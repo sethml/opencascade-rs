@@ -13,19 +13,19 @@ unsafe extern "C" {
     /// **Source:** `BRepMesh_BaseMeshAlgo.hxx`:41 - `BRepMesh_BaseMeshAlgo::Perform()`
     pub fn BRepMesh_BaseMeshAlgo_perform(
         self_: *mut BRepMesh_BaseMeshAlgo,
-        theDFace: *const HandleIMeshDataFace,
+        theDFace: *const Handle_IMeshData_Face,
         theParameters: *const IMeshTools_Parameters,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepMesh_BaseMeshAlgo.hxx`:46 - `BRepMesh_BaseMeshAlgo::DynamicType()`
     pub fn BRepMesh_BaseMeshAlgo_dynamic_type(
         self_: *const BRepMesh_BaseMeshAlgo,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BRepMesh_BaseMeshAlgo.hxx`:46 - `BRepMesh_BaseMeshAlgo::get_type_name()`
     pub fn BRepMesh_BaseMeshAlgo_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BRepMesh_BaseMeshAlgo.hxx`:46 - `BRepMesh_BaseMeshAlgo::get_type_descriptor()`
     pub fn BRepMesh_BaseMeshAlgo_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepMesh_BaseMeshAlgo to IMeshTools_MeshAlgo
     pub fn BRepMesh_BaseMeshAlgo_as_IMeshTools_MeshAlgo(
         self_: *const BRepMesh_BaseMeshAlgo,
@@ -43,68 +43,69 @@ unsafe extern "C" {
         self_: *mut BRepMesh_BaseMeshAlgo,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<BRepMesh_BaseMeshAlgo>
-    pub fn HandleBRepMeshBaseMeshAlgo_destructor(self_: *mut HandleBRepMeshBaseMeshAlgo);
+    pub fn Handle_BRepMesh_BaseMeshAlgo_destructor(self_: *mut Handle_BRepMesh_BaseMeshAlgo);
     /// Clone Handle<BRepMesh_BaseMeshAlgo> (increments reference count)
-    pub fn HandleBRepMeshBaseMeshAlgo_clone(
-        self_: *const HandleBRepMeshBaseMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleBRepMeshBaseMeshAlgo>;
+    pub fn Handle_BRepMesh_BaseMeshAlgo_clone(
+        self_: *const Handle_BRepMesh_BaseMeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_BaseMeshAlgo>;
     /// Check if Handle<BRepMesh_BaseMeshAlgo> is null
-    pub fn HandleBRepMeshBaseMeshAlgo_is_null(self_: *const HandleBRepMeshBaseMeshAlgo) -> bool;
+    pub fn Handle_BRepMesh_BaseMeshAlgo_is_null(self_: *const Handle_BRepMesh_BaseMeshAlgo)
+        -> bool;
     /// Dereference Handle to get *const BRepMesh_BaseMeshAlgo
-    pub fn HandleBRepMeshBaseMeshAlgo_get(
-        handle: *const HandleBRepMeshBaseMeshAlgo,
+    pub fn Handle_BRepMesh_BaseMeshAlgo_get(
+        handle: *const Handle_BRepMesh_BaseMeshAlgo,
     ) -> crate::OcctResult<*const BRepMesh_BaseMeshAlgo>;
     /// Dereference Handle to get *mut BRepMesh_BaseMeshAlgo
-    pub fn HandleBRepMeshBaseMeshAlgo_get_mut(
-        handle: *mut HandleBRepMeshBaseMeshAlgo,
+    pub fn Handle_BRepMesh_BaseMeshAlgo_get_mut(
+        handle: *mut Handle_BRepMesh_BaseMeshAlgo,
     ) -> crate::OcctResult<*mut BRepMesh_BaseMeshAlgo>;
     /// Upcast Handle<BRepMesh_BaseMeshAlgo> to Handle<IMeshTools_MeshAlgo>
-    pub fn HandleBRepMeshBaseMeshAlgo_to_HandleIMeshToolsMeshAlgo(
-        self_: *const HandleBRepMeshBaseMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsMeshAlgo>;
+    pub fn Handle_BRepMesh_BaseMeshAlgo_to_Handle_IMeshTools_MeshAlgo(
+        self_: *const Handle_BRepMesh_BaseMeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_MeshAlgo>;
     /// Upcast Handle<BRepMesh_BaseMeshAlgo> to Handle<Standard_Transient>
-    pub fn HandleBRepMeshBaseMeshAlgo_to_HandleStandardTransient(
-        self_: *const HandleBRepMeshBaseMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BRepMesh_BaseMeshAlgo_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepMesh_BaseMeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<BRepMesh_BaseMeshAlgo> to Handle<BRepMesh_ConstrainedBaseMeshAlgo> (returns null on failure)
-    pub fn HandleBRepMeshBaseMeshAlgo_downcast_to_HandleBRepMeshConstrainedBaseMeshAlgo(
-        self_: *const HandleBRepMeshBaseMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleBRepMeshConstrainedBaseMeshAlgo>;
+    pub fn Handle_BRepMesh_BaseMeshAlgo_downcast_to_Handle_BRepMesh_ConstrainedBaseMeshAlgo(
+        self_: *const Handle_BRepMesh_BaseMeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_ConstrainedBaseMeshAlgo>;
     /// Downcast Handle<BRepMesh_BaseMeshAlgo> to Handle<BRepMesh_DelabellaBaseMeshAlgo> (returns null on failure)
-    pub fn HandleBRepMeshBaseMeshAlgo_downcast_to_HandleBRepMeshDelabellaBaseMeshAlgo(
-        self_: *const HandleBRepMeshBaseMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleBRepMeshDelabellaBaseMeshAlgo>;
+    pub fn Handle_BRepMesh_BaseMeshAlgo_downcast_to_Handle_BRepMesh_DelabellaBaseMeshAlgo(
+        self_: *const Handle_BRepMesh_BaseMeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_DelabellaBaseMeshAlgo>;
     /// Downcast Handle<BRepMesh_BaseMeshAlgo> to Handle<BRepMesh_DelaunayBaseMeshAlgo> (returns null on failure)
-    pub fn HandleBRepMeshBaseMeshAlgo_downcast_to_HandleBRepMeshDelaunayBaseMeshAlgo(
-        self_: *const HandleBRepMeshBaseMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleBRepMeshDelaunayBaseMeshAlgo>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_BRepMesh_BaseMeshAlgo_downcast_to_Handle_BRepMesh_DelaunayBaseMeshAlgo(
+        self_: *const Handle_BRepMesh_BaseMeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_DelaunayBaseMeshAlgo>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepMesh_BaseMeshAlgo_inherited_IsInstance(
         self_: *const BRepMesh_BaseMeshAlgo,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepMesh_BaseMeshAlgo_inherited_IsKind(
         self_: *const BRepMesh_BaseMeshAlgo,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepMesh_BaseMeshAlgo_inherited_This(
         self_: *const BRepMesh_BaseMeshAlgo,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepMesh_BaseMeshAlgo_inherited_GetRefCount(
         self_: *const BRepMesh_BaseMeshAlgo,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepMesh_BaseMeshAlgo_inherited_IncrementRefCounter(
         self_: *mut BRepMesh_BaseMeshAlgo,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepMesh_BaseMeshAlgo_inherited_DecrementRefCounter(
         self_: *mut BRepMesh_BaseMeshAlgo,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepMesh_BaseMeshAlgo_inherited_Delete(
         self_: *const BRepMesh_BaseMeshAlgo,
     ) -> *const std::ffi::c_char;
@@ -152,11 +153,11 @@ unsafe extern "C" {
     pub fn BRepMesh_BoundaryParamsRangeSplitter_inherited_GenerateSurfaceNodes(
         self_: *const BRepMesh_BoundaryParamsRangeSplitter,
         theParameters: *const IMeshTools_Parameters,
-    ) -> crate::OcctResult<*mut HandleNCollectionSharedNCollectionListgpPnt2d>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_Shared_NCollection_List_gp_Pnt2d>;
     /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:38 - `BRepMesh_UVParamRangeSplitter::Reset()`
     pub fn BRepMesh_BoundaryParamsRangeSplitter_inherited_Reset(
         self_: *mut BRepMesh_BoundaryParamsRangeSplitter,
-        theDFace: *const HandleIMeshDataFace,
+        theDFace: *const Handle_IMeshData_Face,
         theParameters: *const IMeshTools_Parameters,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:49 - `BRepMesh_UVParamRangeSplitter::GetParametersU()`
@@ -177,35 +178,35 @@ unsafe extern "C" {
         thePoint: *const gp_Pnt2d,
         isToFaceBasis: bool,
     ) -> crate::OcctResult<*mut gp_Pnt2d>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:65 - `BRepMesh_DefaultRangeSplitter::Point()`
     pub fn BRepMesh_BoundaryParamsRangeSplitter_inherited_Point(
         self_: *const BRepMesh_BoundaryParamsRangeSplitter,
         thePoint2d: *const gp_Pnt2d,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:79 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
     pub fn BRepMesh_BoundaryParamsRangeSplitter_inherited_GetDFace(
         self_: *const BRepMesh_BoundaryParamsRangeSplitter,
-    ) -> crate::OcctResult<*const HandleIMeshDataFace>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
+    ) -> crate::OcctResult<*const Handle_IMeshData_Face>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
     pub fn BRepMesh_BoundaryParamsRangeSplitter_inherited_GetSurface(
         self_: *const BRepMesh_BoundaryParamsRangeSplitter,
-    ) -> crate::OcctResult<*const HandleBRepAdaptorSurface>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
+    ) -> crate::OcctResult<*const Handle_BRepAdaptor_Surface>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
     pub fn BRepMesh_BoundaryParamsRangeSplitter_inherited_GetRangeU(
         self_: *const BRepMesh_BoundaryParamsRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
+    ) -> crate::OcctResult<*const std_pair_double_double>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
     pub fn BRepMesh_BoundaryParamsRangeSplitter_inherited_GetRangeV(
         self_: *const BRepMesh_BoundaryParamsRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
+    ) -> crate::OcctResult<*const std_pair_double_double>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
     pub fn BRepMesh_BoundaryParamsRangeSplitter_inherited_GetDelta(
         self_: *const BRepMesh_BoundaryParamsRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
+    ) -> crate::OcctResult<*const std_pair_double_double>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:93 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
     pub fn BRepMesh_BoundaryParamsRangeSplitter_inherited_GetToleranceUV(
         self_: *const BRepMesh_BoundaryParamsRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
+    ) -> crate::OcctResult<*const std_pair_double_double>;
     // ======================== BRepMesh_Circle ========================
     pub fn BRepMesh_Circle_destructor(self_: *mut BRepMesh_Circle);
     /// **Source:** `BRepMesh_Circle.hxx`:29 - `BRepMesh_Circle::BRepMesh_Circle()`
@@ -235,12 +236,12 @@ unsafe extern "C" {
     pub fn BRepMesh_CircleTool_destructor(self_: *mut BRepMesh_CircleTool);
     /// **Source:** `BRepMesh_CircleTool.hxx`:39 - `BRepMesh_CircleTool::BRepMesh_CircleTool()`
     pub fn BRepMesh_CircleTool_ctor_handlencollectionincallocator(
-        theAllocator: *const HandleNCollectionIncAllocator,
+        theAllocator: *const Handle_NCollection_IncAllocator,
     ) -> crate::OcctResult<*mut BRepMesh_CircleTool>;
     /// **Source:** `BRepMesh_CircleTool.hxx`:44 - `BRepMesh_CircleTool::BRepMesh_CircleTool()`
     pub fn BRepMesh_CircleTool_ctor_int_handlencollectionincallocator(
         theReservedSize: i32,
-        theAllocator: *const HandleNCollectionIncAllocator,
+        theAllocator: *const Handle_NCollection_IncAllocator,
     ) -> crate::OcctResult<*mut BRepMesh_CircleTool>;
     /// **Source:** `BRepMesh_CircleTool.hxx`:49 - `BRepMesh_CircleTool::Init()`
     pub fn BRepMesh_CircleTool_init(
@@ -318,18 +319,19 @@ unsafe extern "C" {
     pub fn BRepMesh_Classifier_register_wire(
         self_: *mut BRepMesh_Classifier,
         theWire: *const NCollection_Sequence_constgp_Pnt2d_ptr,
-        theTolUV: *const std_pair_Standard_Real_Standard_Real,
-        theRangeU: *const std_pair_Standard_Real_Standard_Real,
-        theRangeV: *const std_pair_Standard_Real_Standard_Real,
+        theTolUV: *const std_pair_double_double,
+        theRangeU: *const std_pair_double_double,
+        theRangeV: *const std_pair_double_double,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepMesh_Classifier.hxx`:56 - `BRepMesh_Classifier::DynamicType()`
     pub fn BRepMesh_Classifier_dynamic_type(
         self_: *const BRepMesh_Classifier,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BRepMesh_Classifier.hxx`:56 - `BRepMesh_Classifier::get_type_name()`
     pub fn BRepMesh_Classifier_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BRepMesh_Classifier.hxx`:56 - `BRepMesh_Classifier::get_type_descriptor()`
-    pub fn BRepMesh_Classifier_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn BRepMesh_Classifier_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepMesh_Classifier to Standard_Transient
     pub fn BRepMesh_Classifier_as_Standard_Transient(
         self_: *const BRepMesh_Classifier,
@@ -341,54 +343,54 @@ unsafe extern "C" {
     /// Wrap BRepMesh_Classifier in a Handle
     pub fn BRepMesh_Classifier_to_handle(
         obj: *mut BRepMesh_Classifier,
-    ) -> crate::OcctResult<*mut HandleBRepMeshClassifier>;
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_Classifier>;
     /// Destroy Handle<BRepMesh_Classifier>
-    pub fn HandleBRepMeshClassifier_destructor(self_: *mut HandleBRepMeshClassifier);
+    pub fn Handle_BRepMesh_Classifier_destructor(self_: *mut Handle_BRepMesh_Classifier);
     /// Clone Handle<BRepMesh_Classifier> (increments reference count)
-    pub fn HandleBRepMeshClassifier_clone(
-        self_: *const HandleBRepMeshClassifier,
-    ) -> crate::OcctResult<*mut HandleBRepMeshClassifier>;
+    pub fn Handle_BRepMesh_Classifier_clone(
+        self_: *const Handle_BRepMesh_Classifier,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_Classifier>;
     /// Check if Handle<BRepMesh_Classifier> is null
-    pub fn HandleBRepMeshClassifier_is_null(self_: *const HandleBRepMeshClassifier) -> bool;
+    pub fn Handle_BRepMesh_Classifier_is_null(self_: *const Handle_BRepMesh_Classifier) -> bool;
     /// Dereference Handle to get *const BRepMesh_Classifier
-    pub fn HandleBRepMeshClassifier_get(
-        handle: *const HandleBRepMeshClassifier,
+    pub fn Handle_BRepMesh_Classifier_get(
+        handle: *const Handle_BRepMesh_Classifier,
     ) -> crate::OcctResult<*const BRepMesh_Classifier>;
     /// Dereference Handle to get *mut BRepMesh_Classifier
-    pub fn HandleBRepMeshClassifier_get_mut(
-        handle: *mut HandleBRepMeshClassifier,
+    pub fn Handle_BRepMesh_Classifier_get_mut(
+        handle: *mut Handle_BRepMesh_Classifier,
     ) -> crate::OcctResult<*mut BRepMesh_Classifier>;
     /// Upcast Handle<BRepMesh_Classifier> to Handle<Standard_Transient>
-    pub fn HandleBRepMeshClassifier_to_HandleStandardTransient(
-        self_: *const HandleBRepMeshClassifier,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_BRepMesh_Classifier_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepMesh_Classifier,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepMesh_Classifier_inherited_IsInstance(
         self_: *const BRepMesh_Classifier,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepMesh_Classifier_inherited_IsKind(
         self_: *const BRepMesh_Classifier,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepMesh_Classifier_inherited_This(
         self_: *const BRepMesh_Classifier,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepMesh_Classifier_inherited_GetRefCount(
         self_: *const BRepMesh_Classifier,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepMesh_Classifier_inherited_IncrementRefCounter(
         self_: *mut BRepMesh_Classifier,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepMesh_Classifier_inherited_DecrementRefCounter(
         self_: *mut BRepMesh_Classifier,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepMesh_Classifier_inherited_Delete(
         self_: *const BRepMesh_Classifier,
     ) -> *const std::ffi::c_char;
@@ -400,13 +402,13 @@ unsafe extern "C" {
     pub fn BRepMesh_ConeRangeSplitter_get_split_steps(
         self_: *const BRepMesh_ConeRangeSplitter,
         theParameters: *const IMeshTools_Parameters,
-        theStepsNb: *mut std_pair_Standard_Integer_Standard_Integer,
-    ) -> crate::OcctResult<*mut std_pair_Standard_Real_Standard_Real>;
-    /// **Source:** `BRepMesh_ConeRangeSplitter.hxx`:40 - `BRepMesh_ConeRangeSplitter::GenerateSurfaceNodes()`
+        theStepsNb: *mut std_pair_int_int,
+    ) -> crate::OcctResult<*mut std_pair_double_double>;
+    /// **Source:** `BRepMesh_ConeRangeSplitter.hxx`:39 - `BRepMesh_ConeRangeSplitter::GenerateSurfaceNodes()`
     pub fn BRepMesh_ConeRangeSplitter_generate_surface_nodes(
         self_: *const BRepMesh_ConeRangeSplitter,
         theParameters: *const IMeshTools_Parameters,
-    ) -> crate::OcctResult<*mut HandleNCollectionSharedNCollectionListgpPnt2d>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_Shared_NCollection_List_gp_Pnt2d>;
     /// Upcast BRepMesh_ConeRangeSplitter to BRepMesh_DefaultRangeSplitter
     pub fn BRepMesh_ConeRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
         self_: *const BRepMesh_ConeRangeSplitter,
@@ -418,7 +420,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:38 - `BRepMesh_DefaultRangeSplitter::Reset()`
     pub fn BRepMesh_ConeRangeSplitter_inherited_Reset(
         self_: *mut BRepMesh_ConeRangeSplitter,
-        theDFace: *const HandleIMeshDataFace,
+        theDFace: *const Handle_IMeshData_Face,
         theParameters: *const IMeshTools_Parameters,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
@@ -440,35 +442,35 @@ unsafe extern "C" {
         thePoint: *const gp_Pnt2d,
         isToFaceBasis: bool,
     ) -> crate::OcctResult<*mut gp_Pnt2d>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:65 - `BRepMesh_DefaultRangeSplitter::Point()`
     pub fn BRepMesh_ConeRangeSplitter_inherited_Point(
         self_: *const BRepMesh_ConeRangeSplitter,
         thePoint2d: *const gp_Pnt2d,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:79 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
     pub fn BRepMesh_ConeRangeSplitter_inherited_GetDFace(
         self_: *const BRepMesh_ConeRangeSplitter,
-    ) -> crate::OcctResult<*const HandleIMeshDataFace>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
+    ) -> crate::OcctResult<*const Handle_IMeshData_Face>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
     pub fn BRepMesh_ConeRangeSplitter_inherited_GetSurface(
         self_: *const BRepMesh_ConeRangeSplitter,
-    ) -> crate::OcctResult<*const HandleBRepAdaptorSurface>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
+    ) -> crate::OcctResult<*const Handle_BRepAdaptor_Surface>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
     pub fn BRepMesh_ConeRangeSplitter_inherited_GetRangeU(
         self_: *const BRepMesh_ConeRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
+    ) -> crate::OcctResult<*const std_pair_double_double>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
     pub fn BRepMesh_ConeRangeSplitter_inherited_GetRangeV(
         self_: *const BRepMesh_ConeRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
+    ) -> crate::OcctResult<*const std_pair_double_double>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
     pub fn BRepMesh_ConeRangeSplitter_inherited_GetDelta(
         self_: *const BRepMesh_ConeRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
+    ) -> crate::OcctResult<*const std_pair_double_double>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:93 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
     pub fn BRepMesh_ConeRangeSplitter_inherited_GetToleranceUV(
         self_: *const BRepMesh_ConeRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
+    ) -> crate::OcctResult<*const std_pair_double_double>;
     // ======================== BRepMesh_ConstrainedBaseMeshAlgo ========================
     pub fn BRepMesh_ConstrainedBaseMeshAlgo_destructor(
         self_: *mut BRepMesh_ConstrainedBaseMeshAlgo,
@@ -476,13 +478,13 @@ unsafe extern "C" {
     /// **Source:** `BRepMesh_ConstrainedBaseMeshAlgo.hxx`:34 - `BRepMesh_ConstrainedBaseMeshAlgo::DynamicType()`
     pub fn BRepMesh_ConstrainedBaseMeshAlgo_dynamic_type(
         self_: *const BRepMesh_ConstrainedBaseMeshAlgo,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BRepMesh_ConstrainedBaseMeshAlgo.hxx`:34 - `BRepMesh_ConstrainedBaseMeshAlgo::get_type_name()`
     pub fn BRepMesh_ConstrainedBaseMeshAlgo_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BRepMesh_ConstrainedBaseMeshAlgo.hxx`:34 - `BRepMesh_ConstrainedBaseMeshAlgo::get_type_descriptor()`
     pub fn BRepMesh_ConstrainedBaseMeshAlgo_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepMesh_ConstrainedBaseMeshAlgo to BRepMesh_BaseMeshAlgo
     pub fn BRepMesh_ConstrainedBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo(
         self_: *const BRepMesh_ConstrainedBaseMeshAlgo,
@@ -508,79 +510,79 @@ unsafe extern "C" {
         self_: *mut BRepMesh_ConstrainedBaseMeshAlgo,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<BRepMesh_ConstrainedBaseMeshAlgo>
-    pub fn HandleBRepMeshConstrainedBaseMeshAlgo_destructor(
-        self_: *mut HandleBRepMeshConstrainedBaseMeshAlgo,
+    pub fn Handle_BRepMesh_ConstrainedBaseMeshAlgo_destructor(
+        self_: *mut Handle_BRepMesh_ConstrainedBaseMeshAlgo,
     );
     /// Clone Handle<BRepMesh_ConstrainedBaseMeshAlgo> (increments reference count)
-    pub fn HandleBRepMeshConstrainedBaseMeshAlgo_clone(
-        self_: *const HandleBRepMeshConstrainedBaseMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleBRepMeshConstrainedBaseMeshAlgo>;
+    pub fn Handle_BRepMesh_ConstrainedBaseMeshAlgo_clone(
+        self_: *const Handle_BRepMesh_ConstrainedBaseMeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_ConstrainedBaseMeshAlgo>;
     /// Check if Handle<BRepMesh_ConstrainedBaseMeshAlgo> is null
-    pub fn HandleBRepMeshConstrainedBaseMeshAlgo_is_null(
-        self_: *const HandleBRepMeshConstrainedBaseMeshAlgo,
+    pub fn Handle_BRepMesh_ConstrainedBaseMeshAlgo_is_null(
+        self_: *const Handle_BRepMesh_ConstrainedBaseMeshAlgo,
     ) -> bool;
     /// Dereference Handle to get *const BRepMesh_ConstrainedBaseMeshAlgo
-    pub fn HandleBRepMeshConstrainedBaseMeshAlgo_get(
-        handle: *const HandleBRepMeshConstrainedBaseMeshAlgo,
+    pub fn Handle_BRepMesh_ConstrainedBaseMeshAlgo_get(
+        handle: *const Handle_BRepMesh_ConstrainedBaseMeshAlgo,
     ) -> crate::OcctResult<*const BRepMesh_ConstrainedBaseMeshAlgo>;
     /// Dereference Handle to get *mut BRepMesh_ConstrainedBaseMeshAlgo
-    pub fn HandleBRepMeshConstrainedBaseMeshAlgo_get_mut(
-        handle: *mut HandleBRepMeshConstrainedBaseMeshAlgo,
+    pub fn Handle_BRepMesh_ConstrainedBaseMeshAlgo_get_mut(
+        handle: *mut Handle_BRepMesh_ConstrainedBaseMeshAlgo,
     ) -> crate::OcctResult<*mut BRepMesh_ConstrainedBaseMeshAlgo>;
     /// Upcast Handle<BRepMesh_ConstrainedBaseMeshAlgo> to Handle<BRepMesh_BaseMeshAlgo>
-    pub fn HandleBRepMeshConstrainedBaseMeshAlgo_to_HandleBRepMeshBaseMeshAlgo(
-        self_: *const HandleBRepMeshConstrainedBaseMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleBRepMeshBaseMeshAlgo>;
+    pub fn Handle_BRepMesh_ConstrainedBaseMeshAlgo_to_Handle_BRepMesh_BaseMeshAlgo(
+        self_: *const Handle_BRepMesh_ConstrainedBaseMeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_BaseMeshAlgo>;
     /// Upcast Handle<BRepMesh_ConstrainedBaseMeshAlgo> to Handle<IMeshTools_MeshAlgo>
-    pub fn HandleBRepMeshConstrainedBaseMeshAlgo_to_HandleIMeshToolsMeshAlgo(
-        self_: *const HandleBRepMeshConstrainedBaseMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsMeshAlgo>;
+    pub fn Handle_BRepMesh_ConstrainedBaseMeshAlgo_to_Handle_IMeshTools_MeshAlgo(
+        self_: *const Handle_BRepMesh_ConstrainedBaseMeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_MeshAlgo>;
     /// Upcast Handle<BRepMesh_ConstrainedBaseMeshAlgo> to Handle<Standard_Transient>
-    pub fn HandleBRepMeshConstrainedBaseMeshAlgo_to_HandleStandardTransient(
-        self_: *const HandleBRepMeshConstrainedBaseMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BRepMesh_ConstrainedBaseMeshAlgo_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepMesh_ConstrainedBaseMeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<BRepMesh_ConstrainedBaseMeshAlgo> to Handle<BRepMesh_DelabellaBaseMeshAlgo> (returns null on failure)
-    pub fn HandleBRepMeshConstrainedBaseMeshAlgo_downcast_to_HandleBRepMeshDelabellaBaseMeshAlgo(
-        self_: *const HandleBRepMeshConstrainedBaseMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleBRepMeshDelabellaBaseMeshAlgo>;
+    pub fn Handle_BRepMesh_ConstrainedBaseMeshAlgo_downcast_to_Handle_BRepMesh_DelabellaBaseMeshAlgo(
+        self_: *const Handle_BRepMesh_ConstrainedBaseMeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_DelabellaBaseMeshAlgo>;
     /// Downcast Handle<BRepMesh_ConstrainedBaseMeshAlgo> to Handle<BRepMesh_DelaunayBaseMeshAlgo> (returns null on failure)
-    pub fn HandleBRepMeshConstrainedBaseMeshAlgo_downcast_to_HandleBRepMeshDelaunayBaseMeshAlgo(
-        self_: *const HandleBRepMeshConstrainedBaseMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleBRepMeshDelaunayBaseMeshAlgo>;
+    pub fn Handle_BRepMesh_ConstrainedBaseMeshAlgo_downcast_to_Handle_BRepMesh_DelaunayBaseMeshAlgo(
+        self_: *const Handle_BRepMesh_ConstrainedBaseMeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_DelaunayBaseMeshAlgo>;
     /// Inherited: **Source:** `BRepMesh_BaseMeshAlgo.hxx`:41 - `BRepMesh_BaseMeshAlgo::Perform()`
     pub fn BRepMesh_ConstrainedBaseMeshAlgo_inherited_Perform(
         self_: *mut BRepMesh_ConstrainedBaseMeshAlgo,
-        theDFace: *const HandleIMeshDataFace,
+        theDFace: *const Handle_IMeshData_Face,
         theParameters: *const IMeshTools_Parameters,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepMesh_ConstrainedBaseMeshAlgo_inherited_IsInstance(
         self_: *const BRepMesh_ConstrainedBaseMeshAlgo,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepMesh_ConstrainedBaseMeshAlgo_inherited_IsKind(
         self_: *const BRepMesh_ConstrainedBaseMeshAlgo,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepMesh_ConstrainedBaseMeshAlgo_inherited_This(
         self_: *const BRepMesh_ConstrainedBaseMeshAlgo,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepMesh_ConstrainedBaseMeshAlgo_inherited_GetRefCount(
         self_: *const BRepMesh_ConstrainedBaseMeshAlgo,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepMesh_ConstrainedBaseMeshAlgo_inherited_IncrementRefCounter(
         self_: *mut BRepMesh_ConstrainedBaseMeshAlgo,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepMesh_ConstrainedBaseMeshAlgo_inherited_DecrementRefCounter(
         self_: *mut BRepMesh_ConstrainedBaseMeshAlgo,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepMesh_ConstrainedBaseMeshAlgo_inherited_Delete(
         self_: *const BRepMesh_ConstrainedBaseMeshAlgo,
     ) -> *const std::ffi::c_char;
@@ -593,11 +595,11 @@ unsafe extern "C" {
     /// **Source:** `BRepMesh_Context.hxx`:33 - `BRepMesh_Context::DynamicType()`
     pub fn BRepMesh_Context_dynamic_type(
         self_: *const BRepMesh_Context,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BRepMesh_Context.hxx`:33 - `BRepMesh_Context::get_type_name()`
     pub fn BRepMesh_Context_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BRepMesh_Context.hxx`:33 - `BRepMesh_Context::get_type_descriptor()`
-    pub fn BRepMesh_Context_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn BRepMesh_Context_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepMesh_Context to IMeshTools_Context
     pub fn BRepMesh_Context_as_IMeshTools_Context(
         self_: *const BRepMesh_Context,
@@ -625,35 +627,35 @@ unsafe extern "C" {
     /// Wrap BRepMesh_Context in a Handle
     pub fn BRepMesh_Context_to_handle(
         obj: *mut BRepMesh_Context,
-    ) -> crate::OcctResult<*mut HandleBRepMeshContext>;
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_Context>;
     /// Destroy Handle<BRepMesh_Context>
-    pub fn HandleBRepMeshContext_destructor(self_: *mut HandleBRepMeshContext);
+    pub fn Handle_BRepMesh_Context_destructor(self_: *mut Handle_BRepMesh_Context);
     /// Clone Handle<BRepMesh_Context> (increments reference count)
-    pub fn HandleBRepMeshContext_clone(
-        self_: *const HandleBRepMeshContext,
-    ) -> crate::OcctResult<*mut HandleBRepMeshContext>;
+    pub fn Handle_BRepMesh_Context_clone(
+        self_: *const Handle_BRepMesh_Context,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_Context>;
     /// Check if Handle<BRepMesh_Context> is null
-    pub fn HandleBRepMeshContext_is_null(self_: *const HandleBRepMeshContext) -> bool;
+    pub fn Handle_BRepMesh_Context_is_null(self_: *const Handle_BRepMesh_Context) -> bool;
     /// Dereference Handle to get *const BRepMesh_Context
-    pub fn HandleBRepMeshContext_get(
-        handle: *const HandleBRepMeshContext,
+    pub fn Handle_BRepMesh_Context_get(
+        handle: *const Handle_BRepMesh_Context,
     ) -> crate::OcctResult<*const BRepMesh_Context>;
     /// Dereference Handle to get *mut BRepMesh_Context
-    pub fn HandleBRepMeshContext_get_mut(
-        handle: *mut HandleBRepMeshContext,
+    pub fn Handle_BRepMesh_Context_get_mut(
+        handle: *mut Handle_BRepMesh_Context,
     ) -> crate::OcctResult<*mut BRepMesh_Context>;
     /// Upcast Handle<BRepMesh_Context> to Handle<IMeshTools_Context>
-    pub fn HandleBRepMeshContext_to_HandleIMeshToolsContext(
-        self_: *const HandleBRepMeshContext,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsContext>;
+    pub fn Handle_BRepMesh_Context_to_Handle_IMeshTools_Context(
+        self_: *const Handle_BRepMesh_Context,
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_Context>;
     /// Upcast Handle<BRepMesh_Context> to Handle<IMeshData_Shape>
-    pub fn HandleBRepMeshContext_to_HandleIMeshDataShape(
-        self_: *const HandleBRepMeshContext,
-    ) -> crate::OcctResult<*mut HandleIMeshDataShape>;
+    pub fn Handle_BRepMesh_Context_to_Handle_IMeshData_Shape(
+        self_: *const Handle_BRepMesh_Context,
+    ) -> crate::OcctResult<*mut Handle_IMeshData_Shape>;
     /// Upcast Handle<BRepMesh_Context> to Handle<Standard_Transient>
-    pub fn HandleBRepMeshContext_to_HandleStandardTransient(
-        self_: *const HandleBRepMeshContext,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BRepMesh_Context_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepMesh_Context,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:40 - `IMeshTools_Context::BuildModel()`
     pub fn BRepMesh_Context_inherited_BuildModel(
         self_: *mut BRepMesh_Context,
@@ -686,56 +688,56 @@ unsafe extern "C" {
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:132 - `IMeshTools_Context::GetModelBuilder()`
     pub fn BRepMesh_Context_inherited_GetModelBuilder(
         self_: *const BRepMesh_Context,
-    ) -> crate::OcctResult<*const HandleIMeshToolsModelBuilder>;
+    ) -> crate::OcctResult<*const Handle_IMeshTools_ModelBuilder>;
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:135 - `IMeshTools_Context::SetModelBuilder()`
     pub fn BRepMesh_Context_inherited_SetModelBuilder(
         self_: *mut BRepMesh_Context,
-        theBuilder: *const HandleIMeshToolsModelBuilder,
+        theBuilder: *const Handle_IMeshTools_ModelBuilder,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:141 - `IMeshTools_Context::GetEdgeDiscret()`
     pub fn BRepMesh_Context_inherited_GetEdgeDiscret(
         self_: *const BRepMesh_Context,
-    ) -> crate::OcctResult<*const HandleIMeshToolsModelAlgo>;
+    ) -> crate::OcctResult<*const Handle_IMeshTools_ModelAlgo>;
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:144 - `IMeshTools_Context::SetEdgeDiscret()`
     pub fn BRepMesh_Context_inherited_SetEdgeDiscret(
         self_: *mut BRepMesh_Context,
-        theEdgeDiscret: *const HandleIMeshToolsModelAlgo,
+        theEdgeDiscret: *const Handle_IMeshTools_ModelAlgo,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:150 - `IMeshTools_Context::GetModelHealer()`
     pub fn BRepMesh_Context_inherited_GetModelHealer(
         self_: *const BRepMesh_Context,
-    ) -> crate::OcctResult<*const HandleIMeshToolsModelAlgo>;
+    ) -> crate::OcctResult<*const Handle_IMeshTools_ModelAlgo>;
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:153 - `IMeshTools_Context::SetModelHealer()`
     pub fn BRepMesh_Context_inherited_SetModelHealer(
         self_: *mut BRepMesh_Context,
-        theModelHealer: *const HandleIMeshToolsModelAlgo,
+        theModelHealer: *const Handle_IMeshTools_ModelAlgo,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:159 - `IMeshTools_Context::GetPreProcessor()`
     pub fn BRepMesh_Context_inherited_GetPreProcessor(
         self_: *const BRepMesh_Context,
-    ) -> crate::OcctResult<*const HandleIMeshToolsModelAlgo>;
+    ) -> crate::OcctResult<*const Handle_IMeshTools_ModelAlgo>;
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:162 - `IMeshTools_Context::SetPreProcessor()`
     pub fn BRepMesh_Context_inherited_SetPreProcessor(
         self_: *mut BRepMesh_Context,
-        thePreProcessor: *const HandleIMeshToolsModelAlgo,
+        thePreProcessor: *const Handle_IMeshTools_ModelAlgo,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:168 - `IMeshTools_Context::GetFaceDiscret()`
     pub fn BRepMesh_Context_inherited_GetFaceDiscret(
         self_: *const BRepMesh_Context,
-    ) -> crate::OcctResult<*const HandleIMeshToolsModelAlgo>;
+    ) -> crate::OcctResult<*const Handle_IMeshTools_ModelAlgo>;
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:171 - `IMeshTools_Context::SetFaceDiscret()`
     pub fn BRepMesh_Context_inherited_SetFaceDiscret(
         self_: *mut BRepMesh_Context,
-        theFaceDiscret: *const HandleIMeshToolsModelAlgo,
+        theFaceDiscret: *const Handle_IMeshTools_ModelAlgo,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:177 - `IMeshTools_Context::GetPostProcessor()`
     pub fn BRepMesh_Context_inherited_GetPostProcessor(
         self_: *const BRepMesh_Context,
-    ) -> crate::OcctResult<*const HandleIMeshToolsModelAlgo>;
+    ) -> crate::OcctResult<*const Handle_IMeshTools_ModelAlgo>;
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:180 - `IMeshTools_Context::SetPostProcessor()`
     pub fn BRepMesh_Context_inherited_SetPostProcessor(
         self_: *mut BRepMesh_Context,
-        thePostProcessor: *const HandleIMeshToolsModelAlgo,
+        thePostProcessor: *const Handle_IMeshTools_ModelAlgo,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:186 - `IMeshTools_Context::GetParameters()`
     pub fn BRepMesh_Context_inherited_GetParameters(
@@ -748,7 +750,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:192 - `IMeshTools_Context::GetModel()`
     pub fn BRepMesh_Context_inherited_GetModel(
         self_: *const BRepMesh_Context,
-    ) -> crate::OcctResult<*const HandleIMeshDataModel>;
+    ) -> crate::OcctResult<*const Handle_IMeshData_Model>;
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
     pub fn BRepMesh_Context_inherited_SetShape(
         self_: *mut BRepMesh_Context,
@@ -758,33 +760,33 @@ unsafe extern "C" {
     pub fn BRepMesh_Context_inherited_GetShape(
         self_: *const BRepMesh_Context,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepMesh_Context_inherited_IsInstance(
         self_: *const BRepMesh_Context,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepMesh_Context_inherited_IsKind(
         self_: *const BRepMesh_Context,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepMesh_Context_inherited_This(
         self_: *const BRepMesh_Context,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepMesh_Context_inherited_GetRefCount(
         self_: *const BRepMesh_Context,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepMesh_Context_inherited_IncrementRefCounter(
         self_: *mut BRepMesh_Context,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepMesh_Context_inherited_DecrementRefCounter(
         self_: *mut BRepMesh_Context,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepMesh_Context_inherited_Delete(
         self_: *const BRepMesh_Context,
     ) -> *const std::ffi::c_char;
@@ -792,15 +794,15 @@ unsafe extern "C" {
     pub fn BRepMesh_CurveTessellator_destructor(self_: *mut BRepMesh_CurveTessellator);
     /// **Source:** `BRepMesh_CurveTessellator.hxx`:34 - `BRepMesh_CurveTessellator::BRepMesh_CurveTessellator()`
     pub fn BRepMesh_CurveTessellator_ctor_handleimeshdataedge_parameters_int(
-        theEdge: *const HandleIMeshDataEdge,
+        theEdge: *const Handle_IMeshData_Edge,
         theParameters: *const IMeshTools_Parameters,
         theMinPointsNb: i32,
     ) -> crate::OcctResult<*mut BRepMesh_CurveTessellator>;
     /// **Source:** `BRepMesh_CurveTessellator.hxx`:39 - `BRepMesh_CurveTessellator::BRepMesh_CurveTessellator()`
     pub fn BRepMesh_CurveTessellator_ctor_handleimeshdataedge_orientation_handleimeshdataface_parameters_int(
-        theEdge: *const HandleIMeshDataEdge,
+        theEdge: *const Handle_IMeshData_Edge,
         theOrientation: i32,
-        theFace: *const HandleIMeshDataFace,
+        theFace: *const Handle_IMeshData_Face,
         theParameters: *const IMeshTools_Parameters,
         theMinPointsNb: i32,
     ) -> crate::OcctResult<*mut BRepMesh_CurveTessellator>;
@@ -815,15 +817,15 @@ unsafe extern "C" {
         thePoint: *mut gp_Pnt,
         theParameter: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepMesh_CurveTessellator.hxx`:61 - `BRepMesh_CurveTessellator::DynamicType()`
+    /// **Source:** `BRepMesh_CurveTessellator.hxx`:60 - `BRepMesh_CurveTessellator::DynamicType()`
     pub fn BRepMesh_CurveTessellator_dynamic_type(
         self_: *const BRepMesh_CurveTessellator,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BRepMesh_CurveTessellator.hxx`:61 - `BRepMesh_CurveTessellator::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BRepMesh_CurveTessellator.hxx`:60 - `BRepMesh_CurveTessellator::get_type_name()`
     pub fn BRepMesh_CurveTessellator_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BRepMesh_CurveTessellator.hxx`:61 - `BRepMesh_CurveTessellator::get_type_descriptor()`
+    /// **Source:** `BRepMesh_CurveTessellator.hxx`:60 - `BRepMesh_CurveTessellator::get_type_descriptor()`
     pub fn BRepMesh_CurveTessellator_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepMesh_CurveTessellator to IMeshTools_CurveTessellator
     pub fn BRepMesh_CurveTessellator_as_IMeshTools_CurveTessellator(
         self_: *const BRepMesh_CurveTessellator,
@@ -843,60 +845,62 @@ unsafe extern "C" {
     /// Wrap BRepMesh_CurveTessellator in a Handle
     pub fn BRepMesh_CurveTessellator_to_handle(
         obj: *mut BRepMesh_CurveTessellator,
-    ) -> crate::OcctResult<*mut HandleBRepMeshCurveTessellator>;
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_CurveTessellator>;
     /// Destroy Handle<BRepMesh_CurveTessellator>
-    pub fn HandleBRepMeshCurveTessellator_destructor(self_: *mut HandleBRepMeshCurveTessellator);
+    pub fn Handle_BRepMesh_CurveTessellator_destructor(
+        self_: *mut Handle_BRepMesh_CurveTessellator,
+    );
     /// Clone Handle<BRepMesh_CurveTessellator> (increments reference count)
-    pub fn HandleBRepMeshCurveTessellator_clone(
-        self_: *const HandleBRepMeshCurveTessellator,
-    ) -> crate::OcctResult<*mut HandleBRepMeshCurveTessellator>;
+    pub fn Handle_BRepMesh_CurveTessellator_clone(
+        self_: *const Handle_BRepMesh_CurveTessellator,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_CurveTessellator>;
     /// Check if Handle<BRepMesh_CurveTessellator> is null
-    pub fn HandleBRepMeshCurveTessellator_is_null(
-        self_: *const HandleBRepMeshCurveTessellator,
+    pub fn Handle_BRepMesh_CurveTessellator_is_null(
+        self_: *const Handle_BRepMesh_CurveTessellator,
     ) -> bool;
     /// Dereference Handle to get *const BRepMesh_CurveTessellator
-    pub fn HandleBRepMeshCurveTessellator_get(
-        handle: *const HandleBRepMeshCurveTessellator,
+    pub fn Handle_BRepMesh_CurveTessellator_get(
+        handle: *const Handle_BRepMesh_CurveTessellator,
     ) -> crate::OcctResult<*const BRepMesh_CurveTessellator>;
     /// Dereference Handle to get *mut BRepMesh_CurveTessellator
-    pub fn HandleBRepMeshCurveTessellator_get_mut(
-        handle: *mut HandleBRepMeshCurveTessellator,
+    pub fn Handle_BRepMesh_CurveTessellator_get_mut(
+        handle: *mut Handle_BRepMesh_CurveTessellator,
     ) -> crate::OcctResult<*mut BRepMesh_CurveTessellator>;
     /// Upcast Handle<BRepMesh_CurveTessellator> to Handle<IMeshTools_CurveTessellator>
-    pub fn HandleBRepMeshCurveTessellator_to_HandleIMeshToolsCurveTessellator(
-        self_: *const HandleBRepMeshCurveTessellator,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsCurveTessellator>;
+    pub fn Handle_BRepMesh_CurveTessellator_to_Handle_IMeshTools_CurveTessellator(
+        self_: *const Handle_BRepMesh_CurveTessellator,
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_CurveTessellator>;
     /// Upcast Handle<BRepMesh_CurveTessellator> to Handle<Standard_Transient>
-    pub fn HandleBRepMeshCurveTessellator_to_HandleStandardTransient(
-        self_: *const HandleBRepMeshCurveTessellator,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_BRepMesh_CurveTessellator_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepMesh_CurveTessellator,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepMesh_CurveTessellator_inherited_IsInstance(
         self_: *const BRepMesh_CurveTessellator,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepMesh_CurveTessellator_inherited_IsKind(
         self_: *const BRepMesh_CurveTessellator,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepMesh_CurveTessellator_inherited_This(
         self_: *const BRepMesh_CurveTessellator,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepMesh_CurveTessellator_inherited_GetRefCount(
         self_: *const BRepMesh_CurveTessellator,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepMesh_CurveTessellator_inherited_IncrementRefCounter(
         self_: *mut BRepMesh_CurveTessellator,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepMesh_CurveTessellator_inherited_DecrementRefCounter(
         self_: *mut BRepMesh_CurveTessellator,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepMesh_CurveTessellator_inherited_Delete(
         self_: *const BRepMesh_CurveTessellator,
     ) -> *const std::ffi::c_char;
@@ -905,12 +909,12 @@ unsafe extern "C" {
     /// **Source:** `BRepMesh_CustomBaseMeshAlgo.hxx`:36 - `BRepMesh_CustomBaseMeshAlgo::DynamicType()`
     pub fn BRepMesh_CustomBaseMeshAlgo_dynamic_type(
         self_: *const BRepMesh_CustomBaseMeshAlgo,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BRepMesh_CustomBaseMeshAlgo.hxx`:36 - `BRepMesh_CustomBaseMeshAlgo::get_type_name()`
     pub fn BRepMesh_CustomBaseMeshAlgo_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BRepMesh_CustomBaseMeshAlgo.hxx`:36 - `BRepMesh_CustomBaseMeshAlgo::get_type_descriptor()`
     pub fn BRepMesh_CustomBaseMeshAlgo_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepMesh_CustomBaseMeshAlgo to BRepMesh_ConstrainedBaseMeshAlgo
     pub fn BRepMesh_CustomBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo(
         self_: *const BRepMesh_CustomBaseMeshAlgo,
@@ -944,79 +948,79 @@ unsafe extern "C" {
         self_: *mut BRepMesh_CustomBaseMeshAlgo,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<BRepMesh_CustomBaseMeshAlgo>
-    pub fn HandleBRepMeshCustomBaseMeshAlgo_destructor(
-        self_: *mut HandleBRepMeshCustomBaseMeshAlgo,
+    pub fn Handle_BRepMesh_CustomBaseMeshAlgo_destructor(
+        self_: *mut Handle_BRepMesh_CustomBaseMeshAlgo,
     );
     /// Clone Handle<BRepMesh_CustomBaseMeshAlgo> (increments reference count)
-    pub fn HandleBRepMeshCustomBaseMeshAlgo_clone(
-        self_: *const HandleBRepMeshCustomBaseMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleBRepMeshCustomBaseMeshAlgo>;
+    pub fn Handle_BRepMesh_CustomBaseMeshAlgo_clone(
+        self_: *const Handle_BRepMesh_CustomBaseMeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_CustomBaseMeshAlgo>;
     /// Check if Handle<BRepMesh_CustomBaseMeshAlgo> is null
-    pub fn HandleBRepMeshCustomBaseMeshAlgo_is_null(
-        self_: *const HandleBRepMeshCustomBaseMeshAlgo,
+    pub fn Handle_BRepMesh_CustomBaseMeshAlgo_is_null(
+        self_: *const Handle_BRepMesh_CustomBaseMeshAlgo,
     ) -> bool;
     /// Dereference Handle to get *const BRepMesh_CustomBaseMeshAlgo
-    pub fn HandleBRepMeshCustomBaseMeshAlgo_get(
-        handle: *const HandleBRepMeshCustomBaseMeshAlgo,
+    pub fn Handle_BRepMesh_CustomBaseMeshAlgo_get(
+        handle: *const Handle_BRepMesh_CustomBaseMeshAlgo,
     ) -> crate::OcctResult<*const BRepMesh_CustomBaseMeshAlgo>;
     /// Dereference Handle to get *mut BRepMesh_CustomBaseMeshAlgo
-    pub fn HandleBRepMeshCustomBaseMeshAlgo_get_mut(
-        handle: *mut HandleBRepMeshCustomBaseMeshAlgo,
+    pub fn Handle_BRepMesh_CustomBaseMeshAlgo_get_mut(
+        handle: *mut Handle_BRepMesh_CustomBaseMeshAlgo,
     ) -> crate::OcctResult<*mut BRepMesh_CustomBaseMeshAlgo>;
     /// Upcast Handle<BRepMesh_CustomBaseMeshAlgo> to Handle<BRepMesh_ConstrainedBaseMeshAlgo>
-    pub fn HandleBRepMeshCustomBaseMeshAlgo_to_HandleBRepMeshConstrainedBaseMeshAlgo(
-        self_: *const HandleBRepMeshCustomBaseMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleBRepMeshConstrainedBaseMeshAlgo>;
+    pub fn Handle_BRepMesh_CustomBaseMeshAlgo_to_Handle_BRepMesh_ConstrainedBaseMeshAlgo(
+        self_: *const Handle_BRepMesh_CustomBaseMeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_ConstrainedBaseMeshAlgo>;
     /// Upcast Handle<BRepMesh_CustomBaseMeshAlgo> to Handle<BRepMesh_BaseMeshAlgo>
-    pub fn HandleBRepMeshCustomBaseMeshAlgo_to_HandleBRepMeshBaseMeshAlgo(
-        self_: *const HandleBRepMeshCustomBaseMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleBRepMeshBaseMeshAlgo>;
+    pub fn Handle_BRepMesh_CustomBaseMeshAlgo_to_Handle_BRepMesh_BaseMeshAlgo(
+        self_: *const Handle_BRepMesh_CustomBaseMeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_BaseMeshAlgo>;
     /// Upcast Handle<BRepMesh_CustomBaseMeshAlgo> to Handle<IMeshTools_MeshAlgo>
-    pub fn HandleBRepMeshCustomBaseMeshAlgo_to_HandleIMeshToolsMeshAlgo(
-        self_: *const HandleBRepMeshCustomBaseMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsMeshAlgo>;
+    pub fn Handle_BRepMesh_CustomBaseMeshAlgo_to_Handle_IMeshTools_MeshAlgo(
+        self_: *const Handle_BRepMesh_CustomBaseMeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_MeshAlgo>;
     /// Upcast Handle<BRepMesh_CustomBaseMeshAlgo> to Handle<Standard_Transient>
-    pub fn HandleBRepMeshCustomBaseMeshAlgo_to_HandleStandardTransient(
-        self_: *const HandleBRepMeshCustomBaseMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BRepMesh_CustomBaseMeshAlgo_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepMesh_CustomBaseMeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<BRepMesh_CustomBaseMeshAlgo> to Handle<BRepMesh_DelabellaBaseMeshAlgo> (returns null on failure)
-    pub fn HandleBRepMeshCustomBaseMeshAlgo_downcast_to_HandleBRepMeshDelabellaBaseMeshAlgo(
-        self_: *const HandleBRepMeshCustomBaseMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleBRepMeshDelabellaBaseMeshAlgo>;
+    pub fn Handle_BRepMesh_CustomBaseMeshAlgo_downcast_to_Handle_BRepMesh_DelabellaBaseMeshAlgo(
+        self_: *const Handle_BRepMesh_CustomBaseMeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_DelabellaBaseMeshAlgo>;
     /// Inherited: **Source:** `BRepMesh_BaseMeshAlgo.hxx`:41 - `BRepMesh_BaseMeshAlgo::Perform()`
     pub fn BRepMesh_CustomBaseMeshAlgo_inherited_Perform(
         self_: *mut BRepMesh_CustomBaseMeshAlgo,
-        theDFace: *const HandleIMeshDataFace,
+        theDFace: *const Handle_IMeshData_Face,
         theParameters: *const IMeshTools_Parameters,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepMesh_CustomBaseMeshAlgo_inherited_IsInstance(
         self_: *const BRepMesh_CustomBaseMeshAlgo,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepMesh_CustomBaseMeshAlgo_inherited_IsKind(
         self_: *const BRepMesh_CustomBaseMeshAlgo,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepMesh_CustomBaseMeshAlgo_inherited_This(
         self_: *const BRepMesh_CustomBaseMeshAlgo,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepMesh_CustomBaseMeshAlgo_inherited_GetRefCount(
         self_: *const BRepMesh_CustomBaseMeshAlgo,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepMesh_CustomBaseMeshAlgo_inherited_IncrementRefCounter(
         self_: *mut BRepMesh_CustomBaseMeshAlgo,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepMesh_CustomBaseMeshAlgo_inherited_DecrementRefCounter(
         self_: *mut BRepMesh_CustomBaseMeshAlgo,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepMesh_CustomBaseMeshAlgo_inherited_Delete(
         self_: *const BRepMesh_CustomBaseMeshAlgo,
     ) -> *const std::ffi::c_char;
@@ -1028,14 +1032,14 @@ unsafe extern "C" {
     /// **Source:** `BRepMesh_CylinderRangeSplitter.hxx`:36 - `BRepMesh_CylinderRangeSplitter::Reset()`
     pub fn BRepMesh_CylinderRangeSplitter_reset(
         self_: *mut BRepMesh_CylinderRangeSplitter,
-        theDFace: *const HandleIMeshDataFace,
+        theDFace: *const Handle_IMeshData_Face,
         theParameters: *const IMeshTools_Parameters,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepMesh_CylinderRangeSplitter.hxx`:40 - `BRepMesh_CylinderRangeSplitter::GenerateSurfaceNodes()`
     pub fn BRepMesh_CylinderRangeSplitter_generate_surface_nodes(
         self_: *const BRepMesh_CylinderRangeSplitter,
         theParameters: *const IMeshTools_Parameters,
-    ) -> crate::OcctResult<*mut HandleNCollectionSharedNCollectionListgpPnt2d>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_Shared_NCollection_List_gp_Pnt2d>;
     /// Upcast BRepMesh_CylinderRangeSplitter to BRepMesh_DefaultRangeSplitter
     pub fn BRepMesh_CylinderRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
         self_: *const BRepMesh_CylinderRangeSplitter,
@@ -1063,40 +1067,40 @@ unsafe extern "C" {
         thePoint: *const gp_Pnt2d,
         isToFaceBasis: bool,
     ) -> crate::OcctResult<*mut gp_Pnt2d>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:65 - `BRepMesh_DefaultRangeSplitter::Point()`
     pub fn BRepMesh_CylinderRangeSplitter_inherited_Point(
         self_: *const BRepMesh_CylinderRangeSplitter,
         thePoint2d: *const gp_Pnt2d,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:79 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
     pub fn BRepMesh_CylinderRangeSplitter_inherited_GetDFace(
         self_: *const BRepMesh_CylinderRangeSplitter,
-    ) -> crate::OcctResult<*const HandleIMeshDataFace>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
+    ) -> crate::OcctResult<*const Handle_IMeshData_Face>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
     pub fn BRepMesh_CylinderRangeSplitter_inherited_GetSurface(
         self_: *const BRepMesh_CylinderRangeSplitter,
-    ) -> crate::OcctResult<*const HandleBRepAdaptorSurface>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
+    ) -> crate::OcctResult<*const Handle_BRepAdaptor_Surface>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
     pub fn BRepMesh_CylinderRangeSplitter_inherited_GetRangeU(
         self_: *const BRepMesh_CylinderRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
+    ) -> crate::OcctResult<*const std_pair_double_double>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
     pub fn BRepMesh_CylinderRangeSplitter_inherited_GetRangeV(
         self_: *const BRepMesh_CylinderRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
+    ) -> crate::OcctResult<*const std_pair_double_double>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
     pub fn BRepMesh_CylinderRangeSplitter_inherited_GetDelta(
         self_: *const BRepMesh_CylinderRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
+    ) -> crate::OcctResult<*const std_pair_double_double>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:93 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
     pub fn BRepMesh_CylinderRangeSplitter_inherited_GetToleranceUV(
         self_: *const BRepMesh_CylinderRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
+    ) -> crate::OcctResult<*const std_pair_double_double>;
     // ======================== BRepMesh_DataStructureOfDelaun ========================
     pub fn BRepMesh_DataStructureOfDelaun_destructor(self_: *mut BRepMesh_DataStructureOfDelaun);
     /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:30 - `BRepMesh_DataStructureOfDelaun::BRepMesh_DataStructureOfDelaun()`
     pub fn BRepMesh_DataStructureOfDelaun_ctor_handlencollectionincallocator_int(
-        theAllocator: *const HandleNCollectionIncAllocator,
+        theAllocator: *const Handle_NCollection_IncAllocator,
         theReservedNodeSize: i32,
     ) -> crate::OcctResult<*mut BRepMesh_DataStructureOfDelaun>;
     /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:36 - `BRepMesh_DataStructureOfDelaun::NbNodes()`
@@ -1109,144 +1113,139 @@ unsafe extern "C" {
         theNode: *const BRepMesh_Vertex,
         isForceAdd: bool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:49 - `BRepMesh_DataStructureOfDelaun::IndexOf()`
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:48 - `BRepMesh_DataStructureOfDelaun::IndexOf()`
     pub fn BRepMesh_DataStructureOfDelaun_index_of_vertex(
         self_: *mut BRepMesh_DataStructureOfDelaun,
         theNode: *const BRepMesh_Vertex,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:54 - `BRepMesh_DataStructureOfDelaun::GetNode()`
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:53 - `BRepMesh_DataStructureOfDelaun::GetNode()`
     pub fn BRepMesh_DataStructureOfDelaun_get_node(
         self_: *mut BRepMesh_DataStructureOfDelaun,
         theIndex: i32,
     ) -> crate::OcctResult<*const BRepMesh_Vertex>;
-    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:66 - `BRepMesh_DataStructureOfDelaun::SubstituteNode()`
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:62 - `BRepMesh_DataStructureOfDelaun::SubstituteNode()`
     pub fn BRepMesh_DataStructureOfDelaun_substitute_node(
         self_: *mut BRepMesh_DataStructureOfDelaun,
         theIndex: i32,
         theNewNode: *const BRepMesh_Vertex,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:74 - `BRepMesh_DataStructureOfDelaun::RemoveNode()`
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:69 - `BRepMesh_DataStructureOfDelaun::RemoveNode()`
     pub fn BRepMesh_DataStructureOfDelaun_remove_node(
         self_: *mut BRepMesh_DataStructureOfDelaun,
         theIndex: i32,
         isForce: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:86 - `BRepMesh_DataStructureOfDelaun::LinksConnectedTo()`
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:81 - `BRepMesh_DataStructureOfDelaun::LinksConnectedTo()`
     pub fn BRepMesh_DataStructureOfDelaun_links_connected_to(
         self_: *const BRepMesh_DataStructureOfDelaun,
         theIndex: i32,
     ) -> crate::OcctResult<*const IMeshData_ListOfInteger>;
-    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:93 - `BRepMesh_DataStructureOfDelaun::NbLinks()`
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:88 - `BRepMesh_DataStructureOfDelaun::NbLinks()`
     pub fn BRepMesh_DataStructureOfDelaun_nb_links(
         self_: *const BRepMesh_DataStructureOfDelaun,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:98 - `BRepMesh_DataStructureOfDelaun::AddLink()`
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:93 - `BRepMesh_DataStructureOfDelaun::AddLink()`
     pub fn BRepMesh_DataStructureOfDelaun_add_link(
         self_: *mut BRepMesh_DataStructureOfDelaun,
         theLink: *const BRepMesh_Edge,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:103 - `BRepMesh_DataStructureOfDelaun::IndexOf()`
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:98 - `BRepMesh_DataStructureOfDelaun::IndexOf()`
     pub fn BRepMesh_DataStructureOfDelaun_index_of_edge(
         self_: *const BRepMesh_DataStructureOfDelaun,
         theLink: *const BRepMesh_Edge,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:111 - `BRepMesh_DataStructureOfDelaun::GetLink()`
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:103 - `BRepMesh_DataStructureOfDelaun::GetLink()`
     pub fn BRepMesh_DataStructureOfDelaun_get_link(
         self_: *mut BRepMesh_DataStructureOfDelaun,
         theIndex: i32,
     ) -> crate::OcctResult<*const BRepMesh_Edge>;
-    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:117 - `BRepMesh_DataStructureOfDelaun::LinksOfDomain()`
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:106 - `BRepMesh_DataStructureOfDelaun::LinksOfDomain()`
     pub fn BRepMesh_DataStructureOfDelaun_links_of_domain(
         self_: *const BRepMesh_DataStructureOfDelaun,
     ) -> crate::OcctResult<*const IMeshData_MapOfInteger>;
-    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:123 - `BRepMesh_DataStructureOfDelaun::SubstituteLink()`
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:112 - `BRepMesh_DataStructureOfDelaun::SubstituteLink()`
     pub fn BRepMesh_DataStructureOfDelaun_substitute_link(
         self_: *mut BRepMesh_DataStructureOfDelaun,
         theIndex: i32,
         theNewLink: *const BRepMesh_Edge,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:131 - `BRepMesh_DataStructureOfDelaun::RemoveLink()`
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:119 - `BRepMesh_DataStructureOfDelaun::RemoveLink()`
     pub fn BRepMesh_DataStructureOfDelaun_remove_link(
         self_: *mut BRepMesh_DataStructureOfDelaun,
         theIndex: i32,
         isForce: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:137 - `BRepMesh_DataStructureOfDelaun::ElementsConnectedTo()`
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:124 - `BRepMesh_DataStructureOfDelaun::ElementsConnectedTo()`
     pub fn BRepMesh_DataStructureOfDelaun_elements_connected_to(
         self_: *const BRepMesh_DataStructureOfDelaun,
         theLinkIndex: i32,
     ) -> crate::OcctResult<*const BRepMesh_PairOfIndex>;
-    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:144 - `BRepMesh_DataStructureOfDelaun::NbElements()`
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:131 - `BRepMesh_DataStructureOfDelaun::NbElements()`
     pub fn BRepMesh_DataStructureOfDelaun_nb_elements(
         self_: *const BRepMesh_DataStructureOfDelaun,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:149 - `BRepMesh_DataStructureOfDelaun::AddElement()`
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:136 - `BRepMesh_DataStructureOfDelaun::AddElement()`
     pub fn BRepMesh_DataStructureOfDelaun_add_element(
         self_: *mut BRepMesh_DataStructureOfDelaun,
         theElement: *const BRepMesh_Triangle,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:154 - `BRepMesh_DataStructureOfDelaun::GetElement()`
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:141 - `BRepMesh_DataStructureOfDelaun::GetElement()`
     pub fn BRepMesh_DataStructureOfDelaun_get_element(
         self_: *mut BRepMesh_DataStructureOfDelaun,
         theIndex: i32,
     ) -> crate::OcctResult<*const BRepMesh_Triangle>;
-    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:160 - `BRepMesh_DataStructureOfDelaun::ElementsOfDomain()`
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:147 - `BRepMesh_DataStructureOfDelaun::ElementsOfDomain()`
     pub fn BRepMesh_DataStructureOfDelaun_elements_of_domain(
         self_: *const BRepMesh_DataStructureOfDelaun,
     ) -> crate::OcctResult<*const IMeshData_MapOfInteger>;
-    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:166 - `BRepMesh_DataStructureOfDelaun::SubstituteElement()`
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:153 - `BRepMesh_DataStructureOfDelaun::SubstituteElement()`
     pub fn BRepMesh_DataStructureOfDelaun_substitute_element(
         self_: *mut BRepMesh_DataStructureOfDelaun,
         theIndex: i32,
         theNewElement: *const BRepMesh_Triangle,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:171 - `BRepMesh_DataStructureOfDelaun::RemoveElement()`
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:158 - `BRepMesh_DataStructureOfDelaun::RemoveElement()`
     pub fn BRepMesh_DataStructureOfDelaun_remove_element(
         self_: *mut BRepMesh_DataStructureOfDelaun,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:176 - `BRepMesh_DataStructureOfDelaun::ElementNodes()`
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:163 - `BRepMesh_DataStructureOfDelaun::ElementNodes()`
     pub fn BRepMesh_DataStructureOfDelaun_element_nodes(
         self_: *mut BRepMesh_DataStructureOfDelaun,
         theElement: *const BRepMesh_Triangle,
         theNodes: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:179 - `BRepMesh_DataStructureOfDelaun::Dump()`
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:165 - `BRepMesh_DataStructureOfDelaun::Dump()`
     pub fn BRepMesh_DataStructureOfDelaun_dump(
         self_: *mut BRepMesh_DataStructureOfDelaun,
         theFileNameStr: *const std::ffi::c_char,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:184 - `BRepMesh_DataStructureOfDelaun::Statistics()`
-    pub fn BRepMesh_DataStructureOfDelaun_statistics(
-        self_: *const BRepMesh_DataStructureOfDelaun,
-        theStream: *mut Standard_OStream,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:187 - `BRepMesh_DataStructureOfDelaun::Allocator()`
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:169 - `BRepMesh_DataStructureOfDelaun::Allocator()`
     pub fn BRepMesh_DataStructureOfDelaun_allocator(
         self_: *const BRepMesh_DataStructureOfDelaun,
-    ) -> crate::OcctResult<*const HandleNCollectionIncAllocator>;
-    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:190 - `BRepMesh_DataStructureOfDelaun::Data()`
+    ) -> crate::OcctResult<*const Handle_NCollection_IncAllocator>;
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:172 - `BRepMesh_DataStructureOfDelaun::Data()`
     pub fn BRepMesh_DataStructureOfDelaun_data(
         self_: *mut BRepMesh_DataStructureOfDelaun,
-    ) -> crate::OcctResult<*const HandleBRepMeshVertexTool>;
-    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:193 - `BRepMesh_DataStructureOfDelaun::ClearDomain()`
+    ) -> crate::OcctResult<*const Handle_BRepMesh_VertexTool>;
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:175 - `BRepMesh_DataStructureOfDelaun::ClearDomain()`
     pub fn BRepMesh_DataStructureOfDelaun_clear_domain(
         self_: *mut BRepMesh_DataStructureOfDelaun,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:197 - `BRepMesh_DataStructureOfDelaun::ClearDeleted()`
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:179 - `BRepMesh_DataStructureOfDelaun::ClearDeleted()`
     pub fn BRepMesh_DataStructureOfDelaun_clear_deleted(
         self_: *mut BRepMesh_DataStructureOfDelaun,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:203 - `BRepMesh_DataStructureOfDelaun::DynamicType()`
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:185 - `BRepMesh_DataStructureOfDelaun::DynamicType()`
     pub fn BRepMesh_DataStructureOfDelaun_dynamic_type(
         self_: *const BRepMesh_DataStructureOfDelaun,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:203 - `BRepMesh_DataStructureOfDelaun::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:185 - `BRepMesh_DataStructureOfDelaun::get_type_name()`
     pub fn BRepMesh_DataStructureOfDelaun_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:203 - `BRepMesh_DataStructureOfDelaun::get_type_descriptor()`
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:185 - `BRepMesh_DataStructureOfDelaun::get_type_descriptor()`
     pub fn BRepMesh_DataStructureOfDelaun_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepMesh_DataStructureOfDelaun to Standard_Transient
     pub fn BRepMesh_DataStructureOfDelaun_as_Standard_Transient(
         self_: *const BRepMesh_DataStructureOfDelaun,
@@ -1258,58 +1257,58 @@ unsafe extern "C" {
     /// Wrap BRepMesh_DataStructureOfDelaun in a Handle
     pub fn BRepMesh_DataStructureOfDelaun_to_handle(
         obj: *mut BRepMesh_DataStructureOfDelaun,
-    ) -> crate::OcctResult<*mut HandleBRepMeshDataStructureOfDelaun>;
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_DataStructureOfDelaun>;
     /// Destroy Handle<BRepMesh_DataStructureOfDelaun>
-    pub fn HandleBRepMeshDataStructureOfDelaun_destructor(
-        self_: *mut HandleBRepMeshDataStructureOfDelaun,
+    pub fn Handle_BRepMesh_DataStructureOfDelaun_destructor(
+        self_: *mut Handle_BRepMesh_DataStructureOfDelaun,
     );
     /// Clone Handle<BRepMesh_DataStructureOfDelaun> (increments reference count)
-    pub fn HandleBRepMeshDataStructureOfDelaun_clone(
-        self_: *const HandleBRepMeshDataStructureOfDelaun,
-    ) -> crate::OcctResult<*mut HandleBRepMeshDataStructureOfDelaun>;
+    pub fn Handle_BRepMesh_DataStructureOfDelaun_clone(
+        self_: *const Handle_BRepMesh_DataStructureOfDelaun,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_DataStructureOfDelaun>;
     /// Check if Handle<BRepMesh_DataStructureOfDelaun> is null
-    pub fn HandleBRepMeshDataStructureOfDelaun_is_null(
-        self_: *const HandleBRepMeshDataStructureOfDelaun,
+    pub fn Handle_BRepMesh_DataStructureOfDelaun_is_null(
+        self_: *const Handle_BRepMesh_DataStructureOfDelaun,
     ) -> bool;
     /// Dereference Handle to get *const BRepMesh_DataStructureOfDelaun
-    pub fn HandleBRepMeshDataStructureOfDelaun_get(
-        handle: *const HandleBRepMeshDataStructureOfDelaun,
+    pub fn Handle_BRepMesh_DataStructureOfDelaun_get(
+        handle: *const Handle_BRepMesh_DataStructureOfDelaun,
     ) -> crate::OcctResult<*const BRepMesh_DataStructureOfDelaun>;
     /// Dereference Handle to get *mut BRepMesh_DataStructureOfDelaun
-    pub fn HandleBRepMeshDataStructureOfDelaun_get_mut(
-        handle: *mut HandleBRepMeshDataStructureOfDelaun,
+    pub fn Handle_BRepMesh_DataStructureOfDelaun_get_mut(
+        handle: *mut Handle_BRepMesh_DataStructureOfDelaun,
     ) -> crate::OcctResult<*mut BRepMesh_DataStructureOfDelaun>;
     /// Upcast Handle<BRepMesh_DataStructureOfDelaun> to Handle<Standard_Transient>
-    pub fn HandleBRepMeshDataStructureOfDelaun_to_HandleStandardTransient(
-        self_: *const HandleBRepMeshDataStructureOfDelaun,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_BRepMesh_DataStructureOfDelaun_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepMesh_DataStructureOfDelaun,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepMesh_DataStructureOfDelaun_inherited_IsInstance(
         self_: *const BRepMesh_DataStructureOfDelaun,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepMesh_DataStructureOfDelaun_inherited_IsKind(
         self_: *const BRepMesh_DataStructureOfDelaun,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepMesh_DataStructureOfDelaun_inherited_This(
         self_: *const BRepMesh_DataStructureOfDelaun,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepMesh_DataStructureOfDelaun_inherited_GetRefCount(
         self_: *const BRepMesh_DataStructureOfDelaun,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepMesh_DataStructureOfDelaun_inherited_IncrementRefCounter(
         self_: *mut BRepMesh_DataStructureOfDelaun,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepMesh_DataStructureOfDelaun_inherited_DecrementRefCounter(
         self_: *mut BRepMesh_DataStructureOfDelaun,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepMesh_DataStructureOfDelaun_inherited_Delete(
         self_: *const BRepMesh_DataStructureOfDelaun,
     ) -> *const std::ffi::c_char;
@@ -1321,7 +1320,7 @@ unsafe extern "C" {
     /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:38 - `BRepMesh_DefaultRangeSplitter::Reset()`
     pub fn BRepMesh_DefaultRangeSplitter_reset(
         self_: *mut BRepMesh_DefaultRangeSplitter,
-        theDFace: *const HandleIMeshDataFace,
+        theDFace: *const Handle_IMeshData_Face,
         theParameters: *const IMeshTools_Parameters,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
@@ -1343,81 +1342,82 @@ unsafe extern "C" {
         thePoint: *const gp_Pnt2d,
         isToFaceBasis: bool,
     ) -> crate::OcctResult<*mut gp_Pnt2d>;
-    /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:61 - `BRepMesh_DefaultRangeSplitter::GenerateSurfaceNodes()`
+    /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:60 - `BRepMesh_DefaultRangeSplitter::GenerateSurfaceNodes()`
     pub fn BRepMesh_DefaultRangeSplitter_generate_surface_nodes(
         self_: *const BRepMesh_DefaultRangeSplitter,
         theParameters: *const IMeshTools_Parameters,
-    ) -> crate::OcctResult<*mut HandleNCollectionSharedNCollectionListgpPnt2d>;
-    /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_Shared_NCollection_List_gp_Pnt2d>;
+    /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:65 - `BRepMesh_DefaultRangeSplitter::Point()`
     pub fn BRepMesh_DefaultRangeSplitter_point(
         self_: *const BRepMesh_DefaultRangeSplitter,
         thePoint2d: *const gp_Pnt2d,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
+    /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:79 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
     pub fn BRepMesh_DefaultRangeSplitter_get_d_face(
         self_: *const BRepMesh_DefaultRangeSplitter,
-    ) -> crate::OcctResult<*const HandleIMeshDataFace>;
-    /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
+    ) -> crate::OcctResult<*const Handle_IMeshData_Face>;
+    /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
     pub fn BRepMesh_DefaultRangeSplitter_get_surface(
         self_: *const BRepMesh_DefaultRangeSplitter,
-    ) -> crate::OcctResult<*const HandleBRepAdaptorSurface>;
-    /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
+    ) -> crate::OcctResult<*const Handle_BRepAdaptor_Surface>;
+    /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
     pub fn BRepMesh_DefaultRangeSplitter_get_range_u(
         self_: *const BRepMesh_DefaultRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
-    /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
+    ) -> crate::OcctResult<*const std_pair_double_double>;
+    /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
     pub fn BRepMesh_DefaultRangeSplitter_get_range_v(
         self_: *const BRepMesh_DefaultRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
-    /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
+    ) -> crate::OcctResult<*const std_pair_double_double>;
+    /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
     pub fn BRepMesh_DefaultRangeSplitter_get_delta(
         self_: *const BRepMesh_DefaultRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
-    /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
+    ) -> crate::OcctResult<*const std_pair_double_double>;
+    /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:93 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
     pub fn BRepMesh_DefaultRangeSplitter_get_tolerance_uv(
         self_: *const BRepMesh_DefaultRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
+    ) -> crate::OcctResult<*const std_pair_double_double>;
     // ======================== BRepMesh_Deflection ========================
     pub fn BRepMesh_Deflection_destructor(self_: *mut BRepMesh_Deflection);
     /// **Source:** `BRepMesh_Deflection.hxx` - `BRepMesh_Deflection::BRepMesh_Deflection()`
     pub fn BRepMesh_Deflection_ctor() -> crate::OcctResult<*mut BRepMesh_Deflection>;
-    /// **Source:** `BRepMesh_Deflection.hxx`:66 - `BRepMesh_Deflection::DynamicType()`
+    /// **Source:** `BRepMesh_Deflection.hxx`:65 - `BRepMesh_Deflection::DynamicType()`
     pub fn BRepMesh_Deflection_dynamic_type(
         self_: *const BRepMesh_Deflection,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BRepMesh_Deflection.hxx`:35 - `BRepMesh_Deflection::ComputeAbsoluteDeflection()`
     pub fn BRepMesh_Deflection_compute_absolute_deflection(
         theShape: *const TopoDS_Shape,
         theRelativeDeflection: f64,
         theMaxShapeSize: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepMesh_Deflection.hxx`:41 - `BRepMesh_Deflection::ComputeDeflection()`
+    /// **Source:** `BRepMesh_Deflection.hxx`:40 - `BRepMesh_Deflection::ComputeDeflection()`
     pub fn BRepMesh_Deflection_compute_deflection_handleimeshdataedge_real_parameters(
-        theDEdge: *const HandleIMeshDataEdge,
+        theDEdge: *const Handle_IMeshData_Edge,
         theMaxShapeSize: f64,
         theParameters: *const IMeshTools_Parameters,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_Deflection.hxx`:46 - `BRepMesh_Deflection::ComputeDeflection()`
+    /// **Source:** `BRepMesh_Deflection.hxx`:45 - `BRepMesh_Deflection::ComputeDeflection()`
     pub fn BRepMesh_Deflection_compute_deflection_handleimeshdatawire_parameters(
-        theDWire: *const HandleIMeshDataWire,
+        theDWire: *const Handle_IMeshData_Wire,
         theParameters: *const IMeshTools_Parameters,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_Deflection.hxx`:50 - `BRepMesh_Deflection::ComputeDeflection()`
+    /// **Source:** `BRepMesh_Deflection.hxx`:49 - `BRepMesh_Deflection::ComputeDeflection()`
     pub fn BRepMesh_Deflection_compute_deflection_handleimeshdataface_parameters(
-        theDFace: *const HandleIMeshDataFace,
+        theDFace: *const Handle_IMeshData_Face,
         theParameters: *const IMeshTools_Parameters,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_Deflection.hxx`:61 - `BRepMesh_Deflection::IsConsistent()`
+    /// **Source:** `BRepMesh_Deflection.hxx`:60 - `BRepMesh_Deflection::IsConsistent()`
     pub fn BRepMesh_Deflection_is_consistent(
         theCurrent: f64,
         theRequired: f64,
         theAllowDecrease: bool,
         theRatio: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepMesh_Deflection.hxx`:66 - `BRepMesh_Deflection::get_type_name()`
+    /// **Source:** `BRepMesh_Deflection.hxx`:65 - `BRepMesh_Deflection::get_type_name()`
     pub fn BRepMesh_Deflection_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BRepMesh_Deflection.hxx`:66 - `BRepMesh_Deflection::get_type_descriptor()`
-    pub fn BRepMesh_Deflection_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `BRepMesh_Deflection.hxx`:65 - `BRepMesh_Deflection::get_type_descriptor()`
+    pub fn BRepMesh_Deflection_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepMesh_Deflection to Standard_Transient
     pub fn BRepMesh_Deflection_as_Standard_Transient(
         self_: *const BRepMesh_Deflection,
@@ -1429,54 +1429,54 @@ unsafe extern "C" {
     /// Wrap BRepMesh_Deflection in a Handle
     pub fn BRepMesh_Deflection_to_handle(
         obj: *mut BRepMesh_Deflection,
-    ) -> crate::OcctResult<*mut HandleBRepMeshDeflection>;
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_Deflection>;
     /// Destroy Handle<BRepMesh_Deflection>
-    pub fn HandleBRepMeshDeflection_destructor(self_: *mut HandleBRepMeshDeflection);
+    pub fn Handle_BRepMesh_Deflection_destructor(self_: *mut Handle_BRepMesh_Deflection);
     /// Clone Handle<BRepMesh_Deflection> (increments reference count)
-    pub fn HandleBRepMeshDeflection_clone(
-        self_: *const HandleBRepMeshDeflection,
-    ) -> crate::OcctResult<*mut HandleBRepMeshDeflection>;
+    pub fn Handle_BRepMesh_Deflection_clone(
+        self_: *const Handle_BRepMesh_Deflection,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_Deflection>;
     /// Check if Handle<BRepMesh_Deflection> is null
-    pub fn HandleBRepMeshDeflection_is_null(self_: *const HandleBRepMeshDeflection) -> bool;
+    pub fn Handle_BRepMesh_Deflection_is_null(self_: *const Handle_BRepMesh_Deflection) -> bool;
     /// Dereference Handle to get *const BRepMesh_Deflection
-    pub fn HandleBRepMeshDeflection_get(
-        handle: *const HandleBRepMeshDeflection,
+    pub fn Handle_BRepMesh_Deflection_get(
+        handle: *const Handle_BRepMesh_Deflection,
     ) -> crate::OcctResult<*const BRepMesh_Deflection>;
     /// Dereference Handle to get *mut BRepMesh_Deflection
-    pub fn HandleBRepMeshDeflection_get_mut(
-        handle: *mut HandleBRepMeshDeflection,
+    pub fn Handle_BRepMesh_Deflection_get_mut(
+        handle: *mut Handle_BRepMesh_Deflection,
     ) -> crate::OcctResult<*mut BRepMesh_Deflection>;
     /// Upcast Handle<BRepMesh_Deflection> to Handle<Standard_Transient>
-    pub fn HandleBRepMeshDeflection_to_HandleStandardTransient(
-        self_: *const HandleBRepMeshDeflection,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_BRepMesh_Deflection_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepMesh_Deflection,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepMesh_Deflection_inherited_IsInstance(
         self_: *const BRepMesh_Deflection,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepMesh_Deflection_inherited_IsKind(
         self_: *const BRepMesh_Deflection,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepMesh_Deflection_inherited_This(
         self_: *const BRepMesh_Deflection,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepMesh_Deflection_inherited_GetRefCount(
         self_: *const BRepMesh_Deflection,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepMesh_Deflection_inherited_IncrementRefCounter(
         self_: *mut BRepMesh_Deflection,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepMesh_Deflection_inherited_DecrementRefCounter(
         self_: *mut BRepMesh_Deflection,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepMesh_Deflection_inherited_Delete(
         self_: *const BRepMesh_Deflection,
     ) -> *const std::ffi::c_char;
@@ -1488,13 +1488,13 @@ unsafe extern "C" {
     /// **Source:** `BRepMesh_DelabellaBaseMeshAlgo.hxx`:32 - `BRepMesh_DelabellaBaseMeshAlgo::DynamicType()`
     pub fn BRepMesh_DelabellaBaseMeshAlgo_dynamic_type(
         self_: *const BRepMesh_DelabellaBaseMeshAlgo,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BRepMesh_DelabellaBaseMeshAlgo.hxx`:32 - `BRepMesh_DelabellaBaseMeshAlgo::get_type_name()`
     pub fn BRepMesh_DelabellaBaseMeshAlgo_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BRepMesh_DelabellaBaseMeshAlgo.hxx`:32 - `BRepMesh_DelabellaBaseMeshAlgo::get_type_descriptor()`
     pub fn BRepMesh_DelabellaBaseMeshAlgo_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepMesh_DelabellaBaseMeshAlgo to BRepMesh_CustomBaseMeshAlgo
     pub fn BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_CustomBaseMeshAlgo(
         self_: *const BRepMesh_DelabellaBaseMeshAlgo,
@@ -1538,81 +1538,81 @@ unsafe extern "C" {
     /// Wrap BRepMesh_DelabellaBaseMeshAlgo in a Handle
     pub fn BRepMesh_DelabellaBaseMeshAlgo_to_handle(
         obj: *mut BRepMesh_DelabellaBaseMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleBRepMeshDelabellaBaseMeshAlgo>;
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_DelabellaBaseMeshAlgo>;
     /// Destroy Handle<BRepMesh_DelabellaBaseMeshAlgo>
-    pub fn HandleBRepMeshDelabellaBaseMeshAlgo_destructor(
-        self_: *mut HandleBRepMeshDelabellaBaseMeshAlgo,
+    pub fn Handle_BRepMesh_DelabellaBaseMeshAlgo_destructor(
+        self_: *mut Handle_BRepMesh_DelabellaBaseMeshAlgo,
     );
     /// Clone Handle<BRepMesh_DelabellaBaseMeshAlgo> (increments reference count)
-    pub fn HandleBRepMeshDelabellaBaseMeshAlgo_clone(
-        self_: *const HandleBRepMeshDelabellaBaseMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleBRepMeshDelabellaBaseMeshAlgo>;
+    pub fn Handle_BRepMesh_DelabellaBaseMeshAlgo_clone(
+        self_: *const Handle_BRepMesh_DelabellaBaseMeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_DelabellaBaseMeshAlgo>;
     /// Check if Handle<BRepMesh_DelabellaBaseMeshAlgo> is null
-    pub fn HandleBRepMeshDelabellaBaseMeshAlgo_is_null(
-        self_: *const HandleBRepMeshDelabellaBaseMeshAlgo,
+    pub fn Handle_BRepMesh_DelabellaBaseMeshAlgo_is_null(
+        self_: *const Handle_BRepMesh_DelabellaBaseMeshAlgo,
     ) -> bool;
     /// Dereference Handle to get *const BRepMesh_DelabellaBaseMeshAlgo
-    pub fn HandleBRepMeshDelabellaBaseMeshAlgo_get(
-        handle: *const HandleBRepMeshDelabellaBaseMeshAlgo,
+    pub fn Handle_BRepMesh_DelabellaBaseMeshAlgo_get(
+        handle: *const Handle_BRepMesh_DelabellaBaseMeshAlgo,
     ) -> crate::OcctResult<*const BRepMesh_DelabellaBaseMeshAlgo>;
     /// Dereference Handle to get *mut BRepMesh_DelabellaBaseMeshAlgo
-    pub fn HandleBRepMeshDelabellaBaseMeshAlgo_get_mut(
-        handle: *mut HandleBRepMeshDelabellaBaseMeshAlgo,
+    pub fn Handle_BRepMesh_DelabellaBaseMeshAlgo_get_mut(
+        handle: *mut Handle_BRepMesh_DelabellaBaseMeshAlgo,
     ) -> crate::OcctResult<*mut BRepMesh_DelabellaBaseMeshAlgo>;
     /// Upcast Handle<BRepMesh_DelabellaBaseMeshAlgo> to Handle<BRepMesh_CustomBaseMeshAlgo>
-    pub fn HandleBRepMeshDelabellaBaseMeshAlgo_to_HandleBRepMeshCustomBaseMeshAlgo(
-        self_: *const HandleBRepMeshDelabellaBaseMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleBRepMeshCustomBaseMeshAlgo>;
+    pub fn Handle_BRepMesh_DelabellaBaseMeshAlgo_to_Handle_BRepMesh_CustomBaseMeshAlgo(
+        self_: *const Handle_BRepMesh_DelabellaBaseMeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_CustomBaseMeshAlgo>;
     /// Upcast Handle<BRepMesh_DelabellaBaseMeshAlgo> to Handle<BRepMesh_ConstrainedBaseMeshAlgo>
-    pub fn HandleBRepMeshDelabellaBaseMeshAlgo_to_HandleBRepMeshConstrainedBaseMeshAlgo(
-        self_: *const HandleBRepMeshDelabellaBaseMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleBRepMeshConstrainedBaseMeshAlgo>;
+    pub fn Handle_BRepMesh_DelabellaBaseMeshAlgo_to_Handle_BRepMesh_ConstrainedBaseMeshAlgo(
+        self_: *const Handle_BRepMesh_DelabellaBaseMeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_ConstrainedBaseMeshAlgo>;
     /// Upcast Handle<BRepMesh_DelabellaBaseMeshAlgo> to Handle<BRepMesh_BaseMeshAlgo>
-    pub fn HandleBRepMeshDelabellaBaseMeshAlgo_to_HandleBRepMeshBaseMeshAlgo(
-        self_: *const HandleBRepMeshDelabellaBaseMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleBRepMeshBaseMeshAlgo>;
+    pub fn Handle_BRepMesh_DelabellaBaseMeshAlgo_to_Handle_BRepMesh_BaseMeshAlgo(
+        self_: *const Handle_BRepMesh_DelabellaBaseMeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_BaseMeshAlgo>;
     /// Upcast Handle<BRepMesh_DelabellaBaseMeshAlgo> to Handle<IMeshTools_MeshAlgo>
-    pub fn HandleBRepMeshDelabellaBaseMeshAlgo_to_HandleIMeshToolsMeshAlgo(
-        self_: *const HandleBRepMeshDelabellaBaseMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsMeshAlgo>;
+    pub fn Handle_BRepMesh_DelabellaBaseMeshAlgo_to_Handle_IMeshTools_MeshAlgo(
+        self_: *const Handle_BRepMesh_DelabellaBaseMeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_MeshAlgo>;
     /// Upcast Handle<BRepMesh_DelabellaBaseMeshAlgo> to Handle<Standard_Transient>
-    pub fn HandleBRepMeshDelabellaBaseMeshAlgo_to_HandleStandardTransient(
-        self_: *const HandleBRepMeshDelabellaBaseMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BRepMesh_DelabellaBaseMeshAlgo_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepMesh_DelabellaBaseMeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `BRepMesh_BaseMeshAlgo.hxx`:41 - `BRepMesh_BaseMeshAlgo::Perform()`
     pub fn BRepMesh_DelabellaBaseMeshAlgo_inherited_Perform(
         self_: *mut BRepMesh_DelabellaBaseMeshAlgo,
-        theDFace: *const HandleIMeshDataFace,
+        theDFace: *const Handle_IMeshData_Face,
         theParameters: *const IMeshTools_Parameters,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepMesh_DelabellaBaseMeshAlgo_inherited_IsInstance(
         self_: *const BRepMesh_DelabellaBaseMeshAlgo,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepMesh_DelabellaBaseMeshAlgo_inherited_IsKind(
         self_: *const BRepMesh_DelabellaBaseMeshAlgo,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepMesh_DelabellaBaseMeshAlgo_inherited_This(
         self_: *const BRepMesh_DelabellaBaseMeshAlgo,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepMesh_DelabellaBaseMeshAlgo_inherited_GetRefCount(
         self_: *const BRepMesh_DelabellaBaseMeshAlgo,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepMesh_DelabellaBaseMeshAlgo_inherited_IncrementRefCounter(
         self_: *mut BRepMesh_DelabellaBaseMeshAlgo,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepMesh_DelabellaBaseMeshAlgo_inherited_DecrementRefCounter(
         self_: *mut BRepMesh_DelabellaBaseMeshAlgo,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepMesh_DelabellaBaseMeshAlgo_inherited_Delete(
         self_: *const BRepMesh_DelabellaBaseMeshAlgo,
     ) -> *const std::ffi::c_char;
@@ -1628,17 +1628,17 @@ unsafe extern "C" {
         self_: *const BRepMesh_DelabellaMeshAlgoFactory,
         theSurfaceType: i32,
         theParameters: *const IMeshTools_Parameters,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsMeshAlgo>;
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_MeshAlgo>;
     /// **Source:** `BRepMesh_DelabellaMeshAlgoFactory.hxx`:38 - `BRepMesh_DelabellaMeshAlgoFactory::DynamicType()`
     pub fn BRepMesh_DelabellaMeshAlgoFactory_dynamic_type(
         self_: *const BRepMesh_DelabellaMeshAlgoFactory,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BRepMesh_DelabellaMeshAlgoFactory.hxx`:38 - `BRepMesh_DelabellaMeshAlgoFactory::get_type_name()`
     pub fn BRepMesh_DelabellaMeshAlgoFactory_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BRepMesh_DelabellaMeshAlgoFactory.hxx`:38 - `BRepMesh_DelabellaMeshAlgoFactory::get_type_descriptor()`
     pub fn BRepMesh_DelabellaMeshAlgoFactory_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepMesh_DelabellaMeshAlgoFactory to IMeshTools_MeshAlgoFactory
     pub fn BRepMesh_DelabellaMeshAlgoFactory_as_IMeshTools_MeshAlgoFactory(
         self_: *const BRepMesh_DelabellaMeshAlgoFactory,
@@ -1658,162 +1658,162 @@ unsafe extern "C" {
     /// Wrap BRepMesh_DelabellaMeshAlgoFactory in a Handle
     pub fn BRepMesh_DelabellaMeshAlgoFactory_to_handle(
         obj: *mut BRepMesh_DelabellaMeshAlgoFactory,
-    ) -> crate::OcctResult<*mut HandleBRepMeshDelabellaMeshAlgoFactory>;
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_DelabellaMeshAlgoFactory>;
     /// Destroy Handle<BRepMesh_DelabellaMeshAlgoFactory>
-    pub fn HandleBRepMeshDelabellaMeshAlgoFactory_destructor(
-        self_: *mut HandleBRepMeshDelabellaMeshAlgoFactory,
+    pub fn Handle_BRepMesh_DelabellaMeshAlgoFactory_destructor(
+        self_: *mut Handle_BRepMesh_DelabellaMeshAlgoFactory,
     );
     /// Clone Handle<BRepMesh_DelabellaMeshAlgoFactory> (increments reference count)
-    pub fn HandleBRepMeshDelabellaMeshAlgoFactory_clone(
-        self_: *const HandleBRepMeshDelabellaMeshAlgoFactory,
-    ) -> crate::OcctResult<*mut HandleBRepMeshDelabellaMeshAlgoFactory>;
+    pub fn Handle_BRepMesh_DelabellaMeshAlgoFactory_clone(
+        self_: *const Handle_BRepMesh_DelabellaMeshAlgoFactory,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_DelabellaMeshAlgoFactory>;
     /// Check if Handle<BRepMesh_DelabellaMeshAlgoFactory> is null
-    pub fn HandleBRepMeshDelabellaMeshAlgoFactory_is_null(
-        self_: *const HandleBRepMeshDelabellaMeshAlgoFactory,
+    pub fn Handle_BRepMesh_DelabellaMeshAlgoFactory_is_null(
+        self_: *const Handle_BRepMesh_DelabellaMeshAlgoFactory,
     ) -> bool;
     /// Dereference Handle to get *const BRepMesh_DelabellaMeshAlgoFactory
-    pub fn HandleBRepMeshDelabellaMeshAlgoFactory_get(
-        handle: *const HandleBRepMeshDelabellaMeshAlgoFactory,
+    pub fn Handle_BRepMesh_DelabellaMeshAlgoFactory_get(
+        handle: *const Handle_BRepMesh_DelabellaMeshAlgoFactory,
     ) -> crate::OcctResult<*const BRepMesh_DelabellaMeshAlgoFactory>;
     /// Dereference Handle to get *mut BRepMesh_DelabellaMeshAlgoFactory
-    pub fn HandleBRepMeshDelabellaMeshAlgoFactory_get_mut(
-        handle: *mut HandleBRepMeshDelabellaMeshAlgoFactory,
+    pub fn Handle_BRepMesh_DelabellaMeshAlgoFactory_get_mut(
+        handle: *mut Handle_BRepMesh_DelabellaMeshAlgoFactory,
     ) -> crate::OcctResult<*mut BRepMesh_DelabellaMeshAlgoFactory>;
     /// Upcast Handle<BRepMesh_DelabellaMeshAlgoFactory> to Handle<IMeshTools_MeshAlgoFactory>
-    pub fn HandleBRepMeshDelabellaMeshAlgoFactory_to_HandleIMeshToolsMeshAlgoFactory(
-        self_: *const HandleBRepMeshDelabellaMeshAlgoFactory,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsMeshAlgoFactory>;
+    pub fn Handle_BRepMesh_DelabellaMeshAlgoFactory_to_Handle_IMeshTools_MeshAlgoFactory(
+        self_: *const Handle_BRepMesh_DelabellaMeshAlgoFactory,
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_MeshAlgoFactory>;
     /// Upcast Handle<BRepMesh_DelabellaMeshAlgoFactory> to Handle<Standard_Transient>
-    pub fn HandleBRepMeshDelabellaMeshAlgoFactory_to_HandleStandardTransient(
-        self_: *const HandleBRepMeshDelabellaMeshAlgoFactory,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_BRepMesh_DelabellaMeshAlgoFactory_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepMesh_DelabellaMeshAlgoFactory,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepMesh_DelabellaMeshAlgoFactory_inherited_IsInstance(
         self_: *const BRepMesh_DelabellaMeshAlgoFactory,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepMesh_DelabellaMeshAlgoFactory_inherited_IsKind(
         self_: *const BRepMesh_DelabellaMeshAlgoFactory,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepMesh_DelabellaMeshAlgoFactory_inherited_This(
         self_: *const BRepMesh_DelabellaMeshAlgoFactory,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepMesh_DelabellaMeshAlgoFactory_inherited_GetRefCount(
         self_: *const BRepMesh_DelabellaMeshAlgoFactory,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepMesh_DelabellaMeshAlgoFactory_inherited_IncrementRefCounter(
         self_: *mut BRepMesh_DelabellaMeshAlgoFactory,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepMesh_DelabellaMeshAlgoFactory_inherited_DecrementRefCounter(
         self_: *mut BRepMesh_DelabellaMeshAlgoFactory,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepMesh_DelabellaMeshAlgoFactory_inherited_Delete(
         self_: *const BRepMesh_DelabellaMeshAlgoFactory,
     ) -> *const std::ffi::c_char;
     // ======================== BRepMesh_Delaun ========================
     pub fn BRepMesh_Delaun_destructor(self_: *mut BRepMesh_Delaun);
-    /// **Source:** `BRepMesh_Delaun.hxx`:40 - `BRepMesh_Delaun::BRepMesh_Delaun()`
+    /// **Source:** `BRepMesh_Delaun.hxx`:39 - `BRepMesh_Delaun::BRepMesh_Delaun()`
     pub fn BRepMesh_Delaun_ctor_handlebrepmeshdatastructureofdelaun_int2_bool(
-        theOldMesh: *const HandleBRepMeshDataStructureOfDelaun,
+        theOldMesh: *const Handle_BRepMesh_DataStructureOfDelaun,
         theCellsCountU: i32,
         theCellsCountV: i32,
         isFillCircles: bool,
     ) -> crate::OcctResult<*mut BRepMesh_Delaun>;
-    /// **Source:** `BRepMesh_Delaun.hxx`:46 - `BRepMesh_Delaun::BRepMesh_Delaun()`
+    /// **Source:** `BRepMesh_Delaun.hxx`:45 - `BRepMesh_Delaun::BRepMesh_Delaun()`
     pub fn BRepMesh_Delaun_ctor_array1ofvertexofdelaun(
         theVertices: *mut IMeshData_Array1OfVertexOfDelaun,
     ) -> crate::OcctResult<*mut BRepMesh_Delaun>;
-    /// **Source:** `BRepMesh_Delaun.hxx`:49 - `BRepMesh_Delaun::BRepMesh_Delaun()`
+    /// **Source:** `BRepMesh_Delaun.hxx`:48 - `BRepMesh_Delaun::BRepMesh_Delaun()`
     pub fn BRepMesh_Delaun_ctor_handlebrepmeshdatastructureofdelaun_array1ofvertexofdelaun(
-        theOldMesh: *const HandleBRepMeshDataStructureOfDelaun,
+        theOldMesh: *const Handle_BRepMesh_DataStructureOfDelaun,
         theVertices: *mut IMeshData_Array1OfVertexOfDelaun,
     ) -> crate::OcctResult<*mut BRepMesh_Delaun>;
-    /// **Source:** `BRepMesh_Delaun.hxx`:53 - `BRepMesh_Delaun::BRepMesh_Delaun()`
+    /// **Source:** `BRepMesh_Delaun.hxx`:52 - `BRepMesh_Delaun::BRepMesh_Delaun()`
     pub fn BRepMesh_Delaun_ctor_handlebrepmeshdatastructureofdelaun_vectorofinteger(
-        theOldMesh: *const HandleBRepMeshDataStructureOfDelaun,
+        theOldMesh: *const Handle_BRepMesh_DataStructureOfDelaun,
         theVertexIndices: *mut IMeshData_VectorOfInteger,
     ) -> crate::OcctResult<*mut BRepMesh_Delaun>;
-    /// **Source:** `BRepMesh_Delaun.hxx`:57 - `BRepMesh_Delaun::BRepMesh_Delaun()`
+    /// **Source:** `BRepMesh_Delaun.hxx`:56 - `BRepMesh_Delaun::BRepMesh_Delaun()`
     pub fn BRepMesh_Delaun_ctor_handlebrepmeshdatastructureofdelaun_vectorofinteger_int2(
-        theOldMesh: *const HandleBRepMeshDataStructureOfDelaun,
+        theOldMesh: *const Handle_BRepMesh_DataStructureOfDelaun,
         theVertexIndices: *mut IMeshData_VectorOfInteger,
         theCellsCountU: i32,
         theCellsCountV: i32,
     ) -> crate::OcctResult<*mut BRepMesh_Delaun>;
-    /// **Source:** `BRepMesh_Delaun.hxx`:63 - `BRepMesh_Delaun::Init()`
+    /// **Source:** `BRepMesh_Delaun.hxx`:62 - `BRepMesh_Delaun::Init()`
     pub fn BRepMesh_Delaun_init(
         self_: *mut BRepMesh_Delaun,
         theVertices: *mut IMeshData_Array1OfVertexOfDelaun,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_Delaun.hxx`:66 - `BRepMesh_Delaun::InitCirclesTool()`
+    /// **Source:** `BRepMesh_Delaun.hxx`:65 - `BRepMesh_Delaun::InitCirclesTool()`
     pub fn BRepMesh_Delaun_init_circles_tool(
         self_: *mut BRepMesh_Delaun,
         theCellsCountU: i32,
         theCellsCountV: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_Delaun.hxx`:70 - `BRepMesh_Delaun::RemoveVertex()`
+    /// **Source:** `BRepMesh_Delaun.hxx`:68 - `BRepMesh_Delaun::RemoveVertex()`
     pub fn BRepMesh_Delaun_remove_vertex(
         self_: *mut BRepMesh_Delaun,
         theVertex: *const BRepMesh_Vertex,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_Delaun.hxx`:73 - `BRepMesh_Delaun::AddVertices()`
+    /// **Source:** `BRepMesh_Delaun.hxx`:71 - `BRepMesh_Delaun::AddVertices()`
     pub fn BRepMesh_Delaun_add_vertices(
         self_: *mut BRepMesh_Delaun,
         theVerticesIndices: *mut IMeshData_VectorOfInteger,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_Delaun.hxx`:78 - `BRepMesh_Delaun::UseEdge()`
+    /// **Source:** `BRepMesh_Delaun.hxx`:76 - `BRepMesh_Delaun::UseEdge()`
     pub fn BRepMesh_Delaun_use_edge(
         self_: *mut BRepMesh_Delaun,
         theEdge: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepMesh_Delaun.hxx`:81 - `BRepMesh_Delaun::Result()`
+    /// **Source:** `BRepMesh_Delaun.hxx`:79 - `BRepMesh_Delaun::Result()`
     pub fn BRepMesh_Delaun_result(
         self_: *const BRepMesh_Delaun,
-    ) -> crate::OcctResult<*const HandleBRepMeshDataStructureOfDelaun>;
-    /// **Source:** `BRepMesh_Delaun.hxx`:84 - `BRepMesh_Delaun::ProcessConstraints()`
+    ) -> crate::OcctResult<*const Handle_BRepMesh_DataStructureOfDelaun>;
+    /// **Source:** `BRepMesh_Delaun.hxx`:82 - `BRepMesh_Delaun::ProcessConstraints()`
     pub fn BRepMesh_Delaun_process_constraints(
         self_: *mut BRepMesh_Delaun,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_Delaun.hxx`:93 - `BRepMesh_Delaun::Frontier()`
+    /// **Source:** `BRepMesh_Delaun.hxx`:91 - `BRepMesh_Delaun::Frontier()`
     pub fn BRepMesh_Delaun_frontier(
         self_: *const BRepMesh_Delaun,
-    ) -> crate::OcctResult<*mut HandleNCollectionSharedTColStdPackedMapOfInteger>;
-    /// **Source:** `BRepMesh_Delaun.hxx`:96 - `BRepMesh_Delaun::InternalEdges()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_Shared_NCollection_PackedMap_int>;
+    /// **Source:** `BRepMesh_Delaun.hxx`:94 - `BRepMesh_Delaun::InternalEdges()`
     pub fn BRepMesh_Delaun_internal_edges(
         self_: *const BRepMesh_Delaun,
-    ) -> crate::OcctResult<*mut HandleNCollectionSharedTColStdPackedMapOfInteger>;
-    /// **Source:** `BRepMesh_Delaun.hxx`:99 - `BRepMesh_Delaun::FreeEdges()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_Shared_NCollection_PackedMap_int>;
+    /// **Source:** `BRepMesh_Delaun.hxx`:97 - `BRepMesh_Delaun::FreeEdges()`
     pub fn BRepMesh_Delaun_free_edges(
         self_: *const BRepMesh_Delaun,
-    ) -> crate::OcctResult<*mut HandleNCollectionSharedTColStdPackedMapOfInteger>;
-    /// **Source:** `BRepMesh_Delaun.hxx`:102 - `BRepMesh_Delaun::GetVertex()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_Shared_NCollection_PackedMap_int>;
+    /// **Source:** `BRepMesh_Delaun.hxx`:100 - `BRepMesh_Delaun::GetVertex()`
     pub fn BRepMesh_Delaun_get_vertex(
         self_: *const BRepMesh_Delaun,
         theIndex: i32,
     ) -> crate::OcctResult<*const BRepMesh_Vertex>;
-    /// **Source:** `BRepMesh_Delaun.hxx`:108 - `BRepMesh_Delaun::GetEdge()`
+    /// **Source:** `BRepMesh_Delaun.hxx`:106 - `BRepMesh_Delaun::GetEdge()`
     pub fn BRepMesh_Delaun_get_edge(
         self_: *const BRepMesh_Delaun,
         theIndex: i32,
     ) -> crate::OcctResult<*const BRepMesh_Edge>;
-    /// **Source:** `BRepMesh_Delaun.hxx`:114 - `BRepMesh_Delaun::GetTriangle()`
+    /// **Source:** `BRepMesh_Delaun.hxx`:109 - `BRepMesh_Delaun::GetTriangle()`
     pub fn BRepMesh_Delaun_get_triangle(
         self_: *const BRepMesh_Delaun,
         theIndex: i32,
     ) -> crate::OcctResult<*const BRepMesh_Triangle>;
-    /// **Source:** `BRepMesh_Delaun.hxx`:120 - `BRepMesh_Delaun::Circles()`
+    /// **Source:** `BRepMesh_Delaun.hxx`:115 - `BRepMesh_Delaun::Circles()`
     pub fn BRepMesh_Delaun_circles(
         self_: *const BRepMesh_Delaun,
     ) -> crate::OcctResult<*const BRepMesh_CircleTool>;
-    /// **Source:** `BRepMesh_Delaun.hxx`:126 - `BRepMesh_Delaun::Contains()`
+    /// **Source:** `BRepMesh_Delaun.hxx`:121 - `BRepMesh_Delaun::Contains()`
     pub fn BRepMesh_Delaun_contains(
         self_: *const BRepMesh_Delaun,
         theTriangleId: i32,
@@ -1821,12 +1821,12 @@ unsafe extern "C" {
         theSqTolerance: f64,
         theEdgeOn: *mut i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepMesh_Delaun.hxx`:132 - `BRepMesh_Delaun::SetAuxVertices()`
+    /// **Source:** `BRepMesh_Delaun.hxx`:127 - `BRepMesh_Delaun::SetAuxVertices()`
     pub fn BRepMesh_Delaun_set_aux_vertices(
         self_: *mut BRepMesh_Delaun,
         theSupVert: *const IMeshData_VectorOfInteger,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_Delaun.hxx`:140 - `BRepMesh_Delaun::RemoveAuxElements()`
+    /// **Source:** `BRepMesh_Delaun.hxx`:135 - `BRepMesh_Delaun::RemoveAuxElements()`
     pub fn BRepMesh_Delaun_remove_aux_elements(
         self_: *mut BRepMesh_Delaun,
     ) -> *const std::ffi::c_char;
@@ -1838,13 +1838,13 @@ unsafe extern "C" {
     /// **Source:** `BRepMesh_DelaunayBaseMeshAlgo.hxx`:32 - `BRepMesh_DelaunayBaseMeshAlgo::DynamicType()`
     pub fn BRepMesh_DelaunayBaseMeshAlgo_dynamic_type(
         self_: *const BRepMesh_DelaunayBaseMeshAlgo,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BRepMesh_DelaunayBaseMeshAlgo.hxx`:32 - `BRepMesh_DelaunayBaseMeshAlgo::get_type_name()`
     pub fn BRepMesh_DelaunayBaseMeshAlgo_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BRepMesh_DelaunayBaseMeshAlgo.hxx`:32 - `BRepMesh_DelaunayBaseMeshAlgo::get_type_descriptor()`
     pub fn BRepMesh_DelaunayBaseMeshAlgo_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepMesh_DelaunayBaseMeshAlgo to BRepMesh_ConstrainedBaseMeshAlgo
     pub fn BRepMesh_DelaunayBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo(
         self_: *const BRepMesh_DelaunayBaseMeshAlgo,
@@ -1880,121 +1880,207 @@ unsafe extern "C" {
     /// Wrap BRepMesh_DelaunayBaseMeshAlgo in a Handle
     pub fn BRepMesh_DelaunayBaseMeshAlgo_to_handle(
         obj: *mut BRepMesh_DelaunayBaseMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleBRepMeshDelaunayBaseMeshAlgo>;
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_DelaunayBaseMeshAlgo>;
     /// Destroy Handle<BRepMesh_DelaunayBaseMeshAlgo>
-    pub fn HandleBRepMeshDelaunayBaseMeshAlgo_destructor(
-        self_: *mut HandleBRepMeshDelaunayBaseMeshAlgo,
+    pub fn Handle_BRepMesh_DelaunayBaseMeshAlgo_destructor(
+        self_: *mut Handle_BRepMesh_DelaunayBaseMeshAlgo,
     );
     /// Clone Handle<BRepMesh_DelaunayBaseMeshAlgo> (increments reference count)
-    pub fn HandleBRepMeshDelaunayBaseMeshAlgo_clone(
-        self_: *const HandleBRepMeshDelaunayBaseMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleBRepMeshDelaunayBaseMeshAlgo>;
+    pub fn Handle_BRepMesh_DelaunayBaseMeshAlgo_clone(
+        self_: *const Handle_BRepMesh_DelaunayBaseMeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_DelaunayBaseMeshAlgo>;
     /// Check if Handle<BRepMesh_DelaunayBaseMeshAlgo> is null
-    pub fn HandleBRepMeshDelaunayBaseMeshAlgo_is_null(
-        self_: *const HandleBRepMeshDelaunayBaseMeshAlgo,
+    pub fn Handle_BRepMesh_DelaunayBaseMeshAlgo_is_null(
+        self_: *const Handle_BRepMesh_DelaunayBaseMeshAlgo,
     ) -> bool;
     /// Dereference Handle to get *const BRepMesh_DelaunayBaseMeshAlgo
-    pub fn HandleBRepMeshDelaunayBaseMeshAlgo_get(
-        handle: *const HandleBRepMeshDelaunayBaseMeshAlgo,
+    pub fn Handle_BRepMesh_DelaunayBaseMeshAlgo_get(
+        handle: *const Handle_BRepMesh_DelaunayBaseMeshAlgo,
     ) -> crate::OcctResult<*const BRepMesh_DelaunayBaseMeshAlgo>;
     /// Dereference Handle to get *mut BRepMesh_DelaunayBaseMeshAlgo
-    pub fn HandleBRepMeshDelaunayBaseMeshAlgo_get_mut(
-        handle: *mut HandleBRepMeshDelaunayBaseMeshAlgo,
+    pub fn Handle_BRepMesh_DelaunayBaseMeshAlgo_get_mut(
+        handle: *mut Handle_BRepMesh_DelaunayBaseMeshAlgo,
     ) -> crate::OcctResult<*mut BRepMesh_DelaunayBaseMeshAlgo>;
     /// Upcast Handle<BRepMesh_DelaunayBaseMeshAlgo> to Handle<BRepMesh_ConstrainedBaseMeshAlgo>
-    pub fn HandleBRepMeshDelaunayBaseMeshAlgo_to_HandleBRepMeshConstrainedBaseMeshAlgo(
-        self_: *const HandleBRepMeshDelaunayBaseMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleBRepMeshConstrainedBaseMeshAlgo>;
+    pub fn Handle_BRepMesh_DelaunayBaseMeshAlgo_to_Handle_BRepMesh_ConstrainedBaseMeshAlgo(
+        self_: *const Handle_BRepMesh_DelaunayBaseMeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_ConstrainedBaseMeshAlgo>;
     /// Upcast Handle<BRepMesh_DelaunayBaseMeshAlgo> to Handle<BRepMesh_BaseMeshAlgo>
-    pub fn HandleBRepMeshDelaunayBaseMeshAlgo_to_HandleBRepMeshBaseMeshAlgo(
-        self_: *const HandleBRepMeshDelaunayBaseMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleBRepMeshBaseMeshAlgo>;
+    pub fn Handle_BRepMesh_DelaunayBaseMeshAlgo_to_Handle_BRepMesh_BaseMeshAlgo(
+        self_: *const Handle_BRepMesh_DelaunayBaseMeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_BaseMeshAlgo>;
     /// Upcast Handle<BRepMesh_DelaunayBaseMeshAlgo> to Handle<IMeshTools_MeshAlgo>
-    pub fn HandleBRepMeshDelaunayBaseMeshAlgo_to_HandleIMeshToolsMeshAlgo(
-        self_: *const HandleBRepMeshDelaunayBaseMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsMeshAlgo>;
+    pub fn Handle_BRepMesh_DelaunayBaseMeshAlgo_to_Handle_IMeshTools_MeshAlgo(
+        self_: *const Handle_BRepMesh_DelaunayBaseMeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_MeshAlgo>;
     /// Upcast Handle<BRepMesh_DelaunayBaseMeshAlgo> to Handle<Standard_Transient>
-    pub fn HandleBRepMeshDelaunayBaseMeshAlgo_to_HandleStandardTransient(
-        self_: *const HandleBRepMeshDelaunayBaseMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BRepMesh_DelaunayBaseMeshAlgo_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepMesh_DelaunayBaseMeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `BRepMesh_BaseMeshAlgo.hxx`:41 - `BRepMesh_BaseMeshAlgo::Perform()`
     pub fn BRepMesh_DelaunayBaseMeshAlgo_inherited_Perform(
         self_: *mut BRepMesh_DelaunayBaseMeshAlgo,
-        theDFace: *const HandleIMeshDataFace,
+        theDFace: *const Handle_IMeshData_Face,
         theParameters: *const IMeshTools_Parameters,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepMesh_DelaunayBaseMeshAlgo_inherited_IsInstance(
         self_: *const BRepMesh_DelaunayBaseMeshAlgo,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepMesh_DelaunayBaseMeshAlgo_inherited_IsKind(
         self_: *const BRepMesh_DelaunayBaseMeshAlgo,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepMesh_DelaunayBaseMeshAlgo_inherited_This(
         self_: *const BRepMesh_DelaunayBaseMeshAlgo,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepMesh_DelaunayBaseMeshAlgo_inherited_GetRefCount(
         self_: *const BRepMesh_DelaunayBaseMeshAlgo,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepMesh_DelaunayBaseMeshAlgo_inherited_IncrementRefCounter(
         self_: *mut BRepMesh_DelaunayBaseMeshAlgo,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepMesh_DelaunayBaseMeshAlgo_inherited_DecrementRefCounter(
         self_: *mut BRepMesh_DelaunayBaseMeshAlgo,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepMesh_DelaunayBaseMeshAlgo_inherited_Delete(
         self_: *const BRepMesh_DelaunayBaseMeshAlgo,
     ) -> *const std::ffi::c_char;
+    // ======================== BRepMesh_DiscretAlgoFactory ========================
+    pub fn BRepMesh_DiscretAlgoFactory_destructor(self_: *mut BRepMesh_DiscretAlgoFactory);
+    /// **Source:** `BRepMesh_DiscretAlgoFactory.hxx`:31 - `BRepMesh_DiscretAlgoFactory::DynamicType()`
+    pub fn BRepMesh_DiscretAlgoFactory_dynamic_type(
+        self_: *const BRepMesh_DiscretAlgoFactory,
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BRepMesh_DiscretAlgoFactory.hxx`:65 - `BRepMesh_DiscretAlgoFactory::CreateAlgorithm()`
+    pub fn BRepMesh_DiscretAlgoFactory_create_algorithm(
+        self_: *mut BRepMesh_DiscretAlgoFactory,
+        theShape: *const TopoDS_Shape,
+        theLinDeflection: f64,
+        theAngDeflection: f64,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_DiscretRoot>;
+    /// **Source:** `BRepMesh_DiscretAlgoFactory.hxx`:70 - `BRepMesh_DiscretAlgoFactory::Name()`
+    pub fn BRepMesh_DiscretAlgoFactory_name(
+        self_: *const BRepMesh_DiscretAlgoFactory,
+    ) -> crate::OcctResult<*const TCollection_AsciiString>;
+    /// **Source:** `BRepMesh_DiscretAlgoFactory.hxx`:31 - `BRepMesh_DiscretAlgoFactory::get_type_name()`
+    pub fn BRepMesh_DiscretAlgoFactory_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
+    /// **Source:** `BRepMesh_DiscretAlgoFactory.hxx`:31 - `BRepMesh_DiscretAlgoFactory::get_type_descriptor()`
+    pub fn BRepMesh_DiscretAlgoFactory_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BRepMesh_DiscretAlgoFactory.hxx`:38 - `BRepMesh_DiscretAlgoFactory::RegisterFactory()`
+    pub fn BRepMesh_DiscretAlgoFactory_register_factory(
+        theFactory: *const Handle_BRepMesh_DiscretAlgoFactory,
+        theIsPreferred: bool,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BRepMesh_DiscretAlgoFactory.hxx`:44 - `BRepMesh_DiscretAlgoFactory::UnregisterFactory()`
+    pub fn BRepMesh_DiscretAlgoFactory_unregister_factory(
+        theName: *const TCollection_AsciiString,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BRepMesh_DiscretAlgoFactory.hxx`:47 - `BRepMesh_DiscretAlgoFactory::DefaultFactory()`
+    pub fn BRepMesh_DiscretAlgoFactory_default_factory(
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_DiscretAlgoFactory>;
+    /// **Source:** `BRepMesh_DiscretAlgoFactory.hxx`:52 - `BRepMesh_DiscretAlgoFactory::FindFactory()`
+    pub fn BRepMesh_DiscretAlgoFactory_find_factory(
+        theName: *const TCollection_AsciiString,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_DiscretAlgoFactory>;
+    /// Upcast BRepMesh_DiscretAlgoFactory to Standard_Transient
+    pub fn BRepMesh_DiscretAlgoFactory_as_Standard_Transient(
+        self_: *const BRepMesh_DiscretAlgoFactory,
+    ) -> crate::OcctResult<*const Standard_Transient>;
+    /// Upcast BRepMesh_DiscretAlgoFactory to Standard_Transient (mutable)
+    pub fn BRepMesh_DiscretAlgoFactory_as_Standard_Transient_mut(
+        self_: *mut BRepMesh_DiscretAlgoFactory,
+    ) -> crate::OcctResult<*mut Standard_Transient>;
+    /// Destroy Handle<BRepMesh_DiscretAlgoFactory>
+    pub fn Handle_BRepMesh_DiscretAlgoFactory_destructor(
+        self_: *mut Handle_BRepMesh_DiscretAlgoFactory,
+    );
+    /// Clone Handle<BRepMesh_DiscretAlgoFactory> (increments reference count)
+    pub fn Handle_BRepMesh_DiscretAlgoFactory_clone(
+        self_: *const Handle_BRepMesh_DiscretAlgoFactory,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_DiscretAlgoFactory>;
+    /// Check if Handle<BRepMesh_DiscretAlgoFactory> is null
+    pub fn Handle_BRepMesh_DiscretAlgoFactory_is_null(
+        self_: *const Handle_BRepMesh_DiscretAlgoFactory,
+    ) -> bool;
+    /// Dereference Handle to get *const BRepMesh_DiscretAlgoFactory
+    pub fn Handle_BRepMesh_DiscretAlgoFactory_get(
+        handle: *const Handle_BRepMesh_DiscretAlgoFactory,
+    ) -> crate::OcctResult<*const BRepMesh_DiscretAlgoFactory>;
+    /// Dereference Handle to get *mut BRepMesh_DiscretAlgoFactory
+    pub fn Handle_BRepMesh_DiscretAlgoFactory_get_mut(
+        handle: *mut Handle_BRepMesh_DiscretAlgoFactory,
+    ) -> crate::OcctResult<*mut BRepMesh_DiscretAlgoFactory>;
+    /// Upcast Handle<BRepMesh_DiscretAlgoFactory> to Handle<Standard_Transient>
+    pub fn Handle_BRepMesh_DiscretAlgoFactory_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepMesh_DiscretAlgoFactory,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Downcast Handle<BRepMesh_DiscretAlgoFactory> to Handle<BRepMesh_IncrementalMeshFactory> (returns null on failure)
+    pub fn Handle_BRepMesh_DiscretAlgoFactory_downcast_to_Handle_BRepMesh_IncrementalMeshFactory(
+        self_: *const Handle_BRepMesh_DiscretAlgoFactory,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_IncrementalMeshFactory>;
+    /// Downcast Handle<BRepMesh_DiscretAlgoFactory> to Handle<XBRepMesh_Factory> (returns null on failure)
+    pub fn Handle_BRepMesh_DiscretAlgoFactory_downcast_to_Handle_XBRepMesh_Factory(
+        self_: *const Handle_BRepMesh_DiscretAlgoFactory,
+    ) -> crate::OcctResult<*mut Handle_XBRepMesh_Factory>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn BRepMesh_DiscretAlgoFactory_inherited_IsInstance(
+        self_: *const BRepMesh_DiscretAlgoFactory,
+        theType: *const Handle_Standard_Type,
+    ) -> crate::OcctResult<bool>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn BRepMesh_DiscretAlgoFactory_inherited_IsKind(
+        self_: *const BRepMesh_DiscretAlgoFactory,
+        theType: *const Handle_Standard_Type,
+    ) -> crate::OcctResult<bool>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
+    pub fn BRepMesh_DiscretAlgoFactory_inherited_This(
+        self_: *const BRepMesh_DiscretAlgoFactory,
+    ) -> crate::OcctResult<*mut Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
+    pub fn BRepMesh_DiscretAlgoFactory_inherited_GetRefCount(
+        self_: *const BRepMesh_DiscretAlgoFactory,
+    ) -> crate::OcctResult<i32>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
+    pub fn BRepMesh_DiscretAlgoFactory_inherited_IncrementRefCounter(
+        self_: *mut BRepMesh_DiscretAlgoFactory,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
+    pub fn BRepMesh_DiscretAlgoFactory_inherited_DecrementRefCounter(
+        self_: *mut BRepMesh_DiscretAlgoFactory,
+    ) -> crate::OcctResult<i32>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
+    pub fn BRepMesh_DiscretAlgoFactory_inherited_Delete(
+        self_: *const BRepMesh_DiscretAlgoFactory,
+    ) -> *const std::ffi::c_char;
     // ======================== BRepMesh_DiscretFactory ========================
-    /// **Source:** `BRepMesh_DiscretFactory.hxx`:41 - `BRepMesh_DiscretFactory::Names()`
-    pub fn BRepMesh_DiscretFactory_names(
-        self_: *const BRepMesh_DiscretFactory,
-    ) -> crate::OcctResult<*const TColStd_MapOfAsciiString>;
-    /// **Source:** `BRepMesh_DiscretFactory.hxx`:46 - `BRepMesh_DiscretFactory::SetDefaultName()`
+    pub fn BRepMesh_DiscretFactory_destructor(self_: *mut BRepMesh_DiscretFactory);
+    /// **Source:** `BRepMesh_DiscretFactory.hxx`:42 - `BRepMesh_DiscretFactory::SetDefaultName()`
     pub fn BRepMesh_DiscretFactory_set_default_name(
         self_: *mut BRepMesh_DiscretFactory,
         theName: *const TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepMesh_DiscretFactory.hxx`:52 - `BRepMesh_DiscretFactory::DefaultName()`
+    /// **Source:** `BRepMesh_DiscretFactory.hxx`:45 - `BRepMesh_DiscretFactory::DefaultName()`
     pub fn BRepMesh_DiscretFactory_default_name(
         self_: *const BRepMesh_DiscretFactory,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// **Source:** `BRepMesh_DiscretFactory.hxx`:57 - `BRepMesh_DiscretFactory::SetFunctionName()`
-    pub fn BRepMesh_DiscretFactory_set_function_name(
-        self_: *mut BRepMesh_DiscretFactory,
-        theFuncName: *const TCollection_AsciiString,
-    ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepMesh_DiscretFactory.hxx`:63 - `BRepMesh_DiscretFactory::FunctionName()`
-    pub fn BRepMesh_DiscretFactory_function_name(
-        self_: *const BRepMesh_DiscretFactory,
-    ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// **Source:** `BRepMesh_DiscretFactory.hxx`:66 - `BRepMesh_DiscretFactory::ErrorStatus()`
-    pub fn BRepMesh_DiscretFactory_error_status(
-        self_: *const BRepMesh_DiscretFactory,
-    ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepMesh_DiscretFactory.hxx`:73 - `BRepMesh_DiscretFactory::SetDefault()`
-    pub fn BRepMesh_DiscretFactory_set_default(
-        self_: *mut BRepMesh_DiscretFactory,
-        theName: *const TCollection_AsciiString,
-        theFuncName: *const TCollection_AsciiString,
-    ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepMesh_DiscretFactory.hxx`:80 - `BRepMesh_DiscretFactory::Discret()`
+    /// **Source:** `BRepMesh_DiscretFactory.hxx`:52 - `BRepMesh_DiscretFactory::Discret()`
     pub fn BRepMesh_DiscretFactory_discret(
         self_: *mut BRepMesh_DiscretFactory,
         theShape: *const TopoDS_Shape,
         theLinDeflection: f64,
         theAngDeflection: f64,
-    ) -> crate::OcctResult<*mut HandleBRepMeshDiscretRoot>;
-    /// **Source:** `BRepMesh_DiscretFactory.hxx`:38 - `BRepMesh_DiscretFactory::Get()`
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_DiscretRoot>;
+    /// **Source:** `BRepMesh_DiscretFactory.hxx`:36 - `BRepMesh_DiscretFactory::Get()`
     pub fn BRepMesh_DiscretFactory_get() -> crate::OcctResult<*mut BRepMesh_DiscretFactory>;
     // ======================== BRepMesh_DiscretRoot ========================
     pub fn BRepMesh_DiscretRoot_destructor(self_: *mut BRepMesh_DiscretRoot);
@@ -2019,11 +2105,12 @@ unsafe extern "C" {
     /// **Source:** `BRepMesh_DiscretRoot.hxx`:41 - `BRepMesh_DiscretRoot::DynamicType()`
     pub fn BRepMesh_DiscretRoot_dynamic_type(
         self_: *const BRepMesh_DiscretRoot,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BRepMesh_DiscretRoot.hxx`:41 - `BRepMesh_DiscretRoot::get_type_name()`
     pub fn BRepMesh_DiscretRoot_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BRepMesh_DiscretRoot.hxx`:41 - `BRepMesh_DiscretRoot::get_type_descriptor()`
-    pub fn BRepMesh_DiscretRoot_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn BRepMesh_DiscretRoot_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepMesh_DiscretRoot to Standard_Transient
     pub fn BRepMesh_DiscretRoot_as_Standard_Transient(
         self_: *const BRepMesh_DiscretRoot,
@@ -2033,56 +2120,56 @@ unsafe extern "C" {
         self_: *mut BRepMesh_DiscretRoot,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<BRepMesh_DiscretRoot>
-    pub fn HandleBRepMeshDiscretRoot_destructor(self_: *mut HandleBRepMeshDiscretRoot);
+    pub fn Handle_BRepMesh_DiscretRoot_destructor(self_: *mut Handle_BRepMesh_DiscretRoot);
     /// Clone Handle<BRepMesh_DiscretRoot> (increments reference count)
-    pub fn HandleBRepMeshDiscretRoot_clone(
-        self_: *const HandleBRepMeshDiscretRoot,
-    ) -> crate::OcctResult<*mut HandleBRepMeshDiscretRoot>;
+    pub fn Handle_BRepMesh_DiscretRoot_clone(
+        self_: *const Handle_BRepMesh_DiscretRoot,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_DiscretRoot>;
     /// Check if Handle<BRepMesh_DiscretRoot> is null
-    pub fn HandleBRepMeshDiscretRoot_is_null(self_: *const HandleBRepMeshDiscretRoot) -> bool;
+    pub fn Handle_BRepMesh_DiscretRoot_is_null(self_: *const Handle_BRepMesh_DiscretRoot) -> bool;
     /// Dereference Handle to get *const BRepMesh_DiscretRoot
-    pub fn HandleBRepMeshDiscretRoot_get(
-        handle: *const HandleBRepMeshDiscretRoot,
+    pub fn Handle_BRepMesh_DiscretRoot_get(
+        handle: *const Handle_BRepMesh_DiscretRoot,
     ) -> crate::OcctResult<*const BRepMesh_DiscretRoot>;
     /// Dereference Handle to get *mut BRepMesh_DiscretRoot
-    pub fn HandleBRepMeshDiscretRoot_get_mut(
-        handle: *mut HandleBRepMeshDiscretRoot,
+    pub fn Handle_BRepMesh_DiscretRoot_get_mut(
+        handle: *mut Handle_BRepMesh_DiscretRoot,
     ) -> crate::OcctResult<*mut BRepMesh_DiscretRoot>;
     /// Upcast Handle<BRepMesh_DiscretRoot> to Handle<Standard_Transient>
-    pub fn HandleBRepMeshDiscretRoot_to_HandleStandardTransient(
-        self_: *const HandleBRepMeshDiscretRoot,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BRepMesh_DiscretRoot_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepMesh_DiscretRoot,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<BRepMesh_DiscretRoot> to Handle<BRepMesh_IncrementalMesh> (returns null on failure)
-    pub fn HandleBRepMeshDiscretRoot_downcast_to_HandleBRepMeshIncrementalMesh(
-        self_: *const HandleBRepMeshDiscretRoot,
-    ) -> crate::OcctResult<*mut HandleBRepMeshIncrementalMesh>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_BRepMesh_DiscretRoot_downcast_to_Handle_BRepMesh_IncrementalMesh(
+        self_: *const Handle_BRepMesh_DiscretRoot,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_IncrementalMesh>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepMesh_DiscretRoot_inherited_IsInstance(
         self_: *const BRepMesh_DiscretRoot,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepMesh_DiscretRoot_inherited_IsKind(
         self_: *const BRepMesh_DiscretRoot,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepMesh_DiscretRoot_inherited_This(
         self_: *const BRepMesh_DiscretRoot,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepMesh_DiscretRoot_inherited_GetRefCount(
         self_: *const BRepMesh_DiscretRoot,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepMesh_DiscretRoot_inherited_IncrementRefCounter(
         self_: *mut BRepMesh_DiscretRoot,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepMesh_DiscretRoot_inherited_DecrementRefCounter(
         self_: *mut BRepMesh_DiscretRoot,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepMesh_DiscretRoot_inherited_Delete(
         self_: *const BRepMesh_DiscretRoot,
     ) -> *const std::ffi::c_char;
@@ -2090,25 +2177,25 @@ unsafe extern "C" {
     pub fn BRepMesh_Edge_destructor(self_: *mut BRepMesh_Edge);
     /// **Source:** `BRepMesh_Edge.hxx`:27 - `BRepMesh_Edge::BRepMesh_Edge()`
     pub fn BRepMesh_Edge_ctor() -> crate::OcctResult<*mut BRepMesh_Edge>;
-    /// **Source:** `BRepMesh_Edge.hxx`:34 - `BRepMesh_Edge::BRepMesh_Edge()`
+    /// **Source:** `BRepMesh_Edge.hxx`:33 - `BRepMesh_Edge::BRepMesh_Edge()`
     pub fn BRepMesh_Edge_ctor_int2_degreeoffreedom(
         theFirstNode: i32,
         theLastNode: i32,
         theMovability: i32,
     ) -> crate::OcctResult<*mut BRepMesh_Edge>;
-    /// **Source:** `BRepMesh_Edge.hxx`:43 - `BRepMesh_Edge::Movability()`
+    /// **Source:** `BRepMesh_Edge.hxx`:42 - `BRepMesh_Edge::Movability()`
     pub fn BRepMesh_Edge_movability(self_: *const BRepMesh_Edge) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepMesh_Edge.hxx`:47 - `BRepMesh_Edge::SetMovability()`
+    /// **Source:** `BRepMesh_Edge.hxx`:46 - `BRepMesh_Edge::SetMovability()`
     pub fn BRepMesh_Edge_set_movability(
         self_: *mut BRepMesh_Edge,
         theMovability: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_Edge.hxx`:52 - `BRepMesh_Edge::IsSameOrientation()`
+    /// **Source:** `BRepMesh_Edge.hxx`:51 - `BRepMesh_Edge::IsSameOrientation()`
     pub fn BRepMesh_Edge_is_same_orientation(
         self_: *const BRepMesh_Edge,
         theOther: *const BRepMesh_Edge,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepMesh_Edge.hxx`:60 - `BRepMesh_Edge::IsEqual()`
+    /// **Source:** `BRepMesh_Edge.hxx`:59 - `BRepMesh_Edge::IsEqual()`
     pub fn BRepMesh_Edge_is_equal(
         self_: *const BRepMesh_Edge,
         theOther: *const BRepMesh_Edge,
@@ -2133,41 +2220,42 @@ unsafe extern "C" {
     /// **Source:** `BRepMesh_EdgeDiscret.hxx`:70 - `BRepMesh_EdgeDiscret::DynamicType()`
     pub fn BRepMesh_EdgeDiscret_dynamic_type(
         self_: *const BRepMesh_EdgeDiscret,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BRepMesh_EdgeDiscret.hxx`:39 - `BRepMesh_EdgeDiscret::CreateEdgeTessellator()`
     pub fn BRepMesh_EdgeDiscret_create_edge_tessellator_handleimeshdataedge_parameters_int(
-        theDEdge: *const HandleIMeshDataEdge,
+        theDEdge: *const Handle_IMeshData_Edge,
         theParameters: *const IMeshTools_Parameters,
         theMinPointsNb: i32,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsCurveTessellator>;
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_CurveTessellator>;
     /// **Source:** `BRepMesh_EdgeDiscret.hxx`:45 - `BRepMesh_EdgeDiscret::CreateEdgeTessellator()`
     pub fn BRepMesh_EdgeDiscret_create_edge_tessellator_handleimeshdataedge_orientation_handleimeshdataface_parameters_int(
-        theDEdge: *const HandleIMeshDataEdge,
+        theDEdge: *const Handle_IMeshData_Edge,
         theOrientation: i32,
-        theDFace: *const HandleIMeshDataFace,
+        theDFace: *const Handle_IMeshData_Face,
         theParameters: *const IMeshTools_Parameters,
         theMinPointsNb: i32,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsCurveTessellator>;
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_CurveTessellator>;
     /// **Source:** `BRepMesh_EdgeDiscret.hxx`:53 - `BRepMesh_EdgeDiscret::CreateEdgeTessellationExtractor()`
     pub fn BRepMesh_EdgeDiscret_create_edge_tessellation_extractor(
-        theDEdge: *const HandleIMeshDataEdge,
-        theDFace: *const HandleIMeshDataFace,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsCurveTessellator>;
+        theDEdge: *const Handle_IMeshData_Edge,
+        theDFace: *const Handle_IMeshData_Face,
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_CurveTessellator>;
     /// **Source:** `BRepMesh_EdgeDiscret.hxx`:61 - `BRepMesh_EdgeDiscret::Tessellate3d()`
     pub fn BRepMesh_EdgeDiscret_tessellate3d(
-        theDEdge: *const HandleIMeshDataEdge,
-        theTessellator: *const HandleIMeshToolsCurveTessellator,
+        theDEdge: *const Handle_IMeshData_Edge,
+        theTessellator: *const Handle_IMeshTools_CurveTessellator,
         theUpdateEnds: bool,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepMesh_EdgeDiscret.hxx`:67 - `BRepMesh_EdgeDiscret::Tessellate2d()`
     pub fn BRepMesh_EdgeDiscret_tessellate2d(
-        theDEdge: *const HandleIMeshDataEdge,
+        theDEdge: *const Handle_IMeshData_Edge,
         theUpdateEnds: bool,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepMesh_EdgeDiscret.hxx`:70 - `BRepMesh_EdgeDiscret::get_type_name()`
     pub fn BRepMesh_EdgeDiscret_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BRepMesh_EdgeDiscret.hxx`:70 - `BRepMesh_EdgeDiscret::get_type_descriptor()`
-    pub fn BRepMesh_EdgeDiscret_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn BRepMesh_EdgeDiscret_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepMesh_EdgeDiscret to IMeshTools_ModelAlgo
     pub fn BRepMesh_EdgeDiscret_as_IMeshTools_ModelAlgo(
         self_: *const BRepMesh_EdgeDiscret,
@@ -2187,65 +2275,65 @@ unsafe extern "C" {
     /// Wrap BRepMesh_EdgeDiscret in a Handle
     pub fn BRepMesh_EdgeDiscret_to_handle(
         obj: *mut BRepMesh_EdgeDiscret,
-    ) -> crate::OcctResult<*mut HandleBRepMeshEdgeDiscret>;
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_EdgeDiscret>;
     /// Destroy Handle<BRepMesh_EdgeDiscret>
-    pub fn HandleBRepMeshEdgeDiscret_destructor(self_: *mut HandleBRepMeshEdgeDiscret);
+    pub fn Handle_BRepMesh_EdgeDiscret_destructor(self_: *mut Handle_BRepMesh_EdgeDiscret);
     /// Clone Handle<BRepMesh_EdgeDiscret> (increments reference count)
-    pub fn HandleBRepMeshEdgeDiscret_clone(
-        self_: *const HandleBRepMeshEdgeDiscret,
-    ) -> crate::OcctResult<*mut HandleBRepMeshEdgeDiscret>;
+    pub fn Handle_BRepMesh_EdgeDiscret_clone(
+        self_: *const Handle_BRepMesh_EdgeDiscret,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_EdgeDiscret>;
     /// Check if Handle<BRepMesh_EdgeDiscret> is null
-    pub fn HandleBRepMeshEdgeDiscret_is_null(self_: *const HandleBRepMeshEdgeDiscret) -> bool;
+    pub fn Handle_BRepMesh_EdgeDiscret_is_null(self_: *const Handle_BRepMesh_EdgeDiscret) -> bool;
     /// Dereference Handle to get *const BRepMesh_EdgeDiscret
-    pub fn HandleBRepMeshEdgeDiscret_get(
-        handle: *const HandleBRepMeshEdgeDiscret,
+    pub fn Handle_BRepMesh_EdgeDiscret_get(
+        handle: *const Handle_BRepMesh_EdgeDiscret,
     ) -> crate::OcctResult<*const BRepMesh_EdgeDiscret>;
     /// Dereference Handle to get *mut BRepMesh_EdgeDiscret
-    pub fn HandleBRepMeshEdgeDiscret_get_mut(
-        handle: *mut HandleBRepMeshEdgeDiscret,
+    pub fn Handle_BRepMesh_EdgeDiscret_get_mut(
+        handle: *mut Handle_BRepMesh_EdgeDiscret,
     ) -> crate::OcctResult<*mut BRepMesh_EdgeDiscret>;
     /// Upcast Handle<BRepMesh_EdgeDiscret> to Handle<IMeshTools_ModelAlgo>
-    pub fn HandleBRepMeshEdgeDiscret_to_HandleIMeshToolsModelAlgo(
-        self_: *const HandleBRepMeshEdgeDiscret,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsModelAlgo>;
+    pub fn Handle_BRepMesh_EdgeDiscret_to_Handle_IMeshTools_ModelAlgo(
+        self_: *const Handle_BRepMesh_EdgeDiscret,
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_ModelAlgo>;
     /// Upcast Handle<BRepMesh_EdgeDiscret> to Handle<Standard_Transient>
-    pub fn HandleBRepMeshEdgeDiscret_to_HandleStandardTransient(
-        self_: *const HandleBRepMeshEdgeDiscret,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `IMeshTools_ModelAlgo.hxx`:33 - `IMeshTools_ModelAlgo::Perform()`
+    pub fn Handle_BRepMesh_EdgeDiscret_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepMesh_EdgeDiscret,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `IMeshTools_ModelAlgo.hxx`:34 - `IMeshTools_ModelAlgo::Perform()`
     pub fn BRepMesh_EdgeDiscret_inherited_Perform(
         self_: *mut BRepMesh_EdgeDiscret,
-        theModel: *const HandleIMeshDataModel,
+        theModel: *const Handle_IMeshData_Model,
         theParameters: *const IMeshTools_Parameters,
         theRange: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepMesh_EdgeDiscret_inherited_IsInstance(
         self_: *const BRepMesh_EdgeDiscret,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepMesh_EdgeDiscret_inherited_IsKind(
         self_: *const BRepMesh_EdgeDiscret,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepMesh_EdgeDiscret_inherited_This(
         self_: *const BRepMesh_EdgeDiscret,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepMesh_EdgeDiscret_inherited_GetRefCount(
         self_: *const BRepMesh_EdgeDiscret,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepMesh_EdgeDiscret_inherited_IncrementRefCounter(
         self_: *mut BRepMesh_EdgeDiscret,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepMesh_EdgeDiscret_inherited_DecrementRefCounter(
         self_: *mut BRepMesh_EdgeDiscret,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepMesh_EdgeDiscret_inherited_Delete(
         self_: *const BRepMesh_EdgeDiscret,
     ) -> *const std::ffi::c_char;
@@ -2253,16 +2341,16 @@ unsafe extern "C" {
     pub fn BRepMesh_EdgeTessellationExtractor_destructor(
         self_: *mut BRepMesh_EdgeTessellationExtractor,
     );
-    /// **Source:** `BRepMesh_EdgeTessellationExtractor.hxx`:30 - `BRepMesh_EdgeTessellationExtractor::BRepMesh_EdgeTessellationExtractor()`
+    /// **Source:** `BRepMesh_EdgeTessellationExtractor.hxx`:31 - `BRepMesh_EdgeTessellationExtractor::BRepMesh_EdgeTessellationExtractor()`
     pub fn BRepMesh_EdgeTessellationExtractor_ctor_handleimeshdataedge_handleimeshdataface(
-        theEdge: *const HandleIMeshDataEdge,
-        theFace: *const HandleIMeshDataFace,
+        theEdge: *const Handle_IMeshData_Edge,
+        theFace: *const Handle_IMeshData_Face,
     ) -> crate::OcctResult<*mut BRepMesh_EdgeTessellationExtractor>;
-    /// **Source:** `BRepMesh_EdgeTessellationExtractor.hxx`:37 - `BRepMesh_EdgeTessellationExtractor::PointsNb()`
+    /// **Source:** `BRepMesh_EdgeTessellationExtractor.hxx`:38 - `BRepMesh_EdgeTessellationExtractor::PointsNb()`
     pub fn BRepMesh_EdgeTessellationExtractor_points_nb(
         self_: *const BRepMesh_EdgeTessellationExtractor,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepMesh_EdgeTessellationExtractor.hxx`:44 - `BRepMesh_EdgeTessellationExtractor::Value()`
+    /// **Source:** `BRepMesh_EdgeTessellationExtractor.hxx`:45 - `BRepMesh_EdgeTessellationExtractor::Value()`
     pub fn BRepMesh_EdgeTessellationExtractor_value(
         self_: *const BRepMesh_EdgeTessellationExtractor,
         theIndex: i32,
@@ -2272,13 +2360,13 @@ unsafe extern "C" {
     /// **Source:** `BRepMesh_EdgeTessellationExtractor.hxx`:49 - `BRepMesh_EdgeTessellationExtractor::DynamicType()`
     pub fn BRepMesh_EdgeTessellationExtractor_dynamic_type(
         self_: *const BRepMesh_EdgeTessellationExtractor,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BRepMesh_EdgeTessellationExtractor.hxx`:49 - `BRepMesh_EdgeTessellationExtractor::get_type_name()`
     pub fn BRepMesh_EdgeTessellationExtractor_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BRepMesh_EdgeTessellationExtractor.hxx`:49 - `BRepMesh_EdgeTessellationExtractor::get_type_descriptor()`
     pub fn BRepMesh_EdgeTessellationExtractor_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepMesh_EdgeTessellationExtractor to IMeshTools_CurveTessellator
     pub fn BRepMesh_EdgeTessellationExtractor_as_IMeshTools_CurveTessellator(
         self_: *const BRepMesh_EdgeTessellationExtractor,
@@ -2298,62 +2386,62 @@ unsafe extern "C" {
     /// Wrap BRepMesh_EdgeTessellationExtractor in a Handle
     pub fn BRepMesh_EdgeTessellationExtractor_to_handle(
         obj: *mut BRepMesh_EdgeTessellationExtractor,
-    ) -> crate::OcctResult<*mut HandleBRepMeshEdgeTessellationExtractor>;
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_EdgeTessellationExtractor>;
     /// Destroy Handle<BRepMesh_EdgeTessellationExtractor>
-    pub fn HandleBRepMeshEdgeTessellationExtractor_destructor(
-        self_: *mut HandleBRepMeshEdgeTessellationExtractor,
+    pub fn Handle_BRepMesh_EdgeTessellationExtractor_destructor(
+        self_: *mut Handle_BRepMesh_EdgeTessellationExtractor,
     );
     /// Clone Handle<BRepMesh_EdgeTessellationExtractor> (increments reference count)
-    pub fn HandleBRepMeshEdgeTessellationExtractor_clone(
-        self_: *const HandleBRepMeshEdgeTessellationExtractor,
-    ) -> crate::OcctResult<*mut HandleBRepMeshEdgeTessellationExtractor>;
+    pub fn Handle_BRepMesh_EdgeTessellationExtractor_clone(
+        self_: *const Handle_BRepMesh_EdgeTessellationExtractor,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_EdgeTessellationExtractor>;
     /// Check if Handle<BRepMesh_EdgeTessellationExtractor> is null
-    pub fn HandleBRepMeshEdgeTessellationExtractor_is_null(
-        self_: *const HandleBRepMeshEdgeTessellationExtractor,
+    pub fn Handle_BRepMesh_EdgeTessellationExtractor_is_null(
+        self_: *const Handle_BRepMesh_EdgeTessellationExtractor,
     ) -> bool;
     /// Dereference Handle to get *const BRepMesh_EdgeTessellationExtractor
-    pub fn HandleBRepMeshEdgeTessellationExtractor_get(
-        handle: *const HandleBRepMeshEdgeTessellationExtractor,
+    pub fn Handle_BRepMesh_EdgeTessellationExtractor_get(
+        handle: *const Handle_BRepMesh_EdgeTessellationExtractor,
     ) -> crate::OcctResult<*const BRepMesh_EdgeTessellationExtractor>;
     /// Dereference Handle to get *mut BRepMesh_EdgeTessellationExtractor
-    pub fn HandleBRepMeshEdgeTessellationExtractor_get_mut(
-        handle: *mut HandleBRepMeshEdgeTessellationExtractor,
+    pub fn Handle_BRepMesh_EdgeTessellationExtractor_get_mut(
+        handle: *mut Handle_BRepMesh_EdgeTessellationExtractor,
     ) -> crate::OcctResult<*mut BRepMesh_EdgeTessellationExtractor>;
     /// Upcast Handle<BRepMesh_EdgeTessellationExtractor> to Handle<IMeshTools_CurveTessellator>
-    pub fn HandleBRepMeshEdgeTessellationExtractor_to_HandleIMeshToolsCurveTessellator(
-        self_: *const HandleBRepMeshEdgeTessellationExtractor,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsCurveTessellator>;
+    pub fn Handle_BRepMesh_EdgeTessellationExtractor_to_Handle_IMeshTools_CurveTessellator(
+        self_: *const Handle_BRepMesh_EdgeTessellationExtractor,
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_CurveTessellator>;
     /// Upcast Handle<BRepMesh_EdgeTessellationExtractor> to Handle<Standard_Transient>
-    pub fn HandleBRepMeshEdgeTessellationExtractor_to_HandleStandardTransient(
-        self_: *const HandleBRepMeshEdgeTessellationExtractor,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_BRepMesh_EdgeTessellationExtractor_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepMesh_EdgeTessellationExtractor,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepMesh_EdgeTessellationExtractor_inherited_IsInstance(
         self_: *const BRepMesh_EdgeTessellationExtractor,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepMesh_EdgeTessellationExtractor_inherited_IsKind(
         self_: *const BRepMesh_EdgeTessellationExtractor,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepMesh_EdgeTessellationExtractor_inherited_This(
         self_: *const BRepMesh_EdgeTessellationExtractor,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepMesh_EdgeTessellationExtractor_inherited_GetRefCount(
         self_: *const BRepMesh_EdgeTessellationExtractor,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepMesh_EdgeTessellationExtractor_inherited_IncrementRefCounter(
         self_: *mut BRepMesh_EdgeTessellationExtractor,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepMesh_EdgeTessellationExtractor_inherited_DecrementRefCounter(
         self_: *mut BRepMesh_EdgeTessellationExtractor,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepMesh_EdgeTessellationExtractor_inherited_Delete(
         self_: *const BRepMesh_EdgeTessellationExtractor,
     ) -> *const std::ffi::c_char;
@@ -2394,11 +2482,11 @@ unsafe extern "C" {
     pub fn BRepMesh_ExtrusionRangeSplitter_inherited_GenerateSurfaceNodes(
         self_: *const BRepMesh_ExtrusionRangeSplitter,
         theParameters: *const IMeshTools_Parameters,
-    ) -> crate::OcctResult<*mut HandleNCollectionSharedNCollectionListgpPnt2d>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_Shared_NCollection_List_gp_Pnt2d>;
     /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:38 - `BRepMesh_UVParamRangeSplitter::Reset()`
     pub fn BRepMesh_ExtrusionRangeSplitter_inherited_Reset(
         self_: *mut BRepMesh_ExtrusionRangeSplitter,
-        theDFace: *const HandleIMeshDataFace,
+        theDFace: *const Handle_IMeshData_Face,
         theParameters: *const IMeshTools_Parameters,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:49 - `BRepMesh_UVParamRangeSplitter::GetParametersU()`
@@ -2424,54 +2512,59 @@ unsafe extern "C" {
         thePoint: *const gp_Pnt2d,
         isToFaceBasis: bool,
     ) -> crate::OcctResult<*mut gp_Pnt2d>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:65 - `BRepMesh_DefaultRangeSplitter::Point()`
     pub fn BRepMesh_ExtrusionRangeSplitter_inherited_Point(
         self_: *const BRepMesh_ExtrusionRangeSplitter,
         thePoint2d: *const gp_Pnt2d,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:79 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
     pub fn BRepMesh_ExtrusionRangeSplitter_inherited_GetDFace(
         self_: *const BRepMesh_ExtrusionRangeSplitter,
-    ) -> crate::OcctResult<*const HandleIMeshDataFace>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
+    ) -> crate::OcctResult<*const Handle_IMeshData_Face>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
     pub fn BRepMesh_ExtrusionRangeSplitter_inherited_GetSurface(
         self_: *const BRepMesh_ExtrusionRangeSplitter,
-    ) -> crate::OcctResult<*const HandleBRepAdaptorSurface>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
+    ) -> crate::OcctResult<*const Handle_BRepAdaptor_Surface>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
     pub fn BRepMesh_ExtrusionRangeSplitter_inherited_GetRangeU(
         self_: *const BRepMesh_ExtrusionRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
+    ) -> crate::OcctResult<*const std_pair_double_double>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
     pub fn BRepMesh_ExtrusionRangeSplitter_inherited_GetRangeV(
         self_: *const BRepMesh_ExtrusionRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
+    ) -> crate::OcctResult<*const std_pair_double_double>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
     pub fn BRepMesh_ExtrusionRangeSplitter_inherited_GetDelta(
         self_: *const BRepMesh_ExtrusionRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
+    ) -> crate::OcctResult<*const std_pair_double_double>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:93 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
     pub fn BRepMesh_ExtrusionRangeSplitter_inherited_GetToleranceUV(
         self_: *const BRepMesh_ExtrusionRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
+    ) -> crate::OcctResult<*const std_pair_double_double>;
     // ======================== BRepMesh_FaceChecker ========================
     pub fn BRepMesh_FaceChecker_destructor(self_: *mut BRepMesh_FaceChecker);
     /// **Source:** `BRepMesh_FaceChecker.hxx`:61 - `BRepMesh_FaceChecker::BRepMesh_FaceChecker()`
     pub fn BRepMesh_FaceChecker_ctor_handleimeshdataface_parameters(
-        theFace: *const HandleIMeshDataFace,
+        theFace: *const Handle_IMeshData_Face,
         theParameters: *const IMeshTools_Parameters,
     ) -> crate::OcctResult<*mut BRepMesh_FaceChecker>;
     /// **Source:** `BRepMesh_FaceChecker.hxx`:69 - `BRepMesh_FaceChecker::Perform()`
     pub fn BRepMesh_FaceChecker_perform(
         self_: *mut BRepMesh_FaceChecker,
     ) -> crate::OcctResult<bool>;
+    /// **Source:** `BRepMesh_FaceChecker.hxx`:72 - `BRepMesh_FaceChecker::GetIntersectingEdges()`
+    pub fn BRepMesh_FaceChecker_get_intersecting_edges(
+        self_: *const BRepMesh_FaceChecker,
+    ) -> crate::OcctResult<*const Handle_NCollection_Shared_NCollection_Map_IMeshData_Edge_ptr>;
     /// **Source:** `BRepMesh_FaceChecker.hxx`:80 - `BRepMesh_FaceChecker::DynamicType()`
     pub fn BRepMesh_FaceChecker_dynamic_type(
         self_: *const BRepMesh_FaceChecker,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BRepMesh_FaceChecker.hxx`:80 - `BRepMesh_FaceChecker::get_type_name()`
     pub fn BRepMesh_FaceChecker_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BRepMesh_FaceChecker.hxx`:80 - `BRepMesh_FaceChecker::get_type_descriptor()`
-    pub fn BRepMesh_FaceChecker_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn BRepMesh_FaceChecker_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepMesh_FaceChecker to Standard_Transient
     pub fn BRepMesh_FaceChecker_as_Standard_Transient(
         self_: *const BRepMesh_FaceChecker,
@@ -2483,54 +2576,54 @@ unsafe extern "C" {
     /// Wrap BRepMesh_FaceChecker in a Handle
     pub fn BRepMesh_FaceChecker_to_handle(
         obj: *mut BRepMesh_FaceChecker,
-    ) -> crate::OcctResult<*mut HandleBRepMeshFaceChecker>;
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_FaceChecker>;
     /// Destroy Handle<BRepMesh_FaceChecker>
-    pub fn HandleBRepMeshFaceChecker_destructor(self_: *mut HandleBRepMeshFaceChecker);
+    pub fn Handle_BRepMesh_FaceChecker_destructor(self_: *mut Handle_BRepMesh_FaceChecker);
     /// Clone Handle<BRepMesh_FaceChecker> (increments reference count)
-    pub fn HandleBRepMeshFaceChecker_clone(
-        self_: *const HandleBRepMeshFaceChecker,
-    ) -> crate::OcctResult<*mut HandleBRepMeshFaceChecker>;
+    pub fn Handle_BRepMesh_FaceChecker_clone(
+        self_: *const Handle_BRepMesh_FaceChecker,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_FaceChecker>;
     /// Check if Handle<BRepMesh_FaceChecker> is null
-    pub fn HandleBRepMeshFaceChecker_is_null(self_: *const HandleBRepMeshFaceChecker) -> bool;
+    pub fn Handle_BRepMesh_FaceChecker_is_null(self_: *const Handle_BRepMesh_FaceChecker) -> bool;
     /// Dereference Handle to get *const BRepMesh_FaceChecker
-    pub fn HandleBRepMeshFaceChecker_get(
-        handle: *const HandleBRepMeshFaceChecker,
+    pub fn Handle_BRepMesh_FaceChecker_get(
+        handle: *const Handle_BRepMesh_FaceChecker,
     ) -> crate::OcctResult<*const BRepMesh_FaceChecker>;
     /// Dereference Handle to get *mut BRepMesh_FaceChecker
-    pub fn HandleBRepMeshFaceChecker_get_mut(
-        handle: *mut HandleBRepMeshFaceChecker,
+    pub fn Handle_BRepMesh_FaceChecker_get_mut(
+        handle: *mut Handle_BRepMesh_FaceChecker,
     ) -> crate::OcctResult<*mut BRepMesh_FaceChecker>;
     /// Upcast Handle<BRepMesh_FaceChecker> to Handle<Standard_Transient>
-    pub fn HandleBRepMeshFaceChecker_to_HandleStandardTransient(
-        self_: *const HandleBRepMeshFaceChecker,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_BRepMesh_FaceChecker_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepMesh_FaceChecker,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepMesh_FaceChecker_inherited_IsInstance(
         self_: *const BRepMesh_FaceChecker,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepMesh_FaceChecker_inherited_IsKind(
         self_: *const BRepMesh_FaceChecker,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepMesh_FaceChecker_inherited_This(
         self_: *const BRepMesh_FaceChecker,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepMesh_FaceChecker_inherited_GetRefCount(
         self_: *const BRepMesh_FaceChecker,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepMesh_FaceChecker_inherited_IncrementRefCounter(
         self_: *mut BRepMesh_FaceChecker,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepMesh_FaceChecker_inherited_DecrementRefCounter(
         self_: *mut BRepMesh_FaceChecker,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepMesh_FaceChecker_inherited_Delete(
         self_: *const BRepMesh_FaceChecker,
     ) -> *const std::ffi::c_char;
@@ -2543,16 +2636,17 @@ unsafe extern "C" {
     pub fn BRepMesh_FaceDiscret_destructor(self_: *mut BRepMesh_FaceDiscret);
     /// **Source:** `BRepMesh_FaceDiscret.hxx`:31 - `BRepMesh_FaceDiscret::BRepMesh_FaceDiscret()`
     pub fn BRepMesh_FaceDiscret_ctor_handleimeshtoolsmeshalgofactory(
-        theAlgoFactory: *const HandleIMeshToolsMeshAlgoFactory,
+        theAlgoFactory: *const Handle_IMeshTools_MeshAlgoFactory,
     ) -> crate::OcctResult<*mut BRepMesh_FaceDiscret>;
-    /// **Source:** `BRepMesh_FaceDiscret.hxx`:36 - `BRepMesh_FaceDiscret::DynamicType()`
+    /// **Source:** `BRepMesh_FaceDiscret.hxx`:37 - `BRepMesh_FaceDiscret::DynamicType()`
     pub fn BRepMesh_FaceDiscret_dynamic_type(
         self_: *const BRepMesh_FaceDiscret,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BRepMesh_FaceDiscret.hxx`:36 - `BRepMesh_FaceDiscret::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BRepMesh_FaceDiscret.hxx`:37 - `BRepMesh_FaceDiscret::get_type_name()`
     pub fn BRepMesh_FaceDiscret_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BRepMesh_FaceDiscret.hxx`:36 - `BRepMesh_FaceDiscret::get_type_descriptor()`
-    pub fn BRepMesh_FaceDiscret_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `BRepMesh_FaceDiscret.hxx`:37 - `BRepMesh_FaceDiscret::get_type_descriptor()`
+    pub fn BRepMesh_FaceDiscret_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepMesh_FaceDiscret to IMeshTools_ModelAlgo
     pub fn BRepMesh_FaceDiscret_as_IMeshTools_ModelAlgo(
         self_: *const BRepMesh_FaceDiscret,
@@ -2572,65 +2666,65 @@ unsafe extern "C" {
     /// Wrap BRepMesh_FaceDiscret in a Handle
     pub fn BRepMesh_FaceDiscret_to_handle(
         obj: *mut BRepMesh_FaceDiscret,
-    ) -> crate::OcctResult<*mut HandleBRepMeshFaceDiscret>;
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_FaceDiscret>;
     /// Destroy Handle<BRepMesh_FaceDiscret>
-    pub fn HandleBRepMeshFaceDiscret_destructor(self_: *mut HandleBRepMeshFaceDiscret);
+    pub fn Handle_BRepMesh_FaceDiscret_destructor(self_: *mut Handle_BRepMesh_FaceDiscret);
     /// Clone Handle<BRepMesh_FaceDiscret> (increments reference count)
-    pub fn HandleBRepMeshFaceDiscret_clone(
-        self_: *const HandleBRepMeshFaceDiscret,
-    ) -> crate::OcctResult<*mut HandleBRepMeshFaceDiscret>;
+    pub fn Handle_BRepMesh_FaceDiscret_clone(
+        self_: *const Handle_BRepMesh_FaceDiscret,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_FaceDiscret>;
     /// Check if Handle<BRepMesh_FaceDiscret> is null
-    pub fn HandleBRepMeshFaceDiscret_is_null(self_: *const HandleBRepMeshFaceDiscret) -> bool;
+    pub fn Handle_BRepMesh_FaceDiscret_is_null(self_: *const Handle_BRepMesh_FaceDiscret) -> bool;
     /// Dereference Handle to get *const BRepMesh_FaceDiscret
-    pub fn HandleBRepMeshFaceDiscret_get(
-        handle: *const HandleBRepMeshFaceDiscret,
+    pub fn Handle_BRepMesh_FaceDiscret_get(
+        handle: *const Handle_BRepMesh_FaceDiscret,
     ) -> crate::OcctResult<*const BRepMesh_FaceDiscret>;
     /// Dereference Handle to get *mut BRepMesh_FaceDiscret
-    pub fn HandleBRepMeshFaceDiscret_get_mut(
-        handle: *mut HandleBRepMeshFaceDiscret,
+    pub fn Handle_BRepMesh_FaceDiscret_get_mut(
+        handle: *mut Handle_BRepMesh_FaceDiscret,
     ) -> crate::OcctResult<*mut BRepMesh_FaceDiscret>;
     /// Upcast Handle<BRepMesh_FaceDiscret> to Handle<IMeshTools_ModelAlgo>
-    pub fn HandleBRepMeshFaceDiscret_to_HandleIMeshToolsModelAlgo(
-        self_: *const HandleBRepMeshFaceDiscret,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsModelAlgo>;
+    pub fn Handle_BRepMesh_FaceDiscret_to_Handle_IMeshTools_ModelAlgo(
+        self_: *const Handle_BRepMesh_FaceDiscret,
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_ModelAlgo>;
     /// Upcast Handle<BRepMesh_FaceDiscret> to Handle<Standard_Transient>
-    pub fn HandleBRepMeshFaceDiscret_to_HandleStandardTransient(
-        self_: *const HandleBRepMeshFaceDiscret,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `IMeshTools_ModelAlgo.hxx`:33 - `IMeshTools_ModelAlgo::Perform()`
+    pub fn Handle_BRepMesh_FaceDiscret_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepMesh_FaceDiscret,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `IMeshTools_ModelAlgo.hxx`:34 - `IMeshTools_ModelAlgo::Perform()`
     pub fn BRepMesh_FaceDiscret_inherited_Perform(
         self_: *mut BRepMesh_FaceDiscret,
-        theModel: *const HandleIMeshDataModel,
+        theModel: *const Handle_IMeshData_Model,
         theParameters: *const IMeshTools_Parameters,
         theRange: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepMesh_FaceDiscret_inherited_IsInstance(
         self_: *const BRepMesh_FaceDiscret,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepMesh_FaceDiscret_inherited_IsKind(
         self_: *const BRepMesh_FaceDiscret,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepMesh_FaceDiscret_inherited_This(
         self_: *const BRepMesh_FaceDiscret,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepMesh_FaceDiscret_inherited_GetRefCount(
         self_: *const BRepMesh_FaceDiscret,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepMesh_FaceDiscret_inherited_IncrementRefCounter(
         self_: *mut BRepMesh_FaceDiscret,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepMesh_FaceDiscret_inherited_DecrementRefCounter(
         self_: *mut BRepMesh_FaceDiscret,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepMesh_FaceDiscret_inherited_Delete(
         self_: *const BRepMesh_FaceDiscret,
     ) -> *const std::ffi::c_char;
@@ -2648,7 +2742,7 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*mut BRepMesh_GeomTool>;
     /// **Source:** `BRepMesh_GeomTool.hxx`:76 - `BRepMesh_GeomTool::BRepMesh_GeomTool()`
     pub fn BRepMesh_GeomTool_ctor_handlebrepadaptorsurface_isotype_real5_int_real(
-        theSurface: *const HandleBRepAdaptorSurface,
+        theSurface: *const Handle_BRepAdaptor_Surface,
         theIsoType: i32,
         theParamIso: f64,
         theFirstParam: f64,
@@ -2665,9 +2759,9 @@ unsafe extern "C" {
         theParam: f64,
         theIsReplace: bool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepMesh_GeomTool.hxx`:100 - `BRepMesh_GeomTool::NbPoints()`
+    /// **Source:** `BRepMesh_GeomTool.hxx`:98 - `BRepMesh_GeomTool::NbPoints()`
     pub fn BRepMesh_GeomTool_nb_points(self_: *const BRepMesh_GeomTool) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepMesh_GeomTool.hxx`:110 - `BRepMesh_GeomTool::Value()`
+    /// **Source:** `BRepMesh_GeomTool.hxx`:108 - `BRepMesh_GeomTool::Value()`
     pub fn BRepMesh_GeomTool_value_int_real2_pnt_pnt2d(
         self_: *const BRepMesh_GeomTool,
         theIndex: i32,
@@ -2676,24 +2770,24 @@ unsafe extern "C" {
         thePoint: *mut gp_Pnt,
         theUV: *mut gp_Pnt2d,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepMesh_GeomTool.hxx`:123 - `BRepMesh_GeomTool::Value()`
+    /// **Source:** `BRepMesh_GeomTool.hxx`:121 - `BRepMesh_GeomTool::Value()`
     pub fn BRepMesh_GeomTool_value_int_handlebrepadaptorsurface_real_pnt_pnt2d(
         self_: *const BRepMesh_GeomTool,
         theIndex: i32,
-        theSurface: *const HandleBRepAdaptorSurface,
+        theSurface: *const Handle_BRepAdaptor_Surface,
         theParam: *mut f64,
         thePoint: *mut gp_Pnt,
         theUV: *mut gp_Pnt2d,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepMesh_GeomTool.hxx`:138 - `BRepMesh_GeomTool::Normal()`
+    /// **Source:** `BRepMesh_GeomTool.hxx`:136 - `BRepMesh_GeomTool::Normal()`
     pub fn BRepMesh_GeomTool_normal(
-        theSurface: *const HandleBRepAdaptorSurface,
+        theSurface: *const Handle_BRepAdaptor_Surface,
         theParamU: f64,
         theParamV: f64,
         thePoint: *mut gp_Pnt,
         theNormal: *mut gp_Dir,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepMesh_GeomTool.hxx`:153 - `BRepMesh_GeomTool::IntLinLin()`
+    /// **Source:** `BRepMesh_GeomTool.hxx`:151 - `BRepMesh_GeomTool::IntLinLin()`
     pub fn BRepMesh_GeomTool_int_lin_lin(
         theStartPnt1: *const gp_XY,
         theEndPnt1: *const gp_XY,
@@ -2702,7 +2796,7 @@ unsafe extern "C" {
         theIntPnt: *mut gp_XY,
         theParamOnSegment: *mut f64,
     ) -> crate::OcctResult<*mut BRepMesh_GeomTool_IntFlag>;
-    /// **Source:** `BRepMesh_GeomTool.hxx`:174 - `BRepMesh_GeomTool::IntSegSeg()`
+    /// **Source:** `BRepMesh_GeomTool.hxx`:172 - `BRepMesh_GeomTool::IntSegSeg()`
     pub fn BRepMesh_GeomTool_int_seg_seg(
         theStartPnt1: *const gp_XY,
         theEndPnt1: *const gp_XY,
@@ -2712,19 +2806,19 @@ unsafe extern "C" {
         isConsiderPointOnSegment: bool,
         theIntPnt: *mut gp_Pnt2d,
     ) -> crate::OcctResult<*mut BRepMesh_GeomTool_IntFlag>;
-    /// **Source:** `BRepMesh_GeomTool.hxx`:183 - `BRepMesh_GeomTool::SquareDeflectionOfSegment()`
+    /// **Source:** `BRepMesh_GeomTool.hxx`:181 - `BRepMesh_GeomTool::SquareDeflectionOfSegment()`
     pub fn BRepMesh_GeomTool_square_deflection_of_segment(
         theFirstPoint: *const gp_Pnt,
         theLastPoint: *const gp_Pnt,
         theMidPoint: *const gp_Pnt,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepMesh_GeomTool.hxx`:206 - `BRepMesh_GeomTool::CellsCount()`
+    /// **Source:** `BRepMesh_GeomTool.hxx`:204 - `BRepMesh_GeomTool::CellsCount()`
     pub fn BRepMesh_GeomTool_cells_count(
-        theSurface: *const HandleAdaptor3dSurface,
+        theSurface: *const Handle_Adaptor3d_Surface,
         theVerticesNb: i32,
         theDeflection: f64,
         theRangeSplitter: *const BRepMesh_DefaultRangeSplitter,
-    ) -> crate::OcctResult<*mut std_pair_Standard_Integer_Standard_Integer>;
+    ) -> crate::OcctResult<*mut std_pair_int_int>;
     // ======================== BRepMesh_IncrementalMesh ========================
     pub fn BRepMesh_IncrementalMesh_destructor(self_: *mut BRepMesh_IncrementalMesh);
     /// **Source:** `BRepMesh_IncrementalMesh.hxx`:27 - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`
@@ -2751,7 +2845,7 @@ unsafe extern "C" {
     /// **Source:** `BRepMesh_IncrementalMesh.hxx`:61 - `BRepMesh_IncrementalMesh::Perform()`
     pub fn BRepMesh_IncrementalMesh_perform_handleimeshtoolscontext_progressrange(
         self_: *mut BRepMesh_IncrementalMesh,
-        theContext: *const HandleIMeshToolsContext,
+        theContext: *const Handle_IMeshTools_Context,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepMesh_IncrementalMesh.hxx`:66 - `BRepMesh_IncrementalMesh::Parameters()`
@@ -2770,28 +2864,28 @@ unsafe extern "C" {
     pub fn BRepMesh_IncrementalMesh_get_status_flags(
         self_: *const BRepMesh_IncrementalMesh,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepMesh_IncrementalMesh.hxx`:129 - `BRepMesh_IncrementalMesh::DynamicType()`
+    /// **Source:** `BRepMesh_IncrementalMesh.hxx`:130 - `BRepMesh_IncrementalMesh::DynamicType()`
     pub fn BRepMesh_IncrementalMesh_dynamic_type(
         self_: *const BRepMesh_IncrementalMesh,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BRepMesh_IncrementalMesh.hxx`:116 - `BRepMesh_IncrementalMesh::Discret()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BRepMesh_IncrementalMesh.hxx`:117 - `BRepMesh_IncrementalMesh::Discret()`
     pub fn BRepMesh_IncrementalMesh_discret(
         theShape: *const TopoDS_Shape,
         theLinDeflection: f64,
         theAngDeflection: f64,
         theAlgo: *mut *mut BRepMesh_DiscretRoot,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepMesh_IncrementalMesh.hxx`:123 - `BRepMesh_IncrementalMesh::IsParallelDefault()`
+    /// **Source:** `BRepMesh_IncrementalMesh.hxx`:124 - `BRepMesh_IncrementalMesh::IsParallelDefault()`
     pub fn BRepMesh_IncrementalMesh_is_parallel_default() -> crate::OcctResult<bool>;
-    /// **Source:** `BRepMesh_IncrementalMesh.hxx`:127 - `BRepMesh_IncrementalMesh::SetParallelDefault()`
+    /// **Source:** `BRepMesh_IncrementalMesh.hxx`:128 - `BRepMesh_IncrementalMesh::SetParallelDefault()`
     pub fn BRepMesh_IncrementalMesh_set_parallel_default(
         isInParallel: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_IncrementalMesh.hxx`:129 - `BRepMesh_IncrementalMesh::get_type_name()`
+    /// **Source:** `BRepMesh_IncrementalMesh.hxx`:130 - `BRepMesh_IncrementalMesh::get_type_name()`
     pub fn BRepMesh_IncrementalMesh_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BRepMesh_IncrementalMesh.hxx`:129 - `BRepMesh_IncrementalMesh::get_type_descriptor()`
+    /// **Source:** `BRepMesh_IncrementalMesh.hxx`:130 - `BRepMesh_IncrementalMesh::get_type_descriptor()`
     pub fn BRepMesh_IncrementalMesh_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepMesh_IncrementalMesh to BRepMesh_DiscretRoot
     pub fn BRepMesh_IncrementalMesh_as_BRepMesh_DiscretRoot(
         self_: *const BRepMesh_IncrementalMesh,
@@ -2811,33 +2905,33 @@ unsafe extern "C" {
     /// Wrap BRepMesh_IncrementalMesh in a Handle
     pub fn BRepMesh_IncrementalMesh_to_handle(
         obj: *mut BRepMesh_IncrementalMesh,
-    ) -> crate::OcctResult<*mut HandleBRepMeshIncrementalMesh>;
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_IncrementalMesh>;
     /// Destroy Handle<BRepMesh_IncrementalMesh>
-    pub fn HandleBRepMeshIncrementalMesh_destructor(self_: *mut HandleBRepMeshIncrementalMesh);
+    pub fn Handle_BRepMesh_IncrementalMesh_destructor(self_: *mut Handle_BRepMesh_IncrementalMesh);
     /// Clone Handle<BRepMesh_IncrementalMesh> (increments reference count)
-    pub fn HandleBRepMeshIncrementalMesh_clone(
-        self_: *const HandleBRepMeshIncrementalMesh,
-    ) -> crate::OcctResult<*mut HandleBRepMeshIncrementalMesh>;
+    pub fn Handle_BRepMesh_IncrementalMesh_clone(
+        self_: *const Handle_BRepMesh_IncrementalMesh,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_IncrementalMesh>;
     /// Check if Handle<BRepMesh_IncrementalMesh> is null
-    pub fn HandleBRepMeshIncrementalMesh_is_null(
-        self_: *const HandleBRepMeshIncrementalMesh,
+    pub fn Handle_BRepMesh_IncrementalMesh_is_null(
+        self_: *const Handle_BRepMesh_IncrementalMesh,
     ) -> bool;
     /// Dereference Handle to get *const BRepMesh_IncrementalMesh
-    pub fn HandleBRepMeshIncrementalMesh_get(
-        handle: *const HandleBRepMeshIncrementalMesh,
+    pub fn Handle_BRepMesh_IncrementalMesh_get(
+        handle: *const Handle_BRepMesh_IncrementalMesh,
     ) -> crate::OcctResult<*const BRepMesh_IncrementalMesh>;
     /// Dereference Handle to get *mut BRepMesh_IncrementalMesh
-    pub fn HandleBRepMeshIncrementalMesh_get_mut(
-        handle: *mut HandleBRepMeshIncrementalMesh,
+    pub fn Handle_BRepMesh_IncrementalMesh_get_mut(
+        handle: *mut Handle_BRepMesh_IncrementalMesh,
     ) -> crate::OcctResult<*mut BRepMesh_IncrementalMesh>;
     /// Upcast Handle<BRepMesh_IncrementalMesh> to Handle<BRepMesh_DiscretRoot>
-    pub fn HandleBRepMeshIncrementalMesh_to_HandleBRepMeshDiscretRoot(
-        self_: *const HandleBRepMeshIncrementalMesh,
-    ) -> crate::OcctResult<*mut HandleBRepMeshDiscretRoot>;
+    pub fn Handle_BRepMesh_IncrementalMesh_to_Handle_BRepMesh_DiscretRoot(
+        self_: *const Handle_BRepMesh_IncrementalMesh,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_DiscretRoot>;
     /// Upcast Handle<BRepMesh_IncrementalMesh> to Handle<Standard_Transient>
-    pub fn HandleBRepMeshIncrementalMesh_to_HandleStandardTransient(
-        self_: *const HandleBRepMeshIncrementalMesh,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BRepMesh_IncrementalMesh_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepMesh_IncrementalMesh,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `BRepMesh_DiscretRoot.hxx`:31 - `BRepMesh_DiscretRoot::SetShape()`
     pub fn BRepMesh_IncrementalMesh_inherited_SetShape(
         self_: *mut BRepMesh_IncrementalMesh,
@@ -2851,35 +2945,139 @@ unsafe extern "C" {
     pub fn BRepMesh_IncrementalMesh_inherited_IsDone(
         self_: *const BRepMesh_IncrementalMesh,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepMesh_IncrementalMesh_inherited_IsInstance(
         self_: *const BRepMesh_IncrementalMesh,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepMesh_IncrementalMesh_inherited_IsKind(
         self_: *const BRepMesh_IncrementalMesh,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepMesh_IncrementalMesh_inherited_This(
         self_: *const BRepMesh_IncrementalMesh,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepMesh_IncrementalMesh_inherited_GetRefCount(
         self_: *const BRepMesh_IncrementalMesh,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepMesh_IncrementalMesh_inherited_IncrementRefCounter(
         self_: *mut BRepMesh_IncrementalMesh,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepMesh_IncrementalMesh_inherited_DecrementRefCounter(
         self_: *mut BRepMesh_IncrementalMesh,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepMesh_IncrementalMesh_inherited_Delete(
         self_: *const BRepMesh_IncrementalMesh,
+    ) -> *const std::ffi::c_char;
+    // ======================== BRepMesh_IncrementalMeshFactory ========================
+    pub fn BRepMesh_IncrementalMeshFactory_destructor(self_: *mut BRepMesh_IncrementalMeshFactory);
+    /// **Source:** `BRepMesh_IncrementalMeshFactory.hxx`:28 - `BRepMesh_IncrementalMeshFactory::BRepMesh_IncrementalMeshFactory()`
+    pub fn BRepMesh_IncrementalMeshFactory_ctor(
+    ) -> crate::OcctResult<*mut BRepMesh_IncrementalMeshFactory>;
+    /// **Source:** `BRepMesh_IncrementalMeshFactory.hxx`:24 - `BRepMesh_IncrementalMeshFactory::DynamicType()`
+    pub fn BRepMesh_IncrementalMeshFactory_dynamic_type(
+        self_: *const BRepMesh_IncrementalMeshFactory,
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BRepMesh_IncrementalMeshFactory.hxx`:35 - `BRepMesh_IncrementalMeshFactory::CreateAlgorithm()`
+    pub fn BRepMesh_IncrementalMeshFactory_create_algorithm(
+        self_: *mut BRepMesh_IncrementalMeshFactory,
+        theShape: *const TopoDS_Shape,
+        theLinDeflection: f64,
+        theAngDeflection: f64,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_DiscretRoot>;
+    /// **Source:** `BRepMesh_IncrementalMeshFactory.hxx`:24 - `BRepMesh_IncrementalMeshFactory::get_type_name()`
+    pub fn BRepMesh_IncrementalMeshFactory_get_type_name(
+    ) -> crate::OcctResult<*const std::ffi::c_char>;
+    /// **Source:** `BRepMesh_IncrementalMeshFactory.hxx`:24 - `BRepMesh_IncrementalMeshFactory::get_type_descriptor()`
+    pub fn BRepMesh_IncrementalMeshFactory_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Upcast BRepMesh_IncrementalMeshFactory to BRepMesh_DiscretAlgoFactory
+    pub fn BRepMesh_IncrementalMeshFactory_as_BRepMesh_DiscretAlgoFactory(
+        self_: *const BRepMesh_IncrementalMeshFactory,
+    ) -> crate::OcctResult<*const BRepMesh_DiscretAlgoFactory>;
+    /// Upcast BRepMesh_IncrementalMeshFactory to BRepMesh_DiscretAlgoFactory (mutable)
+    pub fn BRepMesh_IncrementalMeshFactory_as_BRepMesh_DiscretAlgoFactory_mut(
+        self_: *mut BRepMesh_IncrementalMeshFactory,
+    ) -> crate::OcctResult<*mut BRepMesh_DiscretAlgoFactory>;
+    /// Upcast BRepMesh_IncrementalMeshFactory to Standard_Transient
+    pub fn BRepMesh_IncrementalMeshFactory_as_Standard_Transient(
+        self_: *const BRepMesh_IncrementalMeshFactory,
+    ) -> crate::OcctResult<*const Standard_Transient>;
+    /// Upcast BRepMesh_IncrementalMeshFactory to Standard_Transient (mutable)
+    pub fn BRepMesh_IncrementalMeshFactory_as_Standard_Transient_mut(
+        self_: *mut BRepMesh_IncrementalMeshFactory,
+    ) -> crate::OcctResult<*mut Standard_Transient>;
+    /// Wrap BRepMesh_IncrementalMeshFactory in a Handle
+    pub fn BRepMesh_IncrementalMeshFactory_to_handle(
+        obj: *mut BRepMesh_IncrementalMeshFactory,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_IncrementalMeshFactory>;
+    /// Destroy Handle<BRepMesh_IncrementalMeshFactory>
+    pub fn Handle_BRepMesh_IncrementalMeshFactory_destructor(
+        self_: *mut Handle_BRepMesh_IncrementalMeshFactory,
+    );
+    /// Clone Handle<BRepMesh_IncrementalMeshFactory> (increments reference count)
+    pub fn Handle_BRepMesh_IncrementalMeshFactory_clone(
+        self_: *const Handle_BRepMesh_IncrementalMeshFactory,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_IncrementalMeshFactory>;
+    /// Check if Handle<BRepMesh_IncrementalMeshFactory> is null
+    pub fn Handle_BRepMesh_IncrementalMeshFactory_is_null(
+        self_: *const Handle_BRepMesh_IncrementalMeshFactory,
+    ) -> bool;
+    /// Dereference Handle to get *const BRepMesh_IncrementalMeshFactory
+    pub fn Handle_BRepMesh_IncrementalMeshFactory_get(
+        handle: *const Handle_BRepMesh_IncrementalMeshFactory,
+    ) -> crate::OcctResult<*const BRepMesh_IncrementalMeshFactory>;
+    /// Dereference Handle to get *mut BRepMesh_IncrementalMeshFactory
+    pub fn Handle_BRepMesh_IncrementalMeshFactory_get_mut(
+        handle: *mut Handle_BRepMesh_IncrementalMeshFactory,
+    ) -> crate::OcctResult<*mut BRepMesh_IncrementalMeshFactory>;
+    /// Upcast Handle<BRepMesh_IncrementalMeshFactory> to Handle<BRepMesh_DiscretAlgoFactory>
+    pub fn Handle_BRepMesh_IncrementalMeshFactory_to_Handle_BRepMesh_DiscretAlgoFactory(
+        self_: *const Handle_BRepMesh_IncrementalMeshFactory,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_DiscretAlgoFactory>;
+    /// Upcast Handle<BRepMesh_IncrementalMeshFactory> to Handle<Standard_Transient>
+    pub fn Handle_BRepMesh_IncrementalMeshFactory_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepMesh_IncrementalMeshFactory,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BRepMesh_DiscretAlgoFactory.hxx`:70 - `BRepMesh_DiscretAlgoFactory::Name()`
+    pub fn BRepMesh_IncrementalMeshFactory_inherited_Name(
+        self_: *const BRepMesh_IncrementalMeshFactory,
+    ) -> crate::OcctResult<*const TCollection_AsciiString>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn BRepMesh_IncrementalMeshFactory_inherited_IsInstance(
+        self_: *const BRepMesh_IncrementalMeshFactory,
+        theType: *const Handle_Standard_Type,
+    ) -> crate::OcctResult<bool>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn BRepMesh_IncrementalMeshFactory_inherited_IsKind(
+        self_: *const BRepMesh_IncrementalMeshFactory,
+        theType: *const Handle_Standard_Type,
+    ) -> crate::OcctResult<bool>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
+    pub fn BRepMesh_IncrementalMeshFactory_inherited_This(
+        self_: *const BRepMesh_IncrementalMeshFactory,
+    ) -> crate::OcctResult<*mut Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
+    pub fn BRepMesh_IncrementalMeshFactory_inherited_GetRefCount(
+        self_: *const BRepMesh_IncrementalMeshFactory,
+    ) -> crate::OcctResult<i32>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
+    pub fn BRepMesh_IncrementalMeshFactory_inherited_IncrementRefCounter(
+        self_: *mut BRepMesh_IncrementalMeshFactory,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
+    pub fn BRepMesh_IncrementalMeshFactory_inherited_DecrementRefCounter(
+        self_: *mut BRepMesh_IncrementalMeshFactory,
+    ) -> crate::OcctResult<i32>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
+    pub fn BRepMesh_IncrementalMeshFactory_inherited_Delete(
+        self_: *const BRepMesh_IncrementalMeshFactory,
     ) -> *const std::ffi::c_char;
     // ======================== BRepMesh_MeshAlgoFactory ========================
     pub fn BRepMesh_MeshAlgoFactory_destructor(self_: *mut BRepMesh_MeshAlgoFactory);
@@ -2890,16 +3088,16 @@ unsafe extern "C" {
         self_: *const BRepMesh_MeshAlgoFactory,
         theSurfaceType: i32,
         theParameters: *const IMeshTools_Parameters,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsMeshAlgo>;
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_MeshAlgo>;
     /// **Source:** `BRepMesh_MeshAlgoFactory.hxx`:38 - `BRepMesh_MeshAlgoFactory::DynamicType()`
     pub fn BRepMesh_MeshAlgoFactory_dynamic_type(
         self_: *const BRepMesh_MeshAlgoFactory,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BRepMesh_MeshAlgoFactory.hxx`:38 - `BRepMesh_MeshAlgoFactory::get_type_name()`
     pub fn BRepMesh_MeshAlgoFactory_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BRepMesh_MeshAlgoFactory.hxx`:38 - `BRepMesh_MeshAlgoFactory::get_type_descriptor()`
     pub fn BRepMesh_MeshAlgoFactory_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepMesh_MeshAlgoFactory to IMeshTools_MeshAlgoFactory
     pub fn BRepMesh_MeshAlgoFactory_as_IMeshTools_MeshAlgoFactory(
         self_: *const BRepMesh_MeshAlgoFactory,
@@ -2919,60 +3117,60 @@ unsafe extern "C" {
     /// Wrap BRepMesh_MeshAlgoFactory in a Handle
     pub fn BRepMesh_MeshAlgoFactory_to_handle(
         obj: *mut BRepMesh_MeshAlgoFactory,
-    ) -> crate::OcctResult<*mut HandleBRepMeshMeshAlgoFactory>;
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_MeshAlgoFactory>;
     /// Destroy Handle<BRepMesh_MeshAlgoFactory>
-    pub fn HandleBRepMeshMeshAlgoFactory_destructor(self_: *mut HandleBRepMeshMeshAlgoFactory);
+    pub fn Handle_BRepMesh_MeshAlgoFactory_destructor(self_: *mut Handle_BRepMesh_MeshAlgoFactory);
     /// Clone Handle<BRepMesh_MeshAlgoFactory> (increments reference count)
-    pub fn HandleBRepMeshMeshAlgoFactory_clone(
-        self_: *const HandleBRepMeshMeshAlgoFactory,
-    ) -> crate::OcctResult<*mut HandleBRepMeshMeshAlgoFactory>;
+    pub fn Handle_BRepMesh_MeshAlgoFactory_clone(
+        self_: *const Handle_BRepMesh_MeshAlgoFactory,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_MeshAlgoFactory>;
     /// Check if Handle<BRepMesh_MeshAlgoFactory> is null
-    pub fn HandleBRepMeshMeshAlgoFactory_is_null(
-        self_: *const HandleBRepMeshMeshAlgoFactory,
+    pub fn Handle_BRepMesh_MeshAlgoFactory_is_null(
+        self_: *const Handle_BRepMesh_MeshAlgoFactory,
     ) -> bool;
     /// Dereference Handle to get *const BRepMesh_MeshAlgoFactory
-    pub fn HandleBRepMeshMeshAlgoFactory_get(
-        handle: *const HandleBRepMeshMeshAlgoFactory,
+    pub fn Handle_BRepMesh_MeshAlgoFactory_get(
+        handle: *const Handle_BRepMesh_MeshAlgoFactory,
     ) -> crate::OcctResult<*const BRepMesh_MeshAlgoFactory>;
     /// Dereference Handle to get *mut BRepMesh_MeshAlgoFactory
-    pub fn HandleBRepMeshMeshAlgoFactory_get_mut(
-        handle: *mut HandleBRepMeshMeshAlgoFactory,
+    pub fn Handle_BRepMesh_MeshAlgoFactory_get_mut(
+        handle: *mut Handle_BRepMesh_MeshAlgoFactory,
     ) -> crate::OcctResult<*mut BRepMesh_MeshAlgoFactory>;
     /// Upcast Handle<BRepMesh_MeshAlgoFactory> to Handle<IMeshTools_MeshAlgoFactory>
-    pub fn HandleBRepMeshMeshAlgoFactory_to_HandleIMeshToolsMeshAlgoFactory(
-        self_: *const HandleBRepMeshMeshAlgoFactory,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsMeshAlgoFactory>;
+    pub fn Handle_BRepMesh_MeshAlgoFactory_to_Handle_IMeshTools_MeshAlgoFactory(
+        self_: *const Handle_BRepMesh_MeshAlgoFactory,
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_MeshAlgoFactory>;
     /// Upcast Handle<BRepMesh_MeshAlgoFactory> to Handle<Standard_Transient>
-    pub fn HandleBRepMeshMeshAlgoFactory_to_HandleStandardTransient(
-        self_: *const HandleBRepMeshMeshAlgoFactory,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_BRepMesh_MeshAlgoFactory_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepMesh_MeshAlgoFactory,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepMesh_MeshAlgoFactory_inherited_IsInstance(
         self_: *const BRepMesh_MeshAlgoFactory,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepMesh_MeshAlgoFactory_inherited_IsKind(
         self_: *const BRepMesh_MeshAlgoFactory,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepMesh_MeshAlgoFactory_inherited_This(
         self_: *const BRepMesh_MeshAlgoFactory,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepMesh_MeshAlgoFactory_inherited_GetRefCount(
         self_: *const BRepMesh_MeshAlgoFactory,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepMesh_MeshAlgoFactory_inherited_IncrementRefCounter(
         self_: *mut BRepMesh_MeshAlgoFactory,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepMesh_MeshAlgoFactory_inherited_DecrementRefCounter(
         self_: *mut BRepMesh_MeshAlgoFactory,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepMesh_MeshAlgoFactory_inherited_Delete(
         self_: *const BRepMesh_MeshAlgoFactory,
     ) -> *const std::ffi::c_char;
@@ -2980,26 +3178,26 @@ unsafe extern "C" {
     pub fn BRepMesh_MeshTool_destructor(self_: *mut BRepMesh_MeshTool);
     /// **Source:** `BRepMesh_MeshTool.hxx`:77 - `BRepMesh_MeshTool::BRepMesh_MeshTool()`
     pub fn BRepMesh_MeshTool_ctor_handlebrepmeshdatastructureofdelaun(
-        theStructure: *const HandleBRepMeshDataStructureOfDelaun,
+        theStructure: *const Handle_BRepMesh_DataStructureOfDelaun,
     ) -> crate::OcctResult<*mut BRepMesh_MeshTool>;
-    /// **Source:** `BRepMesh_MeshTool.hxx`:83 - `BRepMesh_MeshTool::GetStructure()`
+    /// **Source:** `BRepMesh_MeshTool.hxx`:84 - `BRepMesh_MeshTool::GetStructure()`
     pub fn BRepMesh_MeshTool_get_structure(
         self_: *const BRepMesh_MeshTool,
-    ) -> crate::OcctResult<*const HandleBRepMeshDataStructureOfDelaun>;
-    /// **Source:** `BRepMesh_MeshTool.hxx`:86 - `BRepMesh_MeshTool::DumpTriangles()`
+    ) -> crate::OcctResult<*const Handle_BRepMesh_DataStructureOfDelaun>;
+    /// **Source:** `BRepMesh_MeshTool.hxx`:87 - `BRepMesh_MeshTool::DumpTriangles()`
     pub fn BRepMesh_MeshTool_dump_triangles(
         self_: *mut BRepMesh_MeshTool,
         theFileName: *const std::ffi::c_char,
         theTriangles: *mut IMeshData_MapOfInteger,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_MeshTool.hxx`:90 - `BRepMesh_MeshTool::AddAndLegalizeTriangle()`
+    /// **Source:** `BRepMesh_MeshTool.hxx`:91 - `BRepMesh_MeshTool::AddAndLegalizeTriangle()`
     pub fn BRepMesh_MeshTool_add_and_legalize_triangle(
         self_: *mut BRepMesh_MeshTool,
         thePoint1: i32,
         thePoint2: i32,
         thePoint3: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_MeshTool.hxx`:103 - `BRepMesh_MeshTool::AddTriangle()`
+    /// **Source:** `BRepMesh_MeshTool.hxx`:102 - `BRepMesh_MeshTool::AddTriangle()`
     pub fn BRepMesh_MeshTool_add_triangle(
         self_: *mut BRepMesh_MeshTool,
         thePoint1: i32,
@@ -3007,7 +3205,7 @@ unsafe extern "C" {
         thePoint3: i32,
         theEdges: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_MeshTool.hxx`:118 - `BRepMesh_MeshTool::AddLink()`
+    /// **Source:** `BRepMesh_MeshTool.hxx`:117 - `BRepMesh_MeshTool::AddLink()`
     pub fn BRepMesh_MeshTool_add_link(
         self_: *mut BRepMesh_MeshTool,
         theFirstNode: i32,
@@ -3015,54 +3213,54 @@ unsafe extern "C" {
         theLinkIndex: *mut i32,
         theLinkOri: *mut bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_MeshTool.hxx`:131 - `BRepMesh_MeshTool::Legalize()`
+    /// **Source:** `BRepMesh_MeshTool.hxx`:127 - `BRepMesh_MeshTool::Legalize()`
     pub fn BRepMesh_MeshTool_legalize(
         self_: *mut BRepMesh_MeshTool,
         theLinkIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_MeshTool.hxx`:135 - `BRepMesh_MeshTool::EraseItemsConnectedTo()`
+    /// **Source:** `BRepMesh_MeshTool.hxx`:131 - `BRepMesh_MeshTool::EraseItemsConnectedTo()`
     pub fn BRepMesh_MeshTool_erase_items_connected_to(
         self_: *mut BRepMesh_MeshTool,
         theNodeIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_MeshTool.hxx`:138 - `BRepMesh_MeshTool::CleanFrontierLinks()`
+    /// **Source:** `BRepMesh_MeshTool.hxx`:134 - `BRepMesh_MeshTool::CleanFrontierLinks()`
     pub fn BRepMesh_MeshTool_clean_frontier_links(
         self_: *mut BRepMesh_MeshTool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_MeshTool.hxx`:142 - `BRepMesh_MeshTool::EraseTriangles()`
+    /// **Source:** `BRepMesh_MeshTool.hxx`:138 - `BRepMesh_MeshTool::EraseTriangles()`
     pub fn BRepMesh_MeshTool_erase_triangles(
         self_: *mut BRepMesh_MeshTool,
         theTriangles: *const IMeshData_MapOfInteger,
         theLoopEdges: *mut IMeshData_MapOfIntegerInteger,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_MeshTool.hxx`:147 - `BRepMesh_MeshTool::EraseTriangle()`
+    /// **Source:** `BRepMesh_MeshTool.hxx`:143 - `BRepMesh_MeshTool::EraseTriangle()`
     pub fn BRepMesh_MeshTool_erase_triangle(
         self_: *mut BRepMesh_MeshTool,
         theTriangleIndex: i32,
         theLoopEdges: *mut IMeshData_MapOfIntegerInteger,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_MeshTool.hxx`:151 - `BRepMesh_MeshTool::EraseFreeLinks()`
+    /// **Source:** `BRepMesh_MeshTool.hxx`:147 - `BRepMesh_MeshTool::EraseFreeLinks()`
     pub fn BRepMesh_MeshTool_erase_free_links(
         self_: *mut BRepMesh_MeshTool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_MeshTool.hxx`:154 - `BRepMesh_MeshTool::EraseFreeLinks()`
+    /// **Source:** `BRepMesh_MeshTool.hxx`:150 - `BRepMesh_MeshTool::EraseFreeLinks()`
     pub fn BRepMesh_MeshTool_erase_free_links_mapofintegerinteger(
         self_: *mut BRepMesh_MeshTool,
         theLinks: *const IMeshData_MapOfIntegerInteger,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_MeshTool.hxx`:157 - `BRepMesh_MeshTool::GetEdgesByType()`
+    /// **Source:** `BRepMesh_MeshTool.hxx`:153 - `BRepMesh_MeshTool::GetEdgesByType()`
     pub fn BRepMesh_MeshTool_get_edges_by_type(
         self_: *const BRepMesh_MeshTool,
         theEdgeType: i32,
-    ) -> crate::OcctResult<*mut HandleNCollectionSharedTColStdPackedMapOfInteger>;
-    /// **Source:** `BRepMesh_MeshTool.hxx`:160 - `BRepMesh_MeshTool::DynamicType()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_Shared_NCollection_PackedMap_int>;
+    /// **Source:** `BRepMesh_MeshTool.hxx`:156 - `BRepMesh_MeshTool::DynamicType()`
     pub fn BRepMesh_MeshTool_dynamic_type(
         self_: *const BRepMesh_MeshTool,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BRepMesh_MeshTool.hxx`:160 - `BRepMesh_MeshTool::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BRepMesh_MeshTool.hxx`:156 - `BRepMesh_MeshTool::get_type_name()`
     pub fn BRepMesh_MeshTool_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BRepMesh_MeshTool.hxx`:160 - `BRepMesh_MeshTool::get_type_descriptor()`
-    pub fn BRepMesh_MeshTool_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `BRepMesh_MeshTool.hxx`:156 - `BRepMesh_MeshTool::get_type_descriptor()`
+    pub fn BRepMesh_MeshTool_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepMesh_MeshTool to Standard_Transient
     pub fn BRepMesh_MeshTool_as_Standard_Transient(
         self_: *const BRepMesh_MeshTool,
@@ -3074,54 +3272,54 @@ unsafe extern "C" {
     /// Wrap BRepMesh_MeshTool in a Handle
     pub fn BRepMesh_MeshTool_to_handle(
         obj: *mut BRepMesh_MeshTool,
-    ) -> crate::OcctResult<*mut HandleBRepMeshMeshTool>;
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_MeshTool>;
     /// Destroy Handle<BRepMesh_MeshTool>
-    pub fn HandleBRepMeshMeshTool_destructor(self_: *mut HandleBRepMeshMeshTool);
+    pub fn Handle_BRepMesh_MeshTool_destructor(self_: *mut Handle_BRepMesh_MeshTool);
     /// Clone Handle<BRepMesh_MeshTool> (increments reference count)
-    pub fn HandleBRepMeshMeshTool_clone(
-        self_: *const HandleBRepMeshMeshTool,
-    ) -> crate::OcctResult<*mut HandleBRepMeshMeshTool>;
+    pub fn Handle_BRepMesh_MeshTool_clone(
+        self_: *const Handle_BRepMesh_MeshTool,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_MeshTool>;
     /// Check if Handle<BRepMesh_MeshTool> is null
-    pub fn HandleBRepMeshMeshTool_is_null(self_: *const HandleBRepMeshMeshTool) -> bool;
+    pub fn Handle_BRepMesh_MeshTool_is_null(self_: *const Handle_BRepMesh_MeshTool) -> bool;
     /// Dereference Handle to get *const BRepMesh_MeshTool
-    pub fn HandleBRepMeshMeshTool_get(
-        handle: *const HandleBRepMeshMeshTool,
+    pub fn Handle_BRepMesh_MeshTool_get(
+        handle: *const Handle_BRepMesh_MeshTool,
     ) -> crate::OcctResult<*const BRepMesh_MeshTool>;
     /// Dereference Handle to get *mut BRepMesh_MeshTool
-    pub fn HandleBRepMeshMeshTool_get_mut(
-        handle: *mut HandleBRepMeshMeshTool,
+    pub fn Handle_BRepMesh_MeshTool_get_mut(
+        handle: *mut Handle_BRepMesh_MeshTool,
     ) -> crate::OcctResult<*mut BRepMesh_MeshTool>;
     /// Upcast Handle<BRepMesh_MeshTool> to Handle<Standard_Transient>
-    pub fn HandleBRepMeshMeshTool_to_HandleStandardTransient(
-        self_: *const HandleBRepMeshMeshTool,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_BRepMesh_MeshTool_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepMesh_MeshTool,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepMesh_MeshTool_inherited_IsInstance(
         self_: *const BRepMesh_MeshTool,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepMesh_MeshTool_inherited_IsKind(
         self_: *const BRepMesh_MeshTool,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepMesh_MeshTool_inherited_This(
         self_: *const BRepMesh_MeshTool,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepMesh_MeshTool_inherited_GetRefCount(
         self_: *const BRepMesh_MeshTool,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepMesh_MeshTool_inherited_IncrementRefCounter(
         self_: *mut BRepMesh_MeshTool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepMesh_MeshTool_inherited_DecrementRefCounter(
         self_: *mut BRepMesh_MeshTool,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepMesh_MeshTool_inherited_Delete(
         self_: *const BRepMesh_MeshTool,
     ) -> *const std::ffi::c_char;
@@ -3132,7 +3330,7 @@ unsafe extern "C" {
     /// **Source:** `BRepMesh_MeshTool.hxx`:36 - `BRepMesh_MeshTool_NodeClassifier::BRepMesh_MeshTool_NodeClassifier()`
     pub fn BRepMesh_MeshTool_NodeClassifier_ctor_edge_handlebrepmeshdatastructureofdelaun(
         theConstraint: *const BRepMesh_Edge,
-        theStructure: *const HandleBRepMeshDataStructureOfDelaun,
+        theStructure: *const Handle_BRepMesh_DataStructureOfDelaun,
     ) -> crate::OcctResult<*mut BRepMesh_MeshTool_NodeClassifier>;
     /// **Source:** `BRepMesh_MeshTool.hxx`:48 - `BRepMesh_MeshTool_NodeClassifier::IsAbove()`
     pub fn BRepMesh_MeshTool_NodeClassifier_is_above(
@@ -3146,12 +3344,12 @@ unsafe extern "C" {
     /// **Source:** `BRepMesh_ModelBuilder.hxx`:38 - `BRepMesh_ModelBuilder::DynamicType()`
     pub fn BRepMesh_ModelBuilder_dynamic_type(
         self_: *const BRepMesh_ModelBuilder,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BRepMesh_ModelBuilder.hxx`:38 - `BRepMesh_ModelBuilder::get_type_name()`
     pub fn BRepMesh_ModelBuilder_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BRepMesh_ModelBuilder.hxx`:38 - `BRepMesh_ModelBuilder::get_type_descriptor()`
     pub fn BRepMesh_ModelBuilder_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepMesh_ModelBuilder to IMeshTools_ModelBuilder
     pub fn BRepMesh_ModelBuilder_as_IMeshTools_ModelBuilder(
         self_: *const BRepMesh_ModelBuilder,
@@ -3179,122 +3377,125 @@ unsafe extern "C" {
     /// Wrap BRepMesh_ModelBuilder in a Handle
     pub fn BRepMesh_ModelBuilder_to_handle(
         obj: *mut BRepMesh_ModelBuilder,
-    ) -> crate::OcctResult<*mut HandleBRepMeshModelBuilder>;
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_ModelBuilder>;
     /// Destroy Handle<BRepMesh_ModelBuilder>
-    pub fn HandleBRepMeshModelBuilder_destructor(self_: *mut HandleBRepMeshModelBuilder);
+    pub fn Handle_BRepMesh_ModelBuilder_destructor(self_: *mut Handle_BRepMesh_ModelBuilder);
     /// Clone Handle<BRepMesh_ModelBuilder> (increments reference count)
-    pub fn HandleBRepMeshModelBuilder_clone(
-        self_: *const HandleBRepMeshModelBuilder,
-    ) -> crate::OcctResult<*mut HandleBRepMeshModelBuilder>;
+    pub fn Handle_BRepMesh_ModelBuilder_clone(
+        self_: *const Handle_BRepMesh_ModelBuilder,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_ModelBuilder>;
     /// Check if Handle<BRepMesh_ModelBuilder> is null
-    pub fn HandleBRepMeshModelBuilder_is_null(self_: *const HandleBRepMeshModelBuilder) -> bool;
+    pub fn Handle_BRepMesh_ModelBuilder_is_null(self_: *const Handle_BRepMesh_ModelBuilder)
+        -> bool;
     /// Dereference Handle to get *const BRepMesh_ModelBuilder
-    pub fn HandleBRepMeshModelBuilder_get(
-        handle: *const HandleBRepMeshModelBuilder,
+    pub fn Handle_BRepMesh_ModelBuilder_get(
+        handle: *const Handle_BRepMesh_ModelBuilder,
     ) -> crate::OcctResult<*const BRepMesh_ModelBuilder>;
     /// Dereference Handle to get *mut BRepMesh_ModelBuilder
-    pub fn HandleBRepMeshModelBuilder_get_mut(
-        handle: *mut HandleBRepMeshModelBuilder,
+    pub fn Handle_BRepMesh_ModelBuilder_get_mut(
+        handle: *mut Handle_BRepMesh_ModelBuilder,
     ) -> crate::OcctResult<*mut BRepMesh_ModelBuilder>;
     /// Upcast Handle<BRepMesh_ModelBuilder> to Handle<IMeshTools_ModelBuilder>
-    pub fn HandleBRepMeshModelBuilder_to_HandleIMeshToolsModelBuilder(
-        self_: *const HandleBRepMeshModelBuilder,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsModelBuilder>;
+    pub fn Handle_BRepMesh_ModelBuilder_to_Handle_IMeshTools_ModelBuilder(
+        self_: *const Handle_BRepMesh_ModelBuilder,
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_ModelBuilder>;
     /// Upcast Handle<BRepMesh_ModelBuilder> to Handle<Message_Algorithm>
-    pub fn HandleBRepMeshModelBuilder_to_HandleMessageAlgorithm(
-        self_: *const HandleBRepMeshModelBuilder,
-    ) -> crate::OcctResult<*mut HandleMessageAlgorithm>;
+    pub fn Handle_BRepMesh_ModelBuilder_to_Handle_Message_Algorithm(
+        self_: *const Handle_BRepMesh_ModelBuilder,
+    ) -> crate::OcctResult<*mut Handle_Message_Algorithm>;
     /// Upcast Handle<BRepMesh_ModelBuilder> to Handle<Standard_Transient>
-    pub fn HandleBRepMeshModelBuilder_to_HandleStandardTransient(
-        self_: *const HandleBRepMeshModelBuilder,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BRepMesh_ModelBuilder_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepMesh_ModelBuilder,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `IMeshTools_ModelBuilder.hxx`:41 - `IMeshTools_ModelBuilder::Perform()`
     pub fn BRepMesh_ModelBuilder_inherited_Perform(
         self_: *mut BRepMesh_ModelBuilder,
         theShape: *const TopoDS_Shape,
         theParameters: *const IMeshTools_Parameters,
-    ) -> crate::OcctResult<*mut HandleIMeshDataModel>;
-    /// Inherited: **Source:** `Message_Algorithm.hxx`:95 - `Message_Algorithm::SetStatus()`
+    ) -> crate::OcctResult<*mut Handle_IMeshData_Model>;
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:94 - `Message_Algorithm::SetStatus()`
     pub fn BRepMesh_ModelBuilder_inherited_SetStatus(
         self_: *mut BRepMesh_ModelBuilder,
         theStat: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Message_Algorithm.hxx`:141 - `Message_Algorithm::GetStatus()`
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:140 - `Message_Algorithm::GetStatus()`
     pub fn BRepMesh_ModelBuilder_inherited_GetStatus(
         self_: *const BRepMesh_ModelBuilder,
     ) -> crate::OcctResult<*const Message_ExecStatus>;
-    /// Inherited: **Source:** `Message_Algorithm.hxx`:144 - `Message_Algorithm::ChangeStatus()`
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:143 - `Message_Algorithm::ChangeStatus()`
     pub fn BRepMesh_ModelBuilder_inherited_ChangeStatus(
         self_: *mut BRepMesh_ModelBuilder,
     ) -> crate::OcctResult<*mut Message_ExecStatus>;
-    /// Inherited: **Source:** `Message_Algorithm.hxx`:147 - `Message_Algorithm::ClearStatus()`
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:146 - `Message_Algorithm::ClearStatus()`
     pub fn BRepMesh_ModelBuilder_inherited_ClearStatus(
         self_: *mut BRepMesh_ModelBuilder,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Message_Algorithm.hxx`:150 - `Message_Algorithm::SetMessenger()`
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:149 - `Message_Algorithm::SetMessenger()`
     pub fn BRepMesh_ModelBuilder_inherited_SetMessenger(
         self_: *mut BRepMesh_ModelBuilder,
-        theMsgr: *const HandleMessageMessenger,
+        theMsgr: *const Handle_Message_Messenger,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Message_Algorithm.hxx`:155 - `Message_Algorithm::GetMessenger()`
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:154 - `Message_Algorithm::GetMessenger()`
     pub fn BRepMesh_ModelBuilder_inherited_GetMessenger(
         self_: *const BRepMesh_ModelBuilder,
-    ) -> crate::OcctResult<*mut HandleMessageMessenger>;
-    /// Inherited: **Source:** `Message_Algorithm.hxx`:174 - `Message_Algorithm::SendStatusMessages()`
+    ) -> crate::OcctResult<*mut Handle_Message_Messenger>;
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:173 - `Message_Algorithm::SendStatusMessages()`
     pub fn BRepMesh_ModelBuilder_inherited_SendStatusMessages(
         self_: *const BRepMesh_ModelBuilder,
         theFilter: *const Message_ExecStatus,
         theTraceLevel: i32,
         theMaxCount: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Message_Algorithm.hxx`:182 - `Message_Algorithm::SendMessages()`
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:181 - `Message_Algorithm::SendMessages()`
     pub fn BRepMesh_ModelBuilder_inherited_SendMessages(
         self_: *const BRepMesh_ModelBuilder,
         theTraceLevel: i32,
         theMaxCount: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Message_Algorithm.hxx`:187 - `Message_Algorithm::AddStatus()`
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:186 - `Message_Algorithm::AddStatus()`
     pub fn BRepMesh_ModelBuilder_inherited_AddStatus(
         self_: *mut BRepMesh_ModelBuilder,
-        theOther: *const HandleMessageAlgorithm,
+        theOther: *const Handle_Message_Algorithm,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Message_Algorithm.hxx`:197 - `Message_Algorithm::GetMessageNumbers()`
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:196 - `Message_Algorithm::GetMessageNumbers()`
     pub fn BRepMesh_ModelBuilder_inherited_GetMessageNumbers(
         self_: *const BRepMesh_ModelBuilder,
         theStatus: i32,
-    ) -> crate::OcctResult<*mut HandleTColStdHPackedMapOfInteger>;
+    ) -> crate::OcctResult<*mut Handle_TColStd_HPackedMapOfInteger>;
     /// Inherited: **Source:** `Message_Algorithm.hxx`:202 - `Message_Algorithm::GetMessageStrings()`
     pub fn BRepMesh_ModelBuilder_inherited_GetMessageStrings(
         self_: *const BRepMesh_ModelBuilder,
         theStatus: i32,
-    ) -> crate::OcctResult<*mut HandleTColStdHSequenceOfHExtendedString>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<
+        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString,
+    >;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepMesh_ModelBuilder_inherited_IsInstance(
         self_: *const BRepMesh_ModelBuilder,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepMesh_ModelBuilder_inherited_IsKind(
         self_: *const BRepMesh_ModelBuilder,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepMesh_ModelBuilder_inherited_This(
         self_: *const BRepMesh_ModelBuilder,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepMesh_ModelBuilder_inherited_GetRefCount(
         self_: *const BRepMesh_ModelBuilder,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepMesh_ModelBuilder_inherited_IncrementRefCounter(
         self_: *mut BRepMesh_ModelBuilder,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepMesh_ModelBuilder_inherited_DecrementRefCounter(
         self_: *mut BRepMesh_ModelBuilder,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepMesh_ModelBuilder_inherited_Delete(
         self_: *const BRepMesh_ModelBuilder,
     ) -> *const std::ffi::c_char;
@@ -3305,11 +3506,12 @@ unsafe extern "C" {
     /// **Source:** `BRepMesh_ModelHealer.hxx`:51 - `BRepMesh_ModelHealer::DynamicType()`
     pub fn BRepMesh_ModelHealer_dynamic_type(
         self_: *const BRepMesh_ModelHealer,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BRepMesh_ModelHealer.hxx`:51 - `BRepMesh_ModelHealer::get_type_name()`
     pub fn BRepMesh_ModelHealer_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BRepMesh_ModelHealer.hxx`:51 - `BRepMesh_ModelHealer::get_type_descriptor()`
-    pub fn BRepMesh_ModelHealer_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn BRepMesh_ModelHealer_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepMesh_ModelHealer to IMeshTools_ModelAlgo
     pub fn BRepMesh_ModelHealer_as_IMeshTools_ModelAlgo(
         self_: *const BRepMesh_ModelHealer,
@@ -3329,65 +3531,65 @@ unsafe extern "C" {
     /// Wrap BRepMesh_ModelHealer in a Handle
     pub fn BRepMesh_ModelHealer_to_handle(
         obj: *mut BRepMesh_ModelHealer,
-    ) -> crate::OcctResult<*mut HandleBRepMeshModelHealer>;
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_ModelHealer>;
     /// Destroy Handle<BRepMesh_ModelHealer>
-    pub fn HandleBRepMeshModelHealer_destructor(self_: *mut HandleBRepMeshModelHealer);
+    pub fn Handle_BRepMesh_ModelHealer_destructor(self_: *mut Handle_BRepMesh_ModelHealer);
     /// Clone Handle<BRepMesh_ModelHealer> (increments reference count)
-    pub fn HandleBRepMeshModelHealer_clone(
-        self_: *const HandleBRepMeshModelHealer,
-    ) -> crate::OcctResult<*mut HandleBRepMeshModelHealer>;
+    pub fn Handle_BRepMesh_ModelHealer_clone(
+        self_: *const Handle_BRepMesh_ModelHealer,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_ModelHealer>;
     /// Check if Handle<BRepMesh_ModelHealer> is null
-    pub fn HandleBRepMeshModelHealer_is_null(self_: *const HandleBRepMeshModelHealer) -> bool;
+    pub fn Handle_BRepMesh_ModelHealer_is_null(self_: *const Handle_BRepMesh_ModelHealer) -> bool;
     /// Dereference Handle to get *const BRepMesh_ModelHealer
-    pub fn HandleBRepMeshModelHealer_get(
-        handle: *const HandleBRepMeshModelHealer,
+    pub fn Handle_BRepMesh_ModelHealer_get(
+        handle: *const Handle_BRepMesh_ModelHealer,
     ) -> crate::OcctResult<*const BRepMesh_ModelHealer>;
     /// Dereference Handle to get *mut BRepMesh_ModelHealer
-    pub fn HandleBRepMeshModelHealer_get_mut(
-        handle: *mut HandleBRepMeshModelHealer,
+    pub fn Handle_BRepMesh_ModelHealer_get_mut(
+        handle: *mut Handle_BRepMesh_ModelHealer,
     ) -> crate::OcctResult<*mut BRepMesh_ModelHealer>;
     /// Upcast Handle<BRepMesh_ModelHealer> to Handle<IMeshTools_ModelAlgo>
-    pub fn HandleBRepMeshModelHealer_to_HandleIMeshToolsModelAlgo(
-        self_: *const HandleBRepMeshModelHealer,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsModelAlgo>;
+    pub fn Handle_BRepMesh_ModelHealer_to_Handle_IMeshTools_ModelAlgo(
+        self_: *const Handle_BRepMesh_ModelHealer,
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_ModelAlgo>;
     /// Upcast Handle<BRepMesh_ModelHealer> to Handle<Standard_Transient>
-    pub fn HandleBRepMeshModelHealer_to_HandleStandardTransient(
-        self_: *const HandleBRepMeshModelHealer,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `IMeshTools_ModelAlgo.hxx`:33 - `IMeshTools_ModelAlgo::Perform()`
+    pub fn Handle_BRepMesh_ModelHealer_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepMesh_ModelHealer,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `IMeshTools_ModelAlgo.hxx`:34 - `IMeshTools_ModelAlgo::Perform()`
     pub fn BRepMesh_ModelHealer_inherited_Perform(
         self_: *mut BRepMesh_ModelHealer,
-        theModel: *const HandleIMeshDataModel,
+        theModel: *const Handle_IMeshData_Model,
         theParameters: *const IMeshTools_Parameters,
         theRange: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepMesh_ModelHealer_inherited_IsInstance(
         self_: *const BRepMesh_ModelHealer,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepMesh_ModelHealer_inherited_IsKind(
         self_: *const BRepMesh_ModelHealer,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepMesh_ModelHealer_inherited_This(
         self_: *const BRepMesh_ModelHealer,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepMesh_ModelHealer_inherited_GetRefCount(
         self_: *const BRepMesh_ModelHealer,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepMesh_ModelHealer_inherited_IncrementRefCounter(
         self_: *mut BRepMesh_ModelHealer,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepMesh_ModelHealer_inherited_DecrementRefCounter(
         self_: *mut BRepMesh_ModelHealer,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepMesh_ModelHealer_inherited_Delete(
         self_: *const BRepMesh_ModelHealer,
     ) -> *const std::ffi::c_char;
@@ -3398,12 +3600,12 @@ unsafe extern "C" {
     /// **Source:** `BRepMesh_ModelPostProcessor.hxx`:33 - `BRepMesh_ModelPostProcessor::DynamicType()`
     pub fn BRepMesh_ModelPostProcessor_dynamic_type(
         self_: *const BRepMesh_ModelPostProcessor,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BRepMesh_ModelPostProcessor.hxx`:33 - `BRepMesh_ModelPostProcessor::get_type_name()`
     pub fn BRepMesh_ModelPostProcessor_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BRepMesh_ModelPostProcessor.hxx`:33 - `BRepMesh_ModelPostProcessor::get_type_descriptor()`
     pub fn BRepMesh_ModelPostProcessor_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepMesh_ModelPostProcessor to IMeshTools_ModelAlgo
     pub fn BRepMesh_ModelPostProcessor_as_IMeshTools_ModelAlgo(
         self_: *const BRepMesh_ModelPostProcessor,
@@ -3423,69 +3625,69 @@ unsafe extern "C" {
     /// Wrap BRepMesh_ModelPostProcessor in a Handle
     pub fn BRepMesh_ModelPostProcessor_to_handle(
         obj: *mut BRepMesh_ModelPostProcessor,
-    ) -> crate::OcctResult<*mut HandleBRepMeshModelPostProcessor>;
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_ModelPostProcessor>;
     /// Destroy Handle<BRepMesh_ModelPostProcessor>
-    pub fn HandleBRepMeshModelPostProcessor_destructor(
-        self_: *mut HandleBRepMeshModelPostProcessor,
+    pub fn Handle_BRepMesh_ModelPostProcessor_destructor(
+        self_: *mut Handle_BRepMesh_ModelPostProcessor,
     );
     /// Clone Handle<BRepMesh_ModelPostProcessor> (increments reference count)
-    pub fn HandleBRepMeshModelPostProcessor_clone(
-        self_: *const HandleBRepMeshModelPostProcessor,
-    ) -> crate::OcctResult<*mut HandleBRepMeshModelPostProcessor>;
+    pub fn Handle_BRepMesh_ModelPostProcessor_clone(
+        self_: *const Handle_BRepMesh_ModelPostProcessor,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_ModelPostProcessor>;
     /// Check if Handle<BRepMesh_ModelPostProcessor> is null
-    pub fn HandleBRepMeshModelPostProcessor_is_null(
-        self_: *const HandleBRepMeshModelPostProcessor,
+    pub fn Handle_BRepMesh_ModelPostProcessor_is_null(
+        self_: *const Handle_BRepMesh_ModelPostProcessor,
     ) -> bool;
     /// Dereference Handle to get *const BRepMesh_ModelPostProcessor
-    pub fn HandleBRepMeshModelPostProcessor_get(
-        handle: *const HandleBRepMeshModelPostProcessor,
+    pub fn Handle_BRepMesh_ModelPostProcessor_get(
+        handle: *const Handle_BRepMesh_ModelPostProcessor,
     ) -> crate::OcctResult<*const BRepMesh_ModelPostProcessor>;
     /// Dereference Handle to get *mut BRepMesh_ModelPostProcessor
-    pub fn HandleBRepMeshModelPostProcessor_get_mut(
-        handle: *mut HandleBRepMeshModelPostProcessor,
+    pub fn Handle_BRepMesh_ModelPostProcessor_get_mut(
+        handle: *mut Handle_BRepMesh_ModelPostProcessor,
     ) -> crate::OcctResult<*mut BRepMesh_ModelPostProcessor>;
     /// Upcast Handle<BRepMesh_ModelPostProcessor> to Handle<IMeshTools_ModelAlgo>
-    pub fn HandleBRepMeshModelPostProcessor_to_HandleIMeshToolsModelAlgo(
-        self_: *const HandleBRepMeshModelPostProcessor,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsModelAlgo>;
+    pub fn Handle_BRepMesh_ModelPostProcessor_to_Handle_IMeshTools_ModelAlgo(
+        self_: *const Handle_BRepMesh_ModelPostProcessor,
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_ModelAlgo>;
     /// Upcast Handle<BRepMesh_ModelPostProcessor> to Handle<Standard_Transient>
-    pub fn HandleBRepMeshModelPostProcessor_to_HandleStandardTransient(
-        self_: *const HandleBRepMeshModelPostProcessor,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `IMeshTools_ModelAlgo.hxx`:33 - `IMeshTools_ModelAlgo::Perform()`
+    pub fn Handle_BRepMesh_ModelPostProcessor_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepMesh_ModelPostProcessor,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `IMeshTools_ModelAlgo.hxx`:34 - `IMeshTools_ModelAlgo::Perform()`
     pub fn BRepMesh_ModelPostProcessor_inherited_Perform(
         self_: *mut BRepMesh_ModelPostProcessor,
-        theModel: *const HandleIMeshDataModel,
+        theModel: *const Handle_IMeshData_Model,
         theParameters: *const IMeshTools_Parameters,
         theRange: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepMesh_ModelPostProcessor_inherited_IsInstance(
         self_: *const BRepMesh_ModelPostProcessor,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepMesh_ModelPostProcessor_inherited_IsKind(
         self_: *const BRepMesh_ModelPostProcessor,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepMesh_ModelPostProcessor_inherited_This(
         self_: *const BRepMesh_ModelPostProcessor,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepMesh_ModelPostProcessor_inherited_GetRefCount(
         self_: *const BRepMesh_ModelPostProcessor,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepMesh_ModelPostProcessor_inherited_IncrementRefCounter(
         self_: *mut BRepMesh_ModelPostProcessor,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepMesh_ModelPostProcessor_inherited_DecrementRefCounter(
         self_: *mut BRepMesh_ModelPostProcessor,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepMesh_ModelPostProcessor_inherited_Delete(
         self_: *const BRepMesh_ModelPostProcessor,
     ) -> *const std::ffi::c_char;
@@ -3496,12 +3698,12 @@ unsafe extern "C" {
     /// **Source:** `BRepMesh_ModelPreProcessor.hxx`:34 - `BRepMesh_ModelPreProcessor::DynamicType()`
     pub fn BRepMesh_ModelPreProcessor_dynamic_type(
         self_: *const BRepMesh_ModelPreProcessor,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BRepMesh_ModelPreProcessor.hxx`:34 - `BRepMesh_ModelPreProcessor::get_type_name()`
     pub fn BRepMesh_ModelPreProcessor_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BRepMesh_ModelPreProcessor.hxx`:34 - `BRepMesh_ModelPreProcessor::get_type_descriptor()`
     pub fn BRepMesh_ModelPreProcessor_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepMesh_ModelPreProcessor to IMeshTools_ModelAlgo
     pub fn BRepMesh_ModelPreProcessor_as_IMeshTools_ModelAlgo(
         self_: *const BRepMesh_ModelPreProcessor,
@@ -3521,67 +3723,69 @@ unsafe extern "C" {
     /// Wrap BRepMesh_ModelPreProcessor in a Handle
     pub fn BRepMesh_ModelPreProcessor_to_handle(
         obj: *mut BRepMesh_ModelPreProcessor,
-    ) -> crate::OcctResult<*mut HandleBRepMeshModelPreProcessor>;
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_ModelPreProcessor>;
     /// Destroy Handle<BRepMesh_ModelPreProcessor>
-    pub fn HandleBRepMeshModelPreProcessor_destructor(self_: *mut HandleBRepMeshModelPreProcessor);
+    pub fn Handle_BRepMesh_ModelPreProcessor_destructor(
+        self_: *mut Handle_BRepMesh_ModelPreProcessor,
+    );
     /// Clone Handle<BRepMesh_ModelPreProcessor> (increments reference count)
-    pub fn HandleBRepMeshModelPreProcessor_clone(
-        self_: *const HandleBRepMeshModelPreProcessor,
-    ) -> crate::OcctResult<*mut HandleBRepMeshModelPreProcessor>;
+    pub fn Handle_BRepMesh_ModelPreProcessor_clone(
+        self_: *const Handle_BRepMesh_ModelPreProcessor,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_ModelPreProcessor>;
     /// Check if Handle<BRepMesh_ModelPreProcessor> is null
-    pub fn HandleBRepMeshModelPreProcessor_is_null(
-        self_: *const HandleBRepMeshModelPreProcessor,
+    pub fn Handle_BRepMesh_ModelPreProcessor_is_null(
+        self_: *const Handle_BRepMesh_ModelPreProcessor,
     ) -> bool;
     /// Dereference Handle to get *const BRepMesh_ModelPreProcessor
-    pub fn HandleBRepMeshModelPreProcessor_get(
-        handle: *const HandleBRepMeshModelPreProcessor,
+    pub fn Handle_BRepMesh_ModelPreProcessor_get(
+        handle: *const Handle_BRepMesh_ModelPreProcessor,
     ) -> crate::OcctResult<*const BRepMesh_ModelPreProcessor>;
     /// Dereference Handle to get *mut BRepMesh_ModelPreProcessor
-    pub fn HandleBRepMeshModelPreProcessor_get_mut(
-        handle: *mut HandleBRepMeshModelPreProcessor,
+    pub fn Handle_BRepMesh_ModelPreProcessor_get_mut(
+        handle: *mut Handle_BRepMesh_ModelPreProcessor,
     ) -> crate::OcctResult<*mut BRepMesh_ModelPreProcessor>;
     /// Upcast Handle<BRepMesh_ModelPreProcessor> to Handle<IMeshTools_ModelAlgo>
-    pub fn HandleBRepMeshModelPreProcessor_to_HandleIMeshToolsModelAlgo(
-        self_: *const HandleBRepMeshModelPreProcessor,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsModelAlgo>;
+    pub fn Handle_BRepMesh_ModelPreProcessor_to_Handle_IMeshTools_ModelAlgo(
+        self_: *const Handle_BRepMesh_ModelPreProcessor,
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_ModelAlgo>;
     /// Upcast Handle<BRepMesh_ModelPreProcessor> to Handle<Standard_Transient>
-    pub fn HandleBRepMeshModelPreProcessor_to_HandleStandardTransient(
-        self_: *const HandleBRepMeshModelPreProcessor,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `IMeshTools_ModelAlgo.hxx`:33 - `IMeshTools_ModelAlgo::Perform()`
+    pub fn Handle_BRepMesh_ModelPreProcessor_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepMesh_ModelPreProcessor,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `IMeshTools_ModelAlgo.hxx`:34 - `IMeshTools_ModelAlgo::Perform()`
     pub fn BRepMesh_ModelPreProcessor_inherited_Perform(
         self_: *mut BRepMesh_ModelPreProcessor,
-        theModel: *const HandleIMeshDataModel,
+        theModel: *const Handle_IMeshData_Model,
         theParameters: *const IMeshTools_Parameters,
         theRange: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepMesh_ModelPreProcessor_inherited_IsInstance(
         self_: *const BRepMesh_ModelPreProcessor,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepMesh_ModelPreProcessor_inherited_IsKind(
         self_: *const BRepMesh_ModelPreProcessor,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepMesh_ModelPreProcessor_inherited_This(
         self_: *const BRepMesh_ModelPreProcessor,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepMesh_ModelPreProcessor_inherited_GetRefCount(
         self_: *const BRepMesh_ModelPreProcessor,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepMesh_ModelPreProcessor_inherited_IncrementRefCounter(
         self_: *mut BRepMesh_ModelPreProcessor,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepMesh_ModelPreProcessor_inherited_DecrementRefCounter(
         self_: *mut BRepMesh_ModelPreProcessor,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepMesh_ModelPreProcessor_inherited_Delete(
         self_: *const BRepMesh_ModelPreProcessor,
     ) -> *const std::ffi::c_char;
@@ -3597,7 +3801,7 @@ unsafe extern "C" {
     pub fn BRepMesh_NURBSRangeSplitter_generate_surface_nodes(
         self_: *const BRepMesh_NURBSRangeSplitter,
         theParameters: *const IMeshTools_Parameters,
-    ) -> crate::OcctResult<*mut HandleNCollectionSharedNCollectionListgpPnt2d>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_Shared_NCollection_List_gp_Pnt2d>;
     /// Upcast BRepMesh_NURBSRangeSplitter to BRepMesh_UVParamRangeSplitter
     pub fn BRepMesh_NURBSRangeSplitter_as_BRepMesh_UVParamRangeSplitter(
         self_: *const BRepMesh_NURBSRangeSplitter,
@@ -3617,7 +3821,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:38 - `BRepMesh_UVParamRangeSplitter::Reset()`
     pub fn BRepMesh_NURBSRangeSplitter_inherited_Reset(
         self_: *mut BRepMesh_NURBSRangeSplitter,
-        theDFace: *const HandleIMeshDataFace,
+        theDFace: *const Handle_IMeshData_Face,
         theParameters: *const IMeshTools_Parameters,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:49 - `BRepMesh_UVParamRangeSplitter::GetParametersU()`
@@ -3643,35 +3847,35 @@ unsafe extern "C" {
         thePoint: *const gp_Pnt2d,
         isToFaceBasis: bool,
     ) -> crate::OcctResult<*mut gp_Pnt2d>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:65 - `BRepMesh_DefaultRangeSplitter::Point()`
     pub fn BRepMesh_NURBSRangeSplitter_inherited_Point(
         self_: *const BRepMesh_NURBSRangeSplitter,
         thePoint2d: *const gp_Pnt2d,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:79 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
     pub fn BRepMesh_NURBSRangeSplitter_inherited_GetDFace(
         self_: *const BRepMesh_NURBSRangeSplitter,
-    ) -> crate::OcctResult<*const HandleIMeshDataFace>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
+    ) -> crate::OcctResult<*const Handle_IMeshData_Face>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
     pub fn BRepMesh_NURBSRangeSplitter_inherited_GetSurface(
         self_: *const BRepMesh_NURBSRangeSplitter,
-    ) -> crate::OcctResult<*const HandleBRepAdaptorSurface>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
+    ) -> crate::OcctResult<*const Handle_BRepAdaptor_Surface>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
     pub fn BRepMesh_NURBSRangeSplitter_inherited_GetRangeU(
         self_: *const BRepMesh_NURBSRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
+    ) -> crate::OcctResult<*const std_pair_double_double>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
     pub fn BRepMesh_NURBSRangeSplitter_inherited_GetRangeV(
         self_: *const BRepMesh_NURBSRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
+    ) -> crate::OcctResult<*const std_pair_double_double>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
     pub fn BRepMesh_NURBSRangeSplitter_inherited_GetDelta(
         self_: *const BRepMesh_NURBSRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
+    ) -> crate::OcctResult<*const std_pair_double_double>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:93 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
     pub fn BRepMesh_NURBSRangeSplitter_inherited_GetToleranceUV(
         self_: *const BRepMesh_NURBSRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
+    ) -> crate::OcctResult<*const std_pair_double_double>;
     // ======================== BRepMesh_OrientedEdge ========================
     pub fn BRepMesh_OrientedEdge_destructor(self_: *mut BRepMesh_OrientedEdge);
     /// **Source:** `BRepMesh_OrientedEdge.hxx`:28 - `BRepMesh_OrientedEdge::BRepMesh_OrientedEdge()`
@@ -3751,12 +3955,12 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*mut BRepMesh_SelectorOfDataStructureOfDelaun>;
     /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:35 - `BRepMesh_SelectorOfDataStructureOfDelaun::BRepMesh_SelectorOfDataStructureOfDelaun()`
     pub fn BRepMesh_SelectorOfDataStructureOfDelaun_ctor_handlebrepmeshdatastructureofdelaun(
-        theMesh: *const HandleBRepMeshDataStructureOfDelaun,
+        theMesh: *const Handle_BRepMesh_DataStructureOfDelaun,
     ) -> crate::OcctResult<*mut BRepMesh_SelectorOfDataStructureOfDelaun>;
     /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:39 - `BRepMesh_SelectorOfDataStructureOfDelaun::Initialize()`
     pub fn BRepMesh_SelectorOfDataStructureOfDelaun_initialize(
         self_: *mut BRepMesh_SelectorOfDataStructureOfDelaun,
-        theMesh: *const HandleBRepMeshDataStructureOfDelaun,
+        theMesh: *const Handle_BRepMesh_DataStructureOfDelaun,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:42 - `BRepMesh_SelectorOfDataStructureOfDelaun::NeighboursOf()`
     pub fn BRepMesh_SelectorOfDataStructureOfDelaun_neighbours_of_vertex(
@@ -3821,13 +4025,13 @@ unsafe extern "C" {
     /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:80 - `BRepMesh_SelectorOfDataStructureOfDelaun::DynamicType()`
     pub fn BRepMesh_SelectorOfDataStructureOfDelaun_dynamic_type(
         self_: *const BRepMesh_SelectorOfDataStructureOfDelaun,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:80 - `BRepMesh_SelectorOfDataStructureOfDelaun::get_type_name()`
     pub fn BRepMesh_SelectorOfDataStructureOfDelaun_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:80 - `BRepMesh_SelectorOfDataStructureOfDelaun::get_type_descriptor()`
     pub fn BRepMesh_SelectorOfDataStructureOfDelaun_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepMesh_SelectorOfDataStructureOfDelaun to Standard_Transient
     pub fn BRepMesh_SelectorOfDataStructureOfDelaun_as_Standard_Transient(
         self_: *const BRepMesh_SelectorOfDataStructureOfDelaun,
@@ -3839,58 +4043,58 @@ unsafe extern "C" {
     /// Wrap BRepMesh_SelectorOfDataStructureOfDelaun in a Handle
     pub fn BRepMesh_SelectorOfDataStructureOfDelaun_to_handle(
         obj: *mut BRepMesh_SelectorOfDataStructureOfDelaun,
-    ) -> crate::OcctResult<*mut HandleBRepMeshSelectorOfDataStructureOfDelaun>;
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_SelectorOfDataStructureOfDelaun>;
     /// Destroy Handle<BRepMesh_SelectorOfDataStructureOfDelaun>
-    pub fn HandleBRepMeshSelectorOfDataStructureOfDelaun_destructor(
-        self_: *mut HandleBRepMeshSelectorOfDataStructureOfDelaun,
+    pub fn Handle_BRepMesh_SelectorOfDataStructureOfDelaun_destructor(
+        self_: *mut Handle_BRepMesh_SelectorOfDataStructureOfDelaun,
     );
     /// Clone Handle<BRepMesh_SelectorOfDataStructureOfDelaun> (increments reference count)
-    pub fn HandleBRepMeshSelectorOfDataStructureOfDelaun_clone(
-        self_: *const HandleBRepMeshSelectorOfDataStructureOfDelaun,
-    ) -> crate::OcctResult<*mut HandleBRepMeshSelectorOfDataStructureOfDelaun>;
+    pub fn Handle_BRepMesh_SelectorOfDataStructureOfDelaun_clone(
+        self_: *const Handle_BRepMesh_SelectorOfDataStructureOfDelaun,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_SelectorOfDataStructureOfDelaun>;
     /// Check if Handle<BRepMesh_SelectorOfDataStructureOfDelaun> is null
-    pub fn HandleBRepMeshSelectorOfDataStructureOfDelaun_is_null(
-        self_: *const HandleBRepMeshSelectorOfDataStructureOfDelaun,
+    pub fn Handle_BRepMesh_SelectorOfDataStructureOfDelaun_is_null(
+        self_: *const Handle_BRepMesh_SelectorOfDataStructureOfDelaun,
     ) -> bool;
     /// Dereference Handle to get *const BRepMesh_SelectorOfDataStructureOfDelaun
-    pub fn HandleBRepMeshSelectorOfDataStructureOfDelaun_get(
-        handle: *const HandleBRepMeshSelectorOfDataStructureOfDelaun,
+    pub fn Handle_BRepMesh_SelectorOfDataStructureOfDelaun_get(
+        handle: *const Handle_BRepMesh_SelectorOfDataStructureOfDelaun,
     ) -> crate::OcctResult<*const BRepMesh_SelectorOfDataStructureOfDelaun>;
     /// Dereference Handle to get *mut BRepMesh_SelectorOfDataStructureOfDelaun
-    pub fn HandleBRepMeshSelectorOfDataStructureOfDelaun_get_mut(
-        handle: *mut HandleBRepMeshSelectorOfDataStructureOfDelaun,
+    pub fn Handle_BRepMesh_SelectorOfDataStructureOfDelaun_get_mut(
+        handle: *mut Handle_BRepMesh_SelectorOfDataStructureOfDelaun,
     ) -> crate::OcctResult<*mut BRepMesh_SelectorOfDataStructureOfDelaun>;
     /// Upcast Handle<BRepMesh_SelectorOfDataStructureOfDelaun> to Handle<Standard_Transient>
-    pub fn HandleBRepMeshSelectorOfDataStructureOfDelaun_to_HandleStandardTransient(
-        self_: *const HandleBRepMeshSelectorOfDataStructureOfDelaun,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_BRepMesh_SelectorOfDataStructureOfDelaun_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepMesh_SelectorOfDataStructureOfDelaun,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepMesh_SelectorOfDataStructureOfDelaun_inherited_IsInstance(
         self_: *const BRepMesh_SelectorOfDataStructureOfDelaun,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepMesh_SelectorOfDataStructureOfDelaun_inherited_IsKind(
         self_: *const BRepMesh_SelectorOfDataStructureOfDelaun,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepMesh_SelectorOfDataStructureOfDelaun_inherited_This(
         self_: *const BRepMesh_SelectorOfDataStructureOfDelaun,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepMesh_SelectorOfDataStructureOfDelaun_inherited_GetRefCount(
         self_: *const BRepMesh_SelectorOfDataStructureOfDelaun,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepMesh_SelectorOfDataStructureOfDelaun_inherited_IncrementRefCounter(
         self_: *mut BRepMesh_SelectorOfDataStructureOfDelaun,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepMesh_SelectorOfDataStructureOfDelaun_inherited_DecrementRefCounter(
         self_: *mut BRepMesh_SelectorOfDataStructureOfDelaun,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepMesh_SelectorOfDataStructureOfDelaun_inherited_Delete(
         self_: *const BRepMesh_SelectorOfDataStructureOfDelaun,
     ) -> *const std::ffi::c_char;
@@ -3898,10 +4102,10 @@ unsafe extern "C" {
     pub fn BRepMesh_ShapeTool_destructor(self_: *mut BRepMesh_ShapeTool);
     /// **Source:** `BRepMesh_ShapeTool.hxx` - `BRepMesh_ShapeTool::BRepMesh_ShapeTool()`
     pub fn BRepMesh_ShapeTool_ctor() -> crate::OcctResult<*mut BRepMesh_ShapeTool>;
-    /// **Source:** `BRepMesh_ShapeTool.hxx`:140 - `BRepMesh_ShapeTool::DynamicType()`
+    /// **Source:** `BRepMesh_ShapeTool.hxx`:137 - `BRepMesh_ShapeTool::DynamicType()`
     pub fn BRepMesh_ShapeTool_dynamic_type(
         self_: *const BRepMesh_ShapeTool,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BRepMesh_ShapeTool.hxx`:38 - `BRepMesh_ShapeTool::MaxFaceTolerance()`
     pub fn BRepMesh_ShapeTool_max_face_tolerance(
         theFace: *const TopoDS_Face,
@@ -3911,47 +4115,47 @@ unsafe extern "C" {
         theBox: *const Bnd_Box,
         theMaxDimension: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_ShapeTool.hxx`:53 - `BRepMesh_ShapeTool::CheckAndUpdateFlags()`
+    /// **Source:** `BRepMesh_ShapeTool.hxx`:52 - `BRepMesh_ShapeTool::CheckAndUpdateFlags()`
     pub fn BRepMesh_ShapeTool_check_and_update_flags(
-        theEdge: *const HandleIMeshDataEdge,
-        thePCurve: *const HandleIMeshDataPCurve,
+        theEdge: *const Handle_IMeshData_Edge,
+        thePCurve: *const Handle_IMeshData_PCurve,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_ShapeTool.hxx`:59 - `BRepMesh_ShapeTool::AddInFace()`
+    /// **Source:** `BRepMesh_ShapeTool.hxx`:58 - `BRepMesh_ShapeTool::AddInFace()`
     pub fn BRepMesh_ShapeTool_add_in_face(
         theFace: *const TopoDS_Face,
-        theTriangulation: *mut HandlePolyTriangulation,
+        theTriangulation: *mut Handle_Poly_Triangulation,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_ShapeTool.hxx`:64 - `BRepMesh_ShapeTool::NullifyFace()`
+    /// **Source:** `BRepMesh_ShapeTool.hxx`:63 - `BRepMesh_ShapeTool::NullifyFace()`
     pub fn BRepMesh_ShapeTool_nullify_face(theFace: *const TopoDS_Face) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_ShapeTool.hxx`:70 - `BRepMesh_ShapeTool::NullifyEdge()`
+    /// **Source:** `BRepMesh_ShapeTool.hxx`:69 - `BRepMesh_ShapeTool::NullifyEdge()`
     pub fn BRepMesh_ShapeTool_nullify_edge_edge_handlepolytriangulation_location(
         theEdge: *const TopoDS_Edge,
-        theTriangulation: *const HandlePolyTriangulation,
+        theTriangulation: *const Handle_Poly_Triangulation,
         theLocation: *const TopLoc_Location,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_ShapeTool.hxx`:77 - `BRepMesh_ShapeTool::NullifyEdge()`
+    /// **Source:** `BRepMesh_ShapeTool.hxx`:76 - `BRepMesh_ShapeTool::NullifyEdge()`
     pub fn BRepMesh_ShapeTool_nullify_edge_edge_location(
         theEdge: *const TopoDS_Edge,
         theLocation: *const TopLoc_Location,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_ShapeTool.hxx`:85 - `BRepMesh_ShapeTool::UpdateEdge()`
+    /// **Source:** `BRepMesh_ShapeTool.hxx`:84 - `BRepMesh_ShapeTool::UpdateEdge()`
     pub fn BRepMesh_ShapeTool_update_edge_edge_handlepolypolygonontriangulation_handlepolytriangulation_location(
         theEdge: *const TopoDS_Edge,
-        thePolygon: *const HandlePolyPolygonOnTriangulation,
-        theTriangulation: *const HandlePolyTriangulation,
+        thePolygon: *const Handle_Poly_PolygonOnTriangulation,
+        theTriangulation: *const Handle_Poly_Triangulation,
         theLocation: *const TopLoc_Location,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_ShapeTool.hxx`:93 - `BRepMesh_ShapeTool::UpdateEdge()`
+    /// **Source:** `BRepMesh_ShapeTool.hxx`:92 - `BRepMesh_ShapeTool::UpdateEdge()`
     pub fn BRepMesh_ShapeTool_update_edge_edge_handlepolypolygon3d(
         theEdge: *const TopoDS_Edge,
-        thePolygon: *const HandlePolyPolygon3D,
+        thePolygon: *const Handle_Poly_Polygon3D,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_ShapeTool.hxx`:104 - `BRepMesh_ShapeTool::UpdateEdge()`
+    /// **Source:** `BRepMesh_ShapeTool.hxx`:103 - `BRepMesh_ShapeTool::UpdateEdge()`
     pub fn BRepMesh_ShapeTool_update_edge_edge_handlepolypolygonontriangulation2_handlepolytriangulation_location(
         theEdge: *const TopoDS_Edge,
-        thePolygon1: *const HandlePolyPolygonOnTriangulation,
-        thePolygon2: *const HandlePolyPolygonOnTriangulation,
-        theTriangulation: *const HandlePolyTriangulation,
+        thePolygon1: *const Handle_Poly_PolygonOnTriangulation,
+        thePolygon2: *const Handle_Poly_PolygonOnTriangulation,
+        theTriangulation: *const Handle_Poly_Triangulation,
         theLocation: *const TopLoc_Location,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepMesh_ShapeTool.hxx`:113 - `BRepMesh_ShapeTool::UseLocation()`
@@ -3967,27 +4171,27 @@ unsafe extern "C" {
         theLastPoint2d: *mut gp_Pnt2d,
         isConsiderOrientation: bool,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepMesh_ShapeTool.hxx`:124 - `BRepMesh_ShapeTool::Range()`
+    /// **Source:** `BRepMesh_ShapeTool.hxx`:123 - `BRepMesh_ShapeTool::Range()`
     pub fn BRepMesh_ShapeTool_range_edge_face_handlegeom2dcurve_real2_bool(
         theEdge: *const TopoDS_Edge,
         theFace: *const TopoDS_Face,
-        thePCurve: *mut HandleGeom2dCurve,
+        thePCurve: *mut Handle_Geom2d_Curve,
         theFirstParam: *mut f64,
         theLastParam: *mut f64,
         isConsiderOrientation: bool,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepMesh_ShapeTool.hxx`:133 - `BRepMesh_ShapeTool::Range()`
+    /// **Source:** `BRepMesh_ShapeTool.hxx`:131 - `BRepMesh_ShapeTool::Range()`
     pub fn BRepMesh_ShapeTool_range_edge_handlegeomcurve_real2_bool(
         theEdge: *const TopoDS_Edge,
-        theCurve: *mut HandleGeomCurve,
+        theCurve: *mut Handle_Geom_Curve,
         theFirstParam: *mut f64,
         theLastParam: *mut f64,
         isConsiderOrientation: bool,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepMesh_ShapeTool.hxx`:140 - `BRepMesh_ShapeTool::get_type_name()`
+    /// **Source:** `BRepMesh_ShapeTool.hxx`:137 - `BRepMesh_ShapeTool::get_type_name()`
     pub fn BRepMesh_ShapeTool_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BRepMesh_ShapeTool.hxx`:140 - `BRepMesh_ShapeTool::get_type_descriptor()`
-    pub fn BRepMesh_ShapeTool_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `BRepMesh_ShapeTool.hxx`:137 - `BRepMesh_ShapeTool::get_type_descriptor()`
+    pub fn BRepMesh_ShapeTool_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepMesh_ShapeTool to Standard_Transient
     pub fn BRepMesh_ShapeTool_as_Standard_Transient(
         self_: *const BRepMesh_ShapeTool,
@@ -3999,54 +4203,54 @@ unsafe extern "C" {
     /// Wrap BRepMesh_ShapeTool in a Handle
     pub fn BRepMesh_ShapeTool_to_handle(
         obj: *mut BRepMesh_ShapeTool,
-    ) -> crate::OcctResult<*mut HandleBRepMeshShapeTool>;
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_ShapeTool>;
     /// Destroy Handle<BRepMesh_ShapeTool>
-    pub fn HandleBRepMeshShapeTool_destructor(self_: *mut HandleBRepMeshShapeTool);
+    pub fn Handle_BRepMesh_ShapeTool_destructor(self_: *mut Handle_BRepMesh_ShapeTool);
     /// Clone Handle<BRepMesh_ShapeTool> (increments reference count)
-    pub fn HandleBRepMeshShapeTool_clone(
-        self_: *const HandleBRepMeshShapeTool,
-    ) -> crate::OcctResult<*mut HandleBRepMeshShapeTool>;
+    pub fn Handle_BRepMesh_ShapeTool_clone(
+        self_: *const Handle_BRepMesh_ShapeTool,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_ShapeTool>;
     /// Check if Handle<BRepMesh_ShapeTool> is null
-    pub fn HandleBRepMeshShapeTool_is_null(self_: *const HandleBRepMeshShapeTool) -> bool;
+    pub fn Handle_BRepMesh_ShapeTool_is_null(self_: *const Handle_BRepMesh_ShapeTool) -> bool;
     /// Dereference Handle to get *const BRepMesh_ShapeTool
-    pub fn HandleBRepMeshShapeTool_get(
-        handle: *const HandleBRepMeshShapeTool,
+    pub fn Handle_BRepMesh_ShapeTool_get(
+        handle: *const Handle_BRepMesh_ShapeTool,
     ) -> crate::OcctResult<*const BRepMesh_ShapeTool>;
     /// Dereference Handle to get *mut BRepMesh_ShapeTool
-    pub fn HandleBRepMeshShapeTool_get_mut(
-        handle: *mut HandleBRepMeshShapeTool,
+    pub fn Handle_BRepMesh_ShapeTool_get_mut(
+        handle: *mut Handle_BRepMesh_ShapeTool,
     ) -> crate::OcctResult<*mut BRepMesh_ShapeTool>;
     /// Upcast Handle<BRepMesh_ShapeTool> to Handle<Standard_Transient>
-    pub fn HandleBRepMeshShapeTool_to_HandleStandardTransient(
-        self_: *const HandleBRepMeshShapeTool,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_BRepMesh_ShapeTool_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepMesh_ShapeTool,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepMesh_ShapeTool_inherited_IsInstance(
         self_: *const BRepMesh_ShapeTool,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepMesh_ShapeTool_inherited_IsKind(
         self_: *const BRepMesh_ShapeTool,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepMesh_ShapeTool_inherited_This(
         self_: *const BRepMesh_ShapeTool,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepMesh_ShapeTool_inherited_GetRefCount(
         self_: *const BRepMesh_ShapeTool,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepMesh_ShapeTool_inherited_IncrementRefCounter(
         self_: *mut BRepMesh_ShapeTool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepMesh_ShapeTool_inherited_DecrementRefCounter(
         self_: *mut BRepMesh_ShapeTool,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepMesh_ShapeTool_inherited_Delete(
         self_: *const BRepMesh_ShapeTool,
     ) -> *const std::ffi::c_char;
@@ -4054,7 +4258,7 @@ unsafe extern "C" {
     pub fn BRepMesh_ShapeVisitor_destructor(self_: *mut BRepMesh_ShapeVisitor);
     /// **Source:** `BRepMesh_ShapeVisitor.hxx`:38 - `BRepMesh_ShapeVisitor::BRepMesh_ShapeVisitor()`
     pub fn BRepMesh_ShapeVisitor_ctor_handleimeshdatamodel(
-        theModel: *const HandleIMeshDataModel,
+        theModel: *const Handle_IMeshData_Model,
     ) -> crate::OcctResult<*mut BRepMesh_ShapeVisitor>;
     /// **Source:** `BRepMesh_ShapeVisitor.hxx`:44 - `BRepMesh_ShapeVisitor::Visit()`
     pub fn BRepMesh_ShapeVisitor_visit_face(
@@ -4069,12 +4273,12 @@ unsafe extern "C" {
     /// **Source:** `BRepMesh_ShapeVisitor.hxx`:49 - `BRepMesh_ShapeVisitor::DynamicType()`
     pub fn BRepMesh_ShapeVisitor_dynamic_type(
         self_: *const BRepMesh_ShapeVisitor,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BRepMesh_ShapeVisitor.hxx`:49 - `BRepMesh_ShapeVisitor::get_type_name()`
     pub fn BRepMesh_ShapeVisitor_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BRepMesh_ShapeVisitor.hxx`:49 - `BRepMesh_ShapeVisitor::get_type_descriptor()`
     pub fn BRepMesh_ShapeVisitor_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepMesh_ShapeVisitor to IMeshTools_ShapeVisitor
     pub fn BRepMesh_ShapeVisitor_as_IMeshTools_ShapeVisitor(
         self_: *const BRepMesh_ShapeVisitor,
@@ -4094,58 +4298,59 @@ unsafe extern "C" {
     /// Wrap BRepMesh_ShapeVisitor in a Handle
     pub fn BRepMesh_ShapeVisitor_to_handle(
         obj: *mut BRepMesh_ShapeVisitor,
-    ) -> crate::OcctResult<*mut HandleBRepMeshShapeVisitor>;
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_ShapeVisitor>;
     /// Destroy Handle<BRepMesh_ShapeVisitor>
-    pub fn HandleBRepMeshShapeVisitor_destructor(self_: *mut HandleBRepMeshShapeVisitor);
+    pub fn Handle_BRepMesh_ShapeVisitor_destructor(self_: *mut Handle_BRepMesh_ShapeVisitor);
     /// Clone Handle<BRepMesh_ShapeVisitor> (increments reference count)
-    pub fn HandleBRepMeshShapeVisitor_clone(
-        self_: *const HandleBRepMeshShapeVisitor,
-    ) -> crate::OcctResult<*mut HandleBRepMeshShapeVisitor>;
+    pub fn Handle_BRepMesh_ShapeVisitor_clone(
+        self_: *const Handle_BRepMesh_ShapeVisitor,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_ShapeVisitor>;
     /// Check if Handle<BRepMesh_ShapeVisitor> is null
-    pub fn HandleBRepMeshShapeVisitor_is_null(self_: *const HandleBRepMeshShapeVisitor) -> bool;
+    pub fn Handle_BRepMesh_ShapeVisitor_is_null(self_: *const Handle_BRepMesh_ShapeVisitor)
+        -> bool;
     /// Dereference Handle to get *const BRepMesh_ShapeVisitor
-    pub fn HandleBRepMeshShapeVisitor_get(
-        handle: *const HandleBRepMeshShapeVisitor,
+    pub fn Handle_BRepMesh_ShapeVisitor_get(
+        handle: *const Handle_BRepMesh_ShapeVisitor,
     ) -> crate::OcctResult<*const BRepMesh_ShapeVisitor>;
     /// Dereference Handle to get *mut BRepMesh_ShapeVisitor
-    pub fn HandleBRepMeshShapeVisitor_get_mut(
-        handle: *mut HandleBRepMeshShapeVisitor,
+    pub fn Handle_BRepMesh_ShapeVisitor_get_mut(
+        handle: *mut Handle_BRepMesh_ShapeVisitor,
     ) -> crate::OcctResult<*mut BRepMesh_ShapeVisitor>;
     /// Upcast Handle<BRepMesh_ShapeVisitor> to Handle<IMeshTools_ShapeVisitor>
-    pub fn HandleBRepMeshShapeVisitor_to_HandleIMeshToolsShapeVisitor(
-        self_: *const HandleBRepMeshShapeVisitor,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsShapeVisitor>;
+    pub fn Handle_BRepMesh_ShapeVisitor_to_Handle_IMeshTools_ShapeVisitor(
+        self_: *const Handle_BRepMesh_ShapeVisitor,
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_ShapeVisitor>;
     /// Upcast Handle<BRepMesh_ShapeVisitor> to Handle<Standard_Transient>
-    pub fn HandleBRepMeshShapeVisitor_to_HandleStandardTransient(
-        self_: *const HandleBRepMeshShapeVisitor,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_BRepMesh_ShapeVisitor_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepMesh_ShapeVisitor,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepMesh_ShapeVisitor_inherited_IsInstance(
         self_: *const BRepMesh_ShapeVisitor,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepMesh_ShapeVisitor_inherited_IsKind(
         self_: *const BRepMesh_ShapeVisitor,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepMesh_ShapeVisitor_inherited_This(
         self_: *const BRepMesh_ShapeVisitor,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepMesh_ShapeVisitor_inherited_GetRefCount(
         self_: *const BRepMesh_ShapeVisitor,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepMesh_ShapeVisitor_inherited_IncrementRefCounter(
         self_: *mut BRepMesh_ShapeVisitor,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepMesh_ShapeVisitor_inherited_DecrementRefCounter(
         self_: *mut BRepMesh_ShapeVisitor,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepMesh_ShapeVisitor_inherited_Delete(
         self_: *const BRepMesh_ShapeVisitor,
     ) -> *const std::ffi::c_char;
@@ -4158,7 +4363,7 @@ unsafe extern "C" {
     pub fn BRepMesh_SphereRangeSplitter_generate_surface_nodes(
         self_: *const BRepMesh_SphereRangeSplitter,
         theParameters: *const IMeshTools_Parameters,
-    ) -> crate::OcctResult<*mut HandleNCollectionSharedNCollectionListgpPnt2d>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_Shared_NCollection_List_gp_Pnt2d>;
     /// Upcast BRepMesh_SphereRangeSplitter to BRepMesh_DefaultRangeSplitter
     pub fn BRepMesh_SphereRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
         self_: *const BRepMesh_SphereRangeSplitter,
@@ -4170,7 +4375,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:38 - `BRepMesh_DefaultRangeSplitter::Reset()`
     pub fn BRepMesh_SphereRangeSplitter_inherited_Reset(
         self_: *mut BRepMesh_SphereRangeSplitter,
-        theDFace: *const HandleIMeshDataFace,
+        theDFace: *const Handle_IMeshData_Face,
         theParameters: *const IMeshTools_Parameters,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
@@ -4192,35 +4397,35 @@ unsafe extern "C" {
         thePoint: *const gp_Pnt2d,
         isToFaceBasis: bool,
     ) -> crate::OcctResult<*mut gp_Pnt2d>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:65 - `BRepMesh_DefaultRangeSplitter::Point()`
     pub fn BRepMesh_SphereRangeSplitter_inherited_Point(
         self_: *const BRepMesh_SphereRangeSplitter,
         thePoint2d: *const gp_Pnt2d,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:79 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
     pub fn BRepMesh_SphereRangeSplitter_inherited_GetDFace(
         self_: *const BRepMesh_SphereRangeSplitter,
-    ) -> crate::OcctResult<*const HandleIMeshDataFace>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
+    ) -> crate::OcctResult<*const Handle_IMeshData_Face>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
     pub fn BRepMesh_SphereRangeSplitter_inherited_GetSurface(
         self_: *const BRepMesh_SphereRangeSplitter,
-    ) -> crate::OcctResult<*const HandleBRepAdaptorSurface>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
+    ) -> crate::OcctResult<*const Handle_BRepAdaptor_Surface>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
     pub fn BRepMesh_SphereRangeSplitter_inherited_GetRangeU(
         self_: *const BRepMesh_SphereRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
+    ) -> crate::OcctResult<*const std_pair_double_double>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
     pub fn BRepMesh_SphereRangeSplitter_inherited_GetRangeV(
         self_: *const BRepMesh_SphereRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
+    ) -> crate::OcctResult<*const std_pair_double_double>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
     pub fn BRepMesh_SphereRangeSplitter_inherited_GetDelta(
         self_: *const BRepMesh_SphereRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
+    ) -> crate::OcctResult<*const std_pair_double_double>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:93 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
     pub fn BRepMesh_SphereRangeSplitter_inherited_GetToleranceUV(
         self_: *const BRepMesh_SphereRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
+    ) -> crate::OcctResult<*const std_pair_double_double>;
     // ======================== BRepMesh_TorusRangeSplitter ========================
     pub fn BRepMesh_TorusRangeSplitter_destructor(self_: *mut BRepMesh_TorusRangeSplitter);
     /// **Source:** `BRepMesh_TorusRangeSplitter.hxx`:28 - `BRepMesh_TorusRangeSplitter::BRepMesh_TorusRangeSplitter()`
@@ -4229,7 +4434,7 @@ unsafe extern "C" {
     pub fn BRepMesh_TorusRangeSplitter_generate_surface_nodes(
         self_: *const BRepMesh_TorusRangeSplitter,
         theParameters: *const IMeshTools_Parameters,
-    ) -> crate::OcctResult<*mut HandleNCollectionSharedNCollectionListgpPnt2d>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_Shared_NCollection_List_gp_Pnt2d>;
     /// **Source:** `BRepMesh_TorusRangeSplitter.hxx`:38 - `BRepMesh_TorusRangeSplitter::AddPoint()`
     pub fn BRepMesh_TorusRangeSplitter_add_point(
         self_: *mut BRepMesh_TorusRangeSplitter,
@@ -4254,7 +4459,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:38 - `BRepMesh_UVParamRangeSplitter::Reset()`
     pub fn BRepMesh_TorusRangeSplitter_inherited_Reset(
         self_: *mut BRepMesh_TorusRangeSplitter,
-        theDFace: *const HandleIMeshDataFace,
+        theDFace: *const Handle_IMeshData_Face,
         theParameters: *const IMeshTools_Parameters,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:49 - `BRepMesh_UVParamRangeSplitter::GetParametersU()`
@@ -4279,35 +4484,35 @@ unsafe extern "C" {
         thePoint: *const gp_Pnt2d,
         isToFaceBasis: bool,
     ) -> crate::OcctResult<*mut gp_Pnt2d>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:65 - `BRepMesh_DefaultRangeSplitter::Point()`
     pub fn BRepMesh_TorusRangeSplitter_inherited_Point(
         self_: *const BRepMesh_TorusRangeSplitter,
         thePoint2d: *const gp_Pnt2d,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:79 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
     pub fn BRepMesh_TorusRangeSplitter_inherited_GetDFace(
         self_: *const BRepMesh_TorusRangeSplitter,
-    ) -> crate::OcctResult<*const HandleIMeshDataFace>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
+    ) -> crate::OcctResult<*const Handle_IMeshData_Face>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
     pub fn BRepMesh_TorusRangeSplitter_inherited_GetSurface(
         self_: *const BRepMesh_TorusRangeSplitter,
-    ) -> crate::OcctResult<*const HandleBRepAdaptorSurface>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
+    ) -> crate::OcctResult<*const Handle_BRepAdaptor_Surface>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
     pub fn BRepMesh_TorusRangeSplitter_inherited_GetRangeU(
         self_: *const BRepMesh_TorusRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
+    ) -> crate::OcctResult<*const std_pair_double_double>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
     pub fn BRepMesh_TorusRangeSplitter_inherited_GetRangeV(
         self_: *const BRepMesh_TorusRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
+    ) -> crate::OcctResult<*const std_pair_double_double>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
     pub fn BRepMesh_TorusRangeSplitter_inherited_GetDelta(
         self_: *const BRepMesh_TorusRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
+    ) -> crate::OcctResult<*const std_pair_double_double>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:93 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
     pub fn BRepMesh_TorusRangeSplitter_inherited_GetToleranceUV(
         self_: *const BRepMesh_TorusRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
+    ) -> crate::OcctResult<*const std_pair_double_double>;
     // ======================== BRepMesh_Triangle ========================
     pub fn BRepMesh_Triangle_destructor(self_: *mut BRepMesh_Triangle);
     /// **Source:** `BRepMesh_Triangle.hxx`:34 - `BRepMesh_Triangle::BRepMesh_Triangle()`
@@ -4345,27 +4550,27 @@ unsafe extern "C" {
     ) -> crate::OcctResult<bool>;
     // ======================== BRepMesh_Triangulator ========================
     pub fn BRepMesh_Triangulator_destructor(self_: *mut BRepMesh_Triangulator);
-    /// **Source:** `BRepMesh_Triangulator.hxx`:44 - `BRepMesh_Triangulator::BRepMesh_Triangulator()`
-    pub fn BRepMesh_Triangulator_ctor_vector_gp_xyz_list_tcolstd_sequenceofinteger_dir(
-        theXYZs: *const NCollection_Vector_gp_XYZ,
-        theWires: *const NCollection_List_TColStd_SequenceOfInteger,
+    /// **Source:** `BRepMesh_Triangulator.hxx`:45 - `BRepMesh_Triangulator::BRepMesh_Triangulator()`
+    pub fn BRepMesh_Triangulator_ctor_dynamicarray_gp_xyz_list_ncollection_sequence_int_dir(
+        theXYZs: *const NCollection_DynamicArray_gp_XYZ,
+        theWires: *const NCollection_List_NCollection_Sequence_int,
         theNorm: *const gp_Dir,
     ) -> crate::OcctResult<*mut BRepMesh_Triangulator>;
-    /// **Source:** `BRepMesh_Triangulator.hxx`:49 - `BRepMesh_Triangulator::Perform()`
+    /// **Source:** `BRepMesh_Triangulator.hxx`:50 - `BRepMesh_Triangulator::Perform()`
     pub fn BRepMesh_Triangulator_perform(
         self_: *mut BRepMesh_Triangulator,
         thePolyTriangles: *mut NCollection_List_Poly_Triangle,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepMesh_Triangulator.hxx`:53 - `BRepMesh_Triangulator::SetMessenger()`
+    /// **Source:** `BRepMesh_Triangulator.hxx`:54 - `BRepMesh_Triangulator::SetMessenger()`
     pub fn BRepMesh_Triangulator_set_messenger(
         self_: *mut BRepMesh_Triangulator,
-        theMess: *const HandleMessageMessenger,
+        theMess: *const Handle_Message_Messenger,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_Triangulator.hxx`:38 - `BRepMesh_Triangulator::ToPolyTriangulation()`
+    /// **Source:** `BRepMesh_Triangulator.hxx`:39 - `BRepMesh_Triangulator::ToPolyTriangulation()`
     pub fn BRepMesh_Triangulator_to_poly_triangulation(
-        theNodes: *const TColgp_Array1OfPnt,
+        theNodes: *const NCollection_Array1_gp_Pnt,
         thePolyTriangles: *const NCollection_List_Poly_Triangle,
-    ) -> crate::OcctResult<*mut HandlePolyTriangulation>;
+    ) -> crate::OcctResult<*mut Handle_Poly_Triangulation>;
     // ======================== BRepMesh_UVParamRangeSplitter ========================
     pub fn BRepMesh_UVParamRangeSplitter_destructor(self_: *mut BRepMesh_UVParamRangeSplitter);
     /// **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:27 - `BRepMesh_UVParamRangeSplitter::BRepMesh_UVParamRangeSplitter()`
@@ -4374,7 +4579,7 @@ unsafe extern "C" {
     /// **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:38 - `BRepMesh_UVParamRangeSplitter::Reset()`
     pub fn BRepMesh_UVParamRangeSplitter_reset(
         self_: *mut BRepMesh_UVParamRangeSplitter,
-        theDFace: *const HandleIMeshDataFace,
+        theDFace: *const Handle_IMeshData_Face,
         theParameters: *const IMeshTools_Parameters,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:49 - `BRepMesh_UVParamRangeSplitter::GetParametersU()`
@@ -4420,40 +4625,40 @@ unsafe extern "C" {
         thePoint: *const gp_Pnt2d,
         isToFaceBasis: bool,
     ) -> crate::OcctResult<*mut gp_Pnt2d>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:61 - `BRepMesh_DefaultRangeSplitter::GenerateSurfaceNodes()`
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:60 - `BRepMesh_DefaultRangeSplitter::GenerateSurfaceNodes()`
     pub fn BRepMesh_UVParamRangeSplitter_inherited_GenerateSurfaceNodes(
         self_: *const BRepMesh_UVParamRangeSplitter,
         theParameters: *const IMeshTools_Parameters,
-    ) -> crate::OcctResult<*mut HandleNCollectionSharedNCollectionListgpPnt2d>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_Shared_NCollection_List_gp_Pnt2d>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:65 - `BRepMesh_DefaultRangeSplitter::Point()`
     pub fn BRepMesh_UVParamRangeSplitter_inherited_Point(
         self_: *const BRepMesh_UVParamRangeSplitter,
         thePoint2d: *const gp_Pnt2d,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:79 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
     pub fn BRepMesh_UVParamRangeSplitter_inherited_GetDFace(
         self_: *const BRepMesh_UVParamRangeSplitter,
-    ) -> crate::OcctResult<*const HandleIMeshDataFace>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
+    ) -> crate::OcctResult<*const Handle_IMeshData_Face>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
     pub fn BRepMesh_UVParamRangeSplitter_inherited_GetSurface(
         self_: *const BRepMesh_UVParamRangeSplitter,
-    ) -> crate::OcctResult<*const HandleBRepAdaptorSurface>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
+    ) -> crate::OcctResult<*const Handle_BRepAdaptor_Surface>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
     pub fn BRepMesh_UVParamRangeSplitter_inherited_GetRangeU(
         self_: *const BRepMesh_UVParamRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
+    ) -> crate::OcctResult<*const std_pair_double_double>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
     pub fn BRepMesh_UVParamRangeSplitter_inherited_GetRangeV(
         self_: *const BRepMesh_UVParamRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
+    ) -> crate::OcctResult<*const std_pair_double_double>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
     pub fn BRepMesh_UVParamRangeSplitter_inherited_GetDelta(
         self_: *const BRepMesh_UVParamRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
+    ) -> crate::OcctResult<*const std_pair_double_double>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:93 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
     pub fn BRepMesh_UVParamRangeSplitter_inherited_GetToleranceUV(
         self_: *const BRepMesh_UVParamRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
+    ) -> crate::OcctResult<*const std_pair_double_double>;
     // ======================== BRepMesh_UndefinedRangeSplitter ========================
     pub fn BRepMesh_UndefinedRangeSplitter_destructor(self_: *mut BRepMesh_UndefinedRangeSplitter);
     /// **Source:** `BRepMesh_UndefinedRangeSplitter.hxx`:27 - `BRepMesh_UndefinedRangeSplitter::BRepMesh_UndefinedRangeSplitter()`
@@ -4491,11 +4696,11 @@ unsafe extern "C" {
     pub fn BRepMesh_UndefinedRangeSplitter_inherited_GenerateSurfaceNodes(
         self_: *const BRepMesh_UndefinedRangeSplitter,
         theParameters: *const IMeshTools_Parameters,
-    ) -> crate::OcctResult<*mut HandleNCollectionSharedNCollectionListgpPnt2d>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_Shared_NCollection_List_gp_Pnt2d>;
     /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:38 - `BRepMesh_UVParamRangeSplitter::Reset()`
     pub fn BRepMesh_UndefinedRangeSplitter_inherited_Reset(
         self_: *mut BRepMesh_UndefinedRangeSplitter,
-        theDFace: *const HandleIMeshDataFace,
+        theDFace: *const Handle_IMeshData_Face,
         theParameters: *const IMeshTools_Parameters,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:49 - `BRepMesh_UVParamRangeSplitter::GetParametersU()`
@@ -4521,35 +4726,35 @@ unsafe extern "C" {
         thePoint: *const gp_Pnt2d,
         isToFaceBasis: bool,
     ) -> crate::OcctResult<*mut gp_Pnt2d>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:65 - `BRepMesh_DefaultRangeSplitter::Point()`
     pub fn BRepMesh_UndefinedRangeSplitter_inherited_Point(
         self_: *const BRepMesh_UndefinedRangeSplitter,
         thePoint2d: *const gp_Pnt2d,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:79 - `BRepMesh_DefaultRangeSplitter::GetDFace()`
     pub fn BRepMesh_UndefinedRangeSplitter_inherited_GetDFace(
         self_: *const BRepMesh_UndefinedRangeSplitter,
-    ) -> crate::OcctResult<*const HandleIMeshDataFace>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
+    ) -> crate::OcctResult<*const Handle_IMeshData_Face>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:82 - `BRepMesh_DefaultRangeSplitter::GetSurface()`
     pub fn BRepMesh_UndefinedRangeSplitter_inherited_GetSurface(
         self_: *const BRepMesh_UndefinedRangeSplitter,
-    ) -> crate::OcctResult<*const HandleBRepAdaptorSurface>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
+    ) -> crate::OcctResult<*const Handle_BRepAdaptor_Surface>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:85 - `BRepMesh_DefaultRangeSplitter::GetRangeU()`
     pub fn BRepMesh_UndefinedRangeSplitter_inherited_GetRangeU(
         self_: *const BRepMesh_UndefinedRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
+    ) -> crate::OcctResult<*const std_pair_double_double>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:88 - `BRepMesh_DefaultRangeSplitter::GetRangeV()`
     pub fn BRepMesh_UndefinedRangeSplitter_inherited_GetRangeV(
         self_: *const BRepMesh_UndefinedRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:94 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
+    ) -> crate::OcctResult<*const std_pair_double_double>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:91 - `BRepMesh_DefaultRangeSplitter::GetDelta()`
     pub fn BRepMesh_UndefinedRangeSplitter_inherited_GetDelta(
         self_: *const BRepMesh_UndefinedRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:96 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
+    ) -> crate::OcctResult<*const std_pair_double_double>;
+    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:93 - `BRepMesh_DefaultRangeSplitter::GetToleranceUV()`
     pub fn BRepMesh_UndefinedRangeSplitter_inherited_GetToleranceUV(
         self_: *const BRepMesh_UndefinedRangeSplitter,
-    ) -> crate::OcctResult<*const std_pair_Standard_Real_Standard_Real>;
+    ) -> crate::OcctResult<*const std_pair_double_double>;
     // ======================== BRepMesh_Vertex ========================
     pub fn BRepMesh_Vertex_destructor(self_: *mut BRepMesh_Vertex);
     /// **Source:** `BRepMesh_Vertex.hxx`:32 - `BRepMesh_Vertex::BRepMesh_Vertex()`
@@ -4597,7 +4802,7 @@ unsafe extern "C" {
     pub fn BRepMesh_VertexTool_destructor(self_: *mut BRepMesh_VertexTool);
     /// **Source:** `BRepMesh_VertexTool.hxx`:31 - `BRepMesh_VertexTool::BRepMesh_VertexTool()`
     pub fn BRepMesh_VertexTool_ctor_handlencollectionincallocator(
-        theAllocator: *const HandleNCollectionIncAllocator,
+        theAllocator: *const Handle_NCollection_IncAllocator,
     ) -> crate::OcctResult<*mut BRepMesh_VertexTool>;
     /// **Source:** `BRepMesh_VertexTool.hxx`:34 - `BRepMesh_VertexTool::SetCellSize()`
     pub fn BRepMesh_VertexTool_set_cell_size_real(
@@ -4633,62 +4838,58 @@ unsafe extern "C" {
         theVertex: *const BRepMesh_Vertex,
         isForceAdd: bool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepMesh_VertexTool.hxx`:90 - `BRepMesh_VertexTool::DeleteVertex()`
+    /// **Source:** `BRepMesh_VertexTool.hxx`:89 - `BRepMesh_VertexTool::DeleteVertex()`
     pub fn BRepMesh_VertexTool_delete_vertex(
         self_: *mut BRepMesh_VertexTool,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_VertexTool.hxx`:93 - `BRepMesh_VertexTool::Vertices()`
+    /// **Source:** `BRepMesh_VertexTool.hxx`:92 - `BRepMesh_VertexTool::Vertices()`
     pub fn BRepMesh_VertexTool_vertices(
         self_: *const BRepMesh_VertexTool,
-    ) -> crate::OcctResult<*const HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex>;
-    /// **Source:** `BRepMesh_VertexTool.hxx`:96 - `BRepMesh_VertexTool::ChangeVertices()`
+    ) -> crate::OcctResult<*const Handle_NCollection_Shared_NCollection_DynamicArray_BRepMesh_Vertex>;
+    /// **Source:** `BRepMesh_VertexTool.hxx`:95 - `BRepMesh_VertexTool::ChangeVertices()`
     pub fn BRepMesh_VertexTool_change_vertices(
         self_: *mut BRepMesh_VertexTool,
-    ) -> crate::OcctResult<*mut HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex>;
-    /// **Source:** `BRepMesh_VertexTool.hxx`:99 - `BRepMesh_VertexTool::FindKey()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_Shared_NCollection_DynamicArray_BRepMesh_Vertex>;
+    /// **Source:** `BRepMesh_VertexTool.hxx`:98 - `BRepMesh_VertexTool::FindKey()`
     pub fn BRepMesh_VertexTool_find_key(
         self_: *mut BRepMesh_VertexTool,
         theIndex: i32,
     ) -> crate::OcctResult<*const BRepMesh_Vertex>;
-    /// **Source:** `BRepMesh_VertexTool.hxx`:105 - `BRepMesh_VertexTool::FindIndex()`
+    /// **Source:** `BRepMesh_VertexTool.hxx`:101 - `BRepMesh_VertexTool::FindIndex()`
     pub fn BRepMesh_VertexTool_find_index(
         self_: *mut BRepMesh_VertexTool,
         theVertex: *const BRepMesh_Vertex,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepMesh_VertexTool.hxx`:113 - `BRepMesh_VertexTool::Extent()`
+    /// **Source:** `BRepMesh_VertexTool.hxx`:109 - `BRepMesh_VertexTool::Extent()`
     pub fn BRepMesh_VertexTool_extent(self_: *const BRepMesh_VertexTool) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepMesh_VertexTool.hxx`:116 - `BRepMesh_VertexTool::IsEmpty()`
+    /// **Source:** `BRepMesh_VertexTool.hxx`:112 - `BRepMesh_VertexTool::IsEmpty()`
     pub fn BRepMesh_VertexTool_is_empty(
         self_: *const BRepMesh_VertexTool,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepMesh_VertexTool.hxx`:121 - `BRepMesh_VertexTool::Substitute()`
+    /// **Source:** `BRepMesh_VertexTool.hxx`:117 - `BRepMesh_VertexTool::Substitute()`
     pub fn BRepMesh_VertexTool_substitute(
         self_: *mut BRepMesh_VertexTool,
         theIndex: i32,
         theVertex: *const BRepMesh_Vertex,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_VertexTool.hxx`:125 - `BRepMesh_VertexTool::RemoveLast()`
+    /// **Source:** `BRepMesh_VertexTool.hxx`:120 - `BRepMesh_VertexTool::RemoveLast()`
     pub fn BRepMesh_VertexTool_remove_last(
         self_: *mut BRepMesh_VertexTool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_VertexTool.hxx`:129 - `BRepMesh_VertexTool::GetListOfDelNodes()`
+    /// **Source:** `BRepMesh_VertexTool.hxx`:124 - `BRepMesh_VertexTool::GetListOfDelNodes()`
     pub fn BRepMesh_VertexTool_get_list_of_del_nodes(
         self_: *const BRepMesh_VertexTool,
     ) -> crate::OcctResult<*const IMeshData_ListOfInteger>;
-    /// **Source:** `BRepMesh_VertexTool.hxx`:135 - `BRepMesh_VertexTool::Statistics()`
-    pub fn BRepMesh_VertexTool_statistics(
-        self_: *const BRepMesh_VertexTool,
-        theStream: *mut Standard_OStream,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMesh_VertexTool.hxx`:137 - `BRepMesh_VertexTool::DynamicType()`
+    /// **Source:** `BRepMesh_VertexTool.hxx`:129 - `BRepMesh_VertexTool::DynamicType()`
     pub fn BRepMesh_VertexTool_dynamic_type(
         self_: *const BRepMesh_VertexTool,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BRepMesh_VertexTool.hxx`:137 - `BRepMesh_VertexTool::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BRepMesh_VertexTool.hxx`:129 - `BRepMesh_VertexTool::get_type_name()`
     pub fn BRepMesh_VertexTool_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BRepMesh_VertexTool.hxx`:137 - `BRepMesh_VertexTool::get_type_descriptor()`
-    pub fn BRepMesh_VertexTool_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `BRepMesh_VertexTool.hxx`:129 - `BRepMesh_VertexTool::get_type_descriptor()`
+    pub fn BRepMesh_VertexTool_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepMesh_VertexTool to Standard_Transient
     pub fn BRepMesh_VertexTool_as_Standard_Transient(
         self_: *const BRepMesh_VertexTool,
@@ -4700,54 +4901,54 @@ unsafe extern "C" {
     /// Wrap BRepMesh_VertexTool in a Handle
     pub fn BRepMesh_VertexTool_to_handle(
         obj: *mut BRepMesh_VertexTool,
-    ) -> crate::OcctResult<*mut HandleBRepMeshVertexTool>;
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_VertexTool>;
     /// Destroy Handle<BRepMesh_VertexTool>
-    pub fn HandleBRepMeshVertexTool_destructor(self_: *mut HandleBRepMeshVertexTool);
+    pub fn Handle_BRepMesh_VertexTool_destructor(self_: *mut Handle_BRepMesh_VertexTool);
     /// Clone Handle<BRepMesh_VertexTool> (increments reference count)
-    pub fn HandleBRepMeshVertexTool_clone(
-        self_: *const HandleBRepMeshVertexTool,
-    ) -> crate::OcctResult<*mut HandleBRepMeshVertexTool>;
+    pub fn Handle_BRepMesh_VertexTool_clone(
+        self_: *const Handle_BRepMesh_VertexTool,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_VertexTool>;
     /// Check if Handle<BRepMesh_VertexTool> is null
-    pub fn HandleBRepMeshVertexTool_is_null(self_: *const HandleBRepMeshVertexTool) -> bool;
+    pub fn Handle_BRepMesh_VertexTool_is_null(self_: *const Handle_BRepMesh_VertexTool) -> bool;
     /// Dereference Handle to get *const BRepMesh_VertexTool
-    pub fn HandleBRepMeshVertexTool_get(
-        handle: *const HandleBRepMeshVertexTool,
+    pub fn Handle_BRepMesh_VertexTool_get(
+        handle: *const Handle_BRepMesh_VertexTool,
     ) -> crate::OcctResult<*const BRepMesh_VertexTool>;
     /// Dereference Handle to get *mut BRepMesh_VertexTool
-    pub fn HandleBRepMeshVertexTool_get_mut(
-        handle: *mut HandleBRepMeshVertexTool,
+    pub fn Handle_BRepMesh_VertexTool_get_mut(
+        handle: *mut Handle_BRepMesh_VertexTool,
     ) -> crate::OcctResult<*mut BRepMesh_VertexTool>;
     /// Upcast Handle<BRepMesh_VertexTool> to Handle<Standard_Transient>
-    pub fn HandleBRepMeshVertexTool_to_HandleStandardTransient(
-        self_: *const HandleBRepMeshVertexTool,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_BRepMesh_VertexTool_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepMesh_VertexTool,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepMesh_VertexTool_inherited_IsInstance(
         self_: *const BRepMesh_VertexTool,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepMesh_VertexTool_inherited_IsKind(
         self_: *const BRepMesh_VertexTool,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepMesh_VertexTool_inherited_This(
         self_: *const BRepMesh_VertexTool,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepMesh_VertexTool_inherited_GetRefCount(
         self_: *const BRepMesh_VertexTool,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepMesh_VertexTool_inherited_IncrementRefCounter(
         self_: *mut BRepMesh_VertexTool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepMesh_VertexTool_inherited_DecrementRefCounter(
         self_: *mut BRepMesh_VertexTool,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepMesh_VertexTool_inherited_Delete(
         self_: *const BRepMesh_VertexTool,
     ) -> *const std::ffi::c_char;
@@ -4766,24 +4967,24 @@ unsafe extern "C" {
         thePoint: *const gp_Pnt,
         theParamOnCurve: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IMeshData_Curve.hxx`:42 - `IMeshData_Curve::GetPoint()`
+    /// **Source:** `IMeshData_Curve.hxx`:41 - `IMeshData_Curve::GetPoint()`
     pub fn IMeshData_Curve_get_point(
         self_: *mut IMeshData_Curve,
         theIndex: i32,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// **Source:** `IMeshData_Curve.hxx`:45 - `IMeshData_Curve::RemovePoint()`
+    /// **Source:** `IMeshData_Curve.hxx`:44 - `IMeshData_Curve::RemovePoint()`
     pub fn IMeshData_Curve_remove_point(
         self_: *mut IMeshData_Curve,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IMeshData_Curve.hxx`:47 - `IMeshData_Curve::DynamicType()`
+    /// **Source:** `IMeshData_Curve.hxx`:46 - `IMeshData_Curve::DynamicType()`
     pub fn IMeshData_Curve_dynamic_type(
         self_: *const IMeshData_Curve,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `IMeshData_Curve.hxx`:47 - `IMeshData_Curve::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `IMeshData_Curve.hxx`:46 - `IMeshData_Curve::get_type_name()`
     pub fn IMeshData_Curve_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `IMeshData_Curve.hxx`:47 - `IMeshData_Curve::get_type_descriptor()`
-    pub fn IMeshData_Curve_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `IMeshData_Curve.hxx`:46 - `IMeshData_Curve::get_type_descriptor()`
+    pub fn IMeshData_Curve_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast IMeshData_Curve to IMeshData_ParametersList
     pub fn IMeshData_Curve_as_IMeshData_ParametersList(
         self_: *const IMeshData_Curve,
@@ -4801,29 +5002,29 @@ unsafe extern "C" {
         self_: *mut IMeshData_Curve,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IMeshData_Curve>
-    pub fn HandleIMeshDataCurve_destructor(self_: *mut HandleIMeshDataCurve);
+    pub fn Handle_IMeshData_Curve_destructor(self_: *mut Handle_IMeshData_Curve);
     /// Clone Handle<IMeshData_Curve> (increments reference count)
-    pub fn HandleIMeshDataCurve_clone(
-        self_: *const HandleIMeshDataCurve,
-    ) -> crate::OcctResult<*mut HandleIMeshDataCurve>;
+    pub fn Handle_IMeshData_Curve_clone(
+        self_: *const Handle_IMeshData_Curve,
+    ) -> crate::OcctResult<*mut Handle_IMeshData_Curve>;
     /// Check if Handle<IMeshData_Curve> is null
-    pub fn HandleIMeshDataCurve_is_null(self_: *const HandleIMeshDataCurve) -> bool;
+    pub fn Handle_IMeshData_Curve_is_null(self_: *const Handle_IMeshData_Curve) -> bool;
     /// Dereference Handle to get *const IMeshData_Curve
-    pub fn HandleIMeshDataCurve_get(
-        handle: *const HandleIMeshDataCurve,
+    pub fn Handle_IMeshData_Curve_get(
+        handle: *const Handle_IMeshData_Curve,
     ) -> crate::OcctResult<*const IMeshData_Curve>;
     /// Dereference Handle to get *mut IMeshData_Curve
-    pub fn HandleIMeshDataCurve_get_mut(
-        handle: *mut HandleIMeshDataCurve,
+    pub fn Handle_IMeshData_Curve_get_mut(
+        handle: *mut Handle_IMeshData_Curve,
     ) -> crate::OcctResult<*mut IMeshData_Curve>;
     /// Upcast Handle<IMeshData_Curve> to Handle<IMeshData_ParametersList>
-    pub fn HandleIMeshDataCurve_to_HandleIMeshDataParametersList(
-        self_: *const HandleIMeshDataCurve,
-    ) -> crate::OcctResult<*mut HandleIMeshDataParametersList>;
+    pub fn Handle_IMeshData_Curve_to_Handle_IMeshData_ParametersList(
+        self_: *const Handle_IMeshData_Curve,
+    ) -> crate::OcctResult<*mut Handle_IMeshData_ParametersList>;
     /// Upcast Handle<IMeshData_Curve> to Handle<Standard_Transient>
-    pub fn HandleIMeshDataCurve_to_HandleStandardTransient(
-        self_: *const HandleIMeshDataCurve,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_IMeshData_Curve_to_Handle_Standard_Transient(
+        self_: *const Handle_IMeshData_Curve,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `IMeshData_ParametersList.hxx`:30 - `IMeshData_ParametersList::GetParameter()`
     pub fn IMeshData_Curve_inherited_GetParameter(
         self_: *mut IMeshData_Curve,
@@ -4838,33 +5039,33 @@ unsafe extern "C" {
         self_: *mut IMeshData_Curve,
         isKeepEndPoints: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn IMeshData_Curve_inherited_IsInstance(
         self_: *const IMeshData_Curve,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn IMeshData_Curve_inherited_IsKind(
         self_: *const IMeshData_Curve,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn IMeshData_Curve_inherited_This(
         self_: *const IMeshData_Curve,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn IMeshData_Curve_inherited_GetRefCount(
         self_: *const IMeshData_Curve,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn IMeshData_Curve_inherited_IncrementRefCounter(
         self_: *mut IMeshData_Curve,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn IMeshData_Curve_inherited_DecrementRefCounter(
         self_: *mut IMeshData_Curve,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn IMeshData_Curve_inherited_Delete(
         self_: *const IMeshData_Curve,
     ) -> *const std::ffi::c_char;
@@ -4880,61 +5081,61 @@ unsafe extern "C" {
     pub fn IMeshData_Edge_get_p_curve(
         self_: *const IMeshData_Edge,
         theIndex: i32,
-    ) -> crate::OcctResult<*const HandleIMeshDataPCurve>;
-    /// **Source:** `IMeshData_Edge.hxx`:53 - `IMeshData_Edge::Clear()`
+    ) -> crate::OcctResult<*const Handle_IMeshData_PCurve>;
+    /// **Source:** `IMeshData_Edge.hxx`:56 - `IMeshData_Edge::Clear()`
     pub fn IMeshData_Edge_clear(
         self_: *mut IMeshData_Edge,
         isKeepEndPoints: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IMeshData_Edge.hxx`:63 - `IMeshData_Edge::IsFree()`
+    /// **Source:** `IMeshData_Edge.hxx`:66 - `IMeshData_Edge::IsFree()`
     pub fn IMeshData_Edge_is_free(self_: *const IMeshData_Edge) -> crate::OcctResult<bool>;
-    /// **Source:** `IMeshData_Edge.hxx`:66 - `IMeshData_Edge::SetCurve()`
+    /// **Source:** `IMeshData_Edge.hxx`:69 - `IMeshData_Edge::SetCurve()`
     pub fn IMeshData_Edge_set_curve(
         self_: *mut IMeshData_Edge,
-        theCurve: *const HandleIMeshDataCurve,
+        theCurve: *const Handle_IMeshData_Curve,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IMeshData_Edge.hxx`:69 - `IMeshData_Edge::GetCurve()`
+    /// **Source:** `IMeshData_Edge.hxx`:72 - `IMeshData_Edge::GetCurve()`
     pub fn IMeshData_Edge_get_curve(
         self_: *const IMeshData_Edge,
-    ) -> crate::OcctResult<*const HandleIMeshDataCurve>;
-    /// **Source:** `IMeshData_Edge.hxx`:72 - `IMeshData_Edge::GetAngularDeflection()`
+    ) -> crate::OcctResult<*const Handle_IMeshData_Curve>;
+    /// **Source:** `IMeshData_Edge.hxx`:75 - `IMeshData_Edge::GetAngularDeflection()`
     pub fn IMeshData_Edge_get_angular_deflection(
         self_: *const IMeshData_Edge,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `IMeshData_Edge.hxx`:75 - `IMeshData_Edge::SetAngularDeflection()`
+    /// **Source:** `IMeshData_Edge.hxx`:78 - `IMeshData_Edge::SetAngularDeflection()`
     pub fn IMeshData_Edge_set_angular_deflection(
         self_: *mut IMeshData_Edge,
         theValue: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IMeshData_Edge.hxx`:79 - `IMeshData_Edge::GetSameParam()`
+    /// **Source:** `IMeshData_Edge.hxx`:82 - `IMeshData_Edge::GetSameParam()`
     pub fn IMeshData_Edge_get_same_param(self_: *const IMeshData_Edge) -> crate::OcctResult<bool>;
-    /// **Source:** `IMeshData_Edge.hxx`:82 - `IMeshData_Edge::SetSameParam()`
+    /// **Source:** `IMeshData_Edge.hxx`:85 - `IMeshData_Edge::SetSameParam()`
     pub fn IMeshData_Edge_set_same_param(
         self_: *mut IMeshData_Edge,
         theValue: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IMeshData_Edge.hxx`:86 - `IMeshData_Edge::GetSameRange()`
+    /// **Source:** `IMeshData_Edge.hxx`:89 - `IMeshData_Edge::GetSameRange()`
     pub fn IMeshData_Edge_get_same_range(self_: *const IMeshData_Edge) -> crate::OcctResult<bool>;
-    /// **Source:** `IMeshData_Edge.hxx`:89 - `IMeshData_Edge::SetSameRange()`
+    /// **Source:** `IMeshData_Edge.hxx`:92 - `IMeshData_Edge::SetSameRange()`
     pub fn IMeshData_Edge_set_same_range(
         self_: *mut IMeshData_Edge,
         theValue: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IMeshData_Edge.hxx`:93 - `IMeshData_Edge::GetDegenerated()`
+    /// **Source:** `IMeshData_Edge.hxx`:96 - `IMeshData_Edge::GetDegenerated()`
     pub fn IMeshData_Edge_get_degenerated(self_: *const IMeshData_Edge) -> crate::OcctResult<bool>;
-    /// **Source:** `IMeshData_Edge.hxx`:96 - `IMeshData_Edge::SetDegenerated()`
+    /// **Source:** `IMeshData_Edge.hxx`:99 - `IMeshData_Edge::SetDegenerated()`
     pub fn IMeshData_Edge_set_degenerated(
         self_: *mut IMeshData_Edge,
         theValue: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IMeshData_Edge.hxx`:98 - `IMeshData_Edge::DynamicType()`
+    /// **Source:** `IMeshData_Edge.hxx`:101 - `IMeshData_Edge::DynamicType()`
     pub fn IMeshData_Edge_dynamic_type(
         self_: *const IMeshData_Edge,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `IMeshData_Edge.hxx`:98 - `IMeshData_Edge::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `IMeshData_Edge.hxx`:101 - `IMeshData_Edge::get_type_name()`
     pub fn IMeshData_Edge_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `IMeshData_Edge.hxx`:98 - `IMeshData_Edge::get_type_descriptor()`
-    pub fn IMeshData_Edge_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `IMeshData_Edge.hxx`:101 - `IMeshData_Edge::get_type_descriptor()`
+    pub fn IMeshData_Edge_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast IMeshData_Edge to IMeshData_TessellatedShape
     pub fn IMeshData_Edge_as_IMeshData_TessellatedShape(
         self_: *const IMeshData_Edge,
@@ -4968,33 +5169,33 @@ unsafe extern "C" {
         self_: *mut IMeshData_Edge,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IMeshData_Edge>
-    pub fn HandleIMeshDataEdge_destructor(self_: *mut HandleIMeshDataEdge);
+    pub fn Handle_IMeshData_Edge_destructor(self_: *mut Handle_IMeshData_Edge);
     /// Clone Handle<IMeshData_Edge> (increments reference count)
-    pub fn HandleIMeshDataEdge_clone(
-        self_: *const HandleIMeshDataEdge,
-    ) -> crate::OcctResult<*mut HandleIMeshDataEdge>;
+    pub fn Handle_IMeshData_Edge_clone(
+        self_: *const Handle_IMeshData_Edge,
+    ) -> crate::OcctResult<*mut Handle_IMeshData_Edge>;
     /// Check if Handle<IMeshData_Edge> is null
-    pub fn HandleIMeshDataEdge_is_null(self_: *const HandleIMeshDataEdge) -> bool;
+    pub fn Handle_IMeshData_Edge_is_null(self_: *const Handle_IMeshData_Edge) -> bool;
     /// Dereference Handle to get *const IMeshData_Edge
-    pub fn HandleIMeshDataEdge_get(
-        handle: *const HandleIMeshDataEdge,
+    pub fn Handle_IMeshData_Edge_get(
+        handle: *const Handle_IMeshData_Edge,
     ) -> crate::OcctResult<*const IMeshData_Edge>;
     /// Dereference Handle to get *mut IMeshData_Edge
-    pub fn HandleIMeshDataEdge_get_mut(
-        handle: *mut HandleIMeshDataEdge,
+    pub fn Handle_IMeshData_Edge_get_mut(
+        handle: *mut Handle_IMeshData_Edge,
     ) -> crate::OcctResult<*mut IMeshData_Edge>;
     /// Upcast Handle<IMeshData_Edge> to Handle<IMeshData_TessellatedShape>
-    pub fn HandleIMeshDataEdge_to_HandleIMeshDataTessellatedShape(
-        self_: *const HandleIMeshDataEdge,
-    ) -> crate::OcctResult<*mut HandleIMeshDataTessellatedShape>;
+    pub fn Handle_IMeshData_Edge_to_Handle_IMeshData_TessellatedShape(
+        self_: *const Handle_IMeshData_Edge,
+    ) -> crate::OcctResult<*mut Handle_IMeshData_TessellatedShape>;
     /// Upcast Handle<IMeshData_Edge> to Handle<IMeshData_Shape>
-    pub fn HandleIMeshDataEdge_to_HandleIMeshDataShape(
-        self_: *const HandleIMeshDataEdge,
-    ) -> crate::OcctResult<*mut HandleIMeshDataShape>;
+    pub fn Handle_IMeshData_Edge_to_Handle_IMeshData_Shape(
+        self_: *const Handle_IMeshData_Edge,
+    ) -> crate::OcctResult<*mut Handle_IMeshData_Shape>;
     /// Upcast Handle<IMeshData_Edge> to Handle<Standard_Transient>
-    pub fn HandleIMeshDataEdge_to_HandleStandardTransient(
-        self_: *const HandleIMeshDataEdge,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_IMeshData_Edge_to_Handle_Standard_Transient(
+        self_: *const Handle_IMeshData_Edge,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `IMeshData_TessellatedShape.hxx`:31 - `IMeshData_TessellatedShape::GetDeflection()`
     pub fn IMeshData_Edge_inherited_GetDeflection(
         self_: *const IMeshData_Edge,
@@ -5014,17 +5215,17 @@ unsafe extern "C" {
         self_: *const IMeshData_Edge,
         theValue: i32,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:38 - `IMeshData_StatusOwner::SetStatus()`
+    /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:35 - `IMeshData_StatusOwner::SetStatus()`
     pub fn IMeshData_Edge_inherited_SetStatus(
         self_: *mut IMeshData_Edge,
         theValue: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:41 - `IMeshData_StatusOwner::UnsetStatus()`
+    /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:38 - `IMeshData_StatusOwner::UnsetStatus()`
     pub fn IMeshData_Edge_inherited_UnsetStatus(
         self_: *mut IMeshData_Edge,
         theValue: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:44 - `IMeshData_StatusOwner::GetStatusMask()`
+    /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:41 - `IMeshData_StatusOwner::GetStatusMask()`
     pub fn IMeshData_Edge_inherited_GetStatusMask(
         self_: *const IMeshData_Edge,
     ) -> crate::OcctResult<i32>;
@@ -5037,33 +5238,33 @@ unsafe extern "C" {
     pub fn IMeshData_Edge_inherited_GetShape(
         self_: *const IMeshData_Edge,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn IMeshData_Edge_inherited_IsInstance(
         self_: *const IMeshData_Edge,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn IMeshData_Edge_inherited_IsKind(
         self_: *const IMeshData_Edge,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn IMeshData_Edge_inherited_This(
         self_: *const IMeshData_Edge,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn IMeshData_Edge_inherited_GetRefCount(
         self_: *const IMeshData_Edge,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn IMeshData_Edge_inherited_IncrementRefCounter(
         self_: *mut IMeshData_Edge,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn IMeshData_Edge_inherited_DecrementRefCounter(
         self_: *mut IMeshData_Edge,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn IMeshData_Edge_inherited_Delete(self_: *const IMeshData_Edge)
         -> *const std::ffi::c_char;
     // ======================== IMeshData_Face ========================
@@ -5075,30 +5276,30 @@ unsafe extern "C" {
         self_: *mut IMeshData_Face,
         theWire: *const TopoDS_Wire,
         theEdgeNb: i32,
-    ) -> crate::OcctResult<*const HandleIMeshDataWire>;
-    /// **Source:** `IMeshData_Face.hxx`:47 - `IMeshData_Face::GetWire()`
+    ) -> crate::OcctResult<*const Handle_IMeshData_Wire>;
+    /// **Source:** `IMeshData_Face.hxx`:46 - `IMeshData_Face::GetWire()`
     pub fn IMeshData_Face_get_wire(
         self_: *const IMeshData_Face,
         theIndex: i32,
-    ) -> crate::OcctResult<*const HandleIMeshDataWire>;
-    /// **Source:** `IMeshData_Face.hxx`:51 - `IMeshData_Face::GetSurface()`
+    ) -> crate::OcctResult<*const Handle_IMeshData_Wire>;
+    /// **Source:** `IMeshData_Face.hxx`:49 - `IMeshData_Face::GetSurface()`
     pub fn IMeshData_Face_get_surface(
         self_: *const IMeshData_Face,
-    ) -> crate::OcctResult<*const HandleBRepAdaptorSurface>;
-    /// **Source:** `IMeshData_Face.hxx`:54 - `IMeshData_Face::GetFace()`
+    ) -> crate::OcctResult<*const Handle_BRepAdaptor_Surface>;
+    /// **Source:** `IMeshData_Face.hxx`:52 - `IMeshData_Face::GetFace()`
     pub fn IMeshData_Face_get_face(
         self_: *const IMeshData_Face,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// **Source:** `IMeshData_Face.hxx`:57 - `IMeshData_Face::IsValid()`
+    /// **Source:** `IMeshData_Face.hxx`:55 - `IMeshData_Face::IsValid()`
     pub fn IMeshData_Face_is_valid(self_: *const IMeshData_Face) -> crate::OcctResult<bool>;
-    /// **Source:** `IMeshData_Face.hxx`:63 - `IMeshData_Face::DynamicType()`
+    /// **Source:** `IMeshData_Face.hxx`:61 - `IMeshData_Face::DynamicType()`
     pub fn IMeshData_Face_dynamic_type(
         self_: *const IMeshData_Face,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `IMeshData_Face.hxx`:63 - `IMeshData_Face::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `IMeshData_Face.hxx`:61 - `IMeshData_Face::get_type_name()`
     pub fn IMeshData_Face_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `IMeshData_Face.hxx`:63 - `IMeshData_Face::get_type_descriptor()`
-    pub fn IMeshData_Face_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `IMeshData_Face.hxx`:61 - `IMeshData_Face::get_type_descriptor()`
+    pub fn IMeshData_Face_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast IMeshData_Face to IMeshData_TessellatedShape
     pub fn IMeshData_Face_as_IMeshData_TessellatedShape(
         self_: *const IMeshData_Face,
@@ -5132,33 +5333,33 @@ unsafe extern "C" {
         self_: *mut IMeshData_Face,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IMeshData_Face>
-    pub fn HandleIMeshDataFace_destructor(self_: *mut HandleIMeshDataFace);
+    pub fn Handle_IMeshData_Face_destructor(self_: *mut Handle_IMeshData_Face);
     /// Clone Handle<IMeshData_Face> (increments reference count)
-    pub fn HandleIMeshDataFace_clone(
-        self_: *const HandleIMeshDataFace,
-    ) -> crate::OcctResult<*mut HandleIMeshDataFace>;
+    pub fn Handle_IMeshData_Face_clone(
+        self_: *const Handle_IMeshData_Face,
+    ) -> crate::OcctResult<*mut Handle_IMeshData_Face>;
     /// Check if Handle<IMeshData_Face> is null
-    pub fn HandleIMeshDataFace_is_null(self_: *const HandleIMeshDataFace) -> bool;
+    pub fn Handle_IMeshData_Face_is_null(self_: *const Handle_IMeshData_Face) -> bool;
     /// Dereference Handle to get *const IMeshData_Face
-    pub fn HandleIMeshDataFace_get(
-        handle: *const HandleIMeshDataFace,
+    pub fn Handle_IMeshData_Face_get(
+        handle: *const Handle_IMeshData_Face,
     ) -> crate::OcctResult<*const IMeshData_Face>;
     /// Dereference Handle to get *mut IMeshData_Face
-    pub fn HandleIMeshDataFace_get_mut(
-        handle: *mut HandleIMeshDataFace,
+    pub fn Handle_IMeshData_Face_get_mut(
+        handle: *mut Handle_IMeshData_Face,
     ) -> crate::OcctResult<*mut IMeshData_Face>;
     /// Upcast Handle<IMeshData_Face> to Handle<IMeshData_TessellatedShape>
-    pub fn HandleIMeshDataFace_to_HandleIMeshDataTessellatedShape(
-        self_: *const HandleIMeshDataFace,
-    ) -> crate::OcctResult<*mut HandleIMeshDataTessellatedShape>;
+    pub fn Handle_IMeshData_Face_to_Handle_IMeshData_TessellatedShape(
+        self_: *const Handle_IMeshData_Face,
+    ) -> crate::OcctResult<*mut Handle_IMeshData_TessellatedShape>;
     /// Upcast Handle<IMeshData_Face> to Handle<IMeshData_Shape>
-    pub fn HandleIMeshDataFace_to_HandleIMeshDataShape(
-        self_: *const HandleIMeshDataFace,
-    ) -> crate::OcctResult<*mut HandleIMeshDataShape>;
+    pub fn Handle_IMeshData_Face_to_Handle_IMeshData_Shape(
+        self_: *const Handle_IMeshData_Face,
+    ) -> crate::OcctResult<*mut Handle_IMeshData_Shape>;
     /// Upcast Handle<IMeshData_Face> to Handle<Standard_Transient>
-    pub fn HandleIMeshDataFace_to_HandleStandardTransient(
-        self_: *const HandleIMeshDataFace,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_IMeshData_Face_to_Handle_Standard_Transient(
+        self_: *const Handle_IMeshData_Face,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `IMeshData_TessellatedShape.hxx`:31 - `IMeshData_TessellatedShape::GetDeflection()`
     pub fn IMeshData_Face_inherited_GetDeflection(
         self_: *const IMeshData_Face,
@@ -5178,17 +5379,17 @@ unsafe extern "C" {
         self_: *const IMeshData_Face,
         theValue: i32,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:38 - `IMeshData_StatusOwner::SetStatus()`
+    /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:35 - `IMeshData_StatusOwner::SetStatus()`
     pub fn IMeshData_Face_inherited_SetStatus(
         self_: *mut IMeshData_Face,
         theValue: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:41 - `IMeshData_StatusOwner::UnsetStatus()`
+    /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:38 - `IMeshData_StatusOwner::UnsetStatus()`
     pub fn IMeshData_Face_inherited_UnsetStatus(
         self_: *mut IMeshData_Face,
         theValue: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:44 - `IMeshData_StatusOwner::GetStatusMask()`
+    /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:41 - `IMeshData_StatusOwner::GetStatusMask()`
     pub fn IMeshData_Face_inherited_GetStatusMask(
         self_: *const IMeshData_Face,
     ) -> crate::OcctResult<i32>;
@@ -5201,33 +5402,33 @@ unsafe extern "C" {
     pub fn IMeshData_Face_inherited_GetShape(
         self_: *const IMeshData_Face,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn IMeshData_Face_inherited_IsInstance(
         self_: *const IMeshData_Face,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn IMeshData_Face_inherited_IsKind(
         self_: *const IMeshData_Face,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn IMeshData_Face_inherited_This(
         self_: *const IMeshData_Face,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn IMeshData_Face_inherited_GetRefCount(
         self_: *const IMeshData_Face,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn IMeshData_Face_inherited_IncrementRefCounter(
         self_: *mut IMeshData_Face,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn IMeshData_Face_inherited_DecrementRefCounter(
         self_: *mut IMeshData_Face,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn IMeshData_Face_inherited_Delete(self_: *const IMeshData_Face)
         -> *const std::ffi::c_char;
     // ======================== IMeshData_Model ========================
@@ -5237,35 +5438,35 @@ unsafe extern "C" {
     /// **Source:** `IMeshData_Model.hxx`:37 - `IMeshData_Model::DynamicType()`
     pub fn IMeshData_Model_dynamic_type(
         self_: *const IMeshData_Model,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `IMeshData_Model.hxx`:41 - `IMeshData_Model::FacesNb()`
     pub fn IMeshData_Model_faces_nb(self_: *const IMeshData_Model) -> crate::OcctResult<i32>;
     /// **Source:** `IMeshData_Model.hxx`:44 - `IMeshData_Model::AddFace()`
     pub fn IMeshData_Model_add_face(
         self_: *mut IMeshData_Model,
         theFace: *const TopoDS_Face,
-    ) -> crate::OcctResult<*const HandleIMeshDataFace>;
+    ) -> crate::OcctResult<*const Handle_IMeshData_Face>;
     /// **Source:** `IMeshData_Model.hxx`:47 - `IMeshData_Model::GetFace()`
     pub fn IMeshData_Model_get_face(
         self_: *const IMeshData_Model,
         theIndex: i32,
-    ) -> crate::OcctResult<*const HandleIMeshDataFace>;
-    /// **Source:** `IMeshData_Model.hxx`:52 - `IMeshData_Model::EdgesNb()`
+    ) -> crate::OcctResult<*const Handle_IMeshData_Face>;
+    /// **Source:** `IMeshData_Model.hxx`:51 - `IMeshData_Model::EdgesNb()`
     pub fn IMeshData_Model_edges_nb(self_: *const IMeshData_Model) -> crate::OcctResult<i32>;
-    /// **Source:** `IMeshData_Model.hxx`:55 - `IMeshData_Model::AddEdge()`
+    /// **Source:** `IMeshData_Model.hxx`:54 - `IMeshData_Model::AddEdge()`
     pub fn IMeshData_Model_add_edge(
         self_: *mut IMeshData_Model,
         theEdge: *const TopoDS_Edge,
-    ) -> crate::OcctResult<*const HandleIMeshDataEdge>;
-    /// **Source:** `IMeshData_Model.hxx`:58 - `IMeshData_Model::GetEdge()`
+    ) -> crate::OcctResult<*const Handle_IMeshData_Edge>;
+    /// **Source:** `IMeshData_Model.hxx`:57 - `IMeshData_Model::GetEdge()`
     pub fn IMeshData_Model_get_edge(
         self_: *const IMeshData_Model,
         theIndex: i32,
-    ) -> crate::OcctResult<*const HandleIMeshDataEdge>;
+    ) -> crate::OcctResult<*const Handle_IMeshData_Edge>;
     /// **Source:** `IMeshData_Model.hxx`:37 - `IMeshData_Model::get_type_name()`
     pub fn IMeshData_Model_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `IMeshData_Model.hxx`:37 - `IMeshData_Model::get_type_descriptor()`
-    pub fn IMeshData_Model_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn IMeshData_Model_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast IMeshData_Model to IMeshData_Shape
     pub fn IMeshData_Model_as_IMeshData_Shape(
         self_: *const IMeshData_Model,
@@ -5283,29 +5484,29 @@ unsafe extern "C" {
         self_: *mut IMeshData_Model,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IMeshData_Model>
-    pub fn HandleIMeshDataModel_destructor(self_: *mut HandleIMeshDataModel);
+    pub fn Handle_IMeshData_Model_destructor(self_: *mut Handle_IMeshData_Model);
     /// Clone Handle<IMeshData_Model> (increments reference count)
-    pub fn HandleIMeshDataModel_clone(
-        self_: *const HandleIMeshDataModel,
-    ) -> crate::OcctResult<*mut HandleIMeshDataModel>;
+    pub fn Handle_IMeshData_Model_clone(
+        self_: *const Handle_IMeshData_Model,
+    ) -> crate::OcctResult<*mut Handle_IMeshData_Model>;
     /// Check if Handle<IMeshData_Model> is null
-    pub fn HandleIMeshDataModel_is_null(self_: *const HandleIMeshDataModel) -> bool;
+    pub fn Handle_IMeshData_Model_is_null(self_: *const Handle_IMeshData_Model) -> bool;
     /// Dereference Handle to get *const IMeshData_Model
-    pub fn HandleIMeshDataModel_get(
-        handle: *const HandleIMeshDataModel,
+    pub fn Handle_IMeshData_Model_get(
+        handle: *const Handle_IMeshData_Model,
     ) -> crate::OcctResult<*const IMeshData_Model>;
     /// Dereference Handle to get *mut IMeshData_Model
-    pub fn HandleIMeshDataModel_get_mut(
-        handle: *mut HandleIMeshDataModel,
+    pub fn Handle_IMeshData_Model_get_mut(
+        handle: *mut Handle_IMeshData_Model,
     ) -> crate::OcctResult<*mut IMeshData_Model>;
     /// Upcast Handle<IMeshData_Model> to Handle<IMeshData_Shape>
-    pub fn HandleIMeshDataModel_to_HandleIMeshDataShape(
-        self_: *const HandleIMeshDataModel,
-    ) -> crate::OcctResult<*mut HandleIMeshDataShape>;
+    pub fn Handle_IMeshData_Model_to_Handle_IMeshData_Shape(
+        self_: *const Handle_IMeshData_Model,
+    ) -> crate::OcctResult<*mut Handle_IMeshData_Shape>;
     /// Upcast Handle<IMeshData_Model> to Handle<Standard_Transient>
-    pub fn HandleIMeshDataModel_to_HandleStandardTransient(
-        self_: *const HandleIMeshDataModel,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_IMeshData_Model_to_Handle_Standard_Transient(
+        self_: *const Handle_IMeshData_Model,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
     pub fn IMeshData_Model_inherited_SetShape(
         self_: *mut IMeshData_Model,
@@ -5315,33 +5516,33 @@ unsafe extern "C" {
     pub fn IMeshData_Model_inherited_GetShape(
         self_: *const IMeshData_Model,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn IMeshData_Model_inherited_IsInstance(
         self_: *const IMeshData_Model,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn IMeshData_Model_inherited_IsKind(
         self_: *const IMeshData_Model,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn IMeshData_Model_inherited_This(
         self_: *const IMeshData_Model,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn IMeshData_Model_inherited_GetRefCount(
         self_: *const IMeshData_Model,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn IMeshData_Model_inherited_IncrementRefCounter(
         self_: *mut IMeshData_Model,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn IMeshData_Model_inherited_DecrementRefCounter(
         self_: *mut IMeshData_Model,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn IMeshData_Model_inherited_Delete(
         self_: *const IMeshData_Model,
     ) -> *const std::ffi::c_char;
@@ -5386,11 +5587,11 @@ unsafe extern "C" {
     /// **Source:** `IMeshData_PCurve.hxx`:63 - `IMeshData_PCurve::DynamicType()`
     pub fn IMeshData_PCurve_dynamic_type(
         self_: *const IMeshData_PCurve,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `IMeshData_PCurve.hxx`:63 - `IMeshData_PCurve::get_type_name()`
     pub fn IMeshData_PCurve_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `IMeshData_PCurve.hxx`:63 - `IMeshData_PCurve::get_type_descriptor()`
-    pub fn IMeshData_PCurve_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn IMeshData_PCurve_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast IMeshData_PCurve to IMeshData_ParametersList
     pub fn IMeshData_PCurve_as_IMeshData_ParametersList(
         self_: *const IMeshData_PCurve,
@@ -5408,29 +5609,29 @@ unsafe extern "C" {
         self_: *mut IMeshData_PCurve,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IMeshData_PCurve>
-    pub fn HandleIMeshDataPCurve_destructor(self_: *mut HandleIMeshDataPCurve);
+    pub fn Handle_IMeshData_PCurve_destructor(self_: *mut Handle_IMeshData_PCurve);
     /// Clone Handle<IMeshData_PCurve> (increments reference count)
-    pub fn HandleIMeshDataPCurve_clone(
-        self_: *const HandleIMeshDataPCurve,
-    ) -> crate::OcctResult<*mut HandleIMeshDataPCurve>;
+    pub fn Handle_IMeshData_PCurve_clone(
+        self_: *const Handle_IMeshData_PCurve,
+    ) -> crate::OcctResult<*mut Handle_IMeshData_PCurve>;
     /// Check if Handle<IMeshData_PCurve> is null
-    pub fn HandleIMeshDataPCurve_is_null(self_: *const HandleIMeshDataPCurve) -> bool;
+    pub fn Handle_IMeshData_PCurve_is_null(self_: *const Handle_IMeshData_PCurve) -> bool;
     /// Dereference Handle to get *const IMeshData_PCurve
-    pub fn HandleIMeshDataPCurve_get(
-        handle: *const HandleIMeshDataPCurve,
+    pub fn Handle_IMeshData_PCurve_get(
+        handle: *const Handle_IMeshData_PCurve,
     ) -> crate::OcctResult<*const IMeshData_PCurve>;
     /// Dereference Handle to get *mut IMeshData_PCurve
-    pub fn HandleIMeshDataPCurve_get_mut(
-        handle: *mut HandleIMeshDataPCurve,
+    pub fn Handle_IMeshData_PCurve_get_mut(
+        handle: *mut Handle_IMeshData_PCurve,
     ) -> crate::OcctResult<*mut IMeshData_PCurve>;
     /// Upcast Handle<IMeshData_PCurve> to Handle<IMeshData_ParametersList>
-    pub fn HandleIMeshDataPCurve_to_HandleIMeshDataParametersList(
-        self_: *const HandleIMeshDataPCurve,
-    ) -> crate::OcctResult<*mut HandleIMeshDataParametersList>;
+    pub fn Handle_IMeshData_PCurve_to_Handle_IMeshData_ParametersList(
+        self_: *const Handle_IMeshData_PCurve,
+    ) -> crate::OcctResult<*mut Handle_IMeshData_ParametersList>;
     /// Upcast Handle<IMeshData_PCurve> to Handle<Standard_Transient>
-    pub fn HandleIMeshDataPCurve_to_HandleStandardTransient(
-        self_: *const HandleIMeshDataPCurve,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_IMeshData_PCurve_to_Handle_Standard_Transient(
+        self_: *const Handle_IMeshData_PCurve,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `IMeshData_ParametersList.hxx`:30 - `IMeshData_ParametersList::GetParameter()`
     pub fn IMeshData_PCurve_inherited_GetParameter(
         self_: *mut IMeshData_PCurve,
@@ -5445,33 +5646,33 @@ unsafe extern "C" {
         self_: *mut IMeshData_PCurve,
         isKeepEndPoints: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn IMeshData_PCurve_inherited_IsInstance(
         self_: *const IMeshData_PCurve,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn IMeshData_PCurve_inherited_IsKind(
         self_: *const IMeshData_PCurve,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn IMeshData_PCurve_inherited_This(
         self_: *const IMeshData_PCurve,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn IMeshData_PCurve_inherited_GetRefCount(
         self_: *const IMeshData_PCurve,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn IMeshData_PCurve_inherited_IncrementRefCounter(
         self_: *mut IMeshData_PCurve,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn IMeshData_PCurve_inherited_DecrementRefCounter(
         self_: *mut IMeshData_PCurve,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn IMeshData_PCurve_inherited_Delete(
         self_: *const IMeshData_PCurve,
     ) -> *const std::ffi::c_char;
@@ -5494,12 +5695,12 @@ unsafe extern "C" {
     /// **Source:** `IMeshData_ParametersList.hxx`:38 - `IMeshData_ParametersList::DynamicType()`
     pub fn IMeshData_ParametersList_dynamic_type(
         self_: *const IMeshData_ParametersList,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `IMeshData_ParametersList.hxx`:38 - `IMeshData_ParametersList::get_type_name()`
     pub fn IMeshData_ParametersList_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `IMeshData_ParametersList.hxx`:38 - `IMeshData_ParametersList::get_type_descriptor()`
     pub fn IMeshData_ParametersList_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast IMeshData_ParametersList to Standard_Transient
     pub fn IMeshData_ParametersList_as_Standard_Transient(
         self_: *const IMeshData_ParametersList,
@@ -5509,54 +5710,54 @@ unsafe extern "C" {
         self_: *mut IMeshData_ParametersList,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IMeshData_ParametersList>
-    pub fn HandleIMeshDataParametersList_destructor(self_: *mut HandleIMeshDataParametersList);
+    pub fn Handle_IMeshData_ParametersList_destructor(self_: *mut Handle_IMeshData_ParametersList);
     /// Clone Handle<IMeshData_ParametersList> (increments reference count)
-    pub fn HandleIMeshDataParametersList_clone(
-        self_: *const HandleIMeshDataParametersList,
-    ) -> crate::OcctResult<*mut HandleIMeshDataParametersList>;
+    pub fn Handle_IMeshData_ParametersList_clone(
+        self_: *const Handle_IMeshData_ParametersList,
+    ) -> crate::OcctResult<*mut Handle_IMeshData_ParametersList>;
     /// Check if Handle<IMeshData_ParametersList> is null
-    pub fn HandleIMeshDataParametersList_is_null(
-        self_: *const HandleIMeshDataParametersList,
+    pub fn Handle_IMeshData_ParametersList_is_null(
+        self_: *const Handle_IMeshData_ParametersList,
     ) -> bool;
     /// Dereference Handle to get *const IMeshData_ParametersList
-    pub fn HandleIMeshDataParametersList_get(
-        handle: *const HandleIMeshDataParametersList,
+    pub fn Handle_IMeshData_ParametersList_get(
+        handle: *const Handle_IMeshData_ParametersList,
     ) -> crate::OcctResult<*const IMeshData_ParametersList>;
     /// Dereference Handle to get *mut IMeshData_ParametersList
-    pub fn HandleIMeshDataParametersList_get_mut(
-        handle: *mut HandleIMeshDataParametersList,
+    pub fn Handle_IMeshData_ParametersList_get_mut(
+        handle: *mut Handle_IMeshData_ParametersList,
     ) -> crate::OcctResult<*mut IMeshData_ParametersList>;
     /// Upcast Handle<IMeshData_ParametersList> to Handle<Standard_Transient>
-    pub fn HandleIMeshDataParametersList_to_HandleStandardTransient(
-        self_: *const HandleIMeshDataParametersList,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_IMeshData_ParametersList_to_Handle_Standard_Transient(
+        self_: *const Handle_IMeshData_ParametersList,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn IMeshData_ParametersList_inherited_IsInstance(
         self_: *const IMeshData_ParametersList,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn IMeshData_ParametersList_inherited_IsKind(
         self_: *const IMeshData_ParametersList,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn IMeshData_ParametersList_inherited_This(
         self_: *const IMeshData_ParametersList,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn IMeshData_ParametersList_inherited_GetRefCount(
         self_: *const IMeshData_ParametersList,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn IMeshData_ParametersList_inherited_IncrementRefCounter(
         self_: *mut IMeshData_ParametersList,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn IMeshData_ParametersList_inherited_DecrementRefCounter(
         self_: *mut IMeshData_ParametersList,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn IMeshData_ParametersList_inherited_Delete(
         self_: *const IMeshData_ParametersList,
     ) -> *const std::ffi::c_char;
@@ -5574,11 +5775,11 @@ unsafe extern "C" {
     /// **Source:** `IMeshData_Shape.hxx`:36 - `IMeshData_Shape::DynamicType()`
     pub fn IMeshData_Shape_dynamic_type(
         self_: *const IMeshData_Shape,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `IMeshData_Shape.hxx`:36 - `IMeshData_Shape::get_type_name()`
     pub fn IMeshData_Shape_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `IMeshData_Shape.hxx`:36 - `IMeshData_Shape::get_type_descriptor()`
-    pub fn IMeshData_Shape_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn IMeshData_Shape_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast IMeshData_Shape to Standard_Transient
     pub fn IMeshData_Shape_as_Standard_Transient(
         self_: *const IMeshData_Shape,
@@ -5590,70 +5791,70 @@ unsafe extern "C" {
     /// Wrap IMeshData_Shape in a Handle
     pub fn IMeshData_Shape_to_handle(
         obj: *mut IMeshData_Shape,
-    ) -> crate::OcctResult<*mut HandleIMeshDataShape>;
+    ) -> crate::OcctResult<*mut Handle_IMeshData_Shape>;
     /// Destroy Handle<IMeshData_Shape>
-    pub fn HandleIMeshDataShape_destructor(self_: *mut HandleIMeshDataShape);
+    pub fn Handle_IMeshData_Shape_destructor(self_: *mut Handle_IMeshData_Shape);
     /// Clone Handle<IMeshData_Shape> (increments reference count)
-    pub fn HandleIMeshDataShape_clone(
-        self_: *const HandleIMeshDataShape,
-    ) -> crate::OcctResult<*mut HandleIMeshDataShape>;
+    pub fn Handle_IMeshData_Shape_clone(
+        self_: *const Handle_IMeshData_Shape,
+    ) -> crate::OcctResult<*mut Handle_IMeshData_Shape>;
     /// Check if Handle<IMeshData_Shape> is null
-    pub fn HandleIMeshDataShape_is_null(self_: *const HandleIMeshDataShape) -> bool;
+    pub fn Handle_IMeshData_Shape_is_null(self_: *const Handle_IMeshData_Shape) -> bool;
     /// Dereference Handle to get *const IMeshData_Shape
-    pub fn HandleIMeshDataShape_get(
-        handle: *const HandleIMeshDataShape,
+    pub fn Handle_IMeshData_Shape_get(
+        handle: *const Handle_IMeshData_Shape,
     ) -> crate::OcctResult<*const IMeshData_Shape>;
     /// Dereference Handle to get *mut IMeshData_Shape
-    pub fn HandleIMeshDataShape_get_mut(
-        handle: *mut HandleIMeshDataShape,
+    pub fn Handle_IMeshData_Shape_get_mut(
+        handle: *mut Handle_IMeshData_Shape,
     ) -> crate::OcctResult<*mut IMeshData_Shape>;
     /// Upcast Handle<IMeshData_Shape> to Handle<Standard_Transient>
-    pub fn HandleIMeshDataShape_to_HandleStandardTransient(
-        self_: *const HandleIMeshDataShape,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_IMeshData_Shape_to_Handle_Standard_Transient(
+        self_: *const Handle_IMeshData_Shape,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<IMeshData_Shape> to Handle<BRepMesh_Context> (returns null on failure)
-    pub fn HandleIMeshDataShape_downcast_to_HandleBRepMeshContext(
-        self_: *const HandleIMeshDataShape,
-    ) -> crate::OcctResult<*mut HandleBRepMeshContext>;
+    pub fn Handle_IMeshData_Shape_downcast_to_Handle_BRepMesh_Context(
+        self_: *const Handle_IMeshData_Shape,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_Context>;
     /// Downcast Handle<IMeshData_Shape> to Handle<IMeshData_TessellatedShape> (returns null on failure)
-    pub fn HandleIMeshDataShape_downcast_to_HandleIMeshDataTessellatedShape(
-        self_: *const HandleIMeshDataShape,
-    ) -> crate::OcctResult<*mut HandleIMeshDataTessellatedShape>;
+    pub fn Handle_IMeshData_Shape_downcast_to_Handle_IMeshData_TessellatedShape(
+        self_: *const Handle_IMeshData_Shape,
+    ) -> crate::OcctResult<*mut Handle_IMeshData_TessellatedShape>;
     /// Downcast Handle<IMeshData_Shape> to Handle<IMeshTools_Context> (returns null on failure)
-    pub fn HandleIMeshDataShape_downcast_to_HandleIMeshToolsContext(
-        self_: *const HandleIMeshDataShape,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsContext>;
+    pub fn Handle_IMeshData_Shape_downcast_to_Handle_IMeshTools_Context(
+        self_: *const Handle_IMeshData_Shape,
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_Context>;
     /// Downcast Handle<IMeshData_Shape> to Handle<IMeshTools_ShapeExplorer> (returns null on failure)
-    pub fn HandleIMeshDataShape_downcast_to_HandleIMeshToolsShapeExplorer(
-        self_: *const HandleIMeshDataShape,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsShapeExplorer>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_IMeshData_Shape_downcast_to_Handle_IMeshTools_ShapeExplorer(
+        self_: *const Handle_IMeshData_Shape,
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_ShapeExplorer>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn IMeshData_Shape_inherited_IsInstance(
         self_: *const IMeshData_Shape,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn IMeshData_Shape_inherited_IsKind(
         self_: *const IMeshData_Shape,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn IMeshData_Shape_inherited_This(
         self_: *const IMeshData_Shape,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn IMeshData_Shape_inherited_GetRefCount(
         self_: *const IMeshData_Shape,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn IMeshData_Shape_inherited_IncrementRefCounter(
         self_: *mut IMeshData_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn IMeshData_Shape_inherited_DecrementRefCounter(
         self_: *mut IMeshData_Shape,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn IMeshData_Shape_inherited_Delete(
         self_: *const IMeshData_Shape,
     ) -> *const std::ffi::c_char;
@@ -5669,17 +5870,17 @@ unsafe extern "C" {
         self_: *const IMeshData_StatusOwner,
         theValue: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IMeshData_StatusOwner.hxx`:38 - `IMeshData_StatusOwner::SetStatus()`
+    /// **Source:** `IMeshData_StatusOwner.hxx`:35 - `IMeshData_StatusOwner::SetStatus()`
     pub fn IMeshData_StatusOwner_set_status(
         self_: *mut IMeshData_StatusOwner,
         theValue: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IMeshData_StatusOwner.hxx`:41 - `IMeshData_StatusOwner::UnsetStatus()`
+    /// **Source:** `IMeshData_StatusOwner.hxx`:38 - `IMeshData_StatusOwner::UnsetStatus()`
     pub fn IMeshData_StatusOwner_unset_status(
         self_: *mut IMeshData_StatusOwner,
         theValue: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IMeshData_StatusOwner.hxx`:44 - `IMeshData_StatusOwner::GetStatusMask()`
+    /// **Source:** `IMeshData_StatusOwner.hxx`:41 - `IMeshData_StatusOwner::GetStatusMask()`
     pub fn IMeshData_StatusOwner_get_status_mask(
         self_: *const IMeshData_StatusOwner,
     ) -> crate::OcctResult<i32>;
@@ -5697,12 +5898,12 @@ unsafe extern "C" {
     /// **Source:** `IMeshData_TessellatedShape.hxx`:36 - `IMeshData_TessellatedShape::DynamicType()`
     pub fn IMeshData_TessellatedShape_dynamic_type(
         self_: *const IMeshData_TessellatedShape,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `IMeshData_TessellatedShape.hxx`:36 - `IMeshData_TessellatedShape::get_type_name()`
     pub fn IMeshData_TessellatedShape_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `IMeshData_TessellatedShape.hxx`:36 - `IMeshData_TessellatedShape::get_type_descriptor()`
     pub fn IMeshData_TessellatedShape_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast IMeshData_TessellatedShape to IMeshData_Shape
     pub fn IMeshData_TessellatedShape_as_IMeshData_Shape(
         self_: *const IMeshData_TessellatedShape,
@@ -5722,33 +5923,35 @@ unsafe extern "C" {
     /// Wrap IMeshData_TessellatedShape in a Handle
     pub fn IMeshData_TessellatedShape_to_handle(
         obj: *mut IMeshData_TessellatedShape,
-    ) -> crate::OcctResult<*mut HandleIMeshDataTessellatedShape>;
+    ) -> crate::OcctResult<*mut Handle_IMeshData_TessellatedShape>;
     /// Destroy Handle<IMeshData_TessellatedShape>
-    pub fn HandleIMeshDataTessellatedShape_destructor(self_: *mut HandleIMeshDataTessellatedShape);
+    pub fn Handle_IMeshData_TessellatedShape_destructor(
+        self_: *mut Handle_IMeshData_TessellatedShape,
+    );
     /// Clone Handle<IMeshData_TessellatedShape> (increments reference count)
-    pub fn HandleIMeshDataTessellatedShape_clone(
-        self_: *const HandleIMeshDataTessellatedShape,
-    ) -> crate::OcctResult<*mut HandleIMeshDataTessellatedShape>;
+    pub fn Handle_IMeshData_TessellatedShape_clone(
+        self_: *const Handle_IMeshData_TessellatedShape,
+    ) -> crate::OcctResult<*mut Handle_IMeshData_TessellatedShape>;
     /// Check if Handle<IMeshData_TessellatedShape> is null
-    pub fn HandleIMeshDataTessellatedShape_is_null(
-        self_: *const HandleIMeshDataTessellatedShape,
+    pub fn Handle_IMeshData_TessellatedShape_is_null(
+        self_: *const Handle_IMeshData_TessellatedShape,
     ) -> bool;
     /// Dereference Handle to get *const IMeshData_TessellatedShape
-    pub fn HandleIMeshDataTessellatedShape_get(
-        handle: *const HandleIMeshDataTessellatedShape,
+    pub fn Handle_IMeshData_TessellatedShape_get(
+        handle: *const Handle_IMeshData_TessellatedShape,
     ) -> crate::OcctResult<*const IMeshData_TessellatedShape>;
     /// Dereference Handle to get *mut IMeshData_TessellatedShape
-    pub fn HandleIMeshDataTessellatedShape_get_mut(
-        handle: *mut HandleIMeshDataTessellatedShape,
+    pub fn Handle_IMeshData_TessellatedShape_get_mut(
+        handle: *mut Handle_IMeshData_TessellatedShape,
     ) -> crate::OcctResult<*mut IMeshData_TessellatedShape>;
     /// Upcast Handle<IMeshData_TessellatedShape> to Handle<IMeshData_Shape>
-    pub fn HandleIMeshDataTessellatedShape_to_HandleIMeshDataShape(
-        self_: *const HandleIMeshDataTessellatedShape,
-    ) -> crate::OcctResult<*mut HandleIMeshDataShape>;
+    pub fn Handle_IMeshData_TessellatedShape_to_Handle_IMeshData_Shape(
+        self_: *const Handle_IMeshData_TessellatedShape,
+    ) -> crate::OcctResult<*mut Handle_IMeshData_Shape>;
     /// Upcast Handle<IMeshData_TessellatedShape> to Handle<Standard_Transient>
-    pub fn HandleIMeshDataTessellatedShape_to_HandleStandardTransient(
-        self_: *const HandleIMeshDataTessellatedShape,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_IMeshData_TessellatedShape_to_Handle_Standard_Transient(
+        self_: *const Handle_IMeshData_TessellatedShape,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
     pub fn IMeshData_TessellatedShape_inherited_SetShape(
         self_: *mut IMeshData_TessellatedShape,
@@ -5758,33 +5961,33 @@ unsafe extern "C" {
     pub fn IMeshData_TessellatedShape_inherited_GetShape(
         self_: *const IMeshData_TessellatedShape,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn IMeshData_TessellatedShape_inherited_IsInstance(
         self_: *const IMeshData_TessellatedShape,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn IMeshData_TessellatedShape_inherited_IsKind(
         self_: *const IMeshData_TessellatedShape,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn IMeshData_TessellatedShape_inherited_This(
         self_: *const IMeshData_TessellatedShape,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn IMeshData_TessellatedShape_inherited_GetRefCount(
         self_: *const IMeshData_TessellatedShape,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn IMeshData_TessellatedShape_inherited_IncrementRefCounter(
         self_: *mut IMeshData_TessellatedShape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn IMeshData_TessellatedShape_inherited_DecrementRefCounter(
         self_: *mut IMeshData_TessellatedShape,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn IMeshData_TessellatedShape_inherited_Delete(
         self_: *const IMeshData_TessellatedShape,
     ) -> *const std::ffi::c_char;
@@ -5796,19 +5999,19 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*const TopoDS_Wire>;
     /// **Source:** `IMeshData_Wire.hxx`:38 - `IMeshData_Wire::EdgesNb()`
     pub fn IMeshData_Wire_edges_nb(self_: *const IMeshData_Wire) -> crate::OcctResult<i32>;
-    /// **Source:** `IMeshData_Wire.hxx`:50 - `IMeshData_Wire::GetEdgeOrientation()`
+    /// **Source:** `IMeshData_Wire.hxx`:49 - `IMeshData_Wire::GetEdgeOrientation()`
     pub fn IMeshData_Wire_get_edge_orientation(
         self_: *const IMeshData_Wire,
         theIndex: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `IMeshData_Wire.hxx`:53 - `IMeshData_Wire::DynamicType()`
+    /// **Source:** `IMeshData_Wire.hxx`:51 - `IMeshData_Wire::DynamicType()`
     pub fn IMeshData_Wire_dynamic_type(
         self_: *const IMeshData_Wire,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `IMeshData_Wire.hxx`:53 - `IMeshData_Wire::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `IMeshData_Wire.hxx`:51 - `IMeshData_Wire::get_type_name()`
     pub fn IMeshData_Wire_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `IMeshData_Wire.hxx`:53 - `IMeshData_Wire::get_type_descriptor()`
-    pub fn IMeshData_Wire_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `IMeshData_Wire.hxx`:51 - `IMeshData_Wire::get_type_descriptor()`
+    pub fn IMeshData_Wire_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast IMeshData_Wire to IMeshData_TessellatedShape
     pub fn IMeshData_Wire_as_IMeshData_TessellatedShape(
         self_: *const IMeshData_Wire,
@@ -5842,33 +6045,33 @@ unsafe extern "C" {
         self_: *mut IMeshData_Wire,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IMeshData_Wire>
-    pub fn HandleIMeshDataWire_destructor(self_: *mut HandleIMeshDataWire);
+    pub fn Handle_IMeshData_Wire_destructor(self_: *mut Handle_IMeshData_Wire);
     /// Clone Handle<IMeshData_Wire> (increments reference count)
-    pub fn HandleIMeshDataWire_clone(
-        self_: *const HandleIMeshDataWire,
-    ) -> crate::OcctResult<*mut HandleIMeshDataWire>;
+    pub fn Handle_IMeshData_Wire_clone(
+        self_: *const Handle_IMeshData_Wire,
+    ) -> crate::OcctResult<*mut Handle_IMeshData_Wire>;
     /// Check if Handle<IMeshData_Wire> is null
-    pub fn HandleIMeshDataWire_is_null(self_: *const HandleIMeshDataWire) -> bool;
+    pub fn Handle_IMeshData_Wire_is_null(self_: *const Handle_IMeshData_Wire) -> bool;
     /// Dereference Handle to get *const IMeshData_Wire
-    pub fn HandleIMeshDataWire_get(
-        handle: *const HandleIMeshDataWire,
+    pub fn Handle_IMeshData_Wire_get(
+        handle: *const Handle_IMeshData_Wire,
     ) -> crate::OcctResult<*const IMeshData_Wire>;
     /// Dereference Handle to get *mut IMeshData_Wire
-    pub fn HandleIMeshDataWire_get_mut(
-        handle: *mut HandleIMeshDataWire,
+    pub fn Handle_IMeshData_Wire_get_mut(
+        handle: *mut Handle_IMeshData_Wire,
     ) -> crate::OcctResult<*mut IMeshData_Wire>;
     /// Upcast Handle<IMeshData_Wire> to Handle<IMeshData_TessellatedShape>
-    pub fn HandleIMeshDataWire_to_HandleIMeshDataTessellatedShape(
-        self_: *const HandleIMeshDataWire,
-    ) -> crate::OcctResult<*mut HandleIMeshDataTessellatedShape>;
+    pub fn Handle_IMeshData_Wire_to_Handle_IMeshData_TessellatedShape(
+        self_: *const Handle_IMeshData_Wire,
+    ) -> crate::OcctResult<*mut Handle_IMeshData_TessellatedShape>;
     /// Upcast Handle<IMeshData_Wire> to Handle<IMeshData_Shape>
-    pub fn HandleIMeshDataWire_to_HandleIMeshDataShape(
-        self_: *const HandleIMeshDataWire,
-    ) -> crate::OcctResult<*mut HandleIMeshDataShape>;
+    pub fn Handle_IMeshData_Wire_to_Handle_IMeshData_Shape(
+        self_: *const Handle_IMeshData_Wire,
+    ) -> crate::OcctResult<*mut Handle_IMeshData_Shape>;
     /// Upcast Handle<IMeshData_Wire> to Handle<Standard_Transient>
-    pub fn HandleIMeshDataWire_to_HandleStandardTransient(
-        self_: *const HandleIMeshDataWire,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_IMeshData_Wire_to_Handle_Standard_Transient(
+        self_: *const Handle_IMeshData_Wire,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `IMeshData_TessellatedShape.hxx`:31 - `IMeshData_TessellatedShape::GetDeflection()`
     pub fn IMeshData_Wire_inherited_GetDeflection(
         self_: *const IMeshData_Wire,
@@ -5888,17 +6091,17 @@ unsafe extern "C" {
         self_: *const IMeshData_Wire,
         theValue: i32,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:38 - `IMeshData_StatusOwner::SetStatus()`
+    /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:35 - `IMeshData_StatusOwner::SetStatus()`
     pub fn IMeshData_Wire_inherited_SetStatus(
         self_: *mut IMeshData_Wire,
         theValue: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:41 - `IMeshData_StatusOwner::UnsetStatus()`
+    /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:38 - `IMeshData_StatusOwner::UnsetStatus()`
     pub fn IMeshData_Wire_inherited_UnsetStatus(
         self_: *mut IMeshData_Wire,
         theValue: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:44 - `IMeshData_StatusOwner::GetStatusMask()`
+    /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:41 - `IMeshData_StatusOwner::GetStatusMask()`
     pub fn IMeshData_Wire_inherited_GetStatusMask(
         self_: *const IMeshData_Wire,
     ) -> crate::OcctResult<i32>;
@@ -5911,33 +6114,33 @@ unsafe extern "C" {
     pub fn IMeshData_Wire_inherited_GetShape(
         self_: *const IMeshData_Wire,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn IMeshData_Wire_inherited_IsInstance(
         self_: *const IMeshData_Wire,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn IMeshData_Wire_inherited_IsKind(
         self_: *const IMeshData_Wire,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn IMeshData_Wire_inherited_This(
         self_: *const IMeshData_Wire,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn IMeshData_Wire_inherited_GetRefCount(
         self_: *const IMeshData_Wire,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn IMeshData_Wire_inherited_IncrementRefCounter(
         self_: *mut IMeshData_Wire,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn IMeshData_Wire_inherited_DecrementRefCounter(
         self_: *mut IMeshData_Wire,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn IMeshData_Wire_inherited_Delete(self_: *const IMeshData_Wire)
         -> *const std::ffi::c_char;
     // ======================== IMeshTools_Context ========================
@@ -5973,56 +6176,56 @@ unsafe extern "C" {
     /// **Source:** `IMeshTools_Context.hxx`:132 - `IMeshTools_Context::GetModelBuilder()`
     pub fn IMeshTools_Context_get_model_builder(
         self_: *const IMeshTools_Context,
-    ) -> crate::OcctResult<*const HandleIMeshToolsModelBuilder>;
+    ) -> crate::OcctResult<*const Handle_IMeshTools_ModelBuilder>;
     /// **Source:** `IMeshTools_Context.hxx`:135 - `IMeshTools_Context::SetModelBuilder()`
     pub fn IMeshTools_Context_set_model_builder(
         self_: *mut IMeshTools_Context,
-        theBuilder: *const HandleIMeshToolsModelBuilder,
+        theBuilder: *const Handle_IMeshTools_ModelBuilder,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IMeshTools_Context.hxx`:141 - `IMeshTools_Context::GetEdgeDiscret()`
     pub fn IMeshTools_Context_get_edge_discret(
         self_: *const IMeshTools_Context,
-    ) -> crate::OcctResult<*const HandleIMeshToolsModelAlgo>;
+    ) -> crate::OcctResult<*const Handle_IMeshTools_ModelAlgo>;
     /// **Source:** `IMeshTools_Context.hxx`:144 - `IMeshTools_Context::SetEdgeDiscret()`
     pub fn IMeshTools_Context_set_edge_discret(
         self_: *mut IMeshTools_Context,
-        theEdgeDiscret: *const HandleIMeshToolsModelAlgo,
+        theEdgeDiscret: *const Handle_IMeshTools_ModelAlgo,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IMeshTools_Context.hxx`:150 - `IMeshTools_Context::GetModelHealer()`
     pub fn IMeshTools_Context_get_model_healer(
         self_: *const IMeshTools_Context,
-    ) -> crate::OcctResult<*const HandleIMeshToolsModelAlgo>;
+    ) -> crate::OcctResult<*const Handle_IMeshTools_ModelAlgo>;
     /// **Source:** `IMeshTools_Context.hxx`:153 - `IMeshTools_Context::SetModelHealer()`
     pub fn IMeshTools_Context_set_model_healer(
         self_: *mut IMeshTools_Context,
-        theModelHealer: *const HandleIMeshToolsModelAlgo,
+        theModelHealer: *const Handle_IMeshTools_ModelAlgo,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IMeshTools_Context.hxx`:159 - `IMeshTools_Context::GetPreProcessor()`
     pub fn IMeshTools_Context_get_pre_processor(
         self_: *const IMeshTools_Context,
-    ) -> crate::OcctResult<*const HandleIMeshToolsModelAlgo>;
+    ) -> crate::OcctResult<*const Handle_IMeshTools_ModelAlgo>;
     /// **Source:** `IMeshTools_Context.hxx`:162 - `IMeshTools_Context::SetPreProcessor()`
     pub fn IMeshTools_Context_set_pre_processor(
         self_: *mut IMeshTools_Context,
-        thePreProcessor: *const HandleIMeshToolsModelAlgo,
+        thePreProcessor: *const Handle_IMeshTools_ModelAlgo,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IMeshTools_Context.hxx`:168 - `IMeshTools_Context::GetFaceDiscret()`
     pub fn IMeshTools_Context_get_face_discret(
         self_: *const IMeshTools_Context,
-    ) -> crate::OcctResult<*const HandleIMeshToolsModelAlgo>;
+    ) -> crate::OcctResult<*const Handle_IMeshTools_ModelAlgo>;
     /// **Source:** `IMeshTools_Context.hxx`:171 - `IMeshTools_Context::SetFaceDiscret()`
     pub fn IMeshTools_Context_set_face_discret(
         self_: *mut IMeshTools_Context,
-        theFaceDiscret: *const HandleIMeshToolsModelAlgo,
+        theFaceDiscret: *const Handle_IMeshTools_ModelAlgo,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IMeshTools_Context.hxx`:177 - `IMeshTools_Context::GetPostProcessor()`
     pub fn IMeshTools_Context_get_post_processor(
         self_: *const IMeshTools_Context,
-    ) -> crate::OcctResult<*const HandleIMeshToolsModelAlgo>;
+    ) -> crate::OcctResult<*const Handle_IMeshTools_ModelAlgo>;
     /// **Source:** `IMeshTools_Context.hxx`:180 - `IMeshTools_Context::SetPostProcessor()`
     pub fn IMeshTools_Context_set_post_processor(
         self_: *mut IMeshTools_Context,
-        thePostProcessor: *const HandleIMeshToolsModelAlgo,
+        thePostProcessor: *const Handle_IMeshTools_ModelAlgo,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IMeshTools_Context.hxx`:186 - `IMeshTools_Context::GetParameters()`
     pub fn IMeshTools_Context_get_parameters(
@@ -6035,15 +6238,15 @@ unsafe extern "C" {
     /// **Source:** `IMeshTools_Context.hxx`:192 - `IMeshTools_Context::GetModel()`
     pub fn IMeshTools_Context_get_model(
         self_: *const IMeshTools_Context,
-    ) -> crate::OcctResult<*const HandleIMeshDataModel>;
+    ) -> crate::OcctResult<*const Handle_IMeshData_Model>;
     /// **Source:** `IMeshTools_Context.hxx`:194 - `IMeshTools_Context::DynamicType()`
     pub fn IMeshTools_Context_dynamic_type(
         self_: *const IMeshTools_Context,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `IMeshTools_Context.hxx`:194 - `IMeshTools_Context::get_type_name()`
     pub fn IMeshTools_Context_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `IMeshTools_Context.hxx`:194 - `IMeshTools_Context::get_type_descriptor()`
-    pub fn IMeshTools_Context_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn IMeshTools_Context_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast IMeshTools_Context to IMeshData_Shape
     pub fn IMeshTools_Context_as_IMeshData_Shape(
         self_: *const IMeshTools_Context,
@@ -6063,35 +6266,35 @@ unsafe extern "C" {
     /// Wrap IMeshTools_Context in a Handle
     pub fn IMeshTools_Context_to_handle(
         obj: *mut IMeshTools_Context,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsContext>;
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_Context>;
     /// Destroy Handle<IMeshTools_Context>
-    pub fn HandleIMeshToolsContext_destructor(self_: *mut HandleIMeshToolsContext);
+    pub fn Handle_IMeshTools_Context_destructor(self_: *mut Handle_IMeshTools_Context);
     /// Clone Handle<IMeshTools_Context> (increments reference count)
-    pub fn HandleIMeshToolsContext_clone(
-        self_: *const HandleIMeshToolsContext,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsContext>;
+    pub fn Handle_IMeshTools_Context_clone(
+        self_: *const Handle_IMeshTools_Context,
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_Context>;
     /// Check if Handle<IMeshTools_Context> is null
-    pub fn HandleIMeshToolsContext_is_null(self_: *const HandleIMeshToolsContext) -> bool;
+    pub fn Handle_IMeshTools_Context_is_null(self_: *const Handle_IMeshTools_Context) -> bool;
     /// Dereference Handle to get *const IMeshTools_Context
-    pub fn HandleIMeshToolsContext_get(
-        handle: *const HandleIMeshToolsContext,
+    pub fn Handle_IMeshTools_Context_get(
+        handle: *const Handle_IMeshTools_Context,
     ) -> crate::OcctResult<*const IMeshTools_Context>;
     /// Dereference Handle to get *mut IMeshTools_Context
-    pub fn HandleIMeshToolsContext_get_mut(
-        handle: *mut HandleIMeshToolsContext,
+    pub fn Handle_IMeshTools_Context_get_mut(
+        handle: *mut Handle_IMeshTools_Context,
     ) -> crate::OcctResult<*mut IMeshTools_Context>;
     /// Upcast Handle<IMeshTools_Context> to Handle<IMeshData_Shape>
-    pub fn HandleIMeshToolsContext_to_HandleIMeshDataShape(
-        self_: *const HandleIMeshToolsContext,
-    ) -> crate::OcctResult<*mut HandleIMeshDataShape>;
+    pub fn Handle_IMeshTools_Context_to_Handle_IMeshData_Shape(
+        self_: *const Handle_IMeshTools_Context,
+    ) -> crate::OcctResult<*mut Handle_IMeshData_Shape>;
     /// Upcast Handle<IMeshTools_Context> to Handle<Standard_Transient>
-    pub fn HandleIMeshToolsContext_to_HandleStandardTransient(
-        self_: *const HandleIMeshToolsContext,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_IMeshTools_Context_to_Handle_Standard_Transient(
+        self_: *const Handle_IMeshTools_Context,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<IMeshTools_Context> to Handle<BRepMesh_Context> (returns null on failure)
-    pub fn HandleIMeshToolsContext_downcast_to_HandleBRepMeshContext(
-        self_: *const HandleIMeshToolsContext,
-    ) -> crate::OcctResult<*mut HandleBRepMeshContext>;
+    pub fn Handle_IMeshTools_Context_downcast_to_Handle_BRepMesh_Context(
+        self_: *const Handle_IMeshTools_Context,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_Context>;
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
     pub fn IMeshTools_Context_inherited_SetShape(
         self_: *mut IMeshTools_Context,
@@ -6101,33 +6304,33 @@ unsafe extern "C" {
     pub fn IMeshTools_Context_inherited_GetShape(
         self_: *const IMeshTools_Context,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn IMeshTools_Context_inherited_IsInstance(
         self_: *const IMeshTools_Context,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn IMeshTools_Context_inherited_IsKind(
         self_: *const IMeshTools_Context,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn IMeshTools_Context_inherited_This(
         self_: *const IMeshTools_Context,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn IMeshTools_Context_inherited_GetRefCount(
         self_: *const IMeshTools_Context,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn IMeshTools_Context_inherited_IncrementRefCounter(
         self_: *mut IMeshTools_Context,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn IMeshTools_Context_inherited_DecrementRefCounter(
         self_: *mut IMeshTools_Context,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn IMeshTools_Context_inherited_Delete(
         self_: *const IMeshTools_Context,
     ) -> *const std::ffi::c_char;
@@ -6147,12 +6350,12 @@ unsafe extern "C" {
     /// **Source:** `IMeshTools_CurveTessellator.hxx`:43 - `IMeshTools_CurveTessellator::DynamicType()`
     pub fn IMeshTools_CurveTessellator_dynamic_type(
         self_: *const IMeshTools_CurveTessellator,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `IMeshTools_CurveTessellator.hxx`:43 - `IMeshTools_CurveTessellator::get_type_name()`
     pub fn IMeshTools_CurveTessellator_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `IMeshTools_CurveTessellator.hxx`:43 - `IMeshTools_CurveTessellator::get_type_descriptor()`
     pub fn IMeshTools_CurveTessellator_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast IMeshTools_CurveTessellator to Standard_Transient
     pub fn IMeshTools_CurveTessellator_as_Standard_Transient(
         self_: *const IMeshTools_CurveTessellator,
@@ -6162,64 +6365,64 @@ unsafe extern "C" {
         self_: *mut IMeshTools_CurveTessellator,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IMeshTools_CurveTessellator>
-    pub fn HandleIMeshToolsCurveTessellator_destructor(
-        self_: *mut HandleIMeshToolsCurveTessellator,
+    pub fn Handle_IMeshTools_CurveTessellator_destructor(
+        self_: *mut Handle_IMeshTools_CurveTessellator,
     );
     /// Clone Handle<IMeshTools_CurveTessellator> (increments reference count)
-    pub fn HandleIMeshToolsCurveTessellator_clone(
-        self_: *const HandleIMeshToolsCurveTessellator,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsCurveTessellator>;
+    pub fn Handle_IMeshTools_CurveTessellator_clone(
+        self_: *const Handle_IMeshTools_CurveTessellator,
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_CurveTessellator>;
     /// Check if Handle<IMeshTools_CurveTessellator> is null
-    pub fn HandleIMeshToolsCurveTessellator_is_null(
-        self_: *const HandleIMeshToolsCurveTessellator,
+    pub fn Handle_IMeshTools_CurveTessellator_is_null(
+        self_: *const Handle_IMeshTools_CurveTessellator,
     ) -> bool;
     /// Dereference Handle to get *const IMeshTools_CurveTessellator
-    pub fn HandleIMeshToolsCurveTessellator_get(
-        handle: *const HandleIMeshToolsCurveTessellator,
+    pub fn Handle_IMeshTools_CurveTessellator_get(
+        handle: *const Handle_IMeshTools_CurveTessellator,
     ) -> crate::OcctResult<*const IMeshTools_CurveTessellator>;
     /// Dereference Handle to get *mut IMeshTools_CurveTessellator
-    pub fn HandleIMeshToolsCurveTessellator_get_mut(
-        handle: *mut HandleIMeshToolsCurveTessellator,
+    pub fn Handle_IMeshTools_CurveTessellator_get_mut(
+        handle: *mut Handle_IMeshTools_CurveTessellator,
     ) -> crate::OcctResult<*mut IMeshTools_CurveTessellator>;
     /// Upcast Handle<IMeshTools_CurveTessellator> to Handle<Standard_Transient>
-    pub fn HandleIMeshToolsCurveTessellator_to_HandleStandardTransient(
-        self_: *const HandleIMeshToolsCurveTessellator,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_IMeshTools_CurveTessellator_to_Handle_Standard_Transient(
+        self_: *const Handle_IMeshTools_CurveTessellator,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<IMeshTools_CurveTessellator> to Handle<BRepMesh_CurveTessellator> (returns null on failure)
-    pub fn HandleIMeshToolsCurveTessellator_downcast_to_HandleBRepMeshCurveTessellator(
-        self_: *const HandleIMeshToolsCurveTessellator,
-    ) -> crate::OcctResult<*mut HandleBRepMeshCurveTessellator>;
+    pub fn Handle_IMeshTools_CurveTessellator_downcast_to_Handle_BRepMesh_CurveTessellator(
+        self_: *const Handle_IMeshTools_CurveTessellator,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_CurveTessellator>;
     /// Downcast Handle<IMeshTools_CurveTessellator> to Handle<BRepMesh_EdgeTessellationExtractor> (returns null on failure)
-    pub fn HandleIMeshToolsCurveTessellator_downcast_to_HandleBRepMeshEdgeTessellationExtractor(
-        self_: *const HandleIMeshToolsCurveTessellator,
-    ) -> crate::OcctResult<*mut HandleBRepMeshEdgeTessellationExtractor>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_IMeshTools_CurveTessellator_downcast_to_Handle_BRepMesh_EdgeTessellationExtractor(
+        self_: *const Handle_IMeshTools_CurveTessellator,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_EdgeTessellationExtractor>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn IMeshTools_CurveTessellator_inherited_IsInstance(
         self_: *const IMeshTools_CurveTessellator,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn IMeshTools_CurveTessellator_inherited_IsKind(
         self_: *const IMeshTools_CurveTessellator,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn IMeshTools_CurveTessellator_inherited_This(
         self_: *const IMeshTools_CurveTessellator,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn IMeshTools_CurveTessellator_inherited_GetRefCount(
         self_: *const IMeshTools_CurveTessellator,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn IMeshTools_CurveTessellator_inherited_IncrementRefCounter(
         self_: *mut IMeshTools_CurveTessellator,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn IMeshTools_CurveTessellator_inherited_DecrementRefCounter(
         self_: *mut IMeshTools_CurveTessellator,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn IMeshTools_CurveTessellator_inherited_Delete(
         self_: *const IMeshTools_CurveTessellator,
     ) -> *const std::ffi::c_char;
@@ -6228,18 +6431,19 @@ unsafe extern "C" {
     /// **Source:** `IMeshTools_MeshAlgo.hxx`:33 - `IMeshTools_MeshAlgo::Perform()`
     pub fn IMeshTools_MeshAlgo_perform(
         self_: *mut IMeshTools_MeshAlgo,
-        theDFace: *const HandleIMeshDataFace,
+        theDFace: *const Handle_IMeshData_Face,
         theParameters: *const IMeshTools_Parameters,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IMeshTools_MeshAlgo.hxx`:37 - `IMeshTools_MeshAlgo::DynamicType()`
     pub fn IMeshTools_MeshAlgo_dynamic_type(
         self_: *const IMeshTools_MeshAlgo,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `IMeshTools_MeshAlgo.hxx`:37 - `IMeshTools_MeshAlgo::get_type_name()`
     pub fn IMeshTools_MeshAlgo_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `IMeshTools_MeshAlgo.hxx`:37 - `IMeshTools_MeshAlgo::get_type_descriptor()`
-    pub fn IMeshTools_MeshAlgo_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn IMeshTools_MeshAlgo_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast IMeshTools_MeshAlgo to Standard_Transient
     pub fn IMeshTools_MeshAlgo_as_Standard_Transient(
         self_: *const IMeshTools_MeshAlgo,
@@ -6249,64 +6453,64 @@ unsafe extern "C" {
         self_: *mut IMeshTools_MeshAlgo,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IMeshTools_MeshAlgo>
-    pub fn HandleIMeshToolsMeshAlgo_destructor(self_: *mut HandleIMeshToolsMeshAlgo);
+    pub fn Handle_IMeshTools_MeshAlgo_destructor(self_: *mut Handle_IMeshTools_MeshAlgo);
     /// Clone Handle<IMeshTools_MeshAlgo> (increments reference count)
-    pub fn HandleIMeshToolsMeshAlgo_clone(
-        self_: *const HandleIMeshToolsMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsMeshAlgo>;
+    pub fn Handle_IMeshTools_MeshAlgo_clone(
+        self_: *const Handle_IMeshTools_MeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_MeshAlgo>;
     /// Check if Handle<IMeshTools_MeshAlgo> is null
-    pub fn HandleIMeshToolsMeshAlgo_is_null(self_: *const HandleIMeshToolsMeshAlgo) -> bool;
+    pub fn Handle_IMeshTools_MeshAlgo_is_null(self_: *const Handle_IMeshTools_MeshAlgo) -> bool;
     /// Dereference Handle to get *const IMeshTools_MeshAlgo
-    pub fn HandleIMeshToolsMeshAlgo_get(
-        handle: *const HandleIMeshToolsMeshAlgo,
+    pub fn Handle_IMeshTools_MeshAlgo_get(
+        handle: *const Handle_IMeshTools_MeshAlgo,
     ) -> crate::OcctResult<*const IMeshTools_MeshAlgo>;
     /// Dereference Handle to get *mut IMeshTools_MeshAlgo
-    pub fn HandleIMeshToolsMeshAlgo_get_mut(
-        handle: *mut HandleIMeshToolsMeshAlgo,
+    pub fn Handle_IMeshTools_MeshAlgo_get_mut(
+        handle: *mut Handle_IMeshTools_MeshAlgo,
     ) -> crate::OcctResult<*mut IMeshTools_MeshAlgo>;
     /// Upcast Handle<IMeshTools_MeshAlgo> to Handle<Standard_Transient>
-    pub fn HandleIMeshToolsMeshAlgo_to_HandleStandardTransient(
-        self_: *const HandleIMeshToolsMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_IMeshTools_MeshAlgo_to_Handle_Standard_Transient(
+        self_: *const Handle_IMeshTools_MeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<IMeshTools_MeshAlgo> to Handle<BRepMesh_ConstrainedBaseMeshAlgo> (returns null on failure)
-    pub fn HandleIMeshToolsMeshAlgo_downcast_to_HandleBRepMeshConstrainedBaseMeshAlgo(
-        self_: *const HandleIMeshToolsMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleBRepMeshConstrainedBaseMeshAlgo>;
+    pub fn Handle_IMeshTools_MeshAlgo_downcast_to_Handle_BRepMesh_ConstrainedBaseMeshAlgo(
+        self_: *const Handle_IMeshTools_MeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_ConstrainedBaseMeshAlgo>;
     /// Downcast Handle<IMeshTools_MeshAlgo> to Handle<BRepMesh_DelabellaBaseMeshAlgo> (returns null on failure)
-    pub fn HandleIMeshToolsMeshAlgo_downcast_to_HandleBRepMeshDelabellaBaseMeshAlgo(
-        self_: *const HandleIMeshToolsMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleBRepMeshDelabellaBaseMeshAlgo>;
+    pub fn Handle_IMeshTools_MeshAlgo_downcast_to_Handle_BRepMesh_DelabellaBaseMeshAlgo(
+        self_: *const Handle_IMeshTools_MeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_DelabellaBaseMeshAlgo>;
     /// Downcast Handle<IMeshTools_MeshAlgo> to Handle<BRepMesh_DelaunayBaseMeshAlgo> (returns null on failure)
-    pub fn HandleIMeshToolsMeshAlgo_downcast_to_HandleBRepMeshDelaunayBaseMeshAlgo(
-        self_: *const HandleIMeshToolsMeshAlgo,
-    ) -> crate::OcctResult<*mut HandleBRepMeshDelaunayBaseMeshAlgo>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_IMeshTools_MeshAlgo_downcast_to_Handle_BRepMesh_DelaunayBaseMeshAlgo(
+        self_: *const Handle_IMeshTools_MeshAlgo,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_DelaunayBaseMeshAlgo>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn IMeshTools_MeshAlgo_inherited_IsInstance(
         self_: *const IMeshTools_MeshAlgo,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn IMeshTools_MeshAlgo_inherited_IsKind(
         self_: *const IMeshTools_MeshAlgo,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn IMeshTools_MeshAlgo_inherited_This(
         self_: *const IMeshTools_MeshAlgo,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn IMeshTools_MeshAlgo_inherited_GetRefCount(
         self_: *const IMeshTools_MeshAlgo,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn IMeshTools_MeshAlgo_inherited_IncrementRefCounter(
         self_: *mut IMeshTools_MeshAlgo,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn IMeshTools_MeshAlgo_inherited_DecrementRefCounter(
         self_: *mut IMeshTools_MeshAlgo,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn IMeshTools_MeshAlgo_inherited_Delete(
         self_: *const IMeshTools_MeshAlgo,
     ) -> *const std::ffi::c_char;
@@ -6317,16 +6521,16 @@ unsafe extern "C" {
         self_: *const IMeshTools_MeshAlgoFactory,
         theSurfaceType: i32,
         theParameters: *const IMeshTools_Parameters,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsMeshAlgo>;
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_MeshAlgo>;
     /// **Source:** `IMeshTools_MeshAlgoFactory.hxx`:38 - `IMeshTools_MeshAlgoFactory::DynamicType()`
     pub fn IMeshTools_MeshAlgoFactory_dynamic_type(
         self_: *const IMeshTools_MeshAlgoFactory,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `IMeshTools_MeshAlgoFactory.hxx`:38 - `IMeshTools_MeshAlgoFactory::get_type_name()`
     pub fn IMeshTools_MeshAlgoFactory_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `IMeshTools_MeshAlgoFactory.hxx`:38 - `IMeshTools_MeshAlgoFactory::get_type_descriptor()`
     pub fn IMeshTools_MeshAlgoFactory_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast IMeshTools_MeshAlgoFactory to Standard_Transient
     pub fn IMeshTools_MeshAlgoFactory_as_Standard_Transient(
         self_: *const IMeshTools_MeshAlgoFactory,
@@ -6336,62 +6540,64 @@ unsafe extern "C" {
         self_: *mut IMeshTools_MeshAlgoFactory,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IMeshTools_MeshAlgoFactory>
-    pub fn HandleIMeshToolsMeshAlgoFactory_destructor(self_: *mut HandleIMeshToolsMeshAlgoFactory);
+    pub fn Handle_IMeshTools_MeshAlgoFactory_destructor(
+        self_: *mut Handle_IMeshTools_MeshAlgoFactory,
+    );
     /// Clone Handle<IMeshTools_MeshAlgoFactory> (increments reference count)
-    pub fn HandleIMeshToolsMeshAlgoFactory_clone(
-        self_: *const HandleIMeshToolsMeshAlgoFactory,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsMeshAlgoFactory>;
+    pub fn Handle_IMeshTools_MeshAlgoFactory_clone(
+        self_: *const Handle_IMeshTools_MeshAlgoFactory,
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_MeshAlgoFactory>;
     /// Check if Handle<IMeshTools_MeshAlgoFactory> is null
-    pub fn HandleIMeshToolsMeshAlgoFactory_is_null(
-        self_: *const HandleIMeshToolsMeshAlgoFactory,
+    pub fn Handle_IMeshTools_MeshAlgoFactory_is_null(
+        self_: *const Handle_IMeshTools_MeshAlgoFactory,
     ) -> bool;
     /// Dereference Handle to get *const IMeshTools_MeshAlgoFactory
-    pub fn HandleIMeshToolsMeshAlgoFactory_get(
-        handle: *const HandleIMeshToolsMeshAlgoFactory,
+    pub fn Handle_IMeshTools_MeshAlgoFactory_get(
+        handle: *const Handle_IMeshTools_MeshAlgoFactory,
     ) -> crate::OcctResult<*const IMeshTools_MeshAlgoFactory>;
     /// Dereference Handle to get *mut IMeshTools_MeshAlgoFactory
-    pub fn HandleIMeshToolsMeshAlgoFactory_get_mut(
-        handle: *mut HandleIMeshToolsMeshAlgoFactory,
+    pub fn Handle_IMeshTools_MeshAlgoFactory_get_mut(
+        handle: *mut Handle_IMeshTools_MeshAlgoFactory,
     ) -> crate::OcctResult<*mut IMeshTools_MeshAlgoFactory>;
     /// Upcast Handle<IMeshTools_MeshAlgoFactory> to Handle<Standard_Transient>
-    pub fn HandleIMeshToolsMeshAlgoFactory_to_HandleStandardTransient(
-        self_: *const HandleIMeshToolsMeshAlgoFactory,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_IMeshTools_MeshAlgoFactory_to_Handle_Standard_Transient(
+        self_: *const Handle_IMeshTools_MeshAlgoFactory,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<IMeshTools_MeshAlgoFactory> to Handle<BRepMesh_DelabellaMeshAlgoFactory> (returns null on failure)
-    pub fn HandleIMeshToolsMeshAlgoFactory_downcast_to_HandleBRepMeshDelabellaMeshAlgoFactory(
-        self_: *const HandleIMeshToolsMeshAlgoFactory,
-    ) -> crate::OcctResult<*mut HandleBRepMeshDelabellaMeshAlgoFactory>;
+    pub fn Handle_IMeshTools_MeshAlgoFactory_downcast_to_Handle_BRepMesh_DelabellaMeshAlgoFactory(
+        self_: *const Handle_IMeshTools_MeshAlgoFactory,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_DelabellaMeshAlgoFactory>;
     /// Downcast Handle<IMeshTools_MeshAlgoFactory> to Handle<BRepMesh_MeshAlgoFactory> (returns null on failure)
-    pub fn HandleIMeshToolsMeshAlgoFactory_downcast_to_HandleBRepMeshMeshAlgoFactory(
-        self_: *const HandleIMeshToolsMeshAlgoFactory,
-    ) -> crate::OcctResult<*mut HandleBRepMeshMeshAlgoFactory>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_IMeshTools_MeshAlgoFactory_downcast_to_Handle_BRepMesh_MeshAlgoFactory(
+        self_: *const Handle_IMeshTools_MeshAlgoFactory,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_MeshAlgoFactory>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn IMeshTools_MeshAlgoFactory_inherited_IsInstance(
         self_: *const IMeshTools_MeshAlgoFactory,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn IMeshTools_MeshAlgoFactory_inherited_IsKind(
         self_: *const IMeshTools_MeshAlgoFactory,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn IMeshTools_MeshAlgoFactory_inherited_This(
         self_: *const IMeshTools_MeshAlgoFactory,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn IMeshTools_MeshAlgoFactory_inherited_GetRefCount(
         self_: *const IMeshTools_MeshAlgoFactory,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn IMeshTools_MeshAlgoFactory_inherited_IncrementRefCounter(
         self_: *mut IMeshTools_MeshAlgoFactory,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn IMeshTools_MeshAlgoFactory_inherited_DecrementRefCounter(
         self_: *mut IMeshTools_MeshAlgoFactory,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn IMeshTools_MeshAlgoFactory_inherited_Delete(
         self_: *const IMeshTools_MeshAlgoFactory,
     ) -> *const std::ffi::c_char;
@@ -6401,17 +6607,17 @@ unsafe extern "C" {
     pub fn IMeshTools_MeshBuilder_ctor() -> crate::OcctResult<*mut IMeshTools_MeshBuilder>;
     /// **Source:** `IMeshTools_MeshBuilder.hxx`:46 - `IMeshTools_MeshBuilder::IMeshTools_MeshBuilder()`
     pub fn IMeshTools_MeshBuilder_ctor_handleimeshtoolscontext(
-        theContext: *const HandleIMeshToolsContext,
+        theContext: *const Handle_IMeshTools_Context,
     ) -> crate::OcctResult<*mut IMeshTools_MeshBuilder>;
     /// **Source:** `IMeshTools_MeshBuilder.hxx`:52 - `IMeshTools_MeshBuilder::SetContext()`
     pub fn IMeshTools_MeshBuilder_set_context(
         self_: *mut IMeshTools_MeshBuilder,
-        theContext: *const HandleIMeshToolsContext,
+        theContext: *const Handle_IMeshTools_Context,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IMeshTools_MeshBuilder.hxx`:55 - `IMeshTools_MeshBuilder::GetContext()`
     pub fn IMeshTools_MeshBuilder_get_context(
         self_: *const IMeshTools_MeshBuilder,
-    ) -> crate::OcctResult<*const HandleIMeshToolsContext>;
+    ) -> crate::OcctResult<*const Handle_IMeshTools_Context>;
     /// **Source:** `IMeshTools_MeshBuilder.hxx`:58 - `IMeshTools_MeshBuilder::Perform()`
     pub fn IMeshTools_MeshBuilder_perform(
         self_: *mut IMeshTools_MeshBuilder,
@@ -6420,12 +6626,12 @@ unsafe extern "C" {
     /// **Source:** `IMeshTools_MeshBuilder.hxx`:60 - `IMeshTools_MeshBuilder::DynamicType()`
     pub fn IMeshTools_MeshBuilder_dynamic_type(
         self_: *const IMeshTools_MeshBuilder,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `IMeshTools_MeshBuilder.hxx`:60 - `IMeshTools_MeshBuilder::get_type_name()`
     pub fn IMeshTools_MeshBuilder_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `IMeshTools_MeshBuilder.hxx`:60 - `IMeshTools_MeshBuilder::get_type_descriptor()`
     pub fn IMeshTools_MeshBuilder_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast IMeshTools_MeshBuilder to Message_Algorithm
     pub fn IMeshTools_MeshBuilder_as_Message_Algorithm(
         self_: *const IMeshTools_MeshBuilder,
@@ -6445,132 +6651,137 @@ unsafe extern "C" {
     /// Wrap IMeshTools_MeshBuilder in a Handle
     pub fn IMeshTools_MeshBuilder_to_handle(
         obj: *mut IMeshTools_MeshBuilder,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsMeshBuilder>;
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_MeshBuilder>;
     /// Destroy Handle<IMeshTools_MeshBuilder>
-    pub fn HandleIMeshToolsMeshBuilder_destructor(self_: *mut HandleIMeshToolsMeshBuilder);
+    pub fn Handle_IMeshTools_MeshBuilder_destructor(self_: *mut Handle_IMeshTools_MeshBuilder);
     /// Clone Handle<IMeshTools_MeshBuilder> (increments reference count)
-    pub fn HandleIMeshToolsMeshBuilder_clone(
-        self_: *const HandleIMeshToolsMeshBuilder,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsMeshBuilder>;
+    pub fn Handle_IMeshTools_MeshBuilder_clone(
+        self_: *const Handle_IMeshTools_MeshBuilder,
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_MeshBuilder>;
     /// Check if Handle<IMeshTools_MeshBuilder> is null
-    pub fn HandleIMeshToolsMeshBuilder_is_null(self_: *const HandleIMeshToolsMeshBuilder) -> bool;
+    pub fn Handle_IMeshTools_MeshBuilder_is_null(
+        self_: *const Handle_IMeshTools_MeshBuilder,
+    ) -> bool;
     /// Dereference Handle to get *const IMeshTools_MeshBuilder
-    pub fn HandleIMeshToolsMeshBuilder_get(
-        handle: *const HandleIMeshToolsMeshBuilder,
+    pub fn Handle_IMeshTools_MeshBuilder_get(
+        handle: *const Handle_IMeshTools_MeshBuilder,
     ) -> crate::OcctResult<*const IMeshTools_MeshBuilder>;
     /// Dereference Handle to get *mut IMeshTools_MeshBuilder
-    pub fn HandleIMeshToolsMeshBuilder_get_mut(
-        handle: *mut HandleIMeshToolsMeshBuilder,
+    pub fn Handle_IMeshTools_MeshBuilder_get_mut(
+        handle: *mut Handle_IMeshTools_MeshBuilder,
     ) -> crate::OcctResult<*mut IMeshTools_MeshBuilder>;
     /// Upcast Handle<IMeshTools_MeshBuilder> to Handle<Message_Algorithm>
-    pub fn HandleIMeshToolsMeshBuilder_to_HandleMessageAlgorithm(
-        self_: *const HandleIMeshToolsMeshBuilder,
-    ) -> crate::OcctResult<*mut HandleMessageAlgorithm>;
+    pub fn Handle_IMeshTools_MeshBuilder_to_Handle_Message_Algorithm(
+        self_: *const Handle_IMeshTools_MeshBuilder,
+    ) -> crate::OcctResult<*mut Handle_Message_Algorithm>;
     /// Upcast Handle<IMeshTools_MeshBuilder> to Handle<Standard_Transient>
-    pub fn HandleIMeshToolsMeshBuilder_to_HandleStandardTransient(
-        self_: *const HandleIMeshToolsMeshBuilder,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Message_Algorithm.hxx`:95 - `Message_Algorithm::SetStatus()`
+    pub fn Handle_IMeshTools_MeshBuilder_to_Handle_Standard_Transient(
+        self_: *const Handle_IMeshTools_MeshBuilder,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:94 - `Message_Algorithm::SetStatus()`
     pub fn IMeshTools_MeshBuilder_inherited_SetStatus(
         self_: *mut IMeshTools_MeshBuilder,
         theStat: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Message_Algorithm.hxx`:141 - `Message_Algorithm::GetStatus()`
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:140 - `Message_Algorithm::GetStatus()`
     pub fn IMeshTools_MeshBuilder_inherited_GetStatus(
         self_: *const IMeshTools_MeshBuilder,
     ) -> crate::OcctResult<*const Message_ExecStatus>;
-    /// Inherited: **Source:** `Message_Algorithm.hxx`:144 - `Message_Algorithm::ChangeStatus()`
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:143 - `Message_Algorithm::ChangeStatus()`
     pub fn IMeshTools_MeshBuilder_inherited_ChangeStatus(
         self_: *mut IMeshTools_MeshBuilder,
     ) -> crate::OcctResult<*mut Message_ExecStatus>;
-    /// Inherited: **Source:** `Message_Algorithm.hxx`:147 - `Message_Algorithm::ClearStatus()`
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:146 - `Message_Algorithm::ClearStatus()`
     pub fn IMeshTools_MeshBuilder_inherited_ClearStatus(
         self_: *mut IMeshTools_MeshBuilder,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Message_Algorithm.hxx`:150 - `Message_Algorithm::SetMessenger()`
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:149 - `Message_Algorithm::SetMessenger()`
     pub fn IMeshTools_MeshBuilder_inherited_SetMessenger(
         self_: *mut IMeshTools_MeshBuilder,
-        theMsgr: *const HandleMessageMessenger,
+        theMsgr: *const Handle_Message_Messenger,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Message_Algorithm.hxx`:155 - `Message_Algorithm::GetMessenger()`
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:154 - `Message_Algorithm::GetMessenger()`
     pub fn IMeshTools_MeshBuilder_inherited_GetMessenger(
         self_: *const IMeshTools_MeshBuilder,
-    ) -> crate::OcctResult<*mut HandleMessageMessenger>;
-    /// Inherited: **Source:** `Message_Algorithm.hxx`:174 - `Message_Algorithm::SendStatusMessages()`
+    ) -> crate::OcctResult<*mut Handle_Message_Messenger>;
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:173 - `Message_Algorithm::SendStatusMessages()`
     pub fn IMeshTools_MeshBuilder_inherited_SendStatusMessages(
         self_: *const IMeshTools_MeshBuilder,
         theFilter: *const Message_ExecStatus,
         theTraceLevel: i32,
         theMaxCount: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Message_Algorithm.hxx`:182 - `Message_Algorithm::SendMessages()`
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:181 - `Message_Algorithm::SendMessages()`
     pub fn IMeshTools_MeshBuilder_inherited_SendMessages(
         self_: *const IMeshTools_MeshBuilder,
         theTraceLevel: i32,
         theMaxCount: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Message_Algorithm.hxx`:187 - `Message_Algorithm::AddStatus()`
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:186 - `Message_Algorithm::AddStatus()`
     pub fn IMeshTools_MeshBuilder_inherited_AddStatus(
         self_: *mut IMeshTools_MeshBuilder,
-        theOther: *const HandleMessageAlgorithm,
+        theOther: *const Handle_Message_Algorithm,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Message_Algorithm.hxx`:197 - `Message_Algorithm::GetMessageNumbers()`
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:196 - `Message_Algorithm::GetMessageNumbers()`
     pub fn IMeshTools_MeshBuilder_inherited_GetMessageNumbers(
         self_: *const IMeshTools_MeshBuilder,
         theStatus: i32,
-    ) -> crate::OcctResult<*mut HandleTColStdHPackedMapOfInteger>;
+    ) -> crate::OcctResult<*mut Handle_TColStd_HPackedMapOfInteger>;
     /// Inherited: **Source:** `Message_Algorithm.hxx`:202 - `Message_Algorithm::GetMessageStrings()`
     pub fn IMeshTools_MeshBuilder_inherited_GetMessageStrings(
         self_: *const IMeshTools_MeshBuilder,
         theStatus: i32,
-    ) -> crate::OcctResult<*mut HandleTColStdHSequenceOfHExtendedString>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<
+        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString,
+    >;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn IMeshTools_MeshBuilder_inherited_IsInstance(
         self_: *const IMeshTools_MeshBuilder,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn IMeshTools_MeshBuilder_inherited_IsKind(
         self_: *const IMeshTools_MeshBuilder,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn IMeshTools_MeshBuilder_inherited_This(
         self_: *const IMeshTools_MeshBuilder,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn IMeshTools_MeshBuilder_inherited_GetRefCount(
         self_: *const IMeshTools_MeshBuilder,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn IMeshTools_MeshBuilder_inherited_IncrementRefCounter(
         self_: *mut IMeshTools_MeshBuilder,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn IMeshTools_MeshBuilder_inherited_DecrementRefCounter(
         self_: *mut IMeshTools_MeshBuilder,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn IMeshTools_MeshBuilder_inherited_Delete(
         self_: *const IMeshTools_MeshBuilder,
     ) -> *const std::ffi::c_char;
     // ======================== IMeshTools_ModelAlgo ========================
     pub fn IMeshTools_ModelAlgo_destructor(self_: *mut IMeshTools_ModelAlgo);
-    /// **Source:** `IMeshTools_ModelAlgo.hxx`:33 - `IMeshTools_ModelAlgo::Perform()`
+    /// **Source:** `IMeshTools_ModelAlgo.hxx`:34 - `IMeshTools_ModelAlgo::Perform()`
     pub fn IMeshTools_ModelAlgo_perform(
         self_: *mut IMeshTools_ModelAlgo,
-        theModel: *const HandleIMeshDataModel,
+        theModel: *const Handle_IMeshData_Model,
         theParameters: *const IMeshTools_Parameters,
         theRange: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IMeshTools_ModelAlgo.hxx`:49 - `IMeshTools_ModelAlgo::DynamicType()`
+    /// **Source:** `IMeshTools_ModelAlgo.hxx`:50 - `IMeshTools_ModelAlgo::DynamicType()`
     pub fn IMeshTools_ModelAlgo_dynamic_type(
         self_: *const IMeshTools_ModelAlgo,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `IMeshTools_ModelAlgo.hxx`:49 - `IMeshTools_ModelAlgo::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `IMeshTools_ModelAlgo.hxx`:50 - `IMeshTools_ModelAlgo::get_type_name()`
     pub fn IMeshTools_ModelAlgo_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `IMeshTools_ModelAlgo.hxx`:49 - `IMeshTools_ModelAlgo::get_type_descriptor()`
-    pub fn IMeshTools_ModelAlgo_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `IMeshTools_ModelAlgo.hxx`:50 - `IMeshTools_ModelAlgo::get_type_descriptor()`
+    pub fn IMeshTools_ModelAlgo_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast IMeshTools_ModelAlgo to Standard_Transient
     pub fn IMeshTools_ModelAlgo_as_Standard_Transient(
         self_: *const IMeshTools_ModelAlgo,
@@ -6580,72 +6791,72 @@ unsafe extern "C" {
         self_: *mut IMeshTools_ModelAlgo,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IMeshTools_ModelAlgo>
-    pub fn HandleIMeshToolsModelAlgo_destructor(self_: *mut HandleIMeshToolsModelAlgo);
+    pub fn Handle_IMeshTools_ModelAlgo_destructor(self_: *mut Handle_IMeshTools_ModelAlgo);
     /// Clone Handle<IMeshTools_ModelAlgo> (increments reference count)
-    pub fn HandleIMeshToolsModelAlgo_clone(
-        self_: *const HandleIMeshToolsModelAlgo,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsModelAlgo>;
+    pub fn Handle_IMeshTools_ModelAlgo_clone(
+        self_: *const Handle_IMeshTools_ModelAlgo,
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_ModelAlgo>;
     /// Check if Handle<IMeshTools_ModelAlgo> is null
-    pub fn HandleIMeshToolsModelAlgo_is_null(self_: *const HandleIMeshToolsModelAlgo) -> bool;
+    pub fn Handle_IMeshTools_ModelAlgo_is_null(self_: *const Handle_IMeshTools_ModelAlgo) -> bool;
     /// Dereference Handle to get *const IMeshTools_ModelAlgo
-    pub fn HandleIMeshToolsModelAlgo_get(
-        handle: *const HandleIMeshToolsModelAlgo,
+    pub fn Handle_IMeshTools_ModelAlgo_get(
+        handle: *const Handle_IMeshTools_ModelAlgo,
     ) -> crate::OcctResult<*const IMeshTools_ModelAlgo>;
     /// Dereference Handle to get *mut IMeshTools_ModelAlgo
-    pub fn HandleIMeshToolsModelAlgo_get_mut(
-        handle: *mut HandleIMeshToolsModelAlgo,
+    pub fn Handle_IMeshTools_ModelAlgo_get_mut(
+        handle: *mut Handle_IMeshTools_ModelAlgo,
     ) -> crate::OcctResult<*mut IMeshTools_ModelAlgo>;
     /// Upcast Handle<IMeshTools_ModelAlgo> to Handle<Standard_Transient>
-    pub fn HandleIMeshToolsModelAlgo_to_HandleStandardTransient(
-        self_: *const HandleIMeshToolsModelAlgo,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_IMeshTools_ModelAlgo_to_Handle_Standard_Transient(
+        self_: *const Handle_IMeshTools_ModelAlgo,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<IMeshTools_ModelAlgo> to Handle<BRepMesh_EdgeDiscret> (returns null on failure)
-    pub fn HandleIMeshToolsModelAlgo_downcast_to_HandleBRepMeshEdgeDiscret(
-        self_: *const HandleIMeshToolsModelAlgo,
-    ) -> crate::OcctResult<*mut HandleBRepMeshEdgeDiscret>;
+    pub fn Handle_IMeshTools_ModelAlgo_downcast_to_Handle_BRepMesh_EdgeDiscret(
+        self_: *const Handle_IMeshTools_ModelAlgo,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_EdgeDiscret>;
     /// Downcast Handle<IMeshTools_ModelAlgo> to Handle<BRepMesh_FaceDiscret> (returns null on failure)
-    pub fn HandleIMeshToolsModelAlgo_downcast_to_HandleBRepMeshFaceDiscret(
-        self_: *const HandleIMeshToolsModelAlgo,
-    ) -> crate::OcctResult<*mut HandleBRepMeshFaceDiscret>;
+    pub fn Handle_IMeshTools_ModelAlgo_downcast_to_Handle_BRepMesh_FaceDiscret(
+        self_: *const Handle_IMeshTools_ModelAlgo,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_FaceDiscret>;
     /// Downcast Handle<IMeshTools_ModelAlgo> to Handle<BRepMesh_ModelHealer> (returns null on failure)
-    pub fn HandleIMeshToolsModelAlgo_downcast_to_HandleBRepMeshModelHealer(
-        self_: *const HandleIMeshToolsModelAlgo,
-    ) -> crate::OcctResult<*mut HandleBRepMeshModelHealer>;
+    pub fn Handle_IMeshTools_ModelAlgo_downcast_to_Handle_BRepMesh_ModelHealer(
+        self_: *const Handle_IMeshTools_ModelAlgo,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_ModelHealer>;
     /// Downcast Handle<IMeshTools_ModelAlgo> to Handle<BRepMesh_ModelPostProcessor> (returns null on failure)
-    pub fn HandleIMeshToolsModelAlgo_downcast_to_HandleBRepMeshModelPostProcessor(
-        self_: *const HandleIMeshToolsModelAlgo,
-    ) -> crate::OcctResult<*mut HandleBRepMeshModelPostProcessor>;
+    pub fn Handle_IMeshTools_ModelAlgo_downcast_to_Handle_BRepMesh_ModelPostProcessor(
+        self_: *const Handle_IMeshTools_ModelAlgo,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_ModelPostProcessor>;
     /// Downcast Handle<IMeshTools_ModelAlgo> to Handle<BRepMesh_ModelPreProcessor> (returns null on failure)
-    pub fn HandleIMeshToolsModelAlgo_downcast_to_HandleBRepMeshModelPreProcessor(
-        self_: *const HandleIMeshToolsModelAlgo,
-    ) -> crate::OcctResult<*mut HandleBRepMeshModelPreProcessor>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_IMeshTools_ModelAlgo_downcast_to_Handle_BRepMesh_ModelPreProcessor(
+        self_: *const Handle_IMeshTools_ModelAlgo,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_ModelPreProcessor>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn IMeshTools_ModelAlgo_inherited_IsInstance(
         self_: *const IMeshTools_ModelAlgo,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn IMeshTools_ModelAlgo_inherited_IsKind(
         self_: *const IMeshTools_ModelAlgo,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn IMeshTools_ModelAlgo_inherited_This(
         self_: *const IMeshTools_ModelAlgo,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn IMeshTools_ModelAlgo_inherited_GetRefCount(
         self_: *const IMeshTools_ModelAlgo,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn IMeshTools_ModelAlgo_inherited_IncrementRefCounter(
         self_: *mut IMeshTools_ModelAlgo,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn IMeshTools_ModelAlgo_inherited_DecrementRefCounter(
         self_: *mut IMeshTools_ModelAlgo,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn IMeshTools_ModelAlgo_inherited_Delete(
         self_: *const IMeshTools_ModelAlgo,
     ) -> *const std::ffi::c_char;
@@ -6656,16 +6867,16 @@ unsafe extern "C" {
         self_: *mut IMeshTools_ModelBuilder,
         theShape: *const TopoDS_Shape,
         theParameters: *const IMeshTools_Parameters,
-    ) -> crate::OcctResult<*mut HandleIMeshDataModel>;
+    ) -> crate::OcctResult<*mut Handle_IMeshData_Model>;
     /// **Source:** `IMeshTools_ModelBuilder.hxx`:59 - `IMeshTools_ModelBuilder::DynamicType()`
     pub fn IMeshTools_ModelBuilder_dynamic_type(
         self_: *const IMeshTools_ModelBuilder,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `IMeshTools_ModelBuilder.hxx`:59 - `IMeshTools_ModelBuilder::get_type_name()`
     pub fn IMeshTools_ModelBuilder_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `IMeshTools_ModelBuilder.hxx`:59 - `IMeshTools_ModelBuilder::get_type_descriptor()`
     pub fn IMeshTools_ModelBuilder_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast IMeshTools_ModelBuilder to Message_Algorithm
     pub fn IMeshTools_ModelBuilder_as_Message_Algorithm(
         self_: *const IMeshTools_ModelBuilder,
@@ -6683,115 +6894,118 @@ unsafe extern "C" {
         self_: *mut IMeshTools_ModelBuilder,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IMeshTools_ModelBuilder>
-    pub fn HandleIMeshToolsModelBuilder_destructor(self_: *mut HandleIMeshToolsModelBuilder);
+    pub fn Handle_IMeshTools_ModelBuilder_destructor(self_: *mut Handle_IMeshTools_ModelBuilder);
     /// Clone Handle<IMeshTools_ModelBuilder> (increments reference count)
-    pub fn HandleIMeshToolsModelBuilder_clone(
-        self_: *const HandleIMeshToolsModelBuilder,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsModelBuilder>;
+    pub fn Handle_IMeshTools_ModelBuilder_clone(
+        self_: *const Handle_IMeshTools_ModelBuilder,
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_ModelBuilder>;
     /// Check if Handle<IMeshTools_ModelBuilder> is null
-    pub fn HandleIMeshToolsModelBuilder_is_null(self_: *const HandleIMeshToolsModelBuilder)
-        -> bool;
+    pub fn Handle_IMeshTools_ModelBuilder_is_null(
+        self_: *const Handle_IMeshTools_ModelBuilder,
+    ) -> bool;
     /// Dereference Handle to get *const IMeshTools_ModelBuilder
-    pub fn HandleIMeshToolsModelBuilder_get(
-        handle: *const HandleIMeshToolsModelBuilder,
+    pub fn Handle_IMeshTools_ModelBuilder_get(
+        handle: *const Handle_IMeshTools_ModelBuilder,
     ) -> crate::OcctResult<*const IMeshTools_ModelBuilder>;
     /// Dereference Handle to get *mut IMeshTools_ModelBuilder
-    pub fn HandleIMeshToolsModelBuilder_get_mut(
-        handle: *mut HandleIMeshToolsModelBuilder,
+    pub fn Handle_IMeshTools_ModelBuilder_get_mut(
+        handle: *mut Handle_IMeshTools_ModelBuilder,
     ) -> crate::OcctResult<*mut IMeshTools_ModelBuilder>;
     /// Upcast Handle<IMeshTools_ModelBuilder> to Handle<Message_Algorithm>
-    pub fn HandleIMeshToolsModelBuilder_to_HandleMessageAlgorithm(
-        self_: *const HandleIMeshToolsModelBuilder,
-    ) -> crate::OcctResult<*mut HandleMessageAlgorithm>;
+    pub fn Handle_IMeshTools_ModelBuilder_to_Handle_Message_Algorithm(
+        self_: *const Handle_IMeshTools_ModelBuilder,
+    ) -> crate::OcctResult<*mut Handle_Message_Algorithm>;
     /// Upcast Handle<IMeshTools_ModelBuilder> to Handle<Standard_Transient>
-    pub fn HandleIMeshToolsModelBuilder_to_HandleStandardTransient(
-        self_: *const HandleIMeshToolsModelBuilder,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_IMeshTools_ModelBuilder_to_Handle_Standard_Transient(
+        self_: *const Handle_IMeshTools_ModelBuilder,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<IMeshTools_ModelBuilder> to Handle<BRepMesh_ModelBuilder> (returns null on failure)
-    pub fn HandleIMeshToolsModelBuilder_downcast_to_HandleBRepMeshModelBuilder(
-        self_: *const HandleIMeshToolsModelBuilder,
-    ) -> crate::OcctResult<*mut HandleBRepMeshModelBuilder>;
-    /// Inherited: **Source:** `Message_Algorithm.hxx`:95 - `Message_Algorithm::SetStatus()`
+    pub fn Handle_IMeshTools_ModelBuilder_downcast_to_Handle_BRepMesh_ModelBuilder(
+        self_: *const Handle_IMeshTools_ModelBuilder,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_ModelBuilder>;
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:94 - `Message_Algorithm::SetStatus()`
     pub fn IMeshTools_ModelBuilder_inherited_SetStatus(
         self_: *mut IMeshTools_ModelBuilder,
         theStat: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Message_Algorithm.hxx`:141 - `Message_Algorithm::GetStatus()`
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:140 - `Message_Algorithm::GetStatus()`
     pub fn IMeshTools_ModelBuilder_inherited_GetStatus(
         self_: *const IMeshTools_ModelBuilder,
     ) -> crate::OcctResult<*const Message_ExecStatus>;
-    /// Inherited: **Source:** `Message_Algorithm.hxx`:144 - `Message_Algorithm::ChangeStatus()`
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:143 - `Message_Algorithm::ChangeStatus()`
     pub fn IMeshTools_ModelBuilder_inherited_ChangeStatus(
         self_: *mut IMeshTools_ModelBuilder,
     ) -> crate::OcctResult<*mut Message_ExecStatus>;
-    /// Inherited: **Source:** `Message_Algorithm.hxx`:147 - `Message_Algorithm::ClearStatus()`
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:146 - `Message_Algorithm::ClearStatus()`
     pub fn IMeshTools_ModelBuilder_inherited_ClearStatus(
         self_: *mut IMeshTools_ModelBuilder,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Message_Algorithm.hxx`:150 - `Message_Algorithm::SetMessenger()`
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:149 - `Message_Algorithm::SetMessenger()`
     pub fn IMeshTools_ModelBuilder_inherited_SetMessenger(
         self_: *mut IMeshTools_ModelBuilder,
-        theMsgr: *const HandleMessageMessenger,
+        theMsgr: *const Handle_Message_Messenger,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Message_Algorithm.hxx`:155 - `Message_Algorithm::GetMessenger()`
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:154 - `Message_Algorithm::GetMessenger()`
     pub fn IMeshTools_ModelBuilder_inherited_GetMessenger(
         self_: *const IMeshTools_ModelBuilder,
-    ) -> crate::OcctResult<*mut HandleMessageMessenger>;
-    /// Inherited: **Source:** `Message_Algorithm.hxx`:174 - `Message_Algorithm::SendStatusMessages()`
+    ) -> crate::OcctResult<*mut Handle_Message_Messenger>;
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:173 - `Message_Algorithm::SendStatusMessages()`
     pub fn IMeshTools_ModelBuilder_inherited_SendStatusMessages(
         self_: *const IMeshTools_ModelBuilder,
         theFilter: *const Message_ExecStatus,
         theTraceLevel: i32,
         theMaxCount: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Message_Algorithm.hxx`:182 - `Message_Algorithm::SendMessages()`
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:181 - `Message_Algorithm::SendMessages()`
     pub fn IMeshTools_ModelBuilder_inherited_SendMessages(
         self_: *const IMeshTools_ModelBuilder,
         theTraceLevel: i32,
         theMaxCount: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Message_Algorithm.hxx`:187 - `Message_Algorithm::AddStatus()`
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:186 - `Message_Algorithm::AddStatus()`
     pub fn IMeshTools_ModelBuilder_inherited_AddStatus(
         self_: *mut IMeshTools_ModelBuilder,
-        theOther: *const HandleMessageAlgorithm,
+        theOther: *const Handle_Message_Algorithm,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Message_Algorithm.hxx`:197 - `Message_Algorithm::GetMessageNumbers()`
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:196 - `Message_Algorithm::GetMessageNumbers()`
     pub fn IMeshTools_ModelBuilder_inherited_GetMessageNumbers(
         self_: *const IMeshTools_ModelBuilder,
         theStatus: i32,
-    ) -> crate::OcctResult<*mut HandleTColStdHPackedMapOfInteger>;
+    ) -> crate::OcctResult<*mut Handle_TColStd_HPackedMapOfInteger>;
     /// Inherited: **Source:** `Message_Algorithm.hxx`:202 - `Message_Algorithm::GetMessageStrings()`
     pub fn IMeshTools_ModelBuilder_inherited_GetMessageStrings(
         self_: *const IMeshTools_ModelBuilder,
         theStatus: i32,
-    ) -> crate::OcctResult<*mut HandleTColStdHSequenceOfHExtendedString>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<
+        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString,
+    >;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn IMeshTools_ModelBuilder_inherited_IsInstance(
         self_: *const IMeshTools_ModelBuilder,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn IMeshTools_ModelBuilder_inherited_IsKind(
         self_: *const IMeshTools_ModelBuilder,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn IMeshTools_ModelBuilder_inherited_This(
         self_: *const IMeshTools_ModelBuilder,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn IMeshTools_ModelBuilder_inherited_GetRefCount(
         self_: *const IMeshTools_ModelBuilder,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn IMeshTools_ModelBuilder_inherited_IncrementRefCounter(
         self_: *mut IMeshTools_ModelBuilder,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn IMeshTools_ModelBuilder_inherited_DecrementRefCounter(
         self_: *mut IMeshTools_ModelBuilder,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn IMeshTools_ModelBuilder_inherited_Delete(
         self_: *const IMeshTools_ModelBuilder,
     ) -> *const std::ffi::c_char;
@@ -6810,17 +7024,17 @@ unsafe extern "C" {
     /// **Source:** `IMeshTools_ShapeExplorer.hxx`:35 - `IMeshTools_ShapeExplorer::Accept()`
     pub fn IMeshTools_ShapeExplorer_accept(
         self_: *mut IMeshTools_ShapeExplorer,
-        theVisitor: *const HandleIMeshToolsShapeVisitor,
+        theVisitor: *const Handle_IMeshTools_ShapeVisitor,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IMeshTools_ShapeExplorer.hxx`:37 - `IMeshTools_ShapeExplorer::DynamicType()`
     pub fn IMeshTools_ShapeExplorer_dynamic_type(
         self_: *const IMeshTools_ShapeExplorer,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `IMeshTools_ShapeExplorer.hxx`:37 - `IMeshTools_ShapeExplorer::get_type_name()`
     pub fn IMeshTools_ShapeExplorer_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `IMeshTools_ShapeExplorer.hxx`:37 - `IMeshTools_ShapeExplorer::get_type_descriptor()`
     pub fn IMeshTools_ShapeExplorer_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast IMeshTools_ShapeExplorer to IMeshData_Shape
     pub fn IMeshTools_ShapeExplorer_as_IMeshData_Shape(
         self_: *const IMeshTools_ShapeExplorer,
@@ -6840,33 +7054,33 @@ unsafe extern "C" {
     /// Wrap IMeshTools_ShapeExplorer in a Handle
     pub fn IMeshTools_ShapeExplorer_to_handle(
         obj: *mut IMeshTools_ShapeExplorer,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsShapeExplorer>;
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_ShapeExplorer>;
     /// Destroy Handle<IMeshTools_ShapeExplorer>
-    pub fn HandleIMeshToolsShapeExplorer_destructor(self_: *mut HandleIMeshToolsShapeExplorer);
+    pub fn Handle_IMeshTools_ShapeExplorer_destructor(self_: *mut Handle_IMeshTools_ShapeExplorer);
     /// Clone Handle<IMeshTools_ShapeExplorer> (increments reference count)
-    pub fn HandleIMeshToolsShapeExplorer_clone(
-        self_: *const HandleIMeshToolsShapeExplorer,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsShapeExplorer>;
+    pub fn Handle_IMeshTools_ShapeExplorer_clone(
+        self_: *const Handle_IMeshTools_ShapeExplorer,
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_ShapeExplorer>;
     /// Check if Handle<IMeshTools_ShapeExplorer> is null
-    pub fn HandleIMeshToolsShapeExplorer_is_null(
-        self_: *const HandleIMeshToolsShapeExplorer,
+    pub fn Handle_IMeshTools_ShapeExplorer_is_null(
+        self_: *const Handle_IMeshTools_ShapeExplorer,
     ) -> bool;
     /// Dereference Handle to get *const IMeshTools_ShapeExplorer
-    pub fn HandleIMeshToolsShapeExplorer_get(
-        handle: *const HandleIMeshToolsShapeExplorer,
+    pub fn Handle_IMeshTools_ShapeExplorer_get(
+        handle: *const Handle_IMeshTools_ShapeExplorer,
     ) -> crate::OcctResult<*const IMeshTools_ShapeExplorer>;
     /// Dereference Handle to get *mut IMeshTools_ShapeExplorer
-    pub fn HandleIMeshToolsShapeExplorer_get_mut(
-        handle: *mut HandleIMeshToolsShapeExplorer,
+    pub fn Handle_IMeshTools_ShapeExplorer_get_mut(
+        handle: *mut Handle_IMeshTools_ShapeExplorer,
     ) -> crate::OcctResult<*mut IMeshTools_ShapeExplorer>;
     /// Upcast Handle<IMeshTools_ShapeExplorer> to Handle<IMeshData_Shape>
-    pub fn HandleIMeshToolsShapeExplorer_to_HandleIMeshDataShape(
-        self_: *const HandleIMeshToolsShapeExplorer,
-    ) -> crate::OcctResult<*mut HandleIMeshDataShape>;
+    pub fn Handle_IMeshTools_ShapeExplorer_to_Handle_IMeshData_Shape(
+        self_: *const Handle_IMeshTools_ShapeExplorer,
+    ) -> crate::OcctResult<*mut Handle_IMeshData_Shape>;
     /// Upcast Handle<IMeshTools_ShapeExplorer> to Handle<Standard_Transient>
-    pub fn HandleIMeshToolsShapeExplorer_to_HandleStandardTransient(
-        self_: *const HandleIMeshToolsShapeExplorer,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_IMeshTools_ShapeExplorer_to_Handle_Standard_Transient(
+        self_: *const Handle_IMeshTools_ShapeExplorer,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
     pub fn IMeshTools_ShapeExplorer_inherited_SetShape(
         self_: *mut IMeshTools_ShapeExplorer,
@@ -6876,33 +7090,33 @@ unsafe extern "C" {
     pub fn IMeshTools_ShapeExplorer_inherited_GetShape(
         self_: *const IMeshTools_ShapeExplorer,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn IMeshTools_ShapeExplorer_inherited_IsInstance(
         self_: *const IMeshTools_ShapeExplorer,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn IMeshTools_ShapeExplorer_inherited_IsKind(
         self_: *const IMeshTools_ShapeExplorer,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn IMeshTools_ShapeExplorer_inherited_This(
         self_: *const IMeshTools_ShapeExplorer,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn IMeshTools_ShapeExplorer_inherited_GetRefCount(
         self_: *const IMeshTools_ShapeExplorer,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn IMeshTools_ShapeExplorer_inherited_IncrementRefCounter(
         self_: *mut IMeshTools_ShapeExplorer,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn IMeshTools_ShapeExplorer_inherited_DecrementRefCounter(
         self_: *mut IMeshTools_ShapeExplorer,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn IMeshTools_ShapeExplorer_inherited_Delete(
         self_: *const IMeshTools_ShapeExplorer,
     ) -> *const std::ffi::c_char;
@@ -6921,12 +7135,12 @@ unsafe extern "C" {
     /// **Source:** `IMeshTools_ShapeVisitor.hxx`:38 - `IMeshTools_ShapeVisitor::DynamicType()`
     pub fn IMeshTools_ShapeVisitor_dynamic_type(
         self_: *const IMeshTools_ShapeVisitor,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `IMeshTools_ShapeVisitor.hxx`:38 - `IMeshTools_ShapeVisitor::get_type_name()`
     pub fn IMeshTools_ShapeVisitor_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `IMeshTools_ShapeVisitor.hxx`:38 - `IMeshTools_ShapeVisitor::get_type_descriptor()`
     pub fn IMeshTools_ShapeVisitor_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast IMeshTools_ShapeVisitor to Standard_Transient
     pub fn IMeshTools_ShapeVisitor_as_Standard_Transient(
         self_: *const IMeshTools_ShapeVisitor,
@@ -6936,57 +7150,58 @@ unsafe extern "C" {
         self_: *mut IMeshTools_ShapeVisitor,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<IMeshTools_ShapeVisitor>
-    pub fn HandleIMeshToolsShapeVisitor_destructor(self_: *mut HandleIMeshToolsShapeVisitor);
+    pub fn Handle_IMeshTools_ShapeVisitor_destructor(self_: *mut Handle_IMeshTools_ShapeVisitor);
     /// Clone Handle<IMeshTools_ShapeVisitor> (increments reference count)
-    pub fn HandleIMeshToolsShapeVisitor_clone(
-        self_: *const HandleIMeshToolsShapeVisitor,
-    ) -> crate::OcctResult<*mut HandleIMeshToolsShapeVisitor>;
+    pub fn Handle_IMeshTools_ShapeVisitor_clone(
+        self_: *const Handle_IMeshTools_ShapeVisitor,
+    ) -> crate::OcctResult<*mut Handle_IMeshTools_ShapeVisitor>;
     /// Check if Handle<IMeshTools_ShapeVisitor> is null
-    pub fn HandleIMeshToolsShapeVisitor_is_null(self_: *const HandleIMeshToolsShapeVisitor)
-        -> bool;
+    pub fn Handle_IMeshTools_ShapeVisitor_is_null(
+        self_: *const Handle_IMeshTools_ShapeVisitor,
+    ) -> bool;
     /// Dereference Handle to get *const IMeshTools_ShapeVisitor
-    pub fn HandleIMeshToolsShapeVisitor_get(
-        handle: *const HandleIMeshToolsShapeVisitor,
+    pub fn Handle_IMeshTools_ShapeVisitor_get(
+        handle: *const Handle_IMeshTools_ShapeVisitor,
     ) -> crate::OcctResult<*const IMeshTools_ShapeVisitor>;
     /// Dereference Handle to get *mut IMeshTools_ShapeVisitor
-    pub fn HandleIMeshToolsShapeVisitor_get_mut(
-        handle: *mut HandleIMeshToolsShapeVisitor,
+    pub fn Handle_IMeshTools_ShapeVisitor_get_mut(
+        handle: *mut Handle_IMeshTools_ShapeVisitor,
     ) -> crate::OcctResult<*mut IMeshTools_ShapeVisitor>;
     /// Upcast Handle<IMeshTools_ShapeVisitor> to Handle<Standard_Transient>
-    pub fn HandleIMeshToolsShapeVisitor_to_HandleStandardTransient(
-        self_: *const HandleIMeshToolsShapeVisitor,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_IMeshTools_ShapeVisitor_to_Handle_Standard_Transient(
+        self_: *const Handle_IMeshTools_ShapeVisitor,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<IMeshTools_ShapeVisitor> to Handle<BRepMesh_ShapeVisitor> (returns null on failure)
-    pub fn HandleIMeshToolsShapeVisitor_downcast_to_HandleBRepMeshShapeVisitor(
-        self_: *const HandleIMeshToolsShapeVisitor,
-    ) -> crate::OcctResult<*mut HandleBRepMeshShapeVisitor>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_IMeshTools_ShapeVisitor_downcast_to_Handle_BRepMesh_ShapeVisitor(
+        self_: *const Handle_IMeshTools_ShapeVisitor,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_ShapeVisitor>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn IMeshTools_ShapeVisitor_inherited_IsInstance(
         self_: *const IMeshTools_ShapeVisitor,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn IMeshTools_ShapeVisitor_inherited_IsKind(
         self_: *const IMeshTools_ShapeVisitor,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn IMeshTools_ShapeVisitor_inherited_This(
         self_: *const IMeshTools_ShapeVisitor,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn IMeshTools_ShapeVisitor_inherited_GetRefCount(
         self_: *const IMeshTools_ShapeVisitor,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn IMeshTools_ShapeVisitor_inherited_IncrementRefCounter(
         self_: *mut IMeshTools_ShapeVisitor,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn IMeshTools_ShapeVisitor_inherited_DecrementRefCounter(
         self_: *mut IMeshTools_ShapeVisitor,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn IMeshTools_ShapeVisitor_inherited_Delete(
         self_: *const IMeshTools_ShapeVisitor,
     ) -> *const std::ffi::c_char;

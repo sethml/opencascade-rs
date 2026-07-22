@@ -7,13 +7,13 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::HandleStandardTransient;
+pub use crate::ffi_types::Handle_Standard_Transient;
 
 // ========================
 // From RWPly_CafWriter.hxx
 // ========================
 
-/// **Source:** `RWPly_CafWriter.hxx`:34 - `RWPly_CafWriter`
+/// **Source:** `RWPly_CafWriter.hxx`:36 - `RWPly_CafWriter`
 /// PLY writer context from XCAF document.
 pub use crate::ffi_types::RWPly_CafWriter as CafWriter;
 
@@ -26,7 +26,7 @@ unsafe impl crate::CppDeletable for CafWriter {
 }
 
 impl CafWriter {
-    /// **Source:** `RWPly_CafWriter.hxx`:40 - `RWPly_CafWriter::RWPly_CafWriter()`
+    /// **Source:** `RWPly_CafWriter.hxx`:42 - `RWPly_CafWriter::RWPly_CafWriter()`
     /// Main constructor.
     /// @param[in] theFile path to output PLY file
     pub fn new_asciistring(theFile: &crate::t_collection::AsciiString) -> crate::OwnedPtr<Self> {
@@ -37,8 +37,8 @@ impl CafWriter {
         }
     }
 
-    /// **Source:** `RWPly_CafWriter.hxx`:36 - `RWPly_CafWriter::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `RWPly_CafWriter.hxx`:38 - `RWPly_CafWriter::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEPLY::RWPly_CafWriter_dynamic_type(
                 self as *const Self,
@@ -46,7 +46,7 @@ impl CafWriter {
         }
     }
 
-    /// **Source:** `RWPly_CafWriter.hxx`:46 - `RWPly_CafWriter::CoordinateSystemConverter()`
+    /// **Source:** `RWPly_CafWriter.hxx`:48 - `RWPly_CafWriter::CoordinateSystemConverter()`
     /// Return transformation from OCCT to PLY coordinate system.
     pub fn coordinate_system_converter(&self) -> &crate::rw_mesh::CoordinateSystemConverter {
         unsafe {
@@ -58,7 +58,7 @@ impl CafWriter {
         }
     }
 
-    /// **Source:** `RWPly_CafWriter.hxx`:49 - `RWPly_CafWriter::ChangeCoordinateSystemConverter()`
+    /// **Source:** `RWPly_CafWriter.hxx`:51 - `RWPly_CafWriter::ChangeCoordinateSystemConverter()`
     /// Return transformation from OCCT to PLY coordinate system.
     pub fn change_coordinate_system_converter(
         &mut self,
@@ -72,7 +72,7 @@ impl CafWriter {
         }
     }
 
-    /// **Source:** `RWPly_CafWriter.hxx`:52 - `RWPly_CafWriter::SetCoordinateSystemConverter()`
+    /// **Source:** `RWPly_CafWriter.hxx`:54 - `RWPly_CafWriter::SetCoordinateSystemConverter()`
     /// Set transformation from OCCT to PLY coordinate system.
     pub fn set_coordinate_system_converter(
         &mut self,
@@ -86,7 +86,7 @@ impl CafWriter {
         })
     }
 
-    /// **Source:** `RWPly_CafWriter.hxx`:58 - `RWPly_CafWriter::DefaultStyle()`
+    /// **Source:** `RWPly_CafWriter.hxx`:60 - `RWPly_CafWriter::DefaultStyle()`
     /// Return default material definition to be used for nodes with only color defined.
     pub fn default_style(&self) -> &crate::xcaf_prs::Style {
         unsafe {
@@ -96,7 +96,7 @@ impl CafWriter {
         }
     }
 
-    /// **Source:** `RWPly_CafWriter.hxx`:61 - `RWPly_CafWriter::SetDefaultStyle()`
+    /// **Source:** `RWPly_CafWriter.hxx`:63 - `RWPly_CafWriter::SetDefaultStyle()`
     /// Set default material definition to be used for nodes with only color defined.
     pub fn set_default_style(&mut self, theStyle: &crate::xcaf_prs::Style) {
         crate::check_void_result(unsafe {
@@ -107,7 +107,7 @@ impl CafWriter {
         })
     }
 
-    /// **Source:** `RWPly_CafWriter.hxx`:66 - `RWPly_CafWriter::IsDoublePrecision()`
+    /// **Source:** `RWPly_CafWriter.hxx`:68 - `RWPly_CafWriter::IsDoublePrecision()`
     /// Return TRUE if vertex position should be stored with double floating point precision; FALSE by
     /// default.
     pub fn is_double_precision(&self) -> bool {
@@ -116,7 +116,7 @@ impl CafWriter {
         })
     }
 
-    /// **Source:** `RWPly_CafWriter.hxx`:69 - `RWPly_CafWriter::SetDoublePrecision()`
+    /// **Source:** `RWPly_CafWriter.hxx`:71 - `RWPly_CafWriter::SetDoublePrecision()`
     /// Set if vertex position should be stored with double floating point precision.
     pub fn set_double_precision(&mut self, theDoublePrec: bool) {
         crate::check_void_result(unsafe {
@@ -127,7 +127,7 @@ impl CafWriter {
         })
     }
 
-    /// **Source:** `RWPly_CafWriter.hxx`:72 - `RWPly_CafWriter::HasNormals()`
+    /// **Source:** `RWPly_CafWriter.hxx`:74 - `RWPly_CafWriter::HasNormals()`
     /// Return TRUE if normals should be written; TRUE by default.
     pub fn has_normals(&self) -> bool {
         crate::check_result(unsafe {
@@ -135,7 +135,7 @@ impl CafWriter {
         })
     }
 
-    /// **Source:** `RWPly_CafWriter.hxx`:75 - `RWPly_CafWriter::SetNormals()`
+    /// **Source:** `RWPly_CafWriter.hxx`:77 - `RWPly_CafWriter::SetNormals()`
     /// Set if normals are defined.
     pub fn set_normals(&mut self, theHasNormals: bool) {
         crate::check_void_result(unsafe {
@@ -143,7 +143,7 @@ impl CafWriter {
         })
     }
 
-    /// **Source:** `RWPly_CafWriter.hxx`:78 - `RWPly_CafWriter::HasTexCoords()`
+    /// **Source:** `RWPly_CafWriter.hxx`:80 - `RWPly_CafWriter::HasTexCoords()`
     /// Return TRUE if UV / texture coordinates should be written; FALSE by default.
     pub fn has_tex_coords(&self) -> bool {
         crate::check_result(unsafe {
@@ -151,7 +151,7 @@ impl CafWriter {
         })
     }
 
-    /// **Source:** `RWPly_CafWriter.hxx`:81 - `RWPly_CafWriter::SetTexCoords()`
+    /// **Source:** `RWPly_CafWriter.hxx`:83 - `RWPly_CafWriter::SetTexCoords()`
     /// Set if UV / texture coordinates should be written.
     pub fn set_tex_coords(&mut self, theHasTexCoords: bool) {
         crate::check_void_result(unsafe {
@@ -162,7 +162,7 @@ impl CafWriter {
         })
     }
 
-    /// **Source:** `RWPly_CafWriter.hxx`:84 - `RWPly_CafWriter::HasColors()`
+    /// **Source:** `RWPly_CafWriter.hxx`:86 - `RWPly_CafWriter::HasColors()`
     /// Return TRUE if point colors should be written; TRUE by default.
     pub fn has_colors(&self) -> bool {
         crate::check_result(unsafe {
@@ -170,7 +170,7 @@ impl CafWriter {
         })
     }
 
-    /// **Source:** `RWPly_CafWriter.hxx`:87 - `RWPly_CafWriter::SetColors()`
+    /// **Source:** `RWPly_CafWriter.hxx`:89 - `RWPly_CafWriter::SetColors()`
     /// Set if point colors should be written.
     pub fn set_colors(&mut self, theToWrite: bool) {
         crate::check_void_result(unsafe {
@@ -178,7 +178,7 @@ impl CafWriter {
         })
     }
 
-    /// **Source:** `RWPly_CafWriter.hxx`:90 - `RWPly_CafWriter::HasPartId()`
+    /// **Source:** `RWPly_CafWriter.hxx`:92 - `RWPly_CafWriter::HasPartId()`
     /// Return TRUE if part Id should be written as element attribute; TRUE by default.
     pub fn has_part_id(&self) -> bool {
         crate::check_result(unsafe {
@@ -186,7 +186,7 @@ impl CafWriter {
         })
     }
 
-    /// **Source:** `RWPly_CafWriter.hxx`:94 - `RWPly_CafWriter::SetPartId()`
+    /// **Source:** `RWPly_CafWriter.hxx`:96 - `RWPly_CafWriter::SetPartId()`
     /// Set if part Id should be written as element attribute; FALSE by default.
     /// Cannot be combined with HasFaceId().
     pub fn set_part_id(&mut self, theSurfId: bool) {
@@ -195,7 +195,7 @@ impl CafWriter {
         })
     }
 
-    /// **Source:** `RWPly_CafWriter.hxx`:101 - `RWPly_CafWriter::HasFaceId()`
+    /// **Source:** `RWPly_CafWriter.hxx`:103 - `RWPly_CafWriter::HasFaceId()`
     /// Return TRUE if face Id should be written as element attribute; FALSE by default.
     pub fn has_face_id(&self) -> bool {
         crate::check_result(unsafe {
@@ -203,7 +203,7 @@ impl CafWriter {
         })
     }
 
-    /// **Source:** `RWPly_CafWriter.hxx`:105 - `RWPly_CafWriter::SetFaceId()`
+    /// **Source:** `RWPly_CafWriter.hxx`:107 - `RWPly_CafWriter::SetFaceId()`
     /// Set if face Id should be written as element attribute; FALSE by default.
     /// Cannot be combined with HasPartId().
     pub fn set_face_id(&mut self, theSurfId: bool) {
@@ -212,7 +212,7 @@ impl CafWriter {
         })
     }
 
-    /// **Source:** `RWPly_CafWriter.hxx`:123 - `RWPly_CafWriter::Perform()`
+    /// **Source:** `RWPly_CafWriter.hxx`:125 - `RWPly_CafWriter::Perform()`
     /// Write PLY file and associated MTL material file.
     /// Triangulation data should be precomputed within shapes!
     /// @param[in] theDocument    input document
@@ -224,38 +224,38 @@ impl CafWriter {
     /// @param[in] theFileInfo    map with file metadata to put into PLY header section
     /// @param[in] theProgress    optional progress indicator
     /// @return FALSE on file writing failure
-    pub fn perform_handletdocstddocument_labelsequence_mapofasciistringptr_indexeddatamapofstringstring_progressrange(
+    pub fn perform_handletdocstddocument_seq_label_map_asciistringptr_idmap_asciistring_asciistring_progressrange(
         &mut self,
-        theDocument: &crate::ffi_types::HandleTDocStdDocument,
-        theRootLabels: &crate::ffi_types::TDF_LabelSequence,
-        theLabelFilter: &crate::ffi_types::TColStd_MapOfAsciiString,
-        theFileInfo: &crate::ffi_types::TColStd_IndexedDataMapOfStringString,
+        theDocument: &crate::ffi_types::Handle_TDocStd_Document,
+        theRootLabels: &crate::ffi_types::NCollection_Sequence_TDF_Label,
+        theLabelFilter: &crate::ffi_types::NCollection_Map_TCollection_AsciiString,
+        theFileInfo: &crate::ffi_types::NCollection_IndexedDataMap_TCollection_AsciiString_TCollection_AsciiString,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKDEPLY::RWPly_CafWriter_perform_handletdocstddocument_labelsequence_mapofasciistringptr_indexeddatamapofstringstring_progressrange(self as *mut Self, theDocument, theRootLabels, theLabelFilter as *const _, theFileInfo, theProgress)
+            crate::ffi_extern_TKDEPLY::RWPly_CafWriter_perform_handletdocstddocument_seq_label_map_asciistringptr_idmap_asciistring_asciistring_progressrange(self as *mut Self, theDocument, theRootLabels, theLabelFilter as *const _, theFileInfo, theProgress)
         })
     }
 
-    /// **Source:** `RWPly_CafWriter.hxx`:135 - `RWPly_CafWriter::Perform()`
+    /// **Source:** `RWPly_CafWriter.hxx`:138 - `RWPly_CafWriter::Perform()`
     /// Write PLY file and associated MTL material file.
     /// Triangulation data should be precomputed within shapes!
     /// @param[in] theDocument input document
     /// @param[in] theFileInfo map with file metadata to put into PLY header section
     /// @param[in] theProgress optional progress indicator
     /// @return FALSE on file writing failure
-    pub fn perform_handletdocstddocument_indexeddatamapofstringstring_progressrange(
+    pub fn perform_handletdocstddocument_idmap_asciistring_asciistring_progressrange(
         &mut self,
-        theDocument: &crate::ffi_types::HandleTDocStdDocument,
-        theFileInfo: &crate::ffi_types::TColStd_IndexedDataMapOfStringString,
+        theDocument: &crate::ffi_types::Handle_TDocStd_Document,
+        theFileInfo: &crate::ffi_types::NCollection_IndexedDataMap_TCollection_AsciiString_TCollection_AsciiString,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKDEPLY::RWPly_CafWriter_perform_handletdocstddocument_indexeddatamapofstringstring_progressrange(self as *mut Self, theDocument, theFileInfo, theProgress)
+            crate::ffi_extern_TKDEPLY::RWPly_CafWriter_perform_handletdocstddocument_idmap_asciistring_asciistring_progressrange(self as *mut Self, theDocument, theFileInfo, theProgress)
         })
     }
 
-    /// **Source:** `RWPly_CafWriter.hxx`:36 - `RWPly_CafWriter::get_type_name()`
+    /// **Source:** `RWPly_CafWriter.hxx`:38 - `RWPly_CafWriter::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -266,8 +266,8 @@ impl CafWriter {
         .into_owned()
     }
 
-    /// **Source:** `RWPly_CafWriter.hxx`:36 - `RWPly_CafWriter::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `RWPly_CafWriter.hxx`:38 - `RWPly_CafWriter::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEPLY::RWPly_CafWriter_get_type_descriptor()))
         }
@@ -296,7 +296,7 @@ impl CafWriter {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleRWPlyCafWriter> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_RWPly_CafWriter> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEPLY::RWPly_CafWriter_to_handle(obj.into_raw()),
@@ -304,8 +304,8 @@ impl CafWriter {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEPLY::RWPly_CafWriter_inherited_IsInstance(
                 self as *const Self,
@@ -314,8 +314,8 @@ impl CafWriter {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEPLY::RWPly_CafWriter_inherited_IsKind(
                 self as *const Self,
@@ -324,7 +324,7 @@ impl CafWriter {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -338,14 +338,14 @@ impl CafWriter {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEPLY::RWPly_CafWriter_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEPLY::RWPly_CafWriter_inherited_IncrementRefCounter(
@@ -354,7 +354,7 @@ impl CafWriter {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEPLY::RWPly_CafWriter_inherited_DecrementRefCounter(
@@ -363,7 +363,7 @@ impl CafWriter {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEPLY::RWPly_CafWriter_inherited_Delete(self as *const Self)
@@ -371,32 +371,32 @@ impl CafWriter {
     }
 }
 
-pub use crate::ffi_types::HandleRWPlyCafWriter;
+pub use crate::ffi_types::Handle_RWPly_CafWriter;
 
-unsafe impl crate::CppDeletable for HandleRWPlyCafWriter {
+unsafe impl crate::CppDeletable for Handle_RWPly_CafWriter {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEPLY::HandleRWPlyCafWriter_destructor(ptr);
+            crate::ffi_extern_TKDEPLY::Handle_RWPly_CafWriter_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleRWPlyCafWriter {
+unsafe impl crate::CppCopyable for Handle_RWPly_CafWriter {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKDEPLY::HandleRWPlyCafWriter_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKDEPLY::Handle_RWPly_CafWriter_clone(ptr)) }
     }
 }
 
-impl HandleRWPlyCafWriter {
+impl Handle_RWPly_CafWriter {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEPLY::HandleRWPlyCafWriter_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKDEPLY::Handle_RWPly_CafWriter_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying RWPly_CafWriter
     pub fn get(&self) -> &crate::ffi_types::RWPly_CafWriter {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEPLY::HandleRWPlyCafWriter_get(
+            &*crate::check_result(crate::ffi_extern_TKDEPLY::Handle_RWPly_CafWriter_get(
                 self as *const Self,
             ))
         }
@@ -405,7 +405,7 @@ impl HandleRWPlyCafWriter {
     /// Dereference this Handle to mutably access the underlying RWPly_CafWriter
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::RWPly_CafWriter {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEPLY::HandleRWPlyCafWriter_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKDEPLY::Handle_RWPly_CafWriter_get_mut(
                 self as *mut Self,
             ))
         }
@@ -414,10 +414,10 @@ impl HandleRWPlyCafWriter {
     /// Upcast Handle<RWPly_CafWriter> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEPLY::HandleRWPlyCafWriter_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEPLY::Handle_RWPly_CafWriter_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -429,7 +429,7 @@ impl HandleRWPlyCafWriter {
 // From RWPly_PlyWriterContext.hxx
 // ========================
 
-/// **Source:** `RWPly_PlyWriterContext.hxx`:25 - `RWPly_PlyWriterContext`
+/// **Source:** `RWPly_PlyWriterContext.hxx`:33 - `RWPly_PlyWriterContext`
 /// Auxiliary low-level tool writing PLY file.
 pub use crate::ffi_types::RWPly_PlyWriterContext as PlyWriterContext;
 
@@ -442,7 +442,7 @@ unsafe impl crate::CppDeletable for PlyWriterContext {
 }
 
 impl PlyWriterContext {
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:29 - `RWPly_PlyWriterContext::RWPly_PlyWriterContext()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:37 - `RWPly_PlyWriterContext::RWPly_PlyWriterContext()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -452,7 +452,7 @@ impl PlyWriterContext {
         }
     }
 
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:37 - `RWPly_PlyWriterContext::IsDoublePrecision()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:45 - `RWPly_PlyWriterContext::IsDoublePrecision()`
     /// @name vertex attributes parameters
     /// Return TRUE if vertex position should be stored with double floating point precision; FALSE by
     /// default.
@@ -464,7 +464,7 @@ impl PlyWriterContext {
         })
     }
 
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:40 - `RWPly_PlyWriterContext::SetDoublePrecision()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:48 - `RWPly_PlyWriterContext::SetDoublePrecision()`
     /// Set if vertex position should be stored with double floating point precision.
     pub fn set_double_precision(&mut self, theDoublePrec: bool) {
         crate::check_void_result(unsafe {
@@ -475,7 +475,7 @@ impl PlyWriterContext {
         })
     }
 
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:43 - `RWPly_PlyWriterContext::HasNormals()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:51 - `RWPly_PlyWriterContext::HasNormals()`
     /// Return TRUE if normals should be written as vertex attribute; FALSE by default.
     pub fn has_normals(&self) -> bool {
         crate::check_result(unsafe {
@@ -483,7 +483,7 @@ impl PlyWriterContext {
         })
     }
 
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:46 - `RWPly_PlyWriterContext::SetNormals()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:54 - `RWPly_PlyWriterContext::SetNormals()`
     /// Set if normals should be written.
     pub fn set_normals(&mut self, theHasNormals: bool) {
         crate::check_void_result(unsafe {
@@ -494,7 +494,7 @@ impl PlyWriterContext {
         })
     }
 
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:50 - `RWPly_PlyWriterContext::HasTexCoords()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:58 - `RWPly_PlyWriterContext::HasTexCoords()`
     /// Return TRUE if UV / texture coordinates should be written as vertex attribute; FALSE by
     /// default.
     pub fn has_tex_coords(&self) -> bool {
@@ -503,7 +503,7 @@ impl PlyWriterContext {
         })
     }
 
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:53 - `RWPly_PlyWriterContext::SetTexCoords()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:61 - `RWPly_PlyWriterContext::SetTexCoords()`
     /// Set if UV / texture coordinates should be written.
     pub fn set_tex_coords(&mut self, theHasTexCoords: bool) {
         crate::check_void_result(unsafe {
@@ -514,7 +514,7 @@ impl PlyWriterContext {
         })
     }
 
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:56 - `RWPly_PlyWriterContext::HasColors()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:64 - `RWPly_PlyWriterContext::HasColors()`
     /// Return TRUE if point colors should be written as vertex attribute; FALSE by default.
     pub fn has_colors(&self) -> bool {
         crate::check_result(unsafe {
@@ -522,7 +522,7 @@ impl PlyWriterContext {
         })
     }
 
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:59 - `RWPly_PlyWriterContext::SetColors()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:67 - `RWPly_PlyWriterContext::SetColors()`
     /// Set if point colors should be written.
     pub fn set_colors(&mut self, theToWrite: bool) {
         crate::check_void_result(unsafe {
@@ -533,7 +533,7 @@ impl PlyWriterContext {
         })
     }
 
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:63 - `RWPly_PlyWriterContext::HasSurfaceId()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:71 - `RWPly_PlyWriterContext::HasSurfaceId()`
     /// @name element attributes parameters
     /// Return TRUE if surface Id should be written as element attribute; FALSE by default.
     pub fn has_surface_id(&self) -> bool {
@@ -542,7 +542,7 @@ impl PlyWriterContext {
         })
     }
 
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:66 - `RWPly_PlyWriterContext::SetSurfaceId()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:74 - `RWPly_PlyWriterContext::SetSurfaceId()`
     /// Set if surface Id should be written as element attribute; FALSE by default.
     pub fn set_surface_id_bool(&mut self, theSurfId: bool) {
         crate::check_void_result(unsafe {
@@ -553,7 +553,7 @@ impl PlyWriterContext {
         })
     }
 
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:70 - `RWPly_PlyWriterContext::IsOpened()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:78 - `RWPly_PlyWriterContext::IsOpened()`
     /// @name writing into file
     /// Return TRUE if file has been opened.
     pub fn is_opened(&self) -> bool {
@@ -562,7 +562,7 @@ impl PlyWriterContext {
         })
     }
 
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:73 - `RWPly_PlyWriterContext::Open()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:81 - `RWPly_PlyWriterContext::Open()`
     /// Open file for writing.
     pub fn open(
         &mut self,
@@ -578,7 +578,7 @@ impl PlyWriterContext {
         })
     }
 
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:81 - `RWPly_PlyWriterContext::WriteHeader()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:89 - `RWPly_PlyWriterContext::WriteHeader()`
     /// Write the header.
     /// @param[in] theNbNodes number of vertex nodes
     /// @param[in] theNbElems number of mesh elements
@@ -587,7 +587,7 @@ impl PlyWriterContext {
         &mut self,
         theNbNodes: i32,
         theNbElems: i32,
-        theFileInfo: &crate::ffi_types::TColStd_IndexedDataMapOfStringString,
+        theFileInfo: &crate::ffi_types::NCollection_IndexedDataMap_TCollection_AsciiString_TCollection_AsciiString,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEPLY::RWPly_PlyWriterContext_write_header(
@@ -599,7 +599,7 @@ impl PlyWriterContext {
         })
     }
 
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:90 - `RWPly_PlyWriterContext::WriteVertex()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:100 - `RWPly_PlyWriterContext::WriteVertex()`
     /// Write single point with all attributes.
     /// @param[in] thePoint 3D point coordinates
     /// @param[in] theNorm  surface normal direction at the point
@@ -608,9 +608,9 @@ impl PlyWriterContext {
     pub fn write_vertex(
         &mut self,
         thePoint: &crate::gp::Pnt,
-        theNorm: &crate::ffi_types::Graphic3d_Vec3,
-        theUV: &crate::ffi_types::Graphic3d_Vec2,
-        theColor: &crate::ffi_types::Graphic3d_Vec4ub,
+        theNorm: &crate::ffi_types::BVH_Vec3f,
+        theUV: &crate::ffi_types::BVH_Vec2f,
+        theColor: &crate::ffi_types::NCollection_Vec4_uint8_t,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEPLY::RWPly_PlyWriterContext_write_vertex(
@@ -623,7 +623,7 @@ impl PlyWriterContext {
         })
     }
 
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:96 - `RWPly_PlyWriterContext::NbWrittenVertices()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:106 - `RWPly_PlyWriterContext::NbWrittenVertices()`
     /// Return number of written vertices.
     pub fn nb_written_vertices(&self) -> i32 {
         crate::check_result(unsafe {
@@ -633,7 +633,7 @@ impl PlyWriterContext {
         })
     }
 
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:99 - `RWPly_PlyWriterContext::VertexOffset()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:109 - `RWPly_PlyWriterContext::VertexOffset()`
     /// Return vertex offset to be applied to element indices; 0 by default.
     pub fn vertex_offset(&self) -> i32 {
         crate::check_result(unsafe {
@@ -641,7 +641,7 @@ impl PlyWriterContext {
         })
     }
 
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:102 - `RWPly_PlyWriterContext::SetVertexOffset()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:112 - `RWPly_PlyWriterContext::SetVertexOffset()`
     /// Set vertex offset to be applied to element indices.
     pub fn set_vertex_offset(&mut self, theOffset: i32) {
         crate::check_void_result(unsafe {
@@ -652,7 +652,7 @@ impl PlyWriterContext {
         })
     }
 
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:105 - `RWPly_PlyWriterContext::SurfaceId()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:115 - `RWPly_PlyWriterContext::SurfaceId()`
     /// Return surface id to write with element; 0 by default.
     pub fn surface_id(&self) -> i32 {
         crate::check_result(unsafe {
@@ -660,7 +660,7 @@ impl PlyWriterContext {
         })
     }
 
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:108 - `RWPly_PlyWriterContext::SetSurfaceId()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:118 - `RWPly_PlyWriterContext::SetSurfaceId()`
     /// Set surface id to write with element.
     pub fn set_surface_id_int(&mut self, theSurfId: i32) {
         crate::check_void_result(unsafe {
@@ -671,9 +671,9 @@ impl PlyWriterContext {
         })
     }
 
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:111 - `RWPly_PlyWriterContext::WriteTriangle()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:121 - `RWPly_PlyWriterContext::WriteTriangle()`
     /// Writing a triangle.
-    pub fn write_triangle(&mut self, theTri: &crate::ffi_types::Graphic3d_Vec3i) -> bool {
+    pub fn write_triangle(&mut self, theTri: &crate::ffi_types::BVH_Vec3i) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEPLY::RWPly_PlyWriterContext_write_triangle(
                 self as *mut Self,
@@ -682,15 +682,15 @@ impl PlyWriterContext {
         })
     }
 
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:114 - `RWPly_PlyWriterContext::WriteQuad()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:124 - `RWPly_PlyWriterContext::WriteQuad()`
     /// Writing a quad.
-    pub fn write_quad(&mut self, theQuad: &crate::ffi_types::Graphic3d_Vec4i) -> bool {
+    pub fn write_quad(&mut self, theQuad: &crate::ffi_types::BVH_Vec4i) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEPLY::RWPly_PlyWriterContext_write_quad(self as *mut Self, theQuad)
         })
     }
 
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:117 - `RWPly_PlyWriterContext::NbWrittenElements()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:127 - `RWPly_PlyWriterContext::NbWrittenElements()`
     /// Return number of written elements.
     pub fn nb_written_elements(&self) -> i32 {
         crate::check_result(unsafe {
@@ -700,7 +700,7 @@ impl PlyWriterContext {
         })
     }
 
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:121 - `RWPly_PlyWriterContext::Close()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:131 - `RWPly_PlyWriterContext::Close()`
     /// Correctly close the file.
     /// @return FALSE in case of writing error
     pub fn close(&mut self, theIsAborted: bool) -> bool {

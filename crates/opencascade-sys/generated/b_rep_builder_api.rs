@@ -7,15 +7,15 @@
 #![allow(non_snake_case)]
 
 /// **Source:** `BRepBuilderAPI.hxx`:91 - `BRepBuilderAPI::Plane`
-/// Sets    the current plane.
-pub fn plane_handlegeomplane(P: &crate::ffi_types::HandleGeomPlane) {
+/// Sets the current plane.
+pub fn plane_handlegeomplane(P: &crate::ffi_types::Handle_Geom_Plane) {
     crate::check_void_result(unsafe {
         crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_plane_handlegeomplane(P)
     })
 }
 /// **Source:** `BRepBuilderAPI.hxx`:94 - `BRepBuilderAPI::Plane`
 /// Returns the current plane.
-pub fn plane() -> crate::OwnedPtr<crate::ffi_types::HandleGeomPlane> {
+pub fn plane() -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Plane> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_plane(),
@@ -23,7 +23,7 @@ pub fn plane() -> crate::OwnedPtr<crate::ffi_types::HandleGeomPlane> {
     }
 }
 /// **Source:** `BRepBuilderAPI.hxx`:98 - `BRepBuilderAPI::Precision`
-/// Sets the default precision.  The current Precision
+/// Sets the default precision. The current Precision
 /// is returned.
 pub fn precision_real(P: f64) {
     crate::check_void_result(unsafe {
@@ -39,7 +39,7 @@ pub fn precision() -> f64 {
 /// Indicates the outcome of the
 /// construction of an edge, i.e. whether it has been successful or
 /// not, as explained below:
-/// -      BRepBuilderAPI_EdgeDone No    error occurred; The edge is
+/// -      BRepBuilderAPI_EdgeDone No error occurred; The edge is
 /// correctly built.
 /// -      BRepBuilderAPI_PointProjectionFailed No parameters were given but
 /// the projection of the 3D points on the curve failed. This
@@ -53,13 +53,13 @@ pub fn precision() -> f64 {
 /// curve but have different locations.
 /// -      BRepBuilderAPI_PointWithInfiniteParameter
 /// A finite coordinate point was associated with an infinite
-/// parameter (see the Precision package for a definition of    infinite values).
+/// parameter (see the Precision package for a definition of infinite values).
 /// -      BRepBuilderAPI_DifferentsPointAndParameter
 /// The distance between the 3D point and the point evaluated
 /// on the curve with the parameter is greater than the precision.
 /// -      BRepBuilderAPI_LineThroughIdenticPoints
 /// Two identical points were given to define a line (construction
-/// of an edge without curve); gp::Resolution is used for the    confusion test.
+/// of an edge without curve); gp::Resolution is used for the confusion test.
 /// C++ enum: `BRepBuilderAPI_EdgeError`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
@@ -108,7 +108,7 @@ impl TryFrom<i32> for EdgeError {
 /// -      BRepBuilderAPI_CurveProjectionFailed
 /// Not used so far.
 /// -      BRepBuilderAPI_ParametersOutOfRange
-/// The parameters given to limit the surface are out of its    bounds.
+/// The parameters given to limit the surface are out of its bounds.
 /// C++ enum: `BRepBuilderAPI_FaceError`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
@@ -251,7 +251,7 @@ impl TryFrom<i32> for ShellError {
     }
 }
 
-/// Option to manage  discontinuities in  Sweep
+/// Option to manage discontinuities in Sweep
 /// C++ enum: `BRepBuilderAPI_TransitionMode`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
@@ -321,13 +321,13 @@ impl TryFrom<i32> for WireError {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::HandleStandardTransient;
+pub use crate::ffi_types::Handle_Standard_Transient;
 
 // ========================
 // From BRepBuilderAPI_BndBoxTreeSelector.hxx
 // ========================
 
-/// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:33 - `BRepBuilderAPI_BndBoxTreeSelector`
+/// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:32 - `BRepBuilderAPI_BndBoxTreeSelector`
 /// Class BRepBuilderAPI_BndBoxTreeSelector
 /// derived from UBTree::Selector
 /// This class is used to select overlapping boxes, stored in
@@ -344,7 +344,7 @@ unsafe impl crate::CppDeletable for BndBoxTreeSelector {
 }
 
 impl BndBoxTreeSelector {
-    /// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:37 - `BRepBuilderAPI_BndBoxTreeSelector::BRepBuilderAPI_BndBoxTreeSelector()`
+    /// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:36 - `BRepBuilderAPI_BndBoxTreeSelector::BRepBuilderAPI_BndBoxTreeSelector()`
     /// Constructor; calls the base class constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -354,7 +354,7 @@ impl BndBoxTreeSelector {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:45 - `BRepBuilderAPI_BndBoxTreeSelector::Reject()`
+    /// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:43 - `BRepBuilderAPI_BndBoxTreeSelector::Reject()`
     /// Implementation of rejection method
     /// @return
     /// True if the bounding box does not intersect with the current
@@ -367,7 +367,7 @@ impl BndBoxTreeSelector {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:52 - `BRepBuilderAPI_BndBoxTreeSelector::Accept()`
+    /// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:50 - `BRepBuilderAPI_BndBoxTreeSelector::Accept()`
     /// Implementation of acceptance method
     /// This method is called when the bounding box intersect with the current.
     /// It stores the object - the index of box in the list of accepted objects.
@@ -382,7 +382,7 @@ impl BndBoxTreeSelector {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:59 - `BRepBuilderAPI_BndBoxTreeSelector::ClearResList()`
+    /// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:57 - `BRepBuilderAPI_BndBoxTreeSelector::ClearResList()`
     /// Clear the list of intersecting boxes
     pub fn clear_res_list(&mut self) {
         crate::check_void_result(unsafe {
@@ -392,7 +392,7 @@ impl BndBoxTreeSelector {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:62 - `BRepBuilderAPI_BndBoxTreeSelector::SetCurrent()`
+    /// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:60 - `BRepBuilderAPI_BndBoxTreeSelector::SetCurrent()`
     /// Set current box to search for overlapping with him
     pub fn set_current(&mut self, theBox: &crate::bnd::Box) {
         crate::check_void_result(unsafe {
@@ -403,9 +403,9 @@ impl BndBoxTreeSelector {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:65 - `BRepBuilderAPI_BndBoxTreeSelector::ResInd()`
+    /// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:63 - `BRepBuilderAPI_BndBoxTreeSelector::ResInd()`
     /// Get list of indexes of boxes intersecting with the current box
-    pub fn res_ind(&mut self) -> &crate::ffi_types::TColStd_ListOfInteger {
+    pub fn res_ind(&mut self) -> &crate::ffi_types::NCollection_List_int {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_BndBoxTreeSelector_res_ind(
@@ -420,7 +420,7 @@ impl BndBoxTreeSelector {
 // From BRepBuilderAPI_Collect.hxx
 // ========================
 
-/// **Source:** `BRepBuilderAPI_Collect.hxx`:29 - `BRepBuilderAPI_Collect`
+/// **Source:** `BRepBuilderAPI_Collect.hxx`:31 - `BRepBuilderAPI_Collect`
 pub use crate::ffi_types::BRepBuilderAPI_Collect as Collect;
 
 unsafe impl crate::CppDeletable for Collect {
@@ -432,7 +432,7 @@ unsafe impl crate::CppDeletable for Collect {
 }
 
 impl Collect {
-    /// **Source:** `BRepBuilderAPI_Collect.hxx`:34 - `BRepBuilderAPI_Collect::BRepBuilderAPI_Collect()`
+    /// **Source:** `BRepBuilderAPI_Collect.hxx`:36 - `BRepBuilderAPI_Collect::BRepBuilderAPI_Collect()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -441,14 +441,14 @@ impl Collect {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_Collect.hxx`:36 - `BRepBuilderAPI_Collect::Add()`
+    /// **Source:** `BRepBuilderAPI_Collect.hxx`:38 - `BRepBuilderAPI_Collect::Add()`
     pub fn add(&mut self, SI: &crate::topo_ds::Shape, MKS: &mut MakeShape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Collect_add(self as *mut Self, SI, MKS)
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Collect.hxx`:38 - `BRepBuilderAPI_Collect::AddGenerated()`
+    /// **Source:** `BRepBuilderAPI_Collect.hxx`:40 - `BRepBuilderAPI_Collect::AddGenerated()`
     pub fn add_generated(&mut self, S: &crate::topo_ds::Shape, Gen: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Collect_add_generated(
@@ -459,22 +459,22 @@ impl Collect {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Collect.hxx`:40 - `BRepBuilderAPI_Collect::AddModif()`
+    /// **Source:** `BRepBuilderAPI_Collect.hxx`:42 - `BRepBuilderAPI_Collect::AddModif()`
     pub fn add_modif(&mut self, S: &crate::topo_ds::Shape, Mod: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Collect_add_modif(self as *mut Self, S, Mod)
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Collect.hxx`:42 - `BRepBuilderAPI_Collect::Filter()`
+    /// **Source:** `BRepBuilderAPI_Collect.hxx`:44 - `BRepBuilderAPI_Collect::Filter()`
     pub fn filter(&mut self, SF: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Collect_filter(self as *mut Self, SF)
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Collect.hxx`:44 - `BRepBuilderAPI_Collect::Modification()`
-    pub fn modification(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeListOfShape {
+    /// **Source:** `BRepBuilderAPI_Collect.hxx`:49 - `BRepBuilderAPI_Collect::Modification()`
+    pub fn modification(&self) -> &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher{
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Collect_modification(
@@ -484,8 +484,8 @@ impl Collect {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_Collect.hxx`:46 - `BRepBuilderAPI_Collect::Generated()`
-    pub fn generated(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeListOfShape {
+    /// **Source:** `BRepBuilderAPI_Collect.hxx`:54 - `BRepBuilderAPI_Collect::Generated()`
+    pub fn generated(&self) -> &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher{
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Collect_generated(
                 self as *const Self,
@@ -700,7 +700,7 @@ impl Copy {
         }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_ModifyShape.hxx`:63 - `BRepBuilderAPI_ModifyShape::ModifiedShape()`
+    /// Inherited: **Source:** `BRepBuilderAPI_ModifyShape.hxx`:62 - `BRepBuilderAPI_ModifyShape::ModifiedShape()`
     pub fn modified_shape(
         &self,
         S: &crate::topo_ds::Shape,
@@ -819,7 +819,7 @@ impl FastSewing {
     /// Adds a surface
     pub fn add_handlegeomsurface(
         &mut self,
-        theSurface: &crate::ffi_types::HandleGeomSurface,
+        theSurface: &crate::ffi_types::Handle_Geom_Surface,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_add_handlegeomsurface(
@@ -882,7 +882,7 @@ impl FastSewing {
     }
 
     /// **Source:** `BRepBuilderAPI_FastSewing.hxx`:90 - `BRepBuilderAPI_FastSewing::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_dynamic_type(
@@ -904,7 +904,7 @@ impl FastSewing {
     }
 
     /// **Source:** `BRepBuilderAPI_FastSewing.hxx`:90 - `BRepBuilderAPI_FastSewing::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_get_type_descriptor(),
@@ -937,7 +937,7 @@ impl FastSewing {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepBuilderAPIFastSewing> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepBuilderAPI_FastSewing> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_to_handle(obj.into_raw()),
@@ -945,8 +945,8 @@ impl FastSewing {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_inherited_IsInstance(
                 self as *const Self,
@@ -955,8 +955,8 @@ impl FastSewing {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_inherited_IsKind(
                 self as *const Self,
@@ -965,7 +965,7 @@ impl FastSewing {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -981,7 +981,7 @@ impl FastSewing {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_inherited_GetRefCount(
@@ -990,7 +990,7 @@ impl FastSewing {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_inherited_IncrementRefCounter(
@@ -999,7 +999,7 @@ impl FastSewing {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_inherited_DecrementRefCounter(
@@ -1008,7 +1008,7 @@ impl FastSewing {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_inherited_Delete(
@@ -1018,40 +1018,44 @@ impl FastSewing {
     }
 }
 
-pub use crate::ffi_types::HandleBRepBuilderAPIFastSewing;
+pub use crate::ffi_types::Handle_BRepBuilderAPI_FastSewing;
 
-unsafe impl crate::CppDeletable for HandleBRepBuilderAPIFastSewing {
+unsafe impl crate::CppDeletable for Handle_BRepBuilderAPI_FastSewing {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPIFastSewing_destructor(ptr);
+            crate::ffi_extern_TKTopAlgo::Handle_BRepBuilderAPI_FastSewing_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBRepBuilderAPIFastSewing {
+unsafe impl crate::CppCopyable for Handle_BRepBuilderAPI_FastSewing {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPIFastSewing_clone(
-                ptr,
-            ))
+            crate::check_result(
+                crate::ffi_extern_TKTopAlgo::Handle_BRepBuilderAPI_FastSewing_clone(ptr),
+            )
         }
     }
 }
 
-impl HandleBRepBuilderAPIFastSewing {
+impl Handle_BRepBuilderAPI_FastSewing {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPIFastSewing_is_null(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::Handle_BRepBuilderAPI_FastSewing_is_null(
+                self as *const Self,
+            )
         }
     }
 
     /// Dereference this Handle to access the underlying BRepBuilderAPI_FastSewing
     pub fn get(&self) -> &crate::ffi_types::BRepBuilderAPI_FastSewing {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPIFastSewing_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::Handle_BRepBuilderAPI_FastSewing_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1059,7 +1063,7 @@ impl HandleBRepBuilderAPIFastSewing {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BRepBuilderAPI_FastSewing {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPIFastSewing_get_mut(
+                crate::ffi_extern_TKTopAlgo::Handle_BRepBuilderAPI_FastSewing_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -1069,9 +1073,9 @@ impl HandleBRepBuilderAPIFastSewing {
     /// Upcast Handle<BRepBuilderAPI_FastSewing> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPIFastSewing_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_BRepBuilderAPI_FastSewing_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -1167,7 +1171,7 @@ impl FindPlane {
     /// Warning
     /// Use the function Found to verify that the plane is built. If
     /// a plane is not found, Plane returns a null handle.
-    pub fn plane(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomPlane> {
+    pub fn plane(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Plane> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FindPlane_plane(self as *const Self),
@@ -1180,7 +1184,7 @@ impl FindPlane {
 // From BRepBuilderAPI_GTransform.hxx
 // ========================
 
-/// **Source:** `BRepBuilderAPI_GTransform.hxx`:51 - `BRepBuilderAPI_GTransform`
+/// **Source:** `BRepBuilderAPI_GTransform.hxx`:52 - `BRepBuilderAPI_GTransform`
 /// Geometric transformation on a shape.
 /// The transformation to be applied is defined as a gp_GTrsf
 /// transformation. It may be:
@@ -1214,7 +1218,7 @@ unsafe impl crate::CppDeletable for GTransform {
 }
 
 impl GTransform {
-    /// **Source:** `BRepBuilderAPI_GTransform.hxx`:59 - `BRepBuilderAPI_GTransform::BRepBuilderAPI_GTransform()`
+    /// **Source:** `BRepBuilderAPI_GTransform.hxx`:60 - `BRepBuilderAPI_GTransform::BRepBuilderAPI_GTransform()`
     /// Constructs a framework for applying the geometric
     /// transformation T to a shape. Use the function
     /// Perform to define the shape to transform.
@@ -1226,7 +1230,7 @@ impl GTransform {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_GTransform.hxx`:74 - `BRepBuilderAPI_GTransform::BRepBuilderAPI_GTransform()`
+    /// **Source:** `BRepBuilderAPI_GTransform.hxx`:75 - `BRepBuilderAPI_GTransform::BRepBuilderAPI_GTransform()`
     /// Constructs a framework for applying the geometric
     /// transformation T to a shape, and applies it to the shape S.
     /// -   If the transformation T is direct and isometric (i.e. if
@@ -1254,7 +1258,7 @@ impl GTransform {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_GTransform.hxx`:74 - `BRepBuilderAPI_GTransform::BRepBuilderAPI_GTransform()`
+    /// **Source:** `BRepBuilderAPI_GTransform.hxx`:75 - `BRepBuilderAPI_GTransform::BRepBuilderAPI_GTransform()`
     /// Constructs a framework for applying the geometric
     /// transformation T to a shape, and applies it to the shape S.
     /// -   If the transformation T is direct and isometric (i.e. if
@@ -1275,7 +1279,7 @@ impl GTransform {
         Self::new_shape_gtrsf_bool(S, T, false)
     }
 
-    /// **Source:** `BRepBuilderAPI_GTransform.hxx`:90 - `BRepBuilderAPI_GTransform::Perform()`
+    /// **Source:** `BRepBuilderAPI_GTransform.hxx`:91 - `BRepBuilderAPI_GTransform::Perform()`
     /// Applies the geometric transformation defined at the
     /// time of construction of this framework to the shape S.
     /// -   If the transformation T is direct and isometric (i.e. if
@@ -1298,8 +1302,8 @@ impl GTransform {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_GTransform.hxx`:94 - `BRepBuilderAPI_GTransform::Modified()`
-    /// Returns the list  of shapes modified from the shape
+    /// **Source:** `BRepBuilderAPI_GTransform.hxx`:95 - `BRepBuilderAPI_GTransform::Modified()`
+    /// Returns the list of shapes modified from the shape
     /// <S>.
     ///
     /// # Safety
@@ -1310,7 +1314,7 @@ impl GTransform {
     pub unsafe fn modified(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_GTransform_modified(
@@ -1444,34 +1448,34 @@ impl GTransform {
 /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:71 - `BRepBuilderAPI_MakeEdge`
 /// Provides methods to build edges.
 ///
-/// The   methods have  the  following   syntax, where
+/// The methods have the following syntax, where
 /// TheCurve is one of Lin, Circ, ...
 ///
 /// Create(C : TheCurve)
 ///
-/// Makes an edge on  the whole curve.  Add vertices
+/// Makes an edge on the whole curve. Add vertices
 /// on finite curves.
 ///
 /// Create(C : TheCurve; p1,p2 : Real)
 ///
-/// Make an edge  on the curve between parameters p1
+/// Make an edge on the curve between parameters p1
 /// and p2. if p2 < p1 the edge will be REVERSED. If
-/// p1  or p2 is infinite the  curve will be open in
-/// that  direction. Vertices are created for finite
+/// p1 or p2 is infinite the curve will be open in
+/// that direction. Vertices are created for finite
 /// values of p1 and p2.
 ///
 /// Create(C : TheCurve; P1, P2 : Pnt from gp)
 ///
-/// Make an edge on the curve  between the points P1
-/// and P2. The  points are projected on   the curve
-/// and the   previous method is  used. An  error is
+/// Make an edge on the curve between the points P1
+/// and P2. The points are projected on the curve
+/// and the previous method is used. An error is
 /// raised if the points are not on the curve.
 ///
 /// Create(C : TheCurve; V1, V2 : Vertex from TopoDS)
 ///
-/// Make an edge  on the curve  between the vertices
-/// V1 and V2. Same as the  previous but no vertices
-/// are created. If a vertex is  Null the curve will
+/// Make an edge on the curve between the vertices
+/// V1 and V2. Same as the previous but no vertices
+/// are created. If a vertex is Null the curve will
 /// be open in this direction.
 pub use crate::ffi_types::BRepBuilderAPI_MakeEdge as MakeEdge;
 
@@ -1532,7 +1536,7 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:88 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:86 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_lin_pnt2(
         L: &crate::gp::Lin,
         P1: &crate::gp::Pnt,
@@ -1545,7 +1549,7 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:90 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:88 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_lin_vertex2(
         L: &crate::gp::Lin,
         V1: &crate::topo_ds::Vertex,
@@ -1558,7 +1562,7 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:94 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:92 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_circ(L: &crate::gp::Circ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1567,7 +1571,7 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:96 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:94 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_circ_real2(L: &crate::gp::Circ, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1576,7 +1580,7 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:100 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:96 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_circ_pnt2(
         L: &crate::gp::Circ,
         P1: &crate::gp::Pnt,
@@ -1589,7 +1593,7 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:102 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:98 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_circ_vertex2(
         L: &crate::gp::Circ,
         V1: &crate::topo_ds::Vertex,
@@ -1602,7 +1606,7 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:106 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:102 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_elips(L: &crate::gp::Elips) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1611,7 +1615,7 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:108 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:104 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_elips_real2(L: &crate::gp::Elips, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1620,7 +1624,7 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:112 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:106 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_elips_pnt2(
         L: &crate::gp::Elips,
         P1: &crate::gp::Pnt,
@@ -1633,7 +1637,7 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:114 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:108 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_elips_vertex2(
         L: &crate::gp::Elips,
         V1: &crate::topo_ds::Vertex,
@@ -1646,7 +1650,7 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:118 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:112 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_hypr(L: &crate::gp::Hypr) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1655,7 +1659,7 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:120 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:114 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_hypr_real2(L: &crate::gp::Hypr, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1664,7 +1668,7 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:124 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:116 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_hypr_pnt2(
         L: &crate::gp::Hypr,
         P1: &crate::gp::Pnt,
@@ -1677,7 +1681,7 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:126 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:118 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_hypr_vertex2(
         L: &crate::gp::Hypr,
         V1: &crate::topo_ds::Vertex,
@@ -1690,7 +1694,7 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:130 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:122 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_parab(L: &crate::gp::Parab) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1699,7 +1703,7 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:132 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:124 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_parab_real2(L: &crate::gp::Parab, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1708,7 +1712,7 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:136 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:126 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_parab_pnt2(
         L: &crate::gp::Parab,
         P1: &crate::gp::Pnt,
@@ -1721,7 +1725,7 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:138 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:128 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_parab_vertex2(
         L: &crate::gp::Parab,
         V1: &crate::topo_ds::Vertex,
@@ -1734,8 +1738,8 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:142 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
-    pub fn new_handlegeomcurve(L: &crate::ffi_types::HandleGeomCurve) -> crate::OwnedPtr<Self> {
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:132 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    pub fn new_handlegeomcurve(L: &crate::ffi_types::Handle_Geom_Curve) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_handlegeomcurve(L),
@@ -1743,9 +1747,9 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:144 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:134 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_handlegeomcurve_real2(
-        L: &crate::ffi_types::HandleGeomCurve,
+        L: &crate::ffi_types::Handle_Geom_Curve,
         p1: f64,
         p2: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1758,9 +1762,9 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:148 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:138 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_handlegeomcurve_pnt2(
-        L: &crate::ffi_types::HandleGeomCurve,
+        L: &crate::ffi_types::Handle_Geom_Curve,
         P1: &crate::gp::Pnt,
         P2: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
@@ -1773,9 +1777,9 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:152 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:142 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_handlegeomcurve_vertex2(
-        L: &crate::ffi_types::HandleGeomCurve,
+        L: &crate::ffi_types::Handle_Geom_Curve,
         V1: &crate::topo_ds::Vertex,
         V2: &crate::topo_ds::Vertex,
     ) -> crate::OwnedPtr<Self> {
@@ -1788,9 +1792,9 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:156 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:146 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_handlegeomcurve_pnt2_real2(
-        L: &crate::ffi_types::HandleGeomCurve,
+        L: &crate::ffi_types::Handle_Geom_Curve,
         P1: &crate::gp::Pnt,
         P2: &crate::gp::Pnt,
         p1: f64,
@@ -1801,9 +1805,9 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:162 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:152 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_handlegeomcurve_vertex2_real2(
-        L: &crate::ffi_types::HandleGeomCurve,
+        L: &crate::ffi_types::Handle_Geom_Curve,
         V1: &crate::topo_ds::Vertex,
         V2: &crate::topo_ds::Vertex,
         p1: f64,
@@ -1814,20 +1818,20 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:168 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:158 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_handlegeom2dcurve_handlegeomsurface(
-        L: &crate::ffi_types::HandleGeom2dCurve,
-        S: &crate::ffi_types::HandleGeomSurface,
+        L: &crate::ffi_types::Handle_Geom2d_Curve,
+        S: &crate::ffi_types::Handle_Geom_Surface,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface(L, S)))
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:171 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:161 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_handlegeom2dcurve_handlegeomsurface_real2(
-        L: &crate::ffi_types::HandleGeom2dCurve,
-        S: &crate::ffi_types::HandleGeomSurface,
+        L: &crate::ffi_types::Handle_Geom2d_Curve,
+        S: &crate::ffi_types::Handle_Geom_Surface,
         p1: f64,
         p2: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1836,10 +1840,10 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:176 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:166 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_handlegeom2dcurve_handlegeomsurface_pnt2(
-        L: &crate::ffi_types::HandleGeom2dCurve,
-        S: &crate::ffi_types::HandleGeomSurface,
+        L: &crate::ffi_types::Handle_Geom2d_Curve,
+        S: &crate::ffi_types::Handle_Geom_Surface,
         P1: &crate::gp::Pnt,
         P2: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
@@ -1848,10 +1852,10 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:181 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:171 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_handlegeom2dcurve_handlegeomsurface_vertex2(
-        L: &crate::ffi_types::HandleGeom2dCurve,
-        S: &crate::ffi_types::HandleGeomSurface,
+        L: &crate::ffi_types::Handle_Geom2d_Curve,
+        S: &crate::ffi_types::Handle_Geom_Surface,
         V1: &crate::topo_ds::Vertex,
         V2: &crate::topo_ds::Vertex,
     ) -> crate::OwnedPtr<Self> {
@@ -1860,10 +1864,10 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:186 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:176 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_handlegeom2dcurve_handlegeomsurface_pnt2_real2(
-        L: &crate::ffi_types::HandleGeom2dCurve,
-        S: &crate::ffi_types::HandleGeomSurface,
+        L: &crate::ffi_types::Handle_Geom2d_Curve,
+        S: &crate::ffi_types::Handle_Geom_Surface,
         P1: &crate::gp::Pnt,
         P2: &crate::gp::Pnt,
         p1: f64,
@@ -1874,7 +1878,7 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:257 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:247 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     /// The general method to directly create an edge is to give
     /// -      a 3D curve C as the support (geometric domain) of the edge,
     /// -      two vertices V1 and V2 to limit the curve (definition of the restriction of
@@ -1940,8 +1944,8 @@ impl MakeEdge {
     ///
     /// Auxiliary methods
     pub fn new_handlegeom2dcurve_handlegeomsurface_vertex2_real2(
-        L: &crate::ffi_types::HandleGeom2dCurve,
-        S: &crate::ffi_types::HandleGeomSurface,
+        L: &crate::ffi_types::Handle_Geom2d_Curve,
+        S: &crate::ffi_types::Handle_Geom_Surface,
         V1: &crate::topo_ds::Vertex,
         V2: &crate::topo_ds::Vertex,
         p1: f64,
@@ -1952,8 +1956,8 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:264 - `BRepBuilderAPI_MakeEdge::Init()`
-    pub fn init_handlegeomcurve(&mut self, C: &crate::ffi_types::HandleGeomCurve) {
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:254 - `BRepBuilderAPI_MakeEdge::Init()`
+    pub fn init_handlegeomcurve(&mut self, C: &crate::ffi_types::Handle_Geom_Curve) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_init_handlegeomcurve(
                 self as *mut Self,
@@ -1962,10 +1966,10 @@ impl MakeEdge {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:266 - `BRepBuilderAPI_MakeEdge::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:256 - `BRepBuilderAPI_MakeEdge::Init()`
     pub fn init_handlegeomcurve_real2(
         &mut self,
-        C: &crate::ffi_types::HandleGeomCurve,
+        C: &crate::ffi_types::Handle_Geom_Curve,
         p1: f64,
         p2: f64,
     ) {
@@ -1979,10 +1983,10 @@ impl MakeEdge {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:270 - `BRepBuilderAPI_MakeEdge::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:258 - `BRepBuilderAPI_MakeEdge::Init()`
     pub fn init_handlegeomcurve_pnt2(
         &mut self,
-        C: &crate::ffi_types::HandleGeomCurve,
+        C: &crate::ffi_types::Handle_Geom_Curve,
         P1: &crate::gp::Pnt,
         P2: &crate::gp::Pnt,
     ) {
@@ -1996,10 +2000,10 @@ impl MakeEdge {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:272 - `BRepBuilderAPI_MakeEdge::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:260 - `BRepBuilderAPI_MakeEdge::Init()`
     pub fn init_handlegeomcurve_vertex2(
         &mut self,
-        C: &crate::ffi_types::HandleGeomCurve,
+        C: &crate::ffi_types::Handle_Geom_Curve,
         V1: &crate::topo_ds::Vertex,
         V2: &crate::topo_ds::Vertex,
     ) {
@@ -2013,10 +2017,10 @@ impl MakeEdge {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:276 - `BRepBuilderAPI_MakeEdge::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:264 - `BRepBuilderAPI_MakeEdge::Init()`
     pub fn init_handlegeomcurve_pnt2_real2(
         &mut self,
-        C: &crate::ffi_types::HandleGeomCurve,
+        C: &crate::ffi_types::Handle_Geom_Curve,
         P1: &crate::gp::Pnt,
         P2: &crate::gp::Pnt,
         p1: f64,
@@ -2034,10 +2038,10 @@ impl MakeEdge {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:282 - `BRepBuilderAPI_MakeEdge::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:270 - `BRepBuilderAPI_MakeEdge::Init()`
     pub fn init_handlegeomcurve_vertex2_real2(
         &mut self,
-        C: &crate::ffi_types::HandleGeomCurve,
+        C: &crate::ffi_types::Handle_Geom_Curve,
         V1: &crate::topo_ds::Vertex,
         V2: &crate::topo_ds::Vertex,
         p1: f64,
@@ -2055,22 +2059,22 @@ impl MakeEdge {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:288 - `BRepBuilderAPI_MakeEdge::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:276 - `BRepBuilderAPI_MakeEdge::Init()`
     pub fn init_handlegeom2dcurve_handlegeomsurface(
         &mut self,
-        C: &crate::ffi_types::HandleGeom2dCurve,
-        S: &crate::ffi_types::HandleGeomSurface,
+        C: &crate::ffi_types::Handle_Geom2d_Curve,
+        S: &crate::ffi_types::Handle_Geom_Surface,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_init_handlegeom2dcurve_handlegeomsurface(self as *mut Self, C, S)
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:290 - `BRepBuilderAPI_MakeEdge::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:278 - `BRepBuilderAPI_MakeEdge::Init()`
     pub fn init_handlegeom2dcurve_handlegeomsurface_real2(
         &mut self,
-        C: &crate::ffi_types::HandleGeom2dCurve,
-        S: &crate::ffi_types::HandleGeomSurface,
+        C: &crate::ffi_types::Handle_Geom2d_Curve,
+        S: &crate::ffi_types::Handle_Geom_Surface,
         p1: f64,
         p2: f64,
     ) {
@@ -2079,11 +2083,11 @@ impl MakeEdge {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:295 - `BRepBuilderAPI_MakeEdge::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:283 - `BRepBuilderAPI_MakeEdge::Init()`
     pub fn init_handlegeom2dcurve_handlegeomsurface_pnt2(
         &mut self,
-        C: &crate::ffi_types::HandleGeom2dCurve,
-        S: &crate::ffi_types::HandleGeomSurface,
+        C: &crate::ffi_types::Handle_Geom2d_Curve,
+        S: &crate::ffi_types::Handle_Geom_Surface,
         P1: &crate::gp::Pnt,
         P2: &crate::gp::Pnt,
     ) {
@@ -2092,11 +2096,11 @@ impl MakeEdge {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:300 - `BRepBuilderAPI_MakeEdge::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:288 - `BRepBuilderAPI_MakeEdge::Init()`
     pub fn init_handlegeom2dcurve_handlegeomsurface_vertex2(
         &mut self,
-        C: &crate::ffi_types::HandleGeom2dCurve,
-        S: &crate::ffi_types::HandleGeomSurface,
+        C: &crate::ffi_types::Handle_Geom2d_Curve,
+        S: &crate::ffi_types::Handle_Geom_Surface,
         V1: &crate::topo_ds::Vertex,
         V2: &crate::topo_ds::Vertex,
     ) {
@@ -2105,11 +2109,11 @@ impl MakeEdge {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:305 - `BRepBuilderAPI_MakeEdge::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:293 - `BRepBuilderAPI_MakeEdge::Init()`
     pub fn init_handlegeom2dcurve_handlegeomsurface_pnt2_real2(
         &mut self,
-        C: &crate::ffi_types::HandleGeom2dCurve,
-        S: &crate::ffi_types::HandleGeomSurface,
+        C: &crate::ffi_types::Handle_Geom2d_Curve,
+        S: &crate::ffi_types::Handle_Geom_Surface,
         P1: &crate::gp::Pnt,
         P2: &crate::gp::Pnt,
         p1: f64,
@@ -2120,13 +2124,13 @@ impl MakeEdge {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:314 - `BRepBuilderAPI_MakeEdge::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:302 - `BRepBuilderAPI_MakeEdge::Init()`
     /// Defines or redefines the arguments for the construction of an edge.
     /// This function is currently used after the empty constructor BRepAPI_MakeEdge().
     pub fn init_handlegeom2dcurve_handlegeomsurface_vertex2_real2(
         &mut self,
-        C: &crate::ffi_types::HandleGeom2dCurve,
-        S: &crate::ffi_types::HandleGeomSurface,
+        C: &crate::ffi_types::Handle_Geom2d_Curve,
+        S: &crate::ffi_types::Handle_Geom_Surface,
         V1: &crate::topo_ds::Vertex,
         V2: &crate::topo_ds::Vertex,
         p1: f64,
@@ -2137,7 +2141,7 @@ impl MakeEdge {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:322 - `BRepBuilderAPI_MakeEdge::IsDone()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:310 - `BRepBuilderAPI_MakeEdge::IsDone()`
     /// Returns true if the edge is built.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -2145,7 +2149,7 @@ impl MakeEdge {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:328 - `BRepBuilderAPI_MakeEdge::Error()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:316 - `BRepBuilderAPI_MakeEdge::Error()`
     /// Returns the construction status
     /// -   BRepBuilderAPI_EdgeDone if the edge is built, or
     /// -   another value of the BRepBuilderAPI_EdgeError
@@ -2157,7 +2161,7 @@ impl MakeEdge {
         .unwrap()
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:332 - `BRepBuilderAPI_MakeEdge::Edge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:320 - `BRepBuilderAPI_MakeEdge::Edge()`
     /// Returns the constructed edge.
     /// Exceptions StdFail_NotDone if the edge is not built.
     pub fn edge(&mut self) -> &crate::topo_ds::Edge {
@@ -2168,7 +2172,7 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:336 - `BRepBuilderAPI_MakeEdge::Vertex1()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:324 - `BRepBuilderAPI_MakeEdge::Vertex1()`
     /// Returns the first vertex of the edge. May be Null.
     pub fn vertex1(&self) -> &crate::topo_ds::Vertex {
         unsafe {
@@ -2178,7 +2182,7 @@ impl MakeEdge {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:348 - `BRepBuilderAPI_MakeEdge::Vertex2()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:336 - `BRepBuilderAPI_MakeEdge::Vertex2()`
     /// Returns the second vertex of the edge. May be Null.
     ///
     /// Warning
@@ -2285,34 +2289,34 @@ impl MakeEdge {
 /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:69 - `BRepBuilderAPI_MakeEdge2d`
 /// Provides methods to build edges.
 ///
-/// The   methods have  the  following   syntax, where
+/// The methods have the following syntax, where
 /// TheCurve is one of Lin2d, Circ2d, ...
 ///
 /// Create(C : TheCurve)
 ///
-/// Makes an edge on  the whole curve.  Add vertices
+/// Makes an edge on the whole curve. Add vertices
 /// on finite curves.
 ///
 /// Create(C : TheCurve; p1,p2 : Real)
 ///
-/// Make an edge  on the curve between parameters p1
+/// Make an edge on the curve between parameters p1
 /// and p2. if p2 < p1 the edge will be REVERSED. If
-/// p1  or p2 is infinite the  curve will be open in
-/// that  direction. Vertices are created for finite
+/// p1 or p2 is infinite the curve will be open in
+/// that direction. Vertices are created for finite
 /// values of p1 and p2.
 ///
 /// Create(C : TheCurve; P1, P2 : Pnt2d from gp)
 ///
-/// Make an edge on the curve  between the points P1
-/// and P2. The  points are projected on   the curve
-/// and the   previous method is  used. An  error is
+/// Make an edge on the curve between the points P1
+/// and P2. The points are projected on the curve
+/// and the previous method is used. An error is
 /// raised if the points are not on the curve.
 ///
 /// Create(C : TheCurve; V1, V2 : Vertex from TopoDS)
 ///
-/// Make an edge  on the curve  between the vertices
-/// V1 and V2. Same as the  previous but no vertices
-/// are created. If a vertex is  Null the curve will
+/// Make an edge on the curve between the vertices
+/// V1 and V2. Same as the previous but no vertices
+/// are created. If a vertex is Null the curve will
 /// be open in this direction.
 pub use crate::ffi_types::BRepBuilderAPI_MakeEdge2d as MakeEdge2d;
 
@@ -2364,7 +2368,7 @@ impl MakeEdge2d {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:84 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:82 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn new_lin2d_pnt2d2(
         L: &crate::gp::Lin2d,
         P1: &crate::gp::Pnt2d,
@@ -2377,7 +2381,7 @@ impl MakeEdge2d {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:88 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:86 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn new_lin2d_vertex2(
         L: &crate::gp::Lin2d,
         V1: &crate::topo_ds::Vertex,
@@ -2392,7 +2396,7 @@ impl MakeEdge2d {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:92 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:90 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn new_circ2d(L: &crate::gp::Circ2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2401,7 +2405,7 @@ impl MakeEdge2d {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:94 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:92 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn new_circ2d_real2(L: &crate::gp::Circ2d, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2410,7 +2414,7 @@ impl MakeEdge2d {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:98 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:94 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn new_circ2d_pnt2d2(
         L: &crate::gp::Circ2d,
         P1: &crate::gp::Pnt2d,
@@ -2425,7 +2429,7 @@ impl MakeEdge2d {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:102 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:98 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn new_circ2d_vertex2(
         L: &crate::gp::Circ2d,
         V1: &crate::topo_ds::Vertex,
@@ -2440,7 +2444,7 @@ impl MakeEdge2d {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:106 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:102 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn new_elips2d(L: &crate::gp::Elips2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2449,7 +2453,7 @@ impl MakeEdge2d {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:108 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:104 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn new_elips2d_real2(L: &crate::gp::Elips2d, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2460,7 +2464,7 @@ impl MakeEdge2d {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:112 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:106 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn new_elips2d_pnt2d2(
         L: &crate::gp::Elips2d,
         P1: &crate::gp::Pnt2d,
@@ -2475,7 +2479,7 @@ impl MakeEdge2d {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:116 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:110 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn new_elips2d_vertex2(
         L: &crate::gp::Elips2d,
         V1: &crate::topo_ds::Vertex,
@@ -2490,7 +2494,7 @@ impl MakeEdge2d {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:120 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:114 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn new_hypr2d(L: &crate::gp::Hypr2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2499,7 +2503,7 @@ impl MakeEdge2d {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:122 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:116 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn new_hypr2d_real2(L: &crate::gp::Hypr2d, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2508,7 +2512,7 @@ impl MakeEdge2d {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:126 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:118 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn new_hypr2d_pnt2d2(
         L: &crate::gp::Hypr2d,
         P1: &crate::gp::Pnt2d,
@@ -2523,7 +2527,7 @@ impl MakeEdge2d {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:130 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:122 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn new_hypr2d_vertex2(
         L: &crate::gp::Hypr2d,
         V1: &crate::topo_ds::Vertex,
@@ -2538,7 +2542,7 @@ impl MakeEdge2d {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:134 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:126 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn new_parab2d(L: &crate::gp::Parab2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2547,7 +2551,7 @@ impl MakeEdge2d {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:136 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:128 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn new_parab2d_real2(L: &crate::gp::Parab2d, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2558,7 +2562,7 @@ impl MakeEdge2d {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:140 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:130 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn new_parab2d_pnt2d2(
         L: &crate::gp::Parab2d,
         P1: &crate::gp::Pnt2d,
@@ -2573,7 +2577,7 @@ impl MakeEdge2d {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:144 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:134 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn new_parab2d_vertex2(
         L: &crate::gp::Parab2d,
         V1: &crate::topo_ds::Vertex,
@@ -2588,8 +2592,10 @@ impl MakeEdge2d {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:148 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
-    pub fn new_handlegeom2dcurve(L: &crate::ffi_types::HandleGeom2dCurve) -> crate::OwnedPtr<Self> {
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:138 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    pub fn new_handlegeom2dcurve(
+        L: &crate::ffi_types::Handle_Geom2d_Curve,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_ctor_handlegeom2dcurve(L),
@@ -2597,9 +2603,9 @@ impl MakeEdge2d {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:150 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:140 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn new_handlegeom2dcurve_real2(
-        L: &crate::ffi_types::HandleGeom2dCurve,
+        L: &crate::ffi_types::Handle_Geom2d_Curve,
         p1: f64,
         p2: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -2612,9 +2618,9 @@ impl MakeEdge2d {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:154 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:144 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn new_handlegeom2dcurve_pnt2d2(
-        L: &crate::ffi_types::HandleGeom2dCurve,
+        L: &crate::ffi_types::Handle_Geom2d_Curve,
         P1: &crate::gp::Pnt2d,
         P2: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
@@ -2623,9 +2629,9 @@ impl MakeEdge2d {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:158 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:148 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn new_handlegeom2dcurve_vertex2(
-        L: &crate::ffi_types::HandleGeom2dCurve,
+        L: &crate::ffi_types::Handle_Geom2d_Curve,
         V1: &crate::topo_ds::Vertex,
         V2: &crate::topo_ds::Vertex,
     ) -> crate::OwnedPtr<Self> {
@@ -2634,9 +2640,9 @@ impl MakeEdge2d {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:162 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:152 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn new_handlegeom2dcurve_pnt2d2_real2(
-        L: &crate::ffi_types::HandleGeom2dCurve,
+        L: &crate::ffi_types::Handle_Geom2d_Curve,
         P1: &crate::gp::Pnt2d,
         P2: &crate::gp::Pnt2d,
         p1: f64,
@@ -2647,9 +2653,9 @@ impl MakeEdge2d {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:168 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:158 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn new_handlegeom2dcurve_vertex2_real2(
-        L: &crate::ffi_types::HandleGeom2dCurve,
+        L: &crate::ffi_types::Handle_Geom2d_Curve,
         V1: &crate::topo_ds::Vertex,
         V2: &crate::topo_ds::Vertex,
         p1: f64,
@@ -2660,8 +2666,8 @@ impl MakeEdge2d {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:174 - `BRepBuilderAPI_MakeEdge2d::Init()`
-    pub fn init_handlegeom2dcurve(&mut self, C: &crate::ffi_types::HandleGeom2dCurve) {
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:164 - `BRepBuilderAPI_MakeEdge2d::Init()`
+    pub fn init_handlegeom2dcurve(&mut self, C: &crate::ffi_types::Handle_Geom2d_Curve) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_init_handlegeom2dcurve(
                 self as *mut Self,
@@ -2670,10 +2676,10 @@ impl MakeEdge2d {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:176 - `BRepBuilderAPI_MakeEdge2d::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:166 - `BRepBuilderAPI_MakeEdge2d::Init()`
     pub fn init_handlegeom2dcurve_real2(
         &mut self,
-        C: &crate::ffi_types::HandleGeom2dCurve,
+        C: &crate::ffi_types::Handle_Geom2d_Curve,
         p1: f64,
         p2: f64,
     ) {
@@ -2687,10 +2693,10 @@ impl MakeEdge2d {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:180 - `BRepBuilderAPI_MakeEdge2d::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:168 - `BRepBuilderAPI_MakeEdge2d::Init()`
     pub fn init_handlegeom2dcurve_pnt2d2(
         &mut self,
-        C: &crate::ffi_types::HandleGeom2dCurve,
+        C: &crate::ffi_types::Handle_Geom2d_Curve,
         P1: &crate::gp::Pnt2d,
         P2: &crate::gp::Pnt2d,
     ) {
@@ -2704,10 +2710,10 @@ impl MakeEdge2d {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:182 - `BRepBuilderAPI_MakeEdge2d::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:172 - `BRepBuilderAPI_MakeEdge2d::Init()`
     pub fn init_handlegeom2dcurve_vertex2(
         &mut self,
-        C: &crate::ffi_types::HandleGeom2dCurve,
+        C: &crate::ffi_types::Handle_Geom2d_Curve,
         V1: &crate::topo_ds::Vertex,
         V2: &crate::topo_ds::Vertex,
     ) {
@@ -2721,10 +2727,10 @@ impl MakeEdge2d {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:186 - `BRepBuilderAPI_MakeEdge2d::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:176 - `BRepBuilderAPI_MakeEdge2d::Init()`
     pub fn init_handlegeom2dcurve_pnt2d2_real2(
         &mut self,
-        C: &crate::ffi_types::HandleGeom2dCurve,
+        C: &crate::ffi_types::Handle_Geom2d_Curve,
         P1: &crate::gp::Pnt2d,
         P2: &crate::gp::Pnt2d,
         p1: f64,
@@ -2735,10 +2741,10 @@ impl MakeEdge2d {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:192 - `BRepBuilderAPI_MakeEdge2d::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:182 - `BRepBuilderAPI_MakeEdge2d::Init()`
     pub fn init_handlegeom2dcurve_vertex2_real2(
         &mut self,
-        C: &crate::ffi_types::HandleGeom2dCurve,
+        C: &crate::ffi_types::Handle_Geom2d_Curve,
         V1: &crate::topo_ds::Vertex,
         V2: &crate::topo_ds::Vertex,
         p1: f64,
@@ -2749,14 +2755,14 @@ impl MakeEdge2d {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:198 - `BRepBuilderAPI_MakeEdge2d::IsDone()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:188 - `BRepBuilderAPI_MakeEdge2d::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_is_done(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:201 - `BRepBuilderAPI_MakeEdge2d::Error()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:191 - `BRepBuilderAPI_MakeEdge2d::Error()`
     /// Returns the error description when NotDone.
     pub fn error(&self) -> crate::b_rep_builder_api::EdgeError {
         crate::b_rep_builder_api::EdgeError::try_from(crate::check_result(unsafe {
@@ -2765,7 +2771,7 @@ impl MakeEdge2d {
         .unwrap()
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:203 - `BRepBuilderAPI_MakeEdge2d::Edge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:193 - `BRepBuilderAPI_MakeEdge2d::Edge()`
     pub fn edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_edge(
@@ -2774,7 +2780,7 @@ impl MakeEdge2d {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:207 - `BRepBuilderAPI_MakeEdge2d::Vertex1()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:197 - `BRepBuilderAPI_MakeEdge2d::Vertex1()`
     /// Returns the first vertex of the edge. May be Null.
     pub fn vertex1(&self) -> &crate::topo_ds::Vertex {
         unsafe {
@@ -2784,7 +2790,7 @@ impl MakeEdge2d {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:210 - `BRepBuilderAPI_MakeEdge2d::Vertex2()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:200 - `BRepBuilderAPI_MakeEdge2d::Vertex2()`
     /// Returns the second vertex of the edge. May be Null.
     pub fn vertex2(&self) -> &crate::topo_ds::Vertex {
         unsafe {
@@ -2878,7 +2884,7 @@ impl MakeEdge2d {
 /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:62 - `BRepBuilderAPI_MakeFace`
 /// Provides methods to build faces.
 ///
-/// A face may be built :
+/// A face may be built:
 ///
 /// * From a surface.
 ///
@@ -2895,7 +2901,7 @@ impl MakeEdge2d {
 /// * From a surface and a wire.
 ///
 /// - A flag Inside is given, when this flag is True
-/// the  wire is  oriented to bound a finite area on
+/// the wire is oriented to bound a finite area on
 /// the surface.
 ///
 /// * From a face and a wire.
@@ -2986,7 +2992,7 @@ impl MakeFace {
     /// Make a face from a Surface. Accepts tolerance value (TolDegen)
     /// for resolution of degenerated edges.
     pub fn new_handlegeomsurface_real(
-        S: &crate::ffi_types::HandleGeomSurface,
+        S: &crate::ffi_types::Handle_Geom_Surface,
         TolDegen: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3092,7 +3098,7 @@ impl MakeFace {
     /// Make a face from a Surface. Accepts tolerance value (TolDegen)
     /// for resolution of degenerated edges.
     pub fn new_handlegeomsurface_real5(
-        S: &crate::ffi_types::HandleGeomSurface,
+        S: &crate::ffi_types::Handle_Geom_Surface,
         UMin: f64,
         UMax: f64,
         VMin: f64,
@@ -3121,7 +3127,7 @@ impl MakeFace {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:145 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:144 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
     /// Make a face from a plane and a wire.
     pub fn new_pln_wire_bool(
         P: &crate::gp::Pln,
@@ -3137,7 +3143,7 @@ impl MakeFace {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:150 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:149 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
     /// Make a face from a cylinder and a wire.
     pub fn new_cylinder_wire_bool(
         C: &crate::gp::Cylinder,
@@ -3153,7 +3159,7 @@ impl MakeFace {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:155 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:154 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
     /// Make a face from a cone and a wire.
     pub fn new_cone_wire_bool(
         C: &crate::gp::Cone,
@@ -3169,7 +3175,7 @@ impl MakeFace {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:160 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:159 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
     /// Make a face from a sphere and a wire.
     pub fn new_sphere_wire_bool(
         S: &crate::gp::Sphere,
@@ -3185,7 +3191,7 @@ impl MakeFace {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:165 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:164 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
     /// Make a face from a torus and a wire.
     pub fn new_torus_wire_bool(
         C: &crate::gp::Torus,
@@ -3201,13 +3207,13 @@ impl MakeFace {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:173 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:172 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
     /// Make a face from a Surface and a wire.
     /// If the surface S is not plane,
     /// it must contain pcurves for all edges in W,
     /// otherwise the wrong shape will be created.
     pub fn new_handlegeomsurface_wire_bool(
-        S: &crate::ffi_types::HandleGeomSurface,
+        S: &crate::ffi_types::Handle_Geom_Surface,
         W: &crate::topo_ds::Wire,
         Inside: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -3216,7 +3222,7 @@ impl MakeFace {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:220 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:219 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
     /// Adds the wire <W> in the face <F>
     /// A general method to create a face is to give
     /// -      a surface S as the support (the geometric domain) of the face,
@@ -3280,13 +3286,13 @@ impl MakeFace {
         Self::new_wire_bool(W, false)
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:145 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:144 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
     /// Make a face from a plane and a wire.
     pub fn new_pln_wire(P: &crate::gp::Pln, W: &crate::topo_ds::Wire) -> crate::OwnedPtr<Self> {
         Self::new_pln_wire_bool(P, W, true)
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:150 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:149 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
     /// Make a face from a cylinder and a wire.
     pub fn new_cylinder_wire(
         C: &crate::gp::Cylinder,
@@ -3295,13 +3301,13 @@ impl MakeFace {
         Self::new_cylinder_wire_bool(C, W, true)
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:155 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:154 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
     /// Make a face from a cone and a wire.
     pub fn new_cone_wire(C: &crate::gp::Cone, W: &crate::topo_ds::Wire) -> crate::OwnedPtr<Self> {
         Self::new_cone_wire_bool(C, W, true)
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:160 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:159 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
     /// Make a face from a sphere and a wire.
     pub fn new_sphere_wire(
         S: &crate::gp::Sphere,
@@ -3310,25 +3316,25 @@ impl MakeFace {
         Self::new_sphere_wire_bool(S, W, true)
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:165 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:164 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
     /// Make a face from a torus and a wire.
     pub fn new_torus_wire(C: &crate::gp::Torus, W: &crate::topo_ds::Wire) -> crate::OwnedPtr<Self> {
         Self::new_torus_wire_bool(C, W, true)
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:173 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:172 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
     /// Make a face from a Surface and a wire.
     /// If the surface S is not plane,
     /// it must contain pcurves for all edges in W,
     /// otherwise the wrong shape will be created.
     pub fn new_handlegeomsurface_wire(
-        S: &crate::ffi_types::HandleGeomSurface,
+        S: &crate::ffi_types::Handle_Geom_Surface,
         W: &crate::topo_ds::Wire,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handlegeomsurface_wire_bool(S, W, true)
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:227 - `BRepBuilderAPI_MakeFace::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:226 - `BRepBuilderAPI_MakeFace::Init()`
     /// Initializes (or reinitializes) the
     /// construction of a face by creating a new object which is a copy of
     /// the face F, in order to add wires to it, using the function Add.
@@ -3340,7 +3346,7 @@ impl MakeFace {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:238 - `BRepBuilderAPI_MakeFace::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:237 - `BRepBuilderAPI_MakeFace::Init()`
     /// Initializes (or reinitializes) the construction of a face on
     /// the surface S. If Bound is true, a wire is
     /// automatically created from the natural bounds of the
@@ -3352,7 +3358,7 @@ impl MakeFace {
     /// if calculation of natural bounds is turned on.
     pub fn init_handlegeomsurface_bool_real(
         &mut self,
-        S: &crate::ffi_types::HandleGeomSurface,
+        S: &crate::ffi_types::Handle_Geom_Surface,
         Bound: bool,
         TolDegen: f64,
     ) {
@@ -3366,7 +3372,7 @@ impl MakeFace {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:252 - `BRepBuilderAPI_MakeFace::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:251 - `BRepBuilderAPI_MakeFace::Init()`
     /// Initializes (or reinitializes) the construction of a face on
     /// the surface S, limited in the u parametric direction by
     /// the two parameter values UMin and UMax and in the
@@ -3379,7 +3385,7 @@ impl MakeFace {
     /// TolDegen parameter is used for resolution of degenerated edges.
     pub fn init_handlegeomsurface_real5(
         &mut self,
-        S: &crate::ffi_types::HandleGeomSurface,
+        S: &crate::ffi_types::Handle_Geom_Surface,
         UMin: f64,
         UMax: f64,
         VMin: f64,
@@ -3399,7 +3405,7 @@ impl MakeFace {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:272 - `BRepBuilderAPI_MakeFace::Add()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:271 - `BRepBuilderAPI_MakeFace::Add()`
     /// Adds the wire W to the constructed face as a hole.
     /// Warning
     /// W must not cross the other bounds of the face, and all
@@ -3419,7 +3425,7 @@ impl MakeFace {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:275 - `BRepBuilderAPI_MakeFace::IsDone()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:274 - `BRepBuilderAPI_MakeFace::IsDone()`
     /// Returns true if this algorithm has a valid face.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -3427,7 +3433,7 @@ impl MakeFace {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:283 - `BRepBuilderAPI_MakeFace::Error()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:282 - `BRepBuilderAPI_MakeFace::Error()`
     /// Returns the construction status
     /// BRepBuilderAPI_FaceDone if the face is built, or
     /// -   another value of the BRepBuilderAPI_FaceError
@@ -3441,7 +3447,7 @@ impl MakeFace {
         .unwrap()
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:288 - `BRepBuilderAPI_MakeFace::Face()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:287 - `BRepBuilderAPI_MakeFace::Face()`
     /// Returns the constructed face.
     /// Exceptions
     /// StdFail_NotDone if no face is built.
@@ -3543,8 +3549,8 @@ impl MakeFace {
 /// polygonal wire can be built from any number of points
 /// or vertices, and consists of a sequence of connected
 /// rectilinear edges.
-/// When a point or vertex is added to the  polygon if
-/// it is identic  to the previous  point no  edge  is
+/// When a point or vertex is added to the polygon if
+/// it is identic to the previous point no edge is
 /// built. The method added can be used to test it.
 /// Construction of a Polygonal Wire
 /// You can construct:
@@ -3673,7 +3679,7 @@ impl MakePolygon {
     /// construction can be consulted at any time by using the Wire function.
     /// Example
     /// //a closed triangle from three vertices
-    /// TopoDS_Wire W = BRepBuilderAPI_MakePolygon(V1,V2,V3,Standard_True);
+    /// TopoDS_Wire W = BRepBuilderAPI_MakePolygon(V1,V2,V3,true);
     /// Warning
     /// The process is equivalent to:
     /// -      initializing an empty polygonal wire,
@@ -3749,7 +3755,7 @@ impl MakePolygon {
     /// construction can be consulted at any time by using the Wire function.
     /// Example
     /// //a closed triangle from three vertices
-    /// TopoDS_Wire W = BRepBuilderAPI_MakePolygon(V1,V2,V3,Standard_True);
+    /// TopoDS_Wire W = BRepBuilderAPI_MakePolygon(V1,V2,V3,true);
     /// Warning
     /// The process is equivalent to:
     /// -      initializing an empty polygonal wire,
@@ -3968,10 +3974,10 @@ impl MakePolygon {
 // ========================
 
 /// **Source:** `BRepBuilderAPI_MakeShape.hxx`:34 - `BRepBuilderAPI_MakeShape`
-/// This    is  the  root     class for     all  shape
-/// constructions.  It stores the result.
+/// This is the root class for all shape
+/// constructions. It stores the result.
 ///
-/// It  provides deferred methods to trace the history
+/// It provides deferred methods to trace the history
 /// of sub-shapes.
 pub use crate::ffi_types::BRepBuilderAPI_MakeShape as MakeShape;
 
@@ -3985,7 +3991,7 @@ unsafe impl crate::CppDeletable for MakeShape {
 
 impl MakeShape {
     /// **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
-    /// This is  called by  Shape().  It does  nothing but
+    /// This is called by Shape(). It does nothing but
     /// may be redefined.
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
@@ -4005,7 +4011,7 @@ impl MakeShape {
     }
 
     /// **Source:** `BRepBuilderAPI_MakeShape.hxx`:51 - `BRepBuilderAPI_MakeShape::Generated()`
-    /// Returns the  list   of shapes generated   from the
+    /// Returns the list of shapes generated from the
     /// shape <S>.
     ///
     /// # Safety
@@ -4016,7 +4022,7 @@ impl MakeShape {
     pub unsafe fn generated(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShape_generated(
@@ -4028,7 +4034,7 @@ impl MakeShape {
     }
 
     /// **Source:** `BRepBuilderAPI_MakeShape.hxx`:55 - `BRepBuilderAPI_MakeShape::Modified()`
-    /// Returns the list  of shapes modified from the shape
+    /// Returns the list of shapes modified from the shape
     /// <S>.
     ///
     /// # Safety
@@ -4039,7 +4045,7 @@ impl MakeShape {
     pub unsafe fn modified(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShape_modified(
                 self as *mut Self,
@@ -4120,7 +4126,7 @@ impl MakeShapeOnMesh {
     /// Ctor. Sets mesh to process.
     /// @param[in] theMesh  - Mesh to construct shape for.
     pub fn new_handlepolytriangulation(
-        theMesh: &crate::ffi_types::HandlePolyTriangulation,
+        theMesh: &crate::ffi_types::Handle_Poly_Triangulation,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShapeOnMesh_ctor_handlepolytriangulation(theMesh)))
@@ -4262,7 +4268,7 @@ impl MakeShell {
     /// **Source:** `BRepBuilderAPI_MakeShell.hxx`:67 - `BRepBuilderAPI_MakeShell::BRepBuilderAPI_MakeShell()`
     /// Constructs a shell from the surface S.
     pub fn new_handlegeomsurface_bool(
-        S: &crate::ffi_types::HandleGeomSurface,
+        S: &crate::ffi_types::Handle_Geom_Surface,
         Segment: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -4280,7 +4286,7 @@ impl MakeShell {
     /// parameter values UMin and UMax, and limited in the v
     /// parametric direction by the two parameter values VMin and VMax.
     pub fn new_handlegeomsurface_real4_bool(
-        S: &crate::ffi_types::HandleGeomSurface,
+        S: &crate::ffi_types::Handle_Geom_Surface,
         UMin: f64,
         UMax: f64,
         VMin: f64,
@@ -4294,7 +4300,9 @@ impl MakeShell {
 
     /// **Source:** `BRepBuilderAPI_MakeShell.hxx`:67 - `BRepBuilderAPI_MakeShell::BRepBuilderAPI_MakeShell()`
     /// Constructs a shell from the surface S.
-    pub fn new_handlegeomsurface(S: &crate::ffi_types::HandleGeomSurface) -> crate::OwnedPtr<Self> {
+    pub fn new_handlegeomsurface(
+        S: &crate::ffi_types::Handle_Geom_Surface,
+    ) -> crate::OwnedPtr<Self> {
         Self::new_handlegeomsurface_bool(S, false)
     }
 
@@ -4304,7 +4312,7 @@ impl MakeShell {
     /// parameter values UMin and UMax, and limited in the v
     /// parametric direction by the two parameter values VMin and VMax.
     pub fn new_handlegeomsurface_real4(
-        S: &crate::ffi_types::HandleGeomSurface,
+        S: &crate::ffi_types::Handle_Geom_Surface,
         UMin: f64,
         UMax: f64,
         VMin: f64,
@@ -4326,7 +4334,7 @@ impl MakeShell {
     /// surface or the basis surface if S is trimmed
     pub fn init(
         &mut self,
-        S: &crate::ffi_types::HandleGeomSurface,
+        S: &crate::ffi_types::Handle_Geom_Surface,
         UMin: f64,
         UMax: f64,
         VMin: f64,
@@ -4848,7 +4856,7 @@ impl MakeVertex {
 // From BRepBuilderAPI_MakeWire.hxx
 // ========================
 
-/// **Source:** `BRepBuilderAPI_MakeWire.hxx`:63 - `BRepBuilderAPI_MakeWire`
+/// **Source:** `BRepBuilderAPI_MakeWire.hxx`:64 - `BRepBuilderAPI_MakeWire`
 /// Describes functions to build wires from edges. A wire can
 /// be built from any number of edges.
 /// To build a wire you first initialize the construction, then
@@ -4891,7 +4899,7 @@ unsafe impl crate::CppDeletable for MakeWire {
 }
 
 impl MakeWire {
-    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:76 - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
+    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:77 - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
     /// Constructs an empty wire framework, to which edges
     /// are added using the Add function.
     /// As soon as the wire contains one edge, it can return
@@ -4908,7 +4916,7 @@ impl MakeWire {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:79 - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
+    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:80 - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
     /// Make a Wire from an edge.
     pub fn new_edge(E: &crate::topo_ds::Edge) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -4918,7 +4926,7 @@ impl MakeWire {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:82 - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
+    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:83 - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
     /// Make a Wire from two edges.
     pub fn new_edge2(
         E1: &crate::topo_ds::Edge,
@@ -4931,7 +4939,7 @@ impl MakeWire {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:85 - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
+    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:86 - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
     /// Make a Wire from three edges.
     pub fn new_edge3(
         E1: &crate::topo_ds::Edge,
@@ -4945,7 +4953,7 @@ impl MakeWire {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:110 - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
+    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:111 - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
     /// Make a Wire from four edges.
     /// Constructs a wire
     /// -   from the TopoDS_Wire W composed of the edge E, or
@@ -4980,7 +4988,7 @@ impl MakeWire {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:116 - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
+    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:117 - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
     /// Make a Wire from a Wire. useful for adding later.
     pub fn new_wire(W: &crate::topo_ds::Wire) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -4990,7 +4998,7 @@ impl MakeWire {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:119 - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
+    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:120 - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
     /// Add an edge to a wire.
     pub fn new_wire_edge(
         W: &crate::topo_ds::Wire,
@@ -5003,7 +5011,7 @@ impl MakeWire {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:134 - `BRepBuilderAPI_MakeWire::Add()`
+    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:135 - `BRepBuilderAPI_MakeWire::Add()`
     /// Adds the edge E to the wire under construction.
     /// E must be connectable to the wire under construction, and, unless it
     /// is the first edge of the wire, must satisfy the following
@@ -5023,7 +5031,7 @@ impl MakeWire {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:137 - `BRepBuilderAPI_MakeWire::Add()`
+    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:138 - `BRepBuilderAPI_MakeWire::Add()`
     /// Add the edges of <W> to the current wire.
     pub fn add_wire(&mut self, W: &crate::topo_ds::Wire) {
         crate::check_void_result(unsafe {
@@ -5031,24 +5039,24 @@ impl MakeWire {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:146 - `BRepBuilderAPI_MakeWire::Add()`
-    /// Adds  the edges of <L>   to the current  wire.  The
-    /// edges are not to be consecutive.   But they are to
-    /// be  all  connected geometrically or topologically.
-    /// If some of them are  not connected the Status give
+    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:147 - `BRepBuilderAPI_MakeWire::Add()`
+    /// Adds the edges of <L> to the current wire. The
+    /// edges are not to be consecutive. But they are to
+    /// be all connected geometrically or topologically.
+    /// If some of them are not connected the Status give
     /// DisconnectedWire but the "Maker" is Done() and you
-    /// can get the  partial result. (ie connected to  the
-    /// first edgeof the list <L>)
-    pub fn add_listofshape(&mut self, L: &crate::ffi_types::TopTools_ListOfShape) {
+    /// can get the partial result.
+    /// (i.e. connected to the first edgeof the list <L>)
+    pub fn add_list_shape(&mut self, L: &crate::ffi_types::NCollection_List_TopoDS_Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeWire_add_listofshape(
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeWire_add_list_shape(
                 self as *mut Self,
                 L,
             )
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:152 - `BRepBuilderAPI_MakeWire::IsDone()`
+    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:153 - `BRepBuilderAPI_MakeWire::IsDone()`
     /// Returns true if this algorithm contains a valid wire.
     /// IsDone returns false if:
     /// -   there are no edges in the wire, or
@@ -5059,7 +5067,7 @@ impl MakeWire {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:158 - `BRepBuilderAPI_MakeWire::Error()`
+    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:159 - `BRepBuilderAPI_MakeWire::Error()`
     /// Returns the construction status
     /// -   BRepBuilderAPI_WireDone if the wire is built, or
     /// -   another value of the BRepBuilderAPI_WireError
@@ -5071,7 +5079,7 @@ impl MakeWire {
         .unwrap()
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:163 - `BRepBuilderAPI_MakeWire::Wire()`
+    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:164 - `BRepBuilderAPI_MakeWire::Wire()`
     /// Returns the constructed wire; or the part of the wire
     /// under construction already built.
     /// Exceptions StdFail_NotDone if a wire is not built.
@@ -5083,7 +5091,7 @@ impl MakeWire {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:173 - `BRepBuilderAPI_MakeWire::Edge()`
+    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:174 - `BRepBuilderAPI_MakeWire::Edge()`
     /// Returns the last edge added to the wire under construction.
     /// Warning
     /// -   This edge can be different from the original one (the
@@ -5099,7 +5107,7 @@ impl MakeWire {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:181 - `BRepBuilderAPI_MakeWire::Vertex()`
+    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:182 - `BRepBuilderAPI_MakeWire::Vertex()`
     /// Returns the last vertex of the last edge added to the
     /// wire under construction.
     /// Warning
@@ -5200,11 +5208,11 @@ impl MakeWire {
 // ========================
 
 /// **Source:** `BRepBuilderAPI_ModifyShape.hxx`:45 - `BRepBuilderAPI_ModifyShape`
-/// Implements   the  methods   of MakeShape for   the
-/// constant  topology modifications.  The methods are
-/// implemented  when the modification uses a Modifier
-/// from BRepTools. Some of  them have to be redefined
-/// if  the  modification is  implemented with another
+/// Implements the methods of MakeShape for the
+/// constant topology modifications. The methods are
+/// implemented when the modification uses a Modifier
+/// from BRepTools. Some of them have to be redefined
+/// if the modification is implemented with another
 /// tool (see Transform from BRepBuilderAPI for example).
 /// The BRepBuilderAPI package provides the following
 /// frameworks to perform modifications of this sort:
@@ -5227,7 +5235,7 @@ unsafe impl crate::CppDeletable for ModifyShape {
 
 impl ModifyShape {
     /// **Source:** `BRepBuilderAPI_ModifyShape.hxx`:52 - `BRepBuilderAPI_ModifyShape::Modified()`
-    /// Returns the list  of shapes modified from the shape
+    /// Returns the list of shapes modified from the shape
     /// <S>.
     ///
     /// # Safety
@@ -5238,7 +5246,7 @@ impl ModifyShape {
     pub unsafe fn modified(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_ModifyShape_modified(
@@ -5249,7 +5257,7 @@ impl ModifyShape {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_ModifyShape.hxx`:63 - `BRepBuilderAPI_ModifyShape::ModifiedShape()`
+    /// **Source:** `BRepBuilderAPI_ModifyShape.hxx`:62 - `BRepBuilderAPI_ModifyShape::ModifiedShape()`
     /// Returns the modified shape corresponding to <S>.
     /// S can correspond to the entire initial shape or to its subshape.
     /// Exceptions
@@ -5362,7 +5370,7 @@ impl ModifyShape {
 // From BRepBuilderAPI_NurbsConvert.hxx
 // ========================
 
-/// **Source:** `BRepBuilderAPI_NurbsConvert.hxx`:35 - `BRepBuilderAPI_NurbsConvert`
+/// **Source:** `BRepBuilderAPI_NurbsConvert.hxx`:37 - `BRepBuilderAPI_NurbsConvert`
 /// Conversion of the complete geometry of a shape
 /// (all 3D analytical representation of surfaces and curves)
 /// into NURBS geometry (except for Planes). For example,
@@ -5380,7 +5388,7 @@ unsafe impl crate::CppDeletable for NurbsConvert {
 }
 
 impl NurbsConvert {
-    /// **Source:** `BRepBuilderAPI_NurbsConvert.hxx`:43 - `BRepBuilderAPI_NurbsConvert::BRepBuilderAPI_NurbsConvert()`
+    /// **Source:** `BRepBuilderAPI_NurbsConvert.hxx`:45 - `BRepBuilderAPI_NurbsConvert::BRepBuilderAPI_NurbsConvert()`
     /// Constructs a framework for converting the geometry of a
     /// shape into NURBS geometry. Use the function Perform
     /// to define the shape to convert.
@@ -5392,7 +5400,7 @@ impl NurbsConvert {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_NurbsConvert.hxx`:54 - `BRepBuilderAPI_NurbsConvert::BRepBuilderAPI_NurbsConvert()`
+    /// **Source:** `BRepBuilderAPI_NurbsConvert.hxx`:56 - `BRepBuilderAPI_NurbsConvert::BRepBuilderAPI_NurbsConvert()`
     /// Builds a new shape by converting the geometry of the
     /// shape S into NURBS geometry. Specifically, all curves
     /// supporting edges of S are converted into BSpline
@@ -5410,7 +5418,7 @@ impl NurbsConvert {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_NurbsConvert.hxx`:54 - `BRepBuilderAPI_NurbsConvert::BRepBuilderAPI_NurbsConvert()`
+    /// **Source:** `BRepBuilderAPI_NurbsConvert.hxx`:56 - `BRepBuilderAPI_NurbsConvert::BRepBuilderAPI_NurbsConvert()`
     /// Builds a new shape by converting the geometry of the
     /// shape S into NURBS geometry. Specifically, all curves
     /// supporting edges of S are converted into BSpline
@@ -5424,7 +5432,7 @@ impl NurbsConvert {
         Self::new_shape_bool(S, false)
     }
 
-    /// **Source:** `BRepBuilderAPI_NurbsConvert.hxx`:65 - `BRepBuilderAPI_NurbsConvert::Perform()`
+    /// **Source:** `BRepBuilderAPI_NurbsConvert.hxx`:66 - `BRepBuilderAPI_NurbsConvert::Perform()`
     /// Builds a new shape by converting the geometry of the
     /// shape S into NURBS geometry.
     /// Specifically, all curves supporting edges of S are
@@ -5443,8 +5451,8 @@ impl NurbsConvert {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_NurbsConvert.hxx`:69 - `BRepBuilderAPI_NurbsConvert::Modified()`
-    /// Returns the list  of shapes modified from the shape
+    /// **Source:** `BRepBuilderAPI_NurbsConvert.hxx`:70 - `BRepBuilderAPI_NurbsConvert::Modified()`
+    /// Returns the list of shapes modified from the shape
     /// <S>.
     ///
     /// # Safety
@@ -5455,7 +5463,7 @@ impl NurbsConvert {
     pub unsafe fn modified(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_NurbsConvert_modified(
@@ -5466,7 +5474,7 @@ impl NurbsConvert {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_NurbsConvert.hxx`:77 - `BRepBuilderAPI_NurbsConvert::ModifiedShape()`
+    /// **Source:** `BRepBuilderAPI_NurbsConvert.hxx`:78 - `BRepBuilderAPI_NurbsConvert::ModifiedShape()`
     /// Returns the modified shape corresponding to <S>.
     /// S can correspond to the entire initial shape or to its subshape.
     /// Exceptions
@@ -5587,7 +5595,7 @@ impl NurbsConvert {
 // From BRepBuilderAPI_Sewing.hxx
 // ========================
 
-/// **Source:** `BRepBuilderAPI_Sewing.hxx`:77 - `BRepBuilderAPI_Sewing`
+/// **Source:** `BRepBuilderAPI_Sewing.hxx`:68 - `BRepBuilderAPI_Sewing`
 /// Provides methods to
 ///
 /// - identify possible contiguous boundaries (for control
@@ -5621,7 +5629,7 @@ unsafe impl crate::CppDeletable for Sewing {
 }
 
 impl Sewing {
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:87 - `BRepBuilderAPI_Sewing::BRepBuilderAPI_Sewing()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:78 - `BRepBuilderAPI_Sewing::BRepBuilderAPI_Sewing()`
     /// Creates an object with
     /// tolerance of connexity
     /// option for sewing (if false only control)
@@ -5644,7 +5652,7 @@ impl Sewing {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:87 - `BRepBuilderAPI_Sewing::BRepBuilderAPI_Sewing()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:78 - `BRepBuilderAPI_Sewing::BRepBuilderAPI_Sewing()`
     /// Creates an object with
     /// tolerance of connexity
     /// option for sewing (if false only control)
@@ -5660,7 +5668,7 @@ impl Sewing {
         Self::new_real_bool4(tolerance, option1, option2, option3, false)
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:87 - `BRepBuilderAPI_Sewing::BRepBuilderAPI_Sewing()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:78 - `BRepBuilderAPI_Sewing::BRepBuilderAPI_Sewing()`
     /// Creates an object with
     /// tolerance of connexity
     /// option for sewing (if false only control)
@@ -5671,7 +5679,7 @@ impl Sewing {
         Self::new_real_bool4(tolerance, option1, option2, true, false)
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:87 - `BRepBuilderAPI_Sewing::BRepBuilderAPI_Sewing()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:78 - `BRepBuilderAPI_Sewing::BRepBuilderAPI_Sewing()`
     /// Creates an object with
     /// tolerance of connexity
     /// option for sewing (if false only control)
@@ -5682,7 +5690,7 @@ impl Sewing {
         Self::new_real_bool4(tolerance, option1, true, true, false)
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:87 - `BRepBuilderAPI_Sewing::BRepBuilderAPI_Sewing()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:78 - `BRepBuilderAPI_Sewing::BRepBuilderAPI_Sewing()`
     /// Creates an object with
     /// tolerance of connexity
     /// option for sewing (if false only control)
@@ -5693,7 +5701,7 @@ impl Sewing {
         Self::new_real_bool4(tolerance, true, true, true, false)
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:87 - `BRepBuilderAPI_Sewing::BRepBuilderAPI_Sewing()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:78 - `BRepBuilderAPI_Sewing::BRepBuilderAPI_Sewing()`
     /// Creates an object with
     /// tolerance of connexity
     /// option for sewing (if false only control)
@@ -5704,7 +5712,7 @@ impl Sewing {
         Self::new_real_bool4(1.0e-06, true, true, true, false)
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:94 - `BRepBuilderAPI_Sewing::Init()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:85 - `BRepBuilderAPI_Sewing::Init()`
     /// initialize the parameters if necessary
     pub fn init(
         &mut self,
@@ -5726,7 +5734,7 @@ impl Sewing {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:101 - `BRepBuilderAPI_Sewing::Load()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:92 - `BRepBuilderAPI_Sewing::Load()`
     /// Loads the context shape.
     pub fn load(&mut self, shape: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
@@ -5734,7 +5742,7 @@ impl Sewing {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:104 - `BRepBuilderAPI_Sewing::Add()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:95 - `BRepBuilderAPI_Sewing::Add()`
     /// Defines the shapes to be sewed or controlled
     pub fn add(&mut self, shape: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
@@ -5742,7 +5750,7 @@ impl Sewing {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:108 - `BRepBuilderAPI_Sewing::Perform()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:99 - `BRepBuilderAPI_Sewing::Perform()`
     /// Computing
     /// theProgress - progress indicator of algorithm
     pub fn perform(&mut self, theProgress: &crate::message::ProgressRange) {
@@ -5754,7 +5762,7 @@ impl Sewing {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:113 - `BRepBuilderAPI_Sewing::SewedShape()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:104 - `BRepBuilderAPI_Sewing::SewedShape()`
     /// Gives the sewed shape
     /// a null shape if nothing constructed
     /// may be a face, a shell, a solid or a compound
@@ -5766,9 +5774,9 @@ impl Sewing {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:116 - `BRepBuilderAPI_Sewing::SetContext()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:107 - `BRepBuilderAPI_Sewing::SetContext()`
     /// set context
-    pub fn set_context(&mut self, theContext: &crate::ffi_types::HandleBRepToolsReShape) {
+    pub fn set_context(&mut self, theContext: &crate::ffi_types::Handle_BRepTools_ReShape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_set_context(
                 self as *mut Self,
@@ -5777,9 +5785,9 @@ impl Sewing {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:119 - `BRepBuilderAPI_Sewing::GetContext()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:110 - `BRepBuilderAPI_Sewing::GetContext()`
     /// return context
-    pub fn get_context(&self) -> &crate::ffi_types::HandleBRepToolsReShape {
+    pub fn get_context(&self) -> &crate::ffi_types::Handle_BRepTools_ReShape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_get_context(
                 self as *const Self,
@@ -5787,7 +5795,7 @@ impl Sewing {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:122 - `BRepBuilderAPI_Sewing::NbFreeEdges()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:113 - `BRepBuilderAPI_Sewing::NbFreeEdges()`
     /// Gives the number of free edges (edge shared by one face)
     pub fn nb_free_edges(&self) -> i32 {
         crate::check_result(unsafe {
@@ -5795,7 +5803,7 @@ impl Sewing {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:125 - `BRepBuilderAPI_Sewing::FreeEdge()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:116 - `BRepBuilderAPI_Sewing::FreeEdge()`
     /// Gives each free edge
     pub fn free_edge(&self, index: i32) -> &crate::topo_ds::Edge {
         unsafe {
@@ -5806,7 +5814,7 @@ impl Sewing {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:129 - `BRepBuilderAPI_Sewing::NbMultipleEdges()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:120 - `BRepBuilderAPI_Sewing::NbMultipleEdges()`
     /// Gives the number of multiple edges
     /// (edge shared by more than two faces)
     pub fn nb_multiple_edges(&self) -> i32 {
@@ -5817,7 +5825,7 @@ impl Sewing {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:132 - `BRepBuilderAPI_Sewing::MultipleEdge()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:123 - `BRepBuilderAPI_Sewing::MultipleEdge()`
     /// Gives each multiple edge
     pub fn multiple_edge(&self, index: i32) -> &crate::topo_ds::Edge {
         unsafe {
@@ -5830,7 +5838,7 @@ impl Sewing {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:135 - `BRepBuilderAPI_Sewing::NbContigousEdges()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:126 - `BRepBuilderAPI_Sewing::NbContigousEdges()`
     /// Gives the number of contiguous edges (edge shared by two faces)
     pub fn nb_contigous_edges(&self) -> i32 {
         crate::check_result(unsafe {
@@ -5840,7 +5848,7 @@ impl Sewing {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:138 - `BRepBuilderAPI_Sewing::ContigousEdge()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:129 - `BRepBuilderAPI_Sewing::ContigousEdge()`
     /// Gives each contiguous edge
     pub fn contigous_edge(&self, index: i32) -> &crate::topo_ds::Edge {
         unsafe {
@@ -5853,9 +5861,12 @@ impl Sewing {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:141 - `BRepBuilderAPI_Sewing::ContigousEdgeCouple()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:132 - `BRepBuilderAPI_Sewing::ContigousEdgeCouple()`
     /// Gives the sections (edge) belonging to a contiguous edge
-    pub fn contigous_edge_couple(&self, index: i32) -> &crate::ffi_types::TopTools_ListOfShape {
+    pub fn contigous_edge_couple(
+        &self,
+        index: i32,
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_contigous_edge_couple(
@@ -5866,7 +5877,7 @@ impl Sewing {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:145 - `BRepBuilderAPI_Sewing::IsSectionBound()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:135 - `BRepBuilderAPI_Sewing::IsSectionBound()`
     /// Indicates if a section is bound (before use SectionToBoundary)
     pub fn is_section_bound(&self, section: &crate::topo_ds::Edge) -> bool {
         crate::check_result(unsafe {
@@ -5877,9 +5888,9 @@ impl Sewing {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:152 - `BRepBuilderAPI_Sewing::SectionToBoundary()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:142 - `BRepBuilderAPI_Sewing::SectionToBoundary()`
     /// Gives the original edge (free boundary) which becomes the
-    /// the section. Remember that sections constitute  common edges.
+    /// the section. Remember that sections constitute common edges.
     /// This information is important for control because with
     /// original edge we can find the surface to which the section
     /// is attached.
@@ -5903,7 +5914,7 @@ impl Sewing {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:155 - `BRepBuilderAPI_Sewing::NbDegeneratedShapes()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:145 - `BRepBuilderAPI_Sewing::NbDegeneratedShapes()`
     /// Gives the number of degenerated shapes
     pub fn nb_degenerated_shapes(&self) -> i32 {
         crate::check_result(unsafe {
@@ -5913,7 +5924,7 @@ impl Sewing {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:158 - `BRepBuilderAPI_Sewing::DegeneratedShape()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:148 - `BRepBuilderAPI_Sewing::DegeneratedShape()`
     /// Gives each degenerated shape
     pub fn degenerated_shape(&self, index: i32) -> &crate::topo_ds::Shape {
         unsafe {
@@ -5926,7 +5937,7 @@ impl Sewing {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:161 - `BRepBuilderAPI_Sewing::IsDegenerated()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:151 - `BRepBuilderAPI_Sewing::IsDegenerated()`
     /// Indicates if a input shape is degenerated
     pub fn is_degenerated(&self, shape: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
@@ -5937,7 +5948,7 @@ impl Sewing {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:164 - `BRepBuilderAPI_Sewing::IsModified()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:154 - `BRepBuilderAPI_Sewing::IsModified()`
     /// Indicates if a input shape has been modified
     pub fn is_modified(&self, shape: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
@@ -5948,7 +5959,7 @@ impl Sewing {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:167 - `BRepBuilderAPI_Sewing::Modified()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:157 - `BRepBuilderAPI_Sewing::Modified()`
     /// Gives a modifieded shape
     ///
     /// # Safety
@@ -5965,7 +5976,7 @@ impl Sewing {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:170 - `BRepBuilderAPI_Sewing::IsModifiedSubShape()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:160 - `BRepBuilderAPI_Sewing::IsModifiedSubShape()`
     /// Indicates if a input subshape has been modified
     pub fn is_modified_sub_shape(&self, shape: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
@@ -5976,7 +5987,7 @@ impl Sewing {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:173 - `BRepBuilderAPI_Sewing::ModifiedSubShape()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:163 - `BRepBuilderAPI_Sewing::ModifiedSubShape()`
     /// Gives a modifieded subshape
     pub fn modified_sub_shape(
         &self,
@@ -5992,7 +6003,7 @@ impl Sewing {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:176 - `BRepBuilderAPI_Sewing::Dump()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:166 - `BRepBuilderAPI_Sewing::Dump()`
     /// print the information
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
@@ -6000,7 +6011,7 @@ impl Sewing {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:179 - `BRepBuilderAPI_Sewing::NbDeletedFaces()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:169 - `BRepBuilderAPI_Sewing::NbDeletedFaces()`
     /// Gives the number of deleted faces (faces smallest than tolerance)
     pub fn nb_deleted_faces(&self) -> i32 {
         crate::check_result(unsafe {
@@ -6008,7 +6019,7 @@ impl Sewing {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:182 - `BRepBuilderAPI_Sewing::DeletedFace()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:172 - `BRepBuilderAPI_Sewing::DeletedFace()`
     /// Gives each deleted face
     pub fn deleted_face(&self, index: i32) -> &crate::topo_ds::Face {
         unsafe {
@@ -6021,7 +6032,7 @@ impl Sewing {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:185 - `BRepBuilderAPI_Sewing::WhichFace()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:175 - `BRepBuilderAPI_Sewing::WhichFace()`
     /// Gives a modified shape
     pub fn which_face(
         &self,
@@ -6039,7 +6050,7 @@ impl Sewing {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:189 - `BRepBuilderAPI_Sewing::SameParameterMode()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:178 - `BRepBuilderAPI_Sewing::SameParameterMode()`
     /// Gets same parameter mode.
     pub fn same_parameter_mode(&self) -> bool {
         crate::check_result(unsafe {
@@ -6049,7 +6060,7 @@ impl Sewing {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:192 - `BRepBuilderAPI_Sewing::SetSameParameterMode()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:181 - `BRepBuilderAPI_Sewing::SetSameParameterMode()`
     /// Sets same parameter mode.
     pub fn set_same_parameter_mode(&mut self, SameParameterMode: bool) {
         crate::check_void_result(unsafe {
@@ -6060,7 +6071,7 @@ impl Sewing {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:195 - `BRepBuilderAPI_Sewing::Tolerance()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:184 - `BRepBuilderAPI_Sewing::Tolerance()`
     /// Gives set tolerance.
     pub fn tolerance(&self) -> f64 {
         crate::check_result(unsafe {
@@ -6068,7 +6079,7 @@ impl Sewing {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:198 - `BRepBuilderAPI_Sewing::SetTolerance()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:187 - `BRepBuilderAPI_Sewing::SetTolerance()`
     /// Sets tolerance
     pub fn set_tolerance(&mut self, theToler: f64) {
         crate::check_void_result(unsafe {
@@ -6079,7 +6090,7 @@ impl Sewing {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:201 - `BRepBuilderAPI_Sewing::MinTolerance()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:190 - `BRepBuilderAPI_Sewing::MinTolerance()`
     /// Gives set min tolerance.
     pub fn min_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
@@ -6087,7 +6098,7 @@ impl Sewing {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:204 - `BRepBuilderAPI_Sewing::SetMinTolerance()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:193 - `BRepBuilderAPI_Sewing::SetMinTolerance()`
     /// Sets min tolerance
     pub fn set_min_tolerance(&mut self, theMinToler: f64) {
         crate::check_void_result(unsafe {
@@ -6098,7 +6109,7 @@ impl Sewing {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:207 - `BRepBuilderAPI_Sewing::MaxTolerance()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:196 - `BRepBuilderAPI_Sewing::MaxTolerance()`
     /// Gives set max tolerance
     pub fn max_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
@@ -6106,7 +6117,7 @@ impl Sewing {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:210 - `BRepBuilderAPI_Sewing::SetMaxTolerance()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:199 - `BRepBuilderAPI_Sewing::SetMaxTolerance()`
     /// Sets max tolerance.
     pub fn set_max_tolerance(&mut self, theMaxToler: f64) {
         crate::check_void_result(unsafe {
@@ -6117,7 +6128,7 @@ impl Sewing {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:213 - `BRepBuilderAPI_Sewing::FaceMode()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:202 - `BRepBuilderAPI_Sewing::FaceMode()`
     /// Returns mode for sewing faces By default - true.
     pub fn face_mode(&self) -> bool {
         crate::check_result(unsafe {
@@ -6125,7 +6136,7 @@ impl Sewing {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:216 - `BRepBuilderAPI_Sewing::SetFaceMode()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:205 - `BRepBuilderAPI_Sewing::SetFaceMode()`
     /// Sets mode for sewing faces By default - true.
     pub fn set_face_mode(&mut self, theFaceMode: bool) {
         crate::check_void_result(unsafe {
@@ -6136,7 +6147,7 @@ impl Sewing {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:219 - `BRepBuilderAPI_Sewing::FloatingEdgesMode()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:208 - `BRepBuilderAPI_Sewing::FloatingEdgesMode()`
     /// Returns mode for sewing floating edges By default - false.
     pub fn floating_edges_mode(&self) -> bool {
         crate::check_result(unsafe {
@@ -6146,7 +6157,7 @@ impl Sewing {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:224 - `BRepBuilderAPI_Sewing::SetFloatingEdgesMode()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:213 - `BRepBuilderAPI_Sewing::SetFloatingEdgesMode()`
     /// Sets mode for sewing floating edges By default - false.
     /// Returns mode for cutting floating edges By default - false.
     /// Sets mode for cutting floating edges By default - false.
@@ -6159,7 +6170,7 @@ impl Sewing {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:228 - `BRepBuilderAPI_Sewing::LocalTolerancesMode()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:217 - `BRepBuilderAPI_Sewing::LocalTolerancesMode()`
     /// Returns mode for accounting of local tolerances
     /// of edges and vertices during of merging.
     pub fn local_tolerances_mode(&self) -> bool {
@@ -6170,7 +6181,7 @@ impl Sewing {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:233 - `BRepBuilderAPI_Sewing::SetLocalTolerancesMode()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:222 - `BRepBuilderAPI_Sewing::SetLocalTolerancesMode()`
     /// Sets mode for accounting of local tolerances
     /// of edges and vertices during of merging
     /// in this case WorkTolerance = myTolerance + tolEdge1+ tolEdg2;
@@ -6183,7 +6194,7 @@ impl Sewing {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:236 - `BRepBuilderAPI_Sewing::SetNonManifoldMode()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:225 - `BRepBuilderAPI_Sewing::SetNonManifoldMode()`
     /// Sets mode for non-manifold sewing.
     pub fn set_non_manifold_mode(&mut self, theNonManifoldMode: bool) {
         crate::check_void_result(unsafe {
@@ -6194,7 +6205,7 @@ impl Sewing {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:241 - `BRepBuilderAPI_Sewing::NonManifoldMode()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:230 - `BRepBuilderAPI_Sewing::NonManifoldMode()`
     /// Gets mode for non-manifold sewing.
     ///
     /// INTERNAL FUNCTIONS ---
@@ -6206,8 +6217,8 @@ impl Sewing {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:243 - `BRepBuilderAPI_Sewing::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:232 - `BRepBuilderAPI_Sewing::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_dynamic_type(
@@ -6217,7 +6228,7 @@ impl Sewing {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:243 - `BRepBuilderAPI_Sewing::get_type_name()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:232 - `BRepBuilderAPI_Sewing::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -6228,8 +6239,8 @@ impl Sewing {
         .into_owned()
     }
 
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:243 - `BRepBuilderAPI_Sewing::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:232 - `BRepBuilderAPI_Sewing::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_get_type_descriptor(),
@@ -6262,7 +6273,7 @@ impl Sewing {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepBuilderAPISewing> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepBuilderAPI_Sewing> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_to_handle(obj.into_raw()),
@@ -6270,8 +6281,8 @@ impl Sewing {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_inherited_IsInstance(
                 self as *const Self,
@@ -6280,8 +6291,8 @@ impl Sewing {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_inherited_IsKind(
                 self as *const Self,
@@ -6290,7 +6301,7 @@ impl Sewing {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -6306,7 +6317,7 @@ impl Sewing {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_inherited_GetRefCount(
@@ -6315,7 +6326,7 @@ impl Sewing {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_inherited_IncrementRefCounter(
@@ -6324,7 +6335,7 @@ impl Sewing {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_inherited_DecrementRefCounter(
@@ -6333,7 +6344,7 @@ impl Sewing {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_inherited_Delete(self as *const Self)
@@ -6341,36 +6352,38 @@ impl Sewing {
     }
 }
 
-pub use crate::ffi_types::HandleBRepBuilderAPISewing;
+pub use crate::ffi_types::Handle_BRepBuilderAPI_Sewing;
 
-unsafe impl crate::CppDeletable for HandleBRepBuilderAPISewing {
+unsafe impl crate::CppDeletable for Handle_BRepBuilderAPI_Sewing {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPISewing_destructor(ptr);
+            crate::ffi_extern_TKTopAlgo::Handle_BRepBuilderAPI_Sewing_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBRepBuilderAPISewing {
+unsafe impl crate::CppCopyable for Handle_BRepBuilderAPI_Sewing {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPISewing_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_BRepBuilderAPI_Sewing_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleBRepBuilderAPISewing {
+impl Handle_BRepBuilderAPI_Sewing {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPISewing_is_null(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::Handle_BRepBuilderAPI_Sewing_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying BRepBuilderAPI_Sewing
     pub fn get(&self) -> &crate::ffi_types::BRepBuilderAPI_Sewing {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPISewing_get(
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_BRepBuilderAPI_Sewing_get(
                 self as *const Self,
             ))
         }
@@ -6380,7 +6393,9 @@ impl HandleBRepBuilderAPISewing {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BRepBuilderAPI_Sewing {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPISewing_get_mut(self as *mut Self),
+                crate::ffi_extern_TKTopAlgo::Handle_BRepBuilderAPI_Sewing_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -6388,13 +6403,9 @@ impl HandleBRepBuilderAPISewing {
     /// Upcast Handle<BRepBuilderAPI_Sewing> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPISewing_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_BRepBuilderAPI_Sewing_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -6403,7 +6414,7 @@ impl HandleBRepBuilderAPISewing {
 // From BRepBuilderAPI_Transform.hxx
 // ========================
 
-/// **Source:** `BRepBuilderAPI_Transform.hxx`:40 - `BRepBuilderAPI_Transform`
+/// **Source:** `BRepBuilderAPI_Transform.hxx`:41 - `BRepBuilderAPI_Transform`
 /// Geometric transformation on a shape.
 /// The transformation to be applied is defined as a
 /// gp_Trsf transformation, i.e. a transformation which does
@@ -6426,7 +6437,7 @@ unsafe impl crate::CppDeletable for Transform {
 }
 
 impl Transform {
-    /// **Source:** `BRepBuilderAPI_Transform.hxx`:48 - `BRepBuilderAPI_Transform::BRepBuilderAPI_Transform()`
+    /// **Source:** `BRepBuilderAPI_Transform.hxx`:49 - `BRepBuilderAPI_Transform::BRepBuilderAPI_Transform()`
     /// Constructs a framework for applying the geometric
     /// transformation T to a shape. Use the function Perform
     /// to define the shape to transform.
@@ -6438,13 +6449,13 @@ impl Transform {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_Transform.hxx`:59 - `BRepBuilderAPI_Transform::BRepBuilderAPI_Transform()`
+    /// **Source:** `BRepBuilderAPI_Transform.hxx`:60 - `BRepBuilderAPI_Transform::BRepBuilderAPI_Transform()`
     /// Creates a transformation from the gp_Trsf <theTrsf>, and
     /// applies it to the shape <theShape>. If the transformation
-    /// is  direct   and isometric (determinant  =  1) and
-    /// <theCopyGeom> =  Standard_False,  the resulting shape  is
-    /// <theShape> on   which  a  new  location has    been  set.
-    /// Otherwise,  the   transformation is applied   on a
+    /// is direct and isometric (determinant = 1) and
+    /// <theCopyGeom> = false, the resulting shape is
+    /// <theShape> on which a new location has been set.
+    /// Otherwise, the transformation is applied on a
     /// duplication of <theShape>.
     /// If <theCopyMesh> is true, the triangulation will be copied,
     /// and the copy will be assigned to the result shape.
@@ -6466,13 +6477,13 @@ impl Transform {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_Transform.hxx`:59 - `BRepBuilderAPI_Transform::BRepBuilderAPI_Transform()`
+    /// **Source:** `BRepBuilderAPI_Transform.hxx`:60 - `BRepBuilderAPI_Transform::BRepBuilderAPI_Transform()`
     /// Creates a transformation from the gp_Trsf <theTrsf>, and
     /// applies it to the shape <theShape>. If the transformation
-    /// is  direct   and isometric (determinant  =  1) and
-    /// <theCopyGeom> =  Standard_False,  the resulting shape  is
-    /// <theShape> on   which  a  new  location has    been  set.
-    /// Otherwise,  the   transformation is applied   on a
+    /// is direct and isometric (determinant = 1) and
+    /// <theCopyGeom> = false, the resulting shape is
+    /// <theShape> on which a new location has been set.
+    /// Otherwise, the transformation is applied on a
     /// duplication of <theShape>.
     /// If <theCopyMesh> is true, the triangulation will be copied,
     /// and the copy will be assigned to the result shape.
@@ -6484,13 +6495,13 @@ impl Transform {
         Self::new_shape_trsf_bool2(theShape, theTrsf, theCopyGeom, false)
     }
 
-    /// **Source:** `BRepBuilderAPI_Transform.hxx`:59 - `BRepBuilderAPI_Transform::BRepBuilderAPI_Transform()`
+    /// **Source:** `BRepBuilderAPI_Transform.hxx`:60 - `BRepBuilderAPI_Transform::BRepBuilderAPI_Transform()`
     /// Creates a transformation from the gp_Trsf <theTrsf>, and
     /// applies it to the shape <theShape>. If the transformation
-    /// is  direct   and isometric (determinant  =  1) and
-    /// <theCopyGeom> =  Standard_False,  the resulting shape  is
-    /// <theShape> on   which  a  new  location has    been  set.
-    /// Otherwise,  the   transformation is applied   on a
+    /// is direct and isometric (determinant = 1) and
+    /// <theCopyGeom> = false, the resulting shape is
+    /// <theShape> on which a new location has been set.
+    /// Otherwise, the transformation is applied on a
     /// duplication of <theShape>.
     /// If <theCopyMesh> is true, the triangulation will be copied,
     /// and the copy will be assigned to the result shape.
@@ -6501,7 +6512,7 @@ impl Transform {
         Self::new_shape_trsf_bool2(theShape, theTrsf, false, false)
     }
 
-    /// **Source:** `BRepBuilderAPI_Transform.hxx`:78 - `BRepBuilderAPI_Transform::Perform()`
+    /// **Source:** `BRepBuilderAPI_Transform.hxx`:79 - `BRepBuilderAPI_Transform::Perform()`
     /// Applies the geometric transformation defined at the
     /// time of construction of this framework to the shape S.
     /// - If the transformation T is direct and isometric, in
@@ -6532,7 +6543,7 @@ impl Transform {
         })
     }
 
-    /// **Source:** `BRepBuilderAPI_Transform.hxx`:83 - `BRepBuilderAPI_Transform::ModifiedShape()`
+    /// **Source:** `BRepBuilderAPI_Transform.hxx`:84 - `BRepBuilderAPI_Transform::ModifiedShape()`
     /// Returns the modified shape corresponding to <S>.
     pub fn modified_shape(
         &self,
@@ -6548,8 +6559,8 @@ impl Transform {
         }
     }
 
-    /// **Source:** `BRepBuilderAPI_Transform.hxx`:87 - `BRepBuilderAPI_Transform::Modified()`
-    /// Returns the list  of shapes modified from the shape
+    /// **Source:** `BRepBuilderAPI_Transform.hxx`:88 - `BRepBuilderAPI_Transform::Modified()`
+    /// Returns the list of shapes modified from the shape
     /// <S>.
     ///
     /// # Safety
@@ -6560,7 +6571,7 @@ impl Transform {
     pub unsafe fn modified(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Transform_modified(
                 self as *mut Self,

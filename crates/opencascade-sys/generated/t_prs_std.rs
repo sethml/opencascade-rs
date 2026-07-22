@@ -7,13 +7,15 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::{HandleStandardTransient, HandleTDFAttribute, HandleXCAFPrsDriver};
+pub use crate::ffi_types::{
+    Handle_Standard_Transient, Handle_TDF_Attribute, Handle_XCAFPrs_Driver,
+};
 
 // ========================
 // From TPrsStd_AISPresentation.hxx
 // ========================
 
-/// **Source:** `TPrsStd_AISPresentation.hxx`:47 - `TPrsStd_AISPresentation`
+/// **Source:** `TPrsStd_AISPresentation.hxx`:44 - `TPrsStd_AISPresentation`
 /// An attribute to associate an
 /// AIS_InteractiveObject to a label in an AIS viewer.
 /// This attribute works in collaboration with TPrsStd_AISViewer.
@@ -33,7 +35,7 @@ unsafe impl crate::CppDeletable for AISPresentation {
 }
 
 impl AISPresentation {
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:68 - `TPrsStd_AISPresentation::TPrsStd_AISPresentation()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:66 - `TPrsStd_AISPresentation::TPrsStd_AISPresentation()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -42,14 +44,14 @@ impl AISPresentation {
         }
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:70 - `TPrsStd_AISPresentation::SetDisplayed()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:68 - `TPrsStd_AISPresentation::SetDisplayed()`
     pub fn set_displayed(&mut self, B: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_set_displayed(self as *mut Self, B)
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:75 - `TPrsStd_AISPresentation::Display()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:73 - `TPrsStd_AISPresentation::Display()`
     /// Display presentation of object in AIS viewer.
     /// If <update> = True then AISObject is recomputed and all
     /// the visualization settings are applied
@@ -59,7 +61,7 @@ impl AISPresentation {
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:81 - `TPrsStd_AISPresentation::Erase()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:79 - `TPrsStd_AISPresentation::Erase()`
     /// Removes the presentation of this AIS
     /// presentation attribute from the TPrsStd_AISViewer.
     /// If remove is true, this AIS presentation attribute
@@ -70,7 +72,7 @@ impl AISPresentation {
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:84 - `TPrsStd_AISPresentation::Update()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:82 - `TPrsStd_AISPresentation::Update()`
     /// Recompute presentation of object and apply the visualization settings
     pub fn update(&mut self) {
         crate::check_void_result(unsafe {
@@ -78,7 +80,7 @@ impl AISPresentation {
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:86 - `TPrsStd_AISPresentation::GetDriverGUID()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:84 - `TPrsStd_AISPresentation::GetDriverGUID()`
     pub fn get_driver_guid(&self) -> crate::OwnedPtr<crate::standard::GUID> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -89,7 +91,7 @@ impl AISPresentation {
         }
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:88 - `TPrsStd_AISPresentation::SetDriverGUID()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:86 - `TPrsStd_AISPresentation::SetDriverGUID()`
     pub fn set_driver_guid(&mut self, guid: &crate::standard::GUID) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_set_driver_guid(
@@ -99,7 +101,7 @@ impl AISPresentation {
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:91 - `TPrsStd_AISPresentation::IsDisplayed()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:89 - `TPrsStd_AISPresentation::IsDisplayed()`
     /// Returns true if this AIS presentation attribute is displayed.
     pub fn is_displayed(&self) -> bool {
         crate::check_result(unsafe {
@@ -107,9 +109,9 @@ impl AISPresentation {
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:94 - `TPrsStd_AISPresentation::GetAIS()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:92 - `TPrsStd_AISPresentation::GetAIS()`
     /// Returns AIS_InteractiveObject stored in the presentation attribute
-    pub fn get_ais(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAISInteractiveObject> {
+    pub fn get_ais(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_AIS_InteractiveObject> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_get_ais(self as *const Self),
@@ -117,27 +119,7 @@ impl AISPresentation {
         }
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:97 - `TPrsStd_AISPresentation::Material()`
-    /// Returns the material setting for this presentation attribute.
-    pub fn material(&self) -> crate::graphic3d::NameOfMaterial {
-        crate::graphic3d::NameOfMaterial::try_from(crate::check_result(unsafe {
-            crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_material(self as *const Self)
-        }))
-        .unwrap()
-    }
-
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:100 - `TPrsStd_AISPresentation::SetMaterial()`
-    /// Sets the material aName for this presentation  attribute.
-    pub fn set_material(&mut self, aName: crate::graphic3d::NameOfMaterial) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_set_material(
-                self as *mut Self,
-                aName.into(),
-            )
-        })
-    }
-
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:103 - `TPrsStd_AISPresentation::HasOwnMaterial()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:101 - `TPrsStd_AISPresentation::HasOwnMaterial()`
     /// Returns true if this presentation attribute already has a material setting.
     pub fn has_own_material(&self) -> bool {
         crate::check_result(unsafe {
@@ -145,7 +127,7 @@ impl AISPresentation {
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:106 - `TPrsStd_AISPresentation::UnsetMaterial()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:104 - `TPrsStd_AISPresentation::UnsetMaterial()`
     /// Removes the material setting from this presentation attribute.
     pub fn unset_material(&mut self) {
         crate::check_void_result(unsafe {
@@ -153,7 +135,7 @@ impl AISPresentation {
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:111 - `TPrsStd_AISPresentation::SetTransparency()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:109 - `TPrsStd_AISPresentation::SetTransparency()`
     /// Sets the transparency value aValue for this
     /// presentation attribute.
     /// This value is 0.6 by default.
@@ -166,14 +148,14 @@ impl AISPresentation {
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:113 - `TPrsStd_AISPresentation::Transparency()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:111 - `TPrsStd_AISPresentation::Transparency()`
     pub fn transparency(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_transparency(self as *const Self)
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:116 - `TPrsStd_AISPresentation::HasOwnTransparency()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:114 - `TPrsStd_AISPresentation::HasOwnTransparency()`
     /// Returns true if this presentation attribute already has a transparency setting.
     pub fn has_own_transparency(&self) -> bool {
         crate::check_result(unsafe {
@@ -183,7 +165,7 @@ impl AISPresentation {
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:119 - `TPrsStd_AISPresentation::UnsetTransparency()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:117 - `TPrsStd_AISPresentation::UnsetTransparency()`
     /// Removes the transparency setting from this presentation attribute.
     pub fn unset_transparency(&mut self) {
         crate::check_void_result(unsafe {
@@ -191,7 +173,7 @@ impl AISPresentation {
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:121 - `TPrsStd_AISPresentation::Color()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:119 - `TPrsStd_AISPresentation::Color()`
     pub fn color(&self) -> crate::quantity::NameOfColor {
         crate::quantity::NameOfColor::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_color(self as *const Self)
@@ -199,7 +181,7 @@ impl AISPresentation {
         .unwrap()
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:124 - `TPrsStd_AISPresentation::SetColor()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:122 - `TPrsStd_AISPresentation::SetColor()`
     /// Sets the color aColor for this presentation attribute.
     pub fn set_color(&mut self, aColor: crate::quantity::NameOfColor) {
         crate::check_void_result(unsafe {
@@ -210,7 +192,7 @@ impl AISPresentation {
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:127 - `TPrsStd_AISPresentation::HasOwnColor()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:125 - `TPrsStd_AISPresentation::HasOwnColor()`
     /// Returns true if this presentation attribute already has a color setting.
     pub fn has_own_color(&self) -> bool {
         crate::check_result(unsafe {
@@ -218,7 +200,7 @@ impl AISPresentation {
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:130 - `TPrsStd_AISPresentation::UnsetColor()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:128 - `TPrsStd_AISPresentation::UnsetColor()`
     /// Removes the color setting from this presentation attribute.
     pub fn unset_color(&mut self) {
         crate::check_void_result(unsafe {
@@ -226,14 +208,14 @@ impl AISPresentation {
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:132 - `TPrsStd_AISPresentation::Width()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:130 - `TPrsStd_AISPresentation::Width()`
     pub fn width(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_width(self as *const Self)
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:135 - `TPrsStd_AISPresentation::SetWidth()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:133 - `TPrsStd_AISPresentation::SetWidth()`
     /// Sets the width aWidth for this presentation attribute.
     pub fn set_width(&mut self, aWidth: f64) {
         crate::check_void_result(unsafe {
@@ -241,7 +223,7 @@ impl AISPresentation {
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:138 - `TPrsStd_AISPresentation::HasOwnWidth()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:136 - `TPrsStd_AISPresentation::HasOwnWidth()`
     /// Returns true if this presentation attribute already has a width setting.
     pub fn has_own_width(&self) -> bool {
         crate::check_result(unsafe {
@@ -249,7 +231,7 @@ impl AISPresentation {
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:141 - `TPrsStd_AISPresentation::UnsetWidth()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:139 - `TPrsStd_AISPresentation::UnsetWidth()`
     /// Removes the width setting from this presentation attribute.
     pub fn unset_width(&mut self) {
         crate::check_void_result(unsafe {
@@ -257,35 +239,35 @@ impl AISPresentation {
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:143 - `TPrsStd_AISPresentation::Mode()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:141 - `TPrsStd_AISPresentation::Mode()`
     pub fn mode(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_mode(self as *const Self)
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:145 - `TPrsStd_AISPresentation::SetMode()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:143 - `TPrsStd_AISPresentation::SetMode()`
     pub fn set_mode(&mut self, theMode: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_set_mode(self as *mut Self, theMode)
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:147 - `TPrsStd_AISPresentation::HasOwnMode()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:145 - `TPrsStd_AISPresentation::HasOwnMode()`
     pub fn has_own_mode(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_has_own_mode(self as *const Self)
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:149 - `TPrsStd_AISPresentation::UnsetMode()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:147 - `TPrsStd_AISPresentation::UnsetMode()`
     pub fn unset_mode(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_unset_mode(self as *mut Self)
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:153 - `TPrsStd_AISPresentation::GetNbSelectionModes()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:151 - `TPrsStd_AISPresentation::GetNbSelectionModes()`
     /// Returns selection mode(s) of the attribute.
     /// It starts with 1 .. GetNbSelectionModes().
     pub fn get_nb_selection_modes(&self) -> i32 {
@@ -296,7 +278,7 @@ impl AISPresentation {
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:154 - `TPrsStd_AISPresentation::SelectionMode()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:152 - `TPrsStd_AISPresentation::SelectionMode()`
     pub fn selection_mode(&self, index: i32) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_selection_mode(
@@ -306,7 +288,7 @@ impl AISPresentation {
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:161 - `TPrsStd_AISPresentation::SetSelectionMode()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:159 - `TPrsStd_AISPresentation::SetSelectionMode()`
     /// Sets selection mode.
     /// If "theTransaction" flag is OFF, modification of the attribute doesn't influence the
     /// transaction mechanism (the attribute doesn't participate in undo/redo because of this
@@ -322,7 +304,7 @@ impl AISPresentation {
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:163 - `TPrsStd_AISPresentation::AddSelectionMode()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:161 - `TPrsStd_AISPresentation::AddSelectionMode()`
     pub fn add_selection_mode(&mut self, theSelectionMode: i32, theTransaction: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_add_selection_mode(
@@ -333,7 +315,7 @@ impl AISPresentation {
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:166 - `TPrsStd_AISPresentation::HasOwnSelectionMode()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:164 - `TPrsStd_AISPresentation::HasOwnSelectionMode()`
     pub fn has_own_selection_mode(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_has_own_selection_mode(
@@ -342,7 +324,7 @@ impl AISPresentation {
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:169 - `TPrsStd_AISPresentation::UnsetSelectionMode()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:167 - `TPrsStd_AISPresentation::UnsetSelectionMode()`
     /// Clears all selection modes of the attribute.
     pub fn unset_selection_mode(&mut self) {
         crate::check_void_result(unsafe {
@@ -352,7 +334,7 @@ impl AISPresentation {
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:171 - `TPrsStd_AISPresentation::ID()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:169 - `TPrsStd_AISPresentation::ID()`
     pub fn id(&self) -> &crate::standard::GUID {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_id(
@@ -361,8 +343,8 @@ impl AISPresentation {
         }
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:173 - `TPrsStd_AISPresentation::NewEmpty()`
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:171 - `TPrsStd_AISPresentation::NewEmpty()`
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TDF_Attribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_new_empty(self as *const Self),
@@ -370,26 +352,26 @@ impl AISPresentation {
         }
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:175 - `TPrsStd_AISPresentation::Restore()`
-    pub fn restore(&mut self, with: &crate::ffi_types::HandleTDFAttribute) {
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:173 - `TPrsStd_AISPresentation::Restore()`
+    pub fn restore(&mut self, with: &crate::ffi_types::Handle_TDF_Attribute) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_restore(self as *mut Self, with)
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:177 - `TPrsStd_AISPresentation::Paste()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:175 - `TPrsStd_AISPresentation::Paste()`
     pub fn paste(
         &self,
-        into: &crate::ffi_types::HandleTDFAttribute,
-        RT: &crate::ffi_types::HandleTDFRelocationTable,
+        into: &crate::ffi_types::Handle_TDF_Attribute,
+        RT: &crate::ffi_types::Handle_TDF_RelocationTable,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_paste(self as *const Self, into, RT)
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:180 - `TPrsStd_AISPresentation::BackupCopy()`
-    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:178 - `TPrsStd_AISPresentation::BackupCopy()`
+    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TDF_Attribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_backup_copy(self as *const Self),
@@ -397,38 +379,38 @@ impl AISPresentation {
         }
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:182 - `TPrsStd_AISPresentation::AfterAddition()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:180 - `TPrsStd_AISPresentation::AfterAddition()`
     pub fn after_addition(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_after_addition(self as *mut Self)
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:184 - `TPrsStd_AISPresentation::BeforeRemoval()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:182 - `TPrsStd_AISPresentation::BeforeRemoval()`
     pub fn before_removal(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_before_removal(self as *mut Self)
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:186 - `TPrsStd_AISPresentation::BeforeForget()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:184 - `TPrsStd_AISPresentation::BeforeForget()`
     pub fn before_forget(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_before_forget(self as *mut Self)
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:188 - `TPrsStd_AISPresentation::AfterResume()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:186 - `TPrsStd_AISPresentation::AfterResume()`
     pub fn after_resume(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_after_resume(self as *mut Self)
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:190 - `TPrsStd_AISPresentation::BeforeUndo()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:188 - `TPrsStd_AISPresentation::BeforeUndo()`
     pub fn before_undo(
         &mut self,
-        anAttDelta: &crate::ffi_types::HandleTDFAttributeDelta,
+        anAttDelta: &crate::ffi_types::Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> bool {
         crate::check_result(unsafe {
@@ -440,11 +422,11 @@ impl AISPresentation {
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:195 - `TPrsStd_AISPresentation::AfterUndo()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:192 - `TPrsStd_AISPresentation::AfterUndo()`
     /// update AIS viewer according to delta
     pub fn after_undo(
         &mut self,
-        anAttDelta: &crate::ffi_types::HandleTDFAttributeDelta,
+        anAttDelta: &crate::ffi_types::Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> bool {
         crate::check_result(unsafe {
@@ -456,8 +438,8 @@ impl AISPresentation {
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:203 - `TPrsStd_AISPresentation::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:198 - `TPrsStd_AISPresentation::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_dynamic_type(
                 self as *const Self,
@@ -465,7 +447,7 @@ impl AISPresentation {
         }
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:52 - `TPrsStd_AISPresentation::GetID()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:49 - `TPrsStd_AISPresentation::GetID()`
     /// Returns the GUID for TPrsStd_AISPresentation attributes.
     pub fn get_id() -> &'static crate::standard::GUID {
         unsafe {
@@ -473,13 +455,13 @@ impl AISPresentation {
         }
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:56 - `TPrsStd_AISPresentation::Set()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:53 - `TPrsStd_AISPresentation::Set()`
     /// Creates or retrieves the presentation attribute on
     /// the label L, and sets the GUID driver.
     pub fn set_label_guid(
         L: &crate::tdf::Label,
         driver: &crate::standard::GUID,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTPrsStdAISPresentation> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TPrsStd_AISPresentation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_set_label_guid(L, driver),
@@ -487,7 +469,7 @@ impl AISPresentation {
         }
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:60 - `TPrsStd_AISPresentation::Unset()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:57 - `TPrsStd_AISPresentation::Unset()`
     /// Delete (if exist) the presentation attribute associated to the label <L>.
     pub fn unset(L: &crate::tdf::Label) {
         crate::check_void_result(unsafe {
@@ -495,14 +477,14 @@ impl AISPresentation {
         })
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:66 - `TPrsStd_AISPresentation::Set()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:63 - `TPrsStd_AISPresentation::Set()`
     /// Creates or retrieves the AISPresentation
     /// attribute attached to master.
     /// The GUID of the driver will be the GUID of master.
     /// master is the attribute you want to display.
     pub fn set_handletdfattribute(
-        master: &crate::ffi_types::HandleTDFAttribute,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTPrsStdAISPresentation> {
+        master: &crate::ffi_types::Handle_TDF_Attribute,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TPrsStd_AISPresentation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_set_handletdfattribute(master),
@@ -510,7 +492,7 @@ impl AISPresentation {
         }
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:203 - `TPrsStd_AISPresentation::get_type_name()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:198 - `TPrsStd_AISPresentation::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -521,8 +503,8 @@ impl AISPresentation {
         .into_owned()
     }
 
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:203 - `TPrsStd_AISPresentation::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:198 - `TPrsStd_AISPresentation::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_get_type_descriptor(),
@@ -577,7 +559,7 @@ impl AISPresentation {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTPrsStdAISPresentation> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TPrsStd_AISPresentation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_to_handle(obj.into_raw()),
@@ -585,7 +567,7 @@ impl AISPresentation {
         }
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:135 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_inherited_SetID(
@@ -595,7 +577,7 @@ impl AISPresentation {
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:147 - `TDF_Attribute::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -606,7 +588,7 @@ impl AISPresentation {
         }
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:151 - `TDF_Attribute::Transaction()`
     pub fn transaction(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_inherited_Transaction(
@@ -615,7 +597,7 @@ impl AISPresentation {
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:157 - `TDF_Attribute::UntilTransaction()`
     pub fn until_transaction(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_inherited_UntilTransaction(
@@ -624,21 +606,21 @@ impl AISPresentation {
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:161 - `TDF_Attribute::IsValid()`
     pub fn is_valid(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_inherited_IsValid(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsNew()`
     pub fn is_new(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_inherited_IsNew(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:171 - `TDF_Attribute::IsForgotten()`
     pub fn is_forgotten(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_inherited_IsForgotten(
@@ -647,7 +629,7 @@ impl AISPresentation {
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:175 - `TDF_Attribute::IsAttribute()`
     pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_inherited_IsAttribute(
@@ -657,11 +639,11 @@ impl AISPresentation {
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:182 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
         anID: &crate::standard::GUID,
-        anAttribute: &mut crate::ffi_types::HandleTDFAttribute,
+        anAttribute: &mut crate::ffi_types::Handle_TDF_Attribute,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_inherited_FindAttribute(
@@ -672,8 +654,8 @@ impl AISPresentation {
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
-    pub fn add_attribute(&self, other: &crate::ffi_types::HandleTDFAttribute) {
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:196 - `TDF_Attribute::AddAttribute()`
+    pub fn add_attribute(&self, other: &crate::ffi_types::Handle_TDF_Attribute) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_inherited_AddAttribute(
                 self as *const Self,
@@ -682,7 +664,7 @@ impl AISPresentation {
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:203 - `TDF_Attribute::ForgetAttribute()`
     pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_inherited_ForgetAttribute(
@@ -692,7 +674,7 @@ impl AISPresentation {
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:211 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_inherited_ForgetAllAttributes(
@@ -702,7 +684,7 @@ impl AISPresentation {
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:235 - `TDF_Attribute::AfterRetrieval()`
     pub fn after_retrieval(&mut self, forceIt: bool) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_inherited_AfterRetrieval(
@@ -712,7 +694,7 @@ impl AISPresentation {
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_inherited_BeforeCommitTransaction(
@@ -721,14 +703,14 @@ impl AISPresentation {
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:270 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_inherited_Backup(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:275 - `TDF_Attribute::IsBackuped()`
     pub fn is_backuped(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_inherited_IsBackuped(
@@ -737,8 +719,10 @@ impl AISPresentation {
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
-    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnAddition> {
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:289 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TDF_DeltaOnAddition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_inherited_DeltaOnAddition(
@@ -748,8 +732,8 @@ impl AISPresentation {
         }
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
-    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnForget> {
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:293 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TDF_DeltaOnForget> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_inherited_DeltaOnForget(
@@ -759,8 +743,8 @@ impl AISPresentation {
         }
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
-    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnResume> {
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:297 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TDF_DeltaOnResume> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_inherited_DeltaOnResume(
@@ -770,11 +754,11 @@ impl AISPresentation {
         }
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:301 - `TDF_Attribute::DeltaOnModification()`
     pub fn delta_on_modification(
         &self,
-        anOldAttribute: &crate::ffi_types::HandleTDFAttribute,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnModification> {
+        anOldAttribute: &crate::ffi_types::Handle_TDF_Attribute,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TDF_DeltaOnModification> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_inherited_DeltaOnModification(
@@ -785,8 +769,8 @@ impl AISPresentation {
         }
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
-    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnRemoval> {
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:310 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TDF_DeltaOnRemoval> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_inherited_DeltaOnRemoval(
@@ -796,8 +780,8 @@ impl AISPresentation {
         }
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
-    pub fn references(&self, aDataSet: &crate::ffi_types::HandleTDFDataSet) {
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:340 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi_types::Handle_TDF_DataSet) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_inherited_References(
                 self as *const Self,
@@ -806,24 +790,7 @@ impl AISPresentation {
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
-    pub fn extended_dump(
-        &self,
-        anOS: &mut crate::ffi_types::Standard_OStream,
-        aFilter: &crate::tdf::IDFilter,
-        aMap: &mut crate::ffi_types::TDF_AttributeIndexedMap,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_inherited_ExtendedDump(
-                self as *const Self,
-                anOS,
-                aFilter,
-                aMap,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_inherited_Forget(
@@ -833,8 +800,8 @@ impl AISPresentation {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_inherited_IsInstance(
                 self as *const Self,
@@ -843,8 +810,8 @@ impl AISPresentation {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_inherited_IsKind(
                 self as *const Self,
@@ -853,7 +820,7 @@ impl AISPresentation {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -869,7 +836,7 @@ impl AISPresentation {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_inherited_GetRefCount(
@@ -878,7 +845,7 @@ impl AISPresentation {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_inherited_IncrementRefCounter(
@@ -887,7 +854,7 @@ impl AISPresentation {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_inherited_DecrementRefCounter(
@@ -896,7 +863,7 @@ impl AISPresentation {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISPresentation_inherited_Delete(self as *const Self)
@@ -904,36 +871,36 @@ impl AISPresentation {
     }
 }
 
-pub use crate::ffi_types::HandleTPrsStdAISPresentation;
+pub use crate::ffi_types::Handle_TPrsStd_AISPresentation;
 
-unsafe impl crate::CppDeletable for HandleTPrsStdAISPresentation {
+unsafe impl crate::CppDeletable for Handle_TPrsStd_AISPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKVCAF::HandleTPrsStdAISPresentation_destructor(ptr);
+            crate::ffi_extern_TKVCAF::Handle_TPrsStd_AISPresentation_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleTPrsStdAISPresentation {
+unsafe impl crate::CppCopyable for Handle_TPrsStd_AISPresentation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdAISPresentation_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKVCAF::Handle_TPrsStd_AISPresentation_clone(ptr))
         }
     }
 }
 
-impl HandleTPrsStdAISPresentation {
+impl Handle_TPrsStd_AISPresentation {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKVCAF::HandleTPrsStdAISPresentation_is_null(self as *const Self)
+            crate::ffi_extern_TKVCAF::Handle_TPrsStd_AISPresentation_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying TPrsStd_AISPresentation
     pub fn get(&self) -> &crate::ffi_types::TPrsStd_AISPresentation {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdAISPresentation_get(
+            &*crate::check_result(crate::ffi_extern_TKVCAF::Handle_TPrsStd_AISPresentation_get(
                 self as *const Self,
             ))
         }
@@ -943,16 +910,16 @@ impl HandleTPrsStdAISPresentation {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::TPrsStd_AISPresentation {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKVCAF::HandleTPrsStdAISPresentation_get_mut(self as *mut Self),
+                crate::ffi_extern_TKVCAF::Handle_TPrsStd_AISPresentation_get_mut(self as *mut Self),
             )
         }
     }
 
     /// Upcast Handle<TPrsStd_AISPresentation> to Handle<TDF_Attribute>
-    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TDF_Attribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKVCAF::HandleTPrsStdAISPresentation_to_HandleTDFAttribute(
+                crate::ffi_extern_TKVCAF::Handle_TPrsStd_AISPresentation_to_Handle_TDF_Attribute(
                     self as *const Self,
                 ),
             ))
@@ -962,22 +929,30 @@ impl HandleTPrsStdAISPresentation {
     /// Upcast Handle<TPrsStd_AISPresentation> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKVCAF::HandleTPrsStdAISPresentation_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKVCAF::Handle_TPrsStd_AISPresentation_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
+
+// ── Skipped symbols for AISPresentation (2 total) ──
+// SKIPPED: **Source:** `TPrsStd_AISPresentation.hxx`:95 - `TPrsStd_AISPresentation::Material`
+//   method: Returns the material setting for this presentation attribute.
+//   Reason: return type 'Graphic3d_NameOfMaterial' is unknown
+//   // pub fn material(&self) -> OwnedPtr<Graphic3d_NameOfMaterial>;
+//
+// SKIPPED: **Source:** `TPrsStd_AISPresentation.hxx`:98 - `TPrsStd_AISPresentation::SetMaterial`
+//   method: Sets the material aName for this presentation attribute.
+//   Reason: param 'aName' uses unknown type 'Graphic3d_NameOfMaterial'
+//   // pub fn set_material(&mut self, aName: NameOfMaterial);
+//
 
 // ========================
 // From TPrsStd_AISViewer.hxx
 // ========================
 
-/// **Source:** `TPrsStd_AISViewer.hxx`:36 - `TPrsStd_AISViewer`
+/// **Source:** `TPrsStd_AISViewer.hxx`:33 - `TPrsStd_AISViewer`
 /// The groundwork to define an interactive viewer attribute.
 /// This attribute stores an interactive context at the root label.
 /// You can only have one instance of this class per data framework.
@@ -992,7 +967,7 @@ unsafe impl crate::CppDeletable for AISViewer {
 }
 
 impl AISViewer {
-    /// **Source:** `TPrsStd_AISViewer.hxx`:74 - `TPrsStd_AISViewer::TPrsStd_AISViewer()`
+    /// **Source:** `TPrsStd_AISViewer.hxx`:69 - `TPrsStd_AISViewer::TPrsStd_AISViewer()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1001,7 +976,7 @@ impl AISViewer {
         }
     }
 
-    /// **Source:** `TPrsStd_AISViewer.hxx`:78 - `TPrsStd_AISViewer::Update()`
+    /// **Source:** `TPrsStd_AISViewer.hxx`:73 - `TPrsStd_AISViewer::Update()`
     /// Updates the viewer at the label access.
     /// access is the root of the data framework.
     pub fn update(&self) {
@@ -1010,9 +985,12 @@ impl AISViewer {
         })
     }
 
-    /// **Source:** `TPrsStd_AISViewer.hxx`:81 - `TPrsStd_AISViewer::SetInteractiveContext()`
+    /// **Source:** `TPrsStd_AISViewer.hxx`:76 - `TPrsStd_AISViewer::SetInteractiveContext()`
     /// Sets the interactive context ctx for this attribute.
-    pub fn set_interactive_context(&mut self, ctx: &crate::ffi_types::HandleAISInteractiveContext) {
+    pub fn set_interactive_context(
+        &mut self,
+        ctx: &crate::ffi_types::Handle_AIS_InteractiveContext,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_set_interactive_context(
                 self as *mut Self,
@@ -1021,11 +999,11 @@ impl AISViewer {
         })
     }
 
-    /// **Source:** `TPrsStd_AISViewer.hxx`:84 - `TPrsStd_AISViewer::GetInteractiveContext()`
+    /// **Source:** `TPrsStd_AISViewer.hxx`:79 - `TPrsStd_AISViewer::GetInteractiveContext()`
     /// Returns the interactive context in this attribute.
     pub fn get_interactive_context(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleAISInteractiveContext> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_AIS_InteractiveContext> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_get_interactive_context(
@@ -1035,7 +1013,7 @@ impl AISViewer {
         }
     }
 
-    /// **Source:** `TPrsStd_AISViewer.hxx`:86 - `TPrsStd_AISViewer::ID()`
+    /// **Source:** `TPrsStd_AISViewer.hxx`:81 - `TPrsStd_AISViewer::ID()`
     pub fn id(&self) -> &crate::standard::GUID {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_id(
@@ -1044,15 +1022,15 @@ impl AISViewer {
         }
     }
 
-    /// **Source:** `TPrsStd_AISViewer.hxx`:88 - `TPrsStd_AISViewer::Restore()`
-    pub fn restore(&mut self, with: &crate::ffi_types::HandleTDFAttribute) {
+    /// **Source:** `TPrsStd_AISViewer.hxx`:83 - `TPrsStd_AISViewer::Restore()`
+    pub fn restore(&mut self, with: &crate::ffi_types::Handle_TDF_Attribute) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_restore(self as *mut Self, with)
         })
     }
 
-    /// **Source:** `TPrsStd_AISViewer.hxx`:90 - `TPrsStd_AISViewer::NewEmpty()`
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
+    /// **Source:** `TPrsStd_AISViewer.hxx`:85 - `TPrsStd_AISViewer::NewEmpty()`
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TDF_Attribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_new_empty(self as *const Self),
@@ -1060,19 +1038,19 @@ impl AISViewer {
         }
     }
 
-    /// **Source:** `TPrsStd_AISViewer.hxx`:92 - `TPrsStd_AISViewer::Paste()`
+    /// **Source:** `TPrsStd_AISViewer.hxx`:87 - `TPrsStd_AISViewer::Paste()`
     pub fn paste(
         &self,
-        into: &crate::ffi_types::HandleTDFAttribute,
-        RT: &crate::ffi_types::HandleTDFRelocationTable,
+        into: &crate::ffi_types::Handle_TDF_Attribute,
+        RT: &crate::ffi_types::Handle_TDF_RelocationTable,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_paste(self as *const Self, into, RT)
         })
     }
 
-    /// **Source:** `TPrsStd_AISViewer.hxx`:99 - `TPrsStd_AISViewer::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `TPrsStd_AISViewer.hxx`:93 - `TPrsStd_AISViewer::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_dynamic_type(
                 self as *const Self,
@@ -1080,27 +1058,27 @@ impl AISViewer {
         }
     }
 
-    /// **Source:** `TPrsStd_AISViewer.hxx`:42 - `TPrsStd_AISViewer::GetID()`
+    /// **Source:** `TPrsStd_AISViewer.hxx`:39 - `TPrsStd_AISViewer::GetID()`
     /// class methods
     /// =============
     pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::check_result(crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_get_id())) }
     }
 
-    /// **Source:** `TPrsStd_AISViewer.hxx`:46 - `TPrsStd_AISViewer::Has()`
-    /// returns True if   there is an AISViewer attribute  in
+    /// **Source:** `TPrsStd_AISViewer.hxx`:43 - `TPrsStd_AISViewer::Has()`
+    /// returns True if there is an AISViewer attribute in
     /// <acces> Data Framework.
     pub fn has(acces: &crate::tdf::Label) -> bool {
         crate::check_result(unsafe { crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_has(acces) })
     }
 
-    /// **Source:** `TPrsStd_AISViewer.hxx`:50 - `TPrsStd_AISViewer::New()`
-    /// create and set an  AISViewer at. Raise an exception if
+    /// **Source:** `TPrsStd_AISViewer.hxx`:47 - `TPrsStd_AISViewer::New()`
+    /// create and set an AISViewer at. Raise an exception if
     /// Has.
     pub fn new_label_handleaisinteractivecontext(
         access: &crate::tdf::Label,
-        selector: &crate::ffi_types::HandleAISInteractiveContext,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTPrsStdAISViewer> {
+        selector: &crate::ffi_types::Handle_AIS_InteractiveContext,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TPrsStd_AISViewer> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_new_label_handleaisinteractivecontext(
@@ -1110,14 +1088,14 @@ impl AISViewer {
         }
     }
 
-    /// **Source:** `TPrsStd_AISViewer.hxx`:57 - `TPrsStd_AISViewer::New()`
-    /// create  and set an   AISAttribute at root  label. The
-    /// interactive context is  build.  Raise an exception  if
+    /// **Source:** `TPrsStd_AISViewer.hxx`:54 - `TPrsStd_AISViewer::New()`
+    /// create and set an AISAttribute at root label. The
+    /// interactive context is build. Raise an exception if
     /// Has.
     pub fn new_label_handlev3dviewer(
         acces: &crate::tdf::Label,
-        viewer: &crate::ffi_types::HandleV3dViewer,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTPrsStdAISViewer> {
+        viewer: &crate::ffi_types::Handle_V3d_Viewer,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TPrsStd_AISViewer> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_new_label_handlev3dviewer(
@@ -1127,22 +1105,22 @@ impl AISViewer {
         }
     }
 
-    /// **Source:** `TPrsStd_AISViewer.hxx`:62 - `TPrsStd_AISViewer::Find()`
+    /// **Source:** `TPrsStd_AISViewer.hxx`:59 - `TPrsStd_AISViewer::Find()`
     /// Finds the viewer attribute at the label access, the
     /// root of the data framework. Calling this function can be used to initialize an AIS viewer
     pub fn find_label_handletprsstdaisviewer(
         acces: &crate::tdf::Label,
-        A: &mut crate::ffi_types::HandleTPrsStdAISViewer,
+        A: &mut crate::ffi_types::Handle_TPrsStd_AISViewer,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_find_label_handletprsstdaisviewer(acces, A)
         })
     }
 
-    /// **Source:** `TPrsStd_AISViewer.hxx`:65 - `TPrsStd_AISViewer::Find()`
+    /// **Source:** `TPrsStd_AISViewer.hxx`:61 - `TPrsStd_AISViewer::Find()`
     pub fn find_label_handleaisinteractivecontext(
         acces: &crate::tdf::Label,
-        IC: &mut crate::ffi_types::HandleAISInteractiveContext,
+        IC: &mut crate::ffi_types::Handle_AIS_InteractiveContext,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_find_label_handleaisinteractivecontext(
@@ -1151,17 +1129,17 @@ impl AISViewer {
         })
     }
 
-    /// **Source:** `TPrsStd_AISViewer.hxx`:68 - `TPrsStd_AISViewer::Find()`
+    /// **Source:** `TPrsStd_AISViewer.hxx`:63 - `TPrsStd_AISViewer::Find()`
     pub fn find_label_handlev3dviewer(
         acces: &crate::tdf::Label,
-        V: &mut crate::ffi_types::HandleV3dViewer,
+        V: &mut crate::ffi_types::Handle_V3d_Viewer,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_find_label_handlev3dviewer(acces, V)
         })
     }
 
-    /// **Source:** `TPrsStd_AISViewer.hxx`:72 - `TPrsStd_AISViewer::Update()`
+    /// **Source:** `TPrsStd_AISViewer.hxx`:67 - `TPrsStd_AISViewer::Update()`
     /// AISViewer methods
     /// =================
     pub fn update_label(acces: &crate::tdf::Label) {
@@ -1170,7 +1148,7 @@ impl AISViewer {
         })
     }
 
-    /// **Source:** `TPrsStd_AISViewer.hxx`:99 - `TPrsStd_AISViewer::get_type_name()`
+    /// **Source:** `TPrsStd_AISViewer.hxx`:93 - `TPrsStd_AISViewer::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1181,8 +1159,8 @@ impl AISViewer {
         .into_owned()
     }
 
-    /// **Source:** `TPrsStd_AISViewer.hxx`:99 - `TPrsStd_AISViewer::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `TPrsStd_AISViewer.hxx`:93 - `TPrsStd_AISViewer::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_get_type_descriptor(),
@@ -1233,7 +1211,7 @@ impl AISViewer {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTPrsStdAISViewer> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TPrsStd_AISViewer> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_to_handle(obj.into_raw()),
@@ -1241,14 +1219,14 @@ impl AISViewer {
         }
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:135 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_SetID(self as *mut Self, arg0)
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:147 - `TDF_Attribute::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1257,14 +1235,14 @@ impl AISViewer {
         }
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:151 - `TDF_Attribute::Transaction()`
     pub fn transaction(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_Transaction(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:157 - `TDF_Attribute::UntilTransaction()`
     pub fn until_transaction(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_UntilTransaction(
@@ -1273,28 +1251,28 @@ impl AISViewer {
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:161 - `TDF_Attribute::IsValid()`
     pub fn is_valid(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_IsValid(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsNew()`
     pub fn is_new(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_IsNew(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:171 - `TDF_Attribute::IsForgotten()`
     pub fn is_forgotten(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_IsForgotten(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:175 - `TDF_Attribute::IsAttribute()`
     pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_IsAttribute(
@@ -1304,11 +1282,11 @@ impl AISViewer {
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:182 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
         anID: &crate::standard::GUID,
-        anAttribute: &mut crate::ffi_types::HandleTDFAttribute,
+        anAttribute: &mut crate::ffi_types::Handle_TDF_Attribute,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_FindAttribute(
@@ -1319,8 +1297,8 @@ impl AISViewer {
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
-    pub fn add_attribute(&self, other: &crate::ffi_types::HandleTDFAttribute) {
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:196 - `TDF_Attribute::AddAttribute()`
+    pub fn add_attribute(&self, other: &crate::ffi_types::Handle_TDF_Attribute) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_AddAttribute(
                 self as *const Self,
@@ -1329,7 +1307,7 @@ impl AISViewer {
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:203 - `TDF_Attribute::ForgetAttribute()`
     pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_ForgetAttribute(
@@ -1339,7 +1317,7 @@ impl AISViewer {
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:211 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_ForgetAllAttributes(
@@ -1349,35 +1327,35 @@ impl AISViewer {
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_AfterAddition(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::BeforeRemoval()`
     pub fn before_removal(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_BeforeRemoval(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_BeforeForget(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_AfterResume(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:235 - `TDF_Attribute::AfterRetrieval()`
     pub fn after_retrieval(&mut self, forceIt: bool) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_AfterRetrieval(
@@ -1387,10 +1365,10 @@ impl AISViewer {
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:243 - `TDF_Attribute::BeforeUndo()`
     pub fn before_undo(
         &mut self,
-        anAttDelta: &crate::ffi_types::HandleTDFAttributeDelta,
+        anAttDelta: &crate::ffi_types::Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> bool {
         crate::check_result(unsafe {
@@ -1402,10 +1380,10 @@ impl AISViewer {
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::AfterUndo()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:252 - `TDF_Attribute::AfterUndo()`
     pub fn after_undo(
         &mut self,
-        anAttDelta: &crate::ffi_types::HandleTDFAttributeDelta,
+        anAttDelta: &crate::ffi_types::Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> bool {
         crate::check_result(unsafe {
@@ -1417,7 +1395,7 @@ impl AISViewer {
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_BeforeCommitTransaction(
@@ -1426,22 +1404,22 @@ impl AISViewer {
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:270 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_Backup(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:275 - `TDF_Attribute::IsBackuped()`
     pub fn is_backuped(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_IsBackuped(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:286 - `TDF_Attribute::BackupCopy()`
-    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:279 - `TDF_Attribute::BackupCopy()`
+    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TDF_Attribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_BackupCopy(
@@ -1451,8 +1429,10 @@ impl AISViewer {
         }
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
-    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnAddition> {
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:289 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TDF_DeltaOnAddition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_DeltaOnAddition(
@@ -1462,8 +1442,8 @@ impl AISViewer {
         }
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
-    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnForget> {
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:293 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TDF_DeltaOnForget> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_DeltaOnForget(
@@ -1473,8 +1453,8 @@ impl AISViewer {
         }
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
-    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnResume> {
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:297 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TDF_DeltaOnResume> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_DeltaOnResume(
@@ -1484,11 +1464,11 @@ impl AISViewer {
         }
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:301 - `TDF_Attribute::DeltaOnModification()`
     pub fn delta_on_modification(
         &self,
-        anOldAttribute: &crate::ffi_types::HandleTDFAttribute,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnModification> {
+        anOldAttribute: &crate::ffi_types::Handle_TDF_Attribute,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TDF_DeltaOnModification> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_DeltaOnModification(
@@ -1499,8 +1479,8 @@ impl AISViewer {
         }
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
-    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnRemoval> {
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:310 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TDF_DeltaOnRemoval> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_DeltaOnRemoval(
@@ -1510,8 +1490,8 @@ impl AISViewer {
         }
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
-    pub fn references(&self, aDataSet: &crate::ffi_types::HandleTDFDataSet) {
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:340 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi_types::Handle_TDF_DataSet) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_References(
                 self as *const Self,
@@ -1520,24 +1500,7 @@ impl AISViewer {
         })
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
-    pub fn extended_dump(
-        &self,
-        anOS: &mut crate::ffi_types::Standard_OStream,
-        aFilter: &crate::tdf::IDFilter,
-        aMap: &mut crate::ffi_types::TDF_AttributeIndexedMap,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_ExtendedDump(
-                self as *const Self,
-                anOS,
-                aFilter,
-                aMap,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_Forget(
@@ -1547,8 +1510,8 @@ impl AISViewer {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_IsInstance(
                 self as *const Self,
@@ -1557,8 +1520,8 @@ impl AISViewer {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_IsKind(
                 self as *const Self,
@@ -1567,7 +1530,7 @@ impl AISViewer {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1581,14 +1544,14 @@ impl AISViewer {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_IncrementRefCounter(
@@ -1597,7 +1560,7 @@ impl AISViewer {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_DecrementRefCounter(
@@ -1606,7 +1569,7 @@ impl AISViewer {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AISViewer_inherited_Delete(self as *const Self)
@@ -1614,32 +1577,34 @@ impl AISViewer {
     }
 }
 
-pub use crate::ffi_types::HandleTPrsStdAISViewer;
+pub use crate::ffi_types::Handle_TPrsStd_AISViewer;
 
-unsafe impl crate::CppDeletable for HandleTPrsStdAISViewer {
+unsafe impl crate::CppDeletable for Handle_TPrsStd_AISViewer {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKVCAF::HandleTPrsStdAISViewer_destructor(ptr);
+            crate::ffi_extern_TKVCAF::Handle_TPrsStd_AISViewer_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleTPrsStdAISViewer {
+unsafe impl crate::CppCopyable for Handle_TPrsStd_AISViewer {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdAISViewer_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKVCAF::Handle_TPrsStd_AISViewer_clone(ptr))
+        }
     }
 }
 
-impl HandleTPrsStdAISViewer {
+impl Handle_TPrsStd_AISViewer {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKVCAF::HandleTPrsStdAISViewer_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKVCAF::Handle_TPrsStd_AISViewer_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying TPrsStd_AISViewer
     pub fn get(&self) -> &crate::ffi_types::TPrsStd_AISViewer {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdAISViewer_get(
+            &*crate::check_result(crate::ffi_extern_TKVCAF::Handle_TPrsStd_AISViewer_get(
                 self as *const Self,
             ))
         }
@@ -1648,17 +1613,17 @@ impl HandleTPrsStdAISViewer {
     /// Dereference this Handle to mutably access the underlying TPrsStd_AISViewer
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::TPrsStd_AISViewer {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdAISViewer_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKVCAF::Handle_TPrsStd_AISViewer_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TPrsStd_AISViewer> to Handle<TDF_Attribute>
-    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TDF_Attribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKVCAF::HandleTPrsStdAISViewer_to_HandleTDFAttribute(
+                crate::ffi_extern_TKVCAF::Handle_TPrsStd_AISViewer_to_Handle_TDF_Attribute(
                     self as *const Self,
                 ),
             ))
@@ -1668,10 +1633,10 @@ impl HandleTPrsStdAISViewer {
     /// Upcast Handle<TPrsStd_AISViewer> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKVCAF::HandleTPrsStdAISViewer_to_HandleStandardTransient(
+                crate::ffi_extern_TKVCAF::Handle_TPrsStd_AISViewer_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -1683,7 +1648,7 @@ impl HandleTPrsStdAISViewer {
 // From TPrsStd_AxisDriver.hxx
 // ========================
 
-/// **Source:** `TPrsStd_AxisDriver.hxx`:31 - `TPrsStd_AxisDriver`
+/// **Source:** `TPrsStd_AxisDriver.hxx`:28 - `TPrsStd_AxisDriver`
 /// An implementation of TPrsStd_Driver for axes.
 pub use crate::ffi_types::TPrsStd_AxisDriver as AxisDriver;
 
@@ -1696,7 +1661,7 @@ unsafe impl crate::CppDeletable for AxisDriver {
 }
 
 impl AxisDriver {
-    /// **Source:** `TPrsStd_AxisDriver.hxx`:36 - `TPrsStd_AxisDriver::TPrsStd_AxisDriver()`
+    /// **Source:** `TPrsStd_AxisDriver.hxx`:33 - `TPrsStd_AxisDriver::TPrsStd_AxisDriver()`
     /// Constructs an empty axis driver.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1706,7 +1671,7 @@ impl AxisDriver {
         }
     }
 
-    /// **Source:** `TPrsStd_AxisDriver.hxx`:42 - `TPrsStd_AxisDriver::Update()`
+    /// **Source:** `TPrsStd_AxisDriver.hxx`:39 - `TPrsStd_AxisDriver::Update()`
     /// Build the AISObject (if null) or update it.
     /// No compute is done.
     /// Returns <True> if information was found
@@ -1714,7 +1679,7 @@ impl AxisDriver {
     pub fn update(
         &mut self,
         aLabel: &crate::tdf::Label,
-        anAISObject: &mut crate::ffi_types::HandleAISInteractiveObject,
+        anAISObject: &mut crate::ffi_types::Handle_AIS_InteractiveObject,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AxisDriver_update(
@@ -1725,8 +1690,8 @@ impl AxisDriver {
         })
     }
 
-    /// **Source:** `TPrsStd_AxisDriver.hxx`:46 - `TPrsStd_AxisDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `TPrsStd_AxisDriver.hxx`:42 - `TPrsStd_AxisDriver::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKVCAF::TPrsStd_AxisDriver_dynamic_type(
                 self as *const Self,
@@ -1734,7 +1699,7 @@ impl AxisDriver {
         }
     }
 
-    /// **Source:** `TPrsStd_AxisDriver.hxx`:46 - `TPrsStd_AxisDriver::get_type_name()`
+    /// **Source:** `TPrsStd_AxisDriver.hxx`:42 - `TPrsStd_AxisDriver::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1745,8 +1710,8 @@ impl AxisDriver {
         .into_owned()
     }
 
-    /// **Source:** `TPrsStd_AxisDriver.hxx`:46 - `TPrsStd_AxisDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `TPrsStd_AxisDriver.hxx`:42 - `TPrsStd_AxisDriver::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_AxisDriver_get_type_descriptor(),
@@ -1799,7 +1764,7 @@ impl AxisDriver {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTPrsStdAxisDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TPrsStd_AxisDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_AxisDriver_to_handle(obj.into_raw()),
@@ -1807,8 +1772,8 @@ impl AxisDriver {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AxisDriver_inherited_IsInstance(
                 self as *const Self,
@@ -1817,8 +1782,8 @@ impl AxisDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AxisDriver_inherited_IsKind(
                 self as *const Self,
@@ -1827,7 +1792,7 @@ impl AxisDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1841,14 +1806,14 @@ impl AxisDriver {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AxisDriver_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AxisDriver_inherited_IncrementRefCounter(
@@ -1857,7 +1822,7 @@ impl AxisDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AxisDriver_inherited_DecrementRefCounter(
@@ -1866,7 +1831,7 @@ impl AxisDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_AxisDriver_inherited_Delete(self as *const Self)
@@ -1874,32 +1839,34 @@ impl AxisDriver {
     }
 }
 
-pub use crate::ffi_types::HandleTPrsStdAxisDriver;
+pub use crate::ffi_types::Handle_TPrsStd_AxisDriver;
 
-unsafe impl crate::CppDeletable for HandleTPrsStdAxisDriver {
+unsafe impl crate::CppDeletable for Handle_TPrsStd_AxisDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKVCAF::HandleTPrsStdAxisDriver_destructor(ptr);
+            crate::ffi_extern_TKVCAF::Handle_TPrsStd_AxisDriver_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleTPrsStdAxisDriver {
+unsafe impl crate::CppCopyable for Handle_TPrsStd_AxisDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdAxisDriver_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKVCAF::Handle_TPrsStd_AxisDriver_clone(ptr))
+        }
     }
 }
 
-impl HandleTPrsStdAxisDriver {
+impl Handle_TPrsStd_AxisDriver {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKVCAF::HandleTPrsStdAxisDriver_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKVCAF::Handle_TPrsStd_AxisDriver_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying TPrsStd_AxisDriver
     pub fn get(&self) -> &crate::ffi_types::TPrsStd_AxisDriver {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdAxisDriver_get(
+            &*crate::check_result(crate::ffi_extern_TKVCAF::Handle_TPrsStd_AxisDriver_get(
                 self as *const Self,
             ))
         }
@@ -1908,17 +1875,17 @@ impl HandleTPrsStdAxisDriver {
     /// Dereference this Handle to mutably access the underlying TPrsStd_AxisDriver
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::TPrsStd_AxisDriver {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdAxisDriver_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKVCAF::Handle_TPrsStd_AxisDriver_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TPrsStd_AxisDriver> to Handle<TPrsStd_Driver>
-    pub fn to_handle_driver(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTPrsStdDriver> {
+    pub fn to_handle_driver(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TPrsStd_Driver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKVCAF::HandleTPrsStdAxisDriver_to_HandleTPrsStdDriver(
+                crate::ffi_extern_TKVCAF::Handle_TPrsStd_AxisDriver_to_Handle_TPrsStd_Driver(
                     self as *const Self,
                 ),
             ))
@@ -1928,10 +1895,10 @@ impl HandleTPrsStdAxisDriver {
     /// Upcast Handle<TPrsStd_AxisDriver> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKVCAF::HandleTPrsStdAxisDriver_to_HandleStandardTransient(
+                crate::ffi_extern_TKVCAF::Handle_TPrsStd_AxisDriver_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -1943,7 +1910,7 @@ impl HandleTPrsStdAxisDriver {
 // From TPrsStd_ConstraintDriver.hxx
 // ========================
 
-/// **Source:** `TPrsStd_ConstraintDriver.hxx`:31 - `TPrsStd_ConstraintDriver`
+/// **Source:** `TPrsStd_ConstraintDriver.hxx`:28 - `TPrsStd_ConstraintDriver`
 /// An implementation of TPrsStd_Driver for constraints.
 pub use crate::ffi_types::TPrsStd_ConstraintDriver as ConstraintDriver;
 
@@ -1956,7 +1923,7 @@ unsafe impl crate::CppDeletable for ConstraintDriver {
 }
 
 impl ConstraintDriver {
-    /// **Source:** `TPrsStd_ConstraintDriver.hxx`:36 - `TPrsStd_ConstraintDriver::TPrsStd_ConstraintDriver()`
+    /// **Source:** `TPrsStd_ConstraintDriver.hxx`:33 - `TPrsStd_ConstraintDriver::TPrsStd_ConstraintDriver()`
     /// Constructs an empty constraint driver.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1966,7 +1933,7 @@ impl ConstraintDriver {
         }
     }
 
-    /// **Source:** `TPrsStd_ConstraintDriver.hxx`:42 - `TPrsStd_ConstraintDriver::Update()`
+    /// **Source:** `TPrsStd_ConstraintDriver.hxx`:39 - `TPrsStd_ConstraintDriver::Update()`
     /// Build the AISObject (if null) or update it.
     /// No compute is done.
     /// Returns <True> if information was found
@@ -1974,7 +1941,7 @@ impl ConstraintDriver {
     pub fn update(
         &mut self,
         aLabel: &crate::tdf::Label,
-        anAISObject: &mut crate::ffi_types::HandleAISInteractiveObject,
+        anAISObject: &mut crate::ffi_types::Handle_AIS_InteractiveObject,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_ConstraintDriver_update(
@@ -1985,8 +1952,8 @@ impl ConstraintDriver {
         })
     }
 
-    /// **Source:** `TPrsStd_ConstraintDriver.hxx`:46 - `TPrsStd_ConstraintDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `TPrsStd_ConstraintDriver.hxx`:42 - `TPrsStd_ConstraintDriver::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_ConstraintDriver_dynamic_type(
@@ -1996,7 +1963,7 @@ impl ConstraintDriver {
         }
     }
 
-    /// **Source:** `TPrsStd_ConstraintDriver.hxx`:46 - `TPrsStd_ConstraintDriver::get_type_name()`
+    /// **Source:** `TPrsStd_ConstraintDriver.hxx`:42 - `TPrsStd_ConstraintDriver::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2007,8 +1974,8 @@ impl ConstraintDriver {
         .into_owned()
     }
 
-    /// **Source:** `TPrsStd_ConstraintDriver.hxx`:46 - `TPrsStd_ConstraintDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `TPrsStd_ConstraintDriver.hxx`:42 - `TPrsStd_ConstraintDriver::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_ConstraintDriver_get_type_descriptor(),
@@ -2063,7 +2030,7 @@ impl ConstraintDriver {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTPrsStdConstraintDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TPrsStd_ConstraintDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_ConstraintDriver_to_handle(obj.into_raw()),
@@ -2071,8 +2038,8 @@ impl ConstraintDriver {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_ConstraintDriver_inherited_IsInstance(
                 self as *const Self,
@@ -2081,8 +2048,8 @@ impl ConstraintDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_ConstraintDriver_inherited_IsKind(
                 self as *const Self,
@@ -2091,7 +2058,7 @@ impl ConstraintDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2107,7 +2074,7 @@ impl ConstraintDriver {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_ConstraintDriver_inherited_GetRefCount(
@@ -2116,7 +2083,7 @@ impl ConstraintDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_ConstraintDriver_inherited_IncrementRefCounter(
@@ -2125,7 +2092,7 @@ impl ConstraintDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_ConstraintDriver_inherited_DecrementRefCounter(
@@ -2134,7 +2101,7 @@ impl ConstraintDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_ConstraintDriver_inherited_Delete(self as *const Self)
@@ -2142,36 +2109,38 @@ impl ConstraintDriver {
     }
 }
 
-pub use crate::ffi_types::HandleTPrsStdConstraintDriver;
+pub use crate::ffi_types::Handle_TPrsStd_ConstraintDriver;
 
-unsafe impl crate::CppDeletable for HandleTPrsStdConstraintDriver {
+unsafe impl crate::CppDeletable for Handle_TPrsStd_ConstraintDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKVCAF::HandleTPrsStdConstraintDriver_destructor(ptr);
+            crate::ffi_extern_TKVCAF::Handle_TPrsStd_ConstraintDriver_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleTPrsStdConstraintDriver {
+unsafe impl crate::CppCopyable for Handle_TPrsStd_ConstraintDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdConstraintDriver_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKVCAF::Handle_TPrsStd_ConstraintDriver_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleTPrsStdConstraintDriver {
+impl Handle_TPrsStd_ConstraintDriver {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKVCAF::HandleTPrsStdConstraintDriver_is_null(self as *const Self)
+            crate::ffi_extern_TKVCAF::Handle_TPrsStd_ConstraintDriver_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying TPrsStd_ConstraintDriver
     pub fn get(&self) -> &crate::ffi_types::TPrsStd_ConstraintDriver {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdConstraintDriver_get(
+            &*crate::check_result(crate::ffi_extern_TKVCAF::Handle_TPrsStd_ConstraintDriver_get(
                 self as *const Self,
             ))
         }
@@ -2181,16 +2150,18 @@ impl HandleTPrsStdConstraintDriver {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::TPrsStd_ConstraintDriver {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKVCAF::HandleTPrsStdConstraintDriver_get_mut(self as *mut Self),
+                crate::ffi_extern_TKVCAF::Handle_TPrsStd_ConstraintDriver_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
 
     /// Upcast Handle<TPrsStd_ConstraintDriver> to Handle<TPrsStd_Driver>
-    pub fn to_handle_driver(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTPrsStdDriver> {
+    pub fn to_handle_driver(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TPrsStd_Driver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKVCAF::HandleTPrsStdConstraintDriver_to_HandleTPrsStdDriver(
+                crate::ffi_extern_TKVCAF::Handle_TPrsStd_ConstraintDriver_to_Handle_TPrsStd_Driver(
                     self as *const Self,
                 ),
             ))
@@ -2200,13 +2171,9 @@ impl HandleTPrsStdConstraintDriver {
     /// Upcast Handle<TPrsStd_ConstraintDriver> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKVCAF::HandleTPrsStdConstraintDriver_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKVCAF::Handle_TPrsStd_ConstraintDriver_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -2239,217 +2206,297 @@ impl ConstraintTools {
 
     /// **Source:** `TPrsStd_ConstraintTools.hxx`:37 - `TPrsStd_ConstraintTools::UpdateOnlyValue()`
     pub fn update_only_value(
-        aConst: &crate::ffi_types::HandleTDataXtdConstraint,
-        anAIS: &crate::ffi_types::HandleAISInteractiveObject,
+        aConst: &crate::ffi_types::Handle_TDataXtd_Constraint,
+        anAIS: &crate::ffi_types::Handle_AIS_InteractiveObject,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_update_only_value(aConst, anAIS)
         })
     }
 
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:40 - `TPrsStd_ConstraintTools::ComputeDistance()`
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:43 - `TPrsStd_ConstraintTools::ComputeDistance()`
+    /// Computes a distance dimension presentation for the given constraint.
+    /// @param[in] aConst the distance constraint
+    /// @return interactive object representing the distance, or null handle on failure
     pub fn compute_distance(
-        aConst: &crate::ffi_types::HandleTDataXtdConstraint,
-        anAIS: &mut crate::ffi_types::HandleAISInteractiveObject,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_distance(aConst, anAIS)
-        })
+        aConst: &crate::ffi_types::Handle_TDataXtd_Constraint,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_AIS_InteractiveObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_distance(aConst),
+            ))
+        }
     }
 
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:43 - `TPrsStd_ConstraintTools::ComputeParallel()`
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:54 - `TPrsStd_ConstraintTools::ComputeParallel()`
+    /// Computes a parallel relation presentation for the given constraint.
+    /// @param[in] aConst the parallel constraint
+    /// @return interactive object representing the relation, or null handle on failure
     pub fn compute_parallel(
-        aConst: &crate::ffi_types::HandleTDataXtdConstraint,
-        anAIS: &mut crate::ffi_types::HandleAISInteractiveObject,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_parallel(aConst, anAIS)
-        })
+        aConst: &crate::ffi_types::Handle_TDataXtd_Constraint,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_AIS_InteractiveObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_parallel(aConst),
+            ))
+        }
     }
 
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:46 - `TPrsStd_ConstraintTools::ComputeTangent()`
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:65 - `TPrsStd_ConstraintTools::ComputeTangent()`
+    /// Computes a tangent relation presentation for the given constraint.
+    /// @param[in] aConst the tangent constraint
+    /// @return interactive object representing the relation, or null handle on failure
     pub fn compute_tangent(
-        aConst: &crate::ffi_types::HandleTDataXtdConstraint,
-        anAIS: &mut crate::ffi_types::HandleAISInteractiveObject,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_tangent(aConst, anAIS)
-        })
+        aConst: &crate::ffi_types::Handle_TDataXtd_Constraint,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_AIS_InteractiveObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_tangent(aConst),
+            ))
+        }
     }
 
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:49 - `TPrsStd_ConstraintTools::ComputePerpendicular()`
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:76 - `TPrsStd_ConstraintTools::ComputePerpendicular()`
+    /// Computes a perpendicular relation presentation for the given constraint.
+    /// @param[in] aConst the perpendicular constraint
+    /// @return interactive object representing the relation, or null handle on failure
     pub fn compute_perpendicular(
-        aConst: &crate::ffi_types::HandleTDataXtdConstraint,
-        anAIS: &mut crate::ffi_types::HandleAISInteractiveObject,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_perpendicular(aConst, anAIS)
-        })
+        aConst: &crate::ffi_types::Handle_TDataXtd_Constraint,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_AIS_InteractiveObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_perpendicular(aConst),
+            ))
+        }
     }
 
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:52 - `TPrsStd_ConstraintTools::ComputeConcentric()`
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:87 - `TPrsStd_ConstraintTools::ComputeConcentric()`
+    /// Computes a concentric relation presentation for the given constraint.
+    /// @param[in] aConst the concentric constraint
+    /// @return interactive object representing the relation, or null handle on failure
     pub fn compute_concentric(
-        aConst: &crate::ffi_types::HandleTDataXtdConstraint,
-        anAIS: &mut crate::ffi_types::HandleAISInteractiveObject,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_concentric(aConst, anAIS)
-        })
+        aConst: &crate::ffi_types::Handle_TDataXtd_Constraint,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_AIS_InteractiveObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_concentric(aConst),
+            ))
+        }
     }
 
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:55 - `TPrsStd_ConstraintTools::ComputeSymmetry()`
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:98 - `TPrsStd_ConstraintTools::ComputeSymmetry()`
+    /// Computes a symmetry relation presentation for the given constraint.
+    /// @param[in] aConst the symmetry constraint
+    /// @return interactive object representing the relation, or null handle on failure
     pub fn compute_symmetry(
-        aConst: &crate::ffi_types::HandleTDataXtdConstraint,
-        anAIS: &mut crate::ffi_types::HandleAISInteractiveObject,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_symmetry(aConst, anAIS)
-        })
+        aConst: &crate::ffi_types::Handle_TDataXtd_Constraint,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_AIS_InteractiveObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_symmetry(aConst),
+            ))
+        }
     }
 
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:58 - `TPrsStd_ConstraintTools::ComputeMidPoint()`
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:109 - `TPrsStd_ConstraintTools::ComputeMidPoint()`
+    /// Computes a midpoint relation presentation for the given constraint.
+    /// @param[in] aConst the midpoint constraint
+    /// @return interactive object representing the relation, or null handle on failure
     pub fn compute_mid_point(
-        aConst: &crate::ffi_types::HandleTDataXtdConstraint,
-        anAIS: &mut crate::ffi_types::HandleAISInteractiveObject,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_mid_point(aConst, anAIS)
-        })
+        aConst: &crate::ffi_types::Handle_TDataXtd_Constraint,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_AIS_InteractiveObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_mid_point(aConst),
+            ))
+        }
     }
 
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:61 - `TPrsStd_ConstraintTools::ComputeAngle()`
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:120 - `TPrsStd_ConstraintTools::ComputeAngle()`
+    /// Computes an angle dimension presentation for the given constraint.
+    /// @param[in] aConst the angle constraint
+    /// @return interactive object representing the angle, or null handle on failure
     pub fn compute_angle(
-        aConst: &crate::ffi_types::HandleTDataXtdConstraint,
-        anAIS: &mut crate::ffi_types::HandleAISInteractiveObject,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_angle(aConst, anAIS)
-        })
+        aConst: &crate::ffi_types::Handle_TDataXtd_Constraint,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_AIS_InteractiveObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_angle(aConst),
+            ))
+        }
     }
 
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:64 - `TPrsStd_ConstraintTools::ComputeRadius()`
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:131 - `TPrsStd_ConstraintTools::ComputeRadius()`
+    /// Computes a radius dimension presentation for the given constraint.
+    /// @param[in] aConst the radius constraint
+    /// @return interactive object representing the radius, or null handle on failure
     pub fn compute_radius(
-        aConst: &crate::ffi_types::HandleTDataXtdConstraint,
-        anAIS: &mut crate::ffi_types::HandleAISInteractiveObject,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_radius(aConst, anAIS)
-        })
+        aConst: &crate::ffi_types::Handle_TDataXtd_Constraint,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_AIS_InteractiveObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_radius(aConst),
+            ))
+        }
     }
 
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:67 - `TPrsStd_ConstraintTools::ComputeMinRadius()`
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:142 - `TPrsStd_ConstraintTools::ComputeMinRadius()`
+    /// Computes a minor radius dimension presentation for the given constraint.
+    /// @param[in] aConst the minor radius constraint
+    /// @return interactive object representing the minor radius, or null handle on failure
     pub fn compute_min_radius(
-        aConst: &crate::ffi_types::HandleTDataXtdConstraint,
-        anAIS: &mut crate::ffi_types::HandleAISInteractiveObject,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_min_radius(aConst, anAIS)
-        })
+        aConst: &crate::ffi_types::Handle_TDataXtd_Constraint,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_AIS_InteractiveObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_min_radius(aConst),
+            ))
+        }
     }
 
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:70 - `TPrsStd_ConstraintTools::ComputeMaxRadius()`
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:153 - `TPrsStd_ConstraintTools::ComputeMaxRadius()`
+    /// Computes a major radius dimension presentation for the given constraint.
+    /// @param[in] aConst the major radius constraint
+    /// @return interactive object representing the major radius, or null handle on failure
     pub fn compute_max_radius(
-        aConst: &crate::ffi_types::HandleTDataXtdConstraint,
-        anAIS: &mut crate::ffi_types::HandleAISInteractiveObject,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_max_radius(aConst, anAIS)
-        })
+        aConst: &crate::ffi_types::Handle_TDataXtd_Constraint,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_AIS_InteractiveObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_max_radius(aConst),
+            ))
+        }
     }
 
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:73 - `TPrsStd_ConstraintTools::ComputeEqualDistance()`
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:164 - `TPrsStd_ConstraintTools::ComputeEqualDistance()`
+    /// Computes an equal distance relation presentation for the given constraint.
+    /// @param[in] aConst the equal distance constraint
+    /// @return interactive object representing the relation, or null handle on failure
     pub fn compute_equal_distance(
-        aConst: &crate::ffi_types::HandleTDataXtdConstraint,
-        anAIS: &mut crate::ffi_types::HandleAISInteractiveObject,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_equal_distance(aConst, anAIS)
-        })
+        aConst: &crate::ffi_types::Handle_TDataXtd_Constraint,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_AIS_InteractiveObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_equal_distance(aConst),
+            ))
+        }
     }
 
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:76 - `TPrsStd_ConstraintTools::ComputeEqualRadius()`
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:175 - `TPrsStd_ConstraintTools::ComputeEqualRadius()`
+    /// Computes an equal radius relation presentation for the given constraint.
+    /// @param[in] aConst the equal radius constraint
+    /// @return interactive object representing the relation, or null handle on failure
     pub fn compute_equal_radius(
-        aConst: &crate::ffi_types::HandleTDataXtdConstraint,
-        anAIS: &mut crate::ffi_types::HandleAISInteractiveObject,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_equal_radius(aConst, anAIS)
-        })
+        aConst: &crate::ffi_types::Handle_TDataXtd_Constraint,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_AIS_InteractiveObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_equal_radius(aConst),
+            ))
+        }
     }
 
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:79 - `TPrsStd_ConstraintTools::ComputeFix()`
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:186 - `TPrsStd_ConstraintTools::ComputeFix()`
+    /// Computes a fix constraint presentation for the given constraint.
+    /// @param[in] aConst the fix constraint
+    /// @return interactive object representing the constraint, or null handle on failure
     pub fn compute_fix(
-        aConst: &crate::ffi_types::HandleTDataXtdConstraint,
-        anAIS: &mut crate::ffi_types::HandleAISInteractiveObject,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_fix(aConst, anAIS)
-        })
+        aConst: &crate::ffi_types::Handle_TDataXtd_Constraint,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_AIS_InteractiveObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_fix(aConst),
+            ))
+        }
     }
 
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:82 - `TPrsStd_ConstraintTools::ComputeDiameter()`
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:197 - `TPrsStd_ConstraintTools::ComputeDiameter()`
+    /// Computes a diameter dimension presentation for the given constraint.
+    /// @param[in] aConst the diameter constraint
+    /// @return interactive object representing the diameter, or null handle on failure
     pub fn compute_diameter(
-        aConst: &crate::ffi_types::HandleTDataXtdConstraint,
-        anAIS: &mut crate::ffi_types::HandleAISInteractiveObject,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_diameter(aConst, anAIS)
-        })
+        aConst: &crate::ffi_types::Handle_TDataXtd_Constraint,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_AIS_InteractiveObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_diameter(aConst),
+            ))
+        }
     }
 
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:85 - `TPrsStd_ConstraintTools::ComputeOffset()`
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:208 - `TPrsStd_ConstraintTools::ComputeOffset()`
+    /// Computes an offset relation presentation for the given constraint.
+    /// @param[in] aConst the offset constraint
+    /// @return interactive object representing the offset, or null handle on failure
     pub fn compute_offset(
-        aConst: &crate::ffi_types::HandleTDataXtdConstraint,
-        anAIS: &mut crate::ffi_types::HandleAISInteractiveObject,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_offset(aConst, anAIS)
-        })
+        aConst: &crate::ffi_types::Handle_TDataXtd_Constraint,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_AIS_InteractiveObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_offset(aConst),
+            ))
+        }
     }
 
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:88 - `TPrsStd_ConstraintTools::ComputePlacement()`
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:219 - `TPrsStd_ConstraintTools::ComputePlacement()`
+    /// Computes a placement relation presentation for the given constraint.
+    /// @param[in] aConst the placement constraint
+    /// @return interactive object representing the placement, or null handle on failure
     pub fn compute_placement(
-        aConst: &crate::ffi_types::HandleTDataXtdConstraint,
-        anAIS: &mut crate::ffi_types::HandleAISInteractiveObject,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_placement(aConst, anAIS)
-        })
+        aConst: &crate::ffi_types::Handle_TDataXtd_Constraint,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_AIS_InteractiveObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_placement(aConst),
+            ))
+        }
     }
 
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:91 - `TPrsStd_ConstraintTools::ComputeCoincident()`
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:230 - `TPrsStd_ConstraintTools::ComputeCoincident()`
+    /// Computes a coincident relation presentation for the given constraint.
+    /// @param[in] aConst the coincident constraint
+    /// @return interactive object representing the relation, or null handle on failure
     pub fn compute_coincident(
-        aConst: &crate::ffi_types::HandleTDataXtdConstraint,
-        anAIS: &mut crate::ffi_types::HandleAISInteractiveObject,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_coincident(aConst, anAIS)
-        })
+        aConst: &crate::ffi_types::Handle_TDataXtd_Constraint,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_AIS_InteractiveObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_coincident(aConst),
+            ))
+        }
     }
 
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:94 - `TPrsStd_ConstraintTools::ComputeRound()`
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:241 - `TPrsStd_ConstraintTools::ComputeRound()`
+    /// Computes a round (fillet) relation presentation for the given constraint.
+    /// @param[in] aConst the round constraint
+    /// @return interactive object representing the relation, or null handle on failure
     pub fn compute_round(
-        aConst: &crate::ffi_types::HandleTDataXtdConstraint,
-        anAIS: &mut crate::ffi_types::HandleAISInteractiveObject,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_round(aConst, anAIS)
-        })
+        aConst: &crate::ffi_types::Handle_TDataXtd_Constraint,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_AIS_InteractiveObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_round(aConst),
+            ))
+        }
     }
 
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:97 - `TPrsStd_ConstraintTools::ComputeOthers()`
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:252 - `TPrsStd_ConstraintTools::ComputeOthers()`
+    /// Computes a presentation for constraint types not handled by specific methods.
+    /// @param[in] aConst the constraint
+    /// @return interactive object representing the constraint, or null handle on failure
     pub fn compute_others(
-        aConst: &crate::ffi_types::HandleTDataXtdConstraint,
-        anAIS: &mut crate::ffi_types::HandleAISInteractiveObject,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_others(aConst, anAIS)
-        })
+        aConst: &crate::ffi_types::Handle_TDataXtd_Constraint,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_AIS_InteractiveObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_others(aConst),
+            ))
+        }
     }
 
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:100 - `TPrsStd_ConstraintTools::ComputeTextAndValue()`
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:260 - `TPrsStd_ConstraintTools::ComputeTextAndValue()`
     pub fn compute_text_and_value(
-        aConst: &crate::ffi_types::HandleTDataXtdConstraint,
+        aConst: &crate::ffi_types::Handle_TDataXtd_Constraint,
         aValue: &mut f64,
         aText: &mut crate::t_collection::ExtendedString,
         anIsAngle: bool,
@@ -2461,16 +2508,20 @@ impl ConstraintTools {
         })
     }
 
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:105 - `TPrsStd_ConstraintTools::ComputeAngleForOneFace()`
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:268 - `TPrsStd_ConstraintTools::ComputeAngleForOneFace()`
+    /// Computes an angle dimension presentation for a single-face constraint.
+    /// @param[in] aConst the angle constraint on one face
+    /// @return interactive object representing the angle, or null handle on failure
     pub fn compute_angle_for_one_face(
-        aConst: &crate::ffi_types::HandleTDataXtdConstraint,
-        anAIS: &mut crate::ffi_types::HandleAISInteractiveObject,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_angle_for_one_face(
-                aConst, anAIS,
-            )
-        })
+        aConst: &crate::ffi_types::Handle_TDataXtd_Constraint,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_AIS_InteractiveObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKVCAF::TPrsStd_ConstraintTools_compute_angle_for_one_face(
+                    aConst,
+                ),
+            ))
+        }
     }
 }
 
@@ -2478,7 +2529,7 @@ impl ConstraintTools {
 // From TPrsStd_Driver.hxx
 // ========================
 
-/// **Source:** `TPrsStd_Driver.hxx`:45 - `TPrsStd_Driver`
+/// **Source:** `TPrsStd_Driver.hxx`:42 - `TPrsStd_Driver`
 /// Driver for AIS
 /// ==============
 /// An abstract class, which - in classes inheriting
@@ -2490,9 +2541,9 @@ impl ConstraintTools {
 /// attributes. These attributes are those found on
 /// the label given as an argument in the method Update.
 /// true is returned if the interactive object was modified by the update.
-/// This class  provide  an algorithm  to  Build with its  default
-/// values (if Null) or Update (if !Null) an AIS_InteractiveObject
-/// .   Resources are found  in  attributes associated to  a given
+/// This class provide an algorithm to Build with its default
+/// values (if Null) or Update (if !Null) an AIS_InteractiveObject.
+/// Resources are found in attributes associated to a given
 /// label.
 pub use crate::ffi_types::TPrsStd_Driver as Driver;
 
@@ -2505,21 +2556,21 @@ unsafe impl crate::CppDeletable for Driver {
 }
 
 impl Driver {
-    /// **Source:** `TPrsStd_Driver.hxx`:51 - `TPrsStd_Driver::Update()`
+    /// **Source:** `TPrsStd_Driver.hxx`:48 - `TPrsStd_Driver::Update()`
     /// Updates the interactive object ais with
     /// information found on the attributes associated with the label L.
     pub fn update(
         &mut self,
         L: &crate::tdf::Label,
-        ais: &mut crate::ffi_types::HandleAISInteractiveObject,
+        ais: &mut crate::ffi_types::Handle_AIS_InteractiveObject,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_Driver_update(self as *mut Self, L, ais)
         })
     }
 
-    /// **Source:** `TPrsStd_Driver.hxx`:54 - `TPrsStd_Driver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `TPrsStd_Driver.hxx`:51 - `TPrsStd_Driver::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKVCAF::TPrsStd_Driver_dynamic_type(
                 self as *const Self,
@@ -2527,7 +2578,7 @@ impl Driver {
         }
     }
 
-    /// **Source:** `TPrsStd_Driver.hxx`:54 - `TPrsStd_Driver::get_type_name()`
+    /// **Source:** `TPrsStd_Driver.hxx`:51 - `TPrsStd_Driver::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2538,8 +2589,8 @@ impl Driver {
         .into_owned()
     }
 
-    /// **Source:** `TPrsStd_Driver.hxx`:54 - `TPrsStd_Driver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `TPrsStd_Driver.hxx`:51 - `TPrsStd_Driver::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKVCAF::TPrsStd_Driver_get_type_descriptor()))
         }
@@ -2565,8 +2616,8 @@ impl Driver {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_Driver_inherited_IsInstance(
                 self as *const Self,
@@ -2575,14 +2626,14 @@ impl Driver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_Driver_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2596,14 +2647,14 @@ impl Driver {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_Driver_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_Driver_inherited_IncrementRefCounter(
@@ -2612,7 +2663,7 @@ impl Driver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_Driver_inherited_DecrementRefCounter(
@@ -2621,7 +2672,7 @@ impl Driver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_Driver_inherited_Delete(self as *const Self)
@@ -2629,32 +2680,32 @@ impl Driver {
     }
 }
 
-pub use crate::ffi_types::HandleTPrsStdDriver;
+pub use crate::ffi_types::Handle_TPrsStd_Driver;
 
-unsafe impl crate::CppDeletable for HandleTPrsStdDriver {
+unsafe impl crate::CppDeletable for Handle_TPrsStd_Driver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKVCAF::HandleTPrsStdDriver_destructor(ptr);
+            crate::ffi_extern_TKVCAF::Handle_TPrsStd_Driver_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleTPrsStdDriver {
+unsafe impl crate::CppCopyable for Handle_TPrsStd_Driver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdDriver_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKVCAF::Handle_TPrsStd_Driver_clone(ptr)) }
     }
 }
 
-impl HandleTPrsStdDriver {
+impl Handle_TPrsStd_Driver {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKVCAF::HandleTPrsStdDriver_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKVCAF::Handle_TPrsStd_Driver_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying TPrsStd_Driver
     pub fn get(&self) -> &crate::ffi_types::TPrsStd_Driver {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdDriver_get(
+            &*crate::check_result(crate::ffi_extern_TKVCAF::Handle_TPrsStd_Driver_get(
                 self as *const Self,
             ))
         }
@@ -2663,7 +2714,7 @@ impl HandleTPrsStdDriver {
     /// Dereference this Handle to mutably access the underlying TPrsStd_Driver
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::TPrsStd_Driver {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdDriver_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKVCAF::Handle_TPrsStd_Driver_get_mut(
                 self as *mut Self,
             ))
         }
@@ -2672,10 +2723,10 @@ impl HandleTPrsStdDriver {
     /// Upcast Handle<TPrsStd_Driver> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKVCAF::HandleTPrsStdDriver_to_HandleStandardTransient(
+                crate::ffi_extern_TKVCAF::Handle_TPrsStd_Driver_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -2687,9 +2738,9 @@ impl HandleTPrsStdDriver {
     /// Returns `None` if the handle does not point to a `TPrsStd_AxisDriver` (or subclass).
     pub fn downcast_to_axis_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTPrsStdAxisDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_TPrsStd_AxisDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKVCAF::HandleTPrsStdDriver_downcast_to_HandleTPrsStdAxisDriver(
+            crate::ffi_extern_TKVCAF::Handle_TPrsStd_Driver_downcast_to_Handle_TPrsStd_AxisDriver(
                 self as *const Self,
             )
         });
@@ -2705,11 +2756,9 @@ impl HandleTPrsStdDriver {
     /// Returns `None` if the handle does not point to a `TPrsStd_ConstraintDriver` (or subclass).
     pub fn downcast_to_constraint_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTPrsStdConstraintDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_TPrsStd_ConstraintDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKVCAF::HandleTPrsStdDriver_downcast_to_HandleTPrsStdConstraintDriver(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKVCAF::Handle_TPrsStd_Driver_downcast_to_Handle_TPrsStd_ConstraintDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2723,11 +2772,9 @@ impl HandleTPrsStdDriver {
     /// Returns `None` if the handle does not point to a `TPrsStd_GeometryDriver` (or subclass).
     pub fn downcast_to_geometry_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTPrsStdGeometryDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_TPrsStd_GeometryDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKVCAF::HandleTPrsStdDriver_downcast_to_HandleTPrsStdGeometryDriver(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKVCAF::Handle_TPrsStd_Driver_downcast_to_Handle_TPrsStd_GeometryDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2741,11 +2788,9 @@ impl HandleTPrsStdDriver {
     /// Returns `None` if the handle does not point to a `TPrsStd_NamedShapeDriver` (or subclass).
     pub fn downcast_to_named_shape_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTPrsStdNamedShapeDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_TPrsStd_NamedShapeDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKVCAF::HandleTPrsStdDriver_downcast_to_HandleTPrsStdNamedShapeDriver(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKVCAF::Handle_TPrsStd_Driver_downcast_to_Handle_TPrsStd_NamedShapeDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2759,9 +2804,9 @@ impl HandleTPrsStdDriver {
     /// Returns `None` if the handle does not point to a `TPrsStd_PlaneDriver` (or subclass).
     pub fn downcast_to_plane_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTPrsStdPlaneDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_TPrsStd_PlaneDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKVCAF::HandleTPrsStdDriver_downcast_to_HandleTPrsStdPlaneDriver(
+            crate::ffi_extern_TKVCAF::Handle_TPrsStd_Driver_downcast_to_Handle_TPrsStd_PlaneDriver(
                 self as *const Self,
             )
         });
@@ -2777,9 +2822,9 @@ impl HandleTPrsStdDriver {
     /// Returns `None` if the handle does not point to a `TPrsStd_PointDriver` (or subclass).
     pub fn downcast_to_point_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTPrsStdPointDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_TPrsStd_PointDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKVCAF::HandleTPrsStdDriver_downcast_to_HandleTPrsStdPointDriver(
+            crate::ffi_extern_TKVCAF::Handle_TPrsStd_Driver_downcast_to_Handle_TPrsStd_PointDriver(
                 self as *const Self,
             )
         });
@@ -2795,9 +2840,9 @@ impl HandleTPrsStdDriver {
     /// Returns `None` if the handle does not point to a `XCAFPrs_Driver` (or subclass).
     pub fn downcast_to_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleXCAFPrsDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_XCAFPrs_Driver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKVCAF::HandleTPrsStdDriver_downcast_to_HandleXCAFPrsDriver(
+            crate::ffi_extern_TKVCAF::Handle_TPrsStd_Driver_downcast_to_Handle_XCAFPrs_Driver(
                 self as *const Self,
             )
         });
@@ -2813,11 +2858,11 @@ impl HandleTPrsStdDriver {
 // From TPrsStd_DriverTable.hxx
 // ========================
 
-/// **Source:** `TPrsStd_DriverTable.hxx`:35 - `TPrsStd_DriverTable`
-/// This class is   a  container to record  (AddDriver)
-/// binding between  GUID and  TPrsStd_Driver.
+/// **Source:** `TPrsStd_DriverTable.hxx`:34 - `TPrsStd_DriverTable`
+/// This class is a container to record (AddDriver)
+/// binding between GUID and TPrsStd_Driver.
 /// You create a new instance of TPrsStd_Driver
-/// and use the method AddDriver to load it into the driver table. the method
+/// and use the method AddDriver to load it into the driver table.
 pub use crate::ffi_types::TPrsStd_DriverTable as DriverTable;
 
 unsafe impl crate::CppDeletable for DriverTable {
@@ -2829,7 +2874,7 @@ unsafe impl crate::CppDeletable for DriverTable {
 }
 
 impl DriverTable {
-    /// **Source:** `TPrsStd_DriverTable.hxx`:44 - `TPrsStd_DriverTable::TPrsStd_DriverTable()`
+    /// **Source:** `TPrsStd_DriverTable.hxx`:43 - `TPrsStd_DriverTable::TPrsStd_DriverTable()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2839,7 +2884,7 @@ impl DriverTable {
         }
     }
 
-    /// **Source:** `TPrsStd_DriverTable.hxx`:47 - `TPrsStd_DriverTable::InitStandardDrivers()`
+    /// **Source:** `TPrsStd_DriverTable.hxx`:46 - `TPrsStd_DriverTable::InitStandardDrivers()`
     /// Fills the table with standard drivers
     pub fn init_standard_drivers(&mut self) {
         crate::check_void_result(unsafe {
@@ -2847,12 +2892,12 @@ impl DriverTable {
         })
     }
 
-    /// **Source:** `TPrsStd_DriverTable.hxx`:50 - `TPrsStd_DriverTable::AddDriver()`
+    /// **Source:** `TPrsStd_DriverTable.hxx`:49 - `TPrsStd_DriverTable::AddDriver()`
     /// Returns true if the driver has been added successfully to the driver table.
     pub fn add_driver(
         &mut self,
         guid: &crate::standard::GUID,
-        driver: &crate::ffi_types::HandleTPrsStdDriver,
+        driver: &crate::ffi_types::Handle_TPrsStd_Driver,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_DriverTable_add_driver(
@@ -2863,12 +2908,12 @@ impl DriverTable {
         })
     }
 
-    /// **Source:** `TPrsStd_DriverTable.hxx`:54 - `TPrsStd_DriverTable::FindDriver()`
+    /// **Source:** `TPrsStd_DriverTable.hxx`:53 - `TPrsStd_DriverTable::FindDriver()`
     /// Returns true if the driver was found.
     pub fn find_driver(
         &self,
         guid: &crate::standard::GUID,
-        driver: &mut crate::ffi_types::HandleTPrsStdDriver,
+        driver: &mut crate::ffi_types::Handle_TPrsStd_Driver,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_DriverTable_find_driver(
@@ -2879,7 +2924,7 @@ impl DriverTable {
         })
     }
 
-    /// **Source:** `TPrsStd_DriverTable.hxx`:59 - `TPrsStd_DriverTable::RemoveDriver()`
+    /// **Source:** `TPrsStd_DriverTable.hxx`:58 - `TPrsStd_DriverTable::RemoveDriver()`
     /// Removes a driver with the given GUID.
     /// Returns true if the driver has been removed successfully.
     pub fn remove_driver(&mut self, guid: &crate::standard::GUID) -> bool {
@@ -2888,9 +2933,9 @@ impl DriverTable {
         })
     }
 
-    /// **Source:** `TPrsStd_DriverTable.hxx`:65 - `TPrsStd_DriverTable::Clear()`
-    /// Removes all drivers. Returns
-    /// true if the driver has been removed successfully.
+    /// **Source:** `TPrsStd_DriverTable.hxx`:64 - `TPrsStd_DriverTable::Clear()`
+    /// Removes all drivers.
+    /// Returns true if the driver has been removed successfully.
     /// If this method is used, the InitStandardDrivers method should be
     /// called to fill the table with standard drivers.
     pub fn clear(&mut self) {
@@ -2899,8 +2944,8 @@ impl DriverTable {
         })
     }
 
-    /// **Source:** `TPrsStd_DriverTable.hxx`:67 - `TPrsStd_DriverTable::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `TPrsStd_DriverTable.hxx`:66 - `TPrsStd_DriverTable::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKVCAF::TPrsStd_DriverTable_dynamic_type(
                 self as *const Self,
@@ -2908,10 +2953,10 @@ impl DriverTable {
         }
     }
 
-    /// **Source:** `TPrsStd_DriverTable.hxx`:41 - `TPrsStd_DriverTable::Get()`
+    /// **Source:** `TPrsStd_DriverTable.hxx`:40 - `TPrsStd_DriverTable::Get()`
     /// Returns the static table.
     /// If it does not exist, creates it and fills it with standard drivers.
-    pub fn get() -> crate::OwnedPtr<crate::ffi_types::HandleTPrsStdDriverTable> {
+    pub fn get() -> crate::OwnedPtr<crate::ffi_types::Handle_TPrsStd_DriverTable> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_DriverTable_get(),
@@ -2919,7 +2964,7 @@ impl DriverTable {
         }
     }
 
-    /// **Source:** `TPrsStd_DriverTable.hxx`:67 - `TPrsStd_DriverTable::get_type_name()`
+    /// **Source:** `TPrsStd_DriverTable.hxx`:66 - `TPrsStd_DriverTable::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2930,8 +2975,8 @@ impl DriverTable {
         .into_owned()
     }
 
-    /// **Source:** `TPrsStd_DriverTable.hxx`:67 - `TPrsStd_DriverTable::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `TPrsStd_DriverTable.hxx`:66 - `TPrsStd_DriverTable::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_DriverTable_get_type_descriptor(),
@@ -2964,7 +3009,7 @@ impl DriverTable {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTPrsStdDriverTable> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TPrsStd_DriverTable> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_DriverTable_to_handle(obj.into_raw()),
@@ -2972,8 +3017,8 @@ impl DriverTable {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_DriverTable_inherited_IsInstance(
                 self as *const Self,
@@ -2982,8 +3027,8 @@ impl DriverTable {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_DriverTable_inherited_IsKind(
                 self as *const Self,
@@ -2992,7 +3037,7 @@ impl DriverTable {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3006,14 +3051,14 @@ impl DriverTable {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_DriverTable_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_DriverTable_inherited_IncrementRefCounter(
@@ -3022,7 +3067,7 @@ impl DriverTable {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_DriverTable_inherited_DecrementRefCounter(
@@ -3031,7 +3076,7 @@ impl DriverTable {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_DriverTable_inherited_Delete(self as *const Self)
@@ -3039,34 +3084,34 @@ impl DriverTable {
     }
 }
 
-pub use crate::ffi_types::HandleTPrsStdDriverTable;
+pub use crate::ffi_types::Handle_TPrsStd_DriverTable;
 
-unsafe impl crate::CppDeletable for HandleTPrsStdDriverTable {
+unsafe impl crate::CppDeletable for Handle_TPrsStd_DriverTable {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKVCAF::HandleTPrsStdDriverTable_destructor(ptr);
+            crate::ffi_extern_TKVCAF::Handle_TPrsStd_DriverTable_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleTPrsStdDriverTable {
+unsafe impl crate::CppCopyable for Handle_TPrsStd_DriverTable {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdDriverTable_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKVCAF::Handle_TPrsStd_DriverTable_clone(ptr))
         }
     }
 }
 
-impl HandleTPrsStdDriverTable {
+impl Handle_TPrsStd_DriverTable {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKVCAF::HandleTPrsStdDriverTable_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKVCAF::Handle_TPrsStd_DriverTable_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying TPrsStd_DriverTable
     pub fn get(&self) -> &crate::ffi_types::TPrsStd_DriverTable {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdDriverTable_get(
+            &*crate::check_result(crate::ffi_extern_TKVCAF::Handle_TPrsStd_DriverTable_get(
                 self as *const Self,
             ))
         }
@@ -3075,7 +3120,7 @@ impl HandleTPrsStdDriverTable {
     /// Dereference this Handle to mutably access the underlying TPrsStd_DriverTable
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::TPrsStd_DriverTable {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdDriverTable_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKVCAF::Handle_TPrsStd_DriverTable_get_mut(
                 self as *mut Self,
             ))
         }
@@ -3084,10 +3129,10 @@ impl HandleTPrsStdDriverTable {
     /// Upcast Handle<TPrsStd_DriverTable> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKVCAF::HandleTPrsStdDriverTable_to_HandleStandardTransient(
+                crate::ffi_extern_TKVCAF::Handle_TPrsStd_DriverTable_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -3099,7 +3144,7 @@ impl HandleTPrsStdDriverTable {
 // From TPrsStd_GeometryDriver.hxx
 // ========================
 
-/// **Source:** `TPrsStd_GeometryDriver.hxx`:31 - `TPrsStd_GeometryDriver`
+/// **Source:** `TPrsStd_GeometryDriver.hxx`:28 - `TPrsStd_GeometryDriver`
 /// This method is an implementation of TPrsStd_Driver for geometries.
 pub use crate::ffi_types::TPrsStd_GeometryDriver as GeometryDriver;
 
@@ -3112,7 +3157,7 @@ unsafe impl crate::CppDeletable for GeometryDriver {
 }
 
 impl GeometryDriver {
-    /// **Source:** `TPrsStd_GeometryDriver.hxx`:36 - `TPrsStd_GeometryDriver::TPrsStd_GeometryDriver()`
+    /// **Source:** `TPrsStd_GeometryDriver.hxx`:33 - `TPrsStd_GeometryDriver::TPrsStd_GeometryDriver()`
     /// Constructs an empty geometry driver.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3122,7 +3167,7 @@ impl GeometryDriver {
         }
     }
 
-    /// **Source:** `TPrsStd_GeometryDriver.hxx`:42 - `TPrsStd_GeometryDriver::Update()`
+    /// **Source:** `TPrsStd_GeometryDriver.hxx`:39 - `TPrsStd_GeometryDriver::Update()`
     /// Build the AISObject (if null) or update it.
     /// No compute is done.
     /// Returns <True> if information was found
@@ -3130,7 +3175,7 @@ impl GeometryDriver {
     pub fn update(
         &mut self,
         aLabel: &crate::tdf::Label,
-        anAISObject: &mut crate::ffi_types::HandleAISInteractiveObject,
+        anAISObject: &mut crate::ffi_types::Handle_AIS_InteractiveObject,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_GeometryDriver_update(
@@ -3141,8 +3186,8 @@ impl GeometryDriver {
         })
     }
 
-    /// **Source:** `TPrsStd_GeometryDriver.hxx`:46 - `TPrsStd_GeometryDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `TPrsStd_GeometryDriver.hxx`:42 - `TPrsStd_GeometryDriver::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKVCAF::TPrsStd_GeometryDriver_dynamic_type(
                 self as *const Self,
@@ -3150,7 +3195,7 @@ impl GeometryDriver {
         }
     }
 
-    /// **Source:** `TPrsStd_GeometryDriver.hxx`:46 - `TPrsStd_GeometryDriver::get_type_name()`
+    /// **Source:** `TPrsStd_GeometryDriver.hxx`:42 - `TPrsStd_GeometryDriver::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -3161,8 +3206,8 @@ impl GeometryDriver {
         .into_owned()
     }
 
-    /// **Source:** `TPrsStd_GeometryDriver.hxx`:46 - `TPrsStd_GeometryDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `TPrsStd_GeometryDriver.hxx`:42 - `TPrsStd_GeometryDriver::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_GeometryDriver_get_type_descriptor(),
@@ -3217,7 +3262,7 @@ impl GeometryDriver {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTPrsStdGeometryDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TPrsStd_GeometryDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_GeometryDriver_to_handle(obj.into_raw()),
@@ -3225,8 +3270,8 @@ impl GeometryDriver {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_GeometryDriver_inherited_IsInstance(
                 self as *const Self,
@@ -3235,8 +3280,8 @@ impl GeometryDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_GeometryDriver_inherited_IsKind(
                 self as *const Self,
@@ -3245,7 +3290,7 @@ impl GeometryDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3259,7 +3304,7 @@ impl GeometryDriver {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_GeometryDriver_inherited_GetRefCount(
@@ -3268,7 +3313,7 @@ impl GeometryDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_GeometryDriver_inherited_IncrementRefCounter(
@@ -3277,7 +3322,7 @@ impl GeometryDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_GeometryDriver_inherited_DecrementRefCounter(
@@ -3286,7 +3331,7 @@ impl GeometryDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_GeometryDriver_inherited_Delete(self as *const Self)
@@ -3294,36 +3339,36 @@ impl GeometryDriver {
     }
 }
 
-pub use crate::ffi_types::HandleTPrsStdGeometryDriver;
+pub use crate::ffi_types::Handle_TPrsStd_GeometryDriver;
 
-unsafe impl crate::CppDeletable for HandleTPrsStdGeometryDriver {
+unsafe impl crate::CppDeletable for Handle_TPrsStd_GeometryDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKVCAF::HandleTPrsStdGeometryDriver_destructor(ptr);
+            crate::ffi_extern_TKVCAF::Handle_TPrsStd_GeometryDriver_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleTPrsStdGeometryDriver {
+unsafe impl crate::CppCopyable for Handle_TPrsStd_GeometryDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdGeometryDriver_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKVCAF::Handle_TPrsStd_GeometryDriver_clone(ptr))
         }
     }
 }
 
-impl HandleTPrsStdGeometryDriver {
+impl Handle_TPrsStd_GeometryDriver {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKVCAF::HandleTPrsStdGeometryDriver_is_null(self as *const Self)
+            crate::ffi_extern_TKVCAF::Handle_TPrsStd_GeometryDriver_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying TPrsStd_GeometryDriver
     pub fn get(&self) -> &crate::ffi_types::TPrsStd_GeometryDriver {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdGeometryDriver_get(
+            &*crate::check_result(crate::ffi_extern_TKVCAF::Handle_TPrsStd_GeometryDriver_get(
                 self as *const Self,
             ))
         }
@@ -3333,16 +3378,16 @@ impl HandleTPrsStdGeometryDriver {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::TPrsStd_GeometryDriver {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKVCAF::HandleTPrsStdGeometryDriver_get_mut(self as *mut Self),
+                crate::ffi_extern_TKVCAF::Handle_TPrsStd_GeometryDriver_get_mut(self as *mut Self),
             )
         }
     }
 
     /// Upcast Handle<TPrsStd_GeometryDriver> to Handle<TPrsStd_Driver>
-    pub fn to_handle_driver(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTPrsStdDriver> {
+    pub fn to_handle_driver(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TPrsStd_Driver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKVCAF::HandleTPrsStdGeometryDriver_to_HandleTPrsStdDriver(
+                crate::ffi_extern_TKVCAF::Handle_TPrsStd_GeometryDriver_to_Handle_TPrsStd_Driver(
                     self as *const Self,
                 ),
             ))
@@ -3352,13 +3397,9 @@ impl HandleTPrsStdGeometryDriver {
     /// Upcast Handle<TPrsStd_GeometryDriver> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKVCAF::HandleTPrsStdGeometryDriver_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKVCAF::Handle_TPrsStd_GeometryDriver_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -3367,7 +3408,7 @@ impl HandleTPrsStdGeometryDriver {
 // From TPrsStd_NamedShapeDriver.hxx
 // ========================
 
-/// **Source:** `TPrsStd_NamedShapeDriver.hxx`:31 - `TPrsStd_NamedShapeDriver`
+/// **Source:** `TPrsStd_NamedShapeDriver.hxx`:28 - `TPrsStd_NamedShapeDriver`
 /// An implementation of TPrsStd_Driver for named shapes.
 pub use crate::ffi_types::TPrsStd_NamedShapeDriver as NamedShapeDriver;
 
@@ -3380,7 +3421,7 @@ unsafe impl crate::CppDeletable for NamedShapeDriver {
 }
 
 impl NamedShapeDriver {
-    /// **Source:** `TPrsStd_NamedShapeDriver.hxx`:36 - `TPrsStd_NamedShapeDriver::TPrsStd_NamedShapeDriver()`
+    /// **Source:** `TPrsStd_NamedShapeDriver.hxx`:33 - `TPrsStd_NamedShapeDriver::TPrsStd_NamedShapeDriver()`
     /// Constructs an empty named shape driver.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3390,7 +3431,7 @@ impl NamedShapeDriver {
         }
     }
 
-    /// **Source:** `TPrsStd_NamedShapeDriver.hxx`:42 - `TPrsStd_NamedShapeDriver::Update()`
+    /// **Source:** `TPrsStd_NamedShapeDriver.hxx`:39 - `TPrsStd_NamedShapeDriver::Update()`
     /// Build the AISObject (if null) or update it.
     /// No compute is done.
     /// Returns <True> if information was found
@@ -3398,7 +3439,7 @@ impl NamedShapeDriver {
     pub fn update(
         &mut self,
         aLabel: &crate::tdf::Label,
-        anAISObject: &mut crate::ffi_types::HandleAISInteractiveObject,
+        anAISObject: &mut crate::ffi_types::Handle_AIS_InteractiveObject,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_NamedShapeDriver_update(
@@ -3409,8 +3450,8 @@ impl NamedShapeDriver {
         })
     }
 
-    /// **Source:** `TPrsStd_NamedShapeDriver.hxx`:46 - `TPrsStd_NamedShapeDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `TPrsStd_NamedShapeDriver.hxx`:42 - `TPrsStd_NamedShapeDriver::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_NamedShapeDriver_dynamic_type(
@@ -3420,7 +3461,7 @@ impl NamedShapeDriver {
         }
     }
 
-    /// **Source:** `TPrsStd_NamedShapeDriver.hxx`:46 - `TPrsStd_NamedShapeDriver::get_type_name()`
+    /// **Source:** `TPrsStd_NamedShapeDriver.hxx`:42 - `TPrsStd_NamedShapeDriver::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -3431,8 +3472,8 @@ impl NamedShapeDriver {
         .into_owned()
     }
 
-    /// **Source:** `TPrsStd_NamedShapeDriver.hxx`:46 - `TPrsStd_NamedShapeDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `TPrsStd_NamedShapeDriver.hxx`:42 - `TPrsStd_NamedShapeDriver::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_NamedShapeDriver_get_type_descriptor(),
@@ -3487,7 +3528,7 @@ impl NamedShapeDriver {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTPrsStdNamedShapeDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TPrsStd_NamedShapeDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_NamedShapeDriver_to_handle(obj.into_raw()),
@@ -3495,8 +3536,8 @@ impl NamedShapeDriver {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_NamedShapeDriver_inherited_IsInstance(
                 self as *const Self,
@@ -3505,8 +3546,8 @@ impl NamedShapeDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_NamedShapeDriver_inherited_IsKind(
                 self as *const Self,
@@ -3515,7 +3556,7 @@ impl NamedShapeDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3531,7 +3572,7 @@ impl NamedShapeDriver {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_NamedShapeDriver_inherited_GetRefCount(
@@ -3540,7 +3581,7 @@ impl NamedShapeDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_NamedShapeDriver_inherited_IncrementRefCounter(
@@ -3549,7 +3590,7 @@ impl NamedShapeDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_NamedShapeDriver_inherited_DecrementRefCounter(
@@ -3558,7 +3599,7 @@ impl NamedShapeDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_NamedShapeDriver_inherited_Delete(self as *const Self)
@@ -3566,36 +3607,38 @@ impl NamedShapeDriver {
     }
 }
 
-pub use crate::ffi_types::HandleTPrsStdNamedShapeDriver;
+pub use crate::ffi_types::Handle_TPrsStd_NamedShapeDriver;
 
-unsafe impl crate::CppDeletable for HandleTPrsStdNamedShapeDriver {
+unsafe impl crate::CppDeletable for Handle_TPrsStd_NamedShapeDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKVCAF::HandleTPrsStdNamedShapeDriver_destructor(ptr);
+            crate::ffi_extern_TKVCAF::Handle_TPrsStd_NamedShapeDriver_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleTPrsStdNamedShapeDriver {
+unsafe impl crate::CppCopyable for Handle_TPrsStd_NamedShapeDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdNamedShapeDriver_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKVCAF::Handle_TPrsStd_NamedShapeDriver_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleTPrsStdNamedShapeDriver {
+impl Handle_TPrsStd_NamedShapeDriver {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKVCAF::HandleTPrsStdNamedShapeDriver_is_null(self as *const Self)
+            crate::ffi_extern_TKVCAF::Handle_TPrsStd_NamedShapeDriver_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying TPrsStd_NamedShapeDriver
     pub fn get(&self) -> &crate::ffi_types::TPrsStd_NamedShapeDriver {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdNamedShapeDriver_get(
+            &*crate::check_result(crate::ffi_extern_TKVCAF::Handle_TPrsStd_NamedShapeDriver_get(
                 self as *const Self,
             ))
         }
@@ -3605,16 +3648,18 @@ impl HandleTPrsStdNamedShapeDriver {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::TPrsStd_NamedShapeDriver {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKVCAF::HandleTPrsStdNamedShapeDriver_get_mut(self as *mut Self),
+                crate::ffi_extern_TKVCAF::Handle_TPrsStd_NamedShapeDriver_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
 
     /// Upcast Handle<TPrsStd_NamedShapeDriver> to Handle<TPrsStd_Driver>
-    pub fn to_handle_driver(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTPrsStdDriver> {
+    pub fn to_handle_driver(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TPrsStd_Driver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKVCAF::HandleTPrsStdNamedShapeDriver_to_HandleTPrsStdDriver(
+                crate::ffi_extern_TKVCAF::Handle_TPrsStd_NamedShapeDriver_to_Handle_TPrsStd_Driver(
                     self as *const Self,
                 ),
             ))
@@ -3624,13 +3669,9 @@ impl HandleTPrsStdNamedShapeDriver {
     /// Upcast Handle<TPrsStd_NamedShapeDriver> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKVCAF::HandleTPrsStdNamedShapeDriver_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKVCAF::Handle_TPrsStd_NamedShapeDriver_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -3639,7 +3680,7 @@ impl HandleTPrsStdNamedShapeDriver {
 // From TPrsStd_PlaneDriver.hxx
 // ========================
 
-/// **Source:** `TPrsStd_PlaneDriver.hxx`:31 - `TPrsStd_PlaneDriver`
+/// **Source:** `TPrsStd_PlaneDriver.hxx`:28 - `TPrsStd_PlaneDriver`
 /// An implementation of TPrsStd_Driver for planes.
 pub use crate::ffi_types::TPrsStd_PlaneDriver as PlaneDriver;
 
@@ -3652,7 +3693,7 @@ unsafe impl crate::CppDeletable for PlaneDriver {
 }
 
 impl PlaneDriver {
-    /// **Source:** `TPrsStd_PlaneDriver.hxx`:36 - `TPrsStd_PlaneDriver::TPrsStd_PlaneDriver()`
+    /// **Source:** `TPrsStd_PlaneDriver.hxx`:33 - `TPrsStd_PlaneDriver::TPrsStd_PlaneDriver()`
     /// Constructs an empty plane driver.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3662,7 +3703,7 @@ impl PlaneDriver {
         }
     }
 
-    /// **Source:** `TPrsStd_PlaneDriver.hxx`:42 - `TPrsStd_PlaneDriver::Update()`
+    /// **Source:** `TPrsStd_PlaneDriver.hxx`:39 - `TPrsStd_PlaneDriver::Update()`
     /// Build the AISObject (if null) or update it.
     /// No compute is done.
     /// Returns <True> if information was found
@@ -3670,7 +3711,7 @@ impl PlaneDriver {
     pub fn update(
         &mut self,
         aLabel: &crate::tdf::Label,
-        anAISObject: &mut crate::ffi_types::HandleAISInteractiveObject,
+        anAISObject: &mut crate::ffi_types::Handle_AIS_InteractiveObject,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_PlaneDriver_update(
@@ -3681,8 +3722,8 @@ impl PlaneDriver {
         })
     }
 
-    /// **Source:** `TPrsStd_PlaneDriver.hxx`:46 - `TPrsStd_PlaneDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `TPrsStd_PlaneDriver.hxx`:42 - `TPrsStd_PlaneDriver::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKVCAF::TPrsStd_PlaneDriver_dynamic_type(
                 self as *const Self,
@@ -3690,7 +3731,7 @@ impl PlaneDriver {
         }
     }
 
-    /// **Source:** `TPrsStd_PlaneDriver.hxx`:46 - `TPrsStd_PlaneDriver::get_type_name()`
+    /// **Source:** `TPrsStd_PlaneDriver.hxx`:42 - `TPrsStd_PlaneDriver::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -3701,8 +3742,8 @@ impl PlaneDriver {
         .into_owned()
     }
 
-    /// **Source:** `TPrsStd_PlaneDriver.hxx`:46 - `TPrsStd_PlaneDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `TPrsStd_PlaneDriver.hxx`:42 - `TPrsStd_PlaneDriver::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_PlaneDriver_get_type_descriptor(),
@@ -3755,7 +3796,7 @@ impl PlaneDriver {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTPrsStdPlaneDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TPrsStd_PlaneDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_PlaneDriver_to_handle(obj.into_raw()),
@@ -3763,8 +3804,8 @@ impl PlaneDriver {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_PlaneDriver_inherited_IsInstance(
                 self as *const Self,
@@ -3773,8 +3814,8 @@ impl PlaneDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_PlaneDriver_inherited_IsKind(
                 self as *const Self,
@@ -3783,7 +3824,7 @@ impl PlaneDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3797,14 +3838,14 @@ impl PlaneDriver {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_PlaneDriver_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_PlaneDriver_inherited_IncrementRefCounter(
@@ -3813,7 +3854,7 @@ impl PlaneDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_PlaneDriver_inherited_DecrementRefCounter(
@@ -3822,7 +3863,7 @@ impl PlaneDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_PlaneDriver_inherited_Delete(self as *const Self)
@@ -3830,34 +3871,34 @@ impl PlaneDriver {
     }
 }
 
-pub use crate::ffi_types::HandleTPrsStdPlaneDriver;
+pub use crate::ffi_types::Handle_TPrsStd_PlaneDriver;
 
-unsafe impl crate::CppDeletable for HandleTPrsStdPlaneDriver {
+unsafe impl crate::CppDeletable for Handle_TPrsStd_PlaneDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKVCAF::HandleTPrsStdPlaneDriver_destructor(ptr);
+            crate::ffi_extern_TKVCAF::Handle_TPrsStd_PlaneDriver_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleTPrsStdPlaneDriver {
+unsafe impl crate::CppCopyable for Handle_TPrsStd_PlaneDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdPlaneDriver_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKVCAF::Handle_TPrsStd_PlaneDriver_clone(ptr))
         }
     }
 }
 
-impl HandleTPrsStdPlaneDriver {
+impl Handle_TPrsStd_PlaneDriver {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKVCAF::HandleTPrsStdPlaneDriver_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKVCAF::Handle_TPrsStd_PlaneDriver_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying TPrsStd_PlaneDriver
     pub fn get(&self) -> &crate::ffi_types::TPrsStd_PlaneDriver {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdPlaneDriver_get(
+            &*crate::check_result(crate::ffi_extern_TKVCAF::Handle_TPrsStd_PlaneDriver_get(
                 self as *const Self,
             ))
         }
@@ -3866,17 +3907,17 @@ impl HandleTPrsStdPlaneDriver {
     /// Dereference this Handle to mutably access the underlying TPrsStd_PlaneDriver
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::TPrsStd_PlaneDriver {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdPlaneDriver_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKVCAF::Handle_TPrsStd_PlaneDriver_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TPrsStd_PlaneDriver> to Handle<TPrsStd_Driver>
-    pub fn to_handle_driver(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTPrsStdDriver> {
+    pub fn to_handle_driver(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TPrsStd_Driver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKVCAF::HandleTPrsStdPlaneDriver_to_HandleTPrsStdDriver(
+                crate::ffi_extern_TKVCAF::Handle_TPrsStd_PlaneDriver_to_Handle_TPrsStd_Driver(
                     self as *const Self,
                 ),
             ))
@@ -3886,10 +3927,10 @@ impl HandleTPrsStdPlaneDriver {
     /// Upcast Handle<TPrsStd_PlaneDriver> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKVCAF::HandleTPrsStdPlaneDriver_to_HandleStandardTransient(
+                crate::ffi_extern_TKVCAF::Handle_TPrsStd_PlaneDriver_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -3901,7 +3942,7 @@ impl HandleTPrsStdPlaneDriver {
 // From TPrsStd_PointDriver.hxx
 // ========================
 
-/// **Source:** `TPrsStd_PointDriver.hxx`:31 - `TPrsStd_PointDriver`
+/// **Source:** `TPrsStd_PointDriver.hxx`:28 - `TPrsStd_PointDriver`
 /// An implementation of TPrsStd_Driver for points.
 pub use crate::ffi_types::TPrsStd_PointDriver as PointDriver;
 
@@ -3914,7 +3955,7 @@ unsafe impl crate::CppDeletable for PointDriver {
 }
 
 impl PointDriver {
-    /// **Source:** `TPrsStd_PointDriver.hxx`:36 - `TPrsStd_PointDriver::TPrsStd_PointDriver()`
+    /// **Source:** `TPrsStd_PointDriver.hxx`:33 - `TPrsStd_PointDriver::TPrsStd_PointDriver()`
     /// Constructs an empty point driver.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3924,7 +3965,7 @@ impl PointDriver {
         }
     }
 
-    /// **Source:** `TPrsStd_PointDriver.hxx`:42 - `TPrsStd_PointDriver::Update()`
+    /// **Source:** `TPrsStd_PointDriver.hxx`:39 - `TPrsStd_PointDriver::Update()`
     /// Build the AISObject (if null) or update it.
     /// No compute is done.
     /// Returns <True> if information was found
@@ -3932,7 +3973,7 @@ impl PointDriver {
     pub fn update(
         &mut self,
         aLabel: &crate::tdf::Label,
-        anAISObject: &mut crate::ffi_types::HandleAISInteractiveObject,
+        anAISObject: &mut crate::ffi_types::Handle_AIS_InteractiveObject,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_PointDriver_update(
@@ -3943,8 +3984,8 @@ impl PointDriver {
         })
     }
 
-    /// **Source:** `TPrsStd_PointDriver.hxx`:46 - `TPrsStd_PointDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `TPrsStd_PointDriver.hxx`:42 - `TPrsStd_PointDriver::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKVCAF::TPrsStd_PointDriver_dynamic_type(
                 self as *const Self,
@@ -3952,7 +3993,7 @@ impl PointDriver {
         }
     }
 
-    /// **Source:** `TPrsStd_PointDriver.hxx`:46 - `TPrsStd_PointDriver::get_type_name()`
+    /// **Source:** `TPrsStd_PointDriver.hxx`:42 - `TPrsStd_PointDriver::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -3963,8 +4004,8 @@ impl PointDriver {
         .into_owned()
     }
 
-    /// **Source:** `TPrsStd_PointDriver.hxx`:46 - `TPrsStd_PointDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `TPrsStd_PointDriver.hxx`:42 - `TPrsStd_PointDriver::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_PointDriver_get_type_descriptor(),
@@ -4017,7 +4058,7 @@ impl PointDriver {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTPrsStdPointDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TPrsStd_PointDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKVCAF::TPrsStd_PointDriver_to_handle(obj.into_raw()),
@@ -4025,8 +4066,8 @@ impl PointDriver {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_PointDriver_inherited_IsInstance(
                 self as *const Self,
@@ -4035,8 +4076,8 @@ impl PointDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_PointDriver_inherited_IsKind(
                 self as *const Self,
@@ -4045,7 +4086,7 @@ impl PointDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -4059,14 +4100,14 @@ impl PointDriver {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_PointDriver_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_PointDriver_inherited_IncrementRefCounter(
@@ -4075,7 +4116,7 @@ impl PointDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_PointDriver_inherited_DecrementRefCounter(
@@ -4084,7 +4125,7 @@ impl PointDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKVCAF::TPrsStd_PointDriver_inherited_Delete(self as *const Self)
@@ -4092,34 +4133,34 @@ impl PointDriver {
     }
 }
 
-pub use crate::ffi_types::HandleTPrsStdPointDriver;
+pub use crate::ffi_types::Handle_TPrsStd_PointDriver;
 
-unsafe impl crate::CppDeletable for HandleTPrsStdPointDriver {
+unsafe impl crate::CppDeletable for Handle_TPrsStd_PointDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKVCAF::HandleTPrsStdPointDriver_destructor(ptr);
+            crate::ffi_extern_TKVCAF::Handle_TPrsStd_PointDriver_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleTPrsStdPointDriver {
+unsafe impl crate::CppCopyable for Handle_TPrsStd_PointDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdPointDriver_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKVCAF::Handle_TPrsStd_PointDriver_clone(ptr))
         }
     }
 }
 
-impl HandleTPrsStdPointDriver {
+impl Handle_TPrsStd_PointDriver {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKVCAF::HandleTPrsStdPointDriver_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKVCAF::Handle_TPrsStd_PointDriver_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying TPrsStd_PointDriver
     pub fn get(&self) -> &crate::ffi_types::TPrsStd_PointDriver {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdPointDriver_get(
+            &*crate::check_result(crate::ffi_extern_TKVCAF::Handle_TPrsStd_PointDriver_get(
                 self as *const Self,
             ))
         }
@@ -4128,17 +4169,17 @@ impl HandleTPrsStdPointDriver {
     /// Dereference this Handle to mutably access the underlying TPrsStd_PointDriver
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::TPrsStd_PointDriver {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKVCAF::HandleTPrsStdPointDriver_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKVCAF::Handle_TPrsStd_PointDriver_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TPrsStd_PointDriver> to Handle<TPrsStd_Driver>
-    pub fn to_handle_driver(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTPrsStdDriver> {
+    pub fn to_handle_driver(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TPrsStd_Driver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKVCAF::HandleTPrsStdPointDriver_to_HandleTPrsStdDriver(
+                crate::ffi_extern_TKVCAF::Handle_TPrsStd_PointDriver_to_Handle_TPrsStd_Driver(
                     self as *const Self,
                 ),
             ))
@@ -4148,10 +4189,10 @@ impl HandleTPrsStdPointDriver {
     /// Upcast Handle<TPrsStd_PointDriver> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKVCAF::HandleTPrsStdPointDriver_to_HandleStandardTransient(
+                crate::ffi_extern_TKVCAF::Handle_TPrsStd_PointDriver_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))

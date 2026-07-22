@@ -19,7 +19,7 @@ pub fn outer_wire_face_2(theFace: &crate::topo_ds::Face) -> crate::OwnedPtr<crat
 /// **Source:** `ShapeAnalysis.hxx`:56 - `ShapeAnalysis::TotCross2D`
 /// Returns a total area of 2d wire
 pub fn tot_cross2_d(
-    sewd: &crate::ffi_types::HandleShapeExtendWireData,
+    sewd: &crate::ffi_types::Handle_ShapeExtend_WireData,
     aFace: &crate::topo_ds::Face,
 ) -> f64 {
     crate::check_result(unsafe {
@@ -95,7 +95,7 @@ pub fn get_face_uv_bounds(
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::HandleStandardTransient;
+pub use crate::ffi_types::Handle_Standard_Transient;
 
 // ========================
 // From ShapeAnalysis_BoxBndTree.hxx
@@ -114,12 +114,12 @@ unsafe impl crate::CppDeletable for BoxBndTreeSelector {
 
 impl BoxBndTreeSelector {
     /// **Source:** `ShapeAnalysis_BoxBndTree.hxx`:36 - `ShapeAnalysis_BoxBndTreeSelector::ShapeAnalysis_BoxBndTreeSelector()`
-    pub fn new_handletoptoolsharray1ofshape_bool(
-        theSeq: &crate::ffi_types::HandleTopToolsHArray1OfShape,
+    pub fn new_harr1_shape_bool(
+        theSeq: &crate::ffi_types::Handle_NCollection_HArray1_TopoDS_Shape,
         theShared: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeAnalysis_BoxBndTreeSelector_ctor_handletoptoolsharray1ofshape_bool(theSeq, theShared)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeAnalysis_BoxBndTreeSelector_ctor_harr1_shape_bool(theSeq, theShared)))
         }
     }
 
@@ -520,7 +520,7 @@ impl CheckSmallFace {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:82 - `ShapeAnalysis_CheckSmallFace::IsStripSupport()`
+    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:81 - `ShapeAnalysis_CheckSmallFace::IsStripSupport()`
     /// Checks if a Face lies on a Surface which is a strip
     /// So the Face is a strip. But a Face may be a strip elsewhere ..
     ///
@@ -537,7 +537,7 @@ impl CheckSmallFace {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:87 - `ShapeAnalysis_CheckSmallFace::CheckStripEdges()`
+    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:85 - `ShapeAnalysis_CheckSmallFace::CheckStripEdges()`
     /// Checks if two edges define a strip, i.e. distance maxi below
     /// tolerance, given or some of those of E1 and E2
     pub fn check_strip_edges(
@@ -558,7 +558,7 @@ impl CheckSmallFace {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:95 - `ShapeAnalysis_CheckSmallFace::FindStripEdges()`
+    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:93 - `ShapeAnalysis_CheckSmallFace::FindStripEdges()`
     /// Searches for two and only two edges up tolerance
     /// Returns True if OK, false if not 2 edges
     /// If True, returns the two edges and their maximum distance
@@ -582,7 +582,7 @@ impl CheckSmallFace {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:107 - `ShapeAnalysis_CheckSmallFace::CheckSingleStrip()`
+    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:105 - `ShapeAnalysis_CheckSmallFace::CheckSingleStrip()`
     /// Checks if a Face is a single strip, i.e. brings two great
     /// edges which are confused on their whole length, possible other
     /// edges are small or null length
@@ -607,7 +607,7 @@ impl CheckSmallFace {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:121 - `ShapeAnalysis_CheckSmallFace::CheckStripFace()`
+    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:119 - `ShapeAnalysis_CheckSmallFace::CheckStripFace()`
     /// Checks if a Face is as a Strip
     /// Returns 0 if not or non determined, 1 if in U, 2 if in V
     /// By default, considers the tolerance zone of its edges
@@ -635,7 +635,7 @@ impl CheckSmallFace {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:133 - `ShapeAnalysis_CheckSmallFace::CheckSplittingVertices()`
+    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:130 - `ShapeAnalysis_CheckSmallFace::CheckSplittingVertices()`
     /// Checks if a Face brings vertices which split it, either
     /// confused with non adjacent vertices, or confused with their
     /// projection on non adjacent edges
@@ -645,8 +645,8 @@ impl CheckSmallFace {
     pub fn check_splitting_vertices(
         &mut self,
         F: &crate::topo_ds::Face,
-        MapEdges: &mut crate::ffi_types::TopTools_DataMapOfShapeListOfShape,
-        MapParam: &mut crate::ffi_types::ShapeAnalysis_DataMapOfShapeListOfReal,
+        MapEdges: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
+        MapParam: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_double_TopTools_ShapeMapHasher,
         theAllVert: &mut crate::topo_ds::Compound,
     ) -> i32 {
         crate::check_result(unsafe {
@@ -660,7 +660,7 @@ impl CheckSmallFace {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:147 - `ShapeAnalysis_CheckSmallFace::CheckPin()`
+    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:146 - `ShapeAnalysis_CheckSmallFace::CheckPin()`
     /// Checks if a Face has a pin, which can be edited
     /// No singularity : no pin, returns 0
     /// If there is a pin, checked topics, with returned value :
@@ -686,7 +686,7 @@ impl CheckSmallFace {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:153 - `ShapeAnalysis_CheckSmallFace::CheckTwisted()`
+    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:150 - `ShapeAnalysis_CheckSmallFace::CheckTwisted()`
     /// Checks if a Face is twisted (apart from checking Pin, i.e. it
     /// does not give information on pin, only "it is twisted")
     pub fn check_twisted(
@@ -705,11 +705,11 @@ impl CheckSmallFace {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:157 - `ShapeAnalysis_CheckSmallFace::CheckPinFace()`
+    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:152 - `ShapeAnalysis_CheckSmallFace::CheckPinFace()`
     pub fn check_pin_face(
         &mut self,
         F: &crate::topo_ds::Face,
-        mapEdges: &mut crate::ffi_types::TopTools_DataMapOfShapeShape,
+        mapEdges: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
         toler: f64,
     ) -> bool {
         crate::check_result(unsafe {
@@ -722,7 +722,7 @@ impl CheckSmallFace {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:161 - `ShapeAnalysis_CheckSmallFace::CheckPinEdges()`
+    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:157 - `ShapeAnalysis_CheckSmallFace::CheckPinEdges()`
     pub fn check_pin_edges(
         &self,
         theFirstEdge: &crate::topo_ds::Edge,
@@ -743,7 +743,7 @@ impl CheckSmallFace {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:178 - `ShapeAnalysis_CheckSmallFace::Status()`
+    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:174 - `ShapeAnalysis_CheckSmallFace::Status()`
     /// Returns the status of last call to Perform()
     /// ShapeExtend_OK   : face was OK, nothing done
     /// ShapeExtend_DONE1: some wires are fixed
@@ -764,7 +764,7 @@ impl CheckSmallFace {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:187 - `ShapeAnalysis_CheckSmallFace::SetTolerance()`
+    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:183 - `ShapeAnalysis_CheckSmallFace::SetTolerance()`
     /// Sets a fixed Tolerance to check small face
     /// By default, local tolerance zone is considered
     /// Sets a fixed MaxTolerance to check small face
@@ -781,7 +781,7 @@ impl CheckSmallFace {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:191 - `ShapeAnalysis_CheckSmallFace::Tolerance()`
+    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:187 - `ShapeAnalysis_CheckSmallFace::Tolerance()`
     /// Returns the tolerance to check small faces, negative value if
     /// local tolerances zones are to be considered
     pub fn tolerance(&self) -> f64 {
@@ -792,7 +792,7 @@ impl CheckSmallFace {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:193 - `ShapeAnalysis_CheckSmallFace::StatusSpot()`
+    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:189 - `ShapeAnalysis_CheckSmallFace::StatusSpot()`
     pub fn status_spot(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_CheckSmallFace_status_spot(
@@ -802,7 +802,7 @@ impl CheckSmallFace {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:195 - `ShapeAnalysis_CheckSmallFace::StatusStrip()`
+    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:191 - `ShapeAnalysis_CheckSmallFace::StatusStrip()`
     pub fn status_strip(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_CheckSmallFace_status_strip(
@@ -812,7 +812,7 @@ impl CheckSmallFace {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:197 - `ShapeAnalysis_CheckSmallFace::StatusPin()`
+    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:193 - `ShapeAnalysis_CheckSmallFace::StatusPin()`
     pub fn status_pin(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_CheckSmallFace_status_pin(
@@ -822,7 +822,7 @@ impl CheckSmallFace {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:199 - `ShapeAnalysis_CheckSmallFace::StatusTwisted()`
+    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:195 - `ShapeAnalysis_CheckSmallFace::StatusTwisted()`
     pub fn status_twisted(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_CheckSmallFace_status_twisted(
@@ -832,7 +832,7 @@ impl CheckSmallFace {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:201 - `ShapeAnalysis_CheckSmallFace::StatusSplitVert()`
+    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:197 - `ShapeAnalysis_CheckSmallFace::StatusSplitVert()`
     pub fn status_split_vert(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_CheckSmallFace_status_split_vert(
@@ -842,7 +842,7 @@ impl CheckSmallFace {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:203 - `ShapeAnalysis_CheckSmallFace::StatusPinFace()`
+    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:199 - `ShapeAnalysis_CheckSmallFace::StatusPinFace()`
     pub fn status_pin_face(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_CheckSmallFace_status_pin_face(
@@ -852,7 +852,7 @@ impl CheckSmallFace {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:205 - `ShapeAnalysis_CheckSmallFace::StatusPinEdges()`
+    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:201 - `ShapeAnalysis_CheckSmallFace::StatusPinEdges()`
     pub fn status_pin_edges(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_CheckSmallFace_status_pin_edges(
@@ -867,7 +867,7 @@ impl CheckSmallFace {
 // From ShapeAnalysis_Curve.hxx
 // ========================
 
-/// **Source:** `ShapeAnalysis_Curve.hxx`:37 - `ShapeAnalysis_Curve`
+/// **Source:** `ShapeAnalysis_Curve.hxx`:38 - `ShapeAnalysis_Curve`
 /// Analyzing tool for 2d or 3d curve.
 /// Computes parameters of projected point onto a curve.
 pub use crate::ffi_types::ShapeAnalysis_Curve as Curve;
@@ -891,7 +891,7 @@ impl Curve {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_Curve.hxx`:52 - `ShapeAnalysis_Curve::Project()`
+    /// **Source:** `ShapeAnalysis_Curve.hxx`:53 - `ShapeAnalysis_Curve::Project()`
     /// Projects a Point on a Curve.
     /// Computes the projected point and its parameter on the curve.
     /// <preci> is used as 3d precision (hence, 0 will produce
@@ -904,7 +904,7 @@ impl Curve {
     /// computed one.
     pub fn project_handlegeomcurve_pnt_real_pnt_real_bool(
         &self,
-        C3D: &crate::ffi_types::HandleGeomCurve,
+        C3D: &crate::ffi_types::Handle_Geom_Curve,
         P3D: &crate::gp::Pnt,
         preci: f64,
         proj: &mut crate::gp::Pnt,
@@ -916,7 +916,7 @@ impl Curve {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Curve.hxx`:67 - `ShapeAnalysis_Curve::Project()`
+    /// **Source:** `ShapeAnalysis_Curve.hxx`:68 - `ShapeAnalysis_Curve::Project()`
     /// Projects a Point on a Curve.
     /// Computes the projected point and its parameter on the curve.
     /// <preci> is used as 3d precision (hence, 0 will produce
@@ -947,7 +947,7 @@ impl Curve {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Curve.hxx`:80 - `ShapeAnalysis_Curve::Project()`
+    /// **Source:** `ShapeAnalysis_Curve.hxx`:81 - `ShapeAnalysis_Curve::Project()`
     /// Projects a Point on a Curve, but parameters are limited
     /// between <cf> and <cl>.
     /// The range [cf, cl] is extended with help of Adaptor3d on the
@@ -956,7 +956,7 @@ impl Curve {
     /// of the curve if distance is less than <preci>
     pub fn project_handlegeomcurve_pnt_real_pnt_real3_bool(
         &self,
-        C3D: &crate::ffi_types::HandleGeomCurve,
+        C3D: &crate::ffi_types::Handle_Geom_Curve,
         P3D: &crate::gp::Pnt,
         preci: f64,
         proj: &mut crate::gp::Pnt,
@@ -970,7 +970,7 @@ impl Curve {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Curve.hxx`:89 - `ShapeAnalysis_Curve::ProjectAct()`
+    /// **Source:** `ShapeAnalysis_Curve.hxx`:90 - `ShapeAnalysis_Curve::ProjectAct()`
     pub fn project_act(
         &self,
         C3D: &crate::adaptor3d::Curve,
@@ -1000,7 +1000,7 @@ impl Curve {
     pub fn next_project_real_handlegeomcurve_pnt_real_pnt_real3_bool(
         &self,
         paramPrev: f64,
-        C3D: &crate::ffi_types::HandleGeomCurve,
+        C3D: &crate::ffi_types::Handle_Geom_Curve,
         P3D: &crate::gp::Pnt,
         preci: f64,
         proj: &mut crate::gp::Pnt,
@@ -1044,7 +1044,7 @@ impl Curve {
     /// In the latter case, parameters are reset to range of curve.
     pub fn validate_range(
         &self,
-        Crv: &crate::ffi_types::HandleGeomCurve,
+        Crv: &crate::ffi_types::Handle_Geom_Curve,
         First: &mut f64,
         Last: &mut f64,
         prec: f64,
@@ -1067,7 +1067,7 @@ impl Curve {
     /// extrema. All these points are added to Box.
     pub fn fill_bnd_box(
         &self,
-        C2d: &crate::ffi_types::HandleGeom2dCurve,
+        C2d: &crate::ffi_types::Handle_Geom2d_Curve,
         First: f64,
         Last: f64,
         NPoints: i32,
@@ -1092,8 +1092,8 @@ impl Curve {
     /// seam edge.
     pub fn select_forward_seam(
         &self,
-        C1: &crate::ffi_types::HandleGeom2dCurve,
-        C2: &crate::ffi_types::HandleGeom2dCurve,
+        C1: &crate::ffi_types::Handle_Geom2d_Curve,
+        C2: &crate::ffi_types::Handle_Geom2d_Curve,
     ) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Curve_select_forward_seam(
@@ -1107,13 +1107,13 @@ impl Curve {
     /// **Source:** `ShapeAnalysis_Curve.hxx`:153 - `ShapeAnalysis_Curve::IsPlanar()`
     /// Checks if points are planar with given preci. If Normal has not zero
     /// modulus, checks with given normal
-    pub fn is_planar_array1ofpnt_xyz_real(
-        pnts: &crate::ffi_types::TColgp_Array1OfPnt,
+    pub fn is_planar_arr1_pnt_xyz_real(
+        pnts: &crate::ffi_types::NCollection_Array1_gp_Pnt,
         Normal: &mut crate::gp::XYZ,
         preci: f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKShHealing::ShapeAnalysis_Curve_is_planar_array1ofpnt_xyz_real(
+            crate::ffi_extern_TKShHealing::ShapeAnalysis_Curve_is_planar_arr1_pnt_xyz_real(
                 pnts, Normal, preci,
             )
         })
@@ -1123,7 +1123,7 @@ impl Curve {
     /// Checks if curve is planar with given preci. If Normal has not zero
     /// modulus, checks with given normal
     pub fn is_planar_handlegeomcurve_xyz_real(
-        curve: &crate::ffi_types::HandleGeomCurve,
+        curve: &crate::ffi_types::Handle_Geom_Curve,
         Normal: &mut crate::gp::XYZ,
         preci: f64,
     ) -> bool {
@@ -1139,35 +1139,35 @@ impl Curve {
     /// of the2d curve in range (first, last)
     /// The distribution of sample points is consystent with
     /// what is used by BRepTopAdaptor_FClass2d
-    pub fn get_sample_points_handlegeom2dcurve_real2_sequenceofpnt2d(
-        curve: &crate::ffi_types::HandleGeom2dCurve,
+    pub fn get_sample_points_handlegeom2dcurve_real2_seq_pnt2d(
+        curve: &crate::ffi_types::Handle_Geom2d_Curve,
         first: f64,
         last: f64,
-        seq: &mut crate::ffi_types::TColgp_SequenceOfPnt2d,
+        seq: &mut crate::ffi_types::NCollection_Sequence_gp_Pnt2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKShHealing::ShapeAnalysis_Curve_get_sample_points_handlegeom2dcurve_real2_sequenceofpnt2d(curve, first, last, seq)
+            crate::ffi_extern_TKShHealing::ShapeAnalysis_Curve_get_sample_points_handlegeom2dcurve_real2_seq_pnt2d(curve, first, last, seq)
         })
     }
 
     /// **Source:** `ShapeAnalysis_Curve.hxx`:174 - `ShapeAnalysis_Curve::GetSamplePoints()`
     /// Returns sample points which will serve as linearisation
     /// of the curve in range (first, last)
-    pub fn get_sample_points_handlegeomcurve_real2_sequenceofpnt(
-        curve: &crate::ffi_types::HandleGeomCurve,
+    pub fn get_sample_points_handlegeomcurve_real2_seq_pnt(
+        curve: &crate::ffi_types::Handle_Geom_Curve,
         first: f64,
         last: f64,
-        seq: &mut crate::ffi_types::TColgp_SequenceOfPnt,
+        seq: &mut crate::ffi_types::NCollection_Sequence_gp_Pnt,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKShHealing::ShapeAnalysis_Curve_get_sample_points_handlegeomcurve_real2_sequenceofpnt(curve, first, last, seq)
+            crate::ffi_extern_TKShHealing::ShapeAnalysis_Curve_get_sample_points_handlegeomcurve_real2_seq_pnt(curve, first, last, seq)
         })
     }
 
     /// **Source:** `ShapeAnalysis_Curve.hxx`:181 - `ShapeAnalysis_Curve::IsClosed()`
     /// Tells if the Curve is closed with given precision.
     /// If <preci> < 0 then Precision::Confusion is used.
-    pub fn is_closed(curve: &crate::ffi_types::HandleGeomCurve, preci: f64) -> bool {
+    pub fn is_closed(curve: &crate::ffi_types::Handle_Geom_Curve, preci: f64) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Curve_is_closed(curve, preci)
         })
@@ -1178,7 +1178,7 @@ impl Curve {
     /// behaviour. For the moment trimmed curve returns false anyway.
     /// So it is necessary to adapt all Data exchange tools for this behaviour.
     /// Current implementation takes into account that curve may be offset.
-    pub fn is_periodic_handlegeomcurve(curve: &crate::ffi_types::HandleGeomCurve) -> bool {
+    pub fn is_periodic_handlegeomcurve(curve: &crate::ffi_types::Handle_Geom_Curve) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Curve_is_periodic_handlegeomcurve(curve)
         })
@@ -1186,7 +1186,7 @@ impl Curve {
 
     /// **Source:** `ShapeAnalysis_Curve.hxx`:191 - `ShapeAnalysis_Curve::IsPeriodic()`
     /// The same as for Curve3d.
-    pub fn is_periodic_handlegeom2dcurve(curve: &crate::ffi_types::HandleGeom2dCurve) -> bool {
+    pub fn is_periodic_handlegeom2dcurve(curve: &crate::ffi_types::Handle_Geom2d_Curve) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Curve_is_periodic_handlegeom2dcurve(curve)
         })
@@ -1241,7 +1241,7 @@ impl Edge {
     pub fn curve3d(
         &self,
         edge: &crate::topo_ds::Edge,
-        C3d: &mut crate::ffi_types::HandleGeomCurve,
+        C3d: &mut crate::ffi_types::Handle_Geom_Curve,
         cf: &mut f64,
         cl: &mut f64,
         orient: bool,
@@ -1283,12 +1283,12 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Edge.hxx`:78 - `ShapeAnalysis_Edge::HasPCurve()`
+    /// **Source:** `ShapeAnalysis_Edge.hxx`:77 - `ShapeAnalysis_Edge::HasPCurve()`
     /// Tells if the edge has a pcurve on the surface (with location).
     pub fn has_p_curve_edge_handlegeomsurface_location(
         &self,
         edge: &crate::topo_ds::Edge,
-        surface: &crate::ffi_types::HandleGeomSurface,
+        surface: &crate::ffi_types::Handle_Geom_Surface,
         location: &crate::top_loc::Location,
     ) -> bool {
         crate::check_result(unsafe {
@@ -1296,12 +1296,12 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Edge.hxx`:82 - `ShapeAnalysis_Edge::PCurve()`
+    /// **Source:** `ShapeAnalysis_Edge.hxx`:81 - `ShapeAnalysis_Edge::PCurve()`
     pub fn p_curve_edge_face_handlegeom2dcurve_real2_bool(
         &self,
         edge: &crate::topo_ds::Edge,
         face: &crate::topo_ds::Face,
-        C2d: &mut crate::ffi_types::HandleGeom2dCurve,
+        C2d: &mut crate::ffi_types::Handle_Geom2d_Curve,
         cf: &mut f64,
         cl: &mut f64,
         orient: bool,
@@ -1311,7 +1311,7 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Edge.hxx`:94 - `ShapeAnalysis_Edge::PCurve()`
+    /// **Source:** `ShapeAnalysis_Edge.hxx`:93 - `ShapeAnalysis_Edge::PCurve()`
     /// Returns the pcurve and bounding parameters for the edge
     /// lying on the surface.
     /// Returns False if the edge has no pcurve on this surface.
@@ -1320,9 +1320,9 @@ impl Edge {
     pub fn p_curve_edge_handlegeomsurface_location_handlegeom2dcurve_real2_bool(
         &self,
         edge: &crate::topo_ds::Edge,
-        surface: &crate::ffi_types::HandleGeomSurface,
+        surface: &crate::ffi_types::Handle_Geom_Surface,
         location: &crate::top_loc::Location,
-        C2d: &mut crate::ffi_types::HandleGeom2dCurve,
+        C2d: &mut crate::ffi_types::Handle_Geom2d_Curve,
         cf: &mut f64,
         cl: &mut f64,
         orient: bool,
@@ -1332,7 +1332,7 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Edge.hxx`:102 - `ShapeAnalysis_Edge::BoundUV()`
+    /// **Source:** `ShapeAnalysis_Edge.hxx`:101 - `ShapeAnalysis_Edge::BoundUV()`
     pub fn bound_uv_edge_face_pnt2d2(
         &self,
         edge: &crate::topo_ds::Edge,
@@ -1351,13 +1351,13 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Edge.hxx`:109 - `ShapeAnalysis_Edge::BoundUV()`
+    /// **Source:** `ShapeAnalysis_Edge.hxx`:108 - `ShapeAnalysis_Edge::BoundUV()`
     /// Returns the ends of pcurve
     /// Calls method PCurve with <orient> equal to True
     pub fn bound_uv_edge_handlegeomsurface_location_pnt2d2(
         &self,
         edge: &crate::topo_ds::Edge,
-        surface: &crate::ffi_types::HandleGeomSurface,
+        surface: &crate::ffi_types::Handle_Geom_Surface,
         location: &crate::top_loc::Location,
         first: &mut crate::gp::Pnt2d,
         last: &mut crate::gp::Pnt2d,
@@ -1367,7 +1367,7 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Edge.hxx`:115 - `ShapeAnalysis_Edge::IsSeam()`
+    /// **Source:** `ShapeAnalysis_Edge.hxx`:114 - `ShapeAnalysis_Edge::IsSeam()`
     pub fn is_seam_edge_face(
         &self,
         edge: &crate::topo_ds::Edge,
@@ -1382,12 +1382,12 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Edge.hxx`:118 - `ShapeAnalysis_Edge::IsSeam()`
+    /// **Source:** `ShapeAnalysis_Edge.hxx`:117 - `ShapeAnalysis_Edge::IsSeam()`
     /// Returns True if the edge has two pcurves on one surface
     pub fn is_seam_edge_handlegeomsurface_location(
         &self,
         edge: &crate::topo_ds::Edge,
-        surface: &crate::ffi_types::HandleGeomSurface,
+        surface: &crate::ffi_types::Handle_Geom_Surface,
         location: &crate::top_loc::Location,
     ) -> bool {
         crate::check_result(unsafe {
@@ -1395,7 +1395,7 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Edge.hxx`:124 - `ShapeAnalysis_Edge::FirstVertex()`
+    /// **Source:** `ShapeAnalysis_Edge.hxx`:123 - `ShapeAnalysis_Edge::FirstVertex()`
     /// Returns start vertex of the edge (taking edge orientation
     /// into account).
     pub fn first_vertex(
@@ -1412,7 +1412,7 @@ impl Edge {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_Edge.hxx`:128 - `ShapeAnalysis_Edge::LastVertex()`
+    /// **Source:** `ShapeAnalysis_Edge.hxx`:127 - `ShapeAnalysis_Edge::LastVertex()`
     /// Returns end vertex of the edge (taking edge orientation
     /// into account).
     pub fn last_vertex(
@@ -1429,7 +1429,7 @@ impl Edge {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_Edge.hxx`:130 - `ShapeAnalysis_Edge::GetEndTangent2d()`
+    /// **Source:** `ShapeAnalysis_Edge.hxx`:129 - `ShapeAnalysis_Edge::GetEndTangent2d()`
     pub fn get_end_tangent2d_edge_face_bool_pnt2d_vec2d_real(
         &self,
         edge: &crate::topo_ds::Edge,
@@ -1444,7 +1444,7 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Edge.hxx`:142 - `ShapeAnalysis_Edge::GetEndTangent2d()`
+    /// **Source:** `ShapeAnalysis_Edge.hxx`:141 - `ShapeAnalysis_Edge::GetEndTangent2d()`
     /// Returns tangent of the edge pcurve at its start (if atEnd is
     /// False) or end (if True), regarding the orientation of edge.
     /// If edge is REVERSED, tangent is reversed before return.
@@ -1453,7 +1453,7 @@ impl Edge {
     pub fn get_end_tangent2d_edge_handlegeomsurface_location_bool_pnt2d_vec2d_real(
         &self,
         edge: &crate::topo_ds::Edge,
-        surface: &crate::ffi_types::HandleGeomSurface,
+        surface: &crate::ffi_types::Handle_Geom_Surface,
         location: &crate::top_loc::Location,
         atEnd: bool,
         pos: &mut crate::gp::Pnt2d,
@@ -1465,7 +1465,7 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Edge.hxx`:157 - `ShapeAnalysis_Edge::CheckVerticesWithCurve3d()`
+    /// **Source:** `ShapeAnalysis_Edge.hxx`:156 - `ShapeAnalysis_Edge::CheckVerticesWithCurve3d()`
     /// Checks the start and/or end vertex of the edge for matching
     /// with 3d curve with the given precision.
     /// <vtx> = 1 : start vertex only
@@ -1489,7 +1489,7 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Edge.hxx`:161 - `ShapeAnalysis_Edge::CheckVerticesWithPCurve()`
+    /// **Source:** `ShapeAnalysis_Edge.hxx`:160 - `ShapeAnalysis_Edge::CheckVerticesWithPCurve()`
     pub fn check_vertices_with_p_curve_edge_face_real_int(
         &mut self,
         edge: &crate::topo_ds::Edge,
@@ -1502,7 +1502,7 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Edge.hxx`:173 - `ShapeAnalysis_Edge::CheckVerticesWithPCurve()`
+    /// **Source:** `ShapeAnalysis_Edge.hxx`:172 - `ShapeAnalysis_Edge::CheckVerticesWithPCurve()`
     /// Checks the start and/or end vertex of the edge for matching
     /// with pcurve with the given precision.
     /// <vtx> = 1 : start vertex
@@ -1513,7 +1513,7 @@ impl Edge {
     pub fn check_vertices_with_p_curve_edge_handlegeomsurface_location_real_int(
         &mut self,
         edge: &crate::topo_ds::Edge,
-        surface: &crate::ffi_types::HandleGeomSurface,
+        surface: &crate::ffi_types::Handle_Geom_Surface,
         location: &crate::top_loc::Location,
         preci: f64,
         vtx: i32,
@@ -1523,7 +1523,7 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Edge.hxx`:179 - `ShapeAnalysis_Edge::CheckVertexTolerance()`
+    /// **Source:** `ShapeAnalysis_Edge.hxx`:178 - `ShapeAnalysis_Edge::CheckVertexTolerance()`
     pub fn check_vertex_tolerance_edge_face_real2(
         &mut self,
         edge: &crate::topo_ds::Edge,
@@ -1542,7 +1542,7 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Edge.hxx`:190 - `ShapeAnalysis_Edge::CheckVertexTolerance()`
+    /// **Source:** `ShapeAnalysis_Edge.hxx`:189 - `ShapeAnalysis_Edge::CheckVertexTolerance()`
     /// Checks if it is necessary to increase tolerances of the edge
     /// vertices to comprise the ends of 3d curve and pcurve on
     /// the given face (first method) or all pcurves stored in an edge
@@ -1565,7 +1565,7 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Edge.hxx`:194 - `ShapeAnalysis_Edge::CheckCurve3dWithPCurve()`
+    /// **Source:** `ShapeAnalysis_Edge.hxx`:193 - `ShapeAnalysis_Edge::CheckCurve3dWithPCurve()`
     pub fn check_curve3d_with_p_curve_edge_face(
         &mut self,
         edge: &crate::topo_ds::Edge,
@@ -1580,13 +1580,13 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Edge.hxx`:199 - `ShapeAnalysis_Edge::CheckCurve3dWithPCurve()`
+    /// **Source:** `ShapeAnalysis_Edge.hxx`:197 - `ShapeAnalysis_Edge::CheckCurve3dWithPCurve()`
     /// Checks mutual orientation of 3d curve and pcurve on the
     /// analysis of curves bounding points
     pub fn check_curve3d_with_p_curve_edge_handlegeomsurface_location(
         &mut self,
         edge: &crate::topo_ds::Edge,
-        surface: &crate::ffi_types::HandleGeomSurface,
+        surface: &crate::ffi_types::Handle_Geom_Surface,
         location: &crate::top_loc::Location,
     ) -> bool {
         crate::check_result(unsafe {
@@ -1594,7 +1594,7 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Edge.hxx`:204 - `ShapeAnalysis_Edge::Status()`
+    /// **Source:** `ShapeAnalysis_Edge.hxx`:202 - `ShapeAnalysis_Edge::Status()`
     /// Returns the status (in the form of True/False) of last Check
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
@@ -1605,7 +1605,7 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Edge.hxx`:213 - `ShapeAnalysis_Edge::CheckSameParameter()`
+    /// **Source:** `ShapeAnalysis_Edge.hxx`:211 - `ShapeAnalysis_Edge::CheckSameParameter()`
     /// Checks the edge to be SameParameter.
     /// Calculates the maximal deviation between 3d curve and each
     /// pcurve of the edge on <NbControl> equidistant points (the same
@@ -1629,7 +1629,7 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Edge.hxx`:224 - `ShapeAnalysis_Edge::CheckSameParameter()`
+    /// **Source:** `ShapeAnalysis_Edge.hxx`:222 - `ShapeAnalysis_Edge::CheckSameParameter()`
     /// Checks the edge to be SameParameter.
     /// Calculates the maximal deviation between 3d curve and each
     /// pcurve of the edge on <NbControl> equidistant points (the same
@@ -1649,14 +1649,14 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Edge.hxx`:231 - `ShapeAnalysis_Edge::CheckPCurveRange()`
+    /// **Source:** `ShapeAnalysis_Edge.hxx`:229 - `ShapeAnalysis_Edge::CheckPCurveRange()`
     /// Checks possibility for pcurve thePC to have range [theFirst, theLast] (edge range)
     /// having respect to real first, last parameters of thePC
     pub fn check_p_curve_range(
         &mut self,
         theFirst: f64,
         theLast: f64,
-        thePC: &crate::ffi_types::HandleGeom2dCurve,
+        thePC: &crate::ffi_types::Handle_Geom2d_Curve,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Edge_check_p_curve_range(
@@ -1668,7 +1668,7 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Edge.hxx`:239 - `ShapeAnalysis_Edge::CheckOverlapping()`
+    /// **Source:** `ShapeAnalysis_Edge.hxx`:237 - `ShapeAnalysis_Edge::CheckOverlapping()`
     /// Checks the first edge is overlapped with second edge.
     /// If distance between two edges is less then theTolOverlap
     /// edges are overlapped.
@@ -1878,7 +1878,9 @@ impl FreeBoundData {
 
     /// **Source:** `ShapeAnalysis_FreeBoundData.hxx`:99 - `ShapeAnalysis_FreeBoundData::Notches()`
     /// Returns sequence of notches on the contour
-    pub fn notches(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopToolsHSequenceOfShape> {
+    pub fn notches(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_TopoDS_Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeAnalysis_FreeBoundData_notches(
@@ -1926,7 +1928,7 @@ impl FreeBoundData {
     }
 
     /// **Source:** `ShapeAnalysis_FreeBoundData.hxx`:112 - `ShapeAnalysis_FreeBoundData::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeAnalysis_FreeBoundData_dynamic_type(
@@ -1948,7 +1950,7 @@ impl FreeBoundData {
     }
 
     /// **Source:** `ShapeAnalysis_FreeBoundData.hxx`:112 - `ShapeAnalysis_FreeBoundData::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeAnalysis_FreeBoundData_get_type_descriptor(),
@@ -1977,7 +1979,7 @@ impl FreeBoundData {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeAnalysisFreeBoundData> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ShapeAnalysis_FreeBoundData> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeAnalysis_FreeBoundData_to_handle(
@@ -1987,8 +1989,8 @@ impl FreeBoundData {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_FreeBoundData_inherited_IsInstance(
                 self as *const Self,
@@ -1997,8 +1999,8 @@ impl FreeBoundData {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_FreeBoundData_inherited_IsKind(
                 self as *const Self,
@@ -2007,7 +2009,7 @@ impl FreeBoundData {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2023,7 +2025,7 @@ impl FreeBoundData {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_FreeBoundData_inherited_GetRefCount(
@@ -2032,7 +2034,7 @@ impl FreeBoundData {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_FreeBoundData_inherited_IncrementRefCounter(
@@ -2041,7 +2043,7 @@ impl FreeBoundData {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_FreeBoundData_inherited_DecrementRefCounter(
@@ -2050,7 +2052,7 @@ impl FreeBoundData {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_FreeBoundData_inherited_Delete(
@@ -2060,31 +2062,31 @@ impl FreeBoundData {
     }
 }
 
-pub use crate::ffi_types::HandleShapeAnalysisFreeBoundData;
+pub use crate::ffi_types::Handle_ShapeAnalysis_FreeBoundData;
 
-unsafe impl crate::CppDeletable for HandleShapeAnalysisFreeBoundData {
+unsafe impl crate::CppDeletable for Handle_ShapeAnalysis_FreeBoundData {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeAnalysisFreeBoundData_destructor(ptr);
+            crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_FreeBoundData_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleShapeAnalysisFreeBoundData {
+unsafe impl crate::CppCopyable for Handle_ShapeAnalysis_FreeBoundData {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeAnalysisFreeBoundData_clone(ptr),
+                crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_FreeBoundData_clone(ptr),
             )
         }
     }
 }
 
-impl HandleShapeAnalysisFreeBoundData {
+impl Handle_ShapeAnalysis_FreeBoundData {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeAnalysisFreeBoundData_is_null(
+            crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_FreeBoundData_is_null(
                 self as *const Self,
             )
         }
@@ -2094,7 +2096,7 @@ impl HandleShapeAnalysisFreeBoundData {
     pub fn get(&self) -> &crate::ffi_types::ShapeAnalysis_FreeBoundData {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeAnalysisFreeBoundData_get(
+                crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_FreeBoundData_get(
                     self as *const Self,
                 ),
             )
@@ -2105,7 +2107,7 @@ impl HandleShapeAnalysisFreeBoundData {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeAnalysis_FreeBoundData {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeAnalysisFreeBoundData_get_mut(
+                crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_FreeBoundData_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -2115,9 +2117,9 @@ impl HandleShapeAnalysisFreeBoundData {
     /// Upcast Handle<ShapeAnalysis_FreeBoundData> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeAnalysisFreeBoundData_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_FreeBoundData_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -2126,7 +2128,7 @@ impl HandleShapeAnalysisFreeBoundData {
 // From ShapeAnalysis_FreeBounds.hxx
 // ========================
 
-/// **Source:** `ShapeAnalysis_FreeBounds.hxx`:57 - `ShapeAnalysis_FreeBounds`
+/// **Source:** `ShapeAnalysis_FreeBounds.hxx`:60 - `ShapeAnalysis_FreeBounds`
 /// This class is intended to output free bounds of the shape.
 ///
 /// Free bounds are the wires consisting of edges referenced by the faces of the shape
@@ -2166,7 +2168,7 @@ unsafe impl crate::CppDeletable for FreeBounds {
 }
 
 impl FreeBounds {
-    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:63 - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`
+    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:66 - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2176,7 +2178,7 @@ impl FreeBounds {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:76 - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`
+    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:79 - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`
     /// Builds forecasting free bounds of the <shape>.
     /// <shape> should be a compound of faces.
     /// This constructor is to be used for forecasting free edges
@@ -2206,7 +2208,7 @@ impl FreeBounds {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:92 - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`
+    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:95 - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`
     /// Builds actual free bounds of the <shape>.
     /// <shape> should be a compound of shells.
     /// This constructor is to be used for getting free edges (ones
@@ -2236,7 +2238,7 @@ impl FreeBounds {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:76 - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`
+    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:79 - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`
     /// Builds forecasting free bounds of the <shape>.
     /// <shape> should be a compound of faces.
     /// This constructor is to be used for forecasting free edges
@@ -2256,7 +2258,7 @@ impl FreeBounds {
         Self::new_shape_real_bool2(shape, toler, splitclosed, true)
     }
 
-    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:76 - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`
+    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:79 - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`
     /// Builds forecasting free bounds of the <shape>.
     /// <shape> should be a compound of faces.
     /// This constructor is to be used for forecasting free edges
@@ -2272,7 +2274,7 @@ impl FreeBounds {
         Self::new_shape_real_bool2(shape, toler, false, true)
     }
 
-    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:92 - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`
+    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:95 - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`
     /// Builds actual free bounds of the <shape>.
     /// <shape> should be a compound of shells.
     /// This constructor is to be used for getting free edges (ones
@@ -2292,7 +2294,7 @@ impl FreeBounds {
         Self::new_shape_bool3(shape, splitclosed, splitopen, false)
     }
 
-    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:92 - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`
+    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:95 - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`
     /// Builds actual free bounds of the <shape>.
     /// <shape> should be a compound of shells.
     /// This constructor is to be used for getting free edges (ones
@@ -2311,7 +2313,7 @@ impl FreeBounds {
         Self::new_shape_bool3(shape, splitclosed, true, false)
     }
 
-    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:92 - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`
+    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:95 - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`
     /// Builds actual free bounds of the <shape>.
     /// <shape> should be a compound of shells.
     /// This constructor is to be used for getting free edges (ones
@@ -2327,7 +2329,7 @@ impl FreeBounds {
         Self::new_shape_bool3(shape, false, true, false)
     }
 
-    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:99 - `ShapeAnalysis_FreeBounds::GetClosedWires()`
+    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:101 - `ShapeAnalysis_FreeBounds::GetClosedWires()`
     /// Returns compound of closed wires out of free edges.
     pub fn get_closed_wires(&self) -> &crate::topo_ds::Compound {
         unsafe {
@@ -2339,7 +2341,7 @@ impl FreeBounds {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:102 - `ShapeAnalysis_FreeBounds::GetOpenWires()`
+    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:104 - `ShapeAnalysis_FreeBounds::GetOpenWires()`
     /// Returns compound of open wires out of free edges.
     pub fn get_open_wires(&self) -> &crate::topo_ds::Compound {
         unsafe {
@@ -2351,7 +2353,7 @@ impl FreeBounds {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:115 - `ShapeAnalysis_FreeBounds::ConnectEdgesToWires()`
+    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:123 - `ShapeAnalysis_FreeBounds::ConnectEdgesToWires()`
     /// Builds sequence of <wires> out of sequence of not sorted
     /// <edges>.
     /// Tries to build wires of maximum length. Building a wire is
@@ -2363,32 +2365,42 @@ impl FreeBounds {
     /// adjacent edges share the same vertex.
     /// If <shared> is False connection is performed only when
     /// ends of adjacent edges are at distance less than <toler>.
+    /// Connects edges from the given sequence into wires.
+    /// @param[in] edges the sequence of edges to connect
+    /// @param[in] toler distance tolerance for connection
+    /// @param[in] shared if true, connection uses shared vertices only
+    /// @return sequence of resulting wires
     pub fn connect_edges_to_wires(
-        edges: &mut crate::ffi_types::HandleTopToolsHSequenceOfShape,
+        edges: &crate::ffi_types::Handle_NCollection_HSequence_TopoDS_Shape,
         toler: f64,
         shared: bool,
-        wires: &mut crate::ffi_types::HandleTopToolsHSequenceOfShape,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKShHealing::ShapeAnalysis_FreeBounds_connect_edges_to_wires(
-                edges, toler, shared, wires,
-            )
-        })
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeAnalysis_FreeBounds_connect_edges_to_wires(
+                    edges, toler, shared,
+                ),
+            ))
+        }
     }
 
-    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:120 - `ShapeAnalysis_FreeBounds::ConnectWiresToWires()`
-    pub fn connect_wires_to_wires_handletoptoolshsequenceofshape_real_bool_handletoptoolshsequenceofshape(
-        iwires: &mut crate::ffi_types::HandleTopToolsHSequenceOfShape,
+    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:141 - `ShapeAnalysis_FreeBounds::ConnectWiresToWires()`
+    /// Connects wires from the given sequence into longer wires.
+    /// @param[in] iwires the sequence of input wires
+    /// @param[in] toler distance tolerance for connection
+    /// @param[in] shared if true, connection uses shared vertices only
+    /// @return sequence of resulting wires
+    pub fn connect_wires_to_wires_hseq_shape_real_bool(
+        iwires: &crate::ffi_types::Handle_NCollection_HSequence_TopoDS_Shape,
         toler: f64,
         shared: bool,
-        owires: &mut crate::ffi_types::HandleTopToolsHSequenceOfShape,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKShHealing::ShapeAnalysis_FreeBounds_connect_wires_to_wires_handletoptoolshsequenceofshape_real_bool_handletoptoolshsequenceofshape(iwires, toler, shared, owires)
-        })
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeAnalysis_FreeBounds_connect_wires_to_wires_hseq_shape_real_bool(iwires, toler, shared)))
+        }
     }
 
-    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:138 - `ShapeAnalysis_FreeBounds::ConnectWiresToWires()`
+    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:174 - `ShapeAnalysis_FreeBounds::ConnectWiresToWires()`
     /// Builds sequence of <owires> out of sequence of not sorted
     /// <iwires>.
     /// Tries to build wires of maximum length. Building a wire is
@@ -2402,19 +2414,25 @@ impl FreeBounds {
     /// ends of adjacent wires are at distance less than <toler>.
     /// Map <vertices> stores the correspondence between original
     /// end vertices of the wires and new connecting vertices.
-    pub fn connect_wires_to_wires_handletoptoolshsequenceofshape_real_bool_handletoptoolshsequenceofshape_datamapofshapeshape(
-        iwires: &mut crate::ffi_types::HandleTopToolsHSequenceOfShape,
+    /// Connects wires from the given sequence into longer wires.
+    /// Also fills the map of original to new connecting vertices.
+    /// @param[in] iwires the sequence of input wires
+    /// @param[in] toler distance tolerance for connection
+    /// @param[in] shared if true, connection uses shared vertices only
+    /// @param[out] vertices map of original vertices to new connecting vertices
+    /// @return sequence of resulting wires
+    pub fn connect_wires_to_wires_hseq_shape_real_bool_dmap_shape_shape(
+        iwires: &crate::ffi_types::Handle_NCollection_HSequence_TopoDS_Shape,
         toler: f64,
         shared: bool,
-        owires: &mut crate::ffi_types::HandleTopToolsHSequenceOfShape,
-        vertices: &mut crate::ffi_types::TopTools_DataMapOfShapeShape,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKShHealing::ShapeAnalysis_FreeBounds_connect_wires_to_wires_handletoptoolshsequenceofshape_real_bool_handletoptoolshsequenceofshape_datamapofshapeshape(iwires, toler, shared, owires, vertices)
-        })
+        vertices: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeAnalysis_FreeBounds_connect_wires_to_wires_hseq_shape_real_bool_dmap_shape_shape(iwires, toler, shared, vertices)))
+        }
     }
 
-    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:151 - `ShapeAnalysis_FreeBounds::SplitWires()`
+    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:196 - `ShapeAnalysis_FreeBounds::SplitWires()`
     /// Extracts closed sub-wires out of <wires> and adds them
     /// to <closed>, open wires remained after extraction are put
     /// into <open>.
@@ -2423,11 +2441,11 @@ impl FreeBounds {
     /// If <shared> is False connection is performed only when
     /// ends of the edges are at distance less than <toler>.
     pub fn split_wires(
-        wires: &crate::ffi_types::HandleTopToolsHSequenceOfShape,
+        wires: &crate::ffi_types::Handle_NCollection_HSequence_TopoDS_Shape,
         toler: f64,
         shared: bool,
-        closed: &mut crate::ffi_types::HandleTopToolsHSequenceOfShape,
-        open: &mut crate::ffi_types::HandleTopToolsHSequenceOfShape,
+        closed: &mut crate::ffi_types::Handle_NCollection_HSequence_TopoDS_Shape,
+        open: &mut crate::ffi_types::Handle_NCollection_HSequence_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_FreeBounds_split_wires(
@@ -2436,12 +2454,12 @@ impl FreeBounds {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:160 - `ShapeAnalysis_FreeBounds::DispatchWires()`
+    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:206 - `ShapeAnalysis_FreeBounds::DispatchWires()`
     /// Dispatches sequence of <wires> into two compounds
     /// <closed> for closed wires and <open> for open wires.
     /// If a compound is not empty wires are added into it.
     pub fn dispatch_wires(
-        wires: &crate::ffi_types::HandleTopToolsHSequenceOfShape,
+        wires: &crate::ffi_types::Handle_NCollection_HSequence_TopoDS_Shape,
         closed: &mut crate::topo_ds::Compound,
         open: &mut crate::topo_ds::Compound,
     ) {
@@ -2457,7 +2475,7 @@ impl FreeBounds {
 // From ShapeAnalysis_FreeBoundsProperties.hxx
 // ========================
 
-/// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:49 - `ShapeAnalysis_FreeBoundsProperties`
+/// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:51 - `ShapeAnalysis_FreeBoundsProperties`
 /// This class is intended to calculate shape free bounds
 /// properties.
 /// This class provides the following functionalities:
@@ -2488,7 +2506,7 @@ unsafe impl crate::CppDeletable for FreeBoundsProperties {
 }
 
 impl FreeBoundsProperties {
-    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:55 - `ShapeAnalysis_FreeBoundsProperties::ShapeAnalysis_FreeBoundsProperties()`
+    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:57 - `ShapeAnalysis_FreeBoundsProperties::ShapeAnalysis_FreeBoundsProperties()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2498,7 +2516,7 @@ impl FreeBoundsProperties {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:59 - `ShapeAnalysis_FreeBoundsProperties::ShapeAnalysis_FreeBoundsProperties()`
+    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:61 - `ShapeAnalysis_FreeBoundsProperties::ShapeAnalysis_FreeBoundsProperties()`
     /// Creates the object and calls corresponding Init.
     /// <shape> should be a compound of faces.
     pub fn new_shape_real_bool2(
@@ -2512,7 +2530,7 @@ impl FreeBoundsProperties {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:67 - `ShapeAnalysis_FreeBoundsProperties::ShapeAnalysis_FreeBoundsProperties()`
+    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:68 - `ShapeAnalysis_FreeBoundsProperties::ShapeAnalysis_FreeBoundsProperties()`
     /// Creates the object and calls corresponding Init.
     /// <shape> should be a compound of shells.
     pub fn new_shape_bool2(
@@ -2531,7 +2549,7 @@ impl FreeBoundsProperties {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:59 - `ShapeAnalysis_FreeBoundsProperties::ShapeAnalysis_FreeBoundsProperties()`
+    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:61 - `ShapeAnalysis_FreeBoundsProperties::ShapeAnalysis_FreeBoundsProperties()`
     /// Creates the object and calls corresponding Init.
     /// <shape> should be a compound of faces.
     pub fn new_shape_real_bool(
@@ -2542,14 +2560,14 @@ impl FreeBoundsProperties {
         Self::new_shape_real_bool2(shape, tolerance, splitclosed, false)
     }
 
-    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:59 - `ShapeAnalysis_FreeBoundsProperties::ShapeAnalysis_FreeBoundsProperties()`
+    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:61 - `ShapeAnalysis_FreeBoundsProperties::ShapeAnalysis_FreeBoundsProperties()`
     /// Creates the object and calls corresponding Init.
     /// <shape> should be a compound of faces.
     pub fn new_shape_real(shape: &crate::topo_ds::Shape, tolerance: f64) -> crate::OwnedPtr<Self> {
         Self::new_shape_real_bool2(shape, tolerance, false, false)
     }
 
-    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:67 - `ShapeAnalysis_FreeBoundsProperties::ShapeAnalysis_FreeBoundsProperties()`
+    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:68 - `ShapeAnalysis_FreeBoundsProperties::ShapeAnalysis_FreeBoundsProperties()`
     /// Creates the object and calls corresponding Init.
     /// <shape> should be a compound of shells.
     pub fn new_shape_bool(
@@ -2559,7 +2577,7 @@ impl FreeBoundsProperties {
         Self::new_shape_bool2(shape, splitclosed, false)
     }
 
-    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:67 - `ShapeAnalysis_FreeBoundsProperties::ShapeAnalysis_FreeBoundsProperties()`
+    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:68 - `ShapeAnalysis_FreeBoundsProperties::ShapeAnalysis_FreeBoundsProperties()`
     /// Creates the object and calls corresponding Init.
     /// <shape> should be a compound of shells.
     pub fn new_shape(shape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
@@ -2689,19 +2707,15 @@ impl FreeBoundsProperties {
 
     /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:116 - `ShapeAnalysis_FreeBoundsProperties::ClosedFreeBounds()`
     /// Returns all closed free bounds
-    pub fn closed_free_bounds(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeAnalysisHSequenceOfFreeBounds> {
+    pub fn closed_free_bounds(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData>{
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeAnalysis_FreeBoundsProperties_closed_free_bounds(self as *const Self)))
         }
     }
 
-    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:119 - `ShapeAnalysis_FreeBoundsProperties::OpenFreeBounds()`
+    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:120 - `ShapeAnalysis_FreeBoundsProperties::OpenFreeBounds()`
     /// Returns all open free bounds
-    pub fn open_free_bounds(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeAnalysisHSequenceOfFreeBounds> {
+    pub fn open_free_bounds(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData>{
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeAnalysis_FreeBoundsProperties_open_free_bounds(
@@ -2711,13 +2725,13 @@ impl FreeBoundsProperties {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:123 - `ShapeAnalysis_FreeBoundsProperties::ClosedFreeBound()`
+    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:125 - `ShapeAnalysis_FreeBoundsProperties::ClosedFreeBound()`
     /// Returns properties of closed free bound specified by its rank
     /// number
     pub fn closed_free_bound(
         &self,
         index: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeAnalysisFreeBoundData> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ShapeAnalysis_FreeBoundData> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeAnalysis_FreeBoundsProperties_closed_free_bound(
@@ -2728,13 +2742,13 @@ impl FreeBoundsProperties {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:127 - `ShapeAnalysis_FreeBoundsProperties::OpenFreeBound()`
+    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:129 - `ShapeAnalysis_FreeBoundsProperties::OpenFreeBound()`
     /// Returns properties of open free bound specified by its rank
     /// number
     pub fn open_free_bound(
         &self,
         index: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeAnalysisFreeBoundData> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ShapeAnalysis_FreeBoundData> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeAnalysis_FreeBoundsProperties_open_free_bound(
@@ -2745,7 +2759,7 @@ impl FreeBoundsProperties {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:129 - `ShapeAnalysis_FreeBoundsProperties::DispatchBounds()`
+    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:131 - `ShapeAnalysis_FreeBoundsProperties::DispatchBounds()`
     pub fn dispatch_bounds(&mut self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_FreeBoundsProperties_dispatch_bounds(
@@ -2754,7 +2768,7 @@ impl FreeBoundsProperties {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:131 - `ShapeAnalysis_FreeBoundsProperties::CheckContours()`
+    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:133 - `ShapeAnalysis_FreeBoundsProperties::CheckContours()`
     pub fn check_contours(&mut self, prec: f64) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_FreeBoundsProperties_check_contours(
@@ -2764,7 +2778,7 @@ impl FreeBoundsProperties {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:133 - `ShapeAnalysis_FreeBoundsProperties::CheckNotches()`
+    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:135 - `ShapeAnalysis_FreeBoundsProperties::CheckNotches()`
     pub fn check_notches_real(&mut self, prec: f64) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_FreeBoundsProperties_check_notches_real(
@@ -2774,10 +2788,10 @@ impl FreeBoundsProperties {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:135 - `ShapeAnalysis_FreeBoundsProperties::CheckNotches()`
+    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:137 - `ShapeAnalysis_FreeBoundsProperties::CheckNotches()`
     pub fn check_notches_handleshapeanalysisfreebounddata_real(
         &mut self,
-        fbData: &mut crate::ffi_types::HandleShapeAnalysisFreeBoundData,
+        fbData: &mut crate::ffi_types::Handle_ShapeAnalysis_FreeBoundData,
         prec: f64,
     ) -> bool {
         crate::check_result(unsafe {
@@ -2785,7 +2799,7 @@ impl FreeBoundsProperties {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:138 - `ShapeAnalysis_FreeBoundsProperties::CheckNotches()`
+    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:140 - `ShapeAnalysis_FreeBoundsProperties::CheckNotches()`
     pub fn check_notches_wire_int_wire_real2(
         &mut self,
         freebound: &crate::topo_ds::Wire,
@@ -2799,10 +2813,10 @@ impl FreeBoundsProperties {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:144 - `ShapeAnalysis_FreeBoundsProperties::FillProperties()`
+    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:146 - `ShapeAnalysis_FreeBoundsProperties::FillProperties()`
     pub fn fill_properties(
         &mut self,
-        fbData: &mut crate::ffi_types::HandleShapeAnalysisFreeBoundData,
+        fbData: &mut crate::ffi_types::Handle_ShapeAnalysis_FreeBoundData,
         prec: f64,
     ) -> bool {
         crate::check_result(unsafe {
@@ -2819,7 +2833,7 @@ impl FreeBoundsProperties {
 // From ShapeAnalysis_Geom.hxx
 // ========================
 
-/// **Source:** `ShapeAnalysis_Geom.hxx`:30 - `ShapeAnalysis_Geom`
+/// **Source:** `ShapeAnalysis_Geom.hxx`:32 - `ShapeAnalysis_Geom`
 /// Analyzing tool aimed to work on primitive geometrical objects
 pub use crate::ffi_types::ShapeAnalysis_Geom as Geom;
 
@@ -2842,12 +2856,12 @@ impl Geom {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_Geom.hxx`:38 - `ShapeAnalysis_Geom::NearestPlane()`
+    /// **Source:** `ShapeAnalysis_Geom.hxx`:40 - `ShapeAnalysis_Geom::NearestPlane()`
     /// Builds a plane out of a set of points in array
     /// Returns in <dmax> the maximal distance between the produced
     /// plane and given points
     pub fn nearest_plane(
-        Pnts: &crate::ffi_types::TColgp_Array1OfPnt,
+        Pnts: &crate::ffi_types::NCollection_Array1_gp_Pnt,
         aPln: &mut crate::gp::Pln,
         Dmax: &mut f64,
     ) -> bool {
@@ -2856,12 +2870,12 @@ impl Geom {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Geom.hxx`:45 - `ShapeAnalysis_Geom::PositionTrsf()`
+    /// **Source:** `ShapeAnalysis_Geom.hxx`:47 - `ShapeAnalysis_Geom::PositionTrsf()`
     /// Builds transformation object out of matrix.
     /// Matrix must be 3 x 4.
     /// Unit is used as multiplier.
     pub fn position_trsf(
-        coefs: &crate::ffi_types::HandleTColStdHArray2OfReal,
+        coefs: &crate::ffi_types::Handle_NCollection_HArray2_double,
         trsf: &mut crate::gp::Trsf,
         unit: f64,
         prec: f64,
@@ -2873,273 +2887,10 @@ impl Geom {
 }
 
 // ========================
-// From ShapeAnalysis_HSequenceOfFreeBounds.hxx
-// ========================
-
-/// **Source:** `ShapeAnalysis_HSequenceOfFreeBounds.hxx`:23 - `ShapeAnalysis_HSequenceOfFreeBounds`
-pub use crate::ffi_types::ShapeAnalysis_HSequenceOfFreeBounds as HSequenceOfFreeBounds;
-
-unsafe impl crate::CppDeletable for HSequenceOfFreeBounds {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKShHealing::ShapeAnalysis_HSequenceOfFreeBounds_destructor(ptr);
-        }
-    }
-}
-
-impl HSequenceOfFreeBounds {
-    /// **Source:** `ShapeAnalysis_HSequenceOfFreeBounds.hxx`:23 - `ShapeAnalysis_HSequenceOfFreeBounds::ShapeAnalysis_HSequenceOfFreeBounds()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKShHealing::ShapeAnalysis_HSequenceOfFreeBounds_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `ShapeAnalysis_HSequenceOfFreeBounds.hxx`:23 - `ShapeAnalysis_HSequenceOfFreeBounds::ShapeAnalysis_HSequenceOfFreeBounds()`
-    pub fn new_sequenceoffreebounds(
-        theOther: &crate::ffi_types::ShapeAnalysis_SequenceOfFreeBounds,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeAnalysis_HSequenceOfFreeBounds_ctor_sequenceoffreebounds(theOther)))
-        }
-    }
-
-    /// **Source:** `ShapeAnalysis_HSequenceOfFreeBounds.hxx`:23 - `ShapeAnalysis_HSequenceOfFreeBounds::Sequence()`
-    pub fn sequence(&self) -> &crate::ffi_types::ShapeAnalysis_SequenceOfFreeBounds {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKShHealing::ShapeAnalysis_HSequenceOfFreeBounds_sequence(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `ShapeAnalysis_HSequenceOfFreeBounds.hxx`:23 - `ShapeAnalysis_HSequenceOfFreeBounds::Append()`
-    pub fn append_handleshapeanalysisfreebounddata(
-        &mut self,
-        theItem: &crate::ffi_types::HandleShapeAnalysisFreeBoundData,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKShHealing::ShapeAnalysis_HSequenceOfFreeBounds_append_handleshapeanalysisfreebounddata(self as *mut Self, theItem)
-        })
-    }
-
-    /// **Source:** `ShapeAnalysis_HSequenceOfFreeBounds.hxx`:23 - `ShapeAnalysis_HSequenceOfFreeBounds::Append()`
-    pub fn append_sequenceoffreebounds(
-        &mut self,
-        theSequence: &mut crate::ffi_types::ShapeAnalysis_SequenceOfFreeBounds,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKShHealing::ShapeAnalysis_HSequenceOfFreeBounds_append_sequenceoffreebounds(self as *mut Self, theSequence)
-        })
-    }
-
-    /// **Source:** `ShapeAnalysis_HSequenceOfFreeBounds.hxx`:23 - `ShapeAnalysis_HSequenceOfFreeBounds::ChangeSequence()`
-    pub fn change_sequence(&mut self) -> &mut crate::ffi_types::ShapeAnalysis_SequenceOfFreeBounds {
-        unsafe {
-            &mut *(crate::check_result(
-                crate::ffi_extern_TKShHealing::ShapeAnalysis_HSequenceOfFreeBounds_change_sequence(
-                    self as *mut Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `ShapeAnalysis_HSequenceOfFreeBounds.hxx`:23 - `ShapeAnalysis_HSequenceOfFreeBounds::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKShHealing::ShapeAnalysis_HSequenceOfFreeBounds_dynamic_type(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `ShapeAnalysis_HSequenceOfFreeBounds.hxx`:23 - `ShapeAnalysis_HSequenceOfFreeBounds::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKShHealing::ShapeAnalysis_HSequenceOfFreeBounds_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `ShapeAnalysis_HSequenceOfFreeBounds.hxx`:23 - `ShapeAnalysis_HSequenceOfFreeBounds::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeAnalysis_HSequenceOfFreeBounds_get_type_descriptor()))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeAnalysis_HSequenceOfFreeBounds_as_Standard_Transient(self as *const Self))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeAnalysis_HSequenceOfFreeBounds_as_Standard_Transient_mut(self as *mut Self))
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeAnalysisHSequenceOfFreeBounds> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKShHealing::ShapeAnalysis_HSequenceOfFreeBounds_to_handle(
-                    obj.into_raw(),
-                ),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKShHealing::ShapeAnalysis_HSequenceOfFreeBounds_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKShHealing::ShapeAnalysis_HSequenceOfFreeBounds_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKShHealing::ShapeAnalysis_HSequenceOfFreeBounds_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKShHealing::ShapeAnalysis_HSequenceOfFreeBounds_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKShHealing::ShapeAnalysis_HSequenceOfFreeBounds_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKShHealing::ShapeAnalysis_HSequenceOfFreeBounds_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKShHealing::ShapeAnalysis_HSequenceOfFreeBounds_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleShapeAnalysisHSequenceOfFreeBounds;
-
-unsafe impl crate::CppDeletable for HandleShapeAnalysisHSequenceOfFreeBounds {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeAnalysisHSequenceOfFreeBounds_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleShapeAnalysisHSequenceOfFreeBounds {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeAnalysisHSequenceOfFreeBounds_clone(ptr),
-            )
-        }
-    }
-}
-
-impl HandleShapeAnalysisHSequenceOfFreeBounds {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeAnalysisHSequenceOfFreeBounds_is_null(
-                self as *const Self,
-            )
-        }
-    }
-
-    /// Dereference this Handle to access the underlying ShapeAnalysis_HSequenceOfFreeBounds
-    pub fn get(&self) -> &crate::ffi_types::ShapeAnalysis_HSequenceOfFreeBounds {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeAnalysisHSequenceOfFreeBounds_get(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying ShapeAnalysis_HSequenceOfFreeBounds
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeAnalysis_HSequenceOfFreeBounds {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeAnalysisHSequenceOfFreeBounds_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<ShapeAnalysis_HSequenceOfFreeBounds> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeAnalysisHSequenceOfFreeBounds_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
-}
-
-// ========================
 // From ShapeAnalysis_ShapeContents.hxx
 // ========================
 
-/// **Source:** `ShapeAnalysis_ShapeContents.hxx`:29 - `ShapeAnalysis_ShapeContents`
+/// **Source:** `ShapeAnalysis_ShapeContents.hxx`:31 - `ShapeAnalysis_ShapeContents`
 /// Dumps shape contents
 pub use crate::ffi_types::ShapeAnalysis_ShapeContents as ShapeContents;
 
@@ -3152,7 +2903,7 @@ unsafe impl crate::CppDeletable for ShapeContents {
 }
 
 impl ShapeContents {
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:35 - `ShapeAnalysis_ShapeContents::ShapeAnalysis_ShapeContents()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:37 - `ShapeAnalysis_ShapeContents::ShapeAnalysis_ShapeContents()`
     /// Initialize fields and call ClearFlags()
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3162,7 +2913,7 @@ impl ShapeContents {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:38 - `ShapeAnalysis_ShapeContents::Clear()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:40 - `ShapeAnalysis_ShapeContents::Clear()`
     /// Clears all accumulated statistics
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
@@ -3170,7 +2921,7 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:41 - `ShapeAnalysis_ShapeContents::ClearFlags()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:43 - `ShapeAnalysis_ShapeContents::ClearFlags()`
     /// Clears all flags
     pub fn clear_flags(&mut self) {
         crate::check_void_result(unsafe {
@@ -3180,7 +2931,7 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:45 - `ShapeAnalysis_ShapeContents::Perform()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:47 - `ShapeAnalysis_ShapeContents::Perform()`
     /// Counts quantities of sun-shapes in shape and
     /// stores sub-shapes according to flags
     pub fn perform(&mut self, shape: &crate::topo_ds::Shape) {
@@ -3192,7 +2943,7 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:49 - `ShapeAnalysis_ShapeContents::ModifyBigSplineMode()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:51 - `ShapeAnalysis_ShapeContents::ModifyBigSplineMode()`
     /// Returns (modifiable) the flag which defines whether to store faces
     /// with edges if its 3D curves has more than 8192 poles.
     pub fn modify_big_spline_mode(&mut self) -> &mut bool {
@@ -3205,7 +2956,7 @@ impl ShapeContents {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:52 - `ShapeAnalysis_ShapeContents::ModifyIndirectMode()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:54 - `ShapeAnalysis_ShapeContents::ModifyIndirectMode()`
     /// Returns (modifiable) the flag which defines whether to store faces on indirect surfaces.
     pub fn modify_indirect_mode(&mut self) -> &mut bool {
         unsafe {
@@ -3217,7 +2968,7 @@ impl ShapeContents {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:55 - `ShapeAnalysis_ShapeContents::ModifyOffsetSurfaceMode()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:57 - `ShapeAnalysis_ShapeContents::ModifyOffsetSurfaceMode()`
     /// Returns (modifiable) the flag which defines whether to store faces on offset surfaces.
     pub fn modify_offset_surface_mode(&mut self) -> &mut bool {
         unsafe {
@@ -3225,7 +2976,7 @@ impl ShapeContents {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:59 - `ShapeAnalysis_ShapeContents::ModifyTrimmed3dMode()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:61 - `ShapeAnalysis_ShapeContents::ModifyTrimmed3dMode()`
     /// Returns (modifiable) the flag which defines whether to store faces
     /// with edges if its 3D curves are trimmed curves
     pub fn modify_trimmed3d_mode(&mut self) -> &mut bool {
@@ -3238,7 +2989,7 @@ impl ShapeContents {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:63 - `ShapeAnalysis_ShapeContents::ModifyOffsetCurveMode()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:65 - `ShapeAnalysis_ShapeContents::ModifyOffsetCurveMode()`
     /// Returns (modifiable) the flag which defines whether to store faces
     /// with edges if its 3D curves and pcurves are offset curves
     pub fn modify_offset_curve_mode(&mut self) -> &mut bool {
@@ -3251,9 +3002,9 @@ impl ShapeContents {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:67 - `ShapeAnalysis_ShapeContents::ModifyTrimmed2dMode()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:69 - `ShapeAnalysis_ShapeContents::ModifyTrimmed2dMode()`
     /// Returns (modifiable) the flag which defines whether to store faces
-    /// with edges if its  pcurves are trimmed curves
+    /// with edges if its pcurves are trimmed curves
     pub fn modify_trimmed2d_mode(&mut self) -> &mut bool {
         unsafe {
             &mut *(crate::check_result(
@@ -3264,7 +3015,7 @@ impl ShapeContents {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:69 - `ShapeAnalysis_ShapeContents::NbSolids()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:71 - `ShapeAnalysis_ShapeContents::NbSolids()`
     pub fn nb_solids(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_solids(
@@ -3273,7 +3024,7 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:71 - `ShapeAnalysis_ShapeContents::NbShells()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:73 - `ShapeAnalysis_ShapeContents::NbShells()`
     pub fn nb_shells(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_shells(
@@ -3282,28 +3033,28 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:73 - `ShapeAnalysis_ShapeContents::NbFaces()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:75 - `ShapeAnalysis_ShapeContents::NbFaces()`
     pub fn nb_faces(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_faces(self as *const Self)
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:75 - `ShapeAnalysis_ShapeContents::NbWires()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:77 - `ShapeAnalysis_ShapeContents::NbWires()`
     pub fn nb_wires(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_wires(self as *const Self)
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:77 - `ShapeAnalysis_ShapeContents::NbEdges()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:79 - `ShapeAnalysis_ShapeContents::NbEdges()`
     pub fn nb_edges(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_edges(self as *const Self)
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:79 - `ShapeAnalysis_ShapeContents::NbVertices()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:81 - `ShapeAnalysis_ShapeContents::NbVertices()`
     pub fn nb_vertices(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_vertices(
@@ -3312,7 +3063,7 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:81 - `ShapeAnalysis_ShapeContents::NbSolidsWithVoids()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:83 - `ShapeAnalysis_ShapeContents::NbSolidsWithVoids()`
     pub fn nb_solids_with_voids(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_solids_with_voids(
@@ -3321,7 +3072,7 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:83 - `ShapeAnalysis_ShapeContents::NbBigSplines()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:85 - `ShapeAnalysis_ShapeContents::NbBigSplines()`
     pub fn nb_big_splines(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_big_splines(
@@ -3330,7 +3081,7 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:85 - `ShapeAnalysis_ShapeContents::NbC0Surfaces()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:87 - `ShapeAnalysis_ShapeContents::NbC0Surfaces()`
     pub fn nb_c0_surfaces(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_c0_surfaces(
@@ -3339,7 +3090,7 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:87 - `ShapeAnalysis_ShapeContents::NbC0Curves()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:89 - `ShapeAnalysis_ShapeContents::NbC0Curves()`
     pub fn nb_c0_curves(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_c0_curves(
@@ -3348,7 +3099,7 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:89 - `ShapeAnalysis_ShapeContents::NbOffsetSurf()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:91 - `ShapeAnalysis_ShapeContents::NbOffsetSurf()`
     pub fn nb_offset_surf(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_offset_surf(
@@ -3357,7 +3108,7 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:91 - `ShapeAnalysis_ShapeContents::NbIndirectSurf()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:93 - `ShapeAnalysis_ShapeContents::NbIndirectSurf()`
     pub fn nb_indirect_surf(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_indirect_surf(
@@ -3366,7 +3117,7 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:93 - `ShapeAnalysis_ShapeContents::NbOffsetCurves()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:95 - `ShapeAnalysis_ShapeContents::NbOffsetCurves()`
     pub fn nb_offset_curves(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_offset_curves(
@@ -3375,7 +3126,7 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:95 - `ShapeAnalysis_ShapeContents::NbTrimmedCurve2d()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:97 - `ShapeAnalysis_ShapeContents::NbTrimmedCurve2d()`
     pub fn nb_trimmed_curve2d(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_trimmed_curve2d(
@@ -3384,7 +3135,7 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:97 - `ShapeAnalysis_ShapeContents::NbTrimmedCurve3d()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:99 - `ShapeAnalysis_ShapeContents::NbTrimmedCurve3d()`
     pub fn nb_trimmed_curve3d(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_trimmed_curve3d(
@@ -3393,7 +3144,7 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:99 - `ShapeAnalysis_ShapeContents::NbBSplibeSurf()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:101 - `ShapeAnalysis_ShapeContents::NbBSplibeSurf()`
     pub fn nb_b_splibe_surf(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_b_splibe_surf(
@@ -3402,7 +3153,7 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:101 - `ShapeAnalysis_ShapeContents::NbBezierSurf()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:103 - `ShapeAnalysis_ShapeContents::NbBezierSurf()`
     pub fn nb_bezier_surf(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_bezier_surf(
@@ -3411,7 +3162,7 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:103 - `ShapeAnalysis_ShapeContents::NbTrimSurf()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:105 - `ShapeAnalysis_ShapeContents::NbTrimSurf()`
     pub fn nb_trim_surf(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_trim_surf(
@@ -3420,7 +3171,7 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:105 - `ShapeAnalysis_ShapeContents::NbWireWitnSeam()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:107 - `ShapeAnalysis_ShapeContents::NbWireWitnSeam()`
     pub fn nb_wire_witn_seam(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_wire_witn_seam(
@@ -3429,7 +3180,7 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:107 - `ShapeAnalysis_ShapeContents::NbWireWithSevSeams()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:109 - `ShapeAnalysis_ShapeContents::NbWireWithSevSeams()`
     pub fn nb_wire_with_sev_seams(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_wire_with_sev_seams(
@@ -3438,7 +3189,7 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:109 - `ShapeAnalysis_ShapeContents::NbFaceWithSevWires()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:111 - `ShapeAnalysis_ShapeContents::NbFaceWithSevWires()`
     pub fn nb_face_with_sev_wires(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_face_with_sev_wires(
@@ -3447,7 +3198,7 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:111 - `ShapeAnalysis_ShapeContents::NbNoPCurve()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:113 - `ShapeAnalysis_ShapeContents::NbNoPCurve()`
     pub fn nb_no_p_curve(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_no_p_curve(
@@ -3456,7 +3207,7 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:113 - `ShapeAnalysis_ShapeContents::NbFreeFaces()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:115 - `ShapeAnalysis_ShapeContents::NbFreeFaces()`
     pub fn nb_free_faces(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_free_faces(
@@ -3465,7 +3216,7 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:115 - `ShapeAnalysis_ShapeContents::NbFreeWires()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:117 - `ShapeAnalysis_ShapeContents::NbFreeWires()`
     pub fn nb_free_wires(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_free_wires(
@@ -3474,7 +3225,7 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:117 - `ShapeAnalysis_ShapeContents::NbFreeEdges()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:119 - `ShapeAnalysis_ShapeContents::NbFreeEdges()`
     pub fn nb_free_edges(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_free_edges(
@@ -3483,7 +3234,7 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:119 - `ShapeAnalysis_ShapeContents::NbSharedSolids()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:121 - `ShapeAnalysis_ShapeContents::NbSharedSolids()`
     pub fn nb_shared_solids(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_shared_solids(
@@ -3492,7 +3243,7 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:121 - `ShapeAnalysis_ShapeContents::NbSharedShells()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:123 - `ShapeAnalysis_ShapeContents::NbSharedShells()`
     pub fn nb_shared_shells(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_shared_shells(
@@ -3501,7 +3252,7 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:123 - `ShapeAnalysis_ShapeContents::NbSharedFaces()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:125 - `ShapeAnalysis_ShapeContents::NbSharedFaces()`
     pub fn nb_shared_faces(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_shared_faces(
@@ -3510,7 +3261,7 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:125 - `ShapeAnalysis_ShapeContents::NbSharedWires()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:127 - `ShapeAnalysis_ShapeContents::NbSharedWires()`
     pub fn nb_shared_wires(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_shared_wires(
@@ -3519,7 +3270,7 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:127 - `ShapeAnalysis_ShapeContents::NbSharedFreeWires()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:129 - `ShapeAnalysis_ShapeContents::NbSharedFreeWires()`
     pub fn nb_shared_free_wires(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_shared_free_wires(
@@ -3528,7 +3279,7 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:129 - `ShapeAnalysis_ShapeContents::NbSharedFreeEdges()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:131 - `ShapeAnalysis_ShapeContents::NbSharedFreeEdges()`
     pub fn nb_shared_free_edges(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_shared_free_edges(
@@ -3537,7 +3288,7 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:131 - `ShapeAnalysis_ShapeContents::NbSharedEdges()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:133 - `ShapeAnalysis_ShapeContents::NbSharedEdges()`
     pub fn nb_shared_edges(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_shared_edges(
@@ -3546,7 +3297,7 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:133 - `ShapeAnalysis_ShapeContents::NbSharedVertices()`
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:135 - `ShapeAnalysis_ShapeContents::NbSharedVertices()`
     pub fn nb_shared_vertices(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_nb_shared_vertices(
@@ -3555,8 +3306,8 @@ impl ShapeContents {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:135 - `ShapeAnalysis_ShapeContents::BigSplineSec()`
-    pub fn big_spline_sec(&self) -> &crate::ffi_types::HandleTopToolsHSequenceOfShape {
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:137 - `ShapeAnalysis_ShapeContents::BigSplineSec()`
+    pub fn big_spline_sec(&self) -> &crate::ffi_types::Handle_NCollection_HSequence_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_big_spline_sec(
@@ -3566,8 +3317,8 @@ impl ShapeContents {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:137 - `ShapeAnalysis_ShapeContents::IndirectSec()`
-    pub fn indirect_sec(&self) -> &crate::ffi_types::HandleTopToolsHSequenceOfShape {
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:142 - `ShapeAnalysis_ShapeContents::IndirectSec()`
+    pub fn indirect_sec(&self) -> &crate::ffi_types::Handle_NCollection_HSequence_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_indirect_sec(
@@ -3577,8 +3328,10 @@ impl ShapeContents {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:139 - `ShapeAnalysis_ShapeContents::OffsetSurfaceSec()`
-    pub fn offset_surface_sec(&self) -> &crate::ffi_types::HandleTopToolsHSequenceOfShape {
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:147 - `ShapeAnalysis_ShapeContents::OffsetSurfaceSec()`
+    pub fn offset_surface_sec(
+        &self,
+    ) -> &crate::ffi_types::Handle_NCollection_HSequence_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_offset_surface_sec(
@@ -3588,8 +3341,8 @@ impl ShapeContents {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:141 - `ShapeAnalysis_ShapeContents::Trimmed3dSec()`
-    pub fn trimmed3d_sec(&self) -> &crate::ffi_types::HandleTopToolsHSequenceOfShape {
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:152 - `ShapeAnalysis_ShapeContents::Trimmed3dSec()`
+    pub fn trimmed3d_sec(&self) -> &crate::ffi_types::Handle_NCollection_HSequence_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_trimmed3d_sec(
@@ -3599,8 +3352,8 @@ impl ShapeContents {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:143 - `ShapeAnalysis_ShapeContents::OffsetCurveSec()`
-    pub fn offset_curve_sec(&self) -> &crate::ffi_types::HandleTopToolsHSequenceOfShape {
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:157 - `ShapeAnalysis_ShapeContents::OffsetCurveSec()`
+    pub fn offset_curve_sec(&self) -> &crate::ffi_types::Handle_NCollection_HSequence_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_offset_curve_sec(
@@ -3610,8 +3363,8 @@ impl ShapeContents {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:145 - `ShapeAnalysis_ShapeContents::Trimmed2dSec()`
-    pub fn trimmed2d_sec(&self) -> &crate::ffi_types::HandleTopToolsHSequenceOfShape {
+    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:162 - `ShapeAnalysis_ShapeContents::Trimmed2dSec()`
+    pub fn trimmed2d_sec(&self) -> &crate::ffi_types::Handle_NCollection_HSequence_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeContents_trimmed2d_sec(
@@ -3626,7 +3379,7 @@ impl ShapeContents {
 // From ShapeAnalysis_ShapeTolerance.hxx
 // ========================
 
-/// **Source:** `ShapeAnalysis_ShapeTolerance.hxx`:32 - `ShapeAnalysis_ShapeTolerance`
+/// **Source:** `ShapeAnalysis_ShapeTolerance.hxx`:34 - `ShapeAnalysis_ShapeTolerance`
 /// Tool for computing shape tolerances (minimal, maximal, average),
 /// finding shape with tolerance matching given criteria,
 /// setting or limitating tolerances.
@@ -3641,7 +3394,7 @@ unsafe impl crate::CppDeletable for ShapeTolerance {
 }
 
 impl ShapeTolerance {
-    /// **Source:** `ShapeAnalysis_ShapeTolerance.hxx`:38 - `ShapeAnalysis_ShapeTolerance::ShapeAnalysis_ShapeTolerance()`
+    /// **Source:** `ShapeAnalysis_ShapeTolerance.hxx`:40 - `ShapeAnalysis_ShapeTolerance::ShapeAnalysis_ShapeTolerance()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3651,7 +3404,7 @@ impl ShapeTolerance {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeTolerance.hxx`:53 - `ShapeAnalysis_ShapeTolerance::Tolerance()`
+    /// **Source:** `ShapeAnalysis_ShapeTolerance.hxx`:55 - `ShapeAnalysis_ShapeTolerance::Tolerance()`
     /// Determines a tolerance from the ones stored in a shape
     /// Remark : calls InitTolerance and AddTolerance,
     /// hence, can be used to start a series for cumulating tolerance
@@ -3681,7 +3434,7 @@ impl ShapeTolerance {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeTolerance.hxx`:59 - `ShapeAnalysis_ShapeTolerance::OverTolerance()`
+    /// **Source:** `ShapeAnalysis_ShapeTolerance.hxx`:61 - `ShapeAnalysis_ShapeTolerance::OverTolerance()`
     /// Determines which shapes have a tolerance over the given value
     /// <type> is interpreted as in the method Tolerance
     pub fn over_tolerance(
@@ -3689,7 +3442,7 @@ impl ShapeTolerance {
         shape: &crate::topo_ds::Shape,
         value: f64,
         type_: crate::top_abs::ShapeEnum,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopToolsHSequenceOfShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_TopoDS_Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeTolerance_over_tolerance(
@@ -3702,7 +3455,7 @@ impl ShapeTolerance {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeTolerance.hxx`:66 - `ShapeAnalysis_ShapeTolerance::InTolerance()`
+    /// **Source:** `ShapeAnalysis_ShapeTolerance.hxx`:68 - `ShapeAnalysis_ShapeTolerance::InTolerance()`
     /// Determines which shapes have a tolerance within a given interval
     /// <type> is interpreted as in the method Tolerance
     pub fn in_tolerance(
@@ -3711,7 +3464,7 @@ impl ShapeTolerance {
         valmin: f64,
         valmax: f64,
         type_: crate::top_abs::ShapeEnum,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopToolsHSequenceOfShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_TopoDS_Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeAnalysis_ShapeTolerance_in_tolerance(
@@ -3725,7 +3478,7 @@ impl ShapeTolerance {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeTolerance.hxx`:73 - `ShapeAnalysis_ShapeTolerance::InitTolerance()`
+    /// **Source:** `ShapeAnalysis_ShapeTolerance.hxx`:75 - `ShapeAnalysis_ShapeTolerance::InitTolerance()`
     /// Initializes computation of cumulated tolerance
     pub fn init_tolerance(&mut self) {
         crate::check_void_result(unsafe {
@@ -3735,7 +3488,7 @@ impl ShapeTolerance {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeTolerance.hxx`:77 - `ShapeAnalysis_ShapeTolerance::AddTolerance()`
+    /// **Source:** `ShapeAnalysis_ShapeTolerance.hxx`:79 - `ShapeAnalysis_ShapeTolerance::AddTolerance()`
     /// Adds data on new Shape to compute Cumulated Tolerance
     /// (prepares three computations : maximal, average, minimal)
     pub fn add_tolerance(
@@ -3752,7 +3505,7 @@ impl ShapeTolerance {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_ShapeTolerance.hxx`:84 - `ShapeAnalysis_ShapeTolerance::GlobalTolerance()`
+    /// **Source:** `ShapeAnalysis_ShapeTolerance.hxx`:86 - `ShapeAnalysis_ShapeTolerance::GlobalTolerance()`
     /// Returns the computed tolerance according to the <mode>
     /// <mode> = 0 : average
     /// <mode> > 0 : maximal
@@ -3771,7 +3524,7 @@ impl ShapeTolerance {
 // From ShapeAnalysis_Shell.hxx
 // ========================
 
-/// **Source:** `ShapeAnalysis_Shell.hxx`:30 - `ShapeAnalysis_Shell`
+/// **Source:** `ShapeAnalysis_Shell.hxx`:31 - `ShapeAnalysis_Shell`
 /// This class provides operators to analyze edges orientation
 /// in the shell.
 pub use crate::ffi_types::ShapeAnalysis_Shell as Shell;
@@ -3785,7 +3538,7 @@ unsafe impl crate::CppDeletable for Shell {
 }
 
 impl Shell {
-    /// **Source:** `ShapeAnalysis_Shell.hxx`:36 - `ShapeAnalysis_Shell::ShapeAnalysis_Shell()`
+    /// **Source:** `ShapeAnalysis_Shell.hxx`:37 - `ShapeAnalysis_Shell::ShapeAnalysis_Shell()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3795,7 +3548,7 @@ impl Shell {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_Shell.hxx`:39 - `ShapeAnalysis_Shell::Clear()`
+    /// **Source:** `ShapeAnalysis_Shell.hxx`:40 - `ShapeAnalysis_Shell::Clear()`
     /// Clears data about loaded shells and performed checks
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
@@ -3803,7 +3556,7 @@ impl Shell {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Shell.hxx`:42 - `ShapeAnalysis_Shell::LoadShells()`
+    /// **Source:** `ShapeAnalysis_Shell.hxx`:43 - `ShapeAnalysis_Shell::LoadShells()`
     /// Adds shells contained in the <shape> to the list of loaded shells
     pub fn load_shells(&mut self, shape: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
@@ -3915,7 +3668,7 @@ impl Shell {
 // From ShapeAnalysis_Surface.hxx
 // ========================
 
-/// **Source:** `ShapeAnalysis_Surface.hxx`:58 - `ShapeAnalysis_Surface`
+/// **Source:** `ShapeAnalysis_Surface.hxx`:55 - `ShapeAnalysis_Surface`
 /// Complements standard tool Geom_Surface by providing additional
 /// functionality for detection surface singularities, checking
 /// spatial surface closure and computing projections of 3D points
@@ -3952,9 +3705,11 @@ unsafe impl crate::CppDeletable for Surface {
 }
 
 impl Surface {
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:63 - `ShapeAnalysis_Surface::ShapeAnalysis_Surface()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:60 - `ShapeAnalysis_Surface::ShapeAnalysis_Surface()`
     /// Creates an analyzer object on the basis of existing surface
-    pub fn new_handlegeomsurface(S: &crate::ffi_types::HandleGeomSurface) -> crate::OwnedPtr<Self> {
+    pub fn new_handlegeomsurface(
+        S: &crate::ffi_types::Handle_Geom_Surface,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeAnalysis_Surface_ctor_handlegeomsurface(S),
@@ -3962,9 +3717,9 @@ impl Surface {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:66 - `ShapeAnalysis_Surface::Init()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:63 - `ShapeAnalysis_Surface::Init()`
     /// Loads existing surface
-    pub fn init_handlegeomsurface(&mut self, S: &crate::ffi_types::HandleGeomSurface) {
+    pub fn init_handlegeomsurface(&mut self, S: &crate::ffi_types::Handle_Geom_Surface) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Surface_init_handlegeomsurface(
                 self as *mut Self,
@@ -3973,11 +3728,11 @@ impl Surface {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:69 - `ShapeAnalysis_Surface::Init()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:66 - `ShapeAnalysis_Surface::Init()`
     /// Reads all the data from another Surface, without recomputing
     pub fn init_handleshapeanalysissurface(
         &mut self,
-        other: &crate::ffi_types::HandleShapeAnalysisSurface,
+        other: &crate::ffi_types::Handle_ShapeAnalysis_Surface,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Surface_init_handleshapeanalysissurface(
@@ -3987,7 +3742,7 @@ impl Surface {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:71 - `ShapeAnalysis_Surface::SetDomain()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:68 - `ShapeAnalysis_Surface::SetDomain()`
     pub fn set_domain(&mut self, U1: f64, U2: f64, V1: f64, V2: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Surface_set_domain(
@@ -4000,9 +3755,9 @@ impl Surface {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:77 - `ShapeAnalysis_Surface::Surface()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:74 - `ShapeAnalysis_Surface::Surface()`
     /// Returns a surface being analyzed
-    pub fn surface(&self) -> &crate::ffi_types::HandleGeomSurface {
+    pub fn surface(&self) -> &crate::ffi_types::Handle_Geom_Surface {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeAnalysis_Surface_surface(
                 self as *const Self,
@@ -4010,10 +3765,10 @@ impl Surface {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:81 - `ShapeAnalysis_Surface::Adaptor3d()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:78 - `ShapeAnalysis_Surface::Adaptor3d()`
     /// Returns the Adaptor.
     /// Creates it if not yet done.
-    pub fn adaptor3d(&mut self) -> &crate::ffi_types::HandleGeomAdaptorSurface {
+    pub fn adaptor3d(&mut self) -> &crate::ffi_types::Handle_GeomAdaptor_Surface {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeAnalysis_Surface_adaptor3d(
                 self as *mut Self,
@@ -4021,9 +3776,9 @@ impl Surface {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:84 - `ShapeAnalysis_Surface::TrueAdaptor3d()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:81 - `ShapeAnalysis_Surface::TrueAdaptor3d()`
     /// Returns the Adaptor (may be Null if method Adaptor() was not called)
-    pub fn true_adaptor3d(&self) -> &crate::ffi_types::HandleGeomAdaptorSurface {
+    pub fn true_adaptor3d(&self) -> &crate::ffi_types::Handle_GeomAdaptor_Surface {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeAnalysis_Surface_true_adaptor3d(
@@ -4033,7 +3788,7 @@ impl Surface {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:93 - `ShapeAnalysis_Surface::Gap()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:90 - `ShapeAnalysis_Surface::Gap()`
     /// Returns 3D distance found by one of the following methods.
     /// IsDegenerated, DegeneratedValues, ProjectDegenerated
     /// (distance between 3D point and found or last (if not found)
@@ -4047,7 +3802,7 @@ impl Surface {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:97 - `ShapeAnalysis_Surface::Value()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:94 - `ShapeAnalysis_Surface::Value()`
     /// Returns a 3D point specified by parameters in surface
     /// parametrical space
     pub fn value_real2(&mut self, u: f64, v: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
@@ -4062,7 +3817,7 @@ impl Surface {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:101 - `ShapeAnalysis_Surface::Value()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:98 - `ShapeAnalysis_Surface::Value()`
     /// Returns a 3d point specified by a point in surface
     /// parametrical space
     pub fn value_pnt2d(&mut self, p2d: &crate::gp::Pnt2d) -> crate::OwnedPtr<crate::gp::Pnt> {
@@ -4076,7 +3831,7 @@ impl Surface {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:106 - `ShapeAnalysis_Surface::HasSingularities()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:103 - `ShapeAnalysis_Surface::HasSingularities()`
     /// Returns True if the surface has singularities for the given
     /// precision (i.e. if there are surface singularities with sizes
     /// not greater than precision).
@@ -4089,7 +3844,7 @@ impl Surface {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:111 - `ShapeAnalysis_Surface::NbSingularities()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:108 - `ShapeAnalysis_Surface::NbSingularities()`
     /// Returns the number of singularities for the given precision
     /// (i.e. number of surface singularities with sizes not greater
     /// than precision).
@@ -4102,7 +3857,7 @@ impl Surface {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:130 - `ShapeAnalysis_Surface::Singularity()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:127 - `ShapeAnalysis_Surface::Singularity()`
     /// Returns the characteristics of the singularity specified by
     /// its rank number <num>.
     /// That means, that it is not necessary for <num> to be in the
@@ -4146,7 +3901,7 @@ impl Surface {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:143 - `ShapeAnalysis_Surface::IsDegenerated()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:140 - `ShapeAnalysis_Surface::IsDegenerated()`
     /// Returns True if there is at least one surface boundary which
     /// is considered as degenerated with <preci> and distance
     /// between P3d and corresponding singular point is less than
@@ -4161,7 +3916,7 @@ impl Surface {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:152 - `ShapeAnalysis_Surface::DegeneratedValues()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:148 - `ShapeAnalysis_Surface::DegeneratedValues()`
     /// Returns True if there is at least one surface iso-line which
     /// is considered as degenerated with <preci> and distance
     /// between P3d and corresponding singular point is less than
@@ -4192,7 +3947,7 @@ impl Surface {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:172 - `ShapeAnalysis_Surface::ProjectDegenerated()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:168 - `ShapeAnalysis_Surface::ProjectDegenerated()`
     /// Projects a point <P3d> on a singularity by computing
     /// one of the coordinates of preliminary computed <result>.
     ///
@@ -4223,26 +3978,26 @@ impl Surface {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:182 - `ShapeAnalysis_Surface::ProjectDegenerated()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:178 - `ShapeAnalysis_Surface::ProjectDegenerated()`
     /// Checks points at the beginning (direct is True) or end
     /// (direct is False) of array <points> to lie in singularity of
     /// surface, and if yes, adjusts the indeterminate 2d coordinate
     /// of these points by nearest point which is not in singularity.
     /// Returns True if some points were adjusted.
-    pub fn project_degenerated_int_sequenceofpnt_sequenceofpnt2d_real_bool(
+    pub fn project_degenerated_int_seq_pnt_seq_pnt2d_real_bool(
         &mut self,
         nbrPnt: i32,
-        points: &crate::ffi_types::TColgp_SequenceOfPnt,
-        pnt2d: &mut crate::ffi_types::TColgp_SequenceOfPnt2d,
+        points: &crate::ffi_types::NCollection_Sequence_gp_Pnt,
+        pnt2d: &mut crate::ffi_types::NCollection_Sequence_gp_Pnt2d,
         preci: f64,
         direct: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKShHealing::ShapeAnalysis_Surface_project_degenerated_int_sequenceofpnt_sequenceofpnt2d_real_bool(self as *mut Self, nbrPnt, points, pnt2d, preci, direct)
+            crate::ffi_extern_TKShHealing::ShapeAnalysis_Surface_project_degenerated_int_seq_pnt_seq_pnt2d_real_bool(self as *mut Self, nbrPnt, points, pnt2d, preci, direct)
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:201 - `ShapeAnalysis_Surface::IsDegenerated()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:197 - `ShapeAnalysis_Surface::IsDegenerated()`
     /// Returns True if straight pcurve going from point p2d1 to p2d2
     /// is degenerate, i.e. lies in the singularity of the surface.
     /// NOTE: it uses another method of detecting singularity than
@@ -4274,7 +4029,7 @@ impl Surface {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:208 - `ShapeAnalysis_Surface::Bounds()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:204 - `ShapeAnalysis_Surface::Bounds()`
     /// Returns the bounds of the surface
     /// (from Bounds from Surface, but buffered)
     pub fn bounds(&self, ufirst: &mut f64, ulast: &mut f64, vfirst: &mut f64, vlast: &mut f64) {
@@ -4289,7 +4044,7 @@ impl Surface {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:214 - `ShapeAnalysis_Surface::ComputeBoundIsos()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:207 - `ShapeAnalysis_Surface::ComputeBoundIsos()`
     /// Computes bound isos (protected against exceptions)
     pub fn compute_bound_isos(&mut self) {
         crate::check_void_result(unsafe {
@@ -4299,10 +4054,10 @@ impl Surface {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:218 - `ShapeAnalysis_Surface::UIso()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:211 - `ShapeAnalysis_Surface::UIso()`
     /// Returns a U-Iso. Null if not possible or failed
     /// Remark : bound isos are buffered
-    pub fn u_iso(&mut self, U: f64) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
+    pub fn u_iso(&mut self, U: f64) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeAnalysis_Surface_u_iso(self as *mut Self, U),
@@ -4310,10 +4065,10 @@ impl Surface {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:222 - `ShapeAnalysis_Surface::VIso()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:215 - `ShapeAnalysis_Surface::VIso()`
     /// Returns a V-Iso. Null if not possible or failed
     /// Remark : bound isos are buffered
-    pub fn v_iso(&mut self, V: f64) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
+    pub fn v_iso(&mut self, V: f64) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeAnalysis_Surface_v_iso(self as *mut Self, V),
@@ -4321,7 +4076,7 @@ impl Surface {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:239 - `ShapeAnalysis_Surface::IsUClosed()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:232 - `ShapeAnalysis_Surface::IsUClosed()`
     /// Tells if the Surface is spatially closed in U with given
     /// precision. If <preci> < 0 then Precision::Confusion is used.
     /// If Geom_Surface says that the surface is U-closed, this method
@@ -4346,7 +4101,7 @@ impl Surface {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:256 - `ShapeAnalysis_Surface::IsVClosed()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:249 - `ShapeAnalysis_Surface::IsVClosed()`
     /// Tells if the Surface is spatially closed in V with given
     /// precision. If <preci> < 0 then Precision::Confusion is used.
     /// If Geom_Surface says that the surface is V-closed, this method
@@ -4371,7 +4126,7 @@ impl Surface {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:266 - `ShapeAnalysis_Surface::ValueOfUV()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:259 - `ShapeAnalysis_Surface::ValueOfUV()`
     /// Computes the parameters in the surface parametrical space of
     /// 3D point.
     /// The result is parameters of the point projected onto the
@@ -4396,7 +4151,7 @@ impl Surface {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:276 - `ShapeAnalysis_Surface::NextValueOfUV()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:269 - `ShapeAnalysis_Surface::NextValueOfUV()`
     /// Projects a point P3D on the surface.
     /// Does the same thing as ValueOfUV but tries to optimize
     /// computations by taking into account previous point <p2dPrev>:
@@ -4425,7 +4180,7 @@ impl Surface {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:290 - `ShapeAnalysis_Surface::UVFromIso()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:283 - `ShapeAnalysis_Surface::UVFromIso()`
     /// Tries a refinement of an already computed couple (U,V) by
     /// using projecting 3D point on iso-lines:
     /// 1. boundaries of the surface,
@@ -4453,7 +4208,7 @@ impl Surface {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:296 - `ShapeAnalysis_Surface::UCloseVal()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:286 - `ShapeAnalysis_Surface::UCloseVal()`
     /// Returns minimum value to consider the surface as U-closed
     pub fn u_close_val(&self) -> f64 {
         crate::check_result(unsafe {
@@ -4461,7 +4216,7 @@ impl Surface {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:299 - `ShapeAnalysis_Surface::VCloseVal()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:289 - `ShapeAnalysis_Surface::VCloseVal()`
     /// Returns minimum value to consider the surface as V-closed
     pub fn v_close_val(&self) -> f64 {
         crate::check_result(unsafe {
@@ -4469,7 +4224,7 @@ impl Surface {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:301 - `ShapeAnalysis_Surface::GetBoxUF()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:291 - `ShapeAnalysis_Surface::GetBoxUF()`
     pub fn get_box_uf(&mut self) -> &crate::bnd::Box {
         unsafe {
             &*(crate::check_result(
@@ -4478,7 +4233,7 @@ impl Surface {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:303 - `ShapeAnalysis_Surface::GetBoxUL()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:293 - `ShapeAnalysis_Surface::GetBoxUL()`
     pub fn get_box_ul(&mut self) -> &crate::bnd::Box {
         unsafe {
             &*(crate::check_result(
@@ -4487,7 +4242,7 @@ impl Surface {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:305 - `ShapeAnalysis_Surface::GetBoxVF()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:295 - `ShapeAnalysis_Surface::GetBoxVF()`
     pub fn get_box_vf(&mut self) -> &crate::bnd::Box {
         unsafe {
             &*(crate::check_result(
@@ -4496,7 +4251,7 @@ impl Surface {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:307 - `ShapeAnalysis_Surface::GetBoxVL()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:297 - `ShapeAnalysis_Surface::GetBoxVL()`
     pub fn get_box_vl(&mut self) -> &crate::bnd::Box {
         unsafe {
             &*(crate::check_result(
@@ -4505,8 +4260,8 @@ impl Surface {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:309 - `ShapeAnalysis_Surface::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:299 - `ShapeAnalysis_Surface::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeAnalysis_Surface_dynamic_type(
@@ -4516,7 +4271,7 @@ impl Surface {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:309 - `ShapeAnalysis_Surface::get_type_name()`
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:299 - `ShapeAnalysis_Surface::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -4527,8 +4282,8 @@ impl Surface {
         .into_owned()
     }
 
-    /// **Source:** `ShapeAnalysis_Surface.hxx`:309 - `ShapeAnalysis_Surface::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:299 - `ShapeAnalysis_Surface::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeAnalysis_Surface_get_type_descriptor(),
@@ -4561,7 +4316,7 @@ impl Surface {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeAnalysisSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ShapeAnalysis_Surface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeAnalysis_Surface_to_handle(obj.into_raw()),
@@ -4569,8 +4324,8 @@ impl Surface {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Surface_inherited_IsInstance(
                 self as *const Self,
@@ -4579,8 +4334,8 @@ impl Surface {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Surface_inherited_IsKind(
                 self as *const Self,
@@ -4589,7 +4344,7 @@ impl Surface {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -4605,7 +4360,7 @@ impl Surface {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Surface_inherited_GetRefCount(
@@ -4614,7 +4369,7 @@ impl Surface {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Surface_inherited_IncrementRefCounter(
@@ -4623,7 +4378,7 @@ impl Surface {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Surface_inherited_DecrementRefCounter(
@@ -4632,7 +4387,7 @@ impl Surface {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Surface_inherited_Delete(
@@ -4642,38 +4397,38 @@ impl Surface {
     }
 }
 
-pub use crate::ffi_types::HandleShapeAnalysisSurface;
+pub use crate::ffi_types::Handle_ShapeAnalysis_Surface;
 
-unsafe impl crate::CppDeletable for HandleShapeAnalysisSurface {
+unsafe impl crate::CppDeletable for Handle_ShapeAnalysis_Surface {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeAnalysisSurface_destructor(ptr);
+            crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_Surface_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleShapeAnalysisSurface {
+unsafe impl crate::CppCopyable for Handle_ShapeAnalysis_Surface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeAnalysisSurface_clone(
+            crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_Surface_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleShapeAnalysisSurface {
+impl Handle_ShapeAnalysis_Surface {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeAnalysisSurface_is_null(self as *const Self)
+            crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_Surface_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying ShapeAnalysis_Surface
     pub fn get(&self) -> &crate::ffi_types::ShapeAnalysis_Surface {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeAnalysisSurface_get(
+            &*crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_Surface_get(
                 self as *const Self,
             ))
         }
@@ -4683,7 +4438,7 @@ impl HandleShapeAnalysisSurface {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeAnalysis_Surface {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeAnalysisSurface_get_mut(
+                crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_Surface_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -4693,9 +4448,9 @@ impl HandleShapeAnalysisSurface {
     /// Upcast Handle<ShapeAnalysis_Surface> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeAnalysisSurface_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_Surface_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -4704,7 +4459,7 @@ impl HandleShapeAnalysisSurface {
 // From ShapeAnalysis_TransferParameters.hxx
 // ========================
 
-/// **Source:** `ShapeAnalysis_TransferParameters.hxx`:46 - `ShapeAnalysis_TransferParameters`
+/// **Source:** `ShapeAnalysis_TransferParameters.hxx`:44 - `ShapeAnalysis_TransferParameters`
 /// This tool is used for transferring parameters
 /// from 3d curve of the edge to pcurve and vice versa.
 ///
@@ -4731,7 +4486,7 @@ unsafe impl crate::CppDeletable for TransferParameters {
 }
 
 impl TransferParameters {
-    /// **Source:** `ShapeAnalysis_TransferParameters.hxx`:51 - `ShapeAnalysis_TransferParameters::ShapeAnalysis_TransferParameters()`
+    /// **Source:** `ShapeAnalysis_TransferParameters.hxx`:49 - `ShapeAnalysis_TransferParameters::ShapeAnalysis_TransferParameters()`
     /// Creates empty tool with myShift = 0 and myScale = 1
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -4741,7 +4496,7 @@ impl TransferParameters {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_TransferParameters.hxx`:54 - `ShapeAnalysis_TransferParameters::ShapeAnalysis_TransferParameters()`
+    /// **Source:** `ShapeAnalysis_TransferParameters.hxx`:52 - `ShapeAnalysis_TransferParameters::ShapeAnalysis_TransferParameters()`
     /// Creates a tool and initializes it with edge and face
     pub fn new_edge_face(
         E: &crate::topo_ds::Edge,
@@ -4756,7 +4511,7 @@ impl TransferParameters {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_TransferParameters.hxx`:57 - `ShapeAnalysis_TransferParameters::Init()`
+    /// **Source:** `ShapeAnalysis_TransferParameters.hxx`:55 - `ShapeAnalysis_TransferParameters::Init()`
     /// Initialize a tool with edge and face
     pub fn init(&mut self, E: &crate::topo_ds::Edge, F: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
@@ -4768,7 +4523,7 @@ impl TransferParameters {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_TransferParameters.hxx`:61 - `ShapeAnalysis_TransferParameters::SetMaxTolerance()`
+    /// **Source:** `ShapeAnalysis_TransferParameters.hxx`:59 - `ShapeAnalysis_TransferParameters::SetMaxTolerance()`
     /// Sets maximal tolerance to use linear recomputation of
     /// parameters.
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
@@ -4780,20 +4535,20 @@ impl TransferParameters {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_TransferParameters.hxx`:65 - `ShapeAnalysis_TransferParameters::Perform()`
+    /// **Source:** `ShapeAnalysis_TransferParameters.hxx`:63 - `ShapeAnalysis_TransferParameters::Perform()`
     /// Transfers parameters given by sequence Params from 3d curve
     /// to pcurve (if To2d is True) or back (if To2d is False)
-    pub fn perform_handletcolstdhsequenceofreal_bool(
+    pub fn perform_hseq_double_bool(
         &mut self,
-        Params: &crate::ffi_types::HandleTColStdHSequenceOfReal,
+        Params: &crate::ffi_types::Handle_NCollection_HSequence_double,
         To2d: bool,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfReal> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_double> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeAnalysis_TransferParameters_perform_handletcolstdhsequenceofreal_bool(self as *mut Self, Params, To2d)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeAnalysis_TransferParameters_perform_hseq_double_bool(self as *mut Self, Params, To2d)))
         }
     }
 
-    /// **Source:** `ShapeAnalysis_TransferParameters.hxx`:71 - `ShapeAnalysis_TransferParameters::Perform()`
+    /// **Source:** `ShapeAnalysis_TransferParameters.hxx`:69 - `ShapeAnalysis_TransferParameters::Perform()`
     /// Transfers parameter given by sequence Params from 3d curve
     /// to pcurve (if To2d is True) or back (if To2d is False)
     pub fn perform_real_bool(&mut self, Param: f64, To2d: bool) -> f64 {
@@ -4806,7 +4561,7 @@ impl TransferParameters {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_TransferParameters.hxx`:76 - `ShapeAnalysis_TransferParameters::TransferRange()`
+    /// **Source:** `ShapeAnalysis_TransferParameters.hxx`:73 - `ShapeAnalysis_TransferParameters::TransferRange()`
     /// Recomputes range of curves from NewEdge.
     /// If Is2d equals True parameters are recomputed by curve2d else by curve3d.
     pub fn transfer_range(
@@ -4827,7 +4582,7 @@ impl TransferParameters {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_TransferParameters.hxx`:83 - `ShapeAnalysis_TransferParameters::IsSameRange()`
+    /// **Source:** `ShapeAnalysis_TransferParameters.hxx`:80 - `ShapeAnalysis_TransferParameters::IsSameRange()`
     /// Returns True if 3d curve of edge and pcurve are SameRange
     /// (in default implementation, if myScale == 1 and myShift == 0)
     pub fn is_same_range(&self) -> bool {
@@ -4838,8 +4593,8 @@ impl TransferParameters {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_TransferParameters.hxx`:85 - `ShapeAnalysis_TransferParameters::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `ShapeAnalysis_TransferParameters.hxx`:82 - `ShapeAnalysis_TransferParameters::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeAnalysis_TransferParameters_dynamic_type(
@@ -4849,7 +4604,7 @@ impl TransferParameters {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_TransferParameters.hxx`:85 - `ShapeAnalysis_TransferParameters::get_type_name()`
+    /// **Source:** `ShapeAnalysis_TransferParameters.hxx`:82 - `ShapeAnalysis_TransferParameters::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -4860,8 +4615,8 @@ impl TransferParameters {
         .into_owned()
     }
 
-    /// **Source:** `ShapeAnalysis_TransferParameters.hxx`:85 - `ShapeAnalysis_TransferParameters::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `ShapeAnalysis_TransferParameters.hxx`:82 - `ShapeAnalysis_TransferParameters::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeAnalysis_TransferParameters_get_type_descriptor(
@@ -4887,7 +4642,7 @@ impl TransferParameters {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeAnalysisTransferParameters> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ShapeAnalysis_TransferParameters> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeAnalysis_TransferParameters_to_handle(
@@ -4897,8 +4652,8 @@ impl TransferParameters {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_TransferParameters_inherited_IsInstance(
                 self as *const Self,
@@ -4907,8 +4662,8 @@ impl TransferParameters {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_TransferParameters_inherited_IsKind(
                 self as *const Self,
@@ -4917,7 +4672,7 @@ impl TransferParameters {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -4933,7 +4688,7 @@ impl TransferParameters {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_TransferParameters_inherited_GetRefCount(
@@ -4942,21 +4697,21 @@ impl TransferParameters {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_TransferParameters_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_TransferParameters_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_TransferParameters_inherited_Delete(
@@ -4966,31 +4721,31 @@ impl TransferParameters {
     }
 }
 
-pub use crate::ffi_types::HandleShapeAnalysisTransferParameters;
+pub use crate::ffi_types::Handle_ShapeAnalysis_TransferParameters;
 
-unsafe impl crate::CppDeletable for HandleShapeAnalysisTransferParameters {
+unsafe impl crate::CppDeletable for Handle_ShapeAnalysis_TransferParameters {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeAnalysisTransferParameters_destructor(ptr);
+            crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_TransferParameters_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleShapeAnalysisTransferParameters {
+unsafe impl crate::CppCopyable for Handle_ShapeAnalysis_TransferParameters {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeAnalysisTransferParameters_clone(ptr),
+                crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_TransferParameters_clone(ptr),
             )
         }
     }
 }
 
-impl HandleShapeAnalysisTransferParameters {
+impl Handle_ShapeAnalysis_TransferParameters {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeAnalysisTransferParameters_is_null(
+            crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_TransferParameters_is_null(
                 self as *const Self,
             )
         }
@@ -5000,7 +4755,7 @@ impl HandleShapeAnalysisTransferParameters {
     pub fn get(&self) -> &crate::ffi_types::ShapeAnalysis_TransferParameters {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeAnalysisTransferParameters_get(
+                crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_TransferParameters_get(
                     self as *const Self,
                 ),
             )
@@ -5011,7 +4766,7 @@ impl HandleShapeAnalysisTransferParameters {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeAnalysis_TransferParameters {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeAnalysisTransferParameters_get_mut(
+                crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_TransferParameters_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -5021,9 +4776,9 @@ impl HandleShapeAnalysisTransferParameters {
     /// Upcast Handle<ShapeAnalysis_TransferParameters> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeAnalysisTransferParameters_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_TransferParameters_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 
@@ -5032,9 +4787,10 @@ impl HandleShapeAnalysisTransferParameters {
     /// Returns `None` if the handle does not point to a `ShapeAnalysis_TransferParametersProj` (or subclass).
     pub fn downcast_to_transfer_parameters_proj(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeAnalysisTransferParametersProj>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_ShapeAnalysis_TransferParametersProj>>
+    {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeAnalysisTransferParameters_downcast_to_HandleShapeAnalysisTransferParametersProj(self as *const Self)
+            crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_TransferParameters_downcast_to_Handle_ShapeAnalysis_TransferParametersProj(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -5048,7 +4804,7 @@ impl HandleShapeAnalysisTransferParameters {
 // From ShapeAnalysis_TransferParametersProj.hxx
 // ========================
 
-/// **Source:** `ShapeAnalysis_TransferParametersProj.hxx`:41 - `ShapeAnalysis_TransferParametersProj`
+/// **Source:** `ShapeAnalysis_TransferParametersProj.hxx`:39 - `ShapeAnalysis_TransferParametersProj`
 /// This tool is used for transferring parameters
 /// from 3d curve of the edge to pcurve and vice versa.
 /// This tool transfers parameters with help of
@@ -5065,7 +4821,7 @@ unsafe impl crate::CppDeletable for TransferParametersProj {
 }
 
 impl TransferParametersProj {
-    /// **Source:** `ShapeAnalysis_TransferParametersProj.hxx`:46 - `ShapeAnalysis_TransferParametersProj::ShapeAnalysis_TransferParametersProj()`
+    /// **Source:** `ShapeAnalysis_TransferParametersProj.hxx`:44 - `ShapeAnalysis_TransferParametersProj::ShapeAnalysis_TransferParametersProj()`
     /// Creates empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -5075,7 +4831,7 @@ impl TransferParametersProj {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_TransferParametersProj.hxx`:48 - `ShapeAnalysis_TransferParametersProj::ShapeAnalysis_TransferParametersProj()`
+    /// **Source:** `ShapeAnalysis_TransferParametersProj.hxx`:46 - `ShapeAnalysis_TransferParametersProj::ShapeAnalysis_TransferParametersProj()`
     pub fn new_edge_face(
         E: &crate::topo_ds::Edge,
         F: &crate::topo_ds::Face,
@@ -5089,7 +4845,7 @@ impl TransferParametersProj {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_TransferParametersProj.hxx`:50 - `ShapeAnalysis_TransferParametersProj::Init()`
+    /// **Source:** `ShapeAnalysis_TransferParametersProj.hxx`:48 - `ShapeAnalysis_TransferParametersProj::Init()`
     pub fn init(&mut self, E: &crate::topo_ds::Edge, F: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_TransferParametersProj_init(
@@ -5100,21 +4856,21 @@ impl TransferParametersProj {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_TransferParametersProj.hxx`:54 - `ShapeAnalysis_TransferParametersProj::Perform()`
+    /// **Source:** `ShapeAnalysis_TransferParametersProj.hxx`:52 - `ShapeAnalysis_TransferParametersProj::Perform()`
     /// Transfers parameters given by sequence Params from 3d curve
     /// to pcurve (if To2d is True) or back (if To2d is False)
-    pub fn perform_handletcolstdhsequenceofreal_bool(
+    pub fn perform_hseq_double_bool(
         &mut self,
-        Papams: &crate::ffi_types::HandleTColStdHSequenceOfReal,
+        Papams: &crate::ffi_types::Handle_NCollection_HSequence_double,
         To2d: bool,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfReal> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_double> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeAnalysis_TransferParametersProj_perform_handletcolstdhsequenceofreal_bool(self as *mut Self, Papams, To2d)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeAnalysis_TransferParametersProj_perform_hseq_double_bool(self as *mut Self, Papams, To2d)))
         }
     }
 
-    /// **Source:** `ShapeAnalysis_TransferParametersProj.hxx`:60 - `ShapeAnalysis_TransferParametersProj::Perform()`
-    /// Transfers parameter given by  Param from 3d curve
+    /// **Source:** `ShapeAnalysis_TransferParametersProj.hxx`:58 - `ShapeAnalysis_TransferParametersProj::Perform()`
+    /// Transfers parameter given by Param from 3d curve
     /// to pcurve (if To2d is True) or back (if To2d is False)
     pub fn perform_real_bool(&mut self, Param: f64, To2d: bool) -> f64 {
         crate::check_result(unsafe {
@@ -5126,7 +4882,7 @@ impl TransferParametersProj {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_TransferParametersProj.hxx`:67 - `ShapeAnalysis_TransferParametersProj::ForceProjection()`
+    /// **Source:** `ShapeAnalysis_TransferParametersProj.hxx`:64 - `ShapeAnalysis_TransferParametersProj::ForceProjection()`
     /// Returns modifiable flag forcing projection
     /// If it is False (default), projection is done only
     /// if edge is not SameParameter or if tolerance of edge
@@ -5137,7 +4893,7 @@ impl TransferParametersProj {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_TransferParametersProj.hxx`:71 - `ShapeAnalysis_TransferParametersProj::TransferRange()`
+    /// **Source:** `ShapeAnalysis_TransferParametersProj.hxx`:68 - `ShapeAnalysis_TransferParametersProj::TransferRange()`
     /// Recomputes range of curves from NewEdge.
     /// If Is2d equals True parameters are recomputed by curve2d else by curve3d.
     pub fn transfer_range(
@@ -5158,7 +4914,7 @@ impl TransferParametersProj {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_TransferParametersProj.hxx`:77 - `ShapeAnalysis_TransferParametersProj::IsSameRange()`
+    /// **Source:** `ShapeAnalysis_TransferParametersProj.hxx`:74 - `ShapeAnalysis_TransferParametersProj::IsSameRange()`
     /// Returns False;
     pub fn is_same_range(&self) -> bool {
         crate::check_result(unsafe {
@@ -5168,8 +4924,8 @@ impl TransferParametersProj {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_TransferParametersProj.hxx`:93 - `ShapeAnalysis_TransferParametersProj::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `ShapeAnalysis_TransferParametersProj.hxx`:90 - `ShapeAnalysis_TransferParametersProj::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeAnalysis_TransferParametersProj_dynamic_type(
@@ -5179,9 +4935,9 @@ impl TransferParametersProj {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_TransferParametersProj.hxx`:82 - `ShapeAnalysis_TransferParametersProj::CopyNMVertex()`
+    /// **Source:** `ShapeAnalysis_TransferParametersProj.hxx`:79 - `ShapeAnalysis_TransferParametersProj::CopyNMVertex()`
     /// Make a copy of non-manifold vertex theVert
-    /// (i.e. create new  TVertex and replace PointRepresentations for this vertex
+    /// (i.e. create new TVertex and replace PointRepresentations for this vertex
     /// from fromedge to toedge. Other representations were copied)
     pub fn copy_nm_vertex_vertex_edge2(
         theVert: &crate::topo_ds::Vertex,
@@ -5193,9 +4949,9 @@ impl TransferParametersProj {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_TransferParametersProj.hxx`:89 - `ShapeAnalysis_TransferParametersProj::CopyNMVertex()`
+    /// **Source:** `ShapeAnalysis_TransferParametersProj.hxx`:86 - `ShapeAnalysis_TransferParametersProj::CopyNMVertex()`
     /// Make a copy of non-manifold vertex theVert
-    /// (i.e. create new  TVertex and replace PointRepresentations for this vertex
+    /// (i.e. create new TVertex and replace PointRepresentations for this vertex
     /// from fromFace to toFace. Other representations were copied)
     pub fn copy_nm_vertex_vertex_face2(
         theVert: &crate::topo_ds::Vertex,
@@ -5207,7 +4963,7 @@ impl TransferParametersProj {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_TransferParametersProj.hxx`:93 - `ShapeAnalysis_TransferParametersProj::get_type_name()`
+    /// **Source:** `ShapeAnalysis_TransferParametersProj.hxx`:90 - `ShapeAnalysis_TransferParametersProj::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -5218,8 +4974,8 @@ impl TransferParametersProj {
         .into_owned()
     }
 
-    /// **Source:** `ShapeAnalysis_TransferParametersProj.hxx`:93 - `ShapeAnalysis_TransferParametersProj::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `ShapeAnalysis_TransferParametersProj.hxx`:90 - `ShapeAnalysis_TransferParametersProj::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeAnalysis_TransferParametersProj_get_type_descriptor()))
         }
@@ -5256,7 +5012,7 @@ impl TransferParametersProj {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeAnalysisTransferParametersProj> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ShapeAnalysis_TransferParametersProj> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeAnalysis_TransferParametersProj_to_handle(
@@ -5266,15 +5022,15 @@ impl TransferParametersProj {
         }
     }
 
-    /// Inherited: **Source:** `ShapeAnalysis_TransferParameters.hxx`:61 - `ShapeAnalysis_TransferParameters::SetMaxTolerance()`
+    /// Inherited: **Source:** `ShapeAnalysis_TransferParameters.hxx`:59 - `ShapeAnalysis_TransferParameters::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_TransferParametersProj_inherited_SetMaxTolerance(self as *mut Self, maxtol)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_TransferParametersProj_inherited_IsInstance(
                 self as *const Self,
@@ -5283,8 +5039,8 @@ impl TransferParametersProj {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_TransferParametersProj_inherited_IsKind(
                 self as *const Self,
@@ -5293,7 +5049,7 @@ impl TransferParametersProj {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -5309,28 +5065,28 @@ impl TransferParametersProj {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_TransferParametersProj_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_TransferParametersProj_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_TransferParametersProj_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_TransferParametersProj_inherited_Delete(
@@ -5340,33 +5096,35 @@ impl TransferParametersProj {
     }
 }
 
-pub use crate::ffi_types::HandleShapeAnalysisTransferParametersProj;
+pub use crate::ffi_types::Handle_ShapeAnalysis_TransferParametersProj;
 
-unsafe impl crate::CppDeletable for HandleShapeAnalysisTransferParametersProj {
+unsafe impl crate::CppDeletable for Handle_ShapeAnalysis_TransferParametersProj {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeAnalysisTransferParametersProj_destructor(
+            crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_TransferParametersProj_destructor(
                 ptr,
             );
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleShapeAnalysisTransferParametersProj {
+unsafe impl crate::CppCopyable for Handle_ShapeAnalysis_TransferParametersProj {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeAnalysisTransferParametersProj_clone(ptr),
+                crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_TransferParametersProj_clone(
+                    ptr,
+                ),
             )
         }
     }
 }
 
-impl HandleShapeAnalysisTransferParametersProj {
+impl Handle_ShapeAnalysis_TransferParametersProj {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeAnalysisTransferParametersProj_is_null(
+            crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_TransferParametersProj_is_null(
                 self as *const Self,
             )
         }
@@ -5376,7 +5134,7 @@ impl HandleShapeAnalysisTransferParametersProj {
     pub fn get(&self) -> &crate::ffi_types::ShapeAnalysis_TransferParametersProj {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeAnalysisTransferParametersProj_get(
+                crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_TransferParametersProj_get(
                     self as *const Self,
                 ),
             )
@@ -5387,7 +5145,7 @@ impl HandleShapeAnalysisTransferParametersProj {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeAnalysis_TransferParametersProj {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeAnalysisTransferParametersProj_get_mut(
+                crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_TransferParametersProj_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -5397,18 +5155,18 @@ impl HandleShapeAnalysisTransferParametersProj {
     /// Upcast Handle<ShapeAnalysis_TransferParametersProj> to Handle<ShapeAnalysis_TransferParameters>
     pub fn to_handle_transfer_parameters(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeAnalysisTransferParameters> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ShapeAnalysis_TransferParameters> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeAnalysisTransferParametersProj_to_HandleShapeAnalysisTransferParameters(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_TransferParametersProj_to_Handle_ShapeAnalysis_TransferParameters(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeAnalysis_TransferParametersProj> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeAnalysisTransferParametersProj_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_TransferParametersProj_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -5497,7 +5255,7 @@ impl Wire {
     /// Creates the object with WireData object, face
     /// and precision
     pub fn new_handleshapeextendwiredata_face_real(
-        sbwd: &crate::ffi_types::HandleShapeExtendWireData,
+        sbwd: &crate::ffi_types::Handle_ShapeExtend_WireData,
         face: &crate::topo_ds::Face,
         precision: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -5530,7 +5288,7 @@ impl Wire {
     /// and precision
     pub fn init_handleshapeextendwiredata_face_real(
         &mut self,
-        sbwd: &crate::ffi_types::HandleShapeExtendWireData,
+        sbwd: &crate::ffi_types::Handle_ShapeExtend_WireData,
         face: &crate::topo_ds::Face,
         precision: f64,
     ) {
@@ -5551,7 +5309,7 @@ impl Wire {
     /// Loads the object with WireData object
     pub fn load_handleshapeextendwiredata(
         &mut self,
-        sbwd: &crate::ffi_types::HandleShapeExtendWireData,
+        sbwd: &crate::ffi_types::Handle_ShapeExtend_WireData,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_load_handleshapeextendwiredata(
@@ -5563,15 +5321,44 @@ impl Wire {
 
     /// **Source:** `ShapeAnalysis_Wire.hxx`:127 - `ShapeAnalysis_Wire::SetFace()`
     /// Loads the face the wire lies on
-    pub fn set_face(&mut self, face: &crate::topo_ds::Face) {
+    pub fn set_face_face(&mut self, face: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_set_face(self as *mut Self, face)
+            crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_set_face_face(self as *mut Self, face)
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:130 - `ShapeAnalysis_Wire::SetSurface()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:130 - `ShapeAnalysis_Wire::SetFace()`
+    /// Loads the face the wire lies on and surface analysis object
+    pub fn set_face_face_handleshapeanalysissurface(
+        &mut self,
+        theFace: &crate::topo_ds::Face,
+        theSurfaceAnalysis: &crate::ffi_types::Handle_ShapeAnalysis_Surface,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_set_face_face_handleshapeanalysissurface(self as *mut Self, theFace, theSurfaceAnalysis)
+        })
+    }
+
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:134 - `ShapeAnalysis_Wire::SetSurface()`
+    /// Loads the surface analysis object
+    pub fn set_surface_handleshapeanalysissurface(
+        &mut self,
+        theSurfaceAnalysis: &crate::ffi_types::Handle_ShapeAnalysis_Surface,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_set_surface_handleshapeanalysissurface(
+                self as *mut Self,
+                theSurfaceAnalysis,
+            )
+        })
+    }
+
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:137 - `ShapeAnalysis_Wire::SetSurface()`
     /// Loads the surface the wire lies on
-    pub fn set_surface_handlegeomsurface(&mut self, surface: &crate::ffi_types::HandleGeomSurface) {
+    pub fn set_surface_handlegeomsurface(
+        &mut self,
+        surface: &crate::ffi_types::Handle_Geom_Surface,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_set_surface_handlegeomsurface(
                 self as *mut Self,
@@ -5580,11 +5367,11 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:133 - `ShapeAnalysis_Wire::SetSurface()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:140 - `ShapeAnalysis_Wire::SetSurface()`
     /// Loads the surface the wire lies on
     pub fn set_surface_handlegeomsurface_location(
         &mut self,
-        surface: &crate::ffi_types::HandleGeomSurface,
+        surface: &crate::ffi_types::Handle_Geom_Surface,
         location: &crate::top_loc::Location,
     ) {
         crate::check_void_result(unsafe {
@@ -5596,7 +5383,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:136 - `ShapeAnalysis_Wire::SetPrecision()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:143 - `ShapeAnalysis_Wire::SetPrecision()`
     pub fn set_precision(&mut self, precision: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_set_precision(
@@ -5606,7 +5393,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:140 - `ShapeAnalysis_Wire::ClearStatuses()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:147 - `ShapeAnalysis_Wire::ClearStatuses()`
     /// Unsets all the status and distance fields
     /// wire, face and precision are not cleared
     pub fn clear_statuses(&mut self) {
@@ -5615,7 +5402,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:143 - `ShapeAnalysis_Wire::IsLoaded()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:150 - `ShapeAnalysis_Wire::IsLoaded()`
     /// Returns True if wire is loaded and has number of edges >0
     pub fn is_loaded(&self) -> bool {
         crate::check_result(unsafe {
@@ -5623,7 +5410,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:146 - `ShapeAnalysis_Wire::IsReady()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:153 - `ShapeAnalysis_Wire::IsReady()`
     /// Returns True if IsLoaded and underlying face is not null
     pub fn is_ready(&self) -> bool {
         crate::check_result(unsafe {
@@ -5631,7 +5418,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:149 - `ShapeAnalysis_Wire::Precision()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:156 - `ShapeAnalysis_Wire::Precision()`
     /// Returns the value of precision
     pub fn precision(&self) -> f64 {
         crate::check_result(unsafe {
@@ -5639,9 +5426,9 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:152 - `ShapeAnalysis_Wire::WireData()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:159 - `ShapeAnalysis_Wire::WireData()`
     /// Returns wire object being analyzed
-    pub fn wire_data(&self) -> &crate::ffi_types::HandleShapeExtendWireData {
+    pub fn wire_data(&self) -> &crate::ffi_types::Handle_ShapeExtend_WireData {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_wire_data(
                 self as *const Self,
@@ -5649,7 +5436,7 @@ impl Wire {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:155 - `ShapeAnalysis_Wire::NbEdges()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:162 - `ShapeAnalysis_Wire::NbEdges()`
     /// Returns the number of edges in the wire, or 0 if it is not loaded
     pub fn nb_edges(&self) -> i32 {
         crate::check_result(unsafe {
@@ -5657,7 +5444,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:158 - `ShapeAnalysis_Wire::Face()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:165 - `ShapeAnalysis_Wire::Face()`
     /// Returns the working face
     pub fn face(&self) -> &crate::topo_ds::Face {
         unsafe {
@@ -5667,9 +5454,9 @@ impl Wire {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:161 - `ShapeAnalysis_Wire::Surface()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:168 - `ShapeAnalysis_Wire::Surface()`
     /// Returns the working surface
-    pub fn surface(&self) -> &crate::ffi_types::HandleShapeAnalysisSurface {
+    pub fn surface(&self) -> &crate::ffi_types::Handle_ShapeAnalysis_Surface {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_surface(
                 self as *const Self,
@@ -5677,7 +5464,7 @@ impl Wire {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:169 - `ShapeAnalysis_Wire::Perform()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:176 - `ShapeAnalysis_Wire::Perform()`
     /// Performs all the checks in the following order :
     /// CheckOrder, CheckSmall, CheckConnected, CheckEdgeCurves,
     /// CheckDegenerated, CheckSelfIntersection, CheckLacking,
@@ -5690,7 +5477,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:175 - `ShapeAnalysis_Wire::CheckOrder()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:182 - `ShapeAnalysis_Wire::CheckOrder()`
     /// Calls CheckOrder and returns False if wire is already
     /// ordered (tail-to-head), True otherwise
     /// Flag <isClosed> defines if the wire is closed or not
@@ -5705,7 +5492,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:181 - `ShapeAnalysis_Wire::CheckConnected()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:187 - `ShapeAnalysis_Wire::CheckConnected()`
     /// Calls to CheckConnected for each edge
     /// Returns: True if at least one pair of disconnected edges (not sharing the
     /// same vertex) was detected
@@ -5718,7 +5505,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:185 - `ShapeAnalysis_Wire::CheckSmall()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:191 - `ShapeAnalysis_Wire::CheckSmall()`
     /// Calls to CheckSmall for each edge
     /// Returns: True if at least one small edge was detected
     pub fn check_small_real(&mut self, precsmall: f64) -> bool {
@@ -5730,7 +5517,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:202 - `ShapeAnalysis_Wire::CheckEdgeCurves()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:208 - `ShapeAnalysis_Wire::CheckEdgeCurves()`
     /// Checks edges geometry (consistency of 2d and 3d senses, adjasment
     /// of curves to the vertices, etc.).
     /// The order of the checks :
@@ -5752,7 +5539,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:206 - `ShapeAnalysis_Wire::CheckDegenerated()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:212 - `ShapeAnalysis_Wire::CheckDegenerated()`
     /// Calls to CheckDegenerated for each edge
     /// Returns: True if at least one incorrect degenerated edge was detected
     pub fn check_degenerated(&mut self) -> bool {
@@ -5761,7 +5548,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:214 - `ShapeAnalysis_Wire::CheckClosed()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:220 - `ShapeAnalysis_Wire::CheckClosed()`
     /// Checks if wire is closed, performs CheckConnected,
     /// CheckDegenerated and CheckLacking for the first and the last edges
     /// Returns: True if at least one check returned True
@@ -5774,7 +5561,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:226 - `ShapeAnalysis_Wire::CheckSelfIntersection()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:232 - `ShapeAnalysis_Wire::CheckSelfIntersection()`
     /// Checks self-intersection of the wire (considering pcurves)
     /// Looks for self-intersecting edges and each pair of intersecting
     /// edges.
@@ -5793,7 +5580,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:230 - `ShapeAnalysis_Wire::CheckLacking()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:236 - `ShapeAnalysis_Wire::CheckLacking()`
     /// Calls to CheckLacking for each edge
     /// Returns: True if at least one lacking edge was detected
     pub fn check_lacking(&mut self) -> bool {
@@ -5802,28 +5589,28 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:232 - `ShapeAnalysis_Wire::CheckGaps3d()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:238 - `ShapeAnalysis_Wire::CheckGaps3d()`
     pub fn check_gaps3d(&mut self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_check_gaps3d(self as *mut Self)
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:234 - `ShapeAnalysis_Wire::CheckGaps2d()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:240 - `ShapeAnalysis_Wire::CheckGaps2d()`
     pub fn check_gaps2d(&mut self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_check_gaps2d(self as *mut Self)
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:236 - `ShapeAnalysis_Wire::CheckCurveGaps()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:242 - `ShapeAnalysis_Wire::CheckCurveGaps()`
     pub fn check_curve_gaps(&mut self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_check_curve_gaps(self as *mut Self)
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:253 - `ShapeAnalysis_Wire::CheckOrder()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:259 - `ShapeAnalysis_Wire::CheckOrder()`
     /// Analyzes the order of the edges in the wire,
     /// uses class WireOrder for that purpose.
     /// Flag <isClosed> defines if the wire is closed or not
@@ -5857,9 +5644,9 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:271 - `ShapeAnalysis_Wire::CheckConnected()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:277 - `ShapeAnalysis_Wire::CheckConnected()`
     /// Checks connected edges (num-th and preceding).
-    /// Tests with starting preci from <SBWD> or  with <prec> if
+    /// Tests with starting preci from <SBWD> or with <prec> if
     /// it is greater.
     /// Considers Vertices.
     /// Returns: False if edges are connected by the common vertex, else True
@@ -5881,7 +5668,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:282 - `ShapeAnalysis_Wire::CheckSmall()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:287 - `ShapeAnalysis_Wire::CheckSmall()`
     /// Checks if an edge has a length not greater than myPreci or
     /// precsmall (if it is smaller)
     /// Returns: False if its length is greater than precision
@@ -5900,7 +5687,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:294 - `ShapeAnalysis_Wire::CheckSeam()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:298 - `ShapeAnalysis_Wire::CheckSeam()`
     /// Checks if a seam pcurves are correct oriented
     /// Returns: False (status OK) if given edge is not a seam or if it is OK
     /// C1 - current pcurve for FORWARD edge,
@@ -5913,8 +5700,8 @@ impl Wire {
     pub fn check_seam_int_handlegeom2dcurve2_real2(
         &mut self,
         num: i32,
-        C1: &mut crate::ffi_types::HandleGeom2dCurve,
-        C2: &mut crate::ffi_types::HandleGeom2dCurve,
+        C1: &mut crate::ffi_types::Handle_Geom2d_Curve,
+        C2: &mut crate::ffi_types::Handle_Geom2d_Curve,
         cf: &mut f64,
         cl: &mut f64,
     ) -> bool {
@@ -5923,7 +5710,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:302 - `ShapeAnalysis_Wire::CheckSeam()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:306 - `ShapeAnalysis_Wire::CheckSeam()`
     /// Checks if a seam pcurves are correct oriented
     /// See previous functions for details
     pub fn check_seam_int(&mut self, num: i32) -> bool {
@@ -5932,7 +5719,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:319 - `ShapeAnalysis_Wire::CheckDegenerated()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:323 - `ShapeAnalysis_Wire::CheckDegenerated()`
     /// Checks for degenerated edge between two adjacent ones.
     /// Fills parameters dgnr1 and dgnr2 with points in parametric
     /// space that correspond to the singularity (either gap that
@@ -5964,7 +5751,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:326 - `ShapeAnalysis_Wire::CheckDegenerated()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:328 - `ShapeAnalysis_Wire::CheckDegenerated()`
     /// Checks for degenerated edge between two adjacent ones.
     /// Remark : Calls previous function
     /// Status : See the function above for details
@@ -5977,7 +5764,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:338 - `ShapeAnalysis_Wire::CheckGap3d()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:340 - `ShapeAnalysis_Wire::CheckGap3d()`
     /// Checks gap between edges in 3D (3d curves).
     /// Checks the distance between ends of 3d curves of the num-th
     /// and preceding edge.
@@ -5994,7 +5781,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:350 - `ShapeAnalysis_Wire::CheckGap2d()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:352 - `ShapeAnalysis_Wire::CheckGap2d()`
     /// Checks gap between edges in 2D (pcurves).
     /// Checks the distance between ends of pcurves of the num-th
     /// and preceding edge.
@@ -6011,7 +5798,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:361 - `ShapeAnalysis_Wire::CheckCurveGap()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:363 - `ShapeAnalysis_Wire::CheckCurveGap()`
     /// Checks gap between points on 3D curve and points on surface
     /// generated by pcurve of the num-th edge.
     /// The distance can be queried by MinDistance3d.
@@ -6030,7 +5817,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:374 - `ShapeAnalysis_Wire::CheckSelfIntersectingEdge()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:375 - `ShapeAnalysis_Wire::CheckSelfIntersectingEdge()`
     /// Checks if num-th edge is self-intersecting.
     /// Self-intersection is reported only if intersection point lies outside
     /// of both end vertices of the edge.
@@ -6041,18 +5828,18 @@ impl Wire {
     /// FAIL1 : No pcurve
     /// FAIL2 : No vertices
     /// DONE1 : Self-intersection found
-    pub fn check_self_intersecting_edge_int_sequenceofintersectionpoint_sequenceofpnt(
+    pub fn check_self_intersecting_edge_int_seq_intersectionpoint_seq_pnt(
         &mut self,
         num: i32,
-        points2d: &mut crate::ffi_types::IntRes2d_SequenceOfIntersectionPoint,
-        points3d: &mut crate::ffi_types::TColgp_SequenceOfPnt,
+        points2d: &mut crate::ffi_types::NCollection_Sequence_IntRes2d_IntersectionPoint,
+        points3d: &mut crate::ffi_types::NCollection_Sequence_gp_Pnt,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_check_self_intersecting_edge_int_sequenceofintersectionpoint_sequenceofpnt(self as *mut Self, num, points2d, points3d)
+            crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_check_self_intersecting_edge_int_seq_intersectionpoint_seq_pnt(self as *mut Self, num, points2d, points3d)
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:378 - `ShapeAnalysis_Wire::CheckSelfIntersectingEdge()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:380 - `ShapeAnalysis_Wire::CheckSelfIntersectingEdge()`
     pub fn check_self_intersecting_edge_int(&mut self, num: i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_check_self_intersecting_edge_int(
@@ -6062,7 +5849,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:392 - `ShapeAnalysis_Wire::CheckIntersectingEdges()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:393 - `ShapeAnalysis_Wire::CheckIntersectingEdges()`
     /// Checks two adjacent edges for intersecting.
     /// Intersection is reported only if intersection point is not enclosed
     /// by the common end vertex of the edges.
@@ -6074,19 +5861,19 @@ impl Wire {
     /// FAIL1 : No pcurve
     /// FAIL2 : No vertices
     /// DONE1 : Self-intersection found
-    pub fn check_intersecting_edges_int_sequenceofintersectionpoint_sequenceofpnt_sequenceofreal(
+    pub fn check_intersecting_edges_int_seq_intersectionpoint_seq_pnt_seq_double(
         &mut self,
         num: i32,
-        points2d: &mut crate::ffi_types::IntRes2d_SequenceOfIntersectionPoint,
-        points3d: &mut crate::ffi_types::TColgp_SequenceOfPnt,
-        errors: &mut crate::ffi_types::TColStd_SequenceOfReal,
+        points2d: &mut crate::ffi_types::NCollection_Sequence_IntRes2d_IntersectionPoint,
+        points3d: &mut crate::ffi_types::NCollection_Sequence_gp_Pnt,
+        errors: &mut crate::ffi_types::NCollection_Sequence_double,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_check_intersecting_edges_int_sequenceofintersectionpoint_sequenceofpnt_sequenceofreal(self as *mut Self, num, points2d, points3d, errors)
+            crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_check_intersecting_edges_int_seq_intersectionpoint_seq_pnt_seq_double(self as *mut Self, num, points2d, points3d, errors)
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:400 - `ShapeAnalysis_Wire::CheckIntersectingEdges()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:402 - `ShapeAnalysis_Wire::CheckIntersectingEdges()`
     /// Checks two adjacent edges for intersecting.
     /// Remark : Calls the previous method
     /// Status : See the function above for details
@@ -6099,25 +5886,25 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:405 - `ShapeAnalysis_Wire::CheckIntersectingEdges()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:406 - `ShapeAnalysis_Wire::CheckIntersectingEdges()`
     /// Checks i-th and j-th edges for intersecting.
     /// Remark : See the previous method for details
-    pub fn check_intersecting_edges_int2_sequenceofintersectionpoint_sequenceofpnt_sequenceofreal(
+    pub fn check_intersecting_edges_int2_seq_intersectionpoint_seq_pnt_seq_double(
         &mut self,
         num1: i32,
         num2: i32,
-        points2d: &mut crate::ffi_types::IntRes2d_SequenceOfIntersectionPoint,
-        points3d: &mut crate::ffi_types::TColgp_SequenceOfPnt,
-        errors: &mut crate::ffi_types::TColStd_SequenceOfReal,
+        points2d: &mut crate::ffi_types::NCollection_Sequence_IntRes2d_IntersectionPoint,
+        points3d: &mut crate::ffi_types::NCollection_Sequence_gp_Pnt,
+        errors: &mut crate::ffi_types::NCollection_Sequence_double,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_check_intersecting_edges_int2_sequenceofintersectionpoint_sequenceofpnt_sequenceofreal(self as *mut Self, num1, num2, points2d, points3d, errors)
+            crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_check_intersecting_edges_int2_seq_intersectionpoint_seq_pnt_seq_double(self as *mut Self, num1, num2, points2d, points3d, errors)
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:414 - `ShapeAnalysis_Wire::CheckIntersectingEdges()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:416 - `ShapeAnalysis_Wire::CheckIntersectingEdges()`
     /// Checks i-th and j-th edges for intersecting.
-    /// Remark : Calls  previous method.
+    /// Remark : Calls previous method.
     /// Status : See the function above for details
     pub fn check_intersecting_edges_int2(&mut self, num1: i32, num2: i32) -> bool {
         crate::check_result(unsafe {
@@ -6129,7 +5916,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:435 - `ShapeAnalysis_Wire::CheckLacking()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:436 - `ShapeAnalysis_Wire::CheckLacking()`
     /// Checks if there is a gap in 2d between edges, not comprised by
     /// the tolerance of their common vertex.
     /// If <Tolerance> is greater than 0. and less than tolerance of
@@ -6166,7 +5953,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:448 - `ShapeAnalysis_Wire::CheckLacking()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:449 - `ShapeAnalysis_Wire::CheckLacking()`
     /// Checks if there is a gap in 2D between edges and not comprised by vertex tolerance
     /// The value of SBWD.thepreci is used.
     /// Returns: False if no edge should be inserted
@@ -6275,7 +6062,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:504 - `ShapeAnalysis_Wire::CheckShapeConnect()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:503 - `ShapeAnalysis_Wire::CheckShapeConnect()`
     /// The same as previous CheckShapeConnect but is more advanced.
     /// It returns the distances between each end of <sbwd> and each
     /// end of <shape>. For example, <tailhead> stores distance
@@ -6303,15 +6090,15 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:513 - `ShapeAnalysis_Wire::CheckLoop()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:512 - `ShapeAnalysis_Wire::CheckLoop()`
     /// Checks existence of loop on wire and return vertices which are loop vertices
     /// (vertices belonging to a few pairs of edges)
     pub fn check_loop(
         &mut self,
-        aMapLoopVertices: &mut crate::ffi_types::TopTools_IndexedMapOfShape,
-        aMapVertexEdges: &mut crate::ffi_types::TopTools_DataMapOfShapeListOfShape,
-        aMapSmallEdges: &mut crate::ffi_types::TopTools_MapOfShape,
-        aMapSeemEdges: &mut crate::ffi_types::TopTools_MapOfShape,
+        aMapLoopVertices: &mut crate::ffi_types::NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher,
+        aMapVertexEdges: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
+        aMapSmallEdges: &mut crate::ffi_types::NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher,
+        aMapSeemEdges: &mut crate::ffi_types::NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_check_loop(
@@ -6324,7 +6111,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:518 - `ShapeAnalysis_Wire::CheckTail()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:519 - `ShapeAnalysis_Wire::CheckTail()`
     pub fn check_tail(
         &mut self,
         theEdge1: &crate::topo_ds::Edge,
@@ -6353,7 +6140,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:528 - `ShapeAnalysis_Wire::StatusOrder()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:529 - `ShapeAnalysis_Wire::StatusOrder()`
     pub fn status_order(&self, Status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_status_order(
@@ -6363,7 +6150,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:530 - `ShapeAnalysis_Wire::StatusConnected()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:531 - `ShapeAnalysis_Wire::StatusConnected()`
     pub fn status_connected(&self, Status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_status_connected(
@@ -6373,7 +6160,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:532 - `ShapeAnalysis_Wire::StatusEdgeCurves()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:533 - `ShapeAnalysis_Wire::StatusEdgeCurves()`
     pub fn status_edge_curves(&self, Status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_status_edge_curves(
@@ -6383,7 +6170,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:534 - `ShapeAnalysis_Wire::StatusDegenerated()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:535 - `ShapeAnalysis_Wire::StatusDegenerated()`
     pub fn status_degenerated(&self, Status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_status_degenerated(
@@ -6393,7 +6180,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:536 - `ShapeAnalysis_Wire::StatusClosed()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:537 - `ShapeAnalysis_Wire::StatusClosed()`
     pub fn status_closed(&self, Status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_status_closed(
@@ -6403,7 +6190,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:538 - `ShapeAnalysis_Wire::StatusSmall()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:539 - `ShapeAnalysis_Wire::StatusSmall()`
     pub fn status_small(&self, Status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_status_small(
@@ -6413,7 +6200,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:540 - `ShapeAnalysis_Wire::StatusSelfIntersection()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:541 - `ShapeAnalysis_Wire::StatusSelfIntersection()`
     pub fn status_self_intersection(&self, Status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_status_self_intersection(
@@ -6423,7 +6210,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:542 - `ShapeAnalysis_Wire::StatusLacking()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:543 - `ShapeAnalysis_Wire::StatusLacking()`
     pub fn status_lacking(&self, Status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_status_lacking(
@@ -6433,7 +6220,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:544 - `ShapeAnalysis_Wire::StatusGaps3d()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:545 - `ShapeAnalysis_Wire::StatusGaps3d()`
     pub fn status_gaps3d(&self, Status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_status_gaps3d(
@@ -6443,7 +6230,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:546 - `ShapeAnalysis_Wire::StatusGaps2d()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:547 - `ShapeAnalysis_Wire::StatusGaps2d()`
     pub fn status_gaps2d(&self, Status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_status_gaps2d(
@@ -6453,7 +6240,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:548 - `ShapeAnalysis_Wire::StatusCurveGaps()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:549 - `ShapeAnalysis_Wire::StatusCurveGaps()`
     pub fn status_curve_gaps(&self, Status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_status_curve_gaps(
@@ -6463,7 +6250,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:550 - `ShapeAnalysis_Wire::StatusLoop()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:551 - `ShapeAnalysis_Wire::StatusLoop()`
     pub fn status_loop(&self, Status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_status_loop(
@@ -6473,7 +6260,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:553 - `ShapeAnalysis_Wire::LastCheckStatus()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:554 - `ShapeAnalysis_Wire::LastCheckStatus()`
     /// Querying the status of the LAST performed 'Advanced' checking procedure
     pub fn last_check_status(&self, Status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
@@ -6484,7 +6271,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:558 - `ShapeAnalysis_Wire::MinDistance3d()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:559 - `ShapeAnalysis_Wire::MinDistance3d()`
     /// Returns the last lowest distance in 3D computed by
     /// CheckOrientation, CheckConnected, CheckContinuity3d,
     /// CheckVertex, CheckNewVertex
@@ -6494,7 +6281,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:562 - `ShapeAnalysis_Wire::MinDistance2d()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:563 - `ShapeAnalysis_Wire::MinDistance2d()`
     /// Returns the last lowest distance in 2D-UV computed by
     /// CheckContinuity2d
     pub fn min_distance2d(&self) -> f64 {
@@ -6503,7 +6290,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:567 - `ShapeAnalysis_Wire::MaxDistance3d()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:568 - `ShapeAnalysis_Wire::MaxDistance3d()`
     /// Returns the last maximal distance in 3D computed by
     /// CheckOrientation, CheckConnected, CheckContinuity3d,
     /// CheckVertex, CheckNewVertex, CheckSameParameter
@@ -6513,7 +6300,7 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:571 - `ShapeAnalysis_Wire::MaxDistance2d()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:572 - `ShapeAnalysis_Wire::MaxDistance2d()`
     /// Returns the last maximal distance in 2D-UV computed by
     /// CheckContinuity2d
     pub fn max_distance2d(&self) -> f64 {
@@ -6522,8 +6309,8 @@ impl Wire {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:573 - `ShapeAnalysis_Wire::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:574 - `ShapeAnalysis_Wire::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_dynamic_type(
                 self as *const Self,
@@ -6531,7 +6318,7 @@ impl Wire {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:573 - `ShapeAnalysis_Wire::get_type_name()`
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:574 - `ShapeAnalysis_Wire::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -6542,8 +6329,8 @@ impl Wire {
         .into_owned()
     }
 
-    /// **Source:** `ShapeAnalysis_Wire.hxx`:573 - `ShapeAnalysis_Wire::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:574 - `ShapeAnalysis_Wire::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_get_type_descriptor(),
@@ -6576,7 +6363,7 @@ impl Wire {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeAnalysisWire> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ShapeAnalysis_Wire> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_to_handle(obj.into_raw()),
@@ -6584,8 +6371,8 @@ impl Wire {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_inherited_IsInstance(
                 self as *const Self,
@@ -6594,8 +6381,8 @@ impl Wire {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_inherited_IsKind(
                 self as *const Self,
@@ -6604,7 +6391,7 @@ impl Wire {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -6620,7 +6407,7 @@ impl Wire {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_inherited_GetRefCount(
@@ -6629,7 +6416,7 @@ impl Wire {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_inherited_IncrementRefCounter(
@@ -6638,7 +6425,7 @@ impl Wire {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_inherited_DecrementRefCounter(
@@ -6647,7 +6434,7 @@ impl Wire {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_Wire_inherited_Delete(self as *const Self)
@@ -6655,36 +6442,36 @@ impl Wire {
     }
 }
 
-pub use crate::ffi_types::HandleShapeAnalysisWire;
+pub use crate::ffi_types::Handle_ShapeAnalysis_Wire;
 
-unsafe impl crate::CppDeletable for HandleShapeAnalysisWire {
+unsafe impl crate::CppDeletable for Handle_ShapeAnalysis_Wire {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeAnalysisWire_destructor(ptr);
+            crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_Wire_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleShapeAnalysisWire {
+unsafe impl crate::CppCopyable for Handle_ShapeAnalysis_Wire {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeAnalysisWire_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_Wire_clone(ptr))
         }
     }
 }
 
-impl HandleShapeAnalysisWire {
+impl Handle_ShapeAnalysis_Wire {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeAnalysisWire_is_null(self as *const Self)
+            crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_Wire_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying ShapeAnalysis_Wire
     pub fn get(&self) -> &crate::ffi_types::ShapeAnalysis_Wire {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeAnalysisWire_get(
+            &*crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_Wire_get(
                 self as *const Self,
             ))
         }
@@ -6694,7 +6481,7 @@ impl HandleShapeAnalysisWire {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeAnalysis_Wire {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeAnalysisWire_get_mut(self as *mut Self),
+                crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_Wire_get_mut(self as *mut Self),
             )
         }
     }
@@ -6702,13 +6489,9 @@ impl HandleShapeAnalysisWire {
     /// Upcast Handle<ShapeAnalysis_Wire> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeAnalysisWire_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeAnalysis_Wire_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -6717,7 +6500,7 @@ impl HandleShapeAnalysisWire {
 // From ShapeAnalysis_WireOrder.hxx
 // ========================
 
-/// **Source:** `ShapeAnalysis_WireOrder.hxx`:48 - `ShapeAnalysis_WireOrder`
+/// **Source:** `ShapeAnalysis_WireOrder.hxx`:51 - `ShapeAnalysis_WireOrder`
 /// This class is intended to control and, if possible, redefine
 /// the order of a list of edges which define a wire
 /// Edges are not given directly, but as their bounds (start,end)
@@ -6741,7 +6524,7 @@ unsafe impl crate::CppDeletable for WireOrder {
 }
 
 impl WireOrder {
-    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:54 - `ShapeAnalysis_WireOrder::ShapeAnalysis_WireOrder()`
+    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:57 - `ShapeAnalysis_WireOrder::ShapeAnalysis_WireOrder()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -6751,7 +6534,7 @@ impl WireOrder {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:60 - `ShapeAnalysis_WireOrder::ShapeAnalysis_WireOrder()`
+    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:63 - `ShapeAnalysis_WireOrder::ShapeAnalysis_WireOrder()`
     /// Creates a WireOrder.
     /// Flag <theMode3D> defines 3D or 2d mode.
     /// Flag <theModeBoth> defines miscible mode and the flag <theMode3D> is ignored.
@@ -6772,7 +6555,7 @@ impl WireOrder {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:60 - `ShapeAnalysis_WireOrder::ShapeAnalysis_WireOrder()`
+    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:63 - `ShapeAnalysis_WireOrder::ShapeAnalysis_WireOrder()`
     /// Creates a WireOrder.
     /// Flag <theMode3D> defines 3D or 2d mode.
     /// Flag <theModeBoth> defines miscible mode and the flag <theMode3D> is ignored.
@@ -6781,7 +6564,7 @@ impl WireOrder {
         Self::new_bool_real_bool(theMode3D, theTolerance, false)
     }
 
-    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:68 - `ShapeAnalysis_WireOrder::SetMode()`
+    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:71 - `ShapeAnalysis_WireOrder::SetMode()`
     /// Sets new values.
     /// Clears the edge list if the mode (<theMode3D> or <theModeBoth> ) changes.
     /// Clears the connexion list.
@@ -6797,7 +6580,7 @@ impl WireOrder {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:73 - `ShapeAnalysis_WireOrder::Tolerance()`
+    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:76 - `ShapeAnalysis_WireOrder::Tolerance()`
     /// Returns the working tolerance
     pub fn tolerance(&self) -> f64 {
         crate::check_result(unsafe {
@@ -6805,7 +6588,7 @@ impl WireOrder {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:76 - `ShapeAnalysis_WireOrder::Clear()`
+    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:79 - `ShapeAnalysis_WireOrder::Clear()`
     /// Clears the list of edges, but not mode and tol
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
@@ -6813,7 +6596,7 @@ impl WireOrder {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:79 - `ShapeAnalysis_WireOrder::Add()`
+    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:82 - `ShapeAnalysis_WireOrder::Add()`
     /// Adds a couple of points 3D (start, end)
     pub fn add_xyz2(&mut self, theStart3d: &crate::gp::XYZ, theEnd3d: &crate::gp::XYZ) {
         crate::check_void_result(unsafe {
@@ -6825,7 +6608,7 @@ impl WireOrder {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:82 - `ShapeAnalysis_WireOrder::Add()`
+    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:85 - `ShapeAnalysis_WireOrder::Add()`
     /// Adds a couple of points 2D (start, end)
     pub fn add_xy2(&mut self, theStart2d: &crate::gp::XY, theEnd2d: &crate::gp::XY) {
         crate::check_void_result(unsafe {
@@ -6837,7 +6620,7 @@ impl WireOrder {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:85 - `ShapeAnalysis_WireOrder::Add()`
+    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:88 - `ShapeAnalysis_WireOrder::Add()`
     /// Adds a couple of points 3D and 2D (start, end)
     pub fn add_xyz2_xy2(
         &mut self,
@@ -6857,7 +6640,7 @@ impl WireOrder {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:91 - `ShapeAnalysis_WireOrder::NbEdges()`
+    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:94 - `ShapeAnalysis_WireOrder::NbEdges()`
     /// Returns the count of added couples of points (one per edges)
     pub fn nb_edges(&self) -> i32 {
         crate::check_result(unsafe {
@@ -6865,7 +6648,7 @@ impl WireOrder {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:96 - `ShapeAnalysis_WireOrder::KeepLoopsMode()`
+    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:99 - `ShapeAnalysis_WireOrder::KeepLoopsMode()`
     /// If this mode is True method perform does not sort edges of
     /// different loops. The resulting order is first loop, second
     /// one etc...
@@ -6879,7 +6662,7 @@ impl WireOrder {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:104 - `ShapeAnalysis_WireOrder::Perform()`
+    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:107 - `ShapeAnalysis_WireOrder::Perform()`
     /// Computes the better order
     /// Optimised if the couples were already in order
     /// The criterium is : two couples in order if distance between
@@ -6895,7 +6678,7 @@ impl WireOrder {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:108 - `ShapeAnalysis_WireOrder::IsDone()`
+    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:111 - `ShapeAnalysis_WireOrder::IsDone()`
     /// Tells if Perform has been done
     /// Else, the following methods returns original values
     pub fn is_done(&self) -> bool {
@@ -6904,7 +6687,7 @@ impl WireOrder {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:115 - `ShapeAnalysis_WireOrder::Status()`
+    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:118 - `ShapeAnalysis_WireOrder::Status()`
     /// Returns the status of the order (0 if not done) :
     /// 0 : all edges are direct and in sequence
     /// 1 : all edges are direct but some are not in sequence
@@ -6916,7 +6699,7 @@ impl WireOrder {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:120 - `ShapeAnalysis_WireOrder::Ordered()`
+    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:123 - `ShapeAnalysis_WireOrder::Ordered()`
     /// Returns the number of original edge which correspond to the
     /// newly ordered number <n>
     /// Warning : the returned value is NEGATIVE if edge should be reversed
@@ -6929,7 +6712,7 @@ impl WireOrder {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:123 - `ShapeAnalysis_WireOrder::XYZ()`
+    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:126 - `ShapeAnalysis_WireOrder::XYZ()`
     /// Returns the values of the couple <num>, as 3D values
     pub fn xyz(&self, theIdx: i32, theStart3D: &mut crate::gp::XYZ, theEnd3D: &mut crate::gp::XYZ) {
         crate::check_void_result(unsafe {
@@ -6942,7 +6725,7 @@ impl WireOrder {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:128 - `ShapeAnalysis_WireOrder::XY()`
+    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:129 - `ShapeAnalysis_WireOrder::XY()`
     /// Returns the values of the couple <num>, as 2D values
     pub fn xy(&self, theIdx: i32, theStart2D: &mut crate::gp::XY, theEnd2D: &mut crate::gp::XY) {
         crate::check_void_result(unsafe {
@@ -6955,7 +6738,7 @@ impl WireOrder {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:133 - `ShapeAnalysis_WireOrder::Gap()`
+    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:134 - `ShapeAnalysis_WireOrder::Gap()`
     /// Returns the gap between a couple and its preceding
     /// <num> is considered ordered
     /// If <num> = 0 (D), returns the greatest gap found
@@ -6965,7 +6748,7 @@ impl WireOrder {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:137 - `ShapeAnalysis_WireOrder::SetChains()`
+    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:138 - `ShapeAnalysis_WireOrder::SetChains()`
     /// Determines the chains inside which successive edges have a gap
     /// less than a given value. Queried by NbChains and Chain
     pub fn set_chains(&mut self, gap: f64) {
@@ -6977,7 +6760,7 @@ impl WireOrder {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:140 - `ShapeAnalysis_WireOrder::NbChains()`
+    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:141 - `ShapeAnalysis_WireOrder::NbChains()`
     /// Returns the count of computed chains
     pub fn nb_chains(&self) -> i32 {
         crate::check_result(unsafe {
@@ -6985,7 +6768,7 @@ impl WireOrder {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:144 - `ShapeAnalysis_WireOrder::Chain()`
+    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:145 - `ShapeAnalysis_WireOrder::Chain()`
     /// Returns, for the chain n0 num, starting and ending numbers of
     /// edges. In the list of ordered edges (see Ordered for originals)
     pub fn chain(&self, num: i32, n1: &mut i32, n2: &mut i32) {
@@ -6999,7 +6782,7 @@ impl WireOrder {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:151 - `ShapeAnalysis_WireOrder::SetCouples()`
+    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:150 - `ShapeAnalysis_WireOrder::SetCouples()`
     /// Determines the couples of edges for which end and start fit
     /// inside a given gap. Queried by NbCouples and Couple
     /// Warning: function isn't implemented
@@ -7012,7 +6795,7 @@ impl WireOrder {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:154 - `ShapeAnalysis_WireOrder::NbCouples()`
+    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:153 - `ShapeAnalysis_WireOrder::NbCouples()`
     /// Returns the count of computed couples
     pub fn nb_couples(&self) -> i32 {
         crate::check_result(unsafe {
@@ -7020,7 +6803,7 @@ impl WireOrder {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:158 - `ShapeAnalysis_WireOrder::Couple()`
+    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:157 - `ShapeAnalysis_WireOrder::Couple()`
     /// Returns, for the couple n0 num, the two implied edges
     /// In the list of ordered edges
     pub fn couple(&self, num: i32, n1: &mut i32, n2: &mut i32) {
@@ -7081,7 +6864,7 @@ impl WireVertex {
     /// **Source:** `ShapeAnalysis_WireVertex.hxx`:53 - `ShapeAnalysis_WireVertex::Init()`
     pub fn init_handleshapeextendwiredata_real(
         &mut self,
-        swbd: &crate::ffi_types::HandleShapeExtendWireData,
+        swbd: &crate::ffi_types::Handle_ShapeExtend_WireData,
         preci: f64,
     ) {
         crate::check_void_result(unsafe {
@@ -7102,7 +6885,7 @@ impl WireVertex {
     /// **Source:** `ShapeAnalysis_WireVertex.hxx`:57 - `ShapeAnalysis_WireVertex::Load()`
     pub fn load_handleshapeextendwiredata(
         &mut self,
-        sbwd: &crate::ffi_types::HandleShapeExtendWireData,
+        sbwd: &crate::ffi_types::Handle_ShapeExtend_WireData,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_WireVertex_load_handleshapeextendwiredata(
@@ -7183,7 +6966,7 @@ impl WireVertex {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_WireVertex.hxx`:88 - `ShapeAnalysis_WireVertex::SetStart()`
+    /// **Source:** `ShapeAnalysis_WireVertex.hxx`:86 - `ShapeAnalysis_WireVertex::SetStart()`
     /// <num> is the Start of following Edge, its projection on the
     /// preceding one lies on it at the Precision of <me>
     /// <upre> gives the parameter on the preceding edge
@@ -7198,7 +6981,7 @@ impl WireVertex {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_WireVertex.hxx`:95 - `ShapeAnalysis_WireVertex::SetInters()`
+    /// **Source:** `ShapeAnalysis_WireVertex.hxx`:91 - `ShapeAnalysis_WireVertex::SetInters()`
     /// <num> is the Intersection of both Edges
     /// <upre> is the parameter on preceding edge, <ufol> on
     /// following edge
@@ -7214,7 +6997,7 @@ impl WireVertex {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_WireVertex.hxx`:101 - `ShapeAnalysis_WireVertex::SetDisjoined()`
+    /// **Source:** `ShapeAnalysis_WireVertex.hxx`:97 - `ShapeAnalysis_WireVertex::SetDisjoined()`
     /// <num> cannot be said as same vertex
     pub fn set_disjoined(&mut self, num: i32) {
         crate::check_void_result(unsafe {
@@ -7225,7 +7008,7 @@ impl WireVertex {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_WireVertex.hxx`:104 - `ShapeAnalysis_WireVertex::IsDone()`
+    /// **Source:** `ShapeAnalysis_WireVertex.hxx`:100 - `ShapeAnalysis_WireVertex::IsDone()`
     /// Returns True if analysis was performed, else returns False
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -7233,7 +7016,7 @@ impl WireVertex {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_WireVertex.hxx`:107 - `ShapeAnalysis_WireVertex::Precision()`
+    /// **Source:** `ShapeAnalysis_WireVertex.hxx`:103 - `ShapeAnalysis_WireVertex::Precision()`
     /// Returns precision value used in analysis
     pub fn precision(&self) -> f64 {
         crate::check_result(unsafe {
@@ -7241,7 +7024,7 @@ impl WireVertex {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_WireVertex.hxx`:111 - `ShapeAnalysis_WireVertex::NbEdges()`
+    /// **Source:** `ShapeAnalysis_WireVertex.hxx`:107 - `ShapeAnalysis_WireVertex::NbEdges()`
     /// Returns the number of edges in analyzed wire (i.e. the
     /// length of all arrays)
     pub fn nb_edges(&self) -> i32 {
@@ -7250,9 +7033,9 @@ impl WireVertex {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_WireVertex.hxx`:114 - `ShapeAnalysis_WireVertex::WireData()`
+    /// **Source:** `ShapeAnalysis_WireVertex.hxx`:110 - `ShapeAnalysis_WireVertex::WireData()`
     /// Returns analyzed wire
-    pub fn wire_data(&self) -> &crate::ffi_types::HandleShapeExtendWireData {
+    pub fn wire_data(&self) -> &crate::ffi_types::Handle_ShapeExtend_WireData {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeAnalysis_WireVertex_wire_data(
@@ -7262,7 +7045,7 @@ impl WireVertex {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_WireVertex.hxx`:118 - `ShapeAnalysis_WireVertex::Status()`
+    /// **Source:** `ShapeAnalysis_WireVertex.hxx`:114 - `ShapeAnalysis_WireVertex::Status()`
     /// Returns the recorded status for a vertex
     /// More detail by method Data
     pub fn status(&self, num: i32) -> i32 {
@@ -7271,7 +7054,7 @@ impl WireVertex {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_WireVertex.hxx`:120 - `ShapeAnalysis_WireVertex::Position()`
+    /// **Source:** `ShapeAnalysis_WireVertex.hxx`:116 - `ShapeAnalysis_WireVertex::Position()`
     pub fn position(&self, num: i32) -> crate::OwnedPtr<crate::gp::XYZ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -7283,7 +7066,7 @@ impl WireVertex {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_WireVertex.hxx`:122 - `ShapeAnalysis_WireVertex::UPrevious()`
+    /// **Source:** `ShapeAnalysis_WireVertex.hxx`:118 - `ShapeAnalysis_WireVertex::UPrevious()`
     pub fn u_previous(&self, num: i32) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_WireVertex_u_previous(
@@ -7293,7 +7076,7 @@ impl WireVertex {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_WireVertex.hxx`:124 - `ShapeAnalysis_WireVertex::UFollowing()`
+    /// **Source:** `ShapeAnalysis_WireVertex.hxx`:120 - `ShapeAnalysis_WireVertex::UFollowing()`
     pub fn u_following(&self, num: i32) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeAnalysis_WireVertex_u_following(
@@ -7303,7 +7086,7 @@ impl WireVertex {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_WireVertex.hxx`:137 - `ShapeAnalysis_WireVertex::Data()`
+    /// **Source:** `ShapeAnalysis_WireVertex.hxx`:133 - `ShapeAnalysis_WireVertex::Data()`
     /// Returns the recorded status for a vertex
     /// With its recorded position and parameters on both edges
     /// These values are relevant regarding the status:
@@ -7327,7 +7110,7 @@ impl WireVertex {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_WireVertex.hxx`:145 - `ShapeAnalysis_WireVertex::NextStatus()`
+    /// **Source:** `ShapeAnalysis_WireVertex.hxx`:138 - `ShapeAnalysis_WireVertex::NextStatus()`
     /// For a given status, returns the rank of the vertex which
     /// follows <num> and has the same status. 0 if no more
     /// Acts as an iterator, starts on the first one
@@ -7341,7 +7124,7 @@ impl WireVertex {
         })
     }
 
-    /// **Source:** `ShapeAnalysis_WireVertex.hxx`:158 - `ShapeAnalysis_WireVertex::NextCriter()`
+    /// **Source:** `ShapeAnalysis_WireVertex.hxx`:150 - `ShapeAnalysis_WireVertex::NextCriter()`
     /// For a given criter, returns the rank of the vertex which
     /// follows <num> and has the same status. 0 if no more
     /// Acts as an iterator, starts on the first one
@@ -7362,12 +7145,3 @@ impl WireVertex {
         })
     }
 }
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi_types::{
-    ShapeAnalysis_DataMapOfShapeListOfReal as DataMapOfShapeListOfReal,
-    ShapeAnalysis_SequenceOfFreeBounds as SequenceOfFreeBounds,
-};

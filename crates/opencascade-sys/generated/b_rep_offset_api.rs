@@ -10,7 +10,7 @@
 // From BRepOffsetAPI_DraftAngle.hxx
 // ========================
 
-/// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:61 - `BRepOffsetAPI_DraftAngle`
+/// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:62 - `BRepOffsetAPI_DraftAngle`
 /// Taper-adding transformations on a shape.
 /// The resulting shape is constructed by defining one face
 /// to be tapered after another one, as well as the
@@ -45,7 +45,7 @@ unsafe impl crate::CppDeletable for DraftAngle {
 }
 
 impl DraftAngle {
-    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:69 - `BRepOffsetAPI_DraftAngle::BRepOffsetAPI_DraftAngle()`
+    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:70 - `BRepOffsetAPI_DraftAngle::BRepOffsetAPI_DraftAngle()`
     /// Constructs an empty algorithm to perform
     /// taper-adding transformations on faces of a shape.
     /// Use the Init function to define the shape to be tapered.
@@ -57,7 +57,7 @@ impl DraftAngle {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:74 - `BRepOffsetAPI_DraftAngle::BRepOffsetAPI_DraftAngle()`
+    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:75 - `BRepOffsetAPI_DraftAngle::BRepOffsetAPI_DraftAngle()`
     /// Initializes an algorithm to perform taper-adding
     /// transformations on faces of the shape S.
     /// S will be referred to as the initial shape of the algorithm.
@@ -69,7 +69,7 @@ impl DraftAngle {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:79 - `BRepOffsetAPI_DraftAngle::Clear()`
+    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:80 - `BRepOffsetAPI_DraftAngle::Clear()`
     /// Cancels the results of all taper-adding transformations
     /// performed by this algorithm on the initial shape. These
     /// results will have been defined by successive calls to the function Add.
@@ -79,7 +79,7 @@ impl DraftAngle {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:83 - `BRepOffsetAPI_DraftAngle::Init()`
+    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:84 - `BRepOffsetAPI_DraftAngle::Init()`
     /// Initializes, or reinitializes this taper-adding algorithm with the shape S.
     /// S will be referred to as the initial shape of this algorithm.
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
@@ -88,7 +88,7 @@ impl DraftAngle {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:117 - `BRepOffsetAPI_DraftAngle::Add()`
+    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:118 - `BRepOffsetAPI_DraftAngle::Add()`
     /// Adds the face F, the direction
     /// Direction, the angle Angle, the plane NeutralPlane, and the flag
     /// Flag to the framework created at construction time, and with this
@@ -141,7 +141,7 @@ impl DraftAngle {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:136 - `BRepOffsetAPI_DraftAngle::AddDone()`
+    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:137 - `BRepOffsetAPI_DraftAngle::AddDone()`
     /// Returns true if the previous taper-adding
     /// transformation performed by this algorithm in the last
     /// call to Add, was successful.
@@ -161,7 +161,7 @@ impl DraftAngle {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:151 - `BRepOffsetAPI_DraftAngle::Remove()`
+    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:152 - `BRepOffsetAPI_DraftAngle::Remove()`
     /// Cancels the taper-adding transformation previously
     /// performed by this algorithm on the face F and the
     /// series of tangential faces which contain F, and retrieves
@@ -181,7 +181,7 @@ impl DraftAngle {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:159 - `BRepOffsetAPI_DraftAngle::ProblematicShape()`
+    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:160 - `BRepOffsetAPI_DraftAngle::ProblematicShape()`
     /// Returns the shape on which an error occurred after an
     /// unsuccessful call to Add or when IsDone returns false.
     /// Exceptions
@@ -198,12 +198,12 @@ impl DraftAngle {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:166 - `BRepOffsetAPI_DraftAngle::Status()`
-    /// Returns an error  status when an error has occurred
-    /// (Face,   Edge    or Vertex  recomputation problem).
+    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:167 - `BRepOffsetAPI_DraftAngle::Status()`
+    /// Returns an error status when an error has occurred
+    /// (Face, Edge or Vertex recomputation problem).
     /// Otherwise returns Draft_NoError. The method may be
-    /// called if AddDone  returns Standard_False, or when
-    /// IsDone returns Standard_False.
+    /// called if AddDone returns false, or when
+    /// IsDone returns false.
     pub fn status(&self) -> crate::draft::ErrorStatus {
         crate::draft::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_status(self as *const Self)
@@ -211,8 +211,8 @@ impl DraftAngle {
         .unwrap()
     }
 
-    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:170 - `BRepOffsetAPI_DraftAngle::ConnectedFaces()`
-    /// Returns all  the  faces   which  have been   added
+    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:171 - `BRepOffsetAPI_DraftAngle::ConnectedFaces()`
+    /// Returns all the faces which have been added
     /// together with the face <F>.
     ///
     /// # Safety
@@ -223,7 +223,7 @@ impl DraftAngle {
     pub unsafe fn connected_faces(
         &self,
         F: &crate::topo_ds::Face,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_connected_faces(
@@ -234,10 +234,10 @@ impl DraftAngle {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:174 - `BRepOffsetAPI_DraftAngle::ModifiedFaces()`
-    /// Returns all the faces  on which a modification has
+    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:175 - `BRepOffsetAPI_DraftAngle::ModifiedFaces()`
+    /// Returns all the faces on which a modification has
     /// been given.
-    pub fn modified_faces(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    pub fn modified_faces(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_modified_faces(
@@ -247,7 +247,7 @@ impl DraftAngle {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:177 - `BRepOffsetAPI_DraftAngle::Build()`
+    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:178 - `BRepOffsetAPI_DraftAngle::Build()`
     /// Builds the resulting shape (redefined from MakeShape).
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
@@ -255,15 +255,15 @@ impl DraftAngle {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:180 - `BRepOffsetAPI_DraftAngle::CorrectWires()`
+    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:181 - `BRepOffsetAPI_DraftAngle::CorrectWires()`
     pub fn correct_wires(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_correct_wires(self as *mut Self)
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:184 - `BRepOffsetAPI_DraftAngle::Generated()`
-    /// Returns the  list   of shapes generated   from the
+    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:185 - `BRepOffsetAPI_DraftAngle::Generated()`
+    /// Returns the list of shapes generated from the
     /// shape <S>.
     ///
     /// # Safety
@@ -274,7 +274,7 @@ impl DraftAngle {
     pub unsafe fn generated(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_generated(
                 self as *mut Self,
@@ -284,7 +284,7 @@ impl DraftAngle {
     }
 
     /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:189 - `BRepOffsetAPI_DraftAngle::Modified()`
-    /// Returns the list  of shapes modified from the shape
+    /// Returns the list of shapes modified from the shape
     /// <S>.
     ///
     /// # Safety
@@ -295,7 +295,7 @@ impl DraftAngle {
     pub unsafe fn modified(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_modified(
                 self as *mut Self,
@@ -304,7 +304,7 @@ impl DraftAngle {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:198 - `BRepOffsetAPI_DraftAngle::ModifiedShape()`
+    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:197 - `BRepOffsetAPI_DraftAngle::ModifiedShape()`
     /// Returns the modified shape corresponding to <S>.
     /// S can correspond to the entire initial shape or to its subshape.
     /// Raises exceptions
@@ -431,7 +431,7 @@ impl DraftAngle {
 // From BRepOffsetAPI_FindContigousEdges.hxx
 // ========================
 
-/// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:42 - `BRepOffsetAPI_FindContigousEdges`
+/// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:43 - `BRepOffsetAPI_FindContigousEdges`
 /// Provides methods to identify contiguous boundaries for continuity control (C0, C1, ...)
 ///
 /// Use this function as following:
@@ -455,7 +455,7 @@ unsafe impl crate::CppDeletable for FindContigousEdges {
 }
 
 impl FindContigousEdges {
-    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:55 - `BRepOffsetAPI_FindContigousEdges::BRepOffsetAPI_FindContigousEdges()`
+    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:56 - `BRepOffsetAPI_FindContigousEdges::BRepOffsetAPI_FindContigousEdges()`
     /// Initializes an algorithm for identifying contiguous edges
     /// on shapes with tolerance as the tolerance of contiguity
     /// (defaulted to 1.0e-6). This tolerance value is used to
@@ -474,7 +474,7 @@ impl FindContigousEdges {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:55 - `BRepOffsetAPI_FindContigousEdges::BRepOffsetAPI_FindContigousEdges()`
+    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:56 - `BRepOffsetAPI_FindContigousEdges::BRepOffsetAPI_FindContigousEdges()`
     /// Initializes an algorithm for identifying contiguous edges
     /// on shapes with tolerance as the tolerance of contiguity
     /// (defaulted to 1.0e-6). This tolerance value is used to
@@ -487,7 +487,7 @@ impl FindContigousEdges {
         Self::new_real_bool(tolerance, true)
     }
 
-    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:55 - `BRepOffsetAPI_FindContigousEdges::BRepOffsetAPI_FindContigousEdges()`
+    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:56 - `BRepOffsetAPI_FindContigousEdges::BRepOffsetAPI_FindContigousEdges()`
     /// Initializes an algorithm for identifying contiguous edges
     /// on shapes with tolerance as the tolerance of contiguity
     /// (defaulted to 1.0e-6). This tolerance value is used to
@@ -500,7 +500,7 @@ impl FindContigousEdges {
         Self::new_real_bool(1.0e-06, true)
     }
 
-    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:64 - `BRepOffsetAPI_FindContigousEdges::Init()`
+    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:65 - `BRepOffsetAPI_FindContigousEdges::Init()`
     /// Initializes this algorithm for identifying contiguous edges
     /// on shapes using the tolerance of contiguity tolerance.
     /// This tolerance value is used to determine whether two
@@ -517,7 +517,7 @@ impl FindContigousEdges {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:71 - `BRepOffsetAPI_FindContigousEdges::Add()`
+    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:72 - `BRepOffsetAPI_FindContigousEdges::Add()`
     /// Adds the shape shape to the list of shapes to be
     /// checked by this algorithm.
     /// Once all the shapes to be checked have been added,
@@ -532,7 +532,7 @@ impl FindContigousEdges {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:85 - `BRepOffsetAPI_FindContigousEdges::Perform()`
+    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:86 - `BRepOffsetAPI_FindContigousEdges::Perform()`
     /// Finds coincident parts of edges of two or more shapes
     /// added to this algorithm and breaks down these edges
     /// into contiguous and non-contiguous sections on copies
@@ -551,7 +551,7 @@ impl FindContigousEdges {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:88 - `BRepOffsetAPI_FindContigousEdges::NbEdges()`
+    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:89 - `BRepOffsetAPI_FindContigousEdges::NbEdges()`
     /// Gives the number of edges (free edges + contiguous edges + multiple edge)
     pub fn nb_edges(&self) -> i32 {
         crate::check_result(unsafe {
@@ -561,7 +561,7 @@ impl FindContigousEdges {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:92 - `BRepOffsetAPI_FindContigousEdges::NbContigousEdges()`
+    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:93 - `BRepOffsetAPI_FindContigousEdges::NbContigousEdges()`
     /// Returns the number of contiguous edges found by the
     /// function Perform on the shapes added to this algorithm.
     pub fn nb_contigous_edges(&self) -> i32 {
@@ -572,7 +572,7 @@ impl FindContigousEdges {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:101 - `BRepOffsetAPI_FindContigousEdges::ContigousEdge()`
+    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:102 - `BRepOffsetAPI_FindContigousEdges::ContigousEdge()`
     /// Returns the contiguous edge of index index found by
     /// the function Perform on the shapes added to this algorithm.
     /// Exceptions
@@ -591,7 +591,7 @@ impl FindContigousEdges {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:112 - `BRepOffsetAPI_FindContigousEdges::ContigousEdgeCouple()`
+    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:113 - `BRepOffsetAPI_FindContigousEdges::ContigousEdgeCouple()`
     /// Returns a list of edges coincident with the contiguous
     /// edge of index index found by the function Perform.
     /// There are as many edges in the list as there are faces
@@ -601,7 +601,10 @@ impl FindContigousEdges {
     /// - index is less than 1, or
     /// - index is greater than the number of contiguous edges
     /// found by the function Perform on the shapes added to this algorithm.
-    pub fn contigous_edge_couple(&self, index: i32) -> &crate::ffi_types::TopTools_ListOfShape {
+    pub fn contigous_edge_couple(
+        &self,
+        index: i32,
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKOffset::BRepOffsetAPI_FindContigousEdges_contigous_edge_couple(
@@ -697,7 +700,7 @@ impl FindContigousEdges {
 
     /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:148 - `BRepOffsetAPI_FindContigousEdges::Modified()`
     /// Gives a modifieded shape
-    /// Raises   NoSuchObject if shape has not been modified
+    /// Raises NoSuchObject if shape has not been modified
     ///
     /// # Safety
     ///
@@ -728,7 +731,7 @@ impl FindContigousEdges {
 // From BRepOffsetAPI_MakeDraft.hxx
 // ========================
 
-/// **Source:** `BRepOffsetAPI_MakeDraft.hxx`:35 - `BRepOffsetAPI_MakeDraft`
+/// **Source:** `BRepOffsetAPI_MakeDraft.hxx`:36 - `BRepOffsetAPI_MakeDraft`
 /// Build a draft surface along a wire
 pub use crate::ffi_types::BRepOffsetAPI_MakeDraft as MakeDraft;
 
@@ -741,7 +744,7 @@ unsafe impl crate::CppDeletable for MakeDraft {
 }
 
 impl MakeDraft {
-    /// **Source:** `BRepOffsetAPI_MakeDraft.hxx`:47 - `BRepOffsetAPI_MakeDraft::BRepOffsetAPI_MakeDraft()`
+    /// **Source:** `BRepOffsetAPI_MakeDraft.hxx`:48 - `BRepOffsetAPI_MakeDraft::BRepOffsetAPI_MakeDraft()`
     /// Constructs the draft surface object defined by the shape
     /// Shape, the direction Dir, and the angle Angle.
     /// Shape must be a TopoDS_Wire, Topo_DS_Face or
@@ -763,7 +766,7 @@ impl MakeDraft {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeDraft.hxx`:61 - `BRepOffsetAPI_MakeDraft::SetOptions()`
+    /// **Source:** `BRepOffsetAPI_MakeDraft.hxx`:62 - `BRepOffsetAPI_MakeDraft::SetOptions()`
     /// Sets the options of this draft tool.
     /// If a transition has to be performed, it can be defined by
     /// the mode Style as RightCorner or RoundCorner,
@@ -790,7 +793,7 @@ impl MakeDraft {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeDraft.hxx`:69 - `BRepOffsetAPI_MakeDraft::SetDraft()`
+    /// **Source:** `BRepOffsetAPI_MakeDraft.hxx`:70 - `BRepOffsetAPI_MakeDraft::SetDraft()`
     /// Sets the direction of the draft for this object.
     /// If IsInternal is true, the draft is internal to the argument
     /// Shape used in the constructor.
@@ -803,7 +806,7 @@ impl MakeDraft {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeDraft.hxx`:73 - `BRepOffsetAPI_MakeDraft::Perform()`
+    /// **Source:** `BRepOffsetAPI_MakeDraft.hxx`:74 - `BRepOffsetAPI_MakeDraft::Perform()`
     /// Performs the draft using the length LengthMax as the
     /// maximum length for the corner edge between two draft faces.
     pub fn perform_real(&mut self, LengthMax: f64) {
@@ -815,13 +818,13 @@ impl MakeDraft {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeDraft.hxx`:78 - `BRepOffsetAPI_MakeDraft::Perform()`
+    /// **Source:** `BRepOffsetAPI_MakeDraft.hxx`:79 - `BRepOffsetAPI_MakeDraft::Perform()`
     /// Performs the draft up to the surface Surface.
     /// If KeepInsideSurface is true, the part of Surface inside
     /// the draft is kept in the result.
     pub fn perform_handlegeomsurface_bool(
         &mut self,
-        Surface: &crate::ffi_types::HandleGeomSurface,
+        Surface: &crate::ffi_types::Handle_Geom_Surface,
         KeepInsideSurface: bool,
     ) {
         crate::check_void_result(unsafe {
@@ -833,7 +836,7 @@ impl MakeDraft {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeDraft.hxx`:84 - `BRepOffsetAPI_MakeDraft::Perform()`
+    /// **Source:** `BRepOffsetAPI_MakeDraft.hxx`:85 - `BRepOffsetAPI_MakeDraft::Perform()`
     /// Performs the draft up to the shape StopShape.
     /// If KeepOutSide is true, the part of StopShape which is
     /// outside the Draft is kept in the result.
@@ -859,7 +862,7 @@ impl MakeDraft {
     }
 
     /// **Source:** `BRepOffsetAPI_MakeDraft.hxx`:93 - `BRepOffsetAPI_MakeDraft::Generated()`
-    /// Returns the  list   of shapes generated   from the
+    /// Returns the list of shapes generated from the
     /// shape <S>.
     ///
     /// # Safety
@@ -870,7 +873,7 @@ impl MakeDraft {
     pub unsafe fn generated(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeDraft_generated(
                 self as *mut Self,
@@ -977,7 +980,7 @@ impl MakeDraft {
 // From BRepOffsetAPI_MakeEvolved.hxx
 // ========================
 
-/// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:77 - `BRepOffsetAPI_MakeEvolved`
+/// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:78 - `BRepOffsetAPI_MakeEvolved`
 /// Describes functions to build evolved shapes.
 /// An evolved shape is built from a planar spine (face or
 /// wire) and a profile (wire). The evolved shape is the
@@ -995,8 +998,8 @@ impl MakeDraft {
 /// (which lies in infinite number of planes).
 ///
 /// The profile is defined in a Referential R. The position of
-/// the profile at the current point of the  spine is given by
-/// confusing R  and the local  referential given by (  D0, D1
+/// the profile at the current point of the spine is given by
+/// confusing R and the local referential given by (D0, D1
 /// and the normal of the Spine).
 ///
 /// The coordinate system is determined by theIsAxeProf argument:
@@ -1034,7 +1037,7 @@ unsafe impl crate::CppDeletable for MakeEvolved {
 }
 
 impl MakeEvolved {
-    /// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:82 - `BRepOffsetAPI_MakeEvolved::BRepOffsetAPI_MakeEvolved()`
+    /// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:83 - `BRepOffsetAPI_MakeEvolved::BRepOffsetAPI_MakeEvolved()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1043,7 +1046,7 @@ impl MakeEvolved {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:88 - `BRepOffsetAPI_MakeEvolved::BRepOffsetAPI_MakeEvolved()`
+    /// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:89 - `BRepOffsetAPI_MakeEvolved::BRepOffsetAPI_MakeEvolved()`
     /// Constructs an evolved shape by sweeping the profile
     /// (theProfile) along the spine (theSpine).
     /// theSpine can be shape only of type wire or face.
@@ -1064,7 +1067,7 @@ impl MakeEvolved {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:88 - `BRepOffsetAPI_MakeEvolved::BRepOffsetAPI_MakeEvolved()`
+    /// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:89 - `BRepOffsetAPI_MakeEvolved::BRepOffsetAPI_MakeEvolved()`
     /// Constructs an evolved shape by sweeping the profile
     /// (theProfile) along the spine (theSpine).
     /// theSpine can be shape only of type wire or face.
@@ -1092,7 +1095,7 @@ impl MakeEvolved {
         )
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:88 - `BRepOffsetAPI_MakeEvolved::BRepOffsetAPI_MakeEvolved()`
+    /// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:89 - `BRepOffsetAPI_MakeEvolved::BRepOffsetAPI_MakeEvolved()`
     /// Constructs an evolved shape by sweeping the profile
     /// (theProfile) along the spine (theSpine).
     /// theSpine can be shape only of type wire or face.
@@ -1119,7 +1122,7 @@ impl MakeEvolved {
         )
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:88 - `BRepOffsetAPI_MakeEvolved::BRepOffsetAPI_MakeEvolved()`
+    /// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:89 - `BRepOffsetAPI_MakeEvolved::BRepOffsetAPI_MakeEvolved()`
     /// Constructs an evolved shape by sweeping the profile
     /// (theProfile) along the spine (theSpine).
     /// theSpine can be shape only of type wire or face.
@@ -1145,7 +1148,7 @@ impl MakeEvolved {
         )
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:88 - `BRepOffsetAPI_MakeEvolved::BRepOffsetAPI_MakeEvolved()`
+    /// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:89 - `BRepOffsetAPI_MakeEvolved::BRepOffsetAPI_MakeEvolved()`
     /// Constructs an evolved shape by sweeping the profile
     /// (theProfile) along the spine (theSpine).
     /// theSpine can be shape only of type wire or face.
@@ -1170,7 +1173,7 @@ impl MakeEvolved {
         )
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:88 - `BRepOffsetAPI_MakeEvolved::BRepOffsetAPI_MakeEvolved()`
+    /// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:89 - `BRepOffsetAPI_MakeEvolved::BRepOffsetAPI_MakeEvolved()`
     /// Constructs an evolved shape by sweeping the profile
     /// (theProfile) along the spine (theSpine).
     /// theSpine can be shape only of type wire or face.
@@ -1194,7 +1197,7 @@ impl MakeEvolved {
         )
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:88 - `BRepOffsetAPI_MakeEvolved::BRepOffsetAPI_MakeEvolved()`
+    /// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:89 - `BRepOffsetAPI_MakeEvolved::BRepOffsetAPI_MakeEvolved()`
     /// Constructs an evolved shape by sweeping the profile
     /// (theProfile) along the spine (theSpine).
     /// theSpine can be shape only of type wire or face.
@@ -1235,8 +1238,8 @@ impl MakeEvolved {
     }
 
     /// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:108 - `BRepOffsetAPI_MakeEvolved::GeneratedShapes()`
-    /// Returns   the  shapes  created  from   a  subshape
-    /// <SpineShape>  of     the  spine   and   a subshape
+    /// Returns the shapes created from a subshape
+    /// <SpineShape> of the spine and a subshape
     /// <ProfShape> on the profile.
     ///
     /// # Safety
@@ -1248,7 +1251,7 @@ impl MakeEvolved {
         &self,
         SpineShape: &crate::topo_ds::Shape,
         ProfShape: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeEvolved_generated_shapes(
@@ -1260,7 +1263,7 @@ impl MakeEvolved {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:112 - `BRepOffsetAPI_MakeEvolved::Top()`
+    /// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:113 - `BRepOffsetAPI_MakeEvolved::Top()`
     /// Return the face Top if <Solid> is True in the constructor.
     pub fn top(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -1270,8 +1273,8 @@ impl MakeEvolved {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:115 - `BRepOffsetAPI_MakeEvolved::Bottom()`
-    /// Return the face Bottom  if <Solid> is True in the constructor.
+    /// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:116 - `BRepOffsetAPI_MakeEvolved::Bottom()`
+    /// Return the face Bottom if <Solid> is True in the constructor.
     pub fn bottom(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeEvolved_bottom(
@@ -1366,7 +1369,7 @@ impl MakeEvolved {
 // From BRepOffsetAPI_MakeFilling.hxx
 // ========================
 
-/// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:65 - `BRepOffsetAPI_MakeFilling`
+/// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:66 - `BRepOffsetAPI_MakeFilling`
 /// N-Side Filling
 /// This algorithm avoids to build a face from:
 /// * a set of edges defining the bounds of the face and some
@@ -1408,7 +1411,7 @@ unsafe impl crate::CppDeletable for MakeFilling {
 }
 
 impl MakeFilling {
-    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:86 - `BRepOffsetAPI_MakeFilling::BRepOffsetAPI_MakeFilling()`
+    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:87 - `BRepOffsetAPI_MakeFilling::BRepOffsetAPI_MakeFilling()`
     /// Constructs a wire filling object defined by
     /// - the energy minimizing criterion Degree
     /// - the number of points on the curve NbPntsOnCur
@@ -1455,7 +1458,7 @@ impl MakeFilling {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:86 - `BRepOffsetAPI_MakeFilling::BRepOffsetAPI_MakeFilling()`
+    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:87 - `BRepOffsetAPI_MakeFilling::BRepOffsetAPI_MakeFilling()`
     /// Constructs a wire filling object defined by
     /// - the energy minimizing criterion Degree
     /// - the number of points on the curve NbPntsOnCur
@@ -1497,7 +1500,7 @@ impl MakeFilling {
         )
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:86 - `BRepOffsetAPI_MakeFilling::BRepOffsetAPI_MakeFilling()`
+    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:87 - `BRepOffsetAPI_MakeFilling::BRepOffsetAPI_MakeFilling()`
     /// Constructs a wire filling object defined by
     /// - the energy minimizing criterion Degree
     /// - the number of points on the curve NbPntsOnCur
@@ -1538,7 +1541,7 @@ impl MakeFilling {
         )
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:86 - `BRepOffsetAPI_MakeFilling::BRepOffsetAPI_MakeFilling()`
+    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:87 - `BRepOffsetAPI_MakeFilling::BRepOffsetAPI_MakeFilling()`
     /// Constructs a wire filling object defined by
     /// - the energy minimizing criterion Degree
     /// - the number of points on the curve NbPntsOnCur
@@ -1578,7 +1581,7 @@ impl MakeFilling {
         )
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:86 - `BRepOffsetAPI_MakeFilling::BRepOffsetAPI_MakeFilling()`
+    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:87 - `BRepOffsetAPI_MakeFilling::BRepOffsetAPI_MakeFilling()`
     /// Constructs a wire filling object defined by
     /// - the energy minimizing criterion Degree
     /// - the number of points on the curve NbPntsOnCur
@@ -1617,7 +1620,7 @@ impl MakeFilling {
         )
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:86 - `BRepOffsetAPI_MakeFilling::BRepOffsetAPI_MakeFilling()`
+    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:87 - `BRepOffsetAPI_MakeFilling::BRepOffsetAPI_MakeFilling()`
     /// Constructs a wire filling object defined by
     /// - the energy minimizing criterion Degree
     /// - the number of points on the curve NbPntsOnCur
@@ -1655,7 +1658,7 @@ impl MakeFilling {
         )
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:86 - `BRepOffsetAPI_MakeFilling::BRepOffsetAPI_MakeFilling()`
+    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:87 - `BRepOffsetAPI_MakeFilling::BRepOffsetAPI_MakeFilling()`
     /// Constructs a wire filling object defined by
     /// - the energy minimizing criterion Degree
     /// - the number of points on the curve NbPntsOnCur
@@ -1692,7 +1695,7 @@ impl MakeFilling {
         )
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:86 - `BRepOffsetAPI_MakeFilling::BRepOffsetAPI_MakeFilling()`
+    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:87 - `BRepOffsetAPI_MakeFilling::BRepOffsetAPI_MakeFilling()`
     /// Constructs a wire filling object defined by
     /// - the energy minimizing criterion Degree
     /// - the number of points on the curve NbPntsOnCur
@@ -1715,7 +1718,7 @@ impl MakeFilling {
         )
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:86 - `BRepOffsetAPI_MakeFilling::BRepOffsetAPI_MakeFilling()`
+    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:87 - `BRepOffsetAPI_MakeFilling::BRepOffsetAPI_MakeFilling()`
     /// Constructs a wire filling object defined by
     /// - the energy minimizing criterion Degree
     /// - the number of points on the curve NbPntsOnCur
@@ -1738,7 +1741,7 @@ impl MakeFilling {
         )
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:86 - `BRepOffsetAPI_MakeFilling::BRepOffsetAPI_MakeFilling()`
+    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:87 - `BRepOffsetAPI_MakeFilling::BRepOffsetAPI_MakeFilling()`
     /// Constructs a wire filling object defined by
     /// - the energy minimizing criterion Degree
     /// - the number of points on the curve NbPntsOnCur
@@ -1759,7 +1762,7 @@ impl MakeFilling {
         Self::new_int3_bool_real4_int2(Degree, 15, 2, false, 0.00001, 0.0001, 0.01, 0.1, 8, 9)
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:86 - `BRepOffsetAPI_MakeFilling::BRepOffsetAPI_MakeFilling()`
+    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:87 - `BRepOffsetAPI_MakeFilling::BRepOffsetAPI_MakeFilling()`
     /// Constructs a wire filling object defined by
     /// - the energy minimizing criterion Degree
     /// - the number of points on the curve NbPntsOnCur
@@ -1780,7 +1783,7 @@ impl MakeFilling {
         Self::new_int3_bool_real4_int2(3, 15, 2, false, 0.00001, 0.0001, 0.01, 0.1, 8, 9)
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:105 - `BRepOffsetAPI_MakeFilling::SetConstrParam()`
+    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:106 - `BRepOffsetAPI_MakeFilling::SetConstrParam()`
     /// Sets the values of Tolerances used to control the constraint.
     /// Tol2d:
     /// Tol3d:   it is the maximum distance allowed between the support surface
@@ -1801,7 +1804,7 @@ impl MakeFilling {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:124 - `BRepOffsetAPI_MakeFilling::SetResolParam()`
+    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:125 - `BRepOffsetAPI_MakeFilling::SetResolParam()`
     /// Sets the parameters used for resolution.
     /// The default values of these parameters have been chosen for a good
     /// ratio quality/performance.
@@ -1834,7 +1837,7 @@ impl MakeFilling {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:135 - `BRepOffsetAPI_MakeFilling::SetApproxParam()`
+    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:136 - `BRepOffsetAPI_MakeFilling::SetApproxParam()`
     /// Sets the parameters used to approximate the filling
     /// surface. These include:
     /// - MaxDeg - the highest degree which the polynomial
@@ -2010,7 +2013,7 @@ impl MakeFilling {
     pub unsafe fn generated(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeFilling_generated(
@@ -2021,7 +2024,7 @@ impl MakeFilling {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:216 - `BRepOffsetAPI_MakeFilling::G0Error()`
+    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:215 - `BRepOffsetAPI_MakeFilling::G0Error()`
     /// Returns the maximum distance between the result and
     /// the constraints. This is set at construction time.
     pub fn g0_error(&self) -> f64 {
@@ -2030,7 +2033,7 @@ impl MakeFilling {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:220 - `BRepOffsetAPI_MakeFilling::G1Error()`
+    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:219 - `BRepOffsetAPI_MakeFilling::G1Error()`
     /// Returns the maximum angle between the result and the
     /// constraints. This is set at construction time.
     pub fn g1_error(&self) -> f64 {
@@ -2039,7 +2042,7 @@ impl MakeFilling {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:224 - `BRepOffsetAPI_MakeFilling::G2Error()`
+    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:223 - `BRepOffsetAPI_MakeFilling::G2Error()`
     /// Returns the maximum angle between the result and the
     /// constraints. This is set at construction time.
     pub fn g2_error(&self) -> f64 {
@@ -2048,7 +2051,7 @@ impl MakeFilling {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:228 - `BRepOffsetAPI_MakeFilling::G0Error()`
+    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:227 - `BRepOffsetAPI_MakeFilling::G0Error()`
     /// Returns the maximum distance attained between the
     /// result and the constraint Index. This is set at construction time.
     pub fn g0_error_int(&mut self, Index: i32) -> f64 {
@@ -2060,7 +2063,7 @@ impl MakeFilling {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:232 - `BRepOffsetAPI_MakeFilling::G1Error()`
+    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:231 - `BRepOffsetAPI_MakeFilling::G1Error()`
     /// Returns the maximum angle between the result and the
     /// constraints. This is set at construction time.
     pub fn g1_error_int(&mut self, Index: i32) -> f64 {
@@ -2072,7 +2075,7 @@ impl MakeFilling {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:236 - `BRepOffsetAPI_MakeFilling::G2Error()`
+    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:235 - `BRepOffsetAPI_MakeFilling::G2Error()`
     /// Returns the greatest difference in curvature found
     /// between the result and the constraint Index.
     pub fn g2_error_int(&mut self, Index: i32) -> f64 {
@@ -2161,7 +2164,7 @@ impl MakeFilling {
 // From BRepOffsetAPI_MakeOffset.hxx
 // ========================
 
-/// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:36 - `BRepOffsetAPI_MakeOffset`
+/// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:37 - `BRepOffsetAPI_MakeOffset`
 /// Describes algorithms for offsetting wires from a set of
 /// wires contained in a planar face.
 /// A MakeOffset object provides a framework for:
@@ -2179,7 +2182,7 @@ unsafe impl crate::CppDeletable for MakeOffset {
 }
 
 impl MakeOffset {
-    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:42 - `BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset()`
+    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:43 - `BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset()`
     /// Constructs an algorithm for creating an empty offset
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2189,7 +2192,7 @@ impl MakeOffset {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:46 - `BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset()`
+    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:47 - `BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset()`
     /// Constructs an algorithm for creating an algorithm
     /// to build parallels to the spine Spine
     pub fn new_face_jointype_bool(
@@ -2208,7 +2211,7 @@ impl MakeOffset {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:62 - `BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset()`
+    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:63 - `BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset()`
     pub fn new_wire_jointype_bool(
         Spine: &crate::topo_ds::Wire,
         Join: crate::geom_abs::JoinType,
@@ -2225,7 +2228,7 @@ impl MakeOffset {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:46 - `BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset()`
+    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:47 - `BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset()`
     /// Constructs an algorithm for creating an algorithm
     /// to build parallels to the spine Spine
     pub fn new_face_jointype(
@@ -2235,7 +2238,7 @@ impl MakeOffset {
         Self::new_face_jointype_bool(Spine, Join, false)
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:62 - `BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset()`
+    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:63 - `BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset()`
     pub fn new_wire_jointype(
         Spine: &crate::topo_ds::Wire,
         Join: crate::geom_abs::JoinType,
@@ -2243,7 +2246,7 @@ impl MakeOffset {
         Self::new_wire_jointype_bool(Spine, Join, false)
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:58 - `BRepOffsetAPI_MakeOffset::Init()`
+    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:59 - `BRepOffsetAPI_MakeOffset::Init()`
     /// Initializes the algorithm to construct parallels to the spine Spine.
     /// Join defines the type of parallel generated by the
     /// salient vertices of the spine.
@@ -2268,7 +2271,7 @@ impl MakeOffset {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:67 - `BRepOffsetAPI_MakeOffset::Init()`
+    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:68 - `BRepOffsetAPI_MakeOffset::Init()`
     /// Initialize the evaluation of Offsetting.
     pub fn init_jointype_bool(&mut self, Join: crate::geom_abs::JoinType, IsOpenResult: bool) {
         crate::check_void_result(unsafe {
@@ -2280,7 +2283,7 @@ impl MakeOffset {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:73 - `BRepOffsetAPI_MakeOffset::SetApprox()`
+    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:74 - `BRepOffsetAPI_MakeOffset::SetApprox()`
     /// Set approximation flag
     /// for conversion input contours into ones consisting of
     /// 2D circular arcs and 2D linear segments only.
@@ -2293,7 +2296,7 @@ impl MakeOffset {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:76 - `BRepOffsetAPI_MakeOffset::AddWire()`
+    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:77 - `BRepOffsetAPI_MakeOffset::AddWire()`
     /// Initializes the algorithm to construct parallels to the wire Spine.
     pub fn add_wire(&mut self, Spine: &crate::topo_ds::Wire) {
         crate::check_void_result(unsafe {
@@ -2301,7 +2304,7 @@ impl MakeOffset {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:82 - `BRepOffsetAPI_MakeOffset::Perform()`
+    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:83 - `BRepOffsetAPI_MakeOffset::Perform()`
     /// Computes a parallel to the spine at distance Offset and
     /// at an altitude Alt from the plane of the spine in relation
     /// to the normal to the spine.
@@ -2316,7 +2319,7 @@ impl MakeOffset {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:85 - `BRepOffsetAPI_MakeOffset::Build()`
+    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:86 - `BRepOffsetAPI_MakeOffset::Build()`
     /// Builds the resulting shape (redefined from MakeShape).
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
@@ -2324,7 +2327,7 @@ impl MakeOffset {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:90 - `BRepOffsetAPI_MakeOffset::Generated()`
+    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:91 - `BRepOffsetAPI_MakeOffset::Generated()`
     /// returns a list of the created shapes
     /// from the shape <S>.
     ///
@@ -2336,7 +2339,7 @@ impl MakeOffset {
     pub unsafe fn generated(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffset_generated(
                 self as *mut Self,
@@ -2448,7 +2451,7 @@ impl MakeOffset {
 // From BRepOffsetAPI_MakeOffsetShape.hxx
 // ========================
 
-/// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:38 - `BRepOffsetAPI_MakeOffsetShape`
+/// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:39 - `BRepOffsetAPI_MakeOffsetShape`
 /// Describes functions to build a shell out of a shape. The
 /// result is an unlooped shape parallel to the source shape.
 /// A MakeOffsetShape object provides a framework for:
@@ -2466,7 +2469,7 @@ unsafe impl crate::CppDeletable for MakeOffsetShape {
 }
 
 impl MakeOffsetShape {
-    /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:44 - `BRepOffsetAPI_MakeOffsetShape::BRepOffsetAPI_MakeOffsetShape()`
+    /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:45 - `BRepOffsetAPI_MakeOffsetShape::BRepOffsetAPI_MakeOffsetShape()`
     /// Constructor does nothing.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2476,7 +2479,7 @@ impl MakeOffsetShape {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:48 - `BRepOffsetAPI_MakeOffsetShape::PerformBySimple()`
+    /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:49 - `BRepOffsetAPI_MakeOffsetShape::PerformBySimple()`
     /// Constructs offset shape for the given one using simple algorithm without intersections
     /// computation.
     pub fn perform_by_simple(&mut self, theS: &crate::topo_ds::Shape, theOffsetValue: f64) {
@@ -2607,7 +2610,7 @@ impl MakeOffsetShape {
     pub unsafe fn generated(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffsetShape_generated(
@@ -2618,7 +2621,7 @@ impl MakeOffsetShape {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:129 - `BRepOffsetAPI_MakeOffsetShape::Modified()`
+    /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:128 - `BRepOffsetAPI_MakeOffsetShape::Modified()`
     /// Returns the list of shapes Modified from the shape <S>.
     ///
     /// # Safety
@@ -2629,7 +2632,7 @@ impl MakeOffsetShape {
     pub unsafe fn modified(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffsetShape_modified(
@@ -2640,7 +2643,7 @@ impl MakeOffsetShape {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:133 - `BRepOffsetAPI_MakeOffsetShape::IsDeleted()`
+    /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:131 - `BRepOffsetAPI_MakeOffsetShape::IsDeleted()`
     /// Returns true if the shape has been removed from the result.
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
@@ -2651,7 +2654,7 @@ impl MakeOffsetShape {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:136 - `BRepOffsetAPI_MakeOffsetShape::GetJoinType()`
+    /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:134 - `BRepOffsetAPI_MakeOffsetShape::GetJoinType()`
     /// Returns offset join type.
     pub fn get_join_type(&self) -> crate::geom_abs::JoinType {
         crate::geom_abs::JoinType::try_from(crate::check_result(unsafe {
@@ -2830,7 +2833,7 @@ impl MakePipe {
     }
 
     /// **Source:** `BRepOffsetAPI_MakePipe.hxx`:75 - `BRepOffsetAPI_MakePipe::FirstShape()`
-    /// Returns the  TopoDS  Shape of the bottom of the prism.
+    /// Returns the TopoDS Shape of the bottom of the prism.
     pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2859,7 +2862,7 @@ impl MakePipe {
     pub unsafe fn generated_shape(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipe_generated_shape(
@@ -2870,7 +2873,7 @@ impl MakePipe {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_MakePipe.hxx`:83 - `BRepOffsetAPI_MakePipe::Generated()`
+    /// **Source:** `BRepOffsetAPI_MakePipe.hxx`:82 - `BRepOffsetAPI_MakePipe::Generated()`
     pub fn generated_shape2(
         &mut self,
         SSpine: &crate::topo_ds::Shape,
@@ -2887,7 +2890,7 @@ impl MakePipe {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_MakePipe.hxx`:85 - `BRepOffsetAPI_MakePipe::ErrorOnSurface()`
+    /// **Source:** `BRepOffsetAPI_MakePipe.hxx`:84 - `BRepOffsetAPI_MakePipe::ErrorOnSurface()`
     pub fn error_on_surface(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipe_error_on_surface(self as *const Self)
@@ -3002,7 +3005,7 @@ impl MakePipe {
 // From BRepOffsetAPI_MakePipeShell.hxx
 // ========================
 
-/// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:56 - `BRepOffsetAPI_MakePipeShell`
+/// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:57 - `BRepOffsetAPI_MakePipeShell`
 /// This class provides for a framework to construct a shell
 /// or a solid along a spine consisting in a wire.
 /// To produce a solid, the initial wire must be closed.
@@ -3032,7 +3035,7 @@ unsafe impl crate::CppDeletable for MakePipeShell {
 }
 
 impl MakePipeShell {
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:64 - `BRepOffsetAPI_MakePipeShell::BRepOffsetAPI_MakePipeShell()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:65 - `BRepOffsetAPI_MakePipeShell::BRepOffsetAPI_MakePipeShell()`
     /// Constructs the shell-generating framework defined by the wire Spine.
     /// Sets an sweep's mode
     /// If no mode are set, the mode use in MakePipe is used
@@ -3044,9 +3047,9 @@ impl MakePipeShell {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:69 - `BRepOffsetAPI_MakePipeShell::SetMode()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:70 - `BRepOffsetAPI_MakePipeShell::SetMode()`
     /// Sets a Frenet or a CorrectedFrenet trihedron
-    /// to  perform  the  sweeping
+    /// to perform the sweeping
     /// If IsFrenet is false, a corrected Frenet trihedron is used.
     pub fn set_mode_bool(&mut self, IsFrenet: bool) {
         crate::check_void_result(unsafe {
@@ -3057,9 +3060,9 @@ impl MakePipeShell {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:73 - `BRepOffsetAPI_MakePipeShell::SetDiscreteMode()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:74 - `BRepOffsetAPI_MakePipeShell::SetDiscreteMode()`
     /// Sets a Discrete trihedron
-    /// to  perform  the  sweeping
+    /// to perform the sweeping
     pub fn set_discrete_mode(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_set_discrete_mode(
@@ -3068,8 +3071,8 @@ impl MakePipeShell {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:77 - `BRepOffsetAPI_MakePipeShell::SetMode()`
-    /// Sets  a  fixed  trihedron  to  perform  the  sweeping
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:78 - `BRepOffsetAPI_MakePipeShell::SetMode()`
+    /// Sets a fixed trihedron to perform the sweeping
     /// all sections will be parallel.
     pub fn set_mode_ax2(&mut self, Axe: &crate::gp::Ax2) {
         crate::check_void_result(unsafe {
@@ -3080,9 +3083,9 @@ impl MakePipeShell {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:82 - `BRepOffsetAPI_MakePipeShell::SetMode()`
-    /// Sets a fixed BiNormal  direction to perform the --
-    /// sweeping.   Angular   relations   between  the
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:83 - `BRepOffsetAPI_MakePipeShell::SetMode()`
+    /// Sets a fixed BiNormal direction to perform the
+    /// sweeping. Angular relations between the
     /// section(s) and <BiNormal> will be constant
     pub fn set_mode_dir(&mut self, BiNormal: &crate::gp::Dir) {
         crate::check_void_result(unsafe {
@@ -3093,10 +3096,10 @@ impl MakePipeShell {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:88 - `BRepOffsetAPI_MakePipeShell::SetMode()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:89 - `BRepOffsetAPI_MakePipeShell::SetMode()`
     /// Sets support to the spine to define the BiNormal of
-    /// the trihedron, like the normal  to the surfaces.
-    /// Warning:  To be effective, Each  edge of the <spine> must
+    /// the trihedron, like the normal to the surfaces.
+    /// Warning: To be effective, Each edge of the <spine> must
     /// have a representation on one face of<SpineSupport>
     pub fn set_mode_shape(&mut self, SpineSupport: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
@@ -3107,14 +3110,14 @@ impl MakePipeShell {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:118 - `BRepOffsetAPI_MakePipeShell::SetMode()`
-    /// Sets  an  auxiliary  spine  to  define  the Normal
-    /// For  each  Point  of  the  Spine  P,  an  Point  Q  is  evalued
-    /// on  <AuxiliarySpine>
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:119 - `BRepOffsetAPI_MakePipeShell::SetMode()`
+    /// Sets an auxiliary spine to define the Normal
+    /// For each Point of the Spine P, an Point Q is evaluated
+    /// on <AuxiliarySpine>
     /// If <CurvilinearEquivalence>
-    /// Q split <AuxiliarySpine> with  the  same  length ratio
-    /// than P split  <Spline>.
-    /// Else  the  plan  define  by  P  and  the  tangent  to  the  <Spine>
+    /// Q split <AuxiliarySpine> with the same length ratio
+    /// than P split <Spline>.
+    /// Else the plan define by P and the tangent to the <Spine>
     /// intersect <AuxiliarySpine> in Q.
     /// If <KeepContact> equals BRepFill_NoContact: The Normal is defined
     /// by the vector PQ.
@@ -3129,7 +3132,7 @@ impl MakePipeShell {
     /// becomes a boundary of the swept surface and the width of section varies
     /// along the path.
     /// Give section to sweep.
-    /// Possibilities are :
+    /// Possibilities are:
     /// - Give one or several section
     /// - Give one profile and an homotetic law.
     /// - Automatic compute of correspondence between spine, and section
@@ -3152,7 +3155,7 @@ impl MakePipeShell {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:132 - `BRepOffsetAPI_MakePipeShell::Add()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:133 - `BRepOffsetAPI_MakePipeShell::Add()`
     /// Adds the section Profile to this framework. First and last
     /// sections may be punctual, so the shape Profile may be
     /// both wire and vertex. Correspondent point on spine is
@@ -3179,7 +3182,7 @@ impl MakePipeShell {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:140 - `BRepOffsetAPI_MakePipeShell::Add()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:141 - `BRepOffsetAPI_MakePipeShell::Add()`
     /// Adds the section Profile to this framework.
     /// Correspondent point on the spine is given by Location.
     /// Warning:
@@ -3202,7 +3205,7 @@ impl MakePipeShell {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:151 - `BRepOffsetAPI_MakePipeShell::SetLaw()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:152 - `BRepOffsetAPI_MakePipeShell::SetLaw()`
     /// Sets the evolution law defined by the wire Profile with
     /// its position (Location, WithContact, WithCorrection
     /// are the same options as in methods Add) and a
@@ -3212,7 +3215,7 @@ impl MakePipeShell {
     pub fn set_law_shape_handlelawfunction_bool2(
         &mut self,
         Profile: &crate::topo_ds::Shape,
-        L: &crate::ffi_types::HandleLawFunction,
+        L: &crate::ffi_types::Handle_Law_Function,
         WithContact: bool,
         WithCorrection: bool,
     ) {
@@ -3221,7 +3224,7 @@ impl MakePipeShell {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:162 - `BRepOffsetAPI_MakePipeShell::SetLaw()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:163 - `BRepOffsetAPI_MakePipeShell::SetLaw()`
     /// Sets the evolution law defined by the wire Profile with
     /// its position (Location, WithContact, WithCorrection
     /// are the same options as in methods Add) and a
@@ -3231,7 +3234,7 @@ impl MakePipeShell {
     pub fn set_law_shape_handlelawfunction_vertex_bool2(
         &mut self,
         Profile: &crate::topo_ds::Shape,
-        L: &crate::ffi_types::HandleLawFunction,
+        L: &crate::ffi_types::Handle_Law_Function,
         Location: &crate::topo_ds::Vertex,
         WithContact: bool,
         WithCorrection: bool,
@@ -3241,7 +3244,7 @@ impl MakePipeShell {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:169 - `BRepOffsetAPI_MakePipeShell::Delete()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:170 - `BRepOffsetAPI_MakePipeShell::Delete()`
     /// Removes the section Profile from this framework.
     pub fn delete(&mut self, Profile: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
@@ -3252,7 +3255,7 @@ impl MakePipeShell {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:173 - `BRepOffsetAPI_MakePipeShell::IsReady()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:174 - `BRepOffsetAPI_MakePipeShell::IsReady()`
     /// Returns true if this tool object is ready to build the
     /// shape, i.e. has a definition for the wire section Profile.
     pub fn is_ready(&self) -> bool {
@@ -3261,8 +3264,8 @@ impl MakePipeShell {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:180 - `BRepOffsetAPI_MakePipeShell::GetStatus()`
-    /// Get a status, when Simulate or Build failed.       It can be
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:181 - `BRepOffsetAPI_MakePipeShell::GetStatus()`
+    /// Get a status, when Simulate or Build failed. It can be
     /// BRepBuilderAPI_PipeDone,
     /// BRepBuilderAPI_PipeNotDone,
     /// BRepBuilderAPI_PlaneNotIntersectGuide,
@@ -3274,7 +3277,7 @@ impl MakePipeShell {
         .unwrap()
     }
 
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:186 - `BRepOffsetAPI_MakePipeShell::SetTolerance()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:187 - `BRepOffsetAPI_MakePipeShell::SetTolerance()`
     /// Sets the following tolerance values
     /// - 3D tolerance Tol3d
     /// - boundary tolerance BoundTol
@@ -3290,7 +3293,7 @@ impl MakePipeShell {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:191 - `BRepOffsetAPI_MakePipeShell::SetMaxDegree()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:192 - `BRepOffsetAPI_MakePipeShell::SetMaxDegree()`
     /// Define the maximum V degree of resulting surface
     pub fn set_max_degree(&mut self, NewMaxDegree: i32) {
         crate::check_void_result(unsafe {
@@ -3301,7 +3304,7 @@ impl MakePipeShell {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:195 - `BRepOffsetAPI_MakePipeShell::SetMaxSegments()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:196 - `BRepOffsetAPI_MakePipeShell::SetMaxSegments()`
     /// Define the maximum number of spans in V-direction
     /// on resulting surface
     pub fn set_max_segments(&mut self, NewMaxSegments: i32) {
@@ -3313,7 +3316,7 @@ impl MakePipeShell {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:200 - `BRepOffsetAPI_MakePipeShell::SetForceApproxC1()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:201 - `BRepOffsetAPI_MakePipeShell::SetForceApproxC1()`
     /// Set the flag that indicates attempt to approximate
     /// a C1-continuous surface if a swept surface proved
     /// to be C0.
@@ -3326,7 +3329,7 @@ impl MakePipeShell {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:239 - `BRepOffsetAPI_MakePipeShell::SetTransitionMode()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:240 - `BRepOffsetAPI_MakePipeShell::SetTransitionMode()`
     /// Sets the transition mode to manage discontinuities on
     /// the swept shape caused by fractures on the spine. The
     /// transition mode can be BRepBuilderAPI_Transformed
@@ -3373,7 +3376,7 @@ impl MakePipeShell {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:251 - `BRepOffsetAPI_MakePipeShell::Simulate()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:252 - `BRepOffsetAPI_MakePipeShell::Simulate()`
     /// Simulates the resulting shape by calculating its
     /// cross-sections. The spine is divided by this
     /// cross-sections into (NumberOfSection - 1) equal
@@ -3382,11 +3385,11 @@ impl MakePipeShell {
     /// they are returned in the list Result.
     /// This gives a rapid preview of the resulting shape,
     /// which will be obtained using the settings you have provided.
-    /// Raises  NotDone if  <me> it is not Ready
+    /// Raises NotDone if <me> it is not Ready
     pub fn simulate(
         &mut self,
         NumberOfSection: i32,
-        Result: &mut crate::ffi_types::TopTools_ListOfShape,
+        Result: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_simulate(
@@ -3418,7 +3421,7 @@ impl MakePipeShell {
     }
 
     /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:263 - `BRepOffsetAPI_MakePipeShell::FirstShape()`
-    /// Returns the  TopoDS  Shape of the bottom of the sweep.
+    /// Returns the TopoDS Shape of the bottom of the sweep.
     pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3455,7 +3458,7 @@ impl MakePipeShell {
     pub unsafe fn generated(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_generated(
@@ -3466,7 +3469,7 @@ impl MakePipeShell {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:275 - `BRepOffsetAPI_MakePipeShell::ErrorOnSurface()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:274 - `BRepOffsetAPI_MakePipeShell::ErrorOnSurface()`
     pub fn error_on_surface(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_error_on_surface(
@@ -3475,9 +3478,33 @@ impl MakePipeShell {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:278 - `BRepOffsetAPI_MakePipeShell::Profiles()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:279 - `BRepOffsetAPI_MakePipeShell::SetIsBuildHistory()`
+    /// Sets the build history flag.
+    /// If set to True, the pipe shell will store the history of the sections
+    /// and the spine, which can be used for further modifications or analysis.
+    pub fn set_is_build_history(&mut self, theIsBuildHistory: bool) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_set_is_build_history(
+                self as *mut Self,
+                theIsBuildHistory,
+            )
+        })
+    }
+
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:286 - `BRepOffsetAPI_MakePipeShell::IsBuildHistory()`
+    /// Returns the build history flag.
+    /// If True, the pipe shell stores the history of the sections and the spine.
+    pub fn is_build_history(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_is_build_history(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:289 - `BRepOffsetAPI_MakePipeShell::Profiles()`
     /// Returns the list of original profiles
-    pub fn profiles(&mut self, theProfiles: &mut crate::ffi_types::TopTools_ListOfShape) {
+    pub fn profiles(&mut self, theProfiles: &mut crate::ffi_types::NCollection_List_TopoDS_Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_profiles(
                 self as *mut Self,
@@ -3486,7 +3513,7 @@ impl MakePipeShell {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:281 - `BRepOffsetAPI_MakePipeShell::Spine()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:292 - `BRepOffsetAPI_MakePipeShell::Spine()`
     /// Returns the spine
     pub fn spine(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
@@ -3596,17 +3623,17 @@ impl MakePipeShell {
 // From BRepOffsetAPI_MakeThickSolid.hxx
 // ========================
 
-/// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:46 - `BRepOffsetAPI_MakeThickSolid`
+/// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:47 - `BRepOffsetAPI_MakeThickSolid`
 /// Describes functions to build hollowed solids.
 /// A hollowed solid is built from an initial solid and a set of
 /// faces on this solid, which are to be removed. The
 /// remaining faces of the solid become the walls of the
 /// hollowed solid, their thickness defined at the time of construction.
 /// the solid is built from an initial
-/// solid  <S> and a  set of  faces {Fi} from  <S>,
-/// builds a   solid  composed  by two shells closed  by
-/// the {Fi}. First shell <SS>   is composed by all
-/// the faces of <S> expected {Fi}.  Second shell is
+/// solid <S> and a set of faces {Fi} from <S>,
+/// builds a solid composed by two shells closed by
+/// the {Fi}. First shell <SS> is composed by all
+/// the faces of <S> expected {Fi}. Second shell is
 /// the offset shell of <SS>.
 /// A MakeThickSolid object provides a framework for:
 /// - defining the cross-section of a hollowed solid,
@@ -3623,7 +3650,7 @@ unsafe impl crate::CppDeletable for MakeThickSolid {
 }
 
 impl MakeThickSolid {
-    /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:52 - `BRepOffsetAPI_MakeThickSolid::BRepOffsetAPI_MakeThickSolid()`
+    /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:53 - `BRepOffsetAPI_MakeThickSolid::BRepOffsetAPI_MakeThickSolid()`
     /// Constructor does nothing.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3633,7 +3660,7 @@ impl MakeThickSolid {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:59 - `BRepOffsetAPI_MakeThickSolid::MakeThickSolidBySimple()`
+    /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:60 - `BRepOffsetAPI_MakeThickSolid::MakeThickSolidBySimple()`
     /// Constructs solid using simple algorithm.
     /// According to its nature it is not possible to set list of the closing faces.
     /// This algorithm does not support faces removing. It is caused by fact that
@@ -3653,7 +3680,7 @@ impl MakeThickSolid {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:102 - `BRepOffsetAPI_MakeThickSolid::MakeThickSolidByJoin()`
+    /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:103 - `BRepOffsetAPI_MakeThickSolid::MakeThickSolidByJoin()`
     /// Constructs a hollowed solid from
     /// the solid S by removing the set of faces ClosingFaces from S, where:
     /// Offset defines the thickness of the walls. Its sign indicates
@@ -3697,7 +3724,7 @@ impl MakeThickSolid {
     pub fn make_thick_solid_by_join(
         &mut self,
         S: &crate::topo_ds::Shape,
-        ClosingFaces: &crate::ffi_types::TopTools_ListOfShape,
+        ClosingFaces: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         Offset: f64,
         Tol: f64,
         Mode: crate::b_rep_offset::Mode,
@@ -3724,7 +3751,7 @@ impl MakeThickSolid {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:115 - `BRepOffsetAPI_MakeThickSolid::Build()`
+    /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:116 - `BRepOffsetAPI_MakeThickSolid::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeThickSolid_build(
@@ -3734,8 +3761,8 @@ impl MakeThickSolid {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:120 - `BRepOffsetAPI_MakeThickSolid::Modified()`
-    /// Returns the list  of shapes modified from the shape
+    /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:121 - `BRepOffsetAPI_MakeThickSolid::Modified()`
+    /// Returns the list of shapes modified from the shape
     /// <S>.
     ///
     /// # Safety
@@ -3746,7 +3773,7 @@ impl MakeThickSolid {
     pub unsafe fn modified(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeThickSolid_modified(
@@ -3805,7 +3832,7 @@ impl MakeThickSolid {
         }
     }
 
-    /// Inherited: **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:48 - `BRepOffsetAPI_MakeOffsetShape::PerformBySimple()`
+    /// Inherited: **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:49 - `BRepOffsetAPI_MakeOffsetShape::PerformBySimple()`
     pub fn perform_by_simple(&mut self, theS: &crate::topo_ds::Shape, theOffsetValue: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeThickSolid_inherited_PerformBySimple(
@@ -3856,7 +3883,7 @@ impl MakeThickSolid {
         }
     }
 
-    /// Inherited: **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:133 - `BRepOffsetAPI_MakeOffsetShape::IsDeleted()`
+    /// Inherited: **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:131 - `BRepOffsetAPI_MakeOffsetShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeThickSolid_inherited_IsDeleted(
@@ -3866,7 +3893,7 @@ impl MakeThickSolid {
         })
     }
 
-    /// Inherited: **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:136 - `BRepOffsetAPI_MakeOffsetShape::GetJoinType()`
+    /// Inherited: **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:134 - `BRepOffsetAPI_MakeOffsetShape::GetJoinType()`
     pub fn get_join_type(&self) -> crate::geom_abs::JoinType {
         crate::geom_abs::JoinType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeThickSolid_inherited_GetJoinType(
@@ -3910,7 +3937,7 @@ impl MakeThickSolid {
 // From BRepOffsetAPI_MiddlePath.hxx
 // ========================
 
-/// **Source:** `BRepOffsetAPI_MiddlePath.hxx`:30 - `BRepOffsetAPI_MiddlePath`
+/// **Source:** `BRepOffsetAPI_MiddlePath.hxx`:31 - `BRepOffsetAPI_MiddlePath`
 /// Describes functions to build a middle path of a
 /// pipe-like shape
 pub use crate::ffi_types::BRepOffsetAPI_MiddlePath as MiddlePath;
@@ -3924,7 +3951,7 @@ unsafe impl crate::CppDeletable for MiddlePath {
 }
 
 impl MiddlePath {
-    /// **Source:** `BRepOffsetAPI_MiddlePath.hxx`:38 - `BRepOffsetAPI_MiddlePath::BRepOffsetAPI_MiddlePath()`
+    /// **Source:** `BRepOffsetAPI_MiddlePath.hxx`:39 - `BRepOffsetAPI_MiddlePath::BRepOffsetAPI_MiddlePath()`
     /// General constructor.
     /// StartShape and EndShape may be
     /// a wire or a face
@@ -3942,7 +3969,7 @@ impl MiddlePath {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_MiddlePath.hxx`:42 - `BRepOffsetAPI_MiddlePath::Build()`
+    /// **Source:** `BRepOffsetAPI_MiddlePath.hxx`:43 - `BRepOffsetAPI_MiddlePath::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKOffset::BRepOffsetAPI_MiddlePath_build(self as *mut Self, theRange)
@@ -4035,7 +4062,7 @@ impl MiddlePath {
 // From BRepOffsetAPI_NormalProjection.hxx
 // ========================
 
-/// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:34 - `BRepOffsetAPI_NormalProjection`
+/// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:35 - `BRepOffsetAPI_NormalProjection`
 /// A framework to define projection onto a shape
 /// according to the normal from each point to be projected.
 /// The target shape is a face, and the source shape is an edge or a wire.
@@ -4050,7 +4077,7 @@ unsafe impl crate::CppDeletable for NormalProjection {
 }
 
 impl NormalProjection {
-    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:42 - `BRepOffsetAPI_NormalProjection::BRepOffsetAPI_NormalProjection()`
+    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:43 - `BRepOffsetAPI_NormalProjection::BRepOffsetAPI_NormalProjection()`
     /// Constructs an empty framework to define projection on
     /// a shape according to the normal from each point to be
     /// projected to the shape.
@@ -4062,7 +4089,7 @@ impl NormalProjection {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:49 - `BRepOffsetAPI_NormalProjection::BRepOffsetAPI_NormalProjection()`
+    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:50 - `BRepOffsetAPI_NormalProjection::BRepOffsetAPI_NormalProjection()`
     /// Constructs a framework to define projection onto the
     /// basis shape S according to the normal from each point
     /// to be projected from the shape added to this framework by Add.
@@ -4076,7 +4103,7 @@ impl NormalProjection {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:52 - `BRepOffsetAPI_NormalProjection::Init()`
+    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:53 - `BRepOffsetAPI_NormalProjection::Init()`
     /// Initializes the empty constructor framework with the shape S.
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
@@ -4084,7 +4111,7 @@ impl NormalProjection {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:59 - `BRepOffsetAPI_NormalProjection::Add()`
+    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:60 - `BRepOffsetAPI_NormalProjection::Add()`
     /// Adds the shape ToProj to the framework for calculation
     /// of the projection by Compute3d.
     /// ToProj is an edge or a wire and will be projected onto the basis shape.
@@ -4099,12 +4126,12 @@ impl NormalProjection {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:68 - `BRepOffsetAPI_NormalProjection::SetParams()`
-    /// Sets the parameters  used  for computation
-    /// Tol3 is the required  tolerance between the  3d projected
-    /// curve  and     its    2d    representation
-    /// InternalContinuity  is the order of constraints
-    /// used for  approximation
+    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:69 - `BRepOffsetAPI_NormalProjection::SetParams()`
+    /// Sets the parameters used for computation
+    /// Tol3 is the required tolerance between the 3d projected
+    /// curve and its 2d representation
+    /// InternalContinuity is the order of constraints
+    /// used for approximation
     /// MaxDeg and MaxSeg are the maximum degree and the maximum
     /// number of segment for BSpline resulting of an approximation.
     pub fn set_params(
@@ -4127,7 +4154,7 @@ impl NormalProjection {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:78 - `BRepOffsetAPI_NormalProjection::SetMaxDistance()`
+    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:79 - `BRepOffsetAPI_NormalProjection::SetMaxDistance()`
     /// Sets the maximum distance between target shape and
     /// shape to project. If this condition is not satisfied then corresponding
     /// part of solution is discarded.
@@ -4141,8 +4168,8 @@ impl NormalProjection {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:81 - `BRepOffsetAPI_NormalProjection::SetLimit()`
-    /// Manage  limitation  of  projected  edges.
+    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:82 - `BRepOffsetAPI_NormalProjection::SetLimit()`
+    /// Manage limitation of projected edges.
     pub fn set_limit(&mut self, FaceBoundaries: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKOffset::BRepOffsetAPI_NormalProjection_set_limit(
@@ -4152,7 +4179,7 @@ impl NormalProjection {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:85 - `BRepOffsetAPI_NormalProjection::Compute3d()`
+    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:86 - `BRepOffsetAPI_NormalProjection::Compute3d()`
     /// Returns true if a 3D curve is computed. If not, false is
     /// returned and an initial 3D curve is kept to build the resulting edges.
     pub fn compute3d(&mut self, With3d: bool) {
@@ -4164,7 +4191,7 @@ impl NormalProjection {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:89 - `BRepOffsetAPI_NormalProjection::Build()`
+    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:90 - `BRepOffsetAPI_NormalProjection::Build()`
     /// Builds the result of the projection as a compound of
     /// wires. Tries to build oriented wires.
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
@@ -4176,7 +4203,7 @@ impl NormalProjection {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:99 - `BRepOffsetAPI_NormalProjection::IsDone()`
+    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:100 - `BRepOffsetAPI_NormalProjection::IsDone()`
     /// Returns true if the object was correctly built by the shape
     /// construction algorithm.
     /// If at the construction time of the shape, the algorithm
@@ -4190,7 +4217,7 @@ impl NormalProjection {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:105 - `BRepOffsetAPI_NormalProjection::Projection()`
+    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:106 - `BRepOffsetAPI_NormalProjection::Projection()`
     /// Performs the projection.
     /// The construction of the result is performed by Build.
     /// Exceptions
@@ -4205,7 +4232,7 @@ impl NormalProjection {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:112 - `BRepOffsetAPI_NormalProjection::Couple()`
+    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:113 - `BRepOffsetAPI_NormalProjection::Couple()`
     /// Returns the initial face corresponding to the projected edge E.
     /// Exceptions
     /// StdFail_NotDone if no face was found.
@@ -4228,8 +4255,8 @@ impl NormalProjection {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:116 - `BRepOffsetAPI_NormalProjection::Generated()`
-    /// Returns the  list   of shapes generated   from the
+    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:117 - `BRepOffsetAPI_NormalProjection::Generated()`
+    /// Returns the list of shapes generated from the
     /// shape <S>.
     ///
     /// # Safety
@@ -4240,7 +4267,7 @@ impl NormalProjection {
     pub unsafe fn generated(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKOffset::BRepOffsetAPI_NormalProjection_generated(
@@ -4278,7 +4305,7 @@ impl NormalProjection {
     /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:129 - `BRepOffsetAPI_NormalProjection::BuildWire()`
     /// build the result as a list of wire if possible in --
     /// a first returns a wire only if there is only a wire.
-    pub fn build_wire(&self, Liste: &mut crate::ffi_types::TopTools_ListOfShape) -> bool {
+    pub fn build_wire(&self, Liste: &mut crate::ffi_types::NCollection_List_TopoDS_Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BRepOffsetAPI_NormalProjection_build_wire(
                 self as *const Self,
@@ -4352,7 +4379,7 @@ impl NormalProjection {
 // From BRepOffsetAPI_ThruSections.hxx
 // ========================
 
-/// **Source:** `BRepOffsetAPI_ThruSections.hxx`:47 - `BRepOffsetAPI_ThruSections`
+/// **Source:** `BRepOffsetAPI_ThruSections.hxx`:48 - `BRepOffsetAPI_ThruSections`
 /// Describes functions to build a loft. This is a shell or a
 /// solid passing through a set of sections in a given
 /// sequence. Usually sections are wires, but the first and
@@ -4368,7 +4395,7 @@ unsafe impl crate::CppDeletable for ThruSections {
 }
 
 impl ThruSections {
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:64 - `BRepOffsetAPI_ThruSections::BRepOffsetAPI_ThruSections()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:65 - `BRepOffsetAPI_ThruSections::BRepOffsetAPI_ThruSections()`
     /// Initializes an algorithm for building a shell or a solid
     /// passing through a set of sections, where:
     /// -          isSolid is set to true if the construction algorithm is
@@ -4391,7 +4418,7 @@ impl ThruSections {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:64 - `BRepOffsetAPI_ThruSections::BRepOffsetAPI_ThruSections()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:65 - `BRepOffsetAPI_ThruSections::BRepOffsetAPI_ThruSections()`
     /// Initializes an algorithm for building a shell or a solid
     /// passing through a set of sections, where:
     /// -          isSolid is set to true if the construction algorithm is
@@ -4408,7 +4435,7 @@ impl ThruSections {
         Self::new_bool2_real(isSolid, ruled, 1.0e-06)
     }
 
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:64 - `BRepOffsetAPI_ThruSections::BRepOffsetAPI_ThruSections()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:65 - `BRepOffsetAPI_ThruSections::BRepOffsetAPI_ThruSections()`
     /// Initializes an algorithm for building a shell or a solid
     /// passing through a set of sections, where:
     /// -          isSolid is set to true if the construction algorithm is
@@ -4425,7 +4452,7 @@ impl ThruSections {
         Self::new_bool2_real(isSolid, false, 1.0e-06)
     }
 
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:64 - `BRepOffsetAPI_ThruSections::BRepOffsetAPI_ThruSections()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:65 - `BRepOffsetAPI_ThruSections::BRepOffsetAPI_ThruSections()`
     /// Initializes an algorithm for building a shell or a solid
     /// passing through a set of sections, where:
     /// -          isSolid is set to true if the construction algorithm is
@@ -4442,7 +4469,7 @@ impl ThruSections {
         Self::new_bool2_real(false, false, 1.0e-06)
     }
 
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:80 - `BRepOffsetAPI_ThruSections::Init()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:81 - `BRepOffsetAPI_ThruSections::Init()`
     /// Initializes this algorithm for building a shell or a solid
     /// passing through a set of sections, where:
     /// - isSolid is set to true if this construction algorithm is
@@ -4466,7 +4493,7 @@ impl ThruSections {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:87 - `BRepOffsetAPI_ThruSections::AddWire()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:88 - `BRepOffsetAPI_ThruSections::AddWire()`
     /// Adds the wire wire to the set of
     /// sections through which the shell or solid is built.
     /// Use the Build function to construct the shape.
@@ -4476,7 +4503,7 @@ impl ThruSections {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:94 - `BRepOffsetAPI_ThruSections::AddVertex()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:95 - `BRepOffsetAPI_ThruSections::AddVertex()`
     /// Adds the vertex Vertex (punctual section) to the set of sections
     /// through which the shell or solid is built. A vertex may be added to the
     /// set of sections only as first or last section. At least one wire
@@ -4491,7 +4518,7 @@ impl ThruSections {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:99 - `BRepOffsetAPI_ThruSections::CheckCompatibility()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:100 - `BRepOffsetAPI_ThruSections::CheckCompatibility()`
     /// Sets/unsets the option to
     /// compute origin and orientation on wires to avoid twisted results
     /// and update wires to have same number of edges.
@@ -4504,7 +4531,7 @@ impl ThruSections {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:102 - `BRepOffsetAPI_ThruSections::SetSmoothing()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:103 - `BRepOffsetAPI_ThruSections::SetSmoothing()`
     /// Define the approximation algorithm
     pub fn set_smoothing(&mut self, UseSmoothing: bool) {
         crate::check_void_result(unsafe {
@@ -4515,8 +4542,8 @@ impl ThruSections {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:105 - `BRepOffsetAPI_ThruSections::SetParType()`
-    /// Define the type of parametrization   used in the approximation
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:106 - `BRepOffsetAPI_ThruSections::SetParType()`
+    /// Define the type of parametrization used in the approximation
     pub fn set_par_type(&mut self, ParType: crate::approx::ParametrizationType) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_set_par_type(
@@ -4526,7 +4553,7 @@ impl ThruSections {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:108 - `BRepOffsetAPI_ThruSections::SetContinuity()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:109 - `BRepOffsetAPI_ThruSections::SetContinuity()`
     /// Define the Continuity used in the approximation
     pub fn set_continuity(&mut self, C: crate::geom_abs::Shape) {
         crate::check_void_result(unsafe {
@@ -4537,9 +4564,9 @@ impl ThruSections {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:114 - `BRepOffsetAPI_ThruSections::SetCriteriumWeight()`
-    /// define the Weights  associed to the criterium used in
-    /// the  optimization.
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:115 - `BRepOffsetAPI_ThruSections::SetCriteriumWeight()`
+    /// define the Weights associed to the criterium used in
+    /// the optimization.
     ///
     /// if Wi <= 0
     pub fn set_criterium_weight(&mut self, W1: f64, W2: f64, W3: f64) {
@@ -4553,7 +4580,7 @@ impl ThruSections {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:119 - `BRepOffsetAPI_ThruSections::SetMaxDegree()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:118 - `BRepOffsetAPI_ThruSections::SetMaxDegree()`
     /// Define the maximal U degree of result surface
     pub fn set_max_degree(&mut self, MaxDeg: i32) {
         crate::check_void_result(unsafe {
@@ -4564,7 +4591,7 @@ impl ThruSections {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:122 - `BRepOffsetAPI_ThruSections::ParType()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:121 - `BRepOffsetAPI_ThruSections::ParType()`
     /// returns the type of parametrization used in the approximation
     pub fn par_type(&self) -> crate::approx::ParametrizationType {
         crate::approx::ParametrizationType::try_from(crate::check_result(unsafe {
@@ -4573,7 +4600,7 @@ impl ThruSections {
         .unwrap()
     }
 
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:125 - `BRepOffsetAPI_ThruSections::Continuity()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:124 - `BRepOffsetAPI_ThruSections::Continuity()`
     /// returns the Continuity used in the approximation
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
@@ -4582,7 +4609,7 @@ impl ThruSections {
         .unwrap()
     }
 
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:128 - `BRepOffsetAPI_ThruSections::MaxDegree()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:127 - `BRepOffsetAPI_ThruSections::MaxDegree()`
     /// returns the maximal U degree of result surface
     pub fn max_degree(&self) -> i32 {
         crate::check_result(unsafe {
@@ -4590,7 +4617,7 @@ impl ThruSections {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:131 - `BRepOffsetAPI_ThruSections::UseSmoothing()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:130 - `BRepOffsetAPI_ThruSections::UseSmoothing()`
     /// Define the approximation algorithm
     pub fn use_smoothing(&self) -> bool {
         crate::check_result(unsafe {
@@ -4600,9 +4627,9 @@ impl ThruSections {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:135 - `BRepOffsetAPI_ThruSections::CriteriumWeight()`
-    /// returns the Weights associed  to the criterium used in
-    /// the  optimization.
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:134 - `BRepOffsetAPI_ThruSections::CriteriumWeight()`
+    /// returns the Weights associed to the criterium used in
+    /// the optimization.
     pub fn criterium_weight(&self, W1: &mut f64, W2: &mut f64, W3: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_criterium_weight(
@@ -4614,7 +4641,7 @@ impl ThruSections {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:139 - `BRepOffsetAPI_ThruSections::Build()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:136 - `BRepOffsetAPI_ThruSections::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_build(
@@ -4624,7 +4651,7 @@ impl ThruSections {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:143 - `BRepOffsetAPI_ThruSections::FirstShape()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:140 - `BRepOffsetAPI_ThruSections::FirstShape()`
     /// Returns the TopoDS Shape of the bottom of the loft if solid
     pub fn first_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -4636,7 +4663,7 @@ impl ThruSections {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:146 - `BRepOffsetAPI_ThruSections::LastShape()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:143 - `BRepOffsetAPI_ThruSections::LastShape()`
     /// Returns the TopoDS Shape of the top of the loft if solid
     pub fn last_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -4648,7 +4675,7 @@ impl ThruSections {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:153 - `BRepOffsetAPI_ThruSections::GeneratedFace()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:150 - `BRepOffsetAPI_ThruSections::GeneratedFace()`
     /// if Ruled
     /// Returns the Face generated by each edge
     /// except the last wire
@@ -4668,7 +4695,7 @@ impl ThruSections {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:158 - `BRepOffsetAPI_ThruSections::SetMutableInput()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:155 - `BRepOffsetAPI_ThruSections::SetMutableInput()`
     /// Sets the mutable input state.
     /// If true then the input profile can be modified inside
     /// the thrusection operation. Default value is true.
@@ -4681,7 +4708,7 @@ impl ThruSections {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:164 - `BRepOffsetAPI_ThruSections::Generated()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:161 - `BRepOffsetAPI_ThruSections::Generated()`
     /// Returns a list of new shapes generated from the shape
     /// S by the shell-generating algorithm.
     /// This function is redefined from BRepBuilderAPI_MakeShape::Generated.
@@ -4695,7 +4722,7 @@ impl ThruSections {
     pub unsafe fn generated(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_generated(
@@ -4706,9 +4733,9 @@ impl ThruSections {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:168 - `BRepOffsetAPI_ThruSections::Wires()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:164 - `BRepOffsetAPI_ThruSections::Wires()`
     /// Returns the list of original wires
-    pub fn wires(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    pub fn wires(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_wires(
                 self as *const Self,
@@ -4716,7 +4743,7 @@ impl ThruSections {
         }
     }
 
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:171 - `BRepOffsetAPI_ThruSections::IsMutableInput()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:167 - `BRepOffsetAPI_ThruSections::IsMutableInput()`
     /// Returns the current mutable input state
     pub fn is_mutable_input(&self) -> bool {
         crate::check_result(unsafe {
@@ -4726,7 +4753,7 @@ impl ThruSections {
         })
     }
 
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:174 - `BRepOffsetAPI_ThruSections::GetStatus()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:170 - `BRepOffsetAPI_ThruSections::GetStatus()`
     /// Returns the status of thrusection operation
     pub fn get_status(&self) -> crate::b_rep_fill::ThruSectionErrorStatus {
         crate::b_rep_fill::ThruSectionErrorStatus::try_from(crate::check_result(unsafe {

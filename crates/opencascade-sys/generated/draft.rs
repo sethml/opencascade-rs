@@ -7,9 +7,9 @@
 #![allow(non_snake_case)]
 
 /// **Source:** `Draft.hxx`:40 - `Draft::Angle`
-/// Returns the draft angle of the  face <F> using the
-/// direction <Direction>.  The  method is valid for :
-/// - Plane  faces,
+/// Returns the draft angle of the face <F> using the
+/// direction <Direction>. The method is valid for :
+/// - Plane faces,
 /// - Cylindrical or conical faces, when the direction
 /// of the axis of the surface is colinear with the
 /// direction.
@@ -49,7 +49,7 @@ impl TryFrom<i32> for ErrorStatus {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::{HandleBRepToolsModification, HandleStandardTransient};
+pub use crate::ffi_types::{Handle_BRepTools_Modification, Handle_Standard_Transient};
 
 // ========================
 // From Draft_EdgeInfo.hxx
@@ -128,7 +128,7 @@ impl EdgeInfo {
     }
 
     /// **Source:** `Draft_EdgeInfo.hxx`:50 - `Draft_EdgeInfo::Geometry()`
-    pub fn geometry(&self) -> &crate::ffi_types::HandleGeomCurve {
+    pub fn geometry(&self) -> &crate::ffi_types::Handle_Geom_Curve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKOffset::Draft_EdgeInfo_geometry(
                 self as *const Self,
@@ -155,7 +155,7 @@ impl EdgeInfo {
     }
 
     /// **Source:** `Draft_EdgeInfo.hxx`:56 - `Draft_EdgeInfo::FirstPC()`
-    pub fn first_pc(&self) -> &crate::ffi_types::HandleGeom2dCurve {
+    pub fn first_pc(&self) -> &crate::ffi_types::Handle_Geom2d_Curve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKOffset::Draft_EdgeInfo_first_pc(
                 self as *const Self,
@@ -164,7 +164,7 @@ impl EdgeInfo {
     }
 
     /// **Source:** `Draft_EdgeInfo.hxx`:58 - `Draft_EdgeInfo::SecondPC()`
-    pub fn second_pc(&self) -> &crate::ffi_types::HandleGeom2dCurve {
+    pub fn second_pc(&self) -> &crate::ffi_types::Handle_Geom2d_Curve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKOffset::Draft_EdgeInfo_second_pc(
                 self as *const Self,
@@ -173,7 +173,7 @@ impl EdgeInfo {
     }
 
     /// **Source:** `Draft_EdgeInfo.hxx`:60 - `Draft_EdgeInfo::ChangeGeometry()`
-    pub fn change_geometry(&mut self) -> &mut crate::ffi_types::HandleGeomCurve {
+    pub fn change_geometry(&mut self) -> &mut crate::ffi_types::Handle_Geom_Curve {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKOffset::Draft_EdgeInfo_change_geometry(
                 self as *mut Self,
@@ -182,7 +182,7 @@ impl EdgeInfo {
     }
 
     /// **Source:** `Draft_EdgeInfo.hxx`:62 - `Draft_EdgeInfo::ChangeFirstPC()`
-    pub fn change_first_pc(&mut self) -> &mut crate::ffi_types::HandleGeom2dCurve {
+    pub fn change_first_pc(&mut self) -> &mut crate::ffi_types::Handle_Geom2d_Curve {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKOffset::Draft_EdgeInfo_change_first_pc(
                 self as *mut Self,
@@ -191,7 +191,7 @@ impl EdgeInfo {
     }
 
     /// **Source:** `Draft_EdgeInfo.hxx`:64 - `Draft_EdgeInfo::ChangeSecondPC()`
-    pub fn change_second_pc(&mut self) -> &mut crate::ffi_types::HandleGeom2dCurve {
+    pub fn change_second_pc(&mut self) -> &mut crate::ffi_types::Handle_Geom2d_Curve {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKOffset::Draft_EdgeInfo_change_second_pc(self as *mut Self),
@@ -250,7 +250,7 @@ impl FaceInfo {
 
     /// **Source:** `Draft_FaceInfo.hxx`:36 - `Draft_FaceInfo::Draft_FaceInfo()`
     pub fn new_handlegeomsurface_bool(
-        S: &crate::ffi_types::HandleGeomSurface,
+        S: &crate::ffi_types::Handle_Geom_Surface,
         HasNewGeometry: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -263,28 +263,28 @@ impl FaceInfo {
         }
     }
 
-    /// **Source:** `Draft_FaceInfo.hxx`:39 - `Draft_FaceInfo::RootFace()`
+    /// **Source:** `Draft_FaceInfo.hxx`:38 - `Draft_FaceInfo::RootFace()`
     pub fn root_face_face(&mut self, F: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKOffset::Draft_FaceInfo_root_face_face(self as *mut Self, F)
         })
     }
 
-    /// **Source:** `Draft_FaceInfo.hxx`:41 - `Draft_FaceInfo::NewGeometry()`
+    /// **Source:** `Draft_FaceInfo.hxx`:40 - `Draft_FaceInfo::NewGeometry()`
     pub fn new_geometry(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::Draft_FaceInfo_new_geometry(self as *const Self)
         })
     }
 
-    /// **Source:** `Draft_FaceInfo.hxx`:43 - `Draft_FaceInfo::Add()`
+    /// **Source:** `Draft_FaceInfo.hxx`:42 - `Draft_FaceInfo::Add()`
     pub fn add(&mut self, F: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKOffset::Draft_FaceInfo_add(self as *mut Self, F)
         })
     }
 
-    /// **Source:** `Draft_FaceInfo.hxx`:45 - `Draft_FaceInfo::FirstFace()`
+    /// **Source:** `Draft_FaceInfo.hxx`:44 - `Draft_FaceInfo::FirstFace()`
     pub fn first_face(&self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKOffset::Draft_FaceInfo_first_face(
@@ -293,7 +293,7 @@ impl FaceInfo {
         }
     }
 
-    /// **Source:** `Draft_FaceInfo.hxx`:47 - `Draft_FaceInfo::SecondFace()`
+    /// **Source:** `Draft_FaceInfo.hxx`:46 - `Draft_FaceInfo::SecondFace()`
     pub fn second_face(&self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKOffset::Draft_FaceInfo_second_face(
@@ -302,8 +302,8 @@ impl FaceInfo {
         }
     }
 
-    /// **Source:** `Draft_FaceInfo.hxx`:49 - `Draft_FaceInfo::Geometry()`
-    pub fn geometry(&self) -> &crate::ffi_types::HandleGeomSurface {
+    /// **Source:** `Draft_FaceInfo.hxx`:48 - `Draft_FaceInfo::Geometry()`
+    pub fn geometry(&self) -> &crate::ffi_types::Handle_Geom_Surface {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKOffset::Draft_FaceInfo_geometry(
                 self as *const Self,
@@ -311,8 +311,8 @@ impl FaceInfo {
         }
     }
 
-    /// **Source:** `Draft_FaceInfo.hxx`:51 - `Draft_FaceInfo::ChangeGeometry()`
-    pub fn change_geometry(&mut self) -> &mut crate::ffi_types::HandleGeomSurface {
+    /// **Source:** `Draft_FaceInfo.hxx`:50 - `Draft_FaceInfo::ChangeGeometry()`
+    pub fn change_geometry(&mut self) -> &mut crate::ffi_types::Handle_Geom_Surface {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKOffset::Draft_FaceInfo_change_geometry(
                 self as *mut Self,
@@ -320,7 +320,7 @@ impl FaceInfo {
         }
     }
 
-    /// **Source:** `Draft_FaceInfo.hxx`:53 - `Draft_FaceInfo::RootFace()`
+    /// **Source:** `Draft_FaceInfo.hxx`:52 - `Draft_FaceInfo::RootFace()`
     pub fn root_face(&self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKOffset::Draft_FaceInfo_root_face(
@@ -329,8 +329,8 @@ impl FaceInfo {
         }
     }
 
-    /// **Source:** `Draft_FaceInfo.hxx`:55 - `Draft_FaceInfo::ChangeCurve()`
-    pub fn change_curve(&mut self) -> &mut crate::ffi_types::HandleGeomCurve {
+    /// **Source:** `Draft_FaceInfo.hxx`:54 - `Draft_FaceInfo::ChangeCurve()`
+    pub fn change_curve(&mut self) -> &mut crate::ffi_types::Handle_Geom_Curve {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKOffset::Draft_FaceInfo_change_curve(
                 self as *mut Self,
@@ -338,8 +338,8 @@ impl FaceInfo {
         }
     }
 
-    /// **Source:** `Draft_FaceInfo.hxx`:57 - `Draft_FaceInfo::Curve()`
-    pub fn curve(&self) -> &crate::ffi_types::HandleGeomCurve {
+    /// **Source:** `Draft_FaceInfo.hxx`:56 - `Draft_FaceInfo::Curve()`
+    pub fn curve(&self) -> &crate::ffi_types::Handle_Geom_Curve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKOffset::Draft_FaceInfo_curve(
                 self as *const Self,
@@ -390,10 +390,10 @@ impl Modification {
     }
 
     /// **Source:** `Draft_Modification.hxx`:63 - `Draft_Modification::Add()`
-    /// Adds  the  face  F    and propagates    the  draft
-    /// modification to  its  neighbour faces if they  are
+    /// Adds the face F and propagates the draft
+    /// modification to its neighbour faces if they are
     /// tangent. If an error occurs, will return False and
-    /// ProblematicShape  will  return the "bad" face.
+    /// ProblematicShape will return the "bad" face.
     pub fn add(
         &mut self,
         F: &crate::topo_ds::Face,
@@ -416,8 +416,8 @@ impl Modification {
 
     /// **Source:** `Draft_Modification.hxx`:73 - `Draft_Modification::Remove()`
     /// Removes the face F and the neighbour faces if they
-    /// are tangent.   It will be  necessary to  call this
-    /// method if  the  method Add returns Standard_False,
+    /// are tangent. It will be necessary to call this
+    /// method if the method Add returns false,
     /// to unset ProblematicFace.
     pub fn remove(&mut self, F: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
@@ -427,10 +427,10 @@ impl Modification {
 
     /// **Source:** `Draft_Modification.hxx`:81 - `Draft_Modification::Perform()`
     /// Performs the draft angle modification and sets the
-    /// value returned by the method  IsDone.  If an error
-    /// occurs, IsDone  will return Standard_False, and an
-    /// error status will  be  given by the  method Error,
-    /// and the  shape on which  the problem appeared will
+    /// value returned by the method IsDone. If an error
+    /// occurs, IsDone will return false, and an
+    /// error status will be given by the method Error,
+    /// and the shape on which the problem appeared will
     /// be given by ProblematicShape
     pub fn perform(&mut self) {
         crate::check_void_result(unsafe {
@@ -439,7 +439,7 @@ impl Modification {
     }
 
     /// **Source:** `Draft_Modification.hxx`:86 - `Draft_Modification::IsDone()`
-    /// Returns  True  if   Perform has  been  successfully
+    /// Returns True if Perform has been successfully
     /// called. Otherwise more information can be obtained
     /// using the methods Error() and ProblematicShape().
     pub fn is_done(&self) -> bool {
@@ -457,7 +457,7 @@ impl Modification {
     }
 
     /// **Source:** `Draft_Modification.hxx`:92 - `Draft_Modification::ProblematicShape()`
-    /// Returns the shape (Face,  Edge or Vertex) on which
+    /// Returns the shape (Face, Edge or Vertex) on which
     /// an error occurred.
     pub fn problematic_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -470,7 +470,7 @@ impl Modification {
     }
 
     /// **Source:** `Draft_Modification.hxx`:96 - `Draft_Modification::ConnectedFaces()`
-    /// Returns all  the  faces   which  have been   added
+    /// Returns all the faces which have been added
     /// together with the face <F>.
     ///
     /// # Safety
@@ -481,7 +481,7 @@ impl Modification {
     pub unsafe fn connected_faces(
         &mut self,
         F: &crate::topo_ds::Face,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKOffset::Draft_Modification_connected_faces(
                 self as *mut Self,
@@ -491,9 +491,9 @@ impl Modification {
     }
 
     /// **Source:** `Draft_Modification.hxx`:100 - `Draft_Modification::ModifiedFaces()`
-    /// Returns all the faces  on which a modification has
+    /// Returns all the faces on which a modification has
     /// been given.
-    pub fn modified_faces(&mut self) -> &crate::ffi_types::TopTools_ListOfShape {
+    pub fn modified_faces(&mut self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKOffset::Draft_Modification_modified_faces(
                 self as *mut Self,
@@ -502,23 +502,23 @@ impl Modification {
     }
 
     /// **Source:** `Draft_Modification.hxx`:115 - `Draft_Modification::NewSurface()`
-    /// Returns Standard_True if   the face <F>  has  been
-    /// modified.  In this case,  <S> is the new geometric
-    /// support of the  face,  <L> the new  location,<Tol>
-    /// the   new tolerance.<RevWires>  has  to  be set to
-    /// Standard_True when   the modification reverses the
-    /// normal   of  the  surface.(the  wires   have to be
-    /// reversed).  <RevFace>    has    to  be   set    to
-    /// Standard_True  if  the orientation of the modified
-    /// face changes in  the shells which contain it. Here
-    /// it will be set to Standard_False.
+    /// Returns true if the face <F> has been
+    /// modified. In this case, <S> is the new geometric
+    /// support of the face, <L> the new location, <Tol>
+    /// the new tolerance.<RevWires> has to be set to
+    /// true when the modification reverses the
+    /// normal of the surface. (the wires have to be
+    /// reversed). <RevFace> has to be set to
+    /// true if the orientation of the modified
+    /// face changes in the shells which contain it. Here
+    /// it will be set to false.
     ///
-    /// Otherwise, returns Standard_False, and <S>,   <L>,
-    /// <Tol> , <RevWires> ,<RevFace> are not  significant.
+    /// Otherwise, returns false, and <S>, <L>,
+    /// <Tol> , <RevWires> ,<RevFace> are not significant.
     pub fn new_surface(
         &mut self,
         F: &crate::topo_ds::Face,
-        S: &mut crate::ffi_types::HandleGeomSurface,
+        S: &mut crate::ffi_types::Handle_Geom_Surface,
         L: &mut crate::top_loc::Location,
         Tol: &mut f64,
         RevWires: &mut bool,
@@ -538,16 +538,16 @@ impl Modification {
     }
 
     /// **Source:** `Draft_Modification.hxx`:128 - `Draft_Modification::NewCurve()`
-    /// Returns Standard_True  if  the edge  <E> has  been
-    /// modified.  In this case,  <C> is the new geometric
-    /// support of the  edge, <L> the  new location, <Tol>
-    /// the         new    tolerance.   Otherwise, returns
-    /// Standard_False,    and  <C>,  <L>,   <Tol> are not
+    /// Returns true if the edge <E> has been
+    /// modified. In this case, <C> is the new geometric
+    /// support of the edge, <L> the new location, <Tol>
+    /// the new tolerance. Otherwise, returns
+    /// false, and <C>, <L>, <Tol> are not
     /// significant.
     pub fn new_curve(
         &mut self,
         E: &crate::topo_ds::Edge,
-        C: &mut crate::ffi_types::HandleGeomCurve,
+        C: &mut crate::ffi_types::Handle_Geom_Curve,
         L: &mut crate::top_loc::Location,
         Tol: &mut f64,
     ) -> bool {
@@ -563,10 +563,10 @@ impl Modification {
     }
 
     /// **Source:** `Draft_Modification.hxx`:138 - `Draft_Modification::NewPoint()`
-    /// Returns  Standard_True if the  vertex <V> has been
-    /// modified.  In this  case, <P> is the new geometric
-    /// support of the vertex,   <Tol> the new  tolerance.
-    /// Otherwise, returns Standard_False, and <P>,  <Tol>
+    /// Returns true if the vertex <V> has been
+    /// modified. In this case, <P> is the new geometric
+    /// support of the vertex, <Tol> the new tolerance.
+    /// Otherwise, returns false, and <P>, <Tol>
     /// are not significant.
     pub fn new_point(
         &mut self,
@@ -579,16 +579,16 @@ impl Modification {
         })
     }
 
-    /// **Source:** `Draft_Modification.hxx`:152 - `Draft_Modification::NewCurve2d()`
-    /// Returns Standard_True if  the edge  <E> has a  new
+    /// **Source:** `Draft_Modification.hxx`:150 - `Draft_Modification::NewCurve2d()`
+    /// Returns true if the edge <E> has a new
     /// curve on surface on the face <F>.In this case, <C>
-    /// is the new geometric support of  the edge, <L> the
+    /// is the new geometric support of the edge, <L> the
     /// new location, <Tol> the new tolerance.
     ///
-    /// Otherwise, returns  Standard_False, and <C>,  <L>,
+    /// Otherwise, returns false, and <C>, <L>,
     /// <Tol> are not significant.
     ///
-    /// <NewE> is the new  edge created from  <E>.  <NewF>
+    /// <NewE> is the new edge created from <E>. <NewF>
     /// is the new face created from <F>. They may be useful.
     pub fn new_curve2d(
         &mut self,
@@ -596,7 +596,7 @@ impl Modification {
         F: &crate::topo_ds::Face,
         NewE: &crate::topo_ds::Edge,
         NewF: &crate::topo_ds::Face,
-        C: &mut crate::ffi_types::HandleGeom2dCurve,
+        C: &mut crate::ffi_types::Handle_Geom2d_Curve,
         Tol: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
@@ -612,11 +612,11 @@ impl Modification {
         })
     }
 
-    /// **Source:** `Draft_Modification.hxx`:164 - `Draft_Modification::NewParameter()`
-    /// Returns Standard_True if the Vertex  <V> has a new
-    /// parameter on the  edge <E>. In  this case,  <P> is
-    /// the parameter,    <Tol>  the     new    tolerance.
-    /// Otherwise, returns Standard_False, and <P>,  <Tol>
+    /// **Source:** `Draft_Modification.hxx`:162 - `Draft_Modification::NewParameter()`
+    /// Returns true if the Vertex <V> has a new
+    /// parameter on the edge <E>. In this case, <P> is
+    /// the parameter, <Tol> the new tolerance.
+    /// Otherwise, returns false, and <P>, <Tol>
     /// are not significant.
     pub fn new_parameter(
         &mut self,
@@ -636,12 +636,12 @@ impl Modification {
         })
     }
 
-    /// **Source:** `Draft_Modification.hxx`:175 - `Draft_Modification::Continuity()`
-    /// Returns the  continuity of  <NewE> between <NewF1>
+    /// **Source:** `Draft_Modification.hxx`:173 - `Draft_Modification::Continuity()`
+    /// Returns the continuity of <NewE> between <NewF1>
     /// and <NewF2>.
     ///
-    /// <NewE> is the new  edge created from <E>.  <NewF1>
-    /// (resp. <NewF2>) is the new  face created from <F1>
+    /// <NewE> is the new edge created from <E>. <NewF1>
+    /// (resp. <NewF2>) is the new face created from <F1>
     /// (resp. <F2>).
     pub fn continuity(
         &mut self,
@@ -666,8 +666,8 @@ impl Modification {
         .unwrap()
     }
 
-    /// **Source:** `Draft_Modification.hxx`:182 - `Draft_Modification::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Draft_Modification.hxx`:180 - `Draft_Modification::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKOffset::Draft_Modification_dynamic_type(
                 self as *const Self,
@@ -675,7 +675,7 @@ impl Modification {
         }
     }
 
-    /// **Source:** `Draft_Modification.hxx`:182 - `Draft_Modification::get_type_name()`
+    /// **Source:** `Draft_Modification.hxx`:180 - `Draft_Modification::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -686,8 +686,8 @@ impl Modification {
         .into_owned()
     }
 
-    /// **Source:** `Draft_Modification.hxx`:182 - `Draft_Modification::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Draft_Modification.hxx`:180 - `Draft_Modification::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKOffset::Draft_Modification_get_type_descriptor(),
@@ -742,7 +742,7 @@ impl Modification {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleDraftModification> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Draft_Modification> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKOffset::Draft_Modification_to_handle(obj.into_raw()),
@@ -750,11 +750,11 @@ impl Modification {
         }
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:71 - `BRepTools_Modification::NewTriangulation()`
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:68 - `BRepTools_Modification::NewTriangulation()`
     pub fn new_triangulation(
         &mut self,
         F: &crate::topo_ds::Face,
-        T: &mut crate::ffi_types::HandlePolyTriangulation,
+        T: &mut crate::ffi_types::Handle_Poly_Triangulation,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::Draft_Modification_inherited_NewTriangulation(
@@ -765,11 +765,11 @@ impl Modification {
         })
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:89 - `BRepTools_Modification::NewPolygon()`
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:86 - `BRepTools_Modification::NewPolygon()`
     pub fn new_polygon(
         &mut self,
         E: &crate::topo_ds::Edge,
-        P: &mut crate::ffi_types::HandlePolyPolygon3D,
+        P: &mut crate::ffi_types::Handle_Poly_Polygon3D,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::Draft_Modification_inherited_NewPolygon(
@@ -780,12 +780,12 @@ impl Modification {
         })
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:95 - `BRepTools_Modification::NewPolygonOnTriangulation()`
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:91 - `BRepTools_Modification::NewPolygonOnTriangulation()`
     pub fn new_polygon_on_triangulation(
         &mut self,
         E: &crate::topo_ds::Edge,
         F: &crate::topo_ds::Face,
-        P: &mut crate::ffi_types::HandlePolyPolygonOnTriangulation,
+        P: &mut crate::ffi_types::Handle_Poly_PolygonOnTriangulation,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::Draft_Modification_inherited_NewPolygonOnTriangulation(
@@ -797,8 +797,8 @@ impl Modification {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::Draft_Modification_inherited_IsInstance(
                 self as *const Self,
@@ -807,8 +807,8 @@ impl Modification {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::Draft_Modification_inherited_IsKind(
                 self as *const Self,
@@ -817,7 +817,7 @@ impl Modification {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -831,7 +831,7 @@ impl Modification {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::Draft_Modification_inherited_GetRefCount(
@@ -840,7 +840,7 @@ impl Modification {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKOffset::Draft_Modification_inherited_IncrementRefCounter(
@@ -849,7 +849,7 @@ impl Modification {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::Draft_Modification_inherited_DecrementRefCounter(
@@ -858,7 +858,7 @@ impl Modification {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKOffset::Draft_Modification_inherited_Delete(self as *const Self)
@@ -866,34 +866,36 @@ impl Modification {
     }
 }
 
-pub use crate::ffi_types::HandleDraftModification;
+pub use crate::ffi_types::Handle_Draft_Modification;
 
-unsafe impl crate::CppDeletable for HandleDraftModification {
+unsafe impl crate::CppDeletable for Handle_Draft_Modification {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKOffset::HandleDraftModification_destructor(ptr);
+            crate::ffi_extern_TKOffset::Handle_Draft_Modification_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleDraftModification {
+unsafe impl crate::CppCopyable for Handle_Draft_Modification {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKOffset::HandleDraftModification_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKOffset::Handle_Draft_Modification_clone(ptr))
         }
     }
 }
 
-impl HandleDraftModification {
+impl Handle_Draft_Modification {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKOffset::HandleDraftModification_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKOffset::Handle_Draft_Modification_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying Draft_Modification
     pub fn get(&self) -> &crate::ffi_types::Draft_Modification {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKOffset::HandleDraftModification_get(
+            &*crate::check_result(crate::ffi_extern_TKOffset::Handle_Draft_Modification_get(
                 self as *const Self,
             ))
         }
@@ -902,32 +904,28 @@ impl HandleDraftModification {
     /// Dereference this Handle to mutably access the underlying Draft_Modification
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Draft_Modification {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKOffset::HandleDraftModification_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKOffset::Handle_Draft_Modification_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<Draft_Modification> to Handle<BRepTools_Modification>
     pub fn to_handle_modification(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepToolsModification> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepTools_Modification> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKOffset::HandleDraftModification_to_HandleBRepToolsModification(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKOffset::Handle_Draft_Modification_to_Handle_BRepTools_Modification(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Draft_Modification> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKOffset::HandleDraftModification_to_HandleStandardTransient(
+                crate::ffi_extern_TKOffset::Handle_Draft_Modification_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))

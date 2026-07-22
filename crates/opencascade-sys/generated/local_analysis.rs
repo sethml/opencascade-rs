@@ -7,7 +7,7 @@
 #![allow(non_snake_case)]
 
 /// **Source:** `LocalAnalysis.hxx`:39 - `LocalAnalysis::Dump`
-/// This  class  compute s and gives tools to check the local
+/// This class computes and gives tools to check the local
 /// continuity between two points situated on 2 curves.
 ///
 /// This function gives information about a variable CurveContinuity
@@ -68,7 +68,7 @@ impl TryFrom<i32> for StatusErrorType {
 
 /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:31 - `LocalAnalysis_CurveContinuity`
 /// This class gives tools to check local continuity C0
-/// C1 C2 G1 G2 between  two points situated on two curves
+/// C1 C2 G1 G2 between two points situated on two curves
 pub use crate::ffi_types::LocalAnalysis_CurveContinuity as CurveContinuity;
 
 unsafe impl crate::CppDeletable for CurveContinuity {
@@ -82,63 +82,63 @@ unsafe impl crate::CppDeletable for CurveContinuity {
 impl CurveContinuity {
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:125 - `LocalAnalysis_CurveContinuity::LocalAnalysis_CurveContinuity()`
     /// -u1 is the parameter of the point on Curv1
-    /// -u2 is the  parameter of the point on  Curv2
+    /// -u2 is the parameter of the point on Curv2
     /// -Order is the required continuity:
-    /// GeomAbs_C0    GeomAbs_C1  GeomAbs_C2
+    /// GeomAbs_C0 GeomAbs_C1 GeomAbs_C2
     /// GeomAbs_G1 GeomAbs_G2
     ///
-    /// -EpsNul  is  used to  detect a  a vector with nul
+    /// -EpsNul is used to detect a vector with null
     /// magnitude (in mm)
     ///
-    /// -EpsC0 is used for C0  continuity to confuse two
+    /// -EpsC0 is used for C0 continuity to confuse two
     /// points (in mm)
     ///
-    /// -EpsC1 is  an angular  tolerance in radians  used
-    /// for C1 continuity  to compare the angle between
+    /// -EpsC1 is an angular tolerance in radians used
+    /// for C1 continuity to compare the angle between
     /// the first derivatives
     ///
-    /// -EpsC2 is an   angular tolerance in radians  used
-    /// for C2  continuity to  compare the angle  between
+    /// -EpsC2 is an angular tolerance in radians used
+    /// for C2 continuity to compare the angle between
     /// the second derivatives
     ///
-    /// -EpsG1 is an  angular  tolerance in radians  used
-    /// for G1  continuity to compare  the angle  between
+    /// -EpsG1 is an angular tolerance in radians used
+    /// for G1 continuity to compare the angle between
     /// the tangents
     ///
-    /// -EpsG2 is  an angular  tolerance in radians  used
-    /// for  G2 continuity to  compare  the angle between
+    /// -EpsG2 is an angular tolerance in radians used
+    /// for G2 continuity to compare the angle between
     /// the normals
     ///
-    /// - percent  : percentage of  curvature variation (unitless)
+    /// - percent: percentage of curvature variation (unitless)
     /// used for G2 continuity
     ///
     /// - Maxlen is the maximum length of Curv1 or Curv2 in
     /// meters used to detect nul curvature (in mm)
     ///
-    /// the constructor computes the quantities  which are
+    /// the constructor computes the quantities which are
     /// necessary to check the continuity in the following cases:
     ///
-    /// case  C0
-    /// --------
-    /// - the distance between P1 and P2  with P1=Curv1 (u1)  and
+    /// case C0
+    /// -------
+    /// - the distance between P1 and P2 with P1=Curv1 (u1) and
     /// P2=Curv2(u2)
     ///
     /// case C1
     /// -------
     ///
-    /// - the angle  between  the first derivatives
+    /// - the angle between the first derivatives
     /// dCurv1(u1)           dCurv2(u2)
     /// --------     and     ---------
     /// du                   du
     ///
-    /// - the ratio   between  the magnitudes  of the first
+    /// - the ratio between the magnitudes of the first
     /// derivatives
     ///
     /// the angle value is between 0 and PI/2
     ///
-    /// case  C2
+    /// case C2
     /// -------
-    /// - the angle  between the second derivatives
+    /// - the angle between the second derivatives
     /// 2                   2
     /// d  Curv1(u1)       d Curv2(u2)
     /// ----------        ----------
@@ -147,12 +147,12 @@ impl CurveContinuity {
     ///
     /// the angle value is between 0 and PI/2
     ///
-    /// - the ratio between the magnitudes of  the second
+    /// - the ratio between the magnitudes of the second
     /// derivatives
     ///
     /// case G1
     /// -------
-    /// the angle between  the tangents at each point
+    /// the angle between the tangents at each point
     ///
     /// the angle value is between 0 and PI/2
     ///
@@ -171,9 +171,9 @@ impl CurveContinuity {
     /// where curvat1 is the curvature at the first point
     /// and curvat2 the curvature at the second point
     pub fn new_handlegeomcurve_real_handlegeomcurve_real_shape_real8(
-        Curv1: &crate::ffi_types::HandleGeomCurve,
+        Curv1: &crate::ffi_types::Handle_Geom_Curve,
         u1: f64,
-        Curv2: &crate::ffi_types::HandleGeomCurve,
+        Curv2: &crate::ffi_types::Handle_Geom_Curve,
         u2: f64,
         Order: crate::geom_abs::Shape,
         EpsNul: f64,
@@ -192,63 +192,63 @@ impl CurveContinuity {
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:125 - `LocalAnalysis_CurveContinuity::LocalAnalysis_CurveContinuity()`
     /// -u1 is the parameter of the point on Curv1
-    /// -u2 is the  parameter of the point on  Curv2
+    /// -u2 is the parameter of the point on Curv2
     /// -Order is the required continuity:
-    /// GeomAbs_C0    GeomAbs_C1  GeomAbs_C2
+    /// GeomAbs_C0 GeomAbs_C1 GeomAbs_C2
     /// GeomAbs_G1 GeomAbs_G2
     ///
-    /// -EpsNul  is  used to  detect a  a vector with nul
+    /// -EpsNul is used to detect a vector with null
     /// magnitude (in mm)
     ///
-    /// -EpsC0 is used for C0  continuity to confuse two
+    /// -EpsC0 is used for C0 continuity to confuse two
     /// points (in mm)
     ///
-    /// -EpsC1 is  an angular  tolerance in radians  used
-    /// for C1 continuity  to compare the angle between
+    /// -EpsC1 is an angular tolerance in radians used
+    /// for C1 continuity to compare the angle between
     /// the first derivatives
     ///
-    /// -EpsC2 is an   angular tolerance in radians  used
-    /// for C2  continuity to  compare the angle  between
+    /// -EpsC2 is an angular tolerance in radians used
+    /// for C2 continuity to compare the angle between
     /// the second derivatives
     ///
-    /// -EpsG1 is an  angular  tolerance in radians  used
-    /// for G1  continuity to compare  the angle  between
+    /// -EpsG1 is an angular tolerance in radians used
+    /// for G1 continuity to compare the angle between
     /// the tangents
     ///
-    /// -EpsG2 is  an angular  tolerance in radians  used
-    /// for  G2 continuity to  compare  the angle between
+    /// -EpsG2 is an angular tolerance in radians used
+    /// for G2 continuity to compare the angle between
     /// the normals
     ///
-    /// - percent  : percentage of  curvature variation (unitless)
+    /// - percent: percentage of curvature variation (unitless)
     /// used for G2 continuity
     ///
     /// - Maxlen is the maximum length of Curv1 or Curv2 in
     /// meters used to detect nul curvature (in mm)
     ///
-    /// the constructor computes the quantities  which are
+    /// the constructor computes the quantities which are
     /// necessary to check the continuity in the following cases:
     ///
-    /// case  C0
-    /// --------
-    /// - the distance between P1 and P2  with P1=Curv1 (u1)  and
+    /// case C0
+    /// -------
+    /// - the distance between P1 and P2 with P1=Curv1 (u1) and
     /// P2=Curv2(u2)
     ///
     /// case C1
     /// -------
     ///
-    /// - the angle  between  the first derivatives
+    /// - the angle between the first derivatives
     /// dCurv1(u1)           dCurv2(u2)
     /// --------     and     ---------
     /// du                   du
     ///
-    /// - the ratio   between  the magnitudes  of the first
+    /// - the ratio between the magnitudes of the first
     /// derivatives
     ///
     /// the angle value is between 0 and PI/2
     ///
-    /// case  C2
+    /// case C2
     /// -------
-    /// - the angle  between the second derivatives
+    /// - the angle between the second derivatives
     /// 2                   2
     /// d  Curv1(u1)       d Curv2(u2)
     /// ----------        ----------
@@ -257,12 +257,12 @@ impl CurveContinuity {
     ///
     /// the angle value is between 0 and PI/2
     ///
-    /// - the ratio between the magnitudes of  the second
+    /// - the ratio between the magnitudes of the second
     /// derivatives
     ///
     /// case G1
     /// -------
-    /// the angle between  the tangents at each point
+    /// the angle between the tangents at each point
     ///
     /// the angle value is between 0 and PI/2
     ///
@@ -281,9 +281,9 @@ impl CurveContinuity {
     /// where curvat1 is the curvature at the first point
     /// and curvat2 the curvature at the second point
     pub fn new_handlegeomcurve_real_handlegeomcurve_real_shape_real7(
-        Curv1: &crate::ffi_types::HandleGeomCurve,
+        Curv1: &crate::ffi_types::Handle_Geom_Curve,
         u1: f64,
-        Curv2: &crate::ffi_types::HandleGeomCurve,
+        Curv2: &crate::ffi_types::Handle_Geom_Curve,
         u2: f64,
         Order: crate::geom_abs::Shape,
         EpsNul: f64,
@@ -302,63 +302,63 @@ impl CurveContinuity {
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:125 - `LocalAnalysis_CurveContinuity::LocalAnalysis_CurveContinuity()`
     /// -u1 is the parameter of the point on Curv1
-    /// -u2 is the  parameter of the point on  Curv2
+    /// -u2 is the parameter of the point on Curv2
     /// -Order is the required continuity:
-    /// GeomAbs_C0    GeomAbs_C1  GeomAbs_C2
+    /// GeomAbs_C0 GeomAbs_C1 GeomAbs_C2
     /// GeomAbs_G1 GeomAbs_G2
     ///
-    /// -EpsNul  is  used to  detect a  a vector with nul
+    /// -EpsNul is used to detect a vector with null
     /// magnitude (in mm)
     ///
-    /// -EpsC0 is used for C0  continuity to confuse two
+    /// -EpsC0 is used for C0 continuity to confuse two
     /// points (in mm)
     ///
-    /// -EpsC1 is  an angular  tolerance in radians  used
-    /// for C1 continuity  to compare the angle between
+    /// -EpsC1 is an angular tolerance in radians used
+    /// for C1 continuity to compare the angle between
     /// the first derivatives
     ///
-    /// -EpsC2 is an   angular tolerance in radians  used
-    /// for C2  continuity to  compare the angle  between
+    /// -EpsC2 is an angular tolerance in radians used
+    /// for C2 continuity to compare the angle between
     /// the second derivatives
     ///
-    /// -EpsG1 is an  angular  tolerance in radians  used
-    /// for G1  continuity to compare  the angle  between
+    /// -EpsG1 is an angular tolerance in radians used
+    /// for G1 continuity to compare the angle between
     /// the tangents
     ///
-    /// -EpsG2 is  an angular  tolerance in radians  used
-    /// for  G2 continuity to  compare  the angle between
+    /// -EpsG2 is an angular tolerance in radians used
+    /// for G2 continuity to compare the angle between
     /// the normals
     ///
-    /// - percent  : percentage of  curvature variation (unitless)
+    /// - percent: percentage of curvature variation (unitless)
     /// used for G2 continuity
     ///
     /// - Maxlen is the maximum length of Curv1 or Curv2 in
     /// meters used to detect nul curvature (in mm)
     ///
-    /// the constructor computes the quantities  which are
+    /// the constructor computes the quantities which are
     /// necessary to check the continuity in the following cases:
     ///
-    /// case  C0
-    /// --------
-    /// - the distance between P1 and P2  with P1=Curv1 (u1)  and
+    /// case C0
+    /// -------
+    /// - the distance between P1 and P2 with P1=Curv1 (u1) and
     /// P2=Curv2(u2)
     ///
     /// case C1
     /// -------
     ///
-    /// - the angle  between  the first derivatives
+    /// - the angle between the first derivatives
     /// dCurv1(u1)           dCurv2(u2)
     /// --------     and     ---------
     /// du                   du
     ///
-    /// - the ratio   between  the magnitudes  of the first
+    /// - the ratio between the magnitudes of the first
     /// derivatives
     ///
     /// the angle value is between 0 and PI/2
     ///
-    /// case  C2
+    /// case C2
     /// -------
-    /// - the angle  between the second derivatives
+    /// - the angle between the second derivatives
     /// 2                   2
     /// d  Curv1(u1)       d Curv2(u2)
     /// ----------        ----------
@@ -367,12 +367,12 @@ impl CurveContinuity {
     ///
     /// the angle value is between 0 and PI/2
     ///
-    /// - the ratio between the magnitudes of  the second
+    /// - the ratio between the magnitudes of the second
     /// derivatives
     ///
     /// case G1
     /// -------
-    /// the angle between  the tangents at each point
+    /// the angle between the tangents at each point
     ///
     /// the angle value is between 0 and PI/2
     ///
@@ -391,9 +391,9 @@ impl CurveContinuity {
     /// where curvat1 is the curvature at the first point
     /// and curvat2 the curvature at the second point
     pub fn new_handlegeomcurve_real_handlegeomcurve_real_shape_real6(
-        Curv1: &crate::ffi_types::HandleGeomCurve,
+        Curv1: &crate::ffi_types::Handle_Geom_Curve,
         u1: f64,
-        Curv2: &crate::ffi_types::HandleGeomCurve,
+        Curv2: &crate::ffi_types::Handle_Geom_Curve,
         u2: f64,
         Order: crate::geom_abs::Shape,
         EpsNul: f64,
@@ -410,63 +410,63 @@ impl CurveContinuity {
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:125 - `LocalAnalysis_CurveContinuity::LocalAnalysis_CurveContinuity()`
     /// -u1 is the parameter of the point on Curv1
-    /// -u2 is the  parameter of the point on  Curv2
+    /// -u2 is the parameter of the point on Curv2
     /// -Order is the required continuity:
-    /// GeomAbs_C0    GeomAbs_C1  GeomAbs_C2
+    /// GeomAbs_C0 GeomAbs_C1 GeomAbs_C2
     /// GeomAbs_G1 GeomAbs_G2
     ///
-    /// -EpsNul  is  used to  detect a  a vector with nul
+    /// -EpsNul is used to detect a vector with null
     /// magnitude (in mm)
     ///
-    /// -EpsC0 is used for C0  continuity to confuse two
+    /// -EpsC0 is used for C0 continuity to confuse two
     /// points (in mm)
     ///
-    /// -EpsC1 is  an angular  tolerance in radians  used
-    /// for C1 continuity  to compare the angle between
+    /// -EpsC1 is an angular tolerance in radians used
+    /// for C1 continuity to compare the angle between
     /// the first derivatives
     ///
-    /// -EpsC2 is an   angular tolerance in radians  used
-    /// for C2  continuity to  compare the angle  between
+    /// -EpsC2 is an angular tolerance in radians used
+    /// for C2 continuity to compare the angle between
     /// the second derivatives
     ///
-    /// -EpsG1 is an  angular  tolerance in radians  used
-    /// for G1  continuity to compare  the angle  between
+    /// -EpsG1 is an angular tolerance in radians used
+    /// for G1 continuity to compare the angle between
     /// the tangents
     ///
-    /// -EpsG2 is  an angular  tolerance in radians  used
-    /// for  G2 continuity to  compare  the angle between
+    /// -EpsG2 is an angular tolerance in radians used
+    /// for G2 continuity to compare the angle between
     /// the normals
     ///
-    /// - percent  : percentage of  curvature variation (unitless)
+    /// - percent: percentage of curvature variation (unitless)
     /// used for G2 continuity
     ///
     /// - Maxlen is the maximum length of Curv1 or Curv2 in
     /// meters used to detect nul curvature (in mm)
     ///
-    /// the constructor computes the quantities  which are
+    /// the constructor computes the quantities which are
     /// necessary to check the continuity in the following cases:
     ///
-    /// case  C0
-    /// --------
-    /// - the distance between P1 and P2  with P1=Curv1 (u1)  and
+    /// case C0
+    /// -------
+    /// - the distance between P1 and P2 with P1=Curv1 (u1) and
     /// P2=Curv2(u2)
     ///
     /// case C1
     /// -------
     ///
-    /// - the angle  between  the first derivatives
+    /// - the angle between the first derivatives
     /// dCurv1(u1)           dCurv2(u2)
     /// --------     and     ---------
     /// du                   du
     ///
-    /// - the ratio   between  the magnitudes  of the first
+    /// - the ratio between the magnitudes of the first
     /// derivatives
     ///
     /// the angle value is between 0 and PI/2
     ///
-    /// case  C2
+    /// case C2
     /// -------
-    /// - the angle  between the second derivatives
+    /// - the angle between the second derivatives
     /// 2                   2
     /// d  Curv1(u1)       d Curv2(u2)
     /// ----------        ----------
@@ -475,12 +475,12 @@ impl CurveContinuity {
     ///
     /// the angle value is between 0 and PI/2
     ///
-    /// - the ratio between the magnitudes of  the second
+    /// - the ratio between the magnitudes of the second
     /// derivatives
     ///
     /// case G1
     /// -------
-    /// the angle between  the tangents at each point
+    /// the angle between the tangents at each point
     ///
     /// the angle value is between 0 and PI/2
     ///
@@ -499,9 +499,9 @@ impl CurveContinuity {
     /// where curvat1 is the curvature at the first point
     /// and curvat2 the curvature at the second point
     pub fn new_handlegeomcurve_real_handlegeomcurve_real_shape_real5(
-        Curv1: &crate::ffi_types::HandleGeomCurve,
+        Curv1: &crate::ffi_types::Handle_Geom_Curve,
         u1: f64,
-        Curv2: &crate::ffi_types::HandleGeomCurve,
+        Curv2: &crate::ffi_types::Handle_Geom_Curve,
         u2: f64,
         Order: crate::geom_abs::Shape,
         EpsNul: f64,
@@ -517,63 +517,63 @@ impl CurveContinuity {
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:125 - `LocalAnalysis_CurveContinuity::LocalAnalysis_CurveContinuity()`
     /// -u1 is the parameter of the point on Curv1
-    /// -u2 is the  parameter of the point on  Curv2
+    /// -u2 is the parameter of the point on Curv2
     /// -Order is the required continuity:
-    /// GeomAbs_C0    GeomAbs_C1  GeomAbs_C2
+    /// GeomAbs_C0 GeomAbs_C1 GeomAbs_C2
     /// GeomAbs_G1 GeomAbs_G2
     ///
-    /// -EpsNul  is  used to  detect a  a vector with nul
+    /// -EpsNul is used to detect a vector with null
     /// magnitude (in mm)
     ///
-    /// -EpsC0 is used for C0  continuity to confuse two
+    /// -EpsC0 is used for C0 continuity to confuse two
     /// points (in mm)
     ///
-    /// -EpsC1 is  an angular  tolerance in radians  used
-    /// for C1 continuity  to compare the angle between
+    /// -EpsC1 is an angular tolerance in radians used
+    /// for C1 continuity to compare the angle between
     /// the first derivatives
     ///
-    /// -EpsC2 is an   angular tolerance in radians  used
-    /// for C2  continuity to  compare the angle  between
+    /// -EpsC2 is an angular tolerance in radians used
+    /// for C2 continuity to compare the angle between
     /// the second derivatives
     ///
-    /// -EpsG1 is an  angular  tolerance in radians  used
-    /// for G1  continuity to compare  the angle  between
+    /// -EpsG1 is an angular tolerance in radians used
+    /// for G1 continuity to compare the angle between
     /// the tangents
     ///
-    /// -EpsG2 is  an angular  tolerance in radians  used
-    /// for  G2 continuity to  compare  the angle between
+    /// -EpsG2 is an angular tolerance in radians used
+    /// for G2 continuity to compare the angle between
     /// the normals
     ///
-    /// - percent  : percentage of  curvature variation (unitless)
+    /// - percent: percentage of curvature variation (unitless)
     /// used for G2 continuity
     ///
     /// - Maxlen is the maximum length of Curv1 or Curv2 in
     /// meters used to detect nul curvature (in mm)
     ///
-    /// the constructor computes the quantities  which are
+    /// the constructor computes the quantities which are
     /// necessary to check the continuity in the following cases:
     ///
-    /// case  C0
-    /// --------
-    /// - the distance between P1 and P2  with P1=Curv1 (u1)  and
+    /// case C0
+    /// -------
+    /// - the distance between P1 and P2 with P1=Curv1 (u1) and
     /// P2=Curv2(u2)
     ///
     /// case C1
     /// -------
     ///
-    /// - the angle  between  the first derivatives
+    /// - the angle between the first derivatives
     /// dCurv1(u1)           dCurv2(u2)
     /// --------     and     ---------
     /// du                   du
     ///
-    /// - the ratio   between  the magnitudes  of the first
+    /// - the ratio between the magnitudes of the first
     /// derivatives
     ///
     /// the angle value is between 0 and PI/2
     ///
-    /// case  C2
+    /// case C2
     /// -------
-    /// - the angle  between the second derivatives
+    /// - the angle between the second derivatives
     /// 2                   2
     /// d  Curv1(u1)       d Curv2(u2)
     /// ----------        ----------
@@ -582,12 +582,12 @@ impl CurveContinuity {
     ///
     /// the angle value is between 0 and PI/2
     ///
-    /// - the ratio between the magnitudes of  the second
+    /// - the ratio between the magnitudes of the second
     /// derivatives
     ///
     /// case G1
     /// -------
-    /// the angle between  the tangents at each point
+    /// the angle between the tangents at each point
     ///
     /// the angle value is between 0 and PI/2
     ///
@@ -606,9 +606,9 @@ impl CurveContinuity {
     /// where curvat1 is the curvature at the first point
     /// and curvat2 the curvature at the second point
     pub fn new_handlegeomcurve_real_handlegeomcurve_real_shape_real4(
-        Curv1: &crate::ffi_types::HandleGeomCurve,
+        Curv1: &crate::ffi_types::Handle_Geom_Curve,
         u1: f64,
-        Curv2: &crate::ffi_types::HandleGeomCurve,
+        Curv2: &crate::ffi_types::Handle_Geom_Curve,
         u2: f64,
         Order: crate::geom_abs::Shape,
         EpsNul: f64,
@@ -623,63 +623,63 @@ impl CurveContinuity {
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:125 - `LocalAnalysis_CurveContinuity::LocalAnalysis_CurveContinuity()`
     /// -u1 is the parameter of the point on Curv1
-    /// -u2 is the  parameter of the point on  Curv2
+    /// -u2 is the parameter of the point on Curv2
     /// -Order is the required continuity:
-    /// GeomAbs_C0    GeomAbs_C1  GeomAbs_C2
+    /// GeomAbs_C0 GeomAbs_C1 GeomAbs_C2
     /// GeomAbs_G1 GeomAbs_G2
     ///
-    /// -EpsNul  is  used to  detect a  a vector with nul
+    /// -EpsNul is used to detect a vector with null
     /// magnitude (in mm)
     ///
-    /// -EpsC0 is used for C0  continuity to confuse two
+    /// -EpsC0 is used for C0 continuity to confuse two
     /// points (in mm)
     ///
-    /// -EpsC1 is  an angular  tolerance in radians  used
-    /// for C1 continuity  to compare the angle between
+    /// -EpsC1 is an angular tolerance in radians used
+    /// for C1 continuity to compare the angle between
     /// the first derivatives
     ///
-    /// -EpsC2 is an   angular tolerance in radians  used
-    /// for C2  continuity to  compare the angle  between
+    /// -EpsC2 is an angular tolerance in radians used
+    /// for C2 continuity to compare the angle between
     /// the second derivatives
     ///
-    /// -EpsG1 is an  angular  tolerance in radians  used
-    /// for G1  continuity to compare  the angle  between
+    /// -EpsG1 is an angular tolerance in radians used
+    /// for G1 continuity to compare the angle between
     /// the tangents
     ///
-    /// -EpsG2 is  an angular  tolerance in radians  used
-    /// for  G2 continuity to  compare  the angle between
+    /// -EpsG2 is an angular tolerance in radians used
+    /// for G2 continuity to compare the angle between
     /// the normals
     ///
-    /// - percent  : percentage of  curvature variation (unitless)
+    /// - percent: percentage of curvature variation (unitless)
     /// used for G2 continuity
     ///
     /// - Maxlen is the maximum length of Curv1 or Curv2 in
     /// meters used to detect nul curvature (in mm)
     ///
-    /// the constructor computes the quantities  which are
+    /// the constructor computes the quantities which are
     /// necessary to check the continuity in the following cases:
     ///
-    /// case  C0
-    /// --------
-    /// - the distance between P1 and P2  with P1=Curv1 (u1)  and
+    /// case C0
+    /// -------
+    /// - the distance between P1 and P2 with P1=Curv1 (u1) and
     /// P2=Curv2(u2)
     ///
     /// case C1
     /// -------
     ///
-    /// - the angle  between  the first derivatives
+    /// - the angle between the first derivatives
     /// dCurv1(u1)           dCurv2(u2)
     /// --------     and     ---------
     /// du                   du
     ///
-    /// - the ratio   between  the magnitudes  of the first
+    /// - the ratio between the magnitudes of the first
     /// derivatives
     ///
     /// the angle value is between 0 and PI/2
     ///
-    /// case  C2
+    /// case C2
     /// -------
-    /// - the angle  between the second derivatives
+    /// - the angle between the second derivatives
     /// 2                   2
     /// d  Curv1(u1)       d Curv2(u2)
     /// ----------        ----------
@@ -688,12 +688,12 @@ impl CurveContinuity {
     ///
     /// the angle value is between 0 and PI/2
     ///
-    /// - the ratio between the magnitudes of  the second
+    /// - the ratio between the magnitudes of the second
     /// derivatives
     ///
     /// case G1
     /// -------
-    /// the angle between  the tangents at each point
+    /// the angle between the tangents at each point
     ///
     /// the angle value is between 0 and PI/2
     ///
@@ -712,9 +712,9 @@ impl CurveContinuity {
     /// where curvat1 is the curvature at the first point
     /// and curvat2 the curvature at the second point
     pub fn new_handlegeomcurve_real_handlegeomcurve_real_shape_real3(
-        Curv1: &crate::ffi_types::HandleGeomCurve,
+        Curv1: &crate::ffi_types::Handle_Geom_Curve,
         u1: f64,
-        Curv2: &crate::ffi_types::HandleGeomCurve,
+        Curv2: &crate::ffi_types::Handle_Geom_Curve,
         u2: f64,
         Order: crate::geom_abs::Shape,
         EpsNul: f64,
@@ -728,63 +728,63 @@ impl CurveContinuity {
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:125 - `LocalAnalysis_CurveContinuity::LocalAnalysis_CurveContinuity()`
     /// -u1 is the parameter of the point on Curv1
-    /// -u2 is the  parameter of the point on  Curv2
+    /// -u2 is the parameter of the point on Curv2
     /// -Order is the required continuity:
-    /// GeomAbs_C0    GeomAbs_C1  GeomAbs_C2
+    /// GeomAbs_C0 GeomAbs_C1 GeomAbs_C2
     /// GeomAbs_G1 GeomAbs_G2
     ///
-    /// -EpsNul  is  used to  detect a  a vector with nul
+    /// -EpsNul is used to detect a vector with null
     /// magnitude (in mm)
     ///
-    /// -EpsC0 is used for C0  continuity to confuse two
+    /// -EpsC0 is used for C0 continuity to confuse two
     /// points (in mm)
     ///
-    /// -EpsC1 is  an angular  tolerance in radians  used
-    /// for C1 continuity  to compare the angle between
+    /// -EpsC1 is an angular tolerance in radians used
+    /// for C1 continuity to compare the angle between
     /// the first derivatives
     ///
-    /// -EpsC2 is an   angular tolerance in radians  used
-    /// for C2  continuity to  compare the angle  between
+    /// -EpsC2 is an angular tolerance in radians used
+    /// for C2 continuity to compare the angle between
     /// the second derivatives
     ///
-    /// -EpsG1 is an  angular  tolerance in radians  used
-    /// for G1  continuity to compare  the angle  between
+    /// -EpsG1 is an angular tolerance in radians used
+    /// for G1 continuity to compare the angle between
     /// the tangents
     ///
-    /// -EpsG2 is  an angular  tolerance in radians  used
-    /// for  G2 continuity to  compare  the angle between
+    /// -EpsG2 is an angular tolerance in radians used
+    /// for G2 continuity to compare the angle between
     /// the normals
     ///
-    /// - percent  : percentage of  curvature variation (unitless)
+    /// - percent: percentage of curvature variation (unitless)
     /// used for G2 continuity
     ///
     /// - Maxlen is the maximum length of Curv1 or Curv2 in
     /// meters used to detect nul curvature (in mm)
     ///
-    /// the constructor computes the quantities  which are
+    /// the constructor computes the quantities which are
     /// necessary to check the continuity in the following cases:
     ///
-    /// case  C0
-    /// --------
-    /// - the distance between P1 and P2  with P1=Curv1 (u1)  and
+    /// case C0
+    /// -------
+    /// - the distance between P1 and P2 with P1=Curv1 (u1) and
     /// P2=Curv2(u2)
     ///
     /// case C1
     /// -------
     ///
-    /// - the angle  between  the first derivatives
+    /// - the angle between the first derivatives
     /// dCurv1(u1)           dCurv2(u2)
     /// --------     and     ---------
     /// du                   du
     ///
-    /// - the ratio   between  the magnitudes  of the first
+    /// - the ratio between the magnitudes of the first
     /// derivatives
     ///
     /// the angle value is between 0 and PI/2
     ///
-    /// case  C2
+    /// case C2
     /// -------
-    /// - the angle  between the second derivatives
+    /// - the angle between the second derivatives
     /// 2                   2
     /// d  Curv1(u1)       d Curv2(u2)
     /// ----------        ----------
@@ -793,12 +793,12 @@ impl CurveContinuity {
     ///
     /// the angle value is between 0 and PI/2
     ///
-    /// - the ratio between the magnitudes of  the second
+    /// - the ratio between the magnitudes of the second
     /// derivatives
     ///
     /// case G1
     /// -------
-    /// the angle between  the tangents at each point
+    /// the angle between the tangents at each point
     ///
     /// the angle value is between 0 and PI/2
     ///
@@ -817,9 +817,9 @@ impl CurveContinuity {
     /// where curvat1 is the curvature at the first point
     /// and curvat2 the curvature at the second point
     pub fn new_handlegeomcurve_real_handlegeomcurve_real_shape_real2(
-        Curv1: &crate::ffi_types::HandleGeomCurve,
+        Curv1: &crate::ffi_types::Handle_Geom_Curve,
         u1: f64,
-        Curv2: &crate::ffi_types::HandleGeomCurve,
+        Curv2: &crate::ffi_types::Handle_Geom_Curve,
         u2: f64,
         Order: crate::geom_abs::Shape,
         EpsNul: f64,
@@ -832,63 +832,63 @@ impl CurveContinuity {
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:125 - `LocalAnalysis_CurveContinuity::LocalAnalysis_CurveContinuity()`
     /// -u1 is the parameter of the point on Curv1
-    /// -u2 is the  parameter of the point on  Curv2
+    /// -u2 is the parameter of the point on Curv2
     /// -Order is the required continuity:
-    /// GeomAbs_C0    GeomAbs_C1  GeomAbs_C2
+    /// GeomAbs_C0 GeomAbs_C1 GeomAbs_C2
     /// GeomAbs_G1 GeomAbs_G2
     ///
-    /// -EpsNul  is  used to  detect a  a vector with nul
+    /// -EpsNul is used to detect a vector with null
     /// magnitude (in mm)
     ///
-    /// -EpsC0 is used for C0  continuity to confuse two
+    /// -EpsC0 is used for C0 continuity to confuse two
     /// points (in mm)
     ///
-    /// -EpsC1 is  an angular  tolerance in radians  used
-    /// for C1 continuity  to compare the angle between
+    /// -EpsC1 is an angular tolerance in radians used
+    /// for C1 continuity to compare the angle between
     /// the first derivatives
     ///
-    /// -EpsC2 is an   angular tolerance in radians  used
-    /// for C2  continuity to  compare the angle  between
+    /// -EpsC2 is an angular tolerance in radians used
+    /// for C2 continuity to compare the angle between
     /// the second derivatives
     ///
-    /// -EpsG1 is an  angular  tolerance in radians  used
-    /// for G1  continuity to compare  the angle  between
+    /// -EpsG1 is an angular tolerance in radians used
+    /// for G1 continuity to compare the angle between
     /// the tangents
     ///
-    /// -EpsG2 is  an angular  tolerance in radians  used
-    /// for  G2 continuity to  compare  the angle between
+    /// -EpsG2 is an angular tolerance in radians used
+    /// for G2 continuity to compare the angle between
     /// the normals
     ///
-    /// - percent  : percentage of  curvature variation (unitless)
+    /// - percent: percentage of curvature variation (unitless)
     /// used for G2 continuity
     ///
     /// - Maxlen is the maximum length of Curv1 or Curv2 in
     /// meters used to detect nul curvature (in mm)
     ///
-    /// the constructor computes the quantities  which are
+    /// the constructor computes the quantities which are
     /// necessary to check the continuity in the following cases:
     ///
-    /// case  C0
-    /// --------
-    /// - the distance between P1 and P2  with P1=Curv1 (u1)  and
+    /// case C0
+    /// -------
+    /// - the distance between P1 and P2 with P1=Curv1 (u1) and
     /// P2=Curv2(u2)
     ///
     /// case C1
     /// -------
     ///
-    /// - the angle  between  the first derivatives
+    /// - the angle between the first derivatives
     /// dCurv1(u1)           dCurv2(u2)
     /// --------     and     ---------
     /// du                   du
     ///
-    /// - the ratio   between  the magnitudes  of the first
+    /// - the ratio between the magnitudes of the first
     /// derivatives
     ///
     /// the angle value is between 0 and PI/2
     ///
-    /// case  C2
+    /// case C2
     /// -------
-    /// - the angle  between the second derivatives
+    /// - the angle between the second derivatives
     /// 2                   2
     /// d  Curv1(u1)       d Curv2(u2)
     /// ----------        ----------
@@ -897,12 +897,12 @@ impl CurveContinuity {
     ///
     /// the angle value is between 0 and PI/2
     ///
-    /// - the ratio between the magnitudes of  the second
+    /// - the ratio between the magnitudes of the second
     /// derivatives
     ///
     /// case G1
     /// -------
-    /// the angle between  the tangents at each point
+    /// the angle between the tangents at each point
     ///
     /// the angle value is between 0 and PI/2
     ///
@@ -921,9 +921,9 @@ impl CurveContinuity {
     /// where curvat1 is the curvature at the first point
     /// and curvat2 the curvature at the second point
     pub fn new_handlegeomcurve_real_handlegeomcurve_real_shape_real(
-        Curv1: &crate::ffi_types::HandleGeomCurve,
+        Curv1: &crate::ffi_types::Handle_Geom_Curve,
         u1: f64,
-        Curv2: &crate::ffi_types::HandleGeomCurve,
+        Curv2: &crate::ffi_types::Handle_Geom_Curve,
         u2: f64,
         Order: crate::geom_abs::Shape,
         EpsNul: f64,
@@ -935,63 +935,63 @@ impl CurveContinuity {
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:125 - `LocalAnalysis_CurveContinuity::LocalAnalysis_CurveContinuity()`
     /// -u1 is the parameter of the point on Curv1
-    /// -u2 is the  parameter of the point on  Curv2
+    /// -u2 is the parameter of the point on Curv2
     /// -Order is the required continuity:
-    /// GeomAbs_C0    GeomAbs_C1  GeomAbs_C2
+    /// GeomAbs_C0 GeomAbs_C1 GeomAbs_C2
     /// GeomAbs_G1 GeomAbs_G2
     ///
-    /// -EpsNul  is  used to  detect a  a vector with nul
+    /// -EpsNul is used to detect a vector with null
     /// magnitude (in mm)
     ///
-    /// -EpsC0 is used for C0  continuity to confuse two
+    /// -EpsC0 is used for C0 continuity to confuse two
     /// points (in mm)
     ///
-    /// -EpsC1 is  an angular  tolerance in radians  used
-    /// for C1 continuity  to compare the angle between
+    /// -EpsC1 is an angular tolerance in radians used
+    /// for C1 continuity to compare the angle between
     /// the first derivatives
     ///
-    /// -EpsC2 is an   angular tolerance in radians  used
-    /// for C2  continuity to  compare the angle  between
+    /// -EpsC2 is an angular tolerance in radians used
+    /// for C2 continuity to compare the angle between
     /// the second derivatives
     ///
-    /// -EpsG1 is an  angular  tolerance in radians  used
-    /// for G1  continuity to compare  the angle  between
+    /// -EpsG1 is an angular tolerance in radians used
+    /// for G1 continuity to compare the angle between
     /// the tangents
     ///
-    /// -EpsG2 is  an angular  tolerance in radians  used
-    /// for  G2 continuity to  compare  the angle between
+    /// -EpsG2 is an angular tolerance in radians used
+    /// for G2 continuity to compare the angle between
     /// the normals
     ///
-    /// - percent  : percentage of  curvature variation (unitless)
+    /// - percent: percentage of curvature variation (unitless)
     /// used for G2 continuity
     ///
     /// - Maxlen is the maximum length of Curv1 or Curv2 in
     /// meters used to detect nul curvature (in mm)
     ///
-    /// the constructor computes the quantities  which are
+    /// the constructor computes the quantities which are
     /// necessary to check the continuity in the following cases:
     ///
-    /// case  C0
-    /// --------
-    /// - the distance between P1 and P2  with P1=Curv1 (u1)  and
+    /// case C0
+    /// -------
+    /// - the distance between P1 and P2 with P1=Curv1 (u1) and
     /// P2=Curv2(u2)
     ///
     /// case C1
     /// -------
     ///
-    /// - the angle  between  the first derivatives
+    /// - the angle between the first derivatives
     /// dCurv1(u1)           dCurv2(u2)
     /// --------     and     ---------
     /// du                   du
     ///
-    /// - the ratio   between  the magnitudes  of the first
+    /// - the ratio between the magnitudes of the first
     /// derivatives
     ///
     /// the angle value is between 0 and PI/2
     ///
-    /// case  C2
+    /// case C2
     /// -------
-    /// - the angle  between the second derivatives
+    /// - the angle between the second derivatives
     /// 2                   2
     /// d  Curv1(u1)       d Curv2(u2)
     /// ----------        ----------
@@ -1000,12 +1000,12 @@ impl CurveContinuity {
     ///
     /// the angle value is between 0 and PI/2
     ///
-    /// - the ratio between the magnitudes of  the second
+    /// - the ratio between the magnitudes of the second
     /// derivatives
     ///
     /// case G1
     /// -------
-    /// the angle between  the tangents at each point
+    /// the angle between the tangents at each point
     ///
     /// the angle value is between 0 and PI/2
     ///
@@ -1024,9 +1024,9 @@ impl CurveContinuity {
     /// where curvat1 is the curvature at the first point
     /// and curvat2 the curvature at the second point
     pub fn new_handlegeomcurve_real_handlegeomcurve_real_shape(
-        Curv1: &crate::ffi_types::HandleGeomCurve,
+        Curv1: &crate::ffi_types::Handle_Geom_Curve,
         u1: f64,
-        Curv2: &crate::ffi_types::HandleGeomCurve,
+        Curv2: &crate::ffi_types::Handle_Geom_Curve,
         u2: f64,
         Order: crate::geom_abs::Shape,
     ) -> crate::OwnedPtr<Self> {
@@ -1176,7 +1176,7 @@ impl CurveContinuity {
 
 /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:32 - `LocalAnalysis_SurfaceContinuity`
 /// This class gives tools to check local continuity C0
-/// C1 C2 G1 G2 between  two points situated on two surfaces
+/// C1 C2 G1 G2 between two points situated on two surfaces
 pub use crate::ffi_types::LocalAnalysis_SurfaceContinuity as SurfaceContinuity;
 
 unsafe impl crate::CppDeletable for SurfaceContinuity {
@@ -1189,42 +1189,42 @@ unsafe impl crate::CppDeletable for SurfaceContinuity {
 
 impl SurfaceContinuity {
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:120 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
-    /// -u1,v1 are  the parameters of the point on Surf1
-    /// -u2,v2  are  the  parameters of the point on Surf2
-    /// -Order  is the required continuity:
-    /// GeomAbs_C0    GeomAbs_C1  GeomAbs_C2
+    /// -u1,v1 are the parameters of the point on Surf1
+    /// -u2,v2 are the parameters of the point on Surf2
+    /// -Order is the required continuity:
+    /// GeomAbs_C0 GeomAbs_C1 GeomAbs_C2
     /// GeomAbs_G1 GeomAbs_G2
     ///
-    /// -EpsNul  is  used to  detect a  a vector with nul
+    /// -EpsNul is used to detect a a vector with nul
     /// magnitude
     ///
-    /// -EpsC0 is used for C0  continuity to confuse two
+    /// -EpsC0 is used for C0 continuity to confuse two
     /// points (in mm)
     ///
-    /// -EpsC1 is  an angular  tolerance in radians  used
-    /// for C1 continuity  to compare the angle between
+    /// -EpsC1 is an angular tolerance in radians used
+    /// for C1 continuity to compare the angle between
     /// the first derivatives
     ///
-    /// -EpsC2 is an   angular tolerance in radians  used
-    /// for C2  continuity to  compare the angle  between
+    /// -EpsC2 is an angular tolerance in radians used
+    /// for C2 continuity to compare the angle between
     /// the second derivatives
     ///
-    /// -EpsG1 is an  angular  tolerance in radians  used
-    /// for G1  continuity to compare  the angle  between
-    /// the  normals
+    /// -EpsG1 is an angular tolerance in radians used
+    /// for G1 continuity to compare the angle between
+    /// the normals
     ///
-    /// -Percent  : percentage of  curvature variation (unitless)
+    /// -Percent: percentage of curvature variation (unitless)
     /// used for G2 continuity
     ///
-    /// - Maxlen is the maximum length of Surf1 or Surf2  in
+    /// - Maxlen is the maximum length of Surf1 or Surf2 in
     /// meters used to detect null curvature (in mm)
     ///
-    /// the constructor computes the quantities  which are
+    /// the constructor computes the quantities which are
     /// necessary to check the continuity in the following cases:
     ///
-    /// case  C0
+    /// case C0
     /// --------
-    /// - the distance between P1 and P2  with P1=Surf (u1,v1)  and
+    /// - the distance between P1 and P2 with P1=Surf (u1,v1) and
     /// P2=Surfv2(u2,v2)
     ///
     /// case C1
@@ -1244,39 +1244,39 @@ impl SurfaceContinuity {
     /// --------         and         ---------
     /// dv                           dv
     ///
-    /// - the ratio between  the magnitudes of  the first derivatives  in  u
-    /// - the  ratio  between  the magnitudes of the first derivatives in v
+    /// - the ratio between the magnitudes of the first derivatives in u
+    /// - the ratio between the magnitudes of the first derivatives in v
     ///
-    /// the angle value is between  0 and pi/2
+    /// the angle value is between 0 and pi/2
     ///
-    /// case  C2
+    /// case C2
     /// -------
-    /// - the  angle  between the second derivatives in u
+    /// - the angle between the second derivatives in u
     /// 2                  2
     /// d Surf1(u1,v1)    d  Surf2(u2,v2)
     /// ----------        ----------
     /// 2                  2
     /// d u               d  u
     ///
-    /// - the ratio between the  magnitudes of the second derivatives in  u
-    /// - the  ratio between the  magnitudes of the  second derivatives in v
+    /// - the ratio between the magnitudes of the second derivatives in u
+    /// - the ratio between the magnitudes of the second derivatives in v
     ///
     /// the angle value is between 0 and PI/2
     ///
     /// case G1
     /// -------
-    /// -the angle between  the normals  at each point
+    /// -the angle between the normals at each point
     /// the angle value is between 0 and PI/2
     ///
-    /// case  G2
+    /// case G2
     /// -------
-    /// - the maximum  normal curvature gap between the two
+    /// - the maximum normal curvature gap between the two
     /// points
     pub fn new_handlegeomsurface_real2_handlegeomsurface_real2_shape_real7(
-        Surf1: &crate::ffi_types::HandleGeomSurface,
+        Surf1: &crate::ffi_types::Handle_Geom_Surface,
         u1: f64,
         v1: f64,
-        Surf2: &crate::ffi_types::HandleGeomSurface,
+        Surf2: &crate::ffi_types::Handle_Geom_Surface,
         u2: f64,
         v2: f64,
         Order: crate::geom_abs::Shape,
@@ -1295,11 +1295,11 @@ impl SurfaceContinuity {
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:135 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
     pub fn new_handlegeom2dcurve2_real_handlegeomsurface2_shape_real7(
-        curv1: &crate::ffi_types::HandleGeom2dCurve,
-        curv2: &crate::ffi_types::HandleGeom2dCurve,
+        curv1: &crate::ffi_types::Handle_Geom2d_Curve,
+        curv2: &crate::ffi_types::Handle_Geom2d_Curve,
         U: f64,
-        Surf1: &crate::ffi_types::HandleGeomSurface,
-        Surf2: &crate::ffi_types::HandleGeomSurface,
+        Surf1: &crate::ffi_types::Handle_Geom_Surface,
+        Surf2: &crate::ffi_types::Handle_Geom_Surface,
         Order: crate::geom_abs::Shape,
         EpsNul: f64,
         EpsC0: f64,
@@ -1315,8 +1315,8 @@ impl SurfaceContinuity {
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:151 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
-    /// This  constructor  is  used  when  we  want  to compute  many  analysis.
-    /// After  we  use  the  method  ComputeAnalysis
+    /// This constructor is used when we want to compute many analysis.
+    /// After we use the method ComputeAnalysis
     pub fn new_real7(
         EpsNul: f64,
         EpsC0: f64,
@@ -1336,42 +1336,42 @@ impl SurfaceContinuity {
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:120 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
-    /// -u1,v1 are  the parameters of the point on Surf1
-    /// -u2,v2  are  the  parameters of the point on Surf2
-    /// -Order  is the required continuity:
-    /// GeomAbs_C0    GeomAbs_C1  GeomAbs_C2
+    /// -u1,v1 are the parameters of the point on Surf1
+    /// -u2,v2 are the parameters of the point on Surf2
+    /// -Order is the required continuity:
+    /// GeomAbs_C0 GeomAbs_C1 GeomAbs_C2
     /// GeomAbs_G1 GeomAbs_G2
     ///
-    /// -EpsNul  is  used to  detect a  a vector with nul
+    /// -EpsNul is used to detect a a vector with nul
     /// magnitude
     ///
-    /// -EpsC0 is used for C0  continuity to confuse two
+    /// -EpsC0 is used for C0 continuity to confuse two
     /// points (in mm)
     ///
-    /// -EpsC1 is  an angular  tolerance in radians  used
-    /// for C1 continuity  to compare the angle between
+    /// -EpsC1 is an angular tolerance in radians used
+    /// for C1 continuity to compare the angle between
     /// the first derivatives
     ///
-    /// -EpsC2 is an   angular tolerance in radians  used
-    /// for C2  continuity to  compare the angle  between
+    /// -EpsC2 is an angular tolerance in radians used
+    /// for C2 continuity to compare the angle between
     /// the second derivatives
     ///
-    /// -EpsG1 is an  angular  tolerance in radians  used
-    /// for G1  continuity to compare  the angle  between
-    /// the  normals
+    /// -EpsG1 is an angular tolerance in radians used
+    /// for G1 continuity to compare the angle between
+    /// the normals
     ///
-    /// -Percent  : percentage of  curvature variation (unitless)
+    /// -Percent: percentage of curvature variation (unitless)
     /// used for G2 continuity
     ///
-    /// - Maxlen is the maximum length of Surf1 or Surf2  in
+    /// - Maxlen is the maximum length of Surf1 or Surf2 in
     /// meters used to detect null curvature (in mm)
     ///
-    /// the constructor computes the quantities  which are
+    /// the constructor computes the quantities which are
     /// necessary to check the continuity in the following cases:
     ///
-    /// case  C0
+    /// case C0
     /// --------
-    /// - the distance between P1 and P2  with P1=Surf (u1,v1)  and
+    /// - the distance between P1 and P2 with P1=Surf (u1,v1) and
     /// P2=Surfv2(u2,v2)
     ///
     /// case C1
@@ -1391,39 +1391,39 @@ impl SurfaceContinuity {
     /// --------         and         ---------
     /// dv                           dv
     ///
-    /// - the ratio between  the magnitudes of  the first derivatives  in  u
-    /// - the  ratio  between  the magnitudes of the first derivatives in v
+    /// - the ratio between the magnitudes of the first derivatives in u
+    /// - the ratio between the magnitudes of the first derivatives in v
     ///
-    /// the angle value is between  0 and pi/2
+    /// the angle value is between 0 and pi/2
     ///
-    /// case  C2
+    /// case C2
     /// -------
-    /// - the  angle  between the second derivatives in u
+    /// - the angle between the second derivatives in u
     /// 2                  2
     /// d Surf1(u1,v1)    d  Surf2(u2,v2)
     /// ----------        ----------
     /// 2                  2
     /// d u               d  u
     ///
-    /// - the ratio between the  magnitudes of the second derivatives in  u
-    /// - the  ratio between the  magnitudes of the  second derivatives in v
+    /// - the ratio between the magnitudes of the second derivatives in u
+    /// - the ratio between the magnitudes of the second derivatives in v
     ///
     /// the angle value is between 0 and PI/2
     ///
     /// case G1
     /// -------
-    /// -the angle between  the normals  at each point
+    /// -the angle between the normals at each point
     /// the angle value is between 0 and PI/2
     ///
-    /// case  G2
+    /// case G2
     /// -------
-    /// - the maximum  normal curvature gap between the two
+    /// - the maximum normal curvature gap between the two
     /// points
     pub fn new_handlegeomsurface_real2_handlegeomsurface_real2_shape_real6(
-        Surf1: &crate::ffi_types::HandleGeomSurface,
+        Surf1: &crate::ffi_types::Handle_Geom_Surface,
         u1: f64,
         v1: f64,
-        Surf2: &crate::ffi_types::HandleGeomSurface,
+        Surf2: &crate::ffi_types::Handle_Geom_Surface,
         u2: f64,
         v2: f64,
         Order: crate::geom_abs::Shape,
@@ -1441,42 +1441,42 @@ impl SurfaceContinuity {
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:120 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
-    /// -u1,v1 are  the parameters of the point on Surf1
-    /// -u2,v2  are  the  parameters of the point on Surf2
-    /// -Order  is the required continuity:
-    /// GeomAbs_C0    GeomAbs_C1  GeomAbs_C2
+    /// -u1,v1 are the parameters of the point on Surf1
+    /// -u2,v2 are the parameters of the point on Surf2
+    /// -Order is the required continuity:
+    /// GeomAbs_C0 GeomAbs_C1 GeomAbs_C2
     /// GeomAbs_G1 GeomAbs_G2
     ///
-    /// -EpsNul  is  used to  detect a  a vector with nul
+    /// -EpsNul is used to detect a a vector with nul
     /// magnitude
     ///
-    /// -EpsC0 is used for C0  continuity to confuse two
+    /// -EpsC0 is used for C0 continuity to confuse two
     /// points (in mm)
     ///
-    /// -EpsC1 is  an angular  tolerance in radians  used
-    /// for C1 continuity  to compare the angle between
+    /// -EpsC1 is an angular tolerance in radians used
+    /// for C1 continuity to compare the angle between
     /// the first derivatives
     ///
-    /// -EpsC2 is an   angular tolerance in radians  used
-    /// for C2  continuity to  compare the angle  between
+    /// -EpsC2 is an angular tolerance in radians used
+    /// for C2 continuity to compare the angle between
     /// the second derivatives
     ///
-    /// -EpsG1 is an  angular  tolerance in radians  used
-    /// for G1  continuity to compare  the angle  between
-    /// the  normals
+    /// -EpsG1 is an angular tolerance in radians used
+    /// for G1 continuity to compare the angle between
+    /// the normals
     ///
-    /// -Percent  : percentage of  curvature variation (unitless)
+    /// -Percent: percentage of curvature variation (unitless)
     /// used for G2 continuity
     ///
-    /// - Maxlen is the maximum length of Surf1 or Surf2  in
+    /// - Maxlen is the maximum length of Surf1 or Surf2 in
     /// meters used to detect null curvature (in mm)
     ///
-    /// the constructor computes the quantities  which are
+    /// the constructor computes the quantities which are
     /// necessary to check the continuity in the following cases:
     ///
-    /// case  C0
+    /// case C0
     /// --------
-    /// - the distance between P1 and P2  with P1=Surf (u1,v1)  and
+    /// - the distance between P1 and P2 with P1=Surf (u1,v1) and
     /// P2=Surfv2(u2,v2)
     ///
     /// case C1
@@ -1496,39 +1496,39 @@ impl SurfaceContinuity {
     /// --------         and         ---------
     /// dv                           dv
     ///
-    /// - the ratio between  the magnitudes of  the first derivatives  in  u
-    /// - the  ratio  between  the magnitudes of the first derivatives in v
+    /// - the ratio between the magnitudes of the first derivatives in u
+    /// - the ratio between the magnitudes of the first derivatives in v
     ///
-    /// the angle value is between  0 and pi/2
+    /// the angle value is between 0 and pi/2
     ///
-    /// case  C2
+    /// case C2
     /// -------
-    /// - the  angle  between the second derivatives in u
+    /// - the angle between the second derivatives in u
     /// 2                  2
     /// d Surf1(u1,v1)    d  Surf2(u2,v2)
     /// ----------        ----------
     /// 2                  2
     /// d u               d  u
     ///
-    /// - the ratio between the  magnitudes of the second derivatives in  u
-    /// - the  ratio between the  magnitudes of the  second derivatives in v
+    /// - the ratio between the magnitudes of the second derivatives in u
+    /// - the ratio between the magnitudes of the second derivatives in v
     ///
     /// the angle value is between 0 and PI/2
     ///
     /// case G1
     /// -------
-    /// -the angle between  the normals  at each point
+    /// -the angle between the normals at each point
     /// the angle value is between 0 and PI/2
     ///
-    /// case  G2
+    /// case G2
     /// -------
-    /// - the maximum  normal curvature gap between the two
+    /// - the maximum normal curvature gap between the two
     /// points
     pub fn new_handlegeomsurface_real2_handlegeomsurface_real2_shape_real5(
-        Surf1: &crate::ffi_types::HandleGeomSurface,
+        Surf1: &crate::ffi_types::Handle_Geom_Surface,
         u1: f64,
         v1: f64,
-        Surf2: &crate::ffi_types::HandleGeomSurface,
+        Surf2: &crate::ffi_types::Handle_Geom_Surface,
         u2: f64,
         v2: f64,
         Order: crate::geom_abs::Shape,
@@ -1544,42 +1544,42 @@ impl SurfaceContinuity {
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:120 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
-    /// -u1,v1 are  the parameters of the point on Surf1
-    /// -u2,v2  are  the  parameters of the point on Surf2
-    /// -Order  is the required continuity:
-    /// GeomAbs_C0    GeomAbs_C1  GeomAbs_C2
+    /// -u1,v1 are the parameters of the point on Surf1
+    /// -u2,v2 are the parameters of the point on Surf2
+    /// -Order is the required continuity:
+    /// GeomAbs_C0 GeomAbs_C1 GeomAbs_C2
     /// GeomAbs_G1 GeomAbs_G2
     ///
-    /// -EpsNul  is  used to  detect a  a vector with nul
+    /// -EpsNul is used to detect a a vector with nul
     /// magnitude
     ///
-    /// -EpsC0 is used for C0  continuity to confuse two
+    /// -EpsC0 is used for C0 continuity to confuse two
     /// points (in mm)
     ///
-    /// -EpsC1 is  an angular  tolerance in radians  used
-    /// for C1 continuity  to compare the angle between
+    /// -EpsC1 is an angular tolerance in radians used
+    /// for C1 continuity to compare the angle between
     /// the first derivatives
     ///
-    /// -EpsC2 is an   angular tolerance in radians  used
-    /// for C2  continuity to  compare the angle  between
+    /// -EpsC2 is an angular tolerance in radians used
+    /// for C2 continuity to compare the angle between
     /// the second derivatives
     ///
-    /// -EpsG1 is an  angular  tolerance in radians  used
-    /// for G1  continuity to compare  the angle  between
-    /// the  normals
+    /// -EpsG1 is an angular tolerance in radians used
+    /// for G1 continuity to compare the angle between
+    /// the normals
     ///
-    /// -Percent  : percentage of  curvature variation (unitless)
+    /// -Percent: percentage of curvature variation (unitless)
     /// used for G2 continuity
     ///
-    /// - Maxlen is the maximum length of Surf1 or Surf2  in
+    /// - Maxlen is the maximum length of Surf1 or Surf2 in
     /// meters used to detect null curvature (in mm)
     ///
-    /// the constructor computes the quantities  which are
+    /// the constructor computes the quantities which are
     /// necessary to check the continuity in the following cases:
     ///
-    /// case  C0
+    /// case C0
     /// --------
-    /// - the distance between P1 and P2  with P1=Surf (u1,v1)  and
+    /// - the distance between P1 and P2 with P1=Surf (u1,v1) and
     /// P2=Surfv2(u2,v2)
     ///
     /// case C1
@@ -1599,39 +1599,39 @@ impl SurfaceContinuity {
     /// --------         and         ---------
     /// dv                           dv
     ///
-    /// - the ratio between  the magnitudes of  the first derivatives  in  u
-    /// - the  ratio  between  the magnitudes of the first derivatives in v
+    /// - the ratio between the magnitudes of the first derivatives in u
+    /// - the ratio between the magnitudes of the first derivatives in v
     ///
-    /// the angle value is between  0 and pi/2
+    /// the angle value is between 0 and pi/2
     ///
-    /// case  C2
+    /// case C2
     /// -------
-    /// - the  angle  between the second derivatives in u
+    /// - the angle between the second derivatives in u
     /// 2                  2
     /// d Surf1(u1,v1)    d  Surf2(u2,v2)
     /// ----------        ----------
     /// 2                  2
     /// d u               d  u
     ///
-    /// - the ratio between the  magnitudes of the second derivatives in  u
-    /// - the  ratio between the  magnitudes of the  second derivatives in v
+    /// - the ratio between the magnitudes of the second derivatives in u
+    /// - the ratio between the magnitudes of the second derivatives in v
     ///
     /// the angle value is between 0 and PI/2
     ///
     /// case G1
     /// -------
-    /// -the angle between  the normals  at each point
+    /// -the angle between the normals at each point
     /// the angle value is between 0 and PI/2
     ///
-    /// case  G2
+    /// case G2
     /// -------
-    /// - the maximum  normal curvature gap between the two
+    /// - the maximum normal curvature gap between the two
     /// points
     pub fn new_handlegeomsurface_real2_handlegeomsurface_real2_shape_real4(
-        Surf1: &crate::ffi_types::HandleGeomSurface,
+        Surf1: &crate::ffi_types::Handle_Geom_Surface,
         u1: f64,
         v1: f64,
-        Surf2: &crate::ffi_types::HandleGeomSurface,
+        Surf2: &crate::ffi_types::Handle_Geom_Surface,
         u2: f64,
         v2: f64,
         Order: crate::geom_abs::Shape,
@@ -1646,42 +1646,42 @@ impl SurfaceContinuity {
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:120 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
-    /// -u1,v1 are  the parameters of the point on Surf1
-    /// -u2,v2  are  the  parameters of the point on Surf2
-    /// -Order  is the required continuity:
-    /// GeomAbs_C0    GeomAbs_C1  GeomAbs_C2
+    /// -u1,v1 are the parameters of the point on Surf1
+    /// -u2,v2 are the parameters of the point on Surf2
+    /// -Order is the required continuity:
+    /// GeomAbs_C0 GeomAbs_C1 GeomAbs_C2
     /// GeomAbs_G1 GeomAbs_G2
     ///
-    /// -EpsNul  is  used to  detect a  a vector with nul
+    /// -EpsNul is used to detect a a vector with nul
     /// magnitude
     ///
-    /// -EpsC0 is used for C0  continuity to confuse two
+    /// -EpsC0 is used for C0 continuity to confuse two
     /// points (in mm)
     ///
-    /// -EpsC1 is  an angular  tolerance in radians  used
-    /// for C1 continuity  to compare the angle between
+    /// -EpsC1 is an angular tolerance in radians used
+    /// for C1 continuity to compare the angle between
     /// the first derivatives
     ///
-    /// -EpsC2 is an   angular tolerance in radians  used
-    /// for C2  continuity to  compare the angle  between
+    /// -EpsC2 is an angular tolerance in radians used
+    /// for C2 continuity to compare the angle between
     /// the second derivatives
     ///
-    /// -EpsG1 is an  angular  tolerance in radians  used
-    /// for G1  continuity to compare  the angle  between
-    /// the  normals
+    /// -EpsG1 is an angular tolerance in radians used
+    /// for G1 continuity to compare the angle between
+    /// the normals
     ///
-    /// -Percent  : percentage of  curvature variation (unitless)
+    /// -Percent: percentage of curvature variation (unitless)
     /// used for G2 continuity
     ///
-    /// - Maxlen is the maximum length of Surf1 or Surf2  in
+    /// - Maxlen is the maximum length of Surf1 or Surf2 in
     /// meters used to detect null curvature (in mm)
     ///
-    /// the constructor computes the quantities  which are
+    /// the constructor computes the quantities which are
     /// necessary to check the continuity in the following cases:
     ///
-    /// case  C0
+    /// case C0
     /// --------
-    /// - the distance between P1 and P2  with P1=Surf (u1,v1)  and
+    /// - the distance between P1 and P2 with P1=Surf (u1,v1) and
     /// P2=Surfv2(u2,v2)
     ///
     /// case C1
@@ -1701,39 +1701,39 @@ impl SurfaceContinuity {
     /// --------         and         ---------
     /// dv                           dv
     ///
-    /// - the ratio between  the magnitudes of  the first derivatives  in  u
-    /// - the  ratio  between  the magnitudes of the first derivatives in v
+    /// - the ratio between the magnitudes of the first derivatives in u
+    /// - the ratio between the magnitudes of the first derivatives in v
     ///
-    /// the angle value is between  0 and pi/2
+    /// the angle value is between 0 and pi/2
     ///
-    /// case  C2
+    /// case C2
     /// -------
-    /// - the  angle  between the second derivatives in u
+    /// - the angle between the second derivatives in u
     /// 2                  2
     /// d Surf1(u1,v1)    d  Surf2(u2,v2)
     /// ----------        ----------
     /// 2                  2
     /// d u               d  u
     ///
-    /// - the ratio between the  magnitudes of the second derivatives in  u
-    /// - the  ratio between the  magnitudes of the  second derivatives in v
+    /// - the ratio between the magnitudes of the second derivatives in u
+    /// - the ratio between the magnitudes of the second derivatives in v
     ///
     /// the angle value is between 0 and PI/2
     ///
     /// case G1
     /// -------
-    /// -the angle between  the normals  at each point
+    /// -the angle between the normals at each point
     /// the angle value is between 0 and PI/2
     ///
-    /// case  G2
+    /// case G2
     /// -------
-    /// - the maximum  normal curvature gap between the two
+    /// - the maximum normal curvature gap between the two
     /// points
     pub fn new_handlegeomsurface_real2_handlegeomsurface_real2_shape_real3(
-        Surf1: &crate::ffi_types::HandleGeomSurface,
+        Surf1: &crate::ffi_types::Handle_Geom_Surface,
         u1: f64,
         v1: f64,
-        Surf2: &crate::ffi_types::HandleGeomSurface,
+        Surf2: &crate::ffi_types::Handle_Geom_Surface,
         u2: f64,
         v2: f64,
         Order: crate::geom_abs::Shape,
@@ -1747,42 +1747,42 @@ impl SurfaceContinuity {
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:120 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
-    /// -u1,v1 are  the parameters of the point on Surf1
-    /// -u2,v2  are  the  parameters of the point on Surf2
-    /// -Order  is the required continuity:
-    /// GeomAbs_C0    GeomAbs_C1  GeomAbs_C2
+    /// -u1,v1 are the parameters of the point on Surf1
+    /// -u2,v2 are the parameters of the point on Surf2
+    /// -Order is the required continuity:
+    /// GeomAbs_C0 GeomAbs_C1 GeomAbs_C2
     /// GeomAbs_G1 GeomAbs_G2
     ///
-    /// -EpsNul  is  used to  detect a  a vector with nul
+    /// -EpsNul is used to detect a a vector with nul
     /// magnitude
     ///
-    /// -EpsC0 is used for C0  continuity to confuse two
+    /// -EpsC0 is used for C0 continuity to confuse two
     /// points (in mm)
     ///
-    /// -EpsC1 is  an angular  tolerance in radians  used
-    /// for C1 continuity  to compare the angle between
+    /// -EpsC1 is an angular tolerance in radians used
+    /// for C1 continuity to compare the angle between
     /// the first derivatives
     ///
-    /// -EpsC2 is an   angular tolerance in radians  used
-    /// for C2  continuity to  compare the angle  between
+    /// -EpsC2 is an angular tolerance in radians used
+    /// for C2 continuity to compare the angle between
     /// the second derivatives
     ///
-    /// -EpsG1 is an  angular  tolerance in radians  used
-    /// for G1  continuity to compare  the angle  between
-    /// the  normals
+    /// -EpsG1 is an angular tolerance in radians used
+    /// for G1 continuity to compare the angle between
+    /// the normals
     ///
-    /// -Percent  : percentage of  curvature variation (unitless)
+    /// -Percent: percentage of curvature variation (unitless)
     /// used for G2 continuity
     ///
-    /// - Maxlen is the maximum length of Surf1 or Surf2  in
+    /// - Maxlen is the maximum length of Surf1 or Surf2 in
     /// meters used to detect null curvature (in mm)
     ///
-    /// the constructor computes the quantities  which are
+    /// the constructor computes the quantities which are
     /// necessary to check the continuity in the following cases:
     ///
-    /// case  C0
+    /// case C0
     /// --------
-    /// - the distance between P1 and P2  with P1=Surf (u1,v1)  and
+    /// - the distance between P1 and P2 with P1=Surf (u1,v1) and
     /// P2=Surfv2(u2,v2)
     ///
     /// case C1
@@ -1802,39 +1802,39 @@ impl SurfaceContinuity {
     /// --------         and         ---------
     /// dv                           dv
     ///
-    /// - the ratio between  the magnitudes of  the first derivatives  in  u
-    /// - the  ratio  between  the magnitudes of the first derivatives in v
+    /// - the ratio between the magnitudes of the first derivatives in u
+    /// - the ratio between the magnitudes of the first derivatives in v
     ///
-    /// the angle value is between  0 and pi/2
+    /// the angle value is between 0 and pi/2
     ///
-    /// case  C2
+    /// case C2
     /// -------
-    /// - the  angle  between the second derivatives in u
+    /// - the angle between the second derivatives in u
     /// 2                  2
     /// d Surf1(u1,v1)    d  Surf2(u2,v2)
     /// ----------        ----------
     /// 2                  2
     /// d u               d  u
     ///
-    /// - the ratio between the  magnitudes of the second derivatives in  u
-    /// - the  ratio between the  magnitudes of the  second derivatives in v
+    /// - the ratio between the magnitudes of the second derivatives in u
+    /// - the ratio between the magnitudes of the second derivatives in v
     ///
     /// the angle value is between 0 and PI/2
     ///
     /// case G1
     /// -------
-    /// -the angle between  the normals  at each point
+    /// -the angle between the normals at each point
     /// the angle value is between 0 and PI/2
     ///
-    /// case  G2
+    /// case G2
     /// -------
-    /// - the maximum  normal curvature gap between the two
+    /// - the maximum normal curvature gap between the two
     /// points
     pub fn new_handlegeomsurface_real2_handlegeomsurface_real2_shape_real2(
-        Surf1: &crate::ffi_types::HandleGeomSurface,
+        Surf1: &crate::ffi_types::Handle_Geom_Surface,
         u1: f64,
         v1: f64,
-        Surf2: &crate::ffi_types::HandleGeomSurface,
+        Surf2: &crate::ffi_types::Handle_Geom_Surface,
         u2: f64,
         v2: f64,
         Order: crate::geom_abs::Shape,
@@ -1847,42 +1847,42 @@ impl SurfaceContinuity {
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:120 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
-    /// -u1,v1 are  the parameters of the point on Surf1
-    /// -u2,v2  are  the  parameters of the point on Surf2
-    /// -Order  is the required continuity:
-    /// GeomAbs_C0    GeomAbs_C1  GeomAbs_C2
+    /// -u1,v1 are the parameters of the point on Surf1
+    /// -u2,v2 are the parameters of the point on Surf2
+    /// -Order is the required continuity:
+    /// GeomAbs_C0 GeomAbs_C1 GeomAbs_C2
     /// GeomAbs_G1 GeomAbs_G2
     ///
-    /// -EpsNul  is  used to  detect a  a vector with nul
+    /// -EpsNul is used to detect a a vector with nul
     /// magnitude
     ///
-    /// -EpsC0 is used for C0  continuity to confuse two
+    /// -EpsC0 is used for C0 continuity to confuse two
     /// points (in mm)
     ///
-    /// -EpsC1 is  an angular  tolerance in radians  used
-    /// for C1 continuity  to compare the angle between
+    /// -EpsC1 is an angular tolerance in radians used
+    /// for C1 continuity to compare the angle between
     /// the first derivatives
     ///
-    /// -EpsC2 is an   angular tolerance in radians  used
-    /// for C2  continuity to  compare the angle  between
+    /// -EpsC2 is an angular tolerance in radians used
+    /// for C2 continuity to compare the angle between
     /// the second derivatives
     ///
-    /// -EpsG1 is an  angular  tolerance in radians  used
-    /// for G1  continuity to compare  the angle  between
-    /// the  normals
+    /// -EpsG1 is an angular tolerance in radians used
+    /// for G1 continuity to compare the angle between
+    /// the normals
     ///
-    /// -Percent  : percentage of  curvature variation (unitless)
+    /// -Percent: percentage of curvature variation (unitless)
     /// used for G2 continuity
     ///
-    /// - Maxlen is the maximum length of Surf1 or Surf2  in
+    /// - Maxlen is the maximum length of Surf1 or Surf2 in
     /// meters used to detect null curvature (in mm)
     ///
-    /// the constructor computes the quantities  which are
+    /// the constructor computes the quantities which are
     /// necessary to check the continuity in the following cases:
     ///
-    /// case  C0
+    /// case C0
     /// --------
-    /// - the distance between P1 and P2  with P1=Surf (u1,v1)  and
+    /// - the distance between P1 and P2 with P1=Surf (u1,v1) and
     /// P2=Surfv2(u2,v2)
     ///
     /// case C1
@@ -1902,39 +1902,39 @@ impl SurfaceContinuity {
     /// --------         and         ---------
     /// dv                           dv
     ///
-    /// - the ratio between  the magnitudes of  the first derivatives  in  u
-    /// - the  ratio  between  the magnitudes of the first derivatives in v
+    /// - the ratio between the magnitudes of the first derivatives in u
+    /// - the ratio between the magnitudes of the first derivatives in v
     ///
-    /// the angle value is between  0 and pi/2
+    /// the angle value is between 0 and pi/2
     ///
-    /// case  C2
+    /// case C2
     /// -------
-    /// - the  angle  between the second derivatives in u
+    /// - the angle between the second derivatives in u
     /// 2                  2
     /// d Surf1(u1,v1)    d  Surf2(u2,v2)
     /// ----------        ----------
     /// 2                  2
     /// d u               d  u
     ///
-    /// - the ratio between the  magnitudes of the second derivatives in  u
-    /// - the  ratio between the  magnitudes of the  second derivatives in v
+    /// - the ratio between the magnitudes of the second derivatives in u
+    /// - the ratio between the magnitudes of the second derivatives in v
     ///
     /// the angle value is between 0 and PI/2
     ///
     /// case G1
     /// -------
-    /// -the angle between  the normals  at each point
+    /// -the angle between the normals at each point
     /// the angle value is between 0 and PI/2
     ///
-    /// case  G2
+    /// case G2
     /// -------
-    /// - the maximum  normal curvature gap between the two
+    /// - the maximum normal curvature gap between the two
     /// points
     pub fn new_handlegeomsurface_real2_handlegeomsurface_real2_shape_real(
-        Surf1: &crate::ffi_types::HandleGeomSurface,
+        Surf1: &crate::ffi_types::Handle_Geom_Surface,
         u1: f64,
         v1: f64,
-        Surf2: &crate::ffi_types::HandleGeomSurface,
+        Surf2: &crate::ffi_types::Handle_Geom_Surface,
         u2: f64,
         v2: f64,
         Order: crate::geom_abs::Shape,
@@ -1946,42 +1946,42 @@ impl SurfaceContinuity {
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:120 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
-    /// -u1,v1 are  the parameters of the point on Surf1
-    /// -u2,v2  are  the  parameters of the point on Surf2
-    /// -Order  is the required continuity:
-    /// GeomAbs_C0    GeomAbs_C1  GeomAbs_C2
+    /// -u1,v1 are the parameters of the point on Surf1
+    /// -u2,v2 are the parameters of the point on Surf2
+    /// -Order is the required continuity:
+    /// GeomAbs_C0 GeomAbs_C1 GeomAbs_C2
     /// GeomAbs_G1 GeomAbs_G2
     ///
-    /// -EpsNul  is  used to  detect a  a vector with nul
+    /// -EpsNul is used to detect a a vector with nul
     /// magnitude
     ///
-    /// -EpsC0 is used for C0  continuity to confuse two
+    /// -EpsC0 is used for C0 continuity to confuse two
     /// points (in mm)
     ///
-    /// -EpsC1 is  an angular  tolerance in radians  used
-    /// for C1 continuity  to compare the angle between
+    /// -EpsC1 is an angular tolerance in radians used
+    /// for C1 continuity to compare the angle between
     /// the first derivatives
     ///
-    /// -EpsC2 is an   angular tolerance in radians  used
-    /// for C2  continuity to  compare the angle  between
+    /// -EpsC2 is an angular tolerance in radians used
+    /// for C2 continuity to compare the angle between
     /// the second derivatives
     ///
-    /// -EpsG1 is an  angular  tolerance in radians  used
-    /// for G1  continuity to compare  the angle  between
-    /// the  normals
+    /// -EpsG1 is an angular tolerance in radians used
+    /// for G1 continuity to compare the angle between
+    /// the normals
     ///
-    /// -Percent  : percentage of  curvature variation (unitless)
+    /// -Percent: percentage of curvature variation (unitless)
     /// used for G2 continuity
     ///
-    /// - Maxlen is the maximum length of Surf1 or Surf2  in
+    /// - Maxlen is the maximum length of Surf1 or Surf2 in
     /// meters used to detect null curvature (in mm)
     ///
-    /// the constructor computes the quantities  which are
+    /// the constructor computes the quantities which are
     /// necessary to check the continuity in the following cases:
     ///
-    /// case  C0
+    /// case C0
     /// --------
-    /// - the distance between P1 and P2  with P1=Surf (u1,v1)  and
+    /// - the distance between P1 and P2 with P1=Surf (u1,v1) and
     /// P2=Surfv2(u2,v2)
     ///
     /// case C1
@@ -2001,39 +2001,39 @@ impl SurfaceContinuity {
     /// --------         and         ---------
     /// dv                           dv
     ///
-    /// - the ratio between  the magnitudes of  the first derivatives  in  u
-    /// - the  ratio  between  the magnitudes of the first derivatives in v
+    /// - the ratio between the magnitudes of the first derivatives in u
+    /// - the ratio between the magnitudes of the first derivatives in v
     ///
-    /// the angle value is between  0 and pi/2
+    /// the angle value is between 0 and pi/2
     ///
-    /// case  C2
+    /// case C2
     /// -------
-    /// - the  angle  between the second derivatives in u
+    /// - the angle between the second derivatives in u
     /// 2                  2
     /// d Surf1(u1,v1)    d  Surf2(u2,v2)
     /// ----------        ----------
     /// 2                  2
     /// d u               d  u
     ///
-    /// - the ratio between the  magnitudes of the second derivatives in  u
-    /// - the  ratio between the  magnitudes of the  second derivatives in v
+    /// - the ratio between the magnitudes of the second derivatives in u
+    /// - the ratio between the magnitudes of the second derivatives in v
     ///
     /// the angle value is between 0 and PI/2
     ///
     /// case G1
     /// -------
-    /// -the angle between  the normals  at each point
+    /// -the angle between the normals at each point
     /// the angle value is between 0 and PI/2
     ///
-    /// case  G2
+    /// case G2
     /// -------
-    /// - the maximum  normal curvature gap between the two
+    /// - the maximum normal curvature gap between the two
     /// points
     pub fn new_handlegeomsurface_real2_handlegeomsurface_real2_shape(
-        Surf1: &crate::ffi_types::HandleGeomSurface,
+        Surf1: &crate::ffi_types::Handle_Geom_Surface,
         u1: f64,
         v1: f64,
-        Surf2: &crate::ffi_types::HandleGeomSurface,
+        Surf2: &crate::ffi_types::Handle_Geom_Surface,
         u2: f64,
         v2: f64,
         Order: crate::geom_abs::Shape,
@@ -2045,11 +2045,11 @@ impl SurfaceContinuity {
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:135 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
     pub fn new_handlegeom2dcurve2_real_handlegeomsurface2_shape_real6(
-        curv1: &crate::ffi_types::HandleGeom2dCurve,
-        curv2: &crate::ffi_types::HandleGeom2dCurve,
+        curv1: &crate::ffi_types::Handle_Geom2d_Curve,
+        curv2: &crate::ffi_types::Handle_Geom2d_Curve,
         U: f64,
-        Surf1: &crate::ffi_types::HandleGeomSurface,
-        Surf2: &crate::ffi_types::HandleGeomSurface,
+        Surf1: &crate::ffi_types::Handle_Geom_Surface,
+        Surf2: &crate::ffi_types::Handle_Geom_Surface,
         Order: crate::geom_abs::Shape,
         EpsNul: f64,
         EpsC0: f64,
@@ -2066,11 +2066,11 @@ impl SurfaceContinuity {
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:135 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
     pub fn new_handlegeom2dcurve2_real_handlegeomsurface2_shape_real5(
-        curv1: &crate::ffi_types::HandleGeom2dCurve,
-        curv2: &crate::ffi_types::HandleGeom2dCurve,
+        curv1: &crate::ffi_types::Handle_Geom2d_Curve,
+        curv2: &crate::ffi_types::Handle_Geom2d_Curve,
         U: f64,
-        Surf1: &crate::ffi_types::HandleGeomSurface,
-        Surf2: &crate::ffi_types::HandleGeomSurface,
+        Surf1: &crate::ffi_types::Handle_Geom_Surface,
+        Surf2: &crate::ffi_types::Handle_Geom_Surface,
         Order: crate::geom_abs::Shape,
         EpsNul: f64,
         EpsC0: f64,
@@ -2085,11 +2085,11 @@ impl SurfaceContinuity {
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:135 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
     pub fn new_handlegeom2dcurve2_real_handlegeomsurface2_shape_real4(
-        curv1: &crate::ffi_types::HandleGeom2dCurve,
-        curv2: &crate::ffi_types::HandleGeom2dCurve,
+        curv1: &crate::ffi_types::Handle_Geom2d_Curve,
+        curv2: &crate::ffi_types::Handle_Geom2d_Curve,
         U: f64,
-        Surf1: &crate::ffi_types::HandleGeomSurface,
-        Surf2: &crate::ffi_types::HandleGeomSurface,
+        Surf1: &crate::ffi_types::Handle_Geom_Surface,
+        Surf2: &crate::ffi_types::Handle_Geom_Surface,
         Order: crate::geom_abs::Shape,
         EpsNul: f64,
         EpsC0: f64,
@@ -2103,11 +2103,11 @@ impl SurfaceContinuity {
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:135 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
     pub fn new_handlegeom2dcurve2_real_handlegeomsurface2_shape_real3(
-        curv1: &crate::ffi_types::HandleGeom2dCurve,
-        curv2: &crate::ffi_types::HandleGeom2dCurve,
+        curv1: &crate::ffi_types::Handle_Geom2d_Curve,
+        curv2: &crate::ffi_types::Handle_Geom2d_Curve,
         U: f64,
-        Surf1: &crate::ffi_types::HandleGeomSurface,
-        Surf2: &crate::ffi_types::HandleGeomSurface,
+        Surf1: &crate::ffi_types::Handle_Geom_Surface,
+        Surf2: &crate::ffi_types::Handle_Geom_Surface,
         Order: crate::geom_abs::Shape,
         EpsNul: f64,
         EpsC0: f64,
@@ -2120,11 +2120,11 @@ impl SurfaceContinuity {
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:135 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
     pub fn new_handlegeom2dcurve2_real_handlegeomsurface2_shape_real2(
-        curv1: &crate::ffi_types::HandleGeom2dCurve,
-        curv2: &crate::ffi_types::HandleGeom2dCurve,
+        curv1: &crate::ffi_types::Handle_Geom2d_Curve,
+        curv2: &crate::ffi_types::Handle_Geom2d_Curve,
         U: f64,
-        Surf1: &crate::ffi_types::HandleGeomSurface,
-        Surf2: &crate::ffi_types::HandleGeomSurface,
+        Surf1: &crate::ffi_types::Handle_Geom_Surface,
+        Surf2: &crate::ffi_types::Handle_Geom_Surface,
         Order: crate::geom_abs::Shape,
         EpsNul: f64,
         EpsC0: f64,
@@ -2136,11 +2136,11 @@ impl SurfaceContinuity {
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:135 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
     pub fn new_handlegeom2dcurve2_real_handlegeomsurface2_shape_real(
-        curv1: &crate::ffi_types::HandleGeom2dCurve,
-        curv2: &crate::ffi_types::HandleGeom2dCurve,
+        curv1: &crate::ffi_types::Handle_Geom2d_Curve,
+        curv2: &crate::ffi_types::Handle_Geom2d_Curve,
         U: f64,
-        Surf1: &crate::ffi_types::HandleGeomSurface,
-        Surf2: &crate::ffi_types::HandleGeomSurface,
+        Surf1: &crate::ffi_types::Handle_Geom_Surface,
+        Surf2: &crate::ffi_types::Handle_Geom_Surface,
         Order: crate::geom_abs::Shape,
         EpsNul: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -2151,11 +2151,11 @@ impl SurfaceContinuity {
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:135 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
     pub fn new_handlegeom2dcurve2_real_handlegeomsurface2_shape(
-        curv1: &crate::ffi_types::HandleGeom2dCurve,
-        curv2: &crate::ffi_types::HandleGeom2dCurve,
+        curv1: &crate::ffi_types::Handle_Geom2d_Curve,
+        curv2: &crate::ffi_types::Handle_Geom2d_Curve,
         U: f64,
-        Surf1: &crate::ffi_types::HandleGeomSurface,
-        Surf2: &crate::ffi_types::HandleGeomSurface,
+        Surf1: &crate::ffi_types::Handle_Geom_Surface,
+        Surf2: &crate::ffi_types::Handle_Geom_Surface,
         Order: crate::geom_abs::Shape,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handlegeom2dcurve2_real_handlegeomsurface2_shape_real7(
@@ -2164,8 +2164,8 @@ impl SurfaceContinuity {
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:151 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
-    /// This  constructor  is  used  when  we  want  to compute  many  analysis.
-    /// After  we  use  the  method  ComputeAnalysis
+    /// This constructor is used when we want to compute many analysis.
+    /// After we use the method ComputeAnalysis
     pub fn new_real6(
         EpsNul: f64,
         EpsC0: f64,
@@ -2178,8 +2178,8 @@ impl SurfaceContinuity {
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:151 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
-    /// This  constructor  is  used  when  we  want  to compute  many  analysis.
-    /// After  we  use  the  method  ComputeAnalysis
+    /// This constructor is used when we want to compute many analysis.
+    /// After we use the method ComputeAnalysis
     pub fn new_real5(
         EpsNul: f64,
         EpsC0: f64,
@@ -2191,36 +2191,36 @@ impl SurfaceContinuity {
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:151 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
-    /// This  constructor  is  used  when  we  want  to compute  many  analysis.
-    /// After  we  use  the  method  ComputeAnalysis
+    /// This constructor is used when we want to compute many analysis.
+    /// After we use the method ComputeAnalysis
     pub fn new_real4(EpsNul: f64, EpsC0: f64, EpsC1: f64, EpsC2: f64) -> crate::OwnedPtr<Self> {
         Self::new_real7(EpsNul, EpsC0, EpsC1, EpsC2, 0.001, 0.01, 10000.0)
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:151 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
-    /// This  constructor  is  used  when  we  want  to compute  many  analysis.
-    /// After  we  use  the  method  ComputeAnalysis
+    /// This constructor is used when we want to compute many analysis.
+    /// After we use the method ComputeAnalysis
     pub fn new_real3(EpsNul: f64, EpsC0: f64, EpsC1: f64) -> crate::OwnedPtr<Self> {
         Self::new_real7(EpsNul, EpsC0, EpsC1, 0.001, 0.001, 0.01, 10000.0)
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:151 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
-    /// This  constructor  is  used  when  we  want  to compute  many  analysis.
-    /// After  we  use  the  method  ComputeAnalysis
+    /// This constructor is used when we want to compute many analysis.
+    /// After we use the method ComputeAnalysis
     pub fn new_real2(EpsNul: f64, EpsC0: f64) -> crate::OwnedPtr<Self> {
         Self::new_real7(EpsNul, EpsC0, 0.001, 0.001, 0.001, 0.01, 10000.0)
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:151 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
-    /// This  constructor  is  used  when  we  want  to compute  many  analysis.
-    /// After  we  use  the  method  ComputeAnalysis
+    /// This constructor is used when we want to compute many analysis.
+    /// After we use the method ComputeAnalysis
     pub fn new_real(EpsNul: f64) -> crate::OwnedPtr<Self> {
         Self::new_real7(EpsNul, 0.001, 0.001, 0.001, 0.001, 0.01, 10000.0)
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:151 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
-    /// This  constructor  is  used  when  we  want  to compute  many  analysis.
-    /// After  we  use  the  method  ComputeAnalysis
+    /// This constructor is used when we want to compute many analysis.
+    /// After we use the method ComputeAnalysis
     pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_real7(0.001, 0.001, 0.001, 0.001, 0.001, 0.01, 10000.0)
     }
@@ -2228,8 +2228,8 @@ impl SurfaceContinuity {
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:159 - `LocalAnalysis_SurfaceContinuity::ComputeAnalysis()`
     pub fn compute_analysis(
         &mut self,
-        Surf1: &mut crate::geom_l_prop::SLProps,
-        Surf2: &mut crate::geom_l_prop::SLProps,
+        Surf1: &mut crate::ffi_types::GeomLProp_SLProps,
+        Surf2: &mut crate::ffi_types::GeomLProp_SLProps,
         Order: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {

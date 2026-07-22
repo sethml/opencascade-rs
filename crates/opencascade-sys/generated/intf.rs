@@ -7,10 +7,10 @@
 #![allow(non_snake_case)]
 
 /// **Source:** `Intf.hxx`:44 - `Intf::PlaneEquation`
-/// Computes   the  interference between   two polygons in  2d.
+/// Computes the interference between two polygons in 2d.
 /// Result : points of intersections and zones of tangence.
-/// Computes the interference  between a polygon or  a straight
-/// line and a polyhedron.   Points of intersection  and zones
+/// Computes the interference between a polygon or a straight
+/// line and a polyhedron. Points of intersection and zones
 /// of tangence.
 /// Give the plane equation of the triangle <P1> <P2> <P3>.
 pub fn plane_equation(
@@ -35,7 +35,7 @@ pub fn contain(
     crate::check_result(unsafe { crate::ffi_extern_TKGeomAlgo::Intf_contain(P1, P2, P3, ThePnt) })
 }
 
-/// Describes the different intersection  point types for this
+/// Describes the different intersection point types for this
 /// application.
 /// C++ enum: `Intf_PIType`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -71,16 +71,16 @@ impl TryFrom<i32> for PIType {
 // From Intf_Interference.hxx
 // ========================
 
-/// **Source:** `Intf_Interference.hxx`:36 - `Intf_Interference`
-/// Describes the   Interference  computation    result
+/// **Source:** `Intf_Interference.hxx`:37 - `Intf_Interference`
+/// Describes the Interference computation result
 /// between polygon2d or polygon3d or polyhedron
-/// (as  three sequences   of  points  of  intersection,
+/// (as three sequences of points of intersection,
 /// polylines of intersection and zones de tangence).
 pub use crate::ffi_types::Intf_Interference as Interference;
 
 impl Interference {
-    /// **Source:** `Intf_Interference.hxx`:43 - `Intf_Interference::NbSectionPoints()`
-    /// Gives the number   of  points of  intersection  in the
+    /// **Source:** `Intf_Interference.hxx`:44 - `Intf_Interference::NbSectionPoints()`
+    /// Gives the number of points of intersection in the
     /// interference.
     pub fn nb_section_points(&self) -> i32 {
         crate::check_result(unsafe {
@@ -88,8 +88,8 @@ impl Interference {
         })
     }
 
-    /// **Source:** `Intf_Interference.hxx`:47 - `Intf_Interference::PntValue()`
-    /// Gives the point of  intersection of address  Index in
+    /// **Source:** `Intf_Interference.hxx`:48 - `Intf_Interference::PntValue()`
+    /// Gives the point of intersection of address Index in
     /// the interference.
     pub fn pnt_value(&self, Index: i32) -> &SectionPoint {
         unsafe {
@@ -100,8 +100,8 @@ impl Interference {
         }
     }
 
-    /// **Source:** `Intf_Interference.hxx`:51 - `Intf_Interference::NbSectionLines()`
-    /// Gives the number  of polylines of  intersection in the
+    /// **Source:** `Intf_Interference.hxx`:52 - `Intf_Interference::NbSectionLines()`
+    /// Gives the number of polylines of intersection in the
     /// interference.
     pub fn nb_section_lines(&self) -> i32 {
         crate::check_result(unsafe {
@@ -109,7 +109,7 @@ impl Interference {
         })
     }
 
-    /// **Source:** `Intf_Interference.hxx`:55 - `Intf_Interference::LineValue()`
+    /// **Source:** `Intf_Interference.hxx`:56 - `Intf_Interference::LineValue()`
     /// Gives the polyline of intersection at address <Index> in
     /// the interference.
     pub fn line_value(&self, Index: i32) -> &SectionLine {
@@ -121,7 +121,7 @@ impl Interference {
         }
     }
 
-    /// **Source:** `Intf_Interference.hxx`:58 - `Intf_Interference::NbTangentZones()`
+    /// **Source:** `Intf_Interference.hxx`:59 - `Intf_Interference::NbTangentZones()`
     /// Gives the number of zones of tangence in the interference.
     pub fn nb_tangent_zones(&self) -> i32 {
         crate::check_result(unsafe {
@@ -129,8 +129,8 @@ impl Interference {
         })
     }
 
-    /// **Source:** `Intf_Interference.hxx`:62 - `Intf_Interference::ZoneValue()`
-    /// Gives  the zone of  tangence at address   Index in the
+    /// **Source:** `Intf_Interference.hxx`:63 - `Intf_Interference::ZoneValue()`
+    /// Gives the zone of tangence at address Index in the
     /// interference.
     pub fn zone_value(&self, Index: i32) -> &TangentZone {
         unsafe {
@@ -141,7 +141,7 @@ impl Interference {
         }
     }
 
-    /// **Source:** `Intf_Interference.hxx`:65 - `Intf_Interference::GetTolerance()`
+    /// **Source:** `Intf_Interference.hxx`:66 - `Intf_Interference::GetTolerance()`
     /// Gives the tolerance used for the calculation.
     pub fn get_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
@@ -149,8 +149,8 @@ impl Interference {
         })
     }
 
-    /// **Source:** `Intf_Interference.hxx`:69 - `Intf_Interference::Contains()`
-    /// Tests if the polylines of  intersection or the zones of
+    /// **Source:** `Intf_Interference.hxx`:70 - `Intf_Interference::Contains()`
+    /// Tests if the polylines of intersection or the zones of
     /// tangence contain the point of intersection <ThePnt>.
     pub fn contains(&self, ThePnt: &SectionPoint) -> bool {
         crate::check_result(unsafe {
@@ -158,9 +158,9 @@ impl Interference {
         })
     }
 
-    /// **Source:** `Intf_Interference.hxx`:74 - `Intf_Interference::Insert()`
-    /// Inserts a new zone of tangence in  the current list of
-    /// tangent zones of  the interference  and  returns  True
+    /// **Source:** `Intf_Interference.hxx`:75 - `Intf_Interference::Insert()`
+    /// Inserts a new zone of tangence in the current list of
+    /// tangent zones of the interference and returns True
     /// when done.
     pub fn insert_tangentzone(&mut self, TheZone: &TangentZone) -> bool {
         crate::check_result(unsafe {
@@ -171,8 +171,8 @@ impl Interference {
         })
     }
 
-    /// **Source:** `Intf_Interference.hxx`:78 - `Intf_Interference::Insert()`
-    /// Insert a new segment of intersection in the current  list of
+    /// **Source:** `Intf_Interference.hxx`:79 - `Intf_Interference::Insert()`
+    /// Insert a new segment of intersection in the current list of
     /// polylines of intersection of the interference.
     pub fn insert_sectionpoint2(&mut self, pdeb: &SectionPoint, pfin: &SectionPoint) {
         crate::check_void_result(unsafe {
@@ -184,7 +184,7 @@ impl Interference {
         })
     }
 
-    /// **Source:** `Intf_Interference.hxx`:80 - `Intf_Interference::Dump()`
+    /// **Source:** `Intf_Interference.hxx`:81 - `Intf_Interference::Dump()`
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Intf_Interference_dump(self as *const Self)
@@ -197,8 +197,8 @@ impl Interference {
 // ========================
 
 /// **Source:** `Intf_InterferencePolygon2d.hxx`:32 - `Intf_InterferencePolygon2d`
-/// Computes the  interference between two  polygons or
-/// the    self intersection of    a  polygon  in  two
+/// Computes the interference between two polygons or
+/// the self intersection of a polygon in two
 /// dimensions.
 pub use crate::ffi_types::Intf_InterferencePolygon2d as InterferencePolygon2d;
 
@@ -267,7 +267,7 @@ impl InterferencePolygon2d {
     }
 
     /// **Source:** `Intf_InterferencePolygon2d.hxx`:55 - `Intf_InterferencePolygon2d::Pnt2dValue()`
-    /// Gives the  geometrical 2d point   of the  intersection
+    /// Gives the geometrical 2d point of the intersection
     /// point at address <Index> in the interference.
     pub fn pnt2d_value(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
@@ -302,7 +302,7 @@ impl InterferencePolygon2d {
         }
     }
 
-    /// Inherited: **Source:** `Intf_Interference.hxx`:43 - `Intf_Interference::NbSectionPoints()`
+    /// Inherited: **Source:** `Intf_Interference.hxx`:44 - `Intf_Interference::NbSectionPoints()`
     pub fn nb_section_points(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Intf_InterferencePolygon2d_inherited_NbSectionPoints(
@@ -311,7 +311,7 @@ impl InterferencePolygon2d {
         })
     }
 
-    /// Inherited: **Source:** `Intf_Interference.hxx`:47 - `Intf_Interference::PntValue()`
+    /// Inherited: **Source:** `Intf_Interference.hxx`:48 - `Intf_Interference::PntValue()`
     pub fn pnt_value(&self, Index: i32) -> &SectionPoint {
         unsafe {
             &*(crate::check_result(
@@ -323,7 +323,7 @@ impl InterferencePolygon2d {
         }
     }
 
-    /// Inherited: **Source:** `Intf_Interference.hxx`:51 - `Intf_Interference::NbSectionLines()`
+    /// Inherited: **Source:** `Intf_Interference.hxx`:52 - `Intf_Interference::NbSectionLines()`
     pub fn nb_section_lines(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Intf_InterferencePolygon2d_inherited_NbSectionLines(
@@ -332,7 +332,7 @@ impl InterferencePolygon2d {
         })
     }
 
-    /// Inherited: **Source:** `Intf_Interference.hxx`:55 - `Intf_Interference::LineValue()`
+    /// Inherited: **Source:** `Intf_Interference.hxx`:56 - `Intf_Interference::LineValue()`
     pub fn line_value(&self, Index: i32) -> &SectionLine {
         unsafe {
             &*(crate::check_result(
@@ -344,7 +344,7 @@ impl InterferencePolygon2d {
         }
     }
 
-    /// Inherited: **Source:** `Intf_Interference.hxx`:58 - `Intf_Interference::NbTangentZones()`
+    /// Inherited: **Source:** `Intf_Interference.hxx`:59 - `Intf_Interference::NbTangentZones()`
     pub fn nb_tangent_zones(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Intf_InterferencePolygon2d_inherited_NbTangentZones(
@@ -353,7 +353,7 @@ impl InterferencePolygon2d {
         })
     }
 
-    /// Inherited: **Source:** `Intf_Interference.hxx`:62 - `Intf_Interference::ZoneValue()`
+    /// Inherited: **Source:** `Intf_Interference.hxx`:63 - `Intf_Interference::ZoneValue()`
     pub fn zone_value(&self, Index: i32) -> &TangentZone {
         unsafe {
             &*(crate::check_result(
@@ -365,7 +365,7 @@ impl InterferencePolygon2d {
         }
     }
 
-    /// Inherited: **Source:** `Intf_Interference.hxx`:65 - `Intf_Interference::GetTolerance()`
+    /// Inherited: **Source:** `Intf_Interference.hxx`:66 - `Intf_Interference::GetTolerance()`
     pub fn get_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Intf_InterferencePolygon2d_inherited_GetTolerance(
@@ -374,7 +374,7 @@ impl InterferencePolygon2d {
         })
     }
 
-    /// Inherited: **Source:** `Intf_Interference.hxx`:69 - `Intf_Interference::Contains()`
+    /// Inherited: **Source:** `Intf_Interference.hxx`:70 - `Intf_Interference::Contains()`
     pub fn contains(&self, ThePnt: &SectionPoint) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Intf_InterferencePolygon2d_inherited_Contains(
@@ -384,7 +384,7 @@ impl InterferencePolygon2d {
         })
     }
 
-    /// Inherited: **Source:** `Intf_Interference.hxx`:74 - `Intf_Interference::Insert()`
+    /// Inherited: **Source:** `Intf_Interference.hxx`:75 - `Intf_Interference::Insert()`
     pub fn insert(&mut self, TheZone: &TangentZone) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Intf_InterferencePolygon2d_inherited_Insert(
@@ -394,7 +394,7 @@ impl InterferencePolygon2d {
         })
     }
 
-    /// Inherited: **Source:** `Intf_Interference.hxx`:80 - `Intf_Interference::Dump()`
+    /// Inherited: **Source:** `Intf_Interference.hxx`:81 - `Intf_Interference::Dump()`
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Intf_InterferencePolygon2d_inherited_Dump(
@@ -481,8 +481,8 @@ impl Polygon2d {
 // From Intf_SectionLine.hxx
 // ========================
 
-/// **Source:** `Intf_SectionLine.hxx`:30 - `Intf_SectionLine`
-/// Describe    a  polyline  of   intersection  between two
+/// **Source:** `Intf_SectionLine.hxx`:31 - `Intf_SectionLine`
+/// Describe a polyline of intersection between two
 /// polyhedra as a sequence of points of intersection.
 pub use crate::ffi_types::Intf_SectionLine as SectionLine;
 
@@ -511,7 +511,7 @@ impl std::borrow::ToOwned for SectionLine {
 }
 
 impl SectionLine {
-    /// **Source:** `Intf_SectionLine.hxx`:58 - `Intf_SectionLine::Intf_SectionLine()`
+    /// **Source:** `Intf_SectionLine.hxx`:59 - `Intf_SectionLine::Intf_SectionLine()`
     /// Constructs an empty SectionLine.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -521,7 +521,7 @@ impl SectionLine {
         }
     }
 
-    /// **Source:** `Intf_SectionLine.hxx`:36 - `Intf_SectionLine::NumberOfPoints()`
+    /// **Source:** `Intf_SectionLine.hxx`:37 - `Intf_SectionLine::NumberOfPoints()`
     /// Returns number of points in this SectionLine.
     pub fn number_of_points(&self) -> i32 {
         crate::check_result(unsafe {
@@ -529,8 +529,8 @@ impl SectionLine {
         })
     }
 
-    /// **Source:** `Intf_SectionLine.hxx`:40 - `Intf_SectionLine::GetPoint()`
-    /// Gives the point of intersection of  address <Index>  in the
+    /// **Source:** `Intf_SectionLine.hxx`:41 - `Intf_SectionLine::GetPoint()`
+    /// Gives the point of intersection of address <Index> in the
     /// SectionLine.
     pub fn get_point(&self, Index: i32) -> &SectionPoint {
         unsafe {
@@ -541,7 +541,7 @@ impl SectionLine {
         }
     }
 
-    /// **Source:** `Intf_SectionLine.hxx`:43 - `Intf_SectionLine::IsClosed()`
+    /// **Source:** `Intf_SectionLine.hxx`:44 - `Intf_SectionLine::IsClosed()`
     /// Returns True if the SectionLine is closed.
     pub fn is_closed(&self) -> bool {
         crate::check_result(unsafe {
@@ -549,7 +549,7 @@ impl SectionLine {
         })
     }
 
-    /// **Source:** `Intf_SectionLine.hxx`:46 - `Intf_SectionLine::Contains()`
+    /// **Source:** `Intf_SectionLine.hxx`:47 - `Intf_SectionLine::Contains()`
     /// Returns True if ThePI is in the SectionLine <me>.
     pub fn contains(&self, ThePI: &SectionPoint) -> bool {
         crate::check_result(unsafe {
@@ -557,8 +557,8 @@ impl SectionLine {
         })
     }
 
-    /// **Source:** `Intf_SectionLine.hxx`:50 - `Intf_SectionLine::IsEnd()`
-    /// Checks if <ThePI>  is an end of  the SectionLine. Returns 1
+    /// **Source:** `Intf_SectionLine.hxx`:51 - `Intf_SectionLine::IsEnd()`
+    /// Checks if <ThePI> is an end of the SectionLine. Returns 1
     /// for the beginning, 2 for the end, otherwise 0.
     pub fn is_end(&self, ThePI: &SectionPoint) -> i32 {
         crate::check_result(unsafe {
@@ -566,7 +566,7 @@ impl SectionLine {
         })
     }
 
-    /// **Source:** `Intf_SectionLine.hxx`:53 - `Intf_SectionLine::IsEqual()`
+    /// **Source:** `Intf_SectionLine.hxx`:54 - `Intf_SectionLine::IsEqual()`
     /// Compares two SectionLines.
     pub fn is_equal(&self, Other: &SectionLine) -> bool {
         crate::check_result(unsafe {
@@ -574,7 +574,7 @@ impl SectionLine {
         })
     }
 
-    /// **Source:** `Intf_SectionLine.hxx`:72 - `Intf_SectionLine::Append()`
+    /// **Source:** `Intf_SectionLine.hxx`:73 - `Intf_SectionLine::Append()`
     /// Adds a point at the end of the SectionLine.
     pub fn append_sectionpoint(&mut self, Pi: &SectionPoint) {
         crate::check_void_result(unsafe {
@@ -585,8 +585,8 @@ impl SectionLine {
         })
     }
 
-    /// **Source:** `Intf_SectionLine.hxx`:76 - `Intf_SectionLine::Append()`
-    /// Concatenates   the SectionLine  <LS>  at  the  end  of  the
+    /// **Source:** `Intf_SectionLine.hxx`:77 - `Intf_SectionLine::Append()`
+    /// Concatenates the SectionLine <LS> at the end of the
     /// SectionLine <me>.
     pub fn append_sectionline(&mut self, LS: &mut SectionLine) {
         crate::check_void_result(unsafe {
@@ -594,7 +594,7 @@ impl SectionLine {
         })
     }
 
-    /// **Source:** `Intf_SectionLine.hxx`:79 - `Intf_SectionLine::Prepend()`
+    /// **Source:** `Intf_SectionLine.hxx`:80 - `Intf_SectionLine::Prepend()`
     /// Adds a point to the beginning of the SectionLine <me>.
     pub fn prepend_sectionpoint(&mut self, Pi: &SectionPoint) {
         crate::check_void_result(unsafe {
@@ -605,8 +605,8 @@ impl SectionLine {
         })
     }
 
-    /// **Source:** `Intf_SectionLine.hxx`:83 - `Intf_SectionLine::Prepend()`
-    /// Concatenates a SectionLine  <LS>  at the  beginning  of the
+    /// **Source:** `Intf_SectionLine.hxx`:84 - `Intf_SectionLine::Prepend()`
+    /// Concatenates a SectionLine <LS> at the beginning of the
     /// SectionLine <me>.
     pub fn prepend_sectionline(&mut self, LS: &mut SectionLine) {
         crate::check_void_result(unsafe {
@@ -617,7 +617,7 @@ impl SectionLine {
         })
     }
 
-    /// **Source:** `Intf_SectionLine.hxx`:86 - `Intf_SectionLine::Reverse()`
+    /// **Source:** `Intf_SectionLine.hxx`:87 - `Intf_SectionLine::Reverse()`
     /// Reverses the order of the elements of the SectionLine.
     pub fn reverse(&mut self) {
         crate::check_void_result(unsafe {
@@ -625,7 +625,7 @@ impl SectionLine {
         })
     }
 
-    /// **Source:** `Intf_SectionLine.hxx`:89 - `Intf_SectionLine::Close()`
+    /// **Source:** `Intf_SectionLine.hxx`:90 - `Intf_SectionLine::Close()`
     /// Closes the SectionLine.
     pub fn close(&mut self) {
         crate::check_void_result(unsafe {
@@ -633,7 +633,7 @@ impl SectionLine {
         })
     }
 
-    /// **Source:** `Intf_SectionLine.hxx`:91 - `Intf_SectionLine::Dump()`
+    /// **Source:** `Intf_SectionLine.hxx`:92 - `Intf_SectionLine::Dump()`
     pub fn dump(&self, Indent: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Intf_SectionLine_dump(self as *const Self, Indent)
@@ -646,7 +646,7 @@ impl SectionLine {
 // ========================
 
 /// **Source:** `Intf_SectionPoint.hxx`:30 - `Intf_SectionPoint`
-/// Describes an intersection  point between  polygons  and
+/// Describes an intersection point between polygons and
 /// polyedra.
 pub use crate::ffi_types::Intf_SectionPoint as SectionPoint;
 
@@ -659,7 +659,7 @@ unsafe impl crate::CppDeletable for SectionPoint {
 }
 
 impl SectionPoint {
-    /// **Source:** `Intf_SectionPoint.hxx`:88 - `Intf_SectionPoint::Intf_SectionPoint()`
+    /// **Source:** `Intf_SectionPoint.hxx`:78 - `Intf_SectionPoint::Intf_SectionPoint()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -668,9 +668,9 @@ impl SectionPoint {
         }
     }
 
-    /// **Source:** `Intf_SectionPoint.hxx`:93 - `Intf_SectionPoint::Intf_SectionPoint()`
-    /// Builds  a  SectionPoint    with the  respective  dimensions
-    /// (vertex edge or face)  of the concerned arguments and their
+    /// **Source:** `Intf_SectionPoint.hxx`:83 - `Intf_SectionPoint::Intf_SectionPoint()`
+    /// Builds a SectionPoint with the respective dimensions
+    /// (vertex edge or face) of the concerned arguments and their
     /// addresses in the Topological structure.
     pub fn new_pnt_pitype_int2_real_pitype_int2_real2(
         Where: &crate::gp::Pnt,
@@ -689,9 +689,9 @@ impl SectionPoint {
         }
     }
 
-    /// **Source:** `Intf_SectionPoint.hxx`:107 - `Intf_SectionPoint::Intf_SectionPoint()`
-    /// Builds  a  SectionPoint 2d   with the respective dimensions
-    /// (vertex or  edge)  of  the concerned arguments   and  their
+    /// **Source:** `Intf_SectionPoint.hxx`:97 - `Intf_SectionPoint::Intf_SectionPoint()`
+    /// Builds a SectionPoint 2d with the respective dimensions
+    /// (vertex or edge) of the concerned arguments and their
     /// addresses in the Topological structure.
     pub fn new_pnt2d_pitype_int_real_pitype_int_real2(
         Where: &crate::gp::Pnt2d,
@@ -719,7 +719,7 @@ impl SectionPoint {
     }
 
     /// **Source:** `Intf_SectionPoint.hxx`:40 - `Intf_SectionPoint::ParamOnFirst()`
-    /// Returns the cumulated  Parameter of the SectionPoint on the
+    /// Returns the cumulated Parameter of the SectionPoint on the
     /// first element.
     pub fn param_on_first(&self) -> f64 {
         crate::check_result(unsafe {
@@ -746,7 +746,7 @@ impl SectionPoint {
     }
 
     /// **Source:** `Intf_SectionPoint.hxx`:51 - `Intf_SectionPoint::TypeOnSecond()`
-    /// Returns  the  type  of the  section  point  on  the  second
+    /// Returns the type of the section point on the second
     /// element.
     pub fn type_on_second(&self) -> crate::intf::PIType {
         crate::intf::PIType::try_from(crate::check_result(unsafe {
@@ -776,7 +776,7 @@ impl SectionPoint {
         *Dim = crate::intf::PIType::try_from(Dim_i32_).unwrap();
     }
 
-    /// **Source:** `Intf_SectionPoint.hxx`:59 - `Intf_SectionPoint::InfoFirst()`
+    /// **Source:** `Intf_SectionPoint.hxx`:56 - `Intf_SectionPoint::InfoFirst()`
     /// Gives the data about the first argument of the Interference.
     pub fn info_first_pitype_int_real(
         &self,
@@ -796,7 +796,7 @@ impl SectionPoint {
         *Dim = crate::intf::PIType::try_from(Dim_i32_).unwrap();
     }
 
-    /// **Source:** `Intf_SectionPoint.hxx`:63 - `Intf_SectionPoint::InfoSecond()`
+    /// **Source:** `Intf_SectionPoint.hxx`:58 - `Intf_SectionPoint::InfoSecond()`
     pub fn info_second_pitype_int2_real(
         &self,
         Dim: &mut crate::intf::PIType,
@@ -817,7 +817,7 @@ impl SectionPoint {
         *Dim = crate::intf::PIType::try_from(Dim_i32_).unwrap();
     }
 
-    /// **Source:** `Intf_SectionPoint.hxx`:69 - `Intf_SectionPoint::InfoSecond()`
+    /// **Source:** `Intf_SectionPoint.hxx`:61 - `Intf_SectionPoint::InfoSecond()`
     /// Gives the data about the second argument of the Interference.
     pub fn info_second_pitype_int_real(
         &self,
@@ -837,18 +837,18 @@ impl SectionPoint {
         *Dim = crate::intf::PIType::try_from(Dim_i32_).unwrap();
     }
 
-    /// **Source:** `Intf_SectionPoint.hxx`:76 - `Intf_SectionPoint::Incidence()`
-    /// Gives the incidence at  this  section point. The  incidence
-    /// between the two triangles is given by the cosine.  The best
-    /// incidence is 0. (PI/2).  The worst is 1. (null angle).
+    /// **Source:** `Intf_SectionPoint.hxx`:66 - `Intf_SectionPoint::Incidence()`
+    /// Gives the incidence at this section point. The incidence
+    /// between the two triangles is given by the cosine. The best
+    /// incidence is 0. (PI/2). The worst is 1. (null angle).
     pub fn incidence(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Intf_SectionPoint_incidence(self as *const Self)
         })
     }
 
-    /// **Source:** `Intf_SectionPoint.hxx`:80 - `Intf_SectionPoint::IsEqual()`
-    /// Returns True if the two SectionPoint have the  same logical
+    /// **Source:** `Intf_SectionPoint.hxx`:70 - `Intf_SectionPoint::IsEqual()`
+    /// Returns True if the two SectionPoint have the same logical
     /// information.
     pub fn is_equal(&self, Other: &SectionPoint) -> bool {
         crate::check_result(unsafe {
@@ -856,8 +856,8 @@ impl SectionPoint {
         })
     }
 
-    /// **Source:** `Intf_SectionPoint.hxx`:86 - `Intf_SectionPoint::IsOnSameEdge()`
-    /// Returns True if the two SectionPoints are  on the  same edge
+    /// **Source:** `Intf_SectionPoint.hxx`:76 - `Intf_SectionPoint::IsOnSameEdge()`
+    /// Returns True if the two SectionPoints are on the same edge
     /// of the first or the second element.
     pub fn is_on_same_edge(&self, Other: &SectionPoint) -> bool {
         crate::check_result(unsafe {
@@ -868,7 +868,7 @@ impl SectionPoint {
         })
     }
 
-    /// **Source:** `Intf_SectionPoint.hxx`:117 - `Intf_SectionPoint::Merge()`
+    /// **Source:** `Intf_SectionPoint.hxx`:107 - `Intf_SectionPoint::Merge()`
     /// Merges two SectionPoints.
     pub fn merge(&mut self, Other: &mut SectionPoint) {
         crate::check_void_result(unsafe {
@@ -876,7 +876,7 @@ impl SectionPoint {
         })
     }
 
-    /// **Source:** `Intf_SectionPoint.hxx`:119 - `Intf_SectionPoint::Dump()`
+    /// **Source:** `Intf_SectionPoint.hxx`:109 - `Intf_SectionPoint::Dump()`
     pub fn dump(&self, Indent: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Intf_SectionPoint_dump(self as *const Self, Indent)
@@ -888,8 +888,8 @@ impl SectionPoint {
 // From Intf_TangentZone.hxx
 // ========================
 
-/// **Source:** `Intf_TangentZone.hxx`:30 - `Intf_TangentZone`
-/// Describes   a  zone  of  tangence  between  polygons  or
+/// **Source:** `Intf_TangentZone.hxx`:31 - `Intf_TangentZone`
+/// Describes a zone of tangence between polygons or
 /// polyhedra as a sequence of points of intersection.
 pub use crate::ffi_types::Intf_TangentZone as TangentZone;
 
@@ -902,7 +902,7 @@ unsafe impl crate::CppDeletable for TangentZone {
 }
 
 impl TangentZone {
-    /// **Source:** `Intf_TangentZone.hxx`:81 - `Intf_TangentZone::Intf_TangentZone()`
+    /// **Source:** `Intf_TangentZone.hxx`:76 - `Intf_TangentZone::Intf_TangentZone()`
     /// Builds an empty tangent zone.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -912,7 +912,7 @@ impl TangentZone {
         }
     }
 
-    /// **Source:** `Intf_TangentZone.hxx`:36 - `Intf_TangentZone::NumberOfPoints()`
+    /// **Source:** `Intf_TangentZone.hxx`:37 - `Intf_TangentZone::NumberOfPoints()`
     /// Returns number of SectionPoint in this TangentZone.
     pub fn number_of_points(&self) -> i32 {
         crate::check_result(unsafe {
@@ -920,8 +920,8 @@ impl TangentZone {
         })
     }
 
-    /// **Source:** `Intf_TangentZone.hxx`:40 - `Intf_TangentZone::GetPoint()`
-    /// Gives   the   SectionPoint   of  address  <Index>  in  the
+    /// **Source:** `Intf_TangentZone.hxx`:41 - `Intf_TangentZone::GetPoint()`
+    /// Gives the SectionPoint of address <Index> in the
     /// TangentZone.
     pub fn get_point(&self, Index: i32) -> &SectionPoint {
         unsafe {
@@ -932,7 +932,7 @@ impl TangentZone {
         }
     }
 
-    /// **Source:** `Intf_TangentZone.hxx`:43 - `Intf_TangentZone::IsEqual()`
+    /// **Source:** `Intf_TangentZone.hxx`:44 - `Intf_TangentZone::IsEqual()`
     /// Compares two TangentZones.
     pub fn is_equal(&self, Other: &TangentZone) -> bool {
         crate::check_result(unsafe {
@@ -940,7 +940,7 @@ impl TangentZone {
         })
     }
 
-    /// **Source:** `Intf_TangentZone.hxx`:48 - `Intf_TangentZone::Contains()`
+    /// **Source:** `Intf_TangentZone.hxx`:49 - `Intf_TangentZone::Contains()`
     /// Checks if <ThePI> is in TangentZone.
     pub fn contains(&self, ThePI: &SectionPoint) -> bool {
         crate::check_result(unsafe {
@@ -948,8 +948,8 @@ impl TangentZone {
         })
     }
 
-    /// **Source:** `Intf_TangentZone.hxx`:52 - `Intf_TangentZone::ParamOnFirst()`
-    /// Gives  the parameter range of the  TangentZone on the first
+    /// **Source:** `Intf_TangentZone.hxx`:53 - `Intf_TangentZone::ParamOnFirst()`
+    /// Gives the parameter range of the TangentZone on the first
     /// argument of the Interference. (Usable only for polygon)
     pub fn param_on_first(&self, paraMin: &mut f64, paraMax: &mut f64) {
         crate::check_void_result(unsafe {
@@ -961,8 +961,8 @@ impl TangentZone {
         })
     }
 
-    /// **Source:** `Intf_TangentZone.hxx`:56 - `Intf_TangentZone::ParamOnSecond()`
-    /// Gives the parameter range of the  TangentZone on the second
+    /// **Source:** `Intf_TangentZone.hxx`:57 - `Intf_TangentZone::ParamOnSecond()`
+    /// Gives the parameter range of the TangentZone on the second
     /// argument of the Interference. (Usable only for polygon)
     pub fn param_on_second(&self, paraMin: &mut f64, paraMax: &mut f64) {
         crate::check_void_result(unsafe {
@@ -974,8 +974,8 @@ impl TangentZone {
         })
     }
 
-    /// **Source:** `Intf_TangentZone.hxx`:60 - `Intf_TangentZone::InfoFirst()`
-    /// Gives  information  about  the    first argument   of   the
+    /// **Source:** `Intf_TangentZone.hxx`:61 - `Intf_TangentZone::InfoFirst()`
+    /// Gives information about the first argument of the
     /// Interference. (Usable only for polygon)
     pub fn info_first(
         &self,
@@ -995,8 +995,8 @@ impl TangentZone {
         })
     }
 
-    /// **Source:** `Intf_TangentZone.hxx`:67 - `Intf_TangentZone::InfoSecond()`
-    /// Gives   information   about  the  second   argument of  the
+    /// **Source:** `Intf_TangentZone.hxx`:65 - `Intf_TangentZone::InfoSecond()`
+    /// Gives information about the second argument of the
     /// Interference. (Usable only for polygon)
     pub fn info_second(
         &self,
@@ -1016,8 +1016,8 @@ impl TangentZone {
         })
     }
 
-    /// **Source:** `Intf_TangentZone.hxx`:74 - `Intf_TangentZone::RangeContains()`
-    /// Returns True if  <ThePI>  is in the parameter  range of the
+    /// **Source:** `Intf_TangentZone.hxx`:69 - `Intf_TangentZone::RangeContains()`
+    /// Returns True if <ThePI> is in the parameter range of the
     /// TangentZone.
     pub fn range_contains(&self, ThePI: &SectionPoint) -> bool {
         crate::check_result(unsafe {
@@ -1028,8 +1028,8 @@ impl TangentZone {
         })
     }
 
-    /// **Source:** `Intf_TangentZone.hxx`:78 - `Intf_TangentZone::HasCommonRange()`
-    /// Returns True if the TangentZone  <Other> has  a common part
+    /// **Source:** `Intf_TangentZone.hxx`:73 - `Intf_TangentZone::HasCommonRange()`
+    /// Returns True if the TangentZone <Other> has a common part
     /// with <me>.
     pub fn has_common_range(&self, Other: &TangentZone) -> bool {
         crate::check_result(unsafe {
@@ -1040,7 +1040,7 @@ impl TangentZone {
         })
     }
 
-    /// **Source:** `Intf_TangentZone.hxx`:84 - `Intf_TangentZone::Append()`
+    /// **Source:** `Intf_TangentZone.hxx`:79 - `Intf_TangentZone::Append()`
     /// Adds a SectionPoint to the TangentZone.
     pub fn append_sectionpoint(&mut self, Pi: &SectionPoint) {
         crate::check_void_result(unsafe {
@@ -1051,7 +1051,7 @@ impl TangentZone {
         })
     }
 
-    /// **Source:** `Intf_TangentZone.hxx`:87 - `Intf_TangentZone::Append()`
+    /// **Source:** `Intf_TangentZone.hxx`:82 - `Intf_TangentZone::Append()`
     /// Adds the TangentZone <Tzi> to <me>.
     pub fn append_tangentzone(&mut self, Tzi: &TangentZone) {
         crate::check_void_result(unsafe {
@@ -1062,7 +1062,7 @@ impl TangentZone {
         })
     }
 
-    /// **Source:** `Intf_TangentZone.hxx`:90 - `Intf_TangentZone::Insert()`
+    /// **Source:** `Intf_TangentZone.hxx`:85 - `Intf_TangentZone::Insert()`
     /// Inserts a SectionPoint in the TangentZone.
     pub fn insert(&mut self, Pi: &SectionPoint) -> bool {
         crate::check_result(unsafe {
@@ -1070,7 +1070,7 @@ impl TangentZone {
         })
     }
 
-    /// **Source:** `Intf_TangentZone.hxx`:93 - `Intf_TangentZone::PolygonInsert()`
+    /// **Source:** `Intf_TangentZone.hxx`:88 - `Intf_TangentZone::PolygonInsert()`
     /// Inserts a point in the polygonal TangentZone.
     pub fn polygon_insert(&mut self, Pi: &SectionPoint) {
         crate::check_void_result(unsafe {
@@ -1078,7 +1078,7 @@ impl TangentZone {
         })
     }
 
-    /// **Source:** `Intf_TangentZone.hxx`:96 - `Intf_TangentZone::InsertBefore()`
+    /// **Source:** `Intf_TangentZone.hxx`:91 - `Intf_TangentZone::InsertBefore()`
     /// Inserts a SectionPoint before <Index> in the TangentZone.
     pub fn insert_before(&mut self, Index: i32, Pi: &SectionPoint) {
         crate::check_void_result(unsafe {
@@ -1090,7 +1090,7 @@ impl TangentZone {
         })
     }
 
-    /// **Source:** `Intf_TangentZone.hxx`:99 - `Intf_TangentZone::InsertAfter()`
+    /// **Source:** `Intf_TangentZone.hxx`:94 - `Intf_TangentZone::InsertAfter()`
     /// Inserts a SectionPoint after <Index> in the TangentZone.
     pub fn insert_after(&mut self, Index: i32, Pi: &SectionPoint) {
         crate::check_void_result(unsafe {
@@ -1102,7 +1102,7 @@ impl TangentZone {
         })
     }
 
-    /// **Source:** `Intf_TangentZone.hxx`:101 - `Intf_TangentZone::Dump()`
+    /// **Source:** `Intf_TangentZone.hxx`:96 - `Intf_TangentZone::Dump()`
     pub fn dump(&self, Indent: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Intf_TangentZone_dump(self as *const Self, Indent)
@@ -1260,9 +1260,3 @@ impl Tool {
         })
     }
 }
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi_types::Intf_Array1OfLin as Array1OfLin;

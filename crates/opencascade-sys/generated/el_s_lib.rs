@@ -76,7 +76,7 @@ pub fn dn_real2_pln_int2(
         ))
     }
 }
-/// **Source:** `ElSLib.hxx`:84 - `ElSLib::DN`
+/// **Source:** `ElSLib.hxx`:80 - `ElSLib::DN`
 pub fn dn_real2_cone_int2(
     U: f64,
     V: f64,
@@ -90,7 +90,7 @@ pub fn dn_real2_cone_int2(
         ))
     }
 }
-/// **Source:** `ElSLib.hxx`:90 - `ElSLib::DN`
+/// **Source:** `ElSLib.hxx`:82 - `ElSLib::DN`
 pub fn dn_real2_cylinder_int2(
     U: f64,
     V: f64,
@@ -104,7 +104,7 @@ pub fn dn_real2_cylinder_int2(
         ))
     }
 }
-/// **Source:** `ElSLib.hxx`:96 - `ElSLib::DN`
+/// **Source:** `ElSLib.hxx`:88 - `ElSLib::DN`
 pub fn dn_real2_sphere_int2(
     U: f64,
     V: f64,
@@ -118,7 +118,7 @@ pub fn dn_real2_sphere_int2(
         ))
     }
 }
-/// **Source:** `ElSLib.hxx`:102 - `ElSLib::DN`
+/// **Source:** `ElSLib.hxx`:90 - `ElSLib::DN`
 pub fn dn_real2_torus_int2(
     U: f64,
     V: f64,
@@ -132,7 +132,7 @@ pub fn dn_real2_torus_int2(
         ))
     }
 }
-/// **Source:** `ElSLib.hxx`:111 - `ElSLib::D0`
+/// **Source:** `ElSLib.hxx`:95 - `ElSLib::D0`
 /// For elementary surfaces from the gp package (planes,
 /// cones, cylinders, spheres and tori), computes the point P
 /// of parameters (U, V).inline
@@ -141,31 +141,31 @@ pub fn d0_real2_pln_pnt(U: f64, V: f64, Pl: &crate::gp::Pln, P: &mut crate::gp::
         crate::ffi_extern_TKMath::ElSLib_d0_real2_pln_pnt(U, V, Pl, P)
     })
 }
-/// **Source:** `ElSLib.hxx`:113 - `ElSLib::D0`
+/// **Source:** `ElSLib.hxx`:97 - `ElSLib::D0`
 pub fn d0_real2_cone_pnt(U: f64, V: f64, C: &crate::gp::Cone, P: &mut crate::gp::Pnt) {
     crate::check_void_result(unsafe {
         crate::ffi_extern_TKMath::ElSLib_d0_real2_cone_pnt(U, V, C, P)
     })
 }
-/// **Source:** `ElSLib.hxx`:115 - `ElSLib::D0`
+/// **Source:** `ElSLib.hxx`:99 - `ElSLib::D0`
 pub fn d0_real2_cylinder_pnt(U: f64, V: f64, C: &crate::gp::Cylinder, P: &mut crate::gp::Pnt) {
     crate::check_void_result(unsafe {
         crate::ffi_extern_TKMath::ElSLib_d0_real2_cylinder_pnt(U, V, C, P)
     })
 }
-/// **Source:** `ElSLib.hxx`:117 - `ElSLib::D0`
+/// **Source:** `ElSLib.hxx`:101 - `ElSLib::D0`
 pub fn d0_real2_sphere_pnt(U: f64, V: f64, S: &crate::gp::Sphere, P: &mut crate::gp::Pnt) {
     crate::check_void_result(unsafe {
         crate::ffi_extern_TKMath::ElSLib_d0_real2_sphere_pnt(U, V, S, P)
     })
 }
-/// **Source:** `ElSLib.hxx`:119 - `ElSLib::D0`
+/// **Source:** `ElSLib.hxx`:103 - `ElSLib::D0`
 pub fn d0_real2_torus_pnt(U: f64, V: f64, T: &crate::gp::Torus, P: &mut crate::gp::Pnt) {
     crate::check_void_result(unsafe {
         crate::ffi_extern_TKMath::ElSLib_d0_real2_torus_pnt(U, V, T, P)
     })
 }
-/// **Source:** `ElSLib.hxx`:126 - `ElSLib::D1`
+/// **Source:** `ElSLib.hxx`:110 - `ElSLib::D1`
 /// For elementary surfaces from the gp package (planes,
 /// cones, cylinders, spheres and tori), computes:
 /// -   the point P of parameters (U, V), and
@@ -183,7 +183,7 @@ pub fn d1_real2_pln_pnt_vec2(
         crate::ffi_extern_TKMath::ElSLib_d1_real2_pln_pnt_vec2(U, V, Pl, P, Vu, Vv)
     })
 }
-/// **Source:** `ElSLib.hxx`:133 - `ElSLib::D1`
+/// **Source:** `ElSLib.hxx`:117 - `ElSLib::D1`
 pub fn d1_real2_cone_pnt_vec2(
     U: f64,
     V: f64,
@@ -196,7 +196,7 @@ pub fn d1_real2_cone_pnt_vec2(
         crate::ffi_extern_TKMath::ElSLib_d1_real2_cone_pnt_vec2(U, V, C, P, Vu, Vv)
     })
 }
-/// **Source:** `ElSLib.hxx`:140 - `ElSLib::D1`
+/// **Source:** `ElSLib.hxx`:124 - `ElSLib::D1`
 pub fn d1_real2_cylinder_pnt_vec2(
     U: f64,
     V: f64,
@@ -209,7 +209,7 @@ pub fn d1_real2_cylinder_pnt_vec2(
         crate::ffi_extern_TKMath::ElSLib_d1_real2_cylinder_pnt_vec2(U, V, C, P, Vu, Vv)
     })
 }
-/// **Source:** `ElSLib.hxx`:147 - `ElSLib::D1`
+/// **Source:** `ElSLib.hxx`:131 - `ElSLib::D1`
 pub fn d1_real2_sphere_pnt_vec2(
     U: f64,
     V: f64,
@@ -222,7 +222,7 @@ pub fn d1_real2_sphere_pnt_vec2(
         crate::ffi_extern_TKMath::ElSLib_d1_real2_sphere_pnt_vec2(U, V, S, P, Vu, Vv)
     })
 }
-/// **Source:** `ElSLib.hxx`:154 - `ElSLib::D1`
+/// **Source:** `ElSLib.hxx`:138 - `ElSLib::D1`
 pub fn d1_real2_torus_pnt_vec2(
     U: f64,
     V: f64,
@@ -235,7 +235,7 @@ pub fn d1_real2_torus_pnt_vec2(
         crate::ffi_extern_TKMath::ElSLib_d1_real2_torus_pnt_vec2(U, V, T, P, Vu, Vv)
     })
 }
-/// **Source:** `ElSLib.hxx`:167 - `ElSLib::D2`
+/// **Source:** `ElSLib.hxx`:151 - `ElSLib::D2`
 /// For elementary surfaces from the gp package (cones,
 /// cylinders, spheres and tori), computes:
 /// -   the point P of parameters (U, V), and
@@ -257,7 +257,7 @@ pub fn d2_real2_cone_pnt_vec5(
         crate::ffi_extern_TKMath::ElSLib_d2_real2_cone_pnt_vec5(U, V, C, P, Vu, Vv, Vuu, Vvv, Vuv)
     })
 }
-/// **Source:** `ElSLib.hxx`:177 - `ElSLib::D2`
+/// **Source:** `ElSLib.hxx`:161 - `ElSLib::D2`
 pub fn d2_real2_cylinder_pnt_vec5(
     U: f64,
     V: f64,
@@ -275,7 +275,7 @@ pub fn d2_real2_cylinder_pnt_vec5(
         )
     })
 }
-/// **Source:** `ElSLib.hxx`:187 - `ElSLib::D2`
+/// **Source:** `ElSLib.hxx`:171 - `ElSLib::D2`
 pub fn d2_real2_sphere_pnt_vec5(
     U: f64,
     V: f64,
@@ -291,7 +291,7 @@ pub fn d2_real2_sphere_pnt_vec5(
         crate::ffi_extern_TKMath::ElSLib_d2_real2_sphere_pnt_vec5(U, V, S, P, Vu, Vv, Vuu, Vvv, Vuv)
     })
 }
-/// **Source:** `ElSLib.hxx`:197 - `ElSLib::D2`
+/// **Source:** `ElSLib.hxx`:181 - `ElSLib::D2`
 pub fn d2_real2_torus_pnt_vec5(
     U: f64,
     V: f64,
@@ -307,7 +307,7 @@ pub fn d2_real2_torus_pnt_vec5(
         crate::ffi_extern_TKMath::ElSLib_d2_real2_torus_pnt_vec5(U, V, T, P, Vu, Vv, Vuu, Vvv, Vuv)
     })
 }
-/// **Source:** `ElSLib.hxx`:216 - `ElSLib::D3`
+/// **Source:** `ElSLib.hxx`:200 - `ElSLib::D3`
 /// For elementary surfaces from the gp package (cones,
 /// cylinders, spheres and tori), computes:
 /// -   the point P of parameters (U,V), and
@@ -338,7 +338,7 @@ pub fn d3_real2_cone_pnt_vec9(
         )
     })
 }
-/// **Source:** `ElSLib.hxx`:230 - `ElSLib::D3`
+/// **Source:** `ElSLib.hxx`:214 - `ElSLib::D3`
 pub fn d3_real2_cylinder_pnt_vec9(
     U: f64,
     V: f64,
@@ -360,7 +360,7 @@ pub fn d3_real2_cylinder_pnt_vec9(
         )
     })
 }
-/// **Source:** `ElSLib.hxx`:244 - `ElSLib::D3`
+/// **Source:** `ElSLib.hxx`:228 - `ElSLib::D3`
 pub fn d3_real2_sphere_pnt_vec9(
     U: f64,
     V: f64,
@@ -382,14 +382,14 @@ pub fn d3_real2_sphere_pnt_vec9(
         )
     })
 }
-/// **Source:** `ElSLib.hxx`:266 - `ElSLib::D3`
+/// **Source:** `ElSLib.hxx`:250 - `ElSLib::D3`
 /// Surface evaluation
 /// The following functions compute the point and the
 /// derivatives on elementary surfaces defined with their
 /// geometric characteristics.
 /// You don't need to create the surface to use these functions.
-/// These functions are called by the previous  ones.
-/// Example :
+/// These functions are called by the previous ones.
+/// Example:
 /// A cylinder is defined with its position and its radius.
 pub fn d3_real2_torus_pnt_vec9(
     U: f64,
@@ -412,7 +412,7 @@ pub fn d3_real2_torus_pnt_vec9(
         )
     })
 }
-/// **Source:** `ElSLib.hxx`:280 - `ElSLib::PlaneValue`
+/// **Source:** `ElSLib.hxx`:264 - `ElSLib::PlaneValue`
 pub fn plane_value(U: f64, V: f64, Pos: &crate::gp::Ax3) -> crate::OwnedPtr<crate::gp::Pnt> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
@@ -420,7 +420,7 @@ pub fn plane_value(U: f64, V: f64, Pos: &crate::gp::Ax3) -> crate::OwnedPtr<crat
         ))
     }
 }
-/// **Source:** `ElSLib.hxx`:284 - `ElSLib::CylinderValue`
+/// **Source:** `ElSLib.hxx`:266 - `ElSLib::CylinderValue`
 pub fn cylinder_value(
     U: f64,
     V: f64,
@@ -433,7 +433,7 @@ pub fn cylinder_value(
         ))
     }
 }
-/// **Source:** `ElSLib.hxx`:289 - `ElSLib::ConeValue`
+/// **Source:** `ElSLib.hxx`:271 - `ElSLib::ConeValue`
 pub fn cone_value(
     U: f64,
     V: f64,
@@ -447,7 +447,7 @@ pub fn cone_value(
         )))
     }
 }
-/// **Source:** `ElSLib.hxx`:295 - `ElSLib::SphereValue`
+/// **Source:** `ElSLib.hxx`:277 - `ElSLib::SphereValue`
 pub fn sphere_value(
     U: f64,
     V: f64,
@@ -460,7 +460,7 @@ pub fn sphere_value(
         ))
     }
 }
-/// **Source:** `ElSLib.hxx`:300 - `ElSLib::TorusValue`
+/// **Source:** `ElSLib.hxx`:282 - `ElSLib::TorusValue`
 pub fn torus_value(
     U: f64,
     V: f64,
@@ -474,7 +474,7 @@ pub fn torus_value(
         ))
     }
 }
-/// **Source:** `ElSLib.hxx`:306 - `ElSLib::PlaneDN`
+/// **Source:** `ElSLib.hxx`:288 - `ElSLib::PlaneDN`
 pub fn plane_dn(
     U: f64,
     V: f64,
@@ -488,7 +488,7 @@ pub fn plane_dn(
         )))
     }
 }
-/// **Source:** `ElSLib.hxx`:312 - `ElSLib::CylinderDN`
+/// **Source:** `ElSLib.hxx`:294 - `ElSLib::CylinderDN`
 pub fn cylinder_dn(
     U: f64,
     V: f64,
@@ -503,7 +503,7 @@ pub fn cylinder_dn(
         ))
     }
 }
-/// **Source:** `ElSLib.hxx`:319 - `ElSLib::ConeDN`
+/// **Source:** `ElSLib.hxx`:301 - `ElSLib::ConeDN`
 pub fn cone_dn(
     U: f64,
     V: f64,
@@ -519,7 +519,7 @@ pub fn cone_dn(
         )))
     }
 }
-/// **Source:** `ElSLib.hxx`:327 - `ElSLib::SphereDN`
+/// **Source:** `ElSLib.hxx`:309 - `ElSLib::SphereDN`
 pub fn sphere_dn(
     U: f64,
     V: f64,
@@ -534,7 +534,7 @@ pub fn sphere_dn(
         )))
     }
 }
-/// **Source:** `ElSLib.hxx`:334 - `ElSLib::TorusDN`
+/// **Source:** `ElSLib.hxx`:316 - `ElSLib::TorusDN`
 pub fn torus_dn(
     U: f64,
     V: f64,
@@ -556,11 +556,11 @@ pub fn torus_dn(
         )))
     }
 }
-/// **Source:** `ElSLib.hxx`:342 - `ElSLib::PlaneD0`
+/// **Source:** `ElSLib.hxx`:324 - `ElSLib::PlaneD0`
 pub fn plane_d0(U: f64, V: f64, Pos: &crate::gp::Ax3, P: &mut crate::gp::Pnt) {
     crate::check_void_result(unsafe { crate::ffi_extern_TKMath::ElSLib_plane_d0(U, V, Pos, P) })
 }
-/// **Source:** `ElSLib.hxx`:347 - `ElSLib::ConeD0`
+/// **Source:** `ElSLib.hxx`:326 - `ElSLib::ConeD0`
 pub fn cone_d0(
     U: f64,
     V: f64,
@@ -573,19 +573,19 @@ pub fn cone_d0(
         crate::ffi_extern_TKMath::ElSLib_cone_d0(U, V, Pos, Radius, SAngle, P)
     })
 }
-/// **Source:** `ElSLib.hxx`:354 - `ElSLib::CylinderD0`
+/// **Source:** `ElSLib.hxx`:333 - `ElSLib::CylinderD0`
 pub fn cylinder_d0(U: f64, V: f64, Pos: &crate::gp::Ax3, Radius: f64, P: &mut crate::gp::Pnt) {
     crate::check_void_result(unsafe {
         crate::ffi_extern_TKMath::ElSLib_cylinder_d0(U, V, Pos, Radius, P)
     })
 }
-/// **Source:** `ElSLib.hxx`:360 - `ElSLib::SphereD0`
+/// **Source:** `ElSLib.hxx`:339 - `ElSLib::SphereD0`
 pub fn sphere_d0(U: f64, V: f64, Pos: &crate::gp::Ax3, Radius: f64, P: &mut crate::gp::Pnt) {
     crate::check_void_result(unsafe {
         crate::ffi_extern_TKMath::ElSLib_sphere_d0(U, V, Pos, Radius, P)
     })
 }
-/// **Source:** `ElSLib.hxx`:366 - `ElSLib::TorusD0`
+/// **Source:** `ElSLib.hxx`:345 - `ElSLib::TorusD0`
 pub fn torus_d0(
     U: f64,
     V: f64,
@@ -598,7 +598,7 @@ pub fn torus_d0(
         crate::ffi_extern_TKMath::ElSLib_torus_d0(U, V, Pos, MajorRadius, MinorRadius, P)
     })
 }
-/// **Source:** `ElSLib.hxx`:373 - `ElSLib::PlaneD1`
+/// **Source:** `ElSLib.hxx`:352 - `ElSLib::PlaneD1`
 pub fn plane_d1(
     U: f64,
     V: f64,
@@ -611,7 +611,7 @@ pub fn plane_d1(
         crate::ffi_extern_TKMath::ElSLib_plane_d1(U, V, Pos, P, Vu, Vv)
     })
 }
-/// **Source:** `ElSLib.hxx`:380 - `ElSLib::ConeD1`
+/// **Source:** `ElSLib.hxx`:359 - `ElSLib::ConeD1`
 pub fn cone_d1(
     U: f64,
     V: f64,
@@ -626,7 +626,7 @@ pub fn cone_d1(
         crate::ffi_extern_TKMath::ElSLib_cone_d1(U, V, Pos, Radius, SAngle, P, Vu, Vv)
     })
 }
-/// **Source:** `ElSLib.hxx`:389 - `ElSLib::CylinderD1`
+/// **Source:** `ElSLib.hxx`:368 - `ElSLib::CylinderD1`
 pub fn cylinder_d1(
     U: f64,
     V: f64,
@@ -640,7 +640,7 @@ pub fn cylinder_d1(
         crate::ffi_extern_TKMath::ElSLib_cylinder_d1(U, V, Pos, Radius, P, Vu, Vv)
     })
 }
-/// **Source:** `ElSLib.hxx`:397 - `ElSLib::SphereD1`
+/// **Source:** `ElSLib.hxx`:376 - `ElSLib::SphereD1`
 pub fn sphere_d1(
     U: f64,
     V: f64,
@@ -654,7 +654,7 @@ pub fn sphere_d1(
         crate::ffi_extern_TKMath::ElSLib_sphere_d1(U, V, Pos, Radius, P, Vu, Vv)
     })
 }
-/// **Source:** `ElSLib.hxx`:405 - `ElSLib::TorusD1`
+/// **Source:** `ElSLib.hxx`:384 - `ElSLib::TorusD1`
 pub fn torus_d1(
     U: f64,
     V: f64,
@@ -669,7 +669,7 @@ pub fn torus_d1(
         crate::ffi_extern_TKMath::ElSLib_torus_d1(U, V, Pos, MajorRadius, MinorRadius, P, Vu, Vv)
     })
 }
-/// **Source:** `ElSLib.hxx`:414 - `ElSLib::ConeD2`
+/// **Source:** `ElSLib.hxx`:393 - `ElSLib::ConeD2`
 pub fn cone_d2(
     U: f64,
     V: f64,
@@ -689,7 +689,7 @@ pub fn cone_d2(
         )
     })
 }
-/// **Source:** `ElSLib.hxx`:426 - `ElSLib::CylinderD2`
+/// **Source:** `ElSLib.hxx`:405 - `ElSLib::CylinderD2`
 pub fn cylinder_d2(
     U: f64,
     V: f64,
@@ -706,7 +706,7 @@ pub fn cylinder_d2(
         crate::ffi_extern_TKMath::ElSLib_cylinder_d2(U, V, Pos, Radius, P, Vu, Vv, Vuu, Vvv, Vuv)
     })
 }
-/// **Source:** `ElSLib.hxx`:437 - `ElSLib::SphereD2`
+/// **Source:** `ElSLib.hxx`:416 - `ElSLib::SphereD2`
 pub fn sphere_d2(
     U: f64,
     V: f64,
@@ -723,7 +723,7 @@ pub fn sphere_d2(
         crate::ffi_extern_TKMath::ElSLib_sphere_d2(U, V, Pos, Radius, P, Vu, Vv, Vuu, Vvv, Vuv)
     })
 }
-/// **Source:** `ElSLib.hxx`:448 - `ElSLib::TorusD2`
+/// **Source:** `ElSLib.hxx`:427 - `ElSLib::TorusD2`
 pub fn torus_d2(
     U: f64,
     V: f64,
@@ -753,7 +753,7 @@ pub fn torus_d2(
         )
     })
 }
-/// **Source:** `ElSLib.hxx`:460 - `ElSLib::ConeD3`
+/// **Source:** `ElSLib.hxx`:439 - `ElSLib::ConeD3`
 pub fn cone_d3(
     U: f64,
     V: f64,
@@ -777,7 +777,7 @@ pub fn cone_d3(
         )
     })
 }
-/// **Source:** `ElSLib.hxx`:476 - `ElSLib::CylinderD3`
+/// **Source:** `ElSLib.hxx`:455 - `ElSLib::CylinderD3`
 pub fn cylinder_d3(
     U: f64,
     V: f64,
@@ -800,7 +800,7 @@ pub fn cylinder_d3(
         )
     })
 }
-/// **Source:** `ElSLib.hxx`:491 - `ElSLib::SphereD3`
+/// **Source:** `ElSLib.hxx`:470 - `ElSLib::SphereD3`
 pub fn sphere_d3(
     U: f64,
     V: f64,
@@ -823,7 +823,7 @@ pub fn sphere_d3(
         )
     })
 }
-/// **Source:** `ElSLib.hxx`:509 - `ElSLib::TorusD3`
+/// **Source:** `ElSLib.hxx`:488 - `ElSLib::TorusD3`
 /// The following functions compute the parametric values
 /// corresponding to a given point on a elementary surface.
 /// The point should be on the surface.
@@ -864,7 +864,7 @@ pub fn torus_d3(
         )
     })
 }
-/// **Source:** `ElSLib.hxx`:528 - `ElSLib::Parameters`
+/// **Source:** `ElSLib.hxx`:507 - `ElSLib::Parameters`
 /// parametrization
 /// P (U, V) =
 /// Pl.Location() + U * Pl.XDirection() + V * Pl.YDirection()
@@ -873,10 +873,10 @@ pub fn parameters_pln_pnt_real2(Pl: &crate::gp::Pln, P: &crate::gp::Pnt, U: &mut
         crate::ffi_extern_TKMath::ElSLib_parameters_pln_pnt_real2(Pl, P, U, V)
     })
 }
-/// **Source:** `ElSLib.hxx`:533 - `ElSLib::Parameters`
+/// **Source:** `ElSLib.hxx`:512 - `ElSLib::Parameters`
 /// parametrization
 /// P (U, V) = Location + V * ZDirection +
-/// Radius * (Cos(U) * XDirection + Sin (U) * YDirection)
+/// Radius * (std::cos(U) * XDirection + Sin (U) * YDirection)
 pub fn parameters_cylinder_pnt_real2(
     C: &crate::gp::Cylinder,
     P: &crate::gp::Pnt,
@@ -887,11 +887,11 @@ pub fn parameters_cylinder_pnt_real2(
         crate::ffi_extern_TKMath::ElSLib_parameters_cylinder_pnt_real2(C, P, U, V)
     })
 }
-/// **Source:** `ElSLib.hxx`:539 - `ElSLib::Parameters`
+/// **Source:** `ElSLib.hxx`:518 - `ElSLib::Parameters`
 /// parametrization
-/// P (U, V) =  Location + V * ZDirection +
+/// P (U, V) = Location + V * ZDirection +
 /// (Radius + V * Tan (SemiAngle)) *
-/// (Cos(U) * XDirection + Sin(U) * YDirection)
+/// (std::cos(U) * XDirection + std::sin(U) * YDirection)
 pub fn parameters_cone_pnt_real2(
     C: &crate::gp::Cone,
     P: &crate::gp::Pnt,
@@ -902,7 +902,7 @@ pub fn parameters_cone_pnt_real2(
         crate::ffi_extern_TKMath::ElSLib_parameters_cone_pnt_real2(C, P, U, V)
     })
 }
-/// **Source:** `ElSLib.hxx`:545 - `ElSLib::Parameters`
+/// **Source:** `ElSLib.hxx`:524 - `ElSLib::Parameters`
 /// parametrization
 /// P (U, V) = Location +
 /// Radius * Cos (V) * (Cos (U) * XDirection + Sin (U) * YDirection) +
@@ -917,12 +917,12 @@ pub fn parameters_sphere_pnt_real2(
         crate::ffi_extern_TKMath::ElSLib_parameters_sphere_pnt_real2(S, P, U, V)
     })
 }
-/// **Source:** `ElSLib.hxx`:552 - `ElSLib::Parameters`
+/// **Source:** `ElSLib.hxx`:531 - `ElSLib::Parameters`
 /// parametrization
 /// P (U, V) = Location +
-/// (MajorRadius + MinorRadius * Cos(U)) *
-/// (Cos(V) * XDirection - Sin(V) * YDirection) +
-/// MinorRadius * Sin(U) * ZDirection
+/// (MajorRadius + MinorRadius * std::cos(U)) *
+/// (std::cos(V) * XDirection - std::sin(V) * YDirection) +
+/// MinorRadius * std::sin(U) * ZDirection
 pub fn parameters_torus_pnt_real2(
     T: &crate::gp::Torus,
     P: &crate::gp::Pnt,
@@ -933,7 +933,7 @@ pub fn parameters_torus_pnt_real2(
         crate::ffi_extern_TKMath::ElSLib_parameters_torus_pnt_real2(T, P, U, V)
     })
 }
-/// **Source:** `ElSLib.hxx`:557 - `ElSLib::PlaneParameters`
+/// **Source:** `ElSLib.hxx`:536 - `ElSLib::PlaneParameters`
 /// parametrization
 /// P (U, V) =
 /// Pl.Location() + U * Pl.XDirection() + V * Pl.YDirection()
@@ -942,10 +942,10 @@ pub fn plane_parameters(Pos: &crate::gp::Ax3, P: &crate::gp::Pnt, U: &mut f64, V
         crate::ffi_extern_TKMath::ElSLib_plane_parameters(Pos, P, U, V)
     })
 }
-/// **Source:** `ElSLib.hxx`:565 - `ElSLib::CylinderParameters`
+/// **Source:** `ElSLib.hxx`:544 - `ElSLib::CylinderParameters`
 /// parametrization
 /// P (U, V) = Location + V * ZDirection +
-/// Radius * (Cos(U) * XDirection + Sin (U) * YDirection)
+/// Radius * (std::cos(U) * XDirection + Sin (U) * YDirection)
 pub fn cylinder_parameters(
     Pos: &crate::gp::Ax3,
     Radius: f64,
@@ -957,11 +957,11 @@ pub fn cylinder_parameters(
         crate::ffi_extern_TKMath::ElSLib_cylinder_parameters(Pos, Radius, P, U, V)
     })
 }
-/// **Source:** `ElSLib.hxx`:575 - `ElSLib::ConeParameters`
+/// **Source:** `ElSLib.hxx`:554 - `ElSLib::ConeParameters`
 /// parametrization
-/// P (U, V) =  Location + V * ZDirection +
+/// P (U, V) = Location + V * ZDirection +
 /// (Radius + V * Tan (SemiAngle)) *
-/// (Cos(U) * XDirection + Sin(U) * YDirection)
+/// (std::cos(U) * XDirection + std::sin(U) * YDirection)
 pub fn cone_parameters(
     Pos: &crate::gp::Ax3,
     Radius: f64,
@@ -974,7 +974,7 @@ pub fn cone_parameters(
         crate::ffi_extern_TKMath::ElSLib_cone_parameters(Pos, Radius, SAngle, P, U, V)
     })
 }
-/// **Source:** `ElSLib.hxx`:586 - `ElSLib::SphereParameters`
+/// **Source:** `ElSLib.hxx`:565 - `ElSLib::SphereParameters`
 /// parametrization
 /// P (U, V) = Location +
 /// Radius * Cos (V) * (Cos (U) * XDirection + Sin (U) * YDirection) +
@@ -990,12 +990,12 @@ pub fn sphere_parameters(
         crate::ffi_extern_TKMath::ElSLib_sphere_parameters(Pos, Radius, P, U, V)
     })
 }
-/// **Source:** `ElSLib.hxx`:597 - `ElSLib::TorusParameters`
+/// **Source:** `ElSLib.hxx`:576 - `ElSLib::TorusParameters`
 /// parametrization
 /// P (U, V) = Location +
-/// (MajorRadius + MinorRadius * Cos(U)) *
-/// (Cos(V) * XDirection - Sin(V) * YDirection) +
-/// MinorRadius * Sin(U) * ZDirection
+/// (MajorRadius + MinorRadius * std::cos(U)) *
+/// (std::cos(V) * XDirection - std::sin(V) * YDirection) +
+/// MinorRadius * std::sin(U) * ZDirection
 pub fn torus_parameters(
     Pos: &crate::gp::Ax3,
     MajorRadius: f64,
@@ -1008,7 +1008,7 @@ pub fn torus_parameters(
         crate::ffi_extern_TKMath::ElSLib_torus_parameters(Pos, MajorRadius, MinorRadius, P, U, V)
     })
 }
-/// **Source:** `ElSLib.hxx`:605 - `ElSLib::PlaneUIso`
+/// **Source:** `ElSLib.hxx`:584 - `ElSLib::PlaneUIso`
 /// compute the U Isoparametric gp_Lin of the plane.
 pub fn plane_u_iso(Pos: &crate::gp::Ax3, U: f64) -> crate::OwnedPtr<crate::gp::Lin> {
     unsafe {
@@ -1017,7 +1017,7 @@ pub fn plane_u_iso(Pos: &crate::gp::Ax3, U: f64) -> crate::OwnedPtr<crate::gp::L
         ))
     }
 }
-/// **Source:** `ElSLib.hxx`:608 - `ElSLib::CylinderUIso`
+/// **Source:** `ElSLib.hxx`:587 - `ElSLib::CylinderUIso`
 /// compute the U Isoparametric gp_Lin of the cylinder.
 pub fn cylinder_u_iso(
     Pos: &crate::gp::Ax3,
@@ -1030,7 +1030,7 @@ pub fn cylinder_u_iso(
         ))
     }
 }
-/// **Source:** `ElSLib.hxx`:613 - `ElSLib::ConeUIso`
+/// **Source:** `ElSLib.hxx`:592 - `ElSLib::ConeUIso`
 /// compute the U Isoparametric gp_Lin of the cone.
 pub fn cone_u_iso(
     Pos: &crate::gp::Ax3,
@@ -1044,7 +1044,7 @@ pub fn cone_u_iso(
         )))
     }
 }
-/// **Source:** `ElSLib.hxx`:620 - `ElSLib::SphereUIso`
+/// **Source:** `ElSLib.hxx`:599 - `ElSLib::SphereUIso`
 /// compute the U Isoparametric gp_Circ of the sphere,
 /// (the meridian is not trimmed).
 pub fn sphere_u_iso(Pos: &crate::gp::Ax3, Radius: f64, U: f64) -> crate::OwnedPtr<crate::gp::Circ> {
@@ -1054,7 +1054,7 @@ pub fn sphere_u_iso(Pos: &crate::gp::Ax3, Radius: f64, U: f64) -> crate::OwnedPt
         ))
     }
 }
-/// **Source:** `ElSLib.hxx`:625 - `ElSLib::TorusUIso`
+/// **Source:** `ElSLib.hxx`:602 - `ElSLib::TorusUIso`
 /// compute the U Isoparametric gp_Circ of the torus.
 pub fn torus_u_iso(
     Pos: &crate::gp::Ax3,
@@ -1068,7 +1068,7 @@ pub fn torus_u_iso(
         ))
     }
 }
-/// **Source:** `ElSLib.hxx`:631 - `ElSLib::PlaneVIso`
+/// **Source:** `ElSLib.hxx`:608 - `ElSLib::PlaneVIso`
 /// compute the V Isoparametric gp_Lin of the plane.
 pub fn plane_v_iso(Pos: &crate::gp::Ax3, V: f64) -> crate::OwnedPtr<crate::gp::Lin> {
     unsafe {
@@ -1077,7 +1077,7 @@ pub fn plane_v_iso(Pos: &crate::gp::Ax3, V: f64) -> crate::OwnedPtr<crate::gp::L
         ))
     }
 }
-/// **Source:** `ElSLib.hxx`:634 - `ElSLib::CylinderVIso`
+/// **Source:** `ElSLib.hxx`:611 - `ElSLib::CylinderVIso`
 /// compute the V Isoparametric gp_Circ of the cylinder.
 pub fn cylinder_v_iso(
     Pos: &crate::gp::Ax3,
@@ -1090,7 +1090,7 @@ pub fn cylinder_v_iso(
         ))
     }
 }
-/// **Source:** `ElSLib.hxx`:639 - `ElSLib::ConeVIso`
+/// **Source:** `ElSLib.hxx`:616 - `ElSLib::ConeVIso`
 /// compute the V Isoparametric gp_Circ of the cone.
 pub fn cone_v_iso(
     Pos: &crate::gp::Ax3,
@@ -1104,7 +1104,7 @@ pub fn cone_v_iso(
         )))
     }
 }
-/// **Source:** `ElSLib.hxx`:646 - `ElSLib::SphereVIso`
+/// **Source:** `ElSLib.hxx`:623 - `ElSLib::SphereVIso`
 /// compute the V Isoparametric gp_Circ of the sphere,
 /// (the meridian is not trimmed).
 pub fn sphere_v_iso(Pos: &crate::gp::Ax3, Radius: f64, V: f64) -> crate::OwnedPtr<crate::gp::Circ> {
@@ -1114,7 +1114,7 @@ pub fn sphere_v_iso(Pos: &crate::gp::Ax3, Radius: f64, V: f64) -> crate::OwnedPt
         ))
     }
 }
-/// **Source:** `ElSLib.hxx`:651 - `ElSLib::TorusVIso`
+/// **Source:** `ElSLib.hxx`:626 - `ElSLib::TorusVIso`
 /// compute the V Isoparametric gp_Circ of the torus.
 pub fn torus_v_iso(
     Pos: &crate::gp::Ax3,

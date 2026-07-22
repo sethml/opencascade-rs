@@ -69,7 +69,7 @@ impl LDOMBasicString {
     /// **Source:** `LDOMBasicString.hxx`:110 - `LDOMBasicString::LDOMBasicString()`
     pub fn new_charptr_handleldommemmanager(
         aValue: &str,
-        aDoc: &crate::ffi_types::HandleLDOMMemManager,
+        aDoc: &crate::ffi_types::Handle_LDOM_MemManager,
     ) -> crate::OwnedPtr<Self> {
         let c_aValue = std::ffi::CString::new(aValue).unwrap();
         unsafe {
@@ -86,7 +86,7 @@ impl LDOMBasicString {
     pub fn new_charptr_int_handleldommemmanager(
         aValue: &str,
         aLen: i32,
-        aDoc: &crate::ffi_types::HandleLDOMMemManager,
+        aDoc: &crate::ffi_types::Handle_LDOM_MemManager,
     ) -> crate::OwnedPtr<Self> {
         let c_aValue = std::ffi::CString::new(aValue).unwrap();
         unsafe {

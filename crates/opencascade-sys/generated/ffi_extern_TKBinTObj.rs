@@ -18,18 +18,18 @@ unsafe extern "C" {
     /// **Source:** `BinTObjDrivers_DocumentRetrievalDriver.hxx`:35 - `BinTObjDrivers_DocumentRetrievalDriver::AttributeDrivers()`
     pub fn BinTObjDrivers_DocumentRetrievalDriver_attribute_drivers(
         self_: *mut BinTObjDrivers_DocumentRetrievalDriver,
-        theMsgDriver: *const HandleMessageMessenger,
-    ) -> crate::OcctResult<*mut HandleBinMDFADriverTable>;
+        theMsgDriver: *const Handle_Message_Messenger,
+    ) -> crate::OcctResult<*mut Handle_BinMDF_ADriverTable>;
     /// **Source:** `BinTObjDrivers_DocumentRetrievalDriver.hxx`:40 - `BinTObjDrivers_DocumentRetrievalDriver::DynamicType()`
     pub fn BinTObjDrivers_DocumentRetrievalDriver_dynamic_type(
         self_: *const BinTObjDrivers_DocumentRetrievalDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BinTObjDrivers_DocumentRetrievalDriver.hxx`:40 - `BinTObjDrivers_DocumentRetrievalDriver::get_type_name()`
     pub fn BinTObjDrivers_DocumentRetrievalDriver_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BinTObjDrivers_DocumentRetrievalDriver.hxx`:40 - `BinTObjDrivers_DocumentRetrievalDriver::get_type_descriptor()`
     pub fn BinTObjDrivers_DocumentRetrievalDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BinTObjDrivers_DocumentRetrievalDriver to BinLDrivers_DocumentRetrievalDriver
     pub fn BinTObjDrivers_DocumentRetrievalDriver_as_BinLDrivers_DocumentRetrievalDriver(
         self_: *const BinTObjDrivers_DocumentRetrievalDriver,
@@ -65,92 +65,92 @@ unsafe extern "C" {
     /// Wrap BinTObjDrivers_DocumentRetrievalDriver in a Handle
     pub fn BinTObjDrivers_DocumentRetrievalDriver_to_handle(
         obj: *mut BinTObjDrivers_DocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleBinTObjDriversDocumentRetrievalDriver>;
+    ) -> crate::OcctResult<*mut Handle_BinTObjDrivers_DocumentRetrievalDriver>;
     /// Destroy Handle<BinTObjDrivers_DocumentRetrievalDriver>
-    pub fn HandleBinTObjDriversDocumentRetrievalDriver_destructor(
-        self_: *mut HandleBinTObjDriversDocumentRetrievalDriver,
+    pub fn Handle_BinTObjDrivers_DocumentRetrievalDriver_destructor(
+        self_: *mut Handle_BinTObjDrivers_DocumentRetrievalDriver,
     );
     /// Clone Handle<BinTObjDrivers_DocumentRetrievalDriver> (increments reference count)
-    pub fn HandleBinTObjDriversDocumentRetrievalDriver_clone(
-        self_: *const HandleBinTObjDriversDocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleBinTObjDriversDocumentRetrievalDriver>;
+    pub fn Handle_BinTObjDrivers_DocumentRetrievalDriver_clone(
+        self_: *const Handle_BinTObjDrivers_DocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_BinTObjDrivers_DocumentRetrievalDriver>;
     /// Check if Handle<BinTObjDrivers_DocumentRetrievalDriver> is null
-    pub fn HandleBinTObjDriversDocumentRetrievalDriver_is_null(
-        self_: *const HandleBinTObjDriversDocumentRetrievalDriver,
+    pub fn Handle_BinTObjDrivers_DocumentRetrievalDriver_is_null(
+        self_: *const Handle_BinTObjDrivers_DocumentRetrievalDriver,
     ) -> bool;
     /// Dereference Handle to get *const BinTObjDrivers_DocumentRetrievalDriver
-    pub fn HandleBinTObjDriversDocumentRetrievalDriver_get(
-        handle: *const HandleBinTObjDriversDocumentRetrievalDriver,
+    pub fn Handle_BinTObjDrivers_DocumentRetrievalDriver_get(
+        handle: *const Handle_BinTObjDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<*const BinTObjDrivers_DocumentRetrievalDriver>;
     /// Dereference Handle to get *mut BinTObjDrivers_DocumentRetrievalDriver
-    pub fn HandleBinTObjDriversDocumentRetrievalDriver_get_mut(
-        handle: *mut HandleBinTObjDriversDocumentRetrievalDriver,
+    pub fn Handle_BinTObjDrivers_DocumentRetrievalDriver_get_mut(
+        handle: *mut Handle_BinTObjDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<*mut BinTObjDrivers_DocumentRetrievalDriver>;
     /// Upcast Handle<BinTObjDrivers_DocumentRetrievalDriver> to Handle<BinLDrivers_DocumentRetrievalDriver>
-    pub fn HandleBinTObjDriversDocumentRetrievalDriver_to_HandleBinLDriversDocumentRetrievalDriver(
-        self_: *const HandleBinTObjDriversDocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleBinLDriversDocumentRetrievalDriver>;
+    pub fn Handle_BinTObjDrivers_DocumentRetrievalDriver_to_Handle_BinLDrivers_DocumentRetrievalDriver(
+        self_: *const Handle_BinTObjDrivers_DocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_BinLDrivers_DocumentRetrievalDriver>;
     /// Upcast Handle<BinTObjDrivers_DocumentRetrievalDriver> to Handle<PCDM_RetrievalDriver>
-    pub fn HandleBinTObjDriversDocumentRetrievalDriver_to_HandlePCDMRetrievalDriver(
-        self_: *const HandleBinTObjDriversDocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandlePCDMRetrievalDriver>;
+    pub fn Handle_BinTObjDrivers_DocumentRetrievalDriver_to_Handle_PCDM_RetrievalDriver(
+        self_: *const Handle_BinTObjDrivers_DocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_PCDM_RetrievalDriver>;
     /// Upcast Handle<BinTObjDrivers_DocumentRetrievalDriver> to Handle<PCDM_Reader>
-    pub fn HandleBinTObjDriversDocumentRetrievalDriver_to_HandlePCDMReader(
-        self_: *const HandleBinTObjDriversDocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandlePCDMReader>;
+    pub fn Handle_BinTObjDrivers_DocumentRetrievalDriver_to_Handle_PCDM_Reader(
+        self_: *const Handle_BinTObjDrivers_DocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_PCDM_Reader>;
     /// Upcast Handle<BinTObjDrivers_DocumentRetrievalDriver> to Handle<Standard_Transient>
-    pub fn HandleBinTObjDriversDocumentRetrievalDriver_to_HandleStandardTransient(
-        self_: *const HandleBinTObjDriversDocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BinLDrivers_DocumentRetrievalDriver.hxx`:50 - `BinLDrivers_DocumentRetrievalDriver::Read()`
+    pub fn Handle_BinTObjDrivers_DocumentRetrievalDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_BinTObjDrivers_DocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BinLDrivers_DocumentRetrievalDriver.hxx`:48 - `BinLDrivers_DocumentRetrievalDriver::Read()`
     pub fn BinTObjDrivers_DocumentRetrievalDriver_inherited_Read(
         self_: *mut BinTObjDrivers_DocumentRetrievalDriver,
         theFileName: *const TCollection_ExtendedString,
-        theNewDocument: *const HandleCDMDocument,
-        theApplication: *const HandleCDMApplication,
-        theFilter: *const HandlePCDMReaderFilter,
+        theNewDocument: *const Handle_CDM_Document,
+        theApplication: *const Handle_CDM_Application,
+        theFilter: *const Handle_PCDM_ReaderFilter,
         theProgress: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `PCDM_RetrievalDriver.hxx`:46 - `PCDM_RetrievalDriver::SetFormat()`
+    /// Inherited: **Source:** `PCDM_RetrievalDriver.hxx`:43 - `PCDM_RetrievalDriver::SetFormat()`
     pub fn BinTObjDrivers_DocumentRetrievalDriver_inherited_SetFormat(
         self_: *mut BinTObjDrivers_DocumentRetrievalDriver,
         aformat: *const TCollection_ExtendedString,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `PCDM_RetrievalDriver.hxx`:48 - `PCDM_RetrievalDriver::GetFormat()`
+    /// Inherited: **Source:** `PCDM_RetrievalDriver.hxx`:45 - `PCDM_RetrievalDriver::GetFormat()`
     pub fn BinTObjDrivers_DocumentRetrievalDriver_inherited_GetFormat(
         self_: *const BinTObjDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// Inherited: **Source:** `PCDM_Reader.hxx`:57 - `PCDM_Reader::GetStatus()`
+    /// Inherited: **Source:** `PCDM_Reader.hxx`:54 - `PCDM_Reader::GetStatus()`
     pub fn BinTObjDrivers_DocumentRetrievalDriver_inherited_GetStatus(
         self_: *const BinTObjDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BinTObjDrivers_DocumentRetrievalDriver_inherited_IsInstance(
         self_: *const BinTObjDrivers_DocumentRetrievalDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BinTObjDrivers_DocumentRetrievalDriver_inherited_IsKind(
         self_: *const BinTObjDrivers_DocumentRetrievalDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BinTObjDrivers_DocumentRetrievalDriver_inherited_This(
         self_: *const BinTObjDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BinTObjDrivers_DocumentRetrievalDriver_inherited_GetRefCount(
         self_: *const BinTObjDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BinTObjDrivers_DocumentRetrievalDriver_inherited_IncrementRefCounter(
         self_: *mut BinTObjDrivers_DocumentRetrievalDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BinTObjDrivers_DocumentRetrievalDriver_inherited_DecrementRefCounter(
         self_: *mut BinTObjDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BinTObjDrivers_DocumentRetrievalDriver_inherited_Delete(
         self_: *const BinTObjDrivers_DocumentRetrievalDriver,
     ) -> *const std::ffi::c_char;
@@ -164,18 +164,18 @@ unsafe extern "C" {
     /// **Source:** `BinTObjDrivers_DocumentStorageDriver.hxx`:35 - `BinTObjDrivers_DocumentStorageDriver::AttributeDrivers()`
     pub fn BinTObjDrivers_DocumentStorageDriver_attribute_drivers(
         self_: *mut BinTObjDrivers_DocumentStorageDriver,
-        theMsgDriver: *const HandleMessageMessenger,
-    ) -> crate::OcctResult<*mut HandleBinMDFADriverTable>;
+        theMsgDriver: *const Handle_Message_Messenger,
+    ) -> crate::OcctResult<*mut Handle_BinMDF_ADriverTable>;
     /// **Source:** `BinTObjDrivers_DocumentStorageDriver.hxx`:40 - `BinTObjDrivers_DocumentStorageDriver::DynamicType()`
     pub fn BinTObjDrivers_DocumentStorageDriver_dynamic_type(
         self_: *const BinTObjDrivers_DocumentStorageDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BinTObjDrivers_DocumentStorageDriver.hxx`:40 - `BinTObjDrivers_DocumentStorageDriver::get_type_name()`
     pub fn BinTObjDrivers_DocumentStorageDriver_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BinTObjDrivers_DocumentStorageDriver.hxx`:40 - `BinTObjDrivers_DocumentStorageDriver::get_type_descriptor()`
     pub fn BinTObjDrivers_DocumentStorageDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BinTObjDrivers_DocumentStorageDriver to BinLDrivers_DocumentStorageDriver
     pub fn BinTObjDrivers_DocumentStorageDriver_as_BinLDrivers_DocumentStorageDriver(
         self_: *const BinTObjDrivers_DocumentStorageDriver,
@@ -211,120 +211,120 @@ unsafe extern "C" {
     /// Wrap BinTObjDrivers_DocumentStorageDriver in a Handle
     pub fn BinTObjDrivers_DocumentStorageDriver_to_handle(
         obj: *mut BinTObjDrivers_DocumentStorageDriver,
-    ) -> crate::OcctResult<*mut HandleBinTObjDriversDocumentStorageDriver>;
+    ) -> crate::OcctResult<*mut Handle_BinTObjDrivers_DocumentStorageDriver>;
     /// Destroy Handle<BinTObjDrivers_DocumentStorageDriver>
-    pub fn HandleBinTObjDriversDocumentStorageDriver_destructor(
-        self_: *mut HandleBinTObjDriversDocumentStorageDriver,
+    pub fn Handle_BinTObjDrivers_DocumentStorageDriver_destructor(
+        self_: *mut Handle_BinTObjDrivers_DocumentStorageDriver,
     );
     /// Clone Handle<BinTObjDrivers_DocumentStorageDriver> (increments reference count)
-    pub fn HandleBinTObjDriversDocumentStorageDriver_clone(
-        self_: *const HandleBinTObjDriversDocumentStorageDriver,
-    ) -> crate::OcctResult<*mut HandleBinTObjDriversDocumentStorageDriver>;
+    pub fn Handle_BinTObjDrivers_DocumentStorageDriver_clone(
+        self_: *const Handle_BinTObjDrivers_DocumentStorageDriver,
+    ) -> crate::OcctResult<*mut Handle_BinTObjDrivers_DocumentStorageDriver>;
     /// Check if Handle<BinTObjDrivers_DocumentStorageDriver> is null
-    pub fn HandleBinTObjDriversDocumentStorageDriver_is_null(
-        self_: *const HandleBinTObjDriversDocumentStorageDriver,
+    pub fn Handle_BinTObjDrivers_DocumentStorageDriver_is_null(
+        self_: *const Handle_BinTObjDrivers_DocumentStorageDriver,
     ) -> bool;
     /// Dereference Handle to get *const BinTObjDrivers_DocumentStorageDriver
-    pub fn HandleBinTObjDriversDocumentStorageDriver_get(
-        handle: *const HandleBinTObjDriversDocumentStorageDriver,
+    pub fn Handle_BinTObjDrivers_DocumentStorageDriver_get(
+        handle: *const Handle_BinTObjDrivers_DocumentStorageDriver,
     ) -> crate::OcctResult<*const BinTObjDrivers_DocumentStorageDriver>;
     /// Dereference Handle to get *mut BinTObjDrivers_DocumentStorageDriver
-    pub fn HandleBinTObjDriversDocumentStorageDriver_get_mut(
-        handle: *mut HandleBinTObjDriversDocumentStorageDriver,
+    pub fn Handle_BinTObjDrivers_DocumentStorageDriver_get_mut(
+        handle: *mut Handle_BinTObjDrivers_DocumentStorageDriver,
     ) -> crate::OcctResult<*mut BinTObjDrivers_DocumentStorageDriver>;
     /// Upcast Handle<BinTObjDrivers_DocumentStorageDriver> to Handle<BinLDrivers_DocumentStorageDriver>
-    pub fn HandleBinTObjDriversDocumentStorageDriver_to_HandleBinLDriversDocumentStorageDriver(
-        self_: *const HandleBinTObjDriversDocumentStorageDriver,
-    ) -> crate::OcctResult<*mut HandleBinLDriversDocumentStorageDriver>;
+    pub fn Handle_BinTObjDrivers_DocumentStorageDriver_to_Handle_BinLDrivers_DocumentStorageDriver(
+        self_: *const Handle_BinTObjDrivers_DocumentStorageDriver,
+    ) -> crate::OcctResult<*mut Handle_BinLDrivers_DocumentStorageDriver>;
     /// Upcast Handle<BinTObjDrivers_DocumentStorageDriver> to Handle<PCDM_StorageDriver>
-    pub fn HandleBinTObjDriversDocumentStorageDriver_to_HandlePCDMStorageDriver(
-        self_: *const HandleBinTObjDriversDocumentStorageDriver,
-    ) -> crate::OcctResult<*mut HandlePCDMStorageDriver>;
+    pub fn Handle_BinTObjDrivers_DocumentStorageDriver_to_Handle_PCDM_StorageDriver(
+        self_: *const Handle_BinTObjDrivers_DocumentStorageDriver,
+    ) -> crate::OcctResult<*mut Handle_PCDM_StorageDriver>;
     /// Upcast Handle<BinTObjDrivers_DocumentStorageDriver> to Handle<PCDM_Writer>
-    pub fn HandleBinTObjDriversDocumentStorageDriver_to_HandlePCDMWriter(
-        self_: *const HandleBinTObjDriversDocumentStorageDriver,
-    ) -> crate::OcctResult<*mut HandlePCDMWriter>;
+    pub fn Handle_BinTObjDrivers_DocumentStorageDriver_to_Handle_PCDM_Writer(
+        self_: *const Handle_BinTObjDrivers_DocumentStorageDriver,
+    ) -> crate::OcctResult<*mut Handle_PCDM_Writer>;
     /// Upcast Handle<BinTObjDrivers_DocumentStorageDriver> to Handle<Standard_Transient>
-    pub fn HandleBinTObjDriversDocumentStorageDriver_to_HandleStandardTransient(
-        self_: *const HandleBinTObjDriversDocumentStorageDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BinLDrivers_DocumentStorageDriver.hxx`:51 - `BinLDrivers_DocumentStorageDriver::Write()`
+    pub fn Handle_BinTObjDrivers_DocumentStorageDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_BinTObjDrivers_DocumentStorageDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BinLDrivers_DocumentStorageDriver.hxx`:50 - `BinLDrivers_DocumentStorageDriver::Write()`
     pub fn BinTObjDrivers_DocumentStorageDriver_inherited_Write(
         self_: *mut BinTObjDrivers_DocumentStorageDriver,
-        theDocument: *const HandleCDMDocument,
+        theDocument: *const Handle_CDM_Document,
         theFileName: *const TCollection_ExtendedString,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BinLDrivers_DocumentStorageDriver.hxx`:66 - `BinLDrivers_DocumentStorageDriver::AddSection()`
+    /// Inherited: **Source:** `BinLDrivers_DocumentStorageDriver.hxx`:65 - `BinLDrivers_DocumentStorageDriver::AddSection()`
     pub fn BinTObjDrivers_DocumentStorageDriver_inherited_AddSection(
         self_: *mut BinTObjDrivers_DocumentStorageDriver,
         theName: *const TCollection_AsciiString,
         isPostRead: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BinLDrivers_DocumentStorageDriver.hxx`:70 - `BinLDrivers_DocumentStorageDriver::IsQuickPart()`
+    /// Inherited: **Source:** `BinLDrivers_DocumentStorageDriver.hxx`:69 - `BinLDrivers_DocumentStorageDriver::IsQuickPart()`
     pub fn BinTObjDrivers_DocumentStorageDriver_inherited_IsQuickPart(
         self_: *const BinTObjDrivers_DocumentStorageDriver,
         theVersion: i32,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:52 - `PCDM_StorageDriver::Make()`
+    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:50 - `PCDM_StorageDriver::Make()`
     pub fn BinTObjDrivers_DocumentStorageDriver_inherited_Make(
         self_: *mut BinTObjDrivers_DocumentStorageDriver,
-        aDocument: *const HandleCDMDocument,
-    ) -> crate::OcctResult<*mut HandlePCDMDocument>;
-    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:76 - `PCDM_StorageDriver::SetFormat()`
+        aDocument: *const Handle_CDM_Document,
+    ) -> crate::OcctResult<*mut Handle_PCDM_Document>;
+    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:75 - `PCDM_StorageDriver::SetFormat()`
     pub fn BinTObjDrivers_DocumentStorageDriver_inherited_SetFormat(
         self_: *mut BinTObjDrivers_DocumentStorageDriver,
         aformat: *const TCollection_ExtendedString,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:78 - `PCDM_StorageDriver::GetFormat()`
+    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:77 - `PCDM_StorageDriver::GetFormat()`
     pub fn BinTObjDrivers_DocumentStorageDriver_inherited_GetFormat(
         self_: *const BinTObjDrivers_DocumentStorageDriver,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:80 - `PCDM_StorageDriver::IsError()`
+    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:79 - `PCDM_StorageDriver::IsError()`
     pub fn BinTObjDrivers_DocumentStorageDriver_inherited_IsError(
         self_: *const BinTObjDrivers_DocumentStorageDriver,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:82 - `PCDM_StorageDriver::SetIsError()`
+    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:81 - `PCDM_StorageDriver::SetIsError()`
     pub fn BinTObjDrivers_DocumentStorageDriver_inherited_SetIsError(
         self_: *mut BinTObjDrivers_DocumentStorageDriver,
         theIsError: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:84 - `PCDM_StorageDriver::GetStoreStatus()`
+    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:83 - `PCDM_StorageDriver::GetStoreStatus()`
     pub fn BinTObjDrivers_DocumentStorageDriver_inherited_GetStoreStatus(
         self_: *const BinTObjDrivers_DocumentStorageDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:86 - `PCDM_StorageDriver::SetStoreStatus()`
+    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:85 - `PCDM_StorageDriver::SetStoreStatus()`
     pub fn BinTObjDrivers_DocumentStorageDriver_inherited_SetStoreStatus(
         self_: *mut BinTObjDrivers_DocumentStorageDriver,
         theStoreStatus: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BinTObjDrivers_DocumentStorageDriver_inherited_IsInstance(
         self_: *const BinTObjDrivers_DocumentStorageDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BinTObjDrivers_DocumentStorageDriver_inherited_IsKind(
         self_: *const BinTObjDrivers_DocumentStorageDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BinTObjDrivers_DocumentStorageDriver_inherited_This(
         self_: *const BinTObjDrivers_DocumentStorageDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BinTObjDrivers_DocumentStorageDriver_inherited_GetRefCount(
         self_: *const BinTObjDrivers_DocumentStorageDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BinTObjDrivers_DocumentStorageDriver_inherited_IncrementRefCounter(
         self_: *mut BinTObjDrivers_DocumentStorageDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BinTObjDrivers_DocumentStorageDriver_inherited_DecrementRefCounter(
         self_: *mut BinTObjDrivers_DocumentStorageDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BinTObjDrivers_DocumentStorageDriver_inherited_Delete(
         self_: *const BinTObjDrivers_DocumentStorageDriver,
     ) -> *const std::ffi::c_char;
@@ -334,36 +334,29 @@ unsafe extern "C" {
     );
     /// **Source:** `BinTObjDrivers_IntSparseArrayDriver.hxx`:27 - `BinTObjDrivers_IntSparseArrayDriver::BinTObjDrivers_IntSparseArrayDriver()`
     pub fn BinTObjDrivers_IntSparseArrayDriver_ctor_handlemessagemessenger(
-        theMessageDriver: *const HandleMessageMessenger,
+        theMessageDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<*mut BinTObjDrivers_IntSparseArrayDriver>;
     /// **Source:** `BinTObjDrivers_IntSparseArrayDriver.hxx`:31 - `BinTObjDrivers_IntSparseArrayDriver::NewEmpty()`
     pub fn BinTObjDrivers_IntSparseArrayDriver_new_empty(
         self_: *const BinTObjDrivers_IntSparseArrayDriver,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `BinTObjDrivers_IntSparseArrayDriver.hxx`:35 - `BinTObjDrivers_IntSparseArrayDriver::Paste()`
-    pub fn BinTObjDrivers_IntSparseArrayDriver_paste_persistent_handletdfattribute_rrelocationtable(
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `BinTObjDrivers_IntSparseArrayDriver.hxx`:34 - `BinTObjDrivers_IntSparseArrayDriver::Paste()`
+    pub fn BinTObjDrivers_IntSparseArrayDriver_paste(
         self_: *const BinTObjDrivers_IntSparseArrayDriver,
         theSource: *const BinObjMgt_Persistent,
-        theTarget: *const HandleTDFAttribute,
+        theTarget: *const Handle_TDF_Attribute,
         theRelocTable: *mut BinObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BinTObjDrivers_IntSparseArrayDriver.hxx`:41 - `BinTObjDrivers_IntSparseArrayDriver::Paste()`
-    pub fn BinTObjDrivers_IntSparseArrayDriver_paste_handletdfattribute_persistent_indexedmapoftransient(
-        self_: *const BinTObjDrivers_IntSparseArrayDriver,
-        theSource: *const HandleTDFAttribute,
-        theTarget: *mut BinObjMgt_Persistent,
-        theRelocTable: *mut TColStd_IndexedMapOfTransient,
-    ) -> *const std::ffi::c_char;
     /// **Source:** `BinTObjDrivers_IntSparseArrayDriver.hxx`:49 - `BinTObjDrivers_IntSparseArrayDriver::DynamicType()`
     pub fn BinTObjDrivers_IntSparseArrayDriver_dynamic_type(
         self_: *const BinTObjDrivers_IntSparseArrayDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BinTObjDrivers_IntSparseArrayDriver.hxx`:49 - `BinTObjDrivers_IntSparseArrayDriver::get_type_name()`
     pub fn BinTObjDrivers_IntSparseArrayDriver_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BinTObjDrivers_IntSparseArrayDriver.hxx`:49 - `BinTObjDrivers_IntSparseArrayDriver::get_type_descriptor()`
     pub fn BinTObjDrivers_IntSparseArrayDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BinTObjDrivers_IntSparseArrayDriver to BinMDF_ADriver
     pub fn BinTObjDrivers_IntSparseArrayDriver_as_BinMDF_ADriver(
         self_: *const BinTObjDrivers_IntSparseArrayDriver,
@@ -383,74 +376,74 @@ unsafe extern "C" {
     /// Wrap BinTObjDrivers_IntSparseArrayDriver in a Handle
     pub fn BinTObjDrivers_IntSparseArrayDriver_to_handle(
         obj: *mut BinTObjDrivers_IntSparseArrayDriver,
-    ) -> crate::OcctResult<*mut HandleBinTObjDriversIntSparseArrayDriver>;
+    ) -> crate::OcctResult<*mut Handle_BinTObjDrivers_IntSparseArrayDriver>;
     /// Destroy Handle<BinTObjDrivers_IntSparseArrayDriver>
-    pub fn HandleBinTObjDriversIntSparseArrayDriver_destructor(
-        self_: *mut HandleBinTObjDriversIntSparseArrayDriver,
+    pub fn Handle_BinTObjDrivers_IntSparseArrayDriver_destructor(
+        self_: *mut Handle_BinTObjDrivers_IntSparseArrayDriver,
     );
     /// Clone Handle<BinTObjDrivers_IntSparseArrayDriver> (increments reference count)
-    pub fn HandleBinTObjDriversIntSparseArrayDriver_clone(
-        self_: *const HandleBinTObjDriversIntSparseArrayDriver,
-    ) -> crate::OcctResult<*mut HandleBinTObjDriversIntSparseArrayDriver>;
+    pub fn Handle_BinTObjDrivers_IntSparseArrayDriver_clone(
+        self_: *const Handle_BinTObjDrivers_IntSparseArrayDriver,
+    ) -> crate::OcctResult<*mut Handle_BinTObjDrivers_IntSparseArrayDriver>;
     /// Check if Handle<BinTObjDrivers_IntSparseArrayDriver> is null
-    pub fn HandleBinTObjDriversIntSparseArrayDriver_is_null(
-        self_: *const HandleBinTObjDriversIntSparseArrayDriver,
+    pub fn Handle_BinTObjDrivers_IntSparseArrayDriver_is_null(
+        self_: *const Handle_BinTObjDrivers_IntSparseArrayDriver,
     ) -> bool;
     /// Dereference Handle to get *const BinTObjDrivers_IntSparseArrayDriver
-    pub fn HandleBinTObjDriversIntSparseArrayDriver_get(
-        handle: *const HandleBinTObjDriversIntSparseArrayDriver,
+    pub fn Handle_BinTObjDrivers_IntSparseArrayDriver_get(
+        handle: *const Handle_BinTObjDrivers_IntSparseArrayDriver,
     ) -> crate::OcctResult<*const BinTObjDrivers_IntSparseArrayDriver>;
     /// Dereference Handle to get *mut BinTObjDrivers_IntSparseArrayDriver
-    pub fn HandleBinTObjDriversIntSparseArrayDriver_get_mut(
-        handle: *mut HandleBinTObjDriversIntSparseArrayDriver,
+    pub fn Handle_BinTObjDrivers_IntSparseArrayDriver_get_mut(
+        handle: *mut Handle_BinTObjDrivers_IntSparseArrayDriver,
     ) -> crate::OcctResult<*mut BinTObjDrivers_IntSparseArrayDriver>;
     /// Upcast Handle<BinTObjDrivers_IntSparseArrayDriver> to Handle<BinMDF_ADriver>
-    pub fn HandleBinTObjDriversIntSparseArrayDriver_to_HandleBinMDFADriver(
-        self_: *const HandleBinTObjDriversIntSparseArrayDriver,
-    ) -> crate::OcctResult<*mut HandleBinMDFADriver>;
+    pub fn Handle_BinTObjDrivers_IntSparseArrayDriver_to_Handle_BinMDF_ADriver(
+        self_: *const Handle_BinTObjDrivers_IntSparseArrayDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMDF_ADriver>;
     /// Upcast Handle<BinTObjDrivers_IntSparseArrayDriver> to Handle<Standard_Transient>
-    pub fn HandleBinTObjDriversIntSparseArrayDriver_to_HandleStandardTransient(
-        self_: *const HandleBinTObjDriversIntSparseArrayDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
+    pub fn Handle_BinTObjDrivers_IntSparseArrayDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_BinTObjDrivers_IntSparseArrayDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:38 - `BinMDF_ADriver::SourceType()`
     pub fn BinTObjDrivers_IntSparseArrayDriver_inherited_SourceType(
         self_: *const BinTObjDrivers_IntSparseArrayDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::TypeName()`
     pub fn BinTObjDrivers_IntSparseArrayDriver_inherited_TypeName(
         self_: *const BinTObjDrivers_IntSparseArrayDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:59 - `BinMDF_ADriver::MessageDriver()`
     pub fn BinTObjDrivers_IntSparseArrayDriver_inherited_MessageDriver(
         self_: *const BinTObjDrivers_IntSparseArrayDriver,
-    ) -> crate::OcctResult<*const HandleMessageMessenger>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Message_Messenger>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BinTObjDrivers_IntSparseArrayDriver_inherited_IsInstance(
         self_: *const BinTObjDrivers_IntSparseArrayDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BinTObjDrivers_IntSparseArrayDriver_inherited_IsKind(
         self_: *const BinTObjDrivers_IntSparseArrayDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BinTObjDrivers_IntSparseArrayDriver_inherited_This(
         self_: *const BinTObjDrivers_IntSparseArrayDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BinTObjDrivers_IntSparseArrayDriver_inherited_GetRefCount(
         self_: *const BinTObjDrivers_IntSparseArrayDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BinTObjDrivers_IntSparseArrayDriver_inherited_IncrementRefCounter(
         self_: *mut BinTObjDrivers_IntSparseArrayDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BinTObjDrivers_IntSparseArrayDriver_inherited_DecrementRefCounter(
         self_: *mut BinTObjDrivers_IntSparseArrayDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BinTObjDrivers_IntSparseArrayDriver_inherited_Delete(
         self_: *const BinTObjDrivers_IntSparseArrayDriver,
     ) -> *const std::ffi::c_char;
@@ -458,35 +451,28 @@ unsafe extern "C" {
     pub fn BinTObjDrivers_ModelDriver_destructor(self_: *mut BinTObjDrivers_ModelDriver);
     /// **Source:** `BinTObjDrivers_ModelDriver.hxx`:27 - `BinTObjDrivers_ModelDriver::BinTObjDrivers_ModelDriver()`
     pub fn BinTObjDrivers_ModelDriver_ctor_handlemessagemessenger(
-        theMessageDriver: *const HandleMessageMessenger,
+        theMessageDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<*mut BinTObjDrivers_ModelDriver>;
-    /// **Source:** `BinTObjDrivers_ModelDriver.hxx`:30 - `BinTObjDrivers_ModelDriver::NewEmpty()`
+    /// **Source:** `BinTObjDrivers_ModelDriver.hxx`:31 - `BinTObjDrivers_ModelDriver::NewEmpty()`
     pub fn BinTObjDrivers_ModelDriver_new_empty(
         self_: *const BinTObjDrivers_ModelDriver,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// **Source:** `BinTObjDrivers_ModelDriver.hxx`:34 - `BinTObjDrivers_ModelDriver::Paste()`
-    pub fn BinTObjDrivers_ModelDriver_paste_persistent_handletdfattribute_rrelocationtable(
+    pub fn BinTObjDrivers_ModelDriver_paste(
         self_: *const BinTObjDrivers_ModelDriver,
         Source: *const BinObjMgt_Persistent,
-        Target: *const HandleTDFAttribute,
+        Target: *const Handle_TDF_Attribute,
         RelocTable: *mut BinObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BinTObjDrivers_ModelDriver.hxx`:43 - `BinTObjDrivers_ModelDriver::Paste()`
-    pub fn BinTObjDrivers_ModelDriver_paste_handletdfattribute_persistent_indexedmapoftransient(
-        self_: *const BinTObjDrivers_ModelDriver,
-        Source: *const HandleTDFAttribute,
-        Target: *mut BinObjMgt_Persistent,
-        RelocTable: *mut TColStd_IndexedMapOfTransient,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BinTObjDrivers_ModelDriver.hxx`:53 - `BinTObjDrivers_ModelDriver::DynamicType()`
+    /// **Source:** `BinTObjDrivers_ModelDriver.hxx`:54 - `BinTObjDrivers_ModelDriver::DynamicType()`
     pub fn BinTObjDrivers_ModelDriver_dynamic_type(
         self_: *const BinTObjDrivers_ModelDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BinTObjDrivers_ModelDriver.hxx`:53 - `BinTObjDrivers_ModelDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BinTObjDrivers_ModelDriver.hxx`:54 - `BinTObjDrivers_ModelDriver::get_type_name()`
     pub fn BinTObjDrivers_ModelDriver_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BinTObjDrivers_ModelDriver.hxx`:53 - `BinTObjDrivers_ModelDriver::get_type_descriptor()`
+    /// **Source:** `BinTObjDrivers_ModelDriver.hxx`:54 - `BinTObjDrivers_ModelDriver::get_type_descriptor()`
     pub fn BinTObjDrivers_ModelDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BinTObjDrivers_ModelDriver to BinMDF_ADriver
     pub fn BinTObjDrivers_ModelDriver_as_BinMDF_ADriver(
         self_: *const BinTObjDrivers_ModelDriver,
@@ -506,72 +492,74 @@ unsafe extern "C" {
     /// Wrap BinTObjDrivers_ModelDriver in a Handle
     pub fn BinTObjDrivers_ModelDriver_to_handle(
         obj: *mut BinTObjDrivers_ModelDriver,
-    ) -> crate::OcctResult<*mut HandleBinTObjDriversModelDriver>;
+    ) -> crate::OcctResult<*mut Handle_BinTObjDrivers_ModelDriver>;
     /// Destroy Handle<BinTObjDrivers_ModelDriver>
-    pub fn HandleBinTObjDriversModelDriver_destructor(self_: *mut HandleBinTObjDriversModelDriver);
+    pub fn Handle_BinTObjDrivers_ModelDriver_destructor(
+        self_: *mut Handle_BinTObjDrivers_ModelDriver,
+    );
     /// Clone Handle<BinTObjDrivers_ModelDriver> (increments reference count)
-    pub fn HandleBinTObjDriversModelDriver_clone(
-        self_: *const HandleBinTObjDriversModelDriver,
-    ) -> crate::OcctResult<*mut HandleBinTObjDriversModelDriver>;
+    pub fn Handle_BinTObjDrivers_ModelDriver_clone(
+        self_: *const Handle_BinTObjDrivers_ModelDriver,
+    ) -> crate::OcctResult<*mut Handle_BinTObjDrivers_ModelDriver>;
     /// Check if Handle<BinTObjDrivers_ModelDriver> is null
-    pub fn HandleBinTObjDriversModelDriver_is_null(
-        self_: *const HandleBinTObjDriversModelDriver,
+    pub fn Handle_BinTObjDrivers_ModelDriver_is_null(
+        self_: *const Handle_BinTObjDrivers_ModelDriver,
     ) -> bool;
     /// Dereference Handle to get *const BinTObjDrivers_ModelDriver
-    pub fn HandleBinTObjDriversModelDriver_get(
-        handle: *const HandleBinTObjDriversModelDriver,
+    pub fn Handle_BinTObjDrivers_ModelDriver_get(
+        handle: *const Handle_BinTObjDrivers_ModelDriver,
     ) -> crate::OcctResult<*const BinTObjDrivers_ModelDriver>;
     /// Dereference Handle to get *mut BinTObjDrivers_ModelDriver
-    pub fn HandleBinTObjDriversModelDriver_get_mut(
-        handle: *mut HandleBinTObjDriversModelDriver,
+    pub fn Handle_BinTObjDrivers_ModelDriver_get_mut(
+        handle: *mut Handle_BinTObjDrivers_ModelDriver,
     ) -> crate::OcctResult<*mut BinTObjDrivers_ModelDriver>;
     /// Upcast Handle<BinTObjDrivers_ModelDriver> to Handle<BinMDF_ADriver>
-    pub fn HandleBinTObjDriversModelDriver_to_HandleBinMDFADriver(
-        self_: *const HandleBinTObjDriversModelDriver,
-    ) -> crate::OcctResult<*mut HandleBinMDFADriver>;
+    pub fn Handle_BinTObjDrivers_ModelDriver_to_Handle_BinMDF_ADriver(
+        self_: *const Handle_BinTObjDrivers_ModelDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMDF_ADriver>;
     /// Upcast Handle<BinTObjDrivers_ModelDriver> to Handle<Standard_Transient>
-    pub fn HandleBinTObjDriversModelDriver_to_HandleStandardTransient(
-        self_: *const HandleBinTObjDriversModelDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
+    pub fn Handle_BinTObjDrivers_ModelDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_BinTObjDrivers_ModelDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:38 - `BinMDF_ADriver::SourceType()`
     pub fn BinTObjDrivers_ModelDriver_inherited_SourceType(
         self_: *const BinTObjDrivers_ModelDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::TypeName()`
     pub fn BinTObjDrivers_ModelDriver_inherited_TypeName(
         self_: *const BinTObjDrivers_ModelDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:59 - `BinMDF_ADriver::MessageDriver()`
     pub fn BinTObjDrivers_ModelDriver_inherited_MessageDriver(
         self_: *const BinTObjDrivers_ModelDriver,
-    ) -> crate::OcctResult<*const HandleMessageMessenger>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Message_Messenger>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BinTObjDrivers_ModelDriver_inherited_IsInstance(
         self_: *const BinTObjDrivers_ModelDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BinTObjDrivers_ModelDriver_inherited_IsKind(
         self_: *const BinTObjDrivers_ModelDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BinTObjDrivers_ModelDriver_inherited_This(
         self_: *const BinTObjDrivers_ModelDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BinTObjDrivers_ModelDriver_inherited_GetRefCount(
         self_: *const BinTObjDrivers_ModelDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BinTObjDrivers_ModelDriver_inherited_IncrementRefCounter(
         self_: *mut BinTObjDrivers_ModelDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BinTObjDrivers_ModelDriver_inherited_DecrementRefCounter(
         self_: *mut BinTObjDrivers_ModelDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BinTObjDrivers_ModelDriver_inherited_Delete(
         self_: *const BinTObjDrivers_ModelDriver,
     ) -> *const std::ffi::c_char;
@@ -579,35 +567,28 @@ unsafe extern "C" {
     pub fn BinTObjDrivers_ObjectDriver_destructor(self_: *mut BinTObjDrivers_ObjectDriver);
     /// **Source:** `BinTObjDrivers_ObjectDriver.hxx`:27 - `BinTObjDrivers_ObjectDriver::BinTObjDrivers_ObjectDriver()`
     pub fn BinTObjDrivers_ObjectDriver_ctor_handlemessagemessenger(
-        theMessageDriver: *const HandleMessageMessenger,
+        theMessageDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<*mut BinTObjDrivers_ObjectDriver>;
-    /// **Source:** `BinTObjDrivers_ObjectDriver.hxx`:30 - `BinTObjDrivers_ObjectDriver::NewEmpty()`
+    /// **Source:** `BinTObjDrivers_ObjectDriver.hxx`:31 - `BinTObjDrivers_ObjectDriver::NewEmpty()`
     pub fn BinTObjDrivers_ObjectDriver_new_empty(
         self_: *const BinTObjDrivers_ObjectDriver,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// **Source:** `BinTObjDrivers_ObjectDriver.hxx`:34 - `BinTObjDrivers_ObjectDriver::Paste()`
-    pub fn BinTObjDrivers_ObjectDriver_paste_persistent_handletdfattribute_rrelocationtable(
+    pub fn BinTObjDrivers_ObjectDriver_paste(
         self_: *const BinTObjDrivers_ObjectDriver,
         Source: *const BinObjMgt_Persistent,
-        Target: *const HandleTDFAttribute,
+        Target: *const Handle_TDF_Attribute,
         RelocTable: *mut BinObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BinTObjDrivers_ObjectDriver.hxx`:43 - `BinTObjDrivers_ObjectDriver::Paste()`
-    pub fn BinTObjDrivers_ObjectDriver_paste_handletdfattribute_persistent_indexedmapoftransient(
-        self_: *const BinTObjDrivers_ObjectDriver,
-        Source: *const HandleTDFAttribute,
-        Target: *mut BinObjMgt_Persistent,
-        RelocTable: *mut TColStd_IndexedMapOfTransient,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BinTObjDrivers_ObjectDriver.hxx`:53 - `BinTObjDrivers_ObjectDriver::DynamicType()`
+    /// **Source:** `BinTObjDrivers_ObjectDriver.hxx`:54 - `BinTObjDrivers_ObjectDriver::DynamicType()`
     pub fn BinTObjDrivers_ObjectDriver_dynamic_type(
         self_: *const BinTObjDrivers_ObjectDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BinTObjDrivers_ObjectDriver.hxx`:53 - `BinTObjDrivers_ObjectDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BinTObjDrivers_ObjectDriver.hxx`:54 - `BinTObjDrivers_ObjectDriver::get_type_name()`
     pub fn BinTObjDrivers_ObjectDriver_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BinTObjDrivers_ObjectDriver.hxx`:53 - `BinTObjDrivers_ObjectDriver::get_type_descriptor()`
+    /// **Source:** `BinTObjDrivers_ObjectDriver.hxx`:54 - `BinTObjDrivers_ObjectDriver::get_type_descriptor()`
     pub fn BinTObjDrivers_ObjectDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BinTObjDrivers_ObjectDriver to BinMDF_ADriver
     pub fn BinTObjDrivers_ObjectDriver_as_BinMDF_ADriver(
         self_: *const BinTObjDrivers_ObjectDriver,
@@ -627,74 +608,74 @@ unsafe extern "C" {
     /// Wrap BinTObjDrivers_ObjectDriver in a Handle
     pub fn BinTObjDrivers_ObjectDriver_to_handle(
         obj: *mut BinTObjDrivers_ObjectDriver,
-    ) -> crate::OcctResult<*mut HandleBinTObjDriversObjectDriver>;
+    ) -> crate::OcctResult<*mut Handle_BinTObjDrivers_ObjectDriver>;
     /// Destroy Handle<BinTObjDrivers_ObjectDriver>
-    pub fn HandleBinTObjDriversObjectDriver_destructor(
-        self_: *mut HandleBinTObjDriversObjectDriver,
+    pub fn Handle_BinTObjDrivers_ObjectDriver_destructor(
+        self_: *mut Handle_BinTObjDrivers_ObjectDriver,
     );
     /// Clone Handle<BinTObjDrivers_ObjectDriver> (increments reference count)
-    pub fn HandleBinTObjDriversObjectDriver_clone(
-        self_: *const HandleBinTObjDriversObjectDriver,
-    ) -> crate::OcctResult<*mut HandleBinTObjDriversObjectDriver>;
+    pub fn Handle_BinTObjDrivers_ObjectDriver_clone(
+        self_: *const Handle_BinTObjDrivers_ObjectDriver,
+    ) -> crate::OcctResult<*mut Handle_BinTObjDrivers_ObjectDriver>;
     /// Check if Handle<BinTObjDrivers_ObjectDriver> is null
-    pub fn HandleBinTObjDriversObjectDriver_is_null(
-        self_: *const HandleBinTObjDriversObjectDriver,
+    pub fn Handle_BinTObjDrivers_ObjectDriver_is_null(
+        self_: *const Handle_BinTObjDrivers_ObjectDriver,
     ) -> bool;
     /// Dereference Handle to get *const BinTObjDrivers_ObjectDriver
-    pub fn HandleBinTObjDriversObjectDriver_get(
-        handle: *const HandleBinTObjDriversObjectDriver,
+    pub fn Handle_BinTObjDrivers_ObjectDriver_get(
+        handle: *const Handle_BinTObjDrivers_ObjectDriver,
     ) -> crate::OcctResult<*const BinTObjDrivers_ObjectDriver>;
     /// Dereference Handle to get *mut BinTObjDrivers_ObjectDriver
-    pub fn HandleBinTObjDriversObjectDriver_get_mut(
-        handle: *mut HandleBinTObjDriversObjectDriver,
+    pub fn Handle_BinTObjDrivers_ObjectDriver_get_mut(
+        handle: *mut Handle_BinTObjDrivers_ObjectDriver,
     ) -> crate::OcctResult<*mut BinTObjDrivers_ObjectDriver>;
     /// Upcast Handle<BinTObjDrivers_ObjectDriver> to Handle<BinMDF_ADriver>
-    pub fn HandleBinTObjDriversObjectDriver_to_HandleBinMDFADriver(
-        self_: *const HandleBinTObjDriversObjectDriver,
-    ) -> crate::OcctResult<*mut HandleBinMDFADriver>;
+    pub fn Handle_BinTObjDrivers_ObjectDriver_to_Handle_BinMDF_ADriver(
+        self_: *const Handle_BinTObjDrivers_ObjectDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMDF_ADriver>;
     /// Upcast Handle<BinTObjDrivers_ObjectDriver> to Handle<Standard_Transient>
-    pub fn HandleBinTObjDriversObjectDriver_to_HandleStandardTransient(
-        self_: *const HandleBinTObjDriversObjectDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
+    pub fn Handle_BinTObjDrivers_ObjectDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_BinTObjDrivers_ObjectDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:38 - `BinMDF_ADriver::SourceType()`
     pub fn BinTObjDrivers_ObjectDriver_inherited_SourceType(
         self_: *const BinTObjDrivers_ObjectDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::TypeName()`
     pub fn BinTObjDrivers_ObjectDriver_inherited_TypeName(
         self_: *const BinTObjDrivers_ObjectDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:59 - `BinMDF_ADriver::MessageDriver()`
     pub fn BinTObjDrivers_ObjectDriver_inherited_MessageDriver(
         self_: *const BinTObjDrivers_ObjectDriver,
-    ) -> crate::OcctResult<*const HandleMessageMessenger>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Message_Messenger>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BinTObjDrivers_ObjectDriver_inherited_IsInstance(
         self_: *const BinTObjDrivers_ObjectDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BinTObjDrivers_ObjectDriver_inherited_IsKind(
         self_: *const BinTObjDrivers_ObjectDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BinTObjDrivers_ObjectDriver_inherited_This(
         self_: *const BinTObjDrivers_ObjectDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BinTObjDrivers_ObjectDriver_inherited_GetRefCount(
         self_: *const BinTObjDrivers_ObjectDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BinTObjDrivers_ObjectDriver_inherited_IncrementRefCounter(
         self_: *mut BinTObjDrivers_ObjectDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BinTObjDrivers_ObjectDriver_inherited_DecrementRefCounter(
         self_: *mut BinTObjDrivers_ObjectDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BinTObjDrivers_ObjectDriver_inherited_Delete(
         self_: *const BinTObjDrivers_ObjectDriver,
     ) -> *const std::ffi::c_char;
@@ -702,36 +683,29 @@ unsafe extern "C" {
     pub fn BinTObjDrivers_ReferenceDriver_destructor(self_: *mut BinTObjDrivers_ReferenceDriver);
     /// **Source:** `BinTObjDrivers_ReferenceDriver.hxx`:27 - `BinTObjDrivers_ReferenceDriver::BinTObjDrivers_ReferenceDriver()`
     pub fn BinTObjDrivers_ReferenceDriver_ctor_handlemessagemessenger(
-        theMessageDriver: *const HandleMessageMessenger,
+        theMessageDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<*mut BinTObjDrivers_ReferenceDriver>;
-    /// **Source:** `BinTObjDrivers_ReferenceDriver.hxx`:30 - `BinTObjDrivers_ReferenceDriver::NewEmpty()`
+    /// **Source:** `BinTObjDrivers_ReferenceDriver.hxx`:31 - `BinTObjDrivers_ReferenceDriver::NewEmpty()`
     pub fn BinTObjDrivers_ReferenceDriver_new_empty(
         self_: *const BinTObjDrivers_ReferenceDriver,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// **Source:** `BinTObjDrivers_ReferenceDriver.hxx`:34 - `BinTObjDrivers_ReferenceDriver::Paste()`
-    pub fn BinTObjDrivers_ReferenceDriver_paste_persistent_handletdfattribute_rrelocationtable(
+    pub fn BinTObjDrivers_ReferenceDriver_paste(
         self_: *const BinTObjDrivers_ReferenceDriver,
         Source: *const BinObjMgt_Persistent,
-        Target: *const HandleTDFAttribute,
+        Target: *const Handle_TDF_Attribute,
         RelocTable: *mut BinObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BinTObjDrivers_ReferenceDriver.hxx`:41 - `BinTObjDrivers_ReferenceDriver::Paste()`
-    pub fn BinTObjDrivers_ReferenceDriver_paste_handletdfattribute_persistent_indexedmapoftransient(
-        self_: *const BinTObjDrivers_ReferenceDriver,
-        Source: *const HandleTDFAttribute,
-        Target: *mut BinObjMgt_Persistent,
-        RelocTable: *mut TColStd_IndexedMapOfTransient,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BinTObjDrivers_ReferenceDriver.hxx`:53 - `BinTObjDrivers_ReferenceDriver::DynamicType()`
+    /// **Source:** `BinTObjDrivers_ReferenceDriver.hxx`:54 - `BinTObjDrivers_ReferenceDriver::DynamicType()`
     pub fn BinTObjDrivers_ReferenceDriver_dynamic_type(
         self_: *const BinTObjDrivers_ReferenceDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BinTObjDrivers_ReferenceDriver.hxx`:53 - `BinTObjDrivers_ReferenceDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BinTObjDrivers_ReferenceDriver.hxx`:54 - `BinTObjDrivers_ReferenceDriver::get_type_name()`
     pub fn BinTObjDrivers_ReferenceDriver_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BinTObjDrivers_ReferenceDriver.hxx`:53 - `BinTObjDrivers_ReferenceDriver::get_type_descriptor()`
+    /// **Source:** `BinTObjDrivers_ReferenceDriver.hxx`:54 - `BinTObjDrivers_ReferenceDriver::get_type_descriptor()`
     pub fn BinTObjDrivers_ReferenceDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BinTObjDrivers_ReferenceDriver to BinMDF_ADriver
     pub fn BinTObjDrivers_ReferenceDriver_as_BinMDF_ADriver(
         self_: *const BinTObjDrivers_ReferenceDriver,
@@ -751,74 +725,74 @@ unsafe extern "C" {
     /// Wrap BinTObjDrivers_ReferenceDriver in a Handle
     pub fn BinTObjDrivers_ReferenceDriver_to_handle(
         obj: *mut BinTObjDrivers_ReferenceDriver,
-    ) -> crate::OcctResult<*mut HandleBinTObjDriversReferenceDriver>;
+    ) -> crate::OcctResult<*mut Handle_BinTObjDrivers_ReferenceDriver>;
     /// Destroy Handle<BinTObjDrivers_ReferenceDriver>
-    pub fn HandleBinTObjDriversReferenceDriver_destructor(
-        self_: *mut HandleBinTObjDriversReferenceDriver,
+    pub fn Handle_BinTObjDrivers_ReferenceDriver_destructor(
+        self_: *mut Handle_BinTObjDrivers_ReferenceDriver,
     );
     /// Clone Handle<BinTObjDrivers_ReferenceDriver> (increments reference count)
-    pub fn HandleBinTObjDriversReferenceDriver_clone(
-        self_: *const HandleBinTObjDriversReferenceDriver,
-    ) -> crate::OcctResult<*mut HandleBinTObjDriversReferenceDriver>;
+    pub fn Handle_BinTObjDrivers_ReferenceDriver_clone(
+        self_: *const Handle_BinTObjDrivers_ReferenceDriver,
+    ) -> crate::OcctResult<*mut Handle_BinTObjDrivers_ReferenceDriver>;
     /// Check if Handle<BinTObjDrivers_ReferenceDriver> is null
-    pub fn HandleBinTObjDriversReferenceDriver_is_null(
-        self_: *const HandleBinTObjDriversReferenceDriver,
+    pub fn Handle_BinTObjDrivers_ReferenceDriver_is_null(
+        self_: *const Handle_BinTObjDrivers_ReferenceDriver,
     ) -> bool;
     /// Dereference Handle to get *const BinTObjDrivers_ReferenceDriver
-    pub fn HandleBinTObjDriversReferenceDriver_get(
-        handle: *const HandleBinTObjDriversReferenceDriver,
+    pub fn Handle_BinTObjDrivers_ReferenceDriver_get(
+        handle: *const Handle_BinTObjDrivers_ReferenceDriver,
     ) -> crate::OcctResult<*const BinTObjDrivers_ReferenceDriver>;
     /// Dereference Handle to get *mut BinTObjDrivers_ReferenceDriver
-    pub fn HandleBinTObjDriversReferenceDriver_get_mut(
-        handle: *mut HandleBinTObjDriversReferenceDriver,
+    pub fn Handle_BinTObjDrivers_ReferenceDriver_get_mut(
+        handle: *mut Handle_BinTObjDrivers_ReferenceDriver,
     ) -> crate::OcctResult<*mut BinTObjDrivers_ReferenceDriver>;
     /// Upcast Handle<BinTObjDrivers_ReferenceDriver> to Handle<BinMDF_ADriver>
-    pub fn HandleBinTObjDriversReferenceDriver_to_HandleBinMDFADriver(
-        self_: *const HandleBinTObjDriversReferenceDriver,
-    ) -> crate::OcctResult<*mut HandleBinMDFADriver>;
+    pub fn Handle_BinTObjDrivers_ReferenceDriver_to_Handle_BinMDF_ADriver(
+        self_: *const Handle_BinTObjDrivers_ReferenceDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMDF_ADriver>;
     /// Upcast Handle<BinTObjDrivers_ReferenceDriver> to Handle<Standard_Transient>
-    pub fn HandleBinTObjDriversReferenceDriver_to_HandleStandardTransient(
-        self_: *const HandleBinTObjDriversReferenceDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
+    pub fn Handle_BinTObjDrivers_ReferenceDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_BinTObjDrivers_ReferenceDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:38 - `BinMDF_ADriver::SourceType()`
     pub fn BinTObjDrivers_ReferenceDriver_inherited_SourceType(
         self_: *const BinTObjDrivers_ReferenceDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::TypeName()`
     pub fn BinTObjDrivers_ReferenceDriver_inherited_TypeName(
         self_: *const BinTObjDrivers_ReferenceDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:59 - `BinMDF_ADriver::MessageDriver()`
     pub fn BinTObjDrivers_ReferenceDriver_inherited_MessageDriver(
         self_: *const BinTObjDrivers_ReferenceDriver,
-    ) -> crate::OcctResult<*const HandleMessageMessenger>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Message_Messenger>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BinTObjDrivers_ReferenceDriver_inherited_IsInstance(
         self_: *const BinTObjDrivers_ReferenceDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BinTObjDrivers_ReferenceDriver_inherited_IsKind(
         self_: *const BinTObjDrivers_ReferenceDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BinTObjDrivers_ReferenceDriver_inherited_This(
         self_: *const BinTObjDrivers_ReferenceDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BinTObjDrivers_ReferenceDriver_inherited_GetRefCount(
         self_: *const BinTObjDrivers_ReferenceDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BinTObjDrivers_ReferenceDriver_inherited_IncrementRefCounter(
         self_: *mut BinTObjDrivers_ReferenceDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BinTObjDrivers_ReferenceDriver_inherited_DecrementRefCounter(
         self_: *mut BinTObjDrivers_ReferenceDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BinTObjDrivers_ReferenceDriver_inherited_Delete(
         self_: *const BinTObjDrivers_ReferenceDriver,
     ) -> *const std::ffi::c_char;
@@ -826,35 +800,28 @@ unsafe extern "C" {
     pub fn BinTObjDrivers_XYZDriver_destructor(self_: *mut BinTObjDrivers_XYZDriver);
     /// **Source:** `BinTObjDrivers_XYZDriver.hxx`:27 - `BinTObjDrivers_XYZDriver::BinTObjDrivers_XYZDriver()`
     pub fn BinTObjDrivers_XYZDriver_ctor_handlemessagemessenger(
-        theMessageDriver: *const HandleMessageMessenger,
+        theMessageDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<*mut BinTObjDrivers_XYZDriver>;
     /// **Source:** `BinTObjDrivers_XYZDriver.hxx`:30 - `BinTObjDrivers_XYZDriver::NewEmpty()`
     pub fn BinTObjDrivers_XYZDriver_new_empty(
         self_: *const BinTObjDrivers_XYZDriver,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `BinTObjDrivers_XYZDriver.hxx`:34 - `BinTObjDrivers_XYZDriver::Paste()`
-    pub fn BinTObjDrivers_XYZDriver_paste_persistent_handletdfattribute_rrelocationtable(
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `BinTObjDrivers_XYZDriver.hxx`:33 - `BinTObjDrivers_XYZDriver::Paste()`
+    pub fn BinTObjDrivers_XYZDriver_paste(
         self_: *const BinTObjDrivers_XYZDriver,
         theSource: *const BinObjMgt_Persistent,
-        theTarget: *const HandleTDFAttribute,
+        theTarget: *const Handle_TDF_Attribute,
         theRelocTable: *mut BinObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BinTObjDrivers_XYZDriver.hxx`:40 - `BinTObjDrivers_XYZDriver::Paste()`
-    pub fn BinTObjDrivers_XYZDriver_paste_handletdfattribute_persistent_indexedmapoftransient(
-        self_: *const BinTObjDrivers_XYZDriver,
-        theSource: *const HandleTDFAttribute,
-        theTarget: *mut BinObjMgt_Persistent,
-        theRelocTable: *mut TColStd_IndexedMapOfTransient,
-    ) -> *const std::ffi::c_char;
     /// **Source:** `BinTObjDrivers_XYZDriver.hxx`:48 - `BinTObjDrivers_XYZDriver::DynamicType()`
     pub fn BinTObjDrivers_XYZDriver_dynamic_type(
         self_: *const BinTObjDrivers_XYZDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BinTObjDrivers_XYZDriver.hxx`:48 - `BinTObjDrivers_XYZDriver::get_type_name()`
     pub fn BinTObjDrivers_XYZDriver_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BinTObjDrivers_XYZDriver.hxx`:48 - `BinTObjDrivers_XYZDriver::get_type_descriptor()`
     pub fn BinTObjDrivers_XYZDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BinTObjDrivers_XYZDriver to BinMDF_ADriver
     pub fn BinTObjDrivers_XYZDriver_as_BinMDF_ADriver(
         self_: *const BinTObjDrivers_XYZDriver,
@@ -874,72 +841,72 @@ unsafe extern "C" {
     /// Wrap BinTObjDrivers_XYZDriver in a Handle
     pub fn BinTObjDrivers_XYZDriver_to_handle(
         obj: *mut BinTObjDrivers_XYZDriver,
-    ) -> crate::OcctResult<*mut HandleBinTObjDriversXYZDriver>;
+    ) -> crate::OcctResult<*mut Handle_BinTObjDrivers_XYZDriver>;
     /// Destroy Handle<BinTObjDrivers_XYZDriver>
-    pub fn HandleBinTObjDriversXYZDriver_destructor(self_: *mut HandleBinTObjDriversXYZDriver);
+    pub fn Handle_BinTObjDrivers_XYZDriver_destructor(self_: *mut Handle_BinTObjDrivers_XYZDriver);
     /// Clone Handle<BinTObjDrivers_XYZDriver> (increments reference count)
-    pub fn HandleBinTObjDriversXYZDriver_clone(
-        self_: *const HandleBinTObjDriversXYZDriver,
-    ) -> crate::OcctResult<*mut HandleBinTObjDriversXYZDriver>;
+    pub fn Handle_BinTObjDrivers_XYZDriver_clone(
+        self_: *const Handle_BinTObjDrivers_XYZDriver,
+    ) -> crate::OcctResult<*mut Handle_BinTObjDrivers_XYZDriver>;
     /// Check if Handle<BinTObjDrivers_XYZDriver> is null
-    pub fn HandleBinTObjDriversXYZDriver_is_null(
-        self_: *const HandleBinTObjDriversXYZDriver,
+    pub fn Handle_BinTObjDrivers_XYZDriver_is_null(
+        self_: *const Handle_BinTObjDrivers_XYZDriver,
     ) -> bool;
     /// Dereference Handle to get *const BinTObjDrivers_XYZDriver
-    pub fn HandleBinTObjDriversXYZDriver_get(
-        handle: *const HandleBinTObjDriversXYZDriver,
+    pub fn Handle_BinTObjDrivers_XYZDriver_get(
+        handle: *const Handle_BinTObjDrivers_XYZDriver,
     ) -> crate::OcctResult<*const BinTObjDrivers_XYZDriver>;
     /// Dereference Handle to get *mut BinTObjDrivers_XYZDriver
-    pub fn HandleBinTObjDriversXYZDriver_get_mut(
-        handle: *mut HandleBinTObjDriversXYZDriver,
+    pub fn Handle_BinTObjDrivers_XYZDriver_get_mut(
+        handle: *mut Handle_BinTObjDrivers_XYZDriver,
     ) -> crate::OcctResult<*mut BinTObjDrivers_XYZDriver>;
     /// Upcast Handle<BinTObjDrivers_XYZDriver> to Handle<BinMDF_ADriver>
-    pub fn HandleBinTObjDriversXYZDriver_to_HandleBinMDFADriver(
-        self_: *const HandleBinTObjDriversXYZDriver,
-    ) -> crate::OcctResult<*mut HandleBinMDFADriver>;
+    pub fn Handle_BinTObjDrivers_XYZDriver_to_Handle_BinMDF_ADriver(
+        self_: *const Handle_BinTObjDrivers_XYZDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMDF_ADriver>;
     /// Upcast Handle<BinTObjDrivers_XYZDriver> to Handle<Standard_Transient>
-    pub fn HandleBinTObjDriversXYZDriver_to_HandleStandardTransient(
-        self_: *const HandleBinTObjDriversXYZDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
+    pub fn Handle_BinTObjDrivers_XYZDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_BinTObjDrivers_XYZDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:38 - `BinMDF_ADriver::SourceType()`
     pub fn BinTObjDrivers_XYZDriver_inherited_SourceType(
         self_: *const BinTObjDrivers_XYZDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::TypeName()`
     pub fn BinTObjDrivers_XYZDriver_inherited_TypeName(
         self_: *const BinTObjDrivers_XYZDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:59 - `BinMDF_ADriver::MessageDriver()`
     pub fn BinTObjDrivers_XYZDriver_inherited_MessageDriver(
         self_: *const BinTObjDrivers_XYZDriver,
-    ) -> crate::OcctResult<*const HandleMessageMessenger>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Message_Messenger>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BinTObjDrivers_XYZDriver_inherited_IsInstance(
         self_: *const BinTObjDrivers_XYZDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BinTObjDrivers_XYZDriver_inherited_IsKind(
         self_: *const BinTObjDrivers_XYZDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BinTObjDrivers_XYZDriver_inherited_This(
         self_: *const BinTObjDrivers_XYZDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BinTObjDrivers_XYZDriver_inherited_GetRefCount(
         self_: *const BinTObjDrivers_XYZDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BinTObjDrivers_XYZDriver_inherited_IncrementRefCounter(
         self_: *mut BinTObjDrivers_XYZDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BinTObjDrivers_XYZDriver_inherited_DecrementRefCounter(
         self_: *mut BinTObjDrivers_XYZDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BinTObjDrivers_XYZDriver_inherited_Delete(
         self_: *const BinTObjDrivers_XYZDriver,
     ) -> *const std::ffi::c_char;
@@ -948,14 +915,14 @@ unsafe extern "C" {
     /// **Source:** `BinTObjDrivers.hxx`:34 - `BinTObjDrivers::Factory`
     pub fn BinTObjDrivers_factory(
         aGUID: *const Standard_GUID,
-    ) -> crate::OcctResult<*const HandleStandardTransient>;
+    ) -> crate::OcctResult<*const Handle_Standard_Transient>;
     /// **Source:** `BinTObjDrivers.hxx`:39 - `BinTObjDrivers::DefineFormat`
     pub fn BinTObjDrivers_define_format(
-        theApp: *const HandleTDocStdApplication,
+        theApp: *const Handle_TDocStd_Application,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BinTObjDrivers.hxx`:41 - `BinTObjDrivers::AddDrivers`
     pub fn BinTObjDrivers_add_drivers_handlebinmdfadrivertable_handlemessagemessenger_8(
-        aDriverTable: *const HandleBinMDFADriverTable,
-        aMsgDrv: *const HandleMessageMessenger,
+        aDriverTable: *const Handle_BinMDF_ADriverTable,
+        aMsgDrv: *const Handle_Message_Messenger,
     ) -> *const std::ffi::c_char;
 }

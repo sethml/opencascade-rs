@@ -10,8 +10,8 @@ use glam::{dvec3, DVec2, DVec3};
 use opencascade_sys::{
     b_rep, b_rep_algo_api, b_rep_feat, b_rep_fillet_api, b_rep_int_curve_surface, b_rep_mesh,
     b_rep_offset, b_rep_offset_api, b_rep_prim_api, ch_fi3d, geom_abs, gp, iges_control,
-    if_select, message, shape_upgrade, step_control, stl_api, t_colgp, top_abs, top_exp,
-    top_loc, top_tools, topo_ds,
+    if_select, message, n_collection, shape_upgrade, step_control, stl_api, top_abs, top_exp,
+    top_loc, topo_ds,
 };
 use std::path::Path;
 
@@ -422,7 +422,7 @@ impl Shape {
 
         let pairs: Vec<(f64, f64)> = radius_values.into_iter().collect();
         let n = pairs.len() as i32;
-        let mut array = t_colgp::Array1OfPnt2d::new_int2(1, n);
+        let mut array = n_collection::Array1_gp_Pnt2d::new_int2(1, n);
         for (i, &(param, radius)) in pairs.iter().enumerate() {
             let pnt2d = make_point2d(DVec2::new(param, radius));
             array.set_value(i as i32 + 1, &pnt2d);
@@ -430,7 +430,7 @@ impl Shape {
 
         for edge in edges {
             make_fillet
-                .add_array1ofpnt2d_edge(&array, &edge.as_ref().inner);
+                .add_arr1_pnt2d_edge(&array, &edge.as_ref().inner);
         }
 
         make_fillet.build(&progress);
@@ -616,7 +616,7 @@ impl Shape {
 
         let mut writer = stl_api::Writer::new();
         let path_str = path.as_ref().to_string_lossy();
-        let success = writer.write(&self.inner, &path_str, &progress);
+        let success = writer.write_shape_charptr_progressrange(&self.inner, &path_str, &progress);
 
         if success {
             Ok(())
@@ -714,7 +714,7 @@ impl Shape {
         offset: f64,
         faces_to_remove: impl IntoIterator<Item = T>,
     ) -> Self {
-        let mut faces_list = top_tools::ListOfShape::new();
+        let mut faces_list = n_collection::List_TopoDS_Shape::new();
         for face in faces_to_remove.into_iter() {
             faces_list.append(face.as_ref().inner.as_shape());
         }
@@ -758,10 +758,9 @@ impl Shape {
 }
 
 /// Helper to convert a TopTools_ListOfShape reference to a Vec<Edge>.
-pub(crate) fn list_of_shape_to_edges(list: &top_tools::ListOfShape) -> Vec<Edge> {
-    let mut iter = list.iter();
+pub(crate) fn list_of_shape_to_edges(list: &n_collection::List_TopoDS_Shape) -> Vec<Edge> {
     let mut edges = Vec::new();
-    while let Some(shape) = iter.next() {
+    for shape in list.iter() {
         let edge = topo_ds::edge(&shape);
         edges.push(Edge::from_edge(edge));
     }

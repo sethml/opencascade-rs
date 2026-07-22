@@ -55,15 +55,15 @@ impl KnotTools {
     /// @param theMinNbPnts - Minimal number of points per knot interval.
     /// @param theKnots - output knots sequence.
     pub fn build_knots(
-        thePntsXYZ: &crate::ffi_types::TColgp_Array1OfPnt,
-        thePntsU1V1: &crate::ffi_types::TColgp_Array1OfPnt2d,
-        thePntsU2V2: &crate::ffi_types::TColgp_Array1OfPnt2d,
+        thePntsXYZ: &crate::ffi_types::NCollection_Array1_gp_Pnt,
+        thePntsU1V1: &crate::ffi_types::NCollection_Array1_gp_Pnt2d,
+        thePntsU2V2: &crate::ffi_types::NCollection_Array1_gp_Pnt2d,
         thePars: &crate::ffi_types::math_Vector,
         theApproxXYZ: bool,
         theApproxU1V1: bool,
         theApproxU2V2: bool,
         theMinNbPnts: i32,
-        theKnots: &mut crate::ffi_types::NCollection_Vector_Standard_Integer,
+        theKnots: &mut crate::ffi_types::NCollection_DynamicArray_int,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::ApproxInt_KnotTools_build_knots(
@@ -83,10 +83,10 @@ impl KnotTools {
     /// **Source:** `ApproxInt_KnotTools.hxx`:75 - `ApproxInt_KnotTools::BuildCurvature()`
     /// Builds discrete curvature
     pub fn build_curvature(
-        theCoords: &crate::ffi_types::NCollection_LocalArray_Standard_Real,
+        theCoords: &crate::ffi_types::NCollection_LocalArray_double,
         theDim: i32,
         thePars: &crate::ffi_types::math_Vector,
-        theCurv: &mut crate::ffi_types::TColStd_Array1OfReal,
+        theCurv: &mut crate::ffi_types::NCollection_Array1_double,
         theMaxCurv: &mut f64,
     ) {
         crate::check_void_result(unsafe {
@@ -99,7 +99,7 @@ impl KnotTools {
     /// **Source:** `ApproxInt_KnotTools.hxx`:82 - `ApproxInt_KnotTools::DefineParType()`
     /// Defines preferable parametrization type for theWL
     pub fn define_par_type(
-        theWL: &crate::ffi_types::HandleIntPatchWLine,
+        theWL: &crate::ffi_types::Handle_IntPatch_WLine,
         theFpar: i32,
         theLpar: i32,
         theApproxXYZ: bool,

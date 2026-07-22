@@ -115,6 +115,18 @@ impl<T: CppDeletable + fmt::Debug> fmt::Debug for OwnedPtr<T> {
     }
 }
 
+/// An owned iterator (e.g. a collection's `iter()` result, an owned `IterX`) is itself an
+/// `Iterator`, so it works directly in `for` loops and iterator adapters:
+/// `for item in collection.iter() { ... }`.
+impl<T: CppDeletable + Iterator> Iterator for OwnedPtr<T> {
+    type Item = T::Item;
+
+    #[inline]
+    fn next(&mut self) -> Option<Self::Item> {
+        (**self).next()
+    }
+}
+
 impl<T: CppDeletable + CppCopyable> Clone for OwnedPtr<T> {
     fn clone(&self) -> Self {
         unsafe { Self::from_raw(T::cpp_copy(self.as_ptr())) }

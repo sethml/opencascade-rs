@@ -4,17 +4,13 @@
 #include "occt_preamble.hxx"
 
 #include <Adaptor2d_Curve2d.hxx>
-#include <Adaptor3d_Curve.hxx>
 #include <Adaptor3d_HVertex.hxx>
+#include <Adaptor3d_Surface.hxx>
 #include <Adaptor3d_TopolTool.hxx>
 #include <BRepAdaptor_Curve.hxx>
 #include <BRepAdaptor_Surface.hxx>
-#include <BRepClass3d_MapOfInter.hxx>
-#include <BRepTopAdaptor_MapOfShapeTool.hxx>
 #include <Bnd_BoundSortBox.hxx>
-#include <Bnd_Box.hxx>
 #include <Bnd_Box2d.hxx>
-#include <Bnd_HArray1OfBox.hxx>
 #include <Contap_ArcFunction.hxx>
 #include <Contap_ContAna.hxx>
 #include <Contap_Contour.hxx>
@@ -26,75 +22,51 @@
 #include <Contap_SurfFunction.hxx>
 #include <Contap_SurfProps.hxx>
 #include <Contap_TFunction.hxx>
-#include <Contap_TheHSequenceOfPoint.hxx>
 #include <Contap_TheIWLineOfTheIWalking.hxx>
 #include <Contap_TheIWalking.hxx>
 #include <Contap_ThePathPointOfTheSearch.hxx>
 #include <Contap_TheSearch.hxx>
 #include <Contap_TheSearchInside.hxx>
 #include <Contap_TheSegmentOfTheSearch.hxx>
-#include <Contap_TheSequenceOfPoint.hxx>
-#include <Extrema_POnCurv2d.hxx>
-#include <Geom2d_BSplineCurve.hxx>
 #include <Geom2d_BezierCurve.hxx>
 #include <Geom2d_Line.hxx>
 #include <GeomAbs_CurveType.hxx>
 #include <GeomAbs_Shape.hxx>
 #include <GeomAbs_SurfaceType.hxx>
-#include <Geom_BSplineCurve.hxx>
 #include <Geom_BSplineSurface.hxx>
 #include <Geom_BezierCurve.hxx>
 #include <Geom_BezierSurface.hxx>
 #include <HLRAlgo.hxx>
-#include <HLRAlgo_Array1OfPHDat.hxx>
-#include <HLRAlgo_Array1OfPINod.hxx>
-#include <HLRAlgo_Array1OfPISeg.hxx>
-#include <HLRAlgo_Array1OfTData.hxx>
-#include <HLRAlgo_BiPoint.hxx>
 #include <HLRAlgo_Coincidence.hxx>
 #include <HLRAlgo_EdgeIterator.hxx>
 #include <HLRAlgo_EdgeStatus.hxx>
 #include <HLRAlgo_EdgesBlock.hxx>
-#include <HLRAlgo_HArray1OfPHDat.hxx>
-#include <HLRAlgo_HArray1OfPINod.hxx>
-#include <HLRAlgo_HArray1OfPISeg.hxx>
-#include <HLRAlgo_HArray1OfTData.hxx>
-#include <HLRAlgo_Interference.hxx>
-#include <HLRAlgo_InterferenceList.hxx>
 #include <HLRAlgo_Intersection.hxx>
-#include <HLRAlgo_ListIteratorOfInterferenceList.hxx>
-#include <HLRAlgo_ListOfBPoint.hxx>
 #include <HLRAlgo_PolyAlgo.hxx>
-#include <HLRAlgo_PolyHidingData.hxx>
+#include <HLRAlgo_PolyData.hxx>
 #include <HLRAlgo_PolyInternalData.hxx>
 #include <HLRAlgo_PolyInternalNode.hxx>
-#include <HLRAlgo_PolyInternalSegment.hxx>
+#include <HLRAlgo_PolyShellData.hxx>
 #include <HLRAlgo_Projector.hxx>
-#include <HLRAlgo_TriangleData.hxx>
 #include <HLRAlgo_WiresBlock.hxx>
 #include <HLRAppli_ReflectLines.hxx>
 #include <HLRBRep.hxx>
 #include <HLRBRep_Algo.hxx>
 #include <HLRBRep_AreaLimit.hxx>
-#include <HLRBRep_Array1OfEData.hxx>
-#include <HLRBRep_Array1OfFData.hxx>
 #include <HLRBRep_BCurveTool.hxx>
 #include <HLRBRep_BSurfaceTool.hxx>
 #include <HLRBRep_BiPnt2D.hxx>
 #include <HLRBRep_BiPoint.hxx>
 #include <HLRBRep_CInter.hxx>
-#include <HLRBRep_CLProps.hxx>
 #include <HLRBRep_CLPropsATool.hxx>
 #include <HLRBRep_Curve.hxx>
 #include <HLRBRep_CurveTool.hxx>
 #include <HLRBRep_Data.hxx>
 #include <HLRBRep_EdgeBuilder.hxx>
-#include <HLRBRep_EdgeData.hxx>
 #include <HLRBRep_EdgeFaceTool.hxx>
 #include <HLRBRep_EdgeIList.hxx>
 #include <HLRBRep_EdgeInterferenceTool.hxx>
 #include <HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx>
-#include <HLRBRep_FaceData.hxx>
 #include <HLRBRep_FaceIterator.hxx>
 #include <HLRBRep_HLRToShape.hxx>
 #include <HLRBRep_Hider.hxx>
@@ -104,25 +76,19 @@
 #include <HLRBRep_Intersector.hxx>
 #include <HLRBRep_LineTool.hxx>
 #include <HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter.hxx>
-#include <HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx>
 #include <HLRBRep_PolyAlgo.hxx>
 #include <HLRBRep_PolyHLRToShape.hxx>
-#include <HLRBRep_SLProps.hxx>
 #include <HLRBRep_SLPropsATool.hxx>
-#include <HLRBRep_SeqOfShapeBounds.hxx>
-#include <HLRBRep_ShapeBounds.hxx>
 #include <HLRBRep_ShapeToHLR.hxx>
 #include <HLRBRep_Surface.hxx>
 #include <HLRBRep_SurfaceTool.hxx>
 #include <HLRBRep_TheCSFunctionOfInterCSurf.hxx>
-#include <HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter.hxx>
 #include <HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx>
 #include <HLRBRep_TheExactInterCSurf.hxx>
 #include <HLRBRep_TheIntConicCurveOfCInter.hxx>
 #include <HLRBRep_TheIntPCurvePCurveOfCInter.hxx>
 #include <HLRBRep_TheInterferenceOfInterCSurf.hxx>
 #include <HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx>
-#include <HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter.hxx>
 #include <HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx>
 #include <HLRBRep_ThePolygonOfInterCSurf.hxx>
 #include <HLRBRep_ThePolygonToolOfInterCSurf.hxx>
@@ -143,18 +109,11 @@
 #include <IntCurveSurface_IntersectionSegment.hxx>
 #include <IntCurve_IConicTool.hxx>
 #include <IntRes2d_Domain.hxx>
-#include <IntRes2d_IntersectionPoint.hxx>
 #include <IntRes2d_IntersectionSegment.hxx>
-#include <IntSurf_InteriorPoint.hxx>
 #include <IntSurf_LineOn2S.hxx>
-#include <IntSurf_PathPoint.hxx>
-#include <IntSurf_PntOn2S.hxx>
 #include <IntSurf_Quadric.hxx>
-#include <IntSurf_SequenceOfInteriorPoint.hxx>
-#include <IntSurf_SequenceOfPathPoint.hxx>
 #include <IntSurf_Transition.hxx>
 #include <IntSurf_TypeTrans.hxx>
-#include <Intf_Array1OfLin.hxx>
 #include <Intf_SectionLine.hxx>
 #include <Intf_SectionPoint.hxx>
 #include <Intf_TangentZone.hxx>
@@ -164,204 +123,154 @@
 #include <NCollection_BaseAllocator.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_Type.hxx>
-#include <TColStd_Array1OfInteger.hxx>
-#include <TColStd_Array1OfReal.hxx>
-#include <TColStd_HArray1OfReal.hxx>
-#include <TColgp_Array1OfPnt.hxx>
-#include <TColgp_Array1OfPnt2d.hxx>
-#include <TColgp_Array1OfXYZ.hxx>
-#include <TColgp_HArray1OfXYZ.hxx>
 #include <TopAbs_Orientation.hxx>
-#include <TopAbs_State.hxx>
 #include <TopBas_TestInterference.hxx>
 #include <TopCnx_EdgeFaceTransition.hxx>
-#include <TopTools_IndexedMapOfShape.hxx>
-#include <TopTools_ListOfShape.hxx>
 #include <TopoDS_Edge.hxx>
 #include <TopoDS_Face.hxx>
 #include <TopoDS_Vertex.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Ax2.hxx>
-#include <gp_Circ.hxx>
 #include <gp_Circ2d.hxx>
 #include <gp_Cone.hxx>
 #include <gp_Cylinder.hxx>
-#include <gp_Dir.hxx>
 #include <gp_Dir2d.hxx>
 #include <gp_Elips.hxx>
 #include <gp_Elips2d.hxx>
 #include <gp_Hypr.hxx>
 #include <gp_Hypr2d.hxx>
-#include <gp_Lin.hxx>
 #include <gp_Lin2d.hxx>
 #include <gp_Parab.hxx>
 #include <gp_Parab2d.hxx>
 #include <gp_Pln.hxx>
 #include <gp_Sphere.hxx>
 #include <gp_Torus.hxx>
-#include <gp_Trsf.hxx>
-#include <gp_Vec.hxx>
-#include <gp_Vec2d.hxx>
-#include <gp_XY.hxx>
 #include <math_FunctionSetRoot.hxx>
 #include <math_Matrix.hxx>
 #include <math_Vector.hxx>
 
 // Handle type aliases
-typedef opencascade::handle<Adaptor2d_Curve2d> HandleAdaptor2dCurve2d;
-typedef opencascade::handle<Adaptor3d_Curve> HandleAdaptor3dCurve;
-typedef opencascade::handle<Adaptor3d_HVertex> HandleAdaptor3dHVertex;
-typedef opencascade::handle<Adaptor3d_Surface> HandleAdaptor3dSurface;
-typedef opencascade::handle<Adaptor3d_TopolTool> HandleAdaptor3dTopolTool;
-typedef opencascade::handle<Bnd_HArray1OfBox> HandleBndHArray1OfBox;
-typedef opencascade::handle<Contap_TheHSequenceOfPoint> HandleContapTheHSequenceOfPoint;
-typedef opencascade::handle<Contap_TheIWLineOfTheIWalking> HandleContapTheIWLineOfTheIWalking;
-typedef opencascade::handle<Geom2d_BSplineCurve> HandleGeom2dBSplineCurve;
-typedef opencascade::handle<Geom2d_BezierCurve> HandleGeom2dBezierCurve;
-typedef opencascade::handle<Geom2d_Line> HandleGeom2dLine;
-typedef opencascade::handle<Geom_BSplineCurve> HandleGeomBSplineCurve;
-typedef opencascade::handle<Geom_BSplineSurface> HandleGeomBSplineSurface;
-typedef opencascade::handle<Geom_BezierCurve> HandleGeomBezierCurve;
-typedef opencascade::handle<Geom_BezierSurface> HandleGeomBezierSurface;
-typedef opencascade::handle<HLRAlgo_EdgesBlock> HandleHLRAlgoEdgesBlock;
-typedef opencascade::handle<HLRAlgo_HArray1OfPHDat> HandleHLRAlgoHArray1OfPHDat;
-typedef opencascade::handle<HLRAlgo_HArray1OfPINod> HandleHLRAlgoHArray1OfPINod;
-typedef opencascade::handle<HLRAlgo_HArray1OfPISeg> HandleHLRAlgoHArray1OfPISeg;
-typedef opencascade::handle<HLRAlgo_HArray1OfTData> HandleHLRAlgoHArray1OfTData;
-typedef opencascade::handle<HLRAlgo_PolyAlgo> HandleHLRAlgoPolyAlgo;
-typedef opencascade::handle<HLRAlgo_PolyData> HandleHLRAlgoPolyData;
-typedef opencascade::handle<HLRAlgo_PolyInternalData> HandleHLRAlgoPolyInternalData;
-typedef opencascade::handle<HLRAlgo_PolyInternalNode> HandleHLRAlgoPolyInternalNode;
-typedef opencascade::handle<HLRAlgo_PolyShellData> HandleHLRAlgoPolyShellData;
-typedef opencascade::handle<HLRAlgo_WiresBlock> HandleHLRAlgoWiresBlock;
-typedef opencascade::handle<HLRBRep_Algo> HandleHLRBRepAlgo;
-typedef opencascade::handle<HLRBRep_AreaLimit> HandleHLRBRepAreaLimit;
-typedef opencascade::handle<HLRBRep_Data> HandleHLRBRepData;
-typedef opencascade::handle<HLRBRep_InternalAlgo> HandleHLRBRepInternalAlgo;
-typedef opencascade::handle<HLRBRep_PolyAlgo> HandleHLRBRepPolyAlgo;
-typedef opencascade::handle<HLRTopoBRep_OutLiner> HandleHLRTopoBRepOutLiner;
-typedef opencascade::handle<IntSurf_LineOn2S> HandleIntSurfLineOn2S;
-typedef opencascade::handle<NCollection_BaseAllocator> HandleNCollectionBaseAllocator;
-typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
-typedef opencascade::handle<Standard_Type> HandleStandardType;
-typedef opencascade::handle<TColStd_HArray1OfReal> HandleTColStdHArray1OfReal;
-typedef opencascade::handle<TColgp_HArray1OfXYZ> HandleTColgpHArray1OfXYZ;
+typedef opencascade::handle<Adaptor2d_Curve2d> Handle_Adaptor2d_Curve2d;
+typedef opencascade::handle<Adaptor3d_Curve> Handle_Adaptor3d_Curve;
+typedef opencascade::handle<Adaptor3d_HVertex> Handle_Adaptor3d_HVertex;
+typedef opencascade::handle<Adaptor3d_Surface> Handle_Adaptor3d_Surface;
+typedef opencascade::handle<Adaptor3d_TopolTool> Handle_Adaptor3d_TopolTool;
+typedef opencascade::handle<Contap_TheIWLineOfTheIWalking> Handle_Contap_TheIWLineOfTheIWalking;
+typedef opencascade::handle<Geom2d_BSplineCurve> Handle_Geom2d_BSplineCurve;
+typedef opencascade::handle<Geom2d_BezierCurve> Handle_Geom2d_BezierCurve;
+typedef opencascade::handle<Geom2d_Line> Handle_Geom2d_Line;
+typedef opencascade::handle<Geom_BSplineCurve> Handle_Geom_BSplineCurve;
+typedef opencascade::handle<Geom_BSplineSurface> Handle_Geom_BSplineSurface;
+typedef opencascade::handle<Geom_BezierCurve> Handle_Geom_BezierCurve;
+typedef opencascade::handle<Geom_BezierSurface> Handle_Geom_BezierSurface;
+typedef opencascade::handle<HLRAlgo_EdgesBlock> Handle_HLRAlgo_EdgesBlock;
+typedef opencascade::handle<HLRAlgo_PolyAlgo> Handle_HLRAlgo_PolyAlgo;
+typedef opencascade::handle<HLRAlgo_PolyData> Handle_HLRAlgo_PolyData;
+typedef opencascade::handle<HLRAlgo_PolyInternalData> Handle_HLRAlgo_PolyInternalData;
+typedef opencascade::handle<HLRAlgo_PolyInternalNode> Handle_HLRAlgo_PolyInternalNode;
+typedef opencascade::handle<HLRAlgo_PolyShellData> Handle_HLRAlgo_PolyShellData;
+typedef opencascade::handle<HLRAlgo_WiresBlock> Handle_HLRAlgo_WiresBlock;
+typedef opencascade::handle<HLRBRep_Algo> Handle_HLRBRep_Algo;
+typedef opencascade::handle<HLRBRep_AreaLimit> Handle_HLRBRep_AreaLimit;
+typedef opencascade::handle<HLRBRep_Data> Handle_HLRBRep_Data;
+typedef opencascade::handle<HLRBRep_InternalAlgo> Handle_HLRBRep_InternalAlgo;
+typedef opencascade::handle<HLRBRep_PolyAlgo> Handle_HLRBRep_PolyAlgo;
+typedef opencascade::handle<HLRTopoBRep_OutLiner> Handle_HLRTopoBRep_OutLiner;
+typedef opencascade::handle<IntSurf_LineOn2S> Handle_IntSurf_LineOn2S;
+typedef opencascade::handle<NCollection_BaseAllocator> Handle_NCollection_BaseAllocator;
+typedef opencascade::handle<NCollection_HArray1_Bnd_Box> Handle_NCollection_HArray1_Bnd_Box;
+typedef opencascade::handle<NCollection_HArray1_HLRAlgo_PolyHidingData> Handle_NCollection_HArray1_HLRAlgo_PolyHidingData;
+typedef opencascade::handle<NCollection_HArray1_HLRAlgo_TriangleData> Handle_NCollection_HArray1_HLRAlgo_TriangleData;
+typedef opencascade::handle<NCollection_HArray1_double> Handle_NCollection_HArray1_double;
+typedef opencascade::handle<NCollection_HArray1_gp_XYZ> Handle_NCollection_HArray1_gp_XYZ;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
 
 // Handle type destructors, clone, and is_null functions
-extern "C" void HandleContapTheHSequenceOfPoint_destructor(HandleContapTheHSequenceOfPoint* self_) { delete self_; }
-extern "C" OcctResult<HandleContapTheHSequenceOfPoint*> HandleContapTheHSequenceOfPoint_clone(const HandleContapTheHSequenceOfPoint* self_) {
-    try { return {new HandleContapTheHSequenceOfPoint(*self_), nullptr}; }
+extern "C" void Handle_Contap_TheIWLineOfTheIWalking_destructor(Handle_Contap_TheIWLineOfTheIWalking* self_) { delete self_; }
+extern "C" OcctResult<Handle_Contap_TheIWLineOfTheIWalking*> Handle_Contap_TheIWLineOfTheIWalking_clone(const Handle_Contap_TheIWLineOfTheIWalking* self_) {
+    try { return {new Handle_Contap_TheIWLineOfTheIWalking(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleContapTheHSequenceOfPoint_is_null(const HandleContapTheHSequenceOfPoint* self_) { return self_->IsNull(); }
-extern "C" void HandleContapTheIWLineOfTheIWalking_destructor(HandleContapTheIWLineOfTheIWalking* self_) { delete self_; }
-extern "C" OcctResult<HandleContapTheIWLineOfTheIWalking*> HandleContapTheIWLineOfTheIWalking_clone(const HandleContapTheIWLineOfTheIWalking* self_) {
-    try { return {new HandleContapTheIWLineOfTheIWalking(*self_), nullptr}; }
+extern "C" bool Handle_Contap_TheIWLineOfTheIWalking_is_null(const Handle_Contap_TheIWLineOfTheIWalking* self_) { return self_->IsNull(); }
+extern "C" void Handle_HLRAlgo_EdgesBlock_destructor(Handle_HLRAlgo_EdgesBlock* self_) { delete self_; }
+extern "C" OcctResult<Handle_HLRAlgo_EdgesBlock*> Handle_HLRAlgo_EdgesBlock_clone(const Handle_HLRAlgo_EdgesBlock* self_) {
+    try { return {new Handle_HLRAlgo_EdgesBlock(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleContapTheIWLineOfTheIWalking_is_null(const HandleContapTheIWLineOfTheIWalking* self_) { return self_->IsNull(); }
-extern "C" void HandleHLRAlgoEdgesBlock_destructor(HandleHLRAlgoEdgesBlock* self_) { delete self_; }
-extern "C" OcctResult<HandleHLRAlgoEdgesBlock*> HandleHLRAlgoEdgesBlock_clone(const HandleHLRAlgoEdgesBlock* self_) {
-    try { return {new HandleHLRAlgoEdgesBlock(*self_), nullptr}; }
+extern "C" bool Handle_HLRAlgo_EdgesBlock_is_null(const Handle_HLRAlgo_EdgesBlock* self_) { return self_->IsNull(); }
+extern "C" void Handle_HLRAlgo_PolyAlgo_destructor(Handle_HLRAlgo_PolyAlgo* self_) { delete self_; }
+extern "C" OcctResult<Handle_HLRAlgo_PolyAlgo*> Handle_HLRAlgo_PolyAlgo_clone(const Handle_HLRAlgo_PolyAlgo* self_) {
+    try { return {new Handle_HLRAlgo_PolyAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleHLRAlgoEdgesBlock_is_null(const HandleHLRAlgoEdgesBlock* self_) { return self_->IsNull(); }
-extern "C" void HandleHLRAlgoHArray1OfPHDat_destructor(HandleHLRAlgoHArray1OfPHDat* self_) { delete self_; }
-extern "C" OcctResult<HandleHLRAlgoHArray1OfPHDat*> HandleHLRAlgoHArray1OfPHDat_clone(const HandleHLRAlgoHArray1OfPHDat* self_) {
-    try { return {new HandleHLRAlgoHArray1OfPHDat(*self_), nullptr}; }
+extern "C" bool Handle_HLRAlgo_PolyAlgo_is_null(const Handle_HLRAlgo_PolyAlgo* self_) { return self_->IsNull(); }
+extern "C" void Handle_HLRAlgo_PolyData_destructor(Handle_HLRAlgo_PolyData* self_) { delete self_; }
+extern "C" OcctResult<Handle_HLRAlgo_PolyData*> Handle_HLRAlgo_PolyData_clone(const Handle_HLRAlgo_PolyData* self_) {
+    try { return {new Handle_HLRAlgo_PolyData(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleHLRAlgoHArray1OfPHDat_is_null(const HandleHLRAlgoHArray1OfPHDat* self_) { return self_->IsNull(); }
-extern "C" void HandleHLRAlgoHArray1OfPINod_destructor(HandleHLRAlgoHArray1OfPINod* self_) { delete self_; }
-extern "C" OcctResult<HandleHLRAlgoHArray1OfPINod*> HandleHLRAlgoHArray1OfPINod_clone(const HandleHLRAlgoHArray1OfPINod* self_) {
-    try { return {new HandleHLRAlgoHArray1OfPINod(*self_), nullptr}; }
+extern "C" bool Handle_HLRAlgo_PolyData_is_null(const Handle_HLRAlgo_PolyData* self_) { return self_->IsNull(); }
+extern "C" void Handle_HLRAlgo_PolyInternalData_destructor(Handle_HLRAlgo_PolyInternalData* self_) { delete self_; }
+extern "C" OcctResult<Handle_HLRAlgo_PolyInternalData*> Handle_HLRAlgo_PolyInternalData_clone(const Handle_HLRAlgo_PolyInternalData* self_) {
+    try { return {new Handle_HLRAlgo_PolyInternalData(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleHLRAlgoHArray1OfPINod_is_null(const HandleHLRAlgoHArray1OfPINod* self_) { return self_->IsNull(); }
-extern "C" void HandleHLRAlgoHArray1OfPISeg_destructor(HandleHLRAlgoHArray1OfPISeg* self_) { delete self_; }
-extern "C" OcctResult<HandleHLRAlgoHArray1OfPISeg*> HandleHLRAlgoHArray1OfPISeg_clone(const HandleHLRAlgoHArray1OfPISeg* self_) {
-    try { return {new HandleHLRAlgoHArray1OfPISeg(*self_), nullptr}; }
+extern "C" bool Handle_HLRAlgo_PolyInternalData_is_null(const Handle_HLRAlgo_PolyInternalData* self_) { return self_->IsNull(); }
+extern "C" void Handle_HLRAlgo_PolyInternalNode_destructor(Handle_HLRAlgo_PolyInternalNode* self_) { delete self_; }
+extern "C" OcctResult<Handle_HLRAlgo_PolyInternalNode*> Handle_HLRAlgo_PolyInternalNode_clone(const Handle_HLRAlgo_PolyInternalNode* self_) {
+    try { return {new Handle_HLRAlgo_PolyInternalNode(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleHLRAlgoHArray1OfPISeg_is_null(const HandleHLRAlgoHArray1OfPISeg* self_) { return self_->IsNull(); }
-extern "C" void HandleHLRAlgoHArray1OfTData_destructor(HandleHLRAlgoHArray1OfTData* self_) { delete self_; }
-extern "C" OcctResult<HandleHLRAlgoHArray1OfTData*> HandleHLRAlgoHArray1OfTData_clone(const HandleHLRAlgoHArray1OfTData* self_) {
-    try { return {new HandleHLRAlgoHArray1OfTData(*self_), nullptr}; }
+extern "C" bool Handle_HLRAlgo_PolyInternalNode_is_null(const Handle_HLRAlgo_PolyInternalNode* self_) { return self_->IsNull(); }
+extern "C" void Handle_HLRAlgo_PolyShellData_destructor(Handle_HLRAlgo_PolyShellData* self_) { delete self_; }
+extern "C" OcctResult<Handle_HLRAlgo_PolyShellData*> Handle_HLRAlgo_PolyShellData_clone(const Handle_HLRAlgo_PolyShellData* self_) {
+    try { return {new Handle_HLRAlgo_PolyShellData(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleHLRAlgoHArray1OfTData_is_null(const HandleHLRAlgoHArray1OfTData* self_) { return self_->IsNull(); }
-extern "C" void HandleHLRAlgoPolyAlgo_destructor(HandleHLRAlgoPolyAlgo* self_) { delete self_; }
-extern "C" OcctResult<HandleHLRAlgoPolyAlgo*> HandleHLRAlgoPolyAlgo_clone(const HandleHLRAlgoPolyAlgo* self_) {
-    try { return {new HandleHLRAlgoPolyAlgo(*self_), nullptr}; }
+extern "C" bool Handle_HLRAlgo_PolyShellData_is_null(const Handle_HLRAlgo_PolyShellData* self_) { return self_->IsNull(); }
+extern "C" void Handle_HLRAlgo_WiresBlock_destructor(Handle_HLRAlgo_WiresBlock* self_) { delete self_; }
+extern "C" OcctResult<Handle_HLRAlgo_WiresBlock*> Handle_HLRAlgo_WiresBlock_clone(const Handle_HLRAlgo_WiresBlock* self_) {
+    try { return {new Handle_HLRAlgo_WiresBlock(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleHLRAlgoPolyAlgo_is_null(const HandleHLRAlgoPolyAlgo* self_) { return self_->IsNull(); }
-extern "C" void HandleHLRAlgoPolyData_destructor(HandleHLRAlgoPolyData* self_) { delete self_; }
-extern "C" OcctResult<HandleHLRAlgoPolyData*> HandleHLRAlgoPolyData_clone(const HandleHLRAlgoPolyData* self_) {
-    try { return {new HandleHLRAlgoPolyData(*self_), nullptr}; }
+extern "C" bool Handle_HLRAlgo_WiresBlock_is_null(const Handle_HLRAlgo_WiresBlock* self_) { return self_->IsNull(); }
+extern "C" void Handle_HLRBRep_Algo_destructor(Handle_HLRBRep_Algo* self_) { delete self_; }
+extern "C" OcctResult<Handle_HLRBRep_Algo*> Handle_HLRBRep_Algo_clone(const Handle_HLRBRep_Algo* self_) {
+    try { return {new Handle_HLRBRep_Algo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleHLRAlgoPolyData_is_null(const HandleHLRAlgoPolyData* self_) { return self_->IsNull(); }
-extern "C" void HandleHLRAlgoPolyInternalData_destructor(HandleHLRAlgoPolyInternalData* self_) { delete self_; }
-extern "C" OcctResult<HandleHLRAlgoPolyInternalData*> HandleHLRAlgoPolyInternalData_clone(const HandleHLRAlgoPolyInternalData* self_) {
-    try { return {new HandleHLRAlgoPolyInternalData(*self_), nullptr}; }
+extern "C" bool Handle_HLRBRep_Algo_is_null(const Handle_HLRBRep_Algo* self_) { return self_->IsNull(); }
+extern "C" void Handle_HLRBRep_AreaLimit_destructor(Handle_HLRBRep_AreaLimit* self_) { delete self_; }
+extern "C" OcctResult<Handle_HLRBRep_AreaLimit*> Handle_HLRBRep_AreaLimit_clone(const Handle_HLRBRep_AreaLimit* self_) {
+    try { return {new Handle_HLRBRep_AreaLimit(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleHLRAlgoPolyInternalData_is_null(const HandleHLRAlgoPolyInternalData* self_) { return self_->IsNull(); }
-extern "C" void HandleHLRAlgoPolyInternalNode_destructor(HandleHLRAlgoPolyInternalNode* self_) { delete self_; }
-extern "C" OcctResult<HandleHLRAlgoPolyInternalNode*> HandleHLRAlgoPolyInternalNode_clone(const HandleHLRAlgoPolyInternalNode* self_) {
-    try { return {new HandleHLRAlgoPolyInternalNode(*self_), nullptr}; }
+extern "C" bool Handle_HLRBRep_AreaLimit_is_null(const Handle_HLRBRep_AreaLimit* self_) { return self_->IsNull(); }
+extern "C" void Handle_HLRBRep_Data_destructor(Handle_HLRBRep_Data* self_) { delete self_; }
+extern "C" OcctResult<Handle_HLRBRep_Data*> Handle_HLRBRep_Data_clone(const Handle_HLRBRep_Data* self_) {
+    try { return {new Handle_HLRBRep_Data(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleHLRAlgoPolyInternalNode_is_null(const HandleHLRAlgoPolyInternalNode* self_) { return self_->IsNull(); }
-extern "C" void HandleHLRAlgoPolyShellData_destructor(HandleHLRAlgoPolyShellData* self_) { delete self_; }
-extern "C" OcctResult<HandleHLRAlgoPolyShellData*> HandleHLRAlgoPolyShellData_clone(const HandleHLRAlgoPolyShellData* self_) {
-    try { return {new HandleHLRAlgoPolyShellData(*self_), nullptr}; }
+extern "C" bool Handle_HLRBRep_Data_is_null(const Handle_HLRBRep_Data* self_) { return self_->IsNull(); }
+extern "C" void Handle_HLRBRep_InternalAlgo_destructor(Handle_HLRBRep_InternalAlgo* self_) { delete self_; }
+extern "C" OcctResult<Handle_HLRBRep_InternalAlgo*> Handle_HLRBRep_InternalAlgo_clone(const Handle_HLRBRep_InternalAlgo* self_) {
+    try { return {new Handle_HLRBRep_InternalAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleHLRAlgoPolyShellData_is_null(const HandleHLRAlgoPolyShellData* self_) { return self_->IsNull(); }
-extern "C" void HandleHLRAlgoWiresBlock_destructor(HandleHLRAlgoWiresBlock* self_) { delete self_; }
-extern "C" OcctResult<HandleHLRAlgoWiresBlock*> HandleHLRAlgoWiresBlock_clone(const HandleHLRAlgoWiresBlock* self_) {
-    try { return {new HandleHLRAlgoWiresBlock(*self_), nullptr}; }
+extern "C" bool Handle_HLRBRep_InternalAlgo_is_null(const Handle_HLRBRep_InternalAlgo* self_) { return self_->IsNull(); }
+extern "C" void Handle_HLRBRep_PolyAlgo_destructor(Handle_HLRBRep_PolyAlgo* self_) { delete self_; }
+extern "C" OcctResult<Handle_HLRBRep_PolyAlgo*> Handle_HLRBRep_PolyAlgo_clone(const Handle_HLRBRep_PolyAlgo* self_) {
+    try { return {new Handle_HLRBRep_PolyAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleHLRAlgoWiresBlock_is_null(const HandleHLRAlgoWiresBlock* self_) { return self_->IsNull(); }
-extern "C" void HandleHLRBRepAlgo_destructor(HandleHLRBRepAlgo* self_) { delete self_; }
-extern "C" OcctResult<HandleHLRBRepAlgo*> HandleHLRBRepAlgo_clone(const HandleHLRBRepAlgo* self_) {
-    try { return {new HandleHLRBRepAlgo(*self_), nullptr}; }
+extern "C" bool Handle_HLRBRep_PolyAlgo_is_null(const Handle_HLRBRep_PolyAlgo* self_) { return self_->IsNull(); }
+extern "C" void Handle_HLRTopoBRep_OutLiner_destructor(Handle_HLRTopoBRep_OutLiner* self_) { delete self_; }
+extern "C" OcctResult<Handle_HLRTopoBRep_OutLiner*> Handle_HLRTopoBRep_OutLiner_clone(const Handle_HLRTopoBRep_OutLiner* self_) {
+    try { return {new Handle_HLRTopoBRep_OutLiner(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleHLRBRepAlgo_is_null(const HandleHLRBRepAlgo* self_) { return self_->IsNull(); }
-extern "C" void HandleHLRBRepAreaLimit_destructor(HandleHLRBRepAreaLimit* self_) { delete self_; }
-extern "C" OcctResult<HandleHLRBRepAreaLimit*> HandleHLRBRepAreaLimit_clone(const HandleHLRBRepAreaLimit* self_) {
-    try { return {new HandleHLRBRepAreaLimit(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleHLRBRepAreaLimit_is_null(const HandleHLRBRepAreaLimit* self_) { return self_->IsNull(); }
-extern "C" void HandleHLRBRepData_destructor(HandleHLRBRepData* self_) { delete self_; }
-extern "C" OcctResult<HandleHLRBRepData*> HandleHLRBRepData_clone(const HandleHLRBRepData* self_) {
-    try { return {new HandleHLRBRepData(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleHLRBRepData_is_null(const HandleHLRBRepData* self_) { return self_->IsNull(); }
-extern "C" void HandleHLRBRepInternalAlgo_destructor(HandleHLRBRepInternalAlgo* self_) { delete self_; }
-extern "C" OcctResult<HandleHLRBRepInternalAlgo*> HandleHLRBRepInternalAlgo_clone(const HandleHLRBRepInternalAlgo* self_) {
-    try { return {new HandleHLRBRepInternalAlgo(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleHLRBRepInternalAlgo_is_null(const HandleHLRBRepInternalAlgo* self_) { return self_->IsNull(); }
-extern "C" void HandleHLRBRepPolyAlgo_destructor(HandleHLRBRepPolyAlgo* self_) { delete self_; }
-extern "C" OcctResult<HandleHLRBRepPolyAlgo*> HandleHLRBRepPolyAlgo_clone(const HandleHLRBRepPolyAlgo* self_) {
-    try { return {new HandleHLRBRepPolyAlgo(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleHLRBRepPolyAlgo_is_null(const HandleHLRBRepPolyAlgo* self_) { return self_->IsNull(); }
-extern "C" void HandleHLRTopoBRepOutLiner_destructor(HandleHLRTopoBRepOutLiner* self_) { delete self_; }
-extern "C" OcctResult<HandleHLRTopoBRepOutLiner*> HandleHLRTopoBRepOutLiner_clone(const HandleHLRTopoBRepOutLiner* self_) {
-    try { return {new HandleHLRTopoBRepOutLiner(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleHLRTopoBRepOutLiner_is_null(const HandleHLRTopoBRepOutLiner* self_) { return self_->IsNull(); }
+extern "C" bool Handle_HLRTopoBRep_OutLiner_is_null(const Handle_HLRTopoBRep_OutLiner* self_) { return self_->IsNull(); }
 
 // ========================
 // Contap_ArcFunction wrappers
@@ -691,7 +600,7 @@ extern "C" OcctResult<int32_t> Contap_HCurve2dTool_nb_intervals(Handle(Adaptor2d
     try { return {Contap_HCurve2dTool::NbIntervals(*C, static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Contap_HCurve2dTool_intervals(Handle(Adaptor2d_Curve2d) const* C, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* Contap_HCurve2dTool_intervals(Handle(Adaptor2d_Curve2d) const* C, NCollection_Array1_double* T, int32_t S) {
     try { Contap_HCurve2dTool::Intervals(*C, *T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1078,94 +987,6 @@ extern "C" const char* Contap_SurfProps_norm_and_dn(Handle(Adaptor3d_Surface) co
 extern "C" void Contap_SurfProps_destructor(Contap_SurfProps* self_) { delete self_; }
 
 // ========================
-// Contap_TheHSequenceOfPoint wrappers
-// ========================
-
-extern "C" OcctResult<Contap_TheHSequenceOfPoint*> Contap_TheHSequenceOfPoint_ctor() {
-    try { return {new Contap_TheHSequenceOfPoint(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Contap_TheHSequenceOfPoint*> Contap_TheHSequenceOfPoint_ctor_thesequenceofpoint(Contap_TheSequenceOfPoint const* theOther) {
-    try { return {new Contap_TheHSequenceOfPoint(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Contap_TheSequenceOfPoint const*> Contap_TheHSequenceOfPoint_sequence(const Contap_TheHSequenceOfPoint* self_) {
-    try { return {&(self_->Sequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Contap_TheHSequenceOfPoint_append_point(Contap_TheHSequenceOfPoint* self_, Contap_Point const* theItem) {
-    try { self_->Append(*theItem); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Contap_TheHSequenceOfPoint_append_thesequenceofpoint(Contap_TheHSequenceOfPoint* self_, Contap_TheSequenceOfPoint* theSequence) {
-    try { self_->Append(*theSequence); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Contap_TheSequenceOfPoint*> Contap_TheHSequenceOfPoint_change_sequence(Contap_TheHSequenceOfPoint* self_) {
-    try { return {&(self_->ChangeSequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Contap_TheHSequenceOfPoint_dynamic_type(const Contap_TheHSequenceOfPoint* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> Contap_TheHSequenceOfPoint_get_type_name() {
-    try { return {Contap_TheHSequenceOfPoint::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Contap_TheHSequenceOfPoint_get_type_descriptor() {
-    try { return {&(Contap_TheHSequenceOfPoint::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> Contap_TheHSequenceOfPoint_as_Standard_Transient(const Contap_TheHSequenceOfPoint* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> Contap_TheHSequenceOfPoint_as_Standard_Transient_mut(Contap_TheHSequenceOfPoint* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleContapTheHSequenceOfPoint*> Contap_TheHSequenceOfPoint_to_handle(Contap_TheHSequenceOfPoint* obj) {
-    try { return {new HandleContapTheHSequenceOfPoint(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Contap_TheHSequenceOfPoint*> HandleContapTheHSequenceOfPoint_get(const HandleContapTheHSequenceOfPoint* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Contap_TheHSequenceOfPoint*> HandleContapTheHSequenceOfPoint_get_mut(HandleContapTheHSequenceOfPoint* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleContapTheHSequenceOfPoint_to_HandleStandardTransient(const HandleContapTheHSequenceOfPoint* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Contap_TheHSequenceOfPoint_inherited_IsInstance(const Contap_TheHSequenceOfPoint* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Contap_TheHSequenceOfPoint_inherited_IsKind(const Contap_TheHSequenceOfPoint* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> Contap_TheHSequenceOfPoint_inherited_This(const Contap_TheHSequenceOfPoint* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> Contap_TheHSequenceOfPoint_inherited_GetRefCount(const Contap_TheHSequenceOfPoint* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Contap_TheHSequenceOfPoint_inherited_IncrementRefCounter(Contap_TheHSequenceOfPoint* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> Contap_TheHSequenceOfPoint_inherited_DecrementRefCounter(Contap_TheHSequenceOfPoint* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Contap_TheHSequenceOfPoint_inherited_Delete(const Contap_TheHSequenceOfPoint* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void Contap_TheHSequenceOfPoint_destructor(Contap_TheHSequenceOfPoint* self_) { delete self_; }
-
-// ========================
 // Contap_TheIWLineOfTheIWalking wrappers
 // ========================
 
@@ -1295,20 +1116,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Contap_TheIWLineOfTheIWalkin
 }
 extern "C" OcctResult<const Standard_Transient*> Contap_TheIWLineOfTheIWalking_as_Standard_Transient(const Contap_TheIWLineOfTheIWalking* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Contap_TheIWLineOfTheIWalking_as_Standard_Transient_mut(Contap_TheIWLineOfTheIWalking* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleContapTheIWLineOfTheIWalking*> Contap_TheIWLineOfTheIWalking_to_handle(Contap_TheIWLineOfTheIWalking* obj) {
-    try { return {new HandleContapTheIWLineOfTheIWalking(obj), nullptr}; }
+extern "C" OcctResult<Handle_Contap_TheIWLineOfTheIWalking*> Contap_TheIWLineOfTheIWalking_to_handle(Contap_TheIWLineOfTheIWalking* obj) {
+    try { return {new Handle_Contap_TheIWLineOfTheIWalking(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Contap_TheIWLineOfTheIWalking*> HandleContapTheIWLineOfTheIWalking_get(const HandleContapTheIWLineOfTheIWalking* handle) {
+extern "C" OcctResult<const Contap_TheIWLineOfTheIWalking*> Handle_Contap_TheIWLineOfTheIWalking_get(const Handle_Contap_TheIWLineOfTheIWalking* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Contap_TheIWLineOfTheIWalking*> HandleContapTheIWLineOfTheIWalking_get_mut(HandleContapTheIWLineOfTheIWalking* handle) {
+extern "C" OcctResult<Contap_TheIWLineOfTheIWalking*> Handle_Contap_TheIWLineOfTheIWalking_get_mut(Handle_Contap_TheIWLineOfTheIWalking* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleContapTheIWLineOfTheIWalking_to_HandleStandardTransient(const HandleContapTheIWLineOfTheIWalking* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Contap_TheIWLineOfTheIWalking_to_Handle_Standard_Transient(const Handle_Contap_TheIWLineOfTheIWalking* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Contap_TheIWLineOfTheIWalking_inherited_IsInstance(const Contap_TheIWLineOfTheIWalking* self, Handle(Standard_Type) const& theType) {
@@ -1353,11 +1174,11 @@ extern "C" const char* Contap_TheIWalking_set_tolerance(Contap_TheIWalking* self
     try { self_->SetTolerance(Epsilon, Deflection, Step); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Contap_TheIWalking_perform_sequenceofpathpoint_sequenceofinteriorpoint_surffunction_handleadaptor3dsurface_bool(Contap_TheIWalking* self_, IntSurf_SequenceOfPathPoint const* Pnts1, IntSurf_SequenceOfInteriorPoint const* Pnts2, Contap_SurfFunction* Func, Handle(Adaptor3d_Surface) const* S, bool Reversed) {
+extern "C" const char* Contap_TheIWalking_perform_seq_pathpoint_seq_interiorpoint_surffunction_handleadaptor3dsurface_bool(Contap_TheIWalking* self_, NCollection_Sequence_IntSurf_PathPoint const* Pnts1, NCollection_Sequence_IntSurf_InteriorPoint const* Pnts2, Contap_SurfFunction* Func, Handle(Adaptor3d_Surface) const* S, bool Reversed) {
     try { self_->Perform(*Pnts1, *Pnts2, *Func, *S, Reversed); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Contap_TheIWalking_perform_sequenceofpathpoint_surffunction_handleadaptor3dsurface_bool(Contap_TheIWalking* self_, IntSurf_SequenceOfPathPoint const* Pnts1, Contap_SurfFunction* Func, Handle(Adaptor3d_Surface) const* S, bool Reversed) {
+extern "C" const char* Contap_TheIWalking_perform_seq_pathpoint_surffunction_handleadaptor3dsurface_bool(Contap_TheIWalking* self_, NCollection_Sequence_IntSurf_PathPoint const* Pnts1, Contap_SurfFunction* Func, Handle(Adaptor3d_Surface) const* S, bool Reversed) {
     try { self_->Perform(*Pnts1, *Func, *S, Reversed); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1862,20 +1683,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> HLRAlgo_EdgesBlock_get_type_
 }
 extern "C" OcctResult<const Standard_Transient*> HLRAlgo_EdgesBlock_as_Standard_Transient(const HLRAlgo_EdgesBlock* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> HLRAlgo_EdgesBlock_as_Standard_Transient_mut(HLRAlgo_EdgesBlock* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleHLRAlgoEdgesBlock*> HLRAlgo_EdgesBlock_to_handle(HLRAlgo_EdgesBlock* obj) {
-    try { return {new HandleHLRAlgoEdgesBlock(obj), nullptr}; }
+extern "C" OcctResult<Handle_HLRAlgo_EdgesBlock*> HLRAlgo_EdgesBlock_to_handle(HLRAlgo_EdgesBlock* obj) {
+    try { return {new Handle_HLRAlgo_EdgesBlock(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const HLRAlgo_EdgesBlock*> HandleHLRAlgoEdgesBlock_get(const HandleHLRAlgoEdgesBlock* handle) {
+extern "C" OcctResult<const HLRAlgo_EdgesBlock*> Handle_HLRAlgo_EdgesBlock_get(const Handle_HLRAlgo_EdgesBlock* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRAlgo_EdgesBlock*> HandleHLRAlgoEdgesBlock_get_mut(HandleHLRAlgoEdgesBlock* handle) {
+extern "C" OcctResult<HLRAlgo_EdgesBlock*> Handle_HLRAlgo_EdgesBlock_get_mut(Handle_HLRAlgo_EdgesBlock* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleHLRAlgoEdgesBlock_to_HandleStandardTransient(const HandleHLRAlgoEdgesBlock* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_HLRAlgo_EdgesBlock_to_Handle_Standard_Transient(const Handle_HLRAlgo_EdgesBlock* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> HLRAlgo_EdgesBlock_inherited_IsInstance(const HLRAlgo_EdgesBlock* self, Handle(Standard_Type) const& theType) {
@@ -1911,374 +1732,6 @@ extern "C" void HLRAlgo_EdgesBlock_destructor(HLRAlgo_EdgesBlock* self_) { delet
 // sizeof helper for POD struct HLRAlgo_EdgesBlock::MinMaxIndices
 extern "C" size_t HLRAlgo_EdgesBlock_MinMaxIndices_sizeof() { return sizeof(HLRAlgo_EdgesBlock::MinMaxIndices); }
 extern "C" void HLRAlgo_EdgesBlock_MinMaxIndices_destructor(HLRAlgo_EdgesBlock::MinMaxIndices* self_) { delete self_; }
-
-// ========================
-// HLRAlgo_HArray1OfPHDat wrappers
-// ========================
-
-extern "C" OcctResult<HLRAlgo_HArray1OfPHDat*> HLRAlgo_HArray1OfPHDat_ctor() {
-    try { return {new HLRAlgo_HArray1OfPHDat(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRAlgo_HArray1OfPHDat*> HLRAlgo_HArray1OfPHDat_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new HLRAlgo_HArray1OfPHDat(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRAlgo_HArray1OfPHDat*> HLRAlgo_HArray1OfPHDat_ctor_int2_polyhidingdata(int32_t theLower, int32_t theUpper, HLRAlgo_PolyHidingData const* theValue) {
-    try { return {new HLRAlgo_HArray1OfPHDat(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRAlgo_HArray1OfPHDat*> HLRAlgo_HArray1OfPHDat_ctor_polyhidingdata_int2_bool(HLRAlgo_PolyHidingData const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new HLRAlgo_HArray1OfPHDat(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRAlgo_HArray1OfPHDat*> HLRAlgo_HArray1OfPHDat_ctor_array1ofphdat(HLRAlgo_Array1OfPHDat const* theOther) {
-    try { return {new HLRAlgo_HArray1OfPHDat(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRAlgo_Array1OfPHDat const*> HLRAlgo_HArray1OfPHDat_array1(const HLRAlgo_HArray1OfPHDat* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRAlgo_Array1OfPHDat*> HLRAlgo_HArray1OfPHDat_change_array1(HLRAlgo_HArray1OfPHDat* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> HLRAlgo_HArray1OfPHDat_dynamic_type(const HLRAlgo_HArray1OfPHDat* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> HLRAlgo_HArray1OfPHDat_get_type_name() {
-    try { return {HLRAlgo_HArray1OfPHDat::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> HLRAlgo_HArray1OfPHDat_get_type_descriptor() {
-    try { return {&(HLRAlgo_HArray1OfPHDat::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> HLRAlgo_HArray1OfPHDat_as_Standard_Transient(const HLRAlgo_HArray1OfPHDat* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> HLRAlgo_HArray1OfPHDat_as_Standard_Transient_mut(HLRAlgo_HArray1OfPHDat* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleHLRAlgoHArray1OfPHDat*> HLRAlgo_HArray1OfPHDat_to_handle(HLRAlgo_HArray1OfPHDat* obj) {
-    try { return {new HandleHLRAlgoHArray1OfPHDat(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const HLRAlgo_HArray1OfPHDat*> HandleHLRAlgoHArray1OfPHDat_get(const HandleHLRAlgoHArray1OfPHDat* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRAlgo_HArray1OfPHDat*> HandleHLRAlgoHArray1OfPHDat_get_mut(HandleHLRAlgoHArray1OfPHDat* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleHLRAlgoHArray1OfPHDat_to_HandleStandardTransient(const HandleHLRAlgoHArray1OfPHDat* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> HLRAlgo_HArray1OfPHDat_inherited_IsInstance(const HLRAlgo_HArray1OfPHDat* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> HLRAlgo_HArray1OfPHDat_inherited_IsKind(const HLRAlgo_HArray1OfPHDat* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> HLRAlgo_HArray1OfPHDat_inherited_This(const HLRAlgo_HArray1OfPHDat* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> HLRAlgo_HArray1OfPHDat_inherited_GetRefCount(const HLRAlgo_HArray1OfPHDat* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* HLRAlgo_HArray1OfPHDat_inherited_IncrementRefCounter(HLRAlgo_HArray1OfPHDat* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> HLRAlgo_HArray1OfPHDat_inherited_DecrementRefCounter(HLRAlgo_HArray1OfPHDat* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* HLRAlgo_HArray1OfPHDat_inherited_Delete(const HLRAlgo_HArray1OfPHDat* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void HLRAlgo_HArray1OfPHDat_destructor(HLRAlgo_HArray1OfPHDat* self_) { delete self_; }
-
-// ========================
-// HLRAlgo_HArray1OfPINod wrappers
-// ========================
-
-extern "C" OcctResult<HLRAlgo_HArray1OfPINod*> HLRAlgo_HArray1OfPINod_ctor() {
-    try { return {new HLRAlgo_HArray1OfPINod(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRAlgo_HArray1OfPINod*> HLRAlgo_HArray1OfPINod_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new HLRAlgo_HArray1OfPINod(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRAlgo_HArray1OfPINod*> HLRAlgo_HArray1OfPINod_ctor_int2_handlehlralgopolyinternalnode(int32_t theLower, int32_t theUpper, Handle(HLRAlgo_PolyInternalNode) const* theValue) {
-    try { return {new HLRAlgo_HArray1OfPINod(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRAlgo_HArray1OfPINod*> HLRAlgo_HArray1OfPINod_ctor_handlehlralgopolyinternalnode_int2_bool(Handle(HLRAlgo_PolyInternalNode) const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new HLRAlgo_HArray1OfPINod(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRAlgo_HArray1OfPINod*> HLRAlgo_HArray1OfPINod_ctor_array1ofpinod(HLRAlgo_Array1OfPINod const* theOther) {
-    try { return {new HLRAlgo_HArray1OfPINod(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRAlgo_Array1OfPINod const*> HLRAlgo_HArray1OfPINod_array1(const HLRAlgo_HArray1OfPINod* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRAlgo_Array1OfPINod*> HLRAlgo_HArray1OfPINod_change_array1(HLRAlgo_HArray1OfPINod* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> HLRAlgo_HArray1OfPINod_dynamic_type(const HLRAlgo_HArray1OfPINod* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> HLRAlgo_HArray1OfPINod_get_type_name() {
-    try { return {HLRAlgo_HArray1OfPINod::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> HLRAlgo_HArray1OfPINod_get_type_descriptor() {
-    try { return {&(HLRAlgo_HArray1OfPINod::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> HLRAlgo_HArray1OfPINod_as_Standard_Transient(const HLRAlgo_HArray1OfPINod* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> HLRAlgo_HArray1OfPINod_as_Standard_Transient_mut(HLRAlgo_HArray1OfPINod* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleHLRAlgoHArray1OfPINod*> HLRAlgo_HArray1OfPINod_to_handle(HLRAlgo_HArray1OfPINod* obj) {
-    try { return {new HandleHLRAlgoHArray1OfPINod(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const HLRAlgo_HArray1OfPINod*> HandleHLRAlgoHArray1OfPINod_get(const HandleHLRAlgoHArray1OfPINod* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRAlgo_HArray1OfPINod*> HandleHLRAlgoHArray1OfPINod_get_mut(HandleHLRAlgoHArray1OfPINod* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleHLRAlgoHArray1OfPINod_to_HandleStandardTransient(const HandleHLRAlgoHArray1OfPINod* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> HLRAlgo_HArray1OfPINod_inherited_IsInstance(const HLRAlgo_HArray1OfPINod* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> HLRAlgo_HArray1OfPINod_inherited_IsKind(const HLRAlgo_HArray1OfPINod* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> HLRAlgo_HArray1OfPINod_inherited_This(const HLRAlgo_HArray1OfPINod* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> HLRAlgo_HArray1OfPINod_inherited_GetRefCount(const HLRAlgo_HArray1OfPINod* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* HLRAlgo_HArray1OfPINod_inherited_IncrementRefCounter(HLRAlgo_HArray1OfPINod* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> HLRAlgo_HArray1OfPINod_inherited_DecrementRefCounter(HLRAlgo_HArray1OfPINod* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* HLRAlgo_HArray1OfPINod_inherited_Delete(const HLRAlgo_HArray1OfPINod* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void HLRAlgo_HArray1OfPINod_destructor(HLRAlgo_HArray1OfPINod* self_) { delete self_; }
-
-// ========================
-// HLRAlgo_HArray1OfPISeg wrappers
-// ========================
-
-extern "C" OcctResult<HLRAlgo_HArray1OfPISeg*> HLRAlgo_HArray1OfPISeg_ctor() {
-    try { return {new HLRAlgo_HArray1OfPISeg(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRAlgo_HArray1OfPISeg*> HLRAlgo_HArray1OfPISeg_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new HLRAlgo_HArray1OfPISeg(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRAlgo_HArray1OfPISeg*> HLRAlgo_HArray1OfPISeg_ctor_int2_polyinternalsegment(int32_t theLower, int32_t theUpper, HLRAlgo_PolyInternalSegment const* theValue) {
-    try { return {new HLRAlgo_HArray1OfPISeg(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRAlgo_HArray1OfPISeg*> HLRAlgo_HArray1OfPISeg_ctor_polyinternalsegment_int2_bool(HLRAlgo_PolyInternalSegment const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new HLRAlgo_HArray1OfPISeg(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRAlgo_HArray1OfPISeg*> HLRAlgo_HArray1OfPISeg_ctor_array1ofpiseg(HLRAlgo_Array1OfPISeg const* theOther) {
-    try { return {new HLRAlgo_HArray1OfPISeg(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRAlgo_Array1OfPISeg const*> HLRAlgo_HArray1OfPISeg_array1(const HLRAlgo_HArray1OfPISeg* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRAlgo_Array1OfPISeg*> HLRAlgo_HArray1OfPISeg_change_array1(HLRAlgo_HArray1OfPISeg* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> HLRAlgo_HArray1OfPISeg_dynamic_type(const HLRAlgo_HArray1OfPISeg* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> HLRAlgo_HArray1OfPISeg_get_type_name() {
-    try { return {HLRAlgo_HArray1OfPISeg::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> HLRAlgo_HArray1OfPISeg_get_type_descriptor() {
-    try { return {&(HLRAlgo_HArray1OfPISeg::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> HLRAlgo_HArray1OfPISeg_as_Standard_Transient(const HLRAlgo_HArray1OfPISeg* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> HLRAlgo_HArray1OfPISeg_as_Standard_Transient_mut(HLRAlgo_HArray1OfPISeg* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleHLRAlgoHArray1OfPISeg*> HLRAlgo_HArray1OfPISeg_to_handle(HLRAlgo_HArray1OfPISeg* obj) {
-    try { return {new HandleHLRAlgoHArray1OfPISeg(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const HLRAlgo_HArray1OfPISeg*> HandleHLRAlgoHArray1OfPISeg_get(const HandleHLRAlgoHArray1OfPISeg* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRAlgo_HArray1OfPISeg*> HandleHLRAlgoHArray1OfPISeg_get_mut(HandleHLRAlgoHArray1OfPISeg* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleHLRAlgoHArray1OfPISeg_to_HandleStandardTransient(const HandleHLRAlgoHArray1OfPISeg* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> HLRAlgo_HArray1OfPISeg_inherited_IsInstance(const HLRAlgo_HArray1OfPISeg* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> HLRAlgo_HArray1OfPISeg_inherited_IsKind(const HLRAlgo_HArray1OfPISeg* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> HLRAlgo_HArray1OfPISeg_inherited_This(const HLRAlgo_HArray1OfPISeg* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> HLRAlgo_HArray1OfPISeg_inherited_GetRefCount(const HLRAlgo_HArray1OfPISeg* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* HLRAlgo_HArray1OfPISeg_inherited_IncrementRefCounter(HLRAlgo_HArray1OfPISeg* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> HLRAlgo_HArray1OfPISeg_inherited_DecrementRefCounter(HLRAlgo_HArray1OfPISeg* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* HLRAlgo_HArray1OfPISeg_inherited_Delete(const HLRAlgo_HArray1OfPISeg* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void HLRAlgo_HArray1OfPISeg_destructor(HLRAlgo_HArray1OfPISeg* self_) { delete self_; }
-
-// ========================
-// HLRAlgo_HArray1OfTData wrappers
-// ========================
-
-extern "C" OcctResult<HLRAlgo_HArray1OfTData*> HLRAlgo_HArray1OfTData_ctor() {
-    try { return {new HLRAlgo_HArray1OfTData(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRAlgo_HArray1OfTData*> HLRAlgo_HArray1OfTData_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new HLRAlgo_HArray1OfTData(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRAlgo_HArray1OfTData*> HLRAlgo_HArray1OfTData_ctor_int2_triangledata(int32_t theLower, int32_t theUpper, HLRAlgo_TriangleData const* theValue) {
-    try { return {new HLRAlgo_HArray1OfTData(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRAlgo_HArray1OfTData*> HLRAlgo_HArray1OfTData_ctor_triangledata_int2_bool(HLRAlgo_TriangleData const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new HLRAlgo_HArray1OfTData(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRAlgo_HArray1OfTData*> HLRAlgo_HArray1OfTData_ctor_array1oftdata(HLRAlgo_Array1OfTData const* theOther) {
-    try { return {new HLRAlgo_HArray1OfTData(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRAlgo_Array1OfTData const*> HLRAlgo_HArray1OfTData_array1(const HLRAlgo_HArray1OfTData* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRAlgo_Array1OfTData*> HLRAlgo_HArray1OfTData_change_array1(HLRAlgo_HArray1OfTData* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> HLRAlgo_HArray1OfTData_dynamic_type(const HLRAlgo_HArray1OfTData* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> HLRAlgo_HArray1OfTData_get_type_name() {
-    try { return {HLRAlgo_HArray1OfTData::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> HLRAlgo_HArray1OfTData_get_type_descriptor() {
-    try { return {&(HLRAlgo_HArray1OfTData::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> HLRAlgo_HArray1OfTData_as_Standard_Transient(const HLRAlgo_HArray1OfTData* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> HLRAlgo_HArray1OfTData_as_Standard_Transient_mut(HLRAlgo_HArray1OfTData* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleHLRAlgoHArray1OfTData*> HLRAlgo_HArray1OfTData_to_handle(HLRAlgo_HArray1OfTData* obj) {
-    try { return {new HandleHLRAlgoHArray1OfTData(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const HLRAlgo_HArray1OfTData*> HandleHLRAlgoHArray1OfTData_get(const HandleHLRAlgoHArray1OfTData* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRAlgo_HArray1OfTData*> HandleHLRAlgoHArray1OfTData_get_mut(HandleHLRAlgoHArray1OfTData* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleHLRAlgoHArray1OfTData_to_HandleStandardTransient(const HandleHLRAlgoHArray1OfTData* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> HLRAlgo_HArray1OfTData_inherited_IsInstance(const HLRAlgo_HArray1OfTData* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> HLRAlgo_HArray1OfTData_inherited_IsKind(const HLRAlgo_HArray1OfTData* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> HLRAlgo_HArray1OfTData_inherited_This(const HLRAlgo_HArray1OfTData* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> HLRAlgo_HArray1OfTData_inherited_GetRefCount(const HLRAlgo_HArray1OfTData* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* HLRAlgo_HArray1OfTData_inherited_IncrementRefCounter(HLRAlgo_HArray1OfTData* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> HLRAlgo_HArray1OfTData_inherited_DecrementRefCounter(HLRAlgo_HArray1OfTData* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* HLRAlgo_HArray1OfTData_inherited_Delete(const HLRAlgo_HArray1OfTData* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void HLRAlgo_HArray1OfTData_destructor(HLRAlgo_HArray1OfTData* self_) { delete self_; }
 
 // ========================
 // HLRAlgo_Interference wrappers
@@ -2424,14 +1877,6 @@ extern "C" const char* HLRAlgo_PolyAlgo_init(HLRAlgo_PolyAlgo* self_, int32_t th
     try { self_->Init(theNbShells); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<NCollection_Array1_opencascade_handle_HLRAlgo_PolyShellData const*> HLRAlgo_PolyAlgo_poly_shell(const HLRAlgo_PolyAlgo* self_) {
-    try { return {&(self_->PolyShell()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<NCollection_Array1_opencascade_handle_HLRAlgo_PolyShellData*> HLRAlgo_PolyAlgo_change_poly_shell(HLRAlgo_PolyAlgo* self_) {
-    try { return {&(self_->ChangePolyShell()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* HLRAlgo_PolyAlgo_clear(HLRAlgo_PolyAlgo* self_) {
     try { self_->Clear(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -2486,20 +1931,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> HLRAlgo_PolyAlgo_get_type_de
 }
 extern "C" OcctResult<const Standard_Transient*> HLRAlgo_PolyAlgo_as_Standard_Transient(const HLRAlgo_PolyAlgo* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> HLRAlgo_PolyAlgo_as_Standard_Transient_mut(HLRAlgo_PolyAlgo* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleHLRAlgoPolyAlgo*> HLRAlgo_PolyAlgo_to_handle(HLRAlgo_PolyAlgo* obj) {
-    try { return {new HandleHLRAlgoPolyAlgo(obj), nullptr}; }
+extern "C" OcctResult<Handle_HLRAlgo_PolyAlgo*> HLRAlgo_PolyAlgo_to_handle(HLRAlgo_PolyAlgo* obj) {
+    try { return {new Handle_HLRAlgo_PolyAlgo(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const HLRAlgo_PolyAlgo*> HandleHLRAlgoPolyAlgo_get(const HandleHLRAlgoPolyAlgo* handle) {
+extern "C" OcctResult<const HLRAlgo_PolyAlgo*> Handle_HLRAlgo_PolyAlgo_get(const Handle_HLRAlgo_PolyAlgo* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRAlgo_PolyAlgo*> HandleHLRAlgoPolyAlgo_get_mut(HandleHLRAlgoPolyAlgo* handle) {
+extern "C" OcctResult<HLRAlgo_PolyAlgo*> Handle_HLRAlgo_PolyAlgo_get_mut(Handle_HLRAlgo_PolyAlgo* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleHLRAlgoPolyAlgo_to_HandleStandardTransient(const HandleHLRAlgoPolyAlgo* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_HLRAlgo_PolyAlgo_to_Handle_Standard_Transient(const Handle_HLRAlgo_PolyAlgo* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> HLRAlgo_PolyAlgo_inherited_IsInstance(const HLRAlgo_PolyAlgo* self, Handle(Standard_Type) const& theType) {
@@ -2540,15 +1985,15 @@ extern "C" OcctResult<HLRAlgo_PolyData*> HLRAlgo_PolyData_ctor() {
     try { return {new HLRAlgo_PolyData(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRAlgo_PolyData_h_nodes(HLRAlgo_PolyData* self_, Handle(TColgp_HArray1OfXYZ) const* HNodes) {
+extern "C" const char* HLRAlgo_PolyData_h_nodes(HLRAlgo_PolyData* self_, Handle(NCollection_HArray1_gp_XYZ) const* HNodes) {
     try { self_->HNodes(*HNodes); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRAlgo_PolyData_ht_data(HLRAlgo_PolyData* self_, Handle(HLRAlgo_HArray1OfTData) const* HTData) {
+extern "C" const char* HLRAlgo_PolyData_ht_data(HLRAlgo_PolyData* self_, Handle(NCollection_HArray1_HLRAlgo_TriangleData) const* HTData) {
     try { self_->HTData(*HTData); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRAlgo_PolyData_hph_dat(HLRAlgo_PolyData* self_, Handle(HLRAlgo_HArray1OfPHDat) const* HPHDat) {
+extern "C" const char* HLRAlgo_PolyData_hph_dat(HLRAlgo_PolyData* self_, Handle(NCollection_HArray1_HLRAlgo_PolyHidingData) const* HPHDat) {
     try { self_->HPHDat(*HPHDat); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -2560,19 +2005,19 @@ extern "C" OcctResult<int32_t> HLRAlgo_PolyData_face_index(const HLRAlgo_PolyDat
     try { return {self_->FaceIndex(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColgp_Array1OfXYZ*> HLRAlgo_PolyData_nodes(HLRAlgo_PolyData* self_) {
+extern "C" OcctResult<NCollection_Array1_gp_XYZ*> HLRAlgo_PolyData_nodes(HLRAlgo_PolyData* self_) {
     try { return {&(self_->Nodes()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRAlgo_Array1OfTData*> HLRAlgo_PolyData_t_data(HLRAlgo_PolyData* self_) {
+extern "C" OcctResult<NCollection_Array1_HLRAlgo_TriangleData*> HLRAlgo_PolyData_t_data(HLRAlgo_PolyData* self_) {
     try { return {&(self_->TData()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRAlgo_Array1OfPHDat*> HLRAlgo_PolyData_ph_dat(HLRAlgo_PolyData* self_) {
+extern "C" OcctResult<NCollection_Array1_HLRAlgo_PolyHidingData*> HLRAlgo_PolyData_ph_dat(HLRAlgo_PolyData* self_) {
     try { return {&(self_->PHDat()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRAlgo_PolyData_update_global_min_max(HLRAlgo_PolyData* self_, HLRAlgo_PolyData::Box* theBox) {
+extern "C" const char* HLRAlgo_PolyData_update_global_min_max(HLRAlgo_PolyData* self_, Bnd_Box* theBox) {
     try { self_->UpdateGlobalMinMax(*theBox); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -2602,20 +2047,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> HLRAlgo_PolyData_get_type_de
 }
 extern "C" OcctResult<const Standard_Transient*> HLRAlgo_PolyData_as_Standard_Transient(const HLRAlgo_PolyData* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> HLRAlgo_PolyData_as_Standard_Transient_mut(HLRAlgo_PolyData* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleHLRAlgoPolyData*> HLRAlgo_PolyData_to_handle(HLRAlgo_PolyData* obj) {
-    try { return {new HandleHLRAlgoPolyData(obj), nullptr}; }
+extern "C" OcctResult<Handle_HLRAlgo_PolyData*> HLRAlgo_PolyData_to_handle(HLRAlgo_PolyData* obj) {
+    try { return {new Handle_HLRAlgo_PolyData(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const HLRAlgo_PolyData*> HandleHLRAlgoPolyData_get(const HandleHLRAlgoPolyData* handle) {
+extern "C" OcctResult<const HLRAlgo_PolyData*> Handle_HLRAlgo_PolyData_get(const Handle_HLRAlgo_PolyData* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRAlgo_PolyData*> HandleHLRAlgoPolyData_get_mut(HandleHLRAlgoPolyData* handle) {
+extern "C" OcctResult<HLRAlgo_PolyData*> Handle_HLRAlgo_PolyData_get_mut(Handle_HLRAlgo_PolyData* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleHLRAlgoPolyData_to_HandleStandardTransient(const HandleHLRAlgoPolyData* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_HLRAlgo_PolyData_to_Handle_Standard_Transient(const Handle_HLRAlgo_PolyData* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> HLRAlgo_PolyData_inherited_IsInstance(const HLRAlgo_PolyData* self, Handle(Standard_Type) const& theType) {
@@ -2662,10 +2107,6 @@ extern "C" OcctResult<HLRAlgo_PolyData::Triangle*> HLRAlgo_PolyData_Triangle_cto
 }
 extern "C" void HLRAlgo_PolyData_Triangle_destructor(HLRAlgo_PolyData::Triangle* self_) { delete self_; }
 
-// sizeof helper for POD struct HLRAlgo_PolyData::Box
-extern "C" size_t HLRAlgo_PolyData_Box_sizeof() { return sizeof(HLRAlgo_PolyData::Box); }
-extern "C" void HLRAlgo_PolyData_Box_destructor(HLRAlgo_PolyData::Box* self_) { delete self_; }
-
 // ========================
 // HLRAlgo_PolyHidingData wrappers
 // ========================
@@ -2710,32 +2151,16 @@ extern "C" OcctResult<HLRAlgo_PolyInternalData*> HLRAlgo_PolyInternalData_ctor_i
     try { return {new HLRAlgo_PolyInternalData(nbNod, nbTri), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRAlgo_PolyInternalData_update_links_array1oftdata_array1ofpiseg_array1ofpinod(HLRAlgo_PolyInternalData* self_, HLRAlgo_Array1OfTData* theTData, HLRAlgo_Array1OfPISeg* thePISeg, HLRAlgo_Array1OfPINod* thePINod) {
-    try { self_->UpdateLinks(*theTData, *thePISeg, *thePINod); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> HLRAlgo_PolyInternalData_add_node(HLRAlgo_PolyInternalData* self_, HLRAlgo_PolyInternalNode::NodeData* theNod1RValues, HLRAlgo_PolyInternalNode::NodeData* theNod2RValues, HLRAlgo_Array1OfPINod** thePINod1, HLRAlgo_Array1OfPINod** thePINod2, double theCoef1, double theX3, double theY3, double theZ3) {
-    try { return {self_->AddNode(*theNod1RValues, *theNod2RValues, *thePINod1, *thePINod2, theCoef1, theX3, theY3, theZ3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* HLRAlgo_PolyInternalData_update_links_int3_array1oftdataptr2_array1ofpisegptr2_array1ofpinodptr2(HLRAlgo_PolyInternalData* self_, int32_t theIp1, int32_t theIp2, int32_t theIp3, HLRAlgo_Array1OfTData** theTData1, HLRAlgo_Array1OfTData** theTData2, HLRAlgo_Array1OfPISeg** thePISeg1, HLRAlgo_Array1OfPISeg** thePISeg2, HLRAlgo_Array1OfPINod** thePINod1, HLRAlgo_Array1OfPINod** thePINod2) {
-    try { self_->UpdateLinks(theIp1, theIp2, theIp3, *theTData1, *theTData2, *thePISeg1, *thePISeg2, *thePINod1, *thePINod2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* HLRAlgo_PolyInternalData_dump(const HLRAlgo_PolyInternalData* self_) {
     try { self_->Dump(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRAlgo_PolyInternalData_inc_t_data(HLRAlgo_PolyInternalData* self_, HLRAlgo_Array1OfTData** TData1, HLRAlgo_Array1OfTData** TData2) {
+extern "C" const char* HLRAlgo_PolyInternalData_inc_t_data(HLRAlgo_PolyInternalData* self_, NCollection_Array1_HLRAlgo_TriangleData** TData1, NCollection_Array1_HLRAlgo_TriangleData** TData2) {
     try { self_->IncTData(*TData1, *TData2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRAlgo_PolyInternalData_inc_pi_seg(HLRAlgo_PolyInternalData* self_, HLRAlgo_Array1OfPISeg** PISeg1, HLRAlgo_Array1OfPISeg** PISeg2) {
+extern "C" const char* HLRAlgo_PolyInternalData_inc_pi_seg(HLRAlgo_PolyInternalData* self_, NCollection_Array1_HLRAlgo_PolyInternalSegment** PISeg1, NCollection_Array1_HLRAlgo_PolyInternalSegment** PISeg2) {
     try { self_->IncPISeg(*PISeg1, *PISeg2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* HLRAlgo_PolyInternalData_inc_pi_nod(HLRAlgo_PolyInternalData* self_, HLRAlgo_Array1OfPINod** thePINod1, HLRAlgo_Array1OfPINod** thePINod2) {
-    try { self_->IncPINod(*thePINod1, *thePINod2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* HLRAlgo_PolyInternalData_dec_t_data(HLRAlgo_PolyInternalData* self_) {
@@ -2778,16 +2203,12 @@ extern "C" const char* HLRAlgo_PolyInternalData_int_out_l_bool(HLRAlgo_PolyInter
     try { self_->IntOutL(B); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<HLRAlgo_Array1OfTData*> HLRAlgo_PolyInternalData_t_data(HLRAlgo_PolyInternalData* self_) {
+extern "C" OcctResult<NCollection_Array1_HLRAlgo_TriangleData*> HLRAlgo_PolyInternalData_t_data(HLRAlgo_PolyInternalData* self_) {
     try { return {&(self_->TData()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRAlgo_Array1OfPISeg*> HLRAlgo_PolyInternalData_pi_seg(HLRAlgo_PolyInternalData* self_) {
+extern "C" OcctResult<NCollection_Array1_HLRAlgo_PolyInternalSegment*> HLRAlgo_PolyInternalData_pi_seg(HLRAlgo_PolyInternalData* self_) {
     try { return {&(self_->PISeg()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRAlgo_Array1OfPINod*> HLRAlgo_PolyInternalData_pi_nod(HLRAlgo_PolyInternalData* self_) {
-    try { return {&(self_->PINod()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> HLRAlgo_PolyInternalData_dynamic_type(const HLRAlgo_PolyInternalData* self_) {
@@ -2804,20 +2225,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> HLRAlgo_PolyInternalData_get
 }
 extern "C" OcctResult<const Standard_Transient*> HLRAlgo_PolyInternalData_as_Standard_Transient(const HLRAlgo_PolyInternalData* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> HLRAlgo_PolyInternalData_as_Standard_Transient_mut(HLRAlgo_PolyInternalData* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleHLRAlgoPolyInternalData*> HLRAlgo_PolyInternalData_to_handle(HLRAlgo_PolyInternalData* obj) {
-    try { return {new HandleHLRAlgoPolyInternalData(obj), nullptr}; }
+extern "C" OcctResult<Handle_HLRAlgo_PolyInternalData*> HLRAlgo_PolyInternalData_to_handle(HLRAlgo_PolyInternalData* obj) {
+    try { return {new Handle_HLRAlgo_PolyInternalData(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const HLRAlgo_PolyInternalData*> HandleHLRAlgoPolyInternalData_get(const HandleHLRAlgoPolyInternalData* handle) {
+extern "C" OcctResult<const HLRAlgo_PolyInternalData*> Handle_HLRAlgo_PolyInternalData_get(const Handle_HLRAlgo_PolyInternalData* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRAlgo_PolyInternalData*> HandleHLRAlgoPolyInternalData_get_mut(HandleHLRAlgoPolyInternalData* handle) {
+extern "C" OcctResult<HLRAlgo_PolyInternalData*> Handle_HLRAlgo_PolyInternalData_get_mut(Handle_HLRAlgo_PolyInternalData* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleHLRAlgoPolyInternalData_to_HandleStandardTransient(const HandleHLRAlgoPolyInternalData* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_HLRAlgo_PolyInternalData_to_Handle_Standard_Transient(const Handle_HLRAlgo_PolyInternalData* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> HLRAlgo_PolyInternalData_inherited_IsInstance(const HLRAlgo_PolyInternalData* self, Handle(Standard_Type) const& theType) {
@@ -2880,20 +2301,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> HLRAlgo_PolyInternalNode_get
 }
 extern "C" OcctResult<const Standard_Transient*> HLRAlgo_PolyInternalNode_as_Standard_Transient(const HLRAlgo_PolyInternalNode* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> HLRAlgo_PolyInternalNode_as_Standard_Transient_mut(HLRAlgo_PolyInternalNode* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleHLRAlgoPolyInternalNode*> HLRAlgo_PolyInternalNode_to_handle(HLRAlgo_PolyInternalNode* obj) {
-    try { return {new HandleHLRAlgoPolyInternalNode(obj), nullptr}; }
+extern "C" OcctResult<Handle_HLRAlgo_PolyInternalNode*> HLRAlgo_PolyInternalNode_to_handle(HLRAlgo_PolyInternalNode* obj) {
+    try { return {new Handle_HLRAlgo_PolyInternalNode(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const HLRAlgo_PolyInternalNode*> HandleHLRAlgoPolyInternalNode_get(const HandleHLRAlgoPolyInternalNode* handle) {
+extern "C" OcctResult<const HLRAlgo_PolyInternalNode*> Handle_HLRAlgo_PolyInternalNode_get(const Handle_HLRAlgo_PolyInternalNode* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRAlgo_PolyInternalNode*> HandleHLRAlgoPolyInternalNode_get_mut(HandleHLRAlgoPolyInternalNode* handle) {
+extern "C" OcctResult<HLRAlgo_PolyInternalNode*> Handle_HLRAlgo_PolyInternalNode_get_mut(Handle_HLRAlgo_PolyInternalNode* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleHLRAlgoPolyInternalNode_to_HandleStandardTransient(const HandleHLRAlgoPolyInternalNode* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_HLRAlgo_PolyInternalNode_to_Handle_Standard_Transient(const Handle_HLRAlgo_PolyInternalNode* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> HLRAlgo_PolyInternalNode_inherited_IsInstance(const HLRAlgo_PolyInternalNode* self, Handle(Standard_Type) const& theType) {
@@ -2952,7 +2373,7 @@ extern "C" OcctResult<HLRAlgo_PolyShellData*> HLRAlgo_PolyShellData_ctor_int(int
     try { return {new HLRAlgo_PolyShellData(nbFace), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRAlgo_PolyShellData_update_global_min_max(HLRAlgo_PolyShellData* self_, HLRAlgo_PolyData::Box* theBox) {
+extern "C" const char* HLRAlgo_PolyShellData_update_global_min_max(HLRAlgo_PolyShellData* self_, Bnd_Box* theBox) {
     try { self_->UpdateGlobalMinMax(*theBox); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -2964,15 +2385,7 @@ extern "C" OcctResult<bool> HLRAlgo_PolyShellData_hiding(const HLRAlgo_PolyShell
     try { return {self_->Hiding(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<NCollection_Array1_opencascade_handle_HLRAlgo_PolyData*> HLRAlgo_PolyShellData_poly_data(HLRAlgo_PolyShellData* self_) {
-    try { return {&(self_->PolyData()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<NCollection_Array1_opencascade_handle_HLRAlgo_PolyData*> HLRAlgo_PolyShellData_hiding_poly_data(HLRAlgo_PolyShellData* self_) {
-    try { return {&(self_->HidingPolyData()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRAlgo_ListOfBPoint*> HLRAlgo_PolyShellData_edges(HLRAlgo_PolyShellData* self_) {
+extern "C" OcctResult<NCollection_List_HLRAlgo_BiPoint*> HLRAlgo_PolyShellData_edges(HLRAlgo_PolyShellData* self_) {
     try { return {&(self_->Edges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2994,20 +2407,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> HLRAlgo_PolyShellData_get_ty
 }
 extern "C" OcctResult<const Standard_Transient*> HLRAlgo_PolyShellData_as_Standard_Transient(const HLRAlgo_PolyShellData* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> HLRAlgo_PolyShellData_as_Standard_Transient_mut(HLRAlgo_PolyShellData* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleHLRAlgoPolyShellData*> HLRAlgo_PolyShellData_to_handle(HLRAlgo_PolyShellData* obj) {
-    try { return {new HandleHLRAlgoPolyShellData(obj), nullptr}; }
+extern "C" OcctResult<Handle_HLRAlgo_PolyShellData*> HLRAlgo_PolyShellData_to_handle(HLRAlgo_PolyShellData* obj) {
+    try { return {new Handle_HLRAlgo_PolyShellData(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const HLRAlgo_PolyShellData*> HandleHLRAlgoPolyShellData_get(const HandleHLRAlgoPolyShellData* handle) {
+extern "C" OcctResult<const HLRAlgo_PolyShellData*> Handle_HLRAlgo_PolyShellData_get(const Handle_HLRAlgo_PolyShellData* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRAlgo_PolyShellData*> HandleHLRAlgoPolyShellData_get_mut(HandleHLRAlgoPolyShellData* handle) {
+extern "C" OcctResult<HLRAlgo_PolyShellData*> Handle_HLRAlgo_PolyShellData_get_mut(Handle_HLRAlgo_PolyShellData* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleHLRAlgoPolyShellData_to_HandleStandardTransient(const HandleHLRAlgoPolyShellData* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_HLRAlgo_PolyShellData_to_Handle_Standard_Transient(const Handle_HLRAlgo_PolyShellData* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> HLRAlgo_PolyShellData_inherited_IsInstance(const HLRAlgo_PolyShellData* self, Handle(Standard_Type) const& theType) {
@@ -3172,20 +2585,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> HLRAlgo_WiresBlock_get_type_
 }
 extern "C" OcctResult<const Standard_Transient*> HLRAlgo_WiresBlock_as_Standard_Transient(const HLRAlgo_WiresBlock* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> HLRAlgo_WiresBlock_as_Standard_Transient_mut(HLRAlgo_WiresBlock* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleHLRAlgoWiresBlock*> HLRAlgo_WiresBlock_to_handle(HLRAlgo_WiresBlock* obj) {
-    try { return {new HandleHLRAlgoWiresBlock(obj), nullptr}; }
+extern "C" OcctResult<Handle_HLRAlgo_WiresBlock*> HLRAlgo_WiresBlock_to_handle(HLRAlgo_WiresBlock* obj) {
+    try { return {new Handle_HLRAlgo_WiresBlock(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const HLRAlgo_WiresBlock*> HandleHLRAlgoWiresBlock_get(const HandleHLRAlgoWiresBlock* handle) {
+extern "C" OcctResult<const HLRAlgo_WiresBlock*> Handle_HLRAlgo_WiresBlock_get(const Handle_HLRAlgo_WiresBlock* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRAlgo_WiresBlock*> HandleHLRAlgoWiresBlock_get_mut(HandleHLRAlgoWiresBlock* handle) {
+extern "C" OcctResult<HLRAlgo_WiresBlock*> Handle_HLRAlgo_WiresBlock_get_mut(Handle_HLRAlgo_WiresBlock* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleHLRAlgoWiresBlock_to_HandleStandardTransient(const HandleHLRAlgoWiresBlock* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_HLRAlgo_WiresBlock_to_Handle_Standard_Transient(const Handle_HLRAlgo_WiresBlock* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> HLRAlgo_WiresBlock_inherited_IsInstance(const HLRAlgo_WiresBlock* self, Handle(Standard_Type) const& theType) {
@@ -3288,24 +2701,24 @@ extern "C" OcctResult<const HLRBRep_InternalAlgo*> HLRBRep_Algo_as_HLRBRep_Inter
 extern "C" OcctResult<HLRBRep_InternalAlgo*> HLRBRep_Algo_as_HLRBRep_InternalAlgo_mut(HLRBRep_Algo* self_) { return {static_cast<HLRBRep_InternalAlgo*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> HLRBRep_Algo_as_Standard_Transient(const HLRBRep_Algo* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> HLRBRep_Algo_as_Standard_Transient_mut(HLRBRep_Algo* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleHLRBRepAlgo*> HLRBRep_Algo_to_handle(HLRBRep_Algo* obj) {
-    try { return {new HandleHLRBRepAlgo(obj), nullptr}; }
+extern "C" OcctResult<Handle_HLRBRep_Algo*> HLRBRep_Algo_to_handle(HLRBRep_Algo* obj) {
+    try { return {new Handle_HLRBRep_Algo(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const HLRBRep_Algo*> HandleHLRBRepAlgo_get(const HandleHLRBRepAlgo* handle) {
+extern "C" OcctResult<const HLRBRep_Algo*> Handle_HLRBRep_Algo_get(const Handle_HLRBRep_Algo* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRBRep_Algo*> HandleHLRBRepAlgo_get_mut(HandleHLRBRepAlgo* handle) {
+extern "C" OcctResult<HLRBRep_Algo*> Handle_HLRBRep_Algo_get_mut(Handle_HLRBRep_Algo* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleHLRBRepInternalAlgo*> HandleHLRBRepAlgo_to_HandleHLRBRepInternalAlgo(const HandleHLRBRepAlgo* self_) {
-    try { return {new HandleHLRBRepInternalAlgo(*self_), nullptr}; }
+extern "C" OcctResult<Handle_HLRBRep_InternalAlgo*> Handle_HLRBRep_Algo_to_Handle_HLRBRep_InternalAlgo(const Handle_HLRBRep_Algo* self_) {
+    try { return {new Handle_HLRBRep_InternalAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleHLRBRepAlgo_to_HandleStandardTransient(const HandleHLRBRepAlgo* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_HLRBRep_Algo_to_Handle_Standard_Transient(const Handle_HLRBRep_Algo* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* HLRBRep_Algo_inherited_Projector(HLRBRep_Algo* self, HLRAlgo_Projector const& P) {
@@ -3328,7 +2741,7 @@ extern "C" const char* HLRBRep_Algo_inherited_ShapeData(HLRBRep_Algo* self, int3
     try { self->ShapeData(I, SData); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<HLRBRep_SeqOfShapeBounds*> HLRBRep_Algo_inherited_SeqOfShapeBounds(HLRBRep_Algo* self) {
+extern "C" OcctResult<NCollection_Sequence_HLRBRep_ShapeBounds*> HLRBRep_Algo_inherited_SeqOfShapeBounds(HLRBRep_Algo* self) {
     try { return {&(self->SeqOfShapeBounds()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -3496,20 +2909,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> HLRBRep_AreaLimit_get_type_d
 }
 extern "C" OcctResult<const Standard_Transient*> HLRBRep_AreaLimit_as_Standard_Transient(const HLRBRep_AreaLimit* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> HLRBRep_AreaLimit_as_Standard_Transient_mut(HLRBRep_AreaLimit* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleHLRBRepAreaLimit*> HLRBRep_AreaLimit_to_handle(HLRBRep_AreaLimit* obj) {
-    try { return {new HandleHLRBRepAreaLimit(obj), nullptr}; }
+extern "C" OcctResult<Handle_HLRBRep_AreaLimit*> HLRBRep_AreaLimit_to_handle(HLRBRep_AreaLimit* obj) {
+    try { return {new Handle_HLRBRep_AreaLimit(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const HLRBRep_AreaLimit*> HandleHLRBRepAreaLimit_get(const HandleHLRBRepAreaLimit* handle) {
+extern "C" OcctResult<const HLRBRep_AreaLimit*> Handle_HLRBRep_AreaLimit_get(const Handle_HLRBRep_AreaLimit* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRBRep_AreaLimit*> HandleHLRBRepAreaLimit_get_mut(HandleHLRBRepAreaLimit* handle) {
+extern "C" OcctResult<HLRBRep_AreaLimit*> Handle_HLRBRep_AreaLimit_get_mut(Handle_HLRBRep_AreaLimit* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleHLRBRepAreaLimit_to_HandleStandardTransient(const HandleHLRBRepAreaLimit* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_HLRBRep_AreaLimit_to_Handle_Standard_Transient(const Handle_HLRBRep_AreaLimit* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> HLRBRep_AreaLimit_inherited_IsInstance(const HLRBRep_AreaLimit* self, Handle(Standard_Type) const& theType) {
@@ -3566,7 +2979,7 @@ extern "C" OcctResult<int32_t> HLRBRep_BCurveTool_nb_intervals(BRepAdaptor_Curve
     try { return {HLRBRep_BCurveTool::NbIntervals(*C, static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRBRep_BCurveTool_intervals(BRepAdaptor_Curve const* C, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* HLRBRep_BCurveTool_intervals(BRepAdaptor_Curve const* C, NCollection_Array1_double* T, int32_t S) {
     try { HLRBRep_BCurveTool::Intervals(*C, *T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -3658,11 +3071,11 @@ extern "C" OcctResult<int32_t> HLRBRep_BCurveTool_nb_knots(BRepAdaptor_Curve con
     try { return {HLRBRep_BCurveTool::NbKnots(*C), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRBRep_BCurveTool_poles(BRepAdaptor_Curve const* C, TColgp_Array1OfPnt* T) {
+extern "C" const char* HLRBRep_BCurveTool_poles(BRepAdaptor_Curve const* C, NCollection_Array1_gp_Pnt* T) {
     try { HLRBRep_BCurveTool::Poles(*C, *T); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_BCurveTool_poles_and_weights(BRepAdaptor_Curve const* C, TColgp_Array1OfPnt* T, TColStd_Array1OfReal* W) {
+extern "C" const char* HLRBRep_BCurveTool_poles_and_weights(BRepAdaptor_Curve const* C, NCollection_Array1_gp_Pnt* T, NCollection_Array1_double* W) {
     try { HLRBRep_BCurveTool::PolesAndWeights(*C, *T, *W); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -3704,11 +3117,11 @@ extern "C" OcctResult<int32_t> HLRBRep_BSurfaceTool_nb_v_intervals(BRepAdaptor_S
     try { return {HLRBRep_BSurfaceTool::NbVIntervals(*S, static_cast<GeomAbs_Shape>(Sh)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRBRep_BSurfaceTool_u_intervals(BRepAdaptor_Surface const* S, TColStd_Array1OfReal* T, int32_t Sh) {
+extern "C" const char* HLRBRep_BSurfaceTool_u_intervals(BRepAdaptor_Surface const* S, NCollection_Array1_double* T, int32_t Sh) {
     try { HLRBRep_BSurfaceTool::UIntervals(*S, *T, static_cast<GeomAbs_Shape>(Sh)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_BSurfaceTool_v_intervals(BRepAdaptor_Surface const* S, TColStd_Array1OfReal* T, int32_t Sh) {
+extern "C" const char* HLRBRep_BSurfaceTool_v_intervals(BRepAdaptor_Surface const* S, NCollection_Array1_double* T, int32_t Sh) {
     try { HLRBRep_BSurfaceTool::VIntervals(*S, *T, static_cast<GeomAbs_Shape>(Sh)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4018,55 +3431,55 @@ extern "C" OcctResult<HLRBRep_CInter*> HLRBRep_CInter_ctor() {
     try { return {new HLRBRep_CInter(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRBRep_CInter*> HLRBRep_CInter_ctor_address_real2(Standard_Address const* C, double TolConf, double Tol) {
+extern "C" OcctResult<HLRBRep_CInter*> HLRBRep_CInter_ctor_voidptr_real2(void* const* C, double TolConf, double Tol) {
     try { return {new HLRBRep_CInter(*C, TolConf, Tol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRBRep_CInter*> HLRBRep_CInter_ctor_address_domain_real2(Standard_Address const* C, IntRes2d_Domain const* D, double TolConf, double Tol) {
+extern "C" OcctResult<HLRBRep_CInter*> HLRBRep_CInter_ctor_voidptr_domain_real2(void* const* C, IntRes2d_Domain const* D, double TolConf, double Tol) {
     try { return {new HLRBRep_CInter(*C, *D, TolConf, Tol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRBRep_CInter*> HLRBRep_CInter_ctor_address2_real2(Standard_Address const* C1, Standard_Address const* C2, double TolConf, double Tol) {
+extern "C" OcctResult<HLRBRep_CInter*> HLRBRep_CInter_ctor_voidptr2_real2(void* const* C1, void* const* C2, double TolConf, double Tol) {
     try { return {new HLRBRep_CInter(*C1, *C2, TolConf, Tol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRBRep_CInter*> HLRBRep_CInter_ctor_address_domain_address_real2(Standard_Address const* C1, IntRes2d_Domain const* D1, Standard_Address const* C2, double TolConf, double Tol) {
+extern "C" OcctResult<HLRBRep_CInter*> HLRBRep_CInter_ctor_voidptr_domain_voidptr_real2(void* const* C1, IntRes2d_Domain const* D1, void* const* C2, double TolConf, double Tol) {
     try { return {new HLRBRep_CInter(*C1, *D1, *C2, TolConf, Tol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRBRep_CInter*> HLRBRep_CInter_ctor_address2_domain_real2(Standard_Address const* C1, Standard_Address const* C2, IntRes2d_Domain const* D2, double TolConf, double Tol) {
+extern "C" OcctResult<HLRBRep_CInter*> HLRBRep_CInter_ctor_voidptr2_domain_real2(void* const* C1, void* const* C2, IntRes2d_Domain const* D2, double TolConf, double Tol) {
     try { return {new HLRBRep_CInter(*C1, *C2, *D2, TolConf, Tol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRBRep_CInter*> HLRBRep_CInter_ctor_address_domain_address_domain_real2(Standard_Address const* C1, IntRes2d_Domain const* D1, Standard_Address const* C2, IntRes2d_Domain const* D2, double TolConf, double Tol) {
+extern "C" OcctResult<HLRBRep_CInter*> HLRBRep_CInter_ctor_voidptr_domain_voidptr_domain_real2(void* const* C1, IntRes2d_Domain const* D1, void* const* C2, IntRes2d_Domain const* D2, double TolConf, double Tol) {
     try { return {new HLRBRep_CInter(*C1, *D1, *C2, *D2, TolConf, Tol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IntRes2d_Domain*> HLRBRep_CInter_compute_domain(const HLRBRep_CInter* self_, Standard_Address const* C1, double TolDomain) {
+extern "C" OcctResult<IntRes2d_Domain*> HLRBRep_CInter_compute_domain(const HLRBRep_CInter* self_, void* const* C1, double TolDomain) {
     try { return {new IntRes2d_Domain(self_->ComputeDomain(*C1, TolDomain)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRBRep_CInter_perform_address_domain_address_domain_real2(HLRBRep_CInter* self_, Standard_Address const* C1, IntRes2d_Domain const* D1, Standard_Address const* C2, IntRes2d_Domain const* D2, double TolConf, double Tol) {
+extern "C" const char* HLRBRep_CInter_perform_voidptr_domain_voidptr_domain_real2(HLRBRep_CInter* self_, void* const* C1, IntRes2d_Domain const* D1, void* const* C2, IntRes2d_Domain const* D2, double TolConf, double Tol) {
     try { self_->Perform(*C1, *D1, *C2, *D2, TolConf, Tol); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_CInter_perform_address2_real2(HLRBRep_CInter* self_, Standard_Address const* C1, Standard_Address const* C2, double TolConf, double Tol) {
+extern "C" const char* HLRBRep_CInter_perform_voidptr2_real2(HLRBRep_CInter* self_, void* const* C1, void* const* C2, double TolConf, double Tol) {
     try { self_->Perform(*C1, *C2, TolConf, Tol); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_CInter_perform_address_domain_real2(HLRBRep_CInter* self_, Standard_Address const* C1, IntRes2d_Domain const* D1, double TolConf, double Tol) {
+extern "C" const char* HLRBRep_CInter_perform_voidptr_domain_real2(HLRBRep_CInter* self_, void* const* C1, IntRes2d_Domain const* D1, double TolConf, double Tol) {
     try { self_->Perform(*C1, *D1, TolConf, Tol); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_CInter_perform_address_real2(HLRBRep_CInter* self_, Standard_Address const* C1, double TolConf, double Tol) {
+extern "C" const char* HLRBRep_CInter_perform_voidptr_real2(HLRBRep_CInter* self_, void* const* C1, double TolConf, double Tol) {
     try { self_->Perform(*C1, TolConf, Tol); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_CInter_perform_address_domain_address_real2(HLRBRep_CInter* self_, Standard_Address const* C1, IntRes2d_Domain const* D1, Standard_Address const* C2, double TolConf, double Tol) {
+extern "C" const char* HLRBRep_CInter_perform_voidptr_domain_voidptr_real2(HLRBRep_CInter* self_, void* const* C1, IntRes2d_Domain const* D1, void* const* C2, double TolConf, double Tol) {
     try { self_->Perform(*C1, *D1, *C2, TolConf, Tol); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_CInter_perform_address2_domain_real2(HLRBRep_CInter* self_, Standard_Address const* C1, Standard_Address const* C2, IntRes2d_Domain const* D2, double TolConf, double Tol) {
+extern "C" const char* HLRBRep_CInter_perform_voidptr2_domain_real2(HLRBRep_CInter* self_, void* const* C1, void* const* C2, IntRes2d_Domain const* D2, double TolConf, double Tol) {
     try { self_->Perform(*C1, *C2, *D2, TolConf, Tol); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4109,68 +3522,6 @@ extern "C" const char* HLRBRep_CInter_inherited_SetReversedParameters(HLRBRep_CI
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void HLRBRep_CInter_destructor(HLRBRep_CInter* self_) { delete self_; }
-
-// ========================
-// HLRBRep_CLProps wrappers
-// ========================
-
-extern "C" OcctResult<HLRBRep_CLProps*> HLRBRep_CLProps_ctor_curveptr_int_real(HLRBRep_Curve const** C, int32_t N, double Resolution) {
-    try { return {new HLRBRep_CLProps(*C, N, Resolution), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRBRep_CLProps*> HLRBRep_CLProps_ctor_curveptr_real_int_real(HLRBRep_Curve const** C, double U, int32_t N, double Resolution) {
-    try { return {new HLRBRep_CLProps(*C, U, N, Resolution), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRBRep_CLProps*> HLRBRep_CLProps_ctor_int_real(int32_t N, double Resolution) {
-    try { return {new HLRBRep_CLProps(N, Resolution), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* HLRBRep_CLProps_set_parameter(HLRBRep_CLProps* self_, double U) {
-    try { self_->SetParameter(U); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* HLRBRep_CLProps_set_curve(HLRBRep_CLProps* self_, HLRBRep_Curve const** C) {
-    try { self_->SetCurve(*C); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<gp_Pnt2d const*> HLRBRep_CLProps_value(const HLRBRep_CLProps* self_) {
-    try { return {&(self_->Value()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Vec2d const*> HLRBRep_CLProps_d1(HLRBRep_CLProps* self_) {
-    try { return {&(self_->D1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Vec2d const*> HLRBRep_CLProps_d2(HLRBRep_CLProps* self_) {
-    try { return {&(self_->D2()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Vec2d const*> HLRBRep_CLProps_d3(HLRBRep_CLProps* self_) {
-    try { return {&(self_->D3()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> HLRBRep_CLProps_is_tangent_defined(HLRBRep_CLProps* self_) {
-    try { return {self_->IsTangentDefined(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* HLRBRep_CLProps_tangent(HLRBRep_CLProps* self_, gp_Dir2d* D) {
-    try { self_->Tangent(*D); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<double> HLRBRep_CLProps_curvature(HLRBRep_CLProps* self_) {
-    try { return {self_->Curvature(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* HLRBRep_CLProps_normal(HLRBRep_CLProps* self_, gp_Dir2d* N) {
-    try { self_->Normal(*N); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* HLRBRep_CLProps_centre_of_curvature(HLRBRep_CLProps* self_, gp_Pnt2d* P) {
-    try { self_->CentreOfCurvature(*P); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void HLRBRep_CLProps_destructor(HLRBRep_CLProps* self_) { delete self_; }
 
 // ========================
 // HLRBRep_CLPropsATool wrappers
@@ -4314,7 +3665,7 @@ extern "C" OcctResult<int32_t> HLRBRep_Curve_nb_intervals(const HLRBRep_Curve* s
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRBRep_Curve_intervals(const HLRBRep_Curve* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* HLRBRep_Curve_intervals(const HLRBRep_Curve* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4366,19 +3717,19 @@ extern "C" OcctResult<int32_t> HLRBRep_Curve_nb_poles(const HLRBRep_Curve* self_
     try { return {self_->NbPoles(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRBRep_Curve_poles_array1ofpnt2d(const HLRBRep_Curve* self_, TColgp_Array1OfPnt2d* TP) {
+extern "C" const char* HLRBRep_Curve_poles_arr1_pnt2d(const HLRBRep_Curve* self_, NCollection_Array1_gp_Pnt2d* TP) {
     try { self_->Poles(*TP); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_Curve_poles_handlegeombsplinecurve_array1ofpnt2d(const HLRBRep_Curve* self_, Handle(Geom_BSplineCurve) const* aCurve, TColgp_Array1OfPnt2d* TP) {
+extern "C" const char* HLRBRep_Curve_poles_handlegeombsplinecurve_arr1_pnt2d(const HLRBRep_Curve* self_, Handle(Geom_BSplineCurve) const* aCurve, NCollection_Array1_gp_Pnt2d* TP) {
     try { self_->Poles(*aCurve, *TP); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_Curve_poles_and_weights_array1ofpnt2d_array1ofreal(const HLRBRep_Curve* self_, TColgp_Array1OfPnt2d* TP, TColStd_Array1OfReal* TW) {
+extern "C" const char* HLRBRep_Curve_poles_and_weights_arr1_pnt2d_arr1_double(const HLRBRep_Curve* self_, NCollection_Array1_gp_Pnt2d* TP, NCollection_Array1_double* TW) {
     try { self_->PolesAndWeights(*TP, *TW); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_Curve_poles_and_weights_handlegeombsplinecurve_array1ofpnt2d_array1ofreal(const HLRBRep_Curve* self_, Handle(Geom_BSplineCurve) const* aCurve, TColgp_Array1OfPnt2d* TP, TColStd_Array1OfReal* TW) {
+extern "C" const char* HLRBRep_Curve_poles_and_weights_handlegeombsplinecurve_arr1_pnt2d_arr1_double(const HLRBRep_Curve* self_, Handle(Geom_BSplineCurve) const* aCurve, NCollection_Array1_gp_Pnt2d* TP, NCollection_Array1_double* TW) {
     try { self_->PolesAndWeights(*aCurve, *TP, *TW); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4386,11 +3737,11 @@ extern "C" OcctResult<int32_t> HLRBRep_Curve_nb_knots(const HLRBRep_Curve* self_
     try { return {self_->NbKnots(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRBRep_Curve_knots(const HLRBRep_Curve* self_, TColStd_Array1OfReal* kn) {
+extern "C" const char* HLRBRep_Curve_knots(const HLRBRep_Curve* self_, NCollection_Array1_double* kn) {
     try { self_->Knots(*kn); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_Curve_multiplicities(const HLRBRep_Curve* self_, TColStd_Array1OfInteger* mu) {
+extern "C" const char* HLRBRep_Curve_multiplicities(const HLRBRep_Curve* self_, NCollection_Array1_int* mu) {
     try { self_->Multiplicities(*mu); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4404,119 +3755,119 @@ extern "C" OcctResult<HLRBRep_CurveTool*> HLRBRep_CurveTool_ctor() {
     try { return {new HLRBRep_CurveTool(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> HLRBRep_CurveTool_first_parameter(Standard_Address C) {
+extern "C" OcctResult<double> HLRBRep_CurveTool_first_parameter(void* C) {
     try { return {HLRBRep_CurveTool::FirstParameter(C), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> HLRBRep_CurveTool_last_parameter(Standard_Address C) {
+extern "C" OcctResult<double> HLRBRep_CurveTool_last_parameter(void* C) {
     try { return {HLRBRep_CurveTool::LastParameter(C), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> HLRBRep_CurveTool_continuity(Standard_Address C) {
+extern "C" OcctResult<int32_t> HLRBRep_CurveTool_continuity(void* C) {
     try { return {static_cast<int32_t>(HLRBRep_CurveTool::Continuity(C)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> HLRBRep_CurveTool_nb_intervals(Standard_Address C) {
+extern "C" OcctResult<int32_t> HLRBRep_CurveTool_nb_intervals(void* C) {
     try { return {HLRBRep_CurveTool::NbIntervals(C), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRBRep_CurveTool_intervals(Standard_Address C, TColStd_Array1OfReal* T) {
+extern "C" const char* HLRBRep_CurveTool_intervals(void* C, NCollection_Array1_double* T) {
     try { HLRBRep_CurveTool::Intervals(C, *T); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_CurveTool_get_interval(Standard_Address C, int32_t Index, TColStd_Array1OfReal const* Tab, double* U1, double* U2) {
+extern "C" const char* HLRBRep_CurveTool_get_interval(void* C, int32_t Index, NCollection_Array1_double const* Tab, double* U1, double* U2) {
     try { HLRBRep_CurveTool::GetInterval(C, Index, *Tab, *U1, *U2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> HLRBRep_CurveTool_is_closed(Standard_Address C) {
+extern "C" OcctResult<bool> HLRBRep_CurveTool_is_closed(void* C) {
     try { return {HLRBRep_CurveTool::IsClosed(C), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> HLRBRep_CurveTool_is_periodic(Standard_Address C) {
+extern "C" OcctResult<bool> HLRBRep_CurveTool_is_periodic(void* C) {
     try { return {HLRBRep_CurveTool::IsPeriodic(C), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> HLRBRep_CurveTool_period(Standard_Address C) {
+extern "C" OcctResult<double> HLRBRep_CurveTool_period(void* C) {
     try { return {HLRBRep_CurveTool::Period(C), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Pnt2d*> HLRBRep_CurveTool_value(Standard_Address C, double U) {
+extern "C" OcctResult<gp_Pnt2d*> HLRBRep_CurveTool_value(void* C, double U) {
     try { return {new gp_Pnt2d(HLRBRep_CurveTool::Value(C, U)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRBRep_CurveTool_d0(Standard_Address C, double U, gp_Pnt2d* P) {
+extern "C" const char* HLRBRep_CurveTool_d0(void* C, double U, gp_Pnt2d* P) {
     try { HLRBRep_CurveTool::D0(C, U, *P); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_CurveTool_d1(Standard_Address C, double U, gp_Pnt2d* P, gp_Vec2d* V) {
+extern "C" const char* HLRBRep_CurveTool_d1(void* C, double U, gp_Pnt2d* P, gp_Vec2d* V) {
     try { HLRBRep_CurveTool::D1(C, U, *P, *V); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_CurveTool_d2(Standard_Address C, double U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
+extern "C" const char* HLRBRep_CurveTool_d2(void* C, double U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
     try { HLRBRep_CurveTool::D2(C, U, *P, *V1, *V2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_CurveTool_d3(Standard_Address C, double U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
+extern "C" const char* HLRBRep_CurveTool_d3(void* C, double U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
     try { HLRBRep_CurveTool::D3(C, U, *P, *V1, *V2, *V3); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Vec2d*> HLRBRep_CurveTool_dn(Standard_Address C, double U, int32_t N) {
+extern "C" OcctResult<gp_Vec2d*> HLRBRep_CurveTool_dn(void* C, double U, int32_t N) {
     try { return {new gp_Vec2d(HLRBRep_CurveTool::DN(C, U, N)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> HLRBRep_CurveTool_resolution(Standard_Address C, double R3d) {
+extern "C" OcctResult<double> HLRBRep_CurveTool_resolution(void* C, double R3d) {
     try { return {HLRBRep_CurveTool::Resolution(C, R3d), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> HLRBRep_CurveTool_get_type(Standard_Address C) {
+extern "C" OcctResult<int32_t> HLRBRep_CurveTool_get_type(void* C) {
     try { return {static_cast<int32_t>(HLRBRep_CurveTool::GetType(C)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> HLRBRep_CurveTool_the_type(Standard_Address C) {
+extern "C" OcctResult<int32_t> HLRBRep_CurveTool_the_type(void* C) {
     try { return {static_cast<int32_t>(HLRBRep_CurveTool::TheType(C)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Lin2d*> HLRBRep_CurveTool_line(Standard_Address C) {
+extern "C" OcctResult<gp_Lin2d*> HLRBRep_CurveTool_line(void* C) {
     try { return {new gp_Lin2d(HLRBRep_CurveTool::Line(C)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Circ2d*> HLRBRep_CurveTool_circle(Standard_Address C) {
+extern "C" OcctResult<gp_Circ2d*> HLRBRep_CurveTool_circle(void* C) {
     try { return {new gp_Circ2d(HLRBRep_CurveTool::Circle(C)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Elips2d*> HLRBRep_CurveTool_ellipse(Standard_Address C) {
+extern "C" OcctResult<gp_Elips2d*> HLRBRep_CurveTool_ellipse(void* C) {
     try { return {new gp_Elips2d(HLRBRep_CurveTool::Ellipse(C)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Hypr2d*> HLRBRep_CurveTool_hyperbola(Standard_Address C) {
+extern "C" OcctResult<gp_Hypr2d*> HLRBRep_CurveTool_hyperbola(void* C) {
     try { return {new gp_Hypr2d(HLRBRep_CurveTool::Hyperbola(C)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Parab2d*> HLRBRep_CurveTool_parabola(Standard_Address C) {
+extern "C" OcctResult<gp_Parab2d*> HLRBRep_CurveTool_parabola(void* C) {
     try { return {new gp_Parab2d(HLRBRep_CurveTool::Parabola(C)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Geom2d_BezierCurve)*> HLRBRep_CurveTool_bezier(Standard_Address C) {
+extern "C" OcctResult<Handle(Geom2d_BezierCurve)*> HLRBRep_CurveTool_bezier(void* C) {
     try { return {new Handle(Geom2d_BezierCurve)(HLRBRep_CurveTool::Bezier(C)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Geom2d_BSplineCurve)*> HLRBRep_CurveTool_b_spline(Standard_Address C) {
+extern "C" OcctResult<Handle(Geom2d_BSplineCurve)*> HLRBRep_CurveTool_b_spline(void* C) {
     try { return {new Handle(Geom2d_BSplineCurve)(HLRBRep_CurveTool::BSpline(C)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> HLRBRep_CurveTool_eps_x(Standard_Address C) {
+extern "C" OcctResult<double> HLRBRep_CurveTool_eps_x(void* C) {
     try { return {HLRBRep_CurveTool::EpsX(C), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> HLRBRep_CurveTool_nb_samples_address_real2(Standard_Address C, double U0, double U1) {
+extern "C" OcctResult<int32_t> HLRBRep_CurveTool_nb_samples_voidptr_real2(void* C, double U0, double U1) {
     try { return {HLRBRep_CurveTool::NbSamples(C, U0, U1), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> HLRBRep_CurveTool_nb_samples_address(Standard_Address C) {
+extern "C" OcctResult<int32_t> HLRBRep_CurveTool_nb_samples_voidptr(void* C) {
     try { return {HLRBRep_CurveTool::NbSamples(C), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> HLRBRep_CurveTool_degree(Standard_Address C) {
+extern "C" OcctResult<int32_t> HLRBRep_CurveTool_degree(void* C) {
     try { return {HLRBRep_CurveTool::Degree(C), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4534,11 +3885,11 @@ extern "C" const char* HLRBRep_Data_write(HLRBRep_Data* self_, Handle(HLRBRep_Da
     try { self_->Write(*DS, dv, de, df); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<HLRBRep_Array1OfEData*> HLRBRep_Data_e_data_array(HLRBRep_Data* self_) {
+extern "C" OcctResult<NCollection_Array1_HLRBRep_EdgeData*> HLRBRep_Data_e_data_array(HLRBRep_Data* self_) {
     try { return {&(self_->EDataArray()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRBRep_Array1OfFData*> HLRBRep_Data_f_data_array(HLRBRep_Data* self_) {
+extern "C" OcctResult<NCollection_Array1_HLRBRep_FaceData*> HLRBRep_Data_f_data_array(HLRBRep_Data* self_) {
     try { return {&(self_->FDataArray()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4570,11 +3921,11 @@ extern "C" OcctResult<int32_t> HLRBRep_Data_nb_faces(const HLRBRep_Data* self_) 
     try { return {self_->NbFaces(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_IndexedMapOfShape*> HLRBRep_Data_edge_map(HLRBRep_Data* self_) {
+extern "C" OcctResult<NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher*> HLRBRep_Data_edge_map(HLRBRep_Data* self_) {
     try { return {&(self_->EdgeMap()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_IndexedMapOfShape*> HLRBRep_Data_face_map(HLRBRep_Data* self_) {
+extern "C" OcctResult<NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher*> HLRBRep_Data_face_map(HLRBRep_Data* self_) {
     try { return {&(self_->FaceMap()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4582,7 +3933,7 @@ extern "C" const char* HLRBRep_Data_init_bound_sort(HLRBRep_Data* self_, HLRAlgo
     try { self_->InitBoundSort(*MinMaxTot, e1, e2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_Data_init_edge(HLRBRep_Data* self_, int32_t FI, BRepTopAdaptor_MapOfShapeTool* MST) {
+extern "C" const char* HLRBRep_Data_init_edge(HLRBRep_Data* self_, int32_t FI, NCollection_DataMap_TopoDS_Shape_BRepTopAdaptor_Tool_TopTools_ShapeMapHasher* MST) {
     try { self_->InitEdge(FI, *MST); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4653,7 +4004,7 @@ extern "C" OcctResult<bool> HLRBRep_Data_edge_of_the_hiding_face(const HLRBRep_D
     try { return {self_->EdgeOfTheHidingFace(E, *ED), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> HLRBRep_Data_hiding_start_level(HLRBRep_Data* self_, int32_t E, HLRBRep_EdgeData const* ED, HLRAlgo_InterferenceList const* IL) {
+extern "C" OcctResult<int32_t> HLRBRep_Data_hiding_start_level(HLRBRep_Data* self_, int32_t E, HLRBRep_EdgeData const* ED, NCollection_List_HLRAlgo_Interference const* IL) {
     try { return {self_->HidingStartLevel(E, *ED, *IL), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4691,20 +4042,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> HLRBRep_Data_get_type_descri
 }
 extern "C" OcctResult<const Standard_Transient*> HLRBRep_Data_as_Standard_Transient(const HLRBRep_Data* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> HLRBRep_Data_as_Standard_Transient_mut(HLRBRep_Data* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleHLRBRepData*> HLRBRep_Data_to_handle(HLRBRep_Data* obj) {
-    try { return {new HandleHLRBRepData(obj), nullptr}; }
+extern "C" OcctResult<Handle_HLRBRep_Data*> HLRBRep_Data_to_handle(HLRBRep_Data* obj) {
+    try { return {new Handle_HLRBRep_Data(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const HLRBRep_Data*> HandleHLRBRepData_get(const HandleHLRBRepData* handle) {
+extern "C" OcctResult<const HLRBRep_Data*> Handle_HLRBRep_Data_get(const Handle_HLRBRep_Data* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRBRep_Data*> HandleHLRBRepData_get_mut(HandleHLRBRepData* handle) {
+extern "C" OcctResult<HLRBRep_Data*> Handle_HLRBRep_Data_get_mut(Handle_HLRBRep_Data* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleHLRBRepData_to_HandleStandardTransient(const HandleHLRBRepData* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_HLRBRep_Data_to_Handle_Standard_Transient(const Handle_HLRBRep_Data* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> HLRBRep_Data_inherited_IsInstance(const HLRBRep_Data* self, Handle(Standard_Type) const& theType) {
@@ -4997,11 +4348,11 @@ extern "C" OcctResult<HLRBRep_EdgeFaceTool*> HLRBRep_EdgeFaceTool_ctor() {
     try { return {new HLRBRep_EdgeFaceTool(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> HLRBRep_EdgeFaceTool_curvature_value(Standard_Address F, double U, double V, gp_Dir const* Tg) {
+extern "C" OcctResult<double> HLRBRep_EdgeFaceTool_curvature_value(void* F, double U, double V, gp_Dir const* Tg) {
     try { return {HLRBRep_EdgeFaceTool::CurvatureValue(F, U, V, *Tg), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> HLRBRep_EdgeFaceTool_uv_point(double Par, Standard_Address E, Standard_Address F, double* U, double* V) {
+extern "C" OcctResult<bool> HLRBRep_EdgeFaceTool_uv_point(double Par, void* E, void* F, double* U, double* V) {
     try { return {HLRBRep_EdgeFaceTool::UVPoint(Par, E, F, *U, *V), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5015,11 +4366,11 @@ extern "C" OcctResult<HLRBRep_EdgeIList*> HLRBRep_EdgeIList_ctor() {
     try { return {new HLRBRep_EdgeIList(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRBRep_EdgeIList_add_interference(HLRAlgo_InterferenceList* IL, HLRAlgo_Interference const* I, HLRBRep_EdgeInterferenceTool const* T) {
+extern "C" const char* HLRBRep_EdgeIList_add_interference(NCollection_List_HLRAlgo_Interference* IL, HLRAlgo_Interference const* I, HLRBRep_EdgeInterferenceTool const* T) {
     try { HLRBRep_EdgeIList::AddInterference(*IL, *I, *T); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_EdgeIList_process_complex(HLRAlgo_InterferenceList* IL, HLRBRep_EdgeInterferenceTool const* T) {
+extern "C" const char* HLRBRep_EdgeIList_process_complex(NCollection_List_HLRAlgo_Interference* IL, HLRBRep_EdgeInterferenceTool const* T) {
     try { HLRBRep_EdgeIList::ProcessComplex(*IL, *T); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5091,7 +4442,7 @@ extern "C" void HLRBRep_EdgeInterferenceTool_destructor(HLRBRep_EdgeInterference
 // HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter wrappers
 // ========================
 
-extern "C" OcctResult<HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter*> HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_ctor_address2_real(Standard_Address const* C1, Standard_Address const* C2, double Tol) {
+extern "C" OcctResult<HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter*> HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_ctor_voidptr2_real(void* const* C1, void* const* C2, double Tol) {
     try { return {new HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter(*C1, *C2, Tol), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5447,7 +4798,7 @@ extern "C" const char* HLRBRep_Hider_own_hiding(HLRBRep_Hider* self_, int32_t FI
     try { self_->OwnHiding(FI); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_Hider_hide(HLRBRep_Hider* self_, int32_t FI, BRepTopAdaptor_MapOfShapeTool* MST) {
+extern "C" const char* HLRBRep_Hider_hide(HLRBRep_Hider* self_, int32_t FI, NCollection_DataMap_TopoDS_Shape_BRepTopAdaptor_Tool_TopTools_ShapeMapHasher* MST) {
     try { self_->Hide(FI, *MST); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5461,43 +4812,43 @@ extern "C" OcctResult<HLRBRep_IntConicCurveOfCInter*> HLRBRep_IntConicCurveOfCIn
     try { return {new HLRBRep_IntConicCurveOfCInter(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRBRep_IntConicCurveOfCInter*> HLRBRep_IntConicCurveOfCInter_ctor_lin2d_domain_address_domain_real2(gp_Lin2d const* L, IntRes2d_Domain const* D1, Standard_Address const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
+extern "C" OcctResult<HLRBRep_IntConicCurveOfCInter*> HLRBRep_IntConicCurveOfCInter_ctor_lin2d_domain_voidptr_domain_real2(gp_Lin2d const* L, IntRes2d_Domain const* D1, void* const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
     try { return {new HLRBRep_IntConicCurveOfCInter(*L, *D1, *PCurve, *D2, TolConf, Tol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRBRep_IntConicCurveOfCInter*> HLRBRep_IntConicCurveOfCInter_ctor_circ2d_domain_address_domain_real2(gp_Circ2d const* C, IntRes2d_Domain const* D1, Standard_Address const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
+extern "C" OcctResult<HLRBRep_IntConicCurveOfCInter*> HLRBRep_IntConicCurveOfCInter_ctor_circ2d_domain_voidptr_domain_real2(gp_Circ2d const* C, IntRes2d_Domain const* D1, void* const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
     try { return {new HLRBRep_IntConicCurveOfCInter(*C, *D1, *PCurve, *D2, TolConf, Tol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRBRep_IntConicCurveOfCInter*> HLRBRep_IntConicCurveOfCInter_ctor_elips2d_domain_address_domain_real2(gp_Elips2d const* E, IntRes2d_Domain const* D1, Standard_Address const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
+extern "C" OcctResult<HLRBRep_IntConicCurveOfCInter*> HLRBRep_IntConicCurveOfCInter_ctor_elips2d_domain_voidptr_domain_real2(gp_Elips2d const* E, IntRes2d_Domain const* D1, void* const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
     try { return {new HLRBRep_IntConicCurveOfCInter(*E, *D1, *PCurve, *D2, TolConf, Tol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRBRep_IntConicCurveOfCInter*> HLRBRep_IntConicCurveOfCInter_ctor_parab2d_domain_address_domain_real2(gp_Parab2d const* Prb, IntRes2d_Domain const* D1, Standard_Address const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
+extern "C" OcctResult<HLRBRep_IntConicCurveOfCInter*> HLRBRep_IntConicCurveOfCInter_ctor_parab2d_domain_voidptr_domain_real2(gp_Parab2d const* Prb, IntRes2d_Domain const* D1, void* const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
     try { return {new HLRBRep_IntConicCurveOfCInter(*Prb, *D1, *PCurve, *D2, TolConf, Tol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRBRep_IntConicCurveOfCInter*> HLRBRep_IntConicCurveOfCInter_ctor_hypr2d_domain_address_domain_real2(gp_Hypr2d const* H, IntRes2d_Domain const* D1, Standard_Address const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
+extern "C" OcctResult<HLRBRep_IntConicCurveOfCInter*> HLRBRep_IntConicCurveOfCInter_ctor_hypr2d_domain_voidptr_domain_real2(gp_Hypr2d const* H, IntRes2d_Domain const* D1, void* const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
     try { return {new HLRBRep_IntConicCurveOfCInter(*H, *D1, *PCurve, *D2, TolConf, Tol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRBRep_IntConicCurveOfCInter_perform_lin2d_domain_address_domain_real2(HLRBRep_IntConicCurveOfCInter* self_, gp_Lin2d const* L, IntRes2d_Domain const* D1, Standard_Address const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
+extern "C" const char* HLRBRep_IntConicCurveOfCInter_perform_lin2d_domain_voidptr_domain_real2(HLRBRep_IntConicCurveOfCInter* self_, gp_Lin2d const* L, IntRes2d_Domain const* D1, void* const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
     try { self_->Perform(*L, *D1, *PCurve, *D2, TolConf, Tol); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_IntConicCurveOfCInter_perform_circ2d_domain_address_domain_real2(HLRBRep_IntConicCurveOfCInter* self_, gp_Circ2d const* C, IntRes2d_Domain const* D1, Standard_Address const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
+extern "C" const char* HLRBRep_IntConicCurveOfCInter_perform_circ2d_domain_voidptr_domain_real2(HLRBRep_IntConicCurveOfCInter* self_, gp_Circ2d const* C, IntRes2d_Domain const* D1, void* const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
     try { self_->Perform(*C, *D1, *PCurve, *D2, TolConf, Tol); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_IntConicCurveOfCInter_perform_elips2d_domain_address_domain_real2(HLRBRep_IntConicCurveOfCInter* self_, gp_Elips2d const* E, IntRes2d_Domain const* D1, Standard_Address const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
+extern "C" const char* HLRBRep_IntConicCurveOfCInter_perform_elips2d_domain_voidptr_domain_real2(HLRBRep_IntConicCurveOfCInter* self_, gp_Elips2d const* E, IntRes2d_Domain const* D1, void* const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
     try { self_->Perform(*E, *D1, *PCurve, *D2, TolConf, Tol); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_IntConicCurveOfCInter_perform_parab2d_domain_address_domain_real2(HLRBRep_IntConicCurveOfCInter* self_, gp_Parab2d const* Prb, IntRes2d_Domain const* D1, Standard_Address const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
+extern "C" const char* HLRBRep_IntConicCurveOfCInter_perform_parab2d_domain_voidptr_domain_real2(HLRBRep_IntConicCurveOfCInter* self_, gp_Parab2d const* Prb, IntRes2d_Domain const* D1, void* const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
     try { self_->Perform(*Prb, *D1, *PCurve, *D2, TolConf, Tol); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_IntConicCurveOfCInter_perform_hypr2d_domain_address_domain_real2(HLRBRep_IntConicCurveOfCInter* self_, gp_Hypr2d const* H, IntRes2d_Domain const* D1, Standard_Address const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
+extern "C" const char* HLRBRep_IntConicCurveOfCInter_perform_hypr2d_domain_voidptr_domain_real2(HLRBRep_IntConicCurveOfCInter* self_, gp_Hypr2d const* H, IntRes2d_Domain const* D1, void* const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
     try { self_->Perform(*H, *D1, *PCurve, *D2, TolConf, Tol); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5541,24 +4892,24 @@ extern "C" OcctResult<HLRBRep_InterCSurf*> HLRBRep_InterCSurf_ctor() {
     try { return {new HLRBRep_InterCSurf(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRBRep_InterCSurf_perform_lin_address(HLRBRep_InterCSurf* self_, gp_Lin const* Curve, Standard_Address const* Surface) {
-    try { self_->Perform(*Curve, *Surface); return nullptr; }
+extern "C" const char* HLRBRep_InterCSurf_perform_lin_surfaceptr(HLRBRep_InterCSurf* self_, gp_Lin const* theCurve, HLRBRep_Surface* theSurface) {
+    try { self_->Perform(*theCurve, theSurface); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_InterCSurf_perform_lin_thepolygonofintercsurf_address(HLRBRep_InterCSurf* self_, gp_Lin const* Curve, HLRBRep_ThePolygonOfInterCSurf const* Polygon, Standard_Address const* Surface) {
-    try { self_->Perform(*Curve, *Polygon, *Surface); return nullptr; }
+extern "C" const char* HLRBRep_InterCSurf_perform_lin_thepolygonofintercsurf_surfaceptr(HLRBRep_InterCSurf* self_, gp_Lin const* theCurve, HLRBRep_ThePolygonOfInterCSurf const* thePolygon, HLRBRep_Surface* theSurface) {
+    try { self_->Perform(*theCurve, *thePolygon, theSurface); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_InterCSurf_perform_lin_thepolygonofintercsurf_address_thepolyhedronofintercsurf(HLRBRep_InterCSurf* self_, gp_Lin const* Curve, HLRBRep_ThePolygonOfInterCSurf const* ThePolygon, Standard_Address const* Surface, HLRBRep_ThePolyhedronOfInterCSurf const* Polyhedron) {
-    try { self_->Perform(*Curve, *ThePolygon, *Surface, *Polyhedron); return nullptr; }
+extern "C" const char* HLRBRep_InterCSurf_perform_lin_thepolygonofintercsurf_surfaceptr_thepolyhedronofintercsurf(HLRBRep_InterCSurf* self_, gp_Lin const* theCurve, HLRBRep_ThePolygonOfInterCSurf const* thePolygon, HLRBRep_Surface* theSurface, HLRBRep_ThePolyhedronOfInterCSurf const* thePolyhedron) {
+    try { self_->Perform(*theCurve, *thePolygon, theSurface, *thePolyhedron); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_InterCSurf_perform_lin_thepolygonofintercsurf_address_thepolyhedronofintercsurf_boundsortbox(HLRBRep_InterCSurf* self_, gp_Lin const* Curve, HLRBRep_ThePolygonOfInterCSurf const* ThePolygon, Standard_Address const* Surface, HLRBRep_ThePolyhedronOfInterCSurf const* Polyhedron, Bnd_BoundSortBox* BndBSB) {
-    try { self_->Perform(*Curve, *ThePolygon, *Surface, *Polyhedron, *BndBSB); return nullptr; }
+extern "C" const char* HLRBRep_InterCSurf_perform_lin_thepolygonofintercsurf_surfaceptr_thepolyhedronofintercsurf_boundsortbox(HLRBRep_InterCSurf* self_, gp_Lin const* theCurve, HLRBRep_ThePolygonOfInterCSurf const* thePolygon, HLRBRep_Surface* theSurface, HLRBRep_ThePolyhedronOfInterCSurf const* thePolyhedron, Bnd_BoundSortBox* theBndBSB) {
+    try { self_->Perform(*theCurve, *thePolygon, theSurface, *thePolyhedron, *theBndBSB); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_InterCSurf_perform_lin_address_thepolyhedronofintercsurf(HLRBRep_InterCSurf* self_, gp_Lin const* Curve, Standard_Address const* Surface, HLRBRep_ThePolyhedronOfInterCSurf const* Polyhedron) {
-    try { self_->Perform(*Curve, *Surface, *Polyhedron); return nullptr; }
+extern "C" const char* HLRBRep_InterCSurf_perform_lin_surfaceptr_thepolyhedronofintercsurf(HLRBRep_InterCSurf* self_, gp_Lin const* theCurve, HLRBRep_Surface* theSurface, HLRBRep_ThePolyhedronOfInterCSurf const* thePolyhedron) {
+    try { self_->Perform(*theCurve, theSurface, *thePolyhedron); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<const IntCurveSurface_Intersection*> HLRBRep_InterCSurf_as_IntCurveSurface_Intersection(const HLRBRep_InterCSurf* self_) { return {static_cast<const IntCurveSurface_Intersection*>(self_), nullptr}; }
@@ -5641,7 +4992,7 @@ extern "C" const char* HLRBRep_InternalAlgo_shape_data(HLRBRep_InternalAlgo* sel
     try { self_->ShapeData(I, *SData); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<HLRBRep_SeqOfShapeBounds*> HLRBRep_InternalAlgo_seq_of_shape_bounds(HLRBRep_InternalAlgo* self_) {
+extern "C" OcctResult<NCollection_Sequence_HLRBRep_ShapeBounds*> HLRBRep_InternalAlgo_seq_of_shape_bounds(HLRBRep_InternalAlgo* self_) {
     try { return {&(self_->SeqOfShapeBounds()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5727,27 +5078,27 @@ extern "C" OcctResult<Handle(Standard_Type) const*> HLRBRep_InternalAlgo_get_typ
 }
 extern "C" OcctResult<const Standard_Transient*> HLRBRep_InternalAlgo_as_Standard_Transient(const HLRBRep_InternalAlgo* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> HLRBRep_InternalAlgo_as_Standard_Transient_mut(HLRBRep_InternalAlgo* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleHLRBRepInternalAlgo*> HLRBRep_InternalAlgo_to_handle(HLRBRep_InternalAlgo* obj) {
-    try { return {new HandleHLRBRepInternalAlgo(obj), nullptr}; }
+extern "C" OcctResult<Handle_HLRBRep_InternalAlgo*> HLRBRep_InternalAlgo_to_handle(HLRBRep_InternalAlgo* obj) {
+    try { return {new Handle_HLRBRep_InternalAlgo(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const HLRBRep_InternalAlgo*> HandleHLRBRepInternalAlgo_get(const HandleHLRBRepInternalAlgo* handle) {
+extern "C" OcctResult<const HLRBRep_InternalAlgo*> Handle_HLRBRep_InternalAlgo_get(const Handle_HLRBRep_InternalAlgo* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRBRep_InternalAlgo*> HandleHLRBRepInternalAlgo_get_mut(HandleHLRBRepInternalAlgo* handle) {
+extern "C" OcctResult<HLRBRep_InternalAlgo*> Handle_HLRBRep_InternalAlgo_get_mut(Handle_HLRBRep_InternalAlgo* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleHLRBRepInternalAlgo_to_HandleStandardTransient(const HandleHLRBRepInternalAlgo* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_HLRBRep_InternalAlgo_to_Handle_Standard_Transient(const Handle_HLRBRep_InternalAlgo* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleHLRBRepAlgo*> HandleHLRBRepInternalAlgo_downcast_to_HandleHLRBRepAlgo(const HandleHLRBRepInternalAlgo* self_) {
+extern "C" OcctResult<Handle_HLRBRep_Algo*> Handle_HLRBRep_InternalAlgo_downcast_to_Handle_HLRBRep_Algo(const Handle_HLRBRep_InternalAlgo* self_) {
     try {
     opencascade::handle<HLRBRep_Algo> result = opencascade::handle<HLRBRep_Algo>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleHLRBRepAlgo(result), nullptr};
+    return {new Handle_HLRBRep_Algo(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -5789,24 +5140,24 @@ extern "C" OcctResult<HLRBRep_Intersector*> HLRBRep_Intersector_ctor() {
     try { return {new HLRBRep_Intersector(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRBRep_Intersector_perform_address_real2(HLRBRep_Intersector* self_, Standard_Address A1, double da1, double db1) {
-    try { self_->Perform(A1, da1, db1); return nullptr; }
+extern "C" const char* HLRBRep_Intersector_perform_edgedataptr_real2(HLRBRep_Intersector* self_, HLRBRep_EdgeData* theEdge1, double theDa1, double theDb1) {
+    try { self_->Perform(theEdge1, theDa1, theDb1); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_Intersector_perform_int_address_real2_int_address_real2_bool(HLRBRep_Intersector* self_, int32_t nA, Standard_Address A1, double da1, double db1, int32_t nB, Standard_Address A2, double da2, double db2, bool NoBound) {
-    try { self_->Perform(nA, A1, da1, db1, nB, A2, da2, db2, NoBound); return nullptr; }
+extern "C" const char* HLRBRep_Intersector_perform_int_edgedataptr_real2_int_edgedataptr_real2_bool(HLRBRep_Intersector* self_, int32_t theNA, HLRBRep_EdgeData* theEdge1, double theDa1, double theDb1, int32_t theNB, HLRBRep_EdgeData* theEdge2, double theDa2, double theDb2, bool theNoBound) {
+    try { self_->Perform(theNA, theEdge1, theDa1, theDb1, theNB, theEdge2, theDa2, theDb2, theNoBound); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_Intersector_simulate_one_point(HLRBRep_Intersector* self_, Standard_Address A1, double U, Standard_Address A2, double V) {
-    try { self_->SimulateOnePoint(A1, U, A2, V); return nullptr; }
+extern "C" const char* HLRBRep_Intersector_simulate_one_point(HLRBRep_Intersector* self_, HLRBRep_EdgeData* theEdge1, double theU, HLRBRep_EdgeData* theEdge2, double theV) {
+    try { self_->SimulateOnePoint(theEdge1, theU, theEdge2, theV); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_Intersector_load(HLRBRep_Intersector* self_, Standard_Address* A) {
-    try { self_->Load(*A); return nullptr; }
+extern "C" const char* HLRBRep_Intersector_load(HLRBRep_Intersector* self_, HLRBRep_Surface* theSurface) {
+    try { self_->Load(theSurface); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_Intersector_perform_lin_real(HLRBRep_Intersector* self_, gp_Lin const* L, double P) {
-    try { self_->Perform(*L, P); return nullptr; }
+extern "C" const char* HLRBRep_Intersector_perform_lin_real(HLRBRep_Intersector* self_, gp_Lin const* theL, double theP) {
+    try { self_->Perform(*theL, theP); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<bool> HLRBRep_Intersector_is_done(const HLRBRep_Intersector* self_) {
@@ -5867,7 +5218,7 @@ extern "C" OcctResult<int32_t> HLRBRep_LineTool_nb_intervals(gp_Lin const* C, in
     try { return {HLRBRep_LineTool::NbIntervals(*C, static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRBRep_LineTool_intervals(gp_Lin const* C, TColStd_Array1OfReal* T, int32_t Sh) {
+extern "C" const char* HLRBRep_LineTool_intervals(gp_Lin const* C, NCollection_Array1_double* T, int32_t Sh) {
     try { HLRBRep_LineTool::Intervals(*C, *T, static_cast<GeomAbs_Shape>(Sh)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5963,7 +5314,7 @@ extern "C" OcctResult<int32_t> HLRBRep_LineTool_nb_poles(gp_Lin const* C) {
     try { return {HLRBRep_LineTool::NbPoles(*C), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRBRep_LineTool_poles(gp_Lin const* C, TColgp_Array1OfPnt* TP) {
+extern "C" const char* HLRBRep_LineTool_poles(gp_Lin const* C, NCollection_Array1_gp_Pnt* TP) {
     try { HLRBRep_LineTool::Poles(*C, *TP); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5971,7 +5322,7 @@ extern "C" OcctResult<bool> HLRBRep_LineTool_is_rational(gp_Lin const* C) {
     try { return {HLRBRep_LineTool::IsRational(*C), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRBRep_LineTool_poles_and_weights(gp_Lin const* C, TColgp_Array1OfPnt* TP, TColStd_Array1OfReal* TW) {
+extern "C" const char* HLRBRep_LineTool_poles_and_weights(gp_Lin const* C, NCollection_Array1_gp_Pnt* TP, NCollection_Array1_double* TW) {
     try { HLRBRep_LineTool::PolesAndWeights(*C, *TP, *TW); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5979,7 +5330,7 @@ extern "C" OcctResult<int32_t> HLRBRep_LineTool_nb_knots(gp_Lin const* C) {
     try { return {HLRBRep_LineTool::NbKnots(*C), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRBRep_LineTool_knots_and_multiplicities(gp_Lin const* C, TColStd_Array1OfReal* TK, TColStd_Array1OfInteger* TM) {
+extern "C" const char* HLRBRep_LineTool_knots_and_multiplicities(gp_Lin const* C, NCollection_Array1_double* TK, NCollection_Array1_int* TM) {
     try { HLRBRep_LineTool::KnotsAndMultiplicities(*C, *TK, *TM); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5987,9 +5338,9 @@ extern "C" OcctResult<int32_t> HLRBRep_LineTool_nb_samples(gp_Lin const* C, doub
     try { return {HLRBRep_LineTool::NbSamples(*C, U0, U1), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRBRep_LineTool_sample_pars(gp_Lin const* C, double U0, double U1, double Defl, int32_t NbMin, Handle(TColStd_HArray1OfReal)* Pars) {
-    try { HLRBRep_LineTool::SamplePars(*C, U0, U1, Defl, NbMin, *Pars); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<Handle(NCollection_HArray1_double)*> HLRBRep_LineTool_sample_pars(gp_Lin const* C, double U0, double U1, double Defl, int32_t NbMin) {
+    try { return {new Handle(NCollection_HArray1_double)(HLRBRep_LineTool::SamplePars(*C, U0, U1, Defl, NbMin)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" void HLRBRep_LineTool_destructor(HLRBRep_LineTool* self_) { delete self_; }
 
@@ -5997,7 +5348,7 @@ extern "C" void HLRBRep_LineTool_destructor(HLRBRep_LineTool* self_) { delete se
 // HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter wrappers
 // ========================
 
-extern "C" OcctResult<HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter*> HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_ctor_iconictool_address(IntCurve_IConicTool const* IT, Standard_Address const* PC) {
+extern "C" OcctResult<HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter*> HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_ctor_iconictool_voidptr(IntCurve_IConicTool const* IT, void* const* PC) {
     try { return {new HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter(*IT, *PC), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6022,72 +5373,6 @@ extern "C" OcctResult<int32_t> HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConic
     OCCT_CATCH_RETURN
 }
 extern "C" void HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_destructor(HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter* self_) { delete self_; }
-
-// ========================
-// HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter wrappers
-// ========================
-
-extern "C" OcctResult<HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter*> HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_ctor() {
-    try { return {new HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter*> HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_ctor_pnt2d_address(gp_Pnt2d const* P, Standard_Address const* C) {
-    try { return {new HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter(*P, *C), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_initialize(HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter* self_, Standard_Address const* C) {
-    try { self_->Initialize(*C); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_set_point(HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter* self_, gp_Pnt2d const* P) {
-    try { self_->SetPoint(*P); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_value(HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter* self_, double U, double* F) {
-    try { return {self_->Value(U, *F), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_derivative(HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter* self_, double U, double* DF) {
-    try { return {self_->Derivative(U, *DF), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_values(HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter* self_, double U, double* F, double* DF) {
-    try { return {self_->Values(U, *F, *DF), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_get_state_number(HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter* self_) {
-    try { return {self_->GetStateNumber(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_nb_ext(const HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter* self_) {
-    try { return {self_->NbExt(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_square_distance(const HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter* self_, int32_t N) {
-    try { return {self_->SquareDistance(N), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_is_min(const HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter* self_, int32_t N) {
-    try { return {self_->IsMin(N), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Extrema_POnCurv2d const*> HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_point(const HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter* self_, int32_t N) {
-    try { return {&(self_->Point(N)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_sub_interval_initialize(HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter* self_, double theUfirst, double theUlast) {
-    try { self_->SubIntervalInitialize(theUfirst, theUlast); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<double> HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_search_of_tolerance(HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter* self_) {
-    try { return {self_->SearchOfTolerance(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const math_FunctionWithDerivative*> HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_as_math_FunctionWithDerivative(const HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter* self_) { return {static_cast<const math_FunctionWithDerivative*>(self_), nullptr}; }
-extern "C" OcctResult<math_FunctionWithDerivative*> HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_as_math_FunctionWithDerivative_mut(HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter* self_) { return {static_cast<math_FunctionWithDerivative*>(self_), nullptr}; }
-extern "C" OcctResult<const math_Function*> HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_as_math_Function(const HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter* self_) { return {static_cast<const math_Function*>(self_), nullptr}; }
-extern "C" OcctResult<math_Function*> HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_as_math_Function_mut(HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter* self_) { return {static_cast<math_Function*>(self_), nullptr}; }
-extern "C" void HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_destructor(HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter* self_) { delete self_; }
 
 // ========================
 // HLRBRep_PolyAlgo wrappers
@@ -6215,20 +5500,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> HLRBRep_PolyAlgo_get_type_de
 }
 extern "C" OcctResult<const Standard_Transient*> HLRBRep_PolyAlgo_as_Standard_Transient(const HLRBRep_PolyAlgo* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> HLRBRep_PolyAlgo_as_Standard_Transient_mut(HLRBRep_PolyAlgo* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleHLRBRepPolyAlgo*> HLRBRep_PolyAlgo_to_handle(HLRBRep_PolyAlgo* obj) {
-    try { return {new HandleHLRBRepPolyAlgo(obj), nullptr}; }
+extern "C" OcctResult<Handle_HLRBRep_PolyAlgo*> HLRBRep_PolyAlgo_to_handle(HLRBRep_PolyAlgo* obj) {
+    try { return {new Handle_HLRBRep_PolyAlgo(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const HLRBRep_PolyAlgo*> HandleHLRBRepPolyAlgo_get(const HandleHLRBRepPolyAlgo* handle) {
+extern "C" OcctResult<const HLRBRep_PolyAlgo*> Handle_HLRBRep_PolyAlgo_get(const Handle_HLRBRep_PolyAlgo* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRBRep_PolyAlgo*> HandleHLRBRepPolyAlgo_get_mut(HandleHLRBRepPolyAlgo* handle) {
+extern "C" OcctResult<HLRBRep_PolyAlgo*> Handle_HLRBRep_PolyAlgo_get_mut(Handle_HLRBRep_PolyAlgo* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleHLRBRepPolyAlgo_to_HandleStandardTransient(const HandleHLRBRepPolyAlgo* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_HLRBRep_PolyAlgo_to_Handle_Standard_Transient(const Handle_HLRBRep_PolyAlgo* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> HLRBRep_PolyAlgo_inherited_IsInstance(const HLRBRep_PolyAlgo* self, Handle(Standard_Type) const& theType) {
@@ -6348,108 +5633,6 @@ extern "C" const char* HLRBRep_PolyHLRToShape_hide(HLRBRep_PolyHLRToShape* self_
 extern "C" void HLRBRep_PolyHLRToShape_destructor(HLRBRep_PolyHLRToShape* self_) { delete self_; }
 
 // ========================
-// HLRBRep_SLProps wrappers
-// ========================
-
-extern "C" OcctResult<HLRBRep_SLProps*> HLRBRep_SLProps_ctor_address_real2_int_real(Standard_Address const* S, double U, double V, int32_t N, double Resolution) {
-    try { return {new HLRBRep_SLProps(*S, U, V, N, Resolution), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRBRep_SLProps*> HLRBRep_SLProps_ctor_address_int_real(Standard_Address const* S, int32_t N, double Resolution) {
-    try { return {new HLRBRep_SLProps(*S, N, Resolution), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRBRep_SLProps*> HLRBRep_SLProps_ctor_int_real(int32_t N, double Resolution) {
-    try { return {new HLRBRep_SLProps(N, Resolution), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* HLRBRep_SLProps_set_surface(HLRBRep_SLProps* self_, Standard_Address const* S) {
-    try { self_->SetSurface(*S); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* HLRBRep_SLProps_set_parameters(HLRBRep_SLProps* self_, double U, double V) {
-    try { self_->SetParameters(U, V); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<gp_Pnt const*> HLRBRep_SLProps_value(const HLRBRep_SLProps* self_) {
-    try { return {&(self_->Value()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Vec const*> HLRBRep_SLProps_d1u(HLRBRep_SLProps* self_) {
-    try { return {&(self_->D1U()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Vec const*> HLRBRep_SLProps_d1v(HLRBRep_SLProps* self_) {
-    try { return {&(self_->D1V()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Vec const*> HLRBRep_SLProps_d2u(HLRBRep_SLProps* self_) {
-    try { return {&(self_->D2U()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Vec const*> HLRBRep_SLProps_d2v(HLRBRep_SLProps* self_) {
-    try { return {&(self_->D2V()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Vec const*> HLRBRep_SLProps_duv(HLRBRep_SLProps* self_) {
-    try { return {&(self_->DUV()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> HLRBRep_SLProps_is_tangent_u_defined(HLRBRep_SLProps* self_) {
-    try { return {self_->IsTangentUDefined(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* HLRBRep_SLProps_tangent_u(HLRBRep_SLProps* self_, gp_Dir* D) {
-    try { self_->TangentU(*D); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> HLRBRep_SLProps_is_tangent_v_defined(HLRBRep_SLProps* self_) {
-    try { return {self_->IsTangentVDefined(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* HLRBRep_SLProps_tangent_v(HLRBRep_SLProps* self_, gp_Dir* D) {
-    try { self_->TangentV(*D); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> HLRBRep_SLProps_is_normal_defined(HLRBRep_SLProps* self_) {
-    try { return {self_->IsNormalDefined(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Dir const*> HLRBRep_SLProps_normal(HLRBRep_SLProps* self_) {
-    try { return {&(self_->Normal()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> HLRBRep_SLProps_is_curvature_defined(HLRBRep_SLProps* self_) {
-    try { return {self_->IsCurvatureDefined(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> HLRBRep_SLProps_is_umbilic(HLRBRep_SLProps* self_) {
-    try { return {self_->IsUmbilic(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> HLRBRep_SLProps_max_curvature(HLRBRep_SLProps* self_) {
-    try { return {self_->MaxCurvature(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> HLRBRep_SLProps_min_curvature(HLRBRep_SLProps* self_) {
-    try { return {self_->MinCurvature(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* HLRBRep_SLProps_curvature_directions(HLRBRep_SLProps* self_, gp_Dir* MaxD, gp_Dir* MinD) {
-    try { self_->CurvatureDirections(*MaxD, *MinD); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<double> HLRBRep_SLProps_mean_curvature(HLRBRep_SLProps* self_) {
-    try { return {self_->MeanCurvature(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> HLRBRep_SLProps_gaussian_curvature(HLRBRep_SLProps* self_) {
-    try { return {self_->GaussianCurvature(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" void HLRBRep_SLProps_destructor(HLRBRep_SLProps* self_) { delete self_; }
-
-// ========================
 // HLRBRep_SLPropsATool wrappers
 // ========================
 
@@ -6457,27 +5640,27 @@ extern "C" OcctResult<HLRBRep_SLPropsATool*> HLRBRep_SLPropsATool_ctor() {
     try { return {new HLRBRep_SLPropsATool(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRBRep_SLPropsATool_value(Standard_Address A, double U, double V, gp_Pnt* P) {
+extern "C" const char* HLRBRep_SLPropsATool_value(void* A, double U, double V, gp_Pnt* P) {
     try { HLRBRep_SLPropsATool::Value(A, U, V, *P); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_SLPropsATool_d1(Standard_Address A, double U, double V, gp_Pnt* P, gp_Vec* D1U, gp_Vec* D1V) {
+extern "C" const char* HLRBRep_SLPropsATool_d1(void* A, double U, double V, gp_Pnt* P, gp_Vec* D1U, gp_Vec* D1V) {
     try { HLRBRep_SLPropsATool::D1(A, U, V, *P, *D1U, *D1V); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_SLPropsATool_d2(Standard_Address A, double U, double V, gp_Pnt* P, gp_Vec* D1U, gp_Vec* D1V, gp_Vec* D2U, gp_Vec* D2V, gp_Vec* DUV) {
+extern "C" const char* HLRBRep_SLPropsATool_d2(void* A, double U, double V, gp_Pnt* P, gp_Vec* D1U, gp_Vec* D1V, gp_Vec* D2U, gp_Vec* D2V, gp_Vec* DUV) {
     try { HLRBRep_SLPropsATool::D2(A, U, V, *P, *D1U, *D1V, *D2U, *D2V, *DUV); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Vec*> HLRBRep_SLPropsATool_dn(Standard_Address A, double U, double V, int32_t Nu, int32_t Nv) {
+extern "C" OcctResult<gp_Vec*> HLRBRep_SLPropsATool_dn(void* A, double U, double V, int32_t Nu, int32_t Nv) {
     try { return {new gp_Vec(HLRBRep_SLPropsATool::DN(A, U, V, Nu, Nv)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> HLRBRep_SLPropsATool_continuity(Standard_Address A) {
+extern "C" OcctResult<int32_t> HLRBRep_SLPropsATool_continuity(void* A) {
     try { return {HLRBRep_SLPropsATool::Continuity(A), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRBRep_SLPropsATool_bounds(Standard_Address A, double* U1, double* V1, double* U2, double* V2) {
+extern "C" const char* HLRBRep_SLPropsATool_bounds(void* A, double* U1, double* V1, double* U2, double* V2) {
     try { HLRBRep_SLPropsATool::Bounds(A, *U1, *V1, *U2, *V2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6553,7 +5736,7 @@ extern "C" OcctResult<HLRBRep_ShapeToHLR*> HLRBRep_ShapeToHLR_ctor() {
     try { return {new HLRBRep_ShapeToHLR(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(HLRBRep_Data)*> HLRBRep_ShapeToHLR_load(Handle(HLRTopoBRep_OutLiner) const* S, HLRAlgo_Projector const* P, BRepTopAdaptor_MapOfShapeTool* MST, int32_t nbIso) {
+extern "C" OcctResult<Handle(HLRBRep_Data)*> HLRBRep_ShapeToHLR_load(Handle(HLRTopoBRep_OutLiner) const* S, HLRAlgo_Projector const* P, NCollection_DataMap_TopoDS_Shape_BRepTopAdaptor_Tool_TopTools_ShapeMapHasher* MST, int32_t nbIso) {
     try { return {new Handle(HLRBRep_Data)(HLRBRep_ShapeToHLR::Load(*S, *P, *MST, nbIso)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6603,7 +5786,11 @@ extern "C" const char* HLRBRep_Surface_projector(HLRBRep_Surface* self_, const H
     try { self_->Projector(Proj); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<BRepAdaptor_Surface*> HLRBRep_Surface_surface(HLRBRep_Surface* self_) {
+extern "C" OcctResult<BRepAdaptor_Surface*> HLRBRep_Surface_surface_mut(HLRBRep_Surface* self_) {
+    try { return {&(self_->Surface()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepAdaptor_Surface const*> HLRBRep_Surface_surface(const HLRBRep_Surface* self_) {
     try { return {&(self_->Surface()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6643,11 +5830,11 @@ extern "C" OcctResult<int32_t> HLRBRep_Surface_v_continuity(const HLRBRep_Surfac
     try { return {static_cast<int32_t>(self_->VContinuity()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> HLRBRep_Surface_nb_u_intervals(HLRBRep_Surface* self_, int32_t S) {
+extern "C" OcctResult<int32_t> HLRBRep_Surface_nb_u_intervals(const HLRBRep_Surface* self_, int32_t S) {
     try { return {self_->NbUIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> HLRBRep_Surface_nb_v_intervals(HLRBRep_Surface* self_, int32_t S) {
+extern "C" OcctResult<int32_t> HLRBRep_Surface_nb_v_intervals(const HLRBRep_Surface* self_, int32_t S) {
     try { return {self_->NbVIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6737,168 +5924,168 @@ extern "C" OcctResult<HLRBRep_SurfaceTool*> HLRBRep_SurfaceTool_ctor() {
     try { return {new HLRBRep_SurfaceTool(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> HLRBRep_SurfaceTool_first_u_parameter(Standard_Address S) {
-    try { return {HLRBRep_SurfaceTool::FirstUParameter(S), nullptr}; }
+extern "C" OcctResult<double> HLRBRep_SurfaceTool_first_u_parameter(const HLRBRep_Surface* theSurf) {
+    try { return {HLRBRep_SurfaceTool::FirstUParameter(theSurf), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> HLRBRep_SurfaceTool_first_v_parameter(Standard_Address S) {
-    try { return {HLRBRep_SurfaceTool::FirstVParameter(S), nullptr}; }
+extern "C" OcctResult<double> HLRBRep_SurfaceTool_first_v_parameter(const HLRBRep_Surface* theSurf) {
+    try { return {HLRBRep_SurfaceTool::FirstVParameter(theSurf), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> HLRBRep_SurfaceTool_last_u_parameter(Standard_Address S) {
-    try { return {HLRBRep_SurfaceTool::LastUParameter(S), nullptr}; }
+extern "C" OcctResult<double> HLRBRep_SurfaceTool_last_u_parameter(const HLRBRep_Surface* theSurf) {
+    try { return {HLRBRep_SurfaceTool::LastUParameter(theSurf), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> HLRBRep_SurfaceTool_last_v_parameter(Standard_Address S) {
-    try { return {HLRBRep_SurfaceTool::LastVParameter(S), nullptr}; }
+extern "C" OcctResult<double> HLRBRep_SurfaceTool_last_v_parameter(const HLRBRep_Surface* theSurf) {
+    try { return {HLRBRep_SurfaceTool::LastVParameter(theSurf), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> HLRBRep_SurfaceTool_nb_u_intervals(Standard_Address S, int32_t Sh) {
-    try { return {HLRBRep_SurfaceTool::NbUIntervals(S, static_cast<GeomAbs_Shape>(Sh)), nullptr}; }
+extern "C" OcctResult<int32_t> HLRBRep_SurfaceTool_nb_u_intervals(const HLRBRep_Surface* theSurf, int32_t theSh) {
+    try { return {HLRBRep_SurfaceTool::NbUIntervals(theSurf, static_cast<GeomAbs_Shape>(theSh)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> HLRBRep_SurfaceTool_nb_v_intervals(Standard_Address S, int32_t Sh) {
-    try { return {HLRBRep_SurfaceTool::NbVIntervals(S, static_cast<GeomAbs_Shape>(Sh)), nullptr}; }
+extern "C" OcctResult<int32_t> HLRBRep_SurfaceTool_nb_v_intervals(const HLRBRep_Surface* theSurf, int32_t theSh) {
+    try { return {HLRBRep_SurfaceTool::NbVIntervals(theSurf, static_cast<GeomAbs_Shape>(theSh)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRBRep_SurfaceTool_u_intervals(Standard_Address S, TColStd_Array1OfReal* T, int32_t Sh) {
-    try { HLRBRep_SurfaceTool::UIntervals(S, *T, static_cast<GeomAbs_Shape>(Sh)); return nullptr; }
+extern "C" const char* HLRBRep_SurfaceTool_u_intervals(const HLRBRep_Surface* theSurf, NCollection_Array1_double* theT, int32_t theSh) {
+    try { HLRBRep_SurfaceTool::UIntervals(theSurf, *theT, static_cast<GeomAbs_Shape>(theSh)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_SurfaceTool_v_intervals(Standard_Address S, TColStd_Array1OfReal* T, int32_t Sh) {
-    try { HLRBRep_SurfaceTool::VIntervals(S, *T, static_cast<GeomAbs_Shape>(Sh)); return nullptr; }
+extern "C" const char* HLRBRep_SurfaceTool_v_intervals(const HLRBRep_Surface* theSurf, NCollection_Array1_double* theT, int32_t theSh) {
+    try { HLRBRep_SurfaceTool::VIntervals(theSurf, *theT, static_cast<GeomAbs_Shape>(theSh)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(Adaptor3d_Surface)*> HLRBRep_SurfaceTool_u_trim(Standard_Address S, double First, double Last, double Tol) {
-    try { return {new Handle(Adaptor3d_Surface)(HLRBRep_SurfaceTool::UTrim(S, First, Last, Tol)), nullptr}; }
+extern "C" OcctResult<Handle(Adaptor3d_Surface)*> HLRBRep_SurfaceTool_u_trim(const HLRBRep_Surface* theSurf, double theFirst, double theLast, double theTol) {
+    try { return {new Handle(Adaptor3d_Surface)(HLRBRep_SurfaceTool::UTrim(theSurf, theFirst, theLast, theTol)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Adaptor3d_Surface)*> HLRBRep_SurfaceTool_v_trim(Standard_Address S, double First, double Last, double Tol) {
-    try { return {new Handle(Adaptor3d_Surface)(HLRBRep_SurfaceTool::VTrim(S, First, Last, Tol)), nullptr}; }
+extern "C" OcctResult<Handle(Adaptor3d_Surface)*> HLRBRep_SurfaceTool_v_trim(const HLRBRep_Surface* theSurf, double theFirst, double theLast, double theTol) {
+    try { return {new Handle(Adaptor3d_Surface)(HLRBRep_SurfaceTool::VTrim(theSurf, theFirst, theLast, theTol)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> HLRBRep_SurfaceTool_is_u_closed(Standard_Address S) {
-    try { return {HLRBRep_SurfaceTool::IsUClosed(S), nullptr}; }
+extern "C" OcctResult<bool> HLRBRep_SurfaceTool_is_u_closed(const HLRBRep_Surface* theSurf) {
+    try { return {HLRBRep_SurfaceTool::IsUClosed(theSurf), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> HLRBRep_SurfaceTool_is_v_closed(Standard_Address S) {
-    try { return {HLRBRep_SurfaceTool::IsVClosed(S), nullptr}; }
+extern "C" OcctResult<bool> HLRBRep_SurfaceTool_is_v_closed(const HLRBRep_Surface* theSurf) {
+    try { return {HLRBRep_SurfaceTool::IsVClosed(theSurf), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> HLRBRep_SurfaceTool_is_u_periodic(Standard_Address S) {
-    try { return {HLRBRep_SurfaceTool::IsUPeriodic(S), nullptr}; }
+extern "C" OcctResult<bool> HLRBRep_SurfaceTool_is_u_periodic(const HLRBRep_Surface* theSurf) {
+    try { return {HLRBRep_SurfaceTool::IsUPeriodic(theSurf), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> HLRBRep_SurfaceTool_u_period(Standard_Address S) {
-    try { return {HLRBRep_SurfaceTool::UPeriod(S), nullptr}; }
+extern "C" OcctResult<double> HLRBRep_SurfaceTool_u_period(const HLRBRep_Surface* theSurf) {
+    try { return {HLRBRep_SurfaceTool::UPeriod(theSurf), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> HLRBRep_SurfaceTool_is_v_periodic(Standard_Address S) {
-    try { return {HLRBRep_SurfaceTool::IsVPeriodic(S), nullptr}; }
+extern "C" OcctResult<bool> HLRBRep_SurfaceTool_is_v_periodic(const HLRBRep_Surface* theSurf) {
+    try { return {HLRBRep_SurfaceTool::IsVPeriodic(theSurf), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> HLRBRep_SurfaceTool_v_period(Standard_Address S) {
-    try { return {HLRBRep_SurfaceTool::VPeriod(S), nullptr}; }
+extern "C" OcctResult<double> HLRBRep_SurfaceTool_v_period(const HLRBRep_Surface* theSurf) {
+    try { return {HLRBRep_SurfaceTool::VPeriod(theSurf), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Pnt*> HLRBRep_SurfaceTool_value(Standard_Address S, double u, double v) {
-    try { return {new gp_Pnt(HLRBRep_SurfaceTool::Value(S, u, v)), nullptr}; }
+extern "C" OcctResult<gp_Pnt*> HLRBRep_SurfaceTool_value(const HLRBRep_Surface* theSurf, double theU, double theV) {
+    try { return {new gp_Pnt(HLRBRep_SurfaceTool::Value(theSurf, theU, theV)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRBRep_SurfaceTool_d0(Standard_Address S, double u, double v, gp_Pnt* P) {
-    try { HLRBRep_SurfaceTool::D0(S, u, v, *P); return nullptr; }
+extern "C" const char* HLRBRep_SurfaceTool_d0(const HLRBRep_Surface* theSurf, double theU, double theV, gp_Pnt* theP) {
+    try { HLRBRep_SurfaceTool::D0(theSurf, theU, theV, *theP); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_SurfaceTool_d1(Standard_Address S, double u, double v, gp_Pnt* P, gp_Vec* D1u, gp_Vec* D1v) {
-    try { HLRBRep_SurfaceTool::D1(S, u, v, *P, *D1u, *D1v); return nullptr; }
+extern "C" const char* HLRBRep_SurfaceTool_d1(const HLRBRep_Surface* theSurf, double theU, double theV, gp_Pnt* theP, gp_Vec* theD1U, gp_Vec* theD1V) {
+    try { HLRBRep_SurfaceTool::D1(theSurf, theU, theV, *theP, *theD1U, *theD1V); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_SurfaceTool_d2(Standard_Address S, double u, double v, gp_Pnt* P, gp_Vec* D1U, gp_Vec* D1V, gp_Vec* D2U, gp_Vec* D2V, gp_Vec* D2UV) {
-    try { HLRBRep_SurfaceTool::D2(S, u, v, *P, *D1U, *D1V, *D2U, *D2V, *D2UV); return nullptr; }
+extern "C" const char* HLRBRep_SurfaceTool_d2(const HLRBRep_Surface* theSurf, double theU, double theV, gp_Pnt* theP, gp_Vec* theD1U, gp_Vec* theD1V, gp_Vec* theD2U, gp_Vec* theD2V, gp_Vec* theD2UV) {
+    try { HLRBRep_SurfaceTool::D2(theSurf, theU, theV, *theP, *theD1U, *theD1V, *theD2U, *theD2V, *theD2UV); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_SurfaceTool_d3(Standard_Address S, double u, double v, gp_Pnt* P, gp_Vec* D1U, gp_Vec* D1V, gp_Vec* D2U, gp_Vec* D2V, gp_Vec* D2UV, gp_Vec* D3U, gp_Vec* D3V, gp_Vec* D3UUV, gp_Vec* D3UVV) {
-    try { HLRBRep_SurfaceTool::D3(S, u, v, *P, *D1U, *D1V, *D2U, *D2V, *D2UV, *D3U, *D3V, *D3UUV, *D3UVV); return nullptr; }
+extern "C" const char* HLRBRep_SurfaceTool_d3(const HLRBRep_Surface* theSurf, double theU, double theV, gp_Pnt* theP, gp_Vec* theD1U, gp_Vec* theD1V, gp_Vec* theD2U, gp_Vec* theD2V, gp_Vec* theD2UV, gp_Vec* theD3U, gp_Vec* theD3V, gp_Vec* theD3UUV, gp_Vec* theD3UVV) {
+    try { HLRBRep_SurfaceTool::D3(theSurf, theU, theV, *theP, *theD1U, *theD1V, *theD2U, *theD2V, *theD2UV, *theD3U, *theD3V, *theD3UUV, *theD3UVV); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Vec*> HLRBRep_SurfaceTool_dn(Standard_Address S, double u, double v, int32_t Nu, int32_t Nv) {
-    try { return {new gp_Vec(HLRBRep_SurfaceTool::DN(S, u, v, Nu, Nv)), nullptr}; }
+extern "C" OcctResult<gp_Vec*> HLRBRep_SurfaceTool_dn(const HLRBRep_Surface* theSurf, double theU, double theV, int32_t theNu, int32_t theNv) {
+    try { return {new gp_Vec(HLRBRep_SurfaceTool::DN(theSurf, theU, theV, theNu, theNv)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> HLRBRep_SurfaceTool_u_resolution(Standard_Address S, double R3d) {
-    try { return {HLRBRep_SurfaceTool::UResolution(S, R3d), nullptr}; }
+extern "C" OcctResult<double> HLRBRep_SurfaceTool_u_resolution(const HLRBRep_Surface* theSurf, double theR3d) {
+    try { return {HLRBRep_SurfaceTool::UResolution(theSurf, theR3d), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> HLRBRep_SurfaceTool_v_resolution(Standard_Address S, double R3d) {
-    try { return {HLRBRep_SurfaceTool::VResolution(S, R3d), nullptr}; }
+extern "C" OcctResult<double> HLRBRep_SurfaceTool_v_resolution(const HLRBRep_Surface* theSurf, double theR3d) {
+    try { return {HLRBRep_SurfaceTool::VResolution(theSurf, theR3d), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> HLRBRep_SurfaceTool_get_type(Standard_Address S) {
-    try { return {static_cast<int32_t>(HLRBRep_SurfaceTool::GetType(S)), nullptr}; }
+extern "C" OcctResult<int32_t> HLRBRep_SurfaceTool_get_type(const HLRBRep_Surface* theSurf) {
+    try { return {static_cast<int32_t>(HLRBRep_SurfaceTool::GetType(theSurf)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Pln*> HLRBRep_SurfaceTool_plane(Standard_Address S) {
-    try { return {new gp_Pln(HLRBRep_SurfaceTool::Plane(S)), nullptr}; }
+extern "C" OcctResult<gp_Pln*> HLRBRep_SurfaceTool_plane(const HLRBRep_Surface* theSurf) {
+    try { return {new gp_Pln(HLRBRep_SurfaceTool::Plane(theSurf)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Cylinder*> HLRBRep_SurfaceTool_cylinder(Standard_Address S) {
-    try { return {new gp_Cylinder(HLRBRep_SurfaceTool::Cylinder(S)), nullptr}; }
+extern "C" OcctResult<gp_Cylinder*> HLRBRep_SurfaceTool_cylinder(const HLRBRep_Surface* theSurf) {
+    try { return {new gp_Cylinder(HLRBRep_SurfaceTool::Cylinder(theSurf)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Cone*> HLRBRep_SurfaceTool_cone(Standard_Address S) {
-    try { return {new gp_Cone(HLRBRep_SurfaceTool::Cone(S)), nullptr}; }
+extern "C" OcctResult<gp_Cone*> HLRBRep_SurfaceTool_cone(const HLRBRep_Surface* theSurf) {
+    try { return {new gp_Cone(HLRBRep_SurfaceTool::Cone(theSurf)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Torus*> HLRBRep_SurfaceTool_torus(Standard_Address S) {
-    try { return {new gp_Torus(HLRBRep_SurfaceTool::Torus(S)), nullptr}; }
+extern "C" OcctResult<gp_Torus*> HLRBRep_SurfaceTool_torus(const HLRBRep_Surface* theSurf) {
+    try { return {new gp_Torus(HLRBRep_SurfaceTool::Torus(theSurf)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Sphere*> HLRBRep_SurfaceTool_sphere(Standard_Address S) {
-    try { return {new gp_Sphere(HLRBRep_SurfaceTool::Sphere(S)), nullptr}; }
+extern "C" OcctResult<gp_Sphere*> HLRBRep_SurfaceTool_sphere(const HLRBRep_Surface* theSurf) {
+    try { return {new gp_Sphere(HLRBRep_SurfaceTool::Sphere(theSurf)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Geom_BezierSurface)*> HLRBRep_SurfaceTool_bezier(Standard_Address S) {
-    try { return {new Handle(Geom_BezierSurface)(HLRBRep_SurfaceTool::Bezier(S)), nullptr}; }
+extern "C" OcctResult<Handle(Geom_BezierSurface)*> HLRBRep_SurfaceTool_bezier(const HLRBRep_Surface* theSurf) {
+    try { return {new Handle(Geom_BezierSurface)(HLRBRep_SurfaceTool::Bezier(theSurf)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Geom_BSplineSurface)*> HLRBRep_SurfaceTool_b_spline(Standard_Address S) {
-    try { return {new Handle(Geom_BSplineSurface)(HLRBRep_SurfaceTool::BSpline(S)), nullptr}; }
+extern "C" OcctResult<Handle(Geom_BSplineSurface)*> HLRBRep_SurfaceTool_b_spline(const HLRBRep_Surface* theSurf) {
+    try { return {new Handle(Geom_BSplineSurface)(HLRBRep_SurfaceTool::BSpline(theSurf)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Ax1*> HLRBRep_SurfaceTool_axe_of_revolution(Standard_Address S) {
-    try { return {new gp_Ax1(HLRBRep_SurfaceTool::AxeOfRevolution(S)), nullptr}; }
+extern "C" OcctResult<gp_Ax1*> HLRBRep_SurfaceTool_axe_of_revolution(const HLRBRep_Surface* theSurf) {
+    try { return {new gp_Ax1(HLRBRep_SurfaceTool::AxeOfRevolution(theSurf)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Dir*> HLRBRep_SurfaceTool_direction(Standard_Address S) {
-    try { return {new gp_Dir(HLRBRep_SurfaceTool::Direction(S)), nullptr}; }
+extern "C" OcctResult<gp_Dir*> HLRBRep_SurfaceTool_direction(const HLRBRep_Surface* theSurf) {
+    try { return {new gp_Dir(HLRBRep_SurfaceTool::Direction(theSurf)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Adaptor3d_Curve)*> HLRBRep_SurfaceTool_basis_curve(Standard_Address S) {
-    try { return {new Handle(Adaptor3d_Curve)(HLRBRep_SurfaceTool::BasisCurve(S)), nullptr}; }
+extern "C" OcctResult<Handle(Adaptor3d_Curve)*> HLRBRep_SurfaceTool_basis_curve(const HLRBRep_Surface* theSurf) {
+    try { return {new Handle(Adaptor3d_Curve)(HLRBRep_SurfaceTool::BasisCurve(theSurf)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Adaptor3d_Surface)*> HLRBRep_SurfaceTool_basis_surface(Standard_Address S) {
-    try { return {new Handle(Adaptor3d_Surface)(HLRBRep_SurfaceTool::BasisSurface(S)), nullptr}; }
+extern "C" OcctResult<Handle(Adaptor3d_Surface)*> HLRBRep_SurfaceTool_basis_surface(const HLRBRep_Surface* theSurf) {
+    try { return {new Handle(Adaptor3d_Surface)(HLRBRep_SurfaceTool::BasisSurface(theSurf)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> HLRBRep_SurfaceTool_offset_value(Standard_Address S) {
-    try { return {HLRBRep_SurfaceTool::OffsetValue(S), nullptr}; }
+extern "C" OcctResult<double> HLRBRep_SurfaceTool_offset_value(const HLRBRep_Surface* theSurf) {
+    try { return {HLRBRep_SurfaceTool::OffsetValue(theSurf), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> HLRBRep_SurfaceTool_nb_samples_u_address(Standard_Address S) {
-    try { return {HLRBRep_SurfaceTool::NbSamplesU(S), nullptr}; }
+extern "C" OcctResult<int32_t> HLRBRep_SurfaceTool_nb_samples_u_surfaceptr(const HLRBRep_Surface* theSurf) {
+    try { return {HLRBRep_SurfaceTool::NbSamplesU(theSurf), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> HLRBRep_SurfaceTool_nb_samples_v_address(Standard_Address S) {
-    try { return {HLRBRep_SurfaceTool::NbSamplesV(S), nullptr}; }
+extern "C" OcctResult<int32_t> HLRBRep_SurfaceTool_nb_samples_v_surfaceptr(const HLRBRep_Surface* theSurf) {
+    try { return {HLRBRep_SurfaceTool::NbSamplesV(theSurf), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> HLRBRep_SurfaceTool_nb_samples_u_address_real2(Standard_Address S, double u1, double u2) {
-    try { return {HLRBRep_SurfaceTool::NbSamplesU(S, u1, u2), nullptr}; }
+extern "C" OcctResult<int32_t> HLRBRep_SurfaceTool_nb_samples_u_surfaceptr_real2(const HLRBRep_Surface* theSurf, double theU1, double theU2) {
+    try { return {HLRBRep_SurfaceTool::NbSamplesU(theSurf, theU1, theU2), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> HLRBRep_SurfaceTool_nb_samples_v_address_real2(Standard_Address S, double v1, double v2) {
-    try { return {HLRBRep_SurfaceTool::NbSamplesV(S, v1, v2), nullptr}; }
+extern "C" OcctResult<int32_t> HLRBRep_SurfaceTool_nb_samples_v_surfaceptr_real2(const HLRBRep_Surface* theSurf, double theV1, double theV2) {
+    try { return {HLRBRep_SurfaceTool::NbSamplesV(theSurf, theV1, theV2), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" void HLRBRep_SurfaceTool_destructor(HLRBRep_SurfaceTool* self_) { delete self_; }
@@ -6907,7 +6094,7 @@ extern "C" void HLRBRep_SurfaceTool_destructor(HLRBRep_SurfaceTool* self_) { del
 // HLRBRep_TheCSFunctionOfInterCSurf wrappers
 // ========================
 
-extern "C" OcctResult<HLRBRep_TheCSFunctionOfInterCSurf*> HLRBRep_TheCSFunctionOfInterCSurf_ctor_address_lin(Standard_Address const* S, gp_Lin const* C) {
+extern "C" OcctResult<HLRBRep_TheCSFunctionOfInterCSurf*> HLRBRep_TheCSFunctionOfInterCSurf_ctor_surfaceptr_lin(HLRBRep_Surface* const* S, gp_Lin const* C) {
     try { return {new HLRBRep_TheCSFunctionOfInterCSurf(*S, *C), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6939,7 +6126,7 @@ extern "C" OcctResult<double> HLRBRep_TheCSFunctionOfInterCSurf_root(const HLRBR
     try { return {self_->Root(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Standard_Address const*> HLRBRep_TheCSFunctionOfInterCSurf_auxillar_surface(const HLRBRep_TheCSFunctionOfInterCSurf* self_) {
+extern "C" OcctResult<HLRBRep_Surface* const*> HLRBRep_TheCSFunctionOfInterCSurf_auxillar_surface(const HLRBRep_TheCSFunctionOfInterCSurf* self_) {
     try { return {&(self_->AuxillarSurface()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6958,32 +6145,10 @@ extern "C" OcctResult<int32_t> HLRBRep_TheCSFunctionOfInterCSurf_inherited_GetSt
 extern "C" void HLRBRep_TheCSFunctionOfInterCSurf_destructor(HLRBRep_TheCSFunctionOfInterCSurf* self_) { delete self_; }
 
 // ========================
-// HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter wrappers
-// ========================
-
-extern "C" OcctResult<HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter*> HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_ctor() {
-    try { return {new HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_locate_pnt2d_address_int_poncurv2d(gp_Pnt2d const* P, Standard_Address const* C, int32_t NbU, Extrema_POnCurv2d* Papp) {
-    try { HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter::Locate(*P, *C, NbU, *Papp); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_locate_pnt2d_address_int_real2_poncurv2d(gp_Pnt2d const* P, Standard_Address const* C, int32_t NbU, double Umin, double Usup, Extrema_POnCurv2d* Papp) {
-    try { HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter::Locate(*P, *C, NbU, Umin, Usup, *Papp); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_locate_address2_int2_poncurv2d2(Standard_Address const* C1, Standard_Address const* C2, int32_t NbU, int32_t NbV, Extrema_POnCurv2d* Papp1, Extrema_POnCurv2d* Papp2) {
-    try { HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter::Locate(*C1, *C2, NbU, NbV, *Papp1, *Papp2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_destructor(HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter* self_) { delete self_; }
-
-// ========================
 // HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter wrappers
 // ========================
 
-extern "C" OcctResult<HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter*> HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_ctor_address2(Standard_Address const* curve1, Standard_Address const* curve2) {
+extern "C" OcctResult<HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter*> HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_ctor_voidptr2(void* const* curve1, void* const* curve2) {
     try { return {new HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter(*curve1, *curve2), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7067,43 +6232,43 @@ extern "C" OcctResult<HLRBRep_TheIntConicCurveOfCInter*> HLRBRep_TheIntConicCurv
     try { return {new HLRBRep_TheIntConicCurveOfCInter(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRBRep_TheIntConicCurveOfCInter*> HLRBRep_TheIntConicCurveOfCInter_ctor_lin2d_domain_address_domain_real2(gp_Lin2d const* L, IntRes2d_Domain const* D1, Standard_Address const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
+extern "C" OcctResult<HLRBRep_TheIntConicCurveOfCInter*> HLRBRep_TheIntConicCurveOfCInter_ctor_lin2d_domain_voidptr_domain_real2(gp_Lin2d const* L, IntRes2d_Domain const* D1, void* const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
     try { return {new HLRBRep_TheIntConicCurveOfCInter(*L, *D1, *PCurve, *D2, TolConf, Tol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRBRep_TheIntConicCurveOfCInter*> HLRBRep_TheIntConicCurveOfCInter_ctor_circ2d_domain_address_domain_real2(gp_Circ2d const* C, IntRes2d_Domain const* D1, Standard_Address const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
+extern "C" OcctResult<HLRBRep_TheIntConicCurveOfCInter*> HLRBRep_TheIntConicCurveOfCInter_ctor_circ2d_domain_voidptr_domain_real2(gp_Circ2d const* C, IntRes2d_Domain const* D1, void* const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
     try { return {new HLRBRep_TheIntConicCurveOfCInter(*C, *D1, *PCurve, *D2, TolConf, Tol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRBRep_TheIntConicCurveOfCInter*> HLRBRep_TheIntConicCurveOfCInter_ctor_elips2d_domain_address_domain_real2(gp_Elips2d const* E, IntRes2d_Domain const* D1, Standard_Address const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
+extern "C" OcctResult<HLRBRep_TheIntConicCurveOfCInter*> HLRBRep_TheIntConicCurveOfCInter_ctor_elips2d_domain_voidptr_domain_real2(gp_Elips2d const* E, IntRes2d_Domain const* D1, void* const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
     try { return {new HLRBRep_TheIntConicCurveOfCInter(*E, *D1, *PCurve, *D2, TolConf, Tol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRBRep_TheIntConicCurveOfCInter*> HLRBRep_TheIntConicCurveOfCInter_ctor_parab2d_domain_address_domain_real2(gp_Parab2d const* Prb, IntRes2d_Domain const* D1, Standard_Address const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
+extern "C" OcctResult<HLRBRep_TheIntConicCurveOfCInter*> HLRBRep_TheIntConicCurveOfCInter_ctor_parab2d_domain_voidptr_domain_real2(gp_Parab2d const* Prb, IntRes2d_Domain const* D1, void* const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
     try { return {new HLRBRep_TheIntConicCurveOfCInter(*Prb, *D1, *PCurve, *D2, TolConf, Tol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRBRep_TheIntConicCurveOfCInter*> HLRBRep_TheIntConicCurveOfCInter_ctor_hypr2d_domain_address_domain_real2(gp_Hypr2d const* H, IntRes2d_Domain const* D1, Standard_Address const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
+extern "C" OcctResult<HLRBRep_TheIntConicCurveOfCInter*> HLRBRep_TheIntConicCurveOfCInter_ctor_hypr2d_domain_voidptr_domain_real2(gp_Hypr2d const* H, IntRes2d_Domain const* D1, void* const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
     try { return {new HLRBRep_TheIntConicCurveOfCInter(*H, *D1, *PCurve, *D2, TolConf, Tol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRBRep_TheIntConicCurveOfCInter_perform_lin2d_domain_address_domain_real2(HLRBRep_TheIntConicCurveOfCInter* self_, gp_Lin2d const* L, IntRes2d_Domain const* D1, Standard_Address const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
+extern "C" const char* HLRBRep_TheIntConicCurveOfCInter_perform_lin2d_domain_voidptr_domain_real2(HLRBRep_TheIntConicCurveOfCInter* self_, gp_Lin2d const* L, IntRes2d_Domain const* D1, void* const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
     try { self_->Perform(*L, *D1, *PCurve, *D2, TolConf, Tol); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_TheIntConicCurveOfCInter_perform_circ2d_domain_address_domain_real2(HLRBRep_TheIntConicCurveOfCInter* self_, gp_Circ2d const* C, IntRes2d_Domain const* D1, Standard_Address const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
+extern "C" const char* HLRBRep_TheIntConicCurveOfCInter_perform_circ2d_domain_voidptr_domain_real2(HLRBRep_TheIntConicCurveOfCInter* self_, gp_Circ2d const* C, IntRes2d_Domain const* D1, void* const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
     try { self_->Perform(*C, *D1, *PCurve, *D2, TolConf, Tol); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_TheIntConicCurveOfCInter_perform_elips2d_domain_address_domain_real2(HLRBRep_TheIntConicCurveOfCInter* self_, gp_Elips2d const* E, IntRes2d_Domain const* D1, Standard_Address const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
+extern "C" const char* HLRBRep_TheIntConicCurveOfCInter_perform_elips2d_domain_voidptr_domain_real2(HLRBRep_TheIntConicCurveOfCInter* self_, gp_Elips2d const* E, IntRes2d_Domain const* D1, void* const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
     try { self_->Perform(*E, *D1, *PCurve, *D2, TolConf, Tol); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_TheIntConicCurveOfCInter_perform_parab2d_domain_address_domain_real2(HLRBRep_TheIntConicCurveOfCInter* self_, gp_Parab2d const* Prb, IntRes2d_Domain const* D1, Standard_Address const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
+extern "C" const char* HLRBRep_TheIntConicCurveOfCInter_perform_parab2d_domain_voidptr_domain_real2(HLRBRep_TheIntConicCurveOfCInter* self_, gp_Parab2d const* Prb, IntRes2d_Domain const* D1, void* const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
     try { self_->Perform(*Prb, *D1, *PCurve, *D2, TolConf, Tol); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_TheIntConicCurveOfCInter_perform_hypr2d_domain_address_domain_real2(HLRBRep_TheIntConicCurveOfCInter* self_, gp_Hypr2d const* H, IntRes2d_Domain const* D1, Standard_Address const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
+extern "C" const char* HLRBRep_TheIntConicCurveOfCInter_perform_hypr2d_domain_voidptr_domain_real2(HLRBRep_TheIntConicCurveOfCInter* self_, gp_Hypr2d const* H, IntRes2d_Domain const* D1, void* const* PCurve, IntRes2d_Domain const* D2, double TolConf, double Tol) {
     try { self_->Perform(*H, *D1, *PCurve, *D2, TolConf, Tol); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7147,11 +6312,11 @@ extern "C" OcctResult<HLRBRep_TheIntPCurvePCurveOfCInter*> HLRBRep_TheIntPCurveP
     try { return {new HLRBRep_TheIntPCurvePCurveOfCInter(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRBRep_TheIntPCurvePCurveOfCInter_perform_address_domain_address_domain_real2(HLRBRep_TheIntPCurvePCurveOfCInter* self_, Standard_Address const* Curve1, IntRes2d_Domain const* Domain1, Standard_Address const* Curve2, IntRes2d_Domain const* Domain2, double TolConf, double Tol) {
+extern "C" const char* HLRBRep_TheIntPCurvePCurveOfCInter_perform_voidptr_domain_voidptr_domain_real2(HLRBRep_TheIntPCurvePCurveOfCInter* self_, void* const* Curve1, IntRes2d_Domain const* Domain1, void* const* Curve2, IntRes2d_Domain const* Domain2, double TolConf, double Tol) {
     try { self_->Perform(*Curve1, *Domain1, *Curve2, *Domain2, TolConf, Tol); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_TheIntPCurvePCurveOfCInter_perform_address_domain_real2(HLRBRep_TheIntPCurvePCurveOfCInter* self_, Standard_Address const* Curve1, IntRes2d_Domain const* Domain1, double TolConf, double Tol) {
+extern "C" const char* HLRBRep_TheIntPCurvePCurveOfCInter_perform_voidptr_domain_real2(HLRBRep_TheIntPCurvePCurveOfCInter* self_, void* const* Curve1, IntRes2d_Domain const* Domain1, double TolConf, double Tol) {
     try { self_->Perform(*Curve1, *Domain1, TolConf, Tol); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7211,7 +6376,7 @@ extern "C" OcctResult<HLRBRep_TheInterferenceOfInterCSurf*> HLRBRep_TheInterfere
     try { return {new HLRBRep_TheInterferenceOfInterCSurf(*theLin, *thePolyh), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRBRep_TheInterferenceOfInterCSurf*> HLRBRep_TheInterferenceOfInterCSurf_ctor_array1oflin_thepolyhedronofintercsurf(Intf_Array1OfLin const* theLins, HLRBRep_ThePolyhedronOfInterCSurf const* thePolyh) {
+extern "C" OcctResult<HLRBRep_TheInterferenceOfInterCSurf*> HLRBRep_TheInterferenceOfInterCSurf_ctor_arr1_lin_thepolyhedronofintercsurf(NCollection_Array1_gp_Lin const* theLins, HLRBRep_ThePolyhedronOfInterCSurf const* thePolyh) {
     try { return {new HLRBRep_TheInterferenceOfInterCSurf(*theLins, *thePolyh), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7223,7 +6388,7 @@ extern "C" OcctResult<HLRBRep_TheInterferenceOfInterCSurf*> HLRBRep_TheInterfere
     try { return {new HLRBRep_TheInterferenceOfInterCSurf(*theLin, *thePolyh, *theBoundSB), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRBRep_TheInterferenceOfInterCSurf*> HLRBRep_TheInterferenceOfInterCSurf_ctor_array1oflin_thepolyhedronofintercsurf_boundsortbox(Intf_Array1OfLin const* theLins, HLRBRep_ThePolyhedronOfInterCSurf const* thePolyh, Bnd_BoundSortBox* theBoundSB) {
+extern "C" OcctResult<HLRBRep_TheInterferenceOfInterCSurf*> HLRBRep_TheInterferenceOfInterCSurf_ctor_arr1_lin_thepolyhedronofintercsurf_boundsortbox(NCollection_Array1_gp_Lin const* theLins, HLRBRep_ThePolyhedronOfInterCSurf const* thePolyh, Bnd_BoundSortBox* theBoundSB) {
     try { return {new HLRBRep_TheInterferenceOfInterCSurf(*theLins, *thePolyh, *theBoundSB), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7235,7 +6400,7 @@ extern "C" const char* HLRBRep_TheInterferenceOfInterCSurf_perform_lin_thepolyhe
     try { self_->Perform(*theLin, *thePolyh); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_TheInterferenceOfInterCSurf_perform_array1oflin_thepolyhedronofintercsurf(HLRBRep_TheInterferenceOfInterCSurf* self_, Intf_Array1OfLin const* theLins, HLRBRep_ThePolyhedronOfInterCSurf const* thePolyh) {
+extern "C" const char* HLRBRep_TheInterferenceOfInterCSurf_perform_arr1_lin_thepolyhedronofintercsurf(HLRBRep_TheInterferenceOfInterCSurf* self_, NCollection_Array1_gp_Lin const* theLins, HLRBRep_ThePolyhedronOfInterCSurf const* thePolyh) {
     try { self_->Perform(*theLins, *thePolyh); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7247,7 +6412,7 @@ extern "C" const char* HLRBRep_TheInterferenceOfInterCSurf_perform_lin_thepolyhe
     try { self_->Perform(*theLin, *thePolyh, *theBoundSB); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HLRBRep_TheInterferenceOfInterCSurf_perform_array1oflin_thepolyhedronofintercsurf_boundsortbox(HLRBRep_TheInterferenceOfInterCSurf* self_, Intf_Array1OfLin const* theLins, HLRBRep_ThePolyhedronOfInterCSurf const* thePolyh, Bnd_BoundSortBox* theBoundSB) {
+extern "C" const char* HLRBRep_TheInterferenceOfInterCSurf_perform_arr1_lin_thepolyhedronofintercsurf_boundsortbox(HLRBRep_TheInterferenceOfInterCSurf* self_, NCollection_Array1_gp_Lin const* theLins, HLRBRep_ThePolyhedronOfInterCSurf const* thePolyh, Bnd_BoundSortBox* theBoundSB) {
     try { self_->Perform(*theLins, *thePolyh, *theBoundSB); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7311,23 +6476,23 @@ extern "C" OcctResult<HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter*> HLRBRep
     try { return {new HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter*> HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_ctor_iconictool_domain_address_domain_real2(IntCurve_IConicTool const* ITool, IntRes2d_Domain const* Dom1, Standard_Address const* PCurve, IntRes2d_Domain const* Dom2, double TolConf, double Tol) {
+extern "C" OcctResult<HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter*> HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_ctor_iconictool_domain_voidptr_domain_real2(IntCurve_IConicTool const* ITool, IntRes2d_Domain const* Dom1, void* const* PCurve, IntRes2d_Domain const* Dom2, double TolConf, double Tol) {
     try { return {new HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter(*ITool, *Dom1, *PCurve, *Dom2, TolConf, Tol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_perform(HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter* self_, IntCurve_IConicTool const* ITool, IntRes2d_Domain const* Dom1, Standard_Address const* PCurve, IntRes2d_Domain const* Dom2, double TolConf, double Tol) {
+extern "C" const char* HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_perform(HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter* self_, IntCurve_IConicTool const* ITool, IntRes2d_Domain const* Dom1, void* const* PCurve, IntRes2d_Domain const* Dom2, double TolConf, double Tol) {
     try { self_->Perform(*ITool, *Dom1, *PCurve, *Dom2, TolConf, Tol); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<double> HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_find_u(const HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter* self_, double parameter, gp_Pnt2d* point, Standard_Address const* TheParCurev, IntCurve_IConicTool const* IntCurve_IConicTool) {
+extern "C" OcctResult<double> HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_find_u(const HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter* self_, double parameter, gp_Pnt2d* point, void* const* TheParCurev, IntCurve_IConicTool const* IntCurve_IConicTool) {
     try { return {self_->FindU(parameter, *point, *TheParCurev, *IntCurve_IConicTool), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_find_v(const HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter* self_, double parameter, gp_Pnt2d* point, IntCurve_IConicTool const* IntCurve_IConicTool, Standard_Address const* ParCurve, IntRes2d_Domain const* TheParCurveDomain, double V0, double V1, double Tolerance) {
+extern "C" OcctResult<double> HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_find_v(const HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter* self_, double parameter, gp_Pnt2d* point, IntCurve_IConicTool const* IntCurve_IConicTool, void* const* ParCurve, IntRes2d_Domain const* TheParCurveDomain, double V0, double V1, double Tolerance) {
     try { return {self_->FindV(parameter, *point, *IntCurve_IConicTool, *ParCurve, *TheParCurveDomain, V0, V1, Tolerance), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_and_domaine_objet1_intersections(const HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter* self_, IntCurve_IConicTool const* IntCurve_IConicTool, Standard_Address const* TheParCurve, IntRes2d_Domain const* TheImpCurveDomain, IntRes2d_Domain const* TheParCurveDomain, int32_t* NbResultats, TColStd_Array1OfReal* Inter2_And_Domain2, TColStd_Array1OfReal* Inter1, TColStd_Array1OfReal* Resultat1, TColStd_Array1OfReal* Resultat2, double EpsNul) {
+extern "C" const char* HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_and_domaine_objet1_intersections(const HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter* self_, IntCurve_IConicTool const* IntCurve_IConicTool, void* const* TheParCurve, IntRes2d_Domain const* TheImpCurveDomain, IntRes2d_Domain const* TheParCurveDomain, int32_t* NbResultats, NCollection_Array1_double* Inter2_And_Domain2, NCollection_Array1_double* Inter1, NCollection_Array1_double* Resultat1, NCollection_Array1_double* Resultat2, double EpsNul) {
     try { self_->And_Domaine_Objet1_Intersections(*IntCurve_IConicTool, *TheParCurve, *TheImpCurveDomain, *TheParCurveDomain, *NbResultats, *Inter2_And_Domain2, *Inter1, *Resultat1, *Resultat2, EpsNul); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7364,56 +6529,14 @@ extern "C" const char* HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherite
 extern "C" void HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_destructor(HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter* self_) { delete self_; }
 
 // ========================
-// HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter wrappers
-// ========================
-
-extern "C" OcctResult<HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter*> HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_ctor() {
-    try { return {new HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter*> HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_ctor_pnt2d_address_real2(gp_Pnt2d const* P, Standard_Address const* C, double U0, double TolU) {
-    try { return {new HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter(*P, *C, U0, TolU), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter*> HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_ctor_pnt2d_address_real4(gp_Pnt2d const* P, Standard_Address const* C, double U0, double Umin, double Usup, double TolU) {
-    try { return {new HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter(*P, *C, U0, Umin, Usup, TolU), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_initialize(HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter* self_, Standard_Address const* C, double Umin, double Usup, double TolU) {
-    try { self_->Initialize(*C, Umin, Usup, TolU); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_perform(HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter* self_, gp_Pnt2d const* P, double U0) {
-    try { self_->Perform(*P, U0); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_is_done(const HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter* self_) {
-    try { return {self_->IsDone(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_square_distance(const HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter* self_) {
-    try { return {self_->SquareDistance(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_is_min(const HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter* self_) {
-    try { return {self_->IsMin(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Extrema_POnCurv2d const*> HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_point(const HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter* self_) {
-    try { return {&(self_->Point()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" void HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_destructor(HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter* self_) { delete self_; }
-
-// ========================
 // HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter wrappers
 // ========================
 
-extern "C" OcctResult<HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter*> HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_ctor_address_int_domain_real(Standard_Address const* Curve, int32_t NbPnt, IntRes2d_Domain const* Domain, double Tol) {
+extern "C" OcctResult<HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter*> HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_ctor_voidptr_int_domain_real(void* const* Curve, int32_t NbPnt, IntRes2d_Domain const* Domain, double Tol) {
     try { return {new HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter(*Curve, NbPnt, *Domain, Tol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_compute_with_box(HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter* self_, Standard_Address const* Curve, Bnd_Box2d const* OtherBox) {
+extern "C" const char* HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_compute_with_box(HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter* self_, void* const* Curve, Bnd_Box2d const* OtherBox) {
     try { self_->ComputeWithBox(*Curve, *OtherBox); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7485,7 +6608,7 @@ extern "C" OcctResult<HLRBRep_ThePolygonOfInterCSurf*> HLRBRep_ThePolygonOfInter
     try { return {new HLRBRep_ThePolygonOfInterCSurf(*Curve, U1, U2, NbPnt), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRBRep_ThePolygonOfInterCSurf*> HLRBRep_ThePolygonOfInterCSurf_ctor_lin_array1ofreal(gp_Lin const* Curve, TColStd_Array1OfReal const* Upars) {
+extern "C" OcctResult<HLRBRep_ThePolygonOfInterCSurf*> HLRBRep_ThePolygonOfInterCSurf_ctor_lin_arr1_double(gp_Lin const* Curve, NCollection_Array1_double const* Upars) {
     try { return {new HLRBRep_ThePolygonOfInterCSurf(*Curve, *Upars), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7581,12 +6704,12 @@ extern "C" void HLRBRep_ThePolygonToolOfInterCSurf_destructor(HLRBRep_ThePolygon
 // HLRBRep_ThePolyhedronOfInterCSurf wrappers
 // ========================
 
-extern "C" OcctResult<HLRBRep_ThePolyhedronOfInterCSurf*> HLRBRep_ThePolyhedronOfInterCSurf_ctor_address_int2_real4(Standard_Address const* Surface, int32_t nbdU, int32_t nbdV, double U1, double V1, double U2, double V2) {
-    try { return {new HLRBRep_ThePolyhedronOfInterCSurf(*Surface, nbdU, nbdV, U1, V1, U2, V2), nullptr}; }
+extern "C" OcctResult<HLRBRep_ThePolyhedronOfInterCSurf*> HLRBRep_ThePolyhedronOfInterCSurf_ctor_surfaceptr_int2_real4(HLRBRep_Surface* Surface, int32_t nbdU, int32_t nbdV, double U1, double V1, double U2, double V2) {
+    try { return {new HLRBRep_ThePolyhedronOfInterCSurf(Surface, nbdU, nbdV, U1, V1, U2, V2), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRBRep_ThePolyhedronOfInterCSurf*> HLRBRep_ThePolyhedronOfInterCSurf_ctor_address_array1ofreal2(Standard_Address const* Surface, TColStd_Array1OfReal const* Upars, TColStd_Array1OfReal const* Vpars) {
-    try { return {new HLRBRep_ThePolyhedronOfInterCSurf(*Surface, *Upars, *Vpars), nullptr}; }
+extern "C" OcctResult<HLRBRep_ThePolyhedronOfInterCSurf*> HLRBRep_ThePolyhedronOfInterCSurf_ctor_surfaceptr_arr1_double2(HLRBRep_Surface* Surface, NCollection_Array1_double const* Upars, NCollection_Array1_double const* Vpars) {
+    try { return {new HLRBRep_ThePolyhedronOfInterCSurf(Surface, *Upars, *Vpars), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* HLRBRep_ThePolyhedronOfInterCSurf_destroy(HLRBRep_ThePolyhedronOfInterCSurf* self_) {
@@ -7596,10 +6719,6 @@ extern "C" const char* HLRBRep_ThePolyhedronOfInterCSurf_destroy(HLRBRep_ThePoly
 extern "C" const char* HLRBRep_ThePolyhedronOfInterCSurf_deflection_over_estimation_real(HLRBRep_ThePolyhedronOfInterCSurf* self_, double flec) {
     try { self_->DeflectionOverEstimation(flec); return nullptr; }
     OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<double> HLRBRep_ThePolyhedronOfInterCSurf_deflection_on_triangle(const HLRBRep_ThePolyhedronOfInterCSurf* self_, Standard_Address const* Surface, int32_t Index) {
-    try { return {self_->DeflectionOnTriangle(*Surface, Index), nullptr}; }
-    OCCT_CATCH_RETURN
 }
 extern "C" const char* HLRBRep_ThePolyhedronOfInterCSurf_u_min_singularity(HLRBRep_ThePolyhedronOfInterCSurf* self_, bool Sing) {
     try { self_->UMinSingularity(Sing); return nullptr; }
@@ -7661,7 +6780,7 @@ extern "C" const char* HLRBRep_ThePolyhedronOfInterCSurf_fill_bounding(HLRBRep_T
     try { self_->FillBounding(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(Bnd_HArray1OfBox) const*> HLRBRep_ThePolyhedronOfInterCSurf_components_bounding(const HLRBRep_ThePolyhedronOfInterCSurf* self_) {
+extern "C" OcctResult<Handle(NCollection_HArray1_Bnd_Box) const*> HLRBRep_ThePolyhedronOfInterCSurf_components_bounding(const HLRBRep_ThePolyhedronOfInterCSurf* self_) {
     try { return {&(self_->ComponentsBounding()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7723,7 +6842,7 @@ extern "C" OcctResult<Bnd_Box const*> HLRBRep_ThePolyhedronToolOfInterCSurf_boun
     try { return {&(HLRBRep_ThePolyhedronToolOfInterCSurf::Bounding(*thePolyh)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Bnd_HArray1OfBox) const*> HLRBRep_ThePolyhedronToolOfInterCSurf_components_bounding(HLRBRep_ThePolyhedronOfInterCSurf const* thePolyh) {
+extern "C" OcctResult<Handle(NCollection_HArray1_Bnd_Box) const*> HLRBRep_ThePolyhedronToolOfInterCSurf_components_bounding(HLRBRep_ThePolyhedronOfInterCSurf const* thePolyh) {
     try { return {&(HLRBRep_ThePolyhedronToolOfInterCSurf::ComponentsBounding(*thePolyh)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7769,11 +6888,11 @@ extern "C" OcctResult<HLRBRep_TheProjPCurOfCInter*> HLRBRep_TheProjPCurOfCInter_
     try { return {new HLRBRep_TheProjPCurOfCInter(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> HLRBRep_TheProjPCurOfCInter_find_parameter_address_pnt2d_real(Standard_Address const* C, gp_Pnt2d const* Pnt, double Tol) {
+extern "C" OcctResult<double> HLRBRep_TheProjPCurOfCInter_find_parameter_voidptr_pnt2d_real(void* const* C, gp_Pnt2d const* Pnt, double Tol) {
     try { return {HLRBRep_TheProjPCurOfCInter::FindParameter(*C, *Pnt, Tol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> HLRBRep_TheProjPCurOfCInter_find_parameter_address_pnt2d_real3(Standard_Address const* C, gp_Pnt2d const* Pnt, double LowParameter, double HighParameter, double Tol) {
+extern "C" OcctResult<double> HLRBRep_TheProjPCurOfCInter_find_parameter_voidptr_pnt2d_real3(void* const* C, gp_Pnt2d const* Pnt, double LowParameter, double HighParameter, double Tol) {
     try { return {HLRBRep_TheProjPCurOfCInter::FindParameter(*C, *Pnt, LowParameter, HighParameter, Tol), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7783,8 +6902,8 @@ extern "C" void HLRBRep_TheProjPCurOfCInter_destructor(HLRBRep_TheProjPCurOfCInt
 // HLRBRep_TheQuadCurvExactInterCSurf wrappers
 // ========================
 
-extern "C" OcctResult<HLRBRep_TheQuadCurvExactInterCSurf*> HLRBRep_TheQuadCurvExactInterCSurf_ctor_address_lin(Standard_Address const* S, gp_Lin const* C) {
-    try { return {new HLRBRep_TheQuadCurvExactInterCSurf(*S, *C), nullptr}; }
+extern "C" OcctResult<HLRBRep_TheQuadCurvExactInterCSurf*> HLRBRep_TheQuadCurvExactInterCSurf_ctor_surfaceptr_lin(HLRBRep_Surface* S, gp_Lin const* C) {
+    try { return {new HLRBRep_TheQuadCurvExactInterCSurf(S, *C), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> HLRBRep_TheQuadCurvExactInterCSurf_is_done(const HLRBRep_TheQuadCurvExactInterCSurf* self_) {
@@ -7843,10 +6962,6 @@ extern "C" void HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_destructor(H
 // HLRBRep_VertexList wrappers
 // ========================
 
-extern "C" OcctResult<HLRBRep_VertexList*> HLRBRep_VertexList_ctor_edgeinterferencetool_listiteratorofinterferencelist(HLRBRep_EdgeInterferenceTool const* T, HLRAlgo_ListIteratorOfInterferenceList const* I) {
-    try { return {new HLRBRep_VertexList(*T, *I), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<bool> HLRBRep_VertexList_is_periodic(const HLRBRep_VertexList* self_) {
     try { return {self_->IsPeriodic(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -7893,7 +7008,7 @@ extern "C" OcctResult<HLRTopoBRep_DSFiller*> HLRTopoBRep_DSFiller_ctor() {
     try { return {new HLRTopoBRep_DSFiller(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRTopoBRep_DSFiller_insert(TopoDS_Shape const* S, Contap_Contour* FO, HLRTopoBRep_Data* DS, BRepTopAdaptor_MapOfShapeTool* MST, int32_t nbIso) {
+extern "C" const char* HLRTopoBRep_DSFiller_insert(TopoDS_Shape const* S, Contap_Contour* FO, HLRTopoBRep_Data* DS, NCollection_DataMap_TopoDS_Shape_BRepTopAdaptor_Tool_TopTools_ShapeMapHasher* MST, int32_t nbIso) {
     try { HLRTopoBRep_DSFiller::Insert(*S, *FO, *DS, *MST, nbIso); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7951,19 +7066,19 @@ extern "C" OcctResult<bool> HLRTopoBRep_Data_is_iso_l_face_edge(const HLRTopoBRe
     try { return {self_->IsIsoLFaceEdge(*F, *E), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> HLRTopoBRep_Data_edge_spl_e(const HLRTopoBRep_Data* self_, TopoDS_Edge const* E) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> HLRTopoBRep_Data_edge_spl_e(const HLRTopoBRep_Data* self_, TopoDS_Edge const* E) {
     try { return {&(self_->EdgeSplE(*E)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> HLRTopoBRep_Data_face_int_l(const HLRTopoBRep_Data* self_, TopoDS_Face const* F) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> HLRTopoBRep_Data_face_int_l(const HLRTopoBRep_Data* self_, TopoDS_Face const* F) {
     try { return {&(self_->FaceIntL(*F)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> HLRTopoBRep_Data_face_out_l(const HLRTopoBRep_Data* self_, TopoDS_Face const* F) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> HLRTopoBRep_Data_face_out_l(const HLRTopoBRep_Data* self_, TopoDS_Face const* F) {
     try { return {&(self_->FaceOutL(*F)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> HLRTopoBRep_Data_face_iso_l(const HLRTopoBRep_Data* self_, TopoDS_Face const* F) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> HLRTopoBRep_Data_face_iso_l(const HLRTopoBRep_Data* self_, TopoDS_Face const* F) {
     try { return {&(self_->FaceIsoL(*F)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7979,19 +7094,19 @@ extern "C" const char* HLRTopoBRep_Data_add_old_s(HLRTopoBRep_Data* self_, TopoD
     try { self_->AddOldS(*NewS, *OldS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape*> HLRTopoBRep_Data_add_spl_e(HLRTopoBRep_Data* self_, TopoDS_Edge const* E) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape*> HLRTopoBRep_Data_add_spl_e(HLRTopoBRep_Data* self_, TopoDS_Edge const* E) {
     try { return {&(self_->AddSplE(*E)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape*> HLRTopoBRep_Data_add_int_l(HLRTopoBRep_Data* self_, TopoDS_Face const* F) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape*> HLRTopoBRep_Data_add_int_l(HLRTopoBRep_Data* self_, TopoDS_Face const* F) {
     try { return {&(self_->AddIntL(*F)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape*> HLRTopoBRep_Data_add_out_l(HLRTopoBRep_Data* self_, TopoDS_Face const* F) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape*> HLRTopoBRep_Data_add_out_l(HLRTopoBRep_Data* self_, TopoDS_Face const* F) {
     try { return {&(self_->AddOutL(*F)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape*> HLRTopoBRep_Data_add_iso_l(HLRTopoBRep_Data* self_, TopoDS_Face const* F) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape*> HLRTopoBRep_Data_add_iso_l(HLRTopoBRep_Data* self_, TopoDS_Face const* F) {
     try { return {&(self_->AddIsoL(*F)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8057,27 +7172,27 @@ extern "C" OcctResult<HLRTopoBRep_FaceData*> HLRTopoBRep_FaceData_ctor() {
     try { return {new HLRTopoBRep_FaceData(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> HLRTopoBRep_FaceData_face_int_l(const HLRTopoBRep_FaceData* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> HLRTopoBRep_FaceData_face_int_l(const HLRTopoBRep_FaceData* self_) {
     try { return {&(self_->FaceIntL()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> HLRTopoBRep_FaceData_face_out_l(const HLRTopoBRep_FaceData* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> HLRTopoBRep_FaceData_face_out_l(const HLRTopoBRep_FaceData* self_) {
     try { return {&(self_->FaceOutL()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> HLRTopoBRep_FaceData_face_iso_l(const HLRTopoBRep_FaceData* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> HLRTopoBRep_FaceData_face_iso_l(const HLRTopoBRep_FaceData* self_) {
     try { return {&(self_->FaceIsoL()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape*> HLRTopoBRep_FaceData_add_int_l(HLRTopoBRep_FaceData* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape*> HLRTopoBRep_FaceData_add_int_l(HLRTopoBRep_FaceData* self_) {
     try { return {&(self_->AddIntL()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape*> HLRTopoBRep_FaceData_add_out_l(HLRTopoBRep_FaceData* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape*> HLRTopoBRep_FaceData_add_out_l(HLRTopoBRep_FaceData* self_) {
     try { return {&(self_->AddOutL()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape*> HLRTopoBRep_FaceData_add_iso_l(HLRTopoBRep_FaceData* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape*> HLRTopoBRep_FaceData_add_iso_l(HLRTopoBRep_FaceData* self_) {
     try { return {&(self_->AddIsoL()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8141,7 +7256,7 @@ extern "C" OcctResult<HLRTopoBRep_Data*> HLRTopoBRep_OutLiner_data_structure(HLR
     try { return {&(self_->DataStructure()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HLRTopoBRep_OutLiner_fill(HLRTopoBRep_OutLiner* self_, HLRAlgo_Projector const* P, BRepTopAdaptor_MapOfShapeTool* MST, int32_t nbIso) {
+extern "C" const char* HLRTopoBRep_OutLiner_fill(HLRTopoBRep_OutLiner* self_, HLRAlgo_Projector const* P, NCollection_DataMap_TopoDS_Shape_BRepTopAdaptor_Tool_TopTools_ShapeMapHasher* MST, int32_t nbIso) {
     try { self_->Fill(*P, *MST, nbIso); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -8159,20 +7274,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> HLRTopoBRep_OutLiner_get_typ
 }
 extern "C" OcctResult<const Standard_Transient*> HLRTopoBRep_OutLiner_as_Standard_Transient(const HLRTopoBRep_OutLiner* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> HLRTopoBRep_OutLiner_as_Standard_Transient_mut(HLRTopoBRep_OutLiner* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleHLRTopoBRepOutLiner*> HLRTopoBRep_OutLiner_to_handle(HLRTopoBRep_OutLiner* obj) {
-    try { return {new HandleHLRTopoBRepOutLiner(obj), nullptr}; }
+extern "C" OcctResult<Handle_HLRTopoBRep_OutLiner*> HLRTopoBRep_OutLiner_to_handle(HLRTopoBRep_OutLiner* obj) {
+    try { return {new Handle_HLRTopoBRep_OutLiner(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const HLRTopoBRep_OutLiner*> HandleHLRTopoBRepOutLiner_get(const HandleHLRTopoBRepOutLiner* handle) {
+extern "C" OcctResult<const HLRTopoBRep_OutLiner*> Handle_HLRTopoBRep_OutLiner_get(const Handle_HLRTopoBRep_OutLiner* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HLRTopoBRep_OutLiner*> HandleHLRTopoBRepOutLiner_get_mut(HandleHLRTopoBRepOutLiner* handle) {
+extern "C" OcctResult<HLRTopoBRep_OutLiner*> Handle_HLRTopoBRep_OutLiner_get_mut(Handle_HLRTopoBRep_OutLiner* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleHLRTopoBRepOutLiner_to_HandleStandardTransient(const HandleHLRTopoBRepOutLiner* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_HLRTopoBRep_OutLiner_to_Handle_Standard_Transient(const Handle_HLRTopoBRep_OutLiner* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> HLRTopoBRep_OutLiner_inherited_IsInstance(const HLRTopoBRep_OutLiner* self, Handle(Standard_Type) const& theType) {
@@ -8547,16 +7662,3 @@ extern "C" const char* HLRBRep_poly_hlr_angle_and_deflection(double InAngl, doub
     OCCT_CATCH_RETURN_VOID
 }
 
-
-// Nested type and typedef type destructors
-extern "C" void Contap_TheSequenceOfPoint_destructor(Contap_TheSequenceOfPoint* self_) { delete self_; }
-extern "C" void HLRAlgo_Array1OfPHDat_destructor(HLRAlgo_Array1OfPHDat* self_) { delete self_; }
-extern "C" void HLRAlgo_Array1OfPINod_destructor(HLRAlgo_Array1OfPINod* self_) { delete self_; }
-extern "C" void HLRAlgo_Array1OfPISeg_destructor(HLRAlgo_Array1OfPISeg* self_) { delete self_; }
-extern "C" void HLRAlgo_Array1OfTData_destructor(HLRAlgo_Array1OfTData* self_) { delete self_; }
-extern "C" void HLRAlgo_InterferenceList_destructor(HLRAlgo_InterferenceList* self_) { delete self_; }
-extern "C" void HLRAlgo_ListIteratorOfInterferenceList_destructor(HLRAlgo_ListIteratorOfInterferenceList* self_) { delete self_; }
-extern "C" void HLRAlgo_ListOfBPoint_destructor(HLRAlgo_ListOfBPoint* self_) { delete self_; }
-extern "C" void HLRBRep_Array1OfEData_destructor(HLRBRep_Array1OfEData* self_) { delete self_; }
-extern "C" void HLRBRep_Array1OfFData_destructor(HLRBRep_Array1OfFData* self_) { delete self_; }
-extern "C" void HLRBRep_SeqOfShapeBounds_destructor(HLRBRep_SeqOfShapeBounds* self_) { delete self_; }

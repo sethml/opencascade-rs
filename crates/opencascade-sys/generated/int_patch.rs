@@ -44,7 +44,7 @@ impl TryFrom<i32> for IType {
     }
 }
 
-/// This enum describe the  different kinds of
+/// This enum describes the different kinds of
 /// special (singular) points of Surface-Surface
 /// intersection algorithm. Such as pole of sphere,
 /// apex of cone, point on U- or V-seam etc.
@@ -83,13 +83,13 @@ impl TryFrom<i32> for SpecPntType {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::HandleStandardTransient;
+pub use crate::ffi_types::Handle_Standard_Transient;
 
 // ========================
 // From IntPatch_ALine.hxx
 // ========================
 
-/// **Source:** `IntPatch_ALine.hxx`:34 - `IntPatch_ALine`
+/// **Source:** `IntPatch_ALine.hxx`:32 - `IntPatch_ALine`
 /// Implementation of an intersection line described by a
 /// parametrized curve.
 pub use crate::ffi_types::IntPatch_ALine as ALine;
@@ -103,7 +103,7 @@ unsafe impl crate::CppDeletable for ALine {
 }
 
 impl ALine {
-    /// **Source:** `IntPatch_ALine.hxx`:40 - `IntPatch_ALine::IntPatch_ALine()`
+    /// **Source:** `IntPatch_ALine.hxx`:38 - `IntPatch_ALine::IntPatch_ALine()`
     /// Creates an analytic intersection line
     /// when the transitions are In or Out.
     pub fn new_curve_bool_typetrans2(
@@ -124,7 +124,7 @@ impl ALine {
         }
     }
 
-    /// **Source:** `IntPatch_ALine.hxx`:47 - `IntPatch_ALine::IntPatch_ALine()`
+    /// **Source:** `IntPatch_ALine.hxx`:45 - `IntPatch_ALine::IntPatch_ALine()`
     /// Creates an analytic intersection line
     /// when the transitions are Touch.
     pub fn new_curve_bool_situation2(
@@ -145,7 +145,7 @@ impl ALine {
         }
     }
 
-    /// **Source:** `IntPatch_ALine.hxx`:54 - `IntPatch_ALine::IntPatch_ALine()`
+    /// **Source:** `IntPatch_ALine.hxx`:52 - `IntPatch_ALine::IntPatch_ALine()`
     /// Creates an analytic intersection line
     /// when the transitions are Undecided.
     pub fn new_curve_bool(C: &crate::int_ana::Curve, Tang: bool) -> crate::OwnedPtr<Self> {
@@ -156,7 +156,7 @@ impl ALine {
         }
     }
 
-    /// **Source:** `IntPatch_ALine.hxx`:57 - `IntPatch_ALine::AddVertex()`
+    /// **Source:** `IntPatch_ALine.hxx`:55 - `IntPatch_ALine::AddVertex()`
     /// To add a vertex in the list.
     pub fn add_vertex(&mut self, Pnt: &Point) {
         crate::check_void_result(unsafe {
@@ -164,7 +164,7 @@ impl ALine {
         })
     }
 
-    /// **Source:** `IntPatch_ALine.hxx`:61 - `IntPatch_ALine::Replace()`
+    /// **Source:** `IntPatch_ALine.hxx`:59 - `IntPatch_ALine::Replace()`
     /// Replaces the element of range Index in the list
     /// of points.
     pub fn replace(&mut self, Index: i32, Pnt: &Point) {
@@ -173,7 +173,7 @@ impl ALine {
         })
     }
 
-    /// **Source:** `IntPatch_ALine.hxx`:63 - `IntPatch_ALine::SetFirstPoint()`
+    /// **Source:** `IntPatch_ALine.hxx`:61 - `IntPatch_ALine::SetFirstPoint()`
     pub fn set_first_point(&mut self, IndFirst: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ALine_set_first_point(
@@ -183,14 +183,14 @@ impl ALine {
         })
     }
 
-    /// **Source:** `IntPatch_ALine.hxx`:65 - `IntPatch_ALine::SetLastPoint()`
+    /// **Source:** `IntPatch_ALine.hxx`:63 - `IntPatch_ALine::SetLastPoint()`
     pub fn set_last_point(&mut self, IndLast: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ALine_set_last_point(self as *mut Self, IndLast)
         })
     }
 
-    /// **Source:** `IntPatch_ALine.hxx`:72 - `IntPatch_ALine::FirstParameter()`
+    /// **Source:** `IntPatch_ALine.hxx`:70 - `IntPatch_ALine::FirstParameter()`
     /// Returns the first parameter on the intersection line.
     /// If IsIncluded returns True, Value and D1 methods can
     /// be call with a parameter equal to FirstParameter.
@@ -205,7 +205,7 @@ impl ALine {
         })
     }
 
-    /// **Source:** `IntPatch_ALine.hxx`:78 - `IntPatch_ALine::LastParameter()`
+    /// **Source:** `IntPatch_ALine.hxx`:76 - `IntPatch_ALine::LastParameter()`
     /// Returns the last parameter on the intersection line.
     /// If IsIncluded returns True, Value and D1 methods can
     /// be call with a parameter equal to LastParameter.
@@ -219,7 +219,7 @@ impl ALine {
         })
     }
 
-    /// **Source:** `IntPatch_ALine.hxx`:82 - `IntPatch_ALine::Value()`
+    /// **Source:** `IntPatch_ALine.hxx`:80 - `IntPatch_ALine::Value()`
     /// Returns the point of parameter U on the analytic
     /// intersection line.
     pub fn value(&mut self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
@@ -230,11 +230,11 @@ impl ALine {
         }
     }
 
-    /// **Source:** `IntPatch_ALine.hxx`:91 - `IntPatch_ALine::D1()`
-    /// Returns Standard_True when the derivative at parameter U
+    /// **Source:** `IntPatch_ALine.hxx`:89 - `IntPatch_ALine::D1()`
+    /// Returns true when the derivative at parameter U
     /// is defined on the analytic intersection line.
     /// In that case, Du is the derivative.
-    /// Returns Standard_False when it is not possible to
+    /// Returns false when it is not possible to
     /// evaluate the derivative.
     /// In both cases, P is the point at parameter U on the
     /// intersection.
@@ -244,7 +244,7 @@ impl ALine {
         })
     }
 
-    /// **Source:** `IntPatch_ALine.hxx`:98 - `IntPatch_ALine::FindParameter()`
+    /// **Source:** `IntPatch_ALine.hxx`:96 - `IntPatch_ALine::FindParameter()`
     /// Tries to find the parameters of the point P on the curve.
     /// If the method returns False, the "projection" is
     /// impossible.
@@ -253,7 +253,7 @@ impl ALine {
     pub fn find_parameter(
         &self,
         P: &crate::gp::Pnt,
-        theParams: &mut crate::ffi_types::TColStd_ListOfReal,
+        theParams: &mut crate::ffi_types::NCollection_List_double,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ALine_find_parameter(
@@ -264,7 +264,7 @@ impl ALine {
         })
     }
 
-    /// **Source:** `IntPatch_ALine.hxx`:102 - `IntPatch_ALine::HasFirstPoint()`
+    /// **Source:** `IntPatch_ALine.hxx`:100 - `IntPatch_ALine::HasFirstPoint()`
     /// Returns True if the line has a known First point.
     /// This point is given by the method FirstPoint().
     pub fn has_first_point(&self) -> bool {
@@ -273,7 +273,7 @@ impl ALine {
         })
     }
 
-    /// **Source:** `IntPatch_ALine.hxx`:106 - `IntPatch_ALine::HasLastPoint()`
+    /// **Source:** `IntPatch_ALine.hxx`:104 - `IntPatch_ALine::HasLastPoint()`
     /// Returns True if the line has a known Last point.
     /// This point is given by the method LastPoint().
     pub fn has_last_point(&self) -> bool {
@@ -282,7 +282,7 @@ impl ALine {
         })
     }
 
-    /// **Source:** `IntPatch_ALine.hxx`:110 - `IntPatch_ALine::FirstPoint()`
+    /// **Source:** `IntPatch_ALine.hxx`:108 - `IntPatch_ALine::FirstPoint()`
     /// Returns the IntPoint corresponding to the FirstPoint.
     /// An exception is raised when HasFirstPoint returns False.
     pub fn first_point(&self) -> &Point {
@@ -293,7 +293,7 @@ impl ALine {
         }
     }
 
-    /// **Source:** `IntPatch_ALine.hxx`:114 - `IntPatch_ALine::LastPoint()`
+    /// **Source:** `IntPatch_ALine.hxx`:112 - `IntPatch_ALine::LastPoint()`
     /// Returns the IntPoint corresponding to the LastPoint.
     /// An exception is raised when HasLastPoint returns False.
     pub fn last_point(&self) -> &Point {
@@ -304,14 +304,14 @@ impl ALine {
         }
     }
 
-    /// **Source:** `IntPatch_ALine.hxx`:116 - `IntPatch_ALine::NbVertex()`
+    /// **Source:** `IntPatch_ALine.hxx`:114 - `IntPatch_ALine::NbVertex()`
     pub fn nb_vertex(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ALine_nb_vertex(self as *const Self)
         })
     }
 
-    /// **Source:** `IntPatch_ALine.hxx`:119 - `IntPatch_ALine::Vertex()`
+    /// **Source:** `IntPatch_ALine.hxx`:117 - `IntPatch_ALine::Vertex()`
     /// Returns the vertex of range Index on the line.
     pub fn vertex(&self, Index: i32) -> &Point {
         unsafe {
@@ -322,7 +322,7 @@ impl ALine {
         }
     }
 
-    /// **Source:** `IntPatch_ALine.hxx`:122 - `IntPatch_ALine::ChangeVertex()`
+    /// **Source:** `IntPatch_ALine.hxx`:120 - `IntPatch_ALine::ChangeVertex()`
     /// Allows modifying the vertex with index theIndex on the line.
     pub fn change_vertex(&mut self, theIndex: i32) -> &mut Point {
         unsafe {
@@ -333,7 +333,7 @@ impl ALine {
         }
     }
 
-    /// **Source:** `IntPatch_ALine.hxx`:131 - `IntPatch_ALine::ComputeVertexParameters()`
+    /// **Source:** `IntPatch_ALine.hxx`:126 - `IntPatch_ALine::ComputeVertexParameters()`
     /// Set the parameters of all the vertex on the line.
     /// if a vertex is already in the line,
     /// its parameter is modified
@@ -347,7 +347,7 @@ impl ALine {
         })
     }
 
-    /// **Source:** `IntPatch_ALine.hxx`:133 - `IntPatch_ALine::Curve()`
+    /// **Source:** `IntPatch_ALine.hxx`:128 - `IntPatch_ALine::Curve()`
     pub fn curve(&self) -> &crate::int_ana::Curve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPatch_ALine_curve(
@@ -356,8 +356,8 @@ impl ALine {
         }
     }
 
-    /// **Source:** `IntPatch_ALine.hxx`:135 - `IntPatch_ALine::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IntPatch_ALine.hxx`:130 - `IntPatch_ALine::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPatch_ALine_dynamic_type(
                 self as *const Self,
@@ -365,7 +365,7 @@ impl ALine {
         }
     }
 
-    /// **Source:** `IntPatch_ALine.hxx`:135 - `IntPatch_ALine::get_type_name()`
+    /// **Source:** `IntPatch_ALine.hxx`:130 - `IntPatch_ALine::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -376,8 +376,8 @@ impl ALine {
         .into_owned()
     }
 
-    /// **Source:** `IntPatch_ALine.hxx`:135 - `IntPatch_ALine::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IntPatch_ALine.hxx`:130 - `IntPatch_ALine::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_ALine_get_type_descriptor(),
@@ -430,7 +430,7 @@ impl ALine {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIntPatchALine> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IntPatch_ALine> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_ALine_to_handle(obj.into_raw()),
@@ -438,7 +438,7 @@ impl ALine {
         }
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:44 - `IntPatch_Line::SetValue()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:41 - `IntPatch_Line::SetValue()`
     pub fn set_value(&mut self, Uiso1: bool, Viso1: bool, Uiso2: bool, Viso2: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ALine_inherited_SetValue(
@@ -451,7 +451,7 @@ impl ALine {
         })
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:51 - `IntPatch_Line::ArcType()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:45 - `IntPatch_Line::ArcType()`
     pub fn arc_type(&self) -> crate::int_patch::IType {
         crate::int_patch::IType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ALine_inherited_ArcType(self as *const Self)
@@ -459,14 +459,14 @@ impl ALine {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:55 - `IntPatch_Line::IsTangent()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:49 - `IntPatch_Line::IsTangent()`
     pub fn is_tangent(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ALine_inherited_IsTangent(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:76 - `IntPatch_Line::TransitionOnS1()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:70 - `IntPatch_Line::TransitionOnS1()`
     pub fn transition_on_s1(&self) -> crate::int_surf::TypeTrans {
         crate::int_surf::TypeTrans::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ALine_inherited_TransitionOnS1(
@@ -476,7 +476,7 @@ impl ALine {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:81 - `IntPatch_Line::TransitionOnS2()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:75 - `IntPatch_Line::TransitionOnS2()`
     pub fn transition_on_s2(&self) -> crate::int_surf::TypeTrans {
         crate::int_surf::TypeTrans::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ALine_inherited_TransitionOnS2(
@@ -486,7 +486,7 @@ impl ALine {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:87 - `IntPatch_Line::SituationS1()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:81 - `IntPatch_Line::SituationS1()`
     pub fn situation_s1(&self) -> crate::int_surf::Situation {
         crate::int_surf::Situation::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ALine_inherited_SituationS1(self as *const Self)
@@ -494,7 +494,7 @@ impl ALine {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:93 - `IntPatch_Line::SituationS2()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:87 - `IntPatch_Line::SituationS2()`
     pub fn situation_s2(&self) -> crate::int_surf::Situation {
         crate::int_surf::Situation::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ALine_inherited_SituationS2(self as *const Self)
@@ -502,36 +502,36 @@ impl ALine {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:97 - `IntPatch_Line::IsUIsoOnS1()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:91 - `IntPatch_Line::IsUIsoOnS1()`
     pub fn is_u_iso_on_s1(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ALine_inherited_IsUIsoOnS1(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:101 - `IntPatch_Line::IsVIsoOnS1()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:95 - `IntPatch_Line::IsVIsoOnS1()`
     pub fn is_v_iso_on_s1(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ALine_inherited_IsVIsoOnS1(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:105 - `IntPatch_Line::IsUIsoOnS2()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:99 - `IntPatch_Line::IsUIsoOnS2()`
     pub fn is_u_iso_on_s2(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ALine_inherited_IsUIsoOnS2(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:109 - `IntPatch_Line::IsVIsoOnS2()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:103 - `IntPatch_Line::IsVIsoOnS2()`
     pub fn is_v_iso_on_s2(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ALine_inherited_IsVIsoOnS2(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ALine_inherited_IsInstance(
                 self as *const Self,
@@ -540,8 +540,8 @@ impl ALine {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ALine_inherited_IsKind(
                 self as *const Self,
@@ -550,7 +550,7 @@ impl ALine {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -564,14 +564,14 @@ impl ALine {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ALine_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ALine_inherited_IncrementRefCounter(
@@ -580,7 +580,7 @@ impl ALine {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ALine_inherited_DecrementRefCounter(
@@ -589,7 +589,7 @@ impl ALine {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ALine_inherited_Delete(self as *const Self)
@@ -597,32 +597,34 @@ impl ALine {
     }
 }
 
-pub use crate::ffi_types::HandleIntPatchALine;
+pub use crate::ffi_types::Handle_IntPatch_ALine;
 
-unsafe impl crate::CppDeletable for HandleIntPatchALine {
+unsafe impl crate::CppDeletable for Handle_IntPatch_ALine {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleIntPatchALine_destructor(ptr);
+            crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_ALine_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIntPatchALine {
+unsafe impl crate::CppCopyable for Handle_IntPatch_ALine {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchALine_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_ALine_clone(ptr))
+        }
     }
 }
 
-impl HandleIntPatchALine {
+impl Handle_IntPatch_ALine {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKGeomAlgo::HandleIntPatchALine_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_ALine_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying IntPatch_ALine
     pub fn get(&self) -> &crate::ffi_types::IntPatch_ALine {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchALine_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_ALine_get(
                 self as *const Self,
             ))
         }
@@ -631,17 +633,17 @@ impl HandleIntPatchALine {
     /// Dereference this Handle to mutably access the underlying IntPatch_ALine
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IntPatch_ALine {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchALine_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_ALine_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<IntPatch_ALine> to Handle<IntPatch_Line>
-    pub fn to_handle_line(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIntPatchLine> {
+    pub fn to_handle_line(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IntPatch_Line> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleIntPatchALine_to_HandleIntPatchLine(
+                crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_ALine_to_Handle_IntPatch_Line(
                     self as *const Self,
                 ),
             ))
@@ -651,10 +653,10 @@ impl HandleIntPatchALine {
     /// Upcast Handle<IntPatch_ALine> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleIntPatchALine_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_ALine_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -666,7 +668,7 @@ impl HandleIntPatchALine {
 // From IntPatch_ALineToWLine.hxx
 // ========================
 
-/// **Source:** `IntPatch_ALineToWLine.hxx`:28 - `IntPatch_ALineToWLine`
+/// **Source:** `IntPatch_ALineToWLine.hxx`:29 - `IntPatch_ALineToWLine`
 pub use crate::ffi_types::IntPatch_ALineToWLine as ALineToWLine;
 
 unsafe impl crate::CppDeletable for ALineToWLine {
@@ -678,11 +680,11 @@ unsafe impl crate::CppDeletable for ALineToWLine {
 }
 
 impl ALineToWLine {
-    /// **Source:** `IntPatch_ALineToWLine.hxx`:34 - `IntPatch_ALineToWLine::IntPatch_ALineToWLine()`
+    /// **Source:** `IntPatch_ALineToWLine.hxx`:35 - `IntPatch_ALineToWLine::IntPatch_ALineToWLine()`
     /// Constructor
     pub fn new_handleadaptor3dsurface2_int(
-        theS1: &crate::ffi_types::HandleAdaptor3dSurface,
-        theS2: &crate::ffi_types::HandleAdaptor3dSurface,
+        theS1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        theS2: &crate::ffi_types::Handle_Adaptor3d_Surface,
         theNbPoints: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -690,16 +692,16 @@ impl ALineToWLine {
         }
     }
 
-    /// **Source:** `IntPatch_ALineToWLine.hxx`:34 - `IntPatch_ALineToWLine::IntPatch_ALineToWLine()`
+    /// **Source:** `IntPatch_ALineToWLine.hxx`:35 - `IntPatch_ALineToWLine::IntPatch_ALineToWLine()`
     /// Constructor
     pub fn new_handleadaptor3dsurface2(
-        theS1: &crate::ffi_types::HandleAdaptor3dSurface,
-        theS2: &crate::ffi_types::HandleAdaptor3dSurface,
+        theS1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        theS2: &crate::ffi_types::Handle_Adaptor3d_Surface,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handleadaptor3dsurface2_int(theS1, theS2, 200)
     }
 
-    /// **Source:** `IntPatch_ALineToWLine.hxx`:38 - `IntPatch_ALineToWLine::SetTolOpenDomain()`
+    /// **Source:** `IntPatch_ALineToWLine.hxx`:39 - `IntPatch_ALineToWLine::SetTolOpenDomain()`
     pub fn set_tol_open_domain(&mut self, aT: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ALineToWLine_set_tol_open_domain(
@@ -709,14 +711,14 @@ impl ALineToWLine {
         })
     }
 
-    /// **Source:** `IntPatch_ALineToWLine.hxx`:40 - `IntPatch_ALineToWLine::TolOpenDomain()`
+    /// **Source:** `IntPatch_ALineToWLine.hxx`:41 - `IntPatch_ALineToWLine::TolOpenDomain()`
     pub fn tol_open_domain(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ALineToWLine_tol_open_domain(self as *const Self)
         })
     }
 
-    /// **Source:** `IntPatch_ALineToWLine.hxx`:42 - `IntPatch_ALineToWLine::SetTolTransition()`
+    /// **Source:** `IntPatch_ALineToWLine.hxx`:43 - `IntPatch_ALineToWLine::SetTolTransition()`
     pub fn set_tol_transition(&mut self, aT: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ALineToWLine_set_tol_transition(
@@ -726,61 +728,47 @@ impl ALineToWLine {
         })
     }
 
-    /// **Source:** `IntPatch_ALineToWLine.hxx`:44 - `IntPatch_ALineToWLine::TolTransition()`
+    /// **Source:** `IntPatch_ALineToWLine.hxx`:45 - `IntPatch_ALineToWLine::TolTransition()`
     pub fn tol_transition(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ALineToWLine_tol_transition(self as *const Self)
         })
     }
 
-    /// **Source:** `IntPatch_ALineToWLine.hxx`:46 - `IntPatch_ALineToWLine::SetTol3D()`
+    /// **Source:** `IntPatch_ALineToWLine.hxx`:47 - `IntPatch_ALineToWLine::SetTol3D()`
     pub fn set_tol3_d(&mut self, aT: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ALineToWLine_set_tol3_d(self as *mut Self, aT)
         })
     }
 
-    /// **Source:** `IntPatch_ALineToWLine.hxx`:48 - `IntPatch_ALineToWLine::Tol3D()`
+    /// **Source:** `IntPatch_ALineToWLine.hxx`:49 - `IntPatch_ALineToWLine::Tol3D()`
     pub fn tol3_d(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ALineToWLine_tol3_d(self as *const Self)
         })
     }
-
-    /// **Source:** `IntPatch_ALineToWLine.hxx`:52 - `IntPatch_ALineToWLine::MakeWLine()`
-    /// Converts aline to the set of Walking-lines and adds
-    /// them in theLines.
-    pub fn make_w_line_handleintpatchaline_sequenceofline(
-        &self,
-        aline: &crate::ffi_types::HandleIntPatchALine,
-        theLines: &mut crate::ffi_types::IntPatch_SequenceOfLine,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::IntPatch_ALineToWLine_make_w_line_handleintpatchaline_sequenceofline(self as *const Self, aline, theLines)
-        })
-    }
-
-    /// **Source:** `IntPatch_ALineToWLine.hxx`:57 - `IntPatch_ALineToWLine::MakeWLine()`
-    /// Converts aline (limited by paraminf and paramsup) to the set of
-    /// Walking-lines and adds them in theLines.
-    pub fn make_w_line_handleintpatchaline_real2_sequenceofline(
-        &self,
-        aline: &crate::ffi_types::HandleIntPatchALine,
-        paraminf: f64,
-        paramsup: f64,
-        theLines: &mut crate::ffi_types::IntPatch_SequenceOfLine,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::IntPatch_ALineToWLine_make_w_line_handleintpatchaline_real2_sequenceofline(self as *const Self, aline, paraminf, paramsup, theLines)
-        })
-    }
 }
+
+// ── Skipped symbols for ALineToWLine (2 total) ──
+// SKIPPED: **Source:** `IntPatch_ALineToWLine.hxx`:53 - `IntPatch_ALineToWLine::MakeWLine`
+//   method: Converts aline to the set of Walking-lines and adds
+//   method: them in theLines.
+//   Reason: has unbindable types: param 'theLines': unresolved template type (NCollection_Sequence<occ::handle<IntPatch_Line>>&)
+//   // pub fn make_w_line(&self, aline: &HandleALine, theLines: /* NCollection_Sequence<occ::handle<IntPatch_Line>>& */);
+//
+// SKIPPED: **Source:** `IntPatch_ALineToWLine.hxx`:58 - `IntPatch_ALineToWLine::MakeWLine`
+//   method: Converts aline (limited by paraminf and paramsup) to the set of
+//   method: Walking-lines and adds them in theLines.
+//   Reason: has unbindable types: param 'theLines': unresolved template type (NCollection_Sequence<occ::handle<IntPatch_Line>>&)
+//   // pub fn make_w_line(&self, aline: &HandleALine, paraminf: f64, paramsup: f64, theLines: /* NCollection_Sequence<occ::handle<IntPatch_Line>>& */);
+//
 
 // ========================
 // From IntPatch_ArcFunction.hxx
 // ========================
 
-/// **Source:** `IntPatch_ArcFunction.hxx`:26 - `IntPatch_ArcFunction`
+/// **Source:** `IntPatch_ArcFunction.hxx`:27 - `IntPatch_ArcFunction`
 pub use crate::ffi_types::IntPatch_ArcFunction as ArcFunction;
 
 unsafe impl crate::CppDeletable for ArcFunction {
@@ -792,7 +780,7 @@ unsafe impl crate::CppDeletable for ArcFunction {
 }
 
 impl ArcFunction {
-    /// **Source:** `IntPatch_ArcFunction.hxx`:31 - `IntPatch_ArcFunction::IntPatch_ArcFunction()`
+    /// **Source:** `IntPatch_ArcFunction.hxx`:32 - `IntPatch_ArcFunction::IntPatch_ArcFunction()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -801,15 +789,15 @@ impl ArcFunction {
         }
     }
 
-    /// **Source:** `IntPatch_ArcFunction.hxx`:33 - `IntPatch_ArcFunction::SetQuadric()`
+    /// **Source:** `IntPatch_ArcFunction.hxx`:34 - `IntPatch_ArcFunction::SetQuadric()`
     pub fn set_quadric(&mut self, Q: &crate::int_surf::Quadric) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ArcFunction_set_quadric(self as *mut Self, Q)
         })
     }
 
-    /// **Source:** `IntPatch_ArcFunction.hxx`:35 - `IntPatch_ArcFunction::Set()`
-    pub fn set_handleadaptor2dcurve2d(&mut self, A: &crate::ffi_types::HandleAdaptor2dCurve2d) {
+    /// **Source:** `IntPatch_ArcFunction.hxx`:36 - `IntPatch_ArcFunction::Set()`
+    pub fn set_handleadaptor2dcurve2d(&mut self, A: &crate::ffi_types::Handle_Adaptor2d_Curve2d) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ArcFunction_set_handleadaptor2dcurve2d(
                 self as *mut Self,
@@ -818,8 +806,8 @@ impl ArcFunction {
         })
     }
 
-    /// **Source:** `IntPatch_ArcFunction.hxx`:37 - `IntPatch_ArcFunction::Set()`
-    pub fn set_handleadaptor3dsurface(&mut self, S: &crate::ffi_types::HandleAdaptor3dSurface) {
+    /// **Source:** `IntPatch_ArcFunction.hxx`:38 - `IntPatch_ArcFunction::Set()`
+    pub fn set_handleadaptor3dsurface(&mut self, S: &crate::ffi_types::Handle_Adaptor3d_Surface) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ArcFunction_set_handleadaptor3dsurface(
                 self as *mut Self,
@@ -828,14 +816,14 @@ impl ArcFunction {
         })
     }
 
-    /// **Source:** `IntPatch_ArcFunction.hxx`:39 - `IntPatch_ArcFunction::Value()`
+    /// **Source:** `IntPatch_ArcFunction.hxx`:40 - `IntPatch_ArcFunction::Value()`
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ArcFunction_value(self as *mut Self, X, F)
         })
     }
 
-    /// **Source:** `IntPatch_ArcFunction.hxx`:41 - `IntPatch_ArcFunction::Derivative()`
+    /// **Source:** `IntPatch_ArcFunction.hxx`:42 - `IntPatch_ArcFunction::Derivative()`
     pub fn derivative(&mut self, X: f64, D: &mut f64) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ArcFunction_derivative(self as *mut Self, X, D)
@@ -849,21 +837,21 @@ impl ArcFunction {
         })
     }
 
-    /// **Source:** `IntPatch_ArcFunction.hxx`:48 - `IntPatch_ArcFunction::NbSamples()`
+    /// **Source:** `IntPatch_ArcFunction.hxx`:46 - `IntPatch_ArcFunction::NbSamples()`
     pub fn nb_samples(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ArcFunction_nb_samples(self as *const Self)
         })
     }
 
-    /// **Source:** `IntPatch_ArcFunction.hxx`:50 - `IntPatch_ArcFunction::GetStateNumber()`
+    /// **Source:** `IntPatch_ArcFunction.hxx`:48 - `IntPatch_ArcFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ArcFunction_get_state_number(self as *mut Self)
         })
     }
 
-    /// **Source:** `IntPatch_ArcFunction.hxx`:52 - `IntPatch_ArcFunction::Valpoint()`
+    /// **Source:** `IntPatch_ArcFunction.hxx`:50 - `IntPatch_ArcFunction::Valpoint()`
     pub fn valpoint(&self, Index: i32) -> &crate::gp::Pnt {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPatch_ArcFunction_valpoint(
@@ -873,7 +861,7 @@ impl ArcFunction {
         }
     }
 
-    /// **Source:** `IntPatch_ArcFunction.hxx`:54 - `IntPatch_ArcFunction::Quadric()`
+    /// **Source:** `IntPatch_ArcFunction.hxx`:52 - `IntPatch_ArcFunction::Quadric()`
     pub fn quadric(&self) -> &crate::int_surf::Quadric {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPatch_ArcFunction_quadric(
@@ -882,8 +870,8 @@ impl ArcFunction {
         }
     }
 
-    /// **Source:** `IntPatch_ArcFunction.hxx`:56 - `IntPatch_ArcFunction::Arc()`
-    pub fn arc(&self) -> &crate::ffi_types::HandleAdaptor2dCurve2d {
+    /// **Source:** `IntPatch_ArcFunction.hxx`:54 - `IntPatch_ArcFunction::Arc()`
+    pub fn arc(&self) -> &crate::ffi_types::Handle_Adaptor2d_Curve2d {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPatch_ArcFunction_arc(
                 self as *const Self,
@@ -891,8 +879,8 @@ impl ArcFunction {
         }
     }
 
-    /// **Source:** `IntPatch_ArcFunction.hxx`:58 - `IntPatch_ArcFunction::Surface()`
-    pub fn surface(&self) -> &crate::ffi_types::HandleAdaptor3dSurface {
+    /// **Source:** `IntPatch_ArcFunction.hxx`:56 - `IntPatch_ArcFunction::Surface()`
+    pub fn surface(&self) -> &crate::ffi_types::Handle_Adaptor3d_Surface {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPatch_ArcFunction_surface(
                 self as *const Self,
@@ -900,7 +888,7 @@ impl ArcFunction {
         }
     }
 
-    /// **Source:** `IntPatch_ArcFunction.hxx`:62 - `IntPatch_ArcFunction::LastComputedPoint()`
+    /// **Source:** `IntPatch_ArcFunction.hxx`:60 - `IntPatch_ArcFunction::LastComputedPoint()`
     /// Returns the point, which has been computed
     /// while the last calling Value() method
     pub fn last_computed_point(&self) -> &crate::gp::Pnt {
@@ -957,12 +945,140 @@ impl ArcFunction {
 }
 
 // ========================
+// From IntPatch_BVHTraversal.hxx
+// ========================
+
+/// **Source:** `IntPatch_BVHTraversal.hxx`:29 - `IntPatch_BVHTraversal`
+/// Performs BVH tree traversal of two polyhedra to find candidate triangle pairs
+/// for intersection testing. This class implements the BVH_PairTraverse interface
+/// to efficiently find potentially intersecting triangles using bounding box tests.
+///
+/// The traversal collects pairs of original (1-based) triangle indices that have
+/// overlapping bounding boxes, which should then be tested for actual geometric
+/// intersection using IntPatch_InterferencePolyhedron::Intersect().
+pub use crate::ffi_types::IntPatch_BVHTraversal as BVHTraversal;
+
+unsafe impl crate::CppDeletable for BVHTraversal {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_BVHTraversal_destructor(ptr);
+        }
+    }
+}
+
+impl BVHTraversal {
+    /// **Source:** `IntPatch_BVHTraversal.hxx`:47 - `IntPatch_BVHTraversal::IntPatch_BVHTraversal()`
+    /// Creates an empty traversal object.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntPatch_BVHTraversal_ctor(),
+            ))
+        }
+    }
+
+    /// **Source:** `IntPatch_BVHTraversal.hxx`:58 - `IntPatch_BVHTraversal::Perform()`
+    /// Performs BVH traversal and collects candidate triangle pairs.
+    /// @param[in] theSet1 BVH set for the first polyhedron
+    /// @param[in] theSet2 BVH set for the second polyhedron
+    /// @param[in] theSelfInterference if true, skip pairs where first index >= second index
+    /// (used for self-intersection where we don't want to test same pair twice)
+    /// @return number of collected pairs
+    pub fn perform(
+        &mut self,
+        theSet1: &mut PolyhedronBVH,
+        theSet2: &mut PolyhedronBVH,
+        theSelfInterference: bool,
+    ) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_BVHTraversal_perform(
+                self as *mut Self,
+                theSet1,
+                theSet2,
+                theSelfInterference,
+            )
+        })
+    }
+
+    /// **Source:** `IntPatch_BVHTraversal.hxx`:66 - `IntPatch_BVHTraversal::Clear()`
+    /// Clears the collected pairs.
+    pub fn clear(&mut self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_BVHTraversal_clear(self as *mut Self)
+        })
+    }
+
+    /// **Source:** `IntPatch_BVHTraversal.hxx`:76 - `IntPatch_BVHTraversal::RejectNode()`
+    /// @name BVH_PairTraverse interface implementation
+    /// Rejects pair of nodes if their bounding boxes don't overlap.
+    /// @param[in] theCMin1 minimum corner of the first node's bounding box
+    /// @param[in] theCMax1 maximum corner of the first node's bounding box
+    /// @param[in] theCMin2 minimum corner of the second node's bounding box
+    /// @param[in] theCMax2 maximum corner of the second node's bounding box
+    /// @param[out] theMetric unused metric parameter
+    /// @return true if the pair should be rejected (no overlap), false otherwise
+    pub fn reject_node(
+        &self,
+        theCMin1: &crate::ffi_types::BVH_Vec3d,
+        theCMax1: &crate::ffi_types::BVH_Vec3d,
+        theCMin2: &crate::ffi_types::BVH_Vec3d,
+        theCMax2: &crate::ffi_types::BVH_Vec3d,
+        theMetric: &mut f64,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_BVHTraversal_reject_node(
+                self as *const Self,
+                theCMin1,
+                theCMax1,
+                theCMin2,
+                theCMax2,
+                theMetric,
+            )
+        })
+    }
+
+    /// **Source:** `IntPatch_BVHTraversal.hxx`:86 - `IntPatch_BVHTraversal::Accept()`
+    /// Accepts a pair of leaf elements and stores their original indices.
+    /// @param[in] theIndex1 0-based index in the first BVH set
+    /// @param[in] theIndex2 0-based index in the second BVH set
+    /// @return true (always accepts the pair)
+    pub fn accept(&mut self, theIndex1: i32, theIndex2: i32) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_BVHTraversal_accept(
+                self as *mut Self,
+                theIndex1,
+                theIndex2,
+            )
+        })
+    }
+}
+
+// ── Skipped symbols for BVHTraversal (1 total) ──
+// SKIPPED: **Source:** `IntPatch_BVHTraversal.hxx`:63 - `IntPatch_BVHTraversal::Pairs`
+//   method: Returns the collected triangle pairs.
+//   Reason: has unbindable types: return: unresolved template type (NCollection_DynamicArray<TrianglePair> const&)
+//   // pub fn pairs(&self) -> /* NCollection_DynamicArray<TrianglePair> const& */;
+//
+
+/// **Source:** `IntPatch_BVHTraversal.hxx`:33 - `IntPatch_BVHTraversal_TrianglePair`
+/// Pair of triangle indices (both 1-based, original indices in polyhedra).
+pub use crate::ffi_types::IntPatch_BVHTraversal_TrianglePair as BVHTraversal_TrianglePair;
+
+unsafe impl crate::CppDeletable for BVHTraversal_TrianglePair {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_BVHTraversal_TrianglePair_destructor(ptr);
+        }
+    }
+}
+
+// ========================
 // From IntPatch_CSFunction.hxx
 // ========================
 
 /// **Source:** `IntPatch_CSFunction.hxx`:29 - `IntPatch_CSFunction`
 /// this function is associated to the intersection between
-/// a curve on surface and a surface  .
+/// a curve on surface and a surface.
 pub use crate::ffi_types::IntPatch_CSFunction as CSFunction;
 
 unsafe impl crate::CppDeletable for CSFunction {
@@ -978,9 +1094,9 @@ impl CSFunction {
     /// S1 is the surface on which the intersection is searched.
     /// C is a curve on the surface S2.
     pub fn new_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface(
-        S1: &crate::ffi_types::HandleAdaptor3dSurface,
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
-        S2: &crate::ffi_types::HandleAdaptor3dSurface,
+        S1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
+        S2: &crate::ffi_types::Handle_Adaptor3d_Surface,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPatch_CSFunction_ctor_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface(S1, C, S2)))
@@ -1052,7 +1168,7 @@ impl CSFunction {
     }
 
     /// **Source:** `IntPatch_CSFunction.hxx`:54 - `IntPatch_CSFunction::AuxillarSurface()`
-    pub fn auxillar_surface(&self) -> &crate::ffi_types::HandleAdaptor3dSurface {
+    pub fn auxillar_surface(&self) -> &crate::ffi_types::Handle_Adaptor3d_Surface {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_CSFunction_auxillar_surface(
@@ -1063,7 +1179,7 @@ impl CSFunction {
     }
 
     /// **Source:** `IntPatch_CSFunction.hxx`:56 - `IntPatch_CSFunction::AuxillarCurve()`
-    pub fn auxillar_curve(&self) -> &crate::ffi_types::HandleAdaptor2dCurve2d {
+    pub fn auxillar_curve(&self) -> &crate::ffi_types::Handle_Adaptor2d_Curve2d {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_CSFunction_auxillar_curve(
@@ -1192,7 +1308,7 @@ impl CurvIntSurf {
         Self::new_real3_csfunction_real2(U, V, W, F, TolTangency, 0.0)
     }
 
-    /// **Source:** `IntPatch_CurvIntSurf.hxx`:67 - `IntPatch_CurvIntSurf::Perform()`
+    /// **Source:** `IntPatch_CurvIntSurf.hxx`:66 - `IntPatch_CurvIntSurf::Perform()`
     /// compute the solution
     /// it's possible to write to optimize:
     /// IntImp_IntCS inter(S1,C1,Toltangency)
@@ -1245,7 +1361,7 @@ impl CurvIntSurf {
         })
     }
 
-    /// **Source:** `IntPatch_CurvIntSurf.hxx`:79 - `IntPatch_CurvIntSurf::IsDone()`
+    /// **Source:** `IntPatch_CurvIntSurf.hxx`:78 - `IntPatch_CurvIntSurf::IsDone()`
     /// Returns TRUE if the creation completed without failure.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -1253,14 +1369,14 @@ impl CurvIntSurf {
         })
     }
 
-    /// **Source:** `IntPatch_CurvIntSurf.hxx`:81 - `IntPatch_CurvIntSurf::IsEmpty()`
+    /// **Source:** `IntPatch_CurvIntSurf.hxx`:80 - `IntPatch_CurvIntSurf::IsEmpty()`
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_CurvIntSurf_is_empty(self as *const Self)
         })
     }
 
-    /// **Source:** `IntPatch_CurvIntSurf.hxx`:86 - `IntPatch_CurvIntSurf::Point()`
+    /// **Source:** `IntPatch_CurvIntSurf.hxx`:85 - `IntPatch_CurvIntSurf::Point()`
     /// returns the intersection point
     /// The exception NotDone is raised if IsDone is false.
     /// The exception DomainError is raised if IsEmpty is true.
@@ -1272,7 +1388,7 @@ impl CurvIntSurf {
         }
     }
 
-    /// **Source:** `IntPatch_CurvIntSurf.hxx`:88 - `IntPatch_CurvIntSurf::ParameterOnCurve()`
+    /// **Source:** `IntPatch_CurvIntSurf.hxx`:87 - `IntPatch_CurvIntSurf::ParameterOnCurve()`
     pub fn parameter_on_curve(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_CurvIntSurf_parameter_on_curve(
@@ -1281,7 +1397,7 @@ impl CurvIntSurf {
         })
     }
 
-    /// **Source:** `IntPatch_CurvIntSurf.hxx`:90 - `IntPatch_CurvIntSurf::ParameterOnSurface()`
+    /// **Source:** `IntPatch_CurvIntSurf.hxx`:89 - `IntPatch_CurvIntSurf::ParameterOnSurface()`
     pub fn parameter_on_surface(&self, U: &mut f64, V: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_CurvIntSurf_parameter_on_surface(
@@ -1292,7 +1408,7 @@ impl CurvIntSurf {
         })
     }
 
-    /// **Source:** `IntPatch_CurvIntSurf.hxx`:94 - `IntPatch_CurvIntSurf::Function()`
+    /// **Source:** `IntPatch_CurvIntSurf.hxx`:93 - `IntPatch_CurvIntSurf::Function()`
     /// return the math function which
     /// is used to compute the intersection
     pub fn function(&mut self) -> &mut CSFunction {
@@ -1308,7 +1424,7 @@ impl CurvIntSurf {
 // From IntPatch_GLine.hxx
 // ========================
 
-/// **Source:** `IntPatch_GLine.hxx`:42 - `IntPatch_GLine`
+/// **Source:** `IntPatch_GLine.hxx`:40 - `IntPatch_GLine`
 /// Implementation of an intersection line represented
 /// by a conic.
 pub use crate::ffi_types::IntPatch_GLine as GLine;
@@ -1322,7 +1438,7 @@ unsafe impl crate::CppDeletable for GLine {
 }
 
 impl GLine {
-    /// **Source:** `IntPatch_GLine.hxx`:48 - `IntPatch_GLine::IntPatch_GLine()`
+    /// **Source:** `IntPatch_GLine.hxx`:46 - `IntPatch_GLine::IntPatch_GLine()`
     /// Creates a Line as intersection line
     /// when the transitions are In or Out.
     pub fn new_lin_bool_typetrans2(
@@ -1343,7 +1459,7 @@ impl GLine {
         }
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:55 - `IntPatch_GLine::IntPatch_GLine()`
+    /// **Source:** `IntPatch_GLine.hxx`:53 - `IntPatch_GLine::IntPatch_GLine()`
     /// Creates a Line as intersection line
     /// when the transitions are Touch.
     pub fn new_lin_bool_situation2(
@@ -1364,7 +1480,7 @@ impl GLine {
         }
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:62 - `IntPatch_GLine::IntPatch_GLine()`
+    /// **Source:** `IntPatch_GLine.hxx`:60 - `IntPatch_GLine::IntPatch_GLine()`
     /// Creates a Line as intersection line
     /// when the transitions are Undecided.
     pub fn new_lin_bool(L: &crate::gp::Lin, Tang: bool) -> crate::OwnedPtr<Self> {
@@ -1375,7 +1491,7 @@ impl GLine {
         }
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:66 - `IntPatch_GLine::IntPatch_GLine()`
+    /// **Source:** `IntPatch_GLine.hxx`:64 - `IntPatch_GLine::IntPatch_GLine()`
     /// Creates a circle as intersection line
     /// when the transitions are In or Out.
     pub fn new_circ_bool_typetrans2(
@@ -1396,7 +1512,7 @@ impl GLine {
         }
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:73 - `IntPatch_GLine::IntPatch_GLine()`
+    /// **Source:** `IntPatch_GLine.hxx`:71 - `IntPatch_GLine::IntPatch_GLine()`
     /// Creates a circle as intersection line
     /// when the transitions are Touch.
     pub fn new_circ_bool_situation2(
@@ -1417,7 +1533,7 @@ impl GLine {
         }
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:80 - `IntPatch_GLine::IntPatch_GLine()`
+    /// **Source:** `IntPatch_GLine.hxx`:78 - `IntPatch_GLine::IntPatch_GLine()`
     /// Creates a circle as intersection line
     /// when the transitions are Undecided.
     pub fn new_circ_bool(C: &crate::gp::Circ, Tang: bool) -> crate::OwnedPtr<Self> {
@@ -1428,7 +1544,7 @@ impl GLine {
         }
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:84 - `IntPatch_GLine::IntPatch_GLine()`
+    /// **Source:** `IntPatch_GLine.hxx`:82 - `IntPatch_GLine::IntPatch_GLine()`
     /// Creates an ellipse as intersection line
     /// when the transitions are In or Out.
     pub fn new_elips_bool_typetrans2(
@@ -1449,7 +1565,7 @@ impl GLine {
         }
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:91 - `IntPatch_GLine::IntPatch_GLine()`
+    /// **Source:** `IntPatch_GLine.hxx`:89 - `IntPatch_GLine::IntPatch_GLine()`
     /// Creates an ellispe as intersection line
     /// when the transitions are Touch.
     pub fn new_elips_bool_situation2(
@@ -1470,7 +1586,7 @@ impl GLine {
         }
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:98 - `IntPatch_GLine::IntPatch_GLine()`
+    /// **Source:** `IntPatch_GLine.hxx`:96 - `IntPatch_GLine::IntPatch_GLine()`
     /// Creates an ellipse as intersection line
     /// when the transitions are Undecided.
     pub fn new_elips_bool(E: &crate::gp::Elips, Tang: bool) -> crate::OwnedPtr<Self> {
@@ -1481,7 +1597,7 @@ impl GLine {
         }
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:102 - `IntPatch_GLine::IntPatch_GLine()`
+    /// **Source:** `IntPatch_GLine.hxx`:100 - `IntPatch_GLine::IntPatch_GLine()`
     /// Creates a parabola as intersection line
     /// when the transitions are In or Out.
     pub fn new_parab_bool_typetrans2(
@@ -1502,7 +1618,7 @@ impl GLine {
         }
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:109 - `IntPatch_GLine::IntPatch_GLine()`
+    /// **Source:** `IntPatch_GLine.hxx`:107 - `IntPatch_GLine::IntPatch_GLine()`
     /// Creates a parabola as intersection line
     /// when the transitions are Touch.
     pub fn new_parab_bool_situation2(
@@ -1523,7 +1639,7 @@ impl GLine {
         }
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:116 - `IntPatch_GLine::IntPatch_GLine()`
+    /// **Source:** `IntPatch_GLine.hxx`:114 - `IntPatch_GLine::IntPatch_GLine()`
     /// Creates a parabola as intersection line
     /// when the transitions are Undecided.
     pub fn new_parab_bool(P: &crate::gp::Parab, Tang: bool) -> crate::OwnedPtr<Self> {
@@ -1534,7 +1650,7 @@ impl GLine {
         }
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:120 - `IntPatch_GLine::IntPatch_GLine()`
+    /// **Source:** `IntPatch_GLine.hxx`:118 - `IntPatch_GLine::IntPatch_GLine()`
     /// Creates an hyperbola as intersection line
     /// when the transitions are In or Out.
     pub fn new_hypr_bool_typetrans2(
@@ -1555,7 +1671,7 @@ impl GLine {
         }
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:127 - `IntPatch_GLine::IntPatch_GLine()`
+    /// **Source:** `IntPatch_GLine.hxx`:125 - `IntPatch_GLine::IntPatch_GLine()`
     /// Creates an hyperbola as intersection line
     /// when the transitions are Touch.
     pub fn new_hypr_bool_situation2(
@@ -1576,8 +1692,8 @@ impl GLine {
         }
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:134 - `IntPatch_GLine::IntPatch_GLine()`
-    /// Creates an hyperbola as  intersection line
+    /// **Source:** `IntPatch_GLine.hxx`:132 - `IntPatch_GLine::IntPatch_GLine()`
+    /// Creates an hyperbola as intersection line
     /// when the transitions are Undecided.
     pub fn new_hypr_bool(H: &crate::gp::Hypr, Tang: bool) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1587,7 +1703,7 @@ impl GLine {
         }
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:137 - `IntPatch_GLine::AddVertex()`
+    /// **Source:** `IntPatch_GLine.hxx`:135 - `IntPatch_GLine::AddVertex()`
     /// To add a vertex in the list.
     pub fn add_vertex(&mut self, Pnt: &Point) {
         crate::check_void_result(unsafe {
@@ -1595,7 +1711,7 @@ impl GLine {
         })
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:141 - `IntPatch_GLine::Replace()`
+    /// **Source:** `IntPatch_GLine.hxx`:139 - `IntPatch_GLine::Replace()`
     /// To replace the element of range Index in the list
     /// of points.
     pub fn replace(&mut self, Index: i32, Pnt: &Point) {
@@ -1604,7 +1720,7 @@ impl GLine {
         })
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:143 - `IntPatch_GLine::SetFirstPoint()`
+    /// **Source:** `IntPatch_GLine.hxx`:141 - `IntPatch_GLine::SetFirstPoint()`
     pub fn set_first_point(&mut self, IndFirst: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_GLine_set_first_point(
@@ -1614,14 +1730,14 @@ impl GLine {
         })
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:145 - `IntPatch_GLine::SetLastPoint()`
+    /// **Source:** `IntPatch_GLine.hxx`:143 - `IntPatch_GLine::SetLastPoint()`
     pub fn set_last_point(&mut self, IndLast: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_GLine_set_last_point(self as *mut Self, IndLast)
         })
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:149 - `IntPatch_GLine::Line()`
+    /// **Source:** `IntPatch_GLine.hxx`:147 - `IntPatch_GLine::Line()`
     /// Returns the Lin from gp corresponding to the intersection
     /// when ArcType returns IntPatch_Line.
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
@@ -1632,7 +1748,7 @@ impl GLine {
         }
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:153 - `IntPatch_GLine::Circle()`
+    /// **Source:** `IntPatch_GLine.hxx`:151 - `IntPatch_GLine::Circle()`
     /// Returns the Circ from gp corresponding to the intersection
     /// when ArcType returns IntPatch_Circle.
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
@@ -1643,7 +1759,7 @@ impl GLine {
         }
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:157 - `IntPatch_GLine::Ellipse()`
+    /// **Source:** `IntPatch_GLine.hxx`:155 - `IntPatch_GLine::Ellipse()`
     /// Returns the Elips from gp corresponding to the intersection
     /// when ArcType returns IntPatch_Ellipse.
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips> {
@@ -1654,7 +1770,7 @@ impl GLine {
         }
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:161 - `IntPatch_GLine::Parabola()`
+    /// **Source:** `IntPatch_GLine.hxx`:159 - `IntPatch_GLine::Parabola()`
     /// Returns the Parab from gp corresponding to the intersection
     /// when ArcType returns IntPatch_Parabola.
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab> {
@@ -1665,7 +1781,7 @@ impl GLine {
         }
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:165 - `IntPatch_GLine::Hyperbola()`
+    /// **Source:** `IntPatch_GLine.hxx`:163 - `IntPatch_GLine::Hyperbola()`
     /// Returns the Hypr from gp corresponding to the intersection
     /// when ArcType returns IntPatch_Hyperbola.
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr> {
@@ -1676,7 +1792,7 @@ impl GLine {
         }
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:169 - `IntPatch_GLine::HasFirstPoint()`
+    /// **Source:** `IntPatch_GLine.hxx`:167 - `IntPatch_GLine::HasFirstPoint()`
     /// Returns True if the line has a known First point.
     /// This point is given by the method FirstPoint().
     pub fn has_first_point(&self) -> bool {
@@ -1685,7 +1801,7 @@ impl GLine {
         })
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:173 - `IntPatch_GLine::HasLastPoint()`
+    /// **Source:** `IntPatch_GLine.hxx`:171 - `IntPatch_GLine::HasLastPoint()`
     /// Returns True if the line has a known Last point.
     /// This point is given by the method LastPoint().
     pub fn has_last_point(&self) -> bool {
@@ -1694,7 +1810,7 @@ impl GLine {
         })
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:177 - `IntPatch_GLine::FirstPoint()`
+    /// **Source:** `IntPatch_GLine.hxx`:175 - `IntPatch_GLine::FirstPoint()`
     /// Returns the IntPoint corresponding to the FirstPoint.
     /// An exception is raised when HasFirstPoint returns False.
     pub fn first_point(&self) -> &Point {
@@ -1705,7 +1821,7 @@ impl GLine {
         }
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:181 - `IntPatch_GLine::LastPoint()`
+    /// **Source:** `IntPatch_GLine.hxx`:179 - `IntPatch_GLine::LastPoint()`
     /// Returns the IntPoint corresponding to the LastPoint.
     /// An exception is raised when HasLastPoint returns False.
     pub fn last_point(&self) -> &Point {
@@ -1716,14 +1832,14 @@ impl GLine {
         }
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:183 - `IntPatch_GLine::NbVertex()`
+    /// **Source:** `IntPatch_GLine.hxx`:181 - `IntPatch_GLine::NbVertex()`
     pub fn nb_vertex(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_GLine_nb_vertex(self as *const Self)
         })
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:186 - `IntPatch_GLine::Vertex()`
+    /// **Source:** `IntPatch_GLine.hxx`:184 - `IntPatch_GLine::Vertex()`
     /// Returns the vertex of range Index on the line.
     pub fn vertex(&self, Index: i32) -> &Point {
         unsafe {
@@ -1734,7 +1850,7 @@ impl GLine {
         }
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:192 - `IntPatch_GLine::ComputeVertexParameters()`
+    /// **Source:** `IntPatch_GLine.hxx`:190 - `IntPatch_GLine::ComputeVertexParameters()`
     /// Set the parameters of all the vertex on the line.
     /// if a vertex is already in the line,
     /// its parameter is modified
@@ -1748,8 +1864,8 @@ impl GLine {
         })
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:194 - `IntPatch_GLine::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IntPatch_GLine.hxx`:192 - `IntPatch_GLine::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPatch_GLine_dynamic_type(
                 self as *const Self,
@@ -1757,7 +1873,7 @@ impl GLine {
         }
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:194 - `IntPatch_GLine::get_type_name()`
+    /// **Source:** `IntPatch_GLine.hxx`:192 - `IntPatch_GLine::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1768,8 +1884,8 @@ impl GLine {
         .into_owned()
     }
 
-    /// **Source:** `IntPatch_GLine.hxx`:194 - `IntPatch_GLine::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IntPatch_GLine.hxx`:192 - `IntPatch_GLine::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_GLine_get_type_descriptor(),
@@ -1822,7 +1938,7 @@ impl GLine {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIntPatchGLine> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IntPatch_GLine> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_GLine_to_handle(obj.into_raw()),
@@ -1830,7 +1946,7 @@ impl GLine {
         }
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:44 - `IntPatch_Line::SetValue()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:41 - `IntPatch_Line::SetValue()`
     pub fn set_value(&mut self, Uiso1: bool, Viso1: bool, Uiso2: bool, Viso2: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_GLine_inherited_SetValue(
@@ -1843,7 +1959,7 @@ impl GLine {
         })
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:51 - `IntPatch_Line::ArcType()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:45 - `IntPatch_Line::ArcType()`
     pub fn arc_type(&self) -> crate::int_patch::IType {
         crate::int_patch::IType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_GLine_inherited_ArcType(self as *const Self)
@@ -1851,14 +1967,14 @@ impl GLine {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:55 - `IntPatch_Line::IsTangent()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:49 - `IntPatch_Line::IsTangent()`
     pub fn is_tangent(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_GLine_inherited_IsTangent(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:76 - `IntPatch_Line::TransitionOnS1()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:70 - `IntPatch_Line::TransitionOnS1()`
     pub fn transition_on_s1(&self) -> crate::int_surf::TypeTrans {
         crate::int_surf::TypeTrans::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_GLine_inherited_TransitionOnS1(
@@ -1868,7 +1984,7 @@ impl GLine {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:81 - `IntPatch_Line::TransitionOnS2()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:75 - `IntPatch_Line::TransitionOnS2()`
     pub fn transition_on_s2(&self) -> crate::int_surf::TypeTrans {
         crate::int_surf::TypeTrans::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_GLine_inherited_TransitionOnS2(
@@ -1878,7 +1994,7 @@ impl GLine {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:87 - `IntPatch_Line::SituationS1()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:81 - `IntPatch_Line::SituationS1()`
     pub fn situation_s1(&self) -> crate::int_surf::Situation {
         crate::int_surf::Situation::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_GLine_inherited_SituationS1(self as *const Self)
@@ -1886,7 +2002,7 @@ impl GLine {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:93 - `IntPatch_Line::SituationS2()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:87 - `IntPatch_Line::SituationS2()`
     pub fn situation_s2(&self) -> crate::int_surf::Situation {
         crate::int_surf::Situation::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_GLine_inherited_SituationS2(self as *const Self)
@@ -1894,36 +2010,36 @@ impl GLine {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:97 - `IntPatch_Line::IsUIsoOnS1()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:91 - `IntPatch_Line::IsUIsoOnS1()`
     pub fn is_u_iso_on_s1(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_GLine_inherited_IsUIsoOnS1(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:101 - `IntPatch_Line::IsVIsoOnS1()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:95 - `IntPatch_Line::IsVIsoOnS1()`
     pub fn is_v_iso_on_s1(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_GLine_inherited_IsVIsoOnS1(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:105 - `IntPatch_Line::IsUIsoOnS2()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:99 - `IntPatch_Line::IsUIsoOnS2()`
     pub fn is_u_iso_on_s2(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_GLine_inherited_IsUIsoOnS2(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:109 - `IntPatch_Line::IsVIsoOnS2()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:103 - `IntPatch_Line::IsVIsoOnS2()`
     pub fn is_v_iso_on_s2(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_GLine_inherited_IsVIsoOnS2(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_GLine_inherited_IsInstance(
                 self as *const Self,
@@ -1932,8 +2048,8 @@ impl GLine {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_GLine_inherited_IsKind(
                 self as *const Self,
@@ -1942,7 +2058,7 @@ impl GLine {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1956,14 +2072,14 @@ impl GLine {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_GLine_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_GLine_inherited_IncrementRefCounter(
@@ -1972,7 +2088,7 @@ impl GLine {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_GLine_inherited_DecrementRefCounter(
@@ -1981,7 +2097,7 @@ impl GLine {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_GLine_inherited_Delete(self as *const Self)
@@ -1989,32 +2105,34 @@ impl GLine {
     }
 }
 
-pub use crate::ffi_types::HandleIntPatchGLine;
+pub use crate::ffi_types::Handle_IntPatch_GLine;
 
-unsafe impl crate::CppDeletable for HandleIntPatchGLine {
+unsafe impl crate::CppDeletable for Handle_IntPatch_GLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleIntPatchGLine_destructor(ptr);
+            crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_GLine_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIntPatchGLine {
+unsafe impl crate::CppCopyable for Handle_IntPatch_GLine {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchGLine_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_GLine_clone(ptr))
+        }
     }
 }
 
-impl HandleIntPatchGLine {
+impl Handle_IntPatch_GLine {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKGeomAlgo::HandleIntPatchGLine_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_GLine_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying IntPatch_GLine
     pub fn get(&self) -> &crate::ffi_types::IntPatch_GLine {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchGLine_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_GLine_get(
                 self as *const Self,
             ))
         }
@@ -2023,17 +2141,17 @@ impl HandleIntPatchGLine {
     /// Dereference this Handle to mutably access the underlying IntPatch_GLine
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IntPatch_GLine {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchGLine_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_GLine_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<IntPatch_GLine> to Handle<IntPatch_Line>
-    pub fn to_handle_line(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIntPatchLine> {
+    pub fn to_handle_line(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IntPatch_Line> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleIntPatchGLine_to_HandleIntPatchLine(
+                crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_GLine_to_Handle_IntPatch_Line(
                     self as *const Self,
                 ),
             ))
@@ -2043,10 +2161,10 @@ impl HandleIntPatchGLine {
     /// Upcast Handle<IntPatch_GLine> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleIntPatchGLine_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_GLine_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -2081,21 +2199,21 @@ impl HCurve2dTool {
     }
 
     /// **Source:** `IntPatch_HCurve2dTool.hxx`:39 - `IntPatch_HCurve2dTool::FirstParameter()`
-    pub fn first_parameter(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> f64 {
+    pub fn first_parameter(C: &crate::ffi_types::Handle_Adaptor2d_Curve2d) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_HCurve2dTool_first_parameter(C)
         })
     }
 
     /// **Source:** `IntPatch_HCurve2dTool.hxx`:41 - `IntPatch_HCurve2dTool::LastParameter()`
-    pub fn last_parameter(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> f64 {
+    pub fn last_parameter(C: &crate::ffi_types::Handle_Adaptor2d_Curve2d) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_HCurve2dTool_last_parameter(C)
         })
     }
 
     /// **Source:** `IntPatch_HCurve2dTool.hxx`:43 - `IntPatch_HCurve2dTool::Continuity()`
-    pub fn continuity(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> crate::geom_abs::Shape {
+    pub fn continuity(C: &crate::ffi_types::Handle_Adaptor2d_Curve2d) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_HCurve2dTool_continuity(C)
         }))
@@ -2103,10 +2221,10 @@ impl HCurve2dTool {
     }
 
     /// **Source:** `IntPatch_HCurve2dTool.hxx`:47 - `IntPatch_HCurve2dTool::NbIntervals()`
-    /// Returns  the number  of  intervals for  continuity
+    /// Returns the number of intervals for continuity
     /// <S>. May be one if Continuity(myclass) >= <S>
     pub fn nb_intervals(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         S: crate::geom_abs::Shape,
     ) -> i32 {
         crate::check_result(unsafe {
@@ -2115,14 +2233,14 @@ impl HCurve2dTool {
     }
 
     /// **Source:** `IntPatch_HCurve2dTool.hxx`:54 - `IntPatch_HCurve2dTool::Intervals()`
-    /// Stores in <T> the  parameters bounding the intervals
+    /// Stores in <T> the parameters bounding the intervals
     /// of continuity <S>.
     ///
-    /// The array must provide  enough room to  accommodate
+    /// The array must provide enough room to accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
-        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
+        T: &mut crate::ffi_types::NCollection_Array1_double,
         S: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
@@ -2131,21 +2249,21 @@ impl HCurve2dTool {
     }
 
     /// **Source:** `IntPatch_HCurve2dTool.hxx`:58 - `IntPatch_HCurve2dTool::IsClosed()`
-    pub fn is_closed(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> bool {
+    pub fn is_closed(C: &crate::ffi_types::Handle_Adaptor2d_Curve2d) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_HCurve2dTool_is_closed(C)
         })
     }
 
     /// **Source:** `IntPatch_HCurve2dTool.hxx`:60 - `IntPatch_HCurve2dTool::IsPeriodic()`
-    pub fn is_periodic(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> bool {
+    pub fn is_periodic(C: &crate::ffi_types::Handle_Adaptor2d_Curve2d) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_HCurve2dTool_is_periodic(C)
         })
     }
 
     /// **Source:** `IntPatch_HCurve2dTool.hxx`:62 - `IntPatch_HCurve2dTool::Period()`
-    pub fn period(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> f64 {
+    pub fn period(C: &crate::ffi_types::Handle_Adaptor2d_Curve2d) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_HCurve2dTool_period(C)
         })
@@ -2154,7 +2272,7 @@ impl HCurve2dTool {
     /// **Source:** `IntPatch_HCurve2dTool.hxx`:65 - `IntPatch_HCurve2dTool::Value()`
     /// Computes the point of parameter U on the curve.
     pub fn value(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         U: f64,
     ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
@@ -2166,7 +2284,7 @@ impl HCurve2dTool {
 
     /// **Source:** `IntPatch_HCurve2dTool.hxx`:68 - `IntPatch_HCurve2dTool::D0()`
     /// Computes the point of parameter U on the curve.
-    pub fn d0(C: &crate::ffi_types::HandleAdaptor2dCurve2d, U: f64, P: &mut crate::gp::Pnt2d) {
+    pub fn d0(C: &crate::ffi_types::Handle_Adaptor2d_Curve2d, U: f64, P: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_HCurve2dTool_d0(C, U, P)
         })
@@ -2178,7 +2296,7 @@ impl HCurve2dTool {
     /// Raised if the continuity of the current interval
     /// is not C1.
     pub fn d1(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         U: f64,
         P: &mut crate::gp::Pnt2d,
         V: &mut crate::gp::Vec2d,
@@ -2188,13 +2306,13 @@ impl HCurve2dTool {
         })
     }
 
-    /// **Source:** `IntPatch_HCurve2dTool.hxx`:83 - `IntPatch_HCurve2dTool::D2()`
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:80 - `IntPatch_HCurve2dTool::D2()`
     /// Returns the point P of parameter U, the first and second
     /// derivatives V1 and V2.
     /// Raised if the continuity of the current interval
     /// is not C2.
     pub fn d2(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         U: f64,
         P: &mut crate::gp::Pnt2d,
         V1: &mut crate::gp::Vec2d,
@@ -2205,13 +2323,13 @@ impl HCurve2dTool {
         })
     }
 
-    /// **Source:** `IntPatch_HCurve2dTool.hxx`:93 - `IntPatch_HCurve2dTool::D3()`
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:90 - `IntPatch_HCurve2dTool::D3()`
     /// Returns the point P of parameter U, the first, the second
     /// and the third derivative.
     /// Raised if the continuity of the current interval
     /// is not C3.
     pub fn d3(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         U: f64,
         P: &mut crate::gp::Pnt2d,
         V1: &mut crate::gp::Vec2d,
@@ -2223,14 +2341,14 @@ impl HCurve2dTool {
         })
     }
 
-    /// **Source:** `IntPatch_HCurve2dTool.hxx`:105 - `IntPatch_HCurve2dTool::DN()`
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:102 - `IntPatch_HCurve2dTool::DN()`
     /// The returned vector gives the value of the derivative for the
     /// order of derivation N.
     /// Raised if the continuity of the current interval
     /// is not CN.
     /// Raised if N < 1.
     pub fn dn(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         U: f64,
         N: i32,
     ) -> crate::OwnedPtr<crate::gp::Vec2d> {
@@ -2241,28 +2359,30 @@ impl HCurve2dTool {
         }
     }
 
-    /// **Source:** `IntPatch_HCurve2dTool.hxx`:111 - `IntPatch_HCurve2dTool::Resolution()`
-    /// Returns the parametric  resolution corresponding
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:106 - `IntPatch_HCurve2dTool::Resolution()`
+    /// Returns the parametric resolution corresponding
     /// to the real space resolution <R3d>.
-    pub fn resolution(C: &crate::ffi_types::HandleAdaptor2dCurve2d, R3d: f64) -> f64 {
+    pub fn resolution(C: &crate::ffi_types::Handle_Adaptor2d_Curve2d, R3d: f64) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_HCurve2dTool_resolution(C, R3d)
         })
     }
 
-    /// **Source:** `IntPatch_HCurve2dTool.hxx`:116 - `IntPatch_HCurve2dTool::GetType()`
-    /// Returns  the  type of the   curve  in the  current
-    /// interval :   Line,   Circle,   Ellipse, Hyperbola,
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:111 - `IntPatch_HCurve2dTool::GetType()`
+    /// Returns the type of the curve in the current
+    /// interval: Line, Circle, Ellipse, Hyperbola,
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
-    pub fn get_type(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> crate::geom_abs::CurveType {
+    pub fn get_type(C: &crate::ffi_types::Handle_Adaptor2d_Curve2d) -> crate::geom_abs::CurveType {
         crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_HCurve2dTool_get_type(C)
         }))
         .unwrap()
     }
 
-    /// **Source:** `IntPatch_HCurve2dTool.hxx`:118 - `IntPatch_HCurve2dTool::Line()`
-    pub fn line(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> crate::OwnedPtr<crate::gp::Lin2d> {
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:113 - `IntPatch_HCurve2dTool::Line()`
+    pub fn line(
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
+    ) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_HCurve2dTool_line(C),
@@ -2270,9 +2390,9 @@ impl HCurve2dTool {
         }
     }
 
-    /// **Source:** `IntPatch_HCurve2dTool.hxx`:120 - `IntPatch_HCurve2dTool::Circle()`
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:115 - `IntPatch_HCurve2dTool::Circle()`
     pub fn circle(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
     ) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2281,9 +2401,9 @@ impl HCurve2dTool {
         }
     }
 
-    /// **Source:** `IntPatch_HCurve2dTool.hxx`:122 - `IntPatch_HCurve2dTool::Ellipse()`
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:117 - `IntPatch_HCurve2dTool::Ellipse()`
     pub fn ellipse(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
     ) -> crate::OwnedPtr<crate::gp::Elips2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2292,9 +2412,9 @@ impl HCurve2dTool {
         }
     }
 
-    /// **Source:** `IntPatch_HCurve2dTool.hxx`:124 - `IntPatch_HCurve2dTool::Hyperbola()`
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:119 - `IntPatch_HCurve2dTool::Hyperbola()`
     pub fn hyperbola(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
     ) -> crate::OwnedPtr<crate::gp::Hypr2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2303,9 +2423,9 @@ impl HCurve2dTool {
         }
     }
 
-    /// **Source:** `IntPatch_HCurve2dTool.hxx`:126 - `IntPatch_HCurve2dTool::Parabola()`
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:121 - `IntPatch_HCurve2dTool::Parabola()`
     pub fn parabola(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
     ) -> crate::OwnedPtr<crate::gp::Parab2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2314,10 +2434,10 @@ impl HCurve2dTool {
         }
     }
 
-    /// **Source:** `IntPatch_HCurve2dTool.hxx`:128 - `IntPatch_HCurve2dTool::Bezier()`
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:123 - `IntPatch_HCurve2dTool::Bezier()`
     pub fn bezier(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBezierCurve> {
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BezierCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_HCurve2dTool_bezier(C),
@@ -2325,10 +2445,10 @@ impl HCurve2dTool {
         }
     }
 
-    /// **Source:** `IntPatch_HCurve2dTool.hxx`:130 - `IntPatch_HCurve2dTool::BSpline()`
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:125 - `IntPatch_HCurve2dTool::BSpline()`
     pub fn b_spline(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_HCurve2dTool_b_spline(C),
@@ -2336,8 +2456,8 @@ impl HCurve2dTool {
         }
     }
 
-    /// **Source:** `IntPatch_HCurve2dTool.hxx`:132 - `IntPatch_HCurve2dTool::NbSamples()`
-    pub fn nb_samples(C: &crate::ffi_types::HandleAdaptor2dCurve2d, U0: f64, U1: f64) -> i32 {
+    /// **Source:** `IntPatch_HCurve2dTool.hxx`:127 - `IntPatch_HCurve2dTool::NbSamples()`
+    pub fn nb_samples(C: &crate::ffi_types::Handle_Adaptor2d_Curve2d, U0: f64, U1: f64) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_HCurve2dTool_nb_samples(C, U0, U1)
         })
@@ -2372,7 +2492,7 @@ impl HInterTool {
     }
 
     /// **Source:** `IntPatch_HInterTool.hxx`:52 - `IntPatch_HInterTool::NbSamplePoints()`
-    pub fn nb_sample_points(&mut self, S: &crate::ffi_types::HandleAdaptor3dSurface) -> i32 {
+    pub fn nb_sample_points(&mut self, S: &crate::ffi_types::Handle_Adaptor3d_Surface) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_HInterTool_nb_sample_points(self as *mut Self, S)
         })
@@ -2381,7 +2501,7 @@ impl HInterTool {
     /// **Source:** `IntPatch_HInterTool.hxx`:54 - `IntPatch_HInterTool::SamplePoint()`
     pub fn sample_point(
         &self,
-        S: &crate::ffi_types::HandleAdaptor3dSurface,
+        S: &crate::ffi_types::Handle_Adaptor3d_Surface,
         Index: i32,
         U: &mut f64,
         V: &mut f64,
@@ -2398,42 +2518,42 @@ impl HInterTool {
     }
 
     /// **Source:** `IntPatch_HInterTool.hxx`:36 - `IntPatch_HInterTool::SingularOnUMin()`
-    pub fn singular_on_u_min(S: &crate::ffi_types::HandleAdaptor3dSurface) -> bool {
+    pub fn singular_on_u_min(S: &crate::ffi_types::Handle_Adaptor3d_Surface) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_HInterTool_singular_on_u_min(S)
         })
     }
 
     /// **Source:** `IntPatch_HInterTool.hxx`:38 - `IntPatch_HInterTool::SingularOnUMax()`
-    pub fn singular_on_u_max(S: &crate::ffi_types::HandleAdaptor3dSurface) -> bool {
+    pub fn singular_on_u_max(S: &crate::ffi_types::Handle_Adaptor3d_Surface) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_HInterTool_singular_on_u_max(S)
         })
     }
 
     /// **Source:** `IntPatch_HInterTool.hxx`:40 - `IntPatch_HInterTool::SingularOnVMin()`
-    pub fn singular_on_v_min(S: &crate::ffi_types::HandleAdaptor3dSurface) -> bool {
+    pub fn singular_on_v_min(S: &crate::ffi_types::Handle_Adaptor3d_Surface) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_HInterTool_singular_on_v_min(S)
         })
     }
 
     /// **Source:** `IntPatch_HInterTool.hxx`:42 - `IntPatch_HInterTool::SingularOnVMax()`
-    pub fn singular_on_v_max(S: &crate::ffi_types::HandleAdaptor3dSurface) -> bool {
+    pub fn singular_on_v_max(S: &crate::ffi_types::Handle_Adaptor3d_Surface) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_HInterTool_singular_on_v_max(S)
         })
     }
 
     /// **Source:** `IntPatch_HInterTool.hxx`:44 - `IntPatch_HInterTool::NbSamplesU()`
-    pub fn nb_samples_u(S: &crate::ffi_types::HandleAdaptor3dSurface, u1: f64, u2: f64) -> i32 {
+    pub fn nb_samples_u(S: &crate::ffi_types::Handle_Adaptor3d_Surface, u1: f64, u2: f64) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_HInterTool_nb_samples_u(S, u1, u2)
         })
     }
 
     /// **Source:** `IntPatch_HInterTool.hxx`:48 - `IntPatch_HInterTool::NbSamplesV()`
-    pub fn nb_samples_v(S: &crate::ffi_types::HandleAdaptor3dSurface, v1: f64, v2: f64) -> i32 {
+    pub fn nb_samples_v(S: &crate::ffi_types::Handle_Adaptor3d_Surface, v1: f64, v2: f64) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_HInterTool_nb_samples_v(S, v1, v2)
         })
@@ -2445,7 +2565,7 @@ impl HInterTool {
     /// The intersection point are given as vertices.
     /// The intersection edges are given as intervals between
     /// two vertices.
-    pub fn has_been_seen(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> bool {
+    pub fn has_been_seen(C: &crate::ffi_types::Handle_Adaptor2d_Curve2d) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_HInterTool_has_been_seen(C)
         })
@@ -2455,7 +2575,7 @@ impl HInterTool {
     /// returns the number of points which is used to make
     /// a sample on the arc. this number is a function of
     /// the Surface and the CurveOnSurface complexity.
-    pub fn nb_samples_on_arc(A: &crate::ffi_types::HandleAdaptor2dCurve2d) -> i32 {
+    pub fn nb_samples_on_arc(A: &crate::ffi_types::Handle_Adaptor2d_Curve2d) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_HInterTool_nb_samples_on_arc(A)
         })
@@ -2466,7 +2586,11 @@ impl HInterTool {
     /// These limits must be finite : they are either
     /// the real limits of the arc, for a finite arc,
     /// or a bounding box for an infinite arc.
-    pub fn bounds(C: &crate::ffi_types::HandleAdaptor2dCurve2d, Ufirst: &mut f64, Ulast: &mut f64) {
+    pub fn bounds(
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
+        Ufirst: &mut f64,
+        Ulast: &mut f64,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_HInterTool_bounds(C, Ufirst, Ulast)
         })
@@ -2474,13 +2598,13 @@ impl HInterTool {
 
     /// **Source:** `IntPatch_HInterTool.hxx`:85 - `IntPatch_HInterTool::Project()`
     /// Projects the point P on the arc C.
-    /// If the methods returns Standard_True, the projection is
+    /// If the methods returns true, the projection is
     /// successful, and Paramproj is the parameter on the arc
     /// of the projected point, Ptproj is the projected Point.
-    /// If the method returns Standard_False, Param proj and Ptproj
+    /// If the method returns false, Param proj and Ptproj
     /// are not significant.
     pub fn project(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         P: &crate::gp::Pnt2d,
         Paramproj: &mut f64,
         Ptproj: &mut crate::gp::Pnt2d,
@@ -2493,11 +2617,11 @@ impl HInterTool {
     /// **Source:** `IntPatch_HInterTool.hxx`:94 - `IntPatch_HInterTool::Tolerance()`
     /// Returns the parametric tolerance used to consider
     /// that the vertex and another point meet, i-e
-    /// if Abs(parameter(Vertex) - parameter(OtherPnt))<=
+    /// if std::abs(parameter(Vertex) - parameter(OtherPnt))<=
     /// Tolerance, the points are "merged".
     pub fn tolerance(
-        V: &crate::ffi_types::HandleAdaptor3dHVertex,
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        V: &crate::ffi_types::Handle_Adaptor3d_HVertex,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
     ) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_HInterTool_tolerance(V, C)
@@ -2507,8 +2631,8 @@ impl HInterTool {
     /// **Source:** `IntPatch_HInterTool.hxx`:98 - `IntPatch_HInterTool::Parameter()`
     /// Returns the parameter of the vertex V on the arc A.
     pub fn parameter(
-        V: &crate::ffi_types::HandleAdaptor3dHVertex,
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        V: &crate::ffi_types::Handle_Adaptor3d_HVertex,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
     ) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_HInterTool_parameter(V, C)
@@ -2517,7 +2641,7 @@ impl HInterTool {
 
     /// **Source:** `IntPatch_HInterTool.hxx`:102 - `IntPatch_HInterTool::NbPoints()`
     /// Returns the number of intersection points on the arc A.
-    pub fn nb_points(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> i32 {
+    pub fn nb_points(C: &crate::ffi_types::Handle_Adaptor2d_Curve2d) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_HInterTool_nb_points(C)
         })
@@ -2528,7 +2652,7 @@ impl HInterTool {
     /// the parameter (U) on the arc A , of the intersection
     /// point of range Index.
     pub fn value(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         Index: i32,
         Pt: &mut crate::gp::Pnt,
         Tol: &mut f64,
@@ -2542,35 +2666,35 @@ impl HInterTool {
     /// **Source:** `IntPatch_HInterTool.hxx`:115 - `IntPatch_HInterTool::IsVertex()`
     /// Returns True if the intersection point of range Index
     /// corresponds with a vertex on the arc A.
-    pub fn is_vertex(C: &crate::ffi_types::HandleAdaptor2dCurve2d, Index: i32) -> bool {
+    pub fn is_vertex(C: &crate::ffi_types::Handle_Adaptor2d_Curve2d, Index: i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_HInterTool_is_vertex(C, Index)
         })
     }
 
-    /// **Source:** `IntPatch_HInterTool.hxx`:120 - `IntPatch_HInterTool::Vertex()`
+    /// **Source:** `IntPatch_HInterTool.hxx`:119 - `IntPatch_HInterTool::Vertex()`
     /// When IsVertex returns True, this method returns the
     /// vertex on the arc A.
     pub fn vertex(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         Index: i32,
-        V: &mut crate::ffi_types::HandleAdaptor3dHVertex,
+        V: &mut crate::ffi_types::Handle_Adaptor3d_HVertex,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_HInterTool_vertex(C, Index, V)
         })
     }
 
-    /// **Source:** `IntPatch_HInterTool.hxx`:126 - `IntPatch_HInterTool::NbSegments()`
+    /// **Source:** `IntPatch_HInterTool.hxx`:125 - `IntPatch_HInterTool::NbSegments()`
     /// returns the number of part of A solution of the
     /// of intersection problem.
-    pub fn nb_segments(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> i32 {
+    pub fn nb_segments(C: &crate::ffi_types::Handle_Adaptor2d_Curve2d) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_HInterTool_nb_segments(C)
         })
     }
 
-    /// **Source:** `IntPatch_HInterTool.hxx`:134 - `IntPatch_HInterTool::HasFirstPoint()`
+    /// **Source:** `IntPatch_HInterTool.hxx`:133 - `IntPatch_HInterTool::HasFirstPoint()`
     /// Returns True when the segment of range Index is not
     /// open at the left side. In that case, IndFirst is the
     /// range in the list intersection points (see NbPoints)
@@ -2578,7 +2702,7 @@ impl HInterTool {
     /// Otherwise, the method has to return False, and IndFirst
     /// has no meaning.
     pub fn has_first_point(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         Index: i32,
         IndFirst: &mut i32,
     ) -> bool {
@@ -2587,7 +2711,7 @@ impl HInterTool {
         })
     }
 
-    /// **Source:** `IntPatch_HInterTool.hxx`:144 - `IntPatch_HInterTool::HasLastPoint()`
+    /// **Source:** `IntPatch_HInterTool.hxx`:143 - `IntPatch_HInterTool::HasLastPoint()`
     /// Returns True when the segment of range Index is not
     /// open at the right side. In that case, IndLast is the
     /// range in the list intersection points (see NbPoints)
@@ -2595,7 +2719,7 @@ impl HInterTool {
     /// Otherwise, the method has to return False, and IndLast
     /// has no meaning.
     pub fn has_last_point(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         Index: i32,
         IndLast: &mut i32,
     ) -> bool {
@@ -2604,10 +2728,10 @@ impl HInterTool {
         })
     }
 
-    /// **Source:** `IntPatch_HInterTool.hxx`:150 - `IntPatch_HInterTool::IsAllSolution()`
+    /// **Source:** `IntPatch_HInterTool.hxx`:149 - `IntPatch_HInterTool::IsAllSolution()`
     /// Returns True when the whole restriction is solution
     /// of the intersection problem.
-    pub fn is_all_solution(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> bool {
+    pub fn is_all_solution(C: &crate::ffi_types::Handle_Adaptor2d_Curve2d) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_HInterTool_is_all_solution(C)
         })
@@ -2618,7 +2742,7 @@ impl HInterTool {
 // From IntPatch_ImpImpIntersection.hxx
 // ========================
 
-/// **Source:** `IntPatch_ImpImpIntersection.hxx`:29 - `IntPatch_ImpImpIntersection`
+/// **Source:** `IntPatch_ImpImpIntersection.hxx`:30 - `IntPatch_ImpImpIntersection`
 /// Implementation of the intersection between two
 /// quadric patches : Plane, Cone, Cylinder or Sphere.
 pub use crate::ffi_types::IntPatch_ImpImpIntersection as ImpImpIntersection;
@@ -2632,7 +2756,7 @@ unsafe impl crate::CppDeletable for ImpImpIntersection {
 }
 
 impl ImpImpIntersection {
-    /// **Source:** `IntPatch_ImpImpIntersection.hxx`:50 - `IntPatch_ImpImpIntersection::IntPatch_ImpImpIntersection()`
+    /// **Source:** `IntPatch_ImpImpIntersection.hxx`:51 - `IntPatch_ImpImpIntersection::IntPatch_ImpImpIntersection()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2641,7 +2765,7 @@ impl ImpImpIntersection {
         }
     }
 
-    /// **Source:** `IntPatch_ImpImpIntersection.hxx`:58 - `IntPatch_ImpImpIntersection::IntPatch_ImpImpIntersection()`
+    /// **Source:** `IntPatch_ImpImpIntersection.hxx`:59 - `IntPatch_ImpImpIntersection::IntPatch_ImpImpIntersection()`
     /// Flag theIsReqToKeepRLine has been entered only for
     /// compatibility with TopOpeBRep package. It shall be deleted
     /// after deleting TopOpeBRep.
@@ -2649,10 +2773,10 @@ impl ImpImpIntersection {
     /// IntPatch_Line (not restriction) we (in case of theIsReqToKeepRLine==TRUE)
     /// will always keep both lines even if they are coincided.
     pub fn new_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real2_bool(
-        S1: &crate::ffi_types::HandleAdaptor3dSurface,
-        D1: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        S2: &crate::ffi_types::HandleAdaptor3dSurface,
-        D2: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        S1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        D1: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
+        S2: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        D2: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         TolArc: f64,
         TolTang: f64,
         theIsReqToKeepRLine: bool,
@@ -2662,7 +2786,7 @@ impl ImpImpIntersection {
         }
     }
 
-    /// **Source:** `IntPatch_ImpImpIntersection.hxx`:58 - `IntPatch_ImpImpIntersection::IntPatch_ImpImpIntersection()`
+    /// **Source:** `IntPatch_ImpImpIntersection.hxx`:59 - `IntPatch_ImpImpIntersection::IntPatch_ImpImpIntersection()`
     /// Flag theIsReqToKeepRLine has been entered only for
     /// compatibility with TopOpeBRep package. It shall be deleted
     /// after deleting TopOpeBRep.
@@ -2670,10 +2794,10 @@ impl ImpImpIntersection {
     /// IntPatch_Line (not restriction) we (in case of theIsReqToKeepRLine==TRUE)
     /// will always keep both lines even if they are coincided.
     pub fn new_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real2(
-        S1: &crate::ffi_types::HandleAdaptor3dSurface,
-        D1: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        S2: &crate::ffi_types::HandleAdaptor3dSurface,
-        D2: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        S1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        D1: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
+        S2: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        D2: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         TolArc: f64,
         TolTang: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -2689,10 +2813,10 @@ impl ImpImpIntersection {
     /// will always keep both lines even if they are coincided.
     pub fn perform(
         &mut self,
-        S1: &crate::ffi_types::HandleAdaptor3dSurface,
-        D1: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        S2: &crate::ffi_types::HandleAdaptor3dSurface,
-        D2: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        S1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        D1: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
+        S2: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        D2: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         TolArc: f64,
         TolTang: f64,
         theIsReqToKeepRLine: bool,
@@ -2800,7 +2924,7 @@ impl ImpImpIntersection {
     /// **Source:** `IntPatch_ImpImpIntersection.hxx`:114 - `IntPatch_ImpImpIntersection::Line()`
     /// Returns the line of range Index.
     /// An exception is raised if Index<=0 or Index>NbLine.
-    pub fn line(&self, Index: i32) -> &crate::ffi_types::HandleIntPatchLine {
+    pub fn line(&self, Index: i32) -> &crate::ffi_types::Handle_IntPatch_Line {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPatch_ImpImpIntersection_line(
                 self as *const Self,
@@ -2814,7 +2938,7 @@ impl ImpImpIntersection {
 // From IntPatch_ImpPrmIntersection.hxx
 // ========================
 
-/// **Source:** `IntPatch_ImpPrmIntersection.hxx`:31 - `IntPatch_ImpPrmIntersection`
+/// **Source:** `IntPatch_ImpPrmIntersection.hxx`:32 - `IntPatch_ImpPrmIntersection`
 /// Implementation of the intersection between a natural
 /// quadric patch : Plane, Cone, Cylinder or Sphere and
 /// a bi-parametrised surface.
@@ -2829,7 +2953,7 @@ unsafe impl crate::CppDeletable for ImpPrmIntersection {
 }
 
 impl ImpPrmIntersection {
-    /// **Source:** `IntPatch_ImpPrmIntersection.hxx`:36 - `IntPatch_ImpPrmIntersection::IntPatch_ImpPrmIntersection()`
+    /// **Source:** `IntPatch_ImpPrmIntersection.hxx`:37 - `IntPatch_ImpPrmIntersection::IntPatch_ImpPrmIntersection()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2838,12 +2962,12 @@ impl ImpPrmIntersection {
         }
     }
 
-    /// **Source:** `IntPatch_ImpPrmIntersection.hxx`:38 - `IntPatch_ImpPrmIntersection::IntPatch_ImpPrmIntersection()`
+    /// **Source:** `IntPatch_ImpPrmIntersection.hxx`:39 - `IntPatch_ImpPrmIntersection::IntPatch_ImpPrmIntersection()`
     pub fn new_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real4(
-        Surf1: &crate::ffi_types::HandleAdaptor3dSurface,
-        D1: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        Surf2: &crate::ffi_types::HandleAdaptor3dSurface,
-        D2: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        Surf1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        D1: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
+        Surf2: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        D2: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         TolArc: f64,
         TolTang: f64,
         Fleche: f64,
@@ -2854,7 +2978,7 @@ impl ImpPrmIntersection {
         }
     }
 
-    /// **Source:** `IntPatch_ImpPrmIntersection.hxx`:48 - `IntPatch_ImpPrmIntersection::SetStartPoint()`
+    /// **Source:** `IntPatch_ImpPrmIntersection.hxx`:49 - `IntPatch_ImpPrmIntersection::SetStartPoint()`
     /// to search for solution from the given point
     pub fn set_start_point(&mut self, U: f64, V: f64) {
         crate::check_void_result(unsafe {
@@ -2866,13 +2990,13 @@ impl ImpPrmIntersection {
         })
     }
 
-    /// **Source:** `IntPatch_ImpPrmIntersection.hxx`:50 - `IntPatch_ImpPrmIntersection::Perform()`
+    /// **Source:** `IntPatch_ImpPrmIntersection.hxx`:51 - `IntPatch_ImpPrmIntersection::Perform()`
     pub fn perform(
         &mut self,
-        Surf1: &crate::ffi_types::HandleAdaptor3dSurface,
-        D1: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        Surf2: &crate::ffi_types::HandleAdaptor3dSurface,
-        D2: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        Surf1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        D1: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
+        Surf2: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        D2: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         TolArc: f64,
         TolTang: f64,
         Fleche: f64,
@@ -2893,7 +3017,7 @@ impl ImpPrmIntersection {
         })
     }
 
-    /// **Source:** `IntPatch_ImpPrmIntersection.hxx`:60 - `IntPatch_ImpPrmIntersection::IsDone()`
+    /// **Source:** `IntPatch_ImpPrmIntersection.hxx`:61 - `IntPatch_ImpPrmIntersection::IsDone()`
     /// Returns true if the calculus was successful.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -2901,7 +3025,7 @@ impl ImpPrmIntersection {
         })
     }
 
-    /// **Source:** `IntPatch_ImpPrmIntersection.hxx`:63 - `IntPatch_ImpPrmIntersection::IsEmpty()`
+    /// **Source:** `IntPatch_ImpPrmIntersection.hxx`:64 - `IntPatch_ImpPrmIntersection::IsEmpty()`
     /// Returns true if the is no intersection.
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
@@ -2909,7 +3033,7 @@ impl ImpPrmIntersection {
         })
     }
 
-    /// **Source:** `IntPatch_ImpPrmIntersection.hxx`:66 - `IntPatch_ImpPrmIntersection::NbPnts()`
+    /// **Source:** `IntPatch_ImpPrmIntersection.hxx`:67 - `IntPatch_ImpPrmIntersection::NbPnts()`
     /// Returns the number of "single" points.
     pub fn nb_pnts(&self) -> i32 {
         crate::check_result(unsafe {
@@ -2917,7 +3041,7 @@ impl ImpPrmIntersection {
         })
     }
 
-    /// **Source:** `IntPatch_ImpPrmIntersection.hxx`:70 - `IntPatch_ImpPrmIntersection::Point()`
+    /// **Source:** `IntPatch_ImpPrmIntersection.hxx`:71 - `IntPatch_ImpPrmIntersection::Point()`
     /// Returns the point of range Index.
     /// An exception is raised if Index<=0 or Index>NbPnt.
     pub fn point(&self, Index: i32) -> &Point {
@@ -2931,7 +3055,7 @@ impl ImpPrmIntersection {
         }
     }
 
-    /// **Source:** `IntPatch_ImpPrmIntersection.hxx`:73 - `IntPatch_ImpPrmIntersection::NbLines()`
+    /// **Source:** `IntPatch_ImpPrmIntersection.hxx`:74 - `IntPatch_ImpPrmIntersection::NbLines()`
     /// Returns the number of intersection lines.
     pub fn nb_lines(&self) -> i32 {
         crate::check_result(unsafe {
@@ -2939,10 +3063,10 @@ impl ImpPrmIntersection {
         })
     }
 
-    /// **Source:** `IntPatch_ImpPrmIntersection.hxx`:77 - `IntPatch_ImpPrmIntersection::Line()`
+    /// **Source:** `IntPatch_ImpPrmIntersection.hxx`:78 - `IntPatch_ImpPrmIntersection::Line()`
     /// Returns the line of range Index.
     /// An exception is raised if Index<=0 or Index>NbLine.
-    pub fn line(&self, Index: i32) -> &crate::ffi_types::HandleIntPatchLine {
+    pub fn line(&self, Index: i32) -> &crate::ffi_types::Handle_IntPatch_Line {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPatch_ImpPrmIntersection_line(
                 self as *const Self,
@@ -2957,9 +3081,9 @@ impl ImpPrmIntersection {
 // ========================
 
 /// **Source:** `IntPatch_InterferencePolyhedron.hxx`:32 - `IntPatch_InterferencePolyhedron`
-/// Computes the  interference between two polyhedra or the
+/// Computes the interference between two polyhedra or the
 /// self interference of a polyhedron. Points of intersection,
-/// polylines  of intersection and zones of tangence.
+/// polylines of intersection and zones of tangence.
 pub use crate::ffi_types::IntPatch_InterferencePolyhedron as InterferencePolyhedron;
 
 unsafe impl crate::CppDeletable for InterferencePolyhedron {
@@ -2982,7 +3106,7 @@ impl InterferencePolyhedron {
     }
 
     /// **Source:** `IntPatch_InterferencePolyhedron.hxx`:42 - `IntPatch_InterferencePolyhedron::IntPatch_InterferencePolyhedron()`
-    /// Constructs  and computes  an  interference between  the two
+    /// Constructs and computes an interference between the two
     /// Polyhedra.
     pub fn new_polyhedron2(Obje1: &Polyhedron, Obje2: &Polyhedron) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2995,7 +3119,7 @@ impl InterferencePolyhedron {
     }
 
     /// **Source:** `IntPatch_InterferencePolyhedron.hxx`:47 - `IntPatch_InterferencePolyhedron::IntPatch_InterferencePolyhedron()`
-    /// Constructs  and  computes   the self   interference  of   a
+    /// Constructs and computes the self interference of a
     /// Polyhedron.
     pub fn new_polyhedron(Obje: &Polyhedron) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3046,7 +3170,7 @@ impl InterferencePolyhedron {
         }
     }
 
-    /// Inherited: **Source:** `Intf_Interference.hxx`:43 - `Intf_Interference::NbSectionPoints()`
+    /// Inherited: **Source:** `Intf_Interference.hxx`:44 - `Intf_Interference::NbSectionPoints()`
     pub fn nb_section_points(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_InterferencePolyhedron_inherited_NbSectionPoints(
@@ -3055,7 +3179,7 @@ impl InterferencePolyhedron {
         })
     }
 
-    /// Inherited: **Source:** `Intf_Interference.hxx`:47 - `Intf_Interference::PntValue()`
+    /// Inherited: **Source:** `Intf_Interference.hxx`:48 - `Intf_Interference::PntValue()`
     pub fn pnt_value(&self, Index: i32) -> &crate::intf::SectionPoint {
         unsafe {
             &*(crate::check_result(
@@ -3067,7 +3191,7 @@ impl InterferencePolyhedron {
         }
     }
 
-    /// Inherited: **Source:** `Intf_Interference.hxx`:51 - `Intf_Interference::NbSectionLines()`
+    /// Inherited: **Source:** `Intf_Interference.hxx`:52 - `Intf_Interference::NbSectionLines()`
     pub fn nb_section_lines(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_InterferencePolyhedron_inherited_NbSectionLines(
@@ -3076,7 +3200,7 @@ impl InterferencePolyhedron {
         })
     }
 
-    /// Inherited: **Source:** `Intf_Interference.hxx`:55 - `Intf_Interference::LineValue()`
+    /// Inherited: **Source:** `Intf_Interference.hxx`:56 - `Intf_Interference::LineValue()`
     pub fn line_value(&self, Index: i32) -> &crate::intf::SectionLine {
         unsafe {
             &*(crate::check_result(
@@ -3088,7 +3212,7 @@ impl InterferencePolyhedron {
         }
     }
 
-    /// Inherited: **Source:** `Intf_Interference.hxx`:58 - `Intf_Interference::NbTangentZones()`
+    /// Inherited: **Source:** `Intf_Interference.hxx`:59 - `Intf_Interference::NbTangentZones()`
     pub fn nb_tangent_zones(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_InterferencePolyhedron_inherited_NbTangentZones(
@@ -3097,7 +3221,7 @@ impl InterferencePolyhedron {
         })
     }
 
-    /// Inherited: **Source:** `Intf_Interference.hxx`:62 - `Intf_Interference::ZoneValue()`
+    /// Inherited: **Source:** `Intf_Interference.hxx`:63 - `Intf_Interference::ZoneValue()`
     pub fn zone_value(&self, Index: i32) -> &crate::intf::TangentZone {
         unsafe {
             &*(crate::check_result(
@@ -3109,7 +3233,7 @@ impl InterferencePolyhedron {
         }
     }
 
-    /// Inherited: **Source:** `Intf_Interference.hxx`:65 - `Intf_Interference::GetTolerance()`
+    /// Inherited: **Source:** `Intf_Interference.hxx`:66 - `Intf_Interference::GetTolerance()`
     pub fn get_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_InterferencePolyhedron_inherited_GetTolerance(
@@ -3118,7 +3242,7 @@ impl InterferencePolyhedron {
         })
     }
 
-    /// Inherited: **Source:** `Intf_Interference.hxx`:69 - `Intf_Interference::Contains()`
+    /// Inherited: **Source:** `Intf_Interference.hxx`:70 - `Intf_Interference::Contains()`
     pub fn contains(&self, ThePnt: &crate::intf::SectionPoint) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_InterferencePolyhedron_inherited_Contains(
@@ -3128,7 +3252,7 @@ impl InterferencePolyhedron {
         })
     }
 
-    /// Inherited: **Source:** `Intf_Interference.hxx`:74 - `Intf_Interference::Insert()`
+    /// Inherited: **Source:** `Intf_Interference.hxx`:75 - `Intf_Interference::Insert()`
     pub fn insert(&mut self, TheZone: &crate::intf::TangentZone) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_InterferencePolyhedron_inherited_Insert(
@@ -3138,7 +3262,7 @@ impl InterferencePolyhedron {
         })
     }
 
-    /// Inherited: **Source:** `Intf_Interference.hxx`:80 - `Intf_Interference::Dump()`
+    /// Inherited: **Source:** `Intf_Interference.hxx`:81 - `Intf_Interference::Dump()`
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_InterferencePolyhedron_inherited_Dump(
@@ -3152,7 +3276,7 @@ impl InterferencePolyhedron {
 // From IntPatch_Intersection.hxx
 // ========================
 
-/// **Source:** `IntPatch_Intersection.hxx`:31 - `IntPatch_Intersection`
+/// **Source:** `IntPatch_Intersection.hxx`:33 - `IntPatch_Intersection`
 /// This class provides a generic algorithm to intersect
 /// 2 surfaces.
 pub use crate::ffi_types::IntPatch_Intersection as Intersection;
@@ -3166,7 +3290,7 @@ unsafe impl crate::CppDeletable for Intersection {
 }
 
 impl Intersection {
-    /// **Source:** `IntPatch_Intersection.hxx`:36 - `IntPatch_Intersection::IntPatch_Intersection()`
+    /// **Source:** `IntPatch_Intersection.hxx`:38 - `IntPatch_Intersection::IntPatch_Intersection()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3175,12 +3299,12 @@ impl Intersection {
         }
     }
 
-    /// **Source:** `IntPatch_Intersection.hxx`:38 - `IntPatch_Intersection::IntPatch_Intersection()`
+    /// **Source:** `IntPatch_Intersection.hxx`:40 - `IntPatch_Intersection::IntPatch_Intersection()`
     pub fn new_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real2(
-        S1: &crate::ffi_types::HandleAdaptor3dSurface,
-        D1: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        S2: &crate::ffi_types::HandleAdaptor3dSurface,
-        D2: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        S1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        D1: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
+        S2: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        D2: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         TolArc: f64,
         TolTang: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -3189,10 +3313,10 @@ impl Intersection {
         }
     }
 
-    /// **Source:** `IntPatch_Intersection.hxx`:45 - `IntPatch_Intersection::IntPatch_Intersection()`
+    /// **Source:** `IntPatch_Intersection.hxx`:47 - `IntPatch_Intersection::IntPatch_Intersection()`
     pub fn new_handleadaptor3dsurface_handleadaptor3dtopoltool_real2(
-        S1: &crate::ffi_types::HandleAdaptor3dSurface,
-        D1: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        S1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        D1: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         TolArc: f64,
         TolTang: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -3201,24 +3325,24 @@ impl Intersection {
         }
     }
 
-    /// **Source:** `IntPatch_Intersection.hxx`:68 - `IntPatch_Intersection::SetTolerances()`
+    /// **Source:** `IntPatch_Intersection.hxx`:70 - `IntPatch_Intersection::SetTolerances()`
     /// Set the tolerances used by the algorithms:
     /// --- Implicit   - Parametric
     /// --- Parametric - Parametric
     /// --- Implicit   - Implicit
     ///
-    /// TolArc   is  used  to   compute  the intersections
-    /// between the restrictions   of  a  surface   and  a
+    /// TolArc is used to compute the intersections
+    /// between the restrictions of a surface and a
     /// walking line.
     ///
     /// TolTang is used to compute the points on a walking
     /// line, and in geometric algorithms.
     ///
-    /// Fleche  is  a  parameter   used in    the  walking
+    /// Fleche is a parameter used in the walking
     /// algorithms to provide small curvatures on a line.
     ///
-    /// UVMaxStep is  a  parameter   used in  the  walking
-    /// algorithms  to    compute the  distance between to
+    /// UVMaxStep is a parameter used in the walking
+    /// algorithms to compute the distance between to
     /// points in their respective parametric spaces.
     pub fn set_tolerances(&mut self, TolArc: f64, TolTang: f64, UVMaxStep: f64, Fleche: f64) {
         crate::check_void_result(unsafe {
@@ -3232,7 +3356,7 @@ impl Intersection {
         })
     }
 
-    /// **Source:** `IntPatch_Intersection.hxx`:84 - `IntPatch_Intersection::Perform()`
+    /// **Source:** `IntPatch_Intersection.hxx`:86 - `IntPatch_Intersection::Perform()`
     /// Flag theIsReqToKeepRLine has been entered only for
     /// compatibility with TopOpeBRep package. It shall be deleted
     /// after deleting TopOpeBRep.
@@ -3246,10 +3370,10 @@ impl Intersection {
     /// obtained after intersection algorithm directly (without any post-processing).
     pub fn perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real2_bool3(
         &mut self,
-        S1: &crate::ffi_types::HandleAdaptor3dSurface,
-        D1: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        S2: &crate::ffi_types::HandleAdaptor3dSurface,
-        D2: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        S1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        D1: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
+        S2: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        D2: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         TolArc: f64,
         TolTang: f64,
         isGeomInt: bool,
@@ -3261,8 +3385,8 @@ impl Intersection {
         })
     }
 
-    /// **Source:** `IntPatch_Intersection.hxx`:107 - `IntPatch_Intersection::Perform()`
-    /// If isGeomInt == Standard_False, then method
+    /// **Source:** `IntPatch_Intersection.hxx`:109 - `IntPatch_Intersection::Perform()`
+    /// If isGeomInt == false, then method
     /// Param-Param intersection will be used.
     /// Flag theIsReqToKeepRLine has been entered only for
     /// compatibility with TopOpeBRep package. It shall be deleted
@@ -3275,32 +3399,32 @@ impl Intersection {
     /// after deleting TopOpeBRep.
     /// If theIsReqToPostWLProc == FALSE, then we will work with Walking-line
     /// obtained after intersection algorithm directly (without any post-processing).
-    pub fn perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real2_listofpnton2s_bool3(
+    pub fn perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real2_list_pnton2s_bool3(
         &mut self,
-        S1: &crate::ffi_types::HandleAdaptor3dSurface,
-        D1: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        S2: &crate::ffi_types::HandleAdaptor3dSurface,
-        D2: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        S1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        D1: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
+        S2: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        D2: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         TolArc: f64,
         TolTang: f64,
-        LOfPnts: &mut crate::ffi_types::IntSurf_ListOfPntOn2S,
+        LOfPnts: &mut crate::ffi_types::NCollection_List_IntSurf_PntOn2S,
         isGeomInt: bool,
         theIsReqToKeepRLine: bool,
         theIsReqToPostWLProc: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::IntPatch_Intersection_perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real2_listofpnton2s_bool3(self as *mut Self, S1, D1, S2, D2, TolArc, TolTang, LOfPnts, isGeomInt, theIsReqToKeepRLine, theIsReqToPostWLProc)
+            crate::ffi_extern_TKGeomAlgo::IntPatch_Intersection_perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real2_list_pnton2s_bool3(self as *mut Self, S1, D1, S2, D2, TolArc, TolTang, LOfPnts, isGeomInt, theIsReqToKeepRLine, theIsReqToPostWLProc)
         })
     }
 
-    /// **Source:** `IntPatch_Intersection.hxx`:119 - `IntPatch_Intersection::Perform()`
+    /// **Source:** `IntPatch_Intersection.hxx`:121 - `IntPatch_Intersection::Perform()`
     /// Perform with start point
     pub fn perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real6(
         &mut self,
-        S1: &crate::ffi_types::HandleAdaptor3dSurface,
-        D1: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        S2: &crate::ffi_types::HandleAdaptor3dSurface,
-        D2: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        S1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        D1: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
+        S2: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        D2: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         U1: f64,
         V1: f64,
         U2: f64,
@@ -3313,12 +3437,12 @@ impl Intersection {
         })
     }
 
-    /// **Source:** `IntPatch_Intersection.hxx`:131 - `IntPatch_Intersection::Perform()`
+    /// **Source:** `IntPatch_Intersection.hxx`:133 - `IntPatch_Intersection::Perform()`
     /// Uses for finding self-intersected surfaces.
     pub fn perform_handleadaptor3dsurface_handleadaptor3dtopoltool_real2(
         &mut self,
-        S1: &crate::ffi_types::HandleAdaptor3dSurface,
-        D1: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        S1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        D1: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         TolArc: f64,
         TolTang: f64,
     ) {
@@ -3327,7 +3451,7 @@ impl Intersection {
         })
     }
 
-    /// **Source:** `IntPatch_Intersection.hxx`:137 - `IntPatch_Intersection::IsDone()`
+    /// **Source:** `IntPatch_Intersection.hxx`:139 - `IntPatch_Intersection::IsDone()`
     /// Returns True if the calculus was successful.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -3335,7 +3459,7 @@ impl Intersection {
         })
     }
 
-    /// **Source:** `IntPatch_Intersection.hxx`:140 - `IntPatch_Intersection::IsEmpty()`
+    /// **Source:** `IntPatch_Intersection.hxx`:142 - `IntPatch_Intersection::IsEmpty()`
     /// Returns true if the is no intersection.
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
@@ -3343,7 +3467,7 @@ impl Intersection {
         })
     }
 
-    /// **Source:** `IntPatch_Intersection.hxx`:145 - `IntPatch_Intersection::TangentFaces()`
+    /// **Source:** `IntPatch_Intersection.hxx`:147 - `IntPatch_Intersection::TangentFaces()`
     /// Returns True if the two patches are considered as
     /// entirely tangent, i-e every restriction arc of one
     /// patch is inside the geometric base of the other patch.
@@ -3353,7 +3477,7 @@ impl Intersection {
         })
     }
 
-    /// **Source:** `IntPatch_Intersection.hxx`:152 - `IntPatch_Intersection::OppositeFaces()`
+    /// **Source:** `IntPatch_Intersection.hxx`:154 - `IntPatch_Intersection::OppositeFaces()`
     /// Returns True when the TangentFaces returns True and the
     /// normal vectors evaluated at a point on the first and the
     /// second surface are opposite.
@@ -3365,7 +3489,7 @@ impl Intersection {
         })
     }
 
-    /// **Source:** `IntPatch_Intersection.hxx`:155 - `IntPatch_Intersection::NbPnts()`
+    /// **Source:** `IntPatch_Intersection.hxx`:157 - `IntPatch_Intersection::NbPnts()`
     /// Returns the number of "single" points.
     pub fn nb_pnts(&self) -> i32 {
         crate::check_result(unsafe {
@@ -3373,7 +3497,7 @@ impl Intersection {
         })
     }
 
-    /// **Source:** `IntPatch_Intersection.hxx`:159 - `IntPatch_Intersection::Point()`
+    /// **Source:** `IntPatch_Intersection.hxx`:161 - `IntPatch_Intersection::Point()`
     /// Returns the point of range Index.
     /// An exception is raised if Index<=0 or Index>NbPnt.
     pub fn point(&self, Index: i32) -> &Point {
@@ -3385,7 +3509,7 @@ impl Intersection {
         }
     }
 
-    /// **Source:** `IntPatch_Intersection.hxx`:162 - `IntPatch_Intersection::NbLines()`
+    /// **Source:** `IntPatch_Intersection.hxx`:164 - `IntPatch_Intersection::NbLines()`
     /// Returns the number of intersection lines.
     pub fn nb_lines(&self) -> i32 {
         crate::check_result(unsafe {
@@ -3393,10 +3517,10 @@ impl Intersection {
         })
     }
 
-    /// **Source:** `IntPatch_Intersection.hxx`:166 - `IntPatch_Intersection::Line()`
+    /// **Source:** `IntPatch_Intersection.hxx`:168 - `IntPatch_Intersection::Line()`
     /// Returns the line of range Index.
     /// An exception is raised if Index<=0 or Index>NbLine.
-    pub fn line(&self, Index: i32) -> &crate::ffi_types::HandleIntPatchLine {
+    pub fn line(&self, Index: i32) -> &crate::ffi_types::Handle_IntPatch_Line {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPatch_Intersection_line(
                 self as *const Self,
@@ -3405,27 +3529,16 @@ impl Intersection {
         }
     }
 
-    /// **Source:** `IntPatch_Intersection.hxx`:168 - `IntPatch_Intersection::SequenceOfLine()`
-    pub fn sequence_of_line(&self) -> &crate::ffi_types::IntPatch_SequenceOfLine {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::IntPatch_Intersection_sequence_of_line(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `IntPatch_Intersection.hxx`:172 - `IntPatch_Intersection::Dump()`
+    /// **Source:** `IntPatch_Intersection.hxx`:174 - `IntPatch_Intersection::Dump()`
     /// Dump of each result line.
     /// Mode for more accurate dumps.
     pub fn dump(
         &self,
         Mode: i32,
-        S1: &crate::ffi_types::HandleAdaptor3dSurface,
-        D1: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        S2: &crate::ffi_types::HandleAdaptor3dSurface,
-        D2: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        S1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        D1: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
+        S2: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        D2: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_Intersection_dump(
@@ -3439,14 +3552,14 @@ impl Intersection {
         })
     }
 
-    /// **Source:** `IntPatch_Intersection.hxx`:181 - `IntPatch_Intersection::CheckSingularPoints()`
+    /// **Source:** `IntPatch_Intersection.hxx`:183 - `IntPatch_Intersection::CheckSingularPoints()`
     /// Checks if surface theS1 has degenerated boundary (dS/du or dS/dv = 0) and
     /// calculates minimal distance between corresponding singular points and surface theS2
     /// If singular point exists the method returns "true" and stores minimal distance in theDist.
     pub fn check_singular_points(
-        theS1: &crate::ffi_types::HandleAdaptor3dSurface,
-        theD1: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        theS2: &crate::ffi_types::HandleAdaptor3dSurface,
+        theS1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        theD1: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
+        theS2: &crate::ffi_types::Handle_Adaptor3d_Surface,
         theDist: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
@@ -3456,13 +3569,13 @@ impl Intersection {
         })
     }
 
-    /// **Source:** `IntPatch_Intersection.hxx`:188 - `IntPatch_Intersection::DefineUVMaxStep()`
+    /// **Source:** `IntPatch_Intersection.hxx`:189 - `IntPatch_Intersection::DefineUVMaxStep()`
     /// Calculates recommended value for myUVMaxStep depending on surfaces and their domains
     pub fn define_uv_max_step(
-        theS1: &crate::ffi_types::HandleAdaptor3dSurface,
-        theD1: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        theS2: &crate::ffi_types::HandleAdaptor3dSurface,
-        theD2: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        theS1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        theD1: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
+        theS2: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        theD2: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
     ) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_Intersection_define_uv_max_step(
@@ -3470,31 +3583,24 @@ impl Intersection {
             )
         })
     }
-
-    /// **Source:** `IntPatch_Intersection.hxx`:194 - `IntPatch_Intersection::PrepareSurfaces()`
-    /// Prepares surfaces for intersection
-    pub fn prepare_surfaces(
-        theS1: &crate::ffi_types::HandleAdaptor3dSurface,
-        theD1: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        theS2: &crate::ffi_types::HandleAdaptor3dSurface,
-        theD2: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        Tol: f64,
-        theSeqHS1: &mut crate::ffi_types::NCollection_Vector_opencascade_handle_Adaptor3d_Surface,
-        theSeqHS2: &mut crate::ffi_types::NCollection_Vector_opencascade_handle_Adaptor3d_Surface,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::IntPatch_Intersection_prepare_surfaces(
-                theS1, theD1, theS2, theD2, Tol, theSeqHS1, theSeqHS2,
-            )
-        })
-    }
 }
+
+// ── Skipped symbols for Intersection (2 total) ──
+// SKIPPED: **Source:** `IntPatch_Intersection.hxx`:170 - `IntPatch_Intersection::SequenceOfLine`
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Sequence<occ::handle<IntPatch_Line>> const&)
+//   // pub fn sequence_of_line(&self) -> /* NCollection_Sequence<occ::handle<IntPatch_Line>> const& */;
+//
+// SKIPPED: **Source:** `IntPatch_Intersection.hxx`:195 - `IntPatch_Intersection::PrepareSurfaces`
+//   static_method: Prepares surfaces for intersection
+//   Reason: has unbindable types: param 'theSeqHS1': unresolved template type (NCollection_DynamicArray<occ::handle<Adaptor3d_Surface>>&); param 'theSeqHS2': unresolved template type (NCollection_DynamicArray<occ::handle<Adaptor3d_Surface>>&)
+//   // pub fn prepare_surfaces(theS1: &HandleSurface, theD1: &HandleTopolTool, theS2: &HandleSurface, theD2: &HandleTopolTool, Tol: f64, theSeqHS1: /* NCollection_DynamicArray<occ::handle<Adaptor3d_Surface>>& */, theSeqHS2: /* NCollection_DynamicArray<occ::handle<Adaptor3d_Surface>>& */);
+//
 
 // ========================
 // From IntPatch_Line.hxx
 // ========================
 
-/// **Source:** `IntPatch_Line.hxx`:38 - `IntPatch_Line`
+/// **Source:** `IntPatch_Line.hxx`:35 - `IntPatch_Line`
 /// Definition of an intersection line between two
 /// surfaces.
 /// A line may be either geometric : line, circle, ellipse,
@@ -3513,7 +3619,7 @@ unsafe impl crate::CppDeletable for Line {
 }
 
 impl Line {
-    /// **Source:** `IntPatch_Line.hxx`:44 - `IntPatch_Line::SetValue()`
+    /// **Source:** `IntPatch_Line.hxx`:41 - `IntPatch_Line::SetValue()`
     /// To set the values returned by IsUIsoS1,....
     /// The default values are False.
     pub fn set_value(&mut self, Uiso1: bool, Viso1: bool, Uiso2: bool, Viso2: bool) {
@@ -3528,7 +3634,7 @@ impl Line {
         })
     }
 
-    /// **Source:** `IntPatch_Line.hxx`:51 - `IntPatch_Line::ArcType()`
+    /// **Source:** `IntPatch_Line.hxx`:45 - `IntPatch_Line::ArcType()`
     /// Returns the type of geometry 3d (Line, Circle, Parabola,
     /// Hyperbola, Ellipse, Analytic, Walking, Restriction)
     pub fn arc_type(&self) -> crate::int_patch::IType {
@@ -3538,7 +3644,7 @@ impl Line {
         .unwrap()
     }
 
-    /// **Source:** `IntPatch_Line.hxx`:55 - `IntPatch_Line::IsTangent()`
+    /// **Source:** `IntPatch_Line.hxx`:49 - `IntPatch_Line::IsTangent()`
     /// Returns TRUE if the intersection is a line of tangency
     /// between the 2 patches.
     pub fn is_tangent(&self) -> bool {
@@ -3547,7 +3653,7 @@ impl Line {
         })
     }
 
-    /// **Source:** `IntPatch_Line.hxx`:76 - `IntPatch_Line::TransitionOnS1()`
+    /// **Source:** `IntPatch_Line.hxx`:70 - `IntPatch_Line::TransitionOnS1()`
     /// Returns the type of the transition of the line
     /// for the first surface. The transition is "constant"
     /// along the line.
@@ -3555,7 +3661,7 @@ impl Line {
     /// a way that the system of vector (N1,N2,T) is right-handed,
     /// where N1 is the normal to the first surface at a point P,
     /// N2 is the normal to the second surface at a point P,
-    /// T  is the tangent to the intersection line at P.
+    /// T is the tangent to the intersection line at P.
     /// If the system of vector is left-handed, the transition
     /// is OUT.
     /// When N1 and N2 are colinear all along the intersection
@@ -3574,7 +3680,7 @@ impl Line {
         .unwrap()
     }
 
-    /// **Source:** `IntPatch_Line.hxx`:81 - `IntPatch_Line::TransitionOnS2()`
+    /// **Source:** `IntPatch_Line.hxx`:75 - `IntPatch_Line::TransitionOnS2()`
     /// Returns the type of the transition of the line
     /// for the second surface. The transition is "constant"
     /// along the line.
@@ -3585,7 +3691,7 @@ impl Line {
         .unwrap()
     }
 
-    /// **Source:** `IntPatch_Line.hxx`:87 - `IntPatch_Line::SituationS1()`
+    /// **Source:** `IntPatch_Line.hxx`:81 - `IntPatch_Line::SituationS1()`
     /// Returns the situation (INSIDE/OUTSIDE/UNKNOWN) of
     /// the first patch compared to the second one, when
     /// TransitionOnS1 or TransitionOnS2 returns TOUCH.
@@ -3597,7 +3703,7 @@ impl Line {
         .unwrap()
     }
 
-    /// **Source:** `IntPatch_Line.hxx`:93 - `IntPatch_Line::SituationS2()`
+    /// **Source:** `IntPatch_Line.hxx`:87 - `IntPatch_Line::SituationS2()`
     /// Returns the situation (INSIDE/OUTSIDE/UNKNOWN) of
     /// the second patch compared to the first one, when
     /// TransitionOnS1 or TransitionOnS2 returns TOUCH.
@@ -3609,7 +3715,7 @@ impl Line {
         .unwrap()
     }
 
-    /// **Source:** `IntPatch_Line.hxx`:97 - `IntPatch_Line::IsUIsoOnS1()`
+    /// **Source:** `IntPatch_Line.hxx`:91 - `IntPatch_Line::IsUIsoOnS1()`
     /// Returns TRUE if the intersection is a U isoparametric curve
     /// on the first patch.
     pub fn is_u_iso_on_s1(&self) -> bool {
@@ -3618,7 +3724,7 @@ impl Line {
         })
     }
 
-    /// **Source:** `IntPatch_Line.hxx`:101 - `IntPatch_Line::IsVIsoOnS1()`
+    /// **Source:** `IntPatch_Line.hxx`:95 - `IntPatch_Line::IsVIsoOnS1()`
     /// Returns TRUE if the intersection is a V isoparametric curve
     /// on the first patch.
     pub fn is_v_iso_on_s1(&self) -> bool {
@@ -3627,7 +3733,7 @@ impl Line {
         })
     }
 
-    /// **Source:** `IntPatch_Line.hxx`:105 - `IntPatch_Line::IsUIsoOnS2()`
+    /// **Source:** `IntPatch_Line.hxx`:99 - `IntPatch_Line::IsUIsoOnS2()`
     /// Returns TRUE if the intersection is a U isoparametric curve
     /// on the second patch.
     pub fn is_u_iso_on_s2(&self) -> bool {
@@ -3636,7 +3742,7 @@ impl Line {
         })
     }
 
-    /// **Source:** `IntPatch_Line.hxx`:109 - `IntPatch_Line::IsVIsoOnS2()`
+    /// **Source:** `IntPatch_Line.hxx`:103 - `IntPatch_Line::IsVIsoOnS2()`
     /// Returns TRUE if the intersection is a V isoparametric curve
     /// on the second patch.
     pub fn is_v_iso_on_s2(&self) -> bool {
@@ -3645,8 +3751,8 @@ impl Line {
         })
     }
 
-    /// **Source:** `IntPatch_Line.hxx`:111 - `IntPatch_Line::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IntPatch_Line.hxx`:105 - `IntPatch_Line::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPatch_Line_dynamic_type(
                 self as *const Self,
@@ -3654,7 +3760,7 @@ impl Line {
         }
     }
 
-    /// **Source:** `IntPatch_Line.hxx`:111 - `IntPatch_Line::get_type_name()`
+    /// **Source:** `IntPatch_Line.hxx`:105 - `IntPatch_Line::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -3665,8 +3771,8 @@ impl Line {
         .into_owned()
     }
 
-    /// **Source:** `IntPatch_Line.hxx`:111 - `IntPatch_Line::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IntPatch_Line.hxx`:105 - `IntPatch_Line::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_Line_get_type_descriptor(),
@@ -3699,7 +3805,7 @@ impl Line {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIntPatchLine> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IntPatch_Line> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_Line_to_handle(obj.into_raw()),
@@ -3707,8 +3813,8 @@ impl Line {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_Line_inherited_IsInstance(
                 self as *const Self,
@@ -3717,8 +3823,8 @@ impl Line {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_Line_inherited_IsKind(
                 self as *const Self,
@@ -3727,7 +3833,7 @@ impl Line {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3741,14 +3847,14 @@ impl Line {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_Line_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_Line_inherited_IncrementRefCounter(
@@ -3757,7 +3863,7 @@ impl Line {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_Line_inherited_DecrementRefCounter(
@@ -3766,7 +3872,7 @@ impl Line {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_Line_inherited_Delete(self as *const Self)
@@ -3774,32 +3880,34 @@ impl Line {
     }
 }
 
-pub use crate::ffi_types::HandleIntPatchLine;
+pub use crate::ffi_types::Handle_IntPatch_Line;
 
-unsafe impl crate::CppDeletable for HandleIntPatchLine {
+unsafe impl crate::CppDeletable for Handle_IntPatch_Line {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleIntPatchLine_destructor(ptr);
+            crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_Line_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIntPatchLine {
+unsafe impl crate::CppCopyable for Handle_IntPatch_Line {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchLine_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_Line_clone(ptr))
+        }
     }
 }
 
-impl HandleIntPatchLine {
+impl Handle_IntPatch_Line {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKGeomAlgo::HandleIntPatchLine_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_Line_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying IntPatch_Line
     pub fn get(&self) -> &crate::ffi_types::IntPatch_Line {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchLine_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_Line_get(
                 self as *const Self,
             ))
         }
@@ -3808,7 +3916,7 @@ impl HandleIntPatchLine {
     /// Dereference this Handle to mutably access the underlying IntPatch_Line
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IntPatch_Line {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchLine_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_Line_get_mut(
                 self as *mut Self,
             ))
         }
@@ -3817,10 +3925,10 @@ impl HandleIntPatchLine {
     /// Upcast Handle<IntPatch_Line> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleIntPatchLine_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_Line_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -3832,9 +3940,9 @@ impl HandleIntPatchLine {
     /// Returns `None` if the handle does not point to a `IntPatch_ALine` (or subclass).
     pub fn downcast_to_a_line(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIntPatchALine>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IntPatch_ALine>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleIntPatchLine_downcast_to_HandleIntPatchALine(
+            crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_Line_downcast_to_Handle_IntPatch_ALine(
                 self as *const Self,
             )
         });
@@ -3850,9 +3958,9 @@ impl HandleIntPatchLine {
     /// Returns `None` if the handle does not point to a `IntPatch_GLine` (or subclass).
     pub fn downcast_to_g_line(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIntPatchGLine>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IntPatch_GLine>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleIntPatchLine_downcast_to_HandleIntPatchGLine(
+            crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_Line_downcast_to_Handle_IntPatch_GLine(
                 self as *const Self,
             )
         });
@@ -3868,9 +3976,9 @@ impl HandleIntPatchLine {
     /// Returns `None` if the handle does not point to a `IntPatch_RLine` (or subclass).
     pub fn downcast_to_r_line(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIntPatchRLine>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IntPatch_RLine>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleIntPatchLine_downcast_to_HandleIntPatchRLine(
+            crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_Line_downcast_to_Handle_IntPatch_RLine(
                 self as *const Self,
             )
         });
@@ -3886,9 +3994,9 @@ impl HandleIntPatchLine {
     /// Returns `None` if the handle does not point to a `IntPatch_WLine` (or subclass).
     pub fn downcast_to_w_line(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIntPatchWLine>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IntPatch_WLine>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleIntPatchLine_downcast_to_HandleIntPatchWLine(
+            crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_Line_downcast_to_Handle_IntPatch_WLine(
                 self as *const Self,
             )
         });
@@ -3904,9 +4012,9 @@ impl HandleIntPatchLine {
 // From IntPatch_LineConstructor.hxx
 // ========================
 
-/// **Source:** `IntPatch_LineConstructor.hxx`:28 - `IntPatch_LineConstructor`
-/// The intersections  algorithms compute the intersection
-/// on two surfaces and  return the intersections lines as
+/// **Source:** `IntPatch_LineConstructor.hxx`:29 - `IntPatch_LineConstructor`
+/// The intersections algorithms compute the intersection
+/// on two surfaces and return the intersections lines as
 /// IntPatch_Line.
 pub use crate::ffi_types::IntPatch_LineConstructor as LineConstructor;
 
@@ -3919,7 +4027,7 @@ unsafe impl crate::CppDeletable for LineConstructor {
 }
 
 impl LineConstructor {
-    /// **Source:** `IntPatch_LineConstructor.hxx`:33 - `IntPatch_LineConstructor::IntPatch_LineConstructor()`
+    /// **Source:** `IntPatch_LineConstructor.hxx`:34 - `IntPatch_LineConstructor::IntPatch_LineConstructor()`
     pub fn new_int(mode: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3928,40 +4036,15 @@ impl LineConstructor {
         }
     }
 
-    /// **Source:** `IntPatch_LineConstructor.hxx`:35 - `IntPatch_LineConstructor::Perform()`
-    pub fn perform(
-        &mut self,
-        SL: &crate::ffi_types::IntPatch_SequenceOfLine,
-        L: &crate::ffi_types::HandleIntPatchLine,
-        S1: &crate::ffi_types::HandleAdaptor3dSurface,
-        D1: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        S2: &crate::ffi_types::HandleAdaptor3dSurface,
-        D2: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        Tol: f64,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::IntPatch_LineConstructor_perform(
-                self as *mut Self,
-                SL,
-                L,
-                S1,
-                D1,
-                S2,
-                D2,
-                Tol,
-            )
-        })
-    }
-
-    /// **Source:** `IntPatch_LineConstructor.hxx`:43 - `IntPatch_LineConstructor::NbLines()`
+    /// **Source:** `IntPatch_LineConstructor.hxx`:44 - `IntPatch_LineConstructor::NbLines()`
     pub fn nb_lines(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_LineConstructor_nb_lines(self as *const Self)
         })
     }
 
-    /// **Source:** `IntPatch_LineConstructor.hxx`:45 - `IntPatch_LineConstructor::Line()`
-    pub fn line(&self, index: i32) -> crate::OwnedPtr<crate::ffi_types::HandleIntPatchLine> {
+    /// **Source:** `IntPatch_LineConstructor.hxx`:46 - `IntPatch_LineConstructor::Line()`
+    pub fn line(&self, index: i32) -> crate::OwnedPtr<crate::ffi_types::Handle_IntPatch_Line> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_LineConstructor_line(
@@ -3972,6 +4055,12 @@ impl LineConstructor {
         }
     }
 }
+
+// ── Skipped symbols for LineConstructor (1 total) ──
+// SKIPPED: **Source:** `IntPatch_LineConstructor.hxx`:36 - `IntPatch_LineConstructor::Perform`
+//   Reason: has unbindable types: param 'SL': unresolved template type (NCollection_Sequence<occ::handle<IntPatch_Line>> const&)
+//   // pub fn perform(&mut self, SL: /* NCollection_Sequence<occ::handle<IntPatch_Line>> const& */, L: &HandleLine, S1: &HandleSurface, D1: &HandleTopolTool, S2: &HandleSurface, D2: &HandleTopolTool, Tol: f64);
+//
 
 // ========================
 // From IntPatch_Point.hxx
@@ -4018,14 +4107,14 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:50 - `IntPatch_Point::SetValue()`
+    /// **Source:** `IntPatch_Point.hxx`:48 - `IntPatch_Point::SetValue()`
     pub fn set_value_pnt(&mut self, Pt: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_Point_set_value_pnt(self as *mut Self, Pt)
         })
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:53 - `IntPatch_Point::SetValue()`
+    /// **Source:** `IntPatch_Point.hxx`:51 - `IntPatch_Point::SetValue()`
     /// Sets the value of <pt> member
     pub fn set_value_pnton2s(&mut self, thePOn2S: &crate::int_surf::PntOn2S) {
         crate::check_void_result(unsafe {
@@ -4036,14 +4125,14 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:55 - `IntPatch_Point::SetTolerance()`
+    /// **Source:** `IntPatch_Point.hxx`:53 - `IntPatch_Point::SetTolerance()`
     pub fn set_tolerance(&mut self, Tol: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_Point_set_tolerance(self as *mut Self, Tol)
         })
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:59 - `IntPatch_Point::SetParameters()`
+    /// **Source:** `IntPatch_Point.hxx`:57 - `IntPatch_Point::SetParameters()`
     /// Sets the values of the parameters of the point
     /// on each surface.
     pub fn set_parameters(&mut self, U1: f64, V1: f64, U2: f64, V2: f64) {
@@ -4058,7 +4147,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:65 - `IntPatch_Point::SetParameter()`
+    /// **Source:** `IntPatch_Point.hxx`:60 - `IntPatch_Point::SetParameter()`
     /// Set the value of the parameter on the intersection line.
     pub fn set_parameter(&mut self, Para: f64) {
         crate::check_void_result(unsafe {
@@ -4066,20 +4155,20 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:73 - `IntPatch_Point::SetVertex()`
+    /// **Source:** `IntPatch_Point.hxx`:68 - `IntPatch_Point::SetVertex()`
     /// Sets the values of a point which is a vertex on
     /// the initial facet of restriction of one
     /// of the surface.
     /// If OnFirst is True, the point is on the domain of the
     /// first patch, otherwise the point is on the domain of the
     /// second surface.
-    pub fn set_vertex(&mut self, OnFirst: bool, V: &crate::ffi_types::HandleAdaptor3dHVertex) {
+    pub fn set_vertex(&mut self, OnFirst: bool, V: &crate::ffi_types::Handle_Adaptor3d_HVertex) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_Point_set_vertex(self as *mut Self, OnFirst, V)
         })
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:81 - `IntPatch_Point::SetArc()`
+    /// **Source:** `IntPatch_Point.hxx`:75 - `IntPatch_Point::SetArc()`
     /// Sets the values of a point which is on one of the domain,
     /// when both surfaces are implicit ones.
     /// If OnFirst is True, the point is on the domain of the
@@ -4088,7 +4177,7 @@ impl Point {
     pub fn set_arc(
         &mut self,
         OnFirst: bool,
-        A: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        A: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         Param: f64,
         TLine: &crate::int_surf::Transition,
         TArc: &crate::int_surf::Transition,
@@ -4105,7 +4194,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:89 - `IntPatch_Point::SetMultiple()`
+    /// **Source:** `IntPatch_Point.hxx`:83 - `IntPatch_Point::SetMultiple()`
     /// Sets (or unsets) the point as a point on several
     /// intersection line.
     pub fn set_multiple(&mut self, IsMult: bool) {
@@ -4114,7 +4203,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:92 - `IntPatch_Point::Value()`
+    /// **Source:** `IntPatch_Point.hxx`:86 - `IntPatch_Point::Value()`
     /// Returns the intersection point (geometric information).
     pub fn value(&self) -> &crate::gp::Pnt {
         unsafe {
@@ -4124,7 +4213,7 @@ impl Point {
         }
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:98 - `IntPatch_Point::ParameterOnLine()`
+    /// **Source:** `IntPatch_Point.hxx`:92 - `IntPatch_Point::ParameterOnLine()`
     /// This method returns the parameter of the point
     /// on the intersection line.
     /// If the points does not belong to an intersection line,
@@ -4135,7 +4224,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:101 - `IntPatch_Point::Tolerance()`
+    /// **Source:** `IntPatch_Point.hxx`:95 - `IntPatch_Point::Tolerance()`
     /// This method returns the fuzziness on the point.
     pub fn tolerance(&self) -> f64 {
         crate::check_result(unsafe {
@@ -4143,7 +4232,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:107 - `IntPatch_Point::IsTangencyPoint()`
+    /// **Source:** `IntPatch_Point.hxx`:101 - `IntPatch_Point::IsTangencyPoint()`
     /// Returns True if the Point is a tangency point between
     /// the surfaces.
     /// If the Point is on one of the domain (IsOnDomS1 returns
@@ -4154,7 +4243,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:110 - `IntPatch_Point::ParametersOnS1()`
+    /// **Source:** `IntPatch_Point.hxx`:104 - `IntPatch_Point::ParametersOnS1()`
     /// Returns the parameters on the first surface of the point.
     pub fn parameters_on_s1(&self, U1: &mut f64, V1: &mut f64) {
         crate::check_void_result(unsafe {
@@ -4166,7 +4255,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:113 - `IntPatch_Point::ParametersOnS2()`
+    /// **Source:** `IntPatch_Point.hxx`:107 - `IntPatch_Point::ParametersOnS2()`
     /// Returns the parameters on the second surface of the point.
     pub fn parameters_on_s2(&self, U2: &mut f64, V2: &mut f64) {
         crate::check_void_result(unsafe {
@@ -4178,7 +4267,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:117 - `IntPatch_Point::IsMultiple()`
+    /// **Source:** `IntPatch_Point.hxx`:111 - `IntPatch_Point::IsMultiple()`
     /// Returns True if the point belongs to several intersection
     /// lines.
     pub fn is_multiple(&self) -> bool {
@@ -4187,7 +4276,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:121 - `IntPatch_Point::IsOnDomS1()`
+    /// **Source:** `IntPatch_Point.hxx`:115 - `IntPatch_Point::IsOnDomS1()`
     /// Returns TRUE if the point is on a boundary of the domain
     /// of the first patch.
     pub fn is_on_dom_s1(&self) -> bool {
@@ -4196,7 +4285,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:125 - `IntPatch_Point::IsVertexOnS1()`
+    /// **Source:** `IntPatch_Point.hxx`:119 - `IntPatch_Point::IsVertexOnS1()`
     /// Returns TRUE if the point is a vertex on the initial
     /// restriction facet of the first surface.
     pub fn is_vertex_on_s1(&self) -> bool {
@@ -4205,12 +4294,12 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:131 - `IntPatch_Point::VertexOnS1()`
+    /// **Source:** `IntPatch_Point.hxx`:125 - `IntPatch_Point::VertexOnS1()`
     /// Returns the information about the point when it is
     /// on the domain of the first patch, i-e when the function
     /// IsVertexOnS1 returns True.
     /// Otherwise, an exception is raised.
-    pub fn vertex_on_s1(&self) -> &crate::ffi_types::HandleAdaptor3dHVertex {
+    pub fn vertex_on_s1(&self) -> &crate::ffi_types::Handle_Adaptor3d_HVertex {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPatch_Point_vertex_on_s1(
                 self as *const Self,
@@ -4218,12 +4307,12 @@ impl Point {
         }
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:137 - `IntPatch_Point::ArcOnS1()`
+    /// **Source:** `IntPatch_Point.hxx`:131 - `IntPatch_Point::ArcOnS1()`
     /// Returns the arc of restriction containing the
     /// vertex.
     /// The exception DomainError is raised if
     /// IsOnDomS1 returns False.
-    pub fn arc_on_s1(&self) -> &crate::ffi_types::HandleAdaptor2dCurve2d {
+    pub fn arc_on_s1(&self) -> &crate::ffi_types::Handle_Adaptor2d_Curve2d {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPatch_Point_arc_on_s1(
                 self as *const Self,
@@ -4231,7 +4320,7 @@ impl Point {
         }
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:143 - `IntPatch_Point::TransitionLineArc1()`
+    /// **Source:** `IntPatch_Point.hxx`:137 - `IntPatch_Point::TransitionLineArc1()`
     /// Returns the transition of the point on the
     /// intersection line with the arc on S1.
     /// The exception DomainError is raised if IsOnDomS1
@@ -4246,7 +4335,7 @@ impl Point {
         }
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:150 - `IntPatch_Point::TransitionOnS1()`
+    /// **Source:** `IntPatch_Point.hxx`:144 - `IntPatch_Point::TransitionOnS1()`
     /// Returns the transition between the intersection line
     /// returned by the method Line and the arc on S1 returned
     /// by ArcOnS1().
@@ -4260,7 +4349,7 @@ impl Point {
         }
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:156 - `IntPatch_Point::ParameterOnArc1()`
+    /// **Source:** `IntPatch_Point.hxx`:150 - `IntPatch_Point::ParameterOnArc1()`
     /// Returns the parameter of the point on the
     /// arc returned by the method ArcOnS2.
     /// The exception DomainError is raised if
@@ -4271,7 +4360,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:160 - `IntPatch_Point::IsOnDomS2()`
+    /// **Source:** `IntPatch_Point.hxx`:154 - `IntPatch_Point::IsOnDomS2()`
     /// Returns TRUE if the point is on a boundary of the domain
     /// of the second patch.
     pub fn is_on_dom_s2(&self) -> bool {
@@ -4280,7 +4369,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:164 - `IntPatch_Point::IsVertexOnS2()`
+    /// **Source:** `IntPatch_Point.hxx`:158 - `IntPatch_Point::IsVertexOnS2()`
     /// Returns TRUE if the point is a vertex on the initial
     /// restriction facet of the first surface.
     pub fn is_vertex_on_s2(&self) -> bool {
@@ -4289,12 +4378,12 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:170 - `IntPatch_Point::VertexOnS2()`
+    /// **Source:** `IntPatch_Point.hxx`:164 - `IntPatch_Point::VertexOnS2()`
     /// Returns the information about the point when it is
     /// on the domain of the second patch, i-e when the function
     /// IsVertexOnS2 returns True.
     /// Otherwise, an exception is raised.
-    pub fn vertex_on_s2(&self) -> &crate::ffi_types::HandleAdaptor3dHVertex {
+    pub fn vertex_on_s2(&self) -> &crate::ffi_types::Handle_Adaptor3d_HVertex {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPatch_Point_vertex_on_s2(
                 self as *const Self,
@@ -4302,12 +4391,12 @@ impl Point {
         }
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:176 - `IntPatch_Point::ArcOnS2()`
+    /// **Source:** `IntPatch_Point.hxx`:170 - `IntPatch_Point::ArcOnS2()`
     /// Returns the arc of restriction containing the
     /// vertex.
     /// The exception DomainError is raised if
     /// IsOnDomS2 returns False.
-    pub fn arc_on_s2(&self) -> &crate::ffi_types::HandleAdaptor2dCurve2d {
+    pub fn arc_on_s2(&self) -> &crate::ffi_types::Handle_Adaptor2d_Curve2d {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPatch_Point_arc_on_s2(
                 self as *const Self,
@@ -4315,7 +4404,7 @@ impl Point {
         }
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:182 - `IntPatch_Point::TransitionLineArc2()`
+    /// **Source:** `IntPatch_Point.hxx`:176 - `IntPatch_Point::TransitionLineArc2()`
     /// Returns the transition of the point on the
     /// intersection line with the arc on S2.
     /// The exception DomainError is raised if IsOnDomS2
@@ -4330,7 +4419,7 @@ impl Point {
         }
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:189 - `IntPatch_Point::TransitionOnS2()`
+    /// **Source:** `IntPatch_Point.hxx`:183 - `IntPatch_Point::TransitionOnS2()`
     /// Returns the transition between the intersection line
     /// returned by the method Line and the arc on S2 returned
     /// by ArcOnS2.
@@ -4344,7 +4433,7 @@ impl Point {
         }
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:195 - `IntPatch_Point::ParameterOnArc2()`
+    /// **Source:** `IntPatch_Point.hxx`:189 - `IntPatch_Point::ParameterOnArc2()`
     /// Returns the parameter of the point on the
     /// arc returned by the method ArcOnS2.
     /// The exception DomainError is raised if
@@ -4355,7 +4444,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:199 - `IntPatch_Point::PntOn2S()`
+    /// **Source:** `IntPatch_Point.hxx`:193 - `IntPatch_Point::PntOn2S()`
     /// Returns the PntOn2S
     /// (geometric Point and the parameters)
     pub fn pnt_on2_s(&self) -> &crate::int_surf::PntOn2S {
@@ -4366,7 +4455,7 @@ impl Point {
         }
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:203 - `IntPatch_Point::Parameters()`
+    /// **Source:** `IntPatch_Point.hxx`:197 - `IntPatch_Point::Parameters()`
     /// Returns the parameters on the first and on the
     /// second surface of the point.
     pub fn parameters(&self, U1: &mut f64, V1: &mut f64, U2: &mut f64, V2: &mut f64) {
@@ -4381,14 +4470,14 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:205 - `IntPatch_Point::ReverseTransition()`
+    /// **Source:** `IntPatch_Point.hxx`:199 - `IntPatch_Point::ReverseTransition()`
     pub fn reverse_transition(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_Point_reverse_transition(self as *mut Self)
         })
     }
 
-    /// **Source:** `IntPatch_Point.hxx`:207 - `IntPatch_Point::Dump()`
+    /// **Source:** `IntPatch_Point.hxx`:201 - `IntPatch_Point::Dump()`
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_Point_dump(self as *const Self)
@@ -4400,7 +4489,7 @@ impl Point {
 // From IntPatch_PointLine.hxx
 // ========================
 
-/// **Source:** `IntPatch_PointLine.hxx`:36 - `IntPatch_PointLine`
+/// **Source:** `IntPatch_PointLine.hxx`:34 - `IntPatch_PointLine`
 /// Definition of an intersection line between two
 /// surfaces.
 /// A line defined by a set of points
@@ -4417,7 +4506,7 @@ unsafe impl crate::CppDeletable for PointLine {
 }
 
 impl PointLine {
-    /// **Source:** `IntPatch_PointLine.hxx`:42 - `IntPatch_PointLine::AddVertex()`
+    /// **Source:** `IntPatch_PointLine.hxx`:40 - `IntPatch_PointLine::AddVertex()`
     /// Adds a vertex in the list. If theIsPrepend == TRUE the new
     /// vertex will be added before the first element of vertices sequence.
     /// Otherwise, to the end of the sequence
@@ -4431,7 +4520,7 @@ impl PointLine {
         })
     }
 
-    /// **Source:** `IntPatch_PointLine.hxx`:46 - `IntPatch_PointLine::NbPnts()`
+    /// **Source:** `IntPatch_PointLine.hxx`:44 - `IntPatch_PointLine::NbPnts()`
     /// Returns the number of intersection points.
     pub fn nb_pnts(&self) -> i32 {
         crate::check_result(unsafe {
@@ -4439,7 +4528,7 @@ impl PointLine {
         })
     }
 
-    /// **Source:** `IntPatch_PointLine.hxx`:49 - `IntPatch_PointLine::NbVertex()`
+    /// **Source:** `IntPatch_PointLine.hxx`:47 - `IntPatch_PointLine::NbVertex()`
     /// Returns number of vertices (IntPatch_Point) of the line
     pub fn nb_vertex(&self) -> i32 {
         crate::check_result(unsafe {
@@ -4447,7 +4536,7 @@ impl PointLine {
         })
     }
 
-    /// **Source:** `IntPatch_PointLine.hxx`:52 - `IntPatch_PointLine::Point()`
+    /// **Source:** `IntPatch_PointLine.hxx`:50 - `IntPatch_PointLine::Point()`
     /// Returns the intersection point of range Index.
     pub fn point(&self, Index: i32) -> &crate::int_surf::PntOn2S {
         unsafe {
@@ -4458,7 +4547,7 @@ impl PointLine {
         }
     }
 
-    /// **Source:** `IntPatch_PointLine.hxx`:55 - `IntPatch_PointLine::Vertex()`
+    /// **Source:** `IntPatch_PointLine.hxx`:53 - `IntPatch_PointLine::Vertex()`
     /// Returns the vertex of range Index on the line.
     pub fn vertex(&self, Index: i32) -> &Point {
         unsafe {
@@ -4469,7 +4558,7 @@ impl PointLine {
         }
     }
 
-    /// **Source:** `IntPatch_PointLine.hxx`:58 - `IntPatch_PointLine::ChangeVertex()`
+    /// **Source:** `IntPatch_PointLine.hxx`:56 - `IntPatch_PointLine::ChangeVertex()`
     /// Returns the vertex of range Index on the line.
     pub fn change_vertex(&mut self, Index: i32) -> &mut Point {
         unsafe {
@@ -4482,7 +4571,7 @@ impl PointLine {
         }
     }
 
-    /// **Source:** `IntPatch_PointLine.hxx`:61 - `IntPatch_PointLine::ClearVertexes()`
+    /// **Source:** `IntPatch_PointLine.hxx`:59 - `IntPatch_PointLine::ClearVertexes()`
     /// Removes vertices from the line
     pub fn clear_vertexes(&mut self) {
         crate::check_void_result(unsafe {
@@ -4490,7 +4579,7 @@ impl PointLine {
         })
     }
 
-    /// **Source:** `IntPatch_PointLine.hxx`:64 - `IntPatch_PointLine::RemoveVertex()`
+    /// **Source:** `IntPatch_PointLine.hxx`:62 - `IntPatch_PointLine::RemoveVertex()`
     /// Removes single vertex from the line
     pub fn remove_vertex(&mut self, theIndex: i32) {
         crate::check_void_result(unsafe {
@@ -4501,9 +4590,9 @@ impl PointLine {
         })
     }
 
-    /// **Source:** `IntPatch_PointLine.hxx`:67 - `IntPatch_PointLine::Curve()`
+    /// **Source:** `IntPatch_PointLine.hxx`:65 - `IntPatch_PointLine::Curve()`
     /// Returns set of intersection points
-    pub fn curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIntSurfLineOn2S> {
+    pub fn curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IntSurf_LineOn2S> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_PointLine_curve(self as *const Self),
@@ -4511,7 +4600,7 @@ impl PointLine {
         }
     }
 
-    /// **Source:** `IntPatch_PointLine.hxx`:71 - `IntPatch_PointLine::IsOutSurf1Box()`
+    /// **Source:** `IntPatch_PointLine.hxx`:69 - `IntPatch_PointLine::IsOutSurf1Box()`
     /// Returns TRUE if P1 is out of the box built from
     /// the points on 1st surface
     pub fn is_out_surf1_box(&self, P1: &crate::gp::Pnt2d) -> bool {
@@ -4523,7 +4612,7 @@ impl PointLine {
         })
     }
 
-    /// **Source:** `IntPatch_PointLine.hxx`:75 - `IntPatch_PointLine::IsOutSurf2Box()`
+    /// **Source:** `IntPatch_PointLine.hxx`:73 - `IntPatch_PointLine::IsOutSurf2Box()`
     /// Returns TRUE if P2 is out of the box built from
     /// the points on 2nd surface
     pub fn is_out_surf2_box(&self, P2: &crate::gp::Pnt2d) -> bool {
@@ -4535,7 +4624,7 @@ impl PointLine {
         })
     }
 
-    /// **Source:** `IntPatch_PointLine.hxx`:78 - `IntPatch_PointLine::IsOutBox()`
+    /// **Source:** `IntPatch_PointLine.hxx`:76 - `IntPatch_PointLine::IsOutBox()`
     /// Returns TRUE if P is out of the box built from 3D-points.
     pub fn is_out_box(&self, P: &crate::gp::Pnt) -> bool {
         crate::check_result(unsafe {
@@ -4543,8 +4632,8 @@ impl PointLine {
         })
     }
 
-    /// **Source:** `IntPatch_PointLine.hxx`:88 - `IntPatch_PointLine::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IntPatch_PointLine.hxx`:86 - `IntPatch_PointLine::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPatch_PointLine_dynamic_type(
                 self as *const Self,
@@ -4552,13 +4641,13 @@ impl PointLine {
         }
     }
 
-    /// **Source:** `IntPatch_PointLine.hxx`:83 - `IntPatch_PointLine::CurvatureRadiusOfIntersLine()`
+    /// **Source:** `IntPatch_PointLine.hxx`:81 - `IntPatch_PointLine::CurvatureRadiusOfIntersLine()`
     /// Returns the radius of curvature of
     /// the intersection line in given point.
     /// Returns negative value if computation is not possible.
     pub fn curvature_radius_of_inters_line(
-        theS1: &crate::ffi_types::HandleAdaptor3dSurface,
-        theS2: &crate::ffi_types::HandleAdaptor3dSurface,
+        theS1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        theS2: &crate::ffi_types::Handle_Adaptor3d_Surface,
         theUVPoint: &crate::int_surf::PntOn2S,
     ) -> f64 {
         crate::check_result(unsafe {
@@ -4568,7 +4657,7 @@ impl PointLine {
         })
     }
 
-    /// **Source:** `IntPatch_PointLine.hxx`:88 - `IntPatch_PointLine::get_type_name()`
+    /// **Source:** `IntPatch_PointLine.hxx`:86 - `IntPatch_PointLine::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -4579,8 +4668,8 @@ impl PointLine {
         .into_owned()
     }
 
-    /// **Source:** `IntPatch_PointLine.hxx`:88 - `IntPatch_PointLine::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IntPatch_PointLine.hxx`:86 - `IntPatch_PointLine::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_PointLine_get_type_descriptor(),
@@ -4632,7 +4721,7 @@ impl PointLine {
         }
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:44 - `IntPatch_Line::SetValue()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:41 - `IntPatch_Line::SetValue()`
     pub fn set_value(&mut self, Uiso1: bool, Viso1: bool, Uiso2: bool, Viso2: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_PointLine_inherited_SetValue(
@@ -4645,7 +4734,7 @@ impl PointLine {
         })
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:51 - `IntPatch_Line::ArcType()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:45 - `IntPatch_Line::ArcType()`
     pub fn arc_type(&self) -> crate::int_patch::IType {
         crate::int_patch::IType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_PointLine_inherited_ArcType(self as *const Self)
@@ -4653,7 +4742,7 @@ impl PointLine {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:55 - `IntPatch_Line::IsTangent()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:49 - `IntPatch_Line::IsTangent()`
     pub fn is_tangent(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_PointLine_inherited_IsTangent(
@@ -4662,7 +4751,7 @@ impl PointLine {
         })
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:76 - `IntPatch_Line::TransitionOnS1()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:70 - `IntPatch_Line::TransitionOnS1()`
     pub fn transition_on_s1(&self) -> crate::int_surf::TypeTrans {
         crate::int_surf::TypeTrans::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_PointLine_inherited_TransitionOnS1(
@@ -4672,7 +4761,7 @@ impl PointLine {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:81 - `IntPatch_Line::TransitionOnS2()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:75 - `IntPatch_Line::TransitionOnS2()`
     pub fn transition_on_s2(&self) -> crate::int_surf::TypeTrans {
         crate::int_surf::TypeTrans::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_PointLine_inherited_TransitionOnS2(
@@ -4682,7 +4771,7 @@ impl PointLine {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:87 - `IntPatch_Line::SituationS1()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:81 - `IntPatch_Line::SituationS1()`
     pub fn situation_s1(&self) -> crate::int_surf::Situation {
         crate::int_surf::Situation::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_PointLine_inherited_SituationS1(
@@ -4692,7 +4781,7 @@ impl PointLine {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:93 - `IntPatch_Line::SituationS2()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:87 - `IntPatch_Line::SituationS2()`
     pub fn situation_s2(&self) -> crate::int_surf::Situation {
         crate::int_surf::Situation::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_PointLine_inherited_SituationS2(
@@ -4702,7 +4791,7 @@ impl PointLine {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:97 - `IntPatch_Line::IsUIsoOnS1()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:91 - `IntPatch_Line::IsUIsoOnS1()`
     pub fn is_u_iso_on_s1(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_PointLine_inherited_IsUIsoOnS1(
@@ -4711,7 +4800,7 @@ impl PointLine {
         })
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:101 - `IntPatch_Line::IsVIsoOnS1()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:95 - `IntPatch_Line::IsVIsoOnS1()`
     pub fn is_v_iso_on_s1(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_PointLine_inherited_IsVIsoOnS1(
@@ -4720,7 +4809,7 @@ impl PointLine {
         })
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:105 - `IntPatch_Line::IsUIsoOnS2()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:99 - `IntPatch_Line::IsUIsoOnS2()`
     pub fn is_u_iso_on_s2(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_PointLine_inherited_IsUIsoOnS2(
@@ -4729,7 +4818,7 @@ impl PointLine {
         })
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:109 - `IntPatch_Line::IsVIsoOnS2()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:103 - `IntPatch_Line::IsVIsoOnS2()`
     pub fn is_v_iso_on_s2(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_PointLine_inherited_IsVIsoOnS2(
@@ -4738,8 +4827,8 @@ impl PointLine {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_PointLine_inherited_IsInstance(
                 self as *const Self,
@@ -4748,8 +4837,8 @@ impl PointLine {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_PointLine_inherited_IsKind(
                 self as *const Self,
@@ -4758,7 +4847,7 @@ impl PointLine {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -4772,7 +4861,7 @@ impl PointLine {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_PointLine_inherited_GetRefCount(
@@ -4781,7 +4870,7 @@ impl PointLine {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_PointLine_inherited_IncrementRefCounter(
@@ -4790,7 +4879,7 @@ impl PointLine {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_PointLine_inherited_DecrementRefCounter(
@@ -4799,7 +4888,7 @@ impl PointLine {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_PointLine_inherited_Delete(self as *const Self)
@@ -4807,36 +4896,36 @@ impl PointLine {
     }
 }
 
-pub use crate::ffi_types::HandleIntPatchPointLine;
+pub use crate::ffi_types::Handle_IntPatch_PointLine;
 
-unsafe impl crate::CppDeletable for HandleIntPatchPointLine {
+unsafe impl crate::CppDeletable for Handle_IntPatch_PointLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleIntPatchPointLine_destructor(ptr);
+            crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_PointLine_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIntPatchPointLine {
+unsafe impl crate::CppCopyable for Handle_IntPatch_PointLine {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchPointLine_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_PointLine_clone(ptr))
         }
     }
 }
 
-impl HandleIntPatchPointLine {
+impl Handle_IntPatch_PointLine {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleIntPatchPointLine_is_null(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_PointLine_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying IntPatch_PointLine
     pub fn get(&self) -> &crate::ffi_types::IntPatch_PointLine {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchPointLine_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_PointLine_get(
                 self as *const Self,
             ))
         }
@@ -4846,16 +4935,16 @@ impl HandleIntPatchPointLine {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IntPatch_PointLine {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleIntPatchPointLine_get_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_PointLine_get_mut(self as *mut Self),
             )
         }
     }
 
     /// Upcast Handle<IntPatch_PointLine> to Handle<IntPatch_Line>
-    pub fn to_handle_line(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIntPatchLine> {
+    pub fn to_handle_line(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IntPatch_Line> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleIntPatchPointLine_to_HandleIntPatchLine(
+                crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_PointLine_to_Handle_IntPatch_Line(
                     self as *const Self,
                 ),
             ))
@@ -4865,13 +4954,9 @@ impl HandleIntPatchPointLine {
     /// Upcast Handle<IntPatch_PointLine> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleIntPatchPointLine_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_PointLine_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 
@@ -4880,11 +4965,9 @@ impl HandleIntPatchPointLine {
     /// Returns `None` if the handle does not point to a `IntPatch_RLine` (or subclass).
     pub fn downcast_to_r_line(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIntPatchRLine>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IntPatch_RLine>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleIntPatchPointLine_downcast_to_HandleIntPatchRLine(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_PointLine_downcast_to_Handle_IntPatch_RLine(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -4898,11 +4981,9 @@ impl HandleIntPatchPointLine {
     /// Returns `None` if the handle does not point to a `IntPatch_WLine` (or subclass).
     pub fn downcast_to_w_line(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIntPatchWLine>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IntPatch_WLine>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleIntPatchPointLine_downcast_to_HandleIntPatchWLine(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_PointLine_downcast_to_Handle_IntPatch_WLine(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -4933,7 +5014,7 @@ impl PolyArc {
     /// The arc is limited by the parameters Pfirst and Plast.
     /// None of these parameters can be infinite.
     pub fn new_handleadaptor2dcurve2d_int_real2_box2d(
-        A: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        A: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         NbSample: i32,
         Pfirst: f64,
         Plast: f64,
@@ -5067,7 +5148,7 @@ impl PolyArc {
         })
     }
 
-    /// Inherited: **Source:** `IntPatch_Polygo.hxx`:49 - `IntPatch_Polygo::Dump()`
+    /// Inherited: **Source:** `IntPatch_Polygo.hxx`:47 - `IntPatch_Polygo::Dump()`
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_PolyArc_inherited_Dump(self as *const Self)
@@ -5121,7 +5202,7 @@ impl PolyLine {
     }
 
     /// **Source:** `IntPatch_PolyLine.hxx`:42 - `IntPatch_PolyLine::SetWLine()`
-    pub fn set_w_line(&mut self, OnFirst: bool, Line: &crate::ffi_types::HandleIntPatchWLine) {
+    pub fn set_w_line(&mut self, OnFirst: bool, Line: &crate::ffi_types::Handle_IntPatch_WLine) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_PolyLine_set_w_line(
                 self as *mut Self,
@@ -5132,7 +5213,7 @@ impl PolyLine {
     }
 
     /// **Source:** `IntPatch_PolyLine.hxx`:44 - `IntPatch_PolyLine::SetRLine()`
-    pub fn set_r_line(&mut self, OnFirst: bool, Line: &crate::ffi_types::HandleIntPatchRLine) {
+    pub fn set_r_line(&mut self, OnFirst: bool, Line: &crate::ffi_types::Handle_IntPatch_RLine) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_PolyLine_set_r_line(
                 self as *mut Self,
@@ -5251,7 +5332,7 @@ impl PolyLine {
         })
     }
 
-    /// Inherited: **Source:** `IntPatch_Polygo.hxx`:49 - `IntPatch_Polygo::Dump()`
+    /// Inherited: **Source:** `IntPatch_Polygo.hxx`:47 - `IntPatch_Polygo::Dump()`
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_PolyLine_inherited_Dump(self as *const Self)
@@ -5352,7 +5433,7 @@ impl Polygo {
         })
     }
 
-    /// **Source:** `IntPatch_Polygo.hxx`:49 - `IntPatch_Polygo::Dump()`
+    /// **Source:** `IntPatch_Polygo.hxx`:47 - `IntPatch_Polygo::Dump()`
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_Polygo_dump(self as *const Self)
@@ -5402,9 +5483,9 @@ impl Polygo {
 // From IntPatch_Polyhedron.hxx
 // ========================
 
-/// **Source:** `IntPatch_Polyhedron.hxx`:25 - `IntPatch_Polyhedron`
+/// **Source:** `IntPatch_Polyhedron.hxx`:27 - `IntPatch_Polyhedron`
 /// This class provides a linear approximation of the PSurface.
-/// preview a constructor on a zone of  a surface
+/// preview a constructor on a zone of a surface
 pub use crate::ffi_types::IntPatch_Polyhedron as Polyhedron;
 
 unsafe impl crate::CppDeletable for Polyhedron {
@@ -5416,11 +5497,11 @@ unsafe impl crate::CppDeletable for Polyhedron {
 }
 
 impl Polyhedron {
-    /// **Source:** `IntPatch_Polyhedron.hxx`:32 - `IntPatch_Polyhedron::IntPatch_Polyhedron()`
+    /// **Source:** `IntPatch_Polyhedron.hxx`:34 - `IntPatch_Polyhedron::IntPatch_Polyhedron()`
     /// MaTriangle constructor with an double array of pnt for the
     /// representation of a double array of triangles.
     pub fn new_handleadaptor3dsurface_int2(
-        Surface: &crate::ffi_types::HandleAdaptor3dSurface,
+        Surface: &crate::ffi_types::Handle_Adaptor3d_Surface,
         nbdU: i32,
         nbdV: i32,
     ) -> crate::OwnedPtr<Self> {
@@ -5433,9 +5514,9 @@ impl Polyhedron {
         }
     }
 
-    /// **Source:** `IntPatch_Polyhedron.hxx`:36 - `IntPatch_Polyhedron::IntPatch_Polyhedron()`
+    /// **Source:** `IntPatch_Polyhedron.hxx`:38 - `IntPatch_Polyhedron::IntPatch_Polyhedron()`
     pub fn new_handleadaptor3dsurface(
-        Surface: &crate::ffi_types::HandleAdaptor3dSurface,
+        Surface: &crate::ffi_types::Handle_Adaptor3d_Surface,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -5446,17 +5527,17 @@ impl Polyhedron {
         }
     }
 
-    /// **Source:** `IntPatch_Polyhedron.hxx`:38 - `IntPatch_Polyhedron::Destroy()`
+    /// **Source:** `IntPatch_Polyhedron.hxx`:40 - `IntPatch_Polyhedron::Destroy()`
     pub fn destroy(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_Polyhedron_destroy(self as *mut Self)
         })
     }
 
-    /// **Source:** `IntPatch_Polyhedron.hxx`:42 - `IntPatch_Polyhedron::Perform()`
+    /// **Source:** `IntPatch_Polyhedron.hxx`:44 - `IntPatch_Polyhedron::Perform()`
     pub fn perform(
         &mut self,
-        Surface: &crate::ffi_types::HandleAdaptor3dSurface,
+        Surface: &crate::ffi_types::Handle_Adaptor3d_Surface,
         nbdU: i32,
         nbdV: i32,
     ) {
@@ -5470,7 +5551,7 @@ impl Polyhedron {
         })
     }
 
-    /// **Source:** `IntPatch_Polyhedron.hxx`:46 - `IntPatch_Polyhedron::DeflectionOverEstimation()`
+    /// **Source:** `IntPatch_Polyhedron.hxx`:48 - `IntPatch_Polyhedron::DeflectionOverEstimation()`
     pub fn deflection_over_estimation_real(&mut self, flec: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_Polyhedron_deflection_over_estimation_real(
@@ -5480,22 +5561,7 @@ impl Polyhedron {
         })
     }
 
-    /// **Source:** `IntPatch_Polyhedron.hxx`:48 - `IntPatch_Polyhedron::DeflectionOnTriangle()`
-    pub fn deflection_on_triangle(
-        &self,
-        Surface: &crate::ffi_types::HandleAdaptor3dSurface,
-        Index: i32,
-    ) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::IntPatch_Polyhedron_deflection_on_triangle(
-                self as *const Self,
-                Surface,
-                Index,
-            )
-        })
-    }
-
-    /// **Source:** `IntPatch_Polyhedron.hxx`:51 - `IntPatch_Polyhedron::UMinSingularity()`
+    /// **Source:** `IntPatch_Polyhedron.hxx`:50 - `IntPatch_Polyhedron::UMinSingularity()`
     pub fn u_min_singularity(&mut self, Sing: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_Polyhedron_u_min_singularity(
@@ -5505,7 +5571,7 @@ impl Polyhedron {
         })
     }
 
-    /// **Source:** `IntPatch_Polyhedron.hxx`:53 - `IntPatch_Polyhedron::UMaxSingularity()`
+    /// **Source:** `IntPatch_Polyhedron.hxx`:52 - `IntPatch_Polyhedron::UMaxSingularity()`
     pub fn u_max_singularity(&mut self, Sing: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_Polyhedron_u_max_singularity(
@@ -5515,7 +5581,7 @@ impl Polyhedron {
         })
     }
 
-    /// **Source:** `IntPatch_Polyhedron.hxx`:55 - `IntPatch_Polyhedron::VMinSingularity()`
+    /// **Source:** `IntPatch_Polyhedron.hxx`:54 - `IntPatch_Polyhedron::VMinSingularity()`
     pub fn v_min_singularity(&mut self, Sing: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_Polyhedron_v_min_singularity(
@@ -5525,7 +5591,7 @@ impl Polyhedron {
         })
     }
 
-    /// **Source:** `IntPatch_Polyhedron.hxx`:57 - `IntPatch_Polyhedron::VMaxSingularity()`
+    /// **Source:** `IntPatch_Polyhedron.hxx`:56 - `IntPatch_Polyhedron::VMaxSingularity()`
     pub fn v_max_singularity(&mut self, Sing: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_Polyhedron_v_max_singularity(
@@ -5535,7 +5601,7 @@ impl Polyhedron {
         })
     }
 
-    /// **Source:** `IntPatch_Polyhedron.hxx`:60 - `IntPatch_Polyhedron::Size()`
+    /// **Source:** `IntPatch_Polyhedron.hxx`:59 - `IntPatch_Polyhedron::Size()`
     /// Get the size of the MaTriangle.
     pub fn size(&self, nbdu: &mut i32, nbdv: &mut i32) {
         crate::check_void_result(unsafe {
@@ -5543,7 +5609,7 @@ impl Polyhedron {
         })
     }
 
-    /// **Source:** `IntPatch_Polyhedron.hxx`:64 - `IntPatch_Polyhedron::NbTriangles()`
+    /// **Source:** `IntPatch_Polyhedron.hxx`:63 - `IntPatch_Polyhedron::NbTriangles()`
     /// Give the number of triangles in this double array of
     /// triangles (nbdu*nbdv*2).
     pub fn nb_triangles(&self) -> i32 {
@@ -5552,7 +5618,7 @@ impl Polyhedron {
         })
     }
 
-    /// **Source:** `IntPatch_Polyhedron.hxx`:68 - `IntPatch_Polyhedron::Triangle()`
+    /// **Source:** `IntPatch_Polyhedron.hxx`:67 - `IntPatch_Polyhedron::Triangle()`
     /// Give the 3 points of the triangle of address Index in
     /// the double array of triangles.
     pub fn triangle(&self, Index: i32, P1: &mut i32, P2: &mut i32, P3: &mut i32) {
@@ -5567,7 +5633,7 @@ impl Polyhedron {
         })
     }
 
-    /// **Source:** `IntPatch_Polyhedron.hxx`:79 - `IntPatch_Polyhedron::TriConnex()`
+    /// **Source:** `IntPatch_Polyhedron.hxx`:75 - `IntPatch_Polyhedron::TriConnex()`
     /// Give the address Tricon of the triangle connexe to the
     /// triangle of address Triang by the edge Pivot Pedge and
     /// the third point of this connexe triangle. When we are
@@ -5594,7 +5660,7 @@ impl Polyhedron {
         })
     }
 
-    /// **Source:** `IntPatch_Polyhedron.hxx`:87 - `IntPatch_Polyhedron::NbPoints()`
+    /// **Source:** `IntPatch_Polyhedron.hxx`:83 - `IntPatch_Polyhedron::NbPoints()`
     /// Give the number of point in the double array of
     /// triangles ((nbdu+1)*(nbdv+1)).
     pub fn nb_points(&self) -> i32 {
@@ -5603,7 +5669,7 @@ impl Polyhedron {
         })
     }
 
-    /// **Source:** `IntPatch_Polyhedron.hxx`:91 - `IntPatch_Polyhedron::Point()`
+    /// **Source:** `IntPatch_Polyhedron.hxx`:87 - `IntPatch_Polyhedron::Point()`
     /// Set the value of a field of the double array of
     /// points.
     pub fn point_pnt_int2_real2(
@@ -5626,7 +5692,7 @@ impl Polyhedron {
         })
     }
 
-    /// **Source:** `IntPatch_Polyhedron.hxx`:98 - `IntPatch_Polyhedron::Point()`
+    /// **Source:** `IntPatch_Polyhedron.hxx`:94 - `IntPatch_Polyhedron::Point()`
     /// Give the point of index i in the MaTriangle.
     ///
     /// # Safety
@@ -5647,7 +5713,7 @@ impl Polyhedron {
         }
     }
 
-    /// **Source:** `IntPatch_Polyhedron.hxx`:103 - `IntPatch_Polyhedron::Point()`
+    /// **Source:** `IntPatch_Polyhedron.hxx`:97 - `IntPatch_Polyhedron::Point()`
     /// Give the point of index i in the MaTriangle.
     pub fn point_int(&self, Index: i32) -> &crate::gp::Pnt {
         unsafe {
@@ -5658,7 +5724,7 @@ impl Polyhedron {
         }
     }
 
-    /// **Source:** `IntPatch_Polyhedron.hxx`:106 - `IntPatch_Polyhedron::Point()`
+    /// **Source:** `IntPatch_Polyhedron.hxx`:100 - `IntPatch_Polyhedron::Point()`
     /// Give the point of index i in the MaTriangle.
     pub fn point_int_pnt(&self, Index: i32, P: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
@@ -5670,7 +5736,7 @@ impl Polyhedron {
         })
     }
 
-    /// **Source:** `IntPatch_Polyhedron.hxx`:109 - `IntPatch_Polyhedron::Bounding()`
+    /// **Source:** `IntPatch_Polyhedron.hxx`:103 - `IntPatch_Polyhedron::Bounding()`
     /// Give the bounding box of the MaTriangle.
     pub fn bounding(&self) -> &crate::bnd::Box {
         unsafe {
@@ -5680,7 +5746,7 @@ impl Polyhedron {
         }
     }
 
-    /// **Source:** `IntPatch_Polyhedron.hxx`:113 - `IntPatch_Polyhedron::FillBounding()`
+    /// **Source:** `IntPatch_Polyhedron.hxx`:107 - `IntPatch_Polyhedron::FillBounding()`
     /// Compute the array of boxes. The box <n> corresponding
     /// to the triangle <n>.
     pub fn fill_bounding(&mut self) {
@@ -5689,10 +5755,10 @@ impl Polyhedron {
         })
     }
 
-    /// **Source:** `IntPatch_Polyhedron.hxx`:117 - `IntPatch_Polyhedron::ComponentsBounding()`
+    /// **Source:** `IntPatch_Polyhedron.hxx`:111 - `IntPatch_Polyhedron::ComponentsBounding()`
     /// Give the array of boxes. The box <n> corresponding
     /// to the triangle <n>.
-    pub fn components_bounding(&self) -> &crate::ffi_types::HandleBndHArray1OfBox {
+    pub fn components_bounding(&self) -> &crate::ffi_types::Handle_NCollection_HArray1_Bnd_Box {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_Polyhedron_components_bounding(
@@ -5702,7 +5768,7 @@ impl Polyhedron {
         }
     }
 
-    /// **Source:** `IntPatch_Polyhedron.hxx`:119 - `IntPatch_Polyhedron::DeflectionOverEstimation()`
+    /// **Source:** `IntPatch_Polyhedron.hxx`:113 - `IntPatch_Polyhedron::DeflectionOverEstimation()`
     pub fn deflection_over_estimation(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_Polyhedron_deflection_over_estimation(
@@ -5711,7 +5777,7 @@ impl Polyhedron {
         })
     }
 
-    /// **Source:** `IntPatch_Polyhedron.hxx`:121 - `IntPatch_Polyhedron::HasUMinSingularity()`
+    /// **Source:** `IntPatch_Polyhedron.hxx`:115 - `IntPatch_Polyhedron::HasUMinSingularity()`
     pub fn has_u_min_singularity(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_Polyhedron_has_u_min_singularity(
@@ -5720,7 +5786,7 @@ impl Polyhedron {
         })
     }
 
-    /// **Source:** `IntPatch_Polyhedron.hxx`:123 - `IntPatch_Polyhedron::HasUMaxSingularity()`
+    /// **Source:** `IntPatch_Polyhedron.hxx`:117 - `IntPatch_Polyhedron::HasUMaxSingularity()`
     pub fn has_u_max_singularity(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_Polyhedron_has_u_max_singularity(
@@ -5729,7 +5795,7 @@ impl Polyhedron {
         })
     }
 
-    /// **Source:** `IntPatch_Polyhedron.hxx`:125 - `IntPatch_Polyhedron::HasVMinSingularity()`
+    /// **Source:** `IntPatch_Polyhedron.hxx`:119 - `IntPatch_Polyhedron::HasVMinSingularity()`
     pub fn has_v_min_singularity(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_Polyhedron_has_v_min_singularity(
@@ -5738,7 +5804,7 @@ impl Polyhedron {
         })
     }
 
-    /// **Source:** `IntPatch_Polyhedron.hxx`:127 - `IntPatch_Polyhedron::HasVMaxSingularity()`
+    /// **Source:** `IntPatch_Polyhedron.hxx`:121 - `IntPatch_Polyhedron::HasVMaxSingularity()`
     pub fn has_v_max_singularity(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_Polyhedron_has_v_max_singularity(
@@ -5747,7 +5813,7 @@ impl Polyhedron {
         })
     }
 
-    /// **Source:** `IntPatch_Polyhedron.hxx`:130 - `IntPatch_Polyhedron::PlaneEquation()`
+    /// **Source:** `IntPatch_Polyhedron.hxx`:124 - `IntPatch_Polyhedron::PlaneEquation()`
     /// Give the plane equation of the triangle of address Triang.
     pub fn plane_equation(
         &self,
@@ -5765,7 +5831,7 @@ impl Polyhedron {
         })
     }
 
-    /// **Source:** `IntPatch_Polyhedron.hxx`:135 - `IntPatch_Polyhedron::Contain()`
+    /// **Source:** `IntPatch_Polyhedron.hxx`:129 - `IntPatch_Polyhedron::Contain()`
     /// Give the plane equation of the triangle of address Triang.
     pub fn contain(&self, Triang: i32, ThePnt: &crate::gp::Pnt) -> bool {
         crate::check_result(unsafe {
@@ -5777,7 +5843,7 @@ impl Polyhedron {
         })
     }
 
-    /// **Source:** `IntPatch_Polyhedron.hxx`:138 - `IntPatch_Polyhedron::Parameters()`
+    /// **Source:** `IntPatch_Polyhedron.hxx`:131 - `IntPatch_Polyhedron::Parameters()`
     pub fn parameters(&self, Index: i32, U: &mut f64, V: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_Polyhedron_parameters(
@@ -5789,7 +5855,7 @@ impl Polyhedron {
         })
     }
 
-    /// **Source:** `IntPatch_Polyhedron.hxx`:142 - `IntPatch_Polyhedron::Dump()`
+    /// **Source:** `IntPatch_Polyhedron.hxx`:133 - `IntPatch_Polyhedron::Dump()`
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_Polyhedron_dump(self as *const Self)
@@ -5798,12 +5864,206 @@ impl Polyhedron {
 }
 
 // ========================
+// From IntPatch_PolyhedronBVH.hxx
+// ========================
+
+/// **Source:** `IntPatch_PolyhedronBVH.hxx`:29 - `IntPatch_PolyhedronBVH`
+/// Wraps IntPatch_Polyhedron as a BVH_PrimitiveSet for efficient spatial queries.
+/// This class provides a BVH (Bounding Volume Hierarchy) representation of a polyhedron's
+/// triangles, enabling O(log n) spatial queries instead of linear search.
+///
+/// The class stores a reference to the polyhedron (no data copy) and maintains
+/// an index mapping to track triangle reordering during BVH construction.
+pub use crate::ffi_types::IntPatch_PolyhedronBVH as PolyhedronBVH;
+
+unsafe impl crate::CppDeletable for PolyhedronBVH {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_PolyhedronBVH_destructor(ptr);
+        }
+    }
+}
+
+impl PolyhedronBVH {
+    /// **Source:** `IntPatch_PolyhedronBVH.hxx`:33 - `IntPatch_PolyhedronBVH::IntPatch_PolyhedronBVH()`
+    /// Creates an empty BVH set.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntPatch_PolyhedronBVH_ctor(),
+            ))
+        }
+    }
+
+    /// **Source:** `IntPatch_PolyhedronBVH.hxx`:37 - `IntPatch_PolyhedronBVH::IntPatch_PolyhedronBVH()`
+    /// Creates BVH set from the given polyhedron.
+    /// @param[in] thePoly the polyhedron to wrap (must remain valid during BVH lifetime)
+    pub fn new_polyhedron(thePoly: &Polyhedron) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntPatch_PolyhedronBVH_ctor_polyhedron(thePoly),
+            ))
+        }
+    }
+
+    /// **Source:** `IntPatch_PolyhedronBVH.hxx`:44 - `IntPatch_PolyhedronBVH::Init()`
+    /// Initializes BVH set from the given polyhedron.
+    /// @param[in] thePoly the polyhedron to wrap (must remain valid during BVH lifetime)
+    pub fn init(&mut self, thePoly: &Polyhedron) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_PolyhedronBVH_init(self as *mut Self, thePoly)
+        })
+    }
+
+    /// **Source:** `IntPatch_PolyhedronBVH.hxx`:47 - `IntPatch_PolyhedronBVH::Clear()`
+    /// Clears the BVH set.
+    pub fn clear(&mut self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_PolyhedronBVH_clear(self as *mut Self)
+        })
+    }
+
+    /// **Source:** `IntPatch_PolyhedronBVH.hxx`:54 - `IntPatch_PolyhedronBVH::Size()`
+    /// Returns the total number of triangles.
+    pub fn size(&self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_PolyhedronBVH_size(self as *const Self)
+        })
+    }
+
+    /// **Source:** `IntPatch_PolyhedronBVH.hxx`:58 - `IntPatch_PolyhedronBVH::Box()`
+    /// Returns AABB of the triangle with the given index.
+    /// @param[in] theIndex 0-based triangle index (after BVH reordering)
+    pub fn box_(&self, theIndex: i32) -> crate::OwnedPtr<crate::ffi_types::Select3D_BndBox3d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntPatch_PolyhedronBVH_box_(
+                    self as *const Self,
+                    theIndex,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `IntPatch_PolyhedronBVH.hxx`:63 - `IntPatch_PolyhedronBVH::Center()`
+    /// Returns centroid coordinate of the triangle along the given axis.
+    /// @param[in] theIndex 0-based triangle index (after BVH reordering)
+    /// @param[in] theAxis axis index (0=X, 1=Y, 2=Z)
+    pub fn center(&self, theIndex: i32, theAxis: i32) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_PolyhedronBVH_center(
+                self as *const Self,
+                theIndex,
+                theAxis,
+            )
+        })
+    }
+
+    /// **Source:** `IntPatch_PolyhedronBVH.hxx`:68 - `IntPatch_PolyhedronBVH::Swap()`
+    /// Swaps two triangles in the set (used during BVH construction).
+    /// @param[in] theIndex1 first triangle index
+    /// @param[in] theIndex2 second triangle index
+    pub fn swap(&mut self, theIndex1: i32, theIndex2: i32) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_PolyhedronBVH_swap(
+                self as *mut Self,
+                theIndex1,
+                theIndex2,
+            )
+        })
+    }
+
+    /// **Source:** `IntPatch_PolyhedronBVH.hxx`:75 - `IntPatch_PolyhedronBVH::OriginalIndex()`
+    /// @name Additional methods
+    /// Returns the original (1-based) triangle index in the polyhedron
+    /// for the given 0-based index after BVH reordering.
+    /// @param[in] theIndex 0-based triangle index (after BVH reordering)
+    /// @return 1-based original triangle index in the polyhedron
+    pub fn original_index(&self, theIndex: i32) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_PolyhedronBVH_original_index(
+                self as *const Self,
+                theIndex,
+            )
+        })
+    }
+
+    /// **Source:** `IntPatch_PolyhedronBVH.hxx`:78 - `IntPatch_PolyhedronBVH::IsInitialized()`
+    /// Returns true if the BVH set is initialized.
+    pub fn is_initialized(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_PolyhedronBVH_is_initialized(self as *const Self)
+        })
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IntPatch_PolyhedronBVH> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntPatch_PolyhedronBVH_to_handle(obj.into_raw()),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi_types::Handle_IntPatch_PolyhedronBVH;
+
+unsafe impl crate::CppDeletable for Handle_IntPatch_PolyhedronBVH {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_PolyhedronBVH_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppCopyable for Handle_IntPatch_PolyhedronBVH {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_PolyhedronBVH_clone(
+                ptr,
+            ))
+        }
+    }
+}
+
+impl Handle_IntPatch_PolyhedronBVH {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_PolyhedronBVH_is_null(self as *const Self)
+        }
+    }
+
+    /// Dereference this Handle to access the underlying IntPatch_PolyhedronBVH
+    pub fn get(&self) -> &crate::ffi_types::IntPatch_PolyhedronBVH {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_PolyhedronBVH_get(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IntPatch_PolyhedronBVH
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::IntPatch_PolyhedronBVH {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_PolyhedronBVH_get_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
 // From IntPatch_PolyhedronTool.hxx
 // ========================
 
-/// **Source:** `IntPatch_PolyhedronTool.hxx`:34 - `IntPatch_PolyhedronTool`
+/// **Source:** `IntPatch_PolyhedronTool.hxx`:36 - `IntPatch_PolyhedronTool`
 /// Describe the signature of a polyhedral surface with
-/// only triangular  facets and the necessary information
+/// only triangular facets and the necessary information
 /// to compute the interferences.
 pub use crate::ffi_types::IntPatch_PolyhedronTool as PolyhedronTool;
 
@@ -5826,7 +6086,7 @@ impl PolyhedronTool {
         }
     }
 
-    /// **Source:** `IntPatch_PolyhedronTool.hxx`:40 - `IntPatch_PolyhedronTool::Bounding()`
+    /// **Source:** `IntPatch_PolyhedronTool.hxx`:42 - `IntPatch_PolyhedronTool::Bounding()`
     /// Give the bounding box of the Polyhedron.
     pub fn bounding(thePolyh: &Polyhedron) -> &'static crate::bnd::Box {
         unsafe {
@@ -5836,12 +6096,12 @@ impl PolyhedronTool {
         }
     }
 
-    /// **Source:** `IntPatch_PolyhedronTool.hxx`:44 - `IntPatch_PolyhedronTool::ComponentsBounding()`
+    /// **Source:** `IntPatch_PolyhedronTool.hxx`:46 - `IntPatch_PolyhedronTool::ComponentsBounding()`
     /// Give the array of boxes. The box <n> corresponding
     /// to the triangle <n>.
     pub fn components_bounding(
         thePolyh: &Polyhedron,
-    ) -> &'static crate::ffi_types::HandleBndHArray1OfBox {
+    ) -> &'static crate::ffi_types::Handle_NCollection_HArray1_Bnd_Box {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_PolyhedronTool_components_bounding(thePolyh),
@@ -5849,7 +6109,7 @@ impl PolyhedronTool {
         }
     }
 
-    /// **Source:** `IntPatch_PolyhedronTool.hxx`:47 - `IntPatch_PolyhedronTool::DeflectionOverEstimation()`
+    /// **Source:** `IntPatch_PolyhedronTool.hxx`:50 - `IntPatch_PolyhedronTool::DeflectionOverEstimation()`
     /// Give the tolerance of the polygon.
     pub fn deflection_over_estimation(thePolyh: &Polyhedron) -> f64 {
         crate::check_result(unsafe {
@@ -5859,7 +6119,7 @@ impl PolyhedronTool {
         })
     }
 
-    /// **Source:** `IntPatch_PolyhedronTool.hxx`:50 - `IntPatch_PolyhedronTool::NbTriangles()`
+    /// **Source:** `IntPatch_PolyhedronTool.hxx`:53 - `IntPatch_PolyhedronTool::NbTriangles()`
     /// Give the number of triangles in this polyhedral surface.
     pub fn nb_triangles(thePolyh: &Polyhedron) -> i32 {
         crate::check_result(unsafe {
@@ -5867,8 +6127,8 @@ impl PolyhedronTool {
         })
     }
 
-    /// **Source:** `IntPatch_PolyhedronTool.hxx`:54 - `IntPatch_PolyhedronTool::Triangle()`
-    /// Give the indices  of  the 3 points of  the triangle of
+    /// **Source:** `IntPatch_PolyhedronTool.hxx`:57 - `IntPatch_PolyhedronTool::Triangle()`
+    /// Give the indices of the 3 points of the triangle of
     /// address Index in the Polyhedron.
     pub fn triangle(thePolyh: &Polyhedron, Index: i32, P1: &mut i32, P2: &mut i32, P3: &mut i32) {
         crate::check_void_result(unsafe {
@@ -5878,7 +6138,7 @@ impl PolyhedronTool {
         })
     }
 
-    /// **Source:** `IntPatch_PolyhedronTool.hxx`:61 - `IntPatch_PolyhedronTool::Point()`
+    /// **Source:** `IntPatch_PolyhedronTool.hxx`:64 - `IntPatch_PolyhedronTool::Point()`
     /// Give the point of index i in the polyhedral surface.
     pub fn point(thePolyh: &Polyhedron, Index: i32) -> &'static crate::gp::Pnt {
         unsafe {
@@ -5888,13 +6148,13 @@ impl PolyhedronTool {
         }
     }
 
-    /// **Source:** `IntPatch_PolyhedronTool.hxx`:69 - `IntPatch_PolyhedronTool::TriConnex()`
+    /// **Source:** `IntPatch_PolyhedronTool.hxx`:72 - `IntPatch_PolyhedronTool::TriConnex()`
     /// Gives the address Tricon of the triangle connexe to
     /// the triangle of address Triang by the edge Pivot Pedge
-    /// and the third point of this  connexe triangle. When we
-    /// are on  a free edge TriCon==0  but the function return
-    /// the value of  the triangle in the  other side of Pivot
-    /// on the free edge.  Used to turn around a vertex.
+    /// and the third point of this connexe triangle. When we
+    /// are on a free edge TriCon==0 but the function return
+    /// the value of the triangle in the other side of Pivot
+    /// on the free edge. Used to turn around a vertex.
     pub fn tri_connex(
         thePolyh: &Polyhedron,
         Triang: i32,
@@ -5915,7 +6175,7 @@ impl PolyhedronTool {
 // From IntPatch_PrmPrmIntersection.hxx
 // ========================
 
-/// **Source:** `IntPatch_PrmPrmIntersection.hxx`:34 - `IntPatch_PrmPrmIntersection`
+/// **Source:** `IntPatch_PrmPrmIntersection.hxx`:36 - `IntPatch_PrmPrmIntersection`
 /// Implementation of the Intersection between two bi-parametrised surfaces.
 ///
 /// To avoid multiple constructions of the approximated
@@ -5932,7 +6192,7 @@ unsafe impl crate::CppDeletable for PrmPrmIntersection {
 }
 
 impl PrmPrmIntersection {
-    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:40 - `IntPatch_PrmPrmIntersection::IntPatch_PrmPrmIntersection()`
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:42 - `IntPatch_PrmPrmIntersection::IntPatch_PrmPrmIntersection()`
     /// Empty Constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -5942,18 +6202,18 @@ impl PrmPrmIntersection {
         }
     }
 
-    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:45 - `IntPatch_PrmPrmIntersection::Perform()`
-    /// Performs the intersection between <Caro1>  and
-    /// <Caro2>.  Associated Polyhedrons <Polyhedron1>
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:47 - `IntPatch_PrmPrmIntersection::Perform()`
+    /// Performs the intersection between <Caro1> and
+    /// <Caro2>. Associated Polyhedrons <Polyhedron1>
     /// and <Polyhedron2> are given.
     pub fn perform_handleadaptor3dsurface_polyhedron_handleadaptor3dtopoltool_handleadaptor3dsurface_polyhedron_handleadaptor3dtopoltool_real4(
         &mut self,
-        Caro1: &crate::ffi_types::HandleAdaptor3dSurface,
+        Caro1: &crate::ffi_types::Handle_Adaptor3d_Surface,
         Polyhedron1: &Polyhedron,
-        Domain1: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        Caro2: &crate::ffi_types::HandleAdaptor3dSurface,
+        Domain1: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
+        Caro2: &crate::ffi_types::Handle_Adaptor3d_Surface,
         Polyhedron2: &Polyhedron,
-        Domain2: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        Domain2: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         TolTangency: f64,
         Epsilon: f64,
         Deflection: f64,
@@ -5964,12 +6224,12 @@ impl PrmPrmIntersection {
         })
     }
 
-    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:56 - `IntPatch_PrmPrmIntersection::Perform()`
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:58 - `IntPatch_PrmPrmIntersection::Perform()`
     pub fn perform_handleadaptor3dsurface_polyhedron_handleadaptor3dtopoltool_real4(
         &mut self,
-        Caro1: &crate::ffi_types::HandleAdaptor3dSurface,
+        Caro1: &crate::ffi_types::Handle_Adaptor3d_Surface,
         Polyhedron1: &Polyhedron,
-        Domain1: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        Domain1: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         TolTangency: f64,
         Epsilon: f64,
         Deflection: f64,
@@ -5980,16 +6240,16 @@ impl PrmPrmIntersection {
         })
     }
 
-    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:67 - `IntPatch_PrmPrmIntersection::Perform()`
-    /// Performs the intersection between <Caro1>  and
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:69 - `IntPatch_PrmPrmIntersection::Perform()`
+    /// Performs the intersection between <Caro1> and
     /// <Caro2>. The method computes the polyhedron on
     /// each surface.
     pub fn perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real4_bool(
         &mut self,
-        Caro1: &crate::ffi_types::HandleAdaptor3dSurface,
-        Domain1: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        Caro2: &crate::ffi_types::HandleAdaptor3dSurface,
-        Domain2: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        Caro1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        Domain1: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
+        Caro2: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        Domain2: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         TolTangency: f64,
         Epsilon: f64,
         Deflection: f64,
@@ -6001,37 +6261,37 @@ impl PrmPrmIntersection {
         })
     }
 
-    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:80 - `IntPatch_PrmPrmIntersection::Perform()`
-    /// Performs the intersection between <Caro1>  and
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:82 - `IntPatch_PrmPrmIntersection::Perform()`
+    /// Performs the intersection between <Caro1> and
     /// <Caro2>. The method computes the polyhedron on
     /// each surface.
-    pub fn perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real4_listofpnton2s(
+    pub fn perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real4_list_pnton2s(
         &mut self,
-        Caro1: &crate::ffi_types::HandleAdaptor3dSurface,
-        Domain1: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        Caro2: &crate::ffi_types::HandleAdaptor3dSurface,
-        Domain2: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        Caro1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        Domain1: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
+        Caro2: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        Domain2: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         TolTangency: f64,
         Epsilon: f64,
         Deflection: f64,
         Increment: f64,
-        ListOfPnts: &mut crate::ffi_types::IntSurf_ListOfPntOn2S,
+        ListOfPnts: &mut crate::ffi_types::NCollection_List_IntSurf_PntOn2S,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::IntPatch_PrmPrmIntersection_perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real4_listofpnton2s(self as *mut Self, Caro1, Domain1, Caro2, Domain2, TolTangency, Epsilon, Deflection, Increment, ListOfPnts)
+            crate::ffi_extern_TKGeomAlgo::IntPatch_PrmPrmIntersection_perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real4_list_pnton2s(self as *mut Self, Caro1, Domain1, Caro2, Domain2, TolTangency, Epsilon, Deflection, Increment, ListOfPnts)
         })
     }
 
-    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:93 - `IntPatch_PrmPrmIntersection::Perform()`
-    /// Performs the intersection between <Caro1>  and
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:95 - `IntPatch_PrmPrmIntersection::Perform()`
+    /// Performs the intersection between <Caro1> and
     /// <Caro2>. The method computes the polyhedron on
     /// each surface.
     pub fn perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real8(
         &mut self,
-        Caro1: &crate::ffi_types::HandleAdaptor3dSurface,
-        Domain1: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        Caro2: &crate::ffi_types::HandleAdaptor3dSurface,
-        Domain2: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        Caro1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        Domain1: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
+        Caro2: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        Domain2: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         U1: f64,
         V1: f64,
         U2: f64,
@@ -6046,14 +6306,14 @@ impl PrmPrmIntersection {
         })
     }
 
-    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:109 - `IntPatch_PrmPrmIntersection::Perform()`
-    /// Performs the intersection between <Caro1>  and
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:111 - `IntPatch_PrmPrmIntersection::Perform()`
+    /// Performs the intersection between <Caro1> and
     /// <Caro2>. The method computes the polyhedron on
     /// each surface.
     pub fn perform_handleadaptor3dsurface_handleadaptor3dtopoltool_real4(
         &mut self,
-        Caro1: &crate::ffi_types::HandleAdaptor3dSurface,
-        Domain1: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        Caro1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        Domain1: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         TolTangency: f64,
         Epsilon: f64,
         Deflection: f64,
@@ -6064,20 +6324,20 @@ impl PrmPrmIntersection {
         })
     }
 
-    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:122 - `IntPatch_PrmPrmIntersection::Perform()`
-    /// Performs  the intersection between <Caro1> and
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:124 - `IntPatch_PrmPrmIntersection::Perform()`
+    /// Performs the intersection between <Caro1> and
     /// <Caro2>.
     ///
-    /// The polyhedron which approximates     <Caro2>,
+    /// The polyhedron which approximates <Caro2>,
     /// <Polyhedron2> is given. The other one is
     /// computed.
     pub fn perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_polyhedron_handleadaptor3dtopoltool_real4(
         &mut self,
-        Caro1: &crate::ffi_types::HandleAdaptor3dSurface,
-        Domain1: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        Caro2: &crate::ffi_types::HandleAdaptor3dSurface,
+        Caro1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        Domain1: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
+        Caro2: &crate::ffi_types::Handle_Adaptor3d_Surface,
         Polyhedron2: &Polyhedron,
-        Domain2: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        Domain2: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         TolTangency: f64,
         Epsilon: f64,
         Deflection: f64,
@@ -6088,20 +6348,20 @@ impl PrmPrmIntersection {
         })
     }
 
-    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:138 - `IntPatch_PrmPrmIntersection::Perform()`
-    /// Performs  the intersection between <Caro1> and
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:140 - `IntPatch_PrmPrmIntersection::Perform()`
+    /// Performs the intersection between <Caro1> and
     /// <Caro2>.
     ///
-    /// The polyhedron which approximates     <Caro1>,
+    /// The polyhedron which approximates <Caro1>,
     /// <Polyhedron1> is given. The other one is
     /// computed.
     pub fn perform_handleadaptor3dsurface_polyhedron_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real4(
         &mut self,
-        Caro1: &crate::ffi_types::HandleAdaptor3dSurface,
+        Caro1: &crate::ffi_types::Handle_Adaptor3d_Surface,
         Polyhedron1: &Polyhedron,
-        Domain1: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        Caro2: &crate::ffi_types::HandleAdaptor3dSurface,
-        Domain2: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        Domain1: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
+        Caro2: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        Domain2: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         TolTangency: f64,
         Epsilon: f64,
         Deflection: f64,
@@ -6112,7 +6372,7 @@ impl PrmPrmIntersection {
         })
     }
 
-    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:149 - `IntPatch_PrmPrmIntersection::IsDone()`
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:151 - `IntPatch_PrmPrmIntersection::IsDone()`
     /// Returns true if the calculus was successful.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -6120,7 +6380,7 @@ impl PrmPrmIntersection {
         })
     }
 
-    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:152 - `IntPatch_PrmPrmIntersection::IsEmpty()`
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:154 - `IntPatch_PrmPrmIntersection::IsEmpty()`
     /// Returns true if the is no intersection.
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
@@ -6128,7 +6388,7 @@ impl PrmPrmIntersection {
         })
     }
 
-    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:155 - `IntPatch_PrmPrmIntersection::NbLines()`
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:157 - `IntPatch_PrmPrmIntersection::NbLines()`
     /// Returns the number of intersection lines.
     pub fn nb_lines(&self) -> i32 {
         crate::check_result(unsafe {
@@ -6136,10 +6396,10 @@ impl PrmPrmIntersection {
         })
     }
 
-    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:159 - `IntPatch_PrmPrmIntersection::Line()`
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:161 - `IntPatch_PrmPrmIntersection::Line()`
     /// Returns the line of range Index.
     /// An exception is raised if Index<=0 or Index>NbLine.
-    pub fn line(&self, Index: i32) -> &crate::ffi_types::HandleIntPatchLine {
+    pub fn line(&self, Index: i32) -> &crate::ffi_types::Handle_IntPatch_Line {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPatch_PrmPrmIntersection_line(
                 self as *const Self,
@@ -6148,28 +6408,28 @@ impl PrmPrmIntersection {
         }
     }
 
-    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:173 - `IntPatch_PrmPrmIntersection::NewLine()`
-    /// Computes about <NbPoints>  Intersection Points  on
-    /// the Line <IndexLine> between  the Points of  Index
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:175 - `IntPatch_PrmPrmIntersection::NewLine()`
+    /// Computes about <NbPoints> Intersection Points on
+    /// the Line <IndexLine> between the Points of Index
     /// <LowPoint> and <HighPoint>.
     ///
-    /// All  the points  of the line  of index <IndexLine>
-    /// with an index  between <LowPoint>  and <HighPoint>
-    /// are in the returned  line. New Points are inserted
-    /// between existing points  if  those  points are not
+    /// All the points of the line of index <IndexLine>
+    /// with an index between <LowPoint> and <HighPoint>
+    /// are in the returned line. New Points are inserted
+    /// between existing points if those points are not
     /// too closed.
     ///
     /// An exception is raised if Index<=0 or Index>NbLine.
     /// or if IsDone returns False
     pub fn new_line(
         &self,
-        Caro1: &crate::ffi_types::HandleAdaptor3dSurface,
-        Caro2: &crate::ffi_types::HandleAdaptor3dSurface,
+        Caro1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        Caro2: &crate::ffi_types::Handle_Adaptor3d_Surface,
         IndexLine: i32,
         LowPoint: i32,
         HighPoint: i32,
         NbPoints: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIntPatchLine> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IntPatch_Line> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_PrmPrmIntersection_new_line(
@@ -6185,7 +6445,7 @@ impl PrmPrmIntersection {
         }
     }
 
-    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:180 - `IntPatch_PrmPrmIntersection::GrilleInteger()`
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:182 - `IntPatch_PrmPrmIntersection::GrilleInteger()`
     pub fn grille_integer(&self, ix: i32, iy: i32, iz: i32) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_PrmPrmIntersection_grille_integer(
@@ -6210,7 +6470,7 @@ impl PrmPrmIntersection {
         })
     }
 
-    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:189 - `IntPatch_PrmPrmIntersection::DansGrille()`
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:186 - `IntPatch_PrmPrmIntersection::DansGrille()`
     pub fn dans_grille(&self, t: i32) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_PrmPrmIntersection_dans_grille(
@@ -6220,7 +6480,7 @@ impl PrmPrmIntersection {
         })
     }
 
-    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:191 - `IntPatch_PrmPrmIntersection::NbPointsGrille()`
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:188 - `IntPatch_PrmPrmIntersection::NbPointsGrille()`
     pub fn nb_points_grille(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_PrmPrmIntersection_nb_points_grille(
@@ -6229,7 +6489,7 @@ impl PrmPrmIntersection {
         })
     }
 
-    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:193 - `IntPatch_PrmPrmIntersection::RemplitLin()`
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:190 - `IntPatch_PrmPrmIntersection::RemplitLin()`
     pub fn remplit_lin(
         &self,
         x1: i32,
@@ -6254,7 +6514,7 @@ impl PrmPrmIntersection {
         })
     }
 
-    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:201 - `IntPatch_PrmPrmIntersection::RemplitTri()`
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:198 - `IntPatch_PrmPrmIntersection::RemplitTri()`
     pub fn remplit_tri(
         &self,
         x1: i32,
@@ -6285,7 +6545,7 @@ impl PrmPrmIntersection {
         })
     }
 
-    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:212 - `IntPatch_PrmPrmIntersection::Remplit()`
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:209 - `IntPatch_PrmPrmIntersection::Remplit()`
     pub fn remplit(&self, a: i32, b: i32, c: i32, Map: &mut PrmPrmIntersection_T3Bits) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_PrmPrmIntersection_remplit(
@@ -6298,7 +6558,7 @@ impl PrmPrmIntersection {
         })
     }
 
-    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:217 - `IntPatch_PrmPrmIntersection::CodeReject()`
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:214 - `IntPatch_PrmPrmIntersection::CodeReject()`
     pub fn code_reject(
         &self,
         x1: f64,
@@ -6327,14 +6587,14 @@ impl PrmPrmIntersection {
         })
     }
 
-    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:227 - `IntPatch_PrmPrmIntersection::PointDepart()`
+    /// **Source:** `IntPatch_PrmPrmIntersection.hxx`:224 - `IntPatch_PrmPrmIntersection::PointDepart()`
     pub fn point_depart(
         &self,
-        LineOn2S: &mut crate::ffi_types::HandleIntSurfLineOn2S,
-        S1: &crate::ffi_types::HandleAdaptor3dSurface,
+        LineOn2S: &mut crate::ffi_types::Handle_IntSurf_LineOn2S,
+        S1: &crate::ffi_types::Handle_Adaptor3d_Surface,
         SU1: i32,
         SV1: i32,
-        S2: &crate::ffi_types::HandleAdaptor3dSurface,
+        S2: &crate::ffi_types::Handle_Adaptor3d_Surface,
         SU2: i32,
         SV2: i32,
     ) {
@@ -6398,7 +6658,7 @@ impl PrmPrmIntersection_T3Bits {
         })
     }
 
-    /// **Source:** `IntPatch_PrmPrmIntersection_T3Bits.hxx`:40 - `IntPatch_PrmPrmIntersection_T3Bits::Raz()`
+    /// **Source:** `IntPatch_PrmPrmIntersection_T3Bits.hxx`:37 - `IntPatch_PrmPrmIntersection_T3Bits::Raz()`
     pub fn raz(&mut self, t: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_PrmPrmIntersection_T3Bits_raz(
@@ -6408,7 +6668,7 @@ impl PrmPrmIntersection_T3Bits {
         })
     }
 
-    /// **Source:** `IntPatch_PrmPrmIntersection_T3Bits.hxx`:42 - `IntPatch_PrmPrmIntersection_T3Bits::ResetAnd()`
+    /// **Source:** `IntPatch_PrmPrmIntersection_T3Bits.hxx`:39 - `IntPatch_PrmPrmIntersection_T3Bits::ResetAnd()`
     pub fn reset_and(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_PrmPrmIntersection_T3Bits_reset_and(
@@ -6417,7 +6677,7 @@ impl PrmPrmIntersection_T3Bits {
         })
     }
 
-    /// **Source:** `IntPatch_PrmPrmIntersection_T3Bits.hxx`:44 - `IntPatch_PrmPrmIntersection_T3Bits::And()`
+    /// **Source:** `IntPatch_PrmPrmIntersection_T3Bits.hxx`:41 - `IntPatch_PrmPrmIntersection_T3Bits::And()`
     pub fn and(&mut self, Oth: &mut PrmPrmIntersection_T3Bits, indiceprecedent: &mut i32) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_PrmPrmIntersection_T3Bits_and(
@@ -6433,7 +6693,7 @@ impl PrmPrmIntersection_T3Bits {
 // From IntPatch_RLine.hxx
 // ========================
 
-/// **Source:** `IntPatch_RLine.hxx`:38 - `IntPatch_RLine`
+/// **Source:** `IntPatch_RLine.hxx`:36 - `IntPatch_RLine`
 /// Implementation of an intersection line described by a
 /// restriction line on one of the surfaces.
 pub use crate::ffi_types::IntPatch_RLine as RLine;
@@ -6447,7 +6707,7 @@ unsafe impl crate::CppDeletable for RLine {
 }
 
 impl RLine {
-    /// **Source:** `IntPatch_RLine.hxx`:44 - `IntPatch_RLine::IntPatch_RLine()`
+    /// **Source:** `IntPatch_RLine.hxx`:42 - `IntPatch_RLine::IntPatch_RLine()`
     /// Creates a restriction as an intersection line
     /// when the transitions are In or Out.
     pub fn new_bool_typetrans2(
@@ -6466,7 +6726,7 @@ impl RLine {
         }
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:50 - `IntPatch_RLine::IntPatch_RLine()`
+    /// **Source:** `IntPatch_RLine.hxx`:48 - `IntPatch_RLine::IntPatch_RLine()`
     /// Creates a restriction as an intersection line
     /// when the transitions are Touch.
     pub fn new_bool_situation2(
@@ -6485,7 +6745,7 @@ impl RLine {
         }
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:56 - `IntPatch_RLine::IntPatch_RLine()`
+    /// **Source:** `IntPatch_RLine.hxx`:54 - `IntPatch_RLine::IntPatch_RLine()`
     /// Creates a restriction as an intersection line
     /// when the transitions are Undecided.
     pub fn new_bool(Tang: bool) -> crate::OwnedPtr<Self> {
@@ -6496,7 +6756,7 @@ impl RLine {
         }
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:61 - `IntPatch_RLine::AddVertex()`
+    /// **Source:** `IntPatch_RLine.hxx`:59 - `IntPatch_RLine::AddVertex()`
     /// Adds a vertex in the list. If theIsPrepend == TRUE the new
     /// vertex will be added before the first element of vertices sequence.
     /// Otherwise, to the end of the sequence
@@ -6510,7 +6770,7 @@ impl RLine {
         })
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:66 - `IntPatch_RLine::Replace()`
+    /// **Source:** `IntPatch_RLine.hxx`:63 - `IntPatch_RLine::Replace()`
     /// Replaces the element of range Index in the list
     /// of points.
     pub fn replace(&mut self, Index: i32, Pnt: &Point) {
@@ -6519,7 +6779,7 @@ impl RLine {
         })
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:68 - `IntPatch_RLine::SetFirstPoint()`
+    /// **Source:** `IntPatch_RLine.hxx`:65 - `IntPatch_RLine::SetFirstPoint()`
     pub fn set_first_point(&mut self, IndFirst: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_set_first_point(
@@ -6529,21 +6789,21 @@ impl RLine {
         })
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:70 - `IntPatch_RLine::SetLastPoint()`
+    /// **Source:** `IntPatch_RLine.hxx`:67 - `IntPatch_RLine::SetLastPoint()`
     pub fn set_last_point(&mut self, IndLast: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_set_last_point(self as *mut Self, IndLast)
         })
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:72 - `IntPatch_RLine::Add()`
-    pub fn add(&mut self, L: &crate::ffi_types::HandleIntSurfLineOn2S) {
+    /// **Source:** `IntPatch_RLine.hxx`:69 - `IntPatch_RLine::Add()`
+    pub fn add(&mut self, L: &crate::ffi_types::Handle_IntSurf_LineOn2S) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_add(self as *mut Self, L)
         })
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:78 - `IntPatch_RLine::IsArcOnS1()`
+    /// **Source:** `IntPatch_RLine.hxx`:75 - `IntPatch_RLine::IsArcOnS1()`
     /// Returns True if the intersection is on the domain of the
     /// first patch.
     /// Returns False if the intersection is on the domain of
@@ -6554,7 +6814,7 @@ impl RLine {
         })
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:84 - `IntPatch_RLine::IsArcOnS2()`
+    /// **Source:** `IntPatch_RLine.hxx`:81 - `IntPatch_RLine::IsArcOnS2()`
     /// Returns True if the intersection is on the domain of the
     /// first patch.
     /// Returns False if the intersection is on the domain of
@@ -6565,37 +6825,37 @@ impl RLine {
         })
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:86 - `IntPatch_RLine::SetArcOnS1()`
-    pub fn set_arc_on_s1(&mut self, A: &crate::ffi_types::HandleAdaptor2dCurve2d) {
+    /// **Source:** `IntPatch_RLine.hxx`:83 - `IntPatch_RLine::SetArcOnS1()`
+    pub fn set_arc_on_s1(&mut self, A: &crate::ffi_types::Handle_Adaptor2d_Curve2d) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_set_arc_on_s1(self as *mut Self, A)
         })
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:88 - `IntPatch_RLine::SetArcOnS2()`
-    pub fn set_arc_on_s2(&mut self, A: &crate::ffi_types::HandleAdaptor2dCurve2d) {
+    /// **Source:** `IntPatch_RLine.hxx`:85 - `IntPatch_RLine::SetArcOnS2()`
+    pub fn set_arc_on_s2(&mut self, A: &crate::ffi_types::Handle_Adaptor2d_Curve2d) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_set_arc_on_s2(self as *mut Self, A)
         })
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:90 - `IntPatch_RLine::SetParamOnS1()`
+    /// **Source:** `IntPatch_RLine.hxx`:87 - `IntPatch_RLine::SetParamOnS1()`
     pub fn set_param_on_s1(&mut self, p1: f64, p2: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_set_param_on_s1(self as *mut Self, p1, p2)
         })
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:92 - `IntPatch_RLine::SetParamOnS2()`
+    /// **Source:** `IntPatch_RLine.hxx`:89 - `IntPatch_RLine::SetParamOnS2()`
     pub fn set_param_on_s2(&mut self, p1: &mut f64, p2: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_set_param_on_s2(self as *mut Self, p1, p2)
         })
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:95 - `IntPatch_RLine::ArcOnS1()`
+    /// **Source:** `IntPatch_RLine.hxx`:92 - `IntPatch_RLine::ArcOnS1()`
     /// Returns the concerned arc.
-    pub fn arc_on_s1(&self) -> &crate::ffi_types::HandleAdaptor2dCurve2d {
+    pub fn arc_on_s1(&self) -> &crate::ffi_types::Handle_Adaptor2d_Curve2d {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_arc_on_s1(
                 self as *const Self,
@@ -6603,9 +6863,9 @@ impl RLine {
         }
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:98 - `IntPatch_RLine::ArcOnS2()`
+    /// **Source:** `IntPatch_RLine.hxx`:95 - `IntPatch_RLine::ArcOnS2()`
     /// Returns the concerned arc.
-    pub fn arc_on_s2(&self) -> &crate::ffi_types::HandleAdaptor2dCurve2d {
+    pub fn arc_on_s2(&self) -> &crate::ffi_types::Handle_Adaptor2d_Curve2d {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_arc_on_s2(
                 self as *const Self,
@@ -6613,21 +6873,21 @@ impl RLine {
         }
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:100 - `IntPatch_RLine::ParamOnS1()`
+    /// **Source:** `IntPatch_RLine.hxx`:97 - `IntPatch_RLine::ParamOnS1()`
     pub fn param_on_s1(&self, p1: &mut f64, p2: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_param_on_s1(self as *const Self, p1, p2)
         })
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:102 - `IntPatch_RLine::ParamOnS2()`
+    /// **Source:** `IntPatch_RLine.hxx`:99 - `IntPatch_RLine::ParamOnS2()`
     pub fn param_on_s2(&self, p1: &mut f64, p2: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_param_on_s2(self as *const Self, p1, p2)
         })
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:106 - `IntPatch_RLine::HasFirstPoint()`
+    /// **Source:** `IntPatch_RLine.hxx`:103 - `IntPatch_RLine::HasFirstPoint()`
     /// Returns True if the line has a known First point.
     /// This point is given by the method FirstPoint().
     pub fn has_first_point(&self) -> bool {
@@ -6636,7 +6896,7 @@ impl RLine {
         })
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:110 - `IntPatch_RLine::HasLastPoint()`
+    /// **Source:** `IntPatch_RLine.hxx`:107 - `IntPatch_RLine::HasLastPoint()`
     /// Returns True if the line has a known Last point.
     /// This point is given by the method LastPoint().
     pub fn has_last_point(&self) -> bool {
@@ -6645,7 +6905,7 @@ impl RLine {
         })
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:114 - `IntPatch_RLine::FirstPoint()`
+    /// **Source:** `IntPatch_RLine.hxx`:111 - `IntPatch_RLine::FirstPoint()`
     /// Returns the IntPoint corresponding to the FirstPoint.
     /// An exception is raised when HasFirstPoint returns False.
     pub fn first_point(&self) -> &Point {
@@ -6656,7 +6916,7 @@ impl RLine {
         }
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:118 - `IntPatch_RLine::LastPoint()`
+    /// **Source:** `IntPatch_RLine.hxx`:115 - `IntPatch_RLine::LastPoint()`
     /// Returns the IntPoint corresponding to the LastPoint.
     /// An exception is raised when HasLastPoint returns False.
     pub fn last_point(&self) -> &Point {
@@ -6667,7 +6927,7 @@ impl RLine {
         }
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:121 - `IntPatch_RLine::NbVertex()`
+    /// **Source:** `IntPatch_RLine.hxx`:118 - `IntPatch_RLine::NbVertex()`
     /// Returns number of vertices (IntPatch_Point) of the line
     pub fn nb_vertex(&self) -> i32 {
         crate::check_result(unsafe {
@@ -6675,7 +6935,7 @@ impl RLine {
         })
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:124 - `IntPatch_RLine::Vertex()`
+    /// **Source:** `IntPatch_RLine.hxx`:121 - `IntPatch_RLine::Vertex()`
     /// Returns the vertex of range Index on the line.
     pub fn vertex(&self, Index: i32) -> &Point {
         unsafe {
@@ -6686,7 +6946,7 @@ impl RLine {
         }
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:127 - `IntPatch_RLine::ChangeVertex()`
+    /// **Source:** `IntPatch_RLine.hxx`:124 - `IntPatch_RLine::ChangeVertex()`
     /// Returns the vertex of range Index on the line.
     pub fn change_vertex(&mut self, Index: i32) -> &mut Point {
         unsafe {
@@ -6697,7 +6957,7 @@ impl RLine {
         }
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:130 - `IntPatch_RLine::RemoveVertex()`
+    /// **Source:** `IntPatch_RLine.hxx`:127 - `IntPatch_RLine::RemoveVertex()`
     /// Removes single vertex from the line
     pub fn remove_vertex(&mut self, theIndex: i32) {
         crate::check_void_result(unsafe {
@@ -6705,14 +6965,14 @@ impl RLine {
         })
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:132 - `IntPatch_RLine::HasPolygon()`
+    /// **Source:** `IntPatch_RLine.hxx`:129 - `IntPatch_RLine::HasPolygon()`
     pub fn has_polygon(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_has_polygon(self as *const Self)
         })
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:135 - `IntPatch_RLine::NbPnts()`
+    /// **Source:** `IntPatch_RLine.hxx`:132 - `IntPatch_RLine::NbPnts()`
     /// Returns the number of intersection points.
     pub fn nb_pnts(&self) -> i32 {
         crate::check_result(unsafe {
@@ -6720,7 +6980,7 @@ impl RLine {
         })
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:138 - `IntPatch_RLine::Point()`
+    /// **Source:** `IntPatch_RLine.hxx`:135 - `IntPatch_RLine::Point()`
     /// Returns the intersection point of range Index.
     pub fn point(&self, Index: i32) -> &crate::int_surf::PntOn2S {
         unsafe {
@@ -6731,7 +6991,7 @@ impl RLine {
         }
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:141 - `IntPatch_RLine::SetPoint()`
+    /// **Source:** `IntPatch_RLine.hxx`:138 - `IntPatch_RLine::SetPoint()`
     /// Set the Point of index <Index> in the LineOn2S
     pub fn set_point(&mut self, Index: i32, Pnt: &Point) {
         crate::check_void_result(unsafe {
@@ -6739,7 +6999,7 @@ impl RLine {
         })
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:147 - `IntPatch_RLine::ComputeVertexParameters()`
+    /// **Source:** `IntPatch_RLine.hxx`:144 - `IntPatch_RLine::ComputeVertexParameters()`
     /// Set the parameters of all the vertex on the line.
     /// if a vertex is already in the line,
     /// its parameter is modified
@@ -6753,9 +7013,9 @@ impl RLine {
         })
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:150 - `IntPatch_RLine::Curve()`
+    /// **Source:** `IntPatch_RLine.hxx`:147 - `IntPatch_RLine::Curve()`
     /// Returns set of intersection points
-    pub fn curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIntSurfLineOn2S> {
+    pub fn curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IntSurf_LineOn2S> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_curve(self as *const Self),
@@ -6763,7 +7023,7 @@ impl RLine {
         }
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:154 - `IntPatch_RLine::IsOutSurf1Box()`
+    /// **Source:** `IntPatch_RLine.hxx`:151 - `IntPatch_RLine::IsOutSurf1Box()`
     /// Returns TRUE if theP is out of the box built from
     /// the points on 1st surface
     pub fn is_out_surf1_box(&self, theP: &crate::gp::Pnt2d) -> bool {
@@ -6772,7 +7032,7 @@ impl RLine {
         })
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:161 - `IntPatch_RLine::IsOutSurf2Box()`
+    /// **Source:** `IntPatch_RLine.hxx`:155 - `IntPatch_RLine::IsOutSurf2Box()`
     /// Returns TRUE if theP is out of the box built from
     /// the points on 2nd surface
     pub fn is_out_surf2_box(&self, theP: &crate::gp::Pnt2d) -> bool {
@@ -6781,7 +7041,7 @@ impl RLine {
         })
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:167 - `IntPatch_RLine::IsOutBox()`
+    /// **Source:** `IntPatch_RLine.hxx`:158 - `IntPatch_RLine::IsOutBox()`
     /// Returns TRUE if theP is out of the box built from 3D-points.
     pub fn is_out_box(&self, theP: &crate::gp::Pnt) -> bool {
         crate::check_result(unsafe {
@@ -6789,7 +7049,7 @@ impl RLine {
         })
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:173 - `IntPatch_RLine::ClearVertexes()`
+    /// **Source:** `IntPatch_RLine.hxx`:161 - `IntPatch_RLine::ClearVertexes()`
     /// Removes vertices from the line (i.e. cleans svtx member)
     pub fn clear_vertexes(&mut self) {
         crate::check_void_result(unsafe {
@@ -6797,26 +7057,26 @@ impl RLine {
         })
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:175 - `IntPatch_RLine::SetCurve()`
-    pub fn set_curve(&mut self, theNewCurve: &crate::ffi_types::HandleIntSurfLineOn2S) {
+    /// **Source:** `IntPatch_RLine.hxx`:163 - `IntPatch_RLine::SetCurve()`
+    pub fn set_curve(&mut self, theNewCurve: &crate::ffi_types::Handle_IntSurf_LineOn2S) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_set_curve(self as *mut Self, theNewCurve)
         })
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:181 - `IntPatch_RLine::Dump()`
+    /// **Source:** `IntPatch_RLine.hxx`:169 - `IntPatch_RLine::Dump()`
     /// if (theMode == 0) then prints the information about WLine
     /// if (theMode == 1) then prints the list of 3d-points
     /// if (theMode == 2) then prints the list of 2d-points on the 1st surface
-    /// Otherwise,             prints list of 2d-points on the 2nd surface
+    /// Otherwise, prints list of 2d-points on the 2nd surface
     pub fn dump(&self, theMode: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_dump(self as *const Self, theMode)
         })
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:183 - `IntPatch_RLine::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IntPatch_RLine.hxx`:171 - `IntPatch_RLine::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_dynamic_type(
                 self as *const Self,
@@ -6824,7 +7084,7 @@ impl RLine {
         }
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:183 - `IntPatch_RLine::get_type_name()`
+    /// **Source:** `IntPatch_RLine.hxx`:171 - `IntPatch_RLine::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -6835,8 +7095,8 @@ impl RLine {
         .into_owned()
     }
 
-    /// **Source:** `IntPatch_RLine.hxx`:183 - `IntPatch_RLine::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IntPatch_RLine.hxx`:171 - `IntPatch_RLine::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_get_type_descriptor(),
@@ -6911,7 +7171,7 @@ impl RLine {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIntPatchRLine> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IntPatch_RLine> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_to_handle(obj.into_raw()),
@@ -6919,7 +7179,7 @@ impl RLine {
         }
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:44 - `IntPatch_Line::SetValue()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:41 - `IntPatch_Line::SetValue()`
     pub fn set_value(&mut self, Uiso1: bool, Viso1: bool, Uiso2: bool, Viso2: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_inherited_SetValue(
@@ -6932,7 +7192,7 @@ impl RLine {
         })
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:51 - `IntPatch_Line::ArcType()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:45 - `IntPatch_Line::ArcType()`
     pub fn arc_type(&self) -> crate::int_patch::IType {
         crate::int_patch::IType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_inherited_ArcType(self as *const Self)
@@ -6940,14 +7200,14 @@ impl RLine {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:55 - `IntPatch_Line::IsTangent()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:49 - `IntPatch_Line::IsTangent()`
     pub fn is_tangent(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_inherited_IsTangent(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:76 - `IntPatch_Line::TransitionOnS1()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:70 - `IntPatch_Line::TransitionOnS1()`
     pub fn transition_on_s1(&self) -> crate::int_surf::TypeTrans {
         crate::int_surf::TypeTrans::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_inherited_TransitionOnS1(
@@ -6957,7 +7217,7 @@ impl RLine {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:81 - `IntPatch_Line::TransitionOnS2()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:75 - `IntPatch_Line::TransitionOnS2()`
     pub fn transition_on_s2(&self) -> crate::int_surf::TypeTrans {
         crate::int_surf::TypeTrans::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_inherited_TransitionOnS2(
@@ -6967,7 +7227,7 @@ impl RLine {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:87 - `IntPatch_Line::SituationS1()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:81 - `IntPatch_Line::SituationS1()`
     pub fn situation_s1(&self) -> crate::int_surf::Situation {
         crate::int_surf::Situation::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_inherited_SituationS1(self as *const Self)
@@ -6975,7 +7235,7 @@ impl RLine {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:93 - `IntPatch_Line::SituationS2()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:87 - `IntPatch_Line::SituationS2()`
     pub fn situation_s2(&self) -> crate::int_surf::Situation {
         crate::int_surf::Situation::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_inherited_SituationS2(self as *const Self)
@@ -6983,36 +7243,36 @@ impl RLine {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:97 - `IntPatch_Line::IsUIsoOnS1()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:91 - `IntPatch_Line::IsUIsoOnS1()`
     pub fn is_u_iso_on_s1(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_inherited_IsUIsoOnS1(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:101 - `IntPatch_Line::IsVIsoOnS1()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:95 - `IntPatch_Line::IsVIsoOnS1()`
     pub fn is_v_iso_on_s1(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_inherited_IsVIsoOnS1(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:105 - `IntPatch_Line::IsUIsoOnS2()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:99 - `IntPatch_Line::IsUIsoOnS2()`
     pub fn is_u_iso_on_s2(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_inherited_IsUIsoOnS2(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:109 - `IntPatch_Line::IsVIsoOnS2()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:103 - `IntPatch_Line::IsVIsoOnS2()`
     pub fn is_v_iso_on_s2(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_inherited_IsVIsoOnS2(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_inherited_IsInstance(
                 self as *const Self,
@@ -7021,8 +7281,8 @@ impl RLine {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_inherited_IsKind(
                 self as *const Self,
@@ -7031,7 +7291,7 @@ impl RLine {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -7045,14 +7305,14 @@ impl RLine {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_inherited_IncrementRefCounter(
@@ -7061,7 +7321,7 @@ impl RLine {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_inherited_DecrementRefCounter(
@@ -7070,7 +7330,7 @@ impl RLine {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_RLine_inherited_Delete(self as *const Self)
@@ -7078,32 +7338,34 @@ impl RLine {
     }
 }
 
-pub use crate::ffi_types::HandleIntPatchRLine;
+pub use crate::ffi_types::Handle_IntPatch_RLine;
 
-unsafe impl crate::CppDeletable for HandleIntPatchRLine {
+unsafe impl crate::CppDeletable for Handle_IntPatch_RLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleIntPatchRLine_destructor(ptr);
+            crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_RLine_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIntPatchRLine {
+unsafe impl crate::CppCopyable for Handle_IntPatch_RLine {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchRLine_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_RLine_clone(ptr))
+        }
     }
 }
 
-impl HandleIntPatchRLine {
+impl Handle_IntPatch_RLine {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKGeomAlgo::HandleIntPatchRLine_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_RLine_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying IntPatch_RLine
     pub fn get(&self) -> &crate::ffi_types::IntPatch_RLine {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchRLine_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_RLine_get(
                 self as *const Self,
             ))
         }
@@ -7112,7 +7374,7 @@ impl HandleIntPatchRLine {
     /// Dereference this Handle to mutably access the underlying IntPatch_RLine
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IntPatch_RLine {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchRLine_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_RLine_get_mut(
                 self as *mut Self,
             ))
         }
@@ -7121,10 +7383,10 @@ impl HandleIntPatchRLine {
     /// Upcast Handle<IntPatch_RLine> to Handle<IntPatch_PointLine>
     pub fn to_handle_point_line(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIntPatchPointLine> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IntPatch_PointLine> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleIntPatchRLine_to_HandleIntPatchPointLine(
+                crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_RLine_to_Handle_IntPatch_PointLine(
                     self as *const Self,
                 ),
             ))
@@ -7132,10 +7394,10 @@ impl HandleIntPatchRLine {
     }
 
     /// Upcast Handle<IntPatch_RLine> to Handle<IntPatch_Line>
-    pub fn to_handle_line(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIntPatchLine> {
+    pub fn to_handle_line(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IntPatch_Line> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleIntPatchRLine_to_HandleIntPatchLine(
+                crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_RLine_to_Handle_IntPatch_Line(
                     self as *const Self,
                 ),
             ))
@@ -7145,10 +7407,10 @@ impl HandleIntPatchRLine {
     /// Upcast Handle<IntPatch_RLine> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleIntPatchRLine_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_RLine_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -7186,10 +7448,10 @@ impl RstInt {
 
     /// **Source:** `IntPatch_RstInt.hxx`:32 - `IntPatch_RstInt::PutVertexOnLine()`
     pub fn put_vertex_on_line(
-        L: &crate::ffi_types::HandleIntPatchLine,
-        Surf: &crate::ffi_types::HandleAdaptor3dSurface,
-        Domain: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        OtherSurf: &crate::ffi_types::HandleAdaptor3dSurface,
+        L: &crate::ffi_types::Handle_IntPatch_Line,
+        Surf: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        Domain: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
+        OtherSurf: &crate::ffi_types::Handle_Adaptor3d_Surface,
         OnFirst: bool,
         Tol: f64,
     ) {
@@ -7235,8 +7497,8 @@ impl SpecialPoints {
     /// second (otherwise, the first) surface while forming
     /// intersection point IntSurf_PntOn2S.
     pub fn add_cross_uv_iso_point(
-        theQSurf: &crate::ffi_types::HandleAdaptor3dSurface,
-        thePSurf: &crate::ffi_types::HandleAdaptor3dSurface,
+        theQSurf: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        thePSurf: &crate::ffi_types::Handle_Adaptor3d_Surface,
         theRefPt: &crate::int_surf::PntOn2S,
         theTol3d: f64,
         theAddedPoint: &mut crate::int_surf::PntOn2S,
@@ -7254,7 +7516,7 @@ impl SpecialPoints {
         })
     }
 
-    /// **Source:** `IntPatch_SpecialPoints.hxx`:64 - `IntPatch_SpecialPoints::AddPointOnUorVIso()`
+    /// **Source:** `IntPatch_SpecialPoints.hxx`:63 - `IntPatch_SpecialPoints::AddPointOnUorVIso()`
     /// Adds the point lain strictly in the isoline U = 0 or V = 0 of theQSurf,
     /// in theLine.
     /// theRefPt is used to correct adjusting parameters.
@@ -7267,8 +7529,8 @@ impl SpecialPoints {
     /// [3] - U- (if V-isoline is considered) or V-parameter
     /// (if U-isoline is considered) of theQSurf.
     pub fn add_point_on_uor_v_iso(
-        theQSurf: &crate::ffi_types::HandleAdaptor3dSurface,
-        thePSurf: &crate::ffi_types::HandleAdaptor3dSurface,
+        theQSurf: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        thePSurf: &crate::ffi_types::Handle_Adaptor3d_Surface,
         theRefPt: &crate::int_surf::PntOn2S,
         theIsU: bool,
         theIsoParameter: f64,
@@ -7296,7 +7558,7 @@ impl SpecialPoints {
         })
     }
 
-    /// **Source:** `IntPatch_SpecialPoints.hxx`:88 - `IntPatch_SpecialPoints::AddSingularPole()`
+    /// **Source:** `IntPatch_SpecialPoints.hxx`:86 - `IntPatch_SpecialPoints::AddSingularPole()`
     /// Computes the pole of sphere to add it in the intersection line.
     /// Stores the result in theAddedPoint variable (does not add in the line).
     /// At that, cone and sphere (with singularity) must be set in theQSurf parameter.
@@ -7309,8 +7571,8 @@ impl SpecialPoints {
     /// ATTENTION!!!
     /// theVertex must be initialized before calling the method .
     pub fn add_singular_pole(
-        theQSurf: &crate::ffi_types::HandleAdaptor3dSurface,
-        thePSurf: &crate::ffi_types::HandleAdaptor3dSurface,
+        theQSurf: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        thePSurf: &crate::ffi_types::Handle_Adaptor3d_Surface,
         thePtIso: &crate::int_surf::PntOn2S,
         theVertex: &mut Point,
         theAddedPoint: &mut crate::int_surf::PntOn2S,
@@ -7330,7 +7592,7 @@ impl SpecialPoints {
         })
     }
 
-    /// **Source:** `IntPatch_SpecialPoints.hxx`:103 - `IntPatch_SpecialPoints::ContinueAfterSpecialPoint()`
+    /// **Source:** `IntPatch_SpecialPoints.hxx`:100 - `IntPatch_SpecialPoints::ContinueAfterSpecialPoint()`
     /// Special point has already been added in the line. Now, we need in correct
     /// prolongation of the line or in start new line. This function returns new point.
     ///
@@ -7338,8 +7600,8 @@ impl SpecialPoints {
     /// theNewPoint is not only Output parameter. It is Input/Output one. I.e.
     /// theNewPoint is reference point together with theRefPt.
     pub fn continue_after_special_point(
-        theQSurf: &crate::ffi_types::HandleAdaptor3dSurface,
-        thePSurf: &crate::ffi_types::HandleAdaptor3dSurface,
+        theQSurf: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        thePSurf: &crate::ffi_types::Handle_Adaptor3d_Surface,
         theRefPt: &crate::int_surf::PntOn2S,
         theSPType: crate::int_patch::SpecPntType,
         theTol2D: f64,
@@ -7359,7 +7621,7 @@ impl SpecialPoints {
         })
     }
 
-    /// **Source:** `IntPatch_SpecialPoints.hxx`:123 - `IntPatch_SpecialPoints::AdjustPointAndVertex()`
+    /// **Source:** `IntPatch_SpecialPoints.hxx`:120 - `IntPatch_SpecialPoints::AdjustPointAndVertex()`
     /// Sets theNewPoint parameters in 2D-space the closest to
     /// theRefPoint with help of adding/subtracting corresponding periods.
     /// theArrPeriods must be filled as follows:
@@ -7392,7 +7654,7 @@ impl SpecialPoints {
 // From IntPatch_TheIWLineOfTheIWalking.hxx
 // ========================
 
-/// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:39 - `IntPatch_TheIWLineOfTheIWalking`
+/// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:37 - `IntPatch_TheIWLineOfTheIWalking`
 pub use crate::ffi_types::IntPatch_TheIWLineOfTheIWalking as TheIWLineOfTheIWalking;
 
 unsafe impl crate::CppDeletable for TheIWLineOfTheIWalking {
@@ -7404,16 +7666,16 @@ unsafe impl crate::CppDeletable for TheIWLineOfTheIWalking {
 }
 
 impl TheIWLineOfTheIWalking {
-    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:43 - `IntPatch_TheIWLineOfTheIWalking::IntPatch_TheIWLineOfTheIWalking()`
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:41 - `IntPatch_TheIWLineOfTheIWalking::IntPatch_TheIWLineOfTheIWalking()`
     pub fn new_handlencollectionbaseallocator(
-        theAllocator: &crate::ffi_types::HandleNCollectionBaseAllocator,
+        theAllocator: &crate::ffi_types::Handle_NCollection_BaseAllocator,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPatch_TheIWLineOfTheIWalking_ctor_handlencollectionbaseallocator(theAllocator)))
         }
     }
 
-    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:46 - `IntPatch_TheIWLineOfTheIWalking::Reverse()`
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:44 - `IntPatch_TheIWLineOfTheIWalking::Reverse()`
     /// reverse the points in the line. Hasfirst, HasLast are kept.
     pub fn reverse(&mut self) {
         crate::check_void_result(unsafe {
@@ -7421,7 +7683,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:49 - `IntPatch_TheIWLineOfTheIWalking::Cut()`
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:47 - `IntPatch_TheIWLineOfTheIWalking::Cut()`
     /// Cut the line at the point of rank Index.
     pub fn cut(&mut self, Index: i32) {
         crate::check_void_result(unsafe {
@@ -7432,7 +7694,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:52 - `IntPatch_TheIWLineOfTheIWalking::AddPoint()`
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:50 - `IntPatch_TheIWLineOfTheIWalking::AddPoint()`
     /// Add a point in the line.
     pub fn add_point(&mut self, P: &crate::int_surf::PntOn2S) {
         crate::check_void_result(unsafe {
@@ -7443,7 +7705,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:54 - `IntPatch_TheIWLineOfTheIWalking::AddStatusFirst()`
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:52 - `IntPatch_TheIWLineOfTheIWalking::AddStatusFirst()`
     pub fn add_status_first_bool2(&mut self, Closed: bool, HasFirst: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_TheIWLineOfTheIWalking_add_status_first_bool2(
@@ -7454,7 +7716,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:56 - `IntPatch_TheIWLineOfTheIWalking::AddStatusFirst()`
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:54 - `IntPatch_TheIWLineOfTheIWalking::AddStatusFirst()`
     pub fn add_status_first_bool2_int_pathpoint(
         &mut self,
         Closed: bool,
@@ -7467,7 +7729,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:61 - `IntPatch_TheIWLineOfTheIWalking::AddStatusFirstLast()`
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:59 - `IntPatch_TheIWLineOfTheIWalking::AddStatusFirstLast()`
     pub fn add_status_first_last(&mut self, Closed: bool, HasFirst: bool, HasLast: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_TheIWLineOfTheIWalking_add_status_first_last(
@@ -7479,7 +7741,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:65 - `IntPatch_TheIWLineOfTheIWalking::AddStatusLast()`
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:61 - `IntPatch_TheIWLineOfTheIWalking::AddStatusLast()`
     pub fn add_status_last_bool(&mut self, HasLast: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_TheIWLineOfTheIWalking_add_status_last_bool(
@@ -7489,7 +7751,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:67 - `IntPatch_TheIWLineOfTheIWalking::AddStatusLast()`
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:63 - `IntPatch_TheIWLineOfTheIWalking::AddStatusLast()`
     pub fn add_status_last_bool_int_pathpoint(
         &mut self,
         HasLast: bool,
@@ -7501,9 +7763,9 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:73 - `IntPatch_TheIWLineOfTheIWalking::AddIndexPassing()`
-    /// associer a l 'indice du point sur la ligne l'indice du point
-    /// passant dans l'iterateur de depart
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:66 - `IntPatch_TheIWLineOfTheIWalking::AddIndexPassing()`
+    /// associate the index of the point on the line with the index of the point
+    /// passing through the starting iterator
     pub fn add_index_passing(&mut self, Index: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_TheIWLineOfTheIWalking_add_index_passing(
@@ -7513,7 +7775,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:75 - `IntPatch_TheIWLineOfTheIWalking::SetTangentVector()`
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:68 - `IntPatch_TheIWLineOfTheIWalking::SetTangentVector()`
     pub fn set_tangent_vector(&mut self, V: &crate::gp::Vec, Index: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_TheIWLineOfTheIWalking_set_tangent_vector(
@@ -7524,7 +7786,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:77 - `IntPatch_TheIWLineOfTheIWalking::SetTangencyAtBegining()`
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:70 - `IntPatch_TheIWLineOfTheIWalking::SetTangencyAtBegining()`
     pub fn set_tangency_at_begining(&mut self, IsTangent: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_TheIWLineOfTheIWalking_set_tangency_at_begining(
@@ -7534,7 +7796,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:79 - `IntPatch_TheIWLineOfTheIWalking::SetTangencyAtEnd()`
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:72 - `IntPatch_TheIWLineOfTheIWalking::SetTangencyAtEnd()`
     pub fn set_tangency_at_end(&mut self, IsTangent: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_TheIWLineOfTheIWalking_set_tangency_at_end(
@@ -7544,7 +7806,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:83 - `IntPatch_TheIWLineOfTheIWalking::NbPoints()`
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:76 - `IntPatch_TheIWLineOfTheIWalking::NbPoints()`
     /// Returns the number of points of the line (including first
     /// point and end point : see HasLastPoint and HasFirstPoint).
     pub fn nb_points(&self) -> i32 {
@@ -7555,7 +7817,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:87 - `IntPatch_TheIWLineOfTheIWalking::Value()`
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:80 - `IntPatch_TheIWLineOfTheIWalking::Value()`
     /// Returns the point of range Index.
     /// If index <= 0 or Index > NbPoints, an exception is raised.
     pub fn value(&self, Index: i32) -> &crate::int_surf::PntOn2S {
@@ -7569,9 +7831,9 @@ impl TheIWLineOfTheIWalking {
         }
     }
 
-    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:90 - `IntPatch_TheIWLineOfTheIWalking::Line()`
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:83 - `IntPatch_TheIWLineOfTheIWalking::Line()`
     /// Returns the LineOn2S contained in the walking line.
-    pub fn line(&self) -> &crate::ffi_types::HandleIntSurfLineOn2S {
+    pub fn line(&self) -> &crate::ffi_types::Handle_IntSurf_LineOn2S {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_TheIWLineOfTheIWalking_line(
@@ -7581,7 +7843,7 @@ impl TheIWLineOfTheIWalking {
         }
     }
 
-    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:93 - `IntPatch_TheIWLineOfTheIWalking::IsClosed()`
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:86 - `IntPatch_TheIWLineOfTheIWalking::IsClosed()`
     /// Returns True if the line is closed.
     pub fn is_closed(&self) -> bool {
         crate::check_result(unsafe {
@@ -7591,11 +7853,11 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:99 - `IntPatch_TheIWLineOfTheIWalking::HasFirstPoint()`
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:92 - `IntPatch_TheIWLineOfTheIWalking::HasFirstPoint()`
     /// Returns True if the first point of the line is a
-    /// marching point . when is HasFirstPoint==False ,the line
-    /// begins on the natural bound of the surface.the line can be
-    /// too long
+    /// marching point. when HasFirstPoint==False the line
+    /// begins on the natural bound of the surface. The line
+    /// can be too long
     pub fn has_first_point(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_TheIWLineOfTheIWalking_has_first_point(
@@ -7604,11 +7866,11 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:106 - `IntPatch_TheIWLineOfTheIWalking::HasLastPoint()`
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:99 - `IntPatch_TheIWLineOfTheIWalking::HasLastPoint()`
     /// Returns True if the end point of the line is a
     /// marching point (Point from IntWS).
-    /// when is HasFirstPoint==False ,the line ends
-    /// on the natural bound of the surface.the line can be
+    /// when HasFirstPoint==False the line ends
+    /// on the natural bound of the surface. The line can be
     /// too long.
     pub fn has_last_point(&self) -> bool {
         crate::check_result(unsafe {
@@ -7618,7 +7880,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:111 - `IntPatch_TheIWLineOfTheIWalking::FirstPoint()`
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:104 - `IntPatch_TheIWLineOfTheIWalking::FirstPoint()`
     /// Returns the first point of the line when it is a
     /// marching point.
     /// An exception is raised if HasFirstPoint returns False.
@@ -7632,9 +7894,9 @@ impl TheIWLineOfTheIWalking {
         }
     }
 
-    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:117 - `IntPatch_TheIWLineOfTheIWalking::FirstPointIndex()`
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:110 - `IntPatch_TheIWLineOfTheIWalking::FirstPointIndex()`
     /// Returns the Index of first point of the line when it is a
-    /// marching point.This index is the index in the
+    /// marching point. This index is the index in the
     /// PointStartIterator.
     /// An exception is raised if HasFirstPoint returns False.
     pub fn first_point_index(&self) -> i32 {
@@ -7645,7 +7907,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:122 - `IntPatch_TheIWLineOfTheIWalking::LastPoint()`
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:115 - `IntPatch_TheIWLineOfTheIWalking::LastPoint()`
     /// Returns the last point of the line when it is a
     /// marching point.
     /// An exception is raised if HasLastPoint returns False.
@@ -7659,9 +7921,9 @@ impl TheIWLineOfTheIWalking {
         }
     }
 
-    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:128 - `IntPatch_TheIWLineOfTheIWalking::LastPointIndex()`
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:121 - `IntPatch_TheIWLineOfTheIWalking::LastPointIndex()`
     /// Returns the index of last point of the line when it is a
-    /// marching point.This index is the index in the
+    /// marching point. This index is the index in the
     /// PointStartIterator.
     /// An exception is raised if HasLastPoint returns False.
     pub fn last_point_index(&self) -> i32 {
@@ -7672,7 +7934,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:132 - `IntPatch_TheIWLineOfTheIWalking::NbPassingPoint()`
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:125 - `IntPatch_TheIWLineOfTheIWalking::NbPassingPoint()`
     /// returns the number of points belonging to Pnts1 which are
     /// passing point.
     pub fn nb_passing_point(&self) -> i32 {
@@ -7683,7 +7945,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:137 - `IntPatch_TheIWLineOfTheIWalking::PassingPoint()`
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:130 - `IntPatch_TheIWLineOfTheIWalking::PassingPoint()`
     /// returns the index of the point belonging to the line which
     /// is associated to the passing point belonging to Pnts1
     /// an exception is raised if Index > NbPassingPoint()
@@ -7698,7 +7960,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:141 - `IntPatch_TheIWLineOfTheIWalking::TangentVector()`
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:132 - `IntPatch_TheIWLineOfTheIWalking::TangentVector()`
     ///
     /// # Safety
     ///
@@ -7716,7 +7978,7 @@ impl TheIWLineOfTheIWalking {
         }
     }
 
-    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:143 - `IntPatch_TheIWLineOfTheIWalking::IsTangentAtBegining()`
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:134 - `IntPatch_TheIWLineOfTheIWalking::IsTangentAtBegining()`
     pub fn is_tangent_at_begining(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_TheIWLineOfTheIWalking_is_tangent_at_begining(
@@ -7725,7 +7987,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:145 - `IntPatch_TheIWLineOfTheIWalking::IsTangentAtEnd()`
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:136 - `IntPatch_TheIWLineOfTheIWalking::IsTangentAtEnd()`
     pub fn is_tangent_at_end(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_TheIWLineOfTheIWalking_is_tangent_at_end(
@@ -7734,8 +7996,8 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:147 - `IntPatch_TheIWLineOfTheIWalking::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:138 - `IntPatch_TheIWLineOfTheIWalking::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_TheIWLineOfTheIWalking_dynamic_type(
@@ -7745,7 +8007,7 @@ impl TheIWLineOfTheIWalking {
         }
     }
 
-    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:147 - `IntPatch_TheIWLineOfTheIWalking::get_type_name()`
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:138 - `IntPatch_TheIWLineOfTheIWalking::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -7756,8 +8018,8 @@ impl TheIWLineOfTheIWalking {
         .into_owned()
     }
 
-    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:147 - `IntPatch_TheIWLineOfTheIWalking::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IntPatch_TheIWLineOfTheIWalking.hxx`:138 - `IntPatch_TheIWLineOfTheIWalking::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_TheIWLineOfTheIWalking_get_type_descriptor(),
@@ -7786,7 +8048,7 @@ impl TheIWLineOfTheIWalking {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIntPatchTheIWLineOfTheIWalking> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IntPatch_TheIWLineOfTheIWalking> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_TheIWLineOfTheIWalking_to_handle(
@@ -7796,8 +8058,8 @@ impl TheIWLineOfTheIWalking {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_TheIWLineOfTheIWalking_inherited_IsInstance(
                 self as *const Self,
@@ -7806,8 +8068,8 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_TheIWLineOfTheIWalking_inherited_IsKind(
                 self as *const Self,
@@ -7816,7 +8078,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -7832,7 +8094,7 @@ impl TheIWLineOfTheIWalking {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_TheIWLineOfTheIWalking_inherited_GetRefCount(
@@ -7841,21 +8103,21 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_TheIWLineOfTheIWalking_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_TheIWLineOfTheIWalking_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_TheIWLineOfTheIWalking_inherited_Delete(
@@ -7865,31 +8127,31 @@ impl TheIWLineOfTheIWalking {
     }
 }
 
-pub use crate::ffi_types::HandleIntPatchTheIWLineOfTheIWalking;
+pub use crate::ffi_types::Handle_IntPatch_TheIWLineOfTheIWalking;
 
-unsafe impl crate::CppDeletable for HandleIntPatchTheIWLineOfTheIWalking {
+unsafe impl crate::CppDeletable for Handle_IntPatch_TheIWLineOfTheIWalking {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleIntPatchTheIWLineOfTheIWalking_destructor(ptr);
+            crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_TheIWLineOfTheIWalking_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIntPatchTheIWLineOfTheIWalking {
+unsafe impl crate::CppCopyable for Handle_IntPatch_TheIWLineOfTheIWalking {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleIntPatchTheIWLineOfTheIWalking_clone(ptr),
+                crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_TheIWLineOfTheIWalking_clone(ptr),
             )
         }
     }
 }
 
-impl HandleIntPatchTheIWLineOfTheIWalking {
+impl Handle_IntPatch_TheIWLineOfTheIWalking {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleIntPatchTheIWLineOfTheIWalking_is_null(
+            crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_TheIWLineOfTheIWalking_is_null(
                 self as *const Self,
             )
         }
@@ -7899,7 +8161,7 @@ impl HandleIntPatchTheIWLineOfTheIWalking {
     pub fn get(&self) -> &crate::ffi_types::IntPatch_TheIWLineOfTheIWalking {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleIntPatchTheIWLineOfTheIWalking_get(
+                crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_TheIWLineOfTheIWalking_get(
                     self as *const Self,
                 ),
             )
@@ -7910,7 +8172,7 @@ impl HandleIntPatchTheIWLineOfTheIWalking {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IntPatch_TheIWLineOfTheIWalking {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleIntPatchTheIWLineOfTheIWalking_get_mut(
+                crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_TheIWLineOfTheIWalking_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -7920,9 +8182,9 @@ impl HandleIntPatchTheIWLineOfTheIWalking {
     /// Upcast Handle<IntPatch_TheIWLineOfTheIWalking> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchTheIWLineOfTheIWalking_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_TheIWLineOfTheIWalking_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -8003,39 +8265,39 @@ impl TheIWalking {
         })
     }
 
-    /// **Source:** `IntPatch_TheIWalking.hxx`:79 - `IntPatch_TheIWalking::Perform()`
+    /// **Source:** `IntPatch_TheIWalking.hxx`:77 - `IntPatch_TheIWalking::Perform()`
     /// Searches a set of polylines starting on a point of Pnts1
     /// or Pnts2.
     /// Each point on a resulting polyline verifies F(u,v)=0
-    pub fn perform_sequenceofpathpoint_sequenceofinteriorpoint_thesurffunction_handleadaptor3dsurface_bool(
+    pub fn perform_seq_pathpoint_seq_interiorpoint_thesurffunction_handleadaptor3dsurface_bool(
         &mut self,
-        Pnts1: &crate::ffi_types::IntSurf_SequenceOfPathPoint,
-        Pnts2: &crate::ffi_types::IntSurf_SequenceOfInteriorPoint,
+        Pnts1: &crate::ffi_types::NCollection_Sequence_IntSurf_PathPoint,
+        Pnts2: &crate::ffi_types::NCollection_Sequence_IntSurf_InteriorPoint,
         Func: &mut TheSurfFunction,
-        S: &crate::ffi_types::HandleAdaptor3dSurface,
+        S: &crate::ffi_types::Handle_Adaptor3d_Surface,
         Reversed: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::IntPatch_TheIWalking_perform_sequenceofpathpoint_sequenceofinteriorpoint_thesurffunction_handleadaptor3dsurface_bool(self as *mut Self, Pnts1, Pnts2, Func, S, Reversed)
+            crate::ffi_extern_TKGeomAlgo::IntPatch_TheIWalking_perform_seq_pathpoint_seq_interiorpoint_thesurffunction_handleadaptor3dsurface_bool(self as *mut Self, Pnts1, Pnts2, Func, S, Reversed)
         })
     }
 
-    /// **Source:** `IntPatch_TheIWalking.hxx`:87 - `IntPatch_TheIWalking::Perform()`
+    /// **Source:** `IntPatch_TheIWalking.hxx`:85 - `IntPatch_TheIWalking::Perform()`
     /// Searches a set of polylines starting on a point of Pnts1.
     /// Each point on a resulting polyline verifies F(u,v)=0
-    pub fn perform_sequenceofpathpoint_thesurffunction_handleadaptor3dsurface_bool(
+    pub fn perform_seq_pathpoint_thesurffunction_handleadaptor3dsurface_bool(
         &mut self,
-        Pnts1: &crate::ffi_types::IntSurf_SequenceOfPathPoint,
+        Pnts1: &crate::ffi_types::NCollection_Sequence_IntSurf_PathPoint,
         Func: &mut TheSurfFunction,
-        S: &crate::ffi_types::HandleAdaptor3dSurface,
+        S: &crate::ffi_types::Handle_Adaptor3d_Surface,
         Reversed: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::IntPatch_TheIWalking_perform_sequenceofpathpoint_thesurffunction_handleadaptor3dsurface_bool(self as *mut Self, Pnts1, Func, S, Reversed)
+            crate::ffi_extern_TKGeomAlgo::IntPatch_TheIWalking_perform_seq_pathpoint_thesurffunction_handleadaptor3dsurface_bool(self as *mut Self, Pnts1, Func, S, Reversed)
         })
     }
 
-    /// **Source:** `IntPatch_TheIWalking.hxx`:93 - `IntPatch_TheIWalking::IsDone()`
+    /// **Source:** `IntPatch_TheIWalking.hxx`:91 - `IntPatch_TheIWalking::IsDone()`
     /// Returns true if the calculus was successful.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -8043,7 +8305,7 @@ impl TheIWalking {
         })
     }
 
-    /// **Source:** `IntPatch_TheIWalking.hxx`:97 - `IntPatch_TheIWalking::NbLines()`
+    /// **Source:** `IntPatch_TheIWalking.hxx`:95 - `IntPatch_TheIWalking::NbLines()`
     /// Returns the number of resulting polylines.
     /// An exception is raised if IsDone returns False.
     pub fn nb_lines(&self) -> i32 {
@@ -8052,11 +8314,11 @@ impl TheIWalking {
         })
     }
 
-    /// **Source:** `IntPatch_TheIWalking.hxx`:102 - `IntPatch_TheIWalking::Value()`
+    /// **Source:** `IntPatch_TheIWalking.hxx`:100 - `IntPatch_TheIWalking::Value()`
     /// Returns the polyline of range Index.
     /// An exception is raised if IsDone is False.
     /// An exception is raised if Index<=0 or Index>NbLines.
-    pub fn value(&self, Index: i32) -> &crate::ffi_types::HandleIntPatchTheIWLineOfTheIWalking {
+    pub fn value(&self, Index: i32) -> &crate::ffi_types::Handle_IntPatch_TheIWLineOfTheIWalking {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPatch_TheIWalking_value(
                 self as *const Self,
@@ -8065,7 +8327,7 @@ impl TheIWalking {
         }
     }
 
-    /// **Source:** `IntPatch_TheIWalking.hxx`:107 - `IntPatch_TheIWalking::NbSinglePnts()`
+    /// **Source:** `IntPatch_TheIWalking.hxx`:105 - `IntPatch_TheIWalking::NbSinglePnts()`
     /// Returns the number of points belonging to Pnts on which no
     /// line starts or ends.
     /// An exception is raised if IsDone returns False.
@@ -8075,7 +8337,7 @@ impl TheIWalking {
         })
     }
 
-    /// **Source:** `IntPatch_TheIWalking.hxx`:113 - `IntPatch_TheIWalking::SinglePnt()`
+    /// **Source:** `IntPatch_TheIWalking.hxx`:111 - `IntPatch_TheIWalking::SinglePnt()`
     /// Returns the point of range Index .
     /// An exception is raised if IsDone returns False.
     /// An exception is raised if Index<=0 or
@@ -8119,8 +8381,8 @@ impl ThePathPointOfTheSOnBounds {
     pub fn new_pnt_real_handleadaptor3dhvertex_handleadaptor2dcurve2d_real(
         P: &crate::gp::Pnt,
         Tol: f64,
-        V: &crate::ffi_types::HandleAdaptor3dHVertex,
-        A: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        V: &crate::ffi_types::Handle_Adaptor3d_HVertex,
+        A: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         Parameter: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -8132,7 +8394,7 @@ impl ThePathPointOfTheSOnBounds {
     pub fn new_pnt_real_handleadaptor2dcurve2d_real(
         P: &crate::gp::Pnt,
         Tol: f64,
-        A: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        A: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         Parameter: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -8145,8 +8407,8 @@ impl ThePathPointOfTheSOnBounds {
         &mut self,
         P: &crate::gp::Pnt,
         Tol: f64,
-        V: &crate::ffi_types::HandleAdaptor3dHVertex,
-        A: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        V: &crate::ffi_types::Handle_Adaptor3d_HVertex,
+        A: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         Parameter: f64,
     ) {
         crate::check_void_result(unsafe {
@@ -8159,7 +8421,7 @@ impl ThePathPointOfTheSOnBounds {
         &mut self,
         P: &crate::gp::Pnt,
         Tol: f64,
-        A: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        A: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         Parameter: f64,
     ) {
         crate::check_void_result(unsafe {
@@ -8197,7 +8459,7 @@ impl ThePathPointOfTheSOnBounds {
     }
 
     /// **Source:** `IntPatch_ThePathPointOfTheSOnBounds.hxx`:62 - `IntPatch_ThePathPointOfTheSOnBounds::Vertex()`
-    pub fn vertex(&self) -> &crate::ffi_types::HandleAdaptor3dHVertex {
+    pub fn vertex(&self) -> &crate::ffi_types::Handle_Adaptor3d_HVertex {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_ThePathPointOfTheSOnBounds_vertex(
@@ -8208,7 +8470,7 @@ impl ThePathPointOfTheSOnBounds {
     }
 
     /// **Source:** `IntPatch_ThePathPointOfTheSOnBounds.hxx`:64 - `IntPatch_ThePathPointOfTheSOnBounds::Arc()`
-    pub fn arc(&self) -> &crate::ffi_types::HandleAdaptor2dCurve2d {
+    pub fn arc(&self) -> &crate::ffi_types::Handle_Adaptor2d_Curve2d {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_ThePathPointOfTheSOnBounds_arc(
@@ -8232,7 +8494,7 @@ impl ThePathPointOfTheSOnBounds {
 // From IntPatch_TheSOnBounds.hxx
 // ========================
 
-/// **Source:** `IntPatch_TheSOnBounds.hxx`:38 - `IntPatch_TheSOnBounds`
+/// **Source:** `IntPatch_TheSOnBounds.hxx`:39 - `IntPatch_TheSOnBounds`
 pub use crate::ffi_types::IntPatch_TheSOnBounds as TheSOnBounds;
 
 unsafe impl crate::CppDeletable for TheSOnBounds {
@@ -8244,7 +8506,7 @@ unsafe impl crate::CppDeletable for TheSOnBounds {
 }
 
 impl TheSOnBounds {
-    /// **Source:** `IntPatch_TheSOnBounds.hxx`:44 - `IntPatch_TheSOnBounds::IntPatch_TheSOnBounds()`
+    /// **Source:** `IntPatch_TheSOnBounds.hxx`:45 - `IntPatch_TheSOnBounds::IntPatch_TheSOnBounds()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -8254,7 +8516,7 @@ impl TheSOnBounds {
         }
     }
 
-    /// **Source:** `IntPatch_TheSOnBounds.hxx`:51 - `IntPatch_TheSOnBounds::Perform()`
+    /// **Source:** `IntPatch_TheSOnBounds.hxx`:52 - `IntPatch_TheSOnBounds::Perform()`
     /// Algorithm to find the points and parts of curves of Domain
     /// (domain of of restriction of a surface) which verify
     /// F = 0.
@@ -8263,7 +8525,7 @@ impl TheSOnBounds {
     pub fn perform(
         &mut self,
         F: &mut ArcFunction,
-        Domain: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        Domain: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         TolBoundary: f64,
         TolTangency: f64,
         RecheckOnRegularity: bool,
@@ -8280,7 +8542,7 @@ impl TheSOnBounds {
         })
     }
 
-    /// **Source:** `IntPatch_TheSOnBounds.hxx`:58 - `IntPatch_TheSOnBounds::IsDone()`
+    /// **Source:** `IntPatch_TheSOnBounds.hxx`:59 - `IntPatch_TheSOnBounds::IsDone()`
     /// Returns True if the calculus was successful.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -8288,7 +8550,7 @@ impl TheSOnBounds {
         })
     }
 
-    /// **Source:** `IntPatch_TheSOnBounds.hxx`:63 - `IntPatch_TheSOnBounds::AllArcSolution()`
+    /// **Source:** `IntPatch_TheSOnBounds.hxx`:64 - `IntPatch_TheSOnBounds::AllArcSolution()`
     /// Returns true if all arc of the Arcs are solution (inside
     /// the surface).
     /// An exception is raised if IsDone returns False.
@@ -8300,7 +8562,7 @@ impl TheSOnBounds {
         })
     }
 
-    /// **Source:** `IntPatch_TheSOnBounds.hxx`:67 - `IntPatch_TheSOnBounds::NbPoints()`
+    /// **Source:** `IntPatch_TheSOnBounds.hxx`:68 - `IntPatch_TheSOnBounds::NbPoints()`
     /// Returns the number of resulting points.
     /// An exception is raised if IsDone returns False (NotDone).
     pub fn nb_points(&self) -> i32 {
@@ -8309,7 +8571,7 @@ impl TheSOnBounds {
         })
     }
 
-    /// **Source:** `IntPatch_TheSOnBounds.hxx`:74 - `IntPatch_TheSOnBounds::Point()`
+    /// **Source:** `IntPatch_TheSOnBounds.hxx`:75 - `IntPatch_TheSOnBounds::Point()`
     /// Returns the resulting point of range Index.
     /// The exception NotDone is raised if IsDone() returns
     /// False.
@@ -8324,7 +8586,7 @@ impl TheSOnBounds {
         }
     }
 
-    /// **Source:** `IntPatch_TheSOnBounds.hxx`:78 - `IntPatch_TheSOnBounds::NbSegments()`
+    /// **Source:** `IntPatch_TheSOnBounds.hxx`:79 - `IntPatch_TheSOnBounds::NbSegments()`
     /// Returns the number of the resulting segments.
     /// An exception is raised if IsDone returns False (NotDone).
     pub fn nb_segments(&self) -> i32 {
@@ -8333,7 +8595,7 @@ impl TheSOnBounds {
         })
     }
 
-    /// **Source:** `IntPatch_TheSOnBounds.hxx`:85 - `IntPatch_TheSOnBounds::Segment()`
+    /// **Source:** `IntPatch_TheSOnBounds.hxx`:86 - `IntPatch_TheSOnBounds::Segment()`
     /// Returns the resulting segment of range Index.
     /// The exception NotDone is raised if IsDone() returns
     /// False.
@@ -8353,7 +8615,7 @@ impl TheSOnBounds {
 // From IntPatch_TheSearchInside.hxx
 // ========================
 
-/// **Source:** `IntPatch_TheSearchInside.hxx`:28 - `IntPatch_TheSearchInside`
+/// **Source:** `IntPatch_TheSearchInside.hxx`:29 - `IntPatch_TheSearchInside`
 pub use crate::ffi_types::IntPatch_TheSearchInside as TheSearchInside;
 
 unsafe impl crate::CppDeletable for TheSearchInside {
@@ -8365,7 +8627,7 @@ unsafe impl crate::CppDeletable for TheSearchInside {
 }
 
 impl TheSearchInside {
-    /// **Source:** `IntPatch_TheSearchInside.hxx`:33 - `IntPatch_TheSearchInside::IntPatch_TheSearchInside()`
+    /// **Source:** `IntPatch_TheSearchInside.hxx`:34 - `IntPatch_TheSearchInside::IntPatch_TheSearchInside()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -8374,11 +8636,11 @@ impl TheSearchInside {
         }
     }
 
-    /// **Source:** `IntPatch_TheSearchInside.hxx`:35 - `IntPatch_TheSearchInside::IntPatch_TheSearchInside()`
+    /// **Source:** `IntPatch_TheSearchInside.hxx`:36 - `IntPatch_TheSearchInside::IntPatch_TheSearchInside()`
     pub fn new_thesurffunction_handleadaptor3dsurface_handleadaptor3dtopoltool_real(
         F: &mut TheSurfFunction,
-        Surf: &crate::ffi_types::HandleAdaptor3dSurface,
-        T: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        Surf: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        T: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         Epsilon: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -8386,12 +8648,12 @@ impl TheSearchInside {
         }
     }
 
-    /// **Source:** `IntPatch_TheSearchInside.hxx`:40 - `IntPatch_TheSearchInside::Perform()`
+    /// **Source:** `IntPatch_TheSearchInside.hxx`:41 - `IntPatch_TheSearchInside::Perform()`
     pub fn perform_thesurffunction_handleadaptor3dsurface_handleadaptor3dtopoltool_real(
         &mut self,
         F: &mut TheSurfFunction,
-        Surf: &crate::ffi_types::HandleAdaptor3dSurface,
-        T: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        Surf: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        T: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         Epsilon: f64,
     ) {
         crate::check_void_result(unsafe {
@@ -8399,11 +8661,11 @@ impl TheSearchInside {
         })
     }
 
-    /// **Source:** `IntPatch_TheSearchInside.hxx`:45 - `IntPatch_TheSearchInside::Perform()`
+    /// **Source:** `IntPatch_TheSearchInside.hxx`:46 - `IntPatch_TheSearchInside::Perform()`
     pub fn perform_thesurffunction_handleadaptor3dsurface_real2(
         &mut self,
         F: &mut TheSurfFunction,
-        Surf: &crate::ffi_types::HandleAdaptor3dSurface,
+        Surf: &crate::ffi_types::Handle_Adaptor3d_Surface,
         UStart: f64,
         VStart: f64,
     ) {
@@ -8412,14 +8674,14 @@ impl TheSearchInside {
         })
     }
 
-    /// **Source:** `IntPatch_TheSearchInside.hxx`:50 - `IntPatch_TheSearchInside::IsDone()`
+    /// **Source:** `IntPatch_TheSearchInside.hxx`:51 - `IntPatch_TheSearchInside::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_TheSearchInside_is_done(self as *const Self)
         })
     }
 
-    /// **Source:** `IntPatch_TheSearchInside.hxx`:55 - `IntPatch_TheSearchInside::NbPoints()`
+    /// **Source:** `IntPatch_TheSearchInside.hxx`:56 - `IntPatch_TheSearchInside::NbPoints()`
     /// Returns the number of points.
     /// The exception NotDone if raised if IsDone
     /// returns False.
@@ -8429,7 +8691,7 @@ impl TheSearchInside {
         })
     }
 
-    /// **Source:** `IntPatch_TheSearchInside.hxx`:62 - `IntPatch_TheSearchInside::Value()`
+    /// **Source:** `IntPatch_TheSearchInside.hxx`:63 - `IntPatch_TheSearchInside::Value()`
     /// Returns the point of range Index.
     /// The exception NotDone if raised if IsDone
     /// returns False.
@@ -8473,7 +8735,7 @@ impl TheSegmentOfTheSOnBounds {
 
     /// **Source:** `IntPatch_TheSegmentOfTheSOnBounds.hxx`:39 - `IntPatch_TheSegmentOfTheSOnBounds::SetValue()`
     /// Defines the concerned arc.
-    pub fn set_value(&mut self, A: &crate::ffi_types::HandleAdaptor2dCurve2d) {
+    pub fn set_value(&mut self, A: &crate::ffi_types::Handle_Adaptor2d_Curve2d) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_TheSegmentOfTheSOnBounds_set_value(
                 self as *mut Self,
@@ -8498,7 +8760,7 @@ impl TheSegmentOfTheSOnBounds {
     /// **Source:** `IntPatch_TheSegmentOfTheSOnBounds.hxx`:48 - `IntPatch_TheSegmentOfTheSOnBounds::Curve()`
     /// Returns the geometric curve on the surface 's domain
     /// which is solution.
-    pub fn curve(&self) -> &crate::ffi_types::HandleAdaptor2dCurve2d {
+    pub fn curve(&self) -> &crate::ffi_types::Handle_Adaptor2d_Curve2d {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_TheSegmentOfTheSOnBounds_curve(
@@ -8582,7 +8844,7 @@ impl TheSurfFunction {
 
     /// **Source:** `IntPatch_TheSurfFunction.hxx`:39 - `IntPatch_TheSurfFunction::IntPatch_TheSurfFunction()`
     pub fn new_handleadaptor3dsurface_quadric(
-        PS: &crate::ffi_types::HandleAdaptor3dSurface,
+        PS: &crate::ffi_types::Handle_Adaptor3d_Surface,
         IS: &crate::int_surf::Quadric,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -8600,7 +8862,7 @@ impl TheSurfFunction {
     }
 
     /// **Source:** `IntPatch_TheSurfFunction.hxx`:44 - `IntPatch_TheSurfFunction::Set()`
-    pub fn set_handleadaptor3dsurface(&mut self, PS: &crate::ffi_types::HandleAdaptor3dSurface) {
+    pub fn set_handleadaptor3dsurface(&mut self, PS: &crate::ffi_types::Handle_Adaptor3d_Surface) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_TheSurfFunction_set_handleadaptor3dsurface(
                 self as *mut Self,
@@ -8694,7 +8956,7 @@ impl TheSurfFunction {
     }
 
     /// **Source:** `IntPatch_TheSurfFunction.hxx`:64 - `IntPatch_TheSurfFunction::Tolerance()`
-    /// Returns the value Tol so that if Abs(Func.Root())<Tol
+    /// Returns the value Tol so that if std::abs(Func.Root())<Tol
     /// the function is considered null.
     pub fn tolerance(&self) -> f64 {
         crate::check_result(unsafe {
@@ -8741,7 +9003,7 @@ impl TheSurfFunction {
     }
 
     /// **Source:** `IntPatch_TheSurfFunction.hxx`:74 - `IntPatch_TheSurfFunction::PSurface()`
-    pub fn p_surface(&self) -> &crate::ffi_types::HandleAdaptor3dSurface {
+    pub fn p_surface(&self) -> &crate::ffi_types::Handle_Adaptor3d_Surface {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_TheSurfFunction_p_surface(
@@ -8816,7 +9078,7 @@ impl TheSurfFunction {
 // From IntPatch_WLine.hxx
 // ========================
 
-/// **Source:** `IntPatch_WLine.hxx`:40 - `IntPatch_WLine`
+/// **Source:** `IntPatch_WLine.hxx`:38 - `IntPatch_WLine`
 /// Definition of set of points as a result of the intersection
 /// between 2 parametrised patches.
 pub use crate::ffi_types::IntPatch_WLine as WLine;
@@ -8830,11 +9092,11 @@ unsafe impl crate::CppDeletable for WLine {
 }
 
 impl WLine {
-    /// **Source:** `IntPatch_WLine.hxx`:55 - `IntPatch_WLine::IntPatch_WLine()`
+    /// **Source:** `IntPatch_WLine.hxx`:53 - `IntPatch_WLine::IntPatch_WLine()`
     /// Creates a WLine as an intersection when the
     /// transitions are In or Out.
     pub fn new_handleintsurflineon2s_bool_typetrans2(
-        Line: &crate::ffi_types::HandleIntSurfLineOn2S,
+        Line: &crate::ffi_types::Handle_IntSurf_LineOn2S,
         Tang: bool,
         Trans1: crate::int_surf::TypeTrans,
         Trans2: crate::int_surf::TypeTrans,
@@ -8844,11 +9106,11 @@ impl WLine {
         }
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:62 - `IntPatch_WLine::IntPatch_WLine()`
+    /// **Source:** `IntPatch_WLine.hxx`:60 - `IntPatch_WLine::IntPatch_WLine()`
     /// Creates a WLine as an intersection when the
     /// transitions are Touch.
     pub fn new_handleintsurflineon2s_bool_situation2(
-        Line: &crate::ffi_types::HandleIntSurfLineOn2S,
+        Line: &crate::ffi_types::Handle_IntSurf_LineOn2S,
         Tang: bool,
         Situ1: crate::int_surf::Situation,
         Situ2: crate::int_surf::Situation,
@@ -8858,11 +9120,11 @@ impl WLine {
         }
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:69 - `IntPatch_WLine::IntPatch_WLine()`
+    /// **Source:** `IntPatch_WLine.hxx`:67 - `IntPatch_WLine::IntPatch_WLine()`
     /// Creates a WLine as an intersection when the
     /// transitions are Undecided.
     pub fn new_handleintsurflineon2s_bool(
-        Line: &crate::ffi_types::HandleIntSurfLineOn2S,
+        Line: &crate::ffi_types::Handle_IntSurf_LineOn2S,
         Tang: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -8874,7 +9136,7 @@ impl WLine {
         }
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:74 - `IntPatch_WLine::AddVertex()`
+    /// **Source:** `IntPatch_WLine.hxx`:72 - `IntPatch_WLine::AddVertex()`
     /// Adds a vertex in the list. If theIsPrepend == TRUE the new
     /// vertex will be added before the first element of vertices sequence.
     /// Otherwise, to the end of the sequence
@@ -8888,7 +9150,7 @@ impl WLine {
         })
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:78 - `IntPatch_WLine::SetPoint()`
+    /// **Source:** `IntPatch_WLine.hxx`:75 - `IntPatch_WLine::SetPoint()`
     /// Set the Point of index <Index> in the LineOn2S
     pub fn set_point(&mut self, Index: i32, Pnt: &Point) {
         crate::check_void_result(unsafe {
@@ -8896,7 +9158,7 @@ impl WLine {
         })
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:84 - `IntPatch_WLine::Replace()`
+    /// **Source:** `IntPatch_WLine.hxx`:81 - `IntPatch_WLine::Replace()`
     /// Replaces the element of range Index in the list
     /// of points.
     /// The exception OutOfRange is raised when
@@ -8907,7 +9169,7 @@ impl WLine {
         })
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:86 - `IntPatch_WLine::SetFirstPoint()`
+    /// **Source:** `IntPatch_WLine.hxx`:83 - `IntPatch_WLine::SetFirstPoint()`
     pub fn set_first_point(&mut self, IndFirst: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_set_first_point(
@@ -8917,14 +9179,14 @@ impl WLine {
         })
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:88 - `IntPatch_WLine::SetLastPoint()`
+    /// **Source:** `IntPatch_WLine.hxx`:85 - `IntPatch_WLine::SetLastPoint()`
     pub fn set_last_point(&mut self, IndLast: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_set_last_point(self as *mut Self, IndLast)
         })
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:91 - `IntPatch_WLine::NbPnts()`
+    /// **Source:** `IntPatch_WLine.hxx`:88 - `IntPatch_WLine::NbPnts()`
     /// Returns the number of intersection points.
     pub fn nb_pnts(&self) -> i32 {
         crate::check_result(unsafe {
@@ -8932,7 +9194,7 @@ impl WLine {
         })
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:94 - `IntPatch_WLine::Point()`
+    /// **Source:** `IntPatch_WLine.hxx`:91 - `IntPatch_WLine::Point()`
     /// Returns the intersection point of range Index.
     pub fn point(&self, Index: i32) -> &crate::int_surf::PntOn2S {
         unsafe {
@@ -8943,7 +9205,7 @@ impl WLine {
         }
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:98 - `IntPatch_WLine::HasFirstPoint()`
+    /// **Source:** `IntPatch_WLine.hxx`:95 - `IntPatch_WLine::HasFirstPoint()`
     /// Returns True if the line has a known First point.
     /// This point is given by the method FirstPoint().
     pub fn has_first_point(&self) -> bool {
@@ -8952,7 +9214,7 @@ impl WLine {
         })
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:102 - `IntPatch_WLine::HasLastPoint()`
+    /// **Source:** `IntPatch_WLine.hxx`:99 - `IntPatch_WLine::HasLastPoint()`
     /// Returns True if the line has a known Last point.
     /// This point is given by the method LastPoint().
     pub fn has_last_point(&self) -> bool {
@@ -8961,7 +9223,7 @@ impl WLine {
         })
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:105 - `IntPatch_WLine::FirstPoint()`
+    /// **Source:** `IntPatch_WLine.hxx`:102 - `IntPatch_WLine::FirstPoint()`
     /// Returns the Point corresponding to the FirstPoint.
     pub fn first_point(&self) -> &Point {
         unsafe {
@@ -8971,7 +9233,7 @@ impl WLine {
         }
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:108 - `IntPatch_WLine::LastPoint()`
+    /// **Source:** `IntPatch_WLine.hxx`:105 - `IntPatch_WLine::LastPoint()`
     /// Returns the Point corresponding to the LastPoint.
     pub fn last_point(&self) -> &Point {
         unsafe {
@@ -8981,7 +9243,7 @@ impl WLine {
         }
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:113 - `IntPatch_WLine::FirstPoint()`
+    /// **Source:** `IntPatch_WLine.hxx`:110 - `IntPatch_WLine::FirstPoint()`
     /// Returns the Point corresponding to the FirstPoint.
     /// Indfirst is the index of the first in the list
     /// of vertices.
@@ -9000,7 +9262,7 @@ impl WLine {
         }
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:118 - `IntPatch_WLine::LastPoint()`
+    /// **Source:** `IntPatch_WLine.hxx`:115 - `IntPatch_WLine::LastPoint()`
     /// Returns the Point corresponding to the LastPoint.
     /// Indlast is the index of the last in the list
     /// of vertices.
@@ -9019,7 +9281,7 @@ impl WLine {
         }
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:121 - `IntPatch_WLine::NbVertex()`
+    /// **Source:** `IntPatch_WLine.hxx`:118 - `IntPatch_WLine::NbVertex()`
     /// Returns number of vertices (IntPatch_Point) of the line
     pub fn nb_vertex(&self) -> i32 {
         crate::check_result(unsafe {
@@ -9027,7 +9289,7 @@ impl WLine {
         })
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:124 - `IntPatch_WLine::Vertex()`
+    /// **Source:** `IntPatch_WLine.hxx`:121 - `IntPatch_WLine::Vertex()`
     /// Returns the vertex of range Index on the line.
     pub fn vertex(&self, Index: i32) -> &Point {
         unsafe {
@@ -9038,7 +9300,7 @@ impl WLine {
         }
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:127 - `IntPatch_WLine::ChangeVertex()`
+    /// **Source:** `IntPatch_WLine.hxx`:124 - `IntPatch_WLine::ChangeVertex()`
     /// Returns the vertex of range Index on the line.
     pub fn change_vertex(&mut self, Index: i32) -> &mut Point {
         unsafe {
@@ -9049,7 +9311,7 @@ impl WLine {
         }
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:133 - `IntPatch_WLine::ComputeVertexParameters()`
+    /// **Source:** `IntPatch_WLine.hxx`:130 - `IntPatch_WLine::ComputeVertexParameters()`
     /// Set the parameters of all the vertex on the line.
     /// if a vertex is already in the line,
     /// its parameter is modified
@@ -9063,9 +9325,9 @@ impl WLine {
         })
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:136 - `IntPatch_WLine::Curve()`
+    /// **Source:** `IntPatch_WLine.hxx`:133 - `IntPatch_WLine::Curve()`
     /// Returns set of intersection points
-    pub fn curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIntSurfLineOn2S> {
+    pub fn curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IntSurf_LineOn2S> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_curve(self as *const Self),
@@ -9073,7 +9335,7 @@ impl WLine {
         }
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:140 - `IntPatch_WLine::IsOutSurf1Box()`
+    /// **Source:** `IntPatch_WLine.hxx`:137 - `IntPatch_WLine::IsOutSurf1Box()`
     /// Returns TRUE if theP is out of the box built from
     /// the points on 1st surface
     pub fn is_out_surf1_box(&self, theP: &crate::gp::Pnt2d) -> bool {
@@ -9082,7 +9344,7 @@ impl WLine {
         })
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:147 - `IntPatch_WLine::IsOutSurf2Box()`
+    /// **Source:** `IntPatch_WLine.hxx`:141 - `IntPatch_WLine::IsOutSurf2Box()`
     /// Returns TRUE if theP is out of the box built from
     /// the points on 2nd surface
     pub fn is_out_surf2_box(&self, theP: &crate::gp::Pnt2d) -> bool {
@@ -9091,7 +9353,7 @@ impl WLine {
         })
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:153 - `IntPatch_WLine::IsOutBox()`
+    /// **Source:** `IntPatch_WLine.hxx`:144 - `IntPatch_WLine::IsOutBox()`
     /// Returns TRUE if theP is out of the box built from 3D-points.
     pub fn is_out_box(&self, theP: &crate::gp::Pnt) -> bool {
         crate::check_result(unsafe {
@@ -9099,7 +9361,7 @@ impl WLine {
         })
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:158 - `IntPatch_WLine::SetPeriod()`
+    /// **Source:** `IntPatch_WLine.hxx`:146 - `IntPatch_WLine::SetPeriod()`
     pub fn set_period(&mut self, pu1: f64, pv1: f64, pu2: f64, pv2: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_set_period(
@@ -9112,50 +9374,50 @@ impl WLine {
         })
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:163 - `IntPatch_WLine::U1Period()`
+    /// **Source:** `IntPatch_WLine.hxx`:151 - `IntPatch_WLine::U1Period()`
     pub fn u1_period(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_u1_period(self as *const Self)
         })
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:165 - `IntPatch_WLine::V1Period()`
+    /// **Source:** `IntPatch_WLine.hxx`:153 - `IntPatch_WLine::V1Period()`
     pub fn v1_period(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_v1_period(self as *const Self)
         })
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:167 - `IntPatch_WLine::U2Period()`
+    /// **Source:** `IntPatch_WLine.hxx`:155 - `IntPatch_WLine::U2Period()`
     pub fn u2_period(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_u2_period(self as *const Self)
         })
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:169 - `IntPatch_WLine::V2Period()`
+    /// **Source:** `IntPatch_WLine.hxx`:157 - `IntPatch_WLine::V2Period()`
     pub fn v2_period(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_v2_period(self as *const Self)
         })
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:171 - `IntPatch_WLine::SetArcOnS1()`
-    pub fn set_arc_on_s1(&mut self, A: &crate::ffi_types::HandleAdaptor2dCurve2d) {
+    /// **Source:** `IntPatch_WLine.hxx`:159 - `IntPatch_WLine::SetArcOnS1()`
+    pub fn set_arc_on_s1(&mut self, A: &crate::ffi_types::Handle_Adaptor2d_Curve2d) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_set_arc_on_s1(self as *mut Self, A)
         })
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:173 - `IntPatch_WLine::HasArcOnS1()`
+    /// **Source:** `IntPatch_WLine.hxx`:161 - `IntPatch_WLine::HasArcOnS1()`
     pub fn has_arc_on_s1(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_has_arc_on_s1(self as *const Self)
         })
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:175 - `IntPatch_WLine::GetArcOnS1()`
-    pub fn get_arc_on_s1(&self) -> &crate::ffi_types::HandleAdaptor2dCurve2d {
+    /// **Source:** `IntPatch_WLine.hxx`:163 - `IntPatch_WLine::GetArcOnS1()`
+    pub fn get_arc_on_s1(&self) -> &crate::ffi_types::Handle_Adaptor2d_Curve2d {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_get_arc_on_s1(
                 self as *const Self,
@@ -9163,22 +9425,22 @@ impl WLine {
         }
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:177 - `IntPatch_WLine::SetArcOnS2()`
-    pub fn set_arc_on_s2(&mut self, A: &crate::ffi_types::HandleAdaptor2dCurve2d) {
+    /// **Source:** `IntPatch_WLine.hxx`:165 - `IntPatch_WLine::SetArcOnS2()`
+    pub fn set_arc_on_s2(&mut self, A: &crate::ffi_types::Handle_Adaptor2d_Curve2d) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_set_arc_on_s2(self as *mut Self, A)
         })
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:179 - `IntPatch_WLine::HasArcOnS2()`
+    /// **Source:** `IntPatch_WLine.hxx`:167 - `IntPatch_WLine::HasArcOnS2()`
     pub fn has_arc_on_s2(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_has_arc_on_s2(self as *const Self)
         })
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:181 - `IntPatch_WLine::GetArcOnS2()`
-    pub fn get_arc_on_s2(&self) -> &crate::ffi_types::HandleAdaptor2dCurve2d {
+    /// **Source:** `IntPatch_WLine.hxx`:169 - `IntPatch_WLine::GetArcOnS2()`
+    pub fn get_arc_on_s2(&self) -> &crate::ffi_types::Handle_Adaptor2d_Curve2d {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_get_arc_on_s2(
                 self as *const Self,
@@ -9186,7 +9448,7 @@ impl WLine {
         }
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:184 - `IntPatch_WLine::ClearVertexes()`
+    /// **Source:** `IntPatch_WLine.hxx`:172 - `IntPatch_WLine::ClearVertexes()`
     /// Removes vertices from the line (i.e. cleans svtx member)
     pub fn clear_vertexes(&mut self) {
         crate::check_void_result(unsafe {
@@ -9194,7 +9456,7 @@ impl WLine {
         })
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:187 - `IntPatch_WLine::RemoveVertex()`
+    /// **Source:** `IntPatch_WLine.hxx`:175 - `IntPatch_WLine::RemoveVertex()`
     /// Removes single vertex from the line
     pub fn remove_vertex(&mut self, theIndex: i32) {
         crate::check_void_result(unsafe {
@@ -9202,7 +9464,7 @@ impl WLine {
         })
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:189 - `IntPatch_WLine::InsertVertexBefore()`
+    /// **Source:** `IntPatch_WLine.hxx`:177 - `IntPatch_WLine::InsertVertexBefore()`
     pub fn insert_vertex_before(&mut self, theIndex: i32, thePnt: &Point) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_insert_vertex_before(
@@ -9213,18 +9475,18 @@ impl WLine {
         })
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:195 - `IntPatch_WLine::Dump()`
+    /// **Source:** `IntPatch_WLine.hxx`:183 - `IntPatch_WLine::Dump()`
     /// if (theMode == 0) then prints the information about WLine
     /// if (theMode == 1) then prints the list of 3d-points
     /// if (theMode == 2) then prints the list of 2d-points on the 1st surface
-    /// Otherwise,             prints list of 2d-points on the 2nd surface
+    /// Otherwise, prints list of 2d-points on the 2nd surface
     pub fn dump(&self, theMode: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_dump(self as *const Self, theMode)
         })
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:198 - `IntPatch_WLine::EnablePurging()`
+    /// **Source:** `IntPatch_WLine.hxx`:186 - `IntPatch_WLine::EnablePurging()`
     /// Allows or forbids purging of existing WLine
     pub fn enable_purging(&mut self, theIsEnabled: bool) {
         crate::check_void_result(unsafe {
@@ -9235,7 +9497,7 @@ impl WLine {
         })
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:201 - `IntPatch_WLine::IsPurgingAllowed()`
+    /// **Source:** `IntPatch_WLine.hxx`:189 - `IntPatch_WLine::IsPurgingAllowed()`
     /// Returns TRUE if purging is allowed or forbidden for existing WLine
     pub fn is_purging_allowed(&mut self) -> bool {
         crate::check_result(unsafe {
@@ -9243,7 +9505,7 @@ impl WLine {
         })
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:204 - `IntPatch_WLine::GetCreatingWay()`
+    /// **Source:** `IntPatch_WLine.hxx`:192 - `IntPatch_WLine::GetCreatingWay()`
     /// Returns the way of <*this> creation.
     pub fn get_creating_way(
         &self,
@@ -9255,7 +9517,7 @@ impl WLine {
         }
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:207 - `IntPatch_WLine::SetCreatingWayInfo()`
+    /// **Source:** `IntPatch_WLine.hxx`:195 - `IntPatch_WLine::SetCreatingWayInfo()`
     /// Sets the info about the way of <*this> creation.
     pub fn set_creating_way_info(
         &mut self,
@@ -9269,8 +9531,8 @@ impl WLine {
         })
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:209 - `IntPatch_WLine::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IntPatch_WLine.hxx`:197 - `IntPatch_WLine::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_dynamic_type(
                 self as *const Self,
@@ -9278,7 +9540,7 @@ impl WLine {
         }
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:209 - `IntPatch_WLine::get_type_name()`
+    /// **Source:** `IntPatch_WLine.hxx`:197 - `IntPatch_WLine::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -9289,8 +9551,8 @@ impl WLine {
         .into_owned()
     }
 
-    /// **Source:** `IntPatch_WLine.hxx`:209 - `IntPatch_WLine::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IntPatch_WLine.hxx`:197 - `IntPatch_WLine::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_get_type_descriptor(),
@@ -9365,7 +9627,7 @@ impl WLine {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIntPatchWLine> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IntPatch_WLine> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_to_handle(obj.into_raw()),
@@ -9373,7 +9635,7 @@ impl WLine {
         }
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:44 - `IntPatch_Line::SetValue()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:41 - `IntPatch_Line::SetValue()`
     pub fn set_value(&mut self, Uiso1: bool, Viso1: bool, Uiso2: bool, Viso2: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_inherited_SetValue(
@@ -9386,7 +9648,7 @@ impl WLine {
         })
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:51 - `IntPatch_Line::ArcType()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:45 - `IntPatch_Line::ArcType()`
     pub fn arc_type(&self) -> crate::int_patch::IType {
         crate::int_patch::IType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_inherited_ArcType(self as *const Self)
@@ -9394,14 +9656,14 @@ impl WLine {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:55 - `IntPatch_Line::IsTangent()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:49 - `IntPatch_Line::IsTangent()`
     pub fn is_tangent(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_inherited_IsTangent(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:76 - `IntPatch_Line::TransitionOnS1()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:70 - `IntPatch_Line::TransitionOnS1()`
     pub fn transition_on_s1(&self) -> crate::int_surf::TypeTrans {
         crate::int_surf::TypeTrans::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_inherited_TransitionOnS1(
@@ -9411,7 +9673,7 @@ impl WLine {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:81 - `IntPatch_Line::TransitionOnS2()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:75 - `IntPatch_Line::TransitionOnS2()`
     pub fn transition_on_s2(&self) -> crate::int_surf::TypeTrans {
         crate::int_surf::TypeTrans::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_inherited_TransitionOnS2(
@@ -9421,7 +9683,7 @@ impl WLine {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:87 - `IntPatch_Line::SituationS1()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:81 - `IntPatch_Line::SituationS1()`
     pub fn situation_s1(&self) -> crate::int_surf::Situation {
         crate::int_surf::Situation::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_inherited_SituationS1(self as *const Self)
@@ -9429,7 +9691,7 @@ impl WLine {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:93 - `IntPatch_Line::SituationS2()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:87 - `IntPatch_Line::SituationS2()`
     pub fn situation_s2(&self) -> crate::int_surf::Situation {
         crate::int_surf::Situation::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_inherited_SituationS2(self as *const Self)
@@ -9437,36 +9699,36 @@ impl WLine {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:97 - `IntPatch_Line::IsUIsoOnS1()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:91 - `IntPatch_Line::IsUIsoOnS1()`
     pub fn is_u_iso_on_s1(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_inherited_IsUIsoOnS1(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:101 - `IntPatch_Line::IsVIsoOnS1()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:95 - `IntPatch_Line::IsVIsoOnS1()`
     pub fn is_v_iso_on_s1(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_inherited_IsVIsoOnS1(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:105 - `IntPatch_Line::IsUIsoOnS2()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:99 - `IntPatch_Line::IsUIsoOnS2()`
     pub fn is_u_iso_on_s2(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_inherited_IsUIsoOnS2(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `IntPatch_Line.hxx`:109 - `IntPatch_Line::IsVIsoOnS2()`
+    /// Inherited: **Source:** `IntPatch_Line.hxx`:103 - `IntPatch_Line::IsVIsoOnS2()`
     pub fn is_v_iso_on_s2(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_inherited_IsVIsoOnS2(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_inherited_IsInstance(
                 self as *const Self,
@@ -9475,8 +9737,8 @@ impl WLine {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_inherited_IsKind(
                 self as *const Self,
@@ -9485,7 +9747,7 @@ impl WLine {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -9499,14 +9761,14 @@ impl WLine {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_inherited_IncrementRefCounter(
@@ -9515,7 +9777,7 @@ impl WLine {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_inherited_DecrementRefCounter(
@@ -9524,7 +9786,7 @@ impl WLine {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPatch_WLine_inherited_Delete(self as *const Self)
@@ -9532,32 +9794,34 @@ impl WLine {
     }
 }
 
-pub use crate::ffi_types::HandleIntPatchWLine;
+pub use crate::ffi_types::Handle_IntPatch_WLine;
 
-unsafe impl crate::CppDeletable for HandleIntPatchWLine {
+unsafe impl crate::CppDeletable for Handle_IntPatch_WLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleIntPatchWLine_destructor(ptr);
+            crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_WLine_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIntPatchWLine {
+unsafe impl crate::CppCopyable for Handle_IntPatch_WLine {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchWLine_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_WLine_clone(ptr))
+        }
     }
 }
 
-impl HandleIntPatchWLine {
+impl Handle_IntPatch_WLine {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKGeomAlgo::HandleIntPatchWLine_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_WLine_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying IntPatch_WLine
     pub fn get(&self) -> &crate::ffi_types::IntPatch_WLine {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchWLine_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_WLine_get(
                 self as *const Self,
             ))
         }
@@ -9566,7 +9830,7 @@ impl HandleIntPatchWLine {
     /// Dereference this Handle to mutably access the underlying IntPatch_WLine
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IntPatch_WLine {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntPatchWLine_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_WLine_get_mut(
                 self as *mut Self,
             ))
         }
@@ -9575,10 +9839,10 @@ impl HandleIntPatchWLine {
     /// Upcast Handle<IntPatch_WLine> to Handle<IntPatch_PointLine>
     pub fn to_handle_point_line(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIntPatchPointLine> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IntPatch_PointLine> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleIntPatchWLine_to_HandleIntPatchPointLine(
+                crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_WLine_to_Handle_IntPatch_PointLine(
                     self as *const Self,
                 ),
             ))
@@ -9586,10 +9850,10 @@ impl HandleIntPatchWLine {
     }
 
     /// Upcast Handle<IntPatch_WLine> to Handle<IntPatch_Line>
-    pub fn to_handle_line(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIntPatchLine> {
+    pub fn to_handle_line(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IntPatch_Line> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleIntPatchWLine_to_HandleIntPatchLine(
+                crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_WLine_to_Handle_IntPatch_Line(
                     self as *const Self,
                 ),
             ))
@@ -9599,10 +9863,10 @@ impl HandleIntPatchWLine {
     /// Upcast Handle<IntPatch_WLine> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleIntPatchWLine_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomAlgo::Handle_IntPatch_WLine_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -9614,7 +9878,7 @@ impl HandleIntPatchWLine {
 // From IntPatch_WLineTool.hxx
 // ========================
 
-/// **Source:** `IntPatch_WLineTool.hxx`:24 - `IntPatch_WLineTool`
+/// **Source:** `IntPatch_WLineTool.hxx`:25 - `IntPatch_WLineTool`
 /// IntPatch_WLineTool provides set of static methods related to walking lines.
 pub use crate::ffi_types::IntPatch_WLineTool as WLineTool;
 
@@ -9637,7 +9901,7 @@ impl WLineTool {
         }
     }
 
-    /// **Source:** `IntPatch_WLineTool.hxx`:43 - `IntPatch_WLineTool::ComputePurgedWLine()`
+    /// **Source:** `IntPatch_WLineTool.hxx`:44 - `IntPatch_WLineTool::ComputePurgedWLine()`
     /// I
     /// Removes equal points (leave one of equal points) from theWLine
     /// and recompute vertex parameters.
@@ -9653,12 +9917,12 @@ impl WLineTool {
     /// Returns new WLine or null WLine if the number
     /// of the points is less than 2.
     pub fn compute_purged_w_line(
-        theWLine: &crate::ffi_types::HandleIntPatchWLine,
-        theS1: &crate::ffi_types::HandleAdaptor3dSurface,
-        theS2: &crate::ffi_types::HandleAdaptor3dSurface,
-        theDom1: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        theDom2: &crate::ffi_types::HandleAdaptor3dTopolTool,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIntPatchWLine> {
+        theWLine: &crate::ffi_types::Handle_IntPatch_WLine,
+        theS1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        theS2: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        theDom1: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
+        theDom2: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IntPatch_WLine> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPatch_WLineTool_compute_purged_w_line(
@@ -9667,70 +9931,20 @@ impl WLineTool {
             ))
         }
     }
-
-    /// **Source:** `IntPatch_WLineTool.hxx`:57 - `IntPatch_WLineTool::JoinWLines()`
-    /// Joins all WLines from theSlin to one if it is possible and records
-    /// the result into theSlin again. Lines will be kept to be split if:
-    /// a) they are separated (has no common points);
-    /// b) resulted line (after joining) go through seam-edges or surface boundaries.
-    ///
-    /// In addition, if points in theSPnt lies at least in one of the line in theSlin,
-    /// this point will be deleted.
-    pub fn join_w_lines(
-        theSlin: &mut crate::ffi_types::IntPatch_SequenceOfLine,
-        theSPnt: &mut crate::ffi_types::IntPatch_SequenceOfPoint,
-        theS1: &crate::ffi_types::HandleAdaptor3dSurface,
-        theS2: &crate::ffi_types::HandleAdaptor3dSurface,
-        theTol3D: f64,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::IntPatch_WLineTool_join_w_lines(
-                theSlin, theSPnt, theS1, theS2, theTol3D,
-            )
-        })
-    }
-
-    /// **Source:** `IntPatch_WLineTool.hxx`:74 - `IntPatch_WLineTool::ExtendTwoWLines()`
-    /// Extends every line from theSlin (if it is possible) to be started/finished
-    /// in strictly determined point (in the place of joint of two lines).
-    /// As result, some gaps between two lines will vanish.
-    /// The Walking lines are supposed (algorithm will do nothing for not-Walking line)
-    /// to be computed as a result of intersection. Both theS1 and theS2
-    /// must be quadrics. Other cases are not supported.
-    /// theArrPeriods must be filled as follows (every value must not be negative;
-    /// if the surface is not periodic the period must be equal to 0.0 strictly):
-    /// {<U-period of 1st surface>, <V-period of 1st surface>,
-    /// <U-period of 2nd surface>, <V-period of 2nd surface>}.
-    /// theListOfCriticalPoints must contain 3D-points where joining is disabled.
-    pub unsafe fn extend_two_w_lines(
-        theSlin: &mut crate::ffi_types::IntPatch_SequenceOfLine,
-        theS1: &crate::ffi_types::HandleAdaptor3dSurface,
-        theS2: &crate::ffi_types::HandleAdaptor3dSurface,
-        theToler3D: f64,
-        theArrPeriods: *const f64,
-        theBoxS1: &crate::bnd::Box2d,
-        theBoxS2: &crate::bnd::Box2d,
-        theListOfCriticalPoints: &crate::ffi_types::NCollection_List_gp_Pnt,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::IntPatch_WLineTool_extend_two_w_lines(
-                theSlin,
-                theS1,
-                theS2,
-                theToler3D,
-                theArrPeriods,
-                theBoxS1,
-                theBoxS2,
-                theListOfCriticalPoints,
-            )
-        })
-    }
 }
 
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi_types::{
-    IntPatch_SequenceOfLine as SequenceOfLine, IntPatch_SequenceOfPoint as SequenceOfPoint,
-};
+// ── Skipped symbols for WLineTool (2 total) ──
+// SKIPPED: **Source:** `IntPatch_WLineTool.hxx`:58 - `IntPatch_WLineTool::JoinWLines`
+//   static_method: Joins all WLines from theSlin to one if it is possible and records
+//   static_method: the result into theSlin again. Lines will be kept to be split if:
+//   static_method: a) they are separated (has no common points);
+//   Reason: has unbindable types: param 'theSlin': unresolved template type (NCollection_Sequence<occ::handle<IntPatch_Line>>&)
+//   // pub fn join_w_lines(theSlin: /* NCollection_Sequence<occ::handle<IntPatch_Line>>& */, theSPnt: &mut Sequence_IntPatch_Point, theS1: &HandleSurface, theS2: &HandleSurface, theTol3D: f64);
+//
+// SKIPPED: **Source:** `IntPatch_WLineTool.hxx`:75 - `IntPatch_WLineTool::ExtendTwoWLines`
+//   static_method: Extends every line from theSlin (if it is possible) to be started/finished
+//   static_method: in strictly determined point (in the place of joint of two lines).
+//   static_method: As result, some gaps between two lines will vanish.
+//   Reason: has unbindable types: param 'theSlin': unresolved template type (NCollection_Sequence<occ::handle<IntPatch_Line>>&)
+//   // pub fn extend_two_w_lines(theSlin: /* NCollection_Sequence<occ::handle<IntPatch_Line>>& */, theS1: &HandleSurface, theS2: &HandleSurface, theToler3D: f64, theArrPeriods: *const f64, theBoxS1: &Box2d, theBoxS2: &Box2d, theListOfCriticalPoints: &List_gp_Pnt);
+//

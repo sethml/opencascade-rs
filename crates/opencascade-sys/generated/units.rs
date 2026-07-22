@@ -31,7 +31,7 @@ pub fn lexicon_file(afile: &str) {
 /// the dictionary of units.
 pub fn dictionary_of_units(
     amode: bool,
-) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsUnitsDictionary> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_UnitsDictionary> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKernel::Units_dictionary_of_units(amode),
@@ -40,7 +40,7 @@ pub fn dictionary_of_units(
 }
 /// **Source:** `Units.hxx`:57 - `Units::Quantity`
 /// Returns a unique quantity instance corresponding to <aquantity>.
-pub fn quantity(aquantity: &str) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsQuantity> {
+pub fn quantity(aquantity: &str) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Quantity> {
     let c_aquantity = std::ffi::CString::new(aquantity).unwrap();
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::Units_quantity(
@@ -65,32 +65,32 @@ pub fn first_quantity(aunit: &str) -> std::string::String {
 /// If <amode> is True, it forces the recomputation of
 /// the dictionary of units, and by consequence the
 /// completion of the Units_Lexicon.
-pub fn lexicon_units(amode: bool) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsLexicon> {
+pub fn lexicon_units(amode: bool) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Lexicon> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKernel::Units_lexicon_units(amode),
         ))
     }
 }
-/// **Source:** `Units.hxx`:70 - `Units::LexiconFormula`
+/// **Source:** `Units.hxx`:69 - `Units::LexiconFormula`
 /// Return a unique instance of LexiconFormula.
-pub fn lexicon_formula() -> crate::OwnedPtr<crate::ffi_types::HandleUnitsLexicon> {
+pub fn lexicon_formula() -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Lexicon> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKernel::Units_lexicon_formula(),
         ))
     }
 }
-/// **Source:** `Units.hxx`:73 - `Units::NullDimensions`
+/// **Source:** `Units.hxx`:72 - `Units::NullDimensions`
 /// Returns always the same instance of Dimensions.
-pub fn null_dimensions() -> crate::OwnedPtr<crate::ffi_types::HandleUnitsDimensions> {
+pub fn null_dimensions() -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Dimensions> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKernel::Units_null_dimensions(),
         ))
     }
 }
-/// **Source:** `Units.hxx`:76 - `Units::Convert`
+/// **Source:** `Units.hxx`:75 - `Units::Convert`
 /// Converts <avalue> expressed in <afirstunit> into the <asecondunit>.
 pub fn convert(avalue: f64, afirstunit: &str, asecondunit: &str) -> f64 {
     let c_afirstunit = std::ffi::CString::new(afirstunit).unwrap();
@@ -103,18 +103,18 @@ pub fn convert(avalue: f64, afirstunit: &str, asecondunit: &str) -> f64 {
         )
     })
 }
-/// **Source:** `Units.hxx`:80 - `Units::ToSI`
+/// **Source:** `Units.hxx`:79 - `Units::ToSI`
 pub fn to_si_real_charptr(aData: f64, aUnit: &str) -> f64 {
     let c_aUnit = std::ffi::CString::new(aUnit).unwrap();
     crate::check_result(unsafe {
         crate::ffi_extern_TKernel::Units_to_si_real_charptr(aData, c_aUnit.as_ptr())
     })
 }
-/// **Source:** `Units.hxx`:83 - `Units::ToSI`
+/// **Source:** `Units.hxx`:81 - `Units::ToSI`
 pub fn to_si_real_charptr_handleunitsdimensions(
     aData: f64,
     aUnit: &str,
-    aDim: &mut crate::ffi_types::HandleUnitsDimensions,
+    aDim: &mut crate::ffi_types::Handle_Units_Dimensions,
 ) -> f64 {
     let c_aUnit = std::ffi::CString::new(aUnit).unwrap();
     crate::check_result(unsafe {
@@ -125,18 +125,18 @@ pub fn to_si_real_charptr_handleunitsdimensions(
         )
     })
 }
-/// **Source:** `Units.hxx`:87 - `Units::FromSI`
+/// **Source:** `Units.hxx`:85 - `Units::FromSI`
 pub fn from_si_real_charptr(aData: f64, aUnit: &str) -> f64 {
     let c_aUnit = std::ffi::CString::new(aUnit).unwrap();
     crate::check_result(unsafe {
         crate::ffi_extern_TKernel::Units_from_si_real_charptr(aData, c_aUnit.as_ptr())
     })
 }
-/// **Source:** `Units.hxx`:90 - `Units::FromSI`
+/// **Source:** `Units.hxx`:87 - `Units::FromSI`
 pub fn from_si_real_charptr_handleunitsdimensions(
     aData: f64,
     aUnit: &str,
-    aDim: &mut crate::ffi_types::HandleUnitsDimensions,
+    aDim: &mut crate::ffi_types::Handle_Units_Dimensions,
 ) -> f64 {
     let c_aUnit = std::ffi::CString::new(aUnit).unwrap();
     crate::check_result(unsafe {
@@ -147,9 +147,9 @@ pub fn from_si_real_charptr_handleunitsdimensions(
         )
     })
 }
-/// **Source:** `Units.hxx`:95 - `Units::Dimensions`
+/// **Source:** `Units.hxx`:92 - `Units::Dimensions`
 /// return the dimension associated to the Type
-pub fn dimensions(aType: &str) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsDimensions> {
+pub fn dimensions(aType: &str) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Dimensions> {
     let c_aType = std::ffi::CString::new(aType).unwrap();
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::Units_dimensions(
@@ -159,18 +159,15 @@ pub fn dimensions(aType: &str) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsD
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::{
-    HandleStandardDomainError, HandleStandardFailure, HandleStandardNoSuchObject,
-    HandleStandardTransient,
-};
+pub use crate::ffi_types::Handle_Standard_Transient;
 
 // ========================
 // From Units_Dimensions.hxx
 // ========================
 
-/// **Source:** `Units_Dimensions.hxx`:32 - `Units_Dimensions`
-/// This class includes all  the methods to create and
-/// manipulate    the   dimensions  of the    physical
+/// **Source:** `Units_Dimensions.hxx`:29 - `Units_Dimensions`
+/// This class includes all the methods to create and
+/// manipulate the dimensions of the physical
 /// quantities.
 pub use crate::ffi_types::Units_Dimensions as Dimensions;
 
@@ -183,14 +180,14 @@ unsafe impl crate::CppDeletable for Dimensions {
 }
 
 impl Dimensions {
-    /// **Source:** `Units_Dimensions.hxx`:44 - `Units_Dimensions::Units_Dimensions()`
-    /// Returns  a  Dimensions  object  which  represents  the
-    /// dimension  of  a  physical  quantity.    Each  of  the
-    /// <amass>,  <alength>,   <atime>,   <anelectriccurrent>,
-    /// <athermodynamictemperature>,    <anamountofsubstance>,
+    /// **Source:** `Units_Dimensions.hxx`:41 - `Units_Dimensions::Units_Dimensions()`
+    /// Returns a Dimensions object which represents the
+    /// dimension of a physical quantity. Each of the
+    /// <amass>, <alength>, <atime>, <anelectriccurrent>,
+    /// <athermodynamictemperature>, <anamountofsubstance>,
     /// <aluminousintensity>, <aplaneangle>, <asolidangle> are
-    /// the powers for  the 7  fundamental  units of  physical
-    /// quantity and  the 2  secondary  fundamental  units  of
+    /// the powers for the 7 fundamental units of physical
+    /// quantity and the 2 secondary fundamental units of
     /// physical quantity.
     pub fn new_real9(
         amass: f64,
@@ -220,7 +217,7 @@ impl Dimensions {
         }
     }
 
-    /// **Source:** `Units_Dimensions.hxx`:55 - `Units_Dimensions::Mass()`
+    /// **Source:** `Units_Dimensions.hxx`:52 - `Units_Dimensions::Mass()`
     /// Returns the power of mass stored in the dimensions.
     pub fn mass(&self) -> f64 {
         crate::check_result(unsafe {
@@ -228,7 +225,7 @@ impl Dimensions {
         })
     }
 
-    /// **Source:** `Units_Dimensions.hxx`:58 - `Units_Dimensions::Length()`
+    /// **Source:** `Units_Dimensions.hxx`:55 - `Units_Dimensions::Length()`
     /// Returns the power of length stored in the dimensions.
     pub fn length(&self) -> f64 {
         crate::check_result(unsafe {
@@ -236,7 +233,7 @@ impl Dimensions {
         })
     }
 
-    /// **Source:** `Units_Dimensions.hxx`:61 - `Units_Dimensions::Time()`
+    /// **Source:** `Units_Dimensions.hxx`:58 - `Units_Dimensions::Time()`
     /// Returns the power of time stored in the dimensions.
     pub fn time(&self) -> f64 {
         crate::check_result(unsafe {
@@ -244,8 +241,8 @@ impl Dimensions {
         })
     }
 
-    /// **Source:** `Units_Dimensions.hxx`:65 - `Units_Dimensions::ElectricCurrent()`
-    /// Returns the  power of  electrical  intensity (current)
+    /// **Source:** `Units_Dimensions.hxx`:62 - `Units_Dimensions::ElectricCurrent()`
+    /// Returns the power of electrical intensity (current)
     /// stored in the dimensions.
     pub fn electric_current(&self) -> f64 {
         crate::check_result(unsafe {
@@ -253,8 +250,8 @@ impl Dimensions {
         })
     }
 
-    /// **Source:** `Units_Dimensions.hxx`:69 - `Units_Dimensions::ThermodynamicTemperature()`
-    /// Returns  the  power  of   temperature stored  in   the
+    /// **Source:** `Units_Dimensions.hxx`:66 - `Units_Dimensions::ThermodynamicTemperature()`
+    /// Returns the power of temperature stored in the
     /// dimensions.
     pub fn thermodynamic_temperature(&self) -> f64 {
         crate::check_result(unsafe {
@@ -264,8 +261,8 @@ impl Dimensions {
         })
     }
 
-    /// **Source:** `Units_Dimensions.hxx`:73 - `Units_Dimensions::AmountOfSubstance()`
-    /// Returns  the power   of quantity   of  material (mole)
+    /// **Source:** `Units_Dimensions.hxx`:70 - `Units_Dimensions::AmountOfSubstance()`
+    /// Returns the power of quantity of material (mole)
     /// stored in the dimensions.
     pub fn amount_of_substance(&self) -> f64 {
         crate::check_result(unsafe {
@@ -273,8 +270,8 @@ impl Dimensions {
         })
     }
 
-    /// **Source:** `Units_Dimensions.hxx`:77 - `Units_Dimensions::LuminousIntensity()`
-    /// Returns the  power of light   intensity stored  in the
+    /// **Source:** `Units_Dimensions.hxx`:74 - `Units_Dimensions::LuminousIntensity()`
+    /// Returns the power of light intensity stored in the
     /// dimensions.
     pub fn luminous_intensity(&self) -> f64 {
         crate::check_result(unsafe {
@@ -282,8 +279,8 @@ impl Dimensions {
         })
     }
 
-    /// **Source:** `Units_Dimensions.hxx`:81 - `Units_Dimensions::PlaneAngle()`
-    /// Returns  the power   of plane   angle  stored  in  the
+    /// **Source:** `Units_Dimensions.hxx`:78 - `Units_Dimensions::PlaneAngle()`
+    /// Returns the power of plane angle stored in the
     /// dimensions.
     pub fn plane_angle(&self) -> f64 {
         crate::check_result(unsafe {
@@ -291,8 +288,8 @@ impl Dimensions {
         })
     }
 
-    /// **Source:** `Units_Dimensions.hxx`:85 - `Units_Dimensions::SolidAngle()`
-    /// Returns the   power   of  solid angle stored   in  the
+    /// **Source:** `Units_Dimensions.hxx`:82 - `Units_Dimensions::SolidAngle()`
+    /// Returns the power of solid angle stored in the
     /// dimensions.
     pub fn solid_angle(&self) -> f64 {
         crate::check_result(unsafe {
@@ -300,7 +297,7 @@ impl Dimensions {
         })
     }
 
-    /// **Source:** `Units_Dimensions.hxx`:88 - `Units_Dimensions::Quantity()`
+    /// **Source:** `Units_Dimensions.hxx`:85 - `Units_Dimensions::Quantity()`
     /// Returns the quantity string of the dimension
     pub fn quantity(&self) -> std::string::String {
         unsafe {
@@ -312,14 +309,14 @@ impl Dimensions {
         .into_owned()
     }
 
-    /// **Source:** `Units_Dimensions.hxx`:93 - `Units_Dimensions::Multiply()`
-    /// Creates and returns  a new Dimensions  object which is
-    /// the   result   of the  multiplication    of  <me>  and
+    /// **Source:** `Units_Dimensions.hxx`:90 - `Units_Dimensions::Multiply()`
+    /// Creates and returns a new Dimensions object which is
+    /// the result of the multiplication of <me> and
     /// <adimensions>.
     pub fn multiply(
         &self,
-        adimensions: &crate::ffi_types::HandleUnitsDimensions,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsDimensions> {
+        adimensions: &crate::ffi_types::Handle_Units_Dimensions,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Dimensions> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Dimensions_multiply(
@@ -330,13 +327,13 @@ impl Dimensions {
         }
     }
 
-    /// **Source:** `Units_Dimensions.hxx`:98 - `Units_Dimensions::Divide()`
-    /// Creates and returns a new  Dimensions object which  is
+    /// **Source:** `Units_Dimensions.hxx`:95 - `Units_Dimensions::Divide()`
+    /// Creates and returns a new Dimensions object which is
     /// the result of the division of <me> by <adimensions>.
     pub fn divide(
         &self,
-        adimensions: &crate::ffi_types::HandleUnitsDimensions,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsDimensions> {
+        adimensions: &crate::ffi_types::Handle_Units_Dimensions,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Dimensions> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Dimensions_divide(
@@ -347,13 +344,13 @@ impl Dimensions {
         }
     }
 
-    /// **Source:** `Units_Dimensions.hxx`:103 - `Units_Dimensions::Power()`
-    /// Creates  and returns a new  Dimensions object which is
+    /// **Source:** `Units_Dimensions.hxx`:100 - `Units_Dimensions::Power()`
+    /// Creates and returns a new Dimensions object which is
     /// the result of the power of <me> and <anexponent>.
     pub fn power(
         &self,
         anexponent: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsDimensions> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Dimensions> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Dimensions_power(self as *const Self, anexponent),
@@ -361,19 +358,19 @@ impl Dimensions {
         }
     }
 
-    /// **Source:** `Units_Dimensions.hxx`:107 - `Units_Dimensions::IsEqual()`
-    /// Returns true if  <me>  and <adimensions> have the same
+    /// **Source:** `Units_Dimensions.hxx`:104 - `Units_Dimensions::IsEqual()`
+    /// Returns true if <me> and <adimensions> have the same
     /// dimensions, false otherwise.
-    pub fn is_equal(&self, adimensions: &crate::ffi_types::HandleUnitsDimensions) -> bool {
+    pub fn is_equal(&self, adimensions: &crate::ffi_types::Handle_Units_Dimensions) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_Dimensions_is_equal(self as *const Self, adimensions)
         })
     }
 
-    /// **Source:** `Units_Dimensions.hxx`:111 - `Units_Dimensions::IsNotEqual()`
-    /// Returns false if <me> and  <adimensions> have the same
+    /// **Source:** `Units_Dimensions.hxx`:108 - `Units_Dimensions::IsNotEqual()`
+    /// Returns false if <me> and <adimensions> have the same
     /// dimensions, true otherwise.
-    pub fn is_not_equal(&self, adimensions: &crate::ffi_types::HandleUnitsDimensions) -> bool {
+    pub fn is_not_equal(&self, adimensions: &crate::ffi_types::Handle_Units_Dimensions) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_Dimensions_is_not_equal(
                 self as *const Self,
@@ -382,7 +379,7 @@ impl Dimensions {
         })
     }
 
-    /// **Source:** `Units_Dimensions.hxx`:114 - `Units_Dimensions::Dump()`
+    /// **Source:** `Units_Dimensions.hxx`:111 - `Units_Dimensions::Dump()`
     /// Useful for degugging.
     pub fn dump(&self, ashift: i32) {
         crate::check_void_result(unsafe {
@@ -390,8 +387,8 @@ impl Dimensions {
         })
     }
 
-    /// **Source:** `Units_Dimensions.hxx`:137 - `Units_Dimensions::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Units_Dimensions.hxx`:134 - `Units_Dimensions::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::Units_Dimensions_dynamic_type(
                 self as *const Self,
@@ -399,8 +396,8 @@ impl Dimensions {
         }
     }
 
-    /// **Source:** `Units_Dimensions.hxx`:116 - `Units_Dimensions::ALess()`
-    pub fn a_less() -> crate::OwnedPtr<crate::ffi_types::HandleUnitsDimensions> {
+    /// **Source:** `Units_Dimensions.hxx`:113 - `Units_Dimensions::ALess()`
+    pub fn a_less() -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Dimensions> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Dimensions_a_less(),
@@ -408,8 +405,8 @@ impl Dimensions {
         }
     }
 
-    /// **Source:** `Units_Dimensions.hxx`:118 - `Units_Dimensions::AMass()`
-    pub fn a_mass() -> crate::OwnedPtr<crate::ffi_types::HandleUnitsDimensions> {
+    /// **Source:** `Units_Dimensions.hxx`:115 - `Units_Dimensions::AMass()`
+    pub fn a_mass() -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Dimensions> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Dimensions_a_mass(),
@@ -417,8 +414,8 @@ impl Dimensions {
         }
     }
 
-    /// **Source:** `Units_Dimensions.hxx`:120 - `Units_Dimensions::ALength()`
-    pub fn a_length() -> crate::OwnedPtr<crate::ffi_types::HandleUnitsDimensions> {
+    /// **Source:** `Units_Dimensions.hxx`:117 - `Units_Dimensions::ALength()`
+    pub fn a_length() -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Dimensions> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Dimensions_a_length(),
@@ -426,8 +423,8 @@ impl Dimensions {
         }
     }
 
-    /// **Source:** `Units_Dimensions.hxx`:122 - `Units_Dimensions::ATime()`
-    pub fn a_time() -> crate::OwnedPtr<crate::ffi_types::HandleUnitsDimensions> {
+    /// **Source:** `Units_Dimensions.hxx`:119 - `Units_Dimensions::ATime()`
+    pub fn a_time() -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Dimensions> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Dimensions_a_time(),
@@ -435,8 +432,8 @@ impl Dimensions {
         }
     }
 
-    /// **Source:** `Units_Dimensions.hxx`:124 - `Units_Dimensions::AElectricCurrent()`
-    pub fn a_electric_current() -> crate::OwnedPtr<crate::ffi_types::HandleUnitsDimensions> {
+    /// **Source:** `Units_Dimensions.hxx`:121 - `Units_Dimensions::AElectricCurrent()`
+    pub fn a_electric_current() -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Dimensions> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Dimensions_a_electric_current(),
@@ -444,9 +441,9 @@ impl Dimensions {
         }
     }
 
-    /// **Source:** `Units_Dimensions.hxx`:126 - `Units_Dimensions::AThermodynamicTemperature()`
-    pub fn a_thermodynamic_temperature() -> crate::OwnedPtr<crate::ffi_types::HandleUnitsDimensions>
-    {
+    /// **Source:** `Units_Dimensions.hxx`:123 - `Units_Dimensions::AThermodynamicTemperature()`
+    pub fn a_thermodynamic_temperature(
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Dimensions> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Dimensions_a_thermodynamic_temperature(),
@@ -454,8 +451,8 @@ impl Dimensions {
         }
     }
 
-    /// **Source:** `Units_Dimensions.hxx`:128 - `Units_Dimensions::AAmountOfSubstance()`
-    pub fn a_amount_of_substance() -> crate::OwnedPtr<crate::ffi_types::HandleUnitsDimensions> {
+    /// **Source:** `Units_Dimensions.hxx`:125 - `Units_Dimensions::AAmountOfSubstance()`
+    pub fn a_amount_of_substance() -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Dimensions> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Dimensions_a_amount_of_substance(),
@@ -463,8 +460,8 @@ impl Dimensions {
         }
     }
 
-    /// **Source:** `Units_Dimensions.hxx`:130 - `Units_Dimensions::ALuminousIntensity()`
-    pub fn a_luminous_intensity() -> crate::OwnedPtr<crate::ffi_types::HandleUnitsDimensions> {
+    /// **Source:** `Units_Dimensions.hxx`:127 - `Units_Dimensions::ALuminousIntensity()`
+    pub fn a_luminous_intensity() -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Dimensions> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Dimensions_a_luminous_intensity(),
@@ -472,8 +469,8 @@ impl Dimensions {
         }
     }
 
-    /// **Source:** `Units_Dimensions.hxx`:132 - `Units_Dimensions::APlaneAngle()`
-    pub fn a_plane_angle() -> crate::OwnedPtr<crate::ffi_types::HandleUnitsDimensions> {
+    /// **Source:** `Units_Dimensions.hxx`:129 - `Units_Dimensions::APlaneAngle()`
+    pub fn a_plane_angle() -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Dimensions> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Dimensions_a_plane_angle(),
@@ -481,9 +478,9 @@ impl Dimensions {
         }
     }
 
-    /// **Source:** `Units_Dimensions.hxx`:135 - `Units_Dimensions::ASolidAngle()`
+    /// **Source:** `Units_Dimensions.hxx`:132 - `Units_Dimensions::ASolidAngle()`
     /// Returns the basic dimensions.
-    pub fn a_solid_angle() -> crate::OwnedPtr<crate::ffi_types::HandleUnitsDimensions> {
+    pub fn a_solid_angle() -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Dimensions> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Dimensions_a_solid_angle(),
@@ -491,7 +488,7 @@ impl Dimensions {
         }
     }
 
-    /// **Source:** `Units_Dimensions.hxx`:137 - `Units_Dimensions::get_type_name()`
+    /// **Source:** `Units_Dimensions.hxx`:134 - `Units_Dimensions::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -502,8 +499,8 @@ impl Dimensions {
         .into_owned()
     }
 
-    /// **Source:** `Units_Dimensions.hxx`:137 - `Units_Dimensions::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Units_Dimensions.hxx`:134 - `Units_Dimensions::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Dimensions_get_type_descriptor(),
@@ -536,7 +533,7 @@ impl Dimensions {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsDimensions> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Dimensions> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Dimensions_to_handle(obj.into_raw()),
@@ -544,8 +541,8 @@ impl Dimensions {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_Dimensions_inherited_IsInstance(
                 self as *const Self,
@@ -554,8 +551,8 @@ impl Dimensions {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_Dimensions_inherited_IsKind(
                 self as *const Self,
@@ -564,7 +561,7 @@ impl Dimensions {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -578,14 +575,14 @@ impl Dimensions {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_Dimensions_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_Dimensions_inherited_IncrementRefCounter(
@@ -594,7 +591,7 @@ impl Dimensions {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_Dimensions_inherited_DecrementRefCounter(
@@ -603,7 +600,7 @@ impl Dimensions {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_Dimensions_inherited_Delete(self as *const Self)
@@ -611,32 +608,34 @@ impl Dimensions {
     }
 }
 
-pub use crate::ffi_types::HandleUnitsDimensions;
+pub use crate::ffi_types::Handle_Units_Dimensions;
 
-unsafe impl crate::CppDeletable for HandleUnitsDimensions {
+unsafe impl crate::CppDeletable for Handle_Units_Dimensions {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::HandleUnitsDimensions_destructor(ptr);
+            crate::ffi_extern_TKernel::Handle_Units_Dimensions_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleUnitsDimensions {
+unsafe impl crate::CppCopyable for Handle_Units_Dimensions {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleUnitsDimensions_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::Handle_Units_Dimensions_clone(ptr))
+        }
     }
 }
 
-impl HandleUnitsDimensions {
+impl Handle_Units_Dimensions {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleUnitsDimensions_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKernel::Handle_Units_Dimensions_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Units_Dimensions
     pub fn get(&self) -> &crate::ffi_types::Units_Dimensions {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleUnitsDimensions_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::Handle_Units_Dimensions_get(
                 self as *const Self,
             ))
         }
@@ -645,7 +644,7 @@ impl HandleUnitsDimensions {
     /// Dereference this Handle to mutably access the underlying Units_Dimensions
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Units_Dimensions {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleUnitsDimensions_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKernel::Handle_Units_Dimensions_get_mut(
                 self as *mut Self,
             ))
         }
@@ -654,10 +653,10 @@ impl HandleUnitsDimensions {
     /// Upcast Handle<Units_Dimensions> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleUnitsDimensions_to_HandleStandardTransient(
+                crate::ffi_extern_TKernel::Handle_Units_Dimensions_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -669,7 +668,7 @@ impl HandleUnitsDimensions {
 // From Units_Explorer.hxx
 // ========================
 
-/// **Source:** `Units_Explorer.hxx`:34 - `Units_Explorer`
+/// **Source:** `Units_Explorer.hxx`:35 - `Units_Explorer`
 /// This class provides all the services to explore
 /// UnitsSystem or UnitsDictionary.
 pub use crate::ffi_types::Units_Explorer as Explorer;
@@ -683,7 +682,7 @@ unsafe impl crate::CppDeletable for Explorer {
 }
 
 impl Explorer {
-    /// **Source:** `Units_Explorer.hxx`:40 - `Units_Explorer::Units_Explorer()`
+    /// **Source:** `Units_Explorer.hxx`:41 - `Units_Explorer::Units_Explorer()`
     /// Empty constructor of the class.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -693,11 +692,11 @@ impl Explorer {
         }
     }
 
-    /// **Source:** `Units_Explorer.hxx`:44 - `Units_Explorer::Units_Explorer()`
+    /// **Source:** `Units_Explorer.hxx`:45 - `Units_Explorer::Units_Explorer()`
     /// Creates a new instance of the class, initialized with
     /// the UnitsSystem <aunitssystem>.
     pub fn new_handleunitsunitssystem(
-        aunitssystem: &crate::ffi_types::HandleUnitsUnitsSystem,
+        aunitssystem: &crate::ffi_types::Handle_Units_UnitsSystem,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -706,11 +705,11 @@ impl Explorer {
         }
     }
 
-    /// **Source:** `Units_Explorer.hxx`:48 - `Units_Explorer::Units_Explorer()`
+    /// **Source:** `Units_Explorer.hxx`:49 - `Units_Explorer::Units_Explorer()`
     /// Creates a new instance of the class, initialized with
     /// the UnitsDictionary <aunitsdictionary>.
     pub fn new_handleunitsunitsdictionary(
-        aunitsdictionary: &crate::ffi_types::HandleUnitsUnitsDictionary,
+        aunitsdictionary: &crate::ffi_types::Handle_Units_UnitsDictionary,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -721,12 +720,12 @@ impl Explorer {
         }
     }
 
-    /// **Source:** `Units_Explorer.hxx`:53 - `Units_Explorer::Units_Explorer()`
+    /// **Source:** `Units_Explorer.hxx`:54 - `Units_Explorer::Units_Explorer()`
     /// Creates a new instance of the class, initialized with
     /// the UnitsSystem <aunitssystem> and positioned at the
     /// quantity <aquantity>.
     pub fn new_handleunitsunitssystem_charptr(
-        aunitssystem: &crate::ffi_types::HandleUnitsUnitsSystem,
+        aunitssystem: &crate::ffi_types::Handle_Units_UnitsSystem,
         aquantity: &str,
     ) -> crate::OwnedPtr<Self> {
         let c_aquantity = std::ffi::CString::new(aquantity).unwrap();
@@ -740,12 +739,12 @@ impl Explorer {
         }
     }
 
-    /// **Source:** `Units_Explorer.hxx`:59 - `Units_Explorer::Units_Explorer()`
-    /// Creates a  new instance of the class,  initialized with
-    /// the  UnitsDictionary <aunitsdictionary> and positioned
+    /// **Source:** `Units_Explorer.hxx`:60 - `Units_Explorer::Units_Explorer()`
+    /// Creates a new instance of the class, initialized with
+    /// the UnitsDictionary <aunitsdictionary> and positioned
     /// at the quantity <aquantity>.
     pub fn new_handleunitsunitsdictionary_charptr(
-        aunitsdictionary: &crate::ffi_types::HandleUnitsUnitsDictionary,
+        aunitsdictionary: &crate::ffi_types::Handle_Units_UnitsDictionary,
         aquantity: &str,
     ) -> crate::OwnedPtr<Self> {
         let c_aquantity = std::ffi::CString::new(aquantity).unwrap();
@@ -759,12 +758,12 @@ impl Explorer {
         }
     }
 
-    /// **Source:** `Units_Explorer.hxx`:64 - `Units_Explorer::Init()`
-    /// Initializes  the  instance  of  the  class  with  the
+    /// **Source:** `Units_Explorer.hxx`:65 - `Units_Explorer::Init()`
+    /// Initializes the instance of the class with the
     /// UnitsSystem <aunitssystem>.
     pub fn init_handleunitsunitssystem(
         &mut self,
-        aunitssystem: &crate::ffi_types::HandleUnitsUnitsSystem,
+        aunitssystem: &crate::ffi_types::Handle_Units_UnitsSystem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_Explorer_init_handleunitsunitssystem(
@@ -774,12 +773,12 @@ impl Explorer {
         })
     }
 
-    /// **Source:** `Units_Explorer.hxx`:68 - `Units_Explorer::Init()`
-    /// Initializes  the  instance  of  the  class  with  the
+    /// **Source:** `Units_Explorer.hxx`:69 - `Units_Explorer::Init()`
+    /// Initializes the instance of the class with the
     /// UnitsDictionary <aunitsdictionary>.
     pub fn init_handleunitsunitsdictionary(
         &mut self,
-        aunitsdictionary: &crate::ffi_types::HandleUnitsUnitsDictionary,
+        aunitsdictionary: &crate::ffi_types::Handle_Units_UnitsDictionary,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_Explorer_init_handleunitsunitsdictionary(
@@ -789,13 +788,13 @@ impl Explorer {
         })
     }
 
-    /// **Source:** `Units_Explorer.hxx`:73 - `Units_Explorer::Init()`
-    /// Initializes  the  instance  of  the   class  with  the
-    /// UnitsSystem  <aunitssystem>  and   positioned  at  the
+    /// **Source:** `Units_Explorer.hxx`:74 - `Units_Explorer::Init()`
+    /// Initializes the instance of the class with the
+    /// UnitsSystem <aunitssystem> and positioned at the
     /// quantity <aquantity>.
     pub fn init_handleunitsunitssystem_charptr(
         &mut self,
-        aunitssystem: &crate::ffi_types::HandleUnitsUnitsSystem,
+        aunitssystem: &crate::ffi_types::Handle_Units_UnitsSystem,
         aquantity: &str,
     ) {
         let c_aquantity = std::ffi::CString::new(aquantity).unwrap();
@@ -808,13 +807,13 @@ impl Explorer {
         })
     }
 
-    /// **Source:** `Units_Explorer.hxx`:79 - `Units_Explorer::Init()`
-    /// Initializes  the  instance   of  the  class  with  the
-    /// UnitsDictionary  <aunitsdictionary> and positioned  at
+    /// **Source:** `Units_Explorer.hxx`:80 - `Units_Explorer::Init()`
+    /// Initializes the instance of the class with the
+    /// UnitsDictionary <aunitsdictionary> and positioned at
     /// the quantity <aquantity>.
     pub fn init_handleunitsunitsdictionary_charptr(
         &mut self,
-        aunitsdictionary: &crate::ffi_types::HandleUnitsUnitsDictionary,
+        aunitsdictionary: &crate::ffi_types::Handle_Units_UnitsDictionary,
         aquantity: &str,
     ) {
         let c_aquantity = std::ffi::CString::new(aquantity).unwrap();
@@ -827,7 +826,7 @@ impl Explorer {
         })
     }
 
-    /// **Source:** `Units_Explorer.hxx`:84 - `Units_Explorer::MoreQuantity()`
+    /// **Source:** `Units_Explorer.hxx`:85 - `Units_Explorer::MoreQuantity()`
     /// Returns True if there is another Quantity to explore,
     /// False otherwise.
     pub fn more_quantity(&self) -> bool {
@@ -836,7 +835,7 @@ impl Explorer {
         })
     }
 
-    /// **Source:** `Units_Explorer.hxx`:87 - `Units_Explorer::NextQuantity()`
+    /// **Source:** `Units_Explorer.hxx`:88 - `Units_Explorer::NextQuantity()`
     /// Sets the next Quantity current.
     pub fn next_quantity(&mut self) {
         crate::check_void_result(unsafe {
@@ -844,7 +843,7 @@ impl Explorer {
         })
     }
 
-    /// **Source:** `Units_Explorer.hxx`:90 - `Units_Explorer::Quantity()`
+    /// **Source:** `Units_Explorer.hxx`:91 - `Units_Explorer::Quantity()`
     /// Returns the name of the current Quantity.
     pub fn quantity(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
@@ -854,7 +853,7 @@ impl Explorer {
         }
     }
 
-    /// **Source:** `Units_Explorer.hxx`:94 - `Units_Explorer::MoreUnit()`
+    /// **Source:** `Units_Explorer.hxx`:95 - `Units_Explorer::MoreUnit()`
     /// Returns True if there is another Unit to explore,
     /// False otherwise.
     pub fn more_unit(&self) -> bool {
@@ -863,7 +862,7 @@ impl Explorer {
         })
     }
 
-    /// **Source:** `Units_Explorer.hxx`:97 - `Units_Explorer::NextUnit()`
+    /// **Source:** `Units_Explorer.hxx`:98 - `Units_Explorer::NextUnit()`
     /// Sets the next Unit current.
     pub fn next_unit(&mut self) {
         crate::check_void_result(unsafe {
@@ -882,12 +881,12 @@ impl Explorer {
     }
 
     /// **Source:** `Units_Explorer.hxx`:109 - `Units_Explorer::IsActive()`
-    /// If the  units system  to  explore  is  a user  system,
-    /// returns True  if  the  current unit  is  active, False
+    /// If the units system to explore is a user system,
+    /// returns True if the current unit is active, False
     /// otherwise.
     ///
-    /// If   the   units  system  to  explore  is   the  units
-    /// dictionary,  returns True if the  current unit is  the
+    /// If the units system to explore is the units
+    /// dictionary, returns True if the current unit is the
     /// S.I. unit.
     pub fn is_active(&self) -> bool {
         crate::check_result(unsafe {
@@ -900,10 +899,10 @@ impl Explorer {
 // From Units_Lexicon.hxx
 // ========================
 
-/// **Source:** `Units_Lexicon.hxx`:37 - `Units_Lexicon`
+/// **Source:** `Units_Lexicon.hxx`:36 - `Units_Lexicon`
 /// This class defines a lexicon useful to analyse and
-/// recognize the  different key words  included  in a
-/// sentence.  The lexicon is stored  in a sequence of
+/// recognize the different key words included in a
+/// sentence. The lexicon is stored in a sequence of
 /// tokens.
 pub use crate::ffi_types::Units_Lexicon as Lexicon;
 
@@ -916,7 +915,7 @@ unsafe impl crate::CppDeletable for Lexicon {
 }
 
 impl Lexicon {
-    /// **Source:** `Units_Lexicon.hxx`:42 - `Units_Lexicon::Units_Lexicon()`
+    /// **Source:** `Units_Lexicon.hxx`:41 - `Units_Lexicon::Units_Lexicon()`
     /// Creates an empty instance of Lexicon.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -926,8 +925,8 @@ impl Lexicon {
         }
     }
 
-    /// **Source:** `Units_Lexicon.hxx`:46 - `Units_Lexicon::Creates()`
-    /// Reads the file <afilename> to create a sequence  of tokens
+    /// **Source:** `Units_Lexicon.hxx`:45 - `Units_Lexicon::Creates()`
+    /// Reads the file <afilename> to create a sequence of tokens
     /// stored in <thesequenceoftokens>.
     pub fn creates(&mut self) {
         crate::check_void_result(unsafe {
@@ -935,9 +934,13 @@ impl Lexicon {
         })
     }
 
-    /// **Source:** `Units_Lexicon.hxx`:49 - `Units_Lexicon::Sequence()`
+    /// **Source:** `Units_Lexicon.hxx`:48 - `Units_Lexicon::Sequence()`
     /// Returns the first item of the sequence of tokens.
-    pub fn sequence(&self) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsTokensSequence> {
+    pub fn sequence(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Units_Token,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Lexicon_sequence(self as *const Self),
@@ -945,10 +948,10 @@ impl Lexicon {
         }
     }
 
-    /// **Source:** `Units_Lexicon.hxx`:55 - `Units_Lexicon::AddToken()`
+    /// **Source:** `Units_Lexicon.hxx`:54 - `Units_Lexicon::AddToken()`
     /// Adds to the lexicon a new token with <aword>, <amean>,
-    /// <avalue>  as  arguments.  If there is  already a token
-    /// with   the  field  <theword>  equal    to <aword>, the
+    /// <avalue> as arguments. If there is already a token
+    /// with the field <theword> equal to <aword>, the
     /// existing token is updated.
     pub fn add_token(&mut self, aword: &str, amean: &str, avalue: f64) {
         let c_aword = std::ffi::CString::new(aword).unwrap();
@@ -963,7 +966,7 @@ impl Lexicon {
         })
     }
 
-    /// **Source:** `Units_Lexicon.hxx`:60 - `Units_Lexicon::Dump()`
+    /// **Source:** `Units_Lexicon.hxx`:59 - `Units_Lexicon::Dump()`
     /// Useful for debugging.
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
@@ -971,8 +974,8 @@ impl Lexicon {
         })
     }
 
-    /// **Source:** `Units_Lexicon.hxx`:62 - `Units_Lexicon::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Units_Lexicon.hxx`:61 - `Units_Lexicon::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::Units_Lexicon_dynamic_type(
                 self as *const Self,
@@ -980,7 +983,7 @@ impl Lexicon {
         }
     }
 
-    /// **Source:** `Units_Lexicon.hxx`:62 - `Units_Lexicon::get_type_name()`
+    /// **Source:** `Units_Lexicon.hxx`:61 - `Units_Lexicon::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -991,8 +994,8 @@ impl Lexicon {
         .into_owned()
     }
 
-    /// **Source:** `Units_Lexicon.hxx`:62 - `Units_Lexicon::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Units_Lexicon.hxx`:61 - `Units_Lexicon::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::Units_Lexicon_get_type_descriptor()))
         }
@@ -1021,7 +1024,7 @@ impl Lexicon {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsLexicon> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Lexicon> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Lexicon_to_handle(obj.into_raw()),
@@ -1029,8 +1032,8 @@ impl Lexicon {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_Lexicon_inherited_IsInstance(
                 self as *const Self,
@@ -1039,14 +1042,14 @@ impl Lexicon {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_Lexicon_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1060,14 +1063,14 @@ impl Lexicon {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_Lexicon_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_Lexicon_inherited_IncrementRefCounter(
@@ -1076,7 +1079,7 @@ impl Lexicon {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_Lexicon_inherited_DecrementRefCounter(
@@ -1085,7 +1088,7 @@ impl Lexicon {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_Lexicon_inherited_Delete(self as *const Self)
@@ -1093,32 +1096,32 @@ impl Lexicon {
     }
 }
 
-pub use crate::ffi_types::HandleUnitsLexicon;
+pub use crate::ffi_types::Handle_Units_Lexicon;
 
-unsafe impl crate::CppDeletable for HandleUnitsLexicon {
+unsafe impl crate::CppDeletable for Handle_Units_Lexicon {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::HandleUnitsLexicon_destructor(ptr);
+            crate::ffi_extern_TKernel::Handle_Units_Lexicon_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleUnitsLexicon {
+unsafe impl crate::CppCopyable for Handle_Units_Lexicon {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleUnitsLexicon_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::Handle_Units_Lexicon_clone(ptr)) }
     }
 }
 
-impl HandleUnitsLexicon {
+impl Handle_Units_Lexicon {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleUnitsLexicon_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKernel::Handle_Units_Lexicon_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Units_Lexicon
     pub fn get(&self) -> &crate::ffi_types::Units_Lexicon {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleUnitsLexicon_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::Handle_Units_Lexicon_get(
                 self as *const Self,
             ))
         }
@@ -1127,7 +1130,7 @@ impl HandleUnitsLexicon {
     /// Dereference this Handle to mutably access the underlying Units_Lexicon
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Units_Lexicon {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleUnitsLexicon_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKernel::Handle_Units_Lexicon_get_mut(
                 self as *mut Self,
             ))
         }
@@ -1136,10 +1139,10 @@ impl HandleUnitsLexicon {
     /// Upcast Handle<Units_Lexicon> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleUnitsLexicon_to_HandleStandardTransient(
+                crate::ffi_extern_TKernel::Handle_Units_Lexicon_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -1151,9 +1154,9 @@ impl HandleUnitsLexicon {
     /// Returns `None` if the handle does not point to a `Units_UnitsLexicon` (or subclass).
     pub fn downcast_to_units_lexicon(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleUnitsUnitsLexicon>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_Units_UnitsLexicon>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleUnitsLexicon_downcast_to_HandleUnitsUnitsLexicon(
+            crate::ffi_extern_TKernel::Handle_Units_Lexicon_downcast_to_Handle_Units_UnitsLexicon(
                 self as *const Self,
             )
         });
@@ -1170,7 +1173,7 @@ impl HandleUnitsLexicon {
 // ========================
 
 /// **Source:** `Units_MathSentence.hxx`:27 - `Units_MathSentence`
-/// This class  defines all the methods to  create and
+/// This class defines all the methods to create and
 /// compute an algebraic formula.
 pub use crate::ffi_types::Units_MathSentence as MathSentence;
 
@@ -1184,8 +1187,8 @@ unsafe impl crate::CppDeletable for MathSentence {
 
 impl MathSentence {
     /// **Source:** `Units_MathSentence.hxx`:35 - `Units_MathSentence::Units_MathSentence()`
-    /// Creates and returns a  MathSentence object. The string
-    /// <astring>  describes  an algebraic  formula in natural
+    /// Creates and returns a MathSentence object. The string
+    /// <astring> describes an algebraic formula in natural
     /// language.
     pub fn new_charptr(astring: &str) -> crate::OwnedPtr<Self> {
         let c_astring = std::ffi::CString::new(astring).unwrap();
@@ -1216,15 +1219,19 @@ impl MathSentence {
         }
     }
 
-    /// Inherited: **Source:** `Units_Sentence.hxx`:42 - `Units_Sentence::SetConstants()`
+    /// Inherited: **Source:** `Units_Sentence.hxx`:44 - `Units_Sentence::SetConstants()`
     pub fn set_constants(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_MathSentence_inherited_SetConstants(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Units_Sentence.hxx`:45 - `Units_Sentence::Sequence()`
-    pub fn sequence(&self) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsTokensSequence> {
+    /// Inherited: **Source:** `Units_Sentence.hxx`:47 - `Units_Sentence::Sequence()`
+    pub fn sequence(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Units_Token,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_MathSentence_inherited_Sequence(
@@ -1234,8 +1241,8 @@ impl MathSentence {
         }
     }
 
-    /// Inherited: **Source:** `Units_Sentence.hxx`:52 - `Units_Sentence::Evaluate()`
-    pub fn evaluate(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsToken> {
+    /// Inherited: **Source:** `Units_Sentence.hxx`:55 - `Units_Sentence::Evaluate()`
+    pub fn evaluate(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Token> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_MathSentence_inherited_Evaluate(self as *mut Self),
@@ -1243,14 +1250,14 @@ impl MathSentence {
         }
     }
 
-    /// Inherited: **Source:** `Units_Sentence.hxx`:56 - `Units_Sentence::IsDone()`
+    /// Inherited: **Source:** `Units_Sentence.hxx`:59 - `Units_Sentence::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_MathSentence_inherited_IsDone(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Units_Sentence.hxx`:59 - `Units_Sentence::Dump()`
+    /// Inherited: **Source:** `Units_Sentence.hxx`:62 - `Units_Sentence::Dump()`
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_MathSentence_inherited_Dump(self as *const Self)
@@ -1263,7 +1270,7 @@ impl MathSentence {
 // ========================
 
 /// **Source:** `Units_Measurement.hxx`:28 - `Units_Measurement`
-/// This class  defines  a measurement which is the
+/// This class defines a measurement which is the
 /// association of a real value and a unit.
 pub use crate::ffi_types::Units_Measurement as Measurement;
 
@@ -1287,12 +1294,12 @@ impl Measurement {
     }
 
     /// **Source:** `Units_Measurement.hxx`:39 - `Units_Measurement::Units_Measurement()`
-    /// Returns an instance  of this class.   <avalue> defines
-    /// the measurement, and <atoken>  the token which defines
+    /// Returns an instance of this class. <avalue> defines
+    /// the measurement, and <atoken> the token which defines
     /// the unit used.
     pub fn new_real_handleunitstoken(
         avalue: f64,
-        atoken: &crate::ffi_types::HandleUnitsToken,
+        atoken: &crate::ffi_types::Handle_Units_Token,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1304,8 +1311,8 @@ impl Measurement {
     }
 
     /// **Source:** `Units_Measurement.hxx`:44 - `Units_Measurement::Units_Measurement()`
-    /// Returns an  instance of this  class.  <avalue> defines
-    /// the  measurement, and <aunit> the   unit used,
+    /// Returns an instance of this class. <avalue> defines
+    /// the measurement, and <aunit> the unit used,
     /// described in natural language.
     pub fn new_real_charptr(avalue: f64, aunit: &str) -> crate::OwnedPtr<Self> {
         let c_aunit = std::ffi::CString::new(aunit).unwrap();
@@ -1320,9 +1327,9 @@ impl Measurement {
     }
 
     /// **Source:** `Units_Measurement.hxx`:50 - `Units_Measurement::Convert()`
-    /// Converts (if   possible)  the  measurement   object into
-    /// another   unit.      <aunit>   must  have    the  same
-    /// dimensionality as  the  unit  contained in   the token
+    /// Converts (if possible) the measurement object into
+    /// another unit. <aunit> must have the same
+    /// dimensionality as the unit contained in the token
     /// <thetoken>.
     pub fn convert(&mut self, aunit: &str) {
         let c_aunit = std::ffi::CString::new(aunit).unwrap();
@@ -1366,7 +1373,7 @@ impl Measurement {
 
     /// **Source:** `Units_Measurement.hxx`:64 - `Units_Measurement::Token()`
     /// Returns the token contained in <me>.
-    pub fn token(&self) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsToken> {
+    pub fn token(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Token> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Measurement_token(self as *const Self),
@@ -1376,7 +1383,7 @@ impl Measurement {
 
     /// **Source:** `Units_Measurement.hxx`:69 - `Units_Measurement::Add()`
     /// Returns (if it is possible) a measurement which is the
-    /// addition  of  <me>  and  <ameasurement>.  The   chosen
+    /// addition of <me> and <ameasurement>. The chosen
     /// returned unit is the unit of <me>.
     pub fn add(&self, ameasurement: &Measurement) -> crate::OwnedPtr<Measurement> {
         unsafe {
@@ -1388,7 +1395,7 @@ impl Measurement {
 
     /// **Source:** `Units_Measurement.hxx`:79 - `Units_Measurement::Subtract()`
     /// Returns (if it is possible) a measurement which is the
-    /// subtraction of  <me>  and <ameasurement>.   The chosen
+    /// subtraction of <me> and <ameasurement>. The chosen
     /// returned unit is the unit of <me>.
     pub fn subtract(&self, ameasurement: &Measurement) -> crate::OwnedPtr<Measurement> {
         unsafe {
@@ -1402,7 +1409,7 @@ impl Measurement {
     }
 
     /// **Source:** `Units_Measurement.hxx`:88 - `Units_Measurement::Multiply()`
-    /// Returns  a measurement which  is the multiplication of
+    /// Returns a measurement which is the multiplication of
     /// <me> and <ameasurement>.
     pub fn multiply_measurement(&self, ameasurement: &Measurement) -> crate::OwnedPtr<Measurement> {
         unsafe {
@@ -1416,8 +1423,8 @@ impl Measurement {
     }
 
     /// **Source:** `Units_Measurement.hxx`:97 - `Units_Measurement::Multiply()`
-    /// Returns  a measurement which  is the multiplication of
-    /// <me> with the value  <avalue>.
+    /// Returns a measurement which is the multiplication of
+    /// <me> with the value <avalue>.
     pub fn multiply_real(&self, avalue: f64) -> crate::OwnedPtr<Measurement> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1430,7 +1437,7 @@ impl Measurement {
     }
 
     /// **Source:** `Units_Measurement.hxx`:103 - `Units_Measurement::Divide()`
-    /// Returns a measurement which  is the division of  <me> by
+    /// Returns a measurement which is the division of <me> by
     /// <ameasurement>.
     pub fn divide_measurement(&self, ameasurement: &Measurement) -> crate::OwnedPtr<Measurement> {
         unsafe {
@@ -1444,7 +1451,7 @@ impl Measurement {
     }
 
     /// **Source:** `Units_Measurement.hxx`:112 - `Units_Measurement::Divide()`
-    /// Returns  a measurement which  is the division of <me> by
+    /// Returns a measurement which is the division of <me> by
     /// the constant <avalue>.
     pub fn divide_real(&self, avalue: f64) -> crate::OwnedPtr<Measurement> {
         unsafe {
@@ -1458,7 +1465,7 @@ impl Measurement {
     }
 
     /// **Source:** `Units_Measurement.hxx`:118 - `Units_Measurement::Power()`
-    /// Returns   a    measurement  which   is <me>    powered
+    /// Returns a measurement which is <me> powered
     /// <anexponent>.
     pub fn power(&self, anexponent: f64) -> crate::OwnedPtr<Measurement> {
         unsafe {
@@ -1488,7 +1495,7 @@ impl Measurement {
 // From Units_NoSuchType.hxx
 // ========================
 
-/// **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType`
+/// **Source:** `Units_NoSuchType.hxx`:32 - `Units_NoSuchType`
 pub use crate::ffi_types::Units_NoSuchType as NoSuchType;
 
 unsafe impl crate::CppDeletable for NoSuchType {
@@ -1500,16 +1507,7 @@ unsafe impl crate::CppDeletable for NoSuchType {
 }
 
 impl NoSuchType {
-    /// **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::Units_NoSuchType()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Units_NoSuchType_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::Units_NoSuchType()`
+    /// **Source:** `Units_NoSuchType.hxx`:32 - `Units_NoSuchType::Units_NoSuchType()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -1519,7 +1517,7 @@ impl NoSuchType {
         }
     }
 
-    /// **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::Units_NoSuchType()`
+    /// **Source:** `Units_NoSuchType.hxx`:32 - `Units_NoSuchType::Units_NoSuchType()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -1533,79 +1531,15 @@ impl NoSuchType {
         }
     }
 
-    /// **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::Units_NoSuchType_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Units_NoSuchType_raise_charptr(c_theMessage.as_ptr())
-        })
-    }
-
-    /// **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Units_NoSuchType_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsNoSuchType> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Units_NoSuchType_new_instance_charptr(
-                    c_theMessage.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsNoSuchType> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Units_NoSuchType_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
+    /// **Source:** `Units_NoSuchType.hxx`:32 - `Units_NoSuchType::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::Units_NoSuchType_get_type_name(),
+                crate::ffi_extern_TKernel::Units_NoSuchType_exception_type(self as *const Self),
             ))
         }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `Units_NoSuchType.hxx`:36 - `Units_NoSuchType::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::Units_NoSuchType_get_type_descriptor(),
-            ))
-        }
     }
 
     /// Upcast to Standard_NoSuchObject
@@ -1672,40 +1606,7 @@ impl NoSuchType {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKernel::Units_NoSuchType_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::Units_NoSuchType_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsNoSuchType> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Units_NoSuchType_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_NoSuchType_inherited_Print(
@@ -1714,184 +1615,13 @@ impl NoSuchType {
             )
         })
     }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Units_NoSuchType_inherited_Reraise(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Units_NoSuchType_inherited_Jump(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Units_NoSuchType_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Units_NoSuchType_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::Units_NoSuchType_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Units_NoSuchType_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Units_NoSuchType_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Units_NoSuchType_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Units_NoSuchType_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleUnitsNoSuchType;
-
-unsafe impl crate::CppDeletable for HandleUnitsNoSuchType {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleUnitsNoSuchType_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleUnitsNoSuchType {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleUnitsNoSuchType_clone(ptr)) }
-    }
-}
-
-impl HandleUnitsNoSuchType {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleUnitsNoSuchType_is_null(self as *const Self) }
-    }
-
-    /// Dereference this Handle to access the underlying Units_NoSuchType
-    pub fn get(&self) -> &crate::ffi_types::Units_NoSuchType {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleUnitsNoSuchType_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Units_NoSuchType
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Units_NoSuchType {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleUnitsNoSuchType_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<Units_NoSuchType> to Handle<Standard_NoSuchObject>
-    pub fn to_handle_no_such_object(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardNoSuchObject> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleUnitsNoSuchType_to_HandleStandardNoSuchObject(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<Units_NoSuchType> to Handle<Standard_DomainError>
-    pub fn to_handle_domain_error(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardDomainError> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleUnitsNoSuchType_to_HandleStandardDomainError(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<Units_NoSuchType> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleUnitsNoSuchType_to_HandleStandardFailure(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<Units_NoSuchType> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleUnitsNoSuchType_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
 }
 
 // ========================
 // From Units_NoSuchUnit.hxx
 // ========================
 
-/// **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit`
+/// **Source:** `Units_NoSuchUnit.hxx`:32 - `Units_NoSuchUnit`
 pub use crate::ffi_types::Units_NoSuchUnit as NoSuchUnit;
 
 unsafe impl crate::CppDeletable for NoSuchUnit {
@@ -1903,16 +1633,7 @@ unsafe impl crate::CppDeletable for NoSuchUnit {
 }
 
 impl NoSuchUnit {
-    /// **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::Units_NoSuchUnit()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Units_NoSuchUnit_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::Units_NoSuchUnit()`
+    /// **Source:** `Units_NoSuchUnit.hxx`:32 - `Units_NoSuchUnit::Units_NoSuchUnit()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -1922,7 +1643,7 @@ impl NoSuchUnit {
         }
     }
 
-    /// **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::Units_NoSuchUnit()`
+    /// **Source:** `Units_NoSuchUnit.hxx`:32 - `Units_NoSuchUnit::Units_NoSuchUnit()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -1936,79 +1657,15 @@ impl NoSuchUnit {
         }
     }
 
-    /// **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::Units_NoSuchUnit_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Units_NoSuchUnit_raise_charptr(c_theMessage.as_ptr())
-        })
-    }
-
-    /// **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Units_NoSuchUnit_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsNoSuchUnit> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Units_NoSuchUnit_new_instance_charptr(
-                    c_theMessage.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsNoSuchUnit> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Units_NoSuchUnit_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
+    /// **Source:** `Units_NoSuchUnit.hxx`:32 - `Units_NoSuchUnit::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::Units_NoSuchUnit_get_type_name(),
+                crate::ffi_extern_TKernel::Units_NoSuchUnit_exception_type(self as *const Self),
             ))
         }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `Units_NoSuchUnit.hxx`:36 - `Units_NoSuchUnit::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::Units_NoSuchUnit_get_type_descriptor(),
-            ))
-        }
     }
 
     /// Upcast to Standard_NoSuchObject
@@ -2075,40 +1732,7 @@ impl NoSuchUnit {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKernel::Units_NoSuchUnit_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::Units_NoSuchUnit_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsNoSuchUnit> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Units_NoSuchUnit_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_NoSuchUnit_inherited_Print(
@@ -2117,458 +1741,16 @@ impl NoSuchUnit {
             )
         })
     }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Units_NoSuchUnit_inherited_Reraise(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Units_NoSuchUnit_inherited_Jump(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Units_NoSuchUnit_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Units_NoSuchUnit_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::Units_NoSuchUnit_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Units_NoSuchUnit_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Units_NoSuchUnit_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Units_NoSuchUnit_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Units_NoSuchUnit_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleUnitsNoSuchUnit;
-
-unsafe impl crate::CppDeletable for HandleUnitsNoSuchUnit {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleUnitsNoSuchUnit_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleUnitsNoSuchUnit {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleUnitsNoSuchUnit_clone(ptr)) }
-    }
-}
-
-impl HandleUnitsNoSuchUnit {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleUnitsNoSuchUnit_is_null(self as *const Self) }
-    }
-
-    /// Dereference this Handle to access the underlying Units_NoSuchUnit
-    pub fn get(&self) -> &crate::ffi_types::Units_NoSuchUnit {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleUnitsNoSuchUnit_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Units_NoSuchUnit
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Units_NoSuchUnit {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleUnitsNoSuchUnit_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<Units_NoSuchUnit> to Handle<Standard_NoSuchObject>
-    pub fn to_handle_no_such_object(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardNoSuchObject> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleUnitsNoSuchUnit_to_HandleStandardNoSuchObject(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<Units_NoSuchUnit> to Handle<Standard_DomainError>
-    pub fn to_handle_domain_error(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardDomainError> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleUnitsNoSuchUnit_to_HandleStandardDomainError(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<Units_NoSuchUnit> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleUnitsNoSuchUnit_to_HandleStandardFailure(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<Units_NoSuchUnit> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleUnitsNoSuchUnit_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-}
-
-// ========================
-// From Units_QuantitiesSequence.hxx
-// ========================
-
-/// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence`
-pub use crate::ffi_types::Units_QuantitiesSequence as QuantitiesSequence;
-
-unsafe impl crate::CppDeletable for QuantitiesSequence {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::Units_QuantitiesSequence_destructor(ptr);
-        }
-    }
-}
-
-impl QuantitiesSequence {
-    /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::Units_QuantitiesSequence()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Units_QuantitiesSequence_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::Units_QuantitiesSequence()`
-    pub fn new_qtssequence(
-        theOther: &crate::ffi_types::Units_QtsSequence,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Units_QuantitiesSequence_ctor_qtssequence(theOther),
-            ))
-        }
-    }
-
-    /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::Sequence()`
-    pub fn sequence(&self) -> &crate::ffi_types::Units_QtsSequence {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::Units_QuantitiesSequence_sequence(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::Append()`
-    pub fn append_handleunitsquantity(&mut self, theItem: &crate::ffi_types::HandleUnitsQuantity) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Units_QuantitiesSequence_append_handleunitsquantity(
-                self as *mut Self,
-                theItem,
-            )
-        })
-    }
-
-    /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::Append()`
-    pub fn append_qtssequence(&mut self, theSequence: &mut crate::ffi_types::Units_QtsSequence) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Units_QuantitiesSequence_append_qtssequence(
-                self as *mut Self,
-                theSequence,
-            )
-        })
-    }
-
-    /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::ChangeSequence()`
-    pub fn change_sequence(&mut self) -> &mut crate::ffi_types::Units_QtsSequence {
-        unsafe {
-            &mut *(crate::check_result(
-                crate::ffi_extern_TKernel::Units_QuantitiesSequence_change_sequence(
-                    self as *mut Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::Units_QuantitiesSequence_dynamic_type(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::Units_QuantitiesSequence_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::Units_QuantitiesSequence_get_type_descriptor(),
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKernel::Units_QuantitiesSequence_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::Units_QuantitiesSequence_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsQuantitiesSequence> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Units_QuantitiesSequence_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Units_QuantitiesSequence_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Units_QuantitiesSequence_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::Units_QuantitiesSequence_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Units_QuantitiesSequence_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Units_QuantitiesSequence_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Units_QuantitiesSequence_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Units_QuantitiesSequence_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleUnitsQuantitiesSequence;
-
-unsafe impl crate::CppDeletable for HandleUnitsQuantitiesSequence {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleUnitsQuantitiesSequence_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleUnitsQuantitiesSequence {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKernel::HandleUnitsQuantitiesSequence_clone(ptr))
-        }
-    }
-}
-
-impl HandleUnitsQuantitiesSequence {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleUnitsQuantitiesSequence_is_null(self as *const Self)
-        }
-    }
-
-    /// Dereference this Handle to access the underlying Units_QuantitiesSequence
-    pub fn get(&self) -> &crate::ffi_types::Units_QuantitiesSequence {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleUnitsQuantitiesSequence_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Units_QuantitiesSequence
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Units_QuantitiesSequence {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::HandleUnitsQuantitiesSequence_get_mut(self as *mut Self),
-            )
-        }
-    }
-
-    /// Upcast Handle<Units_QuantitiesSequence> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleUnitsQuantitiesSequence_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
 }
 
 // ========================
 // From Units_Quantity.hxx
 // ========================
 
-/// **Source:** `Units_Quantity.hxx`:37 - `Units_Quantity`
-/// This  class stores  in its  field all the possible
+/// **Source:** `Units_Quantity.hxx`:36 - `Units_Quantity`
+/// This class stores in its field all the possible
 /// units of all the unit systems for a given physical
-/// quantity. Each unit's  value  is  expressed in the
+/// quantity. Each unit's value is expressed in the
 /// S.I. unit system.
 pub use crate::ffi_types::Units_Quantity as Quantity;
 
@@ -2581,23 +1763,23 @@ unsafe impl crate::CppDeletable for Quantity {
 }
 
 impl Quantity {
-    /// **Source:** `Units_Quantity.hxx`:45 - `Units_Quantity::Units_Quantity()`
-    /// Creates  a new Quantity  object with <aname> which  is
+    /// **Source:** `Units_Quantity.hxx`:44 - `Units_Quantity::Units_Quantity()`
+    /// Creates a new Quantity object with <aname> which is
     /// the name of the physical quantity, <adimensions> which
     /// is the physical dimensions, and <aunitssequence> which
     /// describes all the units known for this quantity.
-    pub fn new_charptr_handleunitsdimensions_handleunitsunitssequence(
+    pub fn new_charptr_handleunitsdimensions_handlencollectionhsequenceopencascadehandleunitsunit(
         aname: &str,
-        adimensions: &crate::ffi_types::HandleUnitsDimensions,
-        aunitssequence: &crate::ffi_types::HandleUnitsUnitsSequence,
+        adimensions: &crate::ffi_types::Handle_Units_Dimensions,
+        aunitssequence: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Units_Unit,
     ) -> crate::OwnedPtr<Self> {
         let c_aname = std::ffi::CString::new(aname).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::Units_Quantity_ctor_charptr_handleunitsdimensions_handleunitsunitssequence(c_aname.as_ptr(), adimensions, aunitssequence)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::Units_Quantity_ctor_charptr_handleunitsdimensions_handlencollectionhsequenceopencascadehandleunitsunit(c_aname.as_ptr(), adimensions, aunitssequence)))
         }
     }
 
-    /// **Source:** `Units_Quantity.hxx`:50 - `Units_Quantity::Name()`
+    /// **Source:** `Units_Quantity.hxx`:49 - `Units_Quantity::Name()`
     /// Returns in a AsciiString from TCollection the name of the quantity.
     pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
@@ -2607,9 +1789,9 @@ impl Quantity {
         }
     }
 
-    /// **Source:** `Units_Quantity.hxx`:53 - `Units_Quantity::Dimensions()`
+    /// **Source:** `Units_Quantity.hxx`:52 - `Units_Quantity::Dimensions()`
     /// Returns the physical dimensions of the quantity.
-    pub fn dimensions(&self) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsDimensions> {
+    pub fn dimensions(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Dimensions> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Quantity_dimensions(self as *const Self),
@@ -2617,10 +1799,13 @@ impl Quantity {
         }
     }
 
-    /// **Source:** `Units_Quantity.hxx`:57 - `Units_Quantity::Sequence()`
-    /// Returns <theunitssequence>, which  is the  sequence of
+    /// **Source:** `Units_Quantity.hxx`:56 - `Units_Quantity::Sequence()`
+    /// Returns <theunitssequence>, which is the sequence of
     /// all the units stored for this physical quantity.
-    pub fn sequence(&self) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsUnitsSequence> {
+    pub fn sequence(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Units_Unit>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Quantity_sequence(self as *const Self),
@@ -2628,7 +1813,7 @@ impl Quantity {
         }
     }
 
-    /// **Source:** `Units_Quantity.hxx`:61 - `Units_Quantity::IsEqual()`
+    /// **Source:** `Units_Quantity.hxx`:60 - `Units_Quantity::IsEqual()`
     /// Returns True if the name of the Quantity <me> is equal
     /// to <astring>, False otherwise.
     pub fn is_equal(&self, astring: &str) -> bool {
@@ -2641,7 +1826,7 @@ impl Quantity {
         })
     }
 
-    /// **Source:** `Units_Quantity.hxx`:64 - `Units_Quantity::Dump()`
+    /// **Source:** `Units_Quantity.hxx`:63 - `Units_Quantity::Dump()`
     /// Useful for debugging.
     pub fn dump(&self, ashift: i32, alevel: i32) {
         crate::check_void_result(unsafe {
@@ -2649,8 +1834,8 @@ impl Quantity {
         })
     }
 
-    /// **Source:** `Units_Quantity.hxx`:66 - `Units_Quantity::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Units_Quantity.hxx`:65 - `Units_Quantity::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::Units_Quantity_dynamic_type(
                 self as *const Self,
@@ -2658,7 +1843,7 @@ impl Quantity {
         }
     }
 
-    /// **Source:** `Units_Quantity.hxx`:66 - `Units_Quantity::get_type_name()`
+    /// **Source:** `Units_Quantity.hxx`:65 - `Units_Quantity::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2669,8 +1854,8 @@ impl Quantity {
         .into_owned()
     }
 
-    /// **Source:** `Units_Quantity.hxx`:66 - `Units_Quantity::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Units_Quantity.hxx`:65 - `Units_Quantity::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::Units_Quantity_get_type_descriptor()))
         }
@@ -2699,7 +1884,7 @@ impl Quantity {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsQuantity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Quantity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Quantity_to_handle(obj.into_raw()),
@@ -2707,8 +1892,8 @@ impl Quantity {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_Quantity_inherited_IsInstance(
                 self as *const Self,
@@ -2717,14 +1902,14 @@ impl Quantity {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_Quantity_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2738,14 +1923,14 @@ impl Quantity {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_Quantity_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_Quantity_inherited_IncrementRefCounter(
@@ -2754,7 +1939,7 @@ impl Quantity {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_Quantity_inherited_DecrementRefCounter(
@@ -2763,7 +1948,7 @@ impl Quantity {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_Quantity_inherited_Delete(self as *const Self)
@@ -2771,32 +1956,32 @@ impl Quantity {
     }
 }
 
-pub use crate::ffi_types::HandleUnitsQuantity;
+pub use crate::ffi_types::Handle_Units_Quantity;
 
-unsafe impl crate::CppDeletable for HandleUnitsQuantity {
+unsafe impl crate::CppDeletable for Handle_Units_Quantity {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::HandleUnitsQuantity_destructor(ptr);
+            crate::ffi_extern_TKernel::Handle_Units_Quantity_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleUnitsQuantity {
+unsafe impl crate::CppCopyable for Handle_Units_Quantity {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleUnitsQuantity_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::Handle_Units_Quantity_clone(ptr)) }
     }
 }
 
-impl HandleUnitsQuantity {
+impl Handle_Units_Quantity {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleUnitsQuantity_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKernel::Handle_Units_Quantity_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Units_Quantity
     pub fn get(&self) -> &crate::ffi_types::Units_Quantity {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleUnitsQuantity_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::Handle_Units_Quantity_get(
                 self as *const Self,
             ))
         }
@@ -2805,7 +1990,7 @@ impl HandleUnitsQuantity {
     /// Dereference this Handle to mutably access the underlying Units_Quantity
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Units_Quantity {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleUnitsQuantity_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKernel::Handle_Units_Quantity_get_mut(
                 self as *mut Self,
             ))
         }
@@ -2814,10 +1999,10 @@ impl HandleUnitsQuantity {
     /// Upcast Handle<Units_Quantity> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleUnitsQuantity_to_HandleStandardTransient(
+                crate::ffi_extern_TKernel::Handle_Units_Quantity_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -2829,7 +2014,7 @@ impl HandleUnitsQuantity {
 // From Units_Sentence.hxx
 // ========================
 
-/// **Source:** `Units_Sentence.hxx`:31 - `Units_Sentence`
+/// **Source:** `Units_Sentence.hxx`:33 - `Units_Sentence`
 /// This class describes all the methods to create and
 /// compute an expression contained in a string.
 pub use crate::ffi_types::Units_Sentence as Sentence;
@@ -2843,11 +2028,11 @@ unsafe impl crate::CppDeletable for Sentence {
 }
 
 impl Sentence {
-    /// **Source:** `Units_Sentence.hxx`:38 - `Units_Sentence::Units_Sentence()`
-    /// Creates and  returns  a   Sentence, by  analyzing  the
+    /// **Source:** `Units_Sentence.hxx`:40 - `Units_Sentence::Units_Sentence()`
+    /// Createsand returns a Sentence, by analyzing the
     /// string <astring> with the lexicon <alexicon>.
     pub fn new_handleunitslexicon_charptr(
-        alexicon: &crate::ffi_types::HandleUnitsLexicon,
+        alexicon: &crate::ffi_types::Handle_Units_Lexicon,
         astring: &str,
     ) -> crate::OwnedPtr<Self> {
         let c_astring = std::ffi::CString::new(astring).unwrap();
@@ -2861,7 +2046,7 @@ impl Sentence {
         }
     }
 
-    /// **Source:** `Units_Sentence.hxx`:42 - `Units_Sentence::SetConstants()`
+    /// **Source:** `Units_Sentence.hxx`:44 - `Units_Sentence::SetConstants()`
     /// For each constant encountered, sets the value.
     pub fn set_constants(&mut self) {
         crate::check_void_result(unsafe {
@@ -2869,9 +2054,13 @@ impl Sentence {
         })
     }
 
-    /// **Source:** `Units_Sentence.hxx`:45 - `Units_Sentence::Sequence()`
+    /// **Source:** `Units_Sentence.hxx`:47 - `Units_Sentence::Sequence()`
     /// Returns <thesequenceoftokens>.
-    pub fn sequence(&self) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsTokensSequence> {
+    pub fn sequence(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Units_Token,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Sentence_sequence(self as *const Self),
@@ -2879,24 +2068,21 @@ impl Sentence {
         }
     }
 
-    /// **Source:** `Units_Sentence.hxx`:48 - `Units_Sentence::Sequence()`
+    /// **Source:** `Units_Sentence.hxx`:50 - `Units_Sentence::Sequence()`
     /// Sets the field <thesequenceoftokens> to <asequenceoftokens>.
-    pub fn sequence_handleunitstokenssequence(
+    pub fn sequence_handlencollectionhsequenceopencascadehandleunitstoken(
         &mut self,
-        asequenceoftokens: &crate::ffi_types::HandleUnitsTokensSequence,
+        asequenceoftokens: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Units_Token,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Units_Sentence_sequence_handleunitstokenssequence(
-                self as *mut Self,
-                asequenceoftokens,
-            )
+            crate::ffi_extern_TKernel::Units_Sentence_sequence_handlencollectionhsequenceopencascadehandleunitstoken(self as *mut Self, asequenceoftokens)
         })
     }
 
-    /// **Source:** `Units_Sentence.hxx`:52 - `Units_Sentence::Evaluate()`
-    /// Computes and  returns in a   token the result  of  the
+    /// **Source:** `Units_Sentence.hxx`:55 - `Units_Sentence::Evaluate()`
+    /// Computes and returns in a token the result of the
     /// expression.
-    pub fn evaluate(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsToken> {
+    pub fn evaluate(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Token> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Sentence_evaluate(self as *mut Self),
@@ -2904,7 +2090,7 @@ impl Sentence {
         }
     }
 
-    /// **Source:** `Units_Sentence.hxx`:56 - `Units_Sentence::IsDone()`
+    /// **Source:** `Units_Sentence.hxx`:59 - `Units_Sentence::IsDone()`
     /// Return True if number of created tokens > 0
     /// (i.e creation of sentence is successful)
     pub fn is_done(&self) -> bool {
@@ -2913,7 +2099,7 @@ impl Sentence {
         })
     }
 
-    /// **Source:** `Units_Sentence.hxx`:59 - `Units_Sentence::Dump()`
+    /// **Source:** `Units_Sentence.hxx`:62 - `Units_Sentence::Dump()`
     /// Useful for debugging.
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
@@ -2926,20 +2112,20 @@ impl Sentence {
 // From Units_ShiftedToken.hxx
 // ========================
 
-/// **Source:** `Units_ShiftedToken.hxx`:44 - `Units_ShiftedToken`
-/// The  ShiftedToken class  inherits   from Token and
-/// describes tokens which have  a gap in  addition of
-/// the  multiplicative factor.   This kind  of  token
-/// allows  the  description of linear functions which
-/// do not pass through the origin, of the form :
+/// **Source:** `Units_ShiftedToken.hxx`:41 - `Units_ShiftedToken`
+/// The ShiftedToken class inherits from Token and
+/// describes tokens which have a gap in addition of
+/// the multiplicative factor. This kind of token
+/// allows the description of linear functions which
+/// do not pass through the origin, of the form:
 ///
-/// y = ax  +b
+/// y = ax +b
 ///
-/// where <x> and  <y>  are the unknown variables, <a>
+/// where <x> and <y> are the unknown variables, <a>
 /// the mutiplicative factor, and <b> the gap relative
 /// to the ordinate axis.
 ///
-/// An example is the  translation between the  Celsius
+/// An example is the translation between the Celsius
 /// and Fahrenheit degree of temperature.
 pub use crate::ffi_types::Units_ShiftedToken as ShiftedToken;
 
@@ -2952,19 +2138,19 @@ unsafe impl crate::CppDeletable for ShiftedToken {
 }
 
 impl ShiftedToken {
-    /// **Source:** `Units_ShiftedToken.hxx`:54 - `Units_ShiftedToken::Units_ShiftedToken()`
-    /// Creates and returns a  shifted   token.  <aword> is  a
-    /// string containing the   available word, <amean>  gives
-    /// the signification   of the   token,  <avalue> is   the
-    /// numeric value  of the  dimension, <amove> is  the gap,
-    /// and <adimensions> is  the dimension of the given  word
+    /// **Source:** `Units_ShiftedToken.hxx`:51 - `Units_ShiftedToken::Units_ShiftedToken()`
+    /// Creates and returns a shifted token. <aword> is a
+    /// string containing the available word, <amean> gives
+    /// the signification of the token, <avalue> is the
+    /// numeric value of the dimension, <amove> is the gap,
+    /// and <adimensions> is the dimension of the given word
     /// <aword>.
     pub fn new_charptr2_real2_handleunitsdimensions(
         aword: &str,
         amean: &str,
         avalue: f64,
         amove: f64,
-        adimensions: &crate::ffi_types::HandleUnitsDimensions,
+        adimensions: &crate::ffi_types::Handle_Units_Dimensions,
     ) -> crate::OwnedPtr<Self> {
         let c_aword = std::ffi::CString::new(aword).unwrap();
         let c_amean = std::ffi::CString::new(amean).unwrap();
@@ -2973,9 +2159,9 @@ impl ShiftedToken {
         }
     }
 
-    /// **Source:** `Units_ShiftedToken.hxx`:61 - `Units_ShiftedToken::Creates()`
-    /// Creates and returns a  token, which is a ShiftedToken.
-    pub fn creates(&self) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsToken> {
+    /// **Source:** `Units_ShiftedToken.hxx`:58 - `Units_ShiftedToken::Creates()`
+    /// Creates and returns a token, which is a ShiftedToken.
+    pub fn creates(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Token> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_ShiftedToken_creates(self as *const Self),
@@ -2983,7 +2169,7 @@ impl ShiftedToken {
         }
     }
 
-    /// **Source:** `Units_ShiftedToken.hxx`:64 - `Units_ShiftedToken::Move()`
+    /// **Source:** `Units_ShiftedToken.hxx`:61 - `Units_ShiftedToken::Move()`
     /// Returns the gap <themove>
     pub fn move_(&self) -> f64 {
         crate::check_result(unsafe {
@@ -2991,9 +2177,9 @@ impl ShiftedToken {
         })
     }
 
-    /// **Source:** `Units_ShiftedToken.hxx`:69 - `Units_ShiftedToken::Multiplied()`
-    /// This  virtual   method  is  called  by the Measurement
-    /// methods,  to   compute  the   measurement    during  a
+    /// **Source:** `Units_ShiftedToken.hxx`:66 - `Units_ShiftedToken::Multiplied()`
+    /// This virtual method is called by the Measurement
+    /// methods, to compute the measurement during a
     /// conversion.
     pub fn multiplied(&self, avalue: f64) -> f64 {
         crate::check_result(unsafe {
@@ -3001,9 +2187,9 @@ impl ShiftedToken {
         })
     }
 
-    /// **Source:** `Units_ShiftedToken.hxx`:75 - `Units_ShiftedToken::Divided()`
-    /// This   virtual  method is  called  by  the Measurement
-    /// methods,   to   compute   the   measurement   during a
+    /// **Source:** `Units_ShiftedToken.hxx`:71 - `Units_ShiftedToken::Divided()`
+    /// This virtual method is called by the Measurement
+    /// methods, to compute the measurement during a
     /// conversion.
     pub fn divided(&self, avalue: f64) -> f64 {
         crate::check_result(unsafe {
@@ -3011,15 +2197,15 @@ impl ShiftedToken {
         })
     }
 
-    /// **Source:** `Units_ShiftedToken.hxx`:77 - `Units_ShiftedToken::Dump()`
+    /// **Source:** `Units_ShiftedToken.hxx`:73 - `Units_ShiftedToken::Dump()`
     pub fn dump(&self, ashift: i32, alevel: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_ShiftedToken_dump(self as *const Self, ashift, alevel)
         })
     }
 
-    /// **Source:** `Units_ShiftedToken.hxx`:80 - `Units_ShiftedToken::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Units_ShiftedToken.hxx`:75 - `Units_ShiftedToken::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::Units_ShiftedToken_dynamic_type(
                 self as *const Self,
@@ -3027,7 +2213,7 @@ impl ShiftedToken {
         }
     }
 
-    /// **Source:** `Units_ShiftedToken.hxx`:80 - `Units_ShiftedToken::get_type_name()`
+    /// **Source:** `Units_ShiftedToken.hxx`:75 - `Units_ShiftedToken::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -3038,8 +2224,8 @@ impl ShiftedToken {
         .into_owned()
     }
 
-    /// **Source:** `Units_ShiftedToken.hxx`:80 - `Units_ShiftedToken::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Units_ShiftedToken.hxx`:75 - `Units_ShiftedToken::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKernel::Units_ShiftedToken_get_type_descriptor(),
@@ -3090,7 +2276,7 @@ impl ShiftedToken {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsShiftedToken> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_ShiftedToken> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_ShiftedToken_to_handle(obj.into_raw()),
@@ -3098,14 +2284,14 @@ impl ShiftedToken {
         }
     }
 
-    /// Inherited: **Source:** `Units_Token.hxx`:75 - `Units_Token::Length()`
+    /// Inherited: **Source:** `Units_Token.hxx`:72 - `Units_Token::Length()`
     pub fn length(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_ShiftedToken_inherited_Length(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Units_Token.hxx`:78 - `Units_Token::Word()`
+    /// Inherited: **Source:** `Units_Token.hxx`:75 - `Units_Token::Word()`
     pub fn word(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3114,7 +2300,7 @@ impl ShiftedToken {
         }
     }
 
-    /// Inherited: **Source:** `Units_Token.hxx`:85 - `Units_Token::Mean()`
+    /// Inherited: **Source:** `Units_Token.hxx`:82 - `Units_Token::Mean()`
     pub fn mean(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3123,15 +2309,15 @@ impl ShiftedToken {
         }
     }
 
-    /// Inherited: **Source:** `Units_Token.hxx`:91 - `Units_Token::Value()`
+    /// Inherited: **Source:** `Units_Token.hxx`:88 - `Units_Token::Value()`
     pub fn value(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_ShiftedToken_inherited_Value(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Units_Token.hxx`:97 - `Units_Token::Dimensions()`
-    pub fn dimensions(&self) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsDimensions> {
+    /// Inherited: **Source:** `Units_Token.hxx`:94 - `Units_Token::Dimensions()`
+    pub fn dimensions(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Dimensions> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_ShiftedToken_inherited_Dimensions(
@@ -3141,8 +2327,8 @@ impl ShiftedToken {
         }
     }
 
-    /// Inherited: **Source:** `Units_Token.hxx`:109 - `Units_Token::Add()`
-    pub fn add(&self, aninteger: i32) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsToken> {
+    /// Inherited: **Source:** `Units_Token.hxx`:106 - `Units_Token::Add()`
+    pub fn add(&self, aninteger: i32) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Token> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_ShiftedToken_inherited_Add(
@@ -3153,11 +2339,11 @@ impl ShiftedToken {
         }
     }
 
-    /// Inherited: **Source:** `Units_Token.hxx`:119 - `Units_Token::Subtract()`
+    /// Inherited: **Source:** `Units_Token.hxx`:116 - `Units_Token::Subtract()`
     pub fn subtract(
         &self,
-        atoken: &crate::ffi_types::HandleUnitsToken,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsToken> {
+        atoken: &crate::ffi_types::Handle_Units_Token,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Token> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_ShiftedToken_inherited_Subtract(
@@ -3168,11 +2354,11 @@ impl ShiftedToken {
         }
     }
 
-    /// Inherited: **Source:** `Units_Token.hxx`:123 - `Units_Token::Multiply()`
+    /// Inherited: **Source:** `Units_Token.hxx`:120 - `Units_Token::Multiply()`
     pub fn multiply(
         &self,
-        atoken: &crate::ffi_types::HandleUnitsToken,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsToken> {
+        atoken: &crate::ffi_types::Handle_Units_Token,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Token> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_ShiftedToken_inherited_Multiply(
@@ -3183,11 +2369,11 @@ impl ShiftedToken {
         }
     }
 
-    /// Inherited: **Source:** `Units_Token.hxx`:133 - `Units_Token::Divide()`
+    /// Inherited: **Source:** `Units_Token.hxx`:129 - `Units_Token::Divide()`
     pub fn divide(
         &self,
-        atoken: &crate::ffi_types::HandleUnitsToken,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsToken> {
+        atoken: &crate::ffi_types::Handle_Units_Token,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Token> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_ShiftedToken_inherited_Divide(
@@ -3198,11 +2384,11 @@ impl ShiftedToken {
         }
     }
 
-    /// Inherited: **Source:** `Units_Token.hxx`:144 - `Units_Token::Power()`
+    /// Inherited: **Source:** `Units_Token.hxx`:139 - `Units_Token::Power()`
     pub fn power(
         &self,
-        atoken: &crate::ffi_types::HandleUnitsToken,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsToken> {
+        atoken: &crate::ffi_types::Handle_Units_Token,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Token> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_ShiftedToken_inherited_Power(
@@ -3213,8 +2399,8 @@ impl ShiftedToken {
         }
     }
 
-    /// Inherited: **Source:** `Units_Token.hxx`:185 - `Units_Token::IsGreaterOrEqual()`
-    pub fn is_greater_or_equal(&self, atoken: &crate::ffi_types::HandleUnitsToken) -> bool {
+    /// Inherited: **Source:** `Units_Token.hxx`:180 - `Units_Token::IsGreaterOrEqual()`
+    pub fn is_greater_or_equal(&self, atoken: &crate::ffi_types::Handle_Units_Token) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_ShiftedToken_inherited_IsGreaterOrEqual(
                 self as *const Self,
@@ -3223,8 +2409,8 @@ impl ShiftedToken {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_ShiftedToken_inherited_IsInstance(
                 self as *const Self,
@@ -3233,8 +2419,8 @@ impl ShiftedToken {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_ShiftedToken_inherited_IsKind(
                 self as *const Self,
@@ -3243,7 +2429,7 @@ impl ShiftedToken {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3257,14 +2443,14 @@ impl ShiftedToken {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_ShiftedToken_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_ShiftedToken_inherited_IncrementRefCounter(
@@ -3273,7 +2459,7 @@ impl ShiftedToken {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_ShiftedToken_inherited_DecrementRefCounter(
@@ -3282,7 +2468,7 @@ impl ShiftedToken {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_ShiftedToken_inherited_Delete(self as *const Self)
@@ -3290,34 +2476,34 @@ impl ShiftedToken {
     }
 }
 
-pub use crate::ffi_types::HandleUnitsShiftedToken;
+pub use crate::ffi_types::Handle_Units_ShiftedToken;
 
-unsafe impl crate::CppDeletable for HandleUnitsShiftedToken {
+unsafe impl crate::CppDeletable for Handle_Units_ShiftedToken {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::HandleUnitsShiftedToken_destructor(ptr);
+            crate::ffi_extern_TKernel::Handle_Units_ShiftedToken_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleUnitsShiftedToken {
+unsafe impl crate::CppCopyable for Handle_Units_ShiftedToken {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKernel::HandleUnitsShiftedToken_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKernel::Handle_Units_ShiftedToken_clone(ptr))
         }
     }
 }
 
-impl HandleUnitsShiftedToken {
+impl Handle_Units_ShiftedToken {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleUnitsShiftedToken_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKernel::Handle_Units_ShiftedToken_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Units_ShiftedToken
     pub fn get(&self) -> &crate::ffi_types::Units_ShiftedToken {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleUnitsShiftedToken_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::Handle_Units_ShiftedToken_get(
                 self as *const Self,
             ))
         }
@@ -3326,17 +2512,17 @@ impl HandleUnitsShiftedToken {
     /// Dereference this Handle to mutably access the underlying Units_ShiftedToken
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Units_ShiftedToken {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleUnitsShiftedToken_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKernel::Handle_Units_ShiftedToken_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<Units_ShiftedToken> to Handle<Units_Token>
-    pub fn to_handle_token(&self) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsToken> {
+    pub fn to_handle_token(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Token> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleUnitsShiftedToken_to_HandleUnitsToken(
+                crate::ffi_extern_TKernel::Handle_Units_ShiftedToken_to_Handle_Units_Token(
                     self as *const Self,
                 ),
             ))
@@ -3346,10 +2532,10 @@ impl HandleUnitsShiftedToken {
     /// Upcast Handle<Units_ShiftedToken> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleUnitsShiftedToken_to_HandleStandardTransient(
+                crate::ffi_extern_TKernel::Handle_Units_ShiftedToken_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -3361,10 +2547,10 @@ impl HandleUnitsShiftedToken {
 // From Units_ShiftedUnit.hxx
 // ========================
 
-/// **Source:** `Units_ShiftedUnit.hxx`:36 - `Units_ShiftedUnit`
-/// This class is useful   to describe  units  with  a
+/// **Source:** `Units_ShiftedUnit.hxx`:33 - `Units_ShiftedUnit`
+/// This class is useful to describe units with a
 /// shifted origin in relation to another unit. A well
-/// known example  is the  Celsius degrees in relation
+/// known example is the Celsius degrees in relation
 /// to Kelvin degrees. The shift of the Celsius origin
 /// is 273.15 Kelvin degrees.
 pub use crate::ffi_types::Units_ShiftedUnit as ShiftedUnit;
@@ -3378,22 +2564,22 @@ unsafe impl crate::CppDeletable for ShiftedUnit {
 }
 
 impl ShiftedUnit {
-    /// **Source:** `Units_ShiftedUnit.hxx`:49 - `Units_ShiftedUnit::Units_ShiftedUnit()`
-    /// Creates  and  returns a  shifted unit.   <aname> is the
-    /// name of the unit,  <asymbol> is the usual abbreviation
-    /// of the unit, <avalue> is the  value in relation to the
-    /// International System of Units, and <amove>  is the gap
+    /// **Source:** `Units_ShiftedUnit.hxx`:46 - `Units_ShiftedUnit::Units_ShiftedUnit()`
+    /// Creates and returns a shifted unit. <aname> is the
+    /// name of the unit, <asymbol> is the usual abbreviation
+    /// of the unit, <avalue> is the value in relation to the
+    /// International System of Units, and <amove> is the gap
     /// in relation to another unit.
     ///
-    /// For  example Celsius   degree   of temperature  is  an
-    /// instance of ShiftedUnit  with <avalue> equal to 1. and
-    /// <amove> equal to 273.15.
+    /// For example Celsius degree of temperature is an
+    /// instance of ShiftedUnit with <avalue> equal to 1.
+    /// and <amove> equal to 273.15.
     pub fn new_charptr2_real2_handleunitsquantity(
         aname: &str,
         asymbol: &str,
         avalue: f64,
         amove: f64,
-        aquantity: &crate::ffi_types::HandleUnitsQuantity,
+        aquantity: &crate::ffi_types::Handle_Units_Quantity,
     ) -> crate::OwnedPtr<Self> {
         let c_aname = std::ffi::CString::new(aname).unwrap();
         let c_asymbol = std::ffi::CString::new(asymbol).unwrap();
@@ -3402,9 +2588,9 @@ impl ShiftedUnit {
         }
     }
 
-    /// **Source:** `Units_ShiftedUnit.hxx`:58 - `Units_ShiftedUnit::Units_ShiftedUnit()`
-    /// Creates  and returns a  unit.  <aname> is  the name of
-    /// the  unit, <asymbol> is the  usual abbreviation of the
+    /// **Source:** `Units_ShiftedUnit.hxx`:55 - `Units_ShiftedUnit::Units_ShiftedUnit()`
+    /// Creates and returns a unit. <aname> is the name of
+    /// the unit, <asymbol> is the usual abbreviation of the
     /// unit.
     pub fn new_charptr2(aname: &str, asymbol: &str) -> crate::OwnedPtr<Self> {
         let c_aname = std::ffi::CString::new(aname).unwrap();
@@ -3419,9 +2605,9 @@ impl ShiftedUnit {
         }
     }
 
-    /// **Source:** `Units_ShiftedUnit.hxx`:62 - `Units_ShiftedUnit::Units_ShiftedUnit()`
-    /// Creates  and returns a  unit.  <aname> is  the name of
-    /// the  unit.
+    /// **Source:** `Units_ShiftedUnit.hxx`:59 - `Units_ShiftedUnit::Units_ShiftedUnit()`
+    /// Creates and returns a unit. <aname> is the name of
+    /// the unit.
     pub fn new_charptr(aname: &str) -> crate::OwnedPtr<Self> {
         let c_aname = std::ffi::CString::new(aname).unwrap();
         unsafe {
@@ -3431,7 +2617,7 @@ impl ShiftedUnit {
         }
     }
 
-    /// **Source:** `Units_ShiftedUnit.hxx`:65 - `Units_ShiftedUnit::Move()`
+    /// **Source:** `Units_ShiftedUnit.hxx`:62 - `Units_ShiftedUnit::Move()`
     /// Sets the field <themove> to <amove>
     pub fn move_real(&mut self, amove: f64) {
         crate::check_void_result(unsafe {
@@ -3439,7 +2625,7 @@ impl ShiftedUnit {
         })
     }
 
-    /// **Source:** `Units_ShiftedUnit.hxx`:68 - `Units_ShiftedUnit::Move()`
+    /// **Source:** `Units_ShiftedUnit.hxx`:65 - `Units_ShiftedUnit::Move()`
     /// Returns the shifted value <themove>.
     pub fn move_(&self) -> f64 {
         crate::check_result(unsafe {
@@ -3447,9 +2633,9 @@ impl ShiftedUnit {
         })
     }
 
-    /// **Source:** `Units_ShiftedUnit.hxx`:71 - `Units_ShiftedUnit::Token()`
+    /// **Source:** `Units_ShiftedUnit.hxx`:68 - `Units_ShiftedUnit::Token()`
     /// This redefined method returns a ShiftedToken object.
-    pub fn token(&self) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsToken> {
+    pub fn token(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Token> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_ShiftedUnit_token(self as *const Self),
@@ -3457,15 +2643,15 @@ impl ShiftedUnit {
         }
     }
 
-    /// **Source:** `Units_ShiftedUnit.hxx`:73 - `Units_ShiftedUnit::Dump()`
+    /// **Source:** `Units_ShiftedUnit.hxx`:70 - `Units_ShiftedUnit::Dump()`
     pub fn dump(&self, ashift: i32, alevel: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_ShiftedUnit_dump(self as *const Self, ashift, alevel)
         })
     }
 
-    /// **Source:** `Units_ShiftedUnit.hxx`:76 - `Units_ShiftedUnit::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Units_ShiftedUnit.hxx`:72 - `Units_ShiftedUnit::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::Units_ShiftedUnit_dynamic_type(
                 self as *const Self,
@@ -3473,7 +2659,7 @@ impl ShiftedUnit {
         }
     }
 
-    /// **Source:** `Units_ShiftedUnit.hxx`:76 - `Units_ShiftedUnit::get_type_name()`
+    /// **Source:** `Units_ShiftedUnit.hxx`:72 - `Units_ShiftedUnit::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -3484,8 +2670,8 @@ impl ShiftedUnit {
         .into_owned()
     }
 
-    /// **Source:** `Units_ShiftedUnit.hxx`:76 - `Units_ShiftedUnit::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Units_ShiftedUnit.hxx`:72 - `Units_ShiftedUnit::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKernel::Units_ShiftedUnit_get_type_descriptor(),
@@ -3536,7 +2722,7 @@ impl ShiftedUnit {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsShiftedUnit> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_ShiftedUnit> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_ShiftedUnit_to_handle(obj.into_raw()),
@@ -3544,7 +2730,7 @@ impl ShiftedUnit {
         }
     }
 
-    /// Inherited: **Source:** `Units_Unit.hxx`:59 - `Units_Unit::Name()`
+    /// Inherited: **Source:** `Units_Unit.hxx`:58 - `Units_Unit::Name()`
     pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3553,15 +2739,15 @@ impl ShiftedUnit {
         }
     }
 
-    /// Inherited: **Source:** `Units_Unit.hxx`:66 - `Units_Unit::Value()`
+    /// Inherited: **Source:** `Units_Unit.hxx`:65 - `Units_Unit::Value()`
     pub fn value(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_ShiftedUnit_inherited_Value(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Units_Unit.hxx`:69 - `Units_Unit::Quantity()`
-    pub fn quantity(&self) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsQuantity> {
+    /// Inherited: **Source:** `Units_Unit.hxx`:68 - `Units_Unit::Quantity()`
+    pub fn quantity(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Quantity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_ShiftedUnit_inherited_Quantity(
@@ -3571,10 +2757,12 @@ impl ShiftedUnit {
         }
     }
 
-    /// Inherited: **Source:** `Units_Unit.hxx`:72 - `Units_Unit::SymbolsSequence()`
+    /// Inherited: **Source:** `Units_Unit.hxx`:71 - `Units_Unit::SymbolsSequence()`
     pub fn symbols_sequence(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfHAsciiString> {
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_ShiftedUnit_inherited_SymbolsSequence(
@@ -3584,8 +2772,8 @@ impl ShiftedUnit {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_ShiftedUnit_inherited_IsInstance(
                 self as *const Self,
@@ -3594,8 +2782,8 @@ impl ShiftedUnit {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_ShiftedUnit_inherited_IsKind(
                 self as *const Self,
@@ -3604,7 +2792,7 @@ impl ShiftedUnit {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3618,14 +2806,14 @@ impl ShiftedUnit {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_ShiftedUnit_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_ShiftedUnit_inherited_IncrementRefCounter(
@@ -3634,7 +2822,7 @@ impl ShiftedUnit {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_ShiftedUnit_inherited_DecrementRefCounter(
@@ -3643,7 +2831,7 @@ impl ShiftedUnit {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_ShiftedUnit_inherited_Delete(self as *const Self)
@@ -3651,32 +2839,34 @@ impl ShiftedUnit {
     }
 }
 
-pub use crate::ffi_types::HandleUnitsShiftedUnit;
+pub use crate::ffi_types::Handle_Units_ShiftedUnit;
 
-unsafe impl crate::CppDeletable for HandleUnitsShiftedUnit {
+unsafe impl crate::CppDeletable for Handle_Units_ShiftedUnit {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::HandleUnitsShiftedUnit_destructor(ptr);
+            crate::ffi_extern_TKernel::Handle_Units_ShiftedUnit_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleUnitsShiftedUnit {
+unsafe impl crate::CppCopyable for Handle_Units_ShiftedUnit {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleUnitsShiftedUnit_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::Handle_Units_ShiftedUnit_clone(ptr))
+        }
     }
 }
 
-impl HandleUnitsShiftedUnit {
+impl Handle_Units_ShiftedUnit {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleUnitsShiftedUnit_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKernel::Handle_Units_ShiftedUnit_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Units_ShiftedUnit
     pub fn get(&self) -> &crate::ffi_types::Units_ShiftedUnit {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleUnitsShiftedUnit_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::Handle_Units_ShiftedUnit_get(
                 self as *const Self,
             ))
         }
@@ -3685,17 +2875,17 @@ impl HandleUnitsShiftedUnit {
     /// Dereference this Handle to mutably access the underlying Units_ShiftedUnit
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Units_ShiftedUnit {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleUnitsShiftedUnit_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKernel::Handle_Units_ShiftedUnit_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<Units_ShiftedUnit> to Handle<Units_Unit>
-    pub fn to_handle_unit(&self) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsUnit> {
+    pub fn to_handle_unit(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Unit> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleUnitsShiftedUnit_to_HandleUnitsUnit(
+                crate::ffi_extern_TKernel::Handle_Units_ShiftedUnit_to_Handle_Units_Unit(
                     self as *const Self,
                 ),
             ))
@@ -3705,10 +2895,10 @@ impl HandleUnitsShiftedUnit {
     /// Upcast Handle<Units_ShiftedUnit> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleUnitsShiftedUnit_to_HandleStandardTransient(
+                crate::ffi_extern_TKernel::Handle_Units_ShiftedUnit_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -3720,7 +2910,7 @@ impl HandleUnitsShiftedUnit {
 // From Units_Token.hxx
 // ========================
 
-/// **Source:** `Units_Token.hxx`:33 - `Units_Token`
+/// **Source:** `Units_Token.hxx`:30 - `Units_Token`
 /// This class defines an elementary word contained in
 /// a Sentence object.
 pub use crate::ffi_types::Units_Token as Token;
@@ -3734,7 +2924,7 @@ unsafe impl crate::CppDeletable for Token {
 }
 
 impl Token {
-    /// **Source:** `Units_Token.hxx`:38 - `Units_Token::Units_Token()`
+    /// **Source:** `Units_Token.hxx`:35 - `Units_Token::Units_Token()`
     /// Creates and returns a empty token.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3744,8 +2934,8 @@ impl Token {
         }
     }
 
-    /// **Source:** `Units_Token.hxx`:42 - `Units_Token::Units_Token()`
-    /// Creates  and returns  a token.   <aword>  is  a string
+    /// **Source:** `Units_Token.hxx`:39 - `Units_Token::Units_Token()`
+    /// Creates and returns a token. <aword> is a string
     /// containing the available word.
     pub fn new_charptr(aword: &str) -> crate::OwnedPtr<Self> {
         let c_aword = std::ffi::CString::new(aword).unwrap();
@@ -3756,11 +2946,11 @@ impl Token {
         }
     }
 
-    /// **Source:** `Units_Token.hxx`:46 - `Units_Token::Units_Token()`
-    /// Creates and returns a  token.  <atoken> is  copied  in
+    /// **Source:** `Units_Token.hxx`:43 - `Units_Token::Units_Token()`
+    /// Creates and returns a token. <atoken> is copied in
     /// the returned token.
     pub fn new_handleunitstoken(
-        atoken: &crate::ffi_types::HandleUnitsToken,
+        atoken: &crate::ffi_types::Handle_Units_Token,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3769,9 +2959,9 @@ impl Token {
         }
     }
 
-    /// **Source:** `Units_Token.hxx`:51 - `Units_Token::Units_Token()`
-    /// Creates  and  returns a  token.   <aword> is  a string
-    /// containing the  available word and  <amean>  gives the
+    /// **Source:** `Units_Token.hxx`:48 - `Units_Token::Units_Token()`
+    /// Creates and returns a token. <aword> is a string
+    /// containing the available word and <amean> gives the
     /// signification of the token.
     pub fn new_charptr2(aword: &str, amean: &str) -> crate::OwnedPtr<Self> {
         let c_aword = std::ffi::CString::new(aword).unwrap();
@@ -3786,9 +2976,9 @@ impl Token {
         }
     }
 
-    /// **Source:** `Units_Token.hxx`:57 - `Units_Token::Units_Token()`
-    /// Creates   and  returns a  token.   <aword> is a string
-    /// containing   the available  word,  <amean> gives   the
+    /// **Source:** `Units_Token.hxx`:54 - `Units_Token::Units_Token()`
+    /// Creates and returns a token. <aword> is a string
+    /// containing the available word, <amean> gives the
     /// signification of the token and <avalue> is the numeric
     /// value of the dimension.
     pub fn new_charptr2_real(aword: &str, amean: &str, avalue: f64) -> crate::OwnedPtr<Self> {
@@ -3805,17 +2995,17 @@ impl Token {
         }
     }
 
-    /// **Source:** `Units_Token.hxx`:66 - `Units_Token::Units_Token()`
-    /// Creates and returns  a  token.  <aword> is   a  string
-    /// containing the   available   word, <amean>   gives the
-    /// signification of  the  token, <avalue> is  the numeric
-    /// value  of the dimension,  and <adimensions>   is   the
+    /// **Source:** `Units_Token.hxx`:63 - `Units_Token::Units_Token()`
+    /// Creates and returns a token. <aword> is a string
+    /// containing the available word, <amean> gives the
+    /// signification of the token, <avalue> is the numeric
+    /// value of the dimension, and <adimensions> is the
     /// dimension of the given word <aword>.
     pub fn new_charptr2_real_handleunitsdimensions(
         aword: &str,
         amean: &str,
         avalue: f64,
-        adimension: &crate::ffi_types::HandleUnitsDimensions,
+        adimension: &crate::ffi_types::Handle_Units_Dimensions,
     ) -> crate::OwnedPtr<Self> {
         let c_aword = std::ffi::CString::new(aword).unwrap();
         let c_amean = std::ffi::CString::new(amean).unwrap();
@@ -3831,9 +3021,9 @@ impl Token {
         }
     }
 
-    /// **Source:** `Units_Token.hxx`:72 - `Units_Token::Creates()`
-    /// Creates and returns a  token, which is a ShiftedToken.
-    pub fn creates(&self) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsToken> {
+    /// **Source:** `Units_Token.hxx`:69 - `Units_Token::Creates()`
+    /// Creates and returns a token, which is a ShiftedToken.
+    pub fn creates(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Token> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Token_creates(self as *const Self),
@@ -3841,7 +3031,7 @@ impl Token {
         }
     }
 
-    /// **Source:** `Units_Token.hxx`:75 - `Units_Token::Length()`
+    /// **Source:** `Units_Token.hxx`:72 - `Units_Token::Length()`
     /// Returns the length of the word.
     pub fn length(&self) -> i32 {
         crate::check_result(unsafe {
@@ -3849,7 +3039,7 @@ impl Token {
         })
     }
 
-    /// **Source:** `Units_Token.hxx`:78 - `Units_Token::Word()`
+    /// **Source:** `Units_Token.hxx`:75 - `Units_Token::Word()`
     /// Returns the string <theword>
     pub fn word(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
@@ -3859,7 +3049,7 @@ impl Token {
         }
     }
 
-    /// **Source:** `Units_Token.hxx`:81 - `Units_Token::Word()`
+    /// **Source:** `Units_Token.hxx`:78 - `Units_Token::Word()`
     /// Sets the field <theword> to <aword>.
     pub fn word_charptr(&mut self, aword: &str) {
         let c_aword = std::ffi::CString::new(aword).unwrap();
@@ -3868,8 +3058,8 @@ impl Token {
         })
     }
 
-    /// **Source:** `Units_Token.hxx`:85 - `Units_Token::Mean()`
-    /// Returns the significance of the word  <theword>, which
+    /// **Source:** `Units_Token.hxx`:82 - `Units_Token::Mean()`
+    /// Returns the significance of the word <theword>, which
     /// is in the field <themean>.
     pub fn mean(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
@@ -3879,7 +3069,7 @@ impl Token {
         }
     }
 
-    /// **Source:** `Units_Token.hxx`:88 - `Units_Token::Mean()`
+    /// **Source:** `Units_Token.hxx`:85 - `Units_Token::Mean()`
     /// Sets the field <themean> to <amean>.
     pub fn mean_charptr(&mut self, amean: &str) {
         let c_amean = std::ffi::CString::new(amean).unwrap();
@@ -3888,7 +3078,7 @@ impl Token {
         })
     }
 
-    /// **Source:** `Units_Token.hxx`:91 - `Units_Token::Value()`
+    /// **Source:** `Units_Token.hxx`:88 - `Units_Token::Value()`
     /// Returns the value stored in the field <thevalue>.
     pub fn value(&self) -> f64 {
         crate::check_result(unsafe {
@@ -3896,7 +3086,7 @@ impl Token {
         })
     }
 
-    /// **Source:** `Units_Token.hxx`:94 - `Units_Token::Value()`
+    /// **Source:** `Units_Token.hxx`:91 - `Units_Token::Value()`
     /// Sets the field <thevalue> to <avalue>.
     pub fn value_real(&mut self, avalue: f64) {
         crate::check_void_result(unsafe {
@@ -3904,9 +3094,9 @@ impl Token {
         })
     }
 
-    /// **Source:** `Units_Token.hxx`:97 - `Units_Token::Dimensions()`
+    /// **Source:** `Units_Token.hxx`:94 - `Units_Token::Dimensions()`
     /// Returns the dimensions of the token <thedimensions>.
-    pub fn dimensions(&self) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsDimensions> {
+    pub fn dimensions(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Dimensions> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Token_dimensions(self as *const Self),
@@ -3914,11 +3104,11 @@ impl Token {
         }
     }
 
-    /// **Source:** `Units_Token.hxx`:100 - `Units_Token::Dimensions()`
+    /// **Source:** `Units_Token.hxx`:97 - `Units_Token::Dimensions()`
     /// Sets the field <thedimensions> to <adimensions>.
     pub fn dimensions_handleunitsdimensions(
         &mut self,
-        adimensions: &crate::ffi_types::HandleUnitsDimensions,
+        adimensions: &crate::ffi_types::Handle_Units_Dimensions,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_Token_dimensions_handleunitsdimensions(
@@ -3928,11 +3118,11 @@ impl Token {
         })
     }
 
-    /// **Source:** `Units_Token.hxx`:107 - `Units_Token::Update()`
-    /// Updates     the  token  <me>    with  the   additional
-    /// signification  <amean> by  concatenation   of the  two
-    /// strings   <themean>    and   <amean>.   If    the  two
-    /// significations are  the same  , an information message
+    /// **Source:** `Units_Token.hxx`:104 - `Units_Token::Update()`
+    /// Updates the token <me> with the additional
+    /// signification <amean> by concatenation of the two
+    /// strings <themean> and <amean>. If the two
+    /// significations are the same, an information message
     /// is written in the output device.
     pub fn update(&mut self, amean: &str) {
         let c_amean = std::ffi::CString::new(amean).unwrap();
@@ -3941,8 +3131,8 @@ impl Token {
         })
     }
 
-    /// **Source:** `Units_Token.hxx`:109 - `Units_Token::Add()`
-    pub fn add_int(&self, aninteger: i32) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsToken> {
+    /// **Source:** `Units_Token.hxx`:106 - `Units_Token::Add()`
+    pub fn add_int(&self, aninteger: i32) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Token> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Token_add_int(self as *const Self, aninteger),
@@ -3950,14 +3140,14 @@ impl Token {
         }
     }
 
-    /// **Source:** `Units_Token.hxx`:114 - `Units_Token::Add()`
-    /// Returns a  token which is  the addition  of  <me>  and
-    /// another token <atoken>. The  addition  is  possible if
+    /// **Source:** `Units_Token.hxx`:111 - `Units_Token::Add()`
+    /// Returns a token which is the addition of <me> and
+    /// another token <atoken>. The addition is possible if
     /// and only if the dimensions are the same.
     pub fn add_handleunitstoken(
         &self,
-        atoken: &crate::ffi_types::HandleUnitsToken,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsToken> {
+        atoken: &crate::ffi_types::Handle_Units_Token,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Token> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Token_add_handleunitstoken(
@@ -3968,14 +3158,14 @@ impl Token {
         }
     }
 
-    /// **Source:** `Units_Token.hxx`:119 - `Units_Token::Subtract()`
-    /// Returns a token  which is the  subtraction of <me> and
+    /// **Source:** `Units_Token.hxx`:116 - `Units_Token::Subtract()`
+    /// Returns a token which is the subtraction of <me> and
     /// another token <atoken>. The subtraction is possible if
     /// and only if the dimensions are the same.
     pub fn subtract(
         &self,
-        atoken: &crate::ffi_types::HandleUnitsToken,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsToken> {
+        atoken: &crate::ffi_types::Handle_Units_Token,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Token> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Token_subtract(self as *const Self, atoken),
@@ -3983,13 +3173,13 @@ impl Token {
         }
     }
 
-    /// **Source:** `Units_Token.hxx`:123 - `Units_Token::Multiply()`
-    /// Returns a  token  which  is the  product of   <me> and
+    /// **Source:** `Units_Token.hxx`:120 - `Units_Token::Multiply()`
+    /// Returns a token which is the product of <me> and
     /// another token <atoken>.
     pub fn multiply(
         &self,
-        atoken: &crate::ffi_types::HandleUnitsToken,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsToken> {
+        atoken: &crate::ffi_types::Handle_Units_Token,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Token> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Token_multiply(self as *const Self, atoken),
@@ -3997,9 +3187,9 @@ impl Token {
         }
     }
 
-    /// **Source:** `Units_Token.hxx`:128 - `Units_Token::Multiplied()`
-    /// This   virtual method is   called  by  the Measurement
-    /// methods,  to  compute    the   measurement   during  a
+    /// **Source:** `Units_Token.hxx`:125 - `Units_Token::Multiplied()`
+    /// This virtual method is called by the Measurement
+    /// methods, to compute the measurement during a
     /// conversion.
     pub fn multiplied(&self, avalue: f64) -> f64 {
         crate::check_result(unsafe {
@@ -4007,13 +3197,13 @@ impl Token {
         })
     }
 
-    /// **Source:** `Units_Token.hxx`:133 - `Units_Token::Divide()`
+    /// **Source:** `Units_Token.hxx`:129 - `Units_Token::Divide()`
     /// Returns a token which is the division of <me> by another
     /// token <atoken>.
     pub fn divide(
         &self,
-        atoken: &crate::ffi_types::HandleUnitsToken,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsToken> {
+        atoken: &crate::ffi_types::Handle_Units_Token,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Token> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Token_divide(self as *const Self, atoken),
@@ -4021,9 +3211,9 @@ impl Token {
         }
     }
 
-    /// **Source:** `Units_Token.hxx`:138 - `Units_Token::Divided()`
-    /// This  virtual  method  is  called by  the  Measurement
-    /// methods,   to   compute   the measurement  during    a
+    /// **Source:** `Units_Token.hxx`:134 - `Units_Token::Divided()`
+    /// This virtual method is called by the Measurement
+    /// methods, to compute the measurement during a
     /// conversion.
     pub fn divided(&self, avalue: f64) -> f64 {
         crate::check_result(unsafe {
@@ -4031,14 +3221,14 @@ impl Token {
         })
     }
 
-    /// **Source:** `Units_Token.hxx`:144 - `Units_Token::Power()`
-    /// Returns a token which is <me> to the power  of another
-    /// token <atoken>.  The computation  is possible  only if
+    /// **Source:** `Units_Token.hxx`:139 - `Units_Token::Power()`
+    /// Returns a token which is <me> to the power of another
+    /// token <atoken>. The computation is possible only if
     /// <atoken> is a dimensionless constant.
     pub fn power_handleunitstoken(
         &self,
-        atoken: &crate::ffi_types::HandleUnitsToken,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsToken> {
+        atoken: &crate::ffi_types::Handle_Units_Token,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Token> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Token_power_handleunitstoken(
@@ -4049,12 +3239,12 @@ impl Token {
         }
     }
 
-    /// **Source:** `Units_Token.hxx`:147 - `Units_Token::Power()`
-    /// Returns a token which is <me> to the power  of <anexponent>.
+    /// **Source:** `Units_Token.hxx`:142 - `Units_Token::Power()`
+    /// Returns a token which is <me> to the power of <anexponent>.
     pub fn power_real(
         &self,
         anexponent: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsToken> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Token> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Token_power_real(self as *const Self, anexponent),
@@ -4062,8 +3252,8 @@ impl Token {
         }
     }
 
-    /// **Source:** `Units_Token.hxx`:151 - `Units_Token::IsEqual()`
-    /// Returns true if  the  field <theword> and  the  string
+    /// **Source:** `Units_Token.hxx`:146 - `Units_Token::IsEqual()`
+    /// Returns true if the field <theword> and the string
     /// <astring> are the same, false otherwise.
     pub fn is_equal_charptr(&self, astring: &str) -> bool {
         let c_astring = std::ffi::CString::new(astring).unwrap();
@@ -4075,11 +3265,11 @@ impl Token {
         })
     }
 
-    /// **Source:** `Units_Token.hxx`:156 - `Units_Token::IsEqual()`
-    /// Returns true  if the  field  <theword> and  the string
-    /// <theword> contained  in  the  token <atoken>  are  the
+    /// **Source:** `Units_Token.hxx`:151 - `Units_Token::IsEqual()`
+    /// Returns true if the field <theword> and the string
+    /// <theword> contained in the token <atoken> are the
     /// same, false otherwise.
-    pub fn is_equal_handleunitstoken(&self, atoken: &crate::ffi_types::HandleUnitsToken) -> bool {
+    pub fn is_equal_handleunitstoken(&self, atoken: &crate::ffi_types::Handle_Units_Token) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_Token_is_equal_handleunitstoken(
                 self as *const Self,
@@ -4088,8 +3278,8 @@ impl Token {
         })
     }
 
-    /// **Source:** `Units_Token.hxx`:160 - `Units_Token::IsNotEqual()`
-    /// Returns false if  the field <theword>  and the  string
+    /// **Source:** `Units_Token.hxx`:155 - `Units_Token::IsNotEqual()`
+    /// Returns false if the field <theword> and the string
     /// <astring> are the same, true otherwise.
     pub fn is_not_equal_charptr(&self, astring: &str) -> bool {
         let c_astring = std::ffi::CString::new(astring).unwrap();
@@ -4101,13 +3291,13 @@ impl Token {
         })
     }
 
-    /// **Source:** `Units_Token.hxx`:165 - `Units_Token::IsNotEqual()`
-    /// Returns false if  the field <theword>  and the  string
-    /// <theword> contained  in the  token  <atoken>  are  the
+    /// **Source:** `Units_Token.hxx`:160 - `Units_Token::IsNotEqual()`
+    /// Returns false if the field <theword> and the string
+    /// <theword> contained in the token <atoken> are the
     /// same, true otherwise.
     pub fn is_not_equal_handleunitstoken(
         &self,
-        atoken: &crate::ffi_types::HandleUnitsToken,
+        atoken: &crate::ffi_types::Handle_Units_Token,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_Token_is_not_equal_handleunitstoken(
@@ -4117,9 +3307,9 @@ impl Token {
         })
     }
 
-    /// **Source:** `Units_Token.hxx`:170 - `Units_Token::IsLessOrEqual()`
-    /// Returns   true  if the   field <theword>  is  strictly
-    /// contained at  the beginning  of the string  <astring>,
+    /// **Source:** `Units_Token.hxx`:165 - `Units_Token::IsLessOrEqual()`
+    /// Returns true if the field <theword> is strictly
+    /// contained at the beginning of the string <astring>,
     /// false otherwise.
     pub fn is_less_or_equal(&self, astring: &str) -> bool {
         let c_astring = std::ffi::CString::new(astring).unwrap();
@@ -4131,9 +3321,9 @@ impl Token {
         })
     }
 
-    /// **Source:** `Units_Token.hxx`:175 - `Units_Token::IsGreater()`
-    /// Returns false  if   the field   <theword> is  strictly
-    /// contained at  the  beginning  of the string <astring>,
+    /// **Source:** `Units_Token.hxx`:170 - `Units_Token::IsGreater()`
+    /// Returns false if the field <theword> is strictly
+    /// contained at the beginning of the string <astring>,
     /// true otherwise.
     pub fn is_greater_charptr(&self, astring: &str) -> bool {
         let c_astring = std::ffi::CString::new(astring).unwrap();
@@ -4145,11 +3335,14 @@ impl Token {
         })
     }
 
-    /// **Source:** `Units_Token.hxx`:180 - `Units_Token::IsGreater()`
-    /// Returns false  if   the field   <theword> is  strictly
-    /// contained at  the  beginning  of the string <astring>,
+    /// **Source:** `Units_Token.hxx`:175 - `Units_Token::IsGreater()`
+    /// Returns false if the field <theword> is strictly
+    /// contained at the beginning of the string <astring>,
     /// true otherwise.
-    pub fn is_greater_handleunitstoken(&self, atoken: &crate::ffi_types::HandleUnitsToken) -> bool {
+    pub fn is_greater_handleunitstoken(
+        &self,
+        atoken: &crate::ffi_types::Handle_Units_Token,
+    ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_Token_is_greater_handleunitstoken(
                 self as *const Self,
@@ -4158,17 +3351,17 @@ impl Token {
         })
     }
 
-    /// **Source:** `Units_Token.hxx`:185 - `Units_Token::IsGreaterOrEqual()`
-    /// Returns true  if  the string <astring>   is   strictly
-    /// contained   at the  beginning  of  the field <theword>
+    /// **Source:** `Units_Token.hxx`:180 - `Units_Token::IsGreaterOrEqual()`
+    /// Returns true if the string <astring> is strictly
+    /// contained at the beginning of the field <theword>
     /// false otherwise.
-    pub fn is_greater_or_equal(&self, atoken: &crate::ffi_types::HandleUnitsToken) -> bool {
+    pub fn is_greater_or_equal(&self, atoken: &crate::ffi_types::Handle_Units_Token) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_Token_is_greater_or_equal(self as *const Self, atoken)
         })
     }
 
-    /// **Source:** `Units_Token.hxx`:188 - `Units_Token::Dump()`
+    /// **Source:** `Units_Token.hxx`:183 - `Units_Token::Dump()`
     /// Useful for debugging
     pub fn dump(&self, ashift: i32, alevel: i32) {
         crate::check_void_result(unsafe {
@@ -4176,8 +3369,8 @@ impl Token {
         })
     }
 
-    /// **Source:** `Units_Token.hxx`:191 - `Units_Token::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Units_Token.hxx`:185 - `Units_Token::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::Units_Token_dynamic_type(
                 self as *const Self,
@@ -4185,7 +3378,7 @@ impl Token {
         }
     }
 
-    /// **Source:** `Units_Token.hxx`:191 - `Units_Token::get_type_name()`
+    /// **Source:** `Units_Token.hxx`:185 - `Units_Token::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -4196,8 +3389,8 @@ impl Token {
         .into_owned()
     }
 
-    /// **Source:** `Units_Token.hxx`:191 - `Units_Token::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Units_Token.hxx`:185 - `Units_Token::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::Units_Token_get_type_descriptor()))
         }
@@ -4224,7 +3417,7 @@ impl Token {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsToken> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Token> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Token_to_handle(obj.into_raw()),
@@ -4232,8 +3425,8 @@ impl Token {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_Token_inherited_IsInstance(
                 self as *const Self,
@@ -4242,14 +3435,14 @@ impl Token {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_Token_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -4263,28 +3456,28 @@ impl Token {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_Token_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_Token_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_Token_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_Token_inherited_Delete(self as *const Self)
@@ -4292,32 +3485,32 @@ impl Token {
     }
 }
 
-pub use crate::ffi_types::HandleUnitsToken;
+pub use crate::ffi_types::Handle_Units_Token;
 
-unsafe impl crate::CppDeletable for HandleUnitsToken {
+unsafe impl crate::CppDeletable for Handle_Units_Token {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::HandleUnitsToken_destructor(ptr);
+            crate::ffi_extern_TKernel::Handle_Units_Token_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleUnitsToken {
+unsafe impl crate::CppCopyable for Handle_Units_Token {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleUnitsToken_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::Handle_Units_Token_clone(ptr)) }
     }
 }
 
-impl HandleUnitsToken {
+impl Handle_Units_Token {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleUnitsToken_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKernel::Handle_Units_Token_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Units_Token
     pub fn get(&self) -> &crate::ffi_types::Units_Token {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleUnitsToken_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::Handle_Units_Token_get(
                 self as *const Self,
             ))
         }
@@ -4326,7 +3519,7 @@ impl HandleUnitsToken {
     /// Dereference this Handle to mutably access the underlying Units_Token
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Units_Token {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleUnitsToken_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKernel::Handle_Units_Token_get_mut(
                 self as *mut Self,
             ))
         }
@@ -4335,10 +3528,10 @@ impl HandleUnitsToken {
     /// Upcast Handle<Units_Token> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleUnitsToken_to_HandleStandardTransient(
+                crate::ffi_extern_TKernel::Handle_Units_Token_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -4350,9 +3543,9 @@ impl HandleUnitsToken {
     /// Returns `None` if the handle does not point to a `Units_ShiftedToken` (or subclass).
     pub fn downcast_to_shifted_token(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleUnitsShiftedToken>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_Units_ShiftedToken>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleUnitsToken_downcast_to_HandleUnitsShiftedToken(
+            crate::ffi_extern_TKernel::Handle_Units_Token_downcast_to_Handle_Units_ShiftedToken(
                 self as *const Self,
             )
         });
@@ -4365,271 +3558,10 @@ impl HandleUnitsToken {
 }
 
 // ========================
-// From Units_TokensSequence.hxx
-// ========================
-
-/// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence`
-pub use crate::ffi_types::Units_TokensSequence as TokensSequence;
-
-unsafe impl crate::CppDeletable for TokensSequence {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::Units_TokensSequence_destructor(ptr);
-        }
-    }
-}
-
-impl TokensSequence {
-    /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::Units_TokensSequence()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Units_TokensSequence_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::Units_TokensSequence()`
-    pub fn new_tkssequence(
-        theOther: &crate::ffi_types::Units_TksSequence,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Units_TokensSequence_ctor_tkssequence(theOther),
-            ))
-        }
-    }
-
-    /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::Sequence()`
-    pub fn sequence(&self) -> &crate::ffi_types::Units_TksSequence {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::Units_TokensSequence_sequence(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::Append()`
-    pub fn append_handleunitstoken(&mut self, theItem: &crate::ffi_types::HandleUnitsToken) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Units_TokensSequence_append_handleunitstoken(
-                self as *mut Self,
-                theItem,
-            )
-        })
-    }
-
-    /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::Append()`
-    pub fn append_tkssequence(&mut self, theSequence: &mut crate::ffi_types::Units_TksSequence) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Units_TokensSequence_append_tkssequence(
-                self as *mut Self,
-                theSequence,
-            )
-        })
-    }
-
-    /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::ChangeSequence()`
-    pub fn change_sequence(&mut self) -> &mut crate::ffi_types::Units_TksSequence {
-        unsafe {
-            &mut *(crate::check_result(
-                crate::ffi_extern_TKernel::Units_TokensSequence_change_sequence(self as *mut Self),
-            ))
-        }
-    }
-
-    /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::Units_TokensSequence_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::Units_TokensSequence_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::Units_TokensSequence_get_type_descriptor(),
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKernel::Units_TokensSequence_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::Units_TokensSequence_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsTokensSequence> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Units_TokensSequence_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Units_TokensSequence_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Units_TokensSequence_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::Units_TokensSequence_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Units_TokensSequence_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Units_TokensSequence_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Units_TokensSequence_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Units_TokensSequence_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleUnitsTokensSequence;
-
-unsafe impl crate::CppDeletable for HandleUnitsTokensSequence {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleUnitsTokensSequence_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleUnitsTokensSequence {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKernel::HandleUnitsTokensSequence_clone(ptr))
-        }
-    }
-}
-
-impl HandleUnitsTokensSequence {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleUnitsTokensSequence_is_null(self as *const Self) }
-    }
-
-    /// Dereference this Handle to access the underlying Units_TokensSequence
-    pub fn get(&self) -> &crate::ffi_types::Units_TokensSequence {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleUnitsTokensSequence_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Units_TokensSequence
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Units_TokensSequence {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleUnitsTokensSequence_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<Units_TokensSequence> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleUnitsTokensSequence_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-}
-
-// ========================
 // From Units_Unit.hxx
 // ========================
 
-/// **Source:** `Units_Unit.hxx`:36 - `Units_Unit`
+/// **Source:** `Units_Unit.hxx`:35 - `Units_Unit`
 /// This class defines an elementary word contained in
 /// a physical quantity.
 pub use crate::ffi_types::Units_Unit as Unit;
@@ -4643,16 +3575,16 @@ unsafe impl crate::CppDeletable for Unit {
 }
 
 impl Unit {
-    /// **Source:** `Units_Unit.hxx`:44 - `Units_Unit::Units_Unit()`
-    /// Creates  and returns a  unit.  <aname> is  the name of
-    /// the  unit, <asymbol> is the  usual abbreviation of the
-    /// unit,  and  <avalue> is the  value in relation to  the
+    /// **Source:** `Units_Unit.hxx`:43 - `Units_Unit::Units_Unit()`
+    /// Creates and returns a unit. <aname> is the name of
+    /// the unit, <asymbol> is the usual abbreviation of the
+    /// unit, and <avalue> is the value in relation to the
     /// International System of Units.
     pub fn new_charptr2_real_handleunitsquantity(
         aname: &str,
         asymbol: &str,
         avalue: f64,
-        aquantity: &crate::ffi_types::HandleUnitsQuantity,
+        aquantity: &crate::ffi_types::Handle_Units_Quantity,
     ) -> crate::OwnedPtr<Self> {
         let c_aname = std::ffi::CString::new(aname).unwrap();
         let c_asymbol = std::ffi::CString::new(asymbol).unwrap();
@@ -4668,9 +3600,9 @@ impl Unit {
         }
     }
 
-    /// **Source:** `Units_Unit.hxx`:52 - `Units_Unit::Units_Unit()`
-    /// Creates  and returns a  unit.  <aname> is  the name of
-    /// the  unit, <asymbol> is the  usual abbreviation of the
+    /// **Source:** `Units_Unit.hxx`:51 - `Units_Unit::Units_Unit()`
+    /// Creates and returns a unit. <aname> is the name of
+    /// the unit, <asymbol> is the usual abbreviation of the
     /// unit.
     pub fn new_charptr2(aname: &str, asymbol: &str) -> crate::OwnedPtr<Self> {
         let c_aname = std::ffi::CString::new(aname).unwrap();
@@ -4685,9 +3617,9 @@ impl Unit {
         }
     }
 
-    /// **Source:** `Units_Unit.hxx`:56 - `Units_Unit::Units_Unit()`
-    /// Creates  and returns a  unit.  <aname> is  the name of
-    /// the  unit.
+    /// **Source:** `Units_Unit.hxx`:55 - `Units_Unit::Units_Unit()`
+    /// Creates and returns a unit. <aname> is the name of
+    /// the unit.
     pub fn new_charptr(aname: &str) -> crate::OwnedPtr<Self> {
         let c_aname = std::ffi::CString::new(aname).unwrap();
         unsafe {
@@ -4697,7 +3629,7 @@ impl Unit {
         }
     }
 
-    /// **Source:** `Units_Unit.hxx`:59 - `Units_Unit::Name()`
+    /// **Source:** `Units_Unit.hxx`:58 - `Units_Unit::Name()`
     /// Returns the name of the unit <thename>
     pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
@@ -4707,7 +3639,7 @@ impl Unit {
         }
     }
 
-    /// **Source:** `Units_Unit.hxx`:62 - `Units_Unit::Symbol()`
+    /// **Source:** `Units_Unit.hxx`:61 - `Units_Unit::Symbol()`
     /// Adds a new symbol <asymbol> attached to <me>.
     pub fn symbol(&mut self, asymbol: &str) {
         let c_asymbol = std::ffi::CString::new(asymbol).unwrap();
@@ -4716,8 +3648,8 @@ impl Unit {
         })
     }
 
-    /// **Source:** `Units_Unit.hxx`:66 - `Units_Unit::Value()`
-    /// Returns the  value in relation  with the International
+    /// **Source:** `Units_Unit.hxx`:65 - `Units_Unit::Value()`
+    /// Returns the value in relation with the International
     /// System of Units.
     pub fn value(&self) -> f64 {
         crate::check_result(unsafe {
@@ -4725,9 +3657,9 @@ impl Unit {
         })
     }
 
-    /// **Source:** `Units_Unit.hxx`:69 - `Units_Unit::Quantity()`
+    /// **Source:** `Units_Unit.hxx`:68 - `Units_Unit::Quantity()`
     /// Returns <thequantity> contained in <me>.
-    pub fn quantity(&self) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsQuantity> {
+    pub fn quantity(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Quantity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Unit_quantity(self as *const Self),
@@ -4735,11 +3667,13 @@ impl Unit {
         }
     }
 
-    /// **Source:** `Units_Unit.hxx`:72 - `Units_Unit::SymbolsSequence()`
+    /// **Source:** `Units_Unit.hxx`:71 - `Units_Unit::SymbolsSequence()`
     /// Returns the sequence of symbols <thesymbolssequence>
     pub fn symbols_sequence(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfHAsciiString> {
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Unit_symbols_sequence(self as *const Self),
@@ -4747,7 +3681,7 @@ impl Unit {
         }
     }
 
-    /// **Source:** `Units_Unit.hxx`:75 - `Units_Unit::Value()`
+    /// **Source:** `Units_Unit.hxx`:74 - `Units_Unit::Value()`
     /// Sets the value <avalue> to <me>.
     pub fn value_real(&mut self, avalue: f64) {
         crate::check_void_result(unsafe {
@@ -4755,11 +3689,11 @@ impl Unit {
         })
     }
 
-    /// **Source:** `Units_Unit.hxx`:78 - `Units_Unit::Quantity()`
+    /// **Source:** `Units_Unit.hxx`:77 - `Units_Unit::Quantity()`
     /// Sets the physical Quantity <aquantity> to <me>.
     pub fn quantity_handleunitsquantity(
         &mut self,
-        aquantity: &crate::ffi_types::HandleUnitsQuantity,
+        aquantity: &crate::ffi_types::Handle_Units_Quantity,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_Unit_quantity_handleunitsquantity(
@@ -4769,9 +3703,9 @@ impl Unit {
         })
     }
 
-    /// **Source:** `Units_Unit.hxx`:81 - `Units_Unit::Token()`
+    /// **Source:** `Units_Unit.hxx`:80 - `Units_Unit::Token()`
     /// Starting with <me>, returns a new Token object.
-    pub fn token(&self) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsToken> {
+    pub fn token(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Token> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Unit_token(self as *const Self),
@@ -4779,9 +3713,9 @@ impl Unit {
         }
     }
 
-    /// **Source:** `Units_Unit.hxx`:86 - `Units_Unit::IsEqual()`
-    /// Compares all the symbols  linked  within <me> with the
-    /// name of <atoken>,  and returns  True  if there is  one
+    /// **Source:** `Units_Unit.hxx`:85 - `Units_Unit::IsEqual()`
+    /// Compares all the symbols linked within <me> with the
+    /// name of <atoken>, and returns True if there is one
     /// symbol equal to the name, False otherwise.
     pub fn is_equal(&self, astring: &str) -> bool {
         let c_astring = std::ffi::CString::new(astring).unwrap();
@@ -4790,7 +3724,7 @@ impl Unit {
         })
     }
 
-    /// **Source:** `Units_Unit.hxx`:89 - `Units_Unit::Dump()`
+    /// **Source:** `Units_Unit.hxx`:88 - `Units_Unit::Dump()`
     /// Useful for debugging
     pub fn dump(&self, ashift: i32, alevel: i32) {
         crate::check_void_result(unsafe {
@@ -4798,8 +3732,8 @@ impl Unit {
         })
     }
 
-    /// **Source:** `Units_Unit.hxx`:92 - `Units_Unit::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Units_Unit.hxx`:90 - `Units_Unit::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::Units_Unit_dynamic_type(
                 self as *const Self,
@@ -4807,7 +3741,7 @@ impl Unit {
         }
     }
 
-    /// **Source:** `Units_Unit.hxx`:92 - `Units_Unit::get_type_name()`
+    /// **Source:** `Units_Unit.hxx`:90 - `Units_Unit::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -4818,8 +3752,8 @@ impl Unit {
         .into_owned()
     }
 
-    /// **Source:** `Units_Unit.hxx`:92 - `Units_Unit::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Units_Unit.hxx`:90 - `Units_Unit::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::Units_Unit_get_type_descriptor()))
         }
@@ -4846,7 +3780,7 @@ impl Unit {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsUnit> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Unit> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Unit_to_handle(obj.into_raw()),
@@ -4854,21 +3788,21 @@ impl Unit {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_Unit_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_Unit_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -4882,28 +3816,28 @@ impl Unit {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_Unit_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_Unit_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_Unit_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_Unit_inherited_Delete(self as *const Self)
@@ -4911,32 +3845,32 @@ impl Unit {
     }
 }
 
-pub use crate::ffi_types::HandleUnitsUnit;
+pub use crate::ffi_types::Handle_Units_Unit;
 
-unsafe impl crate::CppDeletable for HandleUnitsUnit {
+unsafe impl crate::CppDeletable for Handle_Units_Unit {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::HandleUnitsUnit_destructor(ptr);
+            crate::ffi_extern_TKernel::Handle_Units_Unit_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleUnitsUnit {
+unsafe impl crate::CppCopyable for Handle_Units_Unit {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleUnitsUnit_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::Handle_Units_Unit_clone(ptr)) }
     }
 }
 
-impl HandleUnitsUnit {
+impl Handle_Units_Unit {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleUnitsUnit_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKernel::Handle_Units_Unit_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Units_Unit
     pub fn get(&self) -> &crate::ffi_types::Units_Unit {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleUnitsUnit_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::Handle_Units_Unit_get(
                 self as *const Self,
             ))
         }
@@ -4945,7 +3879,7 @@ impl HandleUnitsUnit {
     /// Dereference this Handle to mutably access the underlying Units_Unit
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Units_Unit {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleUnitsUnit_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKernel::Handle_Units_Unit_get_mut(
                 self as *mut Self,
             ))
         }
@@ -4954,10 +3888,10 @@ impl HandleUnitsUnit {
     /// Upcast Handle<Units_Unit> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleUnitsUnit_to_HandleStandardTransient(
+                crate::ffi_extern_TKernel::Handle_Units_Unit_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -4969,9 +3903,9 @@ impl HandleUnitsUnit {
     /// Returns `None` if the handle does not point to a `Units_ShiftedUnit` (or subclass).
     pub fn downcast_to_shifted_unit(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleUnitsShiftedUnit>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_Units_ShiftedUnit>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleUnitsUnit_downcast_to_HandleUnitsShiftedUnit(
+            crate::ffi_extern_TKernel::Handle_Units_Unit_downcast_to_Handle_Units_ShiftedUnit(
                 self as *const Self,
             )
         });
@@ -4987,8 +3921,8 @@ impl HandleUnitsUnit {
 // From Units_UnitSentence.hxx
 // ========================
 
-/// **Source:** `Units_UnitSentence.hxx`:31 - `Units_UnitSentence`
-/// This   class describes   all    the  facilities to
+/// **Source:** `Units_UnitSentence.hxx`:33 - `Units_UnitSentence`
+/// This class describes all the facilities to
 /// manipulate and compute units contained in a string
 /// expression.
 pub use crate::ffi_types::Units_UnitSentence as UnitSentence;
@@ -5002,9 +3936,9 @@ unsafe impl crate::CppDeletable for UnitSentence {
 }
 
 impl UnitSentence {
-    /// **Source:** `Units_UnitSentence.hxx`:39 - `Units_UnitSentence::Units_UnitSentence()`
-    /// Creates   and   returns a   UnitSentence.   The string
-    /// <astring> describes in natural  language the  unit  or
+    /// **Source:** `Units_UnitSentence.hxx`:41 - `Units_UnitSentence::Units_UnitSentence()`
+    /// Creates and returns a UnitSentence. The string
+    /// <astring> describes in natural language the unit or
     /// the composed unit to be analysed.
     pub fn new_charptr(astring: &str) -> crate::OwnedPtr<Self> {
         let c_astring = std::ffi::CString::new(astring).unwrap();
@@ -5015,25 +3949,25 @@ impl UnitSentence {
         }
     }
 
-    /// **Source:** `Units_UnitSentence.hxx`:46 - `Units_UnitSentence::Units_UnitSentence()`
-    /// Creates  and returns    a  UnitSentence.  The   string
+    /// **Source:** `Units_UnitSentence.hxx`:48 - `Units_UnitSentence::Units_UnitSentence()`
+    /// Creates and returns a UnitSentence. The string
     /// <astring> describes in natural language the unit to be
-    /// analysed.   The    sequence     of physical quantities
-    /// <asequenceofquantities>   describes    the   available
+    /// analysed. The sequence of physical quantities
+    /// <asequenceofquantities> describes the available
     /// dictionary of units you want to use.
-    pub fn new_charptr_handleunitsquantitiessequence(
+    pub fn new_charptr_handlencollectionhsequenceopencascadehandleunitsquantity(
         astring: &str,
-        aquantitiessequence: &crate::ffi_types::HandleUnitsQuantitiesSequence,
+        aquantitiessequence: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Units_Quantity,
     ) -> crate::OwnedPtr<Self> {
         let c_astring = std::ffi::CString::new(astring).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::Units_UnitSentence_ctor_charptr_handleunitsquantitiessequence(c_astring.as_ptr(), aquantitiessequence)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::Units_UnitSentence_ctor_charptr_handlencollectionhsequenceopencascadehandleunitsquantity(c_astring.as_ptr(), aquantitiessequence)))
         }
     }
 
-    /// **Source:** `Units_UnitSentence.hxx`:52 - `Units_UnitSentence::Analyse()`
-    /// Analyzes   the sequence  of   tokens  created  by  the
-    /// constructor to  find  the true significance   of  each
+    /// **Source:** `Units_UnitSentence.hxx`:55 - `Units_UnitSentence::Analyse()`
+    /// Analyzes the sequence of tokens created by the
+    /// constructor to find the true significance of each
     /// token.
     pub fn analyse(&mut self) {
         crate::check_void_result(unsafe {
@@ -5041,13 +3975,13 @@ impl UnitSentence {
         })
     }
 
-    /// **Source:** `Units_UnitSentence.hxx`:57 - `Units_UnitSentence::SetUnits()`
-    /// For each token which  represents a unit, finds  in the
-    /// sequence    of    physical   quantities      all   the
+    /// **Source:** `Units_UnitSentence.hxx`:60 - `Units_UnitSentence::SetUnits()`
+    /// For each token which represents a unit, finds in the
+    /// sequence of physical quantities all the
     /// characteristics of the unit found.
     pub fn set_units(
         &mut self,
-        aquantitiessequence: &crate::ffi_types::HandleUnitsQuantitiesSequence,
+        aquantitiessequence: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Units_Quantity,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_UnitSentence_set_units(
@@ -5077,15 +4011,19 @@ impl UnitSentence {
         }
     }
 
-    /// Inherited: **Source:** `Units_Sentence.hxx`:42 - `Units_Sentence::SetConstants()`
+    /// Inherited: **Source:** `Units_Sentence.hxx`:44 - `Units_Sentence::SetConstants()`
     pub fn set_constants(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_UnitSentence_inherited_SetConstants(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Units_Sentence.hxx`:45 - `Units_Sentence::Sequence()`
-    pub fn sequence(&self) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsTokensSequence> {
+    /// Inherited: **Source:** `Units_Sentence.hxx`:47 - `Units_Sentence::Sequence()`
+    pub fn sequence(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Units_Token,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_UnitSentence_inherited_Sequence(
@@ -5095,8 +4033,8 @@ impl UnitSentence {
         }
     }
 
-    /// Inherited: **Source:** `Units_Sentence.hxx`:52 - `Units_Sentence::Evaluate()`
-    pub fn evaluate(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsToken> {
+    /// Inherited: **Source:** `Units_Sentence.hxx`:55 - `Units_Sentence::Evaluate()`
+    pub fn evaluate(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Token> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_UnitSentence_inherited_Evaluate(self as *mut Self),
@@ -5104,14 +4042,14 @@ impl UnitSentence {
         }
     }
 
-    /// Inherited: **Source:** `Units_Sentence.hxx`:56 - `Units_Sentence::IsDone()`
+    /// Inherited: **Source:** `Units_Sentence.hxx`:59 - `Units_Sentence::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_UnitSentence_inherited_IsDone(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Units_Sentence.hxx`:59 - `Units_Sentence::Dump()`
+    /// Inherited: **Source:** `Units_Sentence.hxx`:62 - `Units_Sentence::Dump()`
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_UnitSentence_inherited_Dump(self as *const Self)
@@ -5123,8 +4061,8 @@ impl UnitSentence {
 // From Units_UnitsDictionary.hxx
 // ========================
 
-/// **Source:** `Units_UnitsDictionary.hxx`:29 - `Units_UnitsDictionary`
-/// This class creates  a dictionary of all  the units
+/// **Source:** `Units_UnitsDictionary.hxx`:28 - `Units_UnitsDictionary`
+/// This class creates a dictionary of all the units
 /// you want to know.
 pub use crate::ffi_types::Units_UnitsDictionary as UnitsDictionary;
 
@@ -5137,7 +4075,7 @@ unsafe impl crate::CppDeletable for UnitsDictionary {
 }
 
 impl UnitsDictionary {
-    /// **Source:** `Units_UnitsDictionary.hxx`:34 - `Units_UnitsDictionary::Units_UnitsDictionary()`
+    /// **Source:** `Units_UnitsDictionary.hxx`:33 - `Units_UnitsDictionary::Units_UnitsDictionary()`
     /// Returns an empty instance of UnitsDictionary.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -5147,9 +4085,9 @@ impl UnitsDictionary {
         }
     }
 
-    /// **Source:** `Units_UnitsDictionary.hxx`:39 - `Units_UnitsDictionary::Creates()`
-    /// Returns a  UnitsDictionary object  which  contains the
-    /// sequence  of all   the  units  you want to   consider,
+    /// **Source:** `Units_UnitsDictionary.hxx`:38 - `Units_UnitsDictionary::Creates()`
+    /// Returns a UnitsDictionary object which contains the
+    /// sequence of all the units you want to consider,
     /// physical quantity by physical quantity.
     pub fn creates(&mut self) {
         crate::check_void_result(unsafe {
@@ -5157,10 +4095,14 @@ impl UnitsDictionary {
         })
     }
 
-    /// **Source:** `Units_UnitsDictionary.hxx`:43 - `Units_UnitsDictionary::Sequence()`
-    /// Returns   the  head   of   the  sequence  of  physical
+    /// **Source:** `Units_UnitsDictionary.hxx`:42 - `Units_UnitsDictionary::Sequence()`
+    /// Returns the head of the sequence of physical
     /// quantities.
-    pub fn sequence(&self) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsQuantitiesSequence> {
+    pub fn sequence(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Units_Quantity,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_UnitsDictionary_sequence(self as *const Self),
@@ -5168,7 +4110,7 @@ impl UnitsDictionary {
         }
     }
 
-    /// **Source:** `Units_UnitsDictionary.hxx`:46 - `Units_UnitsDictionary::ActiveUnit()`
+    /// **Source:** `Units_UnitsDictionary.hxx`:45 - `Units_UnitsDictionary::ActiveUnit()`
     /// Returns for <aquantity> the active unit.
     pub fn active_unit(
         &self,
@@ -5185,10 +4127,10 @@ impl UnitsDictionary {
         }
     }
 
-    /// **Source:** `Units_UnitsDictionary.hxx`:52 - `Units_UnitsDictionary::Dump()`
-    /// Dumps only  the sequence   of  quantities without  the
-    /// units  if  <alevel> is  equal  to zero,  and  for each
-    /// quantity all the units stored if <alevel>  is equal to
+    /// **Source:** `Units_UnitsDictionary.hxx`:51 - `Units_UnitsDictionary::Dump()`
+    /// Dumps only the sequence of quantities without the
+    /// units if <alevel> is equal to zero, and for each
+    /// quantity all the units stored if <alevel> is equal to
     /// one.
     pub fn dump_int(&self, alevel: i32) {
         crate::check_void_result(unsafe {
@@ -5196,12 +4138,12 @@ impl UnitsDictionary {
         })
     }
 
-    /// **Source:** `Units_UnitsDictionary.hxx`:56 - `Units_UnitsDictionary::Dump()`
-    /// Dumps  for a     designated  physical       dimensions
+    /// **Source:** `Units_UnitsDictionary.hxx`:55 - `Units_UnitsDictionary::Dump()`
+    /// Dumps for a designated physical dimensions
     /// <adimensions> all the previously stored units.
     pub fn dump_handleunitsdimensions(
         &self,
-        adimensions: &crate::ffi_types::HandleUnitsDimensions,
+        adimensions: &crate::ffi_types::Handle_Units_Dimensions,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_UnitsDictionary_dump_handleunitsdimensions(
@@ -5211,8 +4153,8 @@ impl UnitsDictionary {
         })
     }
 
-    /// **Source:** `Units_UnitsDictionary.hxx`:58 - `Units_UnitsDictionary::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Units_UnitsDictionary.hxx`:57 - `Units_UnitsDictionary::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::Units_UnitsDictionary_dynamic_type(
                 self as *const Self,
@@ -5220,7 +4162,7 @@ impl UnitsDictionary {
         }
     }
 
-    /// **Source:** `Units_UnitsDictionary.hxx`:58 - `Units_UnitsDictionary::get_type_name()`
+    /// **Source:** `Units_UnitsDictionary.hxx`:57 - `Units_UnitsDictionary::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -5231,8 +4173,8 @@ impl UnitsDictionary {
         .into_owned()
     }
 
-    /// **Source:** `Units_UnitsDictionary.hxx`:58 - `Units_UnitsDictionary::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Units_UnitsDictionary.hxx`:57 - `Units_UnitsDictionary::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKernel::Units_UnitsDictionary_get_type_descriptor(),
@@ -5265,7 +4207,7 @@ impl UnitsDictionary {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsUnitsDictionary> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_UnitsDictionary> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_UnitsDictionary_to_handle(obj.into_raw()),
@@ -5273,8 +4215,8 @@ impl UnitsDictionary {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_UnitsDictionary_inherited_IsInstance(
                 self as *const Self,
@@ -5283,8 +4225,8 @@ impl UnitsDictionary {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_UnitsDictionary_inherited_IsKind(
                 self as *const Self,
@@ -5293,7 +4235,7 @@ impl UnitsDictionary {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -5307,7 +4249,7 @@ impl UnitsDictionary {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_UnitsDictionary_inherited_GetRefCount(
@@ -5316,7 +4258,7 @@ impl UnitsDictionary {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_UnitsDictionary_inherited_IncrementRefCounter(
@@ -5325,7 +4267,7 @@ impl UnitsDictionary {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_UnitsDictionary_inherited_DecrementRefCounter(
@@ -5334,7 +4276,7 @@ impl UnitsDictionary {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_UnitsDictionary_inherited_Delete(self as *const Self)
@@ -5342,36 +4284,36 @@ impl UnitsDictionary {
     }
 }
 
-pub use crate::ffi_types::HandleUnitsUnitsDictionary;
+pub use crate::ffi_types::Handle_Units_UnitsDictionary;
 
-unsafe impl crate::CppDeletable for HandleUnitsUnitsDictionary {
+unsafe impl crate::CppDeletable for Handle_Units_UnitsDictionary {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::HandleUnitsUnitsDictionary_destructor(ptr);
+            crate::ffi_extern_TKernel::Handle_Units_UnitsDictionary_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleUnitsUnitsDictionary {
+unsafe impl crate::CppCopyable for Handle_Units_UnitsDictionary {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKernel::HandleUnitsUnitsDictionary_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKernel::Handle_Units_UnitsDictionary_clone(ptr))
         }
     }
 }
 
-impl HandleUnitsUnitsDictionary {
+impl Handle_Units_UnitsDictionary {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKernel::HandleUnitsUnitsDictionary_is_null(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Units_UnitsDictionary_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying Units_UnitsDictionary
     pub fn get(&self) -> &crate::ffi_types::Units_UnitsDictionary {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleUnitsUnitsDictionary_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::Handle_Units_UnitsDictionary_get(
                 self as *const Self,
             ))
         }
@@ -5381,7 +4323,7 @@ impl HandleUnitsUnitsDictionary {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Units_UnitsDictionary {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKernel::HandleUnitsUnitsDictionary_get_mut(self as *mut Self),
+                crate::ffi_extern_TKernel::Handle_Units_UnitsDictionary_get_mut(self as *mut Self),
             )
         }
     }
@@ -5389,13 +4331,9 @@ impl HandleUnitsUnitsDictionary {
     /// Upcast Handle<Units_UnitsDictionary> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleUnitsUnitsDictionary_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::Handle_Units_UnitsDictionary_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -5404,10 +4342,10 @@ impl HandleUnitsUnitsDictionary {
 // From Units_UnitsLexicon.hxx
 // ========================
 
-/// **Source:** `Units_UnitsLexicon.hxx`:35 - `Units_UnitsLexicon`
+/// **Source:** `Units_UnitsLexicon.hxx`:32 - `Units_UnitsLexicon`
 /// This class defines a lexicon useful to analyse and
-/// recognize the different key  words  included  in a
-/// sentence. The  lexicon is stored  in a sequence of
+/// recognize the different key words included in a
+/// sentence. The lexicon is stored in a sequence of
 /// tokens.
 pub use crate::ffi_types::Units_UnitsLexicon as UnitsLexicon;
 
@@ -5420,7 +4358,7 @@ unsafe impl crate::CppDeletable for UnitsLexicon {
 }
 
 impl UnitsLexicon {
-    /// **Source:** `Units_UnitsLexicon.hxx`:40 - `Units_UnitsLexicon::Units_UnitsLexicon()`
+    /// **Source:** `Units_UnitsLexicon.hxx`:37 - `Units_UnitsLexicon::Units_UnitsLexicon()`
     /// Returns an empty instance of UnitsLexicon
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -5430,9 +4368,9 @@ impl UnitsLexicon {
         }
     }
 
-    /// **Source:** `Units_UnitsLexicon.hxx`:45 - `Units_UnitsLexicon::Creates()`
-    /// Reads  the files  <afilename1>  and  <afilename2>   to
-    /// create     a   sequence     of    tokens   stored   in
+    /// **Source:** `Units_UnitsLexicon.hxx`:42 - `Units_UnitsLexicon::Creates()`
+    /// Reads the files <afilename1> and <afilename2> to
+    /// create a sequence of tokens stored in
     /// <thesequenceoftokens>.
     pub fn creates(&mut self, amode: bool) {
         crate::check_void_result(unsafe {
@@ -5440,7 +4378,7 @@ impl UnitsLexicon {
         })
     }
 
-    /// **Source:** `Units_UnitsLexicon.hxx`:48 - `Units_UnitsLexicon::Dump()`
+    /// **Source:** `Units_UnitsLexicon.hxx`:45 - `Units_UnitsLexicon::Dump()`
     /// Useful for debugging.
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
@@ -5448,8 +4386,8 @@ impl UnitsLexicon {
         })
     }
 
-    /// **Source:** `Units_UnitsLexicon.hxx`:50 - `Units_UnitsLexicon::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Units_UnitsLexicon.hxx`:47 - `Units_UnitsLexicon::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::Units_UnitsLexicon_dynamic_type(
                 self as *const Self,
@@ -5457,7 +4395,7 @@ impl UnitsLexicon {
         }
     }
 
-    /// **Source:** `Units_UnitsLexicon.hxx`:50 - `Units_UnitsLexicon::get_type_name()`
+    /// **Source:** `Units_UnitsLexicon.hxx`:47 - `Units_UnitsLexicon::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -5468,8 +4406,8 @@ impl UnitsLexicon {
         .into_owned()
     }
 
-    /// **Source:** `Units_UnitsLexicon.hxx`:50 - `Units_UnitsLexicon::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Units_UnitsLexicon.hxx`:47 - `Units_UnitsLexicon::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKernel::Units_UnitsLexicon_get_type_descriptor(),
@@ -5522,7 +4460,7 @@ impl UnitsLexicon {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsUnitsLexicon> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_UnitsLexicon> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_UnitsLexicon_to_handle(obj.into_raw()),
@@ -5530,8 +4468,12 @@ impl UnitsLexicon {
         }
     }
 
-    /// Inherited: **Source:** `Units_Lexicon.hxx`:49 - `Units_Lexicon::Sequence()`
-    pub fn sequence(&self) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsTokensSequence> {
+    /// Inherited: **Source:** `Units_Lexicon.hxx`:48 - `Units_Lexicon::Sequence()`
+    pub fn sequence(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Units_Token,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_UnitsLexicon_inherited_Sequence(
@@ -5541,8 +4483,8 @@ impl UnitsLexicon {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_UnitsLexicon_inherited_IsInstance(
                 self as *const Self,
@@ -5551,8 +4493,8 @@ impl UnitsLexicon {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_UnitsLexicon_inherited_IsKind(
                 self as *const Self,
@@ -5561,7 +4503,7 @@ impl UnitsLexicon {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -5575,14 +4517,14 @@ impl UnitsLexicon {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_UnitsLexicon_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_UnitsLexicon_inherited_IncrementRefCounter(
@@ -5591,7 +4533,7 @@ impl UnitsLexicon {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_UnitsLexicon_inherited_DecrementRefCounter(
@@ -5600,7 +4542,7 @@ impl UnitsLexicon {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_UnitsLexicon_inherited_Delete(self as *const Self)
@@ -5608,34 +4550,34 @@ impl UnitsLexicon {
     }
 }
 
-pub use crate::ffi_types::HandleUnitsUnitsLexicon;
+pub use crate::ffi_types::Handle_Units_UnitsLexicon;
 
-unsafe impl crate::CppDeletable for HandleUnitsUnitsLexicon {
+unsafe impl crate::CppDeletable for Handle_Units_UnitsLexicon {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::HandleUnitsUnitsLexicon_destructor(ptr);
+            crate::ffi_extern_TKernel::Handle_Units_UnitsLexicon_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleUnitsUnitsLexicon {
+unsafe impl crate::CppCopyable for Handle_Units_UnitsLexicon {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKernel::HandleUnitsUnitsLexicon_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKernel::Handle_Units_UnitsLexicon_clone(ptr))
         }
     }
 }
 
-impl HandleUnitsUnitsLexicon {
+impl Handle_Units_UnitsLexicon {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleUnitsUnitsLexicon_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKernel::Handle_Units_UnitsLexicon_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Units_UnitsLexicon
     pub fn get(&self) -> &crate::ffi_types::Units_UnitsLexicon {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleUnitsUnitsLexicon_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::Handle_Units_UnitsLexicon_get(
                 self as *const Self,
             ))
         }
@@ -5644,17 +4586,17 @@ impl HandleUnitsUnitsLexicon {
     /// Dereference this Handle to mutably access the underlying Units_UnitsLexicon
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Units_UnitsLexicon {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleUnitsUnitsLexicon_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKernel::Handle_Units_UnitsLexicon_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<Units_UnitsLexicon> to Handle<Units_Lexicon>
-    pub fn to_handle_lexicon(&self) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsLexicon> {
+    pub fn to_handle_lexicon(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Lexicon> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleUnitsUnitsLexicon_to_HandleUnitsLexicon(
+                crate::ffi_extern_TKernel::Handle_Units_UnitsLexicon_to_Handle_Units_Lexicon(
                     self as *const Self,
                 ),
             ))
@@ -5664,271 +4606,10 @@ impl HandleUnitsUnitsLexicon {
     /// Upcast Handle<Units_UnitsLexicon> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleUnitsUnitsLexicon_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-}
-
-// ========================
-// From Units_UnitsSequence.hxx
-// ========================
-
-/// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence`
-pub use crate::ffi_types::Units_UnitsSequence as UnitsSequence;
-
-unsafe impl crate::CppDeletable for UnitsSequence {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::Units_UnitsSequence_destructor(ptr);
-        }
-    }
-}
-
-impl UnitsSequence {
-    /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::Units_UnitsSequence()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Units_UnitsSequence_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::Units_UnitsSequence()`
-    pub fn new_utssequence(
-        theOther: &crate::ffi_types::Units_UtsSequence,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Units_UnitsSequence_ctor_utssequence(theOther),
-            ))
-        }
-    }
-
-    /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::Sequence()`
-    pub fn sequence(&self) -> &crate::ffi_types::Units_UtsSequence {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::Units_UnitsSequence_sequence(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::Append()`
-    pub fn append_handleunitsunit(&mut self, theItem: &crate::ffi_types::HandleUnitsUnit) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Units_UnitsSequence_append_handleunitsunit(
-                self as *mut Self,
-                theItem,
-            )
-        })
-    }
-
-    /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::Append()`
-    pub fn append_utssequence(&mut self, theSequence: &mut crate::ffi_types::Units_UtsSequence) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Units_UnitsSequence_append_utssequence(
-                self as *mut Self,
-                theSequence,
-            )
-        })
-    }
-
-    /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::ChangeSequence()`
-    pub fn change_sequence(&mut self) -> &mut crate::ffi_types::Units_UtsSequence {
-        unsafe {
-            &mut *(crate::check_result(
-                crate::ffi_extern_TKernel::Units_UnitsSequence_change_sequence(self as *mut Self),
-            ))
-        }
-    }
-
-    /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::Units_UnitsSequence_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::Units_UnitsSequence_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::Units_UnitsSequence_get_type_descriptor(),
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKernel::Units_UnitsSequence_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::Units_UnitsSequence_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsUnitsSequence> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Units_UnitsSequence_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Units_UnitsSequence_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Units_UnitsSequence_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::Units_UnitsSequence_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Units_UnitsSequence_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Units_UnitsSequence_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Units_UnitsSequence_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Units_UnitsSequence_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleUnitsUnitsSequence;
-
-unsafe impl crate::CppDeletable for HandleUnitsUnitsSequence {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleUnitsUnitsSequence_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleUnitsUnitsSequence {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKernel::HandleUnitsUnitsSequence_clone(ptr))
-        }
-    }
-}
-
-impl HandleUnitsUnitsSequence {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleUnitsUnitsSequence_is_null(self as *const Self) }
-    }
-
-    /// Dereference this Handle to access the underlying Units_UnitsSequence
-    pub fn get(&self) -> &crate::ffi_types::Units_UnitsSequence {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleUnitsUnitsSequence_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Units_UnitsSequence
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Units_UnitsSequence {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleUnitsUnitsSequence_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<Units_UnitsSequence> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleUnitsUnitsSequence_to_HandleStandardTransient(
+                crate::ffi_extern_TKernel::Handle_Units_UnitsLexicon_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -5940,8 +4621,8 @@ impl HandleUnitsUnitsSequence {
 // From Units_UnitsSystem.hxx
 // ========================
 
-/// **Source:** `Units_UnitsSystem.hxx`:33 - `Units_UnitsSystem`
-/// This class  allows  the  user  to  define his  own
+/// **Source:** `Units_UnitsSystem.hxx`:32 - `Units_UnitsSystem`
+/// This class allows the user to define his own
 /// system of units.
 pub use crate::ffi_types::Units_UnitsSystem as UnitsSystem;
 
@@ -5954,7 +4635,7 @@ unsafe impl crate::CppDeletable for UnitsSystem {
 }
 
 impl UnitsSystem {
-    /// **Source:** `Units_UnitsSystem.hxx`:39 - `Units_UnitsSystem::Units_UnitsSystem()`
+    /// **Source:** `Units_UnitsSystem.hxx`:38 - `Units_UnitsSystem::Units_UnitsSystem()`
     /// Returns an instance of UnitsSystem initialized to the
     /// S.I. units system.
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -5965,7 +4646,7 @@ impl UnitsSystem {
         }
     }
 
-    /// **Source:** `Units_UnitsSystem.hxx`:50 - `Units_UnitsSystem::Units_UnitsSystem()`
+    /// **Source:** `Units_UnitsSystem.hxx`:49 - `Units_UnitsSystem::Units_UnitsSystem()`
     /// Returns an instance of UnitsSystem initialized to the
     /// S.I. units system upgraded by the base system units description
     /// file.
@@ -5987,7 +4668,7 @@ impl UnitsSystem {
         }
     }
 
-    /// **Source:** `Units_UnitsSystem.hxx`:50 - `Units_UnitsSystem::Units_UnitsSystem()`
+    /// **Source:** `Units_UnitsSystem.hxx`:49 - `Units_UnitsSystem::Units_UnitsSystem()`
     /// Returns an instance of UnitsSystem initialized to the
     /// S.I. units system upgraded by the base system units description
     /// file.
@@ -6001,11 +4682,13 @@ impl UnitsSystem {
         Self::new_charptr_bool(aName, false)
     }
 
-    /// **Source:** `Units_UnitsSystem.hxx`:54 - `Units_UnitsSystem::QuantitiesSequence()`
+    /// **Source:** `Units_UnitsSystem.hxx`:53 - `Units_UnitsSystem::QuantitiesSequence()`
     /// Returns the sequence of refined quantities.
     pub fn quantities_sequence(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsQuantitiesSequence> {
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Units_Quantity,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_UnitsSystem_quantities_sequence(
@@ -6015,14 +4698,14 @@ impl UnitsSystem {
         }
     }
 
-    /// **Source:** `Units_UnitsSystem.hxx`:60 - `Units_UnitsSystem::ActiveUnitsSequence()`
+    /// **Source:** `Units_UnitsSystem.hxx`:59 - `Units_UnitsSystem::ActiveUnitsSequence()`
     /// Returns a sequence of integer in correspondence with
     /// the sequence of quantities, which indicates, for each
     /// redefined quantity, the index into the sequence of
     /// units, of the active unit.
     pub fn active_units_sequence(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfInteger> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_int> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_UnitsSystem_active_units_sequence(
@@ -6032,7 +4715,7 @@ impl UnitsSystem {
         }
     }
 
-    /// **Source:** `Units_UnitsSystem.hxx`:63 - `Units_UnitsSystem::Specify()`
+    /// **Source:** `Units_UnitsSystem.hxx`:62 - `Units_UnitsSystem::Specify()`
     /// Specifies for <aquantity> the unit <aunit> used.
     pub fn specify(&mut self, aquantity: &str, aunit: &str) {
         let c_aquantity = std::ffi::CString::new(aquantity).unwrap();
@@ -6046,7 +4729,7 @@ impl UnitsSystem {
         })
     }
 
-    /// **Source:** `Units_UnitsSystem.hxx`:66 - `Units_UnitsSystem::Remove()`
+    /// **Source:** `Units_UnitsSystem.hxx`:65 - `Units_UnitsSystem::Remove()`
     /// Removes for <aquantity> the unit <aunit> used.
     pub fn remove(&mut self, aquantity: &str, aunit: &str) {
         let c_aquantity = std::ffi::CString::new(aquantity).unwrap();
@@ -6060,7 +4743,7 @@ impl UnitsSystem {
         })
     }
 
-    /// **Source:** `Units_UnitsSystem.hxx`:69 - `Units_UnitsSystem::Activate()`
+    /// **Source:** `Units_UnitsSystem.hxx`:68 - `Units_UnitsSystem::Activate()`
     /// Specifies for <aquantity> the unit <aunit> used.
     pub fn activate(&mut self, aquantity: &str, aunit: &str) {
         let c_aquantity = std::ffi::CString::new(aquantity).unwrap();
@@ -6074,7 +4757,7 @@ impl UnitsSystem {
         })
     }
 
-    /// **Source:** `Units_UnitsSystem.hxx`:72 - `Units_UnitsSystem::Activates()`
+    /// **Source:** `Units_UnitsSystem.hxx`:71 - `Units_UnitsSystem::Activates()`
     /// Activates the first unit of all defined system quantities
     pub fn activates(&mut self) {
         crate::check_void_result(unsafe {
@@ -6082,7 +4765,7 @@ impl UnitsSystem {
         })
     }
 
-    /// **Source:** `Units_UnitsSystem.hxx`:75 - `Units_UnitsSystem::ActiveUnit()`
+    /// **Source:** `Units_UnitsSystem.hxx`:74 - `Units_UnitsSystem::ActiveUnit()`
     /// Returns for <aquantity> the active unit.
     pub fn active_unit(
         &self,
@@ -6099,7 +4782,7 @@ impl UnitsSystem {
         }
     }
 
-    /// **Source:** `Units_UnitsSystem.hxx`:80 - `Units_UnitsSystem::ConvertValueToUserSystem()`
+    /// **Source:** `Units_UnitsSystem.hxx`:79 - `Units_UnitsSystem::ConvertValueToUserSystem()`
     /// Converts a real value <avalue> from the unit <aunit>
     /// belonging to the physical dimensions <aquantity> to
     /// the corresponding unit of the user system.
@@ -6116,7 +4799,7 @@ impl UnitsSystem {
         })
     }
 
-    /// **Source:** `Units_UnitsSystem.hxx`:87 - `Units_UnitsSystem::ConvertSIValueToUserSystem()`
+    /// **Source:** `Units_UnitsSystem.hxx`:86 - `Units_UnitsSystem::ConvertSIValueToUserSystem()`
     /// Converts the real value <avalue> from the S.I. system
     /// of units to the user system of units. <aquantity> is
     /// the physical dimensions of the measurement.
@@ -6131,7 +4814,7 @@ impl UnitsSystem {
         })
     }
 
-    /// **Source:** `Units_UnitsSystem.hxx`:93 - `Units_UnitsSystem::ConvertUserSystemValueToSI()`
+    /// **Source:** `Units_UnitsSystem.hxx`:92 - `Units_UnitsSystem::ConvertUserSystemValueToSI()`
     /// Converts the real value <avalue> from the user system
     /// of units to the S.I. system of units. <aquantity> is
     /// the physical dimensions of the measurement.
@@ -6146,14 +4829,14 @@ impl UnitsSystem {
         })
     }
 
-    /// **Source:** `Units_UnitsSystem.hxx`:96 - `Units_UnitsSystem::Dump()`
+    /// **Source:** `Units_UnitsSystem.hxx`:95 - `Units_UnitsSystem::Dump()`
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_UnitsSystem_dump(self as *const Self)
         })
     }
 
-    /// **Source:** `Units_UnitsSystem.hxx`:99 - `Units_UnitsSystem::IsEmpty()`
+    /// **Source:** `Units_UnitsSystem.hxx`:98 - `Units_UnitsSystem::IsEmpty()`
     /// Returns TRUE if no units has been defined in the system.
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
@@ -6161,8 +4844,8 @@ impl UnitsSystem {
         })
     }
 
-    /// **Source:** `Units_UnitsSystem.hxx`:101 - `Units_UnitsSystem::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Units_UnitsSystem.hxx`:100 - `Units_UnitsSystem::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::Units_UnitsSystem_dynamic_type(
                 self as *const Self,
@@ -6170,7 +4853,7 @@ impl UnitsSystem {
         }
     }
 
-    /// **Source:** `Units_UnitsSystem.hxx`:101 - `Units_UnitsSystem::get_type_name()`
+    /// **Source:** `Units_UnitsSystem.hxx`:100 - `Units_UnitsSystem::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -6181,8 +4864,8 @@ impl UnitsSystem {
         .into_owned()
     }
 
-    /// **Source:** `Units_UnitsSystem.hxx`:101 - `Units_UnitsSystem::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Units_UnitsSystem.hxx`:100 - `Units_UnitsSystem::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKernel::Units_UnitsSystem_get_type_descriptor(),
@@ -6215,7 +4898,7 @@ impl UnitsSystem {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsUnitsSystem> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_UnitsSystem> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_UnitsSystem_to_handle(obj.into_raw()),
@@ -6223,8 +4906,8 @@ impl UnitsSystem {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_UnitsSystem_inherited_IsInstance(
                 self as *const Self,
@@ -6233,8 +4916,8 @@ impl UnitsSystem {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_UnitsSystem_inherited_IsKind(
                 self as *const Self,
@@ -6243,7 +4926,7 @@ impl UnitsSystem {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -6257,14 +4940,14 @@ impl UnitsSystem {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_UnitsSystem_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_UnitsSystem_inherited_IncrementRefCounter(
@@ -6273,7 +4956,7 @@ impl UnitsSystem {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Units_UnitsSystem_inherited_DecrementRefCounter(
@@ -6282,7 +4965,7 @@ impl UnitsSystem {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_UnitsSystem_inherited_Delete(self as *const Self)
@@ -6290,32 +4973,34 @@ impl UnitsSystem {
     }
 }
 
-pub use crate::ffi_types::HandleUnitsUnitsSystem;
+pub use crate::ffi_types::Handle_Units_UnitsSystem;
 
-unsafe impl crate::CppDeletable for HandleUnitsUnitsSystem {
+unsafe impl crate::CppDeletable for Handle_Units_UnitsSystem {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::HandleUnitsUnitsSystem_destructor(ptr);
+            crate::ffi_extern_TKernel::Handle_Units_UnitsSystem_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleUnitsUnitsSystem {
+unsafe impl crate::CppCopyable for Handle_Units_UnitsSystem {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleUnitsUnitsSystem_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::Handle_Units_UnitsSystem_clone(ptr))
+        }
     }
 }
 
-impl HandleUnitsUnitsSystem {
+impl Handle_Units_UnitsSystem {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleUnitsUnitsSystem_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKernel::Handle_Units_UnitsSystem_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Units_UnitsSystem
     pub fn get(&self) -> &crate::ffi_types::Units_UnitsSystem {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleUnitsUnitsSystem_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::Handle_Units_UnitsSystem_get(
                 self as *const Self,
             ))
         }
@@ -6324,7 +5009,7 @@ impl HandleUnitsUnitsSystem {
     /// Dereference this Handle to mutably access the underlying Units_UnitsSystem
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Units_UnitsSystem {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleUnitsUnitsSystem_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKernel::Handle_Units_UnitsSystem_get_mut(
                 self as *mut Self,
             ))
         }
@@ -6333,22 +5018,13 @@ impl HandleUnitsUnitsSystem {
     /// Upcast Handle<Units_UnitsSystem> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleUnitsUnitsSystem_to_HandleStandardTransient(
+                crate::ffi_extern_TKernel::Handle_Units_UnitsSystem_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
         }
     }
 }
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi_types::{
-    Units_QtsSequence as QtsSequence, Units_TksSequence as TksSequence,
-    Units_UtsSequence as UtsSequence,
-};

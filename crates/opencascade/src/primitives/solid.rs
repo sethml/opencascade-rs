@@ -114,10 +114,9 @@ impl Solid {
     }
 }
 
-fn collect_section_edges(edge_list: &opencascade_sys::top_tools::ListOfShape) -> Vec<Edge> {
+fn collect_section_edges(edge_list: &opencascade_sys::n_collection::List_TopoDS_Shape) -> Vec<Edge> {
     let mut new_edges = vec![];
-    let mut iter = edge_list.iter();
-    while let Some(shape) = iter.next() {
+    for shape in edge_list.iter() {
         let edge = topo_ds::edge(&shape);
         new_edges.push(Edge::from_edge(edge));
     }

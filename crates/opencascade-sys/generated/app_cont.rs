@@ -73,8 +73,8 @@ impl Function {
     pub fn value(
         &self,
         theU: f64,
-        thePnt2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
-        thePnt: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        thePnt2d: &mut crate::ffi_types::NCollection_Array1_gp_Pnt2d,
+        thePnt: &mut crate::ffi_types::NCollection_Array1_gp_Pnt,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::AppCont_Function_value(
@@ -91,8 +91,8 @@ impl Function {
     pub fn d1(
         &self,
         theU: f64,
-        theVec2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
-        theVec: &mut crate::ffi_types::TColgp_Array1OfVec,
+        theVec2d: &mut crate::ffi_types::NCollection_Array1_gp_Vec2d,
+        theVec: &mut crate::ffi_types::NCollection_Array1_gp_Vec,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::AppCont_Function_d1(

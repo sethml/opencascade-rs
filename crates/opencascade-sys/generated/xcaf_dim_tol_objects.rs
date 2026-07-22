@@ -734,13 +734,13 @@ impl TryFrom<i32> for ToleranceZoneAffectedPlane {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::HandleStandardTransient;
+pub use crate::ffi_types::Handle_Standard_Transient;
 
 // ========================
 // From XCAFDimTolObjects_DatumObject.hxx
 // ========================
 
-/// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:36 - `XCAFDimTolObjects_DatumObject`
+/// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:33 - `XCAFDimTolObjects_DatumObject`
 /// Access object to store datum
 pub use crate::ffi_types::XCAFDimTolObjects_DatumObject as DatumObject;
 
@@ -753,7 +753,7 @@ unsafe impl crate::CppDeletable for DatumObject {
 }
 
 impl DatumObject {
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:40 - `XCAFDimTolObjects_DatumObject::XCAFDimTolObjects_DatumObject()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:37 - `XCAFDimTolObjects_DatumObject::XCAFDimTolObjects_DatumObject()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -762,20 +762,20 @@ impl DatumObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:42 - `XCAFDimTolObjects_DatumObject::XCAFDimTolObjects_DatumObject()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:39 - `XCAFDimTolObjects_DatumObject::XCAFDimTolObjects_DatumObject()`
     pub fn new_handlexcafdimtolobjectsdatumobject(
-        theObj: &crate::ffi_types::HandleXCAFDimTolObjectsDatumObject,
+        theObj: &crate::ffi_types::Handle_XCAFDimTolObjects_DatumObject,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DatumObject_ctor_handlexcafdimtolobjectsdatumobject(theObj)))
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:46 - `XCAFDimTolObjects_DatumObject::GetSemanticName()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:43 - `XCAFDimTolObjects_DatumObject::GetSemanticName()`
     /// Returns semantic name
     pub fn get_semantic_name(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DatumObject_get_semantic_name(
@@ -785,9 +785,12 @@ impl DatumObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:49 - `XCAFDimTolObjects_DatumObject::SetSemanticName()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:46 - `XCAFDimTolObjects_DatumObject::SetSemanticName()`
     /// Sets semantic name
-    pub fn set_semantic_name(&mut self, theName: &crate::ffi_types::HandleTCollectionHAsciiString) {
+    pub fn set_semantic_name(
+        &mut self,
+        theName: &crate::ffi_types::Handle_TCollection_HAsciiString,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DatumObject_set_semantic_name(
                 self as *mut Self,
@@ -796,9 +799,9 @@ impl DatumObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:52 - `XCAFDimTolObjects_DatumObject::GetName()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:49 - `XCAFDimTolObjects_DatumObject::GetName()`
     /// Returns datum name.
-    pub fn get_name(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    pub fn get_name(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DatumObject_get_name(
@@ -808,9 +811,9 @@ impl DatumObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:55 - `XCAFDimTolObjects_DatumObject::SetName()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:52 - `XCAFDimTolObjects_DatumObject::SetName()`
     /// Sets datum name.
-    pub fn set_name(&mut self, theTag: &crate::ffi_types::HandleTCollectionHAsciiString) {
+    pub fn set_name(&mut self, theTag: &crate::ffi_types::Handle_TCollection_HAsciiString) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DatumObject_set_name(
                 self as *mut Self,
@@ -819,11 +822,12 @@ impl DatumObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:58 - `XCAFDimTolObjects_DatumObject::GetModifiers()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:55 - `XCAFDimTolObjects_DatumObject::GetModifiers()`
     /// Returns a sequence of modifiers of the datum.
     pub fn get_modifiers(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::XCAFDimTolObjects_DatumModifiersSequence> {
+    ) -> crate::OwnedPtr<crate::ffi_types::NCollection_Sequence_XCAFDimTolObjects_DatumSingleModif>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DatumObject_get_modifiers(
@@ -833,11 +837,11 @@ impl DatumObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:61 - `XCAFDimTolObjects_DatumObject::SetModifiers()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:58 - `XCAFDimTolObjects_DatumObject::SetModifiers()`
     /// Sets new sequence of datum modifiers.
     pub fn set_modifiers(
         &mut self,
-        theModifiers: &crate::ffi_types::XCAFDimTolObjects_DatumModifiersSequence,
+        theModifiers: &crate::ffi_types::NCollection_Sequence_XCAFDimTolObjects_DatumSingleModif,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DatumObject_set_modifiers(
@@ -847,7 +851,7 @@ impl DatumObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:64 - `XCAFDimTolObjects_DatumObject::GetModifierWithValue()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:62 - `XCAFDimTolObjects_DatumObject::GetModifierWithValue()`
     /// Retrieves datum modifier with value.
     pub fn get_modifier_with_value(
         &self,
@@ -866,7 +870,7 @@ impl DatumObject {
             crate::xcaf_dim_tol_objects::DatumModifWithValue::try_from(theModifier_i32_).unwrap();
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:68 - `XCAFDimTolObjects_DatumObject::SetModifierWithValue()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:66 - `XCAFDimTolObjects_DatumObject::SetModifierWithValue()`
     /// Sets datum modifier with value.
     pub fn set_modifier_with_value(
         &mut self,
@@ -882,7 +886,7 @@ impl DatumObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:72 - `XCAFDimTolObjects_DatumObject::AddModifier()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:70 - `XCAFDimTolObjects_DatumObject::AddModifier()`
     /// Adds a modifier to the datum sequence of modifiers.
     pub fn add_modifier(&mut self, theModifier: crate::xcaf_dim_tol_objects::DatumSingleModif) {
         crate::check_void_result(unsafe {
@@ -893,7 +897,7 @@ impl DatumObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:75 - `XCAFDimTolObjects_DatumObject::GetDatumTarget()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:73 - `XCAFDimTolObjects_DatumObject::GetDatumTarget()`
     /// Returns datum target shape.
     pub fn get_datum_target(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
@@ -905,7 +909,7 @@ impl DatumObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:78 - `XCAFDimTolObjects_DatumObject::SetDatumTarget()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:76 - `XCAFDimTolObjects_DatumObject::SetDatumTarget()`
     /// Sets datum target shape.
     pub fn set_datum_target(&mut self, theShape: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
@@ -916,7 +920,7 @@ impl DatumObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:81 - `XCAFDimTolObjects_DatumObject::GetPosition()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:79 - `XCAFDimTolObjects_DatumObject::GetPosition()`
     /// Returns datum position in the related geometric tolerance object.
     pub fn get_position(&self) -> i32 {
         crate::check_result(unsafe {
@@ -926,7 +930,7 @@ impl DatumObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:84 - `XCAFDimTolObjects_DatumObject::SetPosition()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:82 - `XCAFDimTolObjects_DatumObject::SetPosition()`
     /// Sets datum position in the related geometric tolerance object.
     pub fn set_position(&mut self, thePosition: i32) {
         crate::check_void_result(unsafe {
@@ -937,7 +941,7 @@ impl DatumObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:87 - `XCAFDimTolObjects_DatumObject::IsDatumTarget()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:85 - `XCAFDimTolObjects_DatumObject::IsDatumTarget()`
     /// Returns True if the datum target is specified.
     pub fn is_datum_target(&self) -> bool {
         crate::check_result(unsafe {
@@ -947,7 +951,7 @@ impl DatumObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:90 - `XCAFDimTolObjects_DatumObject::IsDatumTarget()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:88 - `XCAFDimTolObjects_DatumObject::IsDatumTarget()`
     /// Sets or drops the datum target indicator.
     pub fn is_datum_target_bool(&mut self, theIsDT: bool) {
         crate::check_void_result(unsafe {
@@ -958,7 +962,7 @@ impl DatumObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:93 - `XCAFDimTolObjects_DatumObject::GetDatumTargetType()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:91 - `XCAFDimTolObjects_DatumObject::GetDatumTargetType()`
     /// Returns datum target type
     pub fn get_datum_target_type(&self) -> crate::xcaf_dim_tol_objects::DatumTargetType {
         crate::xcaf_dim_tol_objects::DatumTargetType::try_from(crate::check_result(unsafe {
@@ -969,7 +973,7 @@ impl DatumObject {
         .unwrap()
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:96 - `XCAFDimTolObjects_DatumObject::SetDatumTargetType()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:94 - `XCAFDimTolObjects_DatumObject::SetDatumTargetType()`
     /// Sets datum target to point, line, rectangle, circle or area type.
     pub fn set_datum_target_type(&mut self, theType: crate::xcaf_dim_tol_objects::DatumTargetType) {
         crate::check_void_result(unsafe {
@@ -980,7 +984,7 @@ impl DatumObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:101 - `XCAFDimTolObjects_DatumObject::GetDatumTargetAxis()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:99 - `XCAFDimTolObjects_DatumObject::GetDatumTargetAxis()`
     /// Returns datum target axis.
     /// The Z axis of the datum placement denotes the normal of the surface
     /// pointing away from the material.
@@ -994,7 +998,7 @@ impl DatumObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:104 - `XCAFDimTolObjects_DatumObject::SetDatumTargetAxis()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:102 - `XCAFDimTolObjects_DatumObject::SetDatumTargetAxis()`
     /// Sets datum target axis.
     pub fn set_datum_target_axis(&mut self, theAxis: &crate::gp::Ax2) {
         crate::check_void_result(unsafe {
@@ -1005,7 +1009,7 @@ impl DatumObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:108 - `XCAFDimTolObjects_DatumObject::GetDatumTargetLength()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:106 - `XCAFDimTolObjects_DatumObject::GetDatumTargetLength()`
     /// Returns datum target length for line and rectangle types.
     /// The length along the X axis of the datum placement.
     pub fn get_datum_target_length(&self) -> f64 {
@@ -1016,7 +1020,7 @@ impl DatumObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:111 - `XCAFDimTolObjects_DatumObject::SetDatumTargetLength()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:109 - `XCAFDimTolObjects_DatumObject::SetDatumTargetLength()`
     /// Sets datum target length.
     pub fn set_datum_target_length(&mut self, theLength: f64) {
         crate::check_void_result(unsafe {
@@ -1027,7 +1031,7 @@ impl DatumObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:116 - `XCAFDimTolObjects_DatumObject::GetDatumTargetWidth()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:114 - `XCAFDimTolObjects_DatumObject::GetDatumTargetWidth()`
     /// Returns datum target width for rectangle type.
     /// The width along the derived Y axis, with the placement itself positioned
     /// at the centre of the rectangle.
@@ -1039,7 +1043,7 @@ impl DatumObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:119 - `XCAFDimTolObjects_DatumObject::SetDatumTargetWidth()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:117 - `XCAFDimTolObjects_DatumObject::SetDatumTargetWidth()`
     /// Sets datum target width.
     pub fn set_datum_target_width(&mut self, theWidth: f64) {
         crate::check_void_result(unsafe {
@@ -1050,7 +1054,7 @@ impl DatumObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:122 - `XCAFDimTolObjects_DatumObject::GetDatumTargetNumber()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:120 - `XCAFDimTolObjects_DatumObject::GetDatumTargetNumber()`
     /// Returns datum target number.
     pub fn get_datum_target_number(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1060,7 +1064,7 @@ impl DatumObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:125 - `XCAFDimTolObjects_DatumObject::SetDatumTargetNumber()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:123 - `XCAFDimTolObjects_DatumObject::SetDatumTargetNumber()`
     /// Sets datum target number.
     pub fn set_datum_target_number(&mut self, theNumber: i32) {
         crate::check_void_result(unsafe {
@@ -1071,7 +1075,7 @@ impl DatumObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:128 - `XCAFDimTolObjects_DatumObject::SetPlane()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:126 - `XCAFDimTolObjects_DatumObject::SetPlane()`
     /// Sets annotation plane.
     pub fn set_plane(&mut self, thePlane: &crate::gp::Ax2) {
         crate::check_void_result(unsafe {
@@ -1082,7 +1086,7 @@ impl DatumObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:135 - `XCAFDimTolObjects_DatumObject::GetPlane()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:133 - `XCAFDimTolObjects_DatumObject::GetPlane()`
     /// Returns annotation plane.
     pub fn get_plane(&self) -> &crate::gp::Ax2 {
         unsafe {
@@ -1094,7 +1098,7 @@ impl DatumObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:138 - `XCAFDimTolObjects_DatumObject::SetPoint()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:136 - `XCAFDimTolObjects_DatumObject::SetPoint()`
     /// Sets a point on the datum target shape.
     pub fn set_point(&mut self, thePnt: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
@@ -1105,7 +1109,7 @@ impl DatumObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:145 - `XCAFDimTolObjects_DatumObject::GetPoint()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:143 - `XCAFDimTolObjects_DatumObject::GetPoint()`
     /// Gets point on the datum shape.
     pub fn get_point(&self) -> &crate::gp::Pnt {
         unsafe {
@@ -1117,7 +1121,7 @@ impl DatumObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:148 - `XCAFDimTolObjects_DatumObject::SetPointTextAttach()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:146 - `XCAFDimTolObjects_DatumObject::SetPointTextAttach()`
     /// Sets a position of the datum text.
     pub fn set_point_text_attach(&mut self, thePntText: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
@@ -1128,7 +1132,7 @@ impl DatumObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:155 - `XCAFDimTolObjects_DatumObject::GetPointTextAttach()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:153 - `XCAFDimTolObjects_DatumObject::GetPointTextAttach()`
     /// Gets datum text position.
     pub fn get_point_text_attach(&self) -> &crate::gp::Pnt {
         unsafe {
@@ -1140,7 +1144,7 @@ impl DatumObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:158 - `XCAFDimTolObjects_DatumObject::HasPlane()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:156 - `XCAFDimTolObjects_DatumObject::HasPlane()`
     /// Returns True if the datum has annotation plane.
     pub fn has_plane(&self) -> bool {
         crate::check_result(unsafe {
@@ -1148,7 +1152,7 @@ impl DatumObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:161 - `XCAFDimTolObjects_DatumObject::HasPoint()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:159 - `XCAFDimTolObjects_DatumObject::HasPoint()`
     /// Returns True if point on the datum target is specified.
     pub fn has_point(&self) -> bool {
         crate::check_result(unsafe {
@@ -1156,7 +1160,7 @@ impl DatumObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:164 - `XCAFDimTolObjects_DatumObject::HasPointText()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:162 - `XCAFDimTolObjects_DatumObject::HasPointText()`
     /// Returns True if the datum text position is specified.
     pub fn has_point_text(&self) -> bool {
         crate::check_result(unsafe {
@@ -1166,12 +1170,12 @@ impl DatumObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:167 - `XCAFDimTolObjects_DatumObject::SetPresentation()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:165 - `XCAFDimTolObjects_DatumObject::SetPresentation()`
     /// Set graphical presentation for object.
     pub fn set_presentation(
         &mut self,
         thePresentation: &crate::topo_ds::Shape,
-        thePresentationName: &crate::ffi_types::HandleTCollectionHAsciiString,
+        thePresentationName: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DatumObject_set_presentation(
@@ -1182,7 +1186,7 @@ impl DatumObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:175 - `XCAFDimTolObjects_DatumObject::GetPresentation()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:173 - `XCAFDimTolObjects_DatumObject::GetPresentation()`
     /// Returns graphical presentation of the object.
     pub fn get_presentation(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
@@ -1194,11 +1198,11 @@ impl DatumObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:178 - `XCAFDimTolObjects_DatumObject::GetPresentationName()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:176 - `XCAFDimTolObjects_DatumObject::GetPresentationName()`
     /// Returns graphical presentation of the object.
     pub fn get_presentation_name(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DatumObject_get_presentation_name(
@@ -1208,7 +1212,7 @@ impl DatumObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:182 - `XCAFDimTolObjects_DatumObject::HasDatumTargetParams()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:180 - `XCAFDimTolObjects_DatumObject::HasDatumTargetParams()`
     /// Returns True if the datum has valid parameters for datum target (width, length, circle radius
     /// etc)
     pub fn has_datum_target_params(&mut self) -> bool {
@@ -1219,8 +1223,8 @@ impl DatumObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:187 - `XCAFDimTolObjects_DatumObject::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:185 - `XCAFDimTolObjects_DatumObject::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DatumObject_dynamic_type(
@@ -1230,7 +1234,7 @@ impl DatumObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:187 - `XCAFDimTolObjects_DatumObject::get_type_name()`
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:185 - `XCAFDimTolObjects_DatumObject::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1241,8 +1245,8 @@ impl DatumObject {
         .into_owned()
     }
 
-    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:187 - `XCAFDimTolObjects_DatumObject::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:185 - `XCAFDimTolObjects_DatumObject::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DatumObject_get_type_descriptor(),
@@ -1275,7 +1279,7 @@ impl DatumObject {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleXCAFDimTolObjectsDatumObject> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_XCAFDimTolObjects_DatumObject> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DatumObject_to_handle(obj.into_raw()),
@@ -1283,8 +1287,8 @@ impl DatumObject {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DatumObject_inherited_IsInstance(
                 self as *const Self,
@@ -1293,8 +1297,8 @@ impl DatumObject {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DatumObject_inherited_IsKind(
                 self as *const Self,
@@ -1303,7 +1307,7 @@ impl DatumObject {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1319,7 +1323,7 @@ impl DatumObject {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DatumObject_inherited_GetRefCount(
@@ -1328,7 +1332,7 @@ impl DatumObject {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DatumObject_inherited_IncrementRefCounter(
@@ -1337,7 +1341,7 @@ impl DatumObject {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DatumObject_inherited_DecrementRefCounter(
@@ -1346,7 +1350,7 @@ impl DatumObject {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DatumObject_inherited_Delete(
@@ -1356,31 +1360,31 @@ impl DatumObject {
     }
 }
 
-pub use crate::ffi_types::HandleXCAFDimTolObjectsDatumObject;
+pub use crate::ffi_types::Handle_XCAFDimTolObjects_DatumObject;
 
-unsafe impl crate::CppDeletable for HandleXCAFDimTolObjectsDatumObject {
+unsafe impl crate::CppDeletable for Handle_XCAFDimTolObjects_DatumObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsDatumObject_destructor(ptr);
+            crate::ffi_extern_TKXCAF::Handle_XCAFDimTolObjects_DatumObject_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleXCAFDimTolObjectsDatumObject {
+unsafe impl crate::CppCopyable for Handle_XCAFDimTolObjects_DatumObject {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsDatumObject_clone(
-                ptr,
-            ))
+            crate::check_result(
+                crate::ffi_extern_TKXCAF::Handle_XCAFDimTolObjects_DatumObject_clone(ptr),
+            )
         }
     }
 }
 
-impl HandleXCAFDimTolObjectsDatumObject {
+impl Handle_XCAFDimTolObjects_DatumObject {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsDatumObject_is_null(
+            crate::ffi_extern_TKXCAF::Handle_XCAFDimTolObjects_DatumObject_is_null(
                 self as *const Self,
             )
         }
@@ -1389,9 +1393,11 @@ impl HandleXCAFDimTolObjectsDatumObject {
     /// Dereference this Handle to access the underlying XCAFDimTolObjects_DatumObject
     pub fn get(&self) -> &crate::ffi_types::XCAFDimTolObjects_DatumObject {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsDatumObject_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXCAF::Handle_XCAFDimTolObjects_DatumObject_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1399,7 +1405,7 @@ impl HandleXCAFDimTolObjectsDatumObject {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::XCAFDimTolObjects_DatumObject {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsDatumObject_get_mut(
+                crate::ffi_extern_TKXCAF::Handle_XCAFDimTolObjects_DatumObject_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -1409,9 +1415,9 @@ impl HandleXCAFDimTolObjectsDatumObject {
     /// Upcast Handle<XCAFDimTolObjects_DatumObject> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsDatumObject_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXCAF::Handle_XCAFDimTolObjects_DatumObject_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -1420,7 +1426,7 @@ impl HandleXCAFDimTolObjectsDatumObject {
 // From XCAFDimTolObjects_DimensionObject.hxx
 // ========================
 
-/// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:46 - `XCAFDimTolObjects_DimensionObject`
+/// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:44 - `XCAFDimTolObjects_DimensionObject`
 /// Access object to store dimension data
 pub use crate::ffi_types::XCAFDimTolObjects_DimensionObject as DimensionObject;
 
@@ -1433,7 +1439,7 @@ unsafe impl crate::CppDeletable for DimensionObject {
 }
 
 impl DimensionObject {
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:50 - `XCAFDimTolObjects_DimensionObject::XCAFDimTolObjects_DimensionObject()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:48 - `XCAFDimTolObjects_DimensionObject::XCAFDimTolObjects_DimensionObject()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1442,20 +1448,20 @@ impl DimensionObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:52 - `XCAFDimTolObjects_DimensionObject::XCAFDimTolObjects_DimensionObject()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:50 - `XCAFDimTolObjects_DimensionObject::XCAFDimTolObjects_DimensionObject()`
     pub fn new_handlexcafdimtolobjectsdimensionobject(
-        theObj: &crate::ffi_types::HandleXCAFDimTolObjectsDimensionObject,
+        theObj: &crate::ffi_types::Handle_XCAFDimTolObjects_DimensionObject,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_ctor_handlexcafdimtolobjectsdimensionobject(theObj)))
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:56 - `XCAFDimTolObjects_DimensionObject::GetSemanticName()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:54 - `XCAFDimTolObjects_DimensionObject::GetSemanticName()`
     /// Returns semantic name
     pub fn get_semantic_name(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_get_semantic_name(
@@ -1465,9 +1471,12 @@ impl DimensionObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:59 - `XCAFDimTolObjects_DimensionObject::SetSemanticName()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:57 - `XCAFDimTolObjects_DimensionObject::SetSemanticName()`
     /// Sets semantic name
-    pub fn set_semantic_name(&mut self, theName: &crate::ffi_types::HandleTCollectionHAsciiString) {
+    pub fn set_semantic_name(
+        &mut self,
+        theName: &crate::ffi_types::Handle_TCollection_HAsciiString,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_set_semantic_name(
                 self as *mut Self,
@@ -1476,7 +1485,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:62 - `XCAFDimTolObjects_DimensionObject::SetQualifier()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:60 - `XCAFDimTolObjects_DimensionObject::SetQualifier()`
     /// Sets dimension qualifier as min., max. or average.
     pub fn set_qualifier(&mut self, theQualifier: crate::xcaf_dim_tol_objects::DimensionQualifier) {
         crate::check_void_result(unsafe {
@@ -1487,7 +1496,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:65 - `XCAFDimTolObjects_DimensionObject::GetQualifier()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:63 - `XCAFDimTolObjects_DimensionObject::GetQualifier()`
     /// Returns dimension qualifier.
     pub fn get_qualifier(&self) -> crate::xcaf_dim_tol_objects::DimensionQualifier {
         crate::xcaf_dim_tol_objects::DimensionQualifier::try_from(crate::check_result(unsafe {
@@ -1498,7 +1507,7 @@ impl DimensionObject {
         .unwrap()
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:68 - `XCAFDimTolObjects_DimensionObject::HasQualifier()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:66 - `XCAFDimTolObjects_DimensionObject::HasQualifier()`
     /// Returns True if the object has dimension qualifier.
     pub fn has_qualifier(&self) -> bool {
         crate::check_result(unsafe {
@@ -1508,7 +1517,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:71 - `XCAFDimTolObjects_DimensionObject::SetAngularQualifier()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:69 - `XCAFDimTolObjects_DimensionObject::SetAngularQualifier()`
     /// Sets angular qualifier as small, large or equal.
     pub fn set_angular_qualifier(
         &mut self,
@@ -1522,7 +1531,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:75 - `XCAFDimTolObjects_DimensionObject::GetAngularQualifier()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:73 - `XCAFDimTolObjects_DimensionObject::GetAngularQualifier()`
     /// Returns angular qualifier.
     pub fn get_angular_qualifier(&self) -> crate::xcaf_dim_tol_objects::AngularQualifier {
         crate::xcaf_dim_tol_objects::AngularQualifier::try_from(crate::check_result(unsafe {
@@ -1533,7 +1542,7 @@ impl DimensionObject {
         .unwrap()
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:78 - `XCAFDimTolObjects_DimensionObject::HasAngularQualifier()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:76 - `XCAFDimTolObjects_DimensionObject::HasAngularQualifier()`
     /// Returns True if the object has angular qualifier.
     pub fn has_angular_qualifier(&self) -> bool {
         crate::check_result(unsafe {
@@ -1543,7 +1552,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:81 - `XCAFDimTolObjects_DimensionObject::SetType()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:79 - `XCAFDimTolObjects_DimensionObject::SetType()`
     /// Sets a specific type of dimension.
     pub fn set_type(&mut self, theTyupe: crate::xcaf_dim_tol_objects::DimensionType) {
         crate::check_void_result(unsafe {
@@ -1554,7 +1563,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:84 - `XCAFDimTolObjects_DimensionObject::GetType()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:82 - `XCAFDimTolObjects_DimensionObject::GetType()`
     /// Returns dimension type.
     pub fn get_type(&self) -> crate::xcaf_dim_tol_objects::DimensionType {
         crate::xcaf_dim_tol_objects::DimensionType::try_from(crate::check_result(unsafe {
@@ -1565,7 +1574,7 @@ impl DimensionObject {
         .unwrap()
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:88 - `XCAFDimTolObjects_DimensionObject::GetValue()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:86 - `XCAFDimTolObjects_DimensionObject::GetValue()`
     /// Returns the main dimension value.
     /// It will be the middle value in case of range dimension.
     pub fn get_value(&self) -> f64 {
@@ -1576,9 +1585,11 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:91 - `XCAFDimTolObjects_DimensionObject::GetValues()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:89 - `XCAFDimTolObjects_DimensionObject::GetValues()`
     /// Returns raw array of dimension values
-    pub fn get_values(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
+    pub fn get_values(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_double> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_get_values(
@@ -1588,7 +1599,7 @@ impl DimensionObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:95 - `XCAFDimTolObjects_DimensionObject::SetValue()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:93 - `XCAFDimTolObjects_DimensionObject::SetValue()`
     /// Sets the main dimension value.
     /// Overwrites previous values.
     pub fn set_value(&mut self, theValue: f64) {
@@ -1600,9 +1611,9 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:98 - `XCAFDimTolObjects_DimensionObject::SetValues()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:96 - `XCAFDimTolObjects_DimensionObject::SetValues()`
     /// Replaces current raw array of dimension values with theValues array.
-    pub fn set_values(&mut self, theValue: &crate::ffi_types::HandleTColStdHArray1OfReal) {
+    pub fn set_values(&mut self, theValue: &crate::ffi_types::Handle_NCollection_HArray1_double) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_set_values(
                 self as *mut Self,
@@ -1611,7 +1622,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:103 - `XCAFDimTolObjects_DimensionObject::IsDimWithRange()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:101 - `XCAFDimTolObjects_DimensionObject::IsDimWithRange()`
     /// Returns True if the dimension is of range kind.
     /// Dimension is of range kind if its values array contains two elements
     /// defining lower and upper bounds.
@@ -1623,7 +1634,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:107 - `XCAFDimTolObjects_DimensionObject::SetUpperBound()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:105 - `XCAFDimTolObjects_DimensionObject::SetUpperBound()`
     /// Sets the upper bound of the range dimension, otherwise
     /// resets it to an empty range with the specified upper bound.
     pub fn set_upper_bound(&mut self, theUpperBound: f64) {
@@ -1635,7 +1646,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:111 - `XCAFDimTolObjects_DimensionObject::SetLowerBound()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:109 - `XCAFDimTolObjects_DimensionObject::SetLowerBound()`
     /// Sets the lower bound of the range dimension, otherwise
     /// resets it to an empty range with the specified lower bound.
     pub fn set_lower_bound(&mut self, theLowerBound: f64) {
@@ -1647,7 +1658,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:114 - `XCAFDimTolObjects_DimensionObject::GetUpperBound()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:112 - `XCAFDimTolObjects_DimensionObject::GetUpperBound()`
     /// Returns the upper bound of the range dimension, otherwise - zero.
     pub fn get_upper_bound(&self) -> f64 {
         crate::check_result(unsafe {
@@ -1657,7 +1668,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:117 - `XCAFDimTolObjects_DimensionObject::GetLowerBound()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:115 - `XCAFDimTolObjects_DimensionObject::GetLowerBound()`
     /// Returns the lower bound of the range dimension, otherwise - zero.
     pub fn get_lower_bound(&self) -> f64 {
         crate::check_result(unsafe {
@@ -1667,7 +1678,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:122 - `XCAFDimTolObjects_DimensionObject::IsDimWithPlusMinusTolerance()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:120 - `XCAFDimTolObjects_DimensionObject::IsDimWithPlusMinusTolerance()`
     /// Returns True if the dimension is of +/- tolerance kind.
     /// Dimension is of +/- tolerance kind if its values array contains three elements
     /// defining the main value and the lower/upper tolerances.
@@ -1677,7 +1688,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:127 - `XCAFDimTolObjects_DimensionObject::SetUpperTolValue()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:125 - `XCAFDimTolObjects_DimensionObject::SetUpperTolValue()`
     /// Sets the upper value of the toleranced dimension, otherwise
     /// resets a simple dimension to toleranced one with the specified lower/upper tolerances.
     /// Returns False in case of range dimension.
@@ -1690,7 +1701,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:132 - `XCAFDimTolObjects_DimensionObject::SetLowerTolValue()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:130 - `XCAFDimTolObjects_DimensionObject::SetLowerTolValue()`
     /// Sets the lower value of the toleranced dimension, otherwise
     /// resets a simple dimension to toleranced one with the specified lower/upper tolerances.
     /// Returns False in case of range dimension.
@@ -1703,7 +1714,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:135 - `XCAFDimTolObjects_DimensionObject::GetUpperTolValue()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:133 - `XCAFDimTolObjects_DimensionObject::GetUpperTolValue()`
     /// Returns the lower value of the toleranced dimension, otherwise - zero.
     pub fn get_upper_tol_value(&self) -> f64 {
         crate::check_result(unsafe {
@@ -1713,7 +1724,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:138 - `XCAFDimTolObjects_DimensionObject::GetLowerTolValue()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:136 - `XCAFDimTolObjects_DimensionObject::GetLowerTolValue()`
     /// Returns the upper value of the toleranced dimension, otherwise - zero.
     pub fn get_lower_tol_value(&self) -> f64 {
         crate::check_result(unsafe {
@@ -1723,7 +1734,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:142 - `XCAFDimTolObjects_DimensionObject::IsDimWithClassOfTolerance()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:140 - `XCAFDimTolObjects_DimensionObject::IsDimWithClassOfTolerance()`
     /// Returns True if the form variance was set to not XCAFDimTolObjects_DimensionFormVariance_None
     /// value.
     pub fn is_dim_with_class_of_tolerance(&self) -> bool {
@@ -1732,7 +1743,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:149 - `XCAFDimTolObjects_DimensionObject::SetClassOfTolerance()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:147 - `XCAFDimTolObjects_DimensionObject::SetClassOfTolerance()`
     /// Sets tolerance class of the dimension.
     /// \param theHole - True if the tolerance applies to an internal feature
     /// \param theFormVariance - represents the fundamental deviation or "position letter"
@@ -1754,7 +1765,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:157 - `XCAFDimTolObjects_DimensionObject::GetClassOfTolerance()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:154 - `XCAFDimTolObjects_DimensionObject::GetClassOfTolerance()`
     /// Retrieves tolerance class parameters of the dimension.
     /// Returns True if the dimension is toleranced.
     pub fn get_class_of_tolerance(
@@ -1780,7 +1791,7 @@ impl DimensionObject {
         result_
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:162 - `XCAFDimTolObjects_DimensionObject::SetNbOfDecimalPlaces()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:159 - `XCAFDimTolObjects_DimensionObject::SetNbOfDecimalPlaces()`
     /// Sets the number of places to the left and right of the decimal point respectively.
     pub fn set_nb_of_decimal_places(&mut self, theL: i32, theR: i32) {
         crate::check_void_result(unsafe {
@@ -1792,7 +1803,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:166 - `XCAFDimTolObjects_DimensionObject::GetNbOfDecimalPlaces()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:162 - `XCAFDimTolObjects_DimensionObject::GetNbOfDecimalPlaces()`
     /// Returns the number of places to the left and right of the decimal point respectively.
     pub fn get_nb_of_decimal_places(&self, theL: &mut i32, theR: &mut i32) {
         crate::check_void_result(unsafe {
@@ -1804,11 +1815,12 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:169 - `XCAFDimTolObjects_DimensionObject::GetModifiers()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:165 - `XCAFDimTolObjects_DimensionObject::GetModifiers()`
     /// Returns a sequence of modifiers of the dimension.
     pub fn get_modifiers(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::XCAFDimTolObjects_DimensionModifiersSequence> {
+    ) -> crate::OwnedPtr<crate::ffi_types::NCollection_Sequence_XCAFDimTolObjects_DimensionModif>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_get_modifiers(
@@ -1818,11 +1830,11 @@ impl DimensionObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:172 - `XCAFDimTolObjects_DimensionObject::SetModifiers()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:168 - `XCAFDimTolObjects_DimensionObject::SetModifiers()`
     /// Sets new sequence of dimension modifiers.
     pub fn set_modifiers(
         &mut self,
-        theModifiers: &crate::ffi_types::XCAFDimTolObjects_DimensionModifiersSequence,
+        theModifiers: &crate::ffi_types::NCollection_Sequence_XCAFDimTolObjects_DimensionModif,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_set_modifiers(
@@ -1832,7 +1844,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:176 - `XCAFDimTolObjects_DimensionObject::AddModifier()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:172 - `XCAFDimTolObjects_DimensionObject::AddModifier()`
     /// Adds a modifier to the dimension sequence of modifiers.
     pub fn add_modifier(&mut self, theModifier: crate::xcaf_dim_tol_objects::DimensionModif) {
         crate::check_void_result(unsafe {
@@ -1843,7 +1855,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:179 - `XCAFDimTolObjects_DimensionObject::GetPath()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:175 - `XCAFDimTolObjects_DimensionObject::GetPath()`
     /// Returns a 'curve' along which the dimension is measured.
     pub fn get_path(&self) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
@@ -1855,7 +1867,7 @@ impl DimensionObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:182 - `XCAFDimTolObjects_DimensionObject::SetPath()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:178 - `XCAFDimTolObjects_DimensionObject::SetPath()`
     /// Sets a 'curve' along which the dimension is measured.
     pub fn set_path(&mut self, thePath: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
@@ -1866,7 +1878,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:185 - `XCAFDimTolObjects_DimensionObject::GetDirection()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:181 - `XCAFDimTolObjects_DimensionObject::GetDirection()`
     /// Returns the orientation of the dimension in annotation plane.
     pub fn get_direction(&self, theDir: &mut crate::gp::Dir) -> bool {
         crate::check_result(unsafe {
@@ -1877,7 +1889,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:188 - `XCAFDimTolObjects_DimensionObject::SetDirection()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:184 - `XCAFDimTolObjects_DimensionObject::SetDirection()`
     /// Sets an orientation of the dimension in annotation plane.
     pub fn set_direction(&mut self, theDir: &crate::gp::Dir) -> bool {
         crate::check_result(unsafe {
@@ -1888,7 +1900,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:191 - `XCAFDimTolObjects_DimensionObject::SetPointTextAttach()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:187 - `XCAFDimTolObjects_DimensionObject::SetPointTextAttach()`
     /// Sets position of the dimension text.
     pub fn set_point_text_attach(&mut self, thePntText: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
@@ -1899,7 +1911,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:198 - `XCAFDimTolObjects_DimensionObject::GetPointTextAttach()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:194 - `XCAFDimTolObjects_DimensionObject::GetPointTextAttach()`
     /// Returns position of the dimension text.
     pub fn get_point_text_attach(&self) -> &crate::gp::Pnt {
         unsafe {
@@ -1911,7 +1923,7 @@ impl DimensionObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:201 - `XCAFDimTolObjects_DimensionObject::HasTextPoint()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:197 - `XCAFDimTolObjects_DimensionObject::HasTextPoint()`
     /// Returns True if the position of dimension text is specified.
     pub fn has_text_point(&self) -> bool {
         crate::check_result(unsafe {
@@ -1921,7 +1933,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:204 - `XCAFDimTolObjects_DimensionObject::SetPlane()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:200 - `XCAFDimTolObjects_DimensionObject::SetPlane()`
     /// Sets annotation plane.
     pub fn set_plane(&mut self, thePlane: &crate::gp::Ax2) {
         crate::check_void_result(unsafe {
@@ -1932,7 +1944,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:211 - `XCAFDimTolObjects_DimensionObject::GetPlane()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:207 - `XCAFDimTolObjects_DimensionObject::GetPlane()`
     /// Returns annotation plane.
     pub fn get_plane(&self) -> &crate::gp::Ax2 {
         unsafe {
@@ -1944,7 +1956,7 @@ impl DimensionObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:214 - `XCAFDimTolObjects_DimensionObject::HasPlane()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:210 - `XCAFDimTolObjects_DimensionObject::HasPlane()`
     /// Returns True if the object has annotation plane.
     pub fn has_plane(&self) -> bool {
         crate::check_result(unsafe {
@@ -1954,7 +1966,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:218 - `XCAFDimTolObjects_DimensionObject::HasPoint()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:214 - `XCAFDimTolObjects_DimensionObject::HasPoint()`
     /// Returns true, if connection point exists (for dimensional_size),
     /// if connection point for the first shape exists (for dimensional_location).
     pub fn has_point(&self) -> bool {
@@ -1965,7 +1977,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:221 - `XCAFDimTolObjects_DimensionObject::HasPoint2()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:217 - `XCAFDimTolObjects_DimensionObject::HasPoint2()`
     pub fn has_point2(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_has_point2(
@@ -1974,7 +1986,27 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:225 - `XCAFDimTolObjects_DimensionObject::SetPoint()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:221 - `XCAFDimTolObjects_DimensionObject::IsPointConnection()`
+    /// Returns true, if the connection is a point not coordinate system (for dimensional_size),
+    /// if connection point for the first shape exists (for dimensional_location).
+    pub fn is_point_connection(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_is_point_connection(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:225 - `XCAFDimTolObjects_DimensionObject::IsPointConnection2()`
+    pub fn is_point_connection2(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_is_point_connection2(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:229 - `XCAFDimTolObjects_DimensionObject::SetPoint()`
     /// Set connection point (for dimensional_size),
     /// Set connection point for the first shape (for dimensional_location).
     pub fn set_point(&mut self, thePnt: &crate::gp::Pnt) {
@@ -1986,7 +2018,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:232 - `XCAFDimTolObjects_DimensionObject::SetPoint2()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:237 - `XCAFDimTolObjects_DimensionObject::SetPoint2()`
     pub fn set_point2(&mut self, thePnt: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_set_point2(
@@ -1996,7 +2028,29 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:240 - `XCAFDimTolObjects_DimensionObject::GetPoint()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:246 - `XCAFDimTolObjects_DimensionObject::SetConnectionAxis()`
+    /// Set connection point as a coordinate system (for dimensional_size),
+    /// Set connection point as a coordinate system for the first shape (for dimensional_location).
+    pub fn set_connection_axis(&mut self, theAxis: &crate::gp::Ax2) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_set_connection_axis(
+                self as *mut Self,
+                theAxis,
+            )
+        })
+    }
+
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:255 - `XCAFDimTolObjects_DimensionObject::SetConnectionAxis2()`
+    pub fn set_connection_axis2(&mut self, theAxis: &crate::gp::Ax2) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_set_connection_axis2(
+                self as *mut Self,
+                theAxis,
+            )
+        })
+    }
+
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:264 - `XCAFDimTolObjects_DimensionObject::GetPoint()`
     /// Get connection point (for dimensional_size),
     /// Get connection point for the first shape (for dimensional_location).
     pub fn get_point(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
@@ -2009,7 +2063,7 @@ impl DimensionObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:243 - `XCAFDimTolObjects_DimensionObject::GetPoint2()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:267 - `XCAFDimTolObjects_DimensionObject::GetPoint2()`
     pub fn get_point2(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2020,12 +2074,92 @@ impl DimensionObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:246 - `XCAFDimTolObjects_DimensionObject::SetPresentation()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:271 - `XCAFDimTolObjects_DimensionObject::GetConnectionAxis()`
+    /// Get connection point as a coordinate system (for dimensional_size),
+    /// Get connection point as a coordinate system for the first shape (for dimensional_location).
+    pub fn get_connection_axis(&self) -> crate::OwnedPtr<crate::gp::Ax2> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_get_connection_axis(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:275 - `XCAFDimTolObjects_DimensionObject::GetConnectionAxis2()`
+    pub fn get_connection_axis2(&self) -> crate::OwnedPtr<crate::gp::Ax2> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_get_connection_axis2(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:278 - `XCAFDimTolObjects_DimensionObject::GetConnectionName()`
+    /// Returns connection name of the object.
+    pub fn get_connection_name(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_get_connection_name(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:281 - `XCAFDimTolObjects_DimensionObject::GetConnectionName2()`
+    /// Returns 2nd connection name of the object.
+    pub fn get_connection_name2(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_get_connection_name2(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:284 - `XCAFDimTolObjects_DimensionObject::SetConnectionName()`
+    /// Sets connection name of the object.
+    pub fn set_connection_name(
+        &mut self,
+        theName: &crate::ffi_types::Handle_TCollection_HAsciiString,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_set_connection_name(
+                self as *mut Self,
+                theName,
+            )
+        })
+    }
+
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:290 - `XCAFDimTolObjects_DimensionObject::SetConnectionName2()`
+    /// Sets 2nd connection name of the object.
+    pub fn set_connection_name2(
+        &mut self,
+        theName: &crate::ffi_types::Handle_TCollection_HAsciiString,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_set_connection_name2(
+                self as *mut Self,
+                theName,
+            )
+        })
+    }
+
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:296 - `XCAFDimTolObjects_DimensionObject::SetPresentation()`
     /// Set graphical presentation for the object.
     pub fn set_presentation(
         &mut self,
         thePresentation: &crate::topo_ds::Shape,
-        thePresentationName: &crate::ffi_types::HandleTCollectionHAsciiString,
+        thePresentationName: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_set_presentation(
@@ -2036,7 +2170,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:254 - `XCAFDimTolObjects_DimensionObject::GetPresentation()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:304 - `XCAFDimTolObjects_DimensionObject::GetPresentation()`
     /// Returns graphical presentation of the object.
     pub fn get_presentation(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
@@ -2048,11 +2182,11 @@ impl DimensionObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:257 - `XCAFDimTolObjects_DimensionObject::GetPresentationName()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:307 - `XCAFDimTolObjects_DimensionObject::GetPresentationName()`
     /// Returns graphical presentation of the object
     pub fn get_presentation_name(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_get_presentation_name(
@@ -2062,7 +2196,7 @@ impl DimensionObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:263 - `XCAFDimTolObjects_DimensionObject::HasDescriptions()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:313 - `XCAFDimTolObjects_DimensionObject::HasDescriptions()`
     /// Returns true, if the object has descriptions.
     pub fn has_descriptions(&self) -> bool {
         crate::check_result(unsafe {
@@ -2072,7 +2206,7 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:266 - `XCAFDimTolObjects_DimensionObject::NbDescriptions()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:316 - `XCAFDimTolObjects_DimensionObject::NbDescriptions()`
     /// Returns number of descriptions.
     pub fn nb_descriptions(&self) -> i32 {
         crate::check_result(unsafe {
@@ -2082,12 +2216,12 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:269 - `XCAFDimTolObjects_DimensionObject::GetDescription()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:319 - `XCAFDimTolObjects_DimensionObject::GetDescription()`
     /// Returns description with the given number.
     pub fn get_description(
         &self,
         theNumber: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_get_description(
@@ -2098,12 +2232,12 @@ impl DimensionObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:277 - `XCAFDimTolObjects_DimensionObject::GetDescriptionName()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:327 - `XCAFDimTolObjects_DimensionObject::GetDescriptionName()`
     /// Returns name of description with the given number.
     pub fn get_description_name(
         &self,
         theNumber: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_get_description_name(
@@ -2114,7 +2248,7 @@ impl DimensionObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:285 - `XCAFDimTolObjects_DimensionObject::RemoveDescription()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:335 - `XCAFDimTolObjects_DimensionObject::RemoveDescription()`
     /// Remove description with the given number.
     pub fn remove_description(&mut self, theNumber: i32) {
         crate::check_void_result(unsafe {
@@ -2125,12 +2259,12 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:288 - `XCAFDimTolObjects_DimensionObject::AddDescription()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:338 - `XCAFDimTolObjects_DimensionObject::AddDescription()`
     /// Add new description.
     pub fn add_description(
         &mut self,
-        theDescription: &crate::ffi_types::HandleTCollectionHAsciiString,
-        theName: &crate::ffi_types::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi_types::Handle_TCollection_HAsciiString,
+        theName: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_add_description(
@@ -2141,8 +2275,8 @@ impl DimensionObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:298 - `XCAFDimTolObjects_DimensionObject::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:354 - `XCAFDimTolObjects_DimensionObject::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_dynamic_type(
@@ -2152,7 +2286,27 @@ impl DimensionObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:298 - `XCAFDimTolObjects_DimensionObject::get_type_name()`
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:346 - `XCAFDimTolObjects_DimensionObject::IsDimensionalLocation()`
+    /// Returns true if the dimension type is a location.
+    pub fn is_dimensional_location(theType: crate::xcaf_dim_tol_objects::DimensionType) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_is_dimensional_location(
+                theType.into(),
+            )
+        })
+    }
+
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:349 - `XCAFDimTolObjects_DimensionObject::IsDimensionalSize()`
+    /// Returns true if the dimension type is a size.
+    pub fn is_dimensional_size(theType: crate::xcaf_dim_tol_objects::DimensionType) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_is_dimensional_size(
+                theType.into(),
+            )
+        })
+    }
+
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:354 - `XCAFDimTolObjects_DimensionObject::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2163,8 +2317,8 @@ impl DimensionObject {
         .into_owned()
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:298 - `XCAFDimTolObjects_DimensionObject::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:354 - `XCAFDimTolObjects_DimensionObject::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_get_type_descriptor(),
@@ -2193,7 +2347,7 @@ impl DimensionObject {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleXCAFDimTolObjectsDimensionObject> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_XCAFDimTolObjects_DimensionObject> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_to_handle(
@@ -2203,8 +2357,8 @@ impl DimensionObject {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_inherited_IsInstance(
                 self as *const Self,
@@ -2213,8 +2367,8 @@ impl DimensionObject {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_inherited_IsKind(
                 self as *const Self,
@@ -2223,7 +2377,7 @@ impl DimensionObject {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2239,7 +2393,7 @@ impl DimensionObject {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_inherited_GetRefCount(
@@ -2248,21 +2402,21 @@ impl DimensionObject {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_DimensionObject_inherited_Delete(
@@ -2272,31 +2426,31 @@ impl DimensionObject {
     }
 }
 
-pub use crate::ffi_types::HandleXCAFDimTolObjectsDimensionObject;
+pub use crate::ffi_types::Handle_XCAFDimTolObjects_DimensionObject;
 
-unsafe impl crate::CppDeletable for HandleXCAFDimTolObjectsDimensionObject {
+unsafe impl crate::CppDeletable for Handle_XCAFDimTolObjects_DimensionObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsDimensionObject_destructor(ptr);
+            crate::ffi_extern_TKXCAF::Handle_XCAFDimTolObjects_DimensionObject_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleXCAFDimTolObjectsDimensionObject {
+unsafe impl crate::CppCopyable for Handle_XCAFDimTolObjects_DimensionObject {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsDimensionObject_clone(ptr),
+                crate::ffi_extern_TKXCAF::Handle_XCAFDimTolObjects_DimensionObject_clone(ptr),
             )
         }
     }
 }
 
-impl HandleXCAFDimTolObjectsDimensionObject {
+impl Handle_XCAFDimTolObjects_DimensionObject {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsDimensionObject_is_null(
+            crate::ffi_extern_TKXCAF::Handle_XCAFDimTolObjects_DimensionObject_is_null(
                 self as *const Self,
             )
         }
@@ -2306,7 +2460,7 @@ impl HandleXCAFDimTolObjectsDimensionObject {
     pub fn get(&self) -> &crate::ffi_types::XCAFDimTolObjects_DimensionObject {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsDimensionObject_get(
+                crate::ffi_extern_TKXCAF::Handle_XCAFDimTolObjects_DimensionObject_get(
                     self as *const Self,
                 ),
             )
@@ -2317,7 +2471,7 @@ impl HandleXCAFDimTolObjectsDimensionObject {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::XCAFDimTolObjects_DimensionObject {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsDimensionObject_get_mut(
+                crate::ffi_extern_TKXCAF::Handle_XCAFDimTolObjects_DimensionObject_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -2327,9 +2481,9 @@ impl HandleXCAFDimTolObjectsDimensionObject {
     /// Upcast Handle<XCAFDimTolObjects_DimensionObject> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsDimensionObject_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXCAF::Handle_XCAFDimTolObjects_DimensionObject_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -2338,7 +2492,7 @@ impl HandleXCAFDimTolObjectsDimensionObject {
 // From XCAFDimTolObjects_GeomToleranceObject.hxx
 // ========================
 
-/// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:38 - `XCAFDimTolObjects_GeomToleranceObject`
+/// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:35 - `XCAFDimTolObjects_GeomToleranceObject`
 /// Access object to store dimension and tolerance
 pub use crate::ffi_types::XCAFDimTolObjects_GeomToleranceObject as GeomToleranceObject;
 
@@ -2351,7 +2505,7 @@ unsafe impl crate::CppDeletable for GeomToleranceObject {
 }
 
 impl GeomToleranceObject {
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:42 - `XCAFDimTolObjects_GeomToleranceObject::XCAFDimTolObjects_GeomToleranceObject()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:39 - `XCAFDimTolObjects_GeomToleranceObject::XCAFDimTolObjects_GeomToleranceObject()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2360,20 +2514,20 @@ impl GeomToleranceObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:44 - `XCAFDimTolObjects_GeomToleranceObject::XCAFDimTolObjects_GeomToleranceObject()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:41 - `XCAFDimTolObjects_GeomToleranceObject::XCAFDimTolObjects_GeomToleranceObject()`
     pub fn new_handlexcafdimtolobjectsgeomtoleranceobject(
-        theObj: &crate::ffi_types::HandleXCAFDimTolObjectsGeomToleranceObject,
+        theObj: &crate::ffi_types::Handle_XCAFDimTolObjects_GeomToleranceObject,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXCAF::XCAFDimTolObjects_GeomToleranceObject_ctor_handlexcafdimtolobjectsgeomtoleranceobject(theObj)))
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:48 - `XCAFDimTolObjects_GeomToleranceObject::GetSemanticName()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:45 - `XCAFDimTolObjects_GeomToleranceObject::GetSemanticName()`
     /// Returns semantic name
     pub fn get_semantic_name(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXCAF::XCAFDimTolObjects_GeomToleranceObject_get_semantic_name(
@@ -2383,9 +2537,12 @@ impl GeomToleranceObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:51 - `XCAFDimTolObjects_GeomToleranceObject::SetSemanticName()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:48 - `XCAFDimTolObjects_GeomToleranceObject::SetSemanticName()`
     /// Sets semantic name
-    pub fn set_semantic_name(&mut self, theName: &crate::ffi_types::HandleTCollectionHAsciiString) {
+    pub fn set_semantic_name(
+        &mut self,
+        theName: &crate::ffi_types::Handle_TCollection_HAsciiString,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_GeomToleranceObject_set_semantic_name(
                 self as *mut Self,
@@ -2394,7 +2551,7 @@ impl GeomToleranceObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:54 - `XCAFDimTolObjects_GeomToleranceObject::SetType()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:51 - `XCAFDimTolObjects_GeomToleranceObject::SetType()`
     /// Sets type of the object.
     pub fn set_type(&mut self, theType: crate::xcaf_dim_tol_objects::GeomToleranceType) {
         crate::check_void_result(unsafe {
@@ -2405,7 +2562,7 @@ impl GeomToleranceObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:57 - `XCAFDimTolObjects_GeomToleranceObject::GetType()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:54 - `XCAFDimTolObjects_GeomToleranceObject::GetType()`
     /// Returns type of the object.
     pub fn get_type(&self) -> crate::xcaf_dim_tol_objects::GeomToleranceType {
         crate::xcaf_dim_tol_objects::GeomToleranceType::try_from(crate::check_result(unsafe {
@@ -2416,7 +2573,7 @@ impl GeomToleranceObject {
         .unwrap()
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:60 - `XCAFDimTolObjects_GeomToleranceObject::SetTypeOfValue()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:57 - `XCAFDimTolObjects_GeomToleranceObject::SetTypeOfValue()`
     /// Sets type of tolerance value.
     pub fn set_type_of_value(
         &mut self,
@@ -2430,7 +2587,7 @@ impl GeomToleranceObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:64 - `XCAFDimTolObjects_GeomToleranceObject::GetTypeOfValue()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:61 - `XCAFDimTolObjects_GeomToleranceObject::GetTypeOfValue()`
     /// Returns type of tolerance value.
     pub fn get_type_of_value(&self) -> crate::xcaf_dim_tol_objects::GeomToleranceTypeValue {
         crate::xcaf_dim_tol_objects::GeomToleranceTypeValue::try_from(crate::check_result(unsafe {
@@ -2441,7 +2598,7 @@ impl GeomToleranceObject {
         .unwrap()
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:67 - `XCAFDimTolObjects_GeomToleranceObject::SetValue()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:64 - `XCAFDimTolObjects_GeomToleranceObject::SetValue()`
     /// Sets tolerance value.
     pub fn set_value(&mut self, theValue: f64) {
         crate::check_void_result(unsafe {
@@ -2452,7 +2609,7 @@ impl GeomToleranceObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:70 - `XCAFDimTolObjects_GeomToleranceObject::GetValue()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:67 - `XCAFDimTolObjects_GeomToleranceObject::GetValue()`
     /// Returns tolerance value.
     pub fn get_value(&self) -> f64 {
         crate::check_result(unsafe {
@@ -2462,7 +2619,7 @@ impl GeomToleranceObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:73 - `XCAFDimTolObjects_GeomToleranceObject::SetMaterialRequirementModifier()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:70 - `XCAFDimTolObjects_GeomToleranceObject::SetMaterialRequirementModifier()`
     /// Sets material requirement of the tolerance.
     pub fn set_material_requirement_modifier(
         &mut self,
@@ -2473,7 +2630,7 @@ impl GeomToleranceObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:77 - `XCAFDimTolObjects_GeomToleranceObject::GetMaterialRequirementModifier()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:74 - `XCAFDimTolObjects_GeomToleranceObject::GetMaterialRequirementModifier()`
     /// Returns material requirement of the tolerance.
     pub fn get_material_requirement_modifier(
         &self,
@@ -2481,7 +2638,7 @@ impl GeomToleranceObject {
         crate::xcaf_dim_tol_objects::GeomToleranceMatReqModif::try_from(crate::check_result(unsafe { crate::ffi_extern_TKXCAF::XCAFDimTolObjects_GeomToleranceObject_get_material_requirement_modifier(self as *const Self) })).unwrap()
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:80 - `XCAFDimTolObjects_GeomToleranceObject::SetZoneModifier()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:77 - `XCAFDimTolObjects_GeomToleranceObject::SetZoneModifier()`
     /// Sets tolerance zone.
     pub fn set_zone_modifier(
         &mut self,
@@ -2495,7 +2652,7 @@ impl GeomToleranceObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:83 - `XCAFDimTolObjects_GeomToleranceObject::GetZoneModifier()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:80 - `XCAFDimTolObjects_GeomToleranceObject::GetZoneModifier()`
     /// Returns tolerance zone.
     pub fn get_zone_modifier(&self) -> crate::xcaf_dim_tol_objects::GeomToleranceZoneModif {
         crate::xcaf_dim_tol_objects::GeomToleranceZoneModif::try_from(crate::check_result(unsafe {
@@ -2506,7 +2663,7 @@ impl GeomToleranceObject {
         .unwrap()
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:86 - `XCAFDimTolObjects_GeomToleranceObject::SetValueOfZoneModifier()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:83 - `XCAFDimTolObjects_GeomToleranceObject::SetValueOfZoneModifier()`
     /// Sets value associated with tolerance zone.
     pub fn set_value_of_zone_modifier(&mut self, theValue: f64) {
         crate::check_void_result(unsafe {
@@ -2514,7 +2671,7 @@ impl GeomToleranceObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:89 - `XCAFDimTolObjects_GeomToleranceObject::GetValueOfZoneModifier()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:86 - `XCAFDimTolObjects_GeomToleranceObject::GetValueOfZoneModifier()`
     /// Returns value associated with tolerance zone.
     pub fn get_value_of_zone_modifier(&self) -> f64 {
         crate::check_result(unsafe {
@@ -2522,11 +2679,11 @@ impl GeomToleranceObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:92 - `XCAFDimTolObjects_GeomToleranceObject::SetModifiers()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:89 - `XCAFDimTolObjects_GeomToleranceObject::SetModifiers()`
     /// Sets new sequence of tolerance modifiers.
     pub fn set_modifiers(
         &mut self,
-        theModifiers: &crate::ffi_types::XCAFDimTolObjects_GeomToleranceModifiersSequence,
+        theModifiers: &crate::ffi_types::NCollection_Sequence_XCAFDimTolObjects_GeomToleranceModif,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_GeomToleranceObject_set_modifiers(
@@ -2536,7 +2693,7 @@ impl GeomToleranceObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:96 - `XCAFDimTolObjects_GeomToleranceObject::AddModifier()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:93 - `XCAFDimTolObjects_GeomToleranceObject::AddModifier()`
     /// Adds a tolerance modifier to the sequence of modifiers.
     pub fn add_modifier(&mut self, theModifier: crate::xcaf_dim_tol_objects::GeomToleranceModif) {
         crate::check_void_result(unsafe {
@@ -2547,11 +2704,12 @@ impl GeomToleranceObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:99 - `XCAFDimTolObjects_GeomToleranceObject::GetModifiers()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:96 - `XCAFDimTolObjects_GeomToleranceObject::GetModifiers()`
     /// Returns a sequence of modifiers of the tolerance.
     pub fn get_modifiers(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::XCAFDimTolObjects_GeomToleranceModifiersSequence> {
+    ) -> crate::OwnedPtr<crate::ffi_types::NCollection_Sequence_XCAFDimTolObjects_GeomToleranceModif>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXCAF::XCAFDimTolObjects_GeomToleranceObject_get_modifiers(
@@ -2561,7 +2719,7 @@ impl GeomToleranceObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:102 - `XCAFDimTolObjects_GeomToleranceObject::SetMaxValueModifier()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:99 - `XCAFDimTolObjects_GeomToleranceObject::SetMaxValueModifier()`
     /// Sets the maximal upper tolerance value for tolerance with modifiers.
     pub fn set_max_value_modifier(&mut self, theModifier: f64) {
         crate::check_void_result(unsafe {
@@ -2572,7 +2730,7 @@ impl GeomToleranceObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:105 - `XCAFDimTolObjects_GeomToleranceObject::GetMaxValueModifier()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:102 - `XCAFDimTolObjects_GeomToleranceObject::GetMaxValueModifier()`
     /// Returns the maximal upper tolerance.
     pub fn get_max_value_modifier(&self) -> f64 {
         crate::check_result(unsafe {
@@ -2582,7 +2740,7 @@ impl GeomToleranceObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:107 - `XCAFDimTolObjects_GeomToleranceObject::SetAxis()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:104 - `XCAFDimTolObjects_GeomToleranceObject::SetAxis()`
     pub fn set_axis(&mut self, theAxis: &crate::gp::Ax2) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_GeomToleranceObject_set_axis(
@@ -2592,7 +2750,7 @@ impl GeomToleranceObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:109 - `XCAFDimTolObjects_GeomToleranceObject::GetAxis()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:106 - `XCAFDimTolObjects_GeomToleranceObject::GetAxis()`
     pub fn get_axis(&self) -> crate::OwnedPtr<crate::gp::Ax2> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2603,7 +2761,7 @@ impl GeomToleranceObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:111 - `XCAFDimTolObjects_GeomToleranceObject::HasAxis()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:108 - `XCAFDimTolObjects_GeomToleranceObject::HasAxis()`
     pub fn has_axis(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_GeomToleranceObject_has_axis(
@@ -2612,7 +2770,7 @@ impl GeomToleranceObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:114 - `XCAFDimTolObjects_GeomToleranceObject::SetPlane()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:111 - `XCAFDimTolObjects_GeomToleranceObject::SetPlane()`
     /// Sets annotation plane.
     pub fn set_plane(&mut self, thePlane: &crate::gp::Ax2) {
         crate::check_void_result(unsafe {
@@ -2623,7 +2781,7 @@ impl GeomToleranceObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:121 - `XCAFDimTolObjects_GeomToleranceObject::GetPlane()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:118 - `XCAFDimTolObjects_GeomToleranceObject::GetPlane()`
     /// Returns annotation plane.
     pub fn get_plane(&self) -> &crate::gp::Ax2 {
         unsafe {
@@ -2635,7 +2793,7 @@ impl GeomToleranceObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:124 - `XCAFDimTolObjects_GeomToleranceObject::SetPoint()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:121 - `XCAFDimTolObjects_GeomToleranceObject::SetPoint()`
     /// Sets reference point.
     pub fn set_point(&mut self, thePnt: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
@@ -2646,7 +2804,7 @@ impl GeomToleranceObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:131 - `XCAFDimTolObjects_GeomToleranceObject::GetPoint()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:128 - `XCAFDimTolObjects_GeomToleranceObject::GetPoint()`
     /// Returns reference point.
     pub fn get_point(&self) -> &crate::gp::Pnt {
         unsafe {
@@ -2658,7 +2816,7 @@ impl GeomToleranceObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:134 - `XCAFDimTolObjects_GeomToleranceObject::SetPointTextAttach()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:131 - `XCAFDimTolObjects_GeomToleranceObject::SetPointTextAttach()`
     /// Sets text position.
     pub fn set_point_text_attach(&mut self, thePntText: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
@@ -2669,7 +2827,7 @@ impl GeomToleranceObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:141 - `XCAFDimTolObjects_GeomToleranceObject::GetPointTextAttach()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:138 - `XCAFDimTolObjects_GeomToleranceObject::GetPointTextAttach()`
     /// Returns the text position.
     pub fn get_point_text_attach(&self) -> &crate::gp::Pnt {
         unsafe {
@@ -2677,7 +2835,7 @@ impl GeomToleranceObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:144 - `XCAFDimTolObjects_GeomToleranceObject::HasPlane()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:141 - `XCAFDimTolObjects_GeomToleranceObject::HasPlane()`
     /// Returns True if the object has annotation plane.
     pub fn has_plane(&self) -> bool {
         crate::check_result(unsafe {
@@ -2687,7 +2845,7 @@ impl GeomToleranceObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:147 - `XCAFDimTolObjects_GeomToleranceObject::HasPoint()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:144 - `XCAFDimTolObjects_GeomToleranceObject::HasPoint()`
     /// Returns True if reference point is specified.
     pub fn has_point(&self) -> bool {
         crate::check_result(unsafe {
@@ -2697,7 +2855,7 @@ impl GeomToleranceObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:150 - `XCAFDimTolObjects_GeomToleranceObject::HasPointText()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:147 - `XCAFDimTolObjects_GeomToleranceObject::HasPointText()`
     /// Returns True if text position is specified.
     pub fn has_point_text(&self) -> bool {
         crate::check_result(unsafe {
@@ -2707,12 +2865,12 @@ impl GeomToleranceObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:153 - `XCAFDimTolObjects_GeomToleranceObject::SetPresentation()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:150 - `XCAFDimTolObjects_GeomToleranceObject::SetPresentation()`
     /// Set graphical presentation for object.
     pub fn set_presentation(
         &mut self,
         thePresentation: &crate::topo_ds::Shape,
-        thePresentationName: &crate::ffi_types::HandleTCollectionHAsciiString,
+        thePresentationName: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_GeomToleranceObject_set_presentation(
@@ -2723,7 +2881,7 @@ impl GeomToleranceObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:161 - `XCAFDimTolObjects_GeomToleranceObject::GetPresentation()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:158 - `XCAFDimTolObjects_GeomToleranceObject::GetPresentation()`
     /// Returns graphical presentation of the object.
     pub fn get_presentation(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
@@ -2735,17 +2893,17 @@ impl GeomToleranceObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:164 - `XCAFDimTolObjects_GeomToleranceObject::GetPresentationName()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:161 - `XCAFDimTolObjects_GeomToleranceObject::GetPresentationName()`
     /// Returns graphical presentation of the object.
     pub fn get_presentation_name(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXCAF::XCAFDimTolObjects_GeomToleranceObject_get_presentation_name(self as *const Self)))
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:167 - `XCAFDimTolObjects_GeomToleranceObject::HasAffectedPlane()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:164 - `XCAFDimTolObjects_GeomToleranceObject::HasAffectedPlane()`
     pub fn has_affected_plane(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_GeomToleranceObject_has_affected_plane(
@@ -2754,14 +2912,14 @@ impl GeomToleranceObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:173 - `XCAFDimTolObjects_GeomToleranceObject::GetAffectedPlaneType()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:170 - `XCAFDimTolObjects_GeomToleranceObject::GetAffectedPlaneType()`
     pub fn get_affected_plane_type(
         &self,
     ) -> crate::xcaf_dim_tol_objects::ToleranceZoneAffectedPlane {
         crate::xcaf_dim_tol_objects::ToleranceZoneAffectedPlane::try_from(crate::check_result(unsafe { crate::ffi_extern_TKXCAF::XCAFDimTolObjects_GeomToleranceObject_get_affected_plane_type(self as *const Self) })).unwrap()
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:179 - `XCAFDimTolObjects_GeomToleranceObject::SetAffectedPlaneType()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:176 - `XCAFDimTolObjects_GeomToleranceObject::SetAffectedPlaneType()`
     pub fn set_affected_plane_type(
         &mut self,
         theType: crate::xcaf_dim_tol_objects::ToleranceZoneAffectedPlane,
@@ -2774,7 +2932,7 @@ impl GeomToleranceObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:185 - `XCAFDimTolObjects_GeomToleranceObject::SetAffectedPlane()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:182 - `XCAFDimTolObjects_GeomToleranceObject::SetAffectedPlane()`
     /// Sets affected plane.
     pub fn set_affected_plane_pln(&mut self, thePlane: &crate::gp::Pln) {
         crate::check_void_result(unsafe {
@@ -2785,7 +2943,7 @@ impl GeomToleranceObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:188 - `XCAFDimTolObjects_GeomToleranceObject::SetAffectedPlane()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:185 - `XCAFDimTolObjects_GeomToleranceObject::SetAffectedPlane()`
     /// Sets affected plane.
     pub fn set_affected_plane_pln_tolerancezoneaffectedplane(
         &mut self,
@@ -2797,7 +2955,7 @@ impl GeomToleranceObject {
         })
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:196 - `XCAFDimTolObjects_GeomToleranceObject::GetAffectedPlane()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:193 - `XCAFDimTolObjects_GeomToleranceObject::GetAffectedPlane()`
     /// Returns affected plane.
     pub fn get_affected_plane(&self) -> &crate::gp::Pln {
         unsafe {
@@ -2809,8 +2967,8 @@ impl GeomToleranceObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:201 - `XCAFDimTolObjects_GeomToleranceObject::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:198 - `XCAFDimTolObjects_GeomToleranceObject::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXCAF::XCAFDimTolObjects_GeomToleranceObject_dynamic_type(
@@ -2820,7 +2978,7 @@ impl GeomToleranceObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:201 - `XCAFDimTolObjects_GeomToleranceObject::get_type_name()`
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:198 - `XCAFDimTolObjects_GeomToleranceObject::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2831,8 +2989,8 @@ impl GeomToleranceObject {
         .into_owned()
     }
 
-    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:201 - `XCAFDimTolObjects_GeomToleranceObject::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:198 - `XCAFDimTolObjects_GeomToleranceObject::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXCAF::XCAFDimTolObjects_GeomToleranceObject_get_type_descriptor(
@@ -2858,7 +3016,7 @@ impl GeomToleranceObject {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleXCAFDimTolObjectsGeomToleranceObject> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_XCAFDimTolObjects_GeomToleranceObject> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXCAF::XCAFDimTolObjects_GeomToleranceObject_to_handle(
@@ -2868,8 +3026,8 @@ impl GeomToleranceObject {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_GeomToleranceObject_inherited_IsInstance(
                 self as *const Self,
@@ -2878,8 +3036,8 @@ impl GeomToleranceObject {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_GeomToleranceObject_inherited_IsKind(
                 self as *const Self,
@@ -2888,7 +3046,7 @@ impl GeomToleranceObject {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2904,7 +3062,7 @@ impl GeomToleranceObject {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_GeomToleranceObject_inherited_GetRefCount(
@@ -2913,21 +3071,21 @@ impl GeomToleranceObject {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_GeomToleranceObject_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_GeomToleranceObject_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_GeomToleranceObject_inherited_Delete(
@@ -2937,31 +3095,31 @@ impl GeomToleranceObject {
     }
 }
 
-pub use crate::ffi_types::HandleXCAFDimTolObjectsGeomToleranceObject;
+pub use crate::ffi_types::Handle_XCAFDimTolObjects_GeomToleranceObject;
 
-unsafe impl crate::CppDeletable for HandleXCAFDimTolObjectsGeomToleranceObject {
+unsafe impl crate::CppDeletable for Handle_XCAFDimTolObjects_GeomToleranceObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsGeomToleranceObject_destructor(ptr);
+            crate::ffi_extern_TKXCAF::Handle_XCAFDimTolObjects_GeomToleranceObject_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleXCAFDimTolObjectsGeomToleranceObject {
+unsafe impl crate::CppCopyable for Handle_XCAFDimTolObjects_GeomToleranceObject {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsGeomToleranceObject_clone(ptr),
+                crate::ffi_extern_TKXCAF::Handle_XCAFDimTolObjects_GeomToleranceObject_clone(ptr),
             )
         }
     }
 }
 
-impl HandleXCAFDimTolObjectsGeomToleranceObject {
+impl Handle_XCAFDimTolObjects_GeomToleranceObject {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsGeomToleranceObject_is_null(
+            crate::ffi_extern_TKXCAF::Handle_XCAFDimTolObjects_GeomToleranceObject_is_null(
                 self as *const Self,
             )
         }
@@ -2971,7 +3129,7 @@ impl HandleXCAFDimTolObjectsGeomToleranceObject {
     pub fn get(&self) -> &crate::ffi_types::XCAFDimTolObjects_GeomToleranceObject {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsGeomToleranceObject_get(
+                crate::ffi_extern_TKXCAF::Handle_XCAFDimTolObjects_GeomToleranceObject_get(
                     self as *const Self,
                 ),
             )
@@ -2982,7 +3140,7 @@ impl HandleXCAFDimTolObjectsGeomToleranceObject {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::XCAFDimTolObjects_GeomToleranceObject {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsGeomToleranceObject_get_mut(
+                crate::ffi_extern_TKXCAF::Handle_XCAFDimTolObjects_GeomToleranceObject_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -2992,9 +3150,9 @@ impl HandleXCAFDimTolObjectsGeomToleranceObject {
     /// Upcast Handle<XCAFDimTolObjects_GeomToleranceObject> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFDimTolObjectsGeomToleranceObject_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXCAF::Handle_XCAFDimTolObjects_GeomToleranceObject_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -3003,7 +3161,7 @@ impl HandleXCAFDimTolObjectsGeomToleranceObject {
 // From XCAFDimTolObjects_Tool.hxx
 // ========================
 
-/// **Source:** `XCAFDimTolObjects_Tool.hxx`:33 - `XCAFDimTolObjects_Tool`
+/// **Source:** `XCAFDimTolObjects_Tool.hxx`:37 - `XCAFDimTolObjects_Tool`
 pub use crate::ffi_types::XCAFDimTolObjects_Tool as Tool;
 
 unsafe impl crate::CppDeletable for Tool {
@@ -3015,9 +3173,9 @@ unsafe impl crate::CppDeletable for Tool {
 }
 
 impl Tool {
-    /// **Source:** `XCAFDimTolObjects_Tool.hxx`:38 - `XCAFDimTolObjects_Tool::XCAFDimTolObjects_Tool()`
+    /// **Source:** `XCAFDimTolObjects_Tool.hxx`:42 - `XCAFDimTolObjects_Tool::XCAFDimTolObjects_Tool()`
     pub fn new_handletdocstddocument(
-        theDoc: &crate::ffi_types::HandleTDocStdDocument,
+        theDoc: &crate::ffi_types::Handle_TDocStd_Document,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3026,82 +3184,12 @@ impl Tool {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_Tool.hxx`:42 - `XCAFDimTolObjects_Tool::GetDimensions()`
-    /// Returns a sequence of Dimensions currently stored
-    /// in the GD&T table
-    pub fn get_dimensions(
-        &self,
-        theDimensionObjectSequence: &mut crate::ffi_types::XCAFDimTolObjects_DimensionObjectSequence,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKXCAF::XCAFDimTolObjects_Tool_get_dimensions(
-                self as *const Self,
-                theDimensionObjectSequence,
-            )
-        })
-    }
-
-    /// **Source:** `XCAFDimTolObjects_Tool.hxx`:47 - `XCAFDimTolObjects_Tool::GetRefDimensions()`
-    /// Returns all Dimensions defined for Shape
-    pub fn get_ref_dimensions(
-        &self,
-        theShape: &crate::topo_ds::Shape,
-        theDimensions: &mut crate::ffi_types::XCAFDimTolObjects_DimensionObjectSequence,
-    ) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKXCAF::XCAFDimTolObjects_Tool_get_ref_dimensions(
-                self as *const Self,
-                theShape,
-                theDimensions,
-            )
-        })
-    }
-
-    /// **Source:** `XCAFDimTolObjects_Tool.hxx`:52 - `XCAFDimTolObjects_Tool::GetGeomTolerances()`
-    /// Returns a sequence of Tolerances currently stored
-    /// in the GD&T table
-    pub fn get_geom_tolerances(
-        &self,
-        theGeomToleranceObjectSequence: &mut crate::ffi_types::XCAFDimTolObjects_GeomToleranceObjectSequence,
-        theDatumObjectSequence: &mut crate::ffi_types::XCAFDimTolObjects_DatumObjectSequence,
-        theMap: &mut crate::ffi_types::XCAFDimTolObjects_DataMapOfToleranceDatum,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKXCAF::XCAFDimTolObjects_Tool_get_geom_tolerances(
-                self as *const Self,
-                theGeomToleranceObjectSequence,
-                theDatumObjectSequence,
-                theMap,
-            )
-        })
-    }
-
-    /// **Source:** `XCAFDimTolObjects_Tool.hxx`:58 - `XCAFDimTolObjects_Tool::GetRefGeomTolerances()`
-    /// Returns all GeomTolerances defined for Shape
-    pub fn get_ref_geom_tolerances(
-        &self,
-        theShape: &crate::topo_ds::Shape,
-        theGeomToleranceObjectSequence: &mut crate::ffi_types::XCAFDimTolObjects_GeomToleranceObjectSequence,
-        theDatumObjectSequence: &mut crate::ffi_types::XCAFDimTolObjects_DatumObjectSequence,
-        theMap: &mut crate::ffi_types::XCAFDimTolObjects_DataMapOfToleranceDatum,
-    ) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKXCAF::XCAFDimTolObjects_Tool_get_ref_geom_tolerances(
-                self as *const Self,
-                theShape,
-                theGeomToleranceObjectSequence,
-                theDatumObjectSequence,
-                theMap,
-            )
-        })
-    }
-
-    /// **Source:** `XCAFDimTolObjects_Tool.hxx`:66 - `XCAFDimTolObjects_Tool::GetRefDatum()`
+    /// **Source:** `XCAFDimTolObjects_Tool.hxx`:74 - `XCAFDimTolObjects_Tool::GetRefDatum()`
     /// Returns DatumObject defined for Shape
     pub fn get_ref_datum(
         &self,
         theShape: &crate::topo_ds::Shape,
-        theDatum: &mut crate::ffi_types::HandleXCAFDimTolObjectsDatumObject,
+        theDatum: &mut crate::ffi_types::Handle_XCAFDimTolObjects_DatumObject,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDimTolObjects_Tool_get_ref_datum(
@@ -3113,16 +3201,26 @@ impl Tool {
     }
 }
 
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi_types::{
-    XCAFDimTolObjects_DataMapOfToleranceDatum as DataMapOfToleranceDatum,
-    XCAFDimTolObjects_DatumModifiersSequence as DatumModifiersSequence,
-    XCAFDimTolObjects_DatumObjectSequence as DatumObjectSequence,
-    XCAFDimTolObjects_DimensionModifiersSequence as DimensionModifiersSequence,
-    XCAFDimTolObjects_DimensionObjectSequence as DimensionObjectSequence,
-    XCAFDimTolObjects_GeomToleranceModifiersSequence as GeomToleranceModifiersSequence,
-    XCAFDimTolObjects_GeomToleranceObjectSequence as GeomToleranceObjectSequence,
-};
+// ── Skipped symbols for Tool (4 total) ──
+// SKIPPED: **Source:** `XCAFDimTolObjects_Tool.hxx`:46 - `XCAFDimTolObjects_Tool::GetDimensions`
+//   method: Returns a sequence of Dimensions currently stored
+//   method: in the GD&T table
+//   Reason: has unbindable types: param 'theDimensionObjectSequence': unresolved template type (NCollection_Sequence<occ::handle<XCAFDimTolObjects_DimensionObject>>&)
+//   // pub fn get_dimensions(&self, theDimensionObjectSequence: /* NCollection_Sequence<occ::handle<XCAFDimTolObjects_DimensionObject>>& */);
+//
+// SKIPPED: **Source:** `XCAFDimTolObjects_Tool.hxx`:51 - `XCAFDimTolObjects_Tool::GetRefDimensions`
+//   method: Returns all Dimensions defined for Shape
+//   Reason: has unbindable types: param 'theDimensions': unresolved template type (NCollection_Sequence<occ::handle<XCAFDimTolObjects_DimensionObject>>&)
+//   // pub fn get_ref_dimensions(&self, theShape: &Shape, theDimensions: /* NCollection_Sequence<occ::handle<XCAFDimTolObjects_DimensionObject>>& */) -> bool;
+//
+// SKIPPED: **Source:** `XCAFDimTolObjects_Tool.hxx`:57 - `XCAFDimTolObjects_Tool::GetGeomTolerances`
+//   method: Returns a sequence of Tolerances currently stored
+//   method: in the GD&T table
+//   Reason: has unbindable types: param 'theGeomToleranceObjectSequence': unresolved template type (NCollection_Sequence<occ::handle<XCAFDimTolObjects_GeomToleranceObject>>&); param 'theDatumObjectSequence': unresolved template type (NCollection_Sequence<occ::handle<XCAFDimTolObjects_DatumObject>>&); param 'theMap': unresolved template type (NCollection_DataMap<occ::handle<XCAFDimTolObjects_GeomToleranceObject>, occ::handle<XCAFDimTolObjects_DatumObject>>&)
+//   // pub fn get_geom_tolerances(&self, theGeomToleranceObjectSequence: /* NCollection_Sequence<occ::handle<XCAFDimTolObjects_GeomToleranceObject>>& */, theDatumObjectSequence: /* NCollection_Sequence<occ::handle<XCAFDimTolObjects_DatumObject>>& */, theMap: /* NCollection_DataMap<occ::handle<XCAFDimTolObjects_GeomToleranceObject>, occ::handle<XCAFDimTolObjects_DatumObject>>& */);
+//
+// SKIPPED: **Source:** `XCAFDimTolObjects_Tool.hxx`:65 - `XCAFDimTolObjects_Tool::GetRefGeomTolerances`
+//   method: Returns all GeomTolerances defined for Shape
+//   Reason: has unbindable types: param 'theGeomToleranceObjectSequence': unresolved template type (NCollection_Sequence<occ::handle<XCAFDimTolObjects_GeomToleranceObject>>&); param 'theDatumObjectSequence': unresolved template type (NCollection_Sequence<occ::handle<XCAFDimTolObjects_DatumObject>>&); param 'theMap': unresolved template type (NCollection_DataMap<occ::handle<XCAFDimTolObjects_GeomToleranceObject>, occ::handle<XCAFDimTolObjects_DatumObject>>&)
+//   // pub fn get_ref_geom_tolerances(&self, theShape: &Shape, theGeomToleranceObjectSequence: /* NCollection_Sequence<occ::handle<XCAFDimTolObjects_GeomToleranceObject>>& */, theDatumObjectSequence: /* NCollection_Sequence<occ::handle<XCAFDimTolObjects_DatumObject>>& */, theMap: /* NCollection_DataMap<occ::handle<XCAFDimTolObjects_GeomToleranceObject>, occ::handle<XCAFDimTolObjects_DatumObject>>& */) -> bool;
+//

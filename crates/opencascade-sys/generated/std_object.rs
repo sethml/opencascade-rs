@@ -10,7 +10,7 @@
 // From StdObject_Location.hxx
 // ========================
 
-/// **Source:** `StdObject_Location.hxx`:24 - `StdObject_Location`
+/// **Source:** `StdObject_Location.hxx`:26 - `StdObject_Location`
 pub use crate::ffi_types::StdObject_Location as Location;
 
 unsafe impl crate::CppDeletable for Location {
@@ -32,7 +32,7 @@ impl Location {
         }
     }
 
-    /// **Source:** `StdObject_Location.hxx`:28 - `StdObject_Location::PChildren()`
+    /// **Source:** `StdObject_Location.hxx`:30 - `StdObject_Location::PChildren()`
     /// Gets persistent child objects
     pub fn p_children(
         &self,
@@ -43,7 +43,7 @@ impl Location {
         })
     }
 
-    /// **Source:** `StdObject_Location.hxx`:31 - `StdObject_Location::Import()`
+    /// **Source:** `StdObject_Location.hxx`:33 - `StdObject_Location::Import()`
     /// Import transient object from the persistent data.
     pub fn import(&self) -> crate::OwnedPtr<crate::top_loc::Location> {
         unsafe {
@@ -52,20 +52,14 @@ impl Location {
             ))
         }
     }
-
-    /// **Source:** `StdObject_Location.hxx`:34 - `StdObject_Location::Translate()`
-    /// Creates a persistent wrapper object for a location
-    pub fn translate(
-        theLoc: &crate::top_loc::Location,
-        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<Location> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKStd::StdObject_Location_translate(theLoc, theMap),
-            ))
-        }
-    }
 }
+
+// ── Skipped symbols for Location (1 total) ──
+// SKIPPED: **Source:** `StdObject_Location.hxx`:36 - `StdObject_Location::Translate`
+//   static_method: Creates a persistent wrapper object for a location
+//   Reason: has unbindable types: param 'theMap': unresolved template type (NCollection_DataMap<occ::handle<Standard_Transient>, occ::handle<StdObjMgt_Persistent>>&)
+//   // pub fn translate(theLoc: &Location, theMap: /* NCollection_DataMap<occ::handle<Standard_Transient>, occ::handle<StdObjMgt_Persistent>>& */) -> OwnedPtr<StdObject_Location>;
+//
 
 // ========================
 // From StdObject_Shape.hxx

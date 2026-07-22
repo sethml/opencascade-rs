@@ -12,7 +12,6 @@
 #include <ShapePersistent_BRep.hxx>
 #include <ShapePersistent_Geom.hxx>
 #include <ShapePersistent_TopoDS.hxx>
-#include <Standard_GUID.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_IStream.hxx>
 #include <Standard_Type.hxx>
@@ -22,8 +21,6 @@
 #include <StdLPersistent_Data.hxx>
 #include <StdLPersistent_Document.hxx>
 #include <StdLPersistent_Function.hxx>
-#include <StdLPersistent_HArray1.hxx>
-#include <StdLPersistent_HArray2.hxx>
 #include <StdLPersistent_HString.hxx>
 #include <StdLPersistent_NamedData.hxx>
 #include <StdLPersistent_Real.hxx>
@@ -31,16 +28,13 @@
 #include <StdLPersistent_Value.hxx>
 #include <StdLPersistent_Variable.hxx>
 #include <StdLPersistent_XLink.hxx>
+#include <StdObjMgt_Persistent.hxx>
 #include <StdObjMgt_ReadData.hxx>
-#include <StdObjMgt_TransientPersistentMap.hxx>
 #include <StdObjMgt_WriteData.hxx>
 #include <StdPersistent_Naming.hxx>
 #include <StdPersistent_TopLoc.hxx>
 #include <Storage_BaseDriver.hxx>
 #include <Storage_Data.hxx>
-#include <TCollection_ExtendedString.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <TCollection_HExtendedString.hxx>
 #include <TDF_Attribute.hxx>
 #include <TDF_Data.hxx>
 #include <TDataStd_NamedData.hxx>
@@ -52,76 +46,62 @@
 #include <TFunction_Function.hxx>
 
 // Handle type aliases
-typedef opencascade::handle<CDM_Application> HandleCDMApplication;
-typedef opencascade::handle<CDM_Document> HandleCDMDocument;
-typedef opencascade::handle<PCDM_Reader> HandlePCDMReader;
-typedef opencascade::handle<PCDM_ReaderFilter> HandlePCDMReaderFilter;
-typedef opencascade::handle<PCDM_RetrievalDriver> HandlePCDMRetrievalDriver;
-typedef opencascade::handle<ShapePersistent_BRep::CurveRepresentation> HandleShapePersistentBRepCurveRepresentation;
-typedef opencascade::handle<ShapePersistent_BRep::PointRepresentation> HandleShapePersistentBRepPointRepresentation;
-typedef opencascade::handle<ShapePersistent_Geom::Geometry> HandleShapePersistentGeomGeometry;
-typedef opencascade::handle<ShapePersistent_TopoDS::HShape> HandleShapePersistentTopoDSHShape;
-typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
-typedef opencascade::handle<Standard_Type> HandleStandardType;
-typedef opencascade::handle<StdDrivers_DocumentRetrievalDriver> HandleStdDriversDocumentRetrievalDriver;
-typedef opencascade::handle<StdLDrivers_DocumentRetrievalDriver> HandleStdLDriversDocumentRetrievalDriver;
-typedef opencascade::handle<StdLPersistent_Data> HandleStdLPersistentData;
-typedef opencascade::handle<StdLPersistent_Document> HandleStdLPersistentDocument;
-typedef opencascade::handle<StdLPersistent_HArray1OfPersistent> HandleStdLPersistentHArray1OfPersistent;
-typedef opencascade::handle<StdLPersistent_HArray2OfPersistent> HandleStdLPersistentHArray2OfPersistent;
-typedef opencascade::handle<StdObjMgt_Persistent> HandleStdObjMgtPersistent;
-typedef opencascade::handle<StdPersistent_Naming::Name> HandleStdPersistentNamingName;
-typedef opencascade::handle<StdPersistent_TopLoc::ItemLocation> HandleStdPersistentTopLocItemLocation;
-typedef opencascade::handle<Storage_BaseDriver> HandleStorageBaseDriver;
-typedef opencascade::handle<Storage_Data> HandleStorageData;
-typedef opencascade::handle<TCollection_HAsciiString> HandleTCollectionHAsciiString;
-typedef opencascade::handle<TCollection_HExtendedString> HandleTCollectionHExtendedString;
-typedef opencascade::handle<TDF_Attribute> HandleTDFAttribute;
-typedef opencascade::handle<TDF_Data> HandleTDFData;
-typedef opencascade::handle<TDataStd_NamedData> HandleTDataStdNamedData;
-typedef opencascade::handle<TDataStd_Real> HandleTDataStdReal;
-typedef opencascade::handle<TDataStd_Variable> HandleTDataStdVariable;
-typedef opencascade::handle<TDocStd_Document> HandleTDocStdDocument;
-typedef opencascade::handle<TDocStd_XLink> HandleTDocStdXLink;
-typedef opencascade::handle<TFunction_Function> HandleTFunctionFunction;
+typedef opencascade::handle<CDM_Application> Handle_CDM_Application;
+typedef opencascade::handle<CDM_Document> Handle_CDM_Document;
+typedef opencascade::handle<PCDM_Reader> Handle_PCDM_Reader;
+typedef opencascade::handle<PCDM_ReaderFilter> Handle_PCDM_ReaderFilter;
+typedef opencascade::handle<PCDM_RetrievalDriver> Handle_PCDM_RetrievalDriver;
+typedef opencascade::handle<ShapePersistent_BRep::CurveRepresentation> Handle_ShapePersistent_BRep_CurveRepresentation;
+typedef opencascade::handle<ShapePersistent_BRep::PointRepresentation> Handle_ShapePersistent_BRep_PointRepresentation;
+typedef opencascade::handle<ShapePersistent_Geom::Geometry> Handle_ShapePersistent_Geom_Geometry;
+typedef opencascade::handle<ShapePersistent_TopoDS::HShape> Handle_ShapePersistent_TopoDS_HShape;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
+typedef opencascade::handle<StdDrivers_DocumentRetrievalDriver> Handle_StdDrivers_DocumentRetrievalDriver;
+typedef opencascade::handle<StdLDrivers_DocumentRetrievalDriver> Handle_StdLDrivers_DocumentRetrievalDriver;
+typedef opencascade::handle<StdLPersistent_Data> Handle_StdLPersistent_Data;
+typedef opencascade::handle<StdLPersistent_Document> Handle_StdLPersistent_Document;
+typedef opencascade::handle<StdObjMgt_Persistent> Handle_StdObjMgt_Persistent;
+typedef opencascade::handle<StdPersistent_Naming::Name> Handle_StdPersistent_Naming_Name;
+typedef opencascade::handle<StdPersistent_TopLoc::ItemLocation> Handle_StdPersistent_TopLoc_ItemLocation;
+typedef opencascade::handle<Storage_BaseDriver> Handle_Storage_BaseDriver;
+typedef opencascade::handle<Storage_Data> Handle_Storage_Data;
+typedef opencascade::handle<TCollection_HAsciiString> Handle_TCollection_HAsciiString;
+typedef opencascade::handle<TCollection_HExtendedString> Handle_TCollection_HExtendedString;
+typedef opencascade::handle<TDF_Attribute> Handle_TDF_Attribute;
+typedef opencascade::handle<TDF_Data> Handle_TDF_Data;
+typedef opencascade::handle<TDataStd_NamedData> Handle_TDataStd_NamedData;
+typedef opencascade::handle<TDataStd_Real> Handle_TDataStd_Real;
+typedef opencascade::handle<TDataStd_Variable> Handle_TDataStd_Variable;
+typedef opencascade::handle<TDocStd_Document> Handle_TDocStd_Document;
+typedef opencascade::handle<TDocStd_XLink> Handle_TDocStd_XLink;
+typedef opencascade::handle<TFunction_Function> Handle_TFunction_Function;
 
 // Handle type destructors, clone, and is_null functions
-extern "C" void HandleStdLDriversDocumentRetrievalDriver_destructor(HandleStdLDriversDocumentRetrievalDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleStdLDriversDocumentRetrievalDriver*> HandleStdLDriversDocumentRetrievalDriver_clone(const HandleStdLDriversDocumentRetrievalDriver* self_) {
-    try { return {new HandleStdLDriversDocumentRetrievalDriver(*self_), nullptr}; }
+extern "C" void Handle_StdLDrivers_DocumentRetrievalDriver_destructor(Handle_StdLDrivers_DocumentRetrievalDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_StdLDrivers_DocumentRetrievalDriver*> Handle_StdLDrivers_DocumentRetrievalDriver_clone(const Handle_StdLDrivers_DocumentRetrievalDriver* self_) {
+    try { return {new Handle_StdLDrivers_DocumentRetrievalDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleStdLDriversDocumentRetrievalDriver_is_null(const HandleStdLDriversDocumentRetrievalDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleStdLPersistentData_destructor(HandleStdLPersistentData* self_) { delete self_; }
-extern "C" OcctResult<HandleStdLPersistentData*> HandleStdLPersistentData_clone(const HandleStdLPersistentData* self_) {
-    try { return {new HandleStdLPersistentData(*self_), nullptr}; }
+extern "C" bool Handle_StdLDrivers_DocumentRetrievalDriver_is_null(const Handle_StdLDrivers_DocumentRetrievalDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_StdLPersistent_Data_destructor(Handle_StdLPersistent_Data* self_) { delete self_; }
+extern "C" OcctResult<Handle_StdLPersistent_Data*> Handle_StdLPersistent_Data_clone(const Handle_StdLPersistent_Data* self_) {
+    try { return {new Handle_StdLPersistent_Data(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleStdLPersistentData_is_null(const HandleStdLPersistentData* self_) { return self_->IsNull(); }
-extern "C" void HandleStdLPersistentDocument_destructor(HandleStdLPersistentDocument* self_) { delete self_; }
-extern "C" OcctResult<HandleStdLPersistentDocument*> HandleStdLPersistentDocument_clone(const HandleStdLPersistentDocument* self_) {
-    try { return {new HandleStdLPersistentDocument(*self_), nullptr}; }
+extern "C" bool Handle_StdLPersistent_Data_is_null(const Handle_StdLPersistent_Data* self_) { return self_->IsNull(); }
+extern "C" void Handle_StdLPersistent_Document_destructor(Handle_StdLPersistent_Document* self_) { delete self_; }
+extern "C" OcctResult<Handle_StdLPersistent_Document*> Handle_StdLPersistent_Document_clone(const Handle_StdLPersistent_Document* self_) {
+    try { return {new Handle_StdLPersistent_Document(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleStdLPersistentDocument_is_null(const HandleStdLPersistentDocument* self_) { return self_->IsNull(); }
-extern "C" void HandleStdLPersistentHArray1OfPersistent_destructor(HandleStdLPersistentHArray1OfPersistent* self_) { delete self_; }
-extern "C" OcctResult<HandleStdLPersistentHArray1OfPersistent*> HandleStdLPersistentHArray1OfPersistent_clone(const HandleStdLPersistentHArray1OfPersistent* self_) {
-    try { return {new HandleStdLPersistentHArray1OfPersistent(*self_), nullptr}; }
+extern "C" bool Handle_StdLPersistent_Document_is_null(const Handle_StdLPersistent_Document* self_) { return self_->IsNull(); }
+extern "C" void Handle_StdObjMgt_Persistent_destructor(Handle_StdObjMgt_Persistent* self_) { delete self_; }
+extern "C" OcctResult<Handle_StdObjMgt_Persistent*> Handle_StdObjMgt_Persistent_clone(const Handle_StdObjMgt_Persistent* self_) {
+    try { return {new Handle_StdObjMgt_Persistent(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleStdLPersistentHArray1OfPersistent_is_null(const HandleStdLPersistentHArray1OfPersistent* self_) { return self_->IsNull(); }
-extern "C" void HandleStdLPersistentHArray2OfPersistent_destructor(HandleStdLPersistentHArray2OfPersistent* self_) { delete self_; }
-extern "C" OcctResult<HandleStdLPersistentHArray2OfPersistent*> HandleStdLPersistentHArray2OfPersistent_clone(const HandleStdLPersistentHArray2OfPersistent* self_) {
-    try { return {new HandleStdLPersistentHArray2OfPersistent(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleStdLPersistentHArray2OfPersistent_is_null(const HandleStdLPersistentHArray2OfPersistent* self_) { return self_->IsNull(); }
-extern "C" void HandleStdObjMgtPersistent_destructor(HandleStdObjMgtPersistent* self_) { delete self_; }
-extern "C" OcctResult<HandleStdObjMgtPersistent*> HandleStdObjMgtPersistent_clone(const HandleStdObjMgtPersistent* self_) {
-    try { return {new HandleStdObjMgtPersistent(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleStdObjMgtPersistent_is_null(const HandleStdObjMgtPersistent* self_) { return self_->IsNull(); }
+extern "C" bool Handle_StdObjMgt_Persistent_is_null(const Handle_StdObjMgt_Persistent* self_) { return self_->IsNull(); }
 
 // ========================
 // StdLDrivers_DocumentRetrievalDriver wrappers
@@ -157,35 +137,35 @@ extern "C" OcctResult<const PCDM_Reader*> StdLDrivers_DocumentRetrievalDriver_as
 extern "C" OcctResult<PCDM_Reader*> StdLDrivers_DocumentRetrievalDriver_as_PCDM_Reader_mut(StdLDrivers_DocumentRetrievalDriver* self_) { return {static_cast<PCDM_Reader*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> StdLDrivers_DocumentRetrievalDriver_as_Standard_Transient(const StdLDrivers_DocumentRetrievalDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> StdLDrivers_DocumentRetrievalDriver_as_Standard_Transient_mut(StdLDrivers_DocumentRetrievalDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleStdLDriversDocumentRetrievalDriver*> StdLDrivers_DocumentRetrievalDriver_to_handle(StdLDrivers_DocumentRetrievalDriver* obj) {
-    try { return {new HandleStdLDriversDocumentRetrievalDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_StdLDrivers_DocumentRetrievalDriver*> StdLDrivers_DocumentRetrievalDriver_to_handle(StdLDrivers_DocumentRetrievalDriver* obj) {
+    try { return {new Handle_StdLDrivers_DocumentRetrievalDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const StdLDrivers_DocumentRetrievalDriver*> HandleStdLDriversDocumentRetrievalDriver_get(const HandleStdLDriversDocumentRetrievalDriver* handle) {
+extern "C" OcctResult<const StdLDrivers_DocumentRetrievalDriver*> Handle_StdLDrivers_DocumentRetrievalDriver_get(const Handle_StdLDrivers_DocumentRetrievalDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<StdLDrivers_DocumentRetrievalDriver*> HandleStdLDriversDocumentRetrievalDriver_get_mut(HandleStdLDriversDocumentRetrievalDriver* handle) {
+extern "C" OcctResult<StdLDrivers_DocumentRetrievalDriver*> Handle_StdLDrivers_DocumentRetrievalDriver_get_mut(Handle_StdLDrivers_DocumentRetrievalDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandlePCDMRetrievalDriver*> HandleStdLDriversDocumentRetrievalDriver_to_HandlePCDMRetrievalDriver(const HandleStdLDriversDocumentRetrievalDriver* self_) {
-    try { return {new HandlePCDMRetrievalDriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_PCDM_RetrievalDriver*> Handle_StdLDrivers_DocumentRetrievalDriver_to_Handle_PCDM_RetrievalDriver(const Handle_StdLDrivers_DocumentRetrievalDriver* self_) {
+    try { return {new Handle_PCDM_RetrievalDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandlePCDMReader*> HandleStdLDriversDocumentRetrievalDriver_to_HandlePCDMReader(const HandleStdLDriversDocumentRetrievalDriver* self_) {
-    try { return {new HandlePCDMReader(*self_), nullptr}; }
+extern "C" OcctResult<Handle_PCDM_Reader*> Handle_StdLDrivers_DocumentRetrievalDriver_to_Handle_PCDM_Reader(const Handle_StdLDrivers_DocumentRetrievalDriver* self_) {
+    try { return {new Handle_PCDM_Reader(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleStdLDriversDocumentRetrievalDriver_to_HandleStandardTransient(const HandleStdLDriversDocumentRetrievalDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_StdLDrivers_DocumentRetrievalDriver_to_Handle_Standard_Transient(const Handle_StdLDrivers_DocumentRetrievalDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStdDriversDocumentRetrievalDriver*> HandleStdLDriversDocumentRetrievalDriver_downcast_to_HandleStdDriversDocumentRetrievalDriver(const HandleStdLDriversDocumentRetrievalDriver* self_) {
+extern "C" OcctResult<Handle_StdDrivers_DocumentRetrievalDriver*> Handle_StdLDrivers_DocumentRetrievalDriver_downcast_to_Handle_StdDrivers_DocumentRetrievalDriver(const Handle_StdLDrivers_DocumentRetrievalDriver* self_) {
     try {
     opencascade::handle<StdDrivers_DocumentRetrievalDriver> result = opencascade::handle<StdDrivers_DocumentRetrievalDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleStdDriversDocumentRetrievalDriver(result), nullptr};
+    return {new Handle_StdDrivers_DocumentRetrievalDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -263,24 +243,24 @@ extern "C" OcctResult<const StdObjMgt_Persistent*> StdLPersistent_Data_as_StdObj
 extern "C" OcctResult<StdObjMgt_Persistent*> StdLPersistent_Data_as_StdObjMgt_Persistent_mut(StdLPersistent_Data* self_) { return {static_cast<StdObjMgt_Persistent*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> StdLPersistent_Data_as_Standard_Transient(const StdLPersistent_Data* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> StdLPersistent_Data_as_Standard_Transient_mut(StdLPersistent_Data* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleStdLPersistentData*> StdLPersistent_Data_to_handle(StdLPersistent_Data* obj) {
-    try { return {new HandleStdLPersistentData(obj), nullptr}; }
+extern "C" OcctResult<Handle_StdLPersistent_Data*> StdLPersistent_Data_to_handle(StdLPersistent_Data* obj) {
+    try { return {new Handle_StdLPersistent_Data(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const StdLPersistent_Data*> HandleStdLPersistentData_get(const HandleStdLPersistentData* handle) {
+extern "C" OcctResult<const StdLPersistent_Data*> Handle_StdLPersistent_Data_get(const Handle_StdLPersistent_Data* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<StdLPersistent_Data*> HandleStdLPersistentData_get_mut(HandleStdLPersistentData* handle) {
+extern "C" OcctResult<StdLPersistent_Data*> Handle_StdLPersistent_Data_get_mut(Handle_StdLPersistent_Data* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStdObjMgtPersistent*> HandleStdLPersistentData_to_HandleStdObjMgtPersistent(const HandleStdLPersistentData* self_) {
-    try { return {new HandleStdObjMgtPersistent(*self_), nullptr}; }
+extern "C" OcctResult<Handle_StdObjMgt_Persistent*> Handle_StdLPersistent_Data_to_Handle_StdObjMgt_Persistent(const Handle_StdLPersistent_Data* self_) {
+    try { return {new Handle_StdObjMgt_Persistent(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleStdLPersistentData_to_HandleStandardTransient(const HandleStdLPersistentData* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_StdLPersistent_Data_to_Handle_Standard_Transient(const Handle_StdLPersistent_Data* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* StdLPersistent_Data_inherited_ImportDocument(const StdLPersistent_Data* self, Handle(TDocStd_Document) const& theDocument) {
@@ -385,24 +365,24 @@ extern "C" OcctResult<const StdObjMgt_Persistent*> StdLPersistent_Document_as_St
 extern "C" OcctResult<StdObjMgt_Persistent*> StdLPersistent_Document_as_StdObjMgt_Persistent_mut(StdLPersistent_Document* self_) { return {static_cast<StdObjMgt_Persistent*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> StdLPersistent_Document_as_Standard_Transient(const StdLPersistent_Document* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> StdLPersistent_Document_as_Standard_Transient_mut(StdLPersistent_Document* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleStdLPersistentDocument*> StdLPersistent_Document_to_handle(StdLPersistent_Document* obj) {
-    try { return {new HandleStdLPersistentDocument(obj), nullptr}; }
+extern "C" OcctResult<Handle_StdLPersistent_Document*> StdLPersistent_Document_to_handle(StdLPersistent_Document* obj) {
+    try { return {new Handle_StdLPersistent_Document(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const StdLPersistent_Document*> HandleStdLPersistentDocument_get(const HandleStdLPersistentDocument* handle) {
+extern "C" OcctResult<const StdLPersistent_Document*> Handle_StdLPersistent_Document_get(const Handle_StdLPersistent_Document* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<StdLPersistent_Document*> HandleStdLPersistentDocument_get_mut(HandleStdLPersistentDocument* handle) {
+extern "C" OcctResult<StdLPersistent_Document*> Handle_StdLPersistent_Document_get_mut(Handle_StdLPersistent_Document* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStdObjMgtPersistent*> HandleStdLPersistentDocument_to_HandleStdObjMgtPersistent(const HandleStdLPersistentDocument* self_) {
-    try { return {new HandleStdObjMgtPersistent(*self_), nullptr}; }
+extern "C" OcctResult<Handle_StdObjMgt_Persistent*> Handle_StdLPersistent_Document_to_Handle_StdObjMgt_Persistent(const Handle_StdLPersistent_Document* self_) {
+    try { return {new Handle_StdObjMgt_Persistent(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleStdLPersistentDocument_to_HandleStandardTransient(const HandleStdLPersistentDocument* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_StdLPersistent_Document_to_Handle_Standard_Transient(const Handle_StdLPersistent_Document* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(TDF_Attribute)*> StdLPersistent_Document_inherited_CreateAttribute(StdLPersistent_Document* self) {
@@ -500,182 +480,6 @@ extern "C" const char* StdLPersistent_Function_import(const StdLPersistent_Funct
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void StdLPersistent_Function_destructor(StdLPersistent_Function* self_) { delete self_; }
-
-// ========================
-// StdLPersistent_HArray1OfPersistent wrappers
-// ========================
-
-extern "C" OcctResult<StdLPersistent_HArray1OfPersistent*> StdLPersistent_HArray1OfPersistent_ctor() {
-    try { return {new StdLPersistent_HArray1OfPersistent(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<StdLPersistent_HArray1OfPersistent*> StdLPersistent_HArray1OfPersistent_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new StdLPersistent_HArray1OfPersistent(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<StdLPersistent_HArray1OfPersistent*> StdLPersistent_HArray1OfPersistent_ctor_int2_handlestdobjmgtpersistent(int32_t theLower, int32_t theUpper, Handle(StdObjMgt_Persistent) const* theValue) {
-    try { return {new StdLPersistent_HArray1OfPersistent(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<StdLPersistent_HArray1OfPersistent*> StdLPersistent_HArray1OfPersistent_ctor_handlestdobjmgtpersistent_int2_bool(Handle(StdObjMgt_Persistent) const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new StdLPersistent_HArray1OfPersistent(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<StdLPersistent_HArray1OfPersistent*> StdLPersistent_HArray1OfPersistent_ctor_array1_opencascade_handle_stdobjmgt_persistent(NCollection_Array1_opencascade_handle_StdObjMgt_Persistent const* theOther) {
-    try { return {new StdLPersistent_HArray1OfPersistent(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<NCollection_Array1_opencascade_handle_StdObjMgt_Persistent const*> StdLPersistent_HArray1OfPersistent_array1(const StdLPersistent_HArray1OfPersistent* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<NCollection_Array1_opencascade_handle_StdObjMgt_Persistent*> StdLPersistent_HArray1OfPersistent_change_array1(StdLPersistent_HArray1OfPersistent* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> StdLPersistent_HArray1OfPersistent_dynamic_type(const StdLPersistent_HArray1OfPersistent* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> StdLPersistent_HArray1OfPersistent_get_type_name() {
-    try { return {StdLPersistent_HArray1OfPersistent::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> StdLPersistent_HArray1OfPersistent_get_type_descriptor() {
-    try { return {&(StdLPersistent_HArray1OfPersistent::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> StdLPersistent_HArray1OfPersistent_as_Standard_Transient(const StdLPersistent_HArray1OfPersistent* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> StdLPersistent_HArray1OfPersistent_as_Standard_Transient_mut(StdLPersistent_HArray1OfPersistent* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleStdLPersistentHArray1OfPersistent*> StdLPersistent_HArray1OfPersistent_to_handle(StdLPersistent_HArray1OfPersistent* obj) {
-    try { return {new HandleStdLPersistentHArray1OfPersistent(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const StdLPersistent_HArray1OfPersistent*> HandleStdLPersistentHArray1OfPersistent_get(const HandleStdLPersistentHArray1OfPersistent* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<StdLPersistent_HArray1OfPersistent*> HandleStdLPersistentHArray1OfPersistent_get_mut(HandleStdLPersistentHArray1OfPersistent* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleStdLPersistentHArray1OfPersistent_to_HandleStandardTransient(const HandleStdLPersistentHArray1OfPersistent* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> StdLPersistent_HArray1OfPersistent_inherited_IsInstance(const StdLPersistent_HArray1OfPersistent* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> StdLPersistent_HArray1OfPersistent_inherited_IsKind(const StdLPersistent_HArray1OfPersistent* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> StdLPersistent_HArray1OfPersistent_inherited_This(const StdLPersistent_HArray1OfPersistent* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> StdLPersistent_HArray1OfPersistent_inherited_GetRefCount(const StdLPersistent_HArray1OfPersistent* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* StdLPersistent_HArray1OfPersistent_inherited_IncrementRefCounter(StdLPersistent_HArray1OfPersistent* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> StdLPersistent_HArray1OfPersistent_inherited_DecrementRefCounter(StdLPersistent_HArray1OfPersistent* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* StdLPersistent_HArray1OfPersistent_inherited_Delete(const StdLPersistent_HArray1OfPersistent* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void StdLPersistent_HArray1OfPersistent_destructor(StdLPersistent_HArray1OfPersistent* self_) { delete self_; }
-
-// ========================
-// StdLPersistent_HArray2OfPersistent wrappers
-// ========================
-
-extern "C" OcctResult<StdLPersistent_HArray2OfPersistent*> StdLPersistent_HArray2OfPersistent_ctor_int4(int32_t theRowLow, int32_t theRowUpp, int32_t theColLow, int32_t theColUpp) {
-    try { return {new StdLPersistent_HArray2OfPersistent(theRowLow, theRowUpp, theColLow, theColUpp), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<StdLPersistent_HArray2OfPersistent*> StdLPersistent_HArray2OfPersistent_ctor_int4_handlestdobjmgtpersistent(int32_t theRowLow, int32_t theRowUpp, int32_t theColLow, int32_t theColUpp, Handle(StdObjMgt_Persistent) const* theValue) {
-    try { return {new StdLPersistent_HArray2OfPersistent(theRowLow, theRowUpp, theColLow, theColUpp, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<StdLPersistent_HArray2OfPersistent*> StdLPersistent_HArray2OfPersistent_ctor_array2_opencascade_handle_stdobjmgt_persistent(NCollection_Array2_opencascade_handle_StdObjMgt_Persistent const* theOther) {
-    try { return {new StdLPersistent_HArray2OfPersistent(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<NCollection_Array2_opencascade_handle_StdObjMgt_Persistent const*> StdLPersistent_HArray2OfPersistent_array2(const StdLPersistent_HArray2OfPersistent* self_) {
-    try { return {&(self_->Array2()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<NCollection_Array2_opencascade_handle_StdObjMgt_Persistent*> StdLPersistent_HArray2OfPersistent_change_array2(StdLPersistent_HArray2OfPersistent* self_) {
-    try { return {&(self_->ChangeArray2()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> StdLPersistent_HArray2OfPersistent_dynamic_type(const StdLPersistent_HArray2OfPersistent* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> StdLPersistent_HArray2OfPersistent_get_type_name() {
-    try { return {StdLPersistent_HArray2OfPersistent::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> StdLPersistent_HArray2OfPersistent_get_type_descriptor() {
-    try { return {&(StdLPersistent_HArray2OfPersistent::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> StdLPersistent_HArray2OfPersistent_as_Standard_Transient(const StdLPersistent_HArray2OfPersistent* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> StdLPersistent_HArray2OfPersistent_as_Standard_Transient_mut(StdLPersistent_HArray2OfPersistent* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleStdLPersistentHArray2OfPersistent*> StdLPersistent_HArray2OfPersistent_to_handle(StdLPersistent_HArray2OfPersistent* obj) {
-    try { return {new HandleStdLPersistentHArray2OfPersistent(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const StdLPersistent_HArray2OfPersistent*> HandleStdLPersistentHArray2OfPersistent_get(const HandleStdLPersistentHArray2OfPersistent* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<StdLPersistent_HArray2OfPersistent*> HandleStdLPersistentHArray2OfPersistent_get_mut(HandleStdLPersistentHArray2OfPersistent* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleStdLPersistentHArray2OfPersistent_to_HandleStandardTransient(const HandleStdLPersistentHArray2OfPersistent* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> StdLPersistent_HArray2OfPersistent_inherited_IsInstance(const StdLPersistent_HArray2OfPersistent* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> StdLPersistent_HArray2OfPersistent_inherited_IsKind(const StdLPersistent_HArray2OfPersistent* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> StdLPersistent_HArray2OfPersistent_inherited_This(const StdLPersistent_HArray2OfPersistent* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> StdLPersistent_HArray2OfPersistent_inherited_GetRefCount(const StdLPersistent_HArray2OfPersistent* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* StdLPersistent_HArray2OfPersistent_inherited_IncrementRefCounter(StdLPersistent_HArray2OfPersistent* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> StdLPersistent_HArray2OfPersistent_inherited_DecrementRefCounter(StdLPersistent_HArray2OfPersistent* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* StdLPersistent_HArray2OfPersistent_inherited_Delete(const StdLPersistent_HArray2OfPersistent* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void StdLPersistent_HArray2OfPersistent_destructor(StdLPersistent_HArray2OfPersistent* self_) { delete self_; }
 
 // ========================
 // StdLPersistent_HString wrappers
@@ -1067,79 +871,79 @@ extern "C" const char* StdObjMgt_Persistent_ref_num_int(StdObjMgt_Persistent* se
 }
 extern "C" OcctResult<const Standard_Transient*> StdObjMgt_Persistent_as_Standard_Transient(const StdObjMgt_Persistent* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> StdObjMgt_Persistent_as_Standard_Transient_mut(StdObjMgt_Persistent* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const StdObjMgt_Persistent*> HandleStdObjMgtPersistent_get(const HandleStdObjMgtPersistent* handle) {
+extern "C" OcctResult<const StdObjMgt_Persistent*> Handle_StdObjMgt_Persistent_get(const Handle_StdObjMgt_Persistent* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<StdObjMgt_Persistent*> HandleStdObjMgtPersistent_get_mut(HandleStdObjMgtPersistent* handle) {
+extern "C" OcctResult<StdObjMgt_Persistent*> Handle_StdObjMgt_Persistent_get_mut(Handle_StdObjMgt_Persistent* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleStdObjMgtPersistent_to_HandleStandardTransient(const HandleStdObjMgtPersistent* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_StdObjMgt_Persistent_to_Handle_Standard_Transient(const Handle_StdObjMgt_Persistent* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapePersistentBRepCurveRepresentation*> HandleStdObjMgtPersistent_downcast_to_HandleShapePersistentBRepCurveRepresentation(const HandleStdObjMgtPersistent* self_) {
+extern "C" OcctResult<Handle_ShapePersistent_BRep_CurveRepresentation*> Handle_StdObjMgt_Persistent_downcast_to_Handle_ShapePersistent_BRep_CurveRepresentation(const Handle_StdObjMgt_Persistent* self_) {
     try {
     opencascade::handle<ShapePersistent_BRep::CurveRepresentation> result = opencascade::handle<ShapePersistent_BRep::CurveRepresentation>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapePersistentBRepCurveRepresentation(result), nullptr};
+    return {new Handle_ShapePersistent_BRep_CurveRepresentation(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapePersistentBRepPointRepresentation*> HandleStdObjMgtPersistent_downcast_to_HandleShapePersistentBRepPointRepresentation(const HandleStdObjMgtPersistent* self_) {
+extern "C" OcctResult<Handle_ShapePersistent_BRep_PointRepresentation*> Handle_StdObjMgt_Persistent_downcast_to_Handle_ShapePersistent_BRep_PointRepresentation(const Handle_StdObjMgt_Persistent* self_) {
     try {
     opencascade::handle<ShapePersistent_BRep::PointRepresentation> result = opencascade::handle<ShapePersistent_BRep::PointRepresentation>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapePersistentBRepPointRepresentation(result), nullptr};
+    return {new Handle_ShapePersistent_BRep_PointRepresentation(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapePersistentGeomGeometry*> HandleStdObjMgtPersistent_downcast_to_HandleShapePersistentGeomGeometry(const HandleStdObjMgtPersistent* self_) {
+extern "C" OcctResult<Handle_ShapePersistent_Geom_Geometry*> Handle_StdObjMgt_Persistent_downcast_to_Handle_ShapePersistent_Geom_Geometry(const Handle_StdObjMgt_Persistent* self_) {
     try {
     opencascade::handle<ShapePersistent_Geom::Geometry> result = opencascade::handle<ShapePersistent_Geom::Geometry>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapePersistentGeomGeometry(result), nullptr};
+    return {new Handle_ShapePersistent_Geom_Geometry(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapePersistentTopoDSHShape*> HandleStdObjMgtPersistent_downcast_to_HandleShapePersistentTopoDSHShape(const HandleStdObjMgtPersistent* self_) {
+extern "C" OcctResult<Handle_ShapePersistent_TopoDS_HShape*> Handle_StdObjMgt_Persistent_downcast_to_Handle_ShapePersistent_TopoDS_HShape(const Handle_StdObjMgt_Persistent* self_) {
     try {
     opencascade::handle<ShapePersistent_TopoDS::HShape> result = opencascade::handle<ShapePersistent_TopoDS::HShape>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapePersistentTopoDSHShape(result), nullptr};
+    return {new Handle_ShapePersistent_TopoDS_HShape(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStdLPersistentData*> HandleStdObjMgtPersistent_downcast_to_HandleStdLPersistentData(const HandleStdObjMgtPersistent* self_) {
+extern "C" OcctResult<Handle_StdLPersistent_Data*> Handle_StdObjMgt_Persistent_downcast_to_Handle_StdLPersistent_Data(const Handle_StdObjMgt_Persistent* self_) {
     try {
     opencascade::handle<StdLPersistent_Data> result = opencascade::handle<StdLPersistent_Data>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleStdLPersistentData(result), nullptr};
+    return {new Handle_StdLPersistent_Data(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStdLPersistentDocument*> HandleStdObjMgtPersistent_downcast_to_HandleStdLPersistentDocument(const HandleStdObjMgtPersistent* self_) {
+extern "C" OcctResult<Handle_StdLPersistent_Document*> Handle_StdObjMgt_Persistent_downcast_to_Handle_StdLPersistent_Document(const Handle_StdObjMgt_Persistent* self_) {
     try {
     opencascade::handle<StdLPersistent_Document> result = opencascade::handle<StdLPersistent_Document>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleStdLPersistentDocument(result), nullptr};
+    return {new Handle_StdLPersistent_Document(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStdPersistentNamingName*> HandleStdObjMgtPersistent_downcast_to_HandleStdPersistentNamingName(const HandleStdObjMgtPersistent* self_) {
+extern "C" OcctResult<Handle_StdPersistent_Naming_Name*> Handle_StdObjMgt_Persistent_downcast_to_Handle_StdPersistent_Naming_Name(const Handle_StdObjMgt_Persistent* self_) {
     try {
     opencascade::handle<StdPersistent_Naming::Name> result = opencascade::handle<StdPersistent_Naming::Name>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleStdPersistentNamingName(result), nullptr};
+    return {new Handle_StdPersistent_Naming_Name(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStdPersistentTopLocItemLocation*> HandleStdObjMgtPersistent_downcast_to_HandleStdPersistentTopLocItemLocation(const HandleStdObjMgtPersistent* self_) {
+extern "C" OcctResult<Handle_StdPersistent_TopLoc_ItemLocation*> Handle_StdObjMgt_Persistent_downcast_to_Handle_StdPersistent_TopLoc_ItemLocation(const Handle_StdObjMgt_Persistent* self_) {
     try {
     opencascade::handle<StdPersistent_TopLoc::ItemLocation> result = opencascade::handle<StdPersistent_TopLoc::ItemLocation>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleStdPersistentTopLocItemLocation(result), nullptr};
+    return {new Handle_StdPersistent_TopLoc_ItemLocation(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -1249,4 +1053,3 @@ extern "C" const char* StdLDrivers_define_format(Handle(TDocStd_Application) con
 // Nested type and typedef type destructors
 extern "C" void StdObjMgt_Persistent_Instantiator_destructor(StdObjMgt_Persistent::Instantiator* self_) { delete self_; }
 extern "C" void StdObjMgt_Persistent_SequenceOfPersistent_destructor(StdObjMgt_Persistent::SequenceOfPersistent* self_) { delete self_; }
-extern "C" void StdObjMgt_TransientPersistentMap_destructor(StdObjMgt_TransientPersistentMap* self_) { delete self_; }

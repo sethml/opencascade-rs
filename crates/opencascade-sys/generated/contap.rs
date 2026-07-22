@@ -67,7 +67,7 @@ impl TryFrom<i32> for TFunction {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::HandleStandardTransient;
+pub use crate::ffi_types::Handle_Standard_Transient;
 
 // ========================
 // From Contap_ArcFunction.hxx
@@ -95,7 +95,7 @@ impl ArcFunction {
     }
 
     /// **Source:** `Contap_ArcFunction.hxx`:36 - `Contap_ArcFunction::Set()`
-    pub fn set_handleadaptor3dsurface(&mut self, S: &crate::ffi_types::HandleAdaptor3dSurface) {
+    pub fn set_handleadaptor3dsurface(&mut self, S: &crate::ffi_types::Handle_Adaptor3d_Surface) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_ArcFunction_set_handleadaptor3dsurface(
                 self as *mut Self,
@@ -137,7 +137,7 @@ impl ArcFunction {
     }
 
     /// **Source:** `Contap_ArcFunction.hxx`:46 - `Contap_ArcFunction::Set()`
-    pub fn set_handleadaptor2dcurve2d(&mut self, A: &crate::ffi_types::HandleAdaptor2dCurve2d) {
+    pub fn set_handleadaptor2dcurve2d(&mut self, A: &crate::ffi_types::Handle_Adaptor2d_Curve2d) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_ArcFunction_set_handleadaptor2dcurve2d(
                 self as *mut Self,
@@ -160,28 +160,28 @@ impl ArcFunction {
         })
     }
 
-    /// **Source:** `Contap_ArcFunction.hxx`:53 - `Contap_ArcFunction::Values()`
+    /// **Source:** `Contap_ArcFunction.hxx`:52 - `Contap_ArcFunction::Values()`
     pub fn values(&mut self, X: f64, F: &mut f64, D: &mut f64) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_ArcFunction_values(self as *mut Self, X, F, D)
         })
     }
 
-    /// **Source:** `Contap_ArcFunction.hxx`:57 - `Contap_ArcFunction::NbSamples()`
+    /// **Source:** `Contap_ArcFunction.hxx`:54 - `Contap_ArcFunction::NbSamples()`
     pub fn nb_samples(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_ArcFunction_nb_samples(self as *const Self)
         })
     }
 
-    /// **Source:** `Contap_ArcFunction.hxx`:59 - `Contap_ArcFunction::GetStateNumber()`
+    /// **Source:** `Contap_ArcFunction.hxx`:56 - `Contap_ArcFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_ArcFunction_get_state_number(self as *mut Self)
         })
     }
 
-    /// **Source:** `Contap_ArcFunction.hxx`:61 - `Contap_ArcFunction::Valpoint()`
+    /// **Source:** `Contap_ArcFunction.hxx`:58 - `Contap_ArcFunction::Valpoint()`
     pub fn valpoint(&self, Index: i32) -> &crate::gp::Pnt {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKHLR::Contap_ArcFunction_valpoint(
@@ -191,7 +191,7 @@ impl ArcFunction {
         }
     }
 
-    /// **Source:** `Contap_ArcFunction.hxx`:63 - `Contap_ArcFunction::Quadric()`
+    /// **Source:** `Contap_ArcFunction.hxx`:60 - `Contap_ArcFunction::Quadric()`
     pub fn quadric(&self) -> &crate::int_surf::Quadric {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKHLR::Contap_ArcFunction_quadric(
@@ -200,9 +200,9 @@ impl ArcFunction {
         }
     }
 
-    /// **Source:** `Contap_ArcFunction.hxx`:66 - `Contap_ArcFunction::Surface()`
+    /// **Source:** `Contap_ArcFunction.hxx`:63 - `Contap_ArcFunction::Surface()`
     /// Returns mySurf field
-    pub fn surface(&self) -> &crate::ffi_types::HandleAdaptor3dSurface {
+    pub fn surface(&self) -> &crate::ffi_types::Handle_Adaptor3d_Surface {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKHLR::Contap_ArcFunction_surface(
                 self as *const Self,
@@ -210,7 +210,7 @@ impl ArcFunction {
         }
     }
 
-    /// **Source:** `Contap_ArcFunction.hxx`:70 - `Contap_ArcFunction::LastComputedPoint()`
+    /// **Source:** `Contap_ArcFunction.hxx`:67 - `Contap_ArcFunction::LastComputedPoint()`
     /// Returns the point, which has been computed
     /// while the last calling Value() method
     pub fn last_computed_point(&self) -> &crate::gp::Pnt {
@@ -423,7 +423,7 @@ impl ContAna {
 // From Contap_Contour.hxx
 // ========================
 
-/// **Source:** `Contap_Contour.hxx`:31 - `Contap_Contour`
+/// **Source:** `Contap_Contour.hxx`:32 - `Contap_Contour`
 pub use crate::ffi_types::Contap_Contour as Contour;
 
 unsafe impl crate::CppDeletable for Contour {
@@ -435,7 +435,7 @@ unsafe impl crate::CppDeletable for Contour {
 }
 
 impl Contour {
-    /// **Source:** `Contap_Contour.hxx`:36 - `Contap_Contour::Contap_Contour()`
+    /// **Source:** `Contap_Contour.hxx`:37 - `Contap_Contour::Contap_Contour()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -444,7 +444,7 @@ impl Contour {
         }
     }
 
-    /// **Source:** `Contap_Contour.hxx`:38 - `Contap_Contour::Contap_Contour()`
+    /// **Source:** `Contap_Contour.hxx`:39 - `Contap_Contour::Contap_Contour()`
     pub fn new_vec(Direction: &crate::gp::Vec) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -453,7 +453,7 @@ impl Contour {
         }
     }
 
-    /// **Source:** `Contap_Contour.hxx`:40 - `Contap_Contour::Contap_Contour()`
+    /// **Source:** `Contap_Contour.hxx`:41 - `Contap_Contour::Contap_Contour()`
     pub fn new_vec_real(Direction: &crate::gp::Vec, Angle: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -462,7 +462,7 @@ impl Contour {
         }
     }
 
-    /// **Source:** `Contap_Contour.hxx`:42 - `Contap_Contour::Contap_Contour()`
+    /// **Source:** `Contap_Contour.hxx`:43 - `Contap_Contour::Contap_Contour()`
     pub fn new_pnt(Eye: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -471,11 +471,11 @@ impl Contour {
         }
     }
 
-    /// **Source:** `Contap_Contour.hxx`:45 - `Contap_Contour::Contap_Contour()`
+    /// **Source:** `Contap_Contour.hxx`:46 - `Contap_Contour::Contap_Contour()`
     /// Creates the contour in a given direction.
     pub fn new_handleadaptor3dsurface_handleadaptor3dtopoltool_vec(
-        Surf: &crate::ffi_types::HandleAdaptor3dSurface,
-        Domain: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        Surf: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        Domain: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         Direction: &crate::gp::Vec,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -483,11 +483,11 @@ impl Contour {
         }
     }
 
-    /// **Source:** `Contap_Contour.hxx`:50 - `Contap_Contour::Contap_Contour()`
+    /// **Source:** `Contap_Contour.hxx`:51 - `Contap_Contour::Contap_Contour()`
     /// Creates the contour in a given direction.
     pub fn new_handleadaptor3dsurface_handleadaptor3dtopoltool_vec_real(
-        Surf: &crate::ffi_types::HandleAdaptor3dSurface,
-        Domain: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        Surf: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        Domain: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         Direction: &crate::gp::Vec,
         Angle: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -496,11 +496,11 @@ impl Contour {
         }
     }
 
-    /// **Source:** `Contap_Contour.hxx`:56 - `Contap_Contour::Contap_Contour()`
+    /// **Source:** `Contap_Contour.hxx`:57 - `Contap_Contour::Contap_Contour()`
     /// Creates the contour for a perspective view.
     pub fn new_handleadaptor3dsurface_handleadaptor3dtopoltool_pnt(
-        Surf: &crate::ffi_types::HandleAdaptor3dSurface,
-        Domain: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        Surf: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        Domain: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         Eye: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -508,24 +508,24 @@ impl Contour {
         }
     }
 
-    /// **Source:** `Contap_Contour.hxx`:61 - `Contap_Contour::Perform()`
+    /// **Source:** `Contap_Contour.hxx`:62 - `Contap_Contour::Perform()`
     /// Creates the contour in a given direction.
     pub fn perform_handleadaptor3dsurface_handleadaptor3dtopoltool(
         &mut self,
-        Surf: &crate::ffi_types::HandleAdaptor3dSurface,
-        Domain: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        Surf: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        Domain: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_Contour_perform_handleadaptor3dsurface_handleadaptor3dtopoltool(self as *mut Self, Surf, Domain)
         })
     }
 
-    /// **Source:** `Contap_Contour.hxx`:65 - `Contap_Contour::Perform()`
+    /// **Source:** `Contap_Contour.hxx`:66 - `Contap_Contour::Perform()`
     /// Creates the contour in a given direction.
     pub fn perform_handleadaptor3dsurface_handleadaptor3dtopoltool_vec(
         &mut self,
-        Surf: &crate::ffi_types::HandleAdaptor3dSurface,
-        Domain: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        Surf: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        Domain: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         Direction: &crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
@@ -533,12 +533,12 @@ impl Contour {
         })
     }
 
-    /// **Source:** `Contap_Contour.hxx`:70 - `Contap_Contour::Perform()`
+    /// **Source:** `Contap_Contour.hxx`:71 - `Contap_Contour::Perform()`
     /// Creates the contour in a given direction.
     pub fn perform_handleadaptor3dsurface_handleadaptor3dtopoltool_vec_real(
         &mut self,
-        Surf: &crate::ffi_types::HandleAdaptor3dSurface,
-        Domain: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        Surf: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        Domain: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         Direction: &crate::gp::Vec,
         Angle: f64,
     ) {
@@ -547,12 +547,12 @@ impl Contour {
         })
     }
 
-    /// **Source:** `Contap_Contour.hxx`:76 - `Contap_Contour::Perform()`
+    /// **Source:** `Contap_Contour.hxx`:77 - `Contap_Contour::Perform()`
     /// Creates the contour for a perspective view.
     pub fn perform_handleadaptor3dsurface_handleadaptor3dtopoltool_pnt(
         &mut self,
-        Surf: &crate::ffi_types::HandleAdaptor3dSurface,
-        Domain: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        Surf: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        Domain: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         Eye: &crate::gp::Pnt,
     ) {
         crate::check_void_result(unsafe {
@@ -560,14 +560,14 @@ impl Contour {
         })
     }
 
-    /// **Source:** `Contap_Contour.hxx`:80 - `Contap_Contour::Init()`
+    /// **Source:** `Contap_Contour.hxx`:81 - `Contap_Contour::Init()`
     pub fn init_vec(&mut self, Direction: &crate::gp::Vec) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_Contour_init_vec(self as *mut Self, Direction)
         })
     }
 
-    /// **Source:** `Contap_Contour.hxx`:82 - `Contap_Contour::Init()`
+    /// **Source:** `Contap_Contour.hxx`:83 - `Contap_Contour::Init()`
     pub fn init_vec_real(&mut self, Direction: &crate::gp::Vec, Angle: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_Contour_init_vec_real(
@@ -578,21 +578,21 @@ impl Contour {
         })
     }
 
-    /// **Source:** `Contap_Contour.hxx`:84 - `Contap_Contour::Init()`
+    /// **Source:** `Contap_Contour.hxx`:85 - `Contap_Contour::Init()`
     pub fn init_pnt(&mut self, Eye: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_Contour_init_pnt(self as *mut Self, Eye)
         })
     }
 
-    /// **Source:** `Contap_Contour.hxx`:86 - `Contap_Contour::IsDone()`
+    /// **Source:** `Contap_Contour.hxx`:87 - `Contap_Contour::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_Contour_is_done(self as *const Self)
         })
     }
 
-    /// **Source:** `Contap_Contour.hxx`:89 - `Contap_Contour::IsEmpty()`
+    /// **Source:** `Contap_Contour.hxx`:90 - `Contap_Contour::IsEmpty()`
     /// Returns true if the is no line.
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
@@ -600,14 +600,14 @@ impl Contour {
         })
     }
 
-    /// **Source:** `Contap_Contour.hxx`:91 - `Contap_Contour::NbLines()`
+    /// **Source:** `Contap_Contour.hxx`:92 - `Contap_Contour::NbLines()`
     pub fn nb_lines(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_Contour_nb_lines(self as *const Self)
         })
     }
 
-    /// **Source:** `Contap_Contour.hxx`:93 - `Contap_Contour::Line()`
+    /// **Source:** `Contap_Contour.hxx`:94 - `Contap_Contour::Line()`
     pub fn line(&self, Index: i32) -> &Line {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKHLR::Contap_Contour_line(
@@ -618,9 +618,8 @@ impl Contour {
     }
 
     /// **Source:** `Contap_Contour.hxx`:98 - `Contap_Contour::SurfaceFunction()`
-    /// Returns    a     reference   on     the   internal
-    /// SurfaceFunction.  This is used to compute tangents
-    /// on the lines.
+    /// Returns a reference on the internal SurfaceFunction.
+    /// This is used to compute tangents on the lines.
     pub fn surface_function(&mut self) -> &mut SurfFunction {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKHLR::Contap_Contour_surface_function(
@@ -659,21 +658,21 @@ impl HContTool {
     }
 
     /// **Source:** `Contap_HContTool.hxx`:34 - `Contap_HContTool::NbSamplesU()`
-    pub fn nb_samples_u(S: &crate::ffi_types::HandleAdaptor3dSurface, u1: f64, u2: f64) -> i32 {
+    pub fn nb_samples_u(S: &crate::ffi_types::Handle_Adaptor3d_Surface, u1: f64, u2: f64) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_HContTool_nb_samples_u(S, u1, u2)
         })
     }
 
     /// **Source:** `Contap_HContTool.hxx`:38 - `Contap_HContTool::NbSamplesV()`
-    pub fn nb_samples_v(S: &crate::ffi_types::HandleAdaptor3dSurface, v1: f64, v2: f64) -> i32 {
+    pub fn nb_samples_v(S: &crate::ffi_types::Handle_Adaptor3d_Surface, v1: f64, v2: f64) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_HContTool_nb_samples_v(S, v1, v2)
         })
     }
 
     /// **Source:** `Contap_HContTool.hxx`:42 - `Contap_HContTool::NbSamplePoints()`
-    pub fn nb_sample_points(S: &crate::ffi_types::HandleAdaptor3dSurface) -> i32 {
+    pub fn nb_sample_points(S: &crate::ffi_types::Handle_Adaptor3d_Surface) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_HContTool_nb_sample_points(S)
         })
@@ -681,7 +680,7 @@ impl HContTool {
 
     /// **Source:** `Contap_HContTool.hxx`:44 - `Contap_HContTool::SamplePoint()`
     pub fn sample_point(
-        S: &crate::ffi_types::HandleAdaptor3dSurface,
+        S: &crate::ffi_types::Handle_Adaptor3d_Surface,
         Index: i32,
         U: &mut f64,
         V: &mut f64,
@@ -697,7 +696,7 @@ impl HContTool {
     /// The intersection point are given as vertices.
     /// The intersection edges are given as intervals between
     /// two vertices.
-    pub fn has_been_seen(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> bool {
+    pub fn has_been_seen(C: &crate::ffi_types::Handle_Adaptor2d_Curve2d) -> bool {
         crate::check_result(unsafe { crate::ffi_extern_TKHLR::Contap_HContTool_has_been_seen(C) })
     }
 
@@ -705,7 +704,7 @@ impl HContTool {
     /// returns the number of points which is used to make
     /// a sample on the arc. this number is a function of
     /// the Surface and the CurveOnSurface complexity.
-    pub fn nb_samples_on_arc(A: &crate::ffi_types::HandleAdaptor2dCurve2d) -> i32 {
+    pub fn nb_samples_on_arc(A: &crate::ffi_types::Handle_Adaptor2d_Curve2d) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_HContTool_nb_samples_on_arc(A)
         })
@@ -716,7 +715,11 @@ impl HContTool {
     /// These limits must be finite : they are either
     /// the real limits of the arc, for a finite arc,
     /// or a bounding box for an infinite arc.
-    pub fn bounds(C: &crate::ffi_types::HandleAdaptor2dCurve2d, Ufirst: &mut f64, Ulast: &mut f64) {
+    pub fn bounds(
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
+        Ufirst: &mut f64,
+        Ulast: &mut f64,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_HContTool_bounds(C, Ufirst, Ulast)
         })
@@ -724,13 +727,13 @@ impl HContTool {
 
     /// **Source:** `Contap_HContTool.hxx`:75 - `Contap_HContTool::Project()`
     /// Projects the point P on the arc C.
-    /// If the methods returns Standard_True, the projection is
+    /// If the methods returns true, the projection is
     /// successful, and Paramproj is the parameter on the arc
     /// of the projected point, Ptproj is the projected Point.
-    /// If the method returns Standard_False, Param proj and Ptproj
+    /// If the method returns false, Param proj and Ptproj
     /// are not significant.
     pub fn project(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         P: &crate::gp::Pnt2d,
         Paramproj: &mut f64,
         Ptproj: &mut crate::gp::Pnt2d,
@@ -743,11 +746,11 @@ impl HContTool {
     /// **Source:** `Contap_HContTool.hxx`:84 - `Contap_HContTool::Tolerance()`
     /// Returns the parametric tolerance used to consider
     /// that the vertex and another point meet, i-e
-    /// if Abs(parameter(Vertex) - parameter(OtherPnt))<=
+    /// if std::abs(parameter(Vertex) - parameter(OtherPnt))<=
     /// Tolerance, the points are "merged".
     pub fn tolerance(
-        V: &crate::ffi_types::HandleAdaptor3dHVertex,
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        V: &crate::ffi_types::Handle_Adaptor3d_HVertex,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
     ) -> f64 {
         crate::check_result(unsafe { crate::ffi_extern_TKHLR::Contap_HContTool_tolerance(V, C) })
     }
@@ -755,15 +758,15 @@ impl HContTool {
     /// **Source:** `Contap_HContTool.hxx`:88 - `Contap_HContTool::Parameter()`
     /// Returns the parameter of the vertex V on the arc A.
     pub fn parameter(
-        V: &crate::ffi_types::HandleAdaptor3dHVertex,
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        V: &crate::ffi_types::Handle_Adaptor3d_HVertex,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
     ) -> f64 {
         crate::check_result(unsafe { crate::ffi_extern_TKHLR::Contap_HContTool_parameter(V, C) })
     }
 
     /// **Source:** `Contap_HContTool.hxx`:92 - `Contap_HContTool::NbPoints()`
     /// Returns the number of intersection points on the arc A.
-    pub fn nb_points(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> i32 {
+    pub fn nb_points(C: &crate::ffi_types::Handle_Adaptor2d_Curve2d) -> i32 {
         crate::check_result(unsafe { crate::ffi_extern_TKHLR::Contap_HContTool_nb_points(C) })
     }
 
@@ -772,7 +775,7 @@ impl HContTool {
     /// the parameter (U) on the arc A , of the intersection
     /// point of range Index.
     pub fn value(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         Index: i32,
         Pt: &mut crate::gp::Pnt,
         Tol: &mut f64,
@@ -786,33 +789,33 @@ impl HContTool {
     /// **Source:** `Contap_HContTool.hxx`:105 - `Contap_HContTool::IsVertex()`
     /// Returns True if the intersection point of range Index
     /// corresponds with a vertex on the arc A.
-    pub fn is_vertex(C: &crate::ffi_types::HandleAdaptor2dCurve2d, Index: i32) -> bool {
+    pub fn is_vertex(C: &crate::ffi_types::Handle_Adaptor2d_Curve2d, Index: i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_HContTool_is_vertex(C, Index)
         })
     }
 
-    /// **Source:** `Contap_HContTool.hxx`:110 - `Contap_HContTool::Vertex()`
+    /// **Source:** `Contap_HContTool.hxx`:109 - `Contap_HContTool::Vertex()`
     /// When IsVertex returns True, this method returns the
     /// vertex on the arc A.
     pub fn vertex(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         Index: i32,
-        V: &mut crate::ffi_types::HandleAdaptor3dHVertex,
+        V: &mut crate::ffi_types::Handle_Adaptor3d_HVertex,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_HContTool_vertex(C, Index, V)
         })
     }
 
-    /// **Source:** `Contap_HContTool.hxx`:116 - `Contap_HContTool::NbSegments()`
+    /// **Source:** `Contap_HContTool.hxx`:115 - `Contap_HContTool::NbSegments()`
     /// returns the number of part of A solution of the
     /// of intersection problem.
-    pub fn nb_segments(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> i32 {
+    pub fn nb_segments(C: &crate::ffi_types::Handle_Adaptor2d_Curve2d) -> i32 {
         crate::check_result(unsafe { crate::ffi_extern_TKHLR::Contap_HContTool_nb_segments(C) })
     }
 
-    /// **Source:** `Contap_HContTool.hxx`:124 - `Contap_HContTool::HasFirstPoint()`
+    /// **Source:** `Contap_HContTool.hxx`:123 - `Contap_HContTool::HasFirstPoint()`
     /// Returns True when the segment of range Index is not
     /// open at the left side. In that case, IndFirst is the
     /// range in the list intersection points (see NbPoints)
@@ -820,7 +823,7 @@ impl HContTool {
     /// Otherwise, the method has to return False, and IndFirst
     /// has no meaning.
     pub fn has_first_point(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         Index: i32,
         IndFirst: &mut i32,
     ) -> bool {
@@ -829,7 +832,7 @@ impl HContTool {
         })
     }
 
-    /// **Source:** `Contap_HContTool.hxx`:134 - `Contap_HContTool::HasLastPoint()`
+    /// **Source:** `Contap_HContTool.hxx`:133 - `Contap_HContTool::HasLastPoint()`
     /// Returns True when the segment of range Index is not
     /// open at the right side. In that case, IndLast is the
     /// range in the list intersection points (see NbPoints)
@@ -837,7 +840,7 @@ impl HContTool {
     /// Otherwise, the method has to return False, and IndLast
     /// has no meaning.
     pub fn has_last_point(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         Index: i32,
         IndLast: &mut i32,
     ) -> bool {
@@ -846,10 +849,10 @@ impl HContTool {
         })
     }
 
-    /// **Source:** `Contap_HContTool.hxx`:140 - `Contap_HContTool::IsAllSolution()`
+    /// **Source:** `Contap_HContTool.hxx`:139 - `Contap_HContTool::IsAllSolution()`
     /// Returns True when the whole restriction is solution
     /// of the intersection problem.
-    pub fn is_all_solution(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> bool {
+    pub fn is_all_solution(C: &crate::ffi_types::Handle_Adaptor2d_Curve2d) -> bool {
         crate::check_result(unsafe { crate::ffi_extern_TKHLR::Contap_HContTool_is_all_solution(C) })
     }
 }
@@ -881,21 +884,21 @@ impl HCurve2dTool {
     }
 
     /// **Source:** `Contap_HCurve2dTool.hxx`:40 - `Contap_HCurve2dTool::FirstParameter()`
-    pub fn first_parameter(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> f64 {
+    pub fn first_parameter(C: &crate::ffi_types::Handle_Adaptor2d_Curve2d) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_HCurve2dTool_first_parameter(C)
         })
     }
 
     /// **Source:** `Contap_HCurve2dTool.hxx`:42 - `Contap_HCurve2dTool::LastParameter()`
-    pub fn last_parameter(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> f64 {
+    pub fn last_parameter(C: &crate::ffi_types::Handle_Adaptor2d_Curve2d) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_HCurve2dTool_last_parameter(C)
         })
     }
 
     /// **Source:** `Contap_HCurve2dTool.hxx`:44 - `Contap_HCurve2dTool::Continuity()`
-    pub fn continuity(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> crate::geom_abs::Shape {
+    pub fn continuity(C: &crate::ffi_types::Handle_Adaptor2d_Curve2d) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_HCurve2dTool_continuity(C)
         }))
@@ -903,10 +906,10 @@ impl HCurve2dTool {
     }
 
     /// **Source:** `Contap_HCurve2dTool.hxx`:48 - `Contap_HCurve2dTool::NbIntervals()`
-    /// Returns  the number  of  intervals for  continuity
+    /// Returns the number of intervals for continuity
     /// <S>. May be one if Continuity(myclass) >= <S>
     pub fn nb_intervals(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         S: crate::geom_abs::Shape,
     ) -> i32 {
         crate::check_result(unsafe {
@@ -915,14 +918,14 @@ impl HCurve2dTool {
     }
 
     /// **Source:** `Contap_HCurve2dTool.hxx`:55 - `Contap_HCurve2dTool::Intervals()`
-    /// Stores in <T> the  parameters bounding the intervals
+    /// Stores in <T> the parameters bounding the intervals
     /// of continuity <S>.
     ///
-    /// The array must provide  enough room to  accommodate
+    /// The array must provide enough room to accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
-        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
+        T: &mut crate::ffi_types::NCollection_Array1_double,
         S: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
@@ -931,24 +934,24 @@ impl HCurve2dTool {
     }
 
     /// **Source:** `Contap_HCurve2dTool.hxx`:59 - `Contap_HCurve2dTool::IsClosed()`
-    pub fn is_closed(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> bool {
+    pub fn is_closed(C: &crate::ffi_types::Handle_Adaptor2d_Curve2d) -> bool {
         crate::check_result(unsafe { crate::ffi_extern_TKHLR::Contap_HCurve2dTool_is_closed(C) })
     }
 
     /// **Source:** `Contap_HCurve2dTool.hxx`:61 - `Contap_HCurve2dTool::IsPeriodic()`
-    pub fn is_periodic(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> bool {
+    pub fn is_periodic(C: &crate::ffi_types::Handle_Adaptor2d_Curve2d) -> bool {
         crate::check_result(unsafe { crate::ffi_extern_TKHLR::Contap_HCurve2dTool_is_periodic(C) })
     }
 
     /// **Source:** `Contap_HCurve2dTool.hxx`:63 - `Contap_HCurve2dTool::Period()`
-    pub fn period(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> f64 {
+    pub fn period(C: &crate::ffi_types::Handle_Adaptor2d_Curve2d) -> f64 {
         crate::check_result(unsafe { crate::ffi_extern_TKHLR::Contap_HCurve2dTool_period(C) })
     }
 
     /// **Source:** `Contap_HCurve2dTool.hxx`:66 - `Contap_HCurve2dTool::Value()`
     /// Computes the point of parameter U on the curve.
     pub fn value(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         U: f64,
     ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
@@ -960,7 +963,7 @@ impl HCurve2dTool {
 
     /// **Source:** `Contap_HCurve2dTool.hxx`:69 - `Contap_HCurve2dTool::D0()`
     /// Computes the point of parameter U on the curve.
-    pub fn d0(C: &crate::ffi_types::HandleAdaptor2dCurve2d, U: f64, P: &mut crate::gp::Pnt2d) {
+    pub fn d0(C: &crate::ffi_types::Handle_Adaptor2d_Curve2d, U: f64, P: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_HCurve2dTool_d0(C, U, P)
         })
@@ -972,7 +975,7 @@ impl HCurve2dTool {
     /// Raised if the continuity of the current interval
     /// is not C1.
     pub fn d1(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         U: f64,
         P: &mut crate::gp::Pnt2d,
         V: &mut crate::gp::Vec2d,
@@ -982,13 +985,13 @@ impl HCurve2dTool {
         })
     }
 
-    /// **Source:** `Contap_HCurve2dTool.hxx`:84 - `Contap_HCurve2dTool::D2()`
+    /// **Source:** `Contap_HCurve2dTool.hxx`:81 - `Contap_HCurve2dTool::D2()`
     /// Returns the point P of parameter U, the first and second
     /// derivatives V1 and V2.
     /// Raised if the continuity of the current interval
     /// is not C2.
     pub fn d2(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         U: f64,
         P: &mut crate::gp::Pnt2d,
         V1: &mut crate::gp::Vec2d,
@@ -999,13 +1002,13 @@ impl HCurve2dTool {
         })
     }
 
-    /// **Source:** `Contap_HCurve2dTool.hxx`:94 - `Contap_HCurve2dTool::D3()`
+    /// **Source:** `Contap_HCurve2dTool.hxx`:91 - `Contap_HCurve2dTool::D3()`
     /// Returns the point P of parameter U, the first, the second
     /// and the third derivative.
     /// Raised if the continuity of the current interval
     /// is not C3.
     pub fn d3(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         U: f64,
         P: &mut crate::gp::Pnt2d,
         V1: &mut crate::gp::Vec2d,
@@ -1017,14 +1020,14 @@ impl HCurve2dTool {
         })
     }
 
-    /// **Source:** `Contap_HCurve2dTool.hxx`:106 - `Contap_HCurve2dTool::DN()`
+    /// **Source:** `Contap_HCurve2dTool.hxx`:103 - `Contap_HCurve2dTool::DN()`
     /// The returned vector gives the value of the derivative for the
     /// order of derivation N.
     /// Raised if the continuity of the current interval
     /// is not CN.
     /// Raised if N < 1.
     pub fn dn(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         U: f64,
         N: i32,
     ) -> crate::OwnedPtr<crate::gp::Vec2d> {
@@ -1035,28 +1038,30 @@ impl HCurve2dTool {
         }
     }
 
-    /// **Source:** `Contap_HCurve2dTool.hxx`:112 - `Contap_HCurve2dTool::Resolution()`
-    /// Returns the parametric  resolution corresponding
+    /// **Source:** `Contap_HCurve2dTool.hxx`:107 - `Contap_HCurve2dTool::Resolution()`
+    /// Returns the parametric resolution corresponding
     /// to the real space resolution <R3d>.
-    pub fn resolution(C: &crate::ffi_types::HandleAdaptor2dCurve2d, R3d: f64) -> f64 {
+    pub fn resolution(C: &crate::ffi_types::Handle_Adaptor2d_Curve2d, R3d: f64) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_HCurve2dTool_resolution(C, R3d)
         })
     }
 
-    /// **Source:** `Contap_HCurve2dTool.hxx`:117 - `Contap_HCurve2dTool::GetType()`
-    /// Returns  the  type of the   curve  in the  current
-    /// interval :   Line,   Circle,   Ellipse, Hyperbola,
+    /// **Source:** `Contap_HCurve2dTool.hxx`:112 - `Contap_HCurve2dTool::GetType()`
+    /// Returns the type of the curve in the current
+    /// interval: Line, Circle, Ellipse, Hyperbola,
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
-    pub fn get_type(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> crate::geom_abs::CurveType {
+    pub fn get_type(C: &crate::ffi_types::Handle_Adaptor2d_Curve2d) -> crate::geom_abs::CurveType {
         crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_HCurve2dTool_get_type(C)
         }))
         .unwrap()
     }
 
-    /// **Source:** `Contap_HCurve2dTool.hxx`:119 - `Contap_HCurve2dTool::Line()`
-    pub fn line(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> crate::OwnedPtr<crate::gp::Lin2d> {
+    /// **Source:** `Contap_HCurve2dTool.hxx`:114 - `Contap_HCurve2dTool::Line()`
+    pub fn line(
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
+    ) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKHLR::Contap_HCurve2dTool_line(C),
@@ -1064,9 +1069,9 @@ impl HCurve2dTool {
         }
     }
 
-    /// **Source:** `Contap_HCurve2dTool.hxx`:121 - `Contap_HCurve2dTool::Circle()`
+    /// **Source:** `Contap_HCurve2dTool.hxx`:116 - `Contap_HCurve2dTool::Circle()`
     pub fn circle(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
     ) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1075,9 +1080,9 @@ impl HCurve2dTool {
         }
     }
 
-    /// **Source:** `Contap_HCurve2dTool.hxx`:123 - `Contap_HCurve2dTool::Ellipse()`
+    /// **Source:** `Contap_HCurve2dTool.hxx`:118 - `Contap_HCurve2dTool::Ellipse()`
     pub fn ellipse(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
     ) -> crate::OwnedPtr<crate::gp::Elips2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1086,9 +1091,9 @@ impl HCurve2dTool {
         }
     }
 
-    /// **Source:** `Contap_HCurve2dTool.hxx`:125 - `Contap_HCurve2dTool::Hyperbola()`
+    /// **Source:** `Contap_HCurve2dTool.hxx`:120 - `Contap_HCurve2dTool::Hyperbola()`
     pub fn hyperbola(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
     ) -> crate::OwnedPtr<crate::gp::Hypr2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1097,9 +1102,9 @@ impl HCurve2dTool {
         }
     }
 
-    /// **Source:** `Contap_HCurve2dTool.hxx`:127 - `Contap_HCurve2dTool::Parabola()`
+    /// **Source:** `Contap_HCurve2dTool.hxx`:122 - `Contap_HCurve2dTool::Parabola()`
     pub fn parabola(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
     ) -> crate::OwnedPtr<crate::gp::Parab2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1108,10 +1113,10 @@ impl HCurve2dTool {
         }
     }
 
-    /// **Source:** `Contap_HCurve2dTool.hxx`:129 - `Contap_HCurve2dTool::Bezier()`
+    /// **Source:** `Contap_HCurve2dTool.hxx`:124 - `Contap_HCurve2dTool::Bezier()`
     pub fn bezier(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBezierCurve> {
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BezierCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKHLR::Contap_HCurve2dTool_bezier(C),
@@ -1119,10 +1124,10 @@ impl HCurve2dTool {
         }
     }
 
-    /// **Source:** `Contap_HCurve2dTool.hxx`:131 - `Contap_HCurve2dTool::BSpline()`
+    /// **Source:** `Contap_HCurve2dTool.hxx`:126 - `Contap_HCurve2dTool::BSpline()`
     pub fn b_spline(
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKHLR::Contap_HCurve2dTool_b_spline(C),
@@ -1130,8 +1135,8 @@ impl HCurve2dTool {
         }
     }
 
-    /// **Source:** `Contap_HCurve2dTool.hxx`:133 - `Contap_HCurve2dTool::NbSamples()`
-    pub fn nb_samples(C: &crate::ffi_types::HandleAdaptor2dCurve2d, U0: f64, U1: f64) -> i32 {
+    /// **Source:** `Contap_HCurve2dTool.hxx`:128 - `Contap_HCurve2dTool::NbSamples()`
+    pub fn nb_samples(C: &crate::ffi_types::Handle_Adaptor2d_Curve2d, U0: f64, U1: f64) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_HCurve2dTool_nb_samples(C, U0, U1)
         })
@@ -1142,7 +1147,7 @@ impl HCurve2dTool {
 // From Contap_Line.hxx
 // ========================
 
-/// **Source:** `Contap_Line.hxx`:36 - `Contap_Line`
+/// **Source:** `Contap_Line.hxx`:38 - `Contap_Line`
 pub use crate::ffi_types::Contap_Line as Line;
 
 unsafe impl crate::CppDeletable for Line {
@@ -1154,7 +1159,7 @@ unsafe impl crate::CppDeletable for Line {
 }
 
 impl Line {
-    /// **Source:** `Contap_Line.hxx`:41 - `Contap_Line::Contap_Line()`
+    /// **Source:** `Contap_Line.hxx`:43 - `Contap_Line::Contap_Line()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1163,22 +1168,22 @@ impl Line {
         }
     }
 
-    /// **Source:** `Contap_Line.hxx`:43 - `Contap_Line::SetLineOn2S()`
-    pub fn set_line_on2_s(&mut self, L: &crate::ffi_types::HandleIntSurfLineOn2S) {
+    /// **Source:** `Contap_Line.hxx`:45 - `Contap_Line::SetLineOn2S()`
+    pub fn set_line_on2_s(&mut self, L: &crate::ffi_types::Handle_IntSurf_LineOn2S) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_Line_set_line_on2_s(self as *mut Self, L)
         })
     }
 
-    /// **Source:** `Contap_Line.hxx`:45 - `Contap_Line::Clear()`
+    /// **Source:** `Contap_Line.hxx`:47 - `Contap_Line::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_Line_clear(self as *mut Self)
         })
     }
 
-    /// **Source:** `Contap_Line.hxx`:47 - `Contap_Line::LineOn2S()`
-    pub fn line_on2_s(&self) -> &crate::ffi_types::HandleIntSurfLineOn2S {
+    /// **Source:** `Contap_Line.hxx`:49 - `Contap_Line::LineOn2S()`
+    pub fn line_on2_s(&self) -> &crate::ffi_types::Handle_IntSurf_LineOn2S {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKHLR::Contap_Line_line_on2_s(
                 self as *const Self,
@@ -1186,38 +1191,38 @@ impl Line {
         }
     }
 
-    /// **Source:** `Contap_Line.hxx`:49 - `Contap_Line::ResetSeqOfVertex()`
+    /// **Source:** `Contap_Line.hxx`:51 - `Contap_Line::ResetSeqOfVertex()`
     pub fn reset_seq_of_vertex(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_Line_reset_seq_of_vertex(self as *mut Self)
         })
     }
 
-    /// **Source:** `Contap_Line.hxx`:51 - `Contap_Line::Add()`
+    /// **Source:** `Contap_Line.hxx`:53 - `Contap_Line::Add()`
     pub fn add_pnton2s(&mut self, P: &crate::int_surf::PntOn2S) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_Line_add_pnton2s(self as *mut Self, P)
         })
     }
 
-    /// **Source:** `Contap_Line.hxx`:53 - `Contap_Line::SetValue()`
+    /// **Source:** `Contap_Line.hxx`:55 - `Contap_Line::SetValue()`
     pub fn set_value_lin(&mut self, L: &crate::gp::Lin) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_Line_set_value_lin(self as *mut Self, L)
         })
     }
 
-    /// **Source:** `Contap_Line.hxx`:55 - `Contap_Line::SetValue()`
+    /// **Source:** `Contap_Line.hxx`:57 - `Contap_Line::SetValue()`
     pub fn set_value_circ(&mut self, C: &crate::gp::Circ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_Line_set_value_circ(self as *mut Self, C)
         })
     }
 
-    /// **Source:** `Contap_Line.hxx`:57 - `Contap_Line::SetValue()`
+    /// **Source:** `Contap_Line.hxx`:59 - `Contap_Line::SetValue()`
     pub fn set_value_handleadaptor2dcurve2d(
         &mut self,
-        A: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        A: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_Line_set_value_handleadaptor2dcurve2d(
@@ -1227,21 +1232,21 @@ impl Line {
         })
     }
 
-    /// **Source:** `Contap_Line.hxx`:59 - `Contap_Line::Add()`
+    /// **Source:** `Contap_Line.hxx`:61 - `Contap_Line::Add()`
     pub fn add_point(&mut self, P: &Point) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_Line_add_point(self as *mut Self, P)
         })
     }
 
-    /// **Source:** `Contap_Line.hxx`:61 - `Contap_Line::NbVertex()`
+    /// **Source:** `Contap_Line.hxx`:63 - `Contap_Line::NbVertex()`
     pub fn nb_vertex(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_Line_nb_vertex(self as *const Self)
         })
     }
 
-    /// **Source:** `Contap_Line.hxx`:63 - `Contap_Line::Vertex()`
+    /// **Source:** `Contap_Line.hxx`:65 - `Contap_Line::Vertex()`
     pub fn vertex(&mut self, Index: i32) -> &mut Point {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKHLR::Contap_Line_vertex(
@@ -1251,10 +1256,10 @@ impl Line {
         }
     }
 
-    /// **Source:** `Contap_Line.hxx`:68 - `Contap_Line::TypeContour()`
+    /// **Source:** `Contap_Line.hxx`:70 - `Contap_Line::TypeContour()`
     /// Returns Contap_Lin for a line, Contap_Circle for
     /// a circle, and Contap_Walking for a Walking line,
-    /// Contap_Restriction for a part of  boundarie.
+    /// Contap_Restriction for a part of boundary.
     pub fn type_contour(&self) -> crate::contap::IType {
         crate::contap::IType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_Line_type_contour(self as *const Self)
@@ -1262,14 +1267,14 @@ impl Line {
         .unwrap()
     }
 
-    /// **Source:** `Contap_Line.hxx`:70 - `Contap_Line::NbPnts()`
+    /// **Source:** `Contap_Line.hxx`:72 - `Contap_Line::NbPnts()`
     pub fn nb_pnts(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_Line_nb_pnts(self as *const Self)
         })
     }
 
-    /// **Source:** `Contap_Line.hxx`:72 - `Contap_Line::Point()`
+    /// **Source:** `Contap_Line.hxx`:74 - `Contap_Line::Point()`
     pub fn point(&self, Index: i32) -> &crate::int_surf::PntOn2S {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKHLR::Contap_Line_point(
@@ -1279,7 +1284,7 @@ impl Line {
         }
     }
 
-    /// **Source:** `Contap_Line.hxx`:74 - `Contap_Line::Line()`
+    /// **Source:** `Contap_Line.hxx`:76 - `Contap_Line::Line()`
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1288,7 +1293,7 @@ impl Line {
         }
     }
 
-    /// **Source:** `Contap_Line.hxx`:76 - `Contap_Line::Circle()`
+    /// **Source:** `Contap_Line.hxx`:78 - `Contap_Line::Circle()`
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1297,14 +1302,14 @@ impl Line {
         }
     }
 
-    /// **Source:** `Contap_Line.hxx`:78 - `Contap_Line::Arc()`
-    pub fn arc(&self) -> &crate::ffi_types::HandleAdaptor2dCurve2d {
+    /// **Source:** `Contap_Line.hxx`:80 - `Contap_Line::Arc()`
+    pub fn arc(&self) -> &crate::ffi_types::Handle_Adaptor2d_Curve2d {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKHLR::Contap_Line_arc(self as *const Self)))
         }
     }
 
-    /// **Source:** `Contap_Line.hxx`:81 - `Contap_Line::SetTransitionOnS()`
+    /// **Source:** `Contap_Line.hxx`:83 - `Contap_Line::SetTransitionOnS()`
     /// Set The Transition of the line.
     pub fn set_transition_on_s(&mut self, T: crate::int_surf::TypeTrans) {
         crate::check_void_result(unsafe {
@@ -1312,7 +1317,7 @@ impl Line {
         })
     }
 
-    /// **Source:** `Contap_Line.hxx`:85 - `Contap_Line::TransitionOnS()`
+    /// **Source:** `Contap_Line.hxx`:87 - `Contap_Line::TransitionOnS()`
     /// returns IN if at the "left" of the line, the normale of the
     /// surface is oriented to the observator.
     pub fn transition_on_s(&self) -> crate::int_surf::TypeTrans {
@@ -1385,7 +1390,7 @@ impl Point {
     /// Sets the values of a point which is a vertex on
     /// the initial facet of restriction of one
     /// of the surface.
-    pub fn set_vertex(&mut self, V: &crate::ffi_types::HandleAdaptor3dHVertex) {
+    pub fn set_vertex(&mut self, V: &crate::ffi_types::Handle_Adaptor3d_HVertex) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_Point_set_vertex(self as *mut Self, V)
         })
@@ -1396,7 +1401,7 @@ impl Point {
     /// this arc of the point.
     pub fn set_arc(
         &mut self,
-        A: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        A: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         Param: f64,
         TLine: &crate::int_surf::Transition,
         TArc: &crate::int_surf::Transition,
@@ -1461,7 +1466,7 @@ impl Point {
     /// **Source:** `Contap_Point.hxx`:86 - `Contap_Point::Arc()`
     /// Returns the arc of restriction containing the
     /// vertex.
-    pub fn arc(&self) -> &crate::ffi_types::HandleAdaptor2dCurve2d {
+    pub fn arc(&self) -> &crate::ffi_types::Handle_Adaptor2d_Curve2d {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKHLR::Contap_Point_arc(self as *const Self)))
         }
@@ -1510,7 +1515,7 @@ impl Point {
     /// on the domain of the patch, i-e when the function
     /// IsVertex returns True.
     /// Otherwise, an exception is raised.
-    pub fn vertex(&self) -> &crate::ffi_types::HandleAdaptor3dHVertex {
+    pub fn vertex(&self) -> &crate::ffi_types::Handle_Adaptor3d_HVertex {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKHLR::Contap_Point_vertex(
                 self as *const Self,
@@ -1528,8 +1533,8 @@ impl Point {
     }
 
     /// **Source:** `Contap_Point.hxx`:115 - `Contap_Point::IsInternal()`
-    /// Returns True if the point  is an internal one, i.e
-    /// if the  tangent to the line on  the point  and the
+    /// Returns True if the point is an internal one, i.e
+    /// if the tangent to the line on the point and the
     /// eye direction are parallel.
     pub fn is_internal(&self) -> bool {
         crate::check_result(unsafe {
@@ -1568,7 +1573,7 @@ impl SurfFunction {
     }
 
     /// **Source:** `Contap_SurfFunction.hxx`:42 - `Contap_SurfFunction::Set()`
-    pub fn set_handleadaptor3dsurface(&mut self, S: &crate::ffi_types::HandleAdaptor3dSurface) {
+    pub fn set_handleadaptor3dsurface(&mut self, S: &crate::ffi_types::Handle_Adaptor3d_Surface) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_SurfFunction_set_handleadaptor3dsurface(
                 self as *mut Self,
@@ -1674,7 +1679,7 @@ impl SurfFunction {
     }
 
     /// **Source:** `Contap_SurfFunction.hxx`:74 - `Contap_SurfFunction::Tolerance()`
-    /// Returns the value Tol so that if Abs(Func.Root())<Tol
+    /// Returns the value Tol so that if std::abs(Func.Root())<Tol
     /// the function is considered null.
     pub fn tolerance(&self) -> f64 {
         crate::check_result(unsafe {
@@ -1751,7 +1756,7 @@ impl SurfFunction {
     }
 
     /// **Source:** `Contap_SurfFunction.hxx`:93 - `Contap_SurfFunction::Surface()`
-    pub fn surface(&self) -> &crate::ffi_types::HandleAdaptor3dSurface {
+    pub fn surface(&self) -> &crate::ffi_types::Handle_Adaptor3d_Surface {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKHLR::Contap_SurfFunction_surface(
                 self as *const Self,
@@ -1761,7 +1766,7 @@ impl SurfFunction {
 
     /// **Source:** `Contap_SurfFunction.hxx`:96 - `Contap_SurfFunction::PSurface()`
     /// Method is entered for compatibility with IntPatch_TheSurfFunction.
-    pub fn p_surface(&self) -> &crate::ffi_types::HandleAdaptor3dSurface {
+    pub fn p_surface(&self) -> &crate::ffi_types::Handle_Adaptor3d_Surface {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKHLR::Contap_SurfFunction_p_surface(
                 self as *const Self,
@@ -1828,7 +1833,7 @@ impl SurfFunction {
 // ========================
 
 /// **Source:** `Contap_SurfProps.hxx`:27 - `Contap_SurfProps`
-/// Internal tool used  to compute the  normal and its
+/// Internal tool used to compute the normal and its
 /// derivatives.
 pub use crate::ffi_types::Contap_SurfProps as SurfProps;
 
@@ -1852,10 +1857,10 @@ impl SurfProps {
     }
 
     /// **Source:** `Contap_SurfProps.hxx`:34 - `Contap_SurfProps::Normale()`
-    /// Computes  the point <P>, and  normal vector <N> on
+    /// Computes the point <P>, and normal vector <N> on
     /// <S> at parameters U,V.
     pub fn normale(
-        S: &crate::ffi_types::HandleAdaptor3dSurface,
+        S: &crate::ffi_types::Handle_Adaptor3d_Surface,
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
@@ -1867,10 +1872,10 @@ impl SurfProps {
     }
 
     /// **Source:** `Contap_SurfProps.hxx`:42 - `Contap_SurfProps::DerivAndNorm()`
-    /// Computes  the point <P>, and  normal vector <N> on
+    /// Computes the point <P>, and normal vector <N> on
     /// <S> at parameters U,V.
     pub fn deriv_and_norm(
-        S: &crate::ffi_types::HandleAdaptor3dSurface,
+        S: &crate::ffi_types::Handle_Adaptor3d_Surface,
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
@@ -1887,7 +1892,7 @@ impl SurfProps {
     /// Computes the point <P>, normal vector <N>, and its
     /// derivatives <Dnu> and <Dnv> on <S> at parameters U,V.
     pub fn norm_and_dn(
-        S: &crate::ffi_types::HandleAdaptor3dSurface,
+        S: &crate::ffi_types::Handle_Adaptor3d_Surface,
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
@@ -1902,286 +1907,10 @@ impl SurfProps {
 }
 
 // ========================
-// From Contap_TheHSequenceOfPoint.hxx
-// ========================
-
-/// **Source:** `Contap_TheHSequenceOfPoint.hxx`:24 - `Contap_TheHSequenceOfPoint`
-pub use crate::ffi_types::Contap_TheHSequenceOfPoint as TheHSequenceOfPoint;
-
-unsafe impl crate::CppDeletable for TheHSequenceOfPoint {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKHLR::Contap_TheHSequenceOfPoint_destructor(ptr);
-        }
-    }
-}
-
-impl TheHSequenceOfPoint {
-    /// **Source:** `Contap_TheHSequenceOfPoint.hxx`:24 - `Contap_TheHSequenceOfPoint::Contap_TheHSequenceOfPoint()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::Contap_TheHSequenceOfPoint_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Contap_TheHSequenceOfPoint.hxx`:24 - `Contap_TheHSequenceOfPoint::Contap_TheHSequenceOfPoint()`
-    pub fn new_thesequenceofpoint(
-        theOther: &crate::ffi_types::Contap_TheSequenceOfPoint,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::Contap_TheHSequenceOfPoint_ctor_thesequenceofpoint(
-                    theOther,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Contap_TheHSequenceOfPoint.hxx`:24 - `Contap_TheHSequenceOfPoint::Sequence()`
-    pub fn sequence(&self) -> &crate::ffi_types::Contap_TheSequenceOfPoint {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKHLR::Contap_TheHSequenceOfPoint_sequence(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `Contap_TheHSequenceOfPoint.hxx`:24 - `Contap_TheHSequenceOfPoint::Append()`
-    pub fn append_point(&mut self, theItem: &Point) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKHLR::Contap_TheHSequenceOfPoint_append_point(
-                self as *mut Self,
-                theItem,
-            )
-        })
-    }
-
-    /// **Source:** `Contap_TheHSequenceOfPoint.hxx`:24 - `Contap_TheHSequenceOfPoint::Append()`
-    pub fn append_thesequenceofpoint(
-        &mut self,
-        theSequence: &mut crate::ffi_types::Contap_TheSequenceOfPoint,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKHLR::Contap_TheHSequenceOfPoint_append_thesequenceofpoint(
-                self as *mut Self,
-                theSequence,
-            )
-        })
-    }
-
-    /// **Source:** `Contap_TheHSequenceOfPoint.hxx`:24 - `Contap_TheHSequenceOfPoint::ChangeSequence()`
-    pub fn change_sequence(&mut self) -> &mut crate::ffi_types::Contap_TheSequenceOfPoint {
-        unsafe {
-            &mut *(crate::check_result(
-                crate::ffi_extern_TKHLR::Contap_TheHSequenceOfPoint_change_sequence(
-                    self as *mut Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Contap_TheHSequenceOfPoint.hxx`:24 - `Contap_TheHSequenceOfPoint::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKHLR::Contap_TheHSequenceOfPoint_dynamic_type(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Contap_TheHSequenceOfPoint.hxx`:24 - `Contap_TheHSequenceOfPoint::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKHLR::Contap_TheHSequenceOfPoint_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `Contap_TheHSequenceOfPoint.hxx`:24 - `Contap_TheHSequenceOfPoint::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKHLR::Contap_TheHSequenceOfPoint_get_type_descriptor(),
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKHLR::Contap_TheHSequenceOfPoint_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKHLR::Contap_TheHSequenceOfPoint_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleContapTheHSequenceOfPoint> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::Contap_TheHSequenceOfPoint_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKHLR::Contap_TheHSequenceOfPoint_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKHLR::Contap_TheHSequenceOfPoint_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKHLR::Contap_TheHSequenceOfPoint_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKHLR::Contap_TheHSequenceOfPoint_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKHLR::Contap_TheHSequenceOfPoint_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKHLR::Contap_TheHSequenceOfPoint_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKHLR::Contap_TheHSequenceOfPoint_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleContapTheHSequenceOfPoint;
-
-unsafe impl crate::CppDeletable for HandleContapTheHSequenceOfPoint {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKHLR::HandleContapTheHSequenceOfPoint_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleContapTheHSequenceOfPoint {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKHLR::HandleContapTheHSequenceOfPoint_clone(ptr))
-        }
-    }
-}
-
-impl HandleContapTheHSequenceOfPoint {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKHLR::HandleContapTheHSequenceOfPoint_is_null(self as *const Self)
-        }
-    }
-
-    /// Dereference this Handle to access the underlying Contap_TheHSequenceOfPoint
-    pub fn get(&self) -> &crate::ffi_types::Contap_TheHSequenceOfPoint {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKHLR::HandleContapTheHSequenceOfPoint_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Contap_TheHSequenceOfPoint
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Contap_TheHSequenceOfPoint {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKHLR::HandleContapTheHSequenceOfPoint_get_mut(self as *mut Self),
-            )
-        }
-    }
-
-    /// Upcast Handle<Contap_TheHSequenceOfPoint> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HandleContapTheHSequenceOfPoint_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-}
-
-// ========================
 // From Contap_TheIWLineOfTheIWalking.hxx
 // ========================
 
-/// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:40 - `Contap_TheIWLineOfTheIWalking`
+/// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:38 - `Contap_TheIWLineOfTheIWalking`
 pub use crate::ffi_types::Contap_TheIWLineOfTheIWalking as TheIWLineOfTheIWalking;
 
 unsafe impl crate::CppDeletable for TheIWLineOfTheIWalking {
@@ -2193,16 +1922,16 @@ unsafe impl crate::CppDeletable for TheIWLineOfTheIWalking {
 }
 
 impl TheIWLineOfTheIWalking {
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:44 - `Contap_TheIWLineOfTheIWalking::Contap_TheIWLineOfTheIWalking()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:42 - `Contap_TheIWLineOfTheIWalking::Contap_TheIWLineOfTheIWalking()`
     pub fn new_handlencollectionbaseallocator(
-        theAllocator: &crate::ffi_types::HandleNCollectionBaseAllocator,
+        theAllocator: &crate::ffi_types::Handle_NCollection_BaseAllocator,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::Contap_TheIWLineOfTheIWalking_ctor_handlencollectionbaseallocator(theAllocator)))
         }
     }
 
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:47 - `Contap_TheIWLineOfTheIWalking::Reverse()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:45 - `Contap_TheIWLineOfTheIWalking::Reverse()`
     /// reverse the points in the line. Hasfirst, HasLast are kept.
     pub fn reverse(&mut self) {
         crate::check_void_result(unsafe {
@@ -2210,7 +1939,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:50 - `Contap_TheIWLineOfTheIWalking::Cut()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:48 - `Contap_TheIWLineOfTheIWalking::Cut()`
     /// Cut the line at the point of rank Index.
     pub fn cut(&mut self, Index: i32) {
         crate::check_void_result(unsafe {
@@ -2218,7 +1947,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:53 - `Contap_TheIWLineOfTheIWalking::AddPoint()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:51 - `Contap_TheIWLineOfTheIWalking::AddPoint()`
     /// Add a point in the line.
     pub fn add_point(&mut self, P: &crate::int_surf::PntOn2S) {
         crate::check_void_result(unsafe {
@@ -2226,7 +1955,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:55 - `Contap_TheIWLineOfTheIWalking::AddStatusFirst()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:53 - `Contap_TheIWLineOfTheIWalking::AddStatusFirst()`
     pub fn add_status_first_bool2(&mut self, Closed: bool, HasFirst: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_TheIWLineOfTheIWalking_add_status_first_bool2(
@@ -2237,7 +1966,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:57 - `Contap_TheIWLineOfTheIWalking::AddStatusFirst()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:55 - `Contap_TheIWLineOfTheIWalking::AddStatusFirst()`
     pub fn add_status_first_bool2_int_pathpoint(
         &mut self,
         Closed: bool,
@@ -2250,7 +1979,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:62 - `Contap_TheIWLineOfTheIWalking::AddStatusFirstLast()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:60 - `Contap_TheIWLineOfTheIWalking::AddStatusFirstLast()`
     pub fn add_status_first_last(&mut self, Closed: bool, HasFirst: bool, HasLast: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_TheIWLineOfTheIWalking_add_status_first_last(
@@ -2262,7 +1991,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:66 - `Contap_TheIWLineOfTheIWalking::AddStatusLast()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:62 - `Contap_TheIWLineOfTheIWalking::AddStatusLast()`
     pub fn add_status_last_bool(&mut self, HasLast: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_TheIWLineOfTheIWalking_add_status_last_bool(
@@ -2272,7 +2001,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:68 - `Contap_TheIWLineOfTheIWalking::AddStatusLast()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:64 - `Contap_TheIWLineOfTheIWalking::AddStatusLast()`
     pub fn add_status_last_bool_int_pathpoint(
         &mut self,
         HasLast: bool,
@@ -2284,9 +2013,9 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:74 - `Contap_TheIWLineOfTheIWalking::AddIndexPassing()`
-    /// associer a l 'indice du point sur la ligne l'indice du point
-    /// passant dans l'iterateur de depart
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:68 - `Contap_TheIWLineOfTheIWalking::AddIndexPassing()`
+    /// associate the index of the point on the line with the index of the point
+    /// passing through the starting iterator
     pub fn add_index_passing(&mut self, Index: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_TheIWLineOfTheIWalking_add_index_passing(
@@ -2296,7 +2025,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:76 - `Contap_TheIWLineOfTheIWalking::SetTangentVector()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:70 - `Contap_TheIWLineOfTheIWalking::SetTangentVector()`
     pub fn set_tangent_vector(&mut self, V: &crate::gp::Vec, Index: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_TheIWLineOfTheIWalking_set_tangent_vector(
@@ -2307,7 +2036,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:78 - `Contap_TheIWLineOfTheIWalking::SetTangencyAtBegining()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:72 - `Contap_TheIWLineOfTheIWalking::SetTangencyAtBegining()`
     pub fn set_tangency_at_begining(&mut self, IsTangent: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_TheIWLineOfTheIWalking_set_tangency_at_begining(
@@ -2317,7 +2046,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:80 - `Contap_TheIWLineOfTheIWalking::SetTangencyAtEnd()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:74 - `Contap_TheIWLineOfTheIWalking::SetTangencyAtEnd()`
     pub fn set_tangency_at_end(&mut self, IsTangent: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_TheIWLineOfTheIWalking_set_tangency_at_end(
@@ -2327,7 +2056,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:84 - `Contap_TheIWLineOfTheIWalking::NbPoints()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:78 - `Contap_TheIWLineOfTheIWalking::NbPoints()`
     /// Returns the number of points of the line (including first
     /// point and end point : see HasLastPoint and HasFirstPoint).
     pub fn nb_points(&self) -> i32 {
@@ -2336,7 +2065,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:88 - `Contap_TheIWLineOfTheIWalking::Value()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:82 - `Contap_TheIWLineOfTheIWalking::Value()`
     /// Returns the point of range Index.
     /// If index <= 0 or Index > NbPoints, an exception is raised.
     pub fn value(&self, Index: i32) -> &crate::int_surf::PntOn2S {
@@ -2348,9 +2077,9 @@ impl TheIWLineOfTheIWalking {
         }
     }
 
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:91 - `Contap_TheIWLineOfTheIWalking::Line()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:85 - `Contap_TheIWLineOfTheIWalking::Line()`
     /// Returns the LineOn2S contained in the walking line.
-    pub fn line(&self) -> &crate::ffi_types::HandleIntSurfLineOn2S {
+    pub fn line(&self) -> &crate::ffi_types::Handle_IntSurf_LineOn2S {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKHLR::Contap_TheIWLineOfTheIWalking_line(
                 self as *const Self,
@@ -2358,7 +2087,7 @@ impl TheIWLineOfTheIWalking {
         }
     }
 
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:94 - `Contap_TheIWLineOfTheIWalking::IsClosed()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:88 - `Contap_TheIWLineOfTheIWalking::IsClosed()`
     /// Returns True if the line is closed.
     pub fn is_closed(&self) -> bool {
         crate::check_result(unsafe {
@@ -2366,11 +2095,11 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:100 - `Contap_TheIWLineOfTheIWalking::HasFirstPoint()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:94 - `Contap_TheIWLineOfTheIWalking::HasFirstPoint()`
     /// Returns True if the first point of the line is a
-    /// marching point . when is HasFirstPoint==False ,the line
-    /// begins on the natural bound of the surface.the line can be
-    /// too long
+    /// marching point. when is HasFirstPoint==False ,the line
+    /// begins on the natural bound of the surface. The line can
+    /// be too long
     pub fn has_first_point(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_TheIWLineOfTheIWalking_has_first_point(
@@ -2379,11 +2108,11 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:107 - `Contap_TheIWLineOfTheIWalking::HasLastPoint()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:101 - `Contap_TheIWLineOfTheIWalking::HasLastPoint()`
     /// Returns True if the end point of the line is a
     /// marching point (Point from IntWS).
-    /// when is HasFirstPoint==False ,the line ends
-    /// on the natural bound of the surface.the line can be
+    /// when is HasFirstPoint==False the line ends
+    /// on the natural bound of the surface. The line can be
     /// too long.
     pub fn has_last_point(&self) -> bool {
         crate::check_result(unsafe {
@@ -2393,7 +2122,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:112 - `Contap_TheIWLineOfTheIWalking::FirstPoint()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:106 - `Contap_TheIWLineOfTheIWalking::FirstPoint()`
     /// Returns the first point of the line when it is a
     /// marching point.
     /// An exception is raised if HasFirstPoint returns False.
@@ -2407,9 +2136,9 @@ impl TheIWLineOfTheIWalking {
         }
     }
 
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:118 - `Contap_TheIWLineOfTheIWalking::FirstPointIndex()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:112 - `Contap_TheIWLineOfTheIWalking::FirstPointIndex()`
     /// Returns the Index of first point of the line when it is a
-    /// marching point.This index is the index in the
+    /// marching point. This index is the index in the
     /// PointStartIterator.
     /// An exception is raised if HasFirstPoint returns False.
     pub fn first_point_index(&self) -> i32 {
@@ -2420,7 +2149,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:123 - `Contap_TheIWLineOfTheIWalking::LastPoint()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:117 - `Contap_TheIWLineOfTheIWalking::LastPoint()`
     /// Returns the last point of the line when it is a
     /// marching point.
     /// An exception is raised if HasLastPoint returns False.
@@ -2434,9 +2163,9 @@ impl TheIWLineOfTheIWalking {
         }
     }
 
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:129 - `Contap_TheIWLineOfTheIWalking::LastPointIndex()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:123 - `Contap_TheIWLineOfTheIWalking::LastPointIndex()`
     /// Returns the index of last point of the line when it is a
-    /// marching point.This index is the index in the
+    /// marching point. This index is the index in the
     /// PointStartIterator.
     /// An exception is raised if HasLastPoint returns False.
     pub fn last_point_index(&self) -> i32 {
@@ -2447,7 +2176,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:133 - `Contap_TheIWLineOfTheIWalking::NbPassingPoint()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:127 - `Contap_TheIWLineOfTheIWalking::NbPassingPoint()`
     /// returns the number of points belonging to Pnts1 which are
     /// passing point.
     pub fn nb_passing_point(&self) -> i32 {
@@ -2458,7 +2187,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:138 - `Contap_TheIWLineOfTheIWalking::PassingPoint()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:132 - `Contap_TheIWLineOfTheIWalking::PassingPoint()`
     /// returns the index of the point belonging to the line which
     /// is associated to the passing point belonging to Pnts1
     /// an exception is raised if Index > NbPassingPoint()
@@ -2473,7 +2202,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:142 - `Contap_TheIWLineOfTheIWalking::TangentVector()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:134 - `Contap_TheIWLineOfTheIWalking::TangentVector()`
     ///
     /// # Safety
     ///
@@ -2491,7 +2220,7 @@ impl TheIWLineOfTheIWalking {
         }
     }
 
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:144 - `Contap_TheIWLineOfTheIWalking::IsTangentAtBegining()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:136 - `Contap_TheIWLineOfTheIWalking::IsTangentAtBegining()`
     pub fn is_tangent_at_begining(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_TheIWLineOfTheIWalking_is_tangent_at_begining(
@@ -2500,7 +2229,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:146 - `Contap_TheIWLineOfTheIWalking::IsTangentAtEnd()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:138 - `Contap_TheIWLineOfTheIWalking::IsTangentAtEnd()`
     pub fn is_tangent_at_end(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_TheIWLineOfTheIWalking_is_tangent_at_end(
@@ -2509,8 +2238,8 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:148 - `Contap_TheIWLineOfTheIWalking::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:140 - `Contap_TheIWLineOfTheIWalking::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKHLR::Contap_TheIWLineOfTheIWalking_dynamic_type(
@@ -2520,7 +2249,7 @@ impl TheIWLineOfTheIWalking {
         }
     }
 
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:148 - `Contap_TheIWLineOfTheIWalking::get_type_name()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:140 - `Contap_TheIWLineOfTheIWalking::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2531,8 +2260,8 @@ impl TheIWLineOfTheIWalking {
         .into_owned()
     }
 
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:148 - `Contap_TheIWLineOfTheIWalking::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:140 - `Contap_TheIWLineOfTheIWalking::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKHLR::Contap_TheIWLineOfTheIWalking_get_type_descriptor(),
@@ -2565,7 +2294,7 @@ impl TheIWLineOfTheIWalking {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleContapTheIWLineOfTheIWalking> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Contap_TheIWLineOfTheIWalking> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKHLR::Contap_TheIWLineOfTheIWalking_to_handle(obj.into_raw()),
@@ -2573,8 +2302,8 @@ impl TheIWLineOfTheIWalking {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_TheIWLineOfTheIWalking_inherited_IsInstance(
                 self as *const Self,
@@ -2583,8 +2312,8 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_TheIWLineOfTheIWalking_inherited_IsKind(
                 self as *const Self,
@@ -2593,7 +2322,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2609,7 +2338,7 @@ impl TheIWLineOfTheIWalking {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_TheIWLineOfTheIWalking_inherited_GetRefCount(
@@ -2618,7 +2347,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_TheIWLineOfTheIWalking_inherited_IncrementRefCounter(
@@ -2627,7 +2356,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_TheIWLineOfTheIWalking_inherited_DecrementRefCounter(
@@ -2636,7 +2365,7 @@ impl TheIWLineOfTheIWalking {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_TheIWLineOfTheIWalking_inherited_Delete(
@@ -2646,40 +2375,44 @@ impl TheIWLineOfTheIWalking {
     }
 }
 
-pub use crate::ffi_types::HandleContapTheIWLineOfTheIWalking;
+pub use crate::ffi_types::Handle_Contap_TheIWLineOfTheIWalking;
 
-unsafe impl crate::CppDeletable for HandleContapTheIWLineOfTheIWalking {
+unsafe impl crate::CppDeletable for Handle_Contap_TheIWLineOfTheIWalking {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKHLR::HandleContapTheIWLineOfTheIWalking_destructor(ptr);
+            crate::ffi_extern_TKHLR::Handle_Contap_TheIWLineOfTheIWalking_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleContapTheIWLineOfTheIWalking {
+unsafe impl crate::CppCopyable for Handle_Contap_TheIWLineOfTheIWalking {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKHLR::HandleContapTheIWLineOfTheIWalking_clone(
-                ptr,
-            ))
+            crate::check_result(
+                crate::ffi_extern_TKHLR::Handle_Contap_TheIWLineOfTheIWalking_clone(ptr),
+            )
         }
     }
 }
 
-impl HandleContapTheIWLineOfTheIWalking {
+impl Handle_Contap_TheIWLineOfTheIWalking {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKHLR::HandleContapTheIWLineOfTheIWalking_is_null(self as *const Self)
+            crate::ffi_extern_TKHLR::Handle_Contap_TheIWLineOfTheIWalking_is_null(
+                self as *const Self,
+            )
         }
     }
 
     /// Dereference this Handle to access the underlying Contap_TheIWLineOfTheIWalking
     pub fn get(&self) -> &crate::ffi_types::Contap_TheIWLineOfTheIWalking {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKHLR::HandleContapTheIWLineOfTheIWalking_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKHLR::Handle_Contap_TheIWLineOfTheIWalking_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2687,7 +2420,7 @@ impl HandleContapTheIWLineOfTheIWalking {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Contap_TheIWLineOfTheIWalking {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKHLR::HandleContapTheIWLineOfTheIWalking_get_mut(
+                crate::ffi_extern_TKHLR::Handle_Contap_TheIWLineOfTheIWalking_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -2697,9 +2430,9 @@ impl HandleContapTheIWLineOfTheIWalking {
     /// Upcast Handle<Contap_TheIWLineOfTheIWalking> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HandleContapTheIWLineOfTheIWalking_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::Handle_Contap_TheIWLineOfTheIWalking_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -2708,7 +2441,7 @@ impl HandleContapTheIWLineOfTheIWalking {
 // From Contap_TheIWalking.hxx
 // ========================
 
-/// **Source:** `Contap_TheIWalking.hxx`:45 - `Contap_TheIWalking`
+/// **Source:** `Contap_TheIWalking.hxx`:46 - `Contap_TheIWalking`
 pub use crate::ffi_types::Contap_TheIWalking as TheIWalking;
 
 unsafe impl crate::CppDeletable for TheIWalking {
@@ -2720,7 +2453,7 @@ unsafe impl crate::CppDeletable for TheIWalking {
 }
 
 impl TheIWalking {
-    /// **Source:** `Contap_TheIWalking.hxx`:59 - `Contap_TheIWalking::Contap_TheIWalking()`
+    /// **Source:** `Contap_TheIWalking.hxx`:60 - `Contap_TheIWalking::Contap_TheIWalking()`
     /// Deflection is the maximum deflection admitted between two
     /// consecutive points on a resulting polyline.
     /// Step is the maximum increment admitted between two
@@ -2748,7 +2481,7 @@ impl TheIWalking {
         }
     }
 
-    /// **Source:** `Contap_TheIWalking.hxx`:59 - `Contap_TheIWalking::Contap_TheIWalking()`
+    /// **Source:** `Contap_TheIWalking.hxx`:60 - `Contap_TheIWalking::Contap_TheIWalking()`
     /// Deflection is the maximum deflection admitted between two
     /// consecutive points on a resulting polyline.
     /// Step is the maximum increment admitted between two
@@ -2762,7 +2495,7 @@ impl TheIWalking {
         Self::new_real3_bool(Epsilon, Deflection, Step, false)
     }
 
-    /// **Source:** `Contap_TheIWalking.hxx`:70 - `Contap_TheIWalking::SetTolerance()`
+    /// **Source:** `Contap_TheIWalking.hxx`:71 - `Contap_TheIWalking::SetTolerance()`
     /// Deflection is the maximum deflection admitted between two
     /// consecutive points on a resulting polyline.
     /// Step is the maximum increment admitted between two
@@ -2780,39 +2513,39 @@ impl TheIWalking {
         })
     }
 
-    /// **Source:** `Contap_TheIWalking.hxx`:77 - `Contap_TheIWalking::Perform()`
+    /// **Source:** `Contap_TheIWalking.hxx`:76 - `Contap_TheIWalking::Perform()`
     /// Searches a set of polylines starting on a point of Pnts1
     /// or Pnts2.
     /// Each point on a resulting polyline verifies F(u,v)=0
-    pub fn perform_sequenceofpathpoint_sequenceofinteriorpoint_surffunction_handleadaptor3dsurface_bool(
+    pub fn perform_seq_pathpoint_seq_interiorpoint_surffunction_handleadaptor3dsurface_bool(
         &mut self,
-        Pnts1: &crate::ffi_types::IntSurf_SequenceOfPathPoint,
-        Pnts2: &crate::ffi_types::IntSurf_SequenceOfInteriorPoint,
+        Pnts1: &crate::ffi_types::NCollection_Sequence_IntSurf_PathPoint,
+        Pnts2: &crate::ffi_types::NCollection_Sequence_IntSurf_InteriorPoint,
         Func: &mut SurfFunction,
-        S: &crate::ffi_types::HandleAdaptor3dSurface,
+        S: &crate::ffi_types::Handle_Adaptor3d_Surface,
         Reversed: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKHLR::Contap_TheIWalking_perform_sequenceofpathpoint_sequenceofinteriorpoint_surffunction_handleadaptor3dsurface_bool(self as *mut Self, Pnts1, Pnts2, Func, S, Reversed)
+            crate::ffi_extern_TKHLR::Contap_TheIWalking_perform_seq_pathpoint_seq_interiorpoint_surffunction_handleadaptor3dsurface_bool(self as *mut Self, Pnts1, Pnts2, Func, S, Reversed)
         })
     }
 
-    /// **Source:** `Contap_TheIWalking.hxx`:85 - `Contap_TheIWalking::Perform()`
+    /// **Source:** `Contap_TheIWalking.hxx`:84 - `Contap_TheIWalking::Perform()`
     /// Searches a set of polylines starting on a point of Pnts1.
     /// Each point on a resulting polyline verifies F(u,v)=0
-    pub fn perform_sequenceofpathpoint_surffunction_handleadaptor3dsurface_bool(
+    pub fn perform_seq_pathpoint_surffunction_handleadaptor3dsurface_bool(
         &mut self,
-        Pnts1: &crate::ffi_types::IntSurf_SequenceOfPathPoint,
+        Pnts1: &crate::ffi_types::NCollection_Sequence_IntSurf_PathPoint,
         Func: &mut SurfFunction,
-        S: &crate::ffi_types::HandleAdaptor3dSurface,
+        S: &crate::ffi_types::Handle_Adaptor3d_Surface,
         Reversed: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKHLR::Contap_TheIWalking_perform_sequenceofpathpoint_surffunction_handleadaptor3dsurface_bool(self as *mut Self, Pnts1, Func, S, Reversed)
+            crate::ffi_extern_TKHLR::Contap_TheIWalking_perform_seq_pathpoint_surffunction_handleadaptor3dsurface_bool(self as *mut Self, Pnts1, Func, S, Reversed)
         })
     }
 
-    /// **Source:** `Contap_TheIWalking.hxx`:91 - `Contap_TheIWalking::IsDone()`
+    /// **Source:** `Contap_TheIWalking.hxx`:90 - `Contap_TheIWalking::IsDone()`
     /// Returns true if the calculus was successful.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -2820,7 +2553,7 @@ impl TheIWalking {
         })
     }
 
-    /// **Source:** `Contap_TheIWalking.hxx`:95 - `Contap_TheIWalking::NbLines()`
+    /// **Source:** `Contap_TheIWalking.hxx`:94 - `Contap_TheIWalking::NbLines()`
     /// Returns the number of resulting polylines.
     /// An exception is raised if IsDone returns False.
     pub fn nb_lines(&self) -> i32 {
@@ -2829,11 +2562,11 @@ impl TheIWalking {
         })
     }
 
-    /// **Source:** `Contap_TheIWalking.hxx`:100 - `Contap_TheIWalking::Value()`
+    /// **Source:** `Contap_TheIWalking.hxx`:99 - `Contap_TheIWalking::Value()`
     /// Returns the polyline of range Index.
     /// An exception is raised if IsDone is False.
     /// An exception is raised if Index<=0 or Index>NbLines.
-    pub fn value(&self, Index: i32) -> &crate::ffi_types::HandleContapTheIWLineOfTheIWalking {
+    pub fn value(&self, Index: i32) -> &crate::ffi_types::Handle_Contap_TheIWLineOfTheIWalking {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKHLR::Contap_TheIWalking_value(
                 self as *const Self,
@@ -2842,7 +2575,7 @@ impl TheIWalking {
         }
     }
 
-    /// **Source:** `Contap_TheIWalking.hxx`:105 - `Contap_TheIWalking::NbSinglePnts()`
+    /// **Source:** `Contap_TheIWalking.hxx`:104 - `Contap_TheIWalking::NbSinglePnts()`
     /// Returns the number of points belonging to Pnts on which no
     /// line starts or ends.
     /// An exception is raised if IsDone returns False.
@@ -2852,7 +2585,7 @@ impl TheIWalking {
         })
     }
 
-    /// **Source:** `Contap_TheIWalking.hxx`:111 - `Contap_TheIWalking::SinglePnt()`
+    /// **Source:** `Contap_TheIWalking.hxx`:110 - `Contap_TheIWalking::SinglePnt()`
     /// Returns the point of range Index .
     /// An exception is raised if IsDone returns False.
     /// An exception is raised if Index<=0 or
@@ -2896,8 +2629,8 @@ impl ThePathPointOfTheSearch {
     pub fn new_pnt_real_handleadaptor3dhvertex_handleadaptor2dcurve2d_real(
         P: &crate::gp::Pnt,
         Tol: f64,
-        V: &crate::ffi_types::HandleAdaptor3dHVertex,
-        A: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        V: &crate::ffi_types::Handle_Adaptor3d_HVertex,
+        A: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         Parameter: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2909,7 +2642,7 @@ impl ThePathPointOfTheSearch {
     pub fn new_pnt_real_handleadaptor2dcurve2d_real(
         P: &crate::gp::Pnt,
         Tol: f64,
-        A: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        A: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         Parameter: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2922,8 +2655,8 @@ impl ThePathPointOfTheSearch {
         &mut self,
         P: &crate::gp::Pnt,
         Tol: f64,
-        V: &crate::ffi_types::HandleAdaptor3dHVertex,
-        A: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        V: &crate::ffi_types::Handle_Adaptor3d_HVertex,
+        A: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         Parameter: f64,
     ) {
         crate::check_void_result(unsafe {
@@ -2936,7 +2669,7 @@ impl ThePathPointOfTheSearch {
         &mut self,
         P: &crate::gp::Pnt,
         Tol: f64,
-        A: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        A: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         Parameter: f64,
     ) {
         crate::check_void_result(unsafe {
@@ -2968,7 +2701,7 @@ impl ThePathPointOfTheSearch {
     }
 
     /// **Source:** `Contap_ThePathPointOfTheSearch.hxx`:62 - `Contap_ThePathPointOfTheSearch::Vertex()`
-    pub fn vertex(&self) -> &crate::ffi_types::HandleAdaptor3dHVertex {
+    pub fn vertex(&self) -> &crate::ffi_types::Handle_Adaptor3d_HVertex {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKHLR::Contap_ThePathPointOfTheSearch_vertex(
                 self as *const Self,
@@ -2977,7 +2710,7 @@ impl ThePathPointOfTheSearch {
     }
 
     /// **Source:** `Contap_ThePathPointOfTheSearch.hxx`:64 - `Contap_ThePathPointOfTheSearch::Arc()`
-    pub fn arc(&self) -> &crate::ffi_types::HandleAdaptor2dCurve2d {
+    pub fn arc(&self) -> &crate::ffi_types::Handle_Adaptor2d_Curve2d {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKHLR::Contap_ThePathPointOfTheSearch_arc(
                 self as *const Self,
@@ -2997,7 +2730,7 @@ impl ThePathPointOfTheSearch {
 // From Contap_TheSearch.hxx
 // ========================
 
-/// **Source:** `Contap_TheSearch.hxx`:40 - `Contap_TheSearch`
+/// **Source:** `Contap_TheSearch.hxx`:41 - `Contap_TheSearch`
 pub use crate::ffi_types::Contap_TheSearch as TheSearch;
 
 unsafe impl crate::CppDeletable for TheSearch {
@@ -3009,7 +2742,7 @@ unsafe impl crate::CppDeletable for TheSearch {
 }
 
 impl TheSearch {
-    /// **Source:** `Contap_TheSearch.hxx`:46 - `Contap_TheSearch::Contap_TheSearch()`
+    /// **Source:** `Contap_TheSearch.hxx`:47 - `Contap_TheSearch::Contap_TheSearch()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3019,7 +2752,7 @@ impl TheSearch {
         }
     }
 
-    /// **Source:** `Contap_TheSearch.hxx`:53 - `Contap_TheSearch::Perform()`
+    /// **Source:** `Contap_TheSearch.hxx`:54 - `Contap_TheSearch::Perform()`
     /// Algorithm to find the points and parts of curves of Domain
     /// (domain of of restriction of a surface) which verify
     /// F = 0.
@@ -3028,7 +2761,7 @@ impl TheSearch {
     pub fn perform(
         &mut self,
         F: &mut ArcFunction,
-        Domain: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        Domain: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         TolBoundary: f64,
         TolTangency: f64,
         RecheckOnRegularity: bool,
@@ -3045,7 +2778,7 @@ impl TheSearch {
         })
     }
 
-    /// **Source:** `Contap_TheSearch.hxx`:60 - `Contap_TheSearch::IsDone()`
+    /// **Source:** `Contap_TheSearch.hxx`:61 - `Contap_TheSearch::IsDone()`
     /// Returns True if the calculus was successful.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -3053,7 +2786,7 @@ impl TheSearch {
         })
     }
 
-    /// **Source:** `Contap_TheSearch.hxx`:65 - `Contap_TheSearch::AllArcSolution()`
+    /// **Source:** `Contap_TheSearch.hxx`:66 - `Contap_TheSearch::AllArcSolution()`
     /// Returns true if all arc of the Arcs are solution (inside
     /// the surface).
     /// An exception is raised if IsDone returns False.
@@ -3063,7 +2796,7 @@ impl TheSearch {
         })
     }
 
-    /// **Source:** `Contap_TheSearch.hxx`:69 - `Contap_TheSearch::NbPoints()`
+    /// **Source:** `Contap_TheSearch.hxx`:70 - `Contap_TheSearch::NbPoints()`
     /// Returns the number of resulting points.
     /// An exception is raised if IsDone returns False (NotDone).
     pub fn nb_points(&self) -> i32 {
@@ -3072,7 +2805,7 @@ impl TheSearch {
         })
     }
 
-    /// **Source:** `Contap_TheSearch.hxx`:76 - `Contap_TheSearch::Point()`
+    /// **Source:** `Contap_TheSearch.hxx`:77 - `Contap_TheSearch::Point()`
     /// Returns the resulting point of range Index.
     /// The exception NotDone is raised if IsDone() returns
     /// False.
@@ -3087,7 +2820,7 @@ impl TheSearch {
         }
     }
 
-    /// **Source:** `Contap_TheSearch.hxx`:80 - `Contap_TheSearch::NbSegments()`
+    /// **Source:** `Contap_TheSearch.hxx`:81 - `Contap_TheSearch::NbSegments()`
     /// Returns the number of the resulting segments.
     /// An exception is raised if IsDone returns False (NotDone).
     pub fn nb_segments(&self) -> i32 {
@@ -3096,7 +2829,7 @@ impl TheSearch {
         })
     }
 
-    /// **Source:** `Contap_TheSearch.hxx`:87 - `Contap_TheSearch::Segment()`
+    /// **Source:** `Contap_TheSearch.hxx`:88 - `Contap_TheSearch::Segment()`
     /// Returns the resulting segment of range Index.
     /// The exception NotDone is raised if IsDone() returns
     /// False.
@@ -3116,7 +2849,7 @@ impl TheSearch {
 // From Contap_TheSearchInside.hxx
 // ========================
 
-/// **Source:** `Contap_TheSearchInside.hxx`:29 - `Contap_TheSearchInside`
+/// **Source:** `Contap_TheSearchInside.hxx`:30 - `Contap_TheSearchInside`
 pub use crate::ffi_types::Contap_TheSearchInside as TheSearchInside;
 
 unsafe impl crate::CppDeletable for TheSearchInside {
@@ -3128,7 +2861,7 @@ unsafe impl crate::CppDeletable for TheSearchInside {
 }
 
 impl TheSearchInside {
-    /// **Source:** `Contap_TheSearchInside.hxx`:34 - `Contap_TheSearchInside::Contap_TheSearchInside()`
+    /// **Source:** `Contap_TheSearchInside.hxx`:35 - `Contap_TheSearchInside::Contap_TheSearchInside()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3137,11 +2870,11 @@ impl TheSearchInside {
         }
     }
 
-    /// **Source:** `Contap_TheSearchInside.hxx`:36 - `Contap_TheSearchInside::Contap_TheSearchInside()`
+    /// **Source:** `Contap_TheSearchInside.hxx`:37 - `Contap_TheSearchInside::Contap_TheSearchInside()`
     pub fn new_surffunction_handleadaptor3dsurface_handleadaptor3dtopoltool_real(
         F: &mut SurfFunction,
-        Surf: &crate::ffi_types::HandleAdaptor3dSurface,
-        T: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        Surf: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        T: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         Epsilon: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3149,12 +2882,12 @@ impl TheSearchInside {
         }
     }
 
-    /// **Source:** `Contap_TheSearchInside.hxx`:41 - `Contap_TheSearchInside::Perform()`
+    /// **Source:** `Contap_TheSearchInside.hxx`:42 - `Contap_TheSearchInside::Perform()`
     pub fn perform_surffunction_handleadaptor3dsurface_handleadaptor3dtopoltool_real(
         &mut self,
         F: &mut SurfFunction,
-        Surf: &crate::ffi_types::HandleAdaptor3dSurface,
-        T: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        Surf: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        T: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         Epsilon: f64,
     ) {
         crate::check_void_result(unsafe {
@@ -3162,11 +2895,11 @@ impl TheSearchInside {
         })
     }
 
-    /// **Source:** `Contap_TheSearchInside.hxx`:46 - `Contap_TheSearchInside::Perform()`
+    /// **Source:** `Contap_TheSearchInside.hxx`:47 - `Contap_TheSearchInside::Perform()`
     pub fn perform_surffunction_handleadaptor3dsurface_real2(
         &mut self,
         F: &mut SurfFunction,
-        Surf: &crate::ffi_types::HandleAdaptor3dSurface,
+        Surf: &crate::ffi_types::Handle_Adaptor3d_Surface,
         UStart: f64,
         VStart: f64,
     ) {
@@ -3175,14 +2908,14 @@ impl TheSearchInside {
         })
     }
 
-    /// **Source:** `Contap_TheSearchInside.hxx`:51 - `Contap_TheSearchInside::IsDone()`
+    /// **Source:** `Contap_TheSearchInside.hxx`:52 - `Contap_TheSearchInside::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_TheSearchInside_is_done(self as *const Self)
         })
     }
 
-    /// **Source:** `Contap_TheSearchInside.hxx`:56 - `Contap_TheSearchInside::NbPoints()`
+    /// **Source:** `Contap_TheSearchInside.hxx`:57 - `Contap_TheSearchInside::NbPoints()`
     /// Returns the number of points.
     /// The exception NotDone if raised if IsDone
     /// returns False.
@@ -3192,7 +2925,7 @@ impl TheSearchInside {
         })
     }
 
-    /// **Source:** `Contap_TheSearchInside.hxx`:63 - `Contap_TheSearchInside::Value()`
+    /// **Source:** `Contap_TheSearchInside.hxx`:64 - `Contap_TheSearchInside::Value()`
     /// Returns the point of range Index.
     /// The exception NotDone if raised if IsDone
     /// returns False.
@@ -3236,7 +2969,7 @@ impl TheSegmentOfTheSearch {
 
     /// **Source:** `Contap_TheSegmentOfTheSearch.hxx`:36 - `Contap_TheSegmentOfTheSearch::SetValue()`
     /// Defines the concerned arc.
-    pub fn set_value(&mut self, A: &crate::ffi_types::HandleAdaptor2dCurve2d) {
+    pub fn set_value(&mut self, A: &crate::ffi_types::Handle_Adaptor2d_Curve2d) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Contap_TheSegmentOfTheSearch_set_value(self as *mut Self, A)
         })
@@ -3255,10 +2988,10 @@ impl TheSegmentOfTheSearch {
         })
     }
 
-    /// **Source:** `Contap_TheSegmentOfTheSearch.hxx`:45 - `Contap_TheSegmentOfTheSearch::Curve()`
+    /// **Source:** `Contap_TheSegmentOfTheSearch.hxx`:44 - `Contap_TheSegmentOfTheSearch::Curve()`
     /// Returns the geometric curve on the surface 's domain
     /// which is solution.
-    pub fn curve(&self) -> &crate::ffi_types::HandleAdaptor2dCurve2d {
+    pub fn curve(&self) -> &crate::ffi_types::Handle_Adaptor2d_Curve2d {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKHLR::Contap_TheSegmentOfTheSearch_curve(
                 self as *const Self,
@@ -3266,7 +2999,7 @@ impl TheSegmentOfTheSearch {
         }
     }
 
-    /// **Source:** `Contap_TheSegmentOfTheSearch.hxx`:49 - `Contap_TheSegmentOfTheSearch::HasFirstPoint()`
+    /// **Source:** `Contap_TheSegmentOfTheSearch.hxx`:48 - `Contap_TheSegmentOfTheSearch::HasFirstPoint()`
     /// Returns True if there is a vertex (ThePathPoint) defining
     /// the lowest valid parameter on the arc.
     pub fn has_first_point(&self) -> bool {
@@ -3277,7 +3010,7 @@ impl TheSegmentOfTheSearch {
         })
     }
 
-    /// **Source:** `Contap_TheSegmentOfTheSearch.hxx`:52 - `Contap_TheSegmentOfTheSearch::FirstPoint()`
+    /// **Source:** `Contap_TheSegmentOfTheSearch.hxx`:51 - `Contap_TheSegmentOfTheSearch::FirstPoint()`
     /// Returns the first point.
     pub fn first_point(&self) -> &ThePathPointOfTheSearch {
         unsafe {
@@ -3289,7 +3022,7 @@ impl TheSegmentOfTheSearch {
         }
     }
 
-    /// **Source:** `Contap_TheSegmentOfTheSearch.hxx`:56 - `Contap_TheSegmentOfTheSearch::HasLastPoint()`
+    /// **Source:** `Contap_TheSegmentOfTheSearch.hxx`:55 - `Contap_TheSegmentOfTheSearch::HasLastPoint()`
     /// Returns True if there is a vertex (ThePathPoint) defining
     /// the greatest valid parameter on the arc.
     pub fn has_last_point(&self) -> bool {
@@ -3300,7 +3033,7 @@ impl TheSegmentOfTheSearch {
         })
     }
 
-    /// **Source:** `Contap_TheSegmentOfTheSearch.hxx`:59 - `Contap_TheSegmentOfTheSearch::LastPoint()`
+    /// **Source:** `Contap_TheSegmentOfTheSearch.hxx`:58 - `Contap_TheSegmentOfTheSearch::LastPoint()`
     /// Returns the last point.
     pub fn last_point(&self) -> &ThePathPointOfTheSearch {
         unsafe {
@@ -3312,9 +3045,3 @@ impl TheSegmentOfTheSearch {
         }
     }
 }
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi_types::Contap_TheSequenceOfPoint as TheSequenceOfPoint;

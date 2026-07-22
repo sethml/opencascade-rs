@@ -10,153 +10,155 @@ use crate::ffi_types::*;
 unsafe extern "C" {
     // ======================== RWMesh_CafReader ========================
     pub fn RWMesh_CafReader_destructor(self_: *mut RWMesh_CafReader);
-    /// **Source:** `RWMesh_CafReader.hxx`:52 - `RWMesh_CafReader::DynamicType()`
+    /// **Source:** `RWMesh_CafReader.hxx`:54 - `RWMesh_CafReader::DynamicType()`
     pub fn RWMesh_CafReader_dynamic_type(
         self_: *const RWMesh_CafReader,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `RWMesh_CafReader.hxx`:72 - `RWMesh_CafReader::Document()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `RWMesh_CafReader.hxx`:74 - `RWMesh_CafReader::Document()`
     pub fn RWMesh_CafReader_document(
         self_: *const RWMesh_CafReader,
-    ) -> crate::OcctResult<*const HandleTDocStdDocument>;
-    /// **Source:** `RWMesh_CafReader.hxx`:76 - `RWMesh_CafReader::SetDocument()`
+    ) -> crate::OcctResult<*const Handle_TDocStd_Document>;
+    /// **Source:** `RWMesh_CafReader.hxx`:78 - `RWMesh_CafReader::SetDocument()`
     pub fn RWMesh_CafReader_set_document(
         self_: *mut RWMesh_CafReader,
-        theDoc: *const HandleTDocStdDocument,
+        theDoc: *const Handle_TDocStd_Document,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_CafReader.hxx`:79 - `RWMesh_CafReader::RootPrefix()`
+    /// **Source:** `RWMesh_CafReader.hxx`:81 - `RWMesh_CafReader::RootPrefix()`
     pub fn RWMesh_CafReader_root_prefix(
         self_: *const RWMesh_CafReader,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// **Source:** `RWMesh_CafReader.hxx`:82 - `RWMesh_CafReader::SetRootPrefix()`
+    /// **Source:** `RWMesh_CafReader.hxx`:84 - `RWMesh_CafReader::SetRootPrefix()`
     pub fn RWMesh_CafReader_set_root_prefix(
         self_: *mut RWMesh_CafReader,
         theRootPrefix: *const TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_CafReader.hxx`:95 - `RWMesh_CafReader::ToFillIncompleteDocument()`
+    /// **Source:** `RWMesh_CafReader.hxx`:97 - `RWMesh_CafReader::ToFillIncompleteDocument()`
     pub fn RWMesh_CafReader_to_fill_incomplete_document(
         self_: *const RWMesh_CafReader,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWMesh_CafReader.hxx`:98 - `RWMesh_CafReader::SetFillIncompleteDocument()`
+    /// **Source:** `RWMesh_CafReader.hxx`:100 - `RWMesh_CafReader::SetFillIncompleteDocument()`
     pub fn RWMesh_CafReader_set_fill_incomplete_document(
         self_: *mut RWMesh_CafReader,
         theToFillIncomplete: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_CafReader.hxx`:104 - `RWMesh_CafReader::MemoryLimitMiB()`
+    /// **Source:** `RWMesh_CafReader.hxx`:106 - `RWMesh_CafReader::MemoryLimitMiB()`
     pub fn RWMesh_CafReader_memory_limit_mi_b(
         self_: *const RWMesh_CafReader,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `RWMesh_CafReader.hxx`:107 - `RWMesh_CafReader::SetMemoryLimitMiB()`
+    /// **Source:** `RWMesh_CafReader.hxx`:109 - `RWMesh_CafReader::SetMemoryLimitMiB()`
     pub fn RWMesh_CafReader_set_memory_limit_mi_b(
         self_: *mut RWMesh_CafReader,
         theLimitMiB: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_CafReader.hxx`:111 - `RWMesh_CafReader::CoordinateSystemConverter()`
+    /// **Source:** `RWMesh_CafReader.hxx`:113 - `RWMesh_CafReader::CoordinateSystemConverter()`
     pub fn RWMesh_CafReader_coordinate_system_converter(
         self_: *const RWMesh_CafReader,
     ) -> crate::OcctResult<*const RWMesh_CoordinateSystemConverter>;
-    /// **Source:** `RWMesh_CafReader.hxx`:117 - `RWMesh_CafReader::SetCoordinateSystemConverter()`
+    /// **Source:** `RWMesh_CafReader.hxx`:119 - `RWMesh_CafReader::SetCoordinateSystemConverter()`
     pub fn RWMesh_CafReader_set_coordinate_system_converter(
         self_: *mut RWMesh_CafReader,
         theConverter: *const RWMesh_CoordinateSystemConverter,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_CafReader.hxx`:124 - `RWMesh_CafReader::SystemLengthUnit()`
+    /// **Source:** `RWMesh_CafReader.hxx`:126 - `RWMesh_CafReader::SystemLengthUnit()`
     pub fn RWMesh_CafReader_system_length_unit(
         self_: *const RWMesh_CafReader,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `RWMesh_CafReader.hxx`:128 - `RWMesh_CafReader::SetSystemLengthUnit()`
+    /// **Source:** `RWMesh_CafReader.hxx`:130 - `RWMesh_CafReader::SetSystemLengthUnit()`
     pub fn RWMesh_CafReader_set_system_length_unit(
         self_: *mut RWMesh_CafReader,
         theUnits: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_CafReader.hxx`:134 - `RWMesh_CafReader::HasSystemCoordinateSystem()`
+    /// **Source:** `RWMesh_CafReader.hxx`:133 - `RWMesh_CafReader::HasSystemCoordinateSystem()`
     pub fn RWMesh_CafReader_has_system_coordinate_system(
         self_: *const RWMesh_CafReader,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWMesh_CafReader.hxx`:141 - `RWMesh_CafReader::SystemCoordinateSystem()`
+    /// **Source:** `RWMesh_CafReader.hxx`:137 - `RWMesh_CafReader::SystemCoordinateSystem()`
     pub fn RWMesh_CafReader_system_coordinate_system(
         self_: *const RWMesh_CafReader,
     ) -> crate::OcctResult<*const gp_Ax3>;
-    /// **Source:** `RWMesh_CafReader.hxx`:147 - `RWMesh_CafReader::SetSystemCoordinateSystem()`
+    /// **Source:** `RWMesh_CafReader.hxx`:143 - `RWMesh_CafReader::SetSystemCoordinateSystem()`
     pub fn RWMesh_CafReader_set_system_coordinate_system_ax3(
         self_: *mut RWMesh_CafReader,
         theCS: *const gp_Ax3,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_CafReader.hxx`:153 - `RWMesh_CafReader::SetSystemCoordinateSystem()`
+    /// **Source:** `RWMesh_CafReader.hxx`:149 - `RWMesh_CafReader::SetSystemCoordinateSystem()`
     pub fn RWMesh_CafReader_set_system_coordinate_system_coordinatesystem(
         self_: *mut RWMesh_CafReader,
         theCS: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_CafReader.hxx`:160 - `RWMesh_CafReader::FileLengthUnit()`
+    /// **Source:** `RWMesh_CafReader.hxx`:156 - `RWMesh_CafReader::FileLengthUnit()`
     pub fn RWMesh_CafReader_file_length_unit(
         self_: *const RWMesh_CafReader,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `RWMesh_CafReader.hxx`:164 - `RWMesh_CafReader::SetFileLengthUnit()`
+    /// **Source:** `RWMesh_CafReader.hxx`:160 - `RWMesh_CafReader::SetFileLengthUnit()`
     pub fn RWMesh_CafReader_set_file_length_unit(
         self_: *mut RWMesh_CafReader,
         theUnits: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_CafReader.hxx`:170 - `RWMesh_CafReader::HasFileCoordinateSystem()`
+    /// **Source:** `RWMesh_CafReader.hxx`:163 - `RWMesh_CafReader::HasFileCoordinateSystem()`
     pub fn RWMesh_CafReader_has_file_coordinate_system(
         self_: *const RWMesh_CafReader,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWMesh_CafReader.hxx`:177 - `RWMesh_CafReader::FileCoordinateSystem()`
+    /// **Source:** `RWMesh_CafReader.hxx`:167 - `RWMesh_CafReader::FileCoordinateSystem()`
     pub fn RWMesh_CafReader_file_coordinate_system(
         self_: *const RWMesh_CafReader,
     ) -> crate::OcctResult<*const gp_Ax3>;
-    /// **Source:** `RWMesh_CafReader.hxx`:180 - `RWMesh_CafReader::SetFileCoordinateSystem()`
+    /// **Source:** `RWMesh_CafReader.hxx`:170 - `RWMesh_CafReader::SetFileCoordinateSystem()`
     pub fn RWMesh_CafReader_set_file_coordinate_system_ax3(
         self_: *mut RWMesh_CafReader,
         theCS: *const gp_Ax3,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_CafReader.hxx`:186 - `RWMesh_CafReader::SetFileCoordinateSystem()`
+    /// **Source:** `RWMesh_CafReader.hxx`:176 - `RWMesh_CafReader::SetFileCoordinateSystem()`
     pub fn RWMesh_CafReader_set_file_coordinate_system_coordinatesystem(
         self_: *mut RWMesh_CafReader,
         theCS: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_CafReader.hxx`:194 - `RWMesh_CafReader::Perform()`
+    /// **Source:** `RWMesh_CafReader.hxx`:184 - `RWMesh_CafReader::Perform()`
     pub fn RWMesh_CafReader_perform_asciistring_progressrange(
         self_: *mut RWMesh_CafReader,
         theFile: *const TCollection_AsciiString,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWMesh_CafReader.hxx`:202 - `RWMesh_CafReader::Perform()`
+    /// **Source:** `RWMesh_CafReader.hxx`:192 - `RWMesh_CafReader::Perform()`
     pub fn RWMesh_CafReader_perform_istream_progressrange_asciistring(
         self_: *mut RWMesh_CafReader,
         theStream: *mut Standard_IStream,
         theProgress: *const Message_ProgressRange,
         theFile: *const TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWMesh_CafReader.hxx`:211 - `RWMesh_CafReader::ExtraStatus()`
+    /// **Source:** `RWMesh_CafReader.hxx`:201 - `RWMesh_CafReader::ExtraStatus()`
     pub fn RWMesh_CafReader_extra_status(self_: *const RWMesh_CafReader) -> crate::OcctResult<i32>;
-    /// **Source:** `RWMesh_CafReader.hxx`:215 - `RWMesh_CafReader::SingleShape()`
+    /// **Source:** `RWMesh_CafReader.hxx`:205 - `RWMesh_CafReader::SingleShape()`
     pub fn RWMesh_CafReader_single_shape(
         self_: *const RWMesh_CafReader,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `RWMesh_CafReader.hxx`:218 - `RWMesh_CafReader::ExternalFiles()`
+    /// **Source:** `RWMesh_CafReader.hxx`:208 - `RWMesh_CafReader::ExternalFiles()`
     pub fn RWMesh_CafReader_external_files(
         self_: *const RWMesh_CafReader,
-    ) -> crate::OcctResult<*const Interface_IndexedMapOfAsciiString>;
-    /// **Source:** `RWMesh_CafReader.hxx`:224 - `RWMesh_CafReader::Metadata()`
+    ) -> crate::OcctResult<*const NCollection_IndexedMap_TCollection_AsciiString>;
+    /// **Source:** `RWMesh_CafReader.hxx`:214 - `RWMesh_CafReader::Metadata()`
     pub fn RWMesh_CafReader_metadata(
         self_: *const RWMesh_CafReader,
-    ) -> crate::OcctResult<*const TColStd_IndexedDataMapOfStringString>;
-    /// **Source:** `RWMesh_CafReader.hxx`:227 - `RWMesh_CafReader::ProbeHeader()`
+    ) -> crate::OcctResult<
+        *const NCollection_IndexedDataMap_TCollection_AsciiString_TCollection_AsciiString,
+    >;
+    /// **Source:** `RWMesh_CafReader.hxx`:221 - `RWMesh_CafReader::ProbeHeader()`
     pub fn RWMesh_CafReader_probe_header_asciistring_progressrange(
         self_: *mut RWMesh_CafReader,
         theFile: *const TCollection_AsciiString,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWMesh_CafReader.hxx`:238 - `RWMesh_CafReader::ProbeHeader()`
+    /// **Source:** `RWMesh_CafReader.hxx`:232 - `RWMesh_CafReader::ProbeHeader()`
     pub fn RWMesh_CafReader_probe_header_istream_asciistring_progressrange(
         self_: *mut RWMesh_CafReader,
         theStream: *mut Standard_IStream,
         theFile: *const TCollection_AsciiString,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWMesh_CafReader.hxx`:52 - `RWMesh_CafReader::get_type_name()`
+    /// **Source:** `RWMesh_CafReader.hxx`:54 - `RWMesh_CafReader::get_type_name()`
     pub fn RWMesh_CafReader_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `RWMesh_CafReader.hxx`:52 - `RWMesh_CafReader::get_type_descriptor()`
-    pub fn RWMesh_CafReader_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `RWMesh_CafReader.hxx`:54 - `RWMesh_CafReader::get_type_descriptor()`
+    pub fn RWMesh_CafReader_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast RWMesh_CafReader to Standard_Transient
     pub fn RWMesh_CafReader_as_Standard_Transient(
         self_: *const RWMesh_CafReader,
@@ -166,64 +168,60 @@ unsafe extern "C" {
         self_: *mut RWMesh_CafReader,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<RWMesh_CafReader>
-    pub fn HandleRWMeshCafReader_destructor(self_: *mut HandleRWMeshCafReader);
+    pub fn Handle_RWMesh_CafReader_destructor(self_: *mut Handle_RWMesh_CafReader);
     /// Clone Handle<RWMesh_CafReader> (increments reference count)
-    pub fn HandleRWMeshCafReader_clone(
-        self_: *const HandleRWMeshCafReader,
-    ) -> crate::OcctResult<*mut HandleRWMeshCafReader>;
+    pub fn Handle_RWMesh_CafReader_clone(
+        self_: *const Handle_RWMesh_CafReader,
+    ) -> crate::OcctResult<*mut Handle_RWMesh_CafReader>;
     /// Check if Handle<RWMesh_CafReader> is null
-    pub fn HandleRWMeshCafReader_is_null(self_: *const HandleRWMeshCafReader) -> bool;
+    pub fn Handle_RWMesh_CafReader_is_null(self_: *const Handle_RWMesh_CafReader) -> bool;
     /// Dereference Handle to get *const RWMesh_CafReader
-    pub fn HandleRWMeshCafReader_get(
-        handle: *const HandleRWMeshCafReader,
+    pub fn Handle_RWMesh_CafReader_get(
+        handle: *const Handle_RWMesh_CafReader,
     ) -> crate::OcctResult<*const RWMesh_CafReader>;
     /// Dereference Handle to get *mut RWMesh_CafReader
-    pub fn HandleRWMeshCafReader_get_mut(
-        handle: *mut HandleRWMeshCafReader,
+    pub fn Handle_RWMesh_CafReader_get_mut(
+        handle: *mut Handle_RWMesh_CafReader,
     ) -> crate::OcctResult<*mut RWMesh_CafReader>;
     /// Upcast Handle<RWMesh_CafReader> to Handle<Standard_Transient>
-    pub fn HandleRWMeshCafReader_to_HandleStandardTransient(
-        self_: *const HandleRWMeshCafReader,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Downcast Handle<RWMesh_CafReader> to Handle<RWGltf_CafReader> (returns null on failure)
-    pub fn HandleRWMeshCafReader_downcast_to_HandleRWGltfCafReader(
-        self_: *const HandleRWMeshCafReader,
-    ) -> crate::OcctResult<*mut HandleRWGltfCafReader>;
+    pub fn Handle_RWMesh_CafReader_to_Handle_Standard_Transient(
+        self_: *const Handle_RWMesh_CafReader,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<RWMesh_CafReader> to Handle<RWObj_CafReader> (returns null on failure)
-    pub fn HandleRWMeshCafReader_downcast_to_HandleRWObjCafReader(
-        self_: *const HandleRWMeshCafReader,
-    ) -> crate::OcctResult<*mut HandleRWObjCafReader>;
+    pub fn Handle_RWMesh_CafReader_downcast_to_Handle_RWObj_CafReader(
+        self_: *const Handle_RWMesh_CafReader,
+    ) -> crate::OcctResult<*mut Handle_RWObj_CafReader>;
     /// Downcast Handle<RWMesh_CafReader> to Handle<VrmlAPI_CafReader> (returns null on failure)
-    pub fn HandleRWMeshCafReader_downcast_to_HandleVrmlAPICafReader(
-        self_: *const HandleRWMeshCafReader,
-    ) -> crate::OcctResult<*mut HandleVrmlAPICafReader>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_RWMesh_CafReader_downcast_to_Handle_VrmlAPI_CafReader(
+        self_: *const Handle_RWMesh_CafReader,
+    ) -> crate::OcctResult<*mut Handle_VrmlAPI_CafReader>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn RWMesh_CafReader_inherited_IsInstance(
         self_: *const RWMesh_CafReader,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn RWMesh_CafReader_inherited_IsKind(
         self_: *const RWMesh_CafReader,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn RWMesh_CafReader_inherited_This(
         self_: *const RWMesh_CafReader,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn RWMesh_CafReader_inherited_GetRefCount(
         self_: *const RWMesh_CafReader,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn RWMesh_CafReader_inherited_IncrementRefCounter(
         self_: *mut RWMesh_CafReader,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn RWMesh_CafReader_inherited_DecrementRefCounter(
         self_: *mut RWMesh_CafReader,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn RWMesh_CafReader_inherited_Delete(
         self_: *const RWMesh_CafReader,
     ) -> *const std::ffi::c_char;
@@ -238,68 +236,68 @@ unsafe extern "C" {
     pub fn RWMesh_CoordinateSystemConverter_destructor(
         self_: *mut RWMesh_CoordinateSystemConverter,
     );
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:69 - `RWMesh_CoordinateSystemConverter::RWMesh_CoordinateSystemConverter()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:73 - `RWMesh_CoordinateSystemConverter::RWMesh_CoordinateSystemConverter()`
     pub fn RWMesh_CoordinateSystemConverter_ctor(
     ) -> crate::OcctResult<*mut RWMesh_CoordinateSystemConverter>;
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:72 - `RWMesh_CoordinateSystemConverter::IsEmpty()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:76 - `RWMesh_CoordinateSystemConverter::IsEmpty()`
     pub fn RWMesh_CoordinateSystemConverter_is_empty(
         self_: *const RWMesh_CoordinateSystemConverter,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:77 - `RWMesh_CoordinateSystemConverter::InputLengthUnit()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:81 - `RWMesh_CoordinateSystemConverter::InputLengthUnit()`
     pub fn RWMesh_CoordinateSystemConverter_input_length_unit(
         self_: *const RWMesh_CoordinateSystemConverter,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:80 - `RWMesh_CoordinateSystemConverter::SetInputLengthUnit()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:84 - `RWMesh_CoordinateSystemConverter::SetInputLengthUnit()`
     pub fn RWMesh_CoordinateSystemConverter_set_input_length_unit(
         self_: *mut RWMesh_CoordinateSystemConverter,
         theInputScale: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:88 - `RWMesh_CoordinateSystemConverter::OutputLengthUnit()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:92 - `RWMesh_CoordinateSystemConverter::OutputLengthUnit()`
     pub fn RWMesh_CoordinateSystemConverter_output_length_unit(
         self_: *const RWMesh_CoordinateSystemConverter,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:91 - `RWMesh_CoordinateSystemConverter::SetOutputLengthUnit()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:95 - `RWMesh_CoordinateSystemConverter::SetOutputLengthUnit()`
     pub fn RWMesh_CoordinateSystemConverter_set_output_length_unit(
         self_: *mut RWMesh_CoordinateSystemConverter,
         theOutputScale: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:97 - `RWMesh_CoordinateSystemConverter::HasInputCoordinateSystem()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:101 - `RWMesh_CoordinateSystemConverter::HasInputCoordinateSystem()`
     pub fn RWMesh_CoordinateSystemConverter_has_input_coordinate_system(
         self_: *const RWMesh_CoordinateSystemConverter,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:100 - `RWMesh_CoordinateSystemConverter::InputCoordinateSystem()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:104 - `RWMesh_CoordinateSystemConverter::InputCoordinateSystem()`
     pub fn RWMesh_CoordinateSystemConverter_input_coordinate_system(
         self_: *const RWMesh_CoordinateSystemConverter,
     ) -> crate::OcctResult<*const gp_Ax3>;
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:103 - `RWMesh_CoordinateSystemConverter::SetInputCoordinateSystem()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:107 - `RWMesh_CoordinateSystemConverter::SetInputCoordinateSystem()`
     pub fn RWMesh_CoordinateSystemConverter_set_input_coordinate_system_ax3(
         self_: *mut RWMesh_CoordinateSystemConverter,
         theSysFrom: *const gp_Ax3,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:110 - `RWMesh_CoordinateSystemConverter::SetInputCoordinateSystem()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:114 - `RWMesh_CoordinateSystemConverter::SetInputCoordinateSystem()`
     pub fn RWMesh_CoordinateSystemConverter_set_input_coordinate_system_coordinatesystem(
         self_: *mut RWMesh_CoordinateSystemConverter,
         theSysFrom: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:117 - `RWMesh_CoordinateSystemConverter::HasOutputCoordinateSystem()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:121 - `RWMesh_CoordinateSystemConverter::HasOutputCoordinateSystem()`
     pub fn RWMesh_CoordinateSystemConverter_has_output_coordinate_system(
         self_: *const RWMesh_CoordinateSystemConverter,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:120 - `RWMesh_CoordinateSystemConverter::OutputCoordinateSystem()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:124 - `RWMesh_CoordinateSystemConverter::OutputCoordinateSystem()`
     pub fn RWMesh_CoordinateSystemConverter_output_coordinate_system(
         self_: *const RWMesh_CoordinateSystemConverter,
     ) -> crate::OcctResult<*const gp_Ax3>;
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:123 - `RWMesh_CoordinateSystemConverter::SetOutputCoordinateSystem()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:127 - `RWMesh_CoordinateSystemConverter::SetOutputCoordinateSystem()`
     pub fn RWMesh_CoordinateSystemConverter_set_output_coordinate_system_ax3(
         self_: *mut RWMesh_CoordinateSystemConverter,
         theSysTo: *const gp_Ax3,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:130 - `RWMesh_CoordinateSystemConverter::SetOutputCoordinateSystem()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:134 - `RWMesh_CoordinateSystemConverter::SetOutputCoordinateSystem()`
     pub fn RWMesh_CoordinateSystemConverter_set_output_coordinate_system_coordinatesystem(
         self_: *mut RWMesh_CoordinateSystemConverter,
         theSysTo: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:137 - `RWMesh_CoordinateSystemConverter::Init()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:141 - `RWMesh_CoordinateSystemConverter::Init()`
     pub fn RWMesh_CoordinateSystemConverter_init(
         self_: *mut RWMesh_CoordinateSystemConverter,
         theInputSystem: *const gp_Ax3,
@@ -307,56 +305,56 @@ unsafe extern "C" {
         theOutputSystem: *const gp_Ax3,
         theOutputLengthUnit: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:144 - `RWMesh_CoordinateSystemConverter::TransformTransformation()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:148 - `RWMesh_CoordinateSystemConverter::TransformTransformation()`
     pub fn RWMesh_CoordinateSystemConverter_transform_transformation(
         self_: *const RWMesh_CoordinateSystemConverter,
         theTrsf: *mut gp_Trsf,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:159 - `RWMesh_CoordinateSystemConverter::TransformPosition()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:163 - `RWMesh_CoordinateSystemConverter::TransformPosition()`
     pub fn RWMesh_CoordinateSystemConverter_transform_position(
         self_: *const RWMesh_CoordinateSystemConverter,
         thePos: *mut gp_XYZ,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:172 - `RWMesh_CoordinateSystemConverter::TransformNormal()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:176 - `RWMesh_CoordinateSystemConverter::TransformNormal()`
     pub fn RWMesh_CoordinateSystemConverter_transform_normal(
         self_: *const RWMesh_CoordinateSystemConverter,
-        theNorm: *mut Graphic3d_Vec3,
+        theNorm: *mut BVH_Vec3f,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:53 - `RWMesh_CoordinateSystemConverter::StandardCoordinateSystem()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:57 - `RWMesh_CoordinateSystemConverter::StandardCoordinateSystem()`
     pub fn RWMesh_CoordinateSystemConverter_standard_coordinate_system(
         theSys: i32,
     ) -> crate::OcctResult<*mut gp_Ax3>;
     // ======================== RWMesh_EdgeIterator ========================
     pub fn RWMesh_EdgeIterator_destructor(self_: *mut RWMesh_EdgeIterator);
-    /// **Source:** `RWMesh_EdgeIterator.hxx`:42 - `RWMesh_EdgeIterator::RWMesh_EdgeIterator()`
+    /// **Source:** `RWMesh_EdgeIterator.hxx`:45 - `RWMesh_EdgeIterator::RWMesh_EdgeIterator()`
     pub fn RWMesh_EdgeIterator_ctor_label_location_bool_style(
         theLabel: *const TDF_Label,
         theLocation: *const TopLoc_Location,
         theToMapColors: bool,
         theStyle: *const XCAFPrs_Style,
     ) -> crate::OcctResult<*mut RWMesh_EdgeIterator>;
-    /// **Source:** `RWMesh_EdgeIterator.hxx`:50 - `RWMesh_EdgeIterator::RWMesh_EdgeIterator()`
+    /// **Source:** `RWMesh_EdgeIterator.hxx`:53 - `RWMesh_EdgeIterator::RWMesh_EdgeIterator()`
     pub fn RWMesh_EdgeIterator_ctor_shape_style(
         theShape: *const TopoDS_Shape,
         theStyle: *const XCAFPrs_Style,
     ) -> crate::OcctResult<*mut RWMesh_EdgeIterator>;
-    /// **Source:** `RWMesh_EdgeIterator.hxx`:54 - `RWMesh_EdgeIterator::More()`
+    /// **Source:** `RWMesh_EdgeIterator.hxx`:57 - `RWMesh_EdgeIterator::More()`
     pub fn RWMesh_EdgeIterator_more(self_: *const RWMesh_EdgeIterator) -> crate::OcctResult<bool>;
-    /// **Source:** `RWMesh_EdgeIterator.hxx`:57 - `RWMesh_EdgeIterator::Next()`
+    /// **Source:** `RWMesh_EdgeIterator.hxx`:60 - `RWMesh_EdgeIterator::Next()`
     pub fn RWMesh_EdgeIterator_next(self_: *mut RWMesh_EdgeIterator) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_EdgeIterator.hxx`:60 - `RWMesh_EdgeIterator::Edge()`
+    /// **Source:** `RWMesh_EdgeIterator.hxx`:63 - `RWMesh_EdgeIterator::Edge()`
     pub fn RWMesh_EdgeIterator_edge(
         self_: *const RWMesh_EdgeIterator,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `RWMesh_EdgeIterator.hxx`:63 - `RWMesh_EdgeIterator::Shape()`
+    /// **Source:** `RWMesh_EdgeIterator.hxx`:66 - `RWMesh_EdgeIterator::Shape()`
     pub fn RWMesh_EdgeIterator_shape(
         self_: *const RWMesh_EdgeIterator,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `RWMesh_EdgeIterator.hxx`:66 - `RWMesh_EdgeIterator::Polygon3D()`
+    /// **Source:** `RWMesh_EdgeIterator.hxx`:69 - `RWMesh_EdgeIterator::Polygon3D()`
     pub fn RWMesh_EdgeIterator_polygon3_d(
         self_: *const RWMesh_EdgeIterator,
-    ) -> crate::OcctResult<*const HandlePolyPolygon3D>;
-    /// **Source:** `RWMesh_EdgeIterator.hxx`:69 - `RWMesh_EdgeIterator::IsEmpty()`
+    ) -> crate::OcctResult<*const Handle_Poly_Polygon3D>;
+    /// **Source:** `RWMesh_EdgeIterator.hxx`:72 - `RWMesh_EdgeIterator::IsEmpty()`
     pub fn RWMesh_EdgeIterator_is_empty(
         self_: *const RWMesh_EdgeIterator,
     ) -> crate::OcctResult<bool>;
@@ -372,15 +370,15 @@ unsafe extern "C" {
     pub fn RWMesh_EdgeIterator_nb_nodes(
         self_: *const RWMesh_EdgeIterator,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `RWMesh_EdgeIterator.hxx`:89 - `RWMesh_EdgeIterator::NodeLower()`
+    /// **Source:** `RWMesh_EdgeIterator.hxx`:86 - `RWMesh_EdgeIterator::NodeLower()`
     pub fn RWMesh_EdgeIterator_node_lower(
         self_: *const RWMesh_EdgeIterator,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `RWMesh_EdgeIterator.hxx`:92 - `RWMesh_EdgeIterator::NodeUpper()`
+    /// **Source:** `RWMesh_EdgeIterator.hxx`:89 - `RWMesh_EdgeIterator::NodeUpper()`
     pub fn RWMesh_EdgeIterator_node_upper(
         self_: *const RWMesh_EdgeIterator,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `RWMesh_EdgeIterator.hxx`:96 - `RWMesh_EdgeIterator::node()`
+    /// **Source:** `RWMesh_EdgeIterator.hxx`:93 - `RWMesh_EdgeIterator::node()`
     pub fn RWMesh_EdgeIterator_node(
         self_: *const RWMesh_EdgeIterator,
         theNode: i32,
@@ -393,23 +391,23 @@ unsafe extern "C" {
     pub fn RWMesh_EdgeIterator_as_RWMesh_ShapeIterator_mut(
         self_: *mut RWMesh_EdgeIterator,
     ) -> crate::OcctResult<*mut RWMesh_ShapeIterator>;
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:38 - `RWMesh_ShapeIterator::ExploredShape()`
+    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:41 - `RWMesh_ShapeIterator::ExploredShape()`
     pub fn RWMesh_EdgeIterator_inherited_ExploredShape(
         self_: *const RWMesh_EdgeIterator,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:53 - `RWMesh_ShapeIterator::Style()`
+    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:56 - `RWMesh_ShapeIterator::Style()`
     pub fn RWMesh_EdgeIterator_inherited_Style(
         self_: *const RWMesh_EdgeIterator,
     ) -> crate::OcctResult<*const XCAFPrs_Style>;
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:56 - `RWMesh_ShapeIterator::HasColor()`
+    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:59 - `RWMesh_ShapeIterator::HasColor()`
     pub fn RWMesh_EdgeIterator_inherited_HasColor(
         self_: *const RWMesh_EdgeIterator,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:59 - `RWMesh_ShapeIterator::Color()`
+    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:62 - `RWMesh_ShapeIterator::Color()`
     pub fn RWMesh_EdgeIterator_inherited_Color(
         self_: *const RWMesh_EdgeIterator,
     ) -> crate::OcctResult<*const Quantity_ColorRGBA>;
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:77 - `RWMesh_ShapeIterator::NodeTransformed()`
+    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:80 - `RWMesh_ShapeIterator::NodeTransformed()`
     pub fn RWMesh_EdgeIterator_inherited_NodeTransformed(
         self_: *const RWMesh_EdgeIterator,
         theNode: i32,
@@ -443,7 +441,7 @@ unsafe extern "C" {
     /// **Source:** `RWMesh_FaceIterator.hxx`:64 - `RWMesh_FaceIterator::Triangulation()`
     pub fn RWMesh_FaceIterator_triangulation(
         self_: *const RWMesh_FaceIterator,
-    ) -> crate::OcctResult<*const HandlePolyTriangulation>;
+    ) -> crate::OcctResult<*const Handle_Poly_Triangulation>;
     /// **Source:** `RWMesh_FaceIterator.hxx`:67 - `RWMesh_FaceIterator::IsEmptyMesh()`
     pub fn RWMesh_FaceIterator_is_empty_mesh(
         self_: *const RWMesh_FaceIterator,
@@ -498,30 +496,30 @@ unsafe extern "C" {
     pub fn RWMesh_FaceIterator_nb_nodes(
         self_: *const RWMesh_FaceIterator,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `RWMesh_FaceIterator.hxx`:137 - `RWMesh_FaceIterator::NodeLower()`
+    /// **Source:** `RWMesh_FaceIterator.hxx`:134 - `RWMesh_FaceIterator::NodeLower()`
     pub fn RWMesh_FaceIterator_node_lower(
         self_: *const RWMesh_FaceIterator,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `RWMesh_FaceIterator.hxx`:140 - `RWMesh_FaceIterator::NodeUpper()`
+    /// **Source:** `RWMesh_FaceIterator.hxx`:137 - `RWMesh_FaceIterator::NodeUpper()`
     pub fn RWMesh_FaceIterator_node_upper(
         self_: *const RWMesh_FaceIterator,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `RWMesh_FaceIterator.hxx`:143 - `RWMesh_FaceIterator::NodeTexCoord()`
+    /// **Source:** `RWMesh_FaceIterator.hxx`:140 - `RWMesh_FaceIterator::NodeTexCoord()`
     pub fn RWMesh_FaceIterator_node_tex_coord(
         self_: *const RWMesh_FaceIterator,
         theNode: i32,
     ) -> crate::OcctResult<*mut gp_Pnt2d>;
-    /// **Source:** `RWMesh_FaceIterator.hxx`:150 - `RWMesh_FaceIterator::node()`
+    /// **Source:** `RWMesh_FaceIterator.hxx`:147 - `RWMesh_FaceIterator::node()`
     pub fn RWMesh_FaceIterator_node(
         self_: *const RWMesh_FaceIterator,
         theNode: i32,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// **Source:** `RWMesh_FaceIterator.hxx`:156 - `RWMesh_FaceIterator::normal()`
+    /// **Source:** `RWMesh_FaceIterator.hxx`:150 - `RWMesh_FaceIterator::normal()`
     pub fn RWMesh_FaceIterator_normal(
         self_: *const RWMesh_FaceIterator,
         theNode: i32,
     ) -> crate::OcctResult<*mut gp_Dir>;
-    /// **Source:** `RWMesh_FaceIterator.hxx`:159 - `RWMesh_FaceIterator::triangle()`
+    /// **Source:** `RWMesh_FaceIterator.hxx`:153 - `RWMesh_FaceIterator::triangle()`
     pub fn RWMesh_FaceIterator_triangle(
         self_: *const RWMesh_FaceIterator,
         theElemIndex: i32,
@@ -534,23 +532,23 @@ unsafe extern "C" {
     pub fn RWMesh_FaceIterator_as_RWMesh_ShapeIterator_mut(
         self_: *mut RWMesh_FaceIterator,
     ) -> crate::OcctResult<*mut RWMesh_ShapeIterator>;
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:38 - `RWMesh_ShapeIterator::ExploredShape()`
+    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:41 - `RWMesh_ShapeIterator::ExploredShape()`
     pub fn RWMesh_FaceIterator_inherited_ExploredShape(
         self_: *const RWMesh_FaceIterator,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:53 - `RWMesh_ShapeIterator::Style()`
+    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:56 - `RWMesh_ShapeIterator::Style()`
     pub fn RWMesh_FaceIterator_inherited_Style(
         self_: *const RWMesh_FaceIterator,
     ) -> crate::OcctResult<*const XCAFPrs_Style>;
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:56 - `RWMesh_ShapeIterator::HasColor()`
+    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:59 - `RWMesh_ShapeIterator::HasColor()`
     pub fn RWMesh_FaceIterator_inherited_HasColor(
         self_: *const RWMesh_FaceIterator,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:59 - `RWMesh_ShapeIterator::Color()`
+    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:62 - `RWMesh_ShapeIterator::Color()`
     pub fn RWMesh_FaceIterator_inherited_Color(
         self_: *const RWMesh_FaceIterator,
     ) -> crate::OcctResult<*const Quantity_ColorRGBA>;
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:77 - `RWMesh_ShapeIterator::NodeTransformed()`
+    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:80 - `RWMesh_ShapeIterator::NodeTransformed()`
     pub fn RWMesh_FaceIterator_inherited_NodeTransformed(
         self_: *const RWMesh_FaceIterator,
         theNode: i32,
@@ -560,7 +558,7 @@ unsafe extern "C" {
     /// **Source:** `RWMesh_MaterialMap.hxx`:26 - `RWMesh_MaterialMap::DynamicType()`
     pub fn RWMesh_MaterialMap_dynamic_type(
         self_: *const RWMesh_MaterialMap,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `RWMesh_MaterialMap.hxx`:35 - `RWMesh_MaterialMap::DefaultStyle()`
     pub fn RWMesh_MaterialMap_default_style(
         self_: *const RWMesh_MaterialMap,
@@ -588,7 +586,7 @@ unsafe extern "C" {
     pub fn RWMesh_MaterialMap_copy_texture(
         self_: *mut RWMesh_MaterialMap,
         theResTexture: *mut TCollection_AsciiString,
-        theTexture: *const HandleImageTexture,
+        theTexture: *const Handle_Image_Texture,
         theKey: *const TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `RWMesh_MaterialMap.hxx`:68 - `RWMesh_MaterialMap::DefineMaterial()`
@@ -605,7 +603,7 @@ unsafe extern "C" {
     /// **Source:** `RWMesh_MaterialMap.hxx`:26 - `RWMesh_MaterialMap::get_type_name()`
     pub fn RWMesh_MaterialMap_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `RWMesh_MaterialMap.hxx`:26 - `RWMesh_MaterialMap::get_type_descriptor()`
-    pub fn RWMesh_MaterialMap_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn RWMesh_MaterialMap_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast RWMesh_MaterialMap to Standard_Transient
     pub fn RWMesh_MaterialMap_as_Standard_Transient(
         self_: *const RWMesh_MaterialMap,
@@ -615,60 +613,56 @@ unsafe extern "C" {
         self_: *mut RWMesh_MaterialMap,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<RWMesh_MaterialMap>
-    pub fn HandleRWMeshMaterialMap_destructor(self_: *mut HandleRWMeshMaterialMap);
+    pub fn Handle_RWMesh_MaterialMap_destructor(self_: *mut Handle_RWMesh_MaterialMap);
     /// Clone Handle<RWMesh_MaterialMap> (increments reference count)
-    pub fn HandleRWMeshMaterialMap_clone(
-        self_: *const HandleRWMeshMaterialMap,
-    ) -> crate::OcctResult<*mut HandleRWMeshMaterialMap>;
+    pub fn Handle_RWMesh_MaterialMap_clone(
+        self_: *const Handle_RWMesh_MaterialMap,
+    ) -> crate::OcctResult<*mut Handle_RWMesh_MaterialMap>;
     /// Check if Handle<RWMesh_MaterialMap> is null
-    pub fn HandleRWMeshMaterialMap_is_null(self_: *const HandleRWMeshMaterialMap) -> bool;
+    pub fn Handle_RWMesh_MaterialMap_is_null(self_: *const Handle_RWMesh_MaterialMap) -> bool;
     /// Dereference Handle to get *const RWMesh_MaterialMap
-    pub fn HandleRWMeshMaterialMap_get(
-        handle: *const HandleRWMeshMaterialMap,
+    pub fn Handle_RWMesh_MaterialMap_get(
+        handle: *const Handle_RWMesh_MaterialMap,
     ) -> crate::OcctResult<*const RWMesh_MaterialMap>;
     /// Dereference Handle to get *mut RWMesh_MaterialMap
-    pub fn HandleRWMeshMaterialMap_get_mut(
-        handle: *mut HandleRWMeshMaterialMap,
+    pub fn Handle_RWMesh_MaterialMap_get_mut(
+        handle: *mut Handle_RWMesh_MaterialMap,
     ) -> crate::OcctResult<*mut RWMesh_MaterialMap>;
     /// Upcast Handle<RWMesh_MaterialMap> to Handle<Standard_Transient>
-    pub fn HandleRWMeshMaterialMap_to_HandleStandardTransient(
-        self_: *const HandleRWMeshMaterialMap,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Downcast Handle<RWMesh_MaterialMap> to Handle<RWGltf_GltfMaterialMap> (returns null on failure)
-    pub fn HandleRWMeshMaterialMap_downcast_to_HandleRWGltfGltfMaterialMap(
-        self_: *const HandleRWMeshMaterialMap,
-    ) -> crate::OcctResult<*mut HandleRWGltfGltfMaterialMap>;
+    pub fn Handle_RWMesh_MaterialMap_to_Handle_Standard_Transient(
+        self_: *const Handle_RWMesh_MaterialMap,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<RWMesh_MaterialMap> to Handle<RWObj_ObjMaterialMap> (returns null on failure)
-    pub fn HandleRWMeshMaterialMap_downcast_to_HandleRWObjObjMaterialMap(
-        self_: *const HandleRWMeshMaterialMap,
-    ) -> crate::OcctResult<*mut HandleRWObjObjMaterialMap>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_RWMesh_MaterialMap_downcast_to_Handle_RWObj_ObjMaterialMap(
+        self_: *const Handle_RWMesh_MaterialMap,
+    ) -> crate::OcctResult<*mut Handle_RWObj_ObjMaterialMap>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn RWMesh_MaterialMap_inherited_IsInstance(
         self_: *const RWMesh_MaterialMap,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn RWMesh_MaterialMap_inherited_IsKind(
         self_: *const RWMesh_MaterialMap,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn RWMesh_MaterialMap_inherited_This(
         self_: *const RWMesh_MaterialMap,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn RWMesh_MaterialMap_inherited_GetRefCount(
         self_: *const RWMesh_MaterialMap,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn RWMesh_MaterialMap_inherited_IncrementRefCounter(
         self_: *mut RWMesh_MaterialMap,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn RWMesh_MaterialMap_inherited_DecrementRefCounter(
         self_: *mut RWMesh_MaterialMap,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn RWMesh_MaterialMap_inherited_Delete(
         self_: *const RWMesh_MaterialMap,
     ) -> *const std::ffi::c_char;
@@ -678,135 +672,135 @@ unsafe extern "C" {
     pub fn RWMesh_NodeAttributes_ctor() -> crate::OcctResult<*mut RWMesh_NodeAttributes>;
     // ======================== RWMesh_ShapeIterator ========================
     pub fn RWMesh_ShapeIterator_destructor(self_: *mut RWMesh_ShapeIterator);
-    /// **Source:** `RWMesh_ShapeIterator.hxx`:38 - `RWMesh_ShapeIterator::ExploredShape()`
+    /// **Source:** `RWMesh_ShapeIterator.hxx`:41 - `RWMesh_ShapeIterator::ExploredShape()`
     pub fn RWMesh_ShapeIterator_explored_shape(
         self_: *const RWMesh_ShapeIterator,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `RWMesh_ShapeIterator.hxx`:41 - `RWMesh_ShapeIterator::Shape()`
+    /// **Source:** `RWMesh_ShapeIterator.hxx`:44 - `RWMesh_ShapeIterator::Shape()`
     pub fn RWMesh_ShapeIterator_shape(
         self_: *const RWMesh_ShapeIterator,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `RWMesh_ShapeIterator.hxx`:44 - `RWMesh_ShapeIterator::More()`
+    /// **Source:** `RWMesh_ShapeIterator.hxx`:47 - `RWMesh_ShapeIterator::More()`
     pub fn RWMesh_ShapeIterator_more(self_: *const RWMesh_ShapeIterator)
         -> crate::OcctResult<bool>;
-    /// **Source:** `RWMesh_ShapeIterator.hxx`:47 - `RWMesh_ShapeIterator::Next()`
+    /// **Source:** `RWMesh_ShapeIterator.hxx`:50 - `RWMesh_ShapeIterator::Next()`
     pub fn RWMesh_ShapeIterator_next(self_: *mut RWMesh_ShapeIterator) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_ShapeIterator.hxx`:50 - `RWMesh_ShapeIterator::IsEmpty()`
+    /// **Source:** `RWMesh_ShapeIterator.hxx`:53 - `RWMesh_ShapeIterator::IsEmpty()`
     pub fn RWMesh_ShapeIterator_is_empty(
         self_: *const RWMesh_ShapeIterator,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWMesh_ShapeIterator.hxx`:53 - `RWMesh_ShapeIterator::Style()`
+    /// **Source:** `RWMesh_ShapeIterator.hxx`:56 - `RWMesh_ShapeIterator::Style()`
     pub fn RWMesh_ShapeIterator_style(
         self_: *const RWMesh_ShapeIterator,
     ) -> crate::OcctResult<*const XCAFPrs_Style>;
-    /// **Source:** `RWMesh_ShapeIterator.hxx`:56 - `RWMesh_ShapeIterator::HasColor()`
+    /// **Source:** `RWMesh_ShapeIterator.hxx`:59 - `RWMesh_ShapeIterator::HasColor()`
     pub fn RWMesh_ShapeIterator_has_color(
         self_: *const RWMesh_ShapeIterator,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWMesh_ShapeIterator.hxx`:59 - `RWMesh_ShapeIterator::Color()`
+    /// **Source:** `RWMesh_ShapeIterator.hxx`:62 - `RWMesh_ShapeIterator::Color()`
     pub fn RWMesh_ShapeIterator_color(
         self_: *const RWMesh_ShapeIterator,
     ) -> crate::OcctResult<*const Quantity_ColorRGBA>;
-    /// **Source:** `RWMesh_ShapeIterator.hxx`:62 - `RWMesh_ShapeIterator::ElemLower()`
+    /// **Source:** `RWMesh_ShapeIterator.hxx`:65 - `RWMesh_ShapeIterator::ElemLower()`
     pub fn RWMesh_ShapeIterator_elem_lower(
         self_: *const RWMesh_ShapeIterator,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `RWMesh_ShapeIterator.hxx`:65 - `RWMesh_ShapeIterator::ElemUpper()`
+    /// **Source:** `RWMesh_ShapeIterator.hxx`:68 - `RWMesh_ShapeIterator::ElemUpper()`
     pub fn RWMesh_ShapeIterator_elem_upper(
         self_: *const RWMesh_ShapeIterator,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `RWMesh_ShapeIterator.hxx`:68 - `RWMesh_ShapeIterator::NbNodes()`
+    /// **Source:** `RWMesh_ShapeIterator.hxx`:71 - `RWMesh_ShapeIterator::NbNodes()`
     pub fn RWMesh_ShapeIterator_nb_nodes(
         self_: *const RWMesh_ShapeIterator,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `RWMesh_ShapeIterator.hxx`:71 - `RWMesh_ShapeIterator::NodeLower()`
+    /// **Source:** `RWMesh_ShapeIterator.hxx`:74 - `RWMesh_ShapeIterator::NodeLower()`
     pub fn RWMesh_ShapeIterator_node_lower(
         self_: *const RWMesh_ShapeIterator,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `RWMesh_ShapeIterator.hxx`:74 - `RWMesh_ShapeIterator::NodeUpper()`
+    /// **Source:** `RWMesh_ShapeIterator.hxx`:77 - `RWMesh_ShapeIterator::NodeUpper()`
     pub fn RWMesh_ShapeIterator_node_upper(
         self_: *const RWMesh_ShapeIterator,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `RWMesh_ShapeIterator.hxx`:77 - `RWMesh_ShapeIterator::NodeTransformed()`
+    /// **Source:** `RWMesh_ShapeIterator.hxx`:80 - `RWMesh_ShapeIterator::NodeTransformed()`
     pub fn RWMesh_ShapeIterator_node_transformed(
         self_: *const RWMesh_ShapeIterator,
         theNode: i32,
     ) -> crate::OcctResult<*mut gp_Pnt>;
     // ======================== RWMesh_TriangulationReader ========================
     pub fn RWMesh_TriangulationReader_destructor(self_: *mut RWMesh_TriangulationReader);
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:27 - `RWMesh_TriangulationReader::DynamicType()`
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:28 - `RWMesh_TriangulationReader::DynamicType()`
     pub fn RWMesh_TriangulationReader_dynamic_type(
         self_: *const RWMesh_TriangulationReader,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:65 - `RWMesh_TriangulationReader::FileName()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:66 - `RWMesh_TriangulationReader::FileName()`
     pub fn RWMesh_TriangulationReader_file_name(
         self_: *const RWMesh_TriangulationReader,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:68 - `RWMesh_TriangulationReader::SetFileName()`
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:69 - `RWMesh_TriangulationReader::SetFileName()`
     pub fn RWMesh_TriangulationReader_set_file_name(
         self_: *mut RWMesh_TriangulationReader,
         theFileName: *const TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:71 - `RWMesh_TriangulationReader::CoordinateSystemConverter()`
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:72 - `RWMesh_TriangulationReader::CoordinateSystemConverter()`
     pub fn RWMesh_TriangulationReader_coordinate_system_converter(
         self_: *const RWMesh_TriangulationReader,
     ) -> crate::OcctResult<*const RWMesh_CoordinateSystemConverter>;
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:77 - `RWMesh_TriangulationReader::SetCoordinateSystemConverter()`
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:78 - `RWMesh_TriangulationReader::SetCoordinateSystemConverter()`
     pub fn RWMesh_TriangulationReader_set_coordinate_system_converter(
         self_: *mut RWMesh_TriangulationReader,
         theConverter: *const RWMesh_CoordinateSystemConverter,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:83 - `RWMesh_TriangulationReader::IsDoublePrecision()`
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:84 - `RWMesh_TriangulationReader::IsDoublePrecision()`
     pub fn RWMesh_TriangulationReader_is_double_precision(
         self_: *const RWMesh_TriangulationReader,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:86 - `RWMesh_TriangulationReader::SetDoublePrecision()`
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:87 - `RWMesh_TriangulationReader::SetDoublePrecision()`
     pub fn RWMesh_TriangulationReader_set_double_precision(
         self_: *mut RWMesh_TriangulationReader,
         theIsDouble: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:90 - `RWMesh_TriangulationReader::ToSkipDegenerates()`
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:91 - `RWMesh_TriangulationReader::ToSkipDegenerates()`
     pub fn RWMesh_TriangulationReader_to_skip_degenerates(
         self_: *const RWMesh_TriangulationReader,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:93 - `RWMesh_TriangulationReader::SetToSkipDegenerates()`
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:94 - `RWMesh_TriangulationReader::SetToSkipDegenerates()`
     pub fn RWMesh_TriangulationReader_set_to_skip_degenerates(
         self_: *mut RWMesh_TriangulationReader,
         theToSkip: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:99 - `RWMesh_TriangulationReader::ToPrintDebugMessages()`
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:97 - `RWMesh_TriangulationReader::ToPrintDebugMessages()`
     pub fn RWMesh_TriangulationReader_to_print_debug_messages(
         self_: *const RWMesh_TriangulationReader,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:102 - `RWMesh_TriangulationReader::SetToPrintDebugMessages()`
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:100 - `RWMesh_TriangulationReader::SetToPrintDebugMessages()`
     pub fn RWMesh_TriangulationReader_set_to_print_debug_messages(
         self_: *mut RWMesh_TriangulationReader,
         theToPrint: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:109 - `RWMesh_TriangulationReader::StartStatistic()`
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:104 - `RWMesh_TriangulationReader::StartStatistic()`
     pub fn RWMesh_TriangulationReader_start_statistic(
         self_: *mut RWMesh_TriangulationReader,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:123 - `RWMesh_TriangulationReader::StopStatistic()`
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:118 - `RWMesh_TriangulationReader::StopStatistic()`
     pub fn RWMesh_TriangulationReader_stop_statistic(
         self_: *mut RWMesh_TriangulationReader,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:135 - `RWMesh_TriangulationReader::PrintStatistic()`
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:130 - `RWMesh_TriangulationReader::PrintStatistic()`
     pub fn RWMesh_TriangulationReader_print_statistic(
         self_: *const RWMesh_TriangulationReader,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:145 - `RWMesh_TriangulationReader::Load()`
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:140 - `RWMesh_TriangulationReader::Load()`
     pub fn RWMesh_TriangulationReader_load(
         self_: *const RWMesh_TriangulationReader,
-        theSourceMesh: *const HandleRWMeshTriangulationSource,
-        theDestMesh: *const HandlePolyTriangulation,
-        theFileSystem: *const HandleOSDFileSystem,
+        theSourceMesh: *const Handle_RWMesh_TriangulationSource,
+        theDestMesh: *const Handle_Poly_Triangulation,
+        theFileSystem: *const Handle_OSD_FileSystem,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:27 - `RWMesh_TriangulationReader::get_type_name()`
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:28 - `RWMesh_TriangulationReader::get_type_name()`
     pub fn RWMesh_TriangulationReader_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:27 - `RWMesh_TriangulationReader::get_type_descriptor()`
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:28 - `RWMesh_TriangulationReader::get_type_descriptor()`
     pub fn RWMesh_TriangulationReader_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast RWMesh_TriangulationReader to Standard_Transient
     pub fn RWMesh_TriangulationReader_as_Standard_Transient(
         self_: *const RWMesh_TriangulationReader,
@@ -816,58 +810,56 @@ unsafe extern "C" {
         self_: *mut RWMesh_TriangulationReader,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<RWMesh_TriangulationReader>
-    pub fn HandleRWMeshTriangulationReader_destructor(self_: *mut HandleRWMeshTriangulationReader);
+    pub fn Handle_RWMesh_TriangulationReader_destructor(
+        self_: *mut Handle_RWMesh_TriangulationReader,
+    );
     /// Clone Handle<RWMesh_TriangulationReader> (increments reference count)
-    pub fn HandleRWMeshTriangulationReader_clone(
-        self_: *const HandleRWMeshTriangulationReader,
-    ) -> crate::OcctResult<*mut HandleRWMeshTriangulationReader>;
+    pub fn Handle_RWMesh_TriangulationReader_clone(
+        self_: *const Handle_RWMesh_TriangulationReader,
+    ) -> crate::OcctResult<*mut Handle_RWMesh_TriangulationReader>;
     /// Check if Handle<RWMesh_TriangulationReader> is null
-    pub fn HandleRWMeshTriangulationReader_is_null(
-        self_: *const HandleRWMeshTriangulationReader,
+    pub fn Handle_RWMesh_TriangulationReader_is_null(
+        self_: *const Handle_RWMesh_TriangulationReader,
     ) -> bool;
     /// Dereference Handle to get *const RWMesh_TriangulationReader
-    pub fn HandleRWMeshTriangulationReader_get(
-        handle: *const HandleRWMeshTriangulationReader,
+    pub fn Handle_RWMesh_TriangulationReader_get(
+        handle: *const Handle_RWMesh_TriangulationReader,
     ) -> crate::OcctResult<*const RWMesh_TriangulationReader>;
     /// Dereference Handle to get *mut RWMesh_TriangulationReader
-    pub fn HandleRWMeshTriangulationReader_get_mut(
-        handle: *mut HandleRWMeshTriangulationReader,
+    pub fn Handle_RWMesh_TriangulationReader_get_mut(
+        handle: *mut Handle_RWMesh_TriangulationReader,
     ) -> crate::OcctResult<*mut RWMesh_TriangulationReader>;
     /// Upcast Handle<RWMesh_TriangulationReader> to Handle<Standard_Transient>
-    pub fn HandleRWMeshTriangulationReader_to_HandleStandardTransient(
-        self_: *const HandleRWMeshTriangulationReader,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Downcast Handle<RWMesh_TriangulationReader> to Handle<RWGltf_TriangulationReader> (returns null on failure)
-    pub fn HandleRWMeshTriangulationReader_downcast_to_HandleRWGltfTriangulationReader(
-        self_: *const HandleRWMeshTriangulationReader,
-    ) -> crate::OcctResult<*mut HandleRWGltfTriangulationReader>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_RWMesh_TriangulationReader_to_Handle_Standard_Transient(
+        self_: *const Handle_RWMesh_TriangulationReader,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn RWMesh_TriangulationReader_inherited_IsInstance(
         self_: *const RWMesh_TriangulationReader,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn RWMesh_TriangulationReader_inherited_IsKind(
         self_: *const RWMesh_TriangulationReader,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn RWMesh_TriangulationReader_inherited_This(
         self_: *const RWMesh_TriangulationReader,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn RWMesh_TriangulationReader_inherited_GetRefCount(
         self_: *const RWMesh_TriangulationReader,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn RWMesh_TriangulationReader_inherited_IncrementRefCounter(
         self_: *mut RWMesh_TriangulationReader,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn RWMesh_TriangulationReader_inherited_DecrementRefCounter(
         self_: *mut RWMesh_TriangulationReader,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn RWMesh_TriangulationReader_inherited_Delete(
         self_: *const RWMesh_TriangulationReader,
     ) -> *const std::ffi::c_char;
@@ -883,15 +875,15 @@ unsafe extern "C" {
     /// **Source:** `RWMesh_TriangulationSource.hxx`:27 - `RWMesh_TriangulationSource::DynamicType()`
     pub fn RWMesh_TriangulationSource_dynamic_type(
         self_: *const RWMesh_TriangulationSource,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `RWMesh_TriangulationSource.hxx`:36 - `RWMesh_TriangulationSource::Reader()`
     pub fn RWMesh_TriangulationSource_reader(
         self_: *const RWMesh_TriangulationSource,
-    ) -> crate::OcctResult<*const HandleRWMeshTriangulationReader>;
+    ) -> crate::OcctResult<*const Handle_RWMesh_TriangulationReader>;
     /// **Source:** `RWMesh_TriangulationSource.hxx`:39 - `RWMesh_TriangulationSource::SetReader()`
     pub fn RWMesh_TriangulationSource_set_reader(
         self_: *mut RWMesh_TriangulationSource,
-        theReader: *const HandleRWMeshTriangulationReader,
+        theReader: *const Handle_RWMesh_TriangulationReader,
     ) -> *const std::ffi::c_char;
     /// **Source:** `RWMesh_TriangulationSource.hxx`:43 - `RWMesh_TriangulationSource::DegeneratedTriNb()`
     pub fn RWMesh_TriangulationSource_degenerated_tri_nb(
@@ -920,29 +912,29 @@ unsafe extern "C" {
         theIndex: i32,
         theEdge: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_TriangulationSource.hxx`:75 - `RWMesh_TriangulationSource::NbDeferredNodes()`
+    /// **Source:** `RWMesh_TriangulationSource.hxx`:72 - `RWMesh_TriangulationSource::NbDeferredNodes()`
     pub fn RWMesh_TriangulationSource_nb_deferred_nodes(
         self_: *const RWMesh_TriangulationSource,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `RWMesh_TriangulationSource.hxx`:78 - `RWMesh_TriangulationSource::SetNbDeferredNodes()`
+    /// **Source:** `RWMesh_TriangulationSource.hxx`:75 - `RWMesh_TriangulationSource::SetNbDeferredNodes()`
     pub fn RWMesh_TriangulationSource_set_nb_deferred_nodes(
         self_: *mut RWMesh_TriangulationSource,
         theNbNodes: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_TriangulationSource.hxx`:84 - `RWMesh_TriangulationSource::NbDeferredTriangles()`
+    /// **Source:** `RWMesh_TriangulationSource.hxx`:81 - `RWMesh_TriangulationSource::NbDeferredTriangles()`
     pub fn RWMesh_TriangulationSource_nb_deferred_triangles(
         self_: *const RWMesh_TriangulationSource,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `RWMesh_TriangulationSource.hxx`:90 - `RWMesh_TriangulationSource::SetNbDeferredTriangles()`
+    /// **Source:** `RWMesh_TriangulationSource.hxx`:84 - `RWMesh_TriangulationSource::SetNbDeferredTriangles()`
     pub fn RWMesh_TriangulationSource_set_nb_deferred_triangles(
         self_: *mut RWMesh_TriangulationSource,
         theNbTris: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_TriangulationSource.hxx`:94 - `RWMesh_TriangulationSource::InternalEdges()`
+    /// **Source:** `RWMesh_TriangulationSource.hxx`:88 - `RWMesh_TriangulationSource::InternalEdges()`
     pub fn RWMesh_TriangulationSource_internal_edges(
         self_: *mut RWMesh_TriangulationSource,
-    ) -> crate::OcctResult<*mut TColStd_Array1OfInteger>;
-    /// **Source:** `RWMesh_TriangulationSource.hxx`:99 - `RWMesh_TriangulationSource::ResizeEdges()`
+    ) -> crate::OcctResult<*mut NCollection_Array1_int>;
+    /// **Source:** `RWMesh_TriangulationSource.hxx`:93 - `RWMesh_TriangulationSource::ResizeEdges()`
     pub fn RWMesh_TriangulationSource_resize_edges(
         self_: *mut RWMesh_TriangulationSource,
         theNbEdges: i32,
@@ -952,7 +944,7 @@ unsafe extern "C" {
     pub fn RWMesh_TriangulationSource_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `RWMesh_TriangulationSource.hxx`:27 - `RWMesh_TriangulationSource::get_type_descriptor()`
     pub fn RWMesh_TriangulationSource_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast RWMesh_TriangulationSource to Poly_Triangulation
     pub fn RWMesh_TriangulationSource_as_Poly_Triangulation(
         self_: *const RWMesh_TriangulationSource,
@@ -972,75 +964,73 @@ unsafe extern "C" {
     /// Wrap RWMesh_TriangulationSource in a Handle
     pub fn RWMesh_TriangulationSource_to_handle(
         obj: *mut RWMesh_TriangulationSource,
-    ) -> crate::OcctResult<*mut HandleRWMeshTriangulationSource>;
+    ) -> crate::OcctResult<*mut Handle_RWMesh_TriangulationSource>;
     /// Destroy Handle<RWMesh_TriangulationSource>
-    pub fn HandleRWMeshTriangulationSource_destructor(self_: *mut HandleRWMeshTriangulationSource);
+    pub fn Handle_RWMesh_TriangulationSource_destructor(
+        self_: *mut Handle_RWMesh_TriangulationSource,
+    );
     /// Clone Handle<RWMesh_TriangulationSource> (increments reference count)
-    pub fn HandleRWMeshTriangulationSource_clone(
-        self_: *const HandleRWMeshTriangulationSource,
-    ) -> crate::OcctResult<*mut HandleRWMeshTriangulationSource>;
+    pub fn Handle_RWMesh_TriangulationSource_clone(
+        self_: *const Handle_RWMesh_TriangulationSource,
+    ) -> crate::OcctResult<*mut Handle_RWMesh_TriangulationSource>;
     /// Check if Handle<RWMesh_TriangulationSource> is null
-    pub fn HandleRWMeshTriangulationSource_is_null(
-        self_: *const HandleRWMeshTriangulationSource,
+    pub fn Handle_RWMesh_TriangulationSource_is_null(
+        self_: *const Handle_RWMesh_TriangulationSource,
     ) -> bool;
     /// Dereference Handle to get *const RWMesh_TriangulationSource
-    pub fn HandleRWMeshTriangulationSource_get(
-        handle: *const HandleRWMeshTriangulationSource,
+    pub fn Handle_RWMesh_TriangulationSource_get(
+        handle: *const Handle_RWMesh_TriangulationSource,
     ) -> crate::OcctResult<*const RWMesh_TriangulationSource>;
     /// Dereference Handle to get *mut RWMesh_TriangulationSource
-    pub fn HandleRWMeshTriangulationSource_get_mut(
-        handle: *mut HandleRWMeshTriangulationSource,
+    pub fn Handle_RWMesh_TriangulationSource_get_mut(
+        handle: *mut Handle_RWMesh_TriangulationSource,
     ) -> crate::OcctResult<*mut RWMesh_TriangulationSource>;
     /// Upcast Handle<RWMesh_TriangulationSource> to Handle<Poly_Triangulation>
-    pub fn HandleRWMeshTriangulationSource_to_HandlePolyTriangulation(
-        self_: *const HandleRWMeshTriangulationSource,
-    ) -> crate::OcctResult<*mut HandlePolyTriangulation>;
+    pub fn Handle_RWMesh_TriangulationSource_to_Handle_Poly_Triangulation(
+        self_: *const Handle_RWMesh_TriangulationSource,
+    ) -> crate::OcctResult<*mut Handle_Poly_Triangulation>;
     /// Upcast Handle<RWMesh_TriangulationSource> to Handle<Standard_Transient>
-    pub fn HandleRWMeshTriangulationSource_to_HandleStandardTransient(
-        self_: *const HandleRWMeshTriangulationSource,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Downcast Handle<RWMesh_TriangulationSource> to Handle<RWGltf_GltfLatePrimitiveArray> (returns null on failure)
-    pub fn HandleRWMeshTriangulationSource_downcast_to_HandleRWGltfGltfLatePrimitiveArray(
-        self_: *const HandleRWMeshTriangulationSource,
-    ) -> crate::OcctResult<*mut HandleRWGltfGltfLatePrimitiveArray>;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:100 - `Poly_Triangulation::Copy()`
+    pub fn Handle_RWMesh_TriangulationSource_to_Handle_Standard_Transient(
+        self_: *const Handle_RWMesh_TriangulationSource,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:103 - `Poly_Triangulation::Copy()`
     pub fn RWMesh_TriangulationSource_inherited_Copy(
         self_: *const RWMesh_TriangulationSource,
-    ) -> crate::OcctResult<*mut HandlePolyTriangulation>;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:106 - `Poly_Triangulation::Deflection()`
+    ) -> crate::OcctResult<*mut Handle_Poly_Triangulation>;
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:109 - `Poly_Triangulation::Deflection()`
     pub fn RWMesh_TriangulationSource_inherited_Deflection(
         self_: *const RWMesh_TriangulationSource,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:113 - `Poly_Triangulation::Parameters()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:116 - `Poly_Triangulation::Parameters()`
     pub fn RWMesh_TriangulationSource_inherited_Parameters(
         self_: *const RWMesh_TriangulationSource,
-    ) -> crate::OcctResult<*const HandlePolyTriangulationParameters>;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:119 - `Poly_Triangulation::Clear()`
+    ) -> crate::OcctResult<*const Handle_Poly_TriangulationParameters>;
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:125 - `Poly_Triangulation::Clear()`
     pub fn RWMesh_TriangulationSource_inherited_Clear(
         self_: *mut RWMesh_TriangulationSource,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:128 - `Poly_Triangulation::NbNodes()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:131 - `Poly_Triangulation::NbNodes()`
     pub fn RWMesh_TriangulationSource_inherited_NbNodes(
         self_: *const RWMesh_TriangulationSource,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:131 - `Poly_Triangulation::NbTriangles()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:134 - `Poly_Triangulation::NbTriangles()`
     pub fn RWMesh_TriangulationSource_inherited_NbTriangles(
         self_: *const RWMesh_TriangulationSource,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:134 - `Poly_Triangulation::HasUVNodes()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:137 - `Poly_Triangulation::HasUVNodes()`
     pub fn RWMesh_TriangulationSource_inherited_HasUVNodes(
         self_: *const RWMesh_TriangulationSource,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:137 - `Poly_Triangulation::HasNormals()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:140 - `Poly_Triangulation::HasNormals()`
     pub fn RWMesh_TriangulationSource_inherited_HasNormals(
         self_: *const RWMesh_TriangulationSource,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:142 - `Poly_Triangulation::Node()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:145 - `Poly_Triangulation::Node()`
     pub fn RWMesh_TriangulationSource_inherited_Node(
         self_: *const RWMesh_TriangulationSource,
         theIndex: i32,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:147 - `Poly_Triangulation::SetNode()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:150 - `Poly_Triangulation::SetNode()`
     pub fn RWMesh_TriangulationSource_inherited_SetNode(
         self_: *mut RWMesh_TriangulationSource,
         theIndex: i32,
@@ -1057,240 +1047,240 @@ unsafe extern "C" {
         theIndex: i32,
         thePnt: *const gp_Pnt2d,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:168 - `Poly_Triangulation::Triangle()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:165 - `Poly_Triangulation::Triangle()`
     pub fn RWMesh_TriangulationSource_inherited_Triangle(
         self_: *const RWMesh_TriangulationSource,
         theIndex: i32,
     ) -> crate::OcctResult<*const Poly_Triangle>;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:177 - `Poly_Triangulation::SetTriangle()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:171 - `Poly_Triangulation::SetTriangle()`
     pub fn RWMesh_TriangulationSource_inherited_SetTriangle(
         self_: *mut RWMesh_TriangulationSource,
         theIndex: i32,
         theTriangle: *const Poly_Triangle,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:185 - `Poly_Triangulation::Normal()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:179 - `Poly_Triangulation::Normal()`
     pub fn RWMesh_TriangulationSource_inherited_Normal(
         self_: *const RWMesh_TriangulationSource,
         theIndex: i32,
     ) -> crate::OcctResult<*mut gp_Dir>;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:202 - `Poly_Triangulation::SetNormal()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:196 - `Poly_Triangulation::SetNormal()`
     pub fn RWMesh_TriangulationSource_inherited_SetNormal(
         self_: *mut RWMesh_TriangulationSource,
         theIndex: i32,
-        theNormal: *const gp_Vec3f,
+        theNormal: *const BVH_Vec3f,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:216 - `Poly_Triangulation::MeshPurpose()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:212 - `Poly_Triangulation::MeshPurpose()`
     pub fn RWMesh_TriangulationSource_inherited_MeshPurpose(
         self_: *const RWMesh_TriangulationSource,
     ) -> crate::OcctResult<u32>;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:219 - `Poly_Triangulation::SetMeshPurpose()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:215 - `Poly_Triangulation::SetMeshPurpose()`
     pub fn RWMesh_TriangulationSource_inherited_SetMeshPurpose(
         self_: *mut RWMesh_TriangulationSource,
         thePurpose: u32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:223 - `Poly_Triangulation::CachedMinMax()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:219 - `Poly_Triangulation::CachedMinMax()`
     pub fn RWMesh_TriangulationSource_inherited_CachedMinMax(
         self_: *const RWMesh_TriangulationSource,
     ) -> crate::OcctResult<*const Bnd_Box>;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:229 - `Poly_Triangulation::SetCachedMinMax()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:225 - `Poly_Triangulation::SetCachedMinMax()`
     pub fn RWMesh_TriangulationSource_inherited_SetCachedMinMax(
         self_: *mut RWMesh_TriangulationSource,
         theBox: *const Bnd_Box,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:232 - `Poly_Triangulation::HasCachedMinMax()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:228 - `Poly_Triangulation::HasCachedMinMax()`
     pub fn RWMesh_TriangulationSource_inherited_HasCachedMinMax(
         self_: *const RWMesh_TriangulationSource,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:235 - `Poly_Triangulation::UpdateCachedMinMax()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:231 - `Poly_Triangulation::UpdateCachedMinMax()`
     pub fn RWMesh_TriangulationSource_inherited_UpdateCachedMinMax(
         self_: *mut RWMesh_TriangulationSource,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:254 - `Poly_Triangulation::MinMax()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:250 - `Poly_Triangulation::MinMax()`
     pub fn RWMesh_TriangulationSource_inherited_MinMax(
         self_: *const RWMesh_TriangulationSource,
         theBox: *mut Bnd_Box,
         theTrsf: *const gp_Trsf,
         theIsAccurate: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:264 - `Poly_Triangulation::IsDoublePrecision()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:259 - `Poly_Triangulation::IsDoublePrecision()`
     pub fn RWMesh_TriangulationSource_inherited_IsDoublePrecision(
         self_: *const RWMesh_TriangulationSource,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:268 - `Poly_Triangulation::SetDoublePrecision()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:263 - `Poly_Triangulation::SetDoublePrecision()`
     pub fn RWMesh_TriangulationSource_inherited_SetDoublePrecision(
         self_: *mut RWMesh_TriangulationSource,
         theIsDouble: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:273 - `Poly_Triangulation::ResizeNodes()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:268 - `Poly_Triangulation::ResizeNodes()`
     pub fn RWMesh_TriangulationSource_inherited_ResizeNodes(
         self_: *mut RWMesh_TriangulationSource,
         theNbNodes: i32,
         theToCopyOld: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:278 - `Poly_Triangulation::ResizeTriangles()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:273 - `Poly_Triangulation::ResizeTriangles()`
     pub fn RWMesh_TriangulationSource_inherited_ResizeTriangles(
         self_: *mut RWMesh_TriangulationSource,
         theNbTriangles: i32,
         theToCopyOld: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:282 - `Poly_Triangulation::AddUVNodes()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:276 - `Poly_Triangulation::AddUVNodes()`
     pub fn RWMesh_TriangulationSource_inherited_AddUVNodes(
         self_: *mut RWMesh_TriangulationSource,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:285 - `Poly_Triangulation::RemoveUVNodes()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:279 - `Poly_Triangulation::RemoveUVNodes()`
     pub fn RWMesh_TriangulationSource_inherited_RemoveUVNodes(
         self_: *mut RWMesh_TriangulationSource,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:288 - `Poly_Triangulation::AddNormals()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:282 - `Poly_Triangulation::AddNormals()`
     pub fn RWMesh_TriangulationSource_inherited_AddNormals(
         self_: *mut RWMesh_TriangulationSource,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:291 - `Poly_Triangulation::RemoveNormals()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:285 - `Poly_Triangulation::RemoveNormals()`
     pub fn RWMesh_TriangulationSource_inherited_RemoveNormals(
         self_: *mut RWMesh_TriangulationSource,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:294 - `Poly_Triangulation::ComputeNormals()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:288 - `Poly_Triangulation::ComputeNormals()`
     pub fn RWMesh_TriangulationSource_inherited_ComputeNormals(
         self_: *mut RWMesh_TriangulationSource,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:300 - `Poly_Triangulation::MapNodeArray()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:294 - `Poly_Triangulation::MapNodeArray()`
     pub fn RWMesh_TriangulationSource_inherited_MapNodeArray(
         self_: *const RWMesh_TriangulationSource,
-    ) -> crate::OcctResult<*mut HandleTColgpHArray1OfPnt>;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:305 - `Poly_Triangulation::MapTriangleArray()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_gp_Pnt>;
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:299 - `Poly_Triangulation::MapTriangleArray()`
     pub fn RWMesh_TriangulationSource_inherited_MapTriangleArray(
         self_: *const RWMesh_TriangulationSource,
-    ) -> crate::OcctResult<*mut HandlePolyHArray1OfTriangle>;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:310 - `Poly_Triangulation::MapUVNodeArray()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Poly_Triangle>;
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:304 - `Poly_Triangulation::MapUVNodeArray()`
     pub fn RWMesh_TriangulationSource_inherited_MapUVNodeArray(
         self_: *const RWMesh_TriangulationSource,
-    ) -> crate::OcctResult<*mut HandleTColgpHArray1OfPnt2d>;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:315 - `Poly_Triangulation::MapNormalArray()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_gp_Pnt2d>;
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:309 - `Poly_Triangulation::MapNormalArray()`
     pub fn RWMesh_TriangulationSource_inherited_MapNormalArray(
         self_: *const RWMesh_TriangulationSource,
-    ) -> crate::OcctResult<*mut HandleTShortHArray1OfShortReal>;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:320 - `Poly_Triangulation::InternalTriangles()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_float>;
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:314 - `Poly_Triangulation::InternalTriangles()`
     pub fn RWMesh_TriangulationSource_inherited_InternalTriangles(
         self_: *mut RWMesh_TriangulationSource,
-    ) -> crate::OcctResult<*mut Poly_Array1OfTriangle>;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:324 - `Poly_Triangulation::InternalNodes()`
+    ) -> crate::OcctResult<*mut NCollection_Array1_Poly_Triangle>;
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:318 - `Poly_Triangulation::InternalNodes()`
     pub fn RWMesh_TriangulationSource_inherited_InternalNodes(
         self_: *mut RWMesh_TriangulationSource,
     ) -> crate::OcctResult<*mut Poly_ArrayOfNodes>;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:328 - `Poly_Triangulation::InternalUVNodes()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:322 - `Poly_Triangulation::InternalUVNodes()`
     pub fn RWMesh_TriangulationSource_inherited_InternalUVNodes(
         self_: *mut RWMesh_TriangulationSource,
     ) -> crate::OcctResult<*mut Poly_ArrayOfUVNodes>;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:332 - `Poly_Triangulation::InternalNormals()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:326 - `Poly_Triangulation::InternalNormals()`
     pub fn RWMesh_TriangulationSource_inherited_InternalNormals(
         self_: *mut RWMesh_TriangulationSource,
-    ) -> crate::OcctResult<*mut NCollection_Array1_gp_Vec3f>;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:364 - `Poly_Triangulation::HasDeferredData()`
+    ) -> crate::OcctResult<*mut NCollection_Array1_NCollection_Vec3_float>;
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:352 - `Poly_Triangulation::HasDeferredData()`
     pub fn RWMesh_TriangulationSource_inherited_HasDeferredData(
         self_: *const RWMesh_TriangulationSource,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:368 - `Poly_Triangulation::LoadDeferredData()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:356 - `Poly_Triangulation::LoadDeferredData()`
     pub fn RWMesh_TriangulationSource_inherited_LoadDeferredData(
         self_: *mut RWMesh_TriangulationSource,
-        theFileSystem: *const HandleOSDFileSystem,
+        theFileSystem: *const Handle_OSD_FileSystem,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:373 - `Poly_Triangulation::DetachedLoadDeferredData()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:361 - `Poly_Triangulation::DetachedLoadDeferredData()`
     pub fn RWMesh_TriangulationSource_inherited_DetachedLoadDeferredData(
         self_: *const RWMesh_TriangulationSource,
-        theFileSystem: *const HandleOSDFileSystem,
-    ) -> crate::OcctResult<*mut HandlePolyTriangulation>;
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:377 - `Poly_Triangulation::UnloadDeferredData()`
+        theFileSystem: *const Handle_OSD_FileSystem,
+    ) -> crate::OcctResult<*mut Handle_Poly_Triangulation>;
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:365 - `Poly_Triangulation::UnloadDeferredData()`
     pub fn RWMesh_TriangulationSource_inherited_UnloadDeferredData(
         self_: *mut RWMesh_TriangulationSource,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn RWMesh_TriangulationSource_inherited_IsInstance(
         self_: *const RWMesh_TriangulationSource,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn RWMesh_TriangulationSource_inherited_IsKind(
         self_: *const RWMesh_TriangulationSource,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn RWMesh_TriangulationSource_inherited_This(
         self_: *const RWMesh_TriangulationSource,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn RWMesh_TriangulationSource_inherited_GetRefCount(
         self_: *const RWMesh_TriangulationSource,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn RWMesh_TriangulationSource_inherited_IncrementRefCounter(
         self_: *mut RWMesh_TriangulationSource,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn RWMesh_TriangulationSource_inherited_DecrementRefCounter(
         self_: *mut RWMesh_TriangulationSource,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn RWMesh_TriangulationSource_inherited_Delete(
         self_: *const RWMesh_TriangulationSource,
     ) -> *const std::ffi::c_char;
     // ======================== RWMesh_VertexIterator ========================
     pub fn RWMesh_VertexIterator_destructor(self_: *mut RWMesh_VertexIterator);
-    /// **Source:** `RWMesh_VertexIterator.hxx`:42 - `RWMesh_VertexIterator::RWMesh_VertexIterator()`
+    /// **Source:** `RWMesh_VertexIterator.hxx`:45 - `RWMesh_VertexIterator::RWMesh_VertexIterator()`
     pub fn RWMesh_VertexIterator_ctor_label_location_bool_style(
         theLabel: *const TDF_Label,
         theLocation: *const TopLoc_Location,
         theToMapColors: bool,
         theStyle: *const XCAFPrs_Style,
     ) -> crate::OcctResult<*mut RWMesh_VertexIterator>;
-    /// **Source:** `RWMesh_VertexIterator.hxx`:50 - `RWMesh_VertexIterator::RWMesh_VertexIterator()`
+    /// **Source:** `RWMesh_VertexIterator.hxx`:53 - `RWMesh_VertexIterator::RWMesh_VertexIterator()`
     pub fn RWMesh_VertexIterator_ctor_shape_style(
         theShape: *const TopoDS_Shape,
         theStyle: *const XCAFPrs_Style,
     ) -> crate::OcctResult<*mut RWMesh_VertexIterator>;
-    /// **Source:** `RWMesh_VertexIterator.hxx`:54 - `RWMesh_VertexIterator::More()`
+    /// **Source:** `RWMesh_VertexIterator.hxx`:57 - `RWMesh_VertexIterator::More()`
     pub fn RWMesh_VertexIterator_more(
         self_: *const RWMesh_VertexIterator,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWMesh_VertexIterator.hxx`:57 - `RWMesh_VertexIterator::Next()`
+    /// **Source:** `RWMesh_VertexIterator.hxx`:60 - `RWMesh_VertexIterator::Next()`
     pub fn RWMesh_VertexIterator_next(self_: *mut RWMesh_VertexIterator)
         -> *const std::ffi::c_char;
-    /// **Source:** `RWMesh_VertexIterator.hxx`:60 - `RWMesh_VertexIterator::Vertex()`
+    /// **Source:** `RWMesh_VertexIterator.hxx`:63 - `RWMesh_VertexIterator::Vertex()`
     pub fn RWMesh_VertexIterator_vertex(
         self_: *const RWMesh_VertexIterator,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// **Source:** `RWMesh_VertexIterator.hxx`:63 - `RWMesh_VertexIterator::Shape()`
+    /// **Source:** `RWMesh_VertexIterator.hxx`:66 - `RWMesh_VertexIterator::Shape()`
     pub fn RWMesh_VertexIterator_shape(
         self_: *const RWMesh_VertexIterator,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `RWMesh_VertexIterator.hxx`:66 - `RWMesh_VertexIterator::Point()`
+    /// **Source:** `RWMesh_VertexIterator.hxx`:69 - `RWMesh_VertexIterator::Point()`
     pub fn RWMesh_VertexIterator_point(
         self_: *const RWMesh_VertexIterator,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `RWMesh_VertexIterator.hxx`:69 - `RWMesh_VertexIterator::IsEmpty()`
+    /// **Source:** `RWMesh_VertexIterator.hxx`:72 - `RWMesh_VertexIterator::IsEmpty()`
     pub fn RWMesh_VertexIterator_is_empty(
         self_: *const RWMesh_VertexIterator,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWMesh_VertexIterator.hxx`:73 - `RWMesh_VertexIterator::ElemLower()`
+    /// **Source:** `RWMesh_VertexIterator.hxx`:76 - `RWMesh_VertexIterator::ElemLower()`
     pub fn RWMesh_VertexIterator_elem_lower(
         self_: *const RWMesh_VertexIterator,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `RWMesh_VertexIterator.hxx`:76 - `RWMesh_VertexIterator::ElemUpper()`
+    /// **Source:** `RWMesh_VertexIterator.hxx`:79 - `RWMesh_VertexIterator::ElemUpper()`
     pub fn RWMesh_VertexIterator_elem_upper(
         self_: *const RWMesh_VertexIterator,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `RWMesh_VertexIterator.hxx`:80 - `RWMesh_VertexIterator::NbNodes()`
+    /// **Source:** `RWMesh_VertexIterator.hxx`:83 - `RWMesh_VertexIterator::NbNodes()`
     pub fn RWMesh_VertexIterator_nb_nodes(
         self_: *const RWMesh_VertexIterator,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `RWMesh_VertexIterator.hxx`:83 - `RWMesh_VertexIterator::NodeLower()`
+    /// **Source:** `RWMesh_VertexIterator.hxx`:86 - `RWMesh_VertexIterator::NodeLower()`
     pub fn RWMesh_VertexIterator_node_lower(
         self_: *const RWMesh_VertexIterator,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `RWMesh_VertexIterator.hxx`:86 - `RWMesh_VertexIterator::NodeUpper()`
+    /// **Source:** `RWMesh_VertexIterator.hxx`:89 - `RWMesh_VertexIterator::NodeUpper()`
     pub fn RWMesh_VertexIterator_node_upper(
         self_: *const RWMesh_VertexIterator,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `RWMesh_VertexIterator.hxx`:90 - `RWMesh_VertexIterator::node()`
+    /// **Source:** `RWMesh_VertexIterator.hxx`:93 - `RWMesh_VertexIterator::node()`
     pub fn RWMesh_VertexIterator_node(
         self_: *const RWMesh_VertexIterator,
         arg0: i32,
@@ -1303,23 +1293,23 @@ unsafe extern "C" {
     pub fn RWMesh_VertexIterator_as_RWMesh_ShapeIterator_mut(
         self_: *mut RWMesh_VertexIterator,
     ) -> crate::OcctResult<*mut RWMesh_ShapeIterator>;
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:38 - `RWMesh_ShapeIterator::ExploredShape()`
+    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:41 - `RWMesh_ShapeIterator::ExploredShape()`
     pub fn RWMesh_VertexIterator_inherited_ExploredShape(
         self_: *const RWMesh_VertexIterator,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:53 - `RWMesh_ShapeIterator::Style()`
+    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:56 - `RWMesh_ShapeIterator::Style()`
     pub fn RWMesh_VertexIterator_inherited_Style(
         self_: *const RWMesh_VertexIterator,
     ) -> crate::OcctResult<*const XCAFPrs_Style>;
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:56 - `RWMesh_ShapeIterator::HasColor()`
+    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:59 - `RWMesh_ShapeIterator::HasColor()`
     pub fn RWMesh_VertexIterator_inherited_HasColor(
         self_: *const RWMesh_VertexIterator,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:59 - `RWMesh_ShapeIterator::Color()`
+    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:62 - `RWMesh_ShapeIterator::Color()`
     pub fn RWMesh_VertexIterator_inherited_Color(
         self_: *const RWMesh_VertexIterator,
     ) -> crate::OcctResult<*const Quantity_ColorRGBA>;
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:77 - `RWMesh_ShapeIterator::NodeTransformed()`
+    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:80 - `RWMesh_ShapeIterator::NodeTransformed()`
     pub fn RWMesh_VertexIterator_inherited_NodeTransformed(
         self_: *const RWMesh_VertexIterator,
         theNode: i32,

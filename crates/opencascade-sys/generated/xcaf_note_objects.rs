@@ -7,7 +7,7 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::HandleStandardTransient;
+pub use crate::ffi_types::Handle_Standard_Transient;
 
 // ========================
 // From XCAFNoteObjects_NoteObject.hxx
@@ -39,7 +39,7 @@ impl NoteObject {
     /// **Source:** `XCAFNoteObjects_NoteObject.hxx`:33 - `XCAFNoteObjects_NoteObject::XCAFNoteObjects_NoteObject()`
     /// Copy constructor.
     pub fn new_handlexcafnoteobjectsnoteobject(
-        theObj: &crate::ffi_types::HandleXCAFNoteObjectsNoteObject,
+        theObj: &crate::ffi_types::Handle_XCAFNoteObjects_NoteObject,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXCAF::XCAFNoteObjects_NoteObject_ctor_handlexcafnoteobjectsnoteobject(theObj)))
@@ -47,7 +47,7 @@ impl NoteObject {
     }
 
     /// **Source:** `XCAFNoteObjects_NoteObject.hxx`:27 - `XCAFNoteObjects_NoteObject::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXCAF::XCAFNoteObjects_NoteObject_dynamic_type(
@@ -189,7 +189,7 @@ impl NoteObject {
     }
 
     /// **Source:** `XCAFNoteObjects_NoteObject.hxx`:27 - `XCAFNoteObjects_NoteObject::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXCAF::XCAFNoteObjects_NoteObject_get_type_descriptor(),
@@ -222,7 +222,7 @@ impl NoteObject {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleXCAFNoteObjectsNoteObject> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_XCAFNoteObjects_NoteObject> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXCAF::XCAFNoteObjects_NoteObject_to_handle(obj.into_raw()),
@@ -230,8 +230,8 @@ impl NoteObject {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFNoteObjects_NoteObject_inherited_IsInstance(
                 self as *const Self,
@@ -240,8 +240,8 @@ impl NoteObject {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFNoteObjects_NoteObject_inherited_IsKind(
                 self as *const Self,
@@ -250,7 +250,7 @@ impl NoteObject {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -266,7 +266,7 @@ impl NoteObject {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFNoteObjects_NoteObject_inherited_GetRefCount(
@@ -275,7 +275,7 @@ impl NoteObject {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFNoteObjects_NoteObject_inherited_IncrementRefCounter(
@@ -284,7 +284,7 @@ impl NoteObject {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFNoteObjects_NoteObject_inherited_DecrementRefCounter(
@@ -293,7 +293,7 @@ impl NoteObject {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFNoteObjects_NoteObject_inherited_Delete(
@@ -303,38 +303,38 @@ impl NoteObject {
     }
 }
 
-pub use crate::ffi_types::HandleXCAFNoteObjectsNoteObject;
+pub use crate::ffi_types::Handle_XCAFNoteObjects_NoteObject;
 
-unsafe impl crate::CppDeletable for HandleXCAFNoteObjectsNoteObject {
+unsafe impl crate::CppDeletable for Handle_XCAFNoteObjects_NoteObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXCAF::HandleXCAFNoteObjectsNoteObject_destructor(ptr);
+            crate::ffi_extern_TKXCAF::Handle_XCAFNoteObjects_NoteObject_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleXCAFNoteObjectsNoteObject {
+unsafe impl crate::CppCopyable for Handle_XCAFNoteObjects_NoteObject {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFNoteObjectsNoteObject_clone(
+            crate::check_result(crate::ffi_extern_TKXCAF::Handle_XCAFNoteObjects_NoteObject_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleXCAFNoteObjectsNoteObject {
+impl Handle_XCAFNoteObjects_NoteObject {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKXCAF::HandleXCAFNoteObjectsNoteObject_is_null(self as *const Self)
+            crate::ffi_extern_TKXCAF::Handle_XCAFNoteObjects_NoteObject_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying XCAFNoteObjects_NoteObject
     pub fn get(&self) -> &crate::ffi_types::XCAFNoteObjects_NoteObject {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFNoteObjectsNoteObject_get(
+            &*crate::check_result(crate::ffi_extern_TKXCAF::Handle_XCAFNoteObjects_NoteObject_get(
                 self as *const Self,
             ))
         }
@@ -344,7 +344,7 @@ impl HandleXCAFNoteObjectsNoteObject {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::XCAFNoteObjects_NoteObject {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKXCAF::HandleXCAFNoteObjectsNoteObject_get_mut(
+                crate::ffi_extern_TKXCAF::Handle_XCAFNoteObjects_NoteObject_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -354,9 +354,9 @@ impl HandleXCAFNoteObjectsNoteObject {
     /// Upcast Handle<XCAFNoteObjects_NoteObject> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFNoteObjectsNoteObject_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXCAF::Handle_XCAFNoteObjects_NoteObject_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }

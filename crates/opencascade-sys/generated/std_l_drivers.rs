@@ -11,7 +11,7 @@
 /// or retrieval attribute drivers. Used for plugin
 pub fn factory(
     aGUID: &crate::standard::GUID,
-) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKStdL::StdLDrivers_factory(aGUID),
@@ -21,14 +21,14 @@ pub fn factory(
 /// **Source:** `StdLDrivers.hxx`:33 - `StdLDrivers::DefineFormat`
 /// Defines format "OCC-StdLite" and registers its retrieval driver
 /// in the specified application
-pub fn define_format(theApp: &crate::ffi_types::HandleTDocStdApplication) {
+pub fn define_format(theApp: &crate::ffi_types::Handle_TDocStd_Application) {
     crate::check_void_result(unsafe { crate::ffi_extern_TKStdL::StdLDrivers_define_format(theApp) })
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi_types::{
-    HandlePCDMReader, HandlePCDMRetrievalDriver, HandleStandardTransient,
-    HandleStdDriversDocumentRetrievalDriver,
+    Handle_PCDM_Reader, Handle_PCDM_RetrievalDriver, Handle_Standard_Transient,
+    Handle_StdDrivers_DocumentRetrievalDriver,
 };
 
 // ========================
@@ -63,9 +63,9 @@ impl DocumentRetrievalDriver {
     pub fn read_extendedstring_handlecdmdocument_handlecdmapplication_handlepcdmreaderfilter_progressrange(
         &mut self,
         theFileName: &crate::t_collection::ExtendedString,
-        theNewDocument: &crate::ffi_types::HandleCDMDocument,
-        theApplication: &crate::ffi_types::HandleCDMApplication,
-        theFilter: &crate::ffi_types::HandlePCDMReaderFilter,
+        theNewDocument: &crate::ffi_types::Handle_CDM_Document,
+        theApplication: &crate::ffi_types::Handle_CDM_Application,
+        theFilter: &crate::ffi_types::Handle_PCDM_ReaderFilter,
         theRange: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
@@ -78,10 +78,10 @@ impl DocumentRetrievalDriver {
     pub fn read_istream_handlestoragedata_handlecdmdocument_handlecdmapplication_handlepcdmreaderfilter_progressrange(
         &mut self,
         theIStream: &mut crate::ffi_types::Standard_IStream,
-        theStorageData: &crate::ffi_types::HandleStorageData,
-        theDoc: &crate::ffi_types::HandleCDMDocument,
-        theApplication: &crate::ffi_types::HandleCDMApplication,
-        theFilter: &crate::ffi_types::HandlePCDMReaderFilter,
+        theStorageData: &crate::ffi_types::Handle_Storage_Data,
+        theDoc: &crate::ffi_types::Handle_CDM_Document,
+        theApplication: &crate::ffi_types::Handle_CDM_Application,
+        theFilter: &crate::ffi_types::Handle_PCDM_ReaderFilter,
         theRange: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
@@ -90,7 +90,7 @@ impl DocumentRetrievalDriver {
     }
 
     /// **Source:** `StdLDrivers_DocumentRetrievalDriver.hxx`:44 - `StdLDrivers_DocumentRetrievalDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKStdL::StdLDrivers_DocumentRetrievalDriver_dynamic_type(
@@ -112,7 +112,7 @@ impl DocumentRetrievalDriver {
     }
 
     /// **Source:** `StdLDrivers_DocumentRetrievalDriver.hxx`:44 - `StdLDrivers_DocumentRetrievalDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKStdL::StdLDrivers_DocumentRetrievalDriver_get_type_descriptor(),
@@ -177,7 +177,7 @@ impl DocumentRetrievalDriver {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdLDriversDocumentRetrievalDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StdLDrivers_DocumentRetrievalDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKStdL::StdLDrivers_DocumentRetrievalDriver_to_handle(
@@ -187,7 +187,7 @@ impl DocumentRetrievalDriver {
         }
     }
 
-    /// Inherited: **Source:** `PCDM_RetrievalDriver.hxx`:46 - `PCDM_RetrievalDriver::SetFormat()`
+    /// Inherited: **Source:** `PCDM_RetrievalDriver.hxx`:43 - `PCDM_RetrievalDriver::SetFormat()`
     pub fn set_format(&mut self, aformat: &crate::t_collection::ExtendedString) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKStdL::StdLDrivers_DocumentRetrievalDriver_inherited_SetFormat(
@@ -197,7 +197,7 @@ impl DocumentRetrievalDriver {
         })
     }
 
-    /// Inherited: **Source:** `PCDM_RetrievalDriver.hxx`:48 - `PCDM_RetrievalDriver::GetFormat()`
+    /// Inherited: **Source:** `PCDM_RetrievalDriver.hxx`:45 - `PCDM_RetrievalDriver::GetFormat()`
     pub fn get_format(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -208,7 +208,7 @@ impl DocumentRetrievalDriver {
         }
     }
 
-    /// Inherited: **Source:** `PCDM_Reader.hxx`:57 - `PCDM_Reader::GetStatus()`
+    /// Inherited: **Source:** `PCDM_Reader.hxx`:54 - `PCDM_Reader::GetStatus()`
     pub fn get_status(&self) -> crate::pcdm::ReaderStatus {
         crate::pcdm::ReaderStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKStdL::StdLDrivers_DocumentRetrievalDriver_inherited_GetStatus(
@@ -218,8 +218,8 @@ impl DocumentRetrievalDriver {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKStdL::StdLDrivers_DocumentRetrievalDriver_inherited_IsInstance(
                 self as *const Self,
@@ -228,8 +228,8 @@ impl DocumentRetrievalDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKStdL::StdLDrivers_DocumentRetrievalDriver_inherited_IsKind(
                 self as *const Self,
@@ -238,7 +238,7 @@ impl DocumentRetrievalDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -254,7 +254,7 @@ impl DocumentRetrievalDriver {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKStdL::StdLDrivers_DocumentRetrievalDriver_inherited_GetRefCount(
@@ -263,21 +263,21 @@ impl DocumentRetrievalDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKStdL::StdLDrivers_DocumentRetrievalDriver_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKStdL::StdLDrivers_DocumentRetrievalDriver_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKStdL::StdLDrivers_DocumentRetrievalDriver_inherited_Delete(
@@ -287,31 +287,31 @@ impl DocumentRetrievalDriver {
     }
 }
 
-pub use crate::ffi_types::HandleStdLDriversDocumentRetrievalDriver;
+pub use crate::ffi_types::Handle_StdLDrivers_DocumentRetrievalDriver;
 
-unsafe impl crate::CppDeletable for HandleStdLDriversDocumentRetrievalDriver {
+unsafe impl crate::CppDeletable for Handle_StdLDrivers_DocumentRetrievalDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKStdL::HandleStdLDriversDocumentRetrievalDriver_destructor(ptr);
+            crate::ffi_extern_TKStdL::Handle_StdLDrivers_DocumentRetrievalDriver_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleStdLDriversDocumentRetrievalDriver {
+unsafe impl crate::CppCopyable for Handle_StdLDrivers_DocumentRetrievalDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKStdL::HandleStdLDriversDocumentRetrievalDriver_clone(ptr),
+                crate::ffi_extern_TKStdL::Handle_StdLDrivers_DocumentRetrievalDriver_clone(ptr),
             )
         }
     }
 }
 
-impl HandleStdLDriversDocumentRetrievalDriver {
+impl Handle_StdLDrivers_DocumentRetrievalDriver {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKStdL::HandleStdLDriversDocumentRetrievalDriver_is_null(
+            crate::ffi_extern_TKStdL::Handle_StdLDrivers_DocumentRetrievalDriver_is_null(
                 self as *const Self,
             )
         }
@@ -321,7 +321,7 @@ impl HandleStdLDriversDocumentRetrievalDriver {
     pub fn get(&self) -> &crate::ffi_types::StdLDrivers_DocumentRetrievalDriver {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKStdL::HandleStdLDriversDocumentRetrievalDriver_get(
+                crate::ffi_extern_TKStdL::Handle_StdLDrivers_DocumentRetrievalDriver_get(
                     self as *const Self,
                 ),
             )
@@ -332,7 +332,7 @@ impl HandleStdLDriversDocumentRetrievalDriver {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::StdLDrivers_DocumentRetrievalDriver {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKStdL::HandleStdLDriversDocumentRetrievalDriver_get_mut(
+                crate::ffi_extern_TKStdL::Handle_StdLDrivers_DocumentRetrievalDriver_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -342,25 +342,25 @@ impl HandleStdLDriversDocumentRetrievalDriver {
     /// Upcast Handle<StdLDrivers_DocumentRetrievalDriver> to Handle<PCDM_RetrievalDriver>
     pub fn to_handle_retrieval_driver(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandlePCDMRetrievalDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_PCDM_RetrievalDriver> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStdL::HandleStdLDriversDocumentRetrievalDriver_to_HandlePCDMRetrievalDriver(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStdL::Handle_StdLDrivers_DocumentRetrievalDriver_to_Handle_PCDM_RetrievalDriver(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StdLDrivers_DocumentRetrievalDriver> to Handle<PCDM_Reader>
-    pub fn to_handle_reader(&self) -> crate::OwnedPtr<crate::ffi_types::HandlePCDMReader> {
+    pub fn to_handle_reader(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_PCDM_Reader> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStdL::HandleStdLDriversDocumentRetrievalDriver_to_HandlePCDMReader(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStdL::Handle_StdLDrivers_DocumentRetrievalDriver_to_Handle_PCDM_Reader(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StdLDrivers_DocumentRetrievalDriver> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStdL::HandleStdLDriversDocumentRetrievalDriver_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStdL::Handle_StdLDrivers_DocumentRetrievalDriver_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 
@@ -369,9 +369,9 @@ impl HandleStdLDriversDocumentRetrievalDriver {
     /// Returns `None` if the handle does not point to a `StdDrivers_DocumentRetrievalDriver` (or subclass).
     pub fn downcast_to_document_retrieval_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStdDriversDocumentRetrievalDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_StdDrivers_DocumentRetrievalDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKStdL::HandleStdLDriversDocumentRetrievalDriver_downcast_to_HandleStdDriversDocumentRetrievalDriver(self as *const Self)
+            crate::ffi_extern_TKStdL::Handle_StdLDrivers_DocumentRetrievalDriver_downcast_to_Handle_StdDrivers_DocumentRetrievalDriver(self as *const Self)
         });
         if __val.is_null() {
             None

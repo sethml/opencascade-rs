@@ -14,49 +14,48 @@
 #include <NCollection_Buffer.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_Type.hxx>
-#include <TColStd_ListOfAsciiString.hxx>
 #include <TDocStd_Document.hxx>
 #include <XSControl_WorkSession.hxx>
 
 // Handle type aliases
-typedef opencascade::handle<DEBREP_ConfigurationNode> HandleDEBREPConfigurationNode;
-typedef opencascade::handle<DEBREP_Provider> HandleDEBREPProvider;
-typedef opencascade::handle<DEXCAF_ConfigurationNode> HandleDEXCAFConfigurationNode;
-typedef opencascade::handle<DEXCAF_Provider> HandleDEXCAFProvider;
-typedef opencascade::handle<DE_ConfigurationContext> HandleDEConfigurationContext;
-typedef opencascade::handle<DE_ConfigurationNode> HandleDEConfigurationNode;
-typedef opencascade::handle<DE_Provider> HandleDEProvider;
-typedef opencascade::handle<NCollection_Buffer> HandleNCollectionBuffer;
-typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
-typedef opencascade::handle<Standard_Type> HandleStandardType;
-typedef opencascade::handle<TDocStd_Document> HandleTDocStdDocument;
-typedef opencascade::handle<XSControl_WorkSession> HandleXSControlWorkSession;
+typedef opencascade::handle<DEBREP_ConfigurationNode> Handle_DEBREP_ConfigurationNode;
+typedef opencascade::handle<DEBREP_Provider> Handle_DEBREP_Provider;
+typedef opencascade::handle<DEXCAF_ConfigurationNode> Handle_DEXCAF_ConfigurationNode;
+typedef opencascade::handle<DEXCAF_Provider> Handle_DEXCAF_Provider;
+typedef opencascade::handle<DE_ConfigurationContext> Handle_DE_ConfigurationContext;
+typedef opencascade::handle<DE_ConfigurationNode> Handle_DE_ConfigurationNode;
+typedef opencascade::handle<DE_Provider> Handle_DE_Provider;
+typedef opencascade::handle<NCollection_Buffer> Handle_NCollection_Buffer;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
+typedef opencascade::handle<TDocStd_Document> Handle_TDocStd_Document;
+typedef opencascade::handle<XSControl_WorkSession> Handle_XSControl_WorkSession;
 
 // Handle type destructors, clone, and is_null functions
-extern "C" void HandleDEBREPConfigurationNode_destructor(HandleDEBREPConfigurationNode* self_) { delete self_; }
-extern "C" OcctResult<HandleDEBREPConfigurationNode*> HandleDEBREPConfigurationNode_clone(const HandleDEBREPConfigurationNode* self_) {
-    try { return {new HandleDEBREPConfigurationNode(*self_), nullptr}; }
+extern "C" void Handle_DEBREP_ConfigurationNode_destructor(Handle_DEBREP_ConfigurationNode* self_) { delete self_; }
+extern "C" OcctResult<Handle_DEBREP_ConfigurationNode*> Handle_DEBREP_ConfigurationNode_clone(const Handle_DEBREP_ConfigurationNode* self_) {
+    try { return {new Handle_DEBREP_ConfigurationNode(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleDEBREPConfigurationNode_is_null(const HandleDEBREPConfigurationNode* self_) { return self_->IsNull(); }
-extern "C" void HandleDEBREPProvider_destructor(HandleDEBREPProvider* self_) { delete self_; }
-extern "C" OcctResult<HandleDEBREPProvider*> HandleDEBREPProvider_clone(const HandleDEBREPProvider* self_) {
-    try { return {new HandleDEBREPProvider(*self_), nullptr}; }
+extern "C" bool Handle_DEBREP_ConfigurationNode_is_null(const Handle_DEBREP_ConfigurationNode* self_) { return self_->IsNull(); }
+extern "C" void Handle_DEBREP_Provider_destructor(Handle_DEBREP_Provider* self_) { delete self_; }
+extern "C" OcctResult<Handle_DEBREP_Provider*> Handle_DEBREP_Provider_clone(const Handle_DEBREP_Provider* self_) {
+    try { return {new Handle_DEBREP_Provider(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleDEBREPProvider_is_null(const HandleDEBREPProvider* self_) { return self_->IsNull(); }
-extern "C" void HandleDEXCAFConfigurationNode_destructor(HandleDEXCAFConfigurationNode* self_) { delete self_; }
-extern "C" OcctResult<HandleDEXCAFConfigurationNode*> HandleDEXCAFConfigurationNode_clone(const HandleDEXCAFConfigurationNode* self_) {
-    try { return {new HandleDEXCAFConfigurationNode(*self_), nullptr}; }
+extern "C" bool Handle_DEBREP_Provider_is_null(const Handle_DEBREP_Provider* self_) { return self_->IsNull(); }
+extern "C" void Handle_DEXCAF_ConfigurationNode_destructor(Handle_DEXCAF_ConfigurationNode* self_) { delete self_; }
+extern "C" OcctResult<Handle_DEXCAF_ConfigurationNode*> Handle_DEXCAF_ConfigurationNode_clone(const Handle_DEXCAF_ConfigurationNode* self_) {
+    try { return {new Handle_DEXCAF_ConfigurationNode(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleDEXCAFConfigurationNode_is_null(const HandleDEXCAFConfigurationNode* self_) { return self_->IsNull(); }
-extern "C" void HandleDEXCAFProvider_destructor(HandleDEXCAFProvider* self_) { delete self_; }
-extern "C" OcctResult<HandleDEXCAFProvider*> HandleDEXCAFProvider_clone(const HandleDEXCAFProvider* self_) {
-    try { return {new HandleDEXCAFProvider(*self_), nullptr}; }
+extern "C" bool Handle_DEXCAF_ConfigurationNode_is_null(const Handle_DEXCAF_ConfigurationNode* self_) { return self_->IsNull(); }
+extern "C" void Handle_DEXCAF_Provider_destructor(Handle_DEXCAF_Provider* self_) { delete self_; }
+extern "C" OcctResult<Handle_DEXCAF_Provider*> Handle_DEXCAF_Provider_clone(const Handle_DEXCAF_Provider* self_) {
+    try { return {new Handle_DEXCAF_Provider(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleDEXCAFProvider_is_null(const HandleDEXCAFProvider* self_) { return self_->IsNull(); }
+extern "C" bool Handle_DEXCAF_Provider_is_null(const Handle_DEXCAF_Provider* self_) { return self_->IsNull(); }
 
 // ========================
 // DEBREP_ConfigurationNode wrappers
@@ -90,8 +89,8 @@ extern "C" OcctResult<TCollection_AsciiString*> DEBREP_ConfigurationNode_get_ven
     try { return {new TCollection_AsciiString(self_->GetVendor()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_ListOfAsciiString*> DEBREP_ConfigurationNode_get_extensions(const DEBREP_ConfigurationNode* self_) {
-    try { return {new TColStd_ListOfAsciiString(self_->GetExtensions()), nullptr}; }
+extern "C" OcctResult<NCollection_List_TCollection_AsciiString*> DEBREP_ConfigurationNode_get_extensions(const DEBREP_ConfigurationNode* self_) {
+    try { return {new NCollection_List_TCollection_AsciiString(self_->GetExtensions()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> DEBREP_ConfigurationNode_dynamic_type(const DEBREP_ConfigurationNode* self_) {
@@ -126,28 +125,32 @@ extern "C" OcctResult<const DE_ConfigurationNode*> DEBREP_ConfigurationNode_as_D
 extern "C" OcctResult<DE_ConfigurationNode*> DEBREP_ConfigurationNode_as_DE_ConfigurationNode_mut(DEBREP_ConfigurationNode* self_) { return {static_cast<DE_ConfigurationNode*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> DEBREP_ConfigurationNode_as_Standard_Transient(const DEBREP_ConfigurationNode* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> DEBREP_ConfigurationNode_as_Standard_Transient_mut(DEBREP_ConfigurationNode* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleDEBREPConfigurationNode*> DEBREP_ConfigurationNode_to_handle(DEBREP_ConfigurationNode* obj) {
-    try { return {new HandleDEBREPConfigurationNode(obj), nullptr}; }
+extern "C" OcctResult<Handle_DEBREP_ConfigurationNode*> DEBREP_ConfigurationNode_to_handle(DEBREP_ConfigurationNode* obj) {
+    try { return {new Handle_DEBREP_ConfigurationNode(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const DEBREP_ConfigurationNode*> HandleDEBREPConfigurationNode_get(const HandleDEBREPConfigurationNode* handle) {
+extern "C" OcctResult<const DEBREP_ConfigurationNode*> Handle_DEBREP_ConfigurationNode_get(const Handle_DEBREP_ConfigurationNode* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<DEBREP_ConfigurationNode*> HandleDEBREPConfigurationNode_get_mut(HandleDEBREPConfigurationNode* handle) {
+extern "C" OcctResult<DEBREP_ConfigurationNode*> Handle_DEBREP_ConfigurationNode_get_mut(Handle_DEBREP_ConfigurationNode* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleDEConfigurationNode*> HandleDEBREPConfigurationNode_to_HandleDEConfigurationNode(const HandleDEBREPConfigurationNode* self_) {
-    try { return {new HandleDEConfigurationNode(*self_), nullptr}; }
+extern "C" OcctResult<Handle_DE_ConfigurationNode*> Handle_DEBREP_ConfigurationNode_to_Handle_DE_ConfigurationNode(const Handle_DEBREP_ConfigurationNode* self_) {
+    try { return {new Handle_DE_ConfigurationNode(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleDEBREPConfigurationNode_to_HandleStandardTransient(const HandleDEBREPConfigurationNode* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_DEBREP_ConfigurationNode_to_Handle_Standard_Transient(const Handle_DEBREP_ConfigurationNode* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> DEBREP_ConfigurationNode_inherited_UpdateLoad(DEBREP_ConfigurationNode* self, bool theToImport, bool theToKeep) {
     try { return {self->UpdateLoad(theToImport, theToKeep), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> DEBREP_ConfigurationNode_inherited_IsStreamSupported(const DEBREP_ConfigurationNode* self) {
+    try { return {self->IsStreamSupported(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> DEBREP_ConfigurationNode_inherited_CheckExtension(const DEBREP_ConfigurationNode* self, TCollection_AsciiString const& theExtension) {
@@ -162,8 +165,16 @@ extern "C" const char* DEBREP_ConfigurationNode_inherited_SetEnabled(DEBREP_Conf
     try { self->SetEnabled(theIsLoaded); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* DEBREP_ConfigurationNode_inherited_CustomActivation(DEBREP_ConfigurationNode* self, TColStd_ListOfAsciiString const& arg0) {
+extern "C" const char* DEBREP_ConfigurationNode_inherited_CustomActivation(DEBREP_ConfigurationNode* self, NCollection_List_TCollection_AsciiString const& arg0) {
     try { self->CustomActivation(arg0); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* DEBREP_ConfigurationNode_inherited_Register(const DEBREP_ConfigurationNode* self, Handle(DE_Wrapper) const& theWrapper) {
+    try { self->Register(theWrapper); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* DEBREP_ConfigurationNode_inherited_UnRegister(const DEBREP_ConfigurationNode* self, Handle(DE_Wrapper) const& theWrapper) {
+    try { self->UnRegister(theWrapper); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<bool> DEBREP_ConfigurationNode_inherited_IsInstance(const DEBREP_ConfigurationNode* self, Handle(Standard_Type) const& theType) {
@@ -274,24 +285,24 @@ extern "C" OcctResult<const DE_Provider*> DEBREP_Provider_as_DE_Provider(const D
 extern "C" OcctResult<DE_Provider*> DEBREP_Provider_as_DE_Provider_mut(DEBREP_Provider* self_) { return {static_cast<DE_Provider*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> DEBREP_Provider_as_Standard_Transient(const DEBREP_Provider* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> DEBREP_Provider_as_Standard_Transient_mut(DEBREP_Provider* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleDEBREPProvider*> DEBREP_Provider_to_handle(DEBREP_Provider* obj) {
-    try { return {new HandleDEBREPProvider(obj), nullptr}; }
+extern "C" OcctResult<Handle_DEBREP_Provider*> DEBREP_Provider_to_handle(DEBREP_Provider* obj) {
+    try { return {new Handle_DEBREP_Provider(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const DEBREP_Provider*> HandleDEBREPProvider_get(const HandleDEBREPProvider* handle) {
+extern "C" OcctResult<const DEBREP_Provider*> Handle_DEBREP_Provider_get(const Handle_DEBREP_Provider* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<DEBREP_Provider*> HandleDEBREPProvider_get_mut(HandleDEBREPProvider* handle) {
+extern "C" OcctResult<DEBREP_Provider*> Handle_DEBREP_Provider_get_mut(Handle_DEBREP_Provider* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleDEProvider*> HandleDEBREPProvider_to_HandleDEProvider(const HandleDEBREPProvider* self_) {
-    try { return {new HandleDEProvider(*self_), nullptr}; }
+extern "C" OcctResult<Handle_DE_Provider*> Handle_DEBREP_Provider_to_Handle_DE_Provider(const Handle_DEBREP_Provider* self_) {
+    try { return {new Handle_DE_Provider(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleDEBREPProvider_to_HandleStandardTransient(const HandleDEBREPProvider* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_DEBREP_Provider_to_Handle_Standard_Transient(const Handle_DEBREP_Provider* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(DE_ConfigurationNode)*> DEBREP_Provider_inherited_GetNode(const DEBREP_Provider* self) {
@@ -364,8 +375,8 @@ extern "C" OcctResult<TCollection_AsciiString*> DEXCAF_ConfigurationNode_get_ven
     try { return {new TCollection_AsciiString(self_->GetVendor()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_ListOfAsciiString*> DEXCAF_ConfigurationNode_get_extensions(const DEXCAF_ConfigurationNode* self_) {
-    try { return {new TColStd_ListOfAsciiString(self_->GetExtensions()), nullptr}; }
+extern "C" OcctResult<NCollection_List_TCollection_AsciiString*> DEXCAF_ConfigurationNode_get_extensions(const DEXCAF_ConfigurationNode* self_) {
+    try { return {new NCollection_List_TCollection_AsciiString(self_->GetExtensions()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> DEXCAF_ConfigurationNode_dynamic_type(const DEXCAF_ConfigurationNode* self_) {
@@ -400,28 +411,32 @@ extern "C" OcctResult<const DE_ConfigurationNode*> DEXCAF_ConfigurationNode_as_D
 extern "C" OcctResult<DE_ConfigurationNode*> DEXCAF_ConfigurationNode_as_DE_ConfigurationNode_mut(DEXCAF_ConfigurationNode* self_) { return {static_cast<DE_ConfigurationNode*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> DEXCAF_ConfigurationNode_as_Standard_Transient(const DEXCAF_ConfigurationNode* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> DEXCAF_ConfigurationNode_as_Standard_Transient_mut(DEXCAF_ConfigurationNode* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleDEXCAFConfigurationNode*> DEXCAF_ConfigurationNode_to_handle(DEXCAF_ConfigurationNode* obj) {
-    try { return {new HandleDEXCAFConfigurationNode(obj), nullptr}; }
+extern "C" OcctResult<Handle_DEXCAF_ConfigurationNode*> DEXCAF_ConfigurationNode_to_handle(DEXCAF_ConfigurationNode* obj) {
+    try { return {new Handle_DEXCAF_ConfigurationNode(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const DEXCAF_ConfigurationNode*> HandleDEXCAFConfigurationNode_get(const HandleDEXCAFConfigurationNode* handle) {
+extern "C" OcctResult<const DEXCAF_ConfigurationNode*> Handle_DEXCAF_ConfigurationNode_get(const Handle_DEXCAF_ConfigurationNode* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<DEXCAF_ConfigurationNode*> HandleDEXCAFConfigurationNode_get_mut(HandleDEXCAFConfigurationNode* handle) {
+extern "C" OcctResult<DEXCAF_ConfigurationNode*> Handle_DEXCAF_ConfigurationNode_get_mut(Handle_DEXCAF_ConfigurationNode* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleDEConfigurationNode*> HandleDEXCAFConfigurationNode_to_HandleDEConfigurationNode(const HandleDEXCAFConfigurationNode* self_) {
-    try { return {new HandleDEConfigurationNode(*self_), nullptr}; }
+extern "C" OcctResult<Handle_DE_ConfigurationNode*> Handle_DEXCAF_ConfigurationNode_to_Handle_DE_ConfigurationNode(const Handle_DEXCAF_ConfigurationNode* self_) {
+    try { return {new Handle_DE_ConfigurationNode(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleDEXCAFConfigurationNode_to_HandleStandardTransient(const HandleDEXCAFConfigurationNode* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_DEXCAF_ConfigurationNode_to_Handle_Standard_Transient(const Handle_DEXCAF_ConfigurationNode* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> DEXCAF_ConfigurationNode_inherited_UpdateLoad(DEXCAF_ConfigurationNode* self, bool theToImport, bool theToKeep) {
     try { return {self->UpdateLoad(theToImport, theToKeep), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> DEXCAF_ConfigurationNode_inherited_IsStreamSupported(const DEXCAF_ConfigurationNode* self) {
+    try { return {self->IsStreamSupported(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> DEXCAF_ConfigurationNode_inherited_CheckExtension(const DEXCAF_ConfigurationNode* self, TCollection_AsciiString const& theExtension) {
@@ -436,8 +451,16 @@ extern "C" const char* DEXCAF_ConfigurationNode_inherited_SetEnabled(DEXCAF_Conf
     try { self->SetEnabled(theIsLoaded); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* DEXCAF_ConfigurationNode_inherited_CustomActivation(DEXCAF_ConfigurationNode* self, TColStd_ListOfAsciiString const& arg0) {
+extern "C" const char* DEXCAF_ConfigurationNode_inherited_CustomActivation(DEXCAF_ConfigurationNode* self, NCollection_List_TCollection_AsciiString const& arg0) {
     try { self->CustomActivation(arg0); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* DEXCAF_ConfigurationNode_inherited_Register(const DEXCAF_ConfigurationNode* self, Handle(DE_Wrapper) const& theWrapper) {
+    try { self->Register(theWrapper); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* DEXCAF_ConfigurationNode_inherited_UnRegister(const DEXCAF_ConfigurationNode* self, Handle(DE_Wrapper) const& theWrapper) {
+    try { self->UnRegister(theWrapper); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<bool> DEXCAF_ConfigurationNode_inherited_IsInstance(const DEXCAF_ConfigurationNode* self, Handle(Standard_Type) const& theType) {
@@ -548,24 +571,24 @@ extern "C" OcctResult<const DE_Provider*> DEXCAF_Provider_as_DE_Provider(const D
 extern "C" OcctResult<DE_Provider*> DEXCAF_Provider_as_DE_Provider_mut(DEXCAF_Provider* self_) { return {static_cast<DE_Provider*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> DEXCAF_Provider_as_Standard_Transient(const DEXCAF_Provider* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> DEXCAF_Provider_as_Standard_Transient_mut(DEXCAF_Provider* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleDEXCAFProvider*> DEXCAF_Provider_to_handle(DEXCAF_Provider* obj) {
-    try { return {new HandleDEXCAFProvider(obj), nullptr}; }
+extern "C" OcctResult<Handle_DEXCAF_Provider*> DEXCAF_Provider_to_handle(DEXCAF_Provider* obj) {
+    try { return {new Handle_DEXCAF_Provider(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const DEXCAF_Provider*> HandleDEXCAFProvider_get(const HandleDEXCAFProvider* handle) {
+extern "C" OcctResult<const DEXCAF_Provider*> Handle_DEXCAF_Provider_get(const Handle_DEXCAF_Provider* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<DEXCAF_Provider*> HandleDEXCAFProvider_get_mut(HandleDEXCAFProvider* handle) {
+extern "C" OcctResult<DEXCAF_Provider*> Handle_DEXCAF_Provider_get_mut(Handle_DEXCAF_Provider* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleDEProvider*> HandleDEXCAFProvider_to_HandleDEProvider(const HandleDEXCAFProvider* self_) {
-    try { return {new HandleDEProvider(*self_), nullptr}; }
+extern "C" OcctResult<Handle_DE_Provider*> Handle_DEXCAF_Provider_to_Handle_DE_Provider(const Handle_DEXCAF_Provider* self_) {
+    try { return {new Handle_DE_Provider(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleDEXCAFProvider_to_HandleStandardTransient(const HandleDEXCAFProvider* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_DEXCAF_Provider_to_Handle_Standard_Transient(const Handle_DEXCAF_Provider* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(DE_ConfigurationNode)*> DEXCAF_Provider_inherited_GetNode(const DEXCAF_Provider* self) {

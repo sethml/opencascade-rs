@@ -3,29 +3,20 @@
 
 #include "occt_preamble.hxx"
 
-#include <Adaptor3d_Curve.hxx>
 #include <BRepTools_History.hxx>
 #include <BRepTools_Modification.hxx>
 #include <BRepTools_Modifier.hxx>
 #include <BRepTools_ReShape.hxx>
 #include <BRepTools_TrsfModification.hxx>
-#include <Bnd_Box.hxx>
 #include <Bnd_Box2d.hxx>
-#include <Geom2d_BSplineCurve.hxx>
-#include <Geom2d_Curve.hxx>
 #include <Geom2d_Line.hxx>
 #include <GeomAbs_Shape.hxx>
 #include <GeomAdaptor_Surface.hxx>
-#include <Geom_BSplineCurve.hxx>
 #include <Geom_BSplineSurface.hxx>
-#include <Geom_Curve.hxx>
 #include <Geom_Geometry.hxx>
 #include <Geom_Plane.hxx>
-#include <Geom_Surface.hxx>
-#include <IntRes2d_SequenceOfIntersectionPoint.hxx>
 #include <Message_Gravity.hxx>
 #include <Message_Messenger.hxx>
-#include <Message_Msg.hxx>
 #include <Message_ProgressRange.hxx>
 #include <Resource_Manager.hxx>
 #include <ShapeAlgo.hxx>
@@ -36,14 +27,10 @@
 #include <ShapeAnalysis_CanonicalRecognition.hxx>
 #include <ShapeAnalysis_CheckSmallFace.hxx>
 #include <ShapeAnalysis_Curve.hxx>
-#include <ShapeAnalysis_DataMapOfShapeListOfReal.hxx>
 #include <ShapeAnalysis_Edge.hxx>
-#include <ShapeAnalysis_FreeBoundData.hxx>
 #include <ShapeAnalysis_FreeBounds.hxx>
 #include <ShapeAnalysis_FreeBoundsProperties.hxx>
 #include <ShapeAnalysis_Geom.hxx>
-#include <ShapeAnalysis_HSequenceOfFreeBounds.hxx>
-#include <ShapeAnalysis_SequenceOfFreeBounds.hxx>
 #include <ShapeAnalysis_ShapeContents.hxx>
 #include <ShapeAnalysis_ShapeTolerance.hxx>
 #include <ShapeAnalysis_Shell.hxx>
@@ -77,8 +64,6 @@
 #include <ShapeExtend_BasicMsgRegistrator.hxx>
 #include <ShapeExtend_ComplexCurve.hxx>
 #include <ShapeExtend_CompositeSurface.hxx>
-#include <ShapeExtend_DataMapOfShapeListOfMsg.hxx>
-#include <ShapeExtend_DataMapOfTransientListOfMsg.hxx>
 #include <ShapeExtend_Explorer.hxx>
 #include <ShapeExtend_MsgRegistrator.hxx>
 #include <ShapeExtend_Parametrisation.hxx>
@@ -96,7 +81,6 @@
 #include <ShapeFix_FreeBounds.hxx>
 #include <ShapeFix_IntersectionTool.hxx>
 #include <ShapeFix_Root.hxx>
-#include <ShapeFix_SequenceOfWireSegment.hxx>
 #include <ShapeFix_Shape.hxx>
 #include <ShapeFix_ShapeTolerance.hxx>
 #include <ShapeFix_Shell.hxx>
@@ -104,7 +88,6 @@
 #include <ShapeFix_SplitCommonVertex.hxx>
 #include <ShapeFix_SplitTool.hxx>
 #include <ShapeFix_Wire.hxx>
-#include <ShapeFix_WireSegment.hxx>
 #include <ShapeFix_WireVertex.hxx>
 #include <ShapeFix_Wireframe.hxx>
 #include <ShapeProcess.hxx>
@@ -150,33 +133,8 @@
 #include <ShapeUpgrade_WireDivide.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_Type.hxx>
-#include <TColGeom2d_HArray1OfCurve.hxx>
-#include <TColGeom2d_HSequenceOfBoundedCurve.hxx>
-#include <TColGeom2d_SequenceOfCurve.hxx>
-#include <TColGeom_HArray1OfCurve.hxx>
-#include <TColGeom_HArray2OfSurface.hxx>
-#include <TColGeom_HSequenceOfBoundedCurve.hxx>
-#include <TColGeom_SequenceOfCurve.hxx>
-#include <TColStd_Array1OfReal.hxx>
-#include <TColStd_HArray1OfReal.hxx>
-#include <TColStd_HArray2OfReal.hxx>
-#include <TColStd_HSequenceOfReal.hxx>
-#include <TColStd_SequenceOfReal.hxx>
-#include <TColgp_Array1OfPnt.hxx>
-#include <TColgp_Array1OfPnt2d.hxx>
-#include <TColgp_SequenceOfPnt.hxx>
-#include <TColgp_SequenceOfPnt2d.hxx>
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_ShapeEnum.hxx>
-#include <TopLoc_Location.hxx>
-#include <TopTools_DataMapOfShapeListOfShape.hxx>
-#include <TopTools_DataMapOfShapeShape.hxx>
-#include <TopTools_HArray1OfShape.hxx>
-#include <TopTools_HSequenceOfShape.hxx>
-#include <TopTools_IndexedMapOfShape.hxx>
-#include <TopTools_ListOfShape.hxx>
-#include <TopTools_MapOfShape.hxx>
-#include <TopTools_SequenceOfShape.hxx>
 #include <TopoDS_Compound.hxx>
 #include <TopoDS_Edge.hxx>
 #include <TopoDS_Face.hxx>
@@ -185,498 +143,486 @@
 #include <TopoDS_Vertex.hxx>
 #include <TopoDS_Wire.hxx>
 #include <gp_Ax1.hxx>
-#include <gp_Circ.hxx>
 #include <gp_Cone.hxx>
 #include <gp_Cylinder.hxx>
 #include <gp_Elips.hxx>
 #include <gp_GTrsf2d.hxx>
-#include <gp_Lin.hxx>
 #include <gp_Pln.hxx>
 #include <gp_Sphere.hxx>
-#include <gp_Trsf.hxx>
 #include <gp_Trsf2d.hxx>
-#include <gp_Vec.hxx>
-#include <gp_Vec2d.hxx>
-#include <gp_XY.hxx>
 
 // Handle type aliases
-typedef opencascade::handle<BRepTools_History> HandleBRepToolsHistory;
-typedef opencascade::handle<BRepTools_Modification> HandleBRepToolsModification;
-typedef opencascade::handle<BRepTools_ReShape> HandleBRepToolsReShape;
-typedef opencascade::handle<BRepTools_TrsfModification> HandleBRepToolsTrsfModification;
-typedef opencascade::handle<Geom2d_BSplineCurve> HandleGeom2dBSplineCurve;
-typedef opencascade::handle<Geom2d_Curve> HandleGeom2dCurve;
-typedef opencascade::handle<Geom2d_Line> HandleGeom2dLine;
-typedef opencascade::handle<GeomAdaptor_Surface> HandleGeomAdaptorSurface;
-typedef opencascade::handle<Geom_BSplineCurve> HandleGeomBSplineCurve;
-typedef opencascade::handle<Geom_BSplineSurface> HandleGeomBSplineSurface;
-typedef opencascade::handle<Geom_Curve> HandleGeomCurve;
-typedef opencascade::handle<Geom_Geometry> HandleGeomGeometry;
-typedef opencascade::handle<Geom_Surface> HandleGeomSurface;
-typedef opencascade::handle<Message_Messenger> HandleMessageMessenger;
-typedef opencascade::handle<Resource_Manager> HandleResourceManager;
-typedef opencascade::handle<ShapeAlgo_AlgoContainer> HandleShapeAlgoAlgoContainer;
-typedef opencascade::handle<ShapeAlgo_ToolContainer> HandleShapeAlgoToolContainer;
-typedef opencascade::handle<ShapeAnalysis_FreeBoundData> HandleShapeAnalysisFreeBoundData;
-typedef opencascade::handle<ShapeAnalysis_HSequenceOfFreeBounds> HandleShapeAnalysisHSequenceOfFreeBounds;
-typedef opencascade::handle<ShapeAnalysis_Surface> HandleShapeAnalysisSurface;
-typedef opencascade::handle<ShapeAnalysis_TransferParameters> HandleShapeAnalysisTransferParameters;
-typedef opencascade::handle<ShapeAnalysis_TransferParametersProj> HandleShapeAnalysisTransferParametersProj;
-typedef opencascade::handle<ShapeAnalysis_Wire> HandleShapeAnalysisWire;
-typedef opencascade::handle<ShapeBuild_ReShape> HandleShapeBuildReShape;
-typedef opencascade::handle<ShapeConstruct_ProjectCurveOnSurface> HandleShapeConstructProjectCurveOnSurface;
-typedef opencascade::handle<ShapeCustom_BSplineRestriction> HandleShapeCustomBSplineRestriction;
-typedef opencascade::handle<ShapeCustom_ConvertToBSpline> HandleShapeCustomConvertToBSpline;
-typedef opencascade::handle<ShapeCustom_ConvertToRevolution> HandleShapeCustomConvertToRevolution;
-typedef opencascade::handle<ShapeCustom_DirectModification> HandleShapeCustomDirectModification;
-typedef opencascade::handle<ShapeCustom_Modification> HandleShapeCustomModification;
-typedef opencascade::handle<ShapeCustom_RestrictionParameters> HandleShapeCustomRestrictionParameters;
-typedef opencascade::handle<ShapeCustom_SweptToElementary> HandleShapeCustomSweptToElementary;
-typedef opencascade::handle<ShapeCustom_TrsfModification> HandleShapeCustomTrsfModification;
-typedef opencascade::handle<ShapeExtend_BasicMsgRegistrator> HandleShapeExtendBasicMsgRegistrator;
-typedef opencascade::handle<ShapeExtend_ComplexCurve> HandleShapeExtendComplexCurve;
-typedef opencascade::handle<ShapeExtend_CompositeSurface> HandleShapeExtendCompositeSurface;
-typedef opencascade::handle<ShapeExtend_MsgRegistrator> HandleShapeExtendMsgRegistrator;
-typedef opencascade::handle<ShapeExtend_WireData> HandleShapeExtendWireData;
-typedef opencascade::handle<ShapeFix_ComposeShell> HandleShapeFixComposeShell;
-typedef opencascade::handle<ShapeFix_Edge> HandleShapeFixEdge;
-typedef opencascade::handle<ShapeFix_EdgeProjAux> HandleShapeFixEdgeProjAux;
-typedef opencascade::handle<ShapeFix_Face> HandleShapeFixFace;
-typedef opencascade::handle<ShapeFix_FixSmallFace> HandleShapeFixFixSmallFace;
-typedef opencascade::handle<ShapeFix_FixSmallSolid> HandleShapeFixFixSmallSolid;
-typedef opencascade::handle<ShapeFix_Root> HandleShapeFixRoot;
-typedef opencascade::handle<ShapeFix_Shape> HandleShapeFixShape;
-typedef opencascade::handle<ShapeFix_Shell> HandleShapeFixShell;
-typedef opencascade::handle<ShapeFix_Solid> HandleShapeFixSolid;
-typedef opencascade::handle<ShapeFix_SplitCommonVertex> HandleShapeFixSplitCommonVertex;
-typedef opencascade::handle<ShapeFix_Wire> HandleShapeFixWire;
-typedef opencascade::handle<ShapeFix_Wireframe> HandleShapeFixWireframe;
-typedef opencascade::handle<ShapeProcess_Context> HandleShapeProcessContext;
-typedef opencascade::handle<ShapeProcess_Operator> HandleShapeProcessOperator;
-typedef opencascade::handle<ShapeProcess_ShapeContext> HandleShapeProcessShapeContext;
-typedef opencascade::handle<ShapeProcess_UOperator> HandleShapeProcessUOperator;
-typedef opencascade::handle<ShapeUpgrade_ClosedEdgeDivide> HandleShapeUpgradeClosedEdgeDivide;
-typedef opencascade::handle<ShapeUpgrade_ClosedFaceDivide> HandleShapeUpgradeClosedFaceDivide;
-typedef opencascade::handle<ShapeUpgrade_ConvertCurve2dToBezier> HandleShapeUpgradeConvertCurve2dToBezier;
-typedef opencascade::handle<ShapeUpgrade_ConvertCurve3dToBezier> HandleShapeUpgradeConvertCurve3dToBezier;
-typedef opencascade::handle<ShapeUpgrade_ConvertSurfaceToBezierBasis> HandleShapeUpgradeConvertSurfaceToBezierBasis;
-typedef opencascade::handle<ShapeUpgrade_EdgeDivide> HandleShapeUpgradeEdgeDivide;
-typedef opencascade::handle<ShapeUpgrade_FaceDivide> HandleShapeUpgradeFaceDivide;
-typedef opencascade::handle<ShapeUpgrade_FaceDivideArea> HandleShapeUpgradeFaceDivideArea;
-typedef opencascade::handle<ShapeUpgrade_FixSmallBezierCurves> HandleShapeUpgradeFixSmallBezierCurves;
-typedef opencascade::handle<ShapeUpgrade_FixSmallCurves> HandleShapeUpgradeFixSmallCurves;
-typedef opencascade::handle<ShapeUpgrade_RemoveInternalWires> HandleShapeUpgradeRemoveInternalWires;
-typedef opencascade::handle<ShapeUpgrade_RemoveLocations> HandleShapeUpgradeRemoveLocations;
-typedef opencascade::handle<ShapeUpgrade_SplitCurve> HandleShapeUpgradeSplitCurve;
-typedef opencascade::handle<ShapeUpgrade_SplitCurve2d> HandleShapeUpgradeSplitCurve2d;
-typedef opencascade::handle<ShapeUpgrade_SplitCurve2dContinuity> HandleShapeUpgradeSplitCurve2dContinuity;
-typedef opencascade::handle<ShapeUpgrade_SplitCurve3d> HandleShapeUpgradeSplitCurve3d;
-typedef opencascade::handle<ShapeUpgrade_SplitCurve3dContinuity> HandleShapeUpgradeSplitCurve3dContinuity;
-typedef opencascade::handle<ShapeUpgrade_SplitSurface> HandleShapeUpgradeSplitSurface;
-typedef opencascade::handle<ShapeUpgrade_SplitSurfaceAngle> HandleShapeUpgradeSplitSurfaceAngle;
-typedef opencascade::handle<ShapeUpgrade_SplitSurfaceArea> HandleShapeUpgradeSplitSurfaceArea;
-typedef opencascade::handle<ShapeUpgrade_SplitSurfaceContinuity> HandleShapeUpgradeSplitSurfaceContinuity;
-typedef opencascade::handle<ShapeUpgrade_Tool> HandleShapeUpgradeTool;
-typedef opencascade::handle<ShapeUpgrade_UnifySameDomain> HandleShapeUpgradeUnifySameDomain;
-typedef opencascade::handle<ShapeUpgrade_WireDivide> HandleShapeUpgradeWireDivide;
-typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
-typedef opencascade::handle<Standard_Type> HandleStandardType;
-typedef opencascade::handle<TColGeom2d_HArray1OfCurve> HandleTColGeom2dHArray1OfCurve;
-typedef opencascade::handle<TColGeom2d_HSequenceOfBoundedCurve> HandleTColGeom2dHSequenceOfBoundedCurve;
-typedef opencascade::handle<TColGeom_HArray1OfCurve> HandleTColGeomHArray1OfCurve;
-typedef opencascade::handle<TColGeom_HArray2OfSurface> HandleTColGeomHArray2OfSurface;
-typedef opencascade::handle<TColGeom_HSequenceOfBoundedCurve> HandleTColGeomHSequenceOfBoundedCurve;
-typedef opencascade::handle<TColStd_HArray1OfReal> HandleTColStdHArray1OfReal;
-typedef opencascade::handle<TColStd_HArray2OfReal> HandleTColStdHArray2OfReal;
-typedef opencascade::handle<TColStd_HSequenceOfReal> HandleTColStdHSequenceOfReal;
-typedef opencascade::handle<TopTools_HArray1OfShape> HandleTopToolsHArray1OfShape;
-typedef opencascade::handle<TopTools_HSequenceOfShape> HandleTopToolsHSequenceOfShape;
+typedef opencascade::handle<BRepTools_History> Handle_BRepTools_History;
+typedef opencascade::handle<BRepTools_Modification> Handle_BRepTools_Modification;
+typedef opencascade::handle<BRepTools_ReShape> Handle_BRepTools_ReShape;
+typedef opencascade::handle<BRepTools_TrsfModification> Handle_BRepTools_TrsfModification;
+typedef opencascade::handle<Geom2d_BSplineCurve> Handle_Geom2d_BSplineCurve;
+typedef opencascade::handle<Geom2d_Curve> Handle_Geom2d_Curve;
+typedef opencascade::handle<Geom2d_Line> Handle_Geom2d_Line;
+typedef opencascade::handle<GeomAdaptor_Surface> Handle_GeomAdaptor_Surface;
+typedef opencascade::handle<Geom_BSplineCurve> Handle_Geom_BSplineCurve;
+typedef opencascade::handle<Geom_BSplineSurface> Handle_Geom_BSplineSurface;
+typedef opencascade::handle<Geom_Curve> Handle_Geom_Curve;
+typedef opencascade::handle<Geom_Geometry> Handle_Geom_Geometry;
+typedef opencascade::handle<Geom_Surface> Handle_Geom_Surface;
+typedef opencascade::handle<Message_Messenger> Handle_Message_Messenger;
+typedef opencascade::handle<NCollection_HArray1_TopoDS_Shape> Handle_NCollection_HArray1_TopoDS_Shape;
+typedef opencascade::handle<NCollection_HArray1_double> Handle_NCollection_HArray1_double;
+typedef opencascade::handle<NCollection_HArray1_opencascade_handle_Geom2d_Curve> Handle_NCollection_HArray1_opencascade_handle_Geom2d_Curve;
+typedef opencascade::handle<NCollection_HArray1_opencascade_handle_Geom_Curve> Handle_NCollection_HArray1_opencascade_handle_Geom_Curve;
+typedef opencascade::handle<NCollection_HArray2_double> Handle_NCollection_HArray2_double;
+typedef opencascade::handle<NCollection_HArray2_opencascade_handle_Geom_Surface> Handle_NCollection_HArray2_opencascade_handle_Geom_Surface;
+typedef opencascade::handle<NCollection_HSequence_TopoDS_Shape> Handle_NCollection_HSequence_TopoDS_Shape;
+typedef opencascade::handle<NCollection_HSequence_double> Handle_NCollection_HSequence_double;
+typedef opencascade::handle<NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve> Handle_NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve;
+typedef opencascade::handle<NCollection_HSequence_opencascade_handle_Geom_BoundedCurve> Handle_NCollection_HSequence_opencascade_handle_Geom_BoundedCurve;
+typedef opencascade::handle<NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData> Handle_NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData;
+typedef opencascade::handle<Resource_Manager> Handle_Resource_Manager;
+typedef opencascade::handle<ShapeAlgo_AlgoContainer> Handle_ShapeAlgo_AlgoContainer;
+typedef opencascade::handle<ShapeAlgo_ToolContainer> Handle_ShapeAlgo_ToolContainer;
+typedef opencascade::handle<ShapeAnalysis_FreeBoundData> Handle_ShapeAnalysis_FreeBoundData;
+typedef opencascade::handle<ShapeAnalysis_Surface> Handle_ShapeAnalysis_Surface;
+typedef opencascade::handle<ShapeAnalysis_TransferParameters> Handle_ShapeAnalysis_TransferParameters;
+typedef opencascade::handle<ShapeAnalysis_TransferParametersProj> Handle_ShapeAnalysis_TransferParametersProj;
+typedef opencascade::handle<ShapeAnalysis_Wire> Handle_ShapeAnalysis_Wire;
+typedef opencascade::handle<ShapeBuild_ReShape> Handle_ShapeBuild_ReShape;
+typedef opencascade::handle<ShapeConstruct_ProjectCurveOnSurface> Handle_ShapeConstruct_ProjectCurveOnSurface;
+typedef opencascade::handle<ShapeCustom_BSplineRestriction> Handle_ShapeCustom_BSplineRestriction;
+typedef opencascade::handle<ShapeCustom_ConvertToBSpline> Handle_ShapeCustom_ConvertToBSpline;
+typedef opencascade::handle<ShapeCustom_ConvertToRevolution> Handle_ShapeCustom_ConvertToRevolution;
+typedef opencascade::handle<ShapeCustom_DirectModification> Handle_ShapeCustom_DirectModification;
+typedef opencascade::handle<ShapeCustom_Modification> Handle_ShapeCustom_Modification;
+typedef opencascade::handle<ShapeCustom_RestrictionParameters> Handle_ShapeCustom_RestrictionParameters;
+typedef opencascade::handle<ShapeCustom_SweptToElementary> Handle_ShapeCustom_SweptToElementary;
+typedef opencascade::handle<ShapeCustom_TrsfModification> Handle_ShapeCustom_TrsfModification;
+typedef opencascade::handle<ShapeExtend_BasicMsgRegistrator> Handle_ShapeExtend_BasicMsgRegistrator;
+typedef opencascade::handle<ShapeExtend_ComplexCurve> Handle_ShapeExtend_ComplexCurve;
+typedef opencascade::handle<ShapeExtend_CompositeSurface> Handle_ShapeExtend_CompositeSurface;
+typedef opencascade::handle<ShapeExtend_MsgRegistrator> Handle_ShapeExtend_MsgRegistrator;
+typedef opencascade::handle<ShapeExtend_WireData> Handle_ShapeExtend_WireData;
+typedef opencascade::handle<ShapeFix_ComposeShell> Handle_ShapeFix_ComposeShell;
+typedef opencascade::handle<ShapeFix_Edge> Handle_ShapeFix_Edge;
+typedef opencascade::handle<ShapeFix_EdgeProjAux> Handle_ShapeFix_EdgeProjAux;
+typedef opencascade::handle<ShapeFix_Face> Handle_ShapeFix_Face;
+typedef opencascade::handle<ShapeFix_FixSmallFace> Handle_ShapeFix_FixSmallFace;
+typedef opencascade::handle<ShapeFix_FixSmallSolid> Handle_ShapeFix_FixSmallSolid;
+typedef opencascade::handle<ShapeFix_Root> Handle_ShapeFix_Root;
+typedef opencascade::handle<ShapeFix_Shape> Handle_ShapeFix_Shape;
+typedef opencascade::handle<ShapeFix_Shell> Handle_ShapeFix_Shell;
+typedef opencascade::handle<ShapeFix_Solid> Handle_ShapeFix_Solid;
+typedef opencascade::handle<ShapeFix_SplitCommonVertex> Handle_ShapeFix_SplitCommonVertex;
+typedef opencascade::handle<ShapeFix_Wire> Handle_ShapeFix_Wire;
+typedef opencascade::handle<ShapeFix_Wireframe> Handle_ShapeFix_Wireframe;
+typedef opencascade::handle<ShapeProcess_Context> Handle_ShapeProcess_Context;
+typedef opencascade::handle<ShapeProcess_Operator> Handle_ShapeProcess_Operator;
+typedef opencascade::handle<ShapeProcess_ShapeContext> Handle_ShapeProcess_ShapeContext;
+typedef opencascade::handle<ShapeProcess_UOperator> Handle_ShapeProcess_UOperator;
+typedef opencascade::handle<ShapeUpgrade_ClosedEdgeDivide> Handle_ShapeUpgrade_ClosedEdgeDivide;
+typedef opencascade::handle<ShapeUpgrade_ClosedFaceDivide> Handle_ShapeUpgrade_ClosedFaceDivide;
+typedef opencascade::handle<ShapeUpgrade_ConvertCurve2dToBezier> Handle_ShapeUpgrade_ConvertCurve2dToBezier;
+typedef opencascade::handle<ShapeUpgrade_ConvertCurve3dToBezier> Handle_ShapeUpgrade_ConvertCurve3dToBezier;
+typedef opencascade::handle<ShapeUpgrade_ConvertSurfaceToBezierBasis> Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis;
+typedef opencascade::handle<ShapeUpgrade_EdgeDivide> Handle_ShapeUpgrade_EdgeDivide;
+typedef opencascade::handle<ShapeUpgrade_FaceDivide> Handle_ShapeUpgrade_FaceDivide;
+typedef opencascade::handle<ShapeUpgrade_FaceDivideArea> Handle_ShapeUpgrade_FaceDivideArea;
+typedef opencascade::handle<ShapeUpgrade_FixSmallBezierCurves> Handle_ShapeUpgrade_FixSmallBezierCurves;
+typedef opencascade::handle<ShapeUpgrade_FixSmallCurves> Handle_ShapeUpgrade_FixSmallCurves;
+typedef opencascade::handle<ShapeUpgrade_RemoveInternalWires> Handle_ShapeUpgrade_RemoveInternalWires;
+typedef opencascade::handle<ShapeUpgrade_RemoveLocations> Handle_ShapeUpgrade_RemoveLocations;
+typedef opencascade::handle<ShapeUpgrade_SplitCurve> Handle_ShapeUpgrade_SplitCurve;
+typedef opencascade::handle<ShapeUpgrade_SplitCurve2d> Handle_ShapeUpgrade_SplitCurve2d;
+typedef opencascade::handle<ShapeUpgrade_SplitCurve2dContinuity> Handle_ShapeUpgrade_SplitCurve2dContinuity;
+typedef opencascade::handle<ShapeUpgrade_SplitCurve3d> Handle_ShapeUpgrade_SplitCurve3d;
+typedef opencascade::handle<ShapeUpgrade_SplitCurve3dContinuity> Handle_ShapeUpgrade_SplitCurve3dContinuity;
+typedef opencascade::handle<ShapeUpgrade_SplitSurface> Handle_ShapeUpgrade_SplitSurface;
+typedef opencascade::handle<ShapeUpgrade_SplitSurfaceAngle> Handle_ShapeUpgrade_SplitSurfaceAngle;
+typedef opencascade::handle<ShapeUpgrade_SplitSurfaceArea> Handle_ShapeUpgrade_SplitSurfaceArea;
+typedef opencascade::handle<ShapeUpgrade_SplitSurfaceContinuity> Handle_ShapeUpgrade_SplitSurfaceContinuity;
+typedef opencascade::handle<ShapeUpgrade_Tool> Handle_ShapeUpgrade_Tool;
+typedef opencascade::handle<ShapeUpgrade_UnifySameDomain> Handle_ShapeUpgrade_UnifySameDomain;
+typedef opencascade::handle<ShapeUpgrade_WireDivide> Handle_ShapeUpgrade_WireDivide;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
 
 // Handle type destructors, clone, and is_null functions
-extern "C" void HandleShapeAlgoAlgoContainer_destructor(HandleShapeAlgoAlgoContainer* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeAlgoAlgoContainer*> HandleShapeAlgoAlgoContainer_clone(const HandleShapeAlgoAlgoContainer* self_) {
-    try { return {new HandleShapeAlgoAlgoContainer(*self_), nullptr}; }
+extern "C" void Handle_ShapeAlgo_AlgoContainer_destructor(Handle_ShapeAlgo_AlgoContainer* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeAlgo_AlgoContainer*> Handle_ShapeAlgo_AlgoContainer_clone(const Handle_ShapeAlgo_AlgoContainer* self_) {
+    try { return {new Handle_ShapeAlgo_AlgoContainer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeAlgoAlgoContainer_is_null(const HandleShapeAlgoAlgoContainer* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeAlgoToolContainer_destructor(HandleShapeAlgoToolContainer* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeAlgoToolContainer*> HandleShapeAlgoToolContainer_clone(const HandleShapeAlgoToolContainer* self_) {
-    try { return {new HandleShapeAlgoToolContainer(*self_), nullptr}; }
+extern "C" bool Handle_ShapeAlgo_AlgoContainer_is_null(const Handle_ShapeAlgo_AlgoContainer* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeAlgo_ToolContainer_destructor(Handle_ShapeAlgo_ToolContainer* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeAlgo_ToolContainer*> Handle_ShapeAlgo_ToolContainer_clone(const Handle_ShapeAlgo_ToolContainer* self_) {
+    try { return {new Handle_ShapeAlgo_ToolContainer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeAlgoToolContainer_is_null(const HandleShapeAlgoToolContainer* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeAnalysisFreeBoundData_destructor(HandleShapeAnalysisFreeBoundData* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeAnalysisFreeBoundData*> HandleShapeAnalysisFreeBoundData_clone(const HandleShapeAnalysisFreeBoundData* self_) {
-    try { return {new HandleShapeAnalysisFreeBoundData(*self_), nullptr}; }
+extern "C" bool Handle_ShapeAlgo_ToolContainer_is_null(const Handle_ShapeAlgo_ToolContainer* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeAnalysis_FreeBoundData_destructor(Handle_ShapeAnalysis_FreeBoundData* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeAnalysis_FreeBoundData*> Handle_ShapeAnalysis_FreeBoundData_clone(const Handle_ShapeAnalysis_FreeBoundData* self_) {
+    try { return {new Handle_ShapeAnalysis_FreeBoundData(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeAnalysisFreeBoundData_is_null(const HandleShapeAnalysisFreeBoundData* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeAnalysisHSequenceOfFreeBounds_destructor(HandleShapeAnalysisHSequenceOfFreeBounds* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeAnalysisHSequenceOfFreeBounds*> HandleShapeAnalysisHSequenceOfFreeBounds_clone(const HandleShapeAnalysisHSequenceOfFreeBounds* self_) {
-    try { return {new HandleShapeAnalysisHSequenceOfFreeBounds(*self_), nullptr}; }
+extern "C" bool Handle_ShapeAnalysis_FreeBoundData_is_null(const Handle_ShapeAnalysis_FreeBoundData* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeAnalysis_Surface_destructor(Handle_ShapeAnalysis_Surface* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeAnalysis_Surface*> Handle_ShapeAnalysis_Surface_clone(const Handle_ShapeAnalysis_Surface* self_) {
+    try { return {new Handle_ShapeAnalysis_Surface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeAnalysisHSequenceOfFreeBounds_is_null(const HandleShapeAnalysisHSequenceOfFreeBounds* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeAnalysisSurface_destructor(HandleShapeAnalysisSurface* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeAnalysisSurface*> HandleShapeAnalysisSurface_clone(const HandleShapeAnalysisSurface* self_) {
-    try { return {new HandleShapeAnalysisSurface(*self_), nullptr}; }
+extern "C" bool Handle_ShapeAnalysis_Surface_is_null(const Handle_ShapeAnalysis_Surface* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeAnalysis_TransferParameters_destructor(Handle_ShapeAnalysis_TransferParameters* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeAnalysis_TransferParameters*> Handle_ShapeAnalysis_TransferParameters_clone(const Handle_ShapeAnalysis_TransferParameters* self_) {
+    try { return {new Handle_ShapeAnalysis_TransferParameters(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeAnalysisSurface_is_null(const HandleShapeAnalysisSurface* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeAnalysisTransferParameters_destructor(HandleShapeAnalysisTransferParameters* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeAnalysisTransferParameters*> HandleShapeAnalysisTransferParameters_clone(const HandleShapeAnalysisTransferParameters* self_) {
-    try { return {new HandleShapeAnalysisTransferParameters(*self_), nullptr}; }
+extern "C" bool Handle_ShapeAnalysis_TransferParameters_is_null(const Handle_ShapeAnalysis_TransferParameters* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeAnalysis_TransferParametersProj_destructor(Handle_ShapeAnalysis_TransferParametersProj* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeAnalysis_TransferParametersProj*> Handle_ShapeAnalysis_TransferParametersProj_clone(const Handle_ShapeAnalysis_TransferParametersProj* self_) {
+    try { return {new Handle_ShapeAnalysis_TransferParametersProj(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeAnalysisTransferParameters_is_null(const HandleShapeAnalysisTransferParameters* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeAnalysisTransferParametersProj_destructor(HandleShapeAnalysisTransferParametersProj* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeAnalysisTransferParametersProj*> HandleShapeAnalysisTransferParametersProj_clone(const HandleShapeAnalysisTransferParametersProj* self_) {
-    try { return {new HandleShapeAnalysisTransferParametersProj(*self_), nullptr}; }
+extern "C" bool Handle_ShapeAnalysis_TransferParametersProj_is_null(const Handle_ShapeAnalysis_TransferParametersProj* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeAnalysis_Wire_destructor(Handle_ShapeAnalysis_Wire* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeAnalysis_Wire*> Handle_ShapeAnalysis_Wire_clone(const Handle_ShapeAnalysis_Wire* self_) {
+    try { return {new Handle_ShapeAnalysis_Wire(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeAnalysisTransferParametersProj_is_null(const HandleShapeAnalysisTransferParametersProj* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeAnalysisWire_destructor(HandleShapeAnalysisWire* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeAnalysisWire*> HandleShapeAnalysisWire_clone(const HandleShapeAnalysisWire* self_) {
-    try { return {new HandleShapeAnalysisWire(*self_), nullptr}; }
+extern "C" bool Handle_ShapeAnalysis_Wire_is_null(const Handle_ShapeAnalysis_Wire* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeBuild_ReShape_destructor(Handle_ShapeBuild_ReShape* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeBuild_ReShape*> Handle_ShapeBuild_ReShape_clone(const Handle_ShapeBuild_ReShape* self_) {
+    try { return {new Handle_ShapeBuild_ReShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeAnalysisWire_is_null(const HandleShapeAnalysisWire* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeBuildReShape_destructor(HandleShapeBuildReShape* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeBuildReShape*> HandleShapeBuildReShape_clone(const HandleShapeBuildReShape* self_) {
-    try { return {new HandleShapeBuildReShape(*self_), nullptr}; }
+extern "C" bool Handle_ShapeBuild_ReShape_is_null(const Handle_ShapeBuild_ReShape* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeConstruct_ProjectCurveOnSurface_destructor(Handle_ShapeConstruct_ProjectCurveOnSurface* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeConstruct_ProjectCurveOnSurface*> Handle_ShapeConstruct_ProjectCurveOnSurface_clone(const Handle_ShapeConstruct_ProjectCurveOnSurface* self_) {
+    try { return {new Handle_ShapeConstruct_ProjectCurveOnSurface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeBuildReShape_is_null(const HandleShapeBuildReShape* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeConstructProjectCurveOnSurface_destructor(HandleShapeConstructProjectCurveOnSurface* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeConstructProjectCurveOnSurface*> HandleShapeConstructProjectCurveOnSurface_clone(const HandleShapeConstructProjectCurveOnSurface* self_) {
-    try { return {new HandleShapeConstructProjectCurveOnSurface(*self_), nullptr}; }
+extern "C" bool Handle_ShapeConstruct_ProjectCurveOnSurface_is_null(const Handle_ShapeConstruct_ProjectCurveOnSurface* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeCustom_BSplineRestriction_destructor(Handle_ShapeCustom_BSplineRestriction* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeCustom_BSplineRestriction*> Handle_ShapeCustom_BSplineRestriction_clone(const Handle_ShapeCustom_BSplineRestriction* self_) {
+    try { return {new Handle_ShapeCustom_BSplineRestriction(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeConstructProjectCurveOnSurface_is_null(const HandleShapeConstructProjectCurveOnSurface* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeCustomBSplineRestriction_destructor(HandleShapeCustomBSplineRestriction* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeCustomBSplineRestriction*> HandleShapeCustomBSplineRestriction_clone(const HandleShapeCustomBSplineRestriction* self_) {
-    try { return {new HandleShapeCustomBSplineRestriction(*self_), nullptr}; }
+extern "C" bool Handle_ShapeCustom_BSplineRestriction_is_null(const Handle_ShapeCustom_BSplineRestriction* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeCustom_ConvertToBSpline_destructor(Handle_ShapeCustom_ConvertToBSpline* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeCustom_ConvertToBSpline*> Handle_ShapeCustom_ConvertToBSpline_clone(const Handle_ShapeCustom_ConvertToBSpline* self_) {
+    try { return {new Handle_ShapeCustom_ConvertToBSpline(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeCustomBSplineRestriction_is_null(const HandleShapeCustomBSplineRestriction* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeCustomConvertToBSpline_destructor(HandleShapeCustomConvertToBSpline* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeCustomConvertToBSpline*> HandleShapeCustomConvertToBSpline_clone(const HandleShapeCustomConvertToBSpline* self_) {
-    try { return {new HandleShapeCustomConvertToBSpline(*self_), nullptr}; }
+extern "C" bool Handle_ShapeCustom_ConvertToBSpline_is_null(const Handle_ShapeCustom_ConvertToBSpline* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeCustom_ConvertToRevolution_destructor(Handle_ShapeCustom_ConvertToRevolution* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeCustom_ConvertToRevolution*> Handle_ShapeCustom_ConvertToRevolution_clone(const Handle_ShapeCustom_ConvertToRevolution* self_) {
+    try { return {new Handle_ShapeCustom_ConvertToRevolution(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeCustomConvertToBSpline_is_null(const HandleShapeCustomConvertToBSpline* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeCustomConvertToRevolution_destructor(HandleShapeCustomConvertToRevolution* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeCustomConvertToRevolution*> HandleShapeCustomConvertToRevolution_clone(const HandleShapeCustomConvertToRevolution* self_) {
-    try { return {new HandleShapeCustomConvertToRevolution(*self_), nullptr}; }
+extern "C" bool Handle_ShapeCustom_ConvertToRevolution_is_null(const Handle_ShapeCustom_ConvertToRevolution* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeCustom_DirectModification_destructor(Handle_ShapeCustom_DirectModification* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeCustom_DirectModification*> Handle_ShapeCustom_DirectModification_clone(const Handle_ShapeCustom_DirectModification* self_) {
+    try { return {new Handle_ShapeCustom_DirectModification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeCustomConvertToRevolution_is_null(const HandleShapeCustomConvertToRevolution* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeCustomDirectModification_destructor(HandleShapeCustomDirectModification* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeCustomDirectModification*> HandleShapeCustomDirectModification_clone(const HandleShapeCustomDirectModification* self_) {
-    try { return {new HandleShapeCustomDirectModification(*self_), nullptr}; }
+extern "C" bool Handle_ShapeCustom_DirectModification_is_null(const Handle_ShapeCustom_DirectModification* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeCustom_Modification_destructor(Handle_ShapeCustom_Modification* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeCustom_Modification*> Handle_ShapeCustom_Modification_clone(const Handle_ShapeCustom_Modification* self_) {
+    try { return {new Handle_ShapeCustom_Modification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeCustomDirectModification_is_null(const HandleShapeCustomDirectModification* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeCustomModification_destructor(HandleShapeCustomModification* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeCustomModification*> HandleShapeCustomModification_clone(const HandleShapeCustomModification* self_) {
-    try { return {new HandleShapeCustomModification(*self_), nullptr}; }
+extern "C" bool Handle_ShapeCustom_Modification_is_null(const Handle_ShapeCustom_Modification* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeCustom_RestrictionParameters_destructor(Handle_ShapeCustom_RestrictionParameters* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeCustom_RestrictionParameters*> Handle_ShapeCustom_RestrictionParameters_clone(const Handle_ShapeCustom_RestrictionParameters* self_) {
+    try { return {new Handle_ShapeCustom_RestrictionParameters(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeCustomModification_is_null(const HandleShapeCustomModification* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeCustomRestrictionParameters_destructor(HandleShapeCustomRestrictionParameters* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeCustomRestrictionParameters*> HandleShapeCustomRestrictionParameters_clone(const HandleShapeCustomRestrictionParameters* self_) {
-    try { return {new HandleShapeCustomRestrictionParameters(*self_), nullptr}; }
+extern "C" bool Handle_ShapeCustom_RestrictionParameters_is_null(const Handle_ShapeCustom_RestrictionParameters* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeCustom_SweptToElementary_destructor(Handle_ShapeCustom_SweptToElementary* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeCustom_SweptToElementary*> Handle_ShapeCustom_SweptToElementary_clone(const Handle_ShapeCustom_SweptToElementary* self_) {
+    try { return {new Handle_ShapeCustom_SweptToElementary(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeCustomRestrictionParameters_is_null(const HandleShapeCustomRestrictionParameters* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeCustomSweptToElementary_destructor(HandleShapeCustomSweptToElementary* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeCustomSweptToElementary*> HandleShapeCustomSweptToElementary_clone(const HandleShapeCustomSweptToElementary* self_) {
-    try { return {new HandleShapeCustomSweptToElementary(*self_), nullptr}; }
+extern "C" bool Handle_ShapeCustom_SweptToElementary_is_null(const Handle_ShapeCustom_SweptToElementary* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeCustom_TrsfModification_destructor(Handle_ShapeCustom_TrsfModification* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeCustom_TrsfModification*> Handle_ShapeCustom_TrsfModification_clone(const Handle_ShapeCustom_TrsfModification* self_) {
+    try { return {new Handle_ShapeCustom_TrsfModification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeCustomSweptToElementary_is_null(const HandleShapeCustomSweptToElementary* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeCustomTrsfModification_destructor(HandleShapeCustomTrsfModification* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeCustomTrsfModification*> HandleShapeCustomTrsfModification_clone(const HandleShapeCustomTrsfModification* self_) {
-    try { return {new HandleShapeCustomTrsfModification(*self_), nullptr}; }
+extern "C" bool Handle_ShapeCustom_TrsfModification_is_null(const Handle_ShapeCustom_TrsfModification* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeExtend_BasicMsgRegistrator_destructor(Handle_ShapeExtend_BasicMsgRegistrator* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeExtend_BasicMsgRegistrator*> Handle_ShapeExtend_BasicMsgRegistrator_clone(const Handle_ShapeExtend_BasicMsgRegistrator* self_) {
+    try { return {new Handle_ShapeExtend_BasicMsgRegistrator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeCustomTrsfModification_is_null(const HandleShapeCustomTrsfModification* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeExtendBasicMsgRegistrator_destructor(HandleShapeExtendBasicMsgRegistrator* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeExtendBasicMsgRegistrator*> HandleShapeExtendBasicMsgRegistrator_clone(const HandleShapeExtendBasicMsgRegistrator* self_) {
-    try { return {new HandleShapeExtendBasicMsgRegistrator(*self_), nullptr}; }
+extern "C" bool Handle_ShapeExtend_BasicMsgRegistrator_is_null(const Handle_ShapeExtend_BasicMsgRegistrator* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeExtend_ComplexCurve_destructor(Handle_ShapeExtend_ComplexCurve* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeExtend_ComplexCurve*> Handle_ShapeExtend_ComplexCurve_clone(const Handle_ShapeExtend_ComplexCurve* self_) {
+    try { return {new Handle_ShapeExtend_ComplexCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeExtendBasicMsgRegistrator_is_null(const HandleShapeExtendBasicMsgRegistrator* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeExtendComplexCurve_destructor(HandleShapeExtendComplexCurve* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeExtendComplexCurve*> HandleShapeExtendComplexCurve_clone(const HandleShapeExtendComplexCurve* self_) {
-    try { return {new HandleShapeExtendComplexCurve(*self_), nullptr}; }
+extern "C" bool Handle_ShapeExtend_ComplexCurve_is_null(const Handle_ShapeExtend_ComplexCurve* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeExtend_CompositeSurface_destructor(Handle_ShapeExtend_CompositeSurface* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeExtend_CompositeSurface*> Handle_ShapeExtend_CompositeSurface_clone(const Handle_ShapeExtend_CompositeSurface* self_) {
+    try { return {new Handle_ShapeExtend_CompositeSurface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeExtendComplexCurve_is_null(const HandleShapeExtendComplexCurve* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeExtendCompositeSurface_destructor(HandleShapeExtendCompositeSurface* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeExtendCompositeSurface*> HandleShapeExtendCompositeSurface_clone(const HandleShapeExtendCompositeSurface* self_) {
-    try { return {new HandleShapeExtendCompositeSurface(*self_), nullptr}; }
+extern "C" bool Handle_ShapeExtend_CompositeSurface_is_null(const Handle_ShapeExtend_CompositeSurface* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeExtend_MsgRegistrator_destructor(Handle_ShapeExtend_MsgRegistrator* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeExtend_MsgRegistrator*> Handle_ShapeExtend_MsgRegistrator_clone(const Handle_ShapeExtend_MsgRegistrator* self_) {
+    try { return {new Handle_ShapeExtend_MsgRegistrator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeExtendCompositeSurface_is_null(const HandleShapeExtendCompositeSurface* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeExtendMsgRegistrator_destructor(HandleShapeExtendMsgRegistrator* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeExtendMsgRegistrator*> HandleShapeExtendMsgRegistrator_clone(const HandleShapeExtendMsgRegistrator* self_) {
-    try { return {new HandleShapeExtendMsgRegistrator(*self_), nullptr}; }
+extern "C" bool Handle_ShapeExtend_MsgRegistrator_is_null(const Handle_ShapeExtend_MsgRegistrator* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeExtend_WireData_destructor(Handle_ShapeExtend_WireData* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeExtend_WireData*> Handle_ShapeExtend_WireData_clone(const Handle_ShapeExtend_WireData* self_) {
+    try { return {new Handle_ShapeExtend_WireData(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeExtendMsgRegistrator_is_null(const HandleShapeExtendMsgRegistrator* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeExtendWireData_destructor(HandleShapeExtendWireData* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeExtendWireData*> HandleShapeExtendWireData_clone(const HandleShapeExtendWireData* self_) {
-    try { return {new HandleShapeExtendWireData(*self_), nullptr}; }
+extern "C" bool Handle_ShapeExtend_WireData_is_null(const Handle_ShapeExtend_WireData* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeFix_ComposeShell_destructor(Handle_ShapeFix_ComposeShell* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeFix_ComposeShell*> Handle_ShapeFix_ComposeShell_clone(const Handle_ShapeFix_ComposeShell* self_) {
+    try { return {new Handle_ShapeFix_ComposeShell(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeExtendWireData_is_null(const HandleShapeExtendWireData* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeFixComposeShell_destructor(HandleShapeFixComposeShell* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeFixComposeShell*> HandleShapeFixComposeShell_clone(const HandleShapeFixComposeShell* self_) {
-    try { return {new HandleShapeFixComposeShell(*self_), nullptr}; }
+extern "C" bool Handle_ShapeFix_ComposeShell_is_null(const Handle_ShapeFix_ComposeShell* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeFix_Edge_destructor(Handle_ShapeFix_Edge* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeFix_Edge*> Handle_ShapeFix_Edge_clone(const Handle_ShapeFix_Edge* self_) {
+    try { return {new Handle_ShapeFix_Edge(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeFixComposeShell_is_null(const HandleShapeFixComposeShell* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeFixEdge_destructor(HandleShapeFixEdge* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeFixEdge*> HandleShapeFixEdge_clone(const HandleShapeFixEdge* self_) {
-    try { return {new HandleShapeFixEdge(*self_), nullptr}; }
+extern "C" bool Handle_ShapeFix_Edge_is_null(const Handle_ShapeFix_Edge* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeFix_EdgeProjAux_destructor(Handle_ShapeFix_EdgeProjAux* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeFix_EdgeProjAux*> Handle_ShapeFix_EdgeProjAux_clone(const Handle_ShapeFix_EdgeProjAux* self_) {
+    try { return {new Handle_ShapeFix_EdgeProjAux(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeFixEdge_is_null(const HandleShapeFixEdge* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeFixEdgeProjAux_destructor(HandleShapeFixEdgeProjAux* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeFixEdgeProjAux*> HandleShapeFixEdgeProjAux_clone(const HandleShapeFixEdgeProjAux* self_) {
-    try { return {new HandleShapeFixEdgeProjAux(*self_), nullptr}; }
+extern "C" bool Handle_ShapeFix_EdgeProjAux_is_null(const Handle_ShapeFix_EdgeProjAux* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeFix_Face_destructor(Handle_ShapeFix_Face* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeFix_Face*> Handle_ShapeFix_Face_clone(const Handle_ShapeFix_Face* self_) {
+    try { return {new Handle_ShapeFix_Face(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeFixEdgeProjAux_is_null(const HandleShapeFixEdgeProjAux* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeFixFace_destructor(HandleShapeFixFace* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeFixFace*> HandleShapeFixFace_clone(const HandleShapeFixFace* self_) {
-    try { return {new HandleShapeFixFace(*self_), nullptr}; }
+extern "C" bool Handle_ShapeFix_Face_is_null(const Handle_ShapeFix_Face* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeFix_FixSmallFace_destructor(Handle_ShapeFix_FixSmallFace* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeFix_FixSmallFace*> Handle_ShapeFix_FixSmallFace_clone(const Handle_ShapeFix_FixSmallFace* self_) {
+    try { return {new Handle_ShapeFix_FixSmallFace(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeFixFace_is_null(const HandleShapeFixFace* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeFixFixSmallFace_destructor(HandleShapeFixFixSmallFace* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeFixFixSmallFace*> HandleShapeFixFixSmallFace_clone(const HandleShapeFixFixSmallFace* self_) {
-    try { return {new HandleShapeFixFixSmallFace(*self_), nullptr}; }
+extern "C" bool Handle_ShapeFix_FixSmallFace_is_null(const Handle_ShapeFix_FixSmallFace* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeFix_FixSmallSolid_destructor(Handle_ShapeFix_FixSmallSolid* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeFix_FixSmallSolid*> Handle_ShapeFix_FixSmallSolid_clone(const Handle_ShapeFix_FixSmallSolid* self_) {
+    try { return {new Handle_ShapeFix_FixSmallSolid(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeFixFixSmallFace_is_null(const HandleShapeFixFixSmallFace* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeFixFixSmallSolid_destructor(HandleShapeFixFixSmallSolid* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeFixFixSmallSolid*> HandleShapeFixFixSmallSolid_clone(const HandleShapeFixFixSmallSolid* self_) {
-    try { return {new HandleShapeFixFixSmallSolid(*self_), nullptr}; }
+extern "C" bool Handle_ShapeFix_FixSmallSolid_is_null(const Handle_ShapeFix_FixSmallSolid* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeFix_Root_destructor(Handle_ShapeFix_Root* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeFix_Root*> Handle_ShapeFix_Root_clone(const Handle_ShapeFix_Root* self_) {
+    try { return {new Handle_ShapeFix_Root(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeFixFixSmallSolid_is_null(const HandleShapeFixFixSmallSolid* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeFixRoot_destructor(HandleShapeFixRoot* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeFixRoot*> HandleShapeFixRoot_clone(const HandleShapeFixRoot* self_) {
-    try { return {new HandleShapeFixRoot(*self_), nullptr}; }
+extern "C" bool Handle_ShapeFix_Root_is_null(const Handle_ShapeFix_Root* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeFix_Shape_destructor(Handle_ShapeFix_Shape* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeFix_Shape*> Handle_ShapeFix_Shape_clone(const Handle_ShapeFix_Shape* self_) {
+    try { return {new Handle_ShapeFix_Shape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeFixRoot_is_null(const HandleShapeFixRoot* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeFixShape_destructor(HandleShapeFixShape* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeFixShape*> HandleShapeFixShape_clone(const HandleShapeFixShape* self_) {
-    try { return {new HandleShapeFixShape(*self_), nullptr}; }
+extern "C" bool Handle_ShapeFix_Shape_is_null(const Handle_ShapeFix_Shape* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeFix_Shell_destructor(Handle_ShapeFix_Shell* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeFix_Shell*> Handle_ShapeFix_Shell_clone(const Handle_ShapeFix_Shell* self_) {
+    try { return {new Handle_ShapeFix_Shell(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeFixShape_is_null(const HandleShapeFixShape* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeFixShell_destructor(HandleShapeFixShell* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeFixShell*> HandleShapeFixShell_clone(const HandleShapeFixShell* self_) {
-    try { return {new HandleShapeFixShell(*self_), nullptr}; }
+extern "C" bool Handle_ShapeFix_Shell_is_null(const Handle_ShapeFix_Shell* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeFix_Solid_destructor(Handle_ShapeFix_Solid* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeFix_Solid*> Handle_ShapeFix_Solid_clone(const Handle_ShapeFix_Solid* self_) {
+    try { return {new Handle_ShapeFix_Solid(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeFixShell_is_null(const HandleShapeFixShell* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeFixSolid_destructor(HandleShapeFixSolid* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeFixSolid*> HandleShapeFixSolid_clone(const HandleShapeFixSolid* self_) {
-    try { return {new HandleShapeFixSolid(*self_), nullptr}; }
+extern "C" bool Handle_ShapeFix_Solid_is_null(const Handle_ShapeFix_Solid* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeFix_SplitCommonVertex_destructor(Handle_ShapeFix_SplitCommonVertex* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeFix_SplitCommonVertex*> Handle_ShapeFix_SplitCommonVertex_clone(const Handle_ShapeFix_SplitCommonVertex* self_) {
+    try { return {new Handle_ShapeFix_SplitCommonVertex(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeFixSolid_is_null(const HandleShapeFixSolid* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeFixSplitCommonVertex_destructor(HandleShapeFixSplitCommonVertex* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeFixSplitCommonVertex*> HandleShapeFixSplitCommonVertex_clone(const HandleShapeFixSplitCommonVertex* self_) {
-    try { return {new HandleShapeFixSplitCommonVertex(*self_), nullptr}; }
+extern "C" bool Handle_ShapeFix_SplitCommonVertex_is_null(const Handle_ShapeFix_SplitCommonVertex* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeFix_Wire_destructor(Handle_ShapeFix_Wire* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeFix_Wire*> Handle_ShapeFix_Wire_clone(const Handle_ShapeFix_Wire* self_) {
+    try { return {new Handle_ShapeFix_Wire(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeFixSplitCommonVertex_is_null(const HandleShapeFixSplitCommonVertex* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeFixWire_destructor(HandleShapeFixWire* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeFixWire*> HandleShapeFixWire_clone(const HandleShapeFixWire* self_) {
-    try { return {new HandleShapeFixWire(*self_), nullptr}; }
+extern "C" bool Handle_ShapeFix_Wire_is_null(const Handle_ShapeFix_Wire* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeFix_Wireframe_destructor(Handle_ShapeFix_Wireframe* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeFix_Wireframe*> Handle_ShapeFix_Wireframe_clone(const Handle_ShapeFix_Wireframe* self_) {
+    try { return {new Handle_ShapeFix_Wireframe(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeFixWire_is_null(const HandleShapeFixWire* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeFixWireframe_destructor(HandleShapeFixWireframe* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeFixWireframe*> HandleShapeFixWireframe_clone(const HandleShapeFixWireframe* self_) {
-    try { return {new HandleShapeFixWireframe(*self_), nullptr}; }
+extern "C" bool Handle_ShapeFix_Wireframe_is_null(const Handle_ShapeFix_Wireframe* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeProcess_Context_destructor(Handle_ShapeProcess_Context* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeProcess_Context*> Handle_ShapeProcess_Context_clone(const Handle_ShapeProcess_Context* self_) {
+    try { return {new Handle_ShapeProcess_Context(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeFixWireframe_is_null(const HandleShapeFixWireframe* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeProcessContext_destructor(HandleShapeProcessContext* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeProcessContext*> HandleShapeProcessContext_clone(const HandleShapeProcessContext* self_) {
-    try { return {new HandleShapeProcessContext(*self_), nullptr}; }
+extern "C" bool Handle_ShapeProcess_Context_is_null(const Handle_ShapeProcess_Context* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeProcess_Operator_destructor(Handle_ShapeProcess_Operator* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeProcess_Operator*> Handle_ShapeProcess_Operator_clone(const Handle_ShapeProcess_Operator* self_) {
+    try { return {new Handle_ShapeProcess_Operator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeProcessContext_is_null(const HandleShapeProcessContext* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeProcessOperator_destructor(HandleShapeProcessOperator* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeProcessOperator*> HandleShapeProcessOperator_clone(const HandleShapeProcessOperator* self_) {
-    try { return {new HandleShapeProcessOperator(*self_), nullptr}; }
+extern "C" bool Handle_ShapeProcess_Operator_is_null(const Handle_ShapeProcess_Operator* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeProcess_ShapeContext_destructor(Handle_ShapeProcess_ShapeContext* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeProcess_ShapeContext*> Handle_ShapeProcess_ShapeContext_clone(const Handle_ShapeProcess_ShapeContext* self_) {
+    try { return {new Handle_ShapeProcess_ShapeContext(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeProcessOperator_is_null(const HandleShapeProcessOperator* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeProcessShapeContext_destructor(HandleShapeProcessShapeContext* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeProcessShapeContext*> HandleShapeProcessShapeContext_clone(const HandleShapeProcessShapeContext* self_) {
-    try { return {new HandleShapeProcessShapeContext(*self_), nullptr}; }
+extern "C" bool Handle_ShapeProcess_ShapeContext_is_null(const Handle_ShapeProcess_ShapeContext* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeProcess_UOperator_destructor(Handle_ShapeProcess_UOperator* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeProcess_UOperator*> Handle_ShapeProcess_UOperator_clone(const Handle_ShapeProcess_UOperator* self_) {
+    try { return {new Handle_ShapeProcess_UOperator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeProcessShapeContext_is_null(const HandleShapeProcessShapeContext* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeProcessUOperator_destructor(HandleShapeProcessUOperator* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeProcessUOperator*> HandleShapeProcessUOperator_clone(const HandleShapeProcessUOperator* self_) {
-    try { return {new HandleShapeProcessUOperator(*self_), nullptr}; }
+extern "C" bool Handle_ShapeProcess_UOperator_is_null(const Handle_ShapeProcess_UOperator* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeUpgrade_ClosedEdgeDivide_destructor(Handle_ShapeUpgrade_ClosedEdgeDivide* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeUpgrade_ClosedEdgeDivide*> Handle_ShapeUpgrade_ClosedEdgeDivide_clone(const Handle_ShapeUpgrade_ClosedEdgeDivide* self_) {
+    try { return {new Handle_ShapeUpgrade_ClosedEdgeDivide(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeProcessUOperator_is_null(const HandleShapeProcessUOperator* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeUpgradeClosedEdgeDivide_destructor(HandleShapeUpgradeClosedEdgeDivide* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeUpgradeClosedEdgeDivide*> HandleShapeUpgradeClosedEdgeDivide_clone(const HandleShapeUpgradeClosedEdgeDivide* self_) {
-    try { return {new HandleShapeUpgradeClosedEdgeDivide(*self_), nullptr}; }
+extern "C" bool Handle_ShapeUpgrade_ClosedEdgeDivide_is_null(const Handle_ShapeUpgrade_ClosedEdgeDivide* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeUpgrade_ClosedFaceDivide_destructor(Handle_ShapeUpgrade_ClosedFaceDivide* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeUpgrade_ClosedFaceDivide*> Handle_ShapeUpgrade_ClosedFaceDivide_clone(const Handle_ShapeUpgrade_ClosedFaceDivide* self_) {
+    try { return {new Handle_ShapeUpgrade_ClosedFaceDivide(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeUpgradeClosedEdgeDivide_is_null(const HandleShapeUpgradeClosedEdgeDivide* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeUpgradeClosedFaceDivide_destructor(HandleShapeUpgradeClosedFaceDivide* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeUpgradeClosedFaceDivide*> HandleShapeUpgradeClosedFaceDivide_clone(const HandleShapeUpgradeClosedFaceDivide* self_) {
-    try { return {new HandleShapeUpgradeClosedFaceDivide(*self_), nullptr}; }
+extern "C" bool Handle_ShapeUpgrade_ClosedFaceDivide_is_null(const Handle_ShapeUpgrade_ClosedFaceDivide* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeUpgrade_ConvertCurve2dToBezier_destructor(Handle_ShapeUpgrade_ConvertCurve2dToBezier* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeUpgrade_ConvertCurve2dToBezier*> Handle_ShapeUpgrade_ConvertCurve2dToBezier_clone(const Handle_ShapeUpgrade_ConvertCurve2dToBezier* self_) {
+    try { return {new Handle_ShapeUpgrade_ConvertCurve2dToBezier(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeUpgradeClosedFaceDivide_is_null(const HandleShapeUpgradeClosedFaceDivide* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeUpgradeConvertCurve2dToBezier_destructor(HandleShapeUpgradeConvertCurve2dToBezier* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeUpgradeConvertCurve2dToBezier*> HandleShapeUpgradeConvertCurve2dToBezier_clone(const HandleShapeUpgradeConvertCurve2dToBezier* self_) {
-    try { return {new HandleShapeUpgradeConvertCurve2dToBezier(*self_), nullptr}; }
+extern "C" bool Handle_ShapeUpgrade_ConvertCurve2dToBezier_is_null(const Handle_ShapeUpgrade_ConvertCurve2dToBezier* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeUpgrade_ConvertCurve3dToBezier_destructor(Handle_ShapeUpgrade_ConvertCurve3dToBezier* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeUpgrade_ConvertCurve3dToBezier*> Handle_ShapeUpgrade_ConvertCurve3dToBezier_clone(const Handle_ShapeUpgrade_ConvertCurve3dToBezier* self_) {
+    try { return {new Handle_ShapeUpgrade_ConvertCurve3dToBezier(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeUpgradeConvertCurve2dToBezier_is_null(const HandleShapeUpgradeConvertCurve2dToBezier* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeUpgradeConvertCurve3dToBezier_destructor(HandleShapeUpgradeConvertCurve3dToBezier* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeUpgradeConvertCurve3dToBezier*> HandleShapeUpgradeConvertCurve3dToBezier_clone(const HandleShapeUpgradeConvertCurve3dToBezier* self_) {
-    try { return {new HandleShapeUpgradeConvertCurve3dToBezier(*self_), nullptr}; }
+extern "C" bool Handle_ShapeUpgrade_ConvertCurve3dToBezier_is_null(const Handle_ShapeUpgrade_ConvertCurve3dToBezier* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis_destructor(Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis*> Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis_clone(const Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis* self_) {
+    try { return {new Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeUpgradeConvertCurve3dToBezier_is_null(const HandleShapeUpgradeConvertCurve3dToBezier* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeUpgradeConvertSurfaceToBezierBasis_destructor(HandleShapeUpgradeConvertSurfaceToBezierBasis* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeUpgradeConvertSurfaceToBezierBasis*> HandleShapeUpgradeConvertSurfaceToBezierBasis_clone(const HandleShapeUpgradeConvertSurfaceToBezierBasis* self_) {
-    try { return {new HandleShapeUpgradeConvertSurfaceToBezierBasis(*self_), nullptr}; }
+extern "C" bool Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis_is_null(const Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeUpgrade_EdgeDivide_destructor(Handle_ShapeUpgrade_EdgeDivide* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeUpgrade_EdgeDivide*> Handle_ShapeUpgrade_EdgeDivide_clone(const Handle_ShapeUpgrade_EdgeDivide* self_) {
+    try { return {new Handle_ShapeUpgrade_EdgeDivide(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeUpgradeConvertSurfaceToBezierBasis_is_null(const HandleShapeUpgradeConvertSurfaceToBezierBasis* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeUpgradeEdgeDivide_destructor(HandleShapeUpgradeEdgeDivide* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeUpgradeEdgeDivide*> HandleShapeUpgradeEdgeDivide_clone(const HandleShapeUpgradeEdgeDivide* self_) {
-    try { return {new HandleShapeUpgradeEdgeDivide(*self_), nullptr}; }
+extern "C" bool Handle_ShapeUpgrade_EdgeDivide_is_null(const Handle_ShapeUpgrade_EdgeDivide* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeUpgrade_FaceDivide_destructor(Handle_ShapeUpgrade_FaceDivide* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeUpgrade_FaceDivide*> Handle_ShapeUpgrade_FaceDivide_clone(const Handle_ShapeUpgrade_FaceDivide* self_) {
+    try { return {new Handle_ShapeUpgrade_FaceDivide(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeUpgradeEdgeDivide_is_null(const HandleShapeUpgradeEdgeDivide* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeUpgradeFaceDivide_destructor(HandleShapeUpgradeFaceDivide* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeUpgradeFaceDivide*> HandleShapeUpgradeFaceDivide_clone(const HandleShapeUpgradeFaceDivide* self_) {
-    try { return {new HandleShapeUpgradeFaceDivide(*self_), nullptr}; }
+extern "C" bool Handle_ShapeUpgrade_FaceDivide_is_null(const Handle_ShapeUpgrade_FaceDivide* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeUpgrade_FaceDivideArea_destructor(Handle_ShapeUpgrade_FaceDivideArea* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeUpgrade_FaceDivideArea*> Handle_ShapeUpgrade_FaceDivideArea_clone(const Handle_ShapeUpgrade_FaceDivideArea* self_) {
+    try { return {new Handle_ShapeUpgrade_FaceDivideArea(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeUpgradeFaceDivide_is_null(const HandleShapeUpgradeFaceDivide* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeUpgradeFaceDivideArea_destructor(HandleShapeUpgradeFaceDivideArea* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeUpgradeFaceDivideArea*> HandleShapeUpgradeFaceDivideArea_clone(const HandleShapeUpgradeFaceDivideArea* self_) {
-    try { return {new HandleShapeUpgradeFaceDivideArea(*self_), nullptr}; }
+extern "C" bool Handle_ShapeUpgrade_FaceDivideArea_is_null(const Handle_ShapeUpgrade_FaceDivideArea* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeUpgrade_FixSmallBezierCurves_destructor(Handle_ShapeUpgrade_FixSmallBezierCurves* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeUpgrade_FixSmallBezierCurves*> Handle_ShapeUpgrade_FixSmallBezierCurves_clone(const Handle_ShapeUpgrade_FixSmallBezierCurves* self_) {
+    try { return {new Handle_ShapeUpgrade_FixSmallBezierCurves(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeUpgradeFaceDivideArea_is_null(const HandleShapeUpgradeFaceDivideArea* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeUpgradeFixSmallBezierCurves_destructor(HandleShapeUpgradeFixSmallBezierCurves* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeUpgradeFixSmallBezierCurves*> HandleShapeUpgradeFixSmallBezierCurves_clone(const HandleShapeUpgradeFixSmallBezierCurves* self_) {
-    try { return {new HandleShapeUpgradeFixSmallBezierCurves(*self_), nullptr}; }
+extern "C" bool Handle_ShapeUpgrade_FixSmallBezierCurves_is_null(const Handle_ShapeUpgrade_FixSmallBezierCurves* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeUpgrade_FixSmallCurves_destructor(Handle_ShapeUpgrade_FixSmallCurves* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeUpgrade_FixSmallCurves*> Handle_ShapeUpgrade_FixSmallCurves_clone(const Handle_ShapeUpgrade_FixSmallCurves* self_) {
+    try { return {new Handle_ShapeUpgrade_FixSmallCurves(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeUpgradeFixSmallBezierCurves_is_null(const HandleShapeUpgradeFixSmallBezierCurves* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeUpgradeFixSmallCurves_destructor(HandleShapeUpgradeFixSmallCurves* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeUpgradeFixSmallCurves*> HandleShapeUpgradeFixSmallCurves_clone(const HandleShapeUpgradeFixSmallCurves* self_) {
-    try { return {new HandleShapeUpgradeFixSmallCurves(*self_), nullptr}; }
+extern "C" bool Handle_ShapeUpgrade_FixSmallCurves_is_null(const Handle_ShapeUpgrade_FixSmallCurves* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeUpgrade_RemoveInternalWires_destructor(Handle_ShapeUpgrade_RemoveInternalWires* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeUpgrade_RemoveInternalWires*> Handle_ShapeUpgrade_RemoveInternalWires_clone(const Handle_ShapeUpgrade_RemoveInternalWires* self_) {
+    try { return {new Handle_ShapeUpgrade_RemoveInternalWires(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeUpgradeFixSmallCurves_is_null(const HandleShapeUpgradeFixSmallCurves* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeUpgradeRemoveInternalWires_destructor(HandleShapeUpgradeRemoveInternalWires* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeUpgradeRemoveInternalWires*> HandleShapeUpgradeRemoveInternalWires_clone(const HandleShapeUpgradeRemoveInternalWires* self_) {
-    try { return {new HandleShapeUpgradeRemoveInternalWires(*self_), nullptr}; }
+extern "C" bool Handle_ShapeUpgrade_RemoveInternalWires_is_null(const Handle_ShapeUpgrade_RemoveInternalWires* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeUpgrade_RemoveLocations_destructor(Handle_ShapeUpgrade_RemoveLocations* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeUpgrade_RemoveLocations*> Handle_ShapeUpgrade_RemoveLocations_clone(const Handle_ShapeUpgrade_RemoveLocations* self_) {
+    try { return {new Handle_ShapeUpgrade_RemoveLocations(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeUpgradeRemoveInternalWires_is_null(const HandleShapeUpgradeRemoveInternalWires* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeUpgradeRemoveLocations_destructor(HandleShapeUpgradeRemoveLocations* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeUpgradeRemoveLocations*> HandleShapeUpgradeRemoveLocations_clone(const HandleShapeUpgradeRemoveLocations* self_) {
-    try { return {new HandleShapeUpgradeRemoveLocations(*self_), nullptr}; }
+extern "C" bool Handle_ShapeUpgrade_RemoveLocations_is_null(const Handle_ShapeUpgrade_RemoveLocations* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeUpgrade_SplitCurve_destructor(Handle_ShapeUpgrade_SplitCurve* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitCurve*> Handle_ShapeUpgrade_SplitCurve_clone(const Handle_ShapeUpgrade_SplitCurve* self_) {
+    try { return {new Handle_ShapeUpgrade_SplitCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeUpgradeRemoveLocations_is_null(const HandleShapeUpgradeRemoveLocations* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeUpgradeSplitCurve_destructor(HandleShapeUpgradeSplitCurve* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeUpgradeSplitCurve*> HandleShapeUpgradeSplitCurve_clone(const HandleShapeUpgradeSplitCurve* self_) {
-    try { return {new HandleShapeUpgradeSplitCurve(*self_), nullptr}; }
+extern "C" bool Handle_ShapeUpgrade_SplitCurve_is_null(const Handle_ShapeUpgrade_SplitCurve* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeUpgrade_SplitCurve2d_destructor(Handle_ShapeUpgrade_SplitCurve2d* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitCurve2d*> Handle_ShapeUpgrade_SplitCurve2d_clone(const Handle_ShapeUpgrade_SplitCurve2d* self_) {
+    try { return {new Handle_ShapeUpgrade_SplitCurve2d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeUpgradeSplitCurve_is_null(const HandleShapeUpgradeSplitCurve* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeUpgradeSplitCurve2d_destructor(HandleShapeUpgradeSplitCurve2d* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeUpgradeSplitCurve2d*> HandleShapeUpgradeSplitCurve2d_clone(const HandleShapeUpgradeSplitCurve2d* self_) {
-    try { return {new HandleShapeUpgradeSplitCurve2d(*self_), nullptr}; }
+extern "C" bool Handle_ShapeUpgrade_SplitCurve2d_is_null(const Handle_ShapeUpgrade_SplitCurve2d* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeUpgrade_SplitCurve2dContinuity_destructor(Handle_ShapeUpgrade_SplitCurve2dContinuity* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitCurve2dContinuity*> Handle_ShapeUpgrade_SplitCurve2dContinuity_clone(const Handle_ShapeUpgrade_SplitCurve2dContinuity* self_) {
+    try { return {new Handle_ShapeUpgrade_SplitCurve2dContinuity(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeUpgradeSplitCurve2d_is_null(const HandleShapeUpgradeSplitCurve2d* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeUpgradeSplitCurve2dContinuity_destructor(HandleShapeUpgradeSplitCurve2dContinuity* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeUpgradeSplitCurve2dContinuity*> HandleShapeUpgradeSplitCurve2dContinuity_clone(const HandleShapeUpgradeSplitCurve2dContinuity* self_) {
-    try { return {new HandleShapeUpgradeSplitCurve2dContinuity(*self_), nullptr}; }
+extern "C" bool Handle_ShapeUpgrade_SplitCurve2dContinuity_is_null(const Handle_ShapeUpgrade_SplitCurve2dContinuity* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeUpgrade_SplitCurve3d_destructor(Handle_ShapeUpgrade_SplitCurve3d* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitCurve3d*> Handle_ShapeUpgrade_SplitCurve3d_clone(const Handle_ShapeUpgrade_SplitCurve3d* self_) {
+    try { return {new Handle_ShapeUpgrade_SplitCurve3d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeUpgradeSplitCurve2dContinuity_is_null(const HandleShapeUpgradeSplitCurve2dContinuity* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeUpgradeSplitCurve3d_destructor(HandleShapeUpgradeSplitCurve3d* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeUpgradeSplitCurve3d*> HandleShapeUpgradeSplitCurve3d_clone(const HandleShapeUpgradeSplitCurve3d* self_) {
-    try { return {new HandleShapeUpgradeSplitCurve3d(*self_), nullptr}; }
+extern "C" bool Handle_ShapeUpgrade_SplitCurve3d_is_null(const Handle_ShapeUpgrade_SplitCurve3d* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeUpgrade_SplitCurve3dContinuity_destructor(Handle_ShapeUpgrade_SplitCurve3dContinuity* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitCurve3dContinuity*> Handle_ShapeUpgrade_SplitCurve3dContinuity_clone(const Handle_ShapeUpgrade_SplitCurve3dContinuity* self_) {
+    try { return {new Handle_ShapeUpgrade_SplitCurve3dContinuity(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeUpgradeSplitCurve3d_is_null(const HandleShapeUpgradeSplitCurve3d* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeUpgradeSplitCurve3dContinuity_destructor(HandleShapeUpgradeSplitCurve3dContinuity* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeUpgradeSplitCurve3dContinuity*> HandleShapeUpgradeSplitCurve3dContinuity_clone(const HandleShapeUpgradeSplitCurve3dContinuity* self_) {
-    try { return {new HandleShapeUpgradeSplitCurve3dContinuity(*self_), nullptr}; }
+extern "C" bool Handle_ShapeUpgrade_SplitCurve3dContinuity_is_null(const Handle_ShapeUpgrade_SplitCurve3dContinuity* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeUpgrade_SplitSurface_destructor(Handle_ShapeUpgrade_SplitSurface* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitSurface*> Handle_ShapeUpgrade_SplitSurface_clone(const Handle_ShapeUpgrade_SplitSurface* self_) {
+    try { return {new Handle_ShapeUpgrade_SplitSurface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeUpgradeSplitCurve3dContinuity_is_null(const HandleShapeUpgradeSplitCurve3dContinuity* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeUpgradeSplitSurface_destructor(HandleShapeUpgradeSplitSurface* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeUpgradeSplitSurface*> HandleShapeUpgradeSplitSurface_clone(const HandleShapeUpgradeSplitSurface* self_) {
-    try { return {new HandleShapeUpgradeSplitSurface(*self_), nullptr}; }
+extern "C" bool Handle_ShapeUpgrade_SplitSurface_is_null(const Handle_ShapeUpgrade_SplitSurface* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeUpgrade_SplitSurfaceAngle_destructor(Handle_ShapeUpgrade_SplitSurfaceAngle* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitSurfaceAngle*> Handle_ShapeUpgrade_SplitSurfaceAngle_clone(const Handle_ShapeUpgrade_SplitSurfaceAngle* self_) {
+    try { return {new Handle_ShapeUpgrade_SplitSurfaceAngle(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeUpgradeSplitSurface_is_null(const HandleShapeUpgradeSplitSurface* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeUpgradeSplitSurfaceAngle_destructor(HandleShapeUpgradeSplitSurfaceAngle* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeUpgradeSplitSurfaceAngle*> HandleShapeUpgradeSplitSurfaceAngle_clone(const HandleShapeUpgradeSplitSurfaceAngle* self_) {
-    try { return {new HandleShapeUpgradeSplitSurfaceAngle(*self_), nullptr}; }
+extern "C" bool Handle_ShapeUpgrade_SplitSurfaceAngle_is_null(const Handle_ShapeUpgrade_SplitSurfaceAngle* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeUpgrade_SplitSurfaceArea_destructor(Handle_ShapeUpgrade_SplitSurfaceArea* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitSurfaceArea*> Handle_ShapeUpgrade_SplitSurfaceArea_clone(const Handle_ShapeUpgrade_SplitSurfaceArea* self_) {
+    try { return {new Handle_ShapeUpgrade_SplitSurfaceArea(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeUpgradeSplitSurfaceAngle_is_null(const HandleShapeUpgradeSplitSurfaceAngle* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeUpgradeSplitSurfaceArea_destructor(HandleShapeUpgradeSplitSurfaceArea* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeUpgradeSplitSurfaceArea*> HandleShapeUpgradeSplitSurfaceArea_clone(const HandleShapeUpgradeSplitSurfaceArea* self_) {
-    try { return {new HandleShapeUpgradeSplitSurfaceArea(*self_), nullptr}; }
+extern "C" bool Handle_ShapeUpgrade_SplitSurfaceArea_is_null(const Handle_ShapeUpgrade_SplitSurfaceArea* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeUpgrade_SplitSurfaceContinuity_destructor(Handle_ShapeUpgrade_SplitSurfaceContinuity* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitSurfaceContinuity*> Handle_ShapeUpgrade_SplitSurfaceContinuity_clone(const Handle_ShapeUpgrade_SplitSurfaceContinuity* self_) {
+    try { return {new Handle_ShapeUpgrade_SplitSurfaceContinuity(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeUpgradeSplitSurfaceArea_is_null(const HandleShapeUpgradeSplitSurfaceArea* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeUpgradeSplitSurfaceContinuity_destructor(HandleShapeUpgradeSplitSurfaceContinuity* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeUpgradeSplitSurfaceContinuity*> HandleShapeUpgradeSplitSurfaceContinuity_clone(const HandleShapeUpgradeSplitSurfaceContinuity* self_) {
-    try { return {new HandleShapeUpgradeSplitSurfaceContinuity(*self_), nullptr}; }
+extern "C" bool Handle_ShapeUpgrade_SplitSurfaceContinuity_is_null(const Handle_ShapeUpgrade_SplitSurfaceContinuity* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeUpgrade_Tool_destructor(Handle_ShapeUpgrade_Tool* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeUpgrade_Tool*> Handle_ShapeUpgrade_Tool_clone(const Handle_ShapeUpgrade_Tool* self_) {
+    try { return {new Handle_ShapeUpgrade_Tool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeUpgradeSplitSurfaceContinuity_is_null(const HandleShapeUpgradeSplitSurfaceContinuity* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeUpgradeTool_destructor(HandleShapeUpgradeTool* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeUpgradeTool*> HandleShapeUpgradeTool_clone(const HandleShapeUpgradeTool* self_) {
-    try { return {new HandleShapeUpgradeTool(*self_), nullptr}; }
+extern "C" bool Handle_ShapeUpgrade_Tool_is_null(const Handle_ShapeUpgrade_Tool* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeUpgrade_UnifySameDomain_destructor(Handle_ShapeUpgrade_UnifySameDomain* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeUpgrade_UnifySameDomain*> Handle_ShapeUpgrade_UnifySameDomain_clone(const Handle_ShapeUpgrade_UnifySameDomain* self_) {
+    try { return {new Handle_ShapeUpgrade_UnifySameDomain(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeUpgradeTool_is_null(const HandleShapeUpgradeTool* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeUpgradeUnifySameDomain_destructor(HandleShapeUpgradeUnifySameDomain* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeUpgradeUnifySameDomain*> HandleShapeUpgradeUnifySameDomain_clone(const HandleShapeUpgradeUnifySameDomain* self_) {
-    try { return {new HandleShapeUpgradeUnifySameDomain(*self_), nullptr}; }
+extern "C" bool Handle_ShapeUpgrade_UnifySameDomain_is_null(const Handle_ShapeUpgrade_UnifySameDomain* self_) { return self_->IsNull(); }
+extern "C" void Handle_ShapeUpgrade_WireDivide_destructor(Handle_ShapeUpgrade_WireDivide* self_) { delete self_; }
+extern "C" OcctResult<Handle_ShapeUpgrade_WireDivide*> Handle_ShapeUpgrade_WireDivide_clone(const Handle_ShapeUpgrade_WireDivide* self_) {
+    try { return {new Handle_ShapeUpgrade_WireDivide(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleShapeUpgradeUnifySameDomain_is_null(const HandleShapeUpgradeUnifySameDomain* self_) { return self_->IsNull(); }
-extern "C" void HandleShapeUpgradeWireDivide_destructor(HandleShapeUpgradeWireDivide* self_) { delete self_; }
-extern "C" OcctResult<HandleShapeUpgradeWireDivide*> HandleShapeUpgradeWireDivide_clone(const HandleShapeUpgradeWireDivide* self_) {
-    try { return {new HandleShapeUpgradeWireDivide(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleShapeUpgradeWireDivide_is_null(const HandleShapeUpgradeWireDivide* self_) { return self_->IsNull(); }
+extern "C" bool Handle_ShapeUpgrade_WireDivide_is_null(const Handle_ShapeUpgrade_WireDivide* self_) { return self_->IsNull(); }
 
 // ========================
 // ShapeAlgo_AlgoContainer wrappers
@@ -718,19 +664,11 @@ extern "C" OcctResult<bool> ShapeAlgo_AlgoContainer_connect_next_wire(const Shap
     try { return {self_->ConnectNextWire(*saw, *nextsewd, maxtol, *distmin, *revsewd, *revnextsewd), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* ShapeAlgo_AlgoContainer_approx_b_spline_curve_handlegeombsplinecurve_sequenceofcurve(const ShapeAlgo_AlgoContainer* self_, Handle(Geom_BSplineCurve) const* bspline, TColGeom_SequenceOfCurve* seq) {
-    try { self_->ApproxBSplineCurve(*bspline, *seq); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* ShapeAlgo_AlgoContainer_approx_b_spline_curve_handlegeom2dbsplinecurve_sequenceofcurve(const ShapeAlgo_AlgoContainer* self_, Handle(Geom2d_BSplineCurve) const* bspline, TColGeom2d_SequenceOfCurve* seq) {
-    try { self_->ApproxBSplineCurve(*bspline, *seq); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> ShapeAlgo_AlgoContainer_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_handletcolgeomhsequenceofboundedcurve(const ShapeAlgo_AlgoContainer* self_, Handle(Geom_BSplineCurve) const* BS, Handle(TColGeom_HSequenceOfBoundedCurve)* seqBS) {
+extern "C" OcctResult<bool> ShapeAlgo_AlgoContainer_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_handlencollectionhsequenceopencascadehandlegeomboundedcurve(const ShapeAlgo_AlgoContainer* self_, Handle(Geom_BSplineCurve) const* BS, Handle(NCollection_HSequence_opencascade_handle_Geom_BoundedCurve)* seqBS) {
     try { return {self_->C0BSplineToSequenceOfC1BSplineCurve(*BS, *seqBS), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeAlgo_AlgoContainer_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeom2dbsplinecurve_handletcolgeom2dhsequenceofboundedcurve(const ShapeAlgo_AlgoContainer* self_, Handle(Geom2d_BSplineCurve) const* BS, Handle(TColGeom2d_HSequenceOfBoundedCurve)* seqBS) {
+extern "C" OcctResult<bool> ShapeAlgo_AlgoContainer_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeom2dbsplinecurve_handlencollectionhsequenceopencascadehandlegeom2dboundedcurve(const ShapeAlgo_AlgoContainer* self_, Handle(Geom2d_BSplineCurve) const* BS, Handle(NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve)* seqBS) {
     try { return {self_->C0BSplineToSequenceOfC1BSplineCurve(*BS, *seqBS), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -756,20 +694,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> ShapeAlgo_AlgoContainer_get_
 }
 extern "C" OcctResult<const Standard_Transient*> ShapeAlgo_AlgoContainer_as_Standard_Transient(const ShapeAlgo_AlgoContainer* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeAlgo_AlgoContainer_as_Standard_Transient_mut(ShapeAlgo_AlgoContainer* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeAlgoAlgoContainer*> ShapeAlgo_AlgoContainer_to_handle(ShapeAlgo_AlgoContainer* obj) {
-    try { return {new HandleShapeAlgoAlgoContainer(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeAlgo_AlgoContainer*> ShapeAlgo_AlgoContainer_to_handle(ShapeAlgo_AlgoContainer* obj) {
+    try { return {new Handle_ShapeAlgo_AlgoContainer(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeAlgo_AlgoContainer*> HandleShapeAlgoAlgoContainer_get(const HandleShapeAlgoAlgoContainer* handle) {
+extern "C" OcctResult<const ShapeAlgo_AlgoContainer*> Handle_ShapeAlgo_AlgoContainer_get(const Handle_ShapeAlgo_AlgoContainer* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeAlgo_AlgoContainer*> HandleShapeAlgoAlgoContainer_get_mut(HandleShapeAlgoAlgoContainer* handle) {
+extern "C" OcctResult<ShapeAlgo_AlgoContainer*> Handle_ShapeAlgo_AlgoContainer_get_mut(Handle_ShapeAlgo_AlgoContainer* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeAlgoAlgoContainer_to_HandleStandardTransient(const HandleShapeAlgoAlgoContainer* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeAlgo_AlgoContainer_to_Handle_Standard_Transient(const Handle_ShapeAlgo_AlgoContainer* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> ShapeAlgo_AlgoContainer_inherited_IsInstance(const ShapeAlgo_AlgoContainer* self, Handle(Standard_Type) const& theType) {
@@ -832,20 +770,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> ShapeAlgo_ToolContainer_get_
 }
 extern "C" OcctResult<const Standard_Transient*> ShapeAlgo_ToolContainer_as_Standard_Transient(const ShapeAlgo_ToolContainer* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeAlgo_ToolContainer_as_Standard_Transient_mut(ShapeAlgo_ToolContainer* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeAlgoToolContainer*> ShapeAlgo_ToolContainer_to_handle(ShapeAlgo_ToolContainer* obj) {
-    try { return {new HandleShapeAlgoToolContainer(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeAlgo_ToolContainer*> ShapeAlgo_ToolContainer_to_handle(ShapeAlgo_ToolContainer* obj) {
+    try { return {new Handle_ShapeAlgo_ToolContainer(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeAlgo_ToolContainer*> HandleShapeAlgoToolContainer_get(const HandleShapeAlgoToolContainer* handle) {
+extern "C" OcctResult<const ShapeAlgo_ToolContainer*> Handle_ShapeAlgo_ToolContainer_get(const Handle_ShapeAlgo_ToolContainer* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeAlgo_ToolContainer*> HandleShapeAlgoToolContainer_get_mut(HandleShapeAlgoToolContainer* handle) {
+extern "C" OcctResult<ShapeAlgo_ToolContainer*> Handle_ShapeAlgo_ToolContainer_get_mut(Handle_ShapeAlgo_ToolContainer* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeAlgoToolContainer_to_HandleStandardTransient(const HandleShapeAlgoToolContainer* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeAlgo_ToolContainer_to_Handle_Standard_Transient(const Handle_ShapeAlgo_ToolContainer* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> ShapeAlgo_ToolContainer_inherited_IsInstance(const ShapeAlgo_ToolContainer* self, Handle(Standard_Type) const& theType) {
@@ -882,7 +820,7 @@ extern "C" void ShapeAlgo_ToolContainer_destructor(ShapeAlgo_ToolContainer* self
 // ShapeAnalysis_BoxBndTreeSelector wrappers
 // ========================
 
-extern "C" OcctResult<ShapeAnalysis_BoxBndTreeSelector*> ShapeAnalysis_BoxBndTreeSelector_ctor_handletoptoolsharray1ofshape_bool(Handle(TopTools_HArray1OfShape) const* theSeq, bool theShared) {
+extern "C" OcctResult<ShapeAnalysis_BoxBndTreeSelector*> ShapeAnalysis_BoxBndTreeSelector_ctor_harr1_shape_bool(Handle(NCollection_HArray1_TopoDS_Shape) const* theSeq, bool theShared) {
     try { return {new ShapeAnalysis_BoxBndTreeSelector(*theSeq, theShared), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1034,7 +972,7 @@ extern "C" OcctResult<bool> ShapeAnalysis_CheckSmallFace_check_strip_face(ShapeA
     try { return {self_->CheckStripFace(*F, *E1, *E2, tol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> ShapeAnalysis_CheckSmallFace_check_splitting_vertices(ShapeAnalysis_CheckSmallFace* self_, TopoDS_Face const* F, TopTools_DataMapOfShapeListOfShape* MapEdges, ShapeAnalysis_DataMapOfShapeListOfReal* MapParam, TopoDS_Compound* theAllVert) {
+extern "C" OcctResult<int32_t> ShapeAnalysis_CheckSmallFace_check_splitting_vertices(ShapeAnalysis_CheckSmallFace* self_, TopoDS_Face const* F, NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* MapEdges, NCollection_DataMap_TopoDS_Shape_NCollection_List_double_TopTools_ShapeMapHasher* MapParam, TopoDS_Compound* theAllVert) {
     try { return {self_->CheckSplittingVertices(*F, *MapEdges, *MapParam, *theAllVert), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1046,7 +984,7 @@ extern "C" OcctResult<bool> ShapeAnalysis_CheckSmallFace_check_twisted(ShapeAnal
     try { return {self_->CheckTwisted(*F, *paramu, *paramv), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeAnalysis_CheckSmallFace_check_pin_face(ShapeAnalysis_CheckSmallFace* self_, TopoDS_Face const* F, TopTools_DataMapOfShapeShape* mapEdges, double toler) {
+extern "C" OcctResult<bool> ShapeAnalysis_CheckSmallFace_check_pin_face(ShapeAnalysis_CheckSmallFace* self_, TopoDS_Face const* F, NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher* mapEdges, double toler) {
     try { return {self_->CheckPinFace(*F, *mapEdges, toler), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1140,7 +1078,7 @@ extern "C" OcctResult<int32_t> ShapeAnalysis_Curve_select_forward_seam(const Sha
     try { return {self_->SelectForwardSeam(*C1, *C2), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeAnalysis_Curve_is_planar_array1ofpnt_xyz_real(TColgp_Array1OfPnt const* pnts, gp_XYZ* Normal, double preci) {
+extern "C" OcctResult<bool> ShapeAnalysis_Curve_is_planar_arr1_pnt_xyz_real(NCollection_Array1_gp_Pnt const* pnts, gp_XYZ* Normal, double preci) {
     try { return {ShapeAnalysis_Curve::IsPlanar(*pnts, *Normal, preci), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1148,11 +1086,11 @@ extern "C" OcctResult<bool> ShapeAnalysis_Curve_is_planar_handlegeomcurve_xyz_re
     try { return {ShapeAnalysis_Curve::IsPlanar(*curve, *Normal, preci), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeAnalysis_Curve_get_sample_points_handlegeom2dcurve_real2_sequenceofpnt2d(Handle(Geom2d_Curve) const* curve, double first, double last, TColgp_SequenceOfPnt2d* seq) {
+extern "C" OcctResult<bool> ShapeAnalysis_Curve_get_sample_points_handlegeom2dcurve_real2_seq_pnt2d(Handle(Geom2d_Curve) const* curve, double first, double last, NCollection_Sequence_gp_Pnt2d* seq) {
     try { return {ShapeAnalysis_Curve::GetSamplePoints(*curve, first, last, *seq), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeAnalysis_Curve_get_sample_points_handlegeomcurve_real2_sequenceofpnt(Handle(Geom_Curve) const* curve, double first, double last, TColgp_SequenceOfPnt* seq) {
+extern "C" OcctResult<bool> ShapeAnalysis_Curve_get_sample_points_handlegeomcurve_real2_seq_pnt(Handle(Geom_Curve) const* curve, double first, double last, NCollection_Sequence_gp_Pnt* seq) {
     try { return {ShapeAnalysis_Curve::GetSamplePoints(*curve, first, last, *seq), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1304,8 +1242,8 @@ extern "C" OcctResult<TopoDS_Wire*> ShapeAnalysis_FreeBoundData_free_bound(const
     try { return {new TopoDS_Wire(self_->FreeBound()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TopTools_HSequenceOfShape)*> ShapeAnalysis_FreeBoundData_notches(const ShapeAnalysis_FreeBoundData* self_) {
-    try { return {new Handle(TopTools_HSequenceOfShape)(self_->Notches()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_TopoDS_Shape)*> ShapeAnalysis_FreeBoundData_notches(const ShapeAnalysis_FreeBoundData* self_) {
+    try { return {new Handle(NCollection_HSequence_TopoDS_Shape)(self_->Notches()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Wire*> ShapeAnalysis_FreeBoundData_notch(const ShapeAnalysis_FreeBoundData* self_, int32_t index) {
@@ -1382,20 +1320,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> ShapeAnalysis_FreeBoundData_
 }
 extern "C" OcctResult<const Standard_Transient*> ShapeAnalysis_FreeBoundData_as_Standard_Transient(const ShapeAnalysis_FreeBoundData* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeAnalysis_FreeBoundData_as_Standard_Transient_mut(ShapeAnalysis_FreeBoundData* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeAnalysisFreeBoundData*> ShapeAnalysis_FreeBoundData_to_handle(ShapeAnalysis_FreeBoundData* obj) {
-    try { return {new HandleShapeAnalysisFreeBoundData(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeAnalysis_FreeBoundData*> ShapeAnalysis_FreeBoundData_to_handle(ShapeAnalysis_FreeBoundData* obj) {
+    try { return {new Handle_ShapeAnalysis_FreeBoundData(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeAnalysis_FreeBoundData*> HandleShapeAnalysisFreeBoundData_get(const HandleShapeAnalysisFreeBoundData* handle) {
+extern "C" OcctResult<const ShapeAnalysis_FreeBoundData*> Handle_ShapeAnalysis_FreeBoundData_get(const Handle_ShapeAnalysis_FreeBoundData* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeAnalysis_FreeBoundData*> HandleShapeAnalysisFreeBoundData_get_mut(HandleShapeAnalysisFreeBoundData* handle) {
+extern "C" OcctResult<ShapeAnalysis_FreeBoundData*> Handle_ShapeAnalysis_FreeBoundData_get_mut(Handle_ShapeAnalysis_FreeBoundData* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeAnalysisFreeBoundData_to_HandleStandardTransient(const HandleShapeAnalysisFreeBoundData* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeAnalysis_FreeBoundData_to_Handle_Standard_Transient(const Handle_ShapeAnalysis_FreeBoundData* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> ShapeAnalysis_FreeBoundData_inherited_IsInstance(const ShapeAnalysis_FreeBoundData* self, Handle(Standard_Type) const& theType) {
@@ -1452,23 +1390,23 @@ extern "C" OcctResult<TopoDS_Compound const*> ShapeAnalysis_FreeBounds_get_open_
     try { return {&(self_->GetOpenWires()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* ShapeAnalysis_FreeBounds_connect_edges_to_wires(Handle(TopTools_HSequenceOfShape)* edges, double toler, bool shared, Handle(TopTools_HSequenceOfShape)* wires) {
-    try { ShapeAnalysis_FreeBounds::ConnectEdgesToWires(*edges, toler, shared, *wires); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<Handle(NCollection_HSequence_TopoDS_Shape)*> ShapeAnalysis_FreeBounds_connect_edges_to_wires(Handle(NCollection_HSequence_TopoDS_Shape) const* edges, double toler, bool shared) {
+    try { return {new Handle(NCollection_HSequence_TopoDS_Shape)(ShapeAnalysis_FreeBounds::ConnectEdgesToWires(*edges, toler, shared)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
-extern "C" const char* ShapeAnalysis_FreeBounds_connect_wires_to_wires_handletoptoolshsequenceofshape_real_bool_handletoptoolshsequenceofshape(Handle(TopTools_HSequenceOfShape)* iwires, double toler, bool shared, Handle(TopTools_HSequenceOfShape)* owires) {
-    try { ShapeAnalysis_FreeBounds::ConnectWiresToWires(*iwires, toler, shared, *owires); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<Handle(NCollection_HSequence_TopoDS_Shape)*> ShapeAnalysis_FreeBounds_connect_wires_to_wires_hseq_shape_real_bool(Handle(NCollection_HSequence_TopoDS_Shape) const* iwires, double toler, bool shared) {
+    try { return {new Handle(NCollection_HSequence_TopoDS_Shape)(ShapeAnalysis_FreeBounds::ConnectWiresToWires(*iwires, toler, shared)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
-extern "C" const char* ShapeAnalysis_FreeBounds_connect_wires_to_wires_handletoptoolshsequenceofshape_real_bool_handletoptoolshsequenceofshape_datamapofshapeshape(Handle(TopTools_HSequenceOfShape)* iwires, double toler, bool shared, Handle(TopTools_HSequenceOfShape)* owires, TopTools_DataMapOfShapeShape* vertices) {
-    try { ShapeAnalysis_FreeBounds::ConnectWiresToWires(*iwires, toler, shared, *owires, *vertices); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<Handle(NCollection_HSequence_TopoDS_Shape)*> ShapeAnalysis_FreeBounds_connect_wires_to_wires_hseq_shape_real_bool_dmap_shape_shape(Handle(NCollection_HSequence_TopoDS_Shape) const* iwires, double toler, bool shared, NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher* vertices) {
+    try { return {new Handle(NCollection_HSequence_TopoDS_Shape)(ShapeAnalysis_FreeBounds::ConnectWiresToWires(*iwires, toler, shared, *vertices)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
-extern "C" const char* ShapeAnalysis_FreeBounds_split_wires(Handle(TopTools_HSequenceOfShape) const* wires, double toler, bool shared, Handle(TopTools_HSequenceOfShape)* closed, Handle(TopTools_HSequenceOfShape)* open) {
+extern "C" const char* ShapeAnalysis_FreeBounds_split_wires(Handle(NCollection_HSequence_TopoDS_Shape) const* wires, double toler, bool shared, Handle(NCollection_HSequence_TopoDS_Shape)* closed, Handle(NCollection_HSequence_TopoDS_Shape)* open) {
     try { ShapeAnalysis_FreeBounds::SplitWires(*wires, toler, shared, *closed, *open); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* ShapeAnalysis_FreeBounds_dispatch_wires(Handle(TopTools_HSequenceOfShape) const* wires, TopoDS_Compound* closed, TopoDS_Compound* open) {
+extern "C" const char* ShapeAnalysis_FreeBounds_dispatch_wires(Handle(NCollection_HSequence_TopoDS_Shape) const* wires, TopoDS_Compound* closed, TopoDS_Compound* open) {
     try { ShapeAnalysis_FreeBounds::DispatchWires(*wires, *closed, *open); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1494,12 +1432,12 @@ extern "C" OcctResult<TopoDS_Shape*> ShapeAnalysis_FreeBoundsProperties_shape(co
     try { return {new TopoDS_Shape(self_->Shape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(ShapeAnalysis_HSequenceOfFreeBounds)*> ShapeAnalysis_FreeBoundsProperties_closed_free_bounds(const ShapeAnalysis_FreeBoundsProperties* self_) {
-    try { return {new Handle(ShapeAnalysis_HSequenceOfFreeBounds)(self_->ClosedFreeBounds()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData)*> ShapeAnalysis_FreeBoundsProperties_closed_free_bounds(const ShapeAnalysis_FreeBoundsProperties* self_) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData)(self_->ClosedFreeBounds()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(ShapeAnalysis_HSequenceOfFreeBounds)*> ShapeAnalysis_FreeBoundsProperties_open_free_bounds(const ShapeAnalysis_FreeBoundsProperties* self_) {
-    try { return {new Handle(ShapeAnalysis_HSequenceOfFreeBounds)(self_->OpenFreeBounds()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData)*> ShapeAnalysis_FreeBoundsProperties_open_free_bounds(const ShapeAnalysis_FreeBoundsProperties* self_) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData)(self_->OpenFreeBounds()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(ShapeAnalysis_FreeBoundData)*> ShapeAnalysis_FreeBoundsProperties_closed_free_bound(const ShapeAnalysis_FreeBoundsProperties* self_, int32_t index) {
@@ -1576,103 +1514,15 @@ extern "C" OcctResult<ShapeAnalysis_Geom*> ShapeAnalysis_Geom_ctor() {
     try { return {new ShapeAnalysis_Geom(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeAnalysis_Geom_nearest_plane(TColgp_Array1OfPnt const* Pnts, gp_Pln* aPln, double* Dmax) {
+extern "C" OcctResult<bool> ShapeAnalysis_Geom_nearest_plane(NCollection_Array1_gp_Pnt const* Pnts, gp_Pln* aPln, double* Dmax) {
     try { return {ShapeAnalysis_Geom::NearestPlane(*Pnts, *aPln, *Dmax), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeAnalysis_Geom_position_trsf(Handle(TColStd_HArray2OfReal) const* coefs, gp_Trsf* trsf, double unit, double prec) {
+extern "C" OcctResult<bool> ShapeAnalysis_Geom_position_trsf(Handle(NCollection_HArray2_double) const* coefs, gp_Trsf* trsf, double unit, double prec) {
     try { return {ShapeAnalysis_Geom::PositionTrsf(*coefs, *trsf, unit, prec), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" void ShapeAnalysis_Geom_destructor(ShapeAnalysis_Geom* self_) { delete self_; }
-
-// ========================
-// ShapeAnalysis_HSequenceOfFreeBounds wrappers
-// ========================
-
-extern "C" OcctResult<ShapeAnalysis_HSequenceOfFreeBounds*> ShapeAnalysis_HSequenceOfFreeBounds_ctor() {
-    try { return {new ShapeAnalysis_HSequenceOfFreeBounds(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<ShapeAnalysis_HSequenceOfFreeBounds*> ShapeAnalysis_HSequenceOfFreeBounds_ctor_sequenceoffreebounds(ShapeAnalysis_SequenceOfFreeBounds const* theOther) {
-    try { return {new ShapeAnalysis_HSequenceOfFreeBounds(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<ShapeAnalysis_SequenceOfFreeBounds const*> ShapeAnalysis_HSequenceOfFreeBounds_sequence(const ShapeAnalysis_HSequenceOfFreeBounds* self_) {
-    try { return {&(self_->Sequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* ShapeAnalysis_HSequenceOfFreeBounds_append_handleshapeanalysisfreebounddata(ShapeAnalysis_HSequenceOfFreeBounds* self_, Handle(ShapeAnalysis_FreeBoundData) const* theItem) {
-    try { self_->Append(*theItem); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* ShapeAnalysis_HSequenceOfFreeBounds_append_sequenceoffreebounds(ShapeAnalysis_HSequenceOfFreeBounds* self_, ShapeAnalysis_SequenceOfFreeBounds* theSequence) {
-    try { self_->Append(*theSequence); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<ShapeAnalysis_SequenceOfFreeBounds*> ShapeAnalysis_HSequenceOfFreeBounds_change_sequence(ShapeAnalysis_HSequenceOfFreeBounds* self_) {
-    try { return {&(self_->ChangeSequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> ShapeAnalysis_HSequenceOfFreeBounds_dynamic_type(const ShapeAnalysis_HSequenceOfFreeBounds* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> ShapeAnalysis_HSequenceOfFreeBounds_get_type_name() {
-    try { return {ShapeAnalysis_HSequenceOfFreeBounds::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> ShapeAnalysis_HSequenceOfFreeBounds_get_type_descriptor() {
-    try { return {&(ShapeAnalysis_HSequenceOfFreeBounds::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> ShapeAnalysis_HSequenceOfFreeBounds_as_Standard_Transient(const ShapeAnalysis_HSequenceOfFreeBounds* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> ShapeAnalysis_HSequenceOfFreeBounds_as_Standard_Transient_mut(ShapeAnalysis_HSequenceOfFreeBounds* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeAnalysisHSequenceOfFreeBounds*> ShapeAnalysis_HSequenceOfFreeBounds_to_handle(ShapeAnalysis_HSequenceOfFreeBounds* obj) {
-    try { return {new HandleShapeAnalysisHSequenceOfFreeBounds(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const ShapeAnalysis_HSequenceOfFreeBounds*> HandleShapeAnalysisHSequenceOfFreeBounds_get(const HandleShapeAnalysisHSequenceOfFreeBounds* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<ShapeAnalysis_HSequenceOfFreeBounds*> HandleShapeAnalysisHSequenceOfFreeBounds_get_mut(HandleShapeAnalysisHSequenceOfFreeBounds* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeAnalysisHSequenceOfFreeBounds_to_HandleStandardTransient(const HandleShapeAnalysisHSequenceOfFreeBounds* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> ShapeAnalysis_HSequenceOfFreeBounds_inherited_IsInstance(const ShapeAnalysis_HSequenceOfFreeBounds* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> ShapeAnalysis_HSequenceOfFreeBounds_inherited_IsKind(const ShapeAnalysis_HSequenceOfFreeBounds* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> ShapeAnalysis_HSequenceOfFreeBounds_inherited_This(const ShapeAnalysis_HSequenceOfFreeBounds* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> ShapeAnalysis_HSequenceOfFreeBounds_inherited_GetRefCount(const ShapeAnalysis_HSequenceOfFreeBounds* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* ShapeAnalysis_HSequenceOfFreeBounds_inherited_IncrementRefCounter(ShapeAnalysis_HSequenceOfFreeBounds* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> ShapeAnalysis_HSequenceOfFreeBounds_inherited_DecrementRefCounter(ShapeAnalysis_HSequenceOfFreeBounds* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* ShapeAnalysis_HSequenceOfFreeBounds_inherited_Delete(const ShapeAnalysis_HSequenceOfFreeBounds* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void ShapeAnalysis_HSequenceOfFreeBounds_destructor(ShapeAnalysis_HSequenceOfFreeBounds* self_) { delete self_; }
 
 // ========================
 // ShapeAnalysis_ShapeContents wrappers
@@ -1850,27 +1700,27 @@ extern "C" OcctResult<int32_t> ShapeAnalysis_ShapeContents_nb_shared_vertices(co
     try { return {self_->NbSharedVertices(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TopTools_HSequenceOfShape) const*> ShapeAnalysis_ShapeContents_big_spline_sec(const ShapeAnalysis_ShapeContents* self_) {
+extern "C" OcctResult<Handle(NCollection_HSequence_TopoDS_Shape) const*> ShapeAnalysis_ShapeContents_big_spline_sec(const ShapeAnalysis_ShapeContents* self_) {
     try { return {&(self_->BigSplineSec()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TopTools_HSequenceOfShape) const*> ShapeAnalysis_ShapeContents_indirect_sec(const ShapeAnalysis_ShapeContents* self_) {
+extern "C" OcctResult<Handle(NCollection_HSequence_TopoDS_Shape) const*> ShapeAnalysis_ShapeContents_indirect_sec(const ShapeAnalysis_ShapeContents* self_) {
     try { return {&(self_->IndirectSec()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TopTools_HSequenceOfShape) const*> ShapeAnalysis_ShapeContents_offset_surface_sec(const ShapeAnalysis_ShapeContents* self_) {
+extern "C" OcctResult<Handle(NCollection_HSequence_TopoDS_Shape) const*> ShapeAnalysis_ShapeContents_offset_surface_sec(const ShapeAnalysis_ShapeContents* self_) {
     try { return {&(self_->OffsetSurfaceSec()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TopTools_HSequenceOfShape) const*> ShapeAnalysis_ShapeContents_trimmed3d_sec(const ShapeAnalysis_ShapeContents* self_) {
+extern "C" OcctResult<Handle(NCollection_HSequence_TopoDS_Shape) const*> ShapeAnalysis_ShapeContents_trimmed3d_sec(const ShapeAnalysis_ShapeContents* self_) {
     try { return {&(self_->Trimmed3dSec()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TopTools_HSequenceOfShape) const*> ShapeAnalysis_ShapeContents_offset_curve_sec(const ShapeAnalysis_ShapeContents* self_) {
+extern "C" OcctResult<Handle(NCollection_HSequence_TopoDS_Shape) const*> ShapeAnalysis_ShapeContents_offset_curve_sec(const ShapeAnalysis_ShapeContents* self_) {
     try { return {&(self_->OffsetCurveSec()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TopTools_HSequenceOfShape) const*> ShapeAnalysis_ShapeContents_trimmed2d_sec(const ShapeAnalysis_ShapeContents* self_) {
+extern "C" OcctResult<Handle(NCollection_HSequence_TopoDS_Shape) const*> ShapeAnalysis_ShapeContents_trimmed2d_sec(const ShapeAnalysis_ShapeContents* self_) {
     try { return {&(self_->Trimmed2dSec()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1884,12 +1734,12 @@ extern "C" OcctResult<ShapeAnalysis_ShapeTolerance*> ShapeAnalysis_ShapeToleranc
     try { return {new ShapeAnalysis_ShapeTolerance(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TopTools_HSequenceOfShape)*> ShapeAnalysis_ShapeTolerance_over_tolerance(const ShapeAnalysis_ShapeTolerance* self_, TopoDS_Shape const* shape, double value, int32_t type) {
-    try { return {new Handle(TopTools_HSequenceOfShape)(self_->OverTolerance(*shape, value, static_cast<TopAbs_ShapeEnum>(type))), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_TopoDS_Shape)*> ShapeAnalysis_ShapeTolerance_over_tolerance(const ShapeAnalysis_ShapeTolerance* self_, TopoDS_Shape const* shape, double value, int32_t type) {
+    try { return {new Handle(NCollection_HSequence_TopoDS_Shape)(self_->OverTolerance(*shape, value, static_cast<TopAbs_ShapeEnum>(type))), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TopTools_HSequenceOfShape)*> ShapeAnalysis_ShapeTolerance_in_tolerance(const ShapeAnalysis_ShapeTolerance* self_, TopoDS_Shape const* shape, double valmin, double valmax, int32_t type) {
-    try { return {new Handle(TopTools_HSequenceOfShape)(self_->InTolerance(*shape, valmin, valmax, static_cast<TopAbs_ShapeEnum>(type))), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_TopoDS_Shape)*> ShapeAnalysis_ShapeTolerance_in_tolerance(const ShapeAnalysis_ShapeTolerance* self_, TopoDS_Shape const* shape, double valmin, double valmax, int32_t type) {
+    try { return {new Handle(NCollection_HSequence_TopoDS_Shape)(self_->InTolerance(*shape, valmin, valmax, static_cast<TopAbs_ShapeEnum>(type))), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<double> ShapeAnalysis_ShapeTolerance_tolerance(ShapeAnalysis_ShapeTolerance* self_, TopoDS_Shape const* shape, int32_t mode, int32_t type) {
@@ -2048,7 +1898,7 @@ extern "C" OcctResult<bool> ShapeAnalysis_Surface_project_degenerated_pnt_real_p
     try { return {self_->ProjectDegenerated(*P3d, preci, *neighbour, *result), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeAnalysis_Surface_project_degenerated_int_sequenceofpnt_sequenceofpnt2d_real_bool(ShapeAnalysis_Surface* self_, int32_t nbrPnt, TColgp_SequenceOfPnt const* points, TColgp_SequenceOfPnt2d* pnt2d, double preci, bool direct) {
+extern "C" OcctResult<bool> ShapeAnalysis_Surface_project_degenerated_int_seq_pnt_seq_pnt2d_real_bool(ShapeAnalysis_Surface* self_, int32_t nbrPnt, NCollection_Sequence_gp_Pnt const* points, NCollection_Sequence_gp_Pnt2d* pnt2d, double preci, bool direct) {
     try { return {self_->ProjectDegenerated(nbrPnt, *points, *pnt2d, preci, direct), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2114,20 +1964,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> ShapeAnalysis_Surface_get_ty
 }
 extern "C" OcctResult<const Standard_Transient*> ShapeAnalysis_Surface_as_Standard_Transient(const ShapeAnalysis_Surface* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeAnalysis_Surface_as_Standard_Transient_mut(ShapeAnalysis_Surface* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeAnalysisSurface*> ShapeAnalysis_Surface_to_handle(ShapeAnalysis_Surface* obj) {
-    try { return {new HandleShapeAnalysisSurface(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeAnalysis_Surface*> ShapeAnalysis_Surface_to_handle(ShapeAnalysis_Surface* obj) {
+    try { return {new Handle_ShapeAnalysis_Surface(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeAnalysis_Surface*> HandleShapeAnalysisSurface_get(const HandleShapeAnalysisSurface* handle) {
+extern "C" OcctResult<const ShapeAnalysis_Surface*> Handle_ShapeAnalysis_Surface_get(const Handle_ShapeAnalysis_Surface* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeAnalysis_Surface*> HandleShapeAnalysisSurface_get_mut(HandleShapeAnalysisSurface* handle) {
+extern "C" OcctResult<ShapeAnalysis_Surface*> Handle_ShapeAnalysis_Surface_get_mut(Handle_ShapeAnalysis_Surface* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeAnalysisSurface_to_HandleStandardTransient(const HandleShapeAnalysisSurface* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeAnalysis_Surface_to_Handle_Standard_Transient(const Handle_ShapeAnalysis_Surface* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> ShapeAnalysis_Surface_inherited_IsInstance(const ShapeAnalysis_Surface* self, Handle(Standard_Type) const& theType) {
@@ -2172,8 +2022,8 @@ extern "C" OcctResult<ShapeAnalysis_TransferParameters*> ShapeAnalysis_TransferP
     try { return {new ShapeAnalysis_TransferParameters(*E, *F), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfReal)*> ShapeAnalysis_TransferParameters_perform_handletcolstdhsequenceofreal_bool(ShapeAnalysis_TransferParameters* self_, Handle(TColStd_HSequenceOfReal) const* Params, bool To2d) {
-    try { return {new Handle(TColStd_HSequenceOfReal)(self_->Perform(*Params, To2d)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_double)*> ShapeAnalysis_TransferParameters_perform_hseq_double_bool(ShapeAnalysis_TransferParameters* self_, Handle(NCollection_HSequence_double) const* Params, bool To2d) {
+    try { return {new Handle(NCollection_HSequence_double)(self_->Perform(*Params, To2d)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeAnalysis_TransferParameters_init(ShapeAnalysis_TransferParameters* self_, TopoDS_Edge const* E, TopoDS_Face const* F) {
@@ -2210,27 +2060,27 @@ extern "C" OcctResult<Handle(Standard_Type) const*> ShapeAnalysis_TransferParame
 }
 extern "C" OcctResult<const Standard_Transient*> ShapeAnalysis_TransferParameters_as_Standard_Transient(const ShapeAnalysis_TransferParameters* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeAnalysis_TransferParameters_as_Standard_Transient_mut(ShapeAnalysis_TransferParameters* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeAnalysisTransferParameters*> ShapeAnalysis_TransferParameters_to_handle(ShapeAnalysis_TransferParameters* obj) {
-    try { return {new HandleShapeAnalysisTransferParameters(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeAnalysis_TransferParameters*> ShapeAnalysis_TransferParameters_to_handle(ShapeAnalysis_TransferParameters* obj) {
+    try { return {new Handle_ShapeAnalysis_TransferParameters(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeAnalysis_TransferParameters*> HandleShapeAnalysisTransferParameters_get(const HandleShapeAnalysisTransferParameters* handle) {
+extern "C" OcctResult<const ShapeAnalysis_TransferParameters*> Handle_ShapeAnalysis_TransferParameters_get(const Handle_ShapeAnalysis_TransferParameters* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeAnalysis_TransferParameters*> HandleShapeAnalysisTransferParameters_get_mut(HandleShapeAnalysisTransferParameters* handle) {
+extern "C" OcctResult<ShapeAnalysis_TransferParameters*> Handle_ShapeAnalysis_TransferParameters_get_mut(Handle_ShapeAnalysis_TransferParameters* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeAnalysisTransferParameters_to_HandleStandardTransient(const HandleShapeAnalysisTransferParameters* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeAnalysis_TransferParameters_to_Handle_Standard_Transient(const Handle_ShapeAnalysis_TransferParameters* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeAnalysisTransferParametersProj*> HandleShapeAnalysisTransferParameters_downcast_to_HandleShapeAnalysisTransferParametersProj(const HandleShapeAnalysisTransferParameters* self_) {
+extern "C" OcctResult<Handle_ShapeAnalysis_TransferParametersProj*> Handle_ShapeAnalysis_TransferParameters_downcast_to_Handle_ShapeAnalysis_TransferParametersProj(const Handle_ShapeAnalysis_TransferParameters* self_) {
     try {
     opencascade::handle<ShapeAnalysis_TransferParametersProj> result = opencascade::handle<ShapeAnalysis_TransferParametersProj>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeAnalysisTransferParametersProj(result), nullptr};
+    return {new Handle_ShapeAnalysis_TransferParametersProj(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -2276,8 +2126,8 @@ extern "C" OcctResult<ShapeAnalysis_TransferParametersProj*> ShapeAnalysis_Trans
     try { return {new ShapeAnalysis_TransferParametersProj(*E, *F), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfReal)*> ShapeAnalysis_TransferParametersProj_perform_handletcolstdhsequenceofreal_bool(ShapeAnalysis_TransferParametersProj* self_, Handle(TColStd_HSequenceOfReal) const* Papams, bool To2d) {
-    try { return {new Handle(TColStd_HSequenceOfReal)(self_->Perform(*Papams, To2d)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_double)*> ShapeAnalysis_TransferParametersProj_perform_hseq_double_bool(ShapeAnalysis_TransferParametersProj* self_, Handle(NCollection_HSequence_double) const* Papams, bool To2d) {
+    try { return {new Handle(NCollection_HSequence_double)(self_->Perform(*Papams, To2d)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeAnalysis_TransferParametersProj_init(ShapeAnalysis_TransferParametersProj* self_, TopoDS_Edge const* E, TopoDS_Face const* F) {
@@ -2324,24 +2174,24 @@ extern "C" OcctResult<const ShapeAnalysis_TransferParameters*> ShapeAnalysis_Tra
 extern "C" OcctResult<ShapeAnalysis_TransferParameters*> ShapeAnalysis_TransferParametersProj_as_ShapeAnalysis_TransferParameters_mut(ShapeAnalysis_TransferParametersProj* self_) { return {static_cast<ShapeAnalysis_TransferParameters*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeAnalysis_TransferParametersProj_as_Standard_Transient(const ShapeAnalysis_TransferParametersProj* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeAnalysis_TransferParametersProj_as_Standard_Transient_mut(ShapeAnalysis_TransferParametersProj* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeAnalysisTransferParametersProj*> ShapeAnalysis_TransferParametersProj_to_handle(ShapeAnalysis_TransferParametersProj* obj) {
-    try { return {new HandleShapeAnalysisTransferParametersProj(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeAnalysis_TransferParametersProj*> ShapeAnalysis_TransferParametersProj_to_handle(ShapeAnalysis_TransferParametersProj* obj) {
+    try { return {new Handle_ShapeAnalysis_TransferParametersProj(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeAnalysis_TransferParametersProj*> HandleShapeAnalysisTransferParametersProj_get(const HandleShapeAnalysisTransferParametersProj* handle) {
+extern "C" OcctResult<const ShapeAnalysis_TransferParametersProj*> Handle_ShapeAnalysis_TransferParametersProj_get(const Handle_ShapeAnalysis_TransferParametersProj* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeAnalysis_TransferParametersProj*> HandleShapeAnalysisTransferParametersProj_get_mut(HandleShapeAnalysisTransferParametersProj* handle) {
+extern "C" OcctResult<ShapeAnalysis_TransferParametersProj*> Handle_ShapeAnalysis_TransferParametersProj_get_mut(Handle_ShapeAnalysis_TransferParametersProj* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeAnalysisTransferParameters*> HandleShapeAnalysisTransferParametersProj_to_HandleShapeAnalysisTransferParameters(const HandleShapeAnalysisTransferParametersProj* self_) {
-    try { return {new HandleShapeAnalysisTransferParameters(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeAnalysis_TransferParameters*> Handle_ShapeAnalysis_TransferParametersProj_to_Handle_ShapeAnalysis_TransferParameters(const Handle_ShapeAnalysis_TransferParametersProj* self_) {
+    try { return {new Handle_ShapeAnalysis_TransferParameters(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeAnalysisTransferParametersProj_to_HandleStandardTransient(const HandleShapeAnalysisTransferParametersProj* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeAnalysis_TransferParametersProj_to_Handle_Standard_Transient(const Handle_ShapeAnalysis_TransferParametersProj* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeAnalysis_TransferParametersProj_inherited_SetMaxTolerance(ShapeAnalysis_TransferParametersProj* self, double maxtol) {
@@ -2410,8 +2260,16 @@ extern "C" const char* ShapeAnalysis_Wire_load_handleshapeextendwiredata(ShapeAn
     try { self_->Load(*sbwd); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* ShapeAnalysis_Wire_set_face(ShapeAnalysis_Wire* self_, TopoDS_Face const* face) {
+extern "C" const char* ShapeAnalysis_Wire_set_face_face(ShapeAnalysis_Wire* self_, TopoDS_Face const* face) {
     try { self_->SetFace(*face); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* ShapeAnalysis_Wire_set_face_face_handleshapeanalysissurface(ShapeAnalysis_Wire* self_, TopoDS_Face const* theFace, Handle(ShapeAnalysis_Surface) const* theSurfaceAnalysis) {
+    try { self_->SetFace(*theFace, *theSurfaceAnalysis); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* ShapeAnalysis_Wire_set_surface_handleshapeanalysissurface(ShapeAnalysis_Wire* self_, Handle(ShapeAnalysis_Surface) const* theSurfaceAnalysis) {
+    try { self_->SetSurface(*theSurfaceAnalysis); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* ShapeAnalysis_Wire_set_surface_handlegeomsurface(ShapeAnalysis_Wire* self_, Handle(Geom_Surface) const* surface) {
@@ -2546,7 +2404,7 @@ extern "C" OcctResult<bool> ShapeAnalysis_Wire_check_curve_gap(ShapeAnalysis_Wir
     try { return {self_->CheckCurveGap(num), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeAnalysis_Wire_check_self_intersecting_edge_int_sequenceofintersectionpoint_sequenceofpnt(ShapeAnalysis_Wire* self_, int32_t num, IntRes2d_SequenceOfIntersectionPoint* points2d, TColgp_SequenceOfPnt* points3d) {
+extern "C" OcctResult<bool> ShapeAnalysis_Wire_check_self_intersecting_edge_int_seq_intersectionpoint_seq_pnt(ShapeAnalysis_Wire* self_, int32_t num, NCollection_Sequence_IntRes2d_IntersectionPoint* points2d, NCollection_Sequence_gp_Pnt* points3d) {
     try { return {self_->CheckSelfIntersectingEdge(num, *points2d, *points3d), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2554,7 +2412,7 @@ extern "C" OcctResult<bool> ShapeAnalysis_Wire_check_self_intersecting_edge_int(
     try { return {self_->CheckSelfIntersectingEdge(num), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeAnalysis_Wire_check_intersecting_edges_int_sequenceofintersectionpoint_sequenceofpnt_sequenceofreal(ShapeAnalysis_Wire* self_, int32_t num, IntRes2d_SequenceOfIntersectionPoint* points2d, TColgp_SequenceOfPnt* points3d, TColStd_SequenceOfReal* errors) {
+extern "C" OcctResult<bool> ShapeAnalysis_Wire_check_intersecting_edges_int_seq_intersectionpoint_seq_pnt_seq_double(ShapeAnalysis_Wire* self_, int32_t num, NCollection_Sequence_IntRes2d_IntersectionPoint* points2d, NCollection_Sequence_gp_Pnt* points3d, NCollection_Sequence_double* errors) {
     try { return {self_->CheckIntersectingEdges(num, *points2d, *points3d, *errors), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2562,7 +2420,7 @@ extern "C" OcctResult<bool> ShapeAnalysis_Wire_check_intersecting_edges_int(Shap
     try { return {self_->CheckIntersectingEdges(num), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeAnalysis_Wire_check_intersecting_edges_int2_sequenceofintersectionpoint_sequenceofpnt_sequenceofreal(ShapeAnalysis_Wire* self_, int32_t num1, int32_t num2, IntRes2d_SequenceOfIntersectionPoint* points2d, TColgp_SequenceOfPnt* points3d, TColStd_SequenceOfReal* errors) {
+extern "C" OcctResult<bool> ShapeAnalysis_Wire_check_intersecting_edges_int2_seq_intersectionpoint_seq_pnt_seq_double(ShapeAnalysis_Wire* self_, int32_t num1, int32_t num2, NCollection_Sequence_IntRes2d_IntersectionPoint* points2d, NCollection_Sequence_gp_Pnt* points3d, NCollection_Sequence_double* errors) {
     try { return {self_->CheckIntersectingEdges(num1, num2, *points2d, *points3d, *errors), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2598,7 +2456,7 @@ extern "C" OcctResult<bool> ShapeAnalysis_Wire_check_shape_connect_real4_shape_r
     try { return {self_->CheckShapeConnect(*tailhead, *tailtail, *headtail, *headhead, *shape, prec), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeAnalysis_Wire_check_loop(ShapeAnalysis_Wire* self_, TopTools_IndexedMapOfShape* aMapLoopVertices, TopTools_DataMapOfShapeListOfShape* aMapVertexEdges, TopTools_MapOfShape* aMapSmallEdges, TopTools_MapOfShape* aMapSeemEdges) {
+extern "C" OcctResult<bool> ShapeAnalysis_Wire_check_loop(ShapeAnalysis_Wire* self_, NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher* aMapLoopVertices, NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* aMapVertexEdges, NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher* aMapSmallEdges, NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher* aMapSeemEdges) {
     try { return {self_->CheckLoop(*aMapLoopVertices, *aMapVertexEdges, *aMapSmallEdges, *aMapSeemEdges), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2688,20 +2546,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> ShapeAnalysis_Wire_get_type_
 }
 extern "C" OcctResult<const Standard_Transient*> ShapeAnalysis_Wire_as_Standard_Transient(const ShapeAnalysis_Wire* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeAnalysis_Wire_as_Standard_Transient_mut(ShapeAnalysis_Wire* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeAnalysisWire*> ShapeAnalysis_Wire_to_handle(ShapeAnalysis_Wire* obj) {
-    try { return {new HandleShapeAnalysisWire(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeAnalysis_Wire*> ShapeAnalysis_Wire_to_handle(ShapeAnalysis_Wire* obj) {
+    try { return {new Handle_ShapeAnalysis_Wire(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeAnalysis_Wire*> HandleShapeAnalysisWire_get(const HandleShapeAnalysisWire* handle) {
+extern "C" OcctResult<const ShapeAnalysis_Wire*> Handle_ShapeAnalysis_Wire_get(const Handle_ShapeAnalysis_Wire* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeAnalysis_Wire*> HandleShapeAnalysisWire_get_mut(HandleShapeAnalysisWire* handle) {
+extern "C" OcctResult<ShapeAnalysis_Wire*> Handle_ShapeAnalysis_Wire_get_mut(Handle_ShapeAnalysis_Wire* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeAnalysisWire_to_HandleStandardTransient(const HandleShapeAnalysisWire* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeAnalysis_Wire_to_Handle_Standard_Transient(const Handle_ShapeAnalysis_Wire* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> ShapeAnalysis_Wire_inherited_IsInstance(const ShapeAnalysis_Wire* self, Handle(Standard_Type) const& theType) {
@@ -3064,24 +2922,24 @@ extern "C" OcctResult<const BRepTools_ReShape*> ShapeBuild_ReShape_as_BRepTools_
 extern "C" OcctResult<BRepTools_ReShape*> ShapeBuild_ReShape_as_BRepTools_ReShape_mut(ShapeBuild_ReShape* self_) { return {static_cast<BRepTools_ReShape*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeBuild_ReShape_as_Standard_Transient(const ShapeBuild_ReShape* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeBuild_ReShape_as_Standard_Transient_mut(ShapeBuild_ReShape* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeBuildReShape*> ShapeBuild_ReShape_to_handle(ShapeBuild_ReShape* obj) {
-    try { return {new HandleShapeBuildReShape(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeBuild_ReShape*> ShapeBuild_ReShape_to_handle(ShapeBuild_ReShape* obj) {
+    try { return {new Handle_ShapeBuild_ReShape(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeBuild_ReShape*> HandleShapeBuildReShape_get(const HandleShapeBuildReShape* handle) {
+extern "C" OcctResult<const ShapeBuild_ReShape*> Handle_ShapeBuild_ReShape_get(const Handle_ShapeBuild_ReShape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeBuild_ReShape*> HandleShapeBuildReShape_get_mut(HandleShapeBuildReShape* handle) {
+extern "C" OcctResult<ShapeBuild_ReShape*> Handle_ShapeBuild_ReShape_get_mut(Handle_ShapeBuild_ReShape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepToolsReShape*> HandleShapeBuildReShape_to_HandleBRepToolsReShape(const HandleShapeBuildReShape* self_) {
-    try { return {new HandleBRepToolsReShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepTools_ReShape*> Handle_ShapeBuild_ReShape_to_Handle_BRepTools_ReShape(const Handle_ShapeBuild_ReShape* self_) {
+    try { return {new Handle_BRepTools_ReShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeBuildReShape_to_HandleStandardTransient(const HandleShapeBuildReShape* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeBuild_ReShape_to_Handle_Standard_Transient(const Handle_ShapeBuild_ReShape* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeBuild_ReShape_inherited_Clear(ShapeBuild_ReShape* self) {
@@ -3102,6 +2960,10 @@ extern "C" OcctResult<bool> ShapeBuild_ReShape_inherited_IsRecorded(const ShapeB
 }
 extern "C" OcctResult<TopoDS_Shape*> ShapeBuild_ReShape_inherited_Value(const ShapeBuild_ReShape* self, TopoDS_Shape const& shape) {
     try { return {new TopoDS_Shape(self->Value(shape)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<TopoDS_Shape*> ShapeBuild_ReShape_inherited_ValueLeaf(const ShapeBuild_ReShape* self, TopoDS_Shape const& theShape) {
+    try { return {new TopoDS_Shape(self->ValueLeaf(theShape)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool*> ShapeBuild_ReShape_inherited_ModeConsiderLocation(ShapeBuild_ReShape* self) {
@@ -3196,11 +3058,11 @@ extern "C" OcctResult<bool> ShapeConstruct_Curve_adjust_curve2d(const ShapeConst
     try { return {self_->AdjustCurve2d(*C2D, *P1, *P2, take1, take2), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeConstruct_Curve_fix_knots_handletcolstdharray1ofreal(Handle(TColStd_HArray1OfReal)* knots) {
+extern "C" OcctResult<bool> ShapeConstruct_Curve_fix_knots_harr1_double(Handle(NCollection_HArray1_double)* knots) {
     try { return {ShapeConstruct_Curve::FixKnots(*knots), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeConstruct_Curve_fix_knots_array1ofreal(TColStd_Array1OfReal* knots) {
+extern "C" OcctResult<bool> ShapeConstruct_Curve_fix_knots_arr1_double(NCollection_Array1_double* knots) {
     try { return {ShapeConstruct_Curve::FixKnots(*knots), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -3210,7 +3072,7 @@ extern "C" void ShapeConstruct_Curve_destructor(ShapeConstruct_Curve* self_) { d
 // ShapeConstruct_MakeTriangulation wrappers
 // ========================
 
-extern "C" OcctResult<ShapeConstruct_MakeTriangulation*> ShapeConstruct_MakeTriangulation_ctor_array1ofpnt_real(TColgp_Array1OfPnt const* pnts, double prec) {
+extern "C" OcctResult<ShapeConstruct_MakeTriangulation*> ShapeConstruct_MakeTriangulation_ctor_arr1_pnt_real(NCollection_Array1_gp_Pnt const* pnts, double prec) {
     try { return {new ShapeConstruct_MakeTriangulation(*pnts, prec), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -3252,29 +3114,25 @@ extern "C" OcctResult<ShapeConstruct_ProjectCurveOnSurface*> ShapeConstruct_Proj
     try { return {new ShapeConstruct_ProjectCurveOnSurface(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* ShapeConstruct_ProjectCurveOnSurface_init_handlegeomsurface_real(ShapeConstruct_ProjectCurveOnSurface* self_, Handle(Geom_Surface) const* surf, double preci) {
-    try { self_->Init(*surf, preci); return nullptr; }
+extern "C" const char* ShapeConstruct_ProjectCurveOnSurface_init_handlegeomsurface_real(ShapeConstruct_ProjectCurveOnSurface* self_, Handle(Geom_Surface) const* theSurf, double thePreci) {
+    try { self_->Init(*theSurf, thePreci); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* ShapeConstruct_ProjectCurveOnSurface_init_handleshapeanalysissurface_real(ShapeConstruct_ProjectCurveOnSurface* self_, Handle(ShapeAnalysis_Surface) const* surf, double preci) {
-    try { self_->Init(*surf, preci); return nullptr; }
+extern "C" const char* ShapeConstruct_ProjectCurveOnSurface_init_handleshapeanalysissurface_real(ShapeConstruct_ProjectCurveOnSurface* self_, Handle(ShapeAnalysis_Surface) const* theSurf, double thePreci) {
+    try { self_->Init(*theSurf, thePreci); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* ShapeConstruct_ProjectCurveOnSurface_set_surface_handlegeomsurface(ShapeConstruct_ProjectCurveOnSurface* self_, Handle(Geom_Surface) const* surf) {
-    try { self_->SetSurface(*surf); return nullptr; }
+extern "C" const char* ShapeConstruct_ProjectCurveOnSurface_set_surface_handlegeomsurface(ShapeConstruct_ProjectCurveOnSurface* self_, Handle(Geom_Surface) const* theSurf) {
+    try { self_->SetSurface(*theSurf); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* ShapeConstruct_ProjectCurveOnSurface_set_surface_handleshapeanalysissurface(ShapeConstruct_ProjectCurveOnSurface* self_, Handle(ShapeAnalysis_Surface) const* surf) {
-    try { self_->SetSurface(*surf); return nullptr; }
+extern "C" const char* ShapeConstruct_ProjectCurveOnSurface_set_surface_handleshapeanalysissurface(ShapeConstruct_ProjectCurveOnSurface* self_, Handle(ShapeAnalysis_Surface) const* theSurf) {
+    try { self_->SetSurface(*theSurf); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* ShapeConstruct_ProjectCurveOnSurface_set_precision(ShapeConstruct_ProjectCurveOnSurface* self_, double preci) {
-    try { self_->SetPrecision(preci); return nullptr; }
+extern "C" const char* ShapeConstruct_ProjectCurveOnSurface_set_precision(ShapeConstruct_ProjectCurveOnSurface* self_, double thePreci) {
+    try { self_->SetPrecision(thePreci); return nullptr; }
     OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool*> ShapeConstruct_ProjectCurveOnSurface_build_curve_mode(ShapeConstruct_ProjectCurveOnSurface* self_) {
-    try { return {&(self_->BuildCurveMode()), nullptr}; }
-    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t*> ShapeConstruct_ProjectCurveOnSurface_adjust_over_degen_mode(ShapeConstruct_ProjectCurveOnSurface* self_) {
     try { return {&(self_->AdjustOverDegenMode()), nullptr}; }
@@ -3284,12 +3142,8 @@ extern "C" OcctResult<bool> ShapeConstruct_ProjectCurveOnSurface_status(const Sh
     try { return {self_->Status(static_cast<ShapeExtend_Status>(theStatus)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeConstruct_ProjectCurveOnSurface_perform(ShapeConstruct_ProjectCurveOnSurface* self_, Handle(Geom_Curve)* c3d, double First, double Last, Handle(Geom2d_Curve)* c2d, double TolFirst, double TolLast) {
-    try { return {self_->Perform(*c3d, First, Last, *c2d, TolFirst, TolLast), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> ShapeConstruct_ProjectCurveOnSurface_perform_by_proj_lib(ShapeConstruct_ProjectCurveOnSurface* self_, Handle(Geom_Curve)* c3d, double First, double Last, Handle(Geom2d_Curve)* c2d, int32_t continuity, int32_t maxdeg, int32_t nbinterval) {
-    try { return {self_->PerformByProjLib(*c3d, First, Last, *c2d, static_cast<GeomAbs_Shape>(continuity), maxdeg, nbinterval), nullptr}; }
+extern "C" OcctResult<bool> ShapeConstruct_ProjectCurveOnSurface_perform(ShapeConstruct_ProjectCurveOnSurface* self_, Handle(Geom_Curve) const* theC3D, double theFirst, double theLast, Handle(Geom2d_Curve)* theC2D, double theTolFirst, double theTolLast) {
+    try { return {self_->Perform(*theC3D, theFirst, theLast, *theC2D, theTolFirst, theTolLast), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> ShapeConstruct_ProjectCurveOnSurface_dynamic_type(const ShapeConstruct_ProjectCurveOnSurface* self_) {
@@ -3306,20 +3160,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> ShapeConstruct_ProjectCurveO
 }
 extern "C" OcctResult<const Standard_Transient*> ShapeConstruct_ProjectCurveOnSurface_as_Standard_Transient(const ShapeConstruct_ProjectCurveOnSurface* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeConstruct_ProjectCurveOnSurface_as_Standard_Transient_mut(ShapeConstruct_ProjectCurveOnSurface* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeConstructProjectCurveOnSurface*> ShapeConstruct_ProjectCurveOnSurface_to_handle(ShapeConstruct_ProjectCurveOnSurface* obj) {
-    try { return {new HandleShapeConstructProjectCurveOnSurface(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeConstruct_ProjectCurveOnSurface*> ShapeConstruct_ProjectCurveOnSurface_to_handle(ShapeConstruct_ProjectCurveOnSurface* obj) {
+    try { return {new Handle_ShapeConstruct_ProjectCurveOnSurface(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeConstruct_ProjectCurveOnSurface*> HandleShapeConstructProjectCurveOnSurface_get(const HandleShapeConstructProjectCurveOnSurface* handle) {
+extern "C" OcctResult<const ShapeConstruct_ProjectCurveOnSurface*> Handle_ShapeConstruct_ProjectCurveOnSurface_get(const Handle_ShapeConstruct_ProjectCurveOnSurface* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeConstruct_ProjectCurveOnSurface*> HandleShapeConstructProjectCurveOnSurface_get_mut(HandleShapeConstructProjectCurveOnSurface* handle) {
+extern "C" OcctResult<ShapeConstruct_ProjectCurveOnSurface*> Handle_ShapeConstruct_ProjectCurveOnSurface_get_mut(Handle_ShapeConstruct_ProjectCurveOnSurface* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeConstructProjectCurveOnSurface_to_HandleStandardTransient(const HandleShapeConstructProjectCurveOnSurface* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeConstruct_ProjectCurveOnSurface_to_Handle_Standard_Transient(const Handle_ShapeConstruct_ProjectCurveOnSurface* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> ShapeConstruct_ProjectCurveOnSurface_inherited_IsInstance(const ShapeConstruct_ProjectCurveOnSurface* self, Handle(Standard_Type) const& theType) {
@@ -3494,28 +3348,28 @@ extern "C" OcctResult<const BRepTools_Modification*> ShapeCustom_BSplineRestrict
 extern "C" OcctResult<BRepTools_Modification*> ShapeCustom_BSplineRestriction_as_BRepTools_Modification_mut(ShapeCustom_BSplineRestriction* self_) { return {static_cast<BRepTools_Modification*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeCustom_BSplineRestriction_as_Standard_Transient(const ShapeCustom_BSplineRestriction* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeCustom_BSplineRestriction_as_Standard_Transient_mut(ShapeCustom_BSplineRestriction* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeCustomBSplineRestriction*> ShapeCustom_BSplineRestriction_to_handle(ShapeCustom_BSplineRestriction* obj) {
-    try { return {new HandleShapeCustomBSplineRestriction(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeCustom_BSplineRestriction*> ShapeCustom_BSplineRestriction_to_handle(ShapeCustom_BSplineRestriction* obj) {
+    try { return {new Handle_ShapeCustom_BSplineRestriction(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeCustom_BSplineRestriction*> HandleShapeCustomBSplineRestriction_get(const HandleShapeCustomBSplineRestriction* handle) {
+extern "C" OcctResult<const ShapeCustom_BSplineRestriction*> Handle_ShapeCustom_BSplineRestriction_get(const Handle_ShapeCustom_BSplineRestriction* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeCustom_BSplineRestriction*> HandleShapeCustomBSplineRestriction_get_mut(HandleShapeCustomBSplineRestriction* handle) {
+extern "C" OcctResult<ShapeCustom_BSplineRestriction*> Handle_ShapeCustom_BSplineRestriction_get_mut(Handle_ShapeCustom_BSplineRestriction* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeCustomModification*> HandleShapeCustomBSplineRestriction_to_HandleShapeCustomModification(const HandleShapeCustomBSplineRestriction* self_) {
-    try { return {new HandleShapeCustomModification(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeCustom_Modification*> Handle_ShapeCustom_BSplineRestriction_to_Handle_ShapeCustom_Modification(const Handle_ShapeCustom_BSplineRestriction* self_) {
+    try { return {new Handle_ShapeCustom_Modification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepToolsModification*> HandleShapeCustomBSplineRestriction_to_HandleBRepToolsModification(const HandleShapeCustomBSplineRestriction* self_) {
-    try { return {new HandleBRepToolsModification(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepTools_Modification*> Handle_ShapeCustom_BSplineRestriction_to_Handle_BRepTools_Modification(const Handle_ShapeCustom_BSplineRestriction* self_) {
+    try { return {new Handle_BRepTools_Modification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeCustomBSplineRestriction_to_HandleStandardTransient(const HandleShapeCustomBSplineRestriction* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeCustom_BSplineRestriction_to_Handle_Standard_Transient(const Handle_ShapeCustom_BSplineRestriction* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeCustom_BSplineRestriction_inherited_SetMsgRegistrator(ShapeCustom_BSplineRestriction* self, Handle(ShapeExtend_BasicMsgRegistrator) const& msgreg) {
@@ -3638,28 +3492,28 @@ extern "C" OcctResult<const BRepTools_Modification*> ShapeCustom_ConvertToBSplin
 extern "C" OcctResult<BRepTools_Modification*> ShapeCustom_ConvertToBSpline_as_BRepTools_Modification_mut(ShapeCustom_ConvertToBSpline* self_) { return {static_cast<BRepTools_Modification*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeCustom_ConvertToBSpline_as_Standard_Transient(const ShapeCustom_ConvertToBSpline* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeCustom_ConvertToBSpline_as_Standard_Transient_mut(ShapeCustom_ConvertToBSpline* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeCustomConvertToBSpline*> ShapeCustom_ConvertToBSpline_to_handle(ShapeCustom_ConvertToBSpline* obj) {
-    try { return {new HandleShapeCustomConvertToBSpline(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeCustom_ConvertToBSpline*> ShapeCustom_ConvertToBSpline_to_handle(ShapeCustom_ConvertToBSpline* obj) {
+    try { return {new Handle_ShapeCustom_ConvertToBSpline(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeCustom_ConvertToBSpline*> HandleShapeCustomConvertToBSpline_get(const HandleShapeCustomConvertToBSpline* handle) {
+extern "C" OcctResult<const ShapeCustom_ConvertToBSpline*> Handle_ShapeCustom_ConvertToBSpline_get(const Handle_ShapeCustom_ConvertToBSpline* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeCustom_ConvertToBSpline*> HandleShapeCustomConvertToBSpline_get_mut(HandleShapeCustomConvertToBSpline* handle) {
+extern "C" OcctResult<ShapeCustom_ConvertToBSpline*> Handle_ShapeCustom_ConvertToBSpline_get_mut(Handle_ShapeCustom_ConvertToBSpline* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeCustomModification*> HandleShapeCustomConvertToBSpline_to_HandleShapeCustomModification(const HandleShapeCustomConvertToBSpline* self_) {
-    try { return {new HandleShapeCustomModification(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeCustom_Modification*> Handle_ShapeCustom_ConvertToBSpline_to_Handle_ShapeCustom_Modification(const Handle_ShapeCustom_ConvertToBSpline* self_) {
+    try { return {new Handle_ShapeCustom_Modification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepToolsModification*> HandleShapeCustomConvertToBSpline_to_HandleBRepToolsModification(const HandleShapeCustomConvertToBSpline* self_) {
-    try { return {new HandleBRepToolsModification(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepTools_Modification*> Handle_ShapeCustom_ConvertToBSpline_to_Handle_BRepTools_Modification(const Handle_ShapeCustom_ConvertToBSpline* self_) {
+    try { return {new Handle_BRepTools_Modification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeCustomConvertToBSpline_to_HandleStandardTransient(const HandleShapeCustomConvertToBSpline* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeCustom_ConvertToBSpline_to_Handle_Standard_Transient(const Handle_ShapeCustom_ConvertToBSpline* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeCustom_ConvertToBSpline_inherited_SetMsgRegistrator(ShapeCustom_ConvertToBSpline* self, Handle(ShapeExtend_BasicMsgRegistrator) const& msgreg) {
@@ -3766,28 +3620,28 @@ extern "C" OcctResult<const BRepTools_Modification*> ShapeCustom_ConvertToRevolu
 extern "C" OcctResult<BRepTools_Modification*> ShapeCustom_ConvertToRevolution_as_BRepTools_Modification_mut(ShapeCustom_ConvertToRevolution* self_) { return {static_cast<BRepTools_Modification*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeCustom_ConvertToRevolution_as_Standard_Transient(const ShapeCustom_ConvertToRevolution* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeCustom_ConvertToRevolution_as_Standard_Transient_mut(ShapeCustom_ConvertToRevolution* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeCustomConvertToRevolution*> ShapeCustom_ConvertToRevolution_to_handle(ShapeCustom_ConvertToRevolution* obj) {
-    try { return {new HandleShapeCustomConvertToRevolution(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeCustom_ConvertToRevolution*> ShapeCustom_ConvertToRevolution_to_handle(ShapeCustom_ConvertToRevolution* obj) {
+    try { return {new Handle_ShapeCustom_ConvertToRevolution(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeCustom_ConvertToRevolution*> HandleShapeCustomConvertToRevolution_get(const HandleShapeCustomConvertToRevolution* handle) {
+extern "C" OcctResult<const ShapeCustom_ConvertToRevolution*> Handle_ShapeCustom_ConvertToRevolution_get(const Handle_ShapeCustom_ConvertToRevolution* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeCustom_ConvertToRevolution*> HandleShapeCustomConvertToRevolution_get_mut(HandleShapeCustomConvertToRevolution* handle) {
+extern "C" OcctResult<ShapeCustom_ConvertToRevolution*> Handle_ShapeCustom_ConvertToRevolution_get_mut(Handle_ShapeCustom_ConvertToRevolution* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeCustomModification*> HandleShapeCustomConvertToRevolution_to_HandleShapeCustomModification(const HandleShapeCustomConvertToRevolution* self_) {
-    try { return {new HandleShapeCustomModification(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeCustom_Modification*> Handle_ShapeCustom_ConvertToRevolution_to_Handle_ShapeCustom_Modification(const Handle_ShapeCustom_ConvertToRevolution* self_) {
+    try { return {new Handle_ShapeCustom_Modification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepToolsModification*> HandleShapeCustomConvertToRevolution_to_HandleBRepToolsModification(const HandleShapeCustomConvertToRevolution* self_) {
-    try { return {new HandleBRepToolsModification(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepTools_Modification*> Handle_ShapeCustom_ConvertToRevolution_to_Handle_BRepTools_Modification(const Handle_ShapeCustom_ConvertToRevolution* self_) {
+    try { return {new Handle_BRepTools_Modification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeCustomConvertToRevolution_to_HandleStandardTransient(const HandleShapeCustomConvertToRevolution* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeCustom_ConvertToRevolution_to_Handle_Standard_Transient(const Handle_ShapeCustom_ConvertToRevolution* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeCustom_ConvertToRevolution_inherited_SetMsgRegistrator(ShapeCustom_ConvertToRevolution* self, Handle(ShapeExtend_BasicMsgRegistrator) const& msgreg) {
@@ -3874,7 +3728,7 @@ extern "C" OcctResult<ShapeCustom_Curve2d*> ShapeCustom_Curve2d_ctor() {
     try { return {new ShapeCustom_Curve2d(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeCustom_Curve2d_is_linear(TColgp_Array1OfPnt2d const* thePoles, double theTolerance, double* theDeviation) {
+extern "C" OcctResult<bool> ShapeCustom_Curve2d_is_linear(NCollection_Array1_gp_Pnt2d const* thePoles, double theTolerance, double* theDeviation) {
     try { return {ShapeCustom_Curve2d::IsLinear(*thePoles, theTolerance, *theDeviation), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -3938,28 +3792,28 @@ extern "C" OcctResult<const BRepTools_Modification*> ShapeCustom_DirectModificat
 extern "C" OcctResult<BRepTools_Modification*> ShapeCustom_DirectModification_as_BRepTools_Modification_mut(ShapeCustom_DirectModification* self_) { return {static_cast<BRepTools_Modification*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeCustom_DirectModification_as_Standard_Transient(const ShapeCustom_DirectModification* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeCustom_DirectModification_as_Standard_Transient_mut(ShapeCustom_DirectModification* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeCustomDirectModification*> ShapeCustom_DirectModification_to_handle(ShapeCustom_DirectModification* obj) {
-    try { return {new HandleShapeCustomDirectModification(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeCustom_DirectModification*> ShapeCustom_DirectModification_to_handle(ShapeCustom_DirectModification* obj) {
+    try { return {new Handle_ShapeCustom_DirectModification(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeCustom_DirectModification*> HandleShapeCustomDirectModification_get(const HandleShapeCustomDirectModification* handle) {
+extern "C" OcctResult<const ShapeCustom_DirectModification*> Handle_ShapeCustom_DirectModification_get(const Handle_ShapeCustom_DirectModification* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeCustom_DirectModification*> HandleShapeCustomDirectModification_get_mut(HandleShapeCustomDirectModification* handle) {
+extern "C" OcctResult<ShapeCustom_DirectModification*> Handle_ShapeCustom_DirectModification_get_mut(Handle_ShapeCustom_DirectModification* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeCustomModification*> HandleShapeCustomDirectModification_to_HandleShapeCustomModification(const HandleShapeCustomDirectModification* self_) {
-    try { return {new HandleShapeCustomModification(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeCustom_Modification*> Handle_ShapeCustom_DirectModification_to_Handle_ShapeCustom_Modification(const Handle_ShapeCustom_DirectModification* self_) {
+    try { return {new Handle_ShapeCustom_Modification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepToolsModification*> HandleShapeCustomDirectModification_to_HandleBRepToolsModification(const HandleShapeCustomDirectModification* self_) {
-    try { return {new HandleBRepToolsModification(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepTools_Modification*> Handle_ShapeCustom_DirectModification_to_Handle_BRepTools_Modification(const Handle_ShapeCustom_DirectModification* self_) {
+    try { return {new Handle_BRepTools_Modification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeCustomDirectModification_to_HandleStandardTransient(const HandleShapeCustomDirectModification* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeCustom_DirectModification_to_Handle_Standard_Transient(const Handle_ShapeCustom_DirectModification* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeCustom_DirectModification_inherited_SetMsgRegistrator(ShapeCustom_DirectModification* self, Handle(ShapeExtend_BasicMsgRegistrator) const& msgreg) {
@@ -4048,59 +3902,59 @@ extern "C" OcctResult<const BRepTools_Modification*> ShapeCustom_Modification_as
 extern "C" OcctResult<BRepTools_Modification*> ShapeCustom_Modification_as_BRepTools_Modification_mut(ShapeCustom_Modification* self_) { return {static_cast<BRepTools_Modification*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeCustom_Modification_as_Standard_Transient(const ShapeCustom_Modification* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeCustom_Modification_as_Standard_Transient_mut(ShapeCustom_Modification* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const ShapeCustom_Modification*> HandleShapeCustomModification_get(const HandleShapeCustomModification* handle) {
+extern "C" OcctResult<const ShapeCustom_Modification*> Handle_ShapeCustom_Modification_get(const Handle_ShapeCustom_Modification* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeCustom_Modification*> HandleShapeCustomModification_get_mut(HandleShapeCustomModification* handle) {
+extern "C" OcctResult<ShapeCustom_Modification*> Handle_ShapeCustom_Modification_get_mut(Handle_ShapeCustom_Modification* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepToolsModification*> HandleShapeCustomModification_to_HandleBRepToolsModification(const HandleShapeCustomModification* self_) {
-    try { return {new HandleBRepToolsModification(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepTools_Modification*> Handle_ShapeCustom_Modification_to_Handle_BRepTools_Modification(const Handle_ShapeCustom_Modification* self_) {
+    try { return {new Handle_BRepTools_Modification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeCustomModification_to_HandleStandardTransient(const HandleShapeCustomModification* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeCustom_Modification_to_Handle_Standard_Transient(const Handle_ShapeCustom_Modification* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeCustomBSplineRestriction*> HandleShapeCustomModification_downcast_to_HandleShapeCustomBSplineRestriction(const HandleShapeCustomModification* self_) {
+extern "C" OcctResult<Handle_ShapeCustom_BSplineRestriction*> Handle_ShapeCustom_Modification_downcast_to_Handle_ShapeCustom_BSplineRestriction(const Handle_ShapeCustom_Modification* self_) {
     try {
     opencascade::handle<ShapeCustom_BSplineRestriction> result = opencascade::handle<ShapeCustom_BSplineRestriction>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeCustomBSplineRestriction(result), nullptr};
+    return {new Handle_ShapeCustom_BSplineRestriction(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeCustomConvertToBSpline*> HandleShapeCustomModification_downcast_to_HandleShapeCustomConvertToBSpline(const HandleShapeCustomModification* self_) {
+extern "C" OcctResult<Handle_ShapeCustom_ConvertToBSpline*> Handle_ShapeCustom_Modification_downcast_to_Handle_ShapeCustom_ConvertToBSpline(const Handle_ShapeCustom_Modification* self_) {
     try {
     opencascade::handle<ShapeCustom_ConvertToBSpline> result = opencascade::handle<ShapeCustom_ConvertToBSpline>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeCustomConvertToBSpline(result), nullptr};
+    return {new Handle_ShapeCustom_ConvertToBSpline(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeCustomConvertToRevolution*> HandleShapeCustomModification_downcast_to_HandleShapeCustomConvertToRevolution(const HandleShapeCustomModification* self_) {
+extern "C" OcctResult<Handle_ShapeCustom_ConvertToRevolution*> Handle_ShapeCustom_Modification_downcast_to_Handle_ShapeCustom_ConvertToRevolution(const Handle_ShapeCustom_Modification* self_) {
     try {
     opencascade::handle<ShapeCustom_ConvertToRevolution> result = opencascade::handle<ShapeCustom_ConvertToRevolution>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeCustomConvertToRevolution(result), nullptr};
+    return {new Handle_ShapeCustom_ConvertToRevolution(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeCustomDirectModification*> HandleShapeCustomModification_downcast_to_HandleShapeCustomDirectModification(const HandleShapeCustomModification* self_) {
+extern "C" OcctResult<Handle_ShapeCustom_DirectModification*> Handle_ShapeCustom_Modification_downcast_to_Handle_ShapeCustom_DirectModification(const Handle_ShapeCustom_Modification* self_) {
     try {
     opencascade::handle<ShapeCustom_DirectModification> result = opencascade::handle<ShapeCustom_DirectModification>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeCustomDirectModification(result), nullptr};
+    return {new Handle_ShapeCustom_DirectModification(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeCustomSweptToElementary*> HandleShapeCustomModification_downcast_to_HandleShapeCustomSweptToElementary(const HandleShapeCustomModification* self_) {
+extern "C" OcctResult<Handle_ShapeCustom_SweptToElementary*> Handle_ShapeCustom_Modification_downcast_to_Handle_ShapeCustom_SweptToElementary(const Handle_ShapeCustom_Modification* self_) {
     try {
     opencascade::handle<ShapeCustom_SweptToElementary> result = opencascade::handle<ShapeCustom_SweptToElementary>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeCustomSweptToElementary(result), nullptr};
+    return {new Handle_ShapeCustom_SweptToElementary(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -4256,20 +4110,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> ShapeCustom_RestrictionParam
 }
 extern "C" OcctResult<const Standard_Transient*> ShapeCustom_RestrictionParameters_as_Standard_Transient(const ShapeCustom_RestrictionParameters* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeCustom_RestrictionParameters_as_Standard_Transient_mut(ShapeCustom_RestrictionParameters* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeCustomRestrictionParameters*> ShapeCustom_RestrictionParameters_to_handle(ShapeCustom_RestrictionParameters* obj) {
-    try { return {new HandleShapeCustomRestrictionParameters(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeCustom_RestrictionParameters*> ShapeCustom_RestrictionParameters_to_handle(ShapeCustom_RestrictionParameters* obj) {
+    try { return {new Handle_ShapeCustom_RestrictionParameters(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeCustom_RestrictionParameters*> HandleShapeCustomRestrictionParameters_get(const HandleShapeCustomRestrictionParameters* handle) {
+extern "C" OcctResult<const ShapeCustom_RestrictionParameters*> Handle_ShapeCustom_RestrictionParameters_get(const Handle_ShapeCustom_RestrictionParameters* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeCustom_RestrictionParameters*> HandleShapeCustomRestrictionParameters_get_mut(HandleShapeCustomRestrictionParameters* handle) {
+extern "C" OcctResult<ShapeCustom_RestrictionParameters*> Handle_ShapeCustom_RestrictionParameters_get_mut(Handle_ShapeCustom_RestrictionParameters* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeCustomRestrictionParameters_to_HandleStandardTransient(const HandleShapeCustomRestrictionParameters* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeCustom_RestrictionParameters_to_Handle_Standard_Transient(const Handle_ShapeCustom_RestrictionParameters* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> ShapeCustom_RestrictionParameters_inherited_IsInstance(const ShapeCustom_RestrictionParameters* self, Handle(Standard_Type) const& theType) {
@@ -4382,28 +4236,28 @@ extern "C" OcctResult<const BRepTools_Modification*> ShapeCustom_SweptToElementa
 extern "C" OcctResult<BRepTools_Modification*> ShapeCustom_SweptToElementary_as_BRepTools_Modification_mut(ShapeCustom_SweptToElementary* self_) { return {static_cast<BRepTools_Modification*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeCustom_SweptToElementary_as_Standard_Transient(const ShapeCustom_SweptToElementary* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeCustom_SweptToElementary_as_Standard_Transient_mut(ShapeCustom_SweptToElementary* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeCustomSweptToElementary*> ShapeCustom_SweptToElementary_to_handle(ShapeCustom_SweptToElementary* obj) {
-    try { return {new HandleShapeCustomSweptToElementary(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeCustom_SweptToElementary*> ShapeCustom_SweptToElementary_to_handle(ShapeCustom_SweptToElementary* obj) {
+    try { return {new Handle_ShapeCustom_SweptToElementary(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeCustom_SweptToElementary*> HandleShapeCustomSweptToElementary_get(const HandleShapeCustomSweptToElementary* handle) {
+extern "C" OcctResult<const ShapeCustom_SweptToElementary*> Handle_ShapeCustom_SweptToElementary_get(const Handle_ShapeCustom_SweptToElementary* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeCustom_SweptToElementary*> HandleShapeCustomSweptToElementary_get_mut(HandleShapeCustomSweptToElementary* handle) {
+extern "C" OcctResult<ShapeCustom_SweptToElementary*> Handle_ShapeCustom_SweptToElementary_get_mut(Handle_ShapeCustom_SweptToElementary* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeCustomModification*> HandleShapeCustomSweptToElementary_to_HandleShapeCustomModification(const HandleShapeCustomSweptToElementary* self_) {
-    try { return {new HandleShapeCustomModification(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeCustom_Modification*> Handle_ShapeCustom_SweptToElementary_to_Handle_ShapeCustom_Modification(const Handle_ShapeCustom_SweptToElementary* self_) {
+    try { return {new Handle_ShapeCustom_Modification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepToolsModification*> HandleShapeCustomSweptToElementary_to_HandleBRepToolsModification(const HandleShapeCustomSweptToElementary* self_) {
-    try { return {new HandleBRepToolsModification(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepTools_Modification*> Handle_ShapeCustom_SweptToElementary_to_Handle_BRepTools_Modification(const Handle_ShapeCustom_SweptToElementary* self_) {
+    try { return {new Handle_BRepTools_Modification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeCustomSweptToElementary_to_HandleStandardTransient(const HandleShapeCustomSweptToElementary* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeCustom_SweptToElementary_to_Handle_Standard_Transient(const Handle_ShapeCustom_SweptToElementary* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeCustom_SweptToElementary_inherited_SetMsgRegistrator(ShapeCustom_SweptToElementary* self, Handle(ShapeExtend_BasicMsgRegistrator) const& msgreg) {
@@ -4506,28 +4360,28 @@ extern "C" OcctResult<const BRepTools_Modification*> ShapeCustom_TrsfModificatio
 extern "C" OcctResult<BRepTools_Modification*> ShapeCustom_TrsfModification_as_BRepTools_Modification_mut(ShapeCustom_TrsfModification* self_) { return {static_cast<BRepTools_Modification*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeCustom_TrsfModification_as_Standard_Transient(const ShapeCustom_TrsfModification* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeCustom_TrsfModification_as_Standard_Transient_mut(ShapeCustom_TrsfModification* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeCustomTrsfModification*> ShapeCustom_TrsfModification_to_handle(ShapeCustom_TrsfModification* obj) {
-    try { return {new HandleShapeCustomTrsfModification(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeCustom_TrsfModification*> ShapeCustom_TrsfModification_to_handle(ShapeCustom_TrsfModification* obj) {
+    try { return {new Handle_ShapeCustom_TrsfModification(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeCustom_TrsfModification*> HandleShapeCustomTrsfModification_get(const HandleShapeCustomTrsfModification* handle) {
+extern "C" OcctResult<const ShapeCustom_TrsfModification*> Handle_ShapeCustom_TrsfModification_get(const Handle_ShapeCustom_TrsfModification* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeCustom_TrsfModification*> HandleShapeCustomTrsfModification_get_mut(HandleShapeCustomTrsfModification* handle) {
+extern "C" OcctResult<ShapeCustom_TrsfModification*> Handle_ShapeCustom_TrsfModification_get_mut(Handle_ShapeCustom_TrsfModification* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepToolsTrsfModification*> HandleShapeCustomTrsfModification_to_HandleBRepToolsTrsfModification(const HandleShapeCustomTrsfModification* self_) {
-    try { return {new HandleBRepToolsTrsfModification(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepTools_TrsfModification*> Handle_ShapeCustom_TrsfModification_to_Handle_BRepTools_TrsfModification(const Handle_ShapeCustom_TrsfModification* self_) {
+    try { return {new Handle_BRepTools_TrsfModification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepToolsModification*> HandleShapeCustomTrsfModification_to_HandleBRepToolsModification(const HandleShapeCustomTrsfModification* self_) {
-    try { return {new HandleBRepToolsModification(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepTools_Modification*> Handle_ShapeCustom_TrsfModification_to_Handle_BRepTools_Modification(const Handle_ShapeCustom_TrsfModification* self_) {
+    try { return {new Handle_BRepTools_Modification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeCustomTrsfModification_to_HandleStandardTransient(const HandleShapeCustomTrsfModification* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeCustom_TrsfModification_to_Handle_Standard_Transient(const Handle_ShapeCustom_TrsfModification* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Trsf*> ShapeCustom_TrsfModification_inherited_Trsf(ShapeCustom_TrsfModification* self) {
@@ -4618,27 +4472,27 @@ extern "C" OcctResult<Handle(Standard_Type) const*> ShapeExtend_BasicMsgRegistra
 }
 extern "C" OcctResult<const Standard_Transient*> ShapeExtend_BasicMsgRegistrator_as_Standard_Transient(const ShapeExtend_BasicMsgRegistrator* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeExtend_BasicMsgRegistrator_as_Standard_Transient_mut(ShapeExtend_BasicMsgRegistrator* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeExtendBasicMsgRegistrator*> ShapeExtend_BasicMsgRegistrator_to_handle(ShapeExtend_BasicMsgRegistrator* obj) {
-    try { return {new HandleShapeExtendBasicMsgRegistrator(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeExtend_BasicMsgRegistrator*> ShapeExtend_BasicMsgRegistrator_to_handle(ShapeExtend_BasicMsgRegistrator* obj) {
+    try { return {new Handle_ShapeExtend_BasicMsgRegistrator(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeExtend_BasicMsgRegistrator*> HandleShapeExtendBasicMsgRegistrator_get(const HandleShapeExtendBasicMsgRegistrator* handle) {
+extern "C" OcctResult<const ShapeExtend_BasicMsgRegistrator*> Handle_ShapeExtend_BasicMsgRegistrator_get(const Handle_ShapeExtend_BasicMsgRegistrator* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeExtend_BasicMsgRegistrator*> HandleShapeExtendBasicMsgRegistrator_get_mut(HandleShapeExtendBasicMsgRegistrator* handle) {
+extern "C" OcctResult<ShapeExtend_BasicMsgRegistrator*> Handle_ShapeExtend_BasicMsgRegistrator_get_mut(Handle_ShapeExtend_BasicMsgRegistrator* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeExtendBasicMsgRegistrator_to_HandleStandardTransient(const HandleShapeExtendBasicMsgRegistrator* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeExtend_BasicMsgRegistrator_to_Handle_Standard_Transient(const Handle_ShapeExtend_BasicMsgRegistrator* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeExtendMsgRegistrator*> HandleShapeExtendBasicMsgRegistrator_downcast_to_HandleShapeExtendMsgRegistrator(const HandleShapeExtendBasicMsgRegistrator* self_) {
+extern "C" OcctResult<Handle_ShapeExtend_MsgRegistrator*> Handle_ShapeExtend_BasicMsgRegistrator_downcast_to_Handle_ShapeExtend_MsgRegistrator(const Handle_ShapeExtend_BasicMsgRegistrator* self_) {
     try {
     opencascade::handle<ShapeExtend_MsgRegistrator> result = opencascade::handle<ShapeExtend_MsgRegistrator>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeExtendMsgRegistrator(result), nullptr};
+    return {new Handle_ShapeExtend_MsgRegistrator(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -4676,8 +4530,24 @@ extern "C" void ShapeExtend_BasicMsgRegistrator_destructor(ShapeExtend_BasicMsgR
 // ShapeExtend_ComplexCurve wrappers
 // ========================
 
-extern "C" OcctResult<gp_Vec*> ShapeExtend_ComplexCurve_dn(const ShapeExtend_ComplexCurve* self_, double U, int32_t N) {
-    try { return {new gp_Vec(self_->DN(U, N)), nullptr}; }
+extern "C" OcctResult<gp_Pnt*> ShapeExtend_ComplexCurve_eval_d0(const ShapeExtend_ComplexCurve* self_, double U) {
+    try { return {new gp_Pnt(self_->EvalD0(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom_Curve::ResD1*> ShapeExtend_ComplexCurve_eval_d1(const ShapeExtend_ComplexCurve* self_, double U) {
+    try { return {new Geom_Curve::ResD1(self_->EvalD1(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom_Curve::ResD2*> ShapeExtend_ComplexCurve_eval_d2(const ShapeExtend_ComplexCurve* self_, double U) {
+    try { return {new Geom_Curve::ResD2(self_->EvalD2(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom_Curve::ResD3*> ShapeExtend_ComplexCurve_eval_d3(const ShapeExtend_ComplexCurve* self_, double U) {
+    try { return {new Geom_Curve::ResD3(self_->EvalD3(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec*> ShapeExtend_ComplexCurve_eval_dn(const ShapeExtend_ComplexCurve* self_, double U, int32_t N) {
+    try { return {new gp_Vec(self_->EvalDN(U, N)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> ShapeExtend_ComplexCurve_nb_curves(const ShapeExtend_ComplexCurve* self_) {
@@ -4728,22 +4598,6 @@ extern "C" OcctResult<bool> ShapeExtend_ComplexCurve_is_cn(const ShapeExtend_Com
     try { return {self_->IsCN(N), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* ShapeExtend_ComplexCurve_d0(const ShapeExtend_ComplexCurve* self_, double U, gp_Pnt* P) {
-    try { self_->D0(U, *P); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* ShapeExtend_ComplexCurve_d1(const ShapeExtend_ComplexCurve* self_, double U, gp_Pnt* P, gp_Vec* V1) {
-    try { self_->D1(U, *P, *V1); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* ShapeExtend_ComplexCurve_d2(const ShapeExtend_ComplexCurve* self_, double U, gp_Pnt* P, gp_Vec* V1, gp_Vec* V2) {
-    try { self_->D2(U, *P, *V1, *V2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* ShapeExtend_ComplexCurve_d3(const ShapeExtend_ComplexCurve* self_, double U, gp_Pnt* P, gp_Vec* V1, gp_Vec* V2, gp_Vec* V3) {
-    try { self_->D3(U, *P, *V1, *V2, *V3); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" OcctResult<double> ShapeExtend_ComplexCurve_get_scale_factor(const ShapeExtend_ComplexCurve* self_, int32_t ind) {
     try { return {self_->GetScaleFactor(ind), nullptr}; }
     OCCT_CATCH_RETURN
@@ -4770,24 +4624,24 @@ extern "C" OcctResult<const Geom_Geometry*> ShapeExtend_ComplexCurve_as_Geom_Geo
 extern "C" OcctResult<Geom_Geometry*> ShapeExtend_ComplexCurve_as_Geom_Geometry_mut(ShapeExtend_ComplexCurve* self_) { return {static_cast<Geom_Geometry*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeExtend_ComplexCurve_as_Standard_Transient(const ShapeExtend_ComplexCurve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeExtend_ComplexCurve_as_Standard_Transient_mut(ShapeExtend_ComplexCurve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const ShapeExtend_ComplexCurve*> HandleShapeExtendComplexCurve_get(const HandleShapeExtendComplexCurve* handle) {
+extern "C" OcctResult<const ShapeExtend_ComplexCurve*> Handle_ShapeExtend_ComplexCurve_get(const Handle_ShapeExtend_ComplexCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeExtend_ComplexCurve*> HandleShapeExtendComplexCurve_get_mut(HandleShapeExtendComplexCurve* handle) {
+extern "C" OcctResult<ShapeExtend_ComplexCurve*> Handle_ShapeExtend_ComplexCurve_get_mut(Handle_ShapeExtend_ComplexCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomCurve*> HandleShapeExtendComplexCurve_to_HandleGeomCurve(const HandleShapeExtendComplexCurve* self_) {
-    try { return {new HandleGeomCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom_Curve*> Handle_ShapeExtend_ComplexCurve_to_Handle_Geom_Curve(const Handle_ShapeExtend_ComplexCurve* self_) {
+    try { return {new Handle_Geom_Curve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomGeometry*> HandleShapeExtendComplexCurve_to_HandleGeomGeometry(const HandleShapeExtendComplexCurve* self_) {
-    try { return {new HandleGeomGeometry(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom_Geometry*> Handle_ShapeExtend_ComplexCurve_to_Handle_Geom_Geometry(const Handle_ShapeExtend_ComplexCurve* self_) {
+    try { return {new Handle_Geom_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeExtendComplexCurve_to_HandleStandardTransient(const HandleShapeExtendComplexCurve* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeExtend_ComplexCurve_to_Handle_Standard_Transient(const Handle_ShapeExtend_ComplexCurve* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeExtend_ComplexCurve_inherited_Reverse(ShapeExtend_ComplexCurve* self) {
@@ -4808,6 +4662,26 @@ extern "C" OcctResult<Handle(Geom_Curve)*> ShapeExtend_ComplexCurve_inherited_Re
 }
 extern "C" OcctResult<double> ShapeExtend_ComplexCurve_inherited_Period(const ShapeExtend_ComplexCurve* self) {
     try { return {self->Period(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* ShapeExtend_ComplexCurve_inherited_D0(const ShapeExtend_ComplexCurve* self, double U, gp_Pnt& P) {
+    try { self->D0(U, P); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* ShapeExtend_ComplexCurve_inherited_D1(const ShapeExtend_ComplexCurve* self, double U, gp_Pnt& P, gp_Vec& V1) {
+    try { self->D1(U, P, V1); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* ShapeExtend_ComplexCurve_inherited_D2(const ShapeExtend_ComplexCurve* self, double U, gp_Pnt& P, gp_Vec& V1, gp_Vec& V2) {
+    try { self->D2(U, P, V1, V2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* ShapeExtend_ComplexCurve_inherited_D3(const ShapeExtend_ComplexCurve* self, double U, gp_Pnt& P, gp_Vec& V1, gp_Vec& V2, gp_Vec& V3) {
+    try { self->D3(U, P, V1, V2, V3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<gp_Vec*> ShapeExtend_ComplexCurve_inherited_DN(const ShapeExtend_ComplexCurve* self, double U, int32_t N) {
+    try { return {new gp_Vec(self->DN(U, N)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Pnt*> ShapeExtend_ComplexCurve_inherited_Value(const ShapeExtend_ComplexCurve* self, double U) {
@@ -4892,20 +4766,20 @@ extern "C" OcctResult<ShapeExtend_CompositeSurface*> ShapeExtend_CompositeSurfac
     try { return {new ShapeExtend_CompositeSurface(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeExtend_CompositeSurface*> ShapeExtend_CompositeSurface_ctor_handletcolgeomharray2ofsurface_parametrisation(Handle(TColGeom_HArray2OfSurface) const* GridSurf, int32_t param) {
+extern "C" OcctResult<ShapeExtend_CompositeSurface*> ShapeExtend_CompositeSurface_ctor_handlencollectionharray2opencascadehandlegeomsurface_parametrisation(Handle(NCollection_HArray2_opencascade_handle_Geom_Surface) const* GridSurf, int32_t param) {
     try { return {new ShapeExtend_CompositeSurface(*GridSurf, static_cast<ShapeExtend_Parametrisation>(param)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeExtend_CompositeSurface*> ShapeExtend_CompositeSurface_ctor_handletcolgeomharray2ofsurface_array1ofreal2(Handle(TColGeom_HArray2OfSurface) const* GridSurf, TColStd_Array1OfReal const* UJoints, TColStd_Array1OfReal const* VJoints) {
+extern "C" OcctResult<ShapeExtend_CompositeSurface*> ShapeExtend_CompositeSurface_ctor_handlencollectionharray2opencascadehandlegeomsurface_arr1_double2(Handle(NCollection_HArray2_opencascade_handle_Geom_Surface) const* GridSurf, NCollection_Array1_double const* UJoints, NCollection_Array1_double const* VJoints) {
     try { return {new ShapeExtend_CompositeSurface(*GridSurf, *UJoints, *VJoints), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfReal)*> ShapeExtend_CompositeSurface_u_joint_values(const ShapeExtend_CompositeSurface* self_) {
-    try { return {new Handle(TColStd_HArray1OfReal)(self_->UJointValues()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_double)*> ShapeExtend_CompositeSurface_u_joint_values(const ShapeExtend_CompositeSurface* self_) {
+    try { return {new Handle(NCollection_HArray1_double)(self_->UJointValues()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfReal)*> ShapeExtend_CompositeSurface_v_joint_values(const ShapeExtend_CompositeSurface* self_) {
-    try { return {new Handle(TColStd_HArray1OfReal)(self_->VJointValues()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_double)*> ShapeExtend_CompositeSurface_v_joint_values(const ShapeExtend_CompositeSurface* self_) {
+    try { return {new Handle(NCollection_HArray1_double)(self_->VJointValues()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Pnt2d*> ShapeExtend_CompositeSurface_local_to_global(const ShapeExtend_CompositeSurface* self_, int32_t i, int32_t j, gp_Pnt2d const* uv) {
@@ -4928,19 +4802,35 @@ extern "C" OcctResult<Handle(Geom_Curve)*> ShapeExtend_CompositeSurface_v_iso(co
     try { return {new Handle(Geom_Curve)(self_->VIso(V)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Vec*> ShapeExtend_CompositeSurface_dn(const ShapeExtend_CompositeSurface* self_, double U, double V, int32_t Nu, int32_t Nv) {
-    try { return {new gp_Vec(self_->DN(U, V, Nu, Nv)), nullptr}; }
+extern "C" OcctResult<gp_Pnt*> ShapeExtend_CompositeSurface_eval_d0(const ShapeExtend_CompositeSurface* self_, double U, double V) {
+    try { return {new gp_Pnt(self_->EvalD0(U, V)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom_Surface::ResD1*> ShapeExtend_CompositeSurface_eval_d1(const ShapeExtend_CompositeSurface* self_, double U, double V) {
+    try { return {new Geom_Surface::ResD1(self_->EvalD1(U, V)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom_Surface::ResD2*> ShapeExtend_CompositeSurface_eval_d2(const ShapeExtend_CompositeSurface* self_, double U, double V) {
+    try { return {new Geom_Surface::ResD2(self_->EvalD2(U, V)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom_Surface::ResD3*> ShapeExtend_CompositeSurface_eval_d3(const ShapeExtend_CompositeSurface* self_, double U, double V) {
+    try { return {new Geom_Surface::ResD3(self_->EvalD3(U, V)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec*> ShapeExtend_CompositeSurface_eval_dn(const ShapeExtend_CompositeSurface* self_, double U, double V, int32_t Nu, int32_t Nv) {
+    try { return {new gp_Vec(self_->EvalDN(U, V, Nu, Nv)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Pnt*> ShapeExtend_CompositeSurface_value(const ShapeExtend_CompositeSurface* self_, gp_Pnt2d const* pnt) {
     try { return {new gp_Pnt(self_->Value(*pnt)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeExtend_CompositeSurface_init_handletcolgeomharray2ofsurface_parametrisation(ShapeExtend_CompositeSurface* self_, Handle(TColGeom_HArray2OfSurface) const* GridSurf, int32_t param) {
+extern "C" OcctResult<bool> ShapeExtend_CompositeSurface_init_handlencollectionharray2opencascadehandlegeomsurface_parametrisation(ShapeExtend_CompositeSurface* self_, Handle(NCollection_HArray2_opencascade_handle_Geom_Surface) const* GridSurf, int32_t param) {
     try { return {self_->Init(*GridSurf, static_cast<ShapeExtend_Parametrisation>(param)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeExtend_CompositeSurface_init_handletcolgeomharray2ofsurface_array1ofreal2(ShapeExtend_CompositeSurface* self_, Handle(TColGeom_HArray2OfSurface) const* GridSurf, TColStd_Array1OfReal const* UJoints, TColStd_Array1OfReal const* VJoints) {
+extern "C" OcctResult<bool> ShapeExtend_CompositeSurface_init_handlencollectionharray2opencascadehandlegeomsurface_arr1_double2(ShapeExtend_CompositeSurface* self_, Handle(NCollection_HArray2_opencascade_handle_Geom_Surface) const* GridSurf, NCollection_Array1_double const* UJoints, NCollection_Array1_double const* VJoints) {
     try { return {self_->Init(*GridSurf, *UJoints, *VJoints), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4956,7 +4846,7 @@ extern "C" OcctResult<Handle(Geom_Surface) const*> ShapeExtend_CompositeSurface_
     try { return {&(self_->Patch(i, j)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColGeom_HArray2OfSurface) const*> ShapeExtend_CompositeSurface_patches(const ShapeExtend_CompositeSurface* self_) {
+extern "C" OcctResult<Handle(NCollection_HArray2_opencascade_handle_Geom_Surface) const*> ShapeExtend_CompositeSurface_patches(const ShapeExtend_CompositeSurface* self_) {
     try { return {&(self_->Patches()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4968,11 +4858,11 @@ extern "C" OcctResult<double> ShapeExtend_CompositeSurface_v_joint_value(const S
     try { return {self_->VJointValue(j), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeExtend_CompositeSurface_set_u_joint_values(ShapeExtend_CompositeSurface* self_, TColStd_Array1OfReal const* UJoints) {
+extern "C" OcctResult<bool> ShapeExtend_CompositeSurface_set_u_joint_values(ShapeExtend_CompositeSurface* self_, NCollection_Array1_double const* UJoints) {
     try { return {self_->SetUJointValues(*UJoints), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeExtend_CompositeSurface_set_v_joint_values(ShapeExtend_CompositeSurface* self_, TColStd_Array1OfReal const* VJoints) {
+extern "C" OcctResult<bool> ShapeExtend_CompositeSurface_set_v_joint_values(ShapeExtend_CompositeSurface* self_, NCollection_Array1_double const* VJoints) {
     try { return {self_->SetVJointValues(*VJoints), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5076,22 +4966,6 @@ extern "C" OcctResult<bool> ShapeExtend_CompositeSurface_is_c_nv(const ShapeExte
     try { return {self_->IsCNv(N), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* ShapeExtend_CompositeSurface_d0(const ShapeExtend_CompositeSurface* self_, double U, double V, gp_Pnt* P) {
-    try { self_->D0(U, V, *P); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* ShapeExtend_CompositeSurface_d1(const ShapeExtend_CompositeSurface* self_, double U, double V, gp_Pnt* P, gp_Vec* D1U, gp_Vec* D1V) {
-    try { self_->D1(U, V, *P, *D1U, *D1V); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* ShapeExtend_CompositeSurface_d2(const ShapeExtend_CompositeSurface* self_, double U, double V, gp_Pnt* P, gp_Vec* D1U, gp_Vec* D1V, gp_Vec* D2U, gp_Vec* D2V, gp_Vec* D2UV) {
-    try { self_->D2(U, V, *P, *D1U, *D1V, *D2U, *D2V, *D2UV); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* ShapeExtend_CompositeSurface_d3(const ShapeExtend_CompositeSurface* self_, double U, double V, gp_Pnt* P, gp_Vec* D1U, gp_Vec* D1V, gp_Vec* D2U, gp_Vec* D2V, gp_Vec* D2UV, gp_Vec* D3U, gp_Vec* D3V, gp_Vec* D3UUV, gp_Vec* D3UVV) {
-    try { self_->D3(U, V, *P, *D1U, *D1V, *D2U, *D2V, *D2UV, *D3U, *D3V, *D3UUV, *D3UVV); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* ShapeExtend_CompositeSurface_compute_joint_values(ShapeExtend_CompositeSurface* self_, int32_t param) {
     try { self_->ComputeJointValues(static_cast<ShapeExtend_Parametrisation>(param)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -5118,28 +4992,28 @@ extern "C" OcctResult<const Geom_Geometry*> ShapeExtend_CompositeSurface_as_Geom
 extern "C" OcctResult<Geom_Geometry*> ShapeExtend_CompositeSurface_as_Geom_Geometry_mut(ShapeExtend_CompositeSurface* self_) { return {static_cast<Geom_Geometry*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeExtend_CompositeSurface_as_Standard_Transient(const ShapeExtend_CompositeSurface* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeExtend_CompositeSurface_as_Standard_Transient_mut(ShapeExtend_CompositeSurface* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeExtendCompositeSurface*> ShapeExtend_CompositeSurface_to_handle(ShapeExtend_CompositeSurface* obj) {
-    try { return {new HandleShapeExtendCompositeSurface(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeExtend_CompositeSurface*> ShapeExtend_CompositeSurface_to_handle(ShapeExtend_CompositeSurface* obj) {
+    try { return {new Handle_ShapeExtend_CompositeSurface(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeExtend_CompositeSurface*> HandleShapeExtendCompositeSurface_get(const HandleShapeExtendCompositeSurface* handle) {
+extern "C" OcctResult<const ShapeExtend_CompositeSurface*> Handle_ShapeExtend_CompositeSurface_get(const Handle_ShapeExtend_CompositeSurface* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeExtend_CompositeSurface*> HandleShapeExtendCompositeSurface_get_mut(HandleShapeExtendCompositeSurface* handle) {
+extern "C" OcctResult<ShapeExtend_CompositeSurface*> Handle_ShapeExtend_CompositeSurface_get_mut(Handle_ShapeExtend_CompositeSurface* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomSurface*> HandleShapeExtendCompositeSurface_to_HandleGeomSurface(const HandleShapeExtendCompositeSurface* self_) {
-    try { return {new HandleGeomSurface(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom_Surface*> Handle_ShapeExtend_CompositeSurface_to_Handle_Geom_Surface(const Handle_ShapeExtend_CompositeSurface* self_) {
+    try { return {new Handle_Geom_Surface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomGeometry*> HandleShapeExtendCompositeSurface_to_HandleGeomGeometry(const HandleShapeExtendCompositeSurface* self_) {
-    try { return {new HandleGeomGeometry(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom_Geometry*> Handle_ShapeExtend_CompositeSurface_to_Handle_Geom_Geometry(const Handle_ShapeExtend_CompositeSurface* self_) {
+    try { return {new Handle_Geom_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeExtendCompositeSurface_to_HandleStandardTransient(const HandleShapeExtendCompositeSurface* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeExtend_CompositeSurface_to_Handle_Standard_Transient(const Handle_ShapeExtend_CompositeSurface* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Geom_Surface)*> ShapeExtend_CompositeSurface_inherited_UReversed(const ShapeExtend_CompositeSurface* self) {
@@ -5164,6 +5038,26 @@ extern "C" OcctResult<double> ShapeExtend_CompositeSurface_inherited_UPeriod(con
 }
 extern "C" OcctResult<double> ShapeExtend_CompositeSurface_inherited_VPeriod(const ShapeExtend_CompositeSurface* self) {
     try { return {self->VPeriod(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* ShapeExtend_CompositeSurface_inherited_D0(const ShapeExtend_CompositeSurface* self, double U, double V, gp_Pnt& P) {
+    try { self->D0(U, V, P); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* ShapeExtend_CompositeSurface_inherited_D1(const ShapeExtend_CompositeSurface* self, double U, double V, gp_Pnt& P, gp_Vec& D1U, gp_Vec& D1V) {
+    try { self->D1(U, V, P, D1U, D1V); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* ShapeExtend_CompositeSurface_inherited_D2(const ShapeExtend_CompositeSurface* self, double U, double V, gp_Pnt& P, gp_Vec& D1U, gp_Vec& D1V, gp_Vec& D2U, gp_Vec& D2V, gp_Vec& D2UV) {
+    try { self->D2(U, V, P, D1U, D1V, D2U, D2V, D2UV); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* ShapeExtend_CompositeSurface_inherited_D3(const ShapeExtend_CompositeSurface* self, double U, double V, gp_Pnt& P, gp_Vec& D1U, gp_Vec& D1V, gp_Vec& D2U, gp_Vec& D2V, gp_Vec& D2UV, gp_Vec& D3U, gp_Vec& D3V, gp_Vec& D3UUV, gp_Vec& D3UVV) {
+    try { self->D3(U, V, P, D1U, D1V, D2U, D2V, D2UV, D3U, D3V, D3UUV, D3UVV); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<gp_Vec*> ShapeExtend_CompositeSurface_inherited_DN(const ShapeExtend_CompositeSurface* self, double U, double V, int32_t Nu, int32_t Nv) {
+    try { return {new gp_Vec(self->DN(U, V, Nu, Nv)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeExtend_CompositeSurface_inherited_Mirror(ShapeExtend_CompositeSurface* self, gp_Pnt const& P) {
@@ -5240,23 +5134,23 @@ extern "C" OcctResult<ShapeExtend_Explorer*> ShapeExtend_Explorer_ctor() {
     try { return {new ShapeExtend_Explorer(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopoDS_Shape*> ShapeExtend_Explorer_compound_from_seq(const ShapeExtend_Explorer* self_, Handle(TopTools_HSequenceOfShape) const* seqval) {
+extern "C" OcctResult<TopoDS_Shape*> ShapeExtend_Explorer_compound_from_seq(const ShapeExtend_Explorer* self_, Handle(NCollection_HSequence_TopoDS_Shape) const* seqval) {
     try { return {new TopoDS_Shape(self_->CompoundFromSeq(*seqval)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TopTools_HSequenceOfShape)*> ShapeExtend_Explorer_seq_from_compound(const ShapeExtend_Explorer* self_, TopoDS_Shape const* comp, bool expcomp) {
-    try { return {new Handle(TopTools_HSequenceOfShape)(self_->SeqFromCompound(*comp, expcomp)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_TopoDS_Shape)*> ShapeExtend_Explorer_seq_from_compound(const ShapeExtend_Explorer* self_, TopoDS_Shape const* comp, bool expcomp) {
+    try { return {new Handle(NCollection_HSequence_TopoDS_Shape)(self_->SeqFromCompound(*comp, expcomp)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TopTools_HSequenceOfShape)*> ShapeExtend_Explorer_seq_from_list(const ShapeExtend_Explorer* self_, TopTools_ListOfShape const* lisval) {
-    try { return {new Handle(TopTools_HSequenceOfShape)(self_->SeqFromList(*lisval)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_TopoDS_Shape)*> ShapeExtend_Explorer_seq_from_list(const ShapeExtend_Explorer* self_, NCollection_List_TopoDS_Shape const* lisval) {
+    try { return {new Handle(NCollection_HSequence_TopoDS_Shape)(self_->SeqFromList(*lisval)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape*> ShapeExtend_Explorer_sorted_compound(const ShapeExtend_Explorer* self_, TopoDS_Shape const* shape, int32_t type, bool explore, bool compound) {
     try { return {new TopoDS_Shape(self_->SortedCompound(*shape, static_cast<TopAbs_ShapeEnum>(type), explore, compound)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* ShapeExtend_Explorer_list_from_seq(const ShapeExtend_Explorer* self_, Handle(TopTools_HSequenceOfShape) const* seqval, TopTools_ListOfShape* lisval, bool clear) {
+extern "C" const char* ShapeExtend_Explorer_list_from_seq(const ShapeExtend_Explorer* self_, Handle(NCollection_HSequence_TopoDS_Shape) const* seqval, NCollection_List_TopoDS_Shape* lisval, bool clear) {
     try { self_->ListFromSeq(*seqval, *lisval, clear); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5264,7 +5158,7 @@ extern "C" OcctResult<int32_t> ShapeExtend_Explorer_shape_type(const ShapeExtend
     try { return {static_cast<int32_t>(self_->ShapeType(*shape, compound)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* ShapeExtend_Explorer_dispatch_list(const ShapeExtend_Explorer* self_, Handle(TopTools_HSequenceOfShape) const* list, Handle(TopTools_HSequenceOfShape)* vertices, Handle(TopTools_HSequenceOfShape)* edges, Handle(TopTools_HSequenceOfShape)* wires, Handle(TopTools_HSequenceOfShape)* faces, Handle(TopTools_HSequenceOfShape)* shells, Handle(TopTools_HSequenceOfShape)* solids, Handle(TopTools_HSequenceOfShape)* compsols, Handle(TopTools_HSequenceOfShape)* compounds) {
+extern "C" const char* ShapeExtend_Explorer_dispatch_list(const ShapeExtend_Explorer* self_, Handle(NCollection_HSequence_TopoDS_Shape) const* list, Handle(NCollection_HSequence_TopoDS_Shape)* vertices, Handle(NCollection_HSequence_TopoDS_Shape)* edges, Handle(NCollection_HSequence_TopoDS_Shape)* wires, Handle(NCollection_HSequence_TopoDS_Shape)* faces, Handle(NCollection_HSequence_TopoDS_Shape)* shells, Handle(NCollection_HSequence_TopoDS_Shape)* solids, Handle(NCollection_HSequence_TopoDS_Shape)* compsols, Handle(NCollection_HSequence_TopoDS_Shape)* compounds) {
     try { self_->DispatchList(*list, *vertices, *edges, *wires, *faces, *shells, *solids, *compsols, *compounds); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5286,11 +5180,7 @@ extern "C" const char* ShapeExtend_MsgRegistrator_send_shape_msg_gravity(ShapeEx
     try { self_->Send(*shape, *message, static_cast<Message_Gravity>(gravity)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<ShapeExtend_DataMapOfTransientListOfMsg const*> ShapeExtend_MsgRegistrator_map_transient(const ShapeExtend_MsgRegistrator* self_) {
-    try { return {&(self_->MapTransient()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<ShapeExtend_DataMapOfShapeListOfMsg const*> ShapeExtend_MsgRegistrator_map_shape(const ShapeExtend_MsgRegistrator* self_) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_NCollection_List_Message_Msg_TopTools_ShapeMapHasher const*> ShapeExtend_MsgRegistrator_map_shape(const ShapeExtend_MsgRegistrator* self_) {
     try { return {&(self_->MapShape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5310,24 +5200,24 @@ extern "C" OcctResult<const ShapeExtend_BasicMsgRegistrator*> ShapeExtend_MsgReg
 extern "C" OcctResult<ShapeExtend_BasicMsgRegistrator*> ShapeExtend_MsgRegistrator_as_ShapeExtend_BasicMsgRegistrator_mut(ShapeExtend_MsgRegistrator* self_) { return {static_cast<ShapeExtend_BasicMsgRegistrator*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeExtend_MsgRegistrator_as_Standard_Transient(const ShapeExtend_MsgRegistrator* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeExtend_MsgRegistrator_as_Standard_Transient_mut(ShapeExtend_MsgRegistrator* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeExtendMsgRegistrator*> ShapeExtend_MsgRegistrator_to_handle(ShapeExtend_MsgRegistrator* obj) {
-    try { return {new HandleShapeExtendMsgRegistrator(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeExtend_MsgRegistrator*> ShapeExtend_MsgRegistrator_to_handle(ShapeExtend_MsgRegistrator* obj) {
+    try { return {new Handle_ShapeExtend_MsgRegistrator(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeExtend_MsgRegistrator*> HandleShapeExtendMsgRegistrator_get(const HandleShapeExtendMsgRegistrator* handle) {
+extern "C" OcctResult<const ShapeExtend_MsgRegistrator*> Handle_ShapeExtend_MsgRegistrator_get(const Handle_ShapeExtend_MsgRegistrator* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeExtend_MsgRegistrator*> HandleShapeExtendMsgRegistrator_get_mut(HandleShapeExtendMsgRegistrator* handle) {
+extern "C" OcctResult<ShapeExtend_MsgRegistrator*> Handle_ShapeExtend_MsgRegistrator_get_mut(Handle_ShapeExtend_MsgRegistrator* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeExtendBasicMsgRegistrator*> HandleShapeExtendMsgRegistrator_to_HandleShapeExtendBasicMsgRegistrator(const HandleShapeExtendMsgRegistrator* self_) {
-    try { return {new HandleShapeExtendBasicMsgRegistrator(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeExtend_BasicMsgRegistrator*> Handle_ShapeExtend_MsgRegistrator_to_Handle_ShapeExtend_BasicMsgRegistrator(const Handle_ShapeExtend_MsgRegistrator* self_) {
+    try { return {new Handle_ShapeExtend_BasicMsgRegistrator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeExtendMsgRegistrator_to_HandleStandardTransient(const HandleShapeExtendMsgRegistrator* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeExtend_MsgRegistrator_to_Handle_Standard_Transient(const Handle_ShapeExtend_MsgRegistrator* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> ShapeExtend_MsgRegistrator_inherited_IsInstance(const ShapeExtend_MsgRegistrator* self, Handle(Standard_Type) const& theType) {
@@ -5376,8 +5266,8 @@ extern "C" OcctResult<TopoDS_Edge*> ShapeExtend_WireData_nonmanifold_edge(const 
     try { return {new TopoDS_Edge(self_->NonmanifoldEdge(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TopTools_HSequenceOfShape)*> ShapeExtend_WireData_nonmanifold_edges(const ShapeExtend_WireData* self_) {
-    try { return {new Handle(TopTools_HSequenceOfShape)(self_->NonmanifoldEdges()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_TopoDS_Shape)*> ShapeExtend_WireData_nonmanifold_edges(const ShapeExtend_WireData* self_) {
+    try { return {new Handle(NCollection_HSequence_TopoDS_Shape)(self_->NonmanifoldEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Edge*> ShapeExtend_WireData_edge(const ShapeExtend_WireData* self_, int32_t num) {
@@ -5494,20 +5384,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> ShapeExtend_WireData_get_typ
 }
 extern "C" OcctResult<const Standard_Transient*> ShapeExtend_WireData_as_Standard_Transient(const ShapeExtend_WireData* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeExtend_WireData_as_Standard_Transient_mut(ShapeExtend_WireData* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeExtendWireData*> ShapeExtend_WireData_to_handle(ShapeExtend_WireData* obj) {
-    try { return {new HandleShapeExtendWireData(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeExtend_WireData*> ShapeExtend_WireData_to_handle(ShapeExtend_WireData* obj) {
+    try { return {new Handle_ShapeExtend_WireData(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeExtend_WireData*> HandleShapeExtendWireData_get(const HandleShapeExtendWireData* handle) {
+extern "C" OcctResult<const ShapeExtend_WireData*> Handle_ShapeExtend_WireData_get(const Handle_ShapeExtend_WireData* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeExtend_WireData*> HandleShapeExtendWireData_get_mut(HandleShapeExtendWireData* handle) {
+extern "C" OcctResult<ShapeExtend_WireData*> Handle_ShapeExtend_WireData_get_mut(Handle_ShapeExtend_WireData* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeExtendWireData_to_HandleStandardTransient(const HandleShapeExtendWireData* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeExtend_WireData_to_Handle_Standard_Transient(const Handle_ShapeExtend_WireData* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> ShapeExtend_WireData_inherited_IsInstance(const ShapeExtend_WireData* self, Handle(Standard_Type) const& theType) {
@@ -5576,7 +5466,7 @@ extern "C" OcctResult<bool> ShapeFix_ComposeShell_status(const ShapeFix_ComposeS
     try { return {self_->Status(static_cast<ShapeExtend_Status>(status)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* ShapeFix_ComposeShell_dispatch_wires(const ShapeFix_ComposeShell* self_, TopTools_SequenceOfShape* faces, ShapeFix_SequenceOfWireSegment* wires) {
+extern "C" const char* ShapeFix_ComposeShell_dispatch_wires(const ShapeFix_ComposeShell* self_, NCollection_Sequence_TopoDS_Shape* faces, NCollection_Sequence_ShapeFix_WireSegment* wires) {
     try { self_->DispatchWires(*faces, *wires); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5600,24 +5490,24 @@ extern "C" OcctResult<const ShapeFix_Root*> ShapeFix_ComposeShell_as_ShapeFix_Ro
 extern "C" OcctResult<ShapeFix_Root*> ShapeFix_ComposeShell_as_ShapeFix_Root_mut(ShapeFix_ComposeShell* self_) { return {static_cast<ShapeFix_Root*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeFix_ComposeShell_as_Standard_Transient(const ShapeFix_ComposeShell* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeFix_ComposeShell_as_Standard_Transient_mut(ShapeFix_ComposeShell* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeFixComposeShell*> ShapeFix_ComposeShell_to_handle(ShapeFix_ComposeShell* obj) {
-    try { return {new HandleShapeFixComposeShell(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeFix_ComposeShell*> ShapeFix_ComposeShell_to_handle(ShapeFix_ComposeShell* obj) {
+    try { return {new Handle_ShapeFix_ComposeShell(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeFix_ComposeShell*> HandleShapeFixComposeShell_get(const HandleShapeFixComposeShell* handle) {
+extern "C" OcctResult<const ShapeFix_ComposeShell*> Handle_ShapeFix_ComposeShell_get(const Handle_ShapeFix_ComposeShell* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeFix_ComposeShell*> HandleShapeFixComposeShell_get_mut(HandleShapeFixComposeShell* handle) {
+extern "C" OcctResult<ShapeFix_ComposeShell*> Handle_ShapeFix_ComposeShell_get_mut(Handle_ShapeFix_ComposeShell* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeFixRoot*> HandleShapeFixComposeShell_to_HandleShapeFixRoot(const HandleShapeFixComposeShell* self_) {
-    try { return {new HandleShapeFixRoot(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeFix_Root*> Handle_ShapeFix_ComposeShell_to_Handle_ShapeFix_Root(const Handle_ShapeFix_ComposeShell* self_) {
+    try { return {new Handle_ShapeFix_Root(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeFixComposeShell_to_HandleStandardTransient(const HandleShapeFixComposeShell* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeFix_ComposeShell_to_Handle_Standard_Transient(const Handle_ShapeFix_ComposeShell* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeFix_ComposeShell_inherited_Set(ShapeFix_ComposeShell* self, Handle(ShapeFix_Root) const& Root) {
@@ -5804,20 +5694,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> ShapeFix_Edge_get_type_descr
 }
 extern "C" OcctResult<const Standard_Transient*> ShapeFix_Edge_as_Standard_Transient(const ShapeFix_Edge* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeFix_Edge_as_Standard_Transient_mut(ShapeFix_Edge* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeFixEdge*> ShapeFix_Edge_to_handle(ShapeFix_Edge* obj) {
-    try { return {new HandleShapeFixEdge(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeFix_Edge*> ShapeFix_Edge_to_handle(ShapeFix_Edge* obj) {
+    try { return {new Handle_ShapeFix_Edge(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeFix_Edge*> HandleShapeFixEdge_get(const HandleShapeFixEdge* handle) {
+extern "C" OcctResult<const ShapeFix_Edge*> Handle_ShapeFix_Edge_get(const Handle_ShapeFix_Edge* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeFix_Edge*> HandleShapeFixEdge_get_mut(HandleShapeFixEdge* handle) {
+extern "C" OcctResult<ShapeFix_Edge*> Handle_ShapeFix_Edge_get_mut(Handle_ShapeFix_Edge* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeFixEdge_to_HandleStandardTransient(const HandleShapeFixEdge* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeFix_Edge_to_Handle_Standard_Transient(const Handle_ShapeFix_Edge* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> ShapeFix_Edge_inherited_IsInstance(const ShapeFix_Edge* self, Handle(Standard_Type) const& theType) {
@@ -5930,20 +5820,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> ShapeFix_EdgeProjAux_get_typ
 }
 extern "C" OcctResult<const Standard_Transient*> ShapeFix_EdgeProjAux_as_Standard_Transient(const ShapeFix_EdgeProjAux* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeFix_EdgeProjAux_as_Standard_Transient_mut(ShapeFix_EdgeProjAux* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeFixEdgeProjAux*> ShapeFix_EdgeProjAux_to_handle(ShapeFix_EdgeProjAux* obj) {
-    try { return {new HandleShapeFixEdgeProjAux(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeFix_EdgeProjAux*> ShapeFix_EdgeProjAux_to_handle(ShapeFix_EdgeProjAux* obj) {
+    try { return {new Handle_ShapeFix_EdgeProjAux(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeFix_EdgeProjAux*> HandleShapeFixEdgeProjAux_get(const HandleShapeFixEdgeProjAux* handle) {
+extern "C" OcctResult<const ShapeFix_EdgeProjAux*> Handle_ShapeFix_EdgeProjAux_get(const Handle_ShapeFix_EdgeProjAux* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeFix_EdgeProjAux*> HandleShapeFixEdgeProjAux_get_mut(HandleShapeFixEdgeProjAux* handle) {
+extern "C" OcctResult<ShapeFix_EdgeProjAux*> Handle_ShapeFix_EdgeProjAux_get_mut(Handle_ShapeFix_EdgeProjAux* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeFixEdgeProjAux_to_HandleStandardTransient(const HandleShapeFixEdgeProjAux* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeFix_EdgeProjAux_to_Handle_Standard_Transient(const Handle_ShapeFix_EdgeProjAux* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> ShapeFix_EdgeProjAux_inherited_IsInstance(const ShapeFix_EdgeProjAux* self, Handle(Standard_Type) const& theType) {
@@ -6080,15 +5970,15 @@ extern "C" const char* ShapeFix_Face_add(ShapeFix_Face* self_, TopoDS_Wire const
     try { self_->Add(*wire); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> ShapeFix_Face_perform(ShapeFix_Face* self_) {
-    try { return {self_->Perform(), nullptr}; }
+extern "C" OcctResult<bool> ShapeFix_Face_perform(ShapeFix_Face* self_, Message_ProgressRange const* theProgress) {
+    try { return {self_->Perform(*theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> ShapeFix_Face_fix_orientation(ShapeFix_Face* self_) {
     try { return {self_->FixOrientation(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeFix_Face_fix_orientation_datamapofshapelistofshape(ShapeFix_Face* self_, TopTools_DataMapOfShapeListOfShape* MapWires) {
+extern "C" OcctResult<bool> ShapeFix_Face_fix_orientation_datamap_topods_shape_ncollection_list_topods_shape_toptools_shapemaphasher(ShapeFix_Face* self_, NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* MapWires) {
     try { return {self_->FixOrientation(*MapWires), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6104,7 +5994,7 @@ extern "C" OcctResult<bool> ShapeFix_Face_fix_small_area_wire(ShapeFix_Face* sel
     try { return {self_->FixSmallAreaWire(theIsRemoveSmallFace), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeFix_Face_fix_loop_wire(ShapeFix_Face* self_, TopTools_SequenceOfShape* aResWires) {
+extern "C" OcctResult<bool> ShapeFix_Face_fix_loop_wire(ShapeFix_Face* self_, NCollection_Sequence_TopoDS_Shape* aResWires) {
     try { return {self_->FixLoopWire(*aResWires), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6116,7 +6006,7 @@ extern "C" OcctResult<bool> ShapeFix_Face_fix_wires_two_coinc_edges(ShapeFix_Fac
     try { return {self_->FixWiresTwoCoincEdges(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeFix_Face_fix_split_face(ShapeFix_Face* self_, TopTools_DataMapOfShapeListOfShape const* MapWires) {
+extern "C" OcctResult<bool> ShapeFix_Face_fix_split_face(ShapeFix_Face* self_, NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher const* MapWires) {
     try { return {self_->FixSplitFace(*MapWires), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6144,24 +6034,24 @@ extern "C" OcctResult<const ShapeFix_Root*> ShapeFix_Face_as_ShapeFix_Root(const
 extern "C" OcctResult<ShapeFix_Root*> ShapeFix_Face_as_ShapeFix_Root_mut(ShapeFix_Face* self_) { return {static_cast<ShapeFix_Root*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeFix_Face_as_Standard_Transient(const ShapeFix_Face* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeFix_Face_as_Standard_Transient_mut(ShapeFix_Face* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeFixFace*> ShapeFix_Face_to_handle(ShapeFix_Face* obj) {
-    try { return {new HandleShapeFixFace(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeFix_Face*> ShapeFix_Face_to_handle(ShapeFix_Face* obj) {
+    try { return {new Handle_ShapeFix_Face(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeFix_Face*> HandleShapeFixFace_get(const HandleShapeFixFace* handle) {
+extern "C" OcctResult<const ShapeFix_Face*> Handle_ShapeFix_Face_get(const Handle_ShapeFix_Face* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeFix_Face*> HandleShapeFixFace_get_mut(HandleShapeFixFace* handle) {
+extern "C" OcctResult<ShapeFix_Face*> Handle_ShapeFix_Face_get_mut(Handle_ShapeFix_Face* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeFixRoot*> HandleShapeFixFace_to_HandleShapeFixRoot(const HandleShapeFixFace* self_) {
-    try { return {new HandleShapeFixRoot(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeFix_Root*> Handle_ShapeFix_Face_to_Handle_ShapeFix_Root(const Handle_ShapeFix_Face* self_) {
+    try { return {new Handle_ShapeFix_Root(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeFixFace_to_HandleStandardTransient(const HandleShapeFixFace* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeFix_Face_to_Handle_Standard_Transient(const Handle_ShapeFix_Face* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeFix_Face_inherited_Set(ShapeFix_Face* self, Handle(ShapeFix_Root) const& Root) {
@@ -6344,24 +6234,24 @@ extern "C" OcctResult<const ShapeFix_Root*> ShapeFix_FixSmallFace_as_ShapeFix_Ro
 extern "C" OcctResult<ShapeFix_Root*> ShapeFix_FixSmallFace_as_ShapeFix_Root_mut(ShapeFix_FixSmallFace* self_) { return {static_cast<ShapeFix_Root*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeFix_FixSmallFace_as_Standard_Transient(const ShapeFix_FixSmallFace* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeFix_FixSmallFace_as_Standard_Transient_mut(ShapeFix_FixSmallFace* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeFixFixSmallFace*> ShapeFix_FixSmallFace_to_handle(ShapeFix_FixSmallFace* obj) {
-    try { return {new HandleShapeFixFixSmallFace(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeFix_FixSmallFace*> ShapeFix_FixSmallFace_to_handle(ShapeFix_FixSmallFace* obj) {
+    try { return {new Handle_ShapeFix_FixSmallFace(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeFix_FixSmallFace*> HandleShapeFixFixSmallFace_get(const HandleShapeFixFixSmallFace* handle) {
+extern "C" OcctResult<const ShapeFix_FixSmallFace*> Handle_ShapeFix_FixSmallFace_get(const Handle_ShapeFix_FixSmallFace* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeFix_FixSmallFace*> HandleShapeFixFixSmallFace_get_mut(HandleShapeFixFixSmallFace* handle) {
+extern "C" OcctResult<ShapeFix_FixSmallFace*> Handle_ShapeFix_FixSmallFace_get_mut(Handle_ShapeFix_FixSmallFace* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeFixRoot*> HandleShapeFixFixSmallFace_to_HandleShapeFixRoot(const HandleShapeFixFixSmallFace* self_) {
-    try { return {new HandleShapeFixRoot(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeFix_Root*> Handle_ShapeFix_FixSmallFace_to_Handle_ShapeFix_Root(const Handle_ShapeFix_FixSmallFace* self_) {
+    try { return {new Handle_ShapeFix_Root(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeFixFixSmallFace_to_HandleStandardTransient(const HandleShapeFixFixSmallFace* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeFix_FixSmallFace_to_Handle_Standard_Transient(const Handle_ShapeFix_FixSmallFace* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeFix_FixSmallFace_inherited_Set(ShapeFix_FixSmallFace* self, Handle(ShapeFix_Root) const& Root) {
@@ -6498,24 +6388,24 @@ extern "C" OcctResult<const ShapeFix_Root*> ShapeFix_FixSmallSolid_as_ShapeFix_R
 extern "C" OcctResult<ShapeFix_Root*> ShapeFix_FixSmallSolid_as_ShapeFix_Root_mut(ShapeFix_FixSmallSolid* self_) { return {static_cast<ShapeFix_Root*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeFix_FixSmallSolid_as_Standard_Transient(const ShapeFix_FixSmallSolid* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeFix_FixSmallSolid_as_Standard_Transient_mut(ShapeFix_FixSmallSolid* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeFixFixSmallSolid*> ShapeFix_FixSmallSolid_to_handle(ShapeFix_FixSmallSolid* obj) {
-    try { return {new HandleShapeFixFixSmallSolid(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeFix_FixSmallSolid*> ShapeFix_FixSmallSolid_to_handle(ShapeFix_FixSmallSolid* obj) {
+    try { return {new Handle_ShapeFix_FixSmallSolid(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeFix_FixSmallSolid*> HandleShapeFixFixSmallSolid_get(const HandleShapeFixFixSmallSolid* handle) {
+extern "C" OcctResult<const ShapeFix_FixSmallSolid*> Handle_ShapeFix_FixSmallSolid_get(const Handle_ShapeFix_FixSmallSolid* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeFix_FixSmallSolid*> HandleShapeFixFixSmallSolid_get_mut(HandleShapeFixFixSmallSolid* handle) {
+extern "C" OcctResult<ShapeFix_FixSmallSolid*> Handle_ShapeFix_FixSmallSolid_get_mut(Handle_ShapeFix_FixSmallSolid* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeFixRoot*> HandleShapeFixFixSmallSolid_to_HandleShapeFixRoot(const HandleShapeFixFixSmallSolid* self_) {
-    try { return {new HandleShapeFixRoot(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeFix_Root*> Handle_ShapeFix_FixSmallSolid_to_Handle_ShapeFix_Root(const Handle_ShapeFix_FixSmallSolid* self_) {
+    try { return {new Handle_ShapeFix_Root(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeFixFixSmallSolid_to_HandleStandardTransient(const HandleShapeFixFixSmallSolid* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeFix_FixSmallSolid_to_Handle_Standard_Transient(const Handle_ShapeFix_FixSmallSolid* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeFix_FixSmallSolid_inherited_Set(ShapeFix_FixSmallSolid* self, Handle(ShapeFix_Root) const& Root) {
@@ -6762,99 +6652,99 @@ extern "C" OcctResult<Handle(Standard_Type) const*> ShapeFix_Root_get_type_descr
 }
 extern "C" OcctResult<const Standard_Transient*> ShapeFix_Root_as_Standard_Transient(const ShapeFix_Root* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeFix_Root_as_Standard_Transient_mut(ShapeFix_Root* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeFixRoot*> ShapeFix_Root_to_handle(ShapeFix_Root* obj) {
-    try { return {new HandleShapeFixRoot(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeFix_Root*> ShapeFix_Root_to_handle(ShapeFix_Root* obj) {
+    try { return {new Handle_ShapeFix_Root(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeFix_Root*> HandleShapeFixRoot_get(const HandleShapeFixRoot* handle) {
+extern "C" OcctResult<const ShapeFix_Root*> Handle_ShapeFix_Root_get(const Handle_ShapeFix_Root* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeFix_Root*> HandleShapeFixRoot_get_mut(HandleShapeFixRoot* handle) {
+extern "C" OcctResult<ShapeFix_Root*> Handle_ShapeFix_Root_get_mut(Handle_ShapeFix_Root* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeFixRoot_to_HandleStandardTransient(const HandleShapeFixRoot* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeFix_Root_to_Handle_Standard_Transient(const Handle_ShapeFix_Root* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeFixComposeShell*> HandleShapeFixRoot_downcast_to_HandleShapeFixComposeShell(const HandleShapeFixRoot* self_) {
+extern "C" OcctResult<Handle_ShapeFix_ComposeShell*> Handle_ShapeFix_Root_downcast_to_Handle_ShapeFix_ComposeShell(const Handle_ShapeFix_Root* self_) {
     try {
     opencascade::handle<ShapeFix_ComposeShell> result = opencascade::handle<ShapeFix_ComposeShell>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeFixComposeShell(result), nullptr};
+    return {new Handle_ShapeFix_ComposeShell(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeFixFace*> HandleShapeFixRoot_downcast_to_HandleShapeFixFace(const HandleShapeFixRoot* self_) {
+extern "C" OcctResult<Handle_ShapeFix_Face*> Handle_ShapeFix_Root_downcast_to_Handle_ShapeFix_Face(const Handle_ShapeFix_Root* self_) {
     try {
     opencascade::handle<ShapeFix_Face> result = opencascade::handle<ShapeFix_Face>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeFixFace(result), nullptr};
+    return {new Handle_ShapeFix_Face(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeFixFixSmallFace*> HandleShapeFixRoot_downcast_to_HandleShapeFixFixSmallFace(const HandleShapeFixRoot* self_) {
+extern "C" OcctResult<Handle_ShapeFix_FixSmallFace*> Handle_ShapeFix_Root_downcast_to_Handle_ShapeFix_FixSmallFace(const Handle_ShapeFix_Root* self_) {
     try {
     opencascade::handle<ShapeFix_FixSmallFace> result = opencascade::handle<ShapeFix_FixSmallFace>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeFixFixSmallFace(result), nullptr};
+    return {new Handle_ShapeFix_FixSmallFace(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeFixFixSmallSolid*> HandleShapeFixRoot_downcast_to_HandleShapeFixFixSmallSolid(const HandleShapeFixRoot* self_) {
+extern "C" OcctResult<Handle_ShapeFix_FixSmallSolid*> Handle_ShapeFix_Root_downcast_to_Handle_ShapeFix_FixSmallSolid(const Handle_ShapeFix_Root* self_) {
     try {
     opencascade::handle<ShapeFix_FixSmallSolid> result = opencascade::handle<ShapeFix_FixSmallSolid>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeFixFixSmallSolid(result), nullptr};
+    return {new Handle_ShapeFix_FixSmallSolid(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeFixShape*> HandleShapeFixRoot_downcast_to_HandleShapeFixShape(const HandleShapeFixRoot* self_) {
+extern "C" OcctResult<Handle_ShapeFix_Shape*> Handle_ShapeFix_Root_downcast_to_Handle_ShapeFix_Shape(const Handle_ShapeFix_Root* self_) {
     try {
     opencascade::handle<ShapeFix_Shape> result = opencascade::handle<ShapeFix_Shape>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeFixShape(result), nullptr};
+    return {new Handle_ShapeFix_Shape(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeFixShell*> HandleShapeFixRoot_downcast_to_HandleShapeFixShell(const HandleShapeFixRoot* self_) {
+extern "C" OcctResult<Handle_ShapeFix_Shell*> Handle_ShapeFix_Root_downcast_to_Handle_ShapeFix_Shell(const Handle_ShapeFix_Root* self_) {
     try {
     opencascade::handle<ShapeFix_Shell> result = opencascade::handle<ShapeFix_Shell>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeFixShell(result), nullptr};
+    return {new Handle_ShapeFix_Shell(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeFixSolid*> HandleShapeFixRoot_downcast_to_HandleShapeFixSolid(const HandleShapeFixRoot* self_) {
+extern "C" OcctResult<Handle_ShapeFix_Solid*> Handle_ShapeFix_Root_downcast_to_Handle_ShapeFix_Solid(const Handle_ShapeFix_Root* self_) {
     try {
     opencascade::handle<ShapeFix_Solid> result = opencascade::handle<ShapeFix_Solid>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeFixSolid(result), nullptr};
+    return {new Handle_ShapeFix_Solid(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeFixSplitCommonVertex*> HandleShapeFixRoot_downcast_to_HandleShapeFixSplitCommonVertex(const HandleShapeFixRoot* self_) {
+extern "C" OcctResult<Handle_ShapeFix_SplitCommonVertex*> Handle_ShapeFix_Root_downcast_to_Handle_ShapeFix_SplitCommonVertex(const Handle_ShapeFix_Root* self_) {
     try {
     opencascade::handle<ShapeFix_SplitCommonVertex> result = opencascade::handle<ShapeFix_SplitCommonVertex>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeFixSplitCommonVertex(result), nullptr};
+    return {new Handle_ShapeFix_SplitCommonVertex(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeFixWire*> HandleShapeFixRoot_downcast_to_HandleShapeFixWire(const HandleShapeFixRoot* self_) {
+extern "C" OcctResult<Handle_ShapeFix_Wire*> Handle_ShapeFix_Root_downcast_to_Handle_ShapeFix_Wire(const Handle_ShapeFix_Root* self_) {
     try {
     opencascade::handle<ShapeFix_Wire> result = opencascade::handle<ShapeFix_Wire>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeFixWire(result), nullptr};
+    return {new Handle_ShapeFix_Wire(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeFixWireframe*> HandleShapeFixRoot_downcast_to_HandleShapeFixWireframe(const HandleShapeFixRoot* self_) {
+extern "C" OcctResult<Handle_ShapeFix_Wireframe*> Handle_ShapeFix_Root_downcast_to_Handle_ShapeFix_Wireframe(const Handle_ShapeFix_Root* self_) {
     try {
     opencascade::handle<ShapeFix_Wireframe> result = opencascade::handle<ShapeFix_Wireframe>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeFixWireframe(result), nullptr};
+    return {new Handle_ShapeFix_Wireframe(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -6996,24 +6886,24 @@ extern "C" OcctResult<const ShapeFix_Root*> ShapeFix_Shape_as_ShapeFix_Root(cons
 extern "C" OcctResult<ShapeFix_Root*> ShapeFix_Shape_as_ShapeFix_Root_mut(ShapeFix_Shape* self_) { return {static_cast<ShapeFix_Root*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeFix_Shape_as_Standard_Transient(const ShapeFix_Shape* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeFix_Shape_as_Standard_Transient_mut(ShapeFix_Shape* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeFixShape*> ShapeFix_Shape_to_handle(ShapeFix_Shape* obj) {
-    try { return {new HandleShapeFixShape(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeFix_Shape*> ShapeFix_Shape_to_handle(ShapeFix_Shape* obj) {
+    try { return {new Handle_ShapeFix_Shape(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeFix_Shape*> HandleShapeFixShape_get(const HandleShapeFixShape* handle) {
+extern "C" OcctResult<const ShapeFix_Shape*> Handle_ShapeFix_Shape_get(const Handle_ShapeFix_Shape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeFix_Shape*> HandleShapeFixShape_get_mut(HandleShapeFixShape* handle) {
+extern "C" OcctResult<ShapeFix_Shape*> Handle_ShapeFix_Shape_get_mut(Handle_ShapeFix_Shape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeFixRoot*> HandleShapeFixShape_to_HandleShapeFixRoot(const HandleShapeFixShape* self_) {
-    try { return {new HandleShapeFixRoot(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeFix_Root*> Handle_ShapeFix_Shape_to_Handle_ShapeFix_Root(const Handle_ShapeFix_Shape* self_) {
+    try { return {new Handle_ShapeFix_Root(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeFixShape_to_HandleStandardTransient(const HandleShapeFixShape* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeFix_Shape_to_Handle_Standard_Transient(const Handle_ShapeFix_Shape* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeFix_Shape_inherited_Set(ShapeFix_Shape* self, Handle(ShapeFix_Root) const& Root) {
@@ -7200,24 +7090,24 @@ extern "C" OcctResult<const ShapeFix_Root*> ShapeFix_Shell_as_ShapeFix_Root(cons
 extern "C" OcctResult<ShapeFix_Root*> ShapeFix_Shell_as_ShapeFix_Root_mut(ShapeFix_Shell* self_) { return {static_cast<ShapeFix_Root*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeFix_Shell_as_Standard_Transient(const ShapeFix_Shell* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeFix_Shell_as_Standard_Transient_mut(ShapeFix_Shell* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeFixShell*> ShapeFix_Shell_to_handle(ShapeFix_Shell* obj) {
-    try { return {new HandleShapeFixShell(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeFix_Shell*> ShapeFix_Shell_to_handle(ShapeFix_Shell* obj) {
+    try { return {new Handle_ShapeFix_Shell(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeFix_Shell*> HandleShapeFixShell_get(const HandleShapeFixShell* handle) {
+extern "C" OcctResult<const ShapeFix_Shell*> Handle_ShapeFix_Shell_get(const Handle_ShapeFix_Shell* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeFix_Shell*> HandleShapeFixShell_get_mut(HandleShapeFixShell* handle) {
+extern "C" OcctResult<ShapeFix_Shell*> Handle_ShapeFix_Shell_get_mut(Handle_ShapeFix_Shell* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeFixRoot*> HandleShapeFixShell_to_HandleShapeFixRoot(const HandleShapeFixShell* self_) {
-    try { return {new HandleShapeFixRoot(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeFix_Root*> Handle_ShapeFix_Shell_to_Handle_ShapeFix_Root(const Handle_ShapeFix_Shell* self_) {
+    try { return {new Handle_ShapeFix_Root(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeFixShell_to_HandleStandardTransient(const HandleShapeFixShell* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeFix_Shell_to_Handle_Standard_Transient(const Handle_ShapeFix_Shell* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeFix_Shell_inherited_Set(ShapeFix_Shell* self, Handle(ShapeFix_Root) const& Root) {
@@ -7378,24 +7268,24 @@ extern "C" OcctResult<const ShapeFix_Root*> ShapeFix_Solid_as_ShapeFix_Root(cons
 extern "C" OcctResult<ShapeFix_Root*> ShapeFix_Solid_as_ShapeFix_Root_mut(ShapeFix_Solid* self_) { return {static_cast<ShapeFix_Root*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeFix_Solid_as_Standard_Transient(const ShapeFix_Solid* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeFix_Solid_as_Standard_Transient_mut(ShapeFix_Solid* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeFixSolid*> ShapeFix_Solid_to_handle(ShapeFix_Solid* obj) {
-    try { return {new HandleShapeFixSolid(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeFix_Solid*> ShapeFix_Solid_to_handle(ShapeFix_Solid* obj) {
+    try { return {new Handle_ShapeFix_Solid(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeFix_Solid*> HandleShapeFixSolid_get(const HandleShapeFixSolid* handle) {
+extern "C" OcctResult<const ShapeFix_Solid*> Handle_ShapeFix_Solid_get(const Handle_ShapeFix_Solid* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeFix_Solid*> HandleShapeFixSolid_get_mut(HandleShapeFixSolid* handle) {
+extern "C" OcctResult<ShapeFix_Solid*> Handle_ShapeFix_Solid_get_mut(Handle_ShapeFix_Solid* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeFixRoot*> HandleShapeFixSolid_to_HandleShapeFixRoot(const HandleShapeFixSolid* self_) {
-    try { return {new HandleShapeFixRoot(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeFix_Root*> Handle_ShapeFix_Solid_to_Handle_ShapeFix_Root(const Handle_ShapeFix_Solid* self_) {
+    try { return {new Handle_ShapeFix_Root(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeFixSolid_to_HandleStandardTransient(const HandleShapeFixSolid* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeFix_Solid_to_Handle_Standard_Transient(const Handle_ShapeFix_Solid* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeFix_Solid_inherited_Set(ShapeFix_Solid* self, Handle(ShapeFix_Root) const& Root) {
@@ -7508,24 +7398,24 @@ extern "C" OcctResult<const ShapeFix_Root*> ShapeFix_SplitCommonVertex_as_ShapeF
 extern "C" OcctResult<ShapeFix_Root*> ShapeFix_SplitCommonVertex_as_ShapeFix_Root_mut(ShapeFix_SplitCommonVertex* self_) { return {static_cast<ShapeFix_Root*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeFix_SplitCommonVertex_as_Standard_Transient(const ShapeFix_SplitCommonVertex* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeFix_SplitCommonVertex_as_Standard_Transient_mut(ShapeFix_SplitCommonVertex* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeFixSplitCommonVertex*> ShapeFix_SplitCommonVertex_to_handle(ShapeFix_SplitCommonVertex* obj) {
-    try { return {new HandleShapeFixSplitCommonVertex(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeFix_SplitCommonVertex*> ShapeFix_SplitCommonVertex_to_handle(ShapeFix_SplitCommonVertex* obj) {
+    try { return {new Handle_ShapeFix_SplitCommonVertex(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeFix_SplitCommonVertex*> HandleShapeFixSplitCommonVertex_get(const HandleShapeFixSplitCommonVertex* handle) {
+extern "C" OcctResult<const ShapeFix_SplitCommonVertex*> Handle_ShapeFix_SplitCommonVertex_get(const Handle_ShapeFix_SplitCommonVertex* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeFix_SplitCommonVertex*> HandleShapeFixSplitCommonVertex_get_mut(HandleShapeFixSplitCommonVertex* handle) {
+extern "C" OcctResult<ShapeFix_SplitCommonVertex*> Handle_ShapeFix_SplitCommonVertex_get_mut(Handle_ShapeFix_SplitCommonVertex* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeFixRoot*> HandleShapeFixSplitCommonVertex_to_HandleShapeFixRoot(const HandleShapeFixSplitCommonVertex* self_) {
-    try { return {new HandleShapeFixRoot(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeFix_Root*> Handle_ShapeFix_SplitCommonVertex_to_Handle_ShapeFix_Root(const Handle_ShapeFix_SplitCommonVertex* self_) {
+    try { return {new Handle_ShapeFix_Root(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeFixSplitCommonVertex_to_HandleStandardTransient(const HandleShapeFixSplitCommonVertex* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeFix_SplitCommonVertex_to_Handle_Standard_Transient(const Handle_ShapeFix_SplitCommonVertex* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeFix_SplitCommonVertex_inherited_Set(ShapeFix_SplitCommonVertex* self, Handle(ShapeFix_Root) const& Root) {
@@ -7638,7 +7528,7 @@ extern "C" OcctResult<bool> ShapeFix_SplitTool_cut_edge(const ShapeFix_SplitTool
     try { return {self_->CutEdge(*edge, pend, cut, *face, *iscutline), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeFix_SplitTool_split_edge_edge_real_vertex_real_vertex_face_sequenceofshape_int_handleshapebuildreshape_real2(const ShapeFix_SplitTool* self_, TopoDS_Edge const* edge, double fp, TopoDS_Vertex const* V1, double lp, TopoDS_Vertex const* V2, TopoDS_Face const* face, TopTools_SequenceOfShape* SeqE, int32_t* aNum, Handle(ShapeBuild_ReShape) const* context, double tol3d, double tol2d) {
+extern "C" OcctResult<bool> ShapeFix_SplitTool_split_edge_edge_real_vertex_real_vertex_face_seq_shape_int_handleshapebuildreshape_real2(const ShapeFix_SplitTool* self_, TopoDS_Edge const* edge, double fp, TopoDS_Vertex const* V1, double lp, TopoDS_Vertex const* V2, TopoDS_Face const* face, NCollection_Sequence_TopoDS_Shape* SeqE, int32_t* aNum, Handle(ShapeBuild_ReShape) const* context, double tol3d, double tol2d) {
     try { return {self_->SplitEdge(*edge, fp, *V1, lp, *V2, *face, *SeqE, *aNum, *context, tol3d, tol2d), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7696,8 +7586,16 @@ extern "C" const char* ShapeFix_Wire_load_handleshapeextendwiredata(ShapeFix_Wir
     try { self_->Load(*sbwd); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* ShapeFix_Wire_set_face(ShapeFix_Wire* self_, TopoDS_Face const* face) {
+extern "C" const char* ShapeFix_Wire_set_face_face(ShapeFix_Wire* self_, TopoDS_Face const* face) {
     try { self_->SetFace(*face); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* ShapeFix_Wire_set_face_face_handleshapeanalysissurface(ShapeFix_Wire* self_, TopoDS_Face const* theFace, Handle(ShapeAnalysis_Surface) const* theSurfaceAnalysis) {
+    try { self_->SetFace(*theFace, *theSurfaceAnalysis); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* ShapeFix_Wire_set_surface_handleshapeanalysissurface(ShapeFix_Wire* self_, Handle(ShapeAnalysis_Surface) const* theSurfaceAnalysis) {
+    try { self_->SetSurface(*theSurfaceAnalysis); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* ShapeFix_Wire_set_surface_handlegeomsurface(ShapeFix_Wire* self_, Handle(Geom_Surface) const* surf) {
@@ -7856,8 +7754,8 @@ extern "C" OcctResult<int32_t*> ShapeFix_Wire_fix_tail_mode(ShapeFix_Wire* self_
     try { return {&(self_->FixTailMode()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeFix_Wire_perform(ShapeFix_Wire* self_) {
-    try { return {self_->Perform(), nullptr}; }
+extern "C" OcctResult<bool> ShapeFix_Wire_perform(ShapeFix_Wire* self_, Message_ProgressRange const* theProgress) {
+    try { return {self_->Perform(*theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> ShapeFix_Wire_fix_reorder_bool(ShapeFix_Wire* self_, bool theModeBoth) {
@@ -7908,8 +7806,8 @@ extern "C" OcctResult<bool> ShapeFix_Wire_fix_small_int_bool_real(ShapeFix_Wire*
     try { return {self_->FixSmall(num, lockvtx, precsmall), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeFix_Wire_fix_connected_int_real(ShapeFix_Wire* self_, int32_t num, double prec) {
-    try { return {self_->FixConnected(num, prec), nullptr}; }
+extern "C" OcctResult<bool> ShapeFix_Wire_fix_connected_int_real_bool(ShapeFix_Wire* self_, int32_t num, double prec, bool theUpdateWire) {
+    try { return {self_->FixConnected(num, prec, theUpdateWire), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> ShapeFix_Wire_fix_seam(ShapeFix_Wire* self_, int32_t num) {
@@ -8016,24 +7914,24 @@ extern "C" OcctResult<const ShapeFix_Root*> ShapeFix_Wire_as_ShapeFix_Root(const
 extern "C" OcctResult<ShapeFix_Root*> ShapeFix_Wire_as_ShapeFix_Root_mut(ShapeFix_Wire* self_) { return {static_cast<ShapeFix_Root*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeFix_Wire_as_Standard_Transient(const ShapeFix_Wire* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeFix_Wire_as_Standard_Transient_mut(ShapeFix_Wire* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeFixWire*> ShapeFix_Wire_to_handle(ShapeFix_Wire* obj) {
-    try { return {new HandleShapeFixWire(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeFix_Wire*> ShapeFix_Wire_to_handle(ShapeFix_Wire* obj) {
+    try { return {new Handle_ShapeFix_Wire(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeFix_Wire*> HandleShapeFixWire_get(const HandleShapeFixWire* handle) {
+extern "C" OcctResult<const ShapeFix_Wire*> Handle_ShapeFix_Wire_get(const Handle_ShapeFix_Wire* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeFix_Wire*> HandleShapeFixWire_get_mut(HandleShapeFixWire* handle) {
+extern "C" OcctResult<ShapeFix_Wire*> Handle_ShapeFix_Wire_get_mut(Handle_ShapeFix_Wire* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeFixRoot*> HandleShapeFixWire_to_HandleShapeFixRoot(const HandleShapeFixWire* self_) {
-    try { return {new HandleShapeFixRoot(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeFix_Root*> Handle_ShapeFix_Wire_to_Handle_ShapeFix_Root(const Handle_ShapeFix_Wire* self_) {
+    try { return {new Handle_ShapeFix_Root(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeFixWire_to_HandleStandardTransient(const HandleShapeFixWire* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeFix_Wire_to_Handle_Standard_Transient(const Handle_ShapeFix_Wire* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeFix_Wire_inherited_Set(ShapeFix_Wire* self, Handle(ShapeFix_Root) const& Root) {
@@ -8306,11 +8204,11 @@ extern "C" OcctResult<bool> ShapeFix_Wireframe_fix_small_edges(ShapeFix_Wirefram
     try { return {self_->FixSmallEdges(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeFix_Wireframe_check_small_edges(ShapeFix_Wireframe* self_, TopTools_MapOfShape* theSmallEdges, TopTools_DataMapOfShapeListOfShape* theEdgeToFaces, TopTools_DataMapOfShapeListOfShape* theFaceWithSmall, TopTools_MapOfShape* theMultyEdges) {
+extern "C" OcctResult<bool> ShapeFix_Wireframe_check_small_edges(ShapeFix_Wireframe* self_, NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher* theSmallEdges, NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* theEdgeToFaces, NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* theFaceWithSmall, NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher* theMultyEdges) {
     try { return {self_->CheckSmallEdges(*theSmallEdges, *theEdgeToFaces, *theFaceWithSmall, *theMultyEdges), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeFix_Wireframe_merge_small_edges(ShapeFix_Wireframe* self_, TopTools_MapOfShape* theSmallEdges, TopTools_DataMapOfShapeListOfShape* theEdgeToFaces, TopTools_DataMapOfShapeListOfShape* theFaceWithSmall, TopTools_MapOfShape* theMultyEdges, bool theModeDrop, double theLimitAngle) {
+extern "C" OcctResult<bool> ShapeFix_Wireframe_merge_small_edges(ShapeFix_Wireframe* self_, NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher* theSmallEdges, NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* theEdgeToFaces, NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* theFaceWithSmall, NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher* theMultyEdges, bool theModeDrop, double theLimitAngle) {
     try { return {self_->MergeSmallEdges(*theSmallEdges, *theEdgeToFaces, *theFaceWithSmall, *theMultyEdges, theModeDrop, theLimitAngle), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8350,24 +8248,24 @@ extern "C" OcctResult<const ShapeFix_Root*> ShapeFix_Wireframe_as_ShapeFix_Root(
 extern "C" OcctResult<ShapeFix_Root*> ShapeFix_Wireframe_as_ShapeFix_Root_mut(ShapeFix_Wireframe* self_) { return {static_cast<ShapeFix_Root*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeFix_Wireframe_as_Standard_Transient(const ShapeFix_Wireframe* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeFix_Wireframe_as_Standard_Transient_mut(ShapeFix_Wireframe* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeFixWireframe*> ShapeFix_Wireframe_to_handle(ShapeFix_Wireframe* obj) {
-    try { return {new HandleShapeFixWireframe(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeFix_Wireframe*> ShapeFix_Wireframe_to_handle(ShapeFix_Wireframe* obj) {
+    try { return {new Handle_ShapeFix_Wireframe(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeFix_Wireframe*> HandleShapeFixWireframe_get(const HandleShapeFixWireframe* handle) {
+extern "C" OcctResult<const ShapeFix_Wireframe*> Handle_ShapeFix_Wireframe_get(const Handle_ShapeFix_Wireframe* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeFix_Wireframe*> HandleShapeFixWireframe_get_mut(HandleShapeFixWireframe* handle) {
+extern "C" OcctResult<ShapeFix_Wireframe*> Handle_ShapeFix_Wireframe_get_mut(Handle_ShapeFix_Wireframe* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeFixRoot*> HandleShapeFixWireframe_to_HandleShapeFixRoot(const HandleShapeFixWireframe* self_) {
-    try { return {new HandleShapeFixRoot(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeFix_Root*> Handle_ShapeFix_Wireframe_to_Handle_ShapeFix_Root(const Handle_ShapeFix_Wireframe* self_) {
+    try { return {new Handle_ShapeFix_Root(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeFixWireframe_to_HandleStandardTransient(const HandleShapeFixWireframe* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeFix_Wireframe_to_Handle_Standard_Transient(const Handle_ShapeFix_Wireframe* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeFix_Wireframe_inherited_Set(ShapeFix_Wireframe* self, Handle(ShapeFix_Root) const& Root) {
@@ -8558,27 +8456,27 @@ extern "C" OcctResult<Handle(Standard_Type) const*> ShapeProcess_Context_get_typ
 }
 extern "C" OcctResult<const Standard_Transient*> ShapeProcess_Context_as_Standard_Transient(const ShapeProcess_Context* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeProcess_Context_as_Standard_Transient_mut(ShapeProcess_Context* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeProcessContext*> ShapeProcess_Context_to_handle(ShapeProcess_Context* obj) {
-    try { return {new HandleShapeProcessContext(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeProcess_Context*> ShapeProcess_Context_to_handle(ShapeProcess_Context* obj) {
+    try { return {new Handle_ShapeProcess_Context(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeProcess_Context*> HandleShapeProcessContext_get(const HandleShapeProcessContext* handle) {
+extern "C" OcctResult<const ShapeProcess_Context*> Handle_ShapeProcess_Context_get(const Handle_ShapeProcess_Context* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeProcess_Context*> HandleShapeProcessContext_get_mut(HandleShapeProcessContext* handle) {
+extern "C" OcctResult<ShapeProcess_Context*> Handle_ShapeProcess_Context_get_mut(Handle_ShapeProcess_Context* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeProcessContext_to_HandleStandardTransient(const HandleShapeProcessContext* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeProcess_Context_to_Handle_Standard_Transient(const Handle_ShapeProcess_Context* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeProcessShapeContext*> HandleShapeProcessContext_downcast_to_HandleShapeProcessShapeContext(const HandleShapeProcessContext* self_) {
+extern "C" OcctResult<Handle_ShapeProcess_ShapeContext*> Handle_ShapeProcess_Context_downcast_to_Handle_ShapeProcess_ShapeContext(const Handle_ShapeProcess_Context* self_) {
     try {
     opencascade::handle<ShapeProcess_ShapeContext> result = opencascade::handle<ShapeProcess_ShapeContext>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeProcessShapeContext(result), nullptr};
+    return {new Handle_ShapeProcess_ShapeContext(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -8624,7 +8522,7 @@ extern "C" const char* ShapeProcess_OperLibrary_init() {
     try { ShapeProcess_OperLibrary::Init(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopoDS_Shape*> ShapeProcess_OperLibrary_apply_modifier(TopoDS_Shape const* S, Handle(ShapeProcess_ShapeContext) const* context, Handle(BRepTools_Modification) const* M, TopTools_DataMapOfShapeShape* map, Handle(ShapeExtend_MsgRegistrator) const* msg, bool theMutableInput) {
+extern "C" OcctResult<TopoDS_Shape*> ShapeProcess_OperLibrary_apply_modifier(TopoDS_Shape const* S, Handle(ShapeProcess_ShapeContext) const* context, Handle(BRepTools_Modification) const* M, NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher* map, Handle(ShapeExtend_MsgRegistrator) const* msg, bool theMutableInput) {
     try { return {new TopoDS_Shape(ShapeProcess_OperLibrary::ApplyModifier(*S, *context, *M, *map, *msg, theMutableInput)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8652,23 +8550,23 @@ extern "C" OcctResult<Handle(Standard_Type) const*> ShapeProcess_Operator_get_ty
 }
 extern "C" OcctResult<const Standard_Transient*> ShapeProcess_Operator_as_Standard_Transient(const ShapeProcess_Operator* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeProcess_Operator_as_Standard_Transient_mut(ShapeProcess_Operator* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const ShapeProcess_Operator*> HandleShapeProcessOperator_get(const HandleShapeProcessOperator* handle) {
+extern "C" OcctResult<const ShapeProcess_Operator*> Handle_ShapeProcess_Operator_get(const Handle_ShapeProcess_Operator* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeProcess_Operator*> HandleShapeProcessOperator_get_mut(HandleShapeProcessOperator* handle) {
+extern "C" OcctResult<ShapeProcess_Operator*> Handle_ShapeProcess_Operator_get_mut(Handle_ShapeProcess_Operator* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeProcessOperator_to_HandleStandardTransient(const HandleShapeProcessOperator* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeProcess_Operator_to_Handle_Standard_Transient(const Handle_ShapeProcess_Operator* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeProcessUOperator*> HandleShapeProcessOperator_downcast_to_HandleShapeProcessUOperator(const HandleShapeProcessOperator* self_) {
+extern "C" OcctResult<Handle_ShapeProcess_UOperator*> Handle_ShapeProcess_Operator_downcast_to_Handle_ShapeProcess_UOperator(const Handle_ShapeProcess_Operator* self_) {
     try {
     opencascade::handle<ShapeProcess_UOperator> result = opencascade::handle<ShapeProcess_UOperator>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeProcessUOperator(result), nullptr};
+    return {new Handle_ShapeProcess_UOperator(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -8726,7 +8624,7 @@ extern "C" OcctResult<TopoDS_Shape const*> ShapeProcess_ShapeContext_result(cons
     try { return {&(self_->Result()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeShape const*> ShapeProcess_ShapeContext_map(const ShapeProcess_ShapeContext* self_) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher const*> ShapeProcess_ShapeContext_map(const ShapeProcess_ShapeContext* self_) {
     try { return {&(self_->Map()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8750,7 +8648,7 @@ extern "C" const char* ShapeProcess_ShapeContext_set_result(ShapeProcess_ShapeCo
     try { self_->SetResult(*S); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* ShapeProcess_ShapeContext_record_modification_datamapofshapeshape_handleshapeextendmsgregistrator(ShapeProcess_ShapeContext* self_, TopTools_DataMapOfShapeShape const* repl, Handle(ShapeExtend_MsgRegistrator) const* msg) {
+extern "C" const char* ShapeProcess_ShapeContext_record_modification_dmap_shape_shape_handleshapeextendmsgregistrator(ShapeProcess_ShapeContext* self_, NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher const* repl, Handle(ShapeExtend_MsgRegistrator) const* msg) {
     try { self_->RecordModification(*repl, *msg); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -8811,24 +8709,24 @@ extern "C" OcctResult<const ShapeProcess_Context*> ShapeProcess_ShapeContext_as_
 extern "C" OcctResult<ShapeProcess_Context*> ShapeProcess_ShapeContext_as_ShapeProcess_Context_mut(ShapeProcess_ShapeContext* self_) { return {static_cast<ShapeProcess_Context*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeProcess_ShapeContext_as_Standard_Transient(const ShapeProcess_ShapeContext* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeProcess_ShapeContext_as_Standard_Transient_mut(ShapeProcess_ShapeContext* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeProcessShapeContext*> ShapeProcess_ShapeContext_to_handle(ShapeProcess_ShapeContext* obj) {
-    try { return {new HandleShapeProcessShapeContext(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeProcess_ShapeContext*> ShapeProcess_ShapeContext_to_handle(ShapeProcess_ShapeContext* obj) {
+    try { return {new Handle_ShapeProcess_ShapeContext(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeProcess_ShapeContext*> HandleShapeProcessShapeContext_get(const HandleShapeProcessShapeContext* handle) {
+extern "C" OcctResult<const ShapeProcess_ShapeContext*> Handle_ShapeProcess_ShapeContext_get(const Handle_ShapeProcess_ShapeContext* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeProcess_ShapeContext*> HandleShapeProcessShapeContext_get_mut(HandleShapeProcessShapeContext* handle) {
+extern "C" OcctResult<ShapeProcess_ShapeContext*> Handle_ShapeProcess_ShapeContext_get_mut(Handle_ShapeProcess_ShapeContext* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeProcessContext*> HandleShapeProcessShapeContext_to_HandleShapeProcessContext(const HandleShapeProcessShapeContext* self_) {
-    try { return {new HandleShapeProcessContext(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeProcess_Context*> Handle_ShapeProcess_ShapeContext_to_Handle_ShapeProcess_Context(const Handle_ShapeProcess_ShapeContext* self_) {
+    try { return {new Handle_ShapeProcess_Context(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeProcessShapeContext_to_HandleStandardTransient(const HandleShapeProcessShapeContext* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeProcess_ShapeContext_to_Handle_Standard_Transient(const Handle_ShapeProcess_ShapeContext* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Resource_Manager) const*> ShapeProcess_ShapeContext_inherited_ResourceManager(const ShapeProcess_ShapeContext* self) {
@@ -8913,24 +8811,24 @@ extern "C" OcctResult<const ShapeProcess_Operator*> ShapeProcess_UOperator_as_Sh
 extern "C" OcctResult<ShapeProcess_Operator*> ShapeProcess_UOperator_as_ShapeProcess_Operator_mut(ShapeProcess_UOperator* self_) { return {static_cast<ShapeProcess_Operator*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeProcess_UOperator_as_Standard_Transient(const ShapeProcess_UOperator* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeProcess_UOperator_as_Standard_Transient_mut(ShapeProcess_UOperator* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeProcessUOperator*> ShapeProcess_UOperator_to_handle(ShapeProcess_UOperator* obj) {
-    try { return {new HandleShapeProcessUOperator(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeProcess_UOperator*> ShapeProcess_UOperator_to_handle(ShapeProcess_UOperator* obj) {
+    try { return {new Handle_ShapeProcess_UOperator(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeProcess_UOperator*> HandleShapeProcessUOperator_get(const HandleShapeProcessUOperator* handle) {
+extern "C" OcctResult<const ShapeProcess_UOperator*> Handle_ShapeProcess_UOperator_get(const Handle_ShapeProcess_UOperator* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeProcess_UOperator*> HandleShapeProcessUOperator_get_mut(HandleShapeProcessUOperator* handle) {
+extern "C" OcctResult<ShapeProcess_UOperator*> Handle_ShapeProcess_UOperator_get_mut(Handle_ShapeProcess_UOperator* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeProcessOperator*> HandleShapeProcessUOperator_to_HandleShapeProcessOperator(const HandleShapeProcessUOperator* self_) {
-    try { return {new HandleShapeProcessOperator(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeProcess_Operator*> Handle_ShapeProcess_UOperator_to_Handle_ShapeProcess_Operator(const Handle_ShapeProcess_UOperator* self_) {
+    try { return {new Handle_ShapeProcess_Operator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeProcessUOperator_to_HandleStandardTransient(const HandleShapeProcessUOperator* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeProcess_UOperator_to_Handle_Standard_Transient(const Handle_ShapeProcess_UOperator* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> ShapeProcess_UOperator_inherited_IsInstance(const ShapeProcess_UOperator* self, Handle(Standard_Type) const& theType) {
@@ -8983,7 +8881,7 @@ extern "C" const char* ShapeProcessAPI_ApplySequence_clear_map(ShapeProcessAPI_A
     try { self_->ClearMap(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeShape const*> ShapeProcessAPI_ApplySequence_map(const ShapeProcessAPI_ApplySequence* self_) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher const*> ShapeProcessAPI_ApplySequence_map(const ShapeProcessAPI_ApplySequence* self_) {
     try { return {&(self_->Map()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9023,28 +8921,28 @@ extern "C" OcctResult<const ShapeUpgrade_Tool*> ShapeUpgrade_ClosedEdgeDivide_as
 extern "C" OcctResult<ShapeUpgrade_Tool*> ShapeUpgrade_ClosedEdgeDivide_as_ShapeUpgrade_Tool_mut(ShapeUpgrade_ClosedEdgeDivide* self_) { return {static_cast<ShapeUpgrade_Tool*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeUpgrade_ClosedEdgeDivide_as_Standard_Transient(const ShapeUpgrade_ClosedEdgeDivide* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeUpgrade_ClosedEdgeDivide_as_Standard_Transient_mut(ShapeUpgrade_ClosedEdgeDivide* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeUpgradeClosedEdgeDivide*> ShapeUpgrade_ClosedEdgeDivide_to_handle(ShapeUpgrade_ClosedEdgeDivide* obj) {
-    try { return {new HandleShapeUpgradeClosedEdgeDivide(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_ClosedEdgeDivide*> ShapeUpgrade_ClosedEdgeDivide_to_handle(ShapeUpgrade_ClosedEdgeDivide* obj) {
+    try { return {new Handle_ShapeUpgrade_ClosedEdgeDivide(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeUpgrade_ClosedEdgeDivide*> HandleShapeUpgradeClosedEdgeDivide_get(const HandleShapeUpgradeClosedEdgeDivide* handle) {
+extern "C" OcctResult<const ShapeUpgrade_ClosedEdgeDivide*> Handle_ShapeUpgrade_ClosedEdgeDivide_get(const Handle_ShapeUpgrade_ClosedEdgeDivide* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeUpgrade_ClosedEdgeDivide*> HandleShapeUpgradeClosedEdgeDivide_get_mut(HandleShapeUpgradeClosedEdgeDivide* handle) {
+extern "C" OcctResult<ShapeUpgrade_ClosedEdgeDivide*> Handle_ShapeUpgrade_ClosedEdgeDivide_get_mut(Handle_ShapeUpgrade_ClosedEdgeDivide* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeEdgeDivide*> HandleShapeUpgradeClosedEdgeDivide_to_HandleShapeUpgradeEdgeDivide(const HandleShapeUpgradeClosedEdgeDivide* self_) {
-    try { return {new HandleShapeUpgradeEdgeDivide(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_EdgeDivide*> Handle_ShapeUpgrade_ClosedEdgeDivide_to_Handle_ShapeUpgrade_EdgeDivide(const Handle_ShapeUpgrade_ClosedEdgeDivide* self_) {
+    try { return {new Handle_ShapeUpgrade_EdgeDivide(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeTool*> HandleShapeUpgradeClosedEdgeDivide_to_HandleShapeUpgradeTool(const HandleShapeUpgradeClosedEdgeDivide* self_) {
-    try { return {new HandleShapeUpgradeTool(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_Tool*> Handle_ShapeUpgrade_ClosedEdgeDivide_to_Handle_ShapeUpgrade_Tool(const Handle_ShapeUpgrade_ClosedEdgeDivide* self_) {
+    try { return {new Handle_ShapeUpgrade_Tool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeUpgradeClosedEdgeDivide_to_HandleStandardTransient(const HandleShapeUpgradeClosedEdgeDivide* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeUpgrade_ClosedEdgeDivide_to_Handle_Standard_Transient(const Handle_ShapeUpgrade_ClosedEdgeDivide* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeUpgrade_ClosedEdgeDivide_inherited_Clear(ShapeUpgrade_ClosedEdgeDivide* self) {
@@ -9063,12 +8961,12 @@ extern "C" OcctResult<bool> ShapeUpgrade_ClosedEdgeDivide_inherited_HasCurve3d(c
     try { return {self->HasCurve3d(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfReal)*> ShapeUpgrade_ClosedEdgeDivide_inherited_Knots2d(const ShapeUpgrade_ClosedEdgeDivide* self) {
-    try { return {new Handle(TColStd_HSequenceOfReal)(self->Knots2d()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_double)*> ShapeUpgrade_ClosedEdgeDivide_inherited_Knots2d(const ShapeUpgrade_ClosedEdgeDivide* self) {
+    try { return {new Handle(NCollection_HSequence_double)(self->Knots2d()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfReal)*> ShapeUpgrade_ClosedEdgeDivide_inherited_Knots3d(const ShapeUpgrade_ClosedEdgeDivide* self) {
-    try { return {new Handle(TColStd_HSequenceOfReal)(self->Knots3d()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_double)*> ShapeUpgrade_ClosedEdgeDivide_inherited_Knots3d(const ShapeUpgrade_ClosedEdgeDivide* self) {
+    try { return {new Handle(NCollection_HSequence_double)(self->Knots3d()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeUpgrade_ClosedEdgeDivide_inherited_SetSplitCurve2dTool(ShapeUpgrade_ClosedEdgeDivide* self, Handle(ShapeUpgrade_SplitCurve2d) const& splitCurve2dTool) {
@@ -9199,28 +9097,28 @@ extern "C" OcctResult<const ShapeUpgrade_Tool*> ShapeUpgrade_ClosedFaceDivide_as
 extern "C" OcctResult<ShapeUpgrade_Tool*> ShapeUpgrade_ClosedFaceDivide_as_ShapeUpgrade_Tool_mut(ShapeUpgrade_ClosedFaceDivide* self_) { return {static_cast<ShapeUpgrade_Tool*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeUpgrade_ClosedFaceDivide_as_Standard_Transient(const ShapeUpgrade_ClosedFaceDivide* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeUpgrade_ClosedFaceDivide_as_Standard_Transient_mut(ShapeUpgrade_ClosedFaceDivide* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeUpgradeClosedFaceDivide*> ShapeUpgrade_ClosedFaceDivide_to_handle(ShapeUpgrade_ClosedFaceDivide* obj) {
-    try { return {new HandleShapeUpgradeClosedFaceDivide(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_ClosedFaceDivide*> ShapeUpgrade_ClosedFaceDivide_to_handle(ShapeUpgrade_ClosedFaceDivide* obj) {
+    try { return {new Handle_ShapeUpgrade_ClosedFaceDivide(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeUpgrade_ClosedFaceDivide*> HandleShapeUpgradeClosedFaceDivide_get(const HandleShapeUpgradeClosedFaceDivide* handle) {
+extern "C" OcctResult<const ShapeUpgrade_ClosedFaceDivide*> Handle_ShapeUpgrade_ClosedFaceDivide_get(const Handle_ShapeUpgrade_ClosedFaceDivide* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeUpgrade_ClosedFaceDivide*> HandleShapeUpgradeClosedFaceDivide_get_mut(HandleShapeUpgradeClosedFaceDivide* handle) {
+extern "C" OcctResult<ShapeUpgrade_ClosedFaceDivide*> Handle_ShapeUpgrade_ClosedFaceDivide_get_mut(Handle_ShapeUpgrade_ClosedFaceDivide* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeFaceDivide*> HandleShapeUpgradeClosedFaceDivide_to_HandleShapeUpgradeFaceDivide(const HandleShapeUpgradeClosedFaceDivide* self_) {
-    try { return {new HandleShapeUpgradeFaceDivide(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_FaceDivide*> Handle_ShapeUpgrade_ClosedFaceDivide_to_Handle_ShapeUpgrade_FaceDivide(const Handle_ShapeUpgrade_ClosedFaceDivide* self_) {
+    try { return {new Handle_ShapeUpgrade_FaceDivide(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeTool*> HandleShapeUpgradeClosedFaceDivide_to_HandleShapeUpgradeTool(const HandleShapeUpgradeClosedFaceDivide* self_) {
-    try { return {new HandleShapeUpgradeTool(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_Tool*> Handle_ShapeUpgrade_ClosedFaceDivide_to_Handle_ShapeUpgrade_Tool(const Handle_ShapeUpgrade_ClosedFaceDivide* self_) {
+    try { return {new Handle_ShapeUpgrade_Tool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeUpgradeClosedFaceDivide_to_HandleStandardTransient(const HandleShapeUpgradeClosedFaceDivide* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeUpgrade_ClosedFaceDivide_to_Handle_Standard_Transient(const Handle_ShapeUpgrade_ClosedFaceDivide* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeUpgrade_ClosedFaceDivide_inherited_Init(ShapeUpgrade_ClosedFaceDivide* self, TopoDS_Face const& F) {
@@ -9341,8 +9239,8 @@ extern "C" OcctResult<ShapeUpgrade_ConvertCurve2dToBezier*> ShapeUpgrade_Convert
     try { return {new ShapeUpgrade_ConvertCurve2dToBezier(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfReal)*> ShapeUpgrade_ConvertCurve2dToBezier_split_params(const ShapeUpgrade_ConvertCurve2dToBezier* self_) {
-    try { return {new Handle(TColStd_HSequenceOfReal)(self_->SplitParams()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_double)*> ShapeUpgrade_ConvertCurve2dToBezier_split_params(const ShapeUpgrade_ConvertCurve2dToBezier* self_) {
+    try { return {new Handle(NCollection_HSequence_double)(self_->SplitParams()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeUpgrade_ConvertCurve2dToBezier_compute(ShapeUpgrade_ConvertCurve2dToBezier* self_) {
@@ -9371,43 +9269,43 @@ extern "C" OcctResult<const ShapeUpgrade_SplitCurve*> ShapeUpgrade_ConvertCurve2
 extern "C" OcctResult<ShapeUpgrade_SplitCurve*> ShapeUpgrade_ConvertCurve2dToBezier_as_ShapeUpgrade_SplitCurve_mut(ShapeUpgrade_ConvertCurve2dToBezier* self_) { return {static_cast<ShapeUpgrade_SplitCurve*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeUpgrade_ConvertCurve2dToBezier_as_Standard_Transient(const ShapeUpgrade_ConvertCurve2dToBezier* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeUpgrade_ConvertCurve2dToBezier_as_Standard_Transient_mut(ShapeUpgrade_ConvertCurve2dToBezier* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeUpgradeConvertCurve2dToBezier*> ShapeUpgrade_ConvertCurve2dToBezier_to_handle(ShapeUpgrade_ConvertCurve2dToBezier* obj) {
-    try { return {new HandleShapeUpgradeConvertCurve2dToBezier(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_ConvertCurve2dToBezier*> ShapeUpgrade_ConvertCurve2dToBezier_to_handle(ShapeUpgrade_ConvertCurve2dToBezier* obj) {
+    try { return {new Handle_ShapeUpgrade_ConvertCurve2dToBezier(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeUpgrade_ConvertCurve2dToBezier*> HandleShapeUpgradeConvertCurve2dToBezier_get(const HandleShapeUpgradeConvertCurve2dToBezier* handle) {
+extern "C" OcctResult<const ShapeUpgrade_ConvertCurve2dToBezier*> Handle_ShapeUpgrade_ConvertCurve2dToBezier_get(const Handle_ShapeUpgrade_ConvertCurve2dToBezier* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeUpgrade_ConvertCurve2dToBezier*> HandleShapeUpgradeConvertCurve2dToBezier_get_mut(HandleShapeUpgradeConvertCurve2dToBezier* handle) {
+extern "C" OcctResult<ShapeUpgrade_ConvertCurve2dToBezier*> Handle_ShapeUpgrade_ConvertCurve2dToBezier_get_mut(Handle_ShapeUpgrade_ConvertCurve2dToBezier* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeSplitCurve2d*> HandleShapeUpgradeConvertCurve2dToBezier_to_HandleShapeUpgradeSplitCurve2d(const HandleShapeUpgradeConvertCurve2dToBezier* self_) {
-    try { return {new HandleShapeUpgradeSplitCurve2d(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitCurve2d*> Handle_ShapeUpgrade_ConvertCurve2dToBezier_to_Handle_ShapeUpgrade_SplitCurve2d(const Handle_ShapeUpgrade_ConvertCurve2dToBezier* self_) {
+    try { return {new Handle_ShapeUpgrade_SplitCurve2d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeSplitCurve*> HandleShapeUpgradeConvertCurve2dToBezier_to_HandleShapeUpgradeSplitCurve(const HandleShapeUpgradeConvertCurve2dToBezier* self_) {
-    try { return {new HandleShapeUpgradeSplitCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitCurve*> Handle_ShapeUpgrade_ConvertCurve2dToBezier_to_Handle_ShapeUpgrade_SplitCurve(const Handle_ShapeUpgrade_ConvertCurve2dToBezier* self_) {
+    try { return {new Handle_ShapeUpgrade_SplitCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeUpgradeConvertCurve2dToBezier_to_HandleStandardTransient(const HandleShapeUpgradeConvertCurve2dToBezier* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeUpgrade_ConvertCurve2dToBezier_to_Handle_Standard_Transient(const Handle_ShapeUpgrade_ConvertCurve2dToBezier* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeUpgrade_ConvertCurve2dToBezier_inherited_Init(ShapeUpgrade_ConvertCurve2dToBezier* self, Handle(Geom2d_Curve) const& C) {
     try { self->Init(C); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(TColGeom2d_HArray1OfCurve) const*> ShapeUpgrade_ConvertCurve2dToBezier_inherited_GetCurves(const ShapeUpgrade_ConvertCurve2dToBezier* self) {
+extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_Geom2d_Curve) const*> ShapeUpgrade_ConvertCurve2dToBezier_inherited_GetCurves(const ShapeUpgrade_ConvertCurve2dToBezier* self) {
     try { return {&(self->GetCurves()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* ShapeUpgrade_ConvertCurve2dToBezier_inherited_SetSplitValues(ShapeUpgrade_ConvertCurve2dToBezier* self, Handle(TColStd_HSequenceOfReal) const& SplitValues) {
+extern "C" const char* ShapeUpgrade_ConvertCurve2dToBezier_inherited_SetSplitValues(ShapeUpgrade_ConvertCurve2dToBezier* self, Handle(NCollection_HSequence_double) const& SplitValues) {
     try { self->SetSplitValues(SplitValues); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfReal) const*> ShapeUpgrade_ConvertCurve2dToBezier_inherited_SplitValues(const ShapeUpgrade_ConvertCurve2dToBezier* self) {
+extern "C" OcctResult<Handle(NCollection_HSequence_double) const*> ShapeUpgrade_ConvertCurve2dToBezier_inherited_SplitValues(const ShapeUpgrade_ConvertCurve2dToBezier* self) {
     try { return {&(self->SplitValues()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9457,8 +9355,8 @@ extern "C" OcctResult<ShapeUpgrade_ConvertCurve3dToBezier*> ShapeUpgrade_Convert
     try { return {new ShapeUpgrade_ConvertCurve3dToBezier(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfReal)*> ShapeUpgrade_ConvertCurve3dToBezier_split_params(const ShapeUpgrade_ConvertCurve3dToBezier* self_) {
-    try { return {new Handle(TColStd_HSequenceOfReal)(self_->SplitParams()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_double)*> ShapeUpgrade_ConvertCurve3dToBezier_split_params(const ShapeUpgrade_ConvertCurve3dToBezier* self_) {
+    try { return {new Handle(NCollection_HSequence_double)(self_->SplitParams()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeUpgrade_ConvertCurve3dToBezier_set_line_mode(ShapeUpgrade_ConvertCurve3dToBezier* self_, bool mode) {
@@ -9511,43 +9409,43 @@ extern "C" OcctResult<const ShapeUpgrade_SplitCurve*> ShapeUpgrade_ConvertCurve3
 extern "C" OcctResult<ShapeUpgrade_SplitCurve*> ShapeUpgrade_ConvertCurve3dToBezier_as_ShapeUpgrade_SplitCurve_mut(ShapeUpgrade_ConvertCurve3dToBezier* self_) { return {static_cast<ShapeUpgrade_SplitCurve*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeUpgrade_ConvertCurve3dToBezier_as_Standard_Transient(const ShapeUpgrade_ConvertCurve3dToBezier* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeUpgrade_ConvertCurve3dToBezier_as_Standard_Transient_mut(ShapeUpgrade_ConvertCurve3dToBezier* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeUpgradeConvertCurve3dToBezier*> ShapeUpgrade_ConvertCurve3dToBezier_to_handle(ShapeUpgrade_ConvertCurve3dToBezier* obj) {
-    try { return {new HandleShapeUpgradeConvertCurve3dToBezier(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_ConvertCurve3dToBezier*> ShapeUpgrade_ConvertCurve3dToBezier_to_handle(ShapeUpgrade_ConvertCurve3dToBezier* obj) {
+    try { return {new Handle_ShapeUpgrade_ConvertCurve3dToBezier(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeUpgrade_ConvertCurve3dToBezier*> HandleShapeUpgradeConvertCurve3dToBezier_get(const HandleShapeUpgradeConvertCurve3dToBezier* handle) {
+extern "C" OcctResult<const ShapeUpgrade_ConvertCurve3dToBezier*> Handle_ShapeUpgrade_ConvertCurve3dToBezier_get(const Handle_ShapeUpgrade_ConvertCurve3dToBezier* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeUpgrade_ConvertCurve3dToBezier*> HandleShapeUpgradeConvertCurve3dToBezier_get_mut(HandleShapeUpgradeConvertCurve3dToBezier* handle) {
+extern "C" OcctResult<ShapeUpgrade_ConvertCurve3dToBezier*> Handle_ShapeUpgrade_ConvertCurve3dToBezier_get_mut(Handle_ShapeUpgrade_ConvertCurve3dToBezier* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeSplitCurve3d*> HandleShapeUpgradeConvertCurve3dToBezier_to_HandleShapeUpgradeSplitCurve3d(const HandleShapeUpgradeConvertCurve3dToBezier* self_) {
-    try { return {new HandleShapeUpgradeSplitCurve3d(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitCurve3d*> Handle_ShapeUpgrade_ConvertCurve3dToBezier_to_Handle_ShapeUpgrade_SplitCurve3d(const Handle_ShapeUpgrade_ConvertCurve3dToBezier* self_) {
+    try { return {new Handle_ShapeUpgrade_SplitCurve3d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeSplitCurve*> HandleShapeUpgradeConvertCurve3dToBezier_to_HandleShapeUpgradeSplitCurve(const HandleShapeUpgradeConvertCurve3dToBezier* self_) {
-    try { return {new HandleShapeUpgradeSplitCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitCurve*> Handle_ShapeUpgrade_ConvertCurve3dToBezier_to_Handle_ShapeUpgrade_SplitCurve(const Handle_ShapeUpgrade_ConvertCurve3dToBezier* self_) {
+    try { return {new Handle_ShapeUpgrade_SplitCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeUpgradeConvertCurve3dToBezier_to_HandleStandardTransient(const HandleShapeUpgradeConvertCurve3dToBezier* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeUpgrade_ConvertCurve3dToBezier_to_Handle_Standard_Transient(const Handle_ShapeUpgrade_ConvertCurve3dToBezier* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeUpgrade_ConvertCurve3dToBezier_inherited_Init(ShapeUpgrade_ConvertCurve3dToBezier* self, Handle(Geom_Curve) const& C) {
     try { self->Init(C); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(TColGeom_HArray1OfCurve) const*> ShapeUpgrade_ConvertCurve3dToBezier_inherited_GetCurves(const ShapeUpgrade_ConvertCurve3dToBezier* self) {
+extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_Geom_Curve) const*> ShapeUpgrade_ConvertCurve3dToBezier_inherited_GetCurves(const ShapeUpgrade_ConvertCurve3dToBezier* self) {
     try { return {&(self->GetCurves()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* ShapeUpgrade_ConvertCurve3dToBezier_inherited_SetSplitValues(ShapeUpgrade_ConvertCurve3dToBezier* self, Handle(TColStd_HSequenceOfReal) const& SplitValues) {
+extern "C" const char* ShapeUpgrade_ConvertCurve3dToBezier_inherited_SetSplitValues(ShapeUpgrade_ConvertCurve3dToBezier* self, Handle(NCollection_HSequence_double) const& SplitValues) {
     try { self->SetSplitValues(SplitValues); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfReal) const*> ShapeUpgrade_ConvertCurve3dToBezier_inherited_SplitValues(const ShapeUpgrade_ConvertCurve3dToBezier* self) {
+extern "C" OcctResult<Handle(NCollection_HSequence_double) const*> ShapeUpgrade_ConvertCurve3dToBezier_inherited_SplitValues(const ShapeUpgrade_ConvertCurve3dToBezier* self) {
     try { return {&(self->SplitValues()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9657,35 +9555,35 @@ extern "C" OcctResult<const ShapeUpgrade_SplitSurface*> ShapeUpgrade_ConvertSurf
 extern "C" OcctResult<ShapeUpgrade_SplitSurface*> ShapeUpgrade_ConvertSurfaceToBezierBasis_as_ShapeUpgrade_SplitSurface_mut(ShapeUpgrade_ConvertSurfaceToBezierBasis* self_) { return {static_cast<ShapeUpgrade_SplitSurface*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeUpgrade_ConvertSurfaceToBezierBasis_as_Standard_Transient(const ShapeUpgrade_ConvertSurfaceToBezierBasis* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeUpgrade_ConvertSurfaceToBezierBasis_as_Standard_Transient_mut(ShapeUpgrade_ConvertSurfaceToBezierBasis* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeUpgradeConvertSurfaceToBezierBasis*> ShapeUpgrade_ConvertSurfaceToBezierBasis_to_handle(ShapeUpgrade_ConvertSurfaceToBezierBasis* obj) {
-    try { return {new HandleShapeUpgradeConvertSurfaceToBezierBasis(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis*> ShapeUpgrade_ConvertSurfaceToBezierBasis_to_handle(ShapeUpgrade_ConvertSurfaceToBezierBasis* obj) {
+    try { return {new Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeUpgrade_ConvertSurfaceToBezierBasis*> HandleShapeUpgradeConvertSurfaceToBezierBasis_get(const HandleShapeUpgradeConvertSurfaceToBezierBasis* handle) {
+extern "C" OcctResult<const ShapeUpgrade_ConvertSurfaceToBezierBasis*> Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis_get(const Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeUpgrade_ConvertSurfaceToBezierBasis*> HandleShapeUpgradeConvertSurfaceToBezierBasis_get_mut(HandleShapeUpgradeConvertSurfaceToBezierBasis* handle) {
+extern "C" OcctResult<ShapeUpgrade_ConvertSurfaceToBezierBasis*> Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis_get_mut(Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeSplitSurface*> HandleShapeUpgradeConvertSurfaceToBezierBasis_to_HandleShapeUpgradeSplitSurface(const HandleShapeUpgradeConvertSurfaceToBezierBasis* self_) {
-    try { return {new HandleShapeUpgradeSplitSurface(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitSurface*> Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis_to_Handle_ShapeUpgrade_SplitSurface(const Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis* self_) {
+    try { return {new Handle_ShapeUpgrade_SplitSurface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeUpgradeConvertSurfaceToBezierBasis_to_HandleStandardTransient(const HandleShapeUpgradeConvertSurfaceToBezierBasis* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis_to_Handle_Standard_Transient(const Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_Init(ShapeUpgrade_ConvertSurfaceToBezierBasis* self, Handle(Geom_Surface) const& S) {
     try { self->Init(S); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_SetUSplitValues(ShapeUpgrade_ConvertSurfaceToBezierBasis* self, Handle(TColStd_HSequenceOfReal) const& UValues) {
+extern "C" const char* ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_SetUSplitValues(ShapeUpgrade_ConvertSurfaceToBezierBasis* self, Handle(NCollection_HSequence_double) const& UValues) {
     try { self->SetUSplitValues(UValues); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_SetVSplitValues(ShapeUpgrade_ConvertSurfaceToBezierBasis* self, Handle(TColStd_HSequenceOfReal) const& VValues) {
+extern "C" const char* ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_SetVSplitValues(ShapeUpgrade_ConvertSurfaceToBezierBasis* self, Handle(NCollection_HSequence_double) const& VValues) {
     try { self->SetVSplitValues(VValues); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -9693,11 +9591,11 @@ extern "C" const char* ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_Perfor
     try { self->Perform(Segment); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfReal) const*> ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_USplitValues(const ShapeUpgrade_ConvertSurfaceToBezierBasis* self) {
+extern "C" OcctResult<Handle(NCollection_HSequence_double) const*> ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_USplitValues(const ShapeUpgrade_ConvertSurfaceToBezierBasis* self) {
     try { return {&(self->USplitValues()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfReal) const*> ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_VSplitValues(const ShapeUpgrade_ConvertSurfaceToBezierBasis* self) {
+extern "C" OcctResult<Handle(NCollection_HSequence_double) const*> ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_VSplitValues(const ShapeUpgrade_ConvertSurfaceToBezierBasis* self) {
     try { return {&(self->VSplitValues()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9747,12 +9645,12 @@ extern "C" OcctResult<ShapeUpgrade_EdgeDivide*> ShapeUpgrade_EdgeDivide_ctor() {
     try { return {new ShapeUpgrade_EdgeDivide(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfReal)*> ShapeUpgrade_EdgeDivide_knots2d(const ShapeUpgrade_EdgeDivide* self_) {
-    try { return {new Handle(TColStd_HSequenceOfReal)(self_->Knots2d()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_double)*> ShapeUpgrade_EdgeDivide_knots2d(const ShapeUpgrade_EdgeDivide* self_) {
+    try { return {new Handle(NCollection_HSequence_double)(self_->Knots2d()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfReal)*> ShapeUpgrade_EdgeDivide_knots3d(const ShapeUpgrade_EdgeDivide* self_) {
-    try { return {new Handle(TColStd_HSequenceOfReal)(self_->Knots3d()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_double)*> ShapeUpgrade_EdgeDivide_knots3d(const ShapeUpgrade_EdgeDivide* self_) {
+    try { return {new Handle(NCollection_HSequence_double)(self_->Knots3d()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(ShapeUpgrade_SplitCurve2d)*> ShapeUpgrade_EdgeDivide_get_split_curve2d_tool(const ShapeUpgrade_EdgeDivide* self_) {
@@ -9807,31 +9705,31 @@ extern "C" OcctResult<const ShapeUpgrade_Tool*> ShapeUpgrade_EdgeDivide_as_Shape
 extern "C" OcctResult<ShapeUpgrade_Tool*> ShapeUpgrade_EdgeDivide_as_ShapeUpgrade_Tool_mut(ShapeUpgrade_EdgeDivide* self_) { return {static_cast<ShapeUpgrade_Tool*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeUpgrade_EdgeDivide_as_Standard_Transient(const ShapeUpgrade_EdgeDivide* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeUpgrade_EdgeDivide_as_Standard_Transient_mut(ShapeUpgrade_EdgeDivide* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeUpgradeEdgeDivide*> ShapeUpgrade_EdgeDivide_to_handle(ShapeUpgrade_EdgeDivide* obj) {
-    try { return {new HandleShapeUpgradeEdgeDivide(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_EdgeDivide*> ShapeUpgrade_EdgeDivide_to_handle(ShapeUpgrade_EdgeDivide* obj) {
+    try { return {new Handle_ShapeUpgrade_EdgeDivide(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeUpgrade_EdgeDivide*> HandleShapeUpgradeEdgeDivide_get(const HandleShapeUpgradeEdgeDivide* handle) {
+extern "C" OcctResult<const ShapeUpgrade_EdgeDivide*> Handle_ShapeUpgrade_EdgeDivide_get(const Handle_ShapeUpgrade_EdgeDivide* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeUpgrade_EdgeDivide*> HandleShapeUpgradeEdgeDivide_get_mut(HandleShapeUpgradeEdgeDivide* handle) {
+extern "C" OcctResult<ShapeUpgrade_EdgeDivide*> Handle_ShapeUpgrade_EdgeDivide_get_mut(Handle_ShapeUpgrade_EdgeDivide* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeTool*> HandleShapeUpgradeEdgeDivide_to_HandleShapeUpgradeTool(const HandleShapeUpgradeEdgeDivide* self_) {
-    try { return {new HandleShapeUpgradeTool(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_Tool*> Handle_ShapeUpgrade_EdgeDivide_to_Handle_ShapeUpgrade_Tool(const Handle_ShapeUpgrade_EdgeDivide* self_) {
+    try { return {new Handle_ShapeUpgrade_Tool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeUpgradeEdgeDivide_to_HandleStandardTransient(const HandleShapeUpgradeEdgeDivide* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeUpgrade_EdgeDivide_to_Handle_Standard_Transient(const Handle_ShapeUpgrade_EdgeDivide* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeClosedEdgeDivide*> HandleShapeUpgradeEdgeDivide_downcast_to_HandleShapeUpgradeClosedEdgeDivide(const HandleShapeUpgradeEdgeDivide* self_) {
+extern "C" OcctResult<Handle_ShapeUpgrade_ClosedEdgeDivide*> Handle_ShapeUpgrade_EdgeDivide_downcast_to_Handle_ShapeUpgrade_ClosedEdgeDivide(const Handle_ShapeUpgrade_EdgeDivide* self_) {
     try {
     opencascade::handle<ShapeUpgrade_ClosedEdgeDivide> result = opencascade::handle<ShapeUpgrade_ClosedEdgeDivide>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeUpgradeClosedEdgeDivide(result), nullptr};
+    return {new Handle_ShapeUpgrade_ClosedEdgeDivide(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -9977,39 +9875,39 @@ extern "C" OcctResult<const ShapeUpgrade_Tool*> ShapeUpgrade_FaceDivide_as_Shape
 extern "C" OcctResult<ShapeUpgrade_Tool*> ShapeUpgrade_FaceDivide_as_ShapeUpgrade_Tool_mut(ShapeUpgrade_FaceDivide* self_) { return {static_cast<ShapeUpgrade_Tool*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeUpgrade_FaceDivide_as_Standard_Transient(const ShapeUpgrade_FaceDivide* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeUpgrade_FaceDivide_as_Standard_Transient_mut(ShapeUpgrade_FaceDivide* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeUpgradeFaceDivide*> ShapeUpgrade_FaceDivide_to_handle(ShapeUpgrade_FaceDivide* obj) {
-    try { return {new HandleShapeUpgradeFaceDivide(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_FaceDivide*> ShapeUpgrade_FaceDivide_to_handle(ShapeUpgrade_FaceDivide* obj) {
+    try { return {new Handle_ShapeUpgrade_FaceDivide(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeUpgrade_FaceDivide*> HandleShapeUpgradeFaceDivide_get(const HandleShapeUpgradeFaceDivide* handle) {
+extern "C" OcctResult<const ShapeUpgrade_FaceDivide*> Handle_ShapeUpgrade_FaceDivide_get(const Handle_ShapeUpgrade_FaceDivide* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeUpgrade_FaceDivide*> HandleShapeUpgradeFaceDivide_get_mut(HandleShapeUpgradeFaceDivide* handle) {
+extern "C" OcctResult<ShapeUpgrade_FaceDivide*> Handle_ShapeUpgrade_FaceDivide_get_mut(Handle_ShapeUpgrade_FaceDivide* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeTool*> HandleShapeUpgradeFaceDivide_to_HandleShapeUpgradeTool(const HandleShapeUpgradeFaceDivide* self_) {
-    try { return {new HandleShapeUpgradeTool(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_Tool*> Handle_ShapeUpgrade_FaceDivide_to_Handle_ShapeUpgrade_Tool(const Handle_ShapeUpgrade_FaceDivide* self_) {
+    try { return {new Handle_ShapeUpgrade_Tool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeUpgradeFaceDivide_to_HandleStandardTransient(const HandleShapeUpgradeFaceDivide* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeUpgrade_FaceDivide_to_Handle_Standard_Transient(const Handle_ShapeUpgrade_FaceDivide* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeClosedFaceDivide*> HandleShapeUpgradeFaceDivide_downcast_to_HandleShapeUpgradeClosedFaceDivide(const HandleShapeUpgradeFaceDivide* self_) {
+extern "C" OcctResult<Handle_ShapeUpgrade_ClosedFaceDivide*> Handle_ShapeUpgrade_FaceDivide_downcast_to_Handle_ShapeUpgrade_ClosedFaceDivide(const Handle_ShapeUpgrade_FaceDivide* self_) {
     try {
     opencascade::handle<ShapeUpgrade_ClosedFaceDivide> result = opencascade::handle<ShapeUpgrade_ClosedFaceDivide>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeUpgradeClosedFaceDivide(result), nullptr};
+    return {new Handle_ShapeUpgrade_ClosedFaceDivide(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeFaceDivideArea*> HandleShapeUpgradeFaceDivide_downcast_to_HandleShapeUpgradeFaceDivideArea(const HandleShapeUpgradeFaceDivide* self_) {
+extern "C" OcctResult<Handle_ShapeUpgrade_FaceDivideArea*> Handle_ShapeUpgrade_FaceDivide_downcast_to_Handle_ShapeUpgrade_FaceDivideArea(const Handle_ShapeUpgrade_FaceDivide* self_) {
     try {
     opencascade::handle<ShapeUpgrade_FaceDivideArea> result = opencascade::handle<ShapeUpgrade_FaceDivideArea>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeUpgradeFaceDivideArea(result), nullptr};
+    return {new Handle_ShapeUpgrade_FaceDivideArea(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -10133,28 +10031,28 @@ extern "C" OcctResult<const ShapeUpgrade_Tool*> ShapeUpgrade_FaceDivideArea_as_S
 extern "C" OcctResult<ShapeUpgrade_Tool*> ShapeUpgrade_FaceDivideArea_as_ShapeUpgrade_Tool_mut(ShapeUpgrade_FaceDivideArea* self_) { return {static_cast<ShapeUpgrade_Tool*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeUpgrade_FaceDivideArea_as_Standard_Transient(const ShapeUpgrade_FaceDivideArea* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeUpgrade_FaceDivideArea_as_Standard_Transient_mut(ShapeUpgrade_FaceDivideArea* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeUpgradeFaceDivideArea*> ShapeUpgrade_FaceDivideArea_to_handle(ShapeUpgrade_FaceDivideArea* obj) {
-    try { return {new HandleShapeUpgradeFaceDivideArea(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_FaceDivideArea*> ShapeUpgrade_FaceDivideArea_to_handle(ShapeUpgrade_FaceDivideArea* obj) {
+    try { return {new Handle_ShapeUpgrade_FaceDivideArea(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeUpgrade_FaceDivideArea*> HandleShapeUpgradeFaceDivideArea_get(const HandleShapeUpgradeFaceDivideArea* handle) {
+extern "C" OcctResult<const ShapeUpgrade_FaceDivideArea*> Handle_ShapeUpgrade_FaceDivideArea_get(const Handle_ShapeUpgrade_FaceDivideArea* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeUpgrade_FaceDivideArea*> HandleShapeUpgradeFaceDivideArea_get_mut(HandleShapeUpgradeFaceDivideArea* handle) {
+extern "C" OcctResult<ShapeUpgrade_FaceDivideArea*> Handle_ShapeUpgrade_FaceDivideArea_get_mut(Handle_ShapeUpgrade_FaceDivideArea* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeFaceDivide*> HandleShapeUpgradeFaceDivideArea_to_HandleShapeUpgradeFaceDivide(const HandleShapeUpgradeFaceDivideArea* self_) {
-    try { return {new HandleShapeUpgradeFaceDivide(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_FaceDivide*> Handle_ShapeUpgrade_FaceDivideArea_to_Handle_ShapeUpgrade_FaceDivide(const Handle_ShapeUpgrade_FaceDivideArea* self_) {
+    try { return {new Handle_ShapeUpgrade_FaceDivide(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeTool*> HandleShapeUpgradeFaceDivideArea_to_HandleShapeUpgradeTool(const HandleShapeUpgradeFaceDivideArea* self_) {
-    try { return {new HandleShapeUpgradeTool(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_Tool*> Handle_ShapeUpgrade_FaceDivideArea_to_Handle_ShapeUpgrade_Tool(const Handle_ShapeUpgrade_FaceDivideArea* self_) {
+    try { return {new Handle_ShapeUpgrade_Tool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeUpgradeFaceDivideArea_to_HandleStandardTransient(const HandleShapeUpgradeFaceDivideArea* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeUpgrade_FaceDivideArea_to_Handle_Standard_Transient(const Handle_ShapeUpgrade_FaceDivideArea* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeUpgrade_FaceDivideArea_inherited_Init(ShapeUpgrade_FaceDivideArea* self, TopoDS_Face const& F) {
@@ -10297,28 +10195,28 @@ extern "C" OcctResult<const ShapeUpgrade_Tool*> ShapeUpgrade_FixSmallBezierCurve
 extern "C" OcctResult<ShapeUpgrade_Tool*> ShapeUpgrade_FixSmallBezierCurves_as_ShapeUpgrade_Tool_mut(ShapeUpgrade_FixSmallBezierCurves* self_) { return {static_cast<ShapeUpgrade_Tool*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeUpgrade_FixSmallBezierCurves_as_Standard_Transient(const ShapeUpgrade_FixSmallBezierCurves* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeUpgrade_FixSmallBezierCurves_as_Standard_Transient_mut(ShapeUpgrade_FixSmallBezierCurves* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeUpgradeFixSmallBezierCurves*> ShapeUpgrade_FixSmallBezierCurves_to_handle(ShapeUpgrade_FixSmallBezierCurves* obj) {
-    try { return {new HandleShapeUpgradeFixSmallBezierCurves(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_FixSmallBezierCurves*> ShapeUpgrade_FixSmallBezierCurves_to_handle(ShapeUpgrade_FixSmallBezierCurves* obj) {
+    try { return {new Handle_ShapeUpgrade_FixSmallBezierCurves(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeUpgrade_FixSmallBezierCurves*> HandleShapeUpgradeFixSmallBezierCurves_get(const HandleShapeUpgradeFixSmallBezierCurves* handle) {
+extern "C" OcctResult<const ShapeUpgrade_FixSmallBezierCurves*> Handle_ShapeUpgrade_FixSmallBezierCurves_get(const Handle_ShapeUpgrade_FixSmallBezierCurves* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeUpgrade_FixSmallBezierCurves*> HandleShapeUpgradeFixSmallBezierCurves_get_mut(HandleShapeUpgradeFixSmallBezierCurves* handle) {
+extern "C" OcctResult<ShapeUpgrade_FixSmallBezierCurves*> Handle_ShapeUpgrade_FixSmallBezierCurves_get_mut(Handle_ShapeUpgrade_FixSmallBezierCurves* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeFixSmallCurves*> HandleShapeUpgradeFixSmallBezierCurves_to_HandleShapeUpgradeFixSmallCurves(const HandleShapeUpgradeFixSmallBezierCurves* self_) {
-    try { return {new HandleShapeUpgradeFixSmallCurves(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_FixSmallCurves*> Handle_ShapeUpgrade_FixSmallBezierCurves_to_Handle_ShapeUpgrade_FixSmallCurves(const Handle_ShapeUpgrade_FixSmallBezierCurves* self_) {
+    try { return {new Handle_ShapeUpgrade_FixSmallCurves(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeTool*> HandleShapeUpgradeFixSmallBezierCurves_to_HandleShapeUpgradeTool(const HandleShapeUpgradeFixSmallBezierCurves* self_) {
-    try { return {new HandleShapeUpgradeTool(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_Tool*> Handle_ShapeUpgrade_FixSmallBezierCurves_to_Handle_ShapeUpgrade_Tool(const Handle_ShapeUpgrade_FixSmallBezierCurves* self_) {
+    try { return {new Handle_ShapeUpgrade_Tool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeUpgradeFixSmallBezierCurves_to_HandleStandardTransient(const HandleShapeUpgradeFixSmallBezierCurves* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeUpgrade_FixSmallBezierCurves_to_Handle_Standard_Transient(const Handle_ShapeUpgrade_FixSmallBezierCurves* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeUpgrade_FixSmallBezierCurves_inherited_Init(ShapeUpgrade_FixSmallBezierCurves* self, TopoDS_Edge const& theEdge, TopoDS_Face const& theFace) {
@@ -10451,31 +10349,31 @@ extern "C" OcctResult<const ShapeUpgrade_Tool*> ShapeUpgrade_FixSmallCurves_as_S
 extern "C" OcctResult<ShapeUpgrade_Tool*> ShapeUpgrade_FixSmallCurves_as_ShapeUpgrade_Tool_mut(ShapeUpgrade_FixSmallCurves* self_) { return {static_cast<ShapeUpgrade_Tool*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeUpgrade_FixSmallCurves_as_Standard_Transient(const ShapeUpgrade_FixSmallCurves* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeUpgrade_FixSmallCurves_as_Standard_Transient_mut(ShapeUpgrade_FixSmallCurves* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeUpgradeFixSmallCurves*> ShapeUpgrade_FixSmallCurves_to_handle(ShapeUpgrade_FixSmallCurves* obj) {
-    try { return {new HandleShapeUpgradeFixSmallCurves(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_FixSmallCurves*> ShapeUpgrade_FixSmallCurves_to_handle(ShapeUpgrade_FixSmallCurves* obj) {
+    try { return {new Handle_ShapeUpgrade_FixSmallCurves(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeUpgrade_FixSmallCurves*> HandleShapeUpgradeFixSmallCurves_get(const HandleShapeUpgradeFixSmallCurves* handle) {
+extern "C" OcctResult<const ShapeUpgrade_FixSmallCurves*> Handle_ShapeUpgrade_FixSmallCurves_get(const Handle_ShapeUpgrade_FixSmallCurves* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeUpgrade_FixSmallCurves*> HandleShapeUpgradeFixSmallCurves_get_mut(HandleShapeUpgradeFixSmallCurves* handle) {
+extern "C" OcctResult<ShapeUpgrade_FixSmallCurves*> Handle_ShapeUpgrade_FixSmallCurves_get_mut(Handle_ShapeUpgrade_FixSmallCurves* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeTool*> HandleShapeUpgradeFixSmallCurves_to_HandleShapeUpgradeTool(const HandleShapeUpgradeFixSmallCurves* self_) {
-    try { return {new HandleShapeUpgradeTool(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_Tool*> Handle_ShapeUpgrade_FixSmallCurves_to_Handle_ShapeUpgrade_Tool(const Handle_ShapeUpgrade_FixSmallCurves* self_) {
+    try { return {new Handle_ShapeUpgrade_Tool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeUpgradeFixSmallCurves_to_HandleStandardTransient(const HandleShapeUpgradeFixSmallCurves* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeUpgrade_FixSmallCurves_to_Handle_Standard_Transient(const Handle_ShapeUpgrade_FixSmallCurves* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeFixSmallBezierCurves*> HandleShapeUpgradeFixSmallCurves_downcast_to_HandleShapeUpgradeFixSmallBezierCurves(const HandleShapeUpgradeFixSmallCurves* self_) {
+extern "C" OcctResult<Handle_ShapeUpgrade_FixSmallBezierCurves*> Handle_ShapeUpgrade_FixSmallCurves_downcast_to_Handle_ShapeUpgrade_FixSmallBezierCurves(const Handle_ShapeUpgrade_FixSmallCurves* self_) {
     try {
     opencascade::handle<ShapeUpgrade_FixSmallBezierCurves> result = opencascade::handle<ShapeUpgrade_FixSmallBezierCurves>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeUpgradeFixSmallBezierCurves(result), nullptr};
+    return {new Handle_ShapeUpgrade_FixSmallBezierCurves(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -10573,7 +10471,7 @@ extern "C" OcctResult<bool> ShapeUpgrade_RemoveInternalWires_perform(ShapeUpgrad
     try { return {self_->Perform(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeUpgrade_RemoveInternalWires_perform_sequenceofshape(ShapeUpgrade_RemoveInternalWires* self_, TopTools_SequenceOfShape const* theSeqShapes) {
+extern "C" OcctResult<bool> ShapeUpgrade_RemoveInternalWires_perform_seq_shape(ShapeUpgrade_RemoveInternalWires* self_, NCollection_Sequence_TopoDS_Shape const* theSeqShapes) {
     try { return {self_->Perform(*theSeqShapes), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10585,11 +10483,11 @@ extern "C" OcctResult<bool*> ShapeUpgrade_RemoveInternalWires_remove_face_mode(S
     try { return {&(self_->RemoveFaceMode()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_SequenceOfShape const*> ShapeUpgrade_RemoveInternalWires_removed_faces(const ShapeUpgrade_RemoveInternalWires* self_) {
+extern "C" OcctResult<NCollection_Sequence_TopoDS_Shape const*> ShapeUpgrade_RemoveInternalWires_removed_faces(const ShapeUpgrade_RemoveInternalWires* self_) {
     try { return {&(self_->RemovedFaces()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_SequenceOfShape const*> ShapeUpgrade_RemoveInternalWires_removed_wires(const ShapeUpgrade_RemoveInternalWires* self_) {
+extern "C" OcctResult<NCollection_Sequence_TopoDS_Shape const*> ShapeUpgrade_RemoveInternalWires_removed_wires(const ShapeUpgrade_RemoveInternalWires* self_) {
     try { return {&(self_->RemovedWires()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10613,24 +10511,24 @@ extern "C" OcctResult<const ShapeUpgrade_Tool*> ShapeUpgrade_RemoveInternalWires
 extern "C" OcctResult<ShapeUpgrade_Tool*> ShapeUpgrade_RemoveInternalWires_as_ShapeUpgrade_Tool_mut(ShapeUpgrade_RemoveInternalWires* self_) { return {static_cast<ShapeUpgrade_Tool*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeUpgrade_RemoveInternalWires_as_Standard_Transient(const ShapeUpgrade_RemoveInternalWires* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeUpgrade_RemoveInternalWires_as_Standard_Transient_mut(ShapeUpgrade_RemoveInternalWires* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeUpgradeRemoveInternalWires*> ShapeUpgrade_RemoveInternalWires_to_handle(ShapeUpgrade_RemoveInternalWires* obj) {
-    try { return {new HandleShapeUpgradeRemoveInternalWires(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_RemoveInternalWires*> ShapeUpgrade_RemoveInternalWires_to_handle(ShapeUpgrade_RemoveInternalWires* obj) {
+    try { return {new Handle_ShapeUpgrade_RemoveInternalWires(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeUpgrade_RemoveInternalWires*> HandleShapeUpgradeRemoveInternalWires_get(const HandleShapeUpgradeRemoveInternalWires* handle) {
+extern "C" OcctResult<const ShapeUpgrade_RemoveInternalWires*> Handle_ShapeUpgrade_RemoveInternalWires_get(const Handle_ShapeUpgrade_RemoveInternalWires* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeUpgrade_RemoveInternalWires*> HandleShapeUpgradeRemoveInternalWires_get_mut(HandleShapeUpgradeRemoveInternalWires* handle) {
+extern "C" OcctResult<ShapeUpgrade_RemoveInternalWires*> Handle_ShapeUpgrade_RemoveInternalWires_get_mut(Handle_ShapeUpgrade_RemoveInternalWires* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeTool*> HandleShapeUpgradeRemoveInternalWires_to_HandleShapeUpgradeTool(const HandleShapeUpgradeRemoveInternalWires* self_) {
-    try { return {new HandleShapeUpgradeTool(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_Tool*> Handle_ShapeUpgrade_RemoveInternalWires_to_Handle_ShapeUpgrade_Tool(const Handle_ShapeUpgrade_RemoveInternalWires* self_) {
+    try { return {new Handle_ShapeUpgrade_Tool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeUpgradeRemoveInternalWires_to_HandleStandardTransient(const HandleShapeUpgradeRemoveInternalWires* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeUpgrade_RemoveInternalWires_to_Handle_Standard_Transient(const Handle_ShapeUpgrade_RemoveInternalWires* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeUpgrade_RemoveInternalWires_inherited_Set(ShapeUpgrade_RemoveInternalWires* self, Handle(ShapeUpgrade_Tool) const& tool) {
@@ -10731,7 +10629,7 @@ extern "C" OcctResult<int32_t> ShapeUpgrade_RemoveLocations_remove_level(const S
     try { return {static_cast<int32_t>(self_->RemoveLevel()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeShape const*> ShapeUpgrade_RemoveLocations_get_modified_shapes_map(const ShapeUpgrade_RemoveLocations* self_) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher const*> ShapeUpgrade_RemoveLocations_get_modified_shapes_map(const ShapeUpgrade_RemoveLocations* self_) {
     try { return {&(self_->GetModifiedShapesMap()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10749,20 +10647,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> ShapeUpgrade_RemoveLocations
 }
 extern "C" OcctResult<const Standard_Transient*> ShapeUpgrade_RemoveLocations_as_Standard_Transient(const ShapeUpgrade_RemoveLocations* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeUpgrade_RemoveLocations_as_Standard_Transient_mut(ShapeUpgrade_RemoveLocations* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeUpgradeRemoveLocations*> ShapeUpgrade_RemoveLocations_to_handle(ShapeUpgrade_RemoveLocations* obj) {
-    try { return {new HandleShapeUpgradeRemoveLocations(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_RemoveLocations*> ShapeUpgrade_RemoveLocations_to_handle(ShapeUpgrade_RemoveLocations* obj) {
+    try { return {new Handle_ShapeUpgrade_RemoveLocations(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeUpgrade_RemoveLocations*> HandleShapeUpgradeRemoveLocations_get(const HandleShapeUpgradeRemoveLocations* handle) {
+extern "C" OcctResult<const ShapeUpgrade_RemoveLocations*> Handle_ShapeUpgrade_RemoveLocations_get(const Handle_ShapeUpgrade_RemoveLocations* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeUpgrade_RemoveLocations*> HandleShapeUpgradeRemoveLocations_get_mut(HandleShapeUpgradeRemoveLocations* handle) {
+extern "C" OcctResult<ShapeUpgrade_RemoveLocations*> Handle_ShapeUpgrade_RemoveLocations_get_mut(Handle_ShapeUpgrade_RemoveLocations* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeUpgradeRemoveLocations_to_HandleStandardTransient(const HandleShapeUpgradeRemoveLocations* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeUpgrade_RemoveLocations_to_Handle_Standard_Transient(const Handle_ShapeUpgrade_RemoveLocations* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> ShapeUpgrade_RemoveLocations_inherited_IsInstance(const ShapeUpgrade_RemoveLocations* self, Handle(Standard_Type) const& theType) {
@@ -11479,7 +11377,7 @@ extern "C" const char* ShapeUpgrade_SplitCurve_init(ShapeUpgrade_SplitCurve* sel
     try { self_->Init(First, Last); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* ShapeUpgrade_SplitCurve_set_split_values(ShapeUpgrade_SplitCurve* self_, Handle(TColStd_HSequenceOfReal) const* SplitValues) {
+extern "C" const char* ShapeUpgrade_SplitCurve_set_split_values(ShapeUpgrade_SplitCurve* self_, Handle(NCollection_HSequence_double) const* SplitValues) {
     try { self_->SetSplitValues(*SplitValues); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -11487,7 +11385,7 @@ extern "C" const char* ShapeUpgrade_SplitCurve_build(ShapeUpgrade_SplitCurve* se
     try { self_->Build(Segment); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfReal) const*> ShapeUpgrade_SplitCurve_split_values(const ShapeUpgrade_SplitCurve* self_) {
+extern "C" OcctResult<Handle(NCollection_HSequence_double) const*> ShapeUpgrade_SplitCurve_split_values(const ShapeUpgrade_SplitCurve* self_) {
     try { return {&(self_->SplitValues()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11517,67 +11415,67 @@ extern "C" OcctResult<Handle(Standard_Type) const*> ShapeUpgrade_SplitCurve_get_
 }
 extern "C" OcctResult<const Standard_Transient*> ShapeUpgrade_SplitCurve_as_Standard_Transient(const ShapeUpgrade_SplitCurve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeUpgrade_SplitCurve_as_Standard_Transient_mut(ShapeUpgrade_SplitCurve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeUpgradeSplitCurve*> ShapeUpgrade_SplitCurve_to_handle(ShapeUpgrade_SplitCurve* obj) {
-    try { return {new HandleShapeUpgradeSplitCurve(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitCurve*> ShapeUpgrade_SplitCurve_to_handle(ShapeUpgrade_SplitCurve* obj) {
+    try { return {new Handle_ShapeUpgrade_SplitCurve(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeUpgrade_SplitCurve*> HandleShapeUpgradeSplitCurve_get(const HandleShapeUpgradeSplitCurve* handle) {
+extern "C" OcctResult<const ShapeUpgrade_SplitCurve*> Handle_ShapeUpgrade_SplitCurve_get(const Handle_ShapeUpgrade_SplitCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeUpgrade_SplitCurve*> HandleShapeUpgradeSplitCurve_get_mut(HandleShapeUpgradeSplitCurve* handle) {
+extern "C" OcctResult<ShapeUpgrade_SplitCurve*> Handle_ShapeUpgrade_SplitCurve_get_mut(Handle_ShapeUpgrade_SplitCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeUpgradeSplitCurve_to_HandleStandardTransient(const HandleShapeUpgradeSplitCurve* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeUpgrade_SplitCurve_to_Handle_Standard_Transient(const Handle_ShapeUpgrade_SplitCurve* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeConvertCurve2dToBezier*> HandleShapeUpgradeSplitCurve_downcast_to_HandleShapeUpgradeConvertCurve2dToBezier(const HandleShapeUpgradeSplitCurve* self_) {
+extern "C" OcctResult<Handle_ShapeUpgrade_ConvertCurve2dToBezier*> Handle_ShapeUpgrade_SplitCurve_downcast_to_Handle_ShapeUpgrade_ConvertCurve2dToBezier(const Handle_ShapeUpgrade_SplitCurve* self_) {
     try {
     opencascade::handle<ShapeUpgrade_ConvertCurve2dToBezier> result = opencascade::handle<ShapeUpgrade_ConvertCurve2dToBezier>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeUpgradeConvertCurve2dToBezier(result), nullptr};
+    return {new Handle_ShapeUpgrade_ConvertCurve2dToBezier(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeConvertCurve3dToBezier*> HandleShapeUpgradeSplitCurve_downcast_to_HandleShapeUpgradeConvertCurve3dToBezier(const HandleShapeUpgradeSplitCurve* self_) {
+extern "C" OcctResult<Handle_ShapeUpgrade_ConvertCurve3dToBezier*> Handle_ShapeUpgrade_SplitCurve_downcast_to_Handle_ShapeUpgrade_ConvertCurve3dToBezier(const Handle_ShapeUpgrade_SplitCurve* self_) {
     try {
     opencascade::handle<ShapeUpgrade_ConvertCurve3dToBezier> result = opencascade::handle<ShapeUpgrade_ConvertCurve3dToBezier>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeUpgradeConvertCurve3dToBezier(result), nullptr};
+    return {new Handle_ShapeUpgrade_ConvertCurve3dToBezier(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeSplitCurve2d*> HandleShapeUpgradeSplitCurve_downcast_to_HandleShapeUpgradeSplitCurve2d(const HandleShapeUpgradeSplitCurve* self_) {
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitCurve2d*> Handle_ShapeUpgrade_SplitCurve_downcast_to_Handle_ShapeUpgrade_SplitCurve2d(const Handle_ShapeUpgrade_SplitCurve* self_) {
     try {
     opencascade::handle<ShapeUpgrade_SplitCurve2d> result = opencascade::handle<ShapeUpgrade_SplitCurve2d>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeUpgradeSplitCurve2d(result), nullptr};
+    return {new Handle_ShapeUpgrade_SplitCurve2d(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeSplitCurve2dContinuity*> HandleShapeUpgradeSplitCurve_downcast_to_HandleShapeUpgradeSplitCurve2dContinuity(const HandleShapeUpgradeSplitCurve* self_) {
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitCurve2dContinuity*> Handle_ShapeUpgrade_SplitCurve_downcast_to_Handle_ShapeUpgrade_SplitCurve2dContinuity(const Handle_ShapeUpgrade_SplitCurve* self_) {
     try {
     opencascade::handle<ShapeUpgrade_SplitCurve2dContinuity> result = opencascade::handle<ShapeUpgrade_SplitCurve2dContinuity>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeUpgradeSplitCurve2dContinuity(result), nullptr};
+    return {new Handle_ShapeUpgrade_SplitCurve2dContinuity(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeSplitCurve3d*> HandleShapeUpgradeSplitCurve_downcast_to_HandleShapeUpgradeSplitCurve3d(const HandleShapeUpgradeSplitCurve* self_) {
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitCurve3d*> Handle_ShapeUpgrade_SplitCurve_downcast_to_Handle_ShapeUpgrade_SplitCurve3d(const Handle_ShapeUpgrade_SplitCurve* self_) {
     try {
     opencascade::handle<ShapeUpgrade_SplitCurve3d> result = opencascade::handle<ShapeUpgrade_SplitCurve3d>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeUpgradeSplitCurve3d(result), nullptr};
+    return {new Handle_ShapeUpgrade_SplitCurve3d(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeSplitCurve3dContinuity*> HandleShapeUpgradeSplitCurve_downcast_to_HandleShapeUpgradeSplitCurve3dContinuity(const HandleShapeUpgradeSplitCurve* self_) {
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitCurve3dContinuity*> Handle_ShapeUpgrade_SplitCurve_downcast_to_Handle_ShapeUpgrade_SplitCurve3dContinuity(const Handle_ShapeUpgrade_SplitCurve* self_) {
     try {
     opencascade::handle<ShapeUpgrade_SplitCurve3dContinuity> result = opencascade::handle<ShapeUpgrade_SplitCurve3dContinuity>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeUpgradeSplitCurve3dContinuity(result), nullptr};
+    return {new Handle_ShapeUpgrade_SplitCurve3dContinuity(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -11631,7 +11529,7 @@ extern "C" const char* ShapeUpgrade_SplitCurve2d_build(ShapeUpgrade_SplitCurve2d
     try { self_->Build(Segment); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(TColGeom2d_HArray1OfCurve) const*> ShapeUpgrade_SplitCurve2d_get_curves(const ShapeUpgrade_SplitCurve2d* self_) {
+extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_Geom2d_Curve) const*> ShapeUpgrade_SplitCurve2d_get_curves(const ShapeUpgrade_SplitCurve2d* self_) {
     try { return {&(self_->GetCurves()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11651,47 +11549,47 @@ extern "C" OcctResult<const ShapeUpgrade_SplitCurve*> ShapeUpgrade_SplitCurve2d_
 extern "C" OcctResult<ShapeUpgrade_SplitCurve*> ShapeUpgrade_SplitCurve2d_as_ShapeUpgrade_SplitCurve_mut(ShapeUpgrade_SplitCurve2d* self_) { return {static_cast<ShapeUpgrade_SplitCurve*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeUpgrade_SplitCurve2d_as_Standard_Transient(const ShapeUpgrade_SplitCurve2d* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeUpgrade_SplitCurve2d_as_Standard_Transient_mut(ShapeUpgrade_SplitCurve2d* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeUpgradeSplitCurve2d*> ShapeUpgrade_SplitCurve2d_to_handle(ShapeUpgrade_SplitCurve2d* obj) {
-    try { return {new HandleShapeUpgradeSplitCurve2d(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitCurve2d*> ShapeUpgrade_SplitCurve2d_to_handle(ShapeUpgrade_SplitCurve2d* obj) {
+    try { return {new Handle_ShapeUpgrade_SplitCurve2d(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeUpgrade_SplitCurve2d*> HandleShapeUpgradeSplitCurve2d_get(const HandleShapeUpgradeSplitCurve2d* handle) {
+extern "C" OcctResult<const ShapeUpgrade_SplitCurve2d*> Handle_ShapeUpgrade_SplitCurve2d_get(const Handle_ShapeUpgrade_SplitCurve2d* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeUpgrade_SplitCurve2d*> HandleShapeUpgradeSplitCurve2d_get_mut(HandleShapeUpgradeSplitCurve2d* handle) {
+extern "C" OcctResult<ShapeUpgrade_SplitCurve2d*> Handle_ShapeUpgrade_SplitCurve2d_get_mut(Handle_ShapeUpgrade_SplitCurve2d* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeSplitCurve*> HandleShapeUpgradeSplitCurve2d_to_HandleShapeUpgradeSplitCurve(const HandleShapeUpgradeSplitCurve2d* self_) {
-    try { return {new HandleShapeUpgradeSplitCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitCurve*> Handle_ShapeUpgrade_SplitCurve2d_to_Handle_ShapeUpgrade_SplitCurve(const Handle_ShapeUpgrade_SplitCurve2d* self_) {
+    try { return {new Handle_ShapeUpgrade_SplitCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeUpgradeSplitCurve2d_to_HandleStandardTransient(const HandleShapeUpgradeSplitCurve2d* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeUpgrade_SplitCurve2d_to_Handle_Standard_Transient(const Handle_ShapeUpgrade_SplitCurve2d* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeConvertCurve2dToBezier*> HandleShapeUpgradeSplitCurve2d_downcast_to_HandleShapeUpgradeConvertCurve2dToBezier(const HandleShapeUpgradeSplitCurve2d* self_) {
+extern "C" OcctResult<Handle_ShapeUpgrade_ConvertCurve2dToBezier*> Handle_ShapeUpgrade_SplitCurve2d_downcast_to_Handle_ShapeUpgrade_ConvertCurve2dToBezier(const Handle_ShapeUpgrade_SplitCurve2d* self_) {
     try {
     opencascade::handle<ShapeUpgrade_ConvertCurve2dToBezier> result = opencascade::handle<ShapeUpgrade_ConvertCurve2dToBezier>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeUpgradeConvertCurve2dToBezier(result), nullptr};
+    return {new Handle_ShapeUpgrade_ConvertCurve2dToBezier(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeSplitCurve2dContinuity*> HandleShapeUpgradeSplitCurve2d_downcast_to_HandleShapeUpgradeSplitCurve2dContinuity(const HandleShapeUpgradeSplitCurve2d* self_) {
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitCurve2dContinuity*> Handle_ShapeUpgrade_SplitCurve2d_downcast_to_Handle_ShapeUpgrade_SplitCurve2dContinuity(const Handle_ShapeUpgrade_SplitCurve2d* self_) {
     try {
     opencascade::handle<ShapeUpgrade_SplitCurve2dContinuity> result = opencascade::handle<ShapeUpgrade_SplitCurve2dContinuity>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeUpgradeSplitCurve2dContinuity(result), nullptr};
+    return {new Handle_ShapeUpgrade_SplitCurve2dContinuity(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* ShapeUpgrade_SplitCurve2d_inherited_SetSplitValues(ShapeUpgrade_SplitCurve2d* self, Handle(TColStd_HSequenceOfReal) const& SplitValues) {
+extern "C" const char* ShapeUpgrade_SplitCurve2d_inherited_SetSplitValues(ShapeUpgrade_SplitCurve2d* self, Handle(NCollection_HSequence_double) const& SplitValues) {
     try { self->SetSplitValues(SplitValues); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfReal) const*> ShapeUpgrade_SplitCurve2d_inherited_SplitValues(const ShapeUpgrade_SplitCurve2d* self) {
+extern "C" OcctResult<Handle(NCollection_HSequence_double) const*> ShapeUpgrade_SplitCurve2d_inherited_SplitValues(const ShapeUpgrade_SplitCurve2d* self) {
     try { return {&(self->SplitValues()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11775,28 +11673,28 @@ extern "C" OcctResult<const ShapeUpgrade_SplitCurve*> ShapeUpgrade_SplitCurve2dC
 extern "C" OcctResult<ShapeUpgrade_SplitCurve*> ShapeUpgrade_SplitCurve2dContinuity_as_ShapeUpgrade_SplitCurve_mut(ShapeUpgrade_SplitCurve2dContinuity* self_) { return {static_cast<ShapeUpgrade_SplitCurve*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeUpgrade_SplitCurve2dContinuity_as_Standard_Transient(const ShapeUpgrade_SplitCurve2dContinuity* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeUpgrade_SplitCurve2dContinuity_as_Standard_Transient_mut(ShapeUpgrade_SplitCurve2dContinuity* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeUpgradeSplitCurve2dContinuity*> ShapeUpgrade_SplitCurve2dContinuity_to_handle(ShapeUpgrade_SplitCurve2dContinuity* obj) {
-    try { return {new HandleShapeUpgradeSplitCurve2dContinuity(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitCurve2dContinuity*> ShapeUpgrade_SplitCurve2dContinuity_to_handle(ShapeUpgrade_SplitCurve2dContinuity* obj) {
+    try { return {new Handle_ShapeUpgrade_SplitCurve2dContinuity(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeUpgrade_SplitCurve2dContinuity*> HandleShapeUpgradeSplitCurve2dContinuity_get(const HandleShapeUpgradeSplitCurve2dContinuity* handle) {
+extern "C" OcctResult<const ShapeUpgrade_SplitCurve2dContinuity*> Handle_ShapeUpgrade_SplitCurve2dContinuity_get(const Handle_ShapeUpgrade_SplitCurve2dContinuity* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeUpgrade_SplitCurve2dContinuity*> HandleShapeUpgradeSplitCurve2dContinuity_get_mut(HandleShapeUpgradeSplitCurve2dContinuity* handle) {
+extern "C" OcctResult<ShapeUpgrade_SplitCurve2dContinuity*> Handle_ShapeUpgrade_SplitCurve2dContinuity_get_mut(Handle_ShapeUpgrade_SplitCurve2dContinuity* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeSplitCurve2d*> HandleShapeUpgradeSplitCurve2dContinuity_to_HandleShapeUpgradeSplitCurve2d(const HandleShapeUpgradeSplitCurve2dContinuity* self_) {
-    try { return {new HandleShapeUpgradeSplitCurve2d(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitCurve2d*> Handle_ShapeUpgrade_SplitCurve2dContinuity_to_Handle_ShapeUpgrade_SplitCurve2d(const Handle_ShapeUpgrade_SplitCurve2dContinuity* self_) {
+    try { return {new Handle_ShapeUpgrade_SplitCurve2d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeSplitCurve*> HandleShapeUpgradeSplitCurve2dContinuity_to_HandleShapeUpgradeSplitCurve(const HandleShapeUpgradeSplitCurve2dContinuity* self_) {
-    try { return {new HandleShapeUpgradeSplitCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitCurve*> Handle_ShapeUpgrade_SplitCurve2dContinuity_to_Handle_ShapeUpgrade_SplitCurve(const Handle_ShapeUpgrade_SplitCurve2dContinuity* self_) {
+    try { return {new Handle_ShapeUpgrade_SplitCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeUpgradeSplitCurve2dContinuity_to_HandleStandardTransient(const HandleShapeUpgradeSplitCurve2dContinuity* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeUpgrade_SplitCurve2dContinuity_to_Handle_Standard_Transient(const Handle_ShapeUpgrade_SplitCurve2dContinuity* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeUpgrade_SplitCurve2dContinuity_inherited_Init(ShapeUpgrade_SplitCurve2dContinuity* self, Handle(Geom2d_Curve) const& C) {
@@ -11807,15 +11705,15 @@ extern "C" const char* ShapeUpgrade_SplitCurve2dContinuity_inherited_Build(Shape
     try { self->Build(Segment); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(TColGeom2d_HArray1OfCurve) const*> ShapeUpgrade_SplitCurve2dContinuity_inherited_GetCurves(const ShapeUpgrade_SplitCurve2dContinuity* self) {
+extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_Geom2d_Curve) const*> ShapeUpgrade_SplitCurve2dContinuity_inherited_GetCurves(const ShapeUpgrade_SplitCurve2dContinuity* self) {
     try { return {&(self->GetCurves()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* ShapeUpgrade_SplitCurve2dContinuity_inherited_SetSplitValues(ShapeUpgrade_SplitCurve2dContinuity* self, Handle(TColStd_HSequenceOfReal) const& SplitValues) {
+extern "C" const char* ShapeUpgrade_SplitCurve2dContinuity_inherited_SetSplitValues(ShapeUpgrade_SplitCurve2dContinuity* self, Handle(NCollection_HSequence_double) const& SplitValues) {
     try { self->SetSplitValues(SplitValues); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfReal) const*> ShapeUpgrade_SplitCurve2dContinuity_inherited_SplitValues(const ShapeUpgrade_SplitCurve2dContinuity* self) {
+extern "C" OcctResult<Handle(NCollection_HSequence_double) const*> ShapeUpgrade_SplitCurve2dContinuity_inherited_SplitValues(const ShapeUpgrade_SplitCurve2dContinuity* self) {
     try { return {&(self->SplitValues()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11877,7 +11775,7 @@ extern "C" const char* ShapeUpgrade_SplitCurve3d_build(ShapeUpgrade_SplitCurve3d
     try { self_->Build(Segment); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(TColGeom_HArray1OfCurve) const*> ShapeUpgrade_SplitCurve3d_get_curves(const ShapeUpgrade_SplitCurve3d* self_) {
+extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_Geom_Curve) const*> ShapeUpgrade_SplitCurve3d_get_curves(const ShapeUpgrade_SplitCurve3d* self_) {
     try { return {&(self_->GetCurves()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11897,47 +11795,47 @@ extern "C" OcctResult<const ShapeUpgrade_SplitCurve*> ShapeUpgrade_SplitCurve3d_
 extern "C" OcctResult<ShapeUpgrade_SplitCurve*> ShapeUpgrade_SplitCurve3d_as_ShapeUpgrade_SplitCurve_mut(ShapeUpgrade_SplitCurve3d* self_) { return {static_cast<ShapeUpgrade_SplitCurve*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeUpgrade_SplitCurve3d_as_Standard_Transient(const ShapeUpgrade_SplitCurve3d* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeUpgrade_SplitCurve3d_as_Standard_Transient_mut(ShapeUpgrade_SplitCurve3d* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeUpgradeSplitCurve3d*> ShapeUpgrade_SplitCurve3d_to_handle(ShapeUpgrade_SplitCurve3d* obj) {
-    try { return {new HandleShapeUpgradeSplitCurve3d(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitCurve3d*> ShapeUpgrade_SplitCurve3d_to_handle(ShapeUpgrade_SplitCurve3d* obj) {
+    try { return {new Handle_ShapeUpgrade_SplitCurve3d(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeUpgrade_SplitCurve3d*> HandleShapeUpgradeSplitCurve3d_get(const HandleShapeUpgradeSplitCurve3d* handle) {
+extern "C" OcctResult<const ShapeUpgrade_SplitCurve3d*> Handle_ShapeUpgrade_SplitCurve3d_get(const Handle_ShapeUpgrade_SplitCurve3d* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeUpgrade_SplitCurve3d*> HandleShapeUpgradeSplitCurve3d_get_mut(HandleShapeUpgradeSplitCurve3d* handle) {
+extern "C" OcctResult<ShapeUpgrade_SplitCurve3d*> Handle_ShapeUpgrade_SplitCurve3d_get_mut(Handle_ShapeUpgrade_SplitCurve3d* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeSplitCurve*> HandleShapeUpgradeSplitCurve3d_to_HandleShapeUpgradeSplitCurve(const HandleShapeUpgradeSplitCurve3d* self_) {
-    try { return {new HandleShapeUpgradeSplitCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitCurve*> Handle_ShapeUpgrade_SplitCurve3d_to_Handle_ShapeUpgrade_SplitCurve(const Handle_ShapeUpgrade_SplitCurve3d* self_) {
+    try { return {new Handle_ShapeUpgrade_SplitCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeUpgradeSplitCurve3d_to_HandleStandardTransient(const HandleShapeUpgradeSplitCurve3d* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeUpgrade_SplitCurve3d_to_Handle_Standard_Transient(const Handle_ShapeUpgrade_SplitCurve3d* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeConvertCurve3dToBezier*> HandleShapeUpgradeSplitCurve3d_downcast_to_HandleShapeUpgradeConvertCurve3dToBezier(const HandleShapeUpgradeSplitCurve3d* self_) {
+extern "C" OcctResult<Handle_ShapeUpgrade_ConvertCurve3dToBezier*> Handle_ShapeUpgrade_SplitCurve3d_downcast_to_Handle_ShapeUpgrade_ConvertCurve3dToBezier(const Handle_ShapeUpgrade_SplitCurve3d* self_) {
     try {
     opencascade::handle<ShapeUpgrade_ConvertCurve3dToBezier> result = opencascade::handle<ShapeUpgrade_ConvertCurve3dToBezier>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeUpgradeConvertCurve3dToBezier(result), nullptr};
+    return {new Handle_ShapeUpgrade_ConvertCurve3dToBezier(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeSplitCurve3dContinuity*> HandleShapeUpgradeSplitCurve3d_downcast_to_HandleShapeUpgradeSplitCurve3dContinuity(const HandleShapeUpgradeSplitCurve3d* self_) {
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitCurve3dContinuity*> Handle_ShapeUpgrade_SplitCurve3d_downcast_to_Handle_ShapeUpgrade_SplitCurve3dContinuity(const Handle_ShapeUpgrade_SplitCurve3d* self_) {
     try {
     opencascade::handle<ShapeUpgrade_SplitCurve3dContinuity> result = opencascade::handle<ShapeUpgrade_SplitCurve3dContinuity>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeUpgradeSplitCurve3dContinuity(result), nullptr};
+    return {new Handle_ShapeUpgrade_SplitCurve3dContinuity(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* ShapeUpgrade_SplitCurve3d_inherited_SetSplitValues(ShapeUpgrade_SplitCurve3d* self, Handle(TColStd_HSequenceOfReal) const& SplitValues) {
+extern "C" const char* ShapeUpgrade_SplitCurve3d_inherited_SetSplitValues(ShapeUpgrade_SplitCurve3d* self, Handle(NCollection_HSequence_double) const& SplitValues) {
     try { self->SetSplitValues(SplitValues); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfReal) const*> ShapeUpgrade_SplitCurve3d_inherited_SplitValues(const ShapeUpgrade_SplitCurve3d* self) {
+extern "C" OcctResult<Handle(NCollection_HSequence_double) const*> ShapeUpgrade_SplitCurve3d_inherited_SplitValues(const ShapeUpgrade_SplitCurve3d* self) {
     try { return {&(self->SplitValues()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -12025,28 +11923,28 @@ extern "C" OcctResult<const ShapeUpgrade_SplitCurve*> ShapeUpgrade_SplitCurve3dC
 extern "C" OcctResult<ShapeUpgrade_SplitCurve*> ShapeUpgrade_SplitCurve3dContinuity_as_ShapeUpgrade_SplitCurve_mut(ShapeUpgrade_SplitCurve3dContinuity* self_) { return {static_cast<ShapeUpgrade_SplitCurve*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeUpgrade_SplitCurve3dContinuity_as_Standard_Transient(const ShapeUpgrade_SplitCurve3dContinuity* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeUpgrade_SplitCurve3dContinuity_as_Standard_Transient_mut(ShapeUpgrade_SplitCurve3dContinuity* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeUpgradeSplitCurve3dContinuity*> ShapeUpgrade_SplitCurve3dContinuity_to_handle(ShapeUpgrade_SplitCurve3dContinuity* obj) {
-    try { return {new HandleShapeUpgradeSplitCurve3dContinuity(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitCurve3dContinuity*> ShapeUpgrade_SplitCurve3dContinuity_to_handle(ShapeUpgrade_SplitCurve3dContinuity* obj) {
+    try { return {new Handle_ShapeUpgrade_SplitCurve3dContinuity(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeUpgrade_SplitCurve3dContinuity*> HandleShapeUpgradeSplitCurve3dContinuity_get(const HandleShapeUpgradeSplitCurve3dContinuity* handle) {
+extern "C" OcctResult<const ShapeUpgrade_SplitCurve3dContinuity*> Handle_ShapeUpgrade_SplitCurve3dContinuity_get(const Handle_ShapeUpgrade_SplitCurve3dContinuity* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeUpgrade_SplitCurve3dContinuity*> HandleShapeUpgradeSplitCurve3dContinuity_get_mut(HandleShapeUpgradeSplitCurve3dContinuity* handle) {
+extern "C" OcctResult<ShapeUpgrade_SplitCurve3dContinuity*> Handle_ShapeUpgrade_SplitCurve3dContinuity_get_mut(Handle_ShapeUpgrade_SplitCurve3dContinuity* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeSplitCurve3d*> HandleShapeUpgradeSplitCurve3dContinuity_to_HandleShapeUpgradeSplitCurve3d(const HandleShapeUpgradeSplitCurve3dContinuity* self_) {
-    try { return {new HandleShapeUpgradeSplitCurve3d(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitCurve3d*> Handle_ShapeUpgrade_SplitCurve3dContinuity_to_Handle_ShapeUpgrade_SplitCurve3d(const Handle_ShapeUpgrade_SplitCurve3dContinuity* self_) {
+    try { return {new Handle_ShapeUpgrade_SplitCurve3d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeSplitCurve*> HandleShapeUpgradeSplitCurve3dContinuity_to_HandleShapeUpgradeSplitCurve(const HandleShapeUpgradeSplitCurve3dContinuity* self_) {
-    try { return {new HandleShapeUpgradeSplitCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitCurve*> Handle_ShapeUpgrade_SplitCurve3dContinuity_to_Handle_ShapeUpgrade_SplitCurve(const Handle_ShapeUpgrade_SplitCurve3dContinuity* self_) {
+    try { return {new Handle_ShapeUpgrade_SplitCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeUpgradeSplitCurve3dContinuity_to_HandleStandardTransient(const HandleShapeUpgradeSplitCurve3dContinuity* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeUpgrade_SplitCurve3dContinuity_to_Handle_Standard_Transient(const Handle_ShapeUpgrade_SplitCurve3dContinuity* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeUpgrade_SplitCurve3dContinuity_inherited_Init(ShapeUpgrade_SplitCurve3dContinuity* self, Handle(Geom_Curve) const& C) {
@@ -12057,15 +11955,15 @@ extern "C" const char* ShapeUpgrade_SplitCurve3dContinuity_inherited_Build(Shape
     try { self->Build(Segment); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(TColGeom_HArray1OfCurve) const*> ShapeUpgrade_SplitCurve3dContinuity_inherited_GetCurves(const ShapeUpgrade_SplitCurve3dContinuity* self) {
+extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_Geom_Curve) const*> ShapeUpgrade_SplitCurve3dContinuity_inherited_GetCurves(const ShapeUpgrade_SplitCurve3dContinuity* self) {
     try { return {&(self->GetCurves()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* ShapeUpgrade_SplitCurve3dContinuity_inherited_SetSplitValues(ShapeUpgrade_SplitCurve3dContinuity* self, Handle(TColStd_HSequenceOfReal) const& SplitValues) {
+extern "C" const char* ShapeUpgrade_SplitCurve3dContinuity_inherited_SetSplitValues(ShapeUpgrade_SplitCurve3dContinuity* self, Handle(NCollection_HSequence_double) const& SplitValues) {
     try { self->SetSplitValues(SplitValues); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfReal) const*> ShapeUpgrade_SplitCurve3dContinuity_inherited_SplitValues(const ShapeUpgrade_SplitCurve3dContinuity* self) {
+extern "C" OcctResult<Handle(NCollection_HSequence_double) const*> ShapeUpgrade_SplitCurve3dContinuity_inherited_SplitValues(const ShapeUpgrade_SplitCurve3dContinuity* self) {
     try { return {&(self->SplitValues()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -12123,11 +12021,11 @@ extern "C" const char* ShapeUpgrade_SplitSurface_init_handlegeomsurface_real5(Sh
     try { self_->Init(*S, UFirst, ULast, VFirst, VLast, theArea); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* ShapeUpgrade_SplitSurface_set_u_split_values(ShapeUpgrade_SplitSurface* self_, Handle(TColStd_HSequenceOfReal) const* UValues) {
+extern "C" const char* ShapeUpgrade_SplitSurface_set_u_split_values(ShapeUpgrade_SplitSurface* self_, Handle(NCollection_HSequence_double) const* UValues) {
     try { self_->SetUSplitValues(*UValues); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* ShapeUpgrade_SplitSurface_set_v_split_values(ShapeUpgrade_SplitSurface* self_, Handle(TColStd_HSequenceOfReal) const* VValues) {
+extern "C" const char* ShapeUpgrade_SplitSurface_set_v_split_values(ShapeUpgrade_SplitSurface* self_, Handle(NCollection_HSequence_double) const* VValues) {
     try { self_->SetVSplitValues(*VValues); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -12143,11 +12041,11 @@ extern "C" const char* ShapeUpgrade_SplitSurface_perform(ShapeUpgrade_SplitSurfa
     try { self_->Perform(Segment); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfReal) const*> ShapeUpgrade_SplitSurface_u_split_values(const ShapeUpgrade_SplitSurface* self_) {
+extern "C" OcctResult<Handle(NCollection_HSequence_double) const*> ShapeUpgrade_SplitSurface_u_split_values(const ShapeUpgrade_SplitSurface* self_) {
     try { return {&(self_->USplitValues()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfReal) const*> ShapeUpgrade_SplitSurface_v_split_values(const ShapeUpgrade_SplitSurface* self_) {
+extern "C" OcctResult<Handle(NCollection_HSequence_double) const*> ShapeUpgrade_SplitSurface_v_split_values(const ShapeUpgrade_SplitSurface* self_) {
     try { return {&(self_->VSplitValues()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -12173,51 +12071,51 @@ extern "C" OcctResult<Handle(Standard_Type) const*> ShapeUpgrade_SplitSurface_ge
 }
 extern "C" OcctResult<const Standard_Transient*> ShapeUpgrade_SplitSurface_as_Standard_Transient(const ShapeUpgrade_SplitSurface* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeUpgrade_SplitSurface_as_Standard_Transient_mut(ShapeUpgrade_SplitSurface* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeUpgradeSplitSurface*> ShapeUpgrade_SplitSurface_to_handle(ShapeUpgrade_SplitSurface* obj) {
-    try { return {new HandleShapeUpgradeSplitSurface(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitSurface*> ShapeUpgrade_SplitSurface_to_handle(ShapeUpgrade_SplitSurface* obj) {
+    try { return {new Handle_ShapeUpgrade_SplitSurface(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeUpgrade_SplitSurface*> HandleShapeUpgradeSplitSurface_get(const HandleShapeUpgradeSplitSurface* handle) {
+extern "C" OcctResult<const ShapeUpgrade_SplitSurface*> Handle_ShapeUpgrade_SplitSurface_get(const Handle_ShapeUpgrade_SplitSurface* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeUpgrade_SplitSurface*> HandleShapeUpgradeSplitSurface_get_mut(HandleShapeUpgradeSplitSurface* handle) {
+extern "C" OcctResult<ShapeUpgrade_SplitSurface*> Handle_ShapeUpgrade_SplitSurface_get_mut(Handle_ShapeUpgrade_SplitSurface* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeUpgradeSplitSurface_to_HandleStandardTransient(const HandleShapeUpgradeSplitSurface* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeUpgrade_SplitSurface_to_Handle_Standard_Transient(const Handle_ShapeUpgrade_SplitSurface* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeConvertSurfaceToBezierBasis*> HandleShapeUpgradeSplitSurface_downcast_to_HandleShapeUpgradeConvertSurfaceToBezierBasis(const HandleShapeUpgradeSplitSurface* self_) {
+extern "C" OcctResult<Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis*> Handle_ShapeUpgrade_SplitSurface_downcast_to_Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis(const Handle_ShapeUpgrade_SplitSurface* self_) {
     try {
     opencascade::handle<ShapeUpgrade_ConvertSurfaceToBezierBasis> result = opencascade::handle<ShapeUpgrade_ConvertSurfaceToBezierBasis>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeUpgradeConvertSurfaceToBezierBasis(result), nullptr};
+    return {new Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeSplitSurfaceAngle*> HandleShapeUpgradeSplitSurface_downcast_to_HandleShapeUpgradeSplitSurfaceAngle(const HandleShapeUpgradeSplitSurface* self_) {
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitSurfaceAngle*> Handle_ShapeUpgrade_SplitSurface_downcast_to_Handle_ShapeUpgrade_SplitSurfaceAngle(const Handle_ShapeUpgrade_SplitSurface* self_) {
     try {
     opencascade::handle<ShapeUpgrade_SplitSurfaceAngle> result = opencascade::handle<ShapeUpgrade_SplitSurfaceAngle>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeUpgradeSplitSurfaceAngle(result), nullptr};
+    return {new Handle_ShapeUpgrade_SplitSurfaceAngle(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeSplitSurfaceArea*> HandleShapeUpgradeSplitSurface_downcast_to_HandleShapeUpgradeSplitSurfaceArea(const HandleShapeUpgradeSplitSurface* self_) {
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitSurfaceArea*> Handle_ShapeUpgrade_SplitSurface_downcast_to_Handle_ShapeUpgrade_SplitSurfaceArea(const Handle_ShapeUpgrade_SplitSurface* self_) {
     try {
     opencascade::handle<ShapeUpgrade_SplitSurfaceArea> result = opencascade::handle<ShapeUpgrade_SplitSurfaceArea>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeUpgradeSplitSurfaceArea(result), nullptr};
+    return {new Handle_ShapeUpgrade_SplitSurfaceArea(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeSplitSurfaceContinuity*> HandleShapeUpgradeSplitSurface_downcast_to_HandleShapeUpgradeSplitSurfaceContinuity(const HandleShapeUpgradeSplitSurface* self_) {
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitSurfaceContinuity*> Handle_ShapeUpgrade_SplitSurface_downcast_to_Handle_ShapeUpgrade_SplitSurfaceContinuity(const Handle_ShapeUpgrade_SplitSurface* self_) {
     try {
     opencascade::handle<ShapeUpgrade_SplitSurfaceContinuity> result = opencascade::handle<ShapeUpgrade_SplitSurfaceContinuity>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeUpgradeSplitSurfaceContinuity(result), nullptr};
+    return {new Handle_ShapeUpgrade_SplitSurfaceContinuity(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -12287,35 +12185,35 @@ extern "C" OcctResult<const ShapeUpgrade_SplitSurface*> ShapeUpgrade_SplitSurfac
 extern "C" OcctResult<ShapeUpgrade_SplitSurface*> ShapeUpgrade_SplitSurfaceAngle_as_ShapeUpgrade_SplitSurface_mut(ShapeUpgrade_SplitSurfaceAngle* self_) { return {static_cast<ShapeUpgrade_SplitSurface*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeUpgrade_SplitSurfaceAngle_as_Standard_Transient(const ShapeUpgrade_SplitSurfaceAngle* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeUpgrade_SplitSurfaceAngle_as_Standard_Transient_mut(ShapeUpgrade_SplitSurfaceAngle* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeUpgradeSplitSurfaceAngle*> ShapeUpgrade_SplitSurfaceAngle_to_handle(ShapeUpgrade_SplitSurfaceAngle* obj) {
-    try { return {new HandleShapeUpgradeSplitSurfaceAngle(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitSurfaceAngle*> ShapeUpgrade_SplitSurfaceAngle_to_handle(ShapeUpgrade_SplitSurfaceAngle* obj) {
+    try { return {new Handle_ShapeUpgrade_SplitSurfaceAngle(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeUpgrade_SplitSurfaceAngle*> HandleShapeUpgradeSplitSurfaceAngle_get(const HandleShapeUpgradeSplitSurfaceAngle* handle) {
+extern "C" OcctResult<const ShapeUpgrade_SplitSurfaceAngle*> Handle_ShapeUpgrade_SplitSurfaceAngle_get(const Handle_ShapeUpgrade_SplitSurfaceAngle* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeUpgrade_SplitSurfaceAngle*> HandleShapeUpgradeSplitSurfaceAngle_get_mut(HandleShapeUpgradeSplitSurfaceAngle* handle) {
+extern "C" OcctResult<ShapeUpgrade_SplitSurfaceAngle*> Handle_ShapeUpgrade_SplitSurfaceAngle_get_mut(Handle_ShapeUpgrade_SplitSurfaceAngle* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeSplitSurface*> HandleShapeUpgradeSplitSurfaceAngle_to_HandleShapeUpgradeSplitSurface(const HandleShapeUpgradeSplitSurfaceAngle* self_) {
-    try { return {new HandleShapeUpgradeSplitSurface(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitSurface*> Handle_ShapeUpgrade_SplitSurfaceAngle_to_Handle_ShapeUpgrade_SplitSurface(const Handle_ShapeUpgrade_SplitSurfaceAngle* self_) {
+    try { return {new Handle_ShapeUpgrade_SplitSurface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeUpgradeSplitSurfaceAngle_to_HandleStandardTransient(const HandleShapeUpgradeSplitSurfaceAngle* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeUpgrade_SplitSurfaceAngle_to_Handle_Standard_Transient(const Handle_ShapeUpgrade_SplitSurfaceAngle* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeUpgrade_SplitSurfaceAngle_inherited_Init(ShapeUpgrade_SplitSurfaceAngle* self, Handle(Geom_Surface) const& S) {
     try { self->Init(S); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* ShapeUpgrade_SplitSurfaceAngle_inherited_SetUSplitValues(ShapeUpgrade_SplitSurfaceAngle* self, Handle(TColStd_HSequenceOfReal) const& UValues) {
+extern "C" const char* ShapeUpgrade_SplitSurfaceAngle_inherited_SetUSplitValues(ShapeUpgrade_SplitSurfaceAngle* self, Handle(NCollection_HSequence_double) const& UValues) {
     try { self->SetUSplitValues(UValues); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* ShapeUpgrade_SplitSurfaceAngle_inherited_SetVSplitValues(ShapeUpgrade_SplitSurfaceAngle* self, Handle(TColStd_HSequenceOfReal) const& VValues) {
+extern "C" const char* ShapeUpgrade_SplitSurfaceAngle_inherited_SetVSplitValues(ShapeUpgrade_SplitSurfaceAngle* self, Handle(NCollection_HSequence_double) const& VValues) {
     try { self->SetVSplitValues(VValues); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -12327,11 +12225,11 @@ extern "C" const char* ShapeUpgrade_SplitSurfaceAngle_inherited_Perform(ShapeUpg
     try { self->Perform(Segment); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfReal) const*> ShapeUpgrade_SplitSurfaceAngle_inherited_USplitValues(const ShapeUpgrade_SplitSurfaceAngle* self) {
+extern "C" OcctResult<Handle(NCollection_HSequence_double) const*> ShapeUpgrade_SplitSurfaceAngle_inherited_USplitValues(const ShapeUpgrade_SplitSurfaceAngle* self) {
     try { return {&(self->USplitValues()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfReal) const*> ShapeUpgrade_SplitSurfaceAngle_inherited_VSplitValues(const ShapeUpgrade_SplitSurfaceAngle* self) {
+extern "C" OcctResult<Handle(NCollection_HSequence_double) const*> ShapeUpgrade_SplitSurfaceAngle_inherited_VSplitValues(const ShapeUpgrade_SplitSurfaceAngle* self) {
     try { return {&(self->VSplitValues()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -12413,35 +12311,35 @@ extern "C" OcctResult<const ShapeUpgrade_SplitSurface*> ShapeUpgrade_SplitSurfac
 extern "C" OcctResult<ShapeUpgrade_SplitSurface*> ShapeUpgrade_SplitSurfaceArea_as_ShapeUpgrade_SplitSurface_mut(ShapeUpgrade_SplitSurfaceArea* self_) { return {static_cast<ShapeUpgrade_SplitSurface*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeUpgrade_SplitSurfaceArea_as_Standard_Transient(const ShapeUpgrade_SplitSurfaceArea* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeUpgrade_SplitSurfaceArea_as_Standard_Transient_mut(ShapeUpgrade_SplitSurfaceArea* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeUpgradeSplitSurfaceArea*> ShapeUpgrade_SplitSurfaceArea_to_handle(ShapeUpgrade_SplitSurfaceArea* obj) {
-    try { return {new HandleShapeUpgradeSplitSurfaceArea(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitSurfaceArea*> ShapeUpgrade_SplitSurfaceArea_to_handle(ShapeUpgrade_SplitSurfaceArea* obj) {
+    try { return {new Handle_ShapeUpgrade_SplitSurfaceArea(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeUpgrade_SplitSurfaceArea*> HandleShapeUpgradeSplitSurfaceArea_get(const HandleShapeUpgradeSplitSurfaceArea* handle) {
+extern "C" OcctResult<const ShapeUpgrade_SplitSurfaceArea*> Handle_ShapeUpgrade_SplitSurfaceArea_get(const Handle_ShapeUpgrade_SplitSurfaceArea* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeUpgrade_SplitSurfaceArea*> HandleShapeUpgradeSplitSurfaceArea_get_mut(HandleShapeUpgradeSplitSurfaceArea* handle) {
+extern "C" OcctResult<ShapeUpgrade_SplitSurfaceArea*> Handle_ShapeUpgrade_SplitSurfaceArea_get_mut(Handle_ShapeUpgrade_SplitSurfaceArea* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeSplitSurface*> HandleShapeUpgradeSplitSurfaceArea_to_HandleShapeUpgradeSplitSurface(const HandleShapeUpgradeSplitSurfaceArea* self_) {
-    try { return {new HandleShapeUpgradeSplitSurface(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitSurface*> Handle_ShapeUpgrade_SplitSurfaceArea_to_Handle_ShapeUpgrade_SplitSurface(const Handle_ShapeUpgrade_SplitSurfaceArea* self_) {
+    try { return {new Handle_ShapeUpgrade_SplitSurface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeUpgradeSplitSurfaceArea_to_HandleStandardTransient(const HandleShapeUpgradeSplitSurfaceArea* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeUpgrade_SplitSurfaceArea_to_Handle_Standard_Transient(const Handle_ShapeUpgrade_SplitSurfaceArea* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeUpgrade_SplitSurfaceArea_inherited_Init(ShapeUpgrade_SplitSurfaceArea* self, Handle(Geom_Surface) const& S) {
     try { self->Init(S); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* ShapeUpgrade_SplitSurfaceArea_inherited_SetUSplitValues(ShapeUpgrade_SplitSurfaceArea* self, Handle(TColStd_HSequenceOfReal) const& UValues) {
+extern "C" const char* ShapeUpgrade_SplitSurfaceArea_inherited_SetUSplitValues(ShapeUpgrade_SplitSurfaceArea* self, Handle(NCollection_HSequence_double) const& UValues) {
     try { self->SetUSplitValues(UValues); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* ShapeUpgrade_SplitSurfaceArea_inherited_SetVSplitValues(ShapeUpgrade_SplitSurfaceArea* self, Handle(TColStd_HSequenceOfReal) const& VValues) {
+extern "C" const char* ShapeUpgrade_SplitSurfaceArea_inherited_SetVSplitValues(ShapeUpgrade_SplitSurfaceArea* self, Handle(NCollection_HSequence_double) const& VValues) {
     try { self->SetVSplitValues(VValues); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -12453,11 +12351,11 @@ extern "C" const char* ShapeUpgrade_SplitSurfaceArea_inherited_Perform(ShapeUpgr
     try { self->Perform(Segment); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfReal) const*> ShapeUpgrade_SplitSurfaceArea_inherited_USplitValues(const ShapeUpgrade_SplitSurfaceArea* self) {
+extern "C" OcctResult<Handle(NCollection_HSequence_double) const*> ShapeUpgrade_SplitSurfaceArea_inherited_USplitValues(const ShapeUpgrade_SplitSurfaceArea* self) {
     try { return {&(self->USplitValues()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfReal) const*> ShapeUpgrade_SplitSurfaceArea_inherited_VSplitValues(const ShapeUpgrade_SplitSurfaceArea* self) {
+extern "C" OcctResult<Handle(NCollection_HSequence_double) const*> ShapeUpgrade_SplitSurfaceArea_inherited_VSplitValues(const ShapeUpgrade_SplitSurfaceArea* self) {
     try { return {&(self->VSplitValues()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -12535,35 +12433,35 @@ extern "C" OcctResult<const ShapeUpgrade_SplitSurface*> ShapeUpgrade_SplitSurfac
 extern "C" OcctResult<ShapeUpgrade_SplitSurface*> ShapeUpgrade_SplitSurfaceContinuity_as_ShapeUpgrade_SplitSurface_mut(ShapeUpgrade_SplitSurfaceContinuity* self_) { return {static_cast<ShapeUpgrade_SplitSurface*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeUpgrade_SplitSurfaceContinuity_as_Standard_Transient(const ShapeUpgrade_SplitSurfaceContinuity* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeUpgrade_SplitSurfaceContinuity_as_Standard_Transient_mut(ShapeUpgrade_SplitSurfaceContinuity* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeUpgradeSplitSurfaceContinuity*> ShapeUpgrade_SplitSurfaceContinuity_to_handle(ShapeUpgrade_SplitSurfaceContinuity* obj) {
-    try { return {new HandleShapeUpgradeSplitSurfaceContinuity(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitSurfaceContinuity*> ShapeUpgrade_SplitSurfaceContinuity_to_handle(ShapeUpgrade_SplitSurfaceContinuity* obj) {
+    try { return {new Handle_ShapeUpgrade_SplitSurfaceContinuity(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeUpgrade_SplitSurfaceContinuity*> HandleShapeUpgradeSplitSurfaceContinuity_get(const HandleShapeUpgradeSplitSurfaceContinuity* handle) {
+extern "C" OcctResult<const ShapeUpgrade_SplitSurfaceContinuity*> Handle_ShapeUpgrade_SplitSurfaceContinuity_get(const Handle_ShapeUpgrade_SplitSurfaceContinuity* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeUpgrade_SplitSurfaceContinuity*> HandleShapeUpgradeSplitSurfaceContinuity_get_mut(HandleShapeUpgradeSplitSurfaceContinuity* handle) {
+extern "C" OcctResult<ShapeUpgrade_SplitSurfaceContinuity*> Handle_ShapeUpgrade_SplitSurfaceContinuity_get_mut(Handle_ShapeUpgrade_SplitSurfaceContinuity* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeSplitSurface*> HandleShapeUpgradeSplitSurfaceContinuity_to_HandleShapeUpgradeSplitSurface(const HandleShapeUpgradeSplitSurfaceContinuity* self_) {
-    try { return {new HandleShapeUpgradeSplitSurface(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_SplitSurface*> Handle_ShapeUpgrade_SplitSurfaceContinuity_to_Handle_ShapeUpgrade_SplitSurface(const Handle_ShapeUpgrade_SplitSurfaceContinuity* self_) {
+    try { return {new Handle_ShapeUpgrade_SplitSurface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeUpgradeSplitSurfaceContinuity_to_HandleStandardTransient(const HandleShapeUpgradeSplitSurfaceContinuity* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeUpgrade_SplitSurfaceContinuity_to_Handle_Standard_Transient(const Handle_ShapeUpgrade_SplitSurfaceContinuity* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeUpgrade_SplitSurfaceContinuity_inherited_Init(ShapeUpgrade_SplitSurfaceContinuity* self, Handle(Geom_Surface) const& S) {
     try { self->Init(S); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* ShapeUpgrade_SplitSurfaceContinuity_inherited_SetUSplitValues(ShapeUpgrade_SplitSurfaceContinuity* self, Handle(TColStd_HSequenceOfReal) const& UValues) {
+extern "C" const char* ShapeUpgrade_SplitSurfaceContinuity_inherited_SetUSplitValues(ShapeUpgrade_SplitSurfaceContinuity* self, Handle(NCollection_HSequence_double) const& UValues) {
     try { self->SetUSplitValues(UValues); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* ShapeUpgrade_SplitSurfaceContinuity_inherited_SetVSplitValues(ShapeUpgrade_SplitSurfaceContinuity* self, Handle(TColStd_HSequenceOfReal) const& VValues) {
+extern "C" const char* ShapeUpgrade_SplitSurfaceContinuity_inherited_SetVSplitValues(ShapeUpgrade_SplitSurfaceContinuity* self, Handle(NCollection_HSequence_double) const& VValues) {
     try { self->SetVSplitValues(VValues); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -12575,11 +12473,11 @@ extern "C" const char* ShapeUpgrade_SplitSurfaceContinuity_inherited_Perform(Sha
     try { self->Perform(Segment); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfReal) const*> ShapeUpgrade_SplitSurfaceContinuity_inherited_USplitValues(const ShapeUpgrade_SplitSurfaceContinuity* self) {
+extern "C" OcctResult<Handle(NCollection_HSequence_double) const*> ShapeUpgrade_SplitSurfaceContinuity_inherited_USplitValues(const ShapeUpgrade_SplitSurfaceContinuity* self) {
     try { return {&(self->USplitValues()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfReal) const*> ShapeUpgrade_SplitSurfaceContinuity_inherited_VSplitValues(const ShapeUpgrade_SplitSurfaceContinuity* self) {
+extern "C" OcctResult<Handle(NCollection_HSequence_double) const*> ShapeUpgrade_SplitSurfaceContinuity_inherited_VSplitValues(const ShapeUpgrade_SplitSurfaceContinuity* self) {
     try { return {&(self->VSplitValues()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -12683,91 +12581,91 @@ extern "C" OcctResult<Handle(Standard_Type) const*> ShapeUpgrade_Tool_get_type_d
 }
 extern "C" OcctResult<const Standard_Transient*> ShapeUpgrade_Tool_as_Standard_Transient(const ShapeUpgrade_Tool* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeUpgrade_Tool_as_Standard_Transient_mut(ShapeUpgrade_Tool* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeUpgradeTool*> ShapeUpgrade_Tool_to_handle(ShapeUpgrade_Tool* obj) {
-    try { return {new HandleShapeUpgradeTool(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_Tool*> ShapeUpgrade_Tool_to_handle(ShapeUpgrade_Tool* obj) {
+    try { return {new Handle_ShapeUpgrade_Tool(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeUpgrade_Tool*> HandleShapeUpgradeTool_get(const HandleShapeUpgradeTool* handle) {
+extern "C" OcctResult<const ShapeUpgrade_Tool*> Handle_ShapeUpgrade_Tool_get(const Handle_ShapeUpgrade_Tool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeUpgrade_Tool*> HandleShapeUpgradeTool_get_mut(HandleShapeUpgradeTool* handle) {
+extern "C" OcctResult<ShapeUpgrade_Tool*> Handle_ShapeUpgrade_Tool_get_mut(Handle_ShapeUpgrade_Tool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeUpgradeTool_to_HandleStandardTransient(const HandleShapeUpgradeTool* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeUpgrade_Tool_to_Handle_Standard_Transient(const Handle_ShapeUpgrade_Tool* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeClosedEdgeDivide*> HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeClosedEdgeDivide(const HandleShapeUpgradeTool* self_) {
+extern "C" OcctResult<Handle_ShapeUpgrade_ClosedEdgeDivide*> Handle_ShapeUpgrade_Tool_downcast_to_Handle_ShapeUpgrade_ClosedEdgeDivide(const Handle_ShapeUpgrade_Tool* self_) {
     try {
     opencascade::handle<ShapeUpgrade_ClosedEdgeDivide> result = opencascade::handle<ShapeUpgrade_ClosedEdgeDivide>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeUpgradeClosedEdgeDivide(result), nullptr};
+    return {new Handle_ShapeUpgrade_ClosedEdgeDivide(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeClosedFaceDivide*> HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeClosedFaceDivide(const HandleShapeUpgradeTool* self_) {
+extern "C" OcctResult<Handle_ShapeUpgrade_ClosedFaceDivide*> Handle_ShapeUpgrade_Tool_downcast_to_Handle_ShapeUpgrade_ClosedFaceDivide(const Handle_ShapeUpgrade_Tool* self_) {
     try {
     opencascade::handle<ShapeUpgrade_ClosedFaceDivide> result = opencascade::handle<ShapeUpgrade_ClosedFaceDivide>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeUpgradeClosedFaceDivide(result), nullptr};
+    return {new Handle_ShapeUpgrade_ClosedFaceDivide(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeEdgeDivide*> HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeEdgeDivide(const HandleShapeUpgradeTool* self_) {
+extern "C" OcctResult<Handle_ShapeUpgrade_EdgeDivide*> Handle_ShapeUpgrade_Tool_downcast_to_Handle_ShapeUpgrade_EdgeDivide(const Handle_ShapeUpgrade_Tool* self_) {
     try {
     opencascade::handle<ShapeUpgrade_EdgeDivide> result = opencascade::handle<ShapeUpgrade_EdgeDivide>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeUpgradeEdgeDivide(result), nullptr};
+    return {new Handle_ShapeUpgrade_EdgeDivide(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeFaceDivide*> HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeFaceDivide(const HandleShapeUpgradeTool* self_) {
+extern "C" OcctResult<Handle_ShapeUpgrade_FaceDivide*> Handle_ShapeUpgrade_Tool_downcast_to_Handle_ShapeUpgrade_FaceDivide(const Handle_ShapeUpgrade_Tool* self_) {
     try {
     opencascade::handle<ShapeUpgrade_FaceDivide> result = opencascade::handle<ShapeUpgrade_FaceDivide>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeUpgradeFaceDivide(result), nullptr};
+    return {new Handle_ShapeUpgrade_FaceDivide(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeFaceDivideArea*> HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeFaceDivideArea(const HandleShapeUpgradeTool* self_) {
+extern "C" OcctResult<Handle_ShapeUpgrade_FaceDivideArea*> Handle_ShapeUpgrade_Tool_downcast_to_Handle_ShapeUpgrade_FaceDivideArea(const Handle_ShapeUpgrade_Tool* self_) {
     try {
     opencascade::handle<ShapeUpgrade_FaceDivideArea> result = opencascade::handle<ShapeUpgrade_FaceDivideArea>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeUpgradeFaceDivideArea(result), nullptr};
+    return {new Handle_ShapeUpgrade_FaceDivideArea(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeFixSmallBezierCurves*> HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeFixSmallBezierCurves(const HandleShapeUpgradeTool* self_) {
+extern "C" OcctResult<Handle_ShapeUpgrade_FixSmallBezierCurves*> Handle_ShapeUpgrade_Tool_downcast_to_Handle_ShapeUpgrade_FixSmallBezierCurves(const Handle_ShapeUpgrade_Tool* self_) {
     try {
     opencascade::handle<ShapeUpgrade_FixSmallBezierCurves> result = opencascade::handle<ShapeUpgrade_FixSmallBezierCurves>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeUpgradeFixSmallBezierCurves(result), nullptr};
+    return {new Handle_ShapeUpgrade_FixSmallBezierCurves(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeFixSmallCurves*> HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeFixSmallCurves(const HandleShapeUpgradeTool* self_) {
+extern "C" OcctResult<Handle_ShapeUpgrade_FixSmallCurves*> Handle_ShapeUpgrade_Tool_downcast_to_Handle_ShapeUpgrade_FixSmallCurves(const Handle_ShapeUpgrade_Tool* self_) {
     try {
     opencascade::handle<ShapeUpgrade_FixSmallCurves> result = opencascade::handle<ShapeUpgrade_FixSmallCurves>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeUpgradeFixSmallCurves(result), nullptr};
+    return {new Handle_ShapeUpgrade_FixSmallCurves(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeRemoveInternalWires*> HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeRemoveInternalWires(const HandleShapeUpgradeTool* self_) {
+extern "C" OcctResult<Handle_ShapeUpgrade_RemoveInternalWires*> Handle_ShapeUpgrade_Tool_downcast_to_Handle_ShapeUpgrade_RemoveInternalWires(const Handle_ShapeUpgrade_Tool* self_) {
     try {
     opencascade::handle<ShapeUpgrade_RemoveInternalWires> result = opencascade::handle<ShapeUpgrade_RemoveInternalWires>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeUpgradeRemoveInternalWires(result), nullptr};
+    return {new Handle_ShapeUpgrade_RemoveInternalWires(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeWireDivide*> HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeWireDivide(const HandleShapeUpgradeTool* self_) {
+extern "C" OcctResult<Handle_ShapeUpgrade_WireDivide*> Handle_ShapeUpgrade_Tool_downcast_to_Handle_ShapeUpgrade_WireDivide(const Handle_ShapeUpgrade_Tool* self_) {
     try {
     opencascade::handle<ShapeUpgrade_WireDivide> result = opencascade::handle<ShapeUpgrade_WireDivide>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeUpgradeWireDivide(result), nullptr};
+    return {new Handle_ShapeUpgrade_WireDivide(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -12825,7 +12723,7 @@ extern "C" const char* ShapeUpgrade_UnifySameDomain_keep_shape(ShapeUpgrade_Unif
     try { self_->KeepShape(*theShape); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* ShapeUpgrade_UnifySameDomain_keep_shapes(ShapeUpgrade_UnifySameDomain* self_, TopTools_MapOfShape const* theShapes) {
+extern "C" const char* ShapeUpgrade_UnifySameDomain_keep_shapes(ShapeUpgrade_UnifySameDomain* self_, NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher const* theShapes) {
     try { self_->KeepShapes(*theShapes); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -12871,20 +12769,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> ShapeUpgrade_UnifySameDomain
 }
 extern "C" OcctResult<const Standard_Transient*> ShapeUpgrade_UnifySameDomain_as_Standard_Transient(const ShapeUpgrade_UnifySameDomain* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeUpgrade_UnifySameDomain_as_Standard_Transient_mut(ShapeUpgrade_UnifySameDomain* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeUpgradeUnifySameDomain*> ShapeUpgrade_UnifySameDomain_to_handle(ShapeUpgrade_UnifySameDomain* obj) {
-    try { return {new HandleShapeUpgradeUnifySameDomain(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_UnifySameDomain*> ShapeUpgrade_UnifySameDomain_to_handle(ShapeUpgrade_UnifySameDomain* obj) {
+    try { return {new Handle_ShapeUpgrade_UnifySameDomain(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeUpgrade_UnifySameDomain*> HandleShapeUpgradeUnifySameDomain_get(const HandleShapeUpgradeUnifySameDomain* handle) {
+extern "C" OcctResult<const ShapeUpgrade_UnifySameDomain*> Handle_ShapeUpgrade_UnifySameDomain_get(const Handle_ShapeUpgrade_UnifySameDomain* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeUpgrade_UnifySameDomain*> HandleShapeUpgradeUnifySameDomain_get_mut(HandleShapeUpgradeUnifySameDomain* handle) {
+extern "C" OcctResult<ShapeUpgrade_UnifySameDomain*> Handle_ShapeUpgrade_UnifySameDomain_get_mut(Handle_ShapeUpgrade_UnifySameDomain* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeUpgradeUnifySameDomain_to_HandleStandardTransient(const HandleShapeUpgradeUnifySameDomain* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeUpgrade_UnifySameDomain_to_Handle_Standard_Transient(const Handle_ShapeUpgrade_UnifySameDomain* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> ShapeUpgrade_UnifySameDomain_inherited_IsInstance(const ShapeUpgrade_UnifySameDomain* self, Handle(Standard_Type) const& theType) {
@@ -13017,24 +12915,24 @@ extern "C" OcctResult<const ShapeUpgrade_Tool*> ShapeUpgrade_WireDivide_as_Shape
 extern "C" OcctResult<ShapeUpgrade_Tool*> ShapeUpgrade_WireDivide_as_ShapeUpgrade_Tool_mut(ShapeUpgrade_WireDivide* self_) { return {static_cast<ShapeUpgrade_Tool*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ShapeUpgrade_WireDivide_as_Standard_Transient(const ShapeUpgrade_WireDivide* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ShapeUpgrade_WireDivide_as_Standard_Transient_mut(ShapeUpgrade_WireDivide* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleShapeUpgradeWireDivide*> ShapeUpgrade_WireDivide_to_handle(ShapeUpgrade_WireDivide* obj) {
-    try { return {new HandleShapeUpgradeWireDivide(obj), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_WireDivide*> ShapeUpgrade_WireDivide_to_handle(ShapeUpgrade_WireDivide* obj) {
+    try { return {new Handle_ShapeUpgrade_WireDivide(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ShapeUpgrade_WireDivide*> HandleShapeUpgradeWireDivide_get(const HandleShapeUpgradeWireDivide* handle) {
+extern "C" OcctResult<const ShapeUpgrade_WireDivide*> Handle_ShapeUpgrade_WireDivide_get(const Handle_ShapeUpgrade_WireDivide* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeUpgrade_WireDivide*> HandleShapeUpgradeWireDivide_get_mut(HandleShapeUpgradeWireDivide* handle) {
+extern "C" OcctResult<ShapeUpgrade_WireDivide*> Handle_ShapeUpgrade_WireDivide_get_mut(Handle_ShapeUpgrade_WireDivide* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeUpgradeTool*> HandleShapeUpgradeWireDivide_to_HandleShapeUpgradeTool(const HandleShapeUpgradeWireDivide* self_) {
-    try { return {new HandleShapeUpgradeTool(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ShapeUpgrade_Tool*> Handle_ShapeUpgrade_WireDivide_to_Handle_ShapeUpgrade_Tool(const Handle_ShapeUpgrade_WireDivide* self_) {
+    try { return {new Handle_ShapeUpgrade_Tool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleShapeUpgradeWireDivide_to_HandleStandardTransient(const HandleShapeUpgradeWireDivide* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ShapeUpgrade_WireDivide_to_Handle_Standard_Transient(const Handle_ShapeUpgrade_WireDivide* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ShapeUpgrade_WireDivide_inherited_Set(ShapeUpgrade_WireDivide* self, Handle(ShapeUpgrade_Tool) const& tool) {
@@ -13182,7 +13080,7 @@ extern "C" OcctResult<Handle(Geom_BSplineSurface)*> ShapeConstruct_convert_surfa
     try { return {new Handle(Geom_BSplineSurface)(ShapeConstruct::ConvertSurfaceToBSpline(*surf, UF, UL, VF, VL, Tol3d, static_cast<GeomAbs_Shape>(Continuity), MaxSegments, MaxDegree)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeConstruct_join_p_curves(Handle(TopTools_HSequenceOfShape) const* theEdges, TopoDS_Face const* theFace, TopoDS_Edge* theEdge) {
+extern "C" OcctResult<bool> ShapeConstruct_join_p_curves(Handle(NCollection_HSequence_TopoDS_Shape) const* theEdges, TopoDS_Face const* theFace, TopoDS_Edge* theEdge) {
     try { return {ShapeConstruct::JoinPCurves(*theEdges, *theFace, *theEdge), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13198,7 +13096,7 @@ extern "C" OcctResult<bool> ShapeConstruct_join_curves_handlegeom2dcurve2_orient
 // ========================
 // ShapeCustom namespace functions
 // ========================
-extern "C" OcctResult<TopoDS_Shape*> ShapeCustom_apply_modifier(TopoDS_Shape const* S, Handle(BRepTools_Modification) const* M, TopTools_DataMapOfShapeShape* context, BRepTools_Modifier* MD, Message_ProgressRange const* theProgress, Handle(ShapeBuild_ReShape) const* aReShape) {
+extern "C" OcctResult<TopoDS_Shape*> ShapeCustom_apply_modifier(TopoDS_Shape const* S, Handle(BRepTools_Modification) const* M, NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher* context, BRepTools_Modifier* MD, Message_ProgressRange const* theProgress, Handle(ShapeBuild_ReShape) const* aReShape) {
     try { return {new TopoDS_Shape(ShapeCustom::ApplyModifier(*S, *M, *context, *MD, *theProgress, *aReShape)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13290,21 +13188,16 @@ extern "C" OcctResult<bool> ShapeProcess_perform_handleshapeprocesscontext_opera
 // ========================
 // ShapeUpgrade namespace functions
 // ========================
-extern "C" OcctResult<bool> ShapeUpgrade_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_handletcolgeomhsequenceofboundedcurve(Handle(Geom_BSplineCurve) const* BS, Handle(TColGeom_HSequenceOfBoundedCurve)* seqBS) {
+extern "C" OcctResult<bool> ShapeUpgrade_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_handlencollectionhsequenceopencascadehandlegeomboundedcurve(Handle(Geom_BSplineCurve) const* BS, Handle(NCollection_HSequence_opencascade_handle_Geom_BoundedCurve)* seqBS) {
     try { return {ShapeUpgrade::C0BSplineToSequenceOfC1BSplineCurve(*BS, *seqBS), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeUpgrade_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeom2dbsplinecurve_handletcolgeom2dhsequenceofboundedcurve(Handle(Geom2d_BSplineCurve) const* BS, Handle(TColGeom2d_HSequenceOfBoundedCurve)* seqBS) {
+extern "C" OcctResult<bool> ShapeUpgrade_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeom2dbsplinecurve_handlencollectionhsequenceopencascadehandlegeom2dboundedcurve(Handle(Geom2d_BSplineCurve) const* BS, Handle(NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve)* seqBS) {
     try { return {ShapeUpgrade::C0BSplineToSequenceOfC1BSplineCurve(*BS, *seqBS), nullptr}; }
     OCCT_CATCH_RETURN
 }
 
 
 // Nested type and typedef type destructors
-extern "C" void ShapeAnalysis_DataMapOfShapeListOfReal_destructor(ShapeAnalysis_DataMapOfShapeListOfReal* self_) { delete self_; }
-extern "C" void ShapeAnalysis_SequenceOfFreeBounds_destructor(ShapeAnalysis_SequenceOfFreeBounds* self_) { delete self_; }
-extern "C" void ShapeExtend_DataMapOfShapeListOfMsg_destructor(ShapeExtend_DataMapOfShapeListOfMsg* self_) { delete self_; }
-extern "C" void ShapeExtend_DataMapOfTransientListOfMsg_destructor(ShapeExtend_DataMapOfTransientListOfMsg* self_) { delete self_; }
-extern "C" void ShapeFix_SequenceOfWireSegment_destructor(ShapeFix_SequenceOfWireSegment* self_) { delete self_; }
 extern "C" void ShapeProcess_OperationsFlags_destructor(ShapeProcess::OperationsFlags* self_) { delete self_; }
 extern "C" void ShapeProcess_OperFunc_destructor(ShapeProcess_OperFunc* self_) { delete self_; }

@@ -1,6 +1,6 @@
 use crate::primitives::{make_axis_2, make_point};
 use glam::{dvec3, DVec3};
-use opencascade_sys::{b_rep_adaptor, b_rep_builder_api, gc, gc_pnts, geom, geom_abs, geom_api, gp, t_colgp, topo_ds};
+use opencascade_sys::{b_rep_adaptor, b_rep_builder_api, gc, gc_pnts, geom, geom_abs, geom_api, gp, n_collection, topo_ds};
 
 use super::make_vec;
 
@@ -62,12 +62,12 @@ impl Edge {
 
     pub fn bezier(points: impl IntoIterator<Item = DVec3>) -> Self {
         let points: Vec<_> = points.into_iter().collect();
-        let mut array = t_colgp::Array1OfPnt::new_int2(1, points.len() as i32);
+        let mut array = n_collection::Array1_gp_Pnt::new_int2(1, points.len() as i32);
         for (index, point) in points.into_iter().enumerate() {
             array.set_value(index as i32 + 1, &make_point(point));
         }
 
-        let bezier = geom::BezierCurve::new_array1ofpnt(&array);
+        let bezier = geom::BezierCurve::new_arr1_pnt(&array);
         let bezier_handle = geom::BezierCurve::to_handle(bezier);
         let curve_handle = bezier_handle.to_handle_curve();
 
@@ -91,15 +91,17 @@ impl Edge {
         tangents: Option<(DVec3, DVec3)>,
     ) -> Self {
         let points: Vec<_> = points.into_iter().collect();
-        let mut array = t_colgp::HArray1OfPnt::new_int2(1, points.len() as i32);
+        let mut array = n_collection::HArray1_gp_Pnt::new_int2(1, points.len() as i32);
         for (index, point) in points.into_iter().enumerate() {
-            array.change_array1().set_value(index as i32 + 1, &make_point(point));
+            // OCCT 8.0: NCollection_HArray1 *is* an Array1, so set_value is called
+            // directly (the old ChangeArray1() accessor is no longer needed).
+            array.set_value(index as i32 + 1, &make_point(point));
         }
-        let array_handle = t_colgp::HArray1OfPnt::to_handle(array);
+        let array_handle = n_collection::HArray1_gp_Pnt::to_handle(array);
 
         let periodic = false;
         let tolerance = 1.0e-7;
-        let mut interpolate = geom_api::Interpolate::new_handletcolgpharray1ofpnt_bool_real(
+        let mut interpolate = geom_api::Interpolate::new_harr1_pnt_bool_real(
             &array_handle, periodic, tolerance,
         );
         if let Some((t_start, t_end)) = tangents {

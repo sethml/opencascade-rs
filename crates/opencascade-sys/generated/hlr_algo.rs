@@ -7,7 +7,7 @@
 #![allow(non_snake_case)]
 
 /// **Source:** `HLRAlgo.hxx`:51 - `HLRAlgo::UpdateMinMax`
-/// Iterator  on the  visible or  hidden  parts of  an
+/// Iterator on the visible or hidden parts of an
 /// EdgeStatus.
 pub fn update_min_max(x: f64, y: f64, z: f64, Min: &mut [f64; 16], Max: &mut [f64; 16]) {
     crate::check_void_result(unsafe {
@@ -20,13 +20,13 @@ pub fn enlarge_min_max(tol: f64, Min: &mut [f64; 16], Max: &mut [f64; 16]) {
         crate::ffi_extern_TKHLR::HLRAlgo_enlarge_min_max(tol, Min.as_mut_ptr(), Max.as_mut_ptr())
     })
 }
-/// **Source:** `HLRAlgo.hxx`:61 - `HLRAlgo::InitMinMax`
+/// **Source:** `HLRAlgo.hxx`:59 - `HLRAlgo::InitMinMax`
 pub fn init_min_max(Big: f64, Min: &mut [f64; 16], Max: &mut [f64; 16]) {
     crate::check_void_result(unsafe {
         crate::ffi_extern_TKHLR::HLRAlgo_init_min_max(Big, Min.as_mut_ptr(), Max.as_mut_ptr())
     })
 }
-/// **Source:** `HLRAlgo.hxx`:65 - `HLRAlgo::EncodeMinMax`
+/// **Source:** `HLRAlgo.hxx`:61 - `HLRAlgo::EncodeMinMax`
 pub fn encode_min_max(
     Min: &mut EdgesBlock_MinMaxIndices,
     Max: &mut EdgesBlock_MinMaxIndices,
@@ -36,11 +36,11 @@ pub fn encode_min_max(
         crate::ffi_extern_TKHLR::HLRAlgo_encode_min_max(Min, Max, MinMax)
     })
 }
-/// **Source:** `HLRAlgo.hxx`:69 - `HLRAlgo::SizeBox`
+/// **Source:** `HLRAlgo.hxx`:65 - `HLRAlgo::SizeBox`
 pub fn size_box(Min: &mut EdgesBlock_MinMaxIndices, Max: &mut EdgesBlock_MinMaxIndices) -> f64 {
     crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRAlgo_size_box(Min, Max) })
 }
-/// **Source:** `HLRAlgo.hxx`:72 - `HLRAlgo::DecodeMinMax`
+/// **Source:** `HLRAlgo.hxx`:68 - `HLRAlgo::DecodeMinMax`
 pub fn decode_min_max(
     MinMax: &EdgesBlock_MinMaxIndices,
     Min: &mut EdgesBlock_MinMaxIndices,
@@ -50,7 +50,7 @@ pub fn decode_min_max(
         crate::ffi_extern_TKHLR::HLRAlgo_decode_min_max(MinMax, Min, Max)
     })
 }
-/// **Source:** `HLRAlgo.hxx`:76 - `HLRAlgo::CopyMinMax`
+/// **Source:** `HLRAlgo.hxx`:72 - `HLRAlgo::CopyMinMax`
 pub fn copy_min_max(
     IMin: &mut EdgesBlock_MinMaxIndices,
     IMax: &mut EdgesBlock_MinMaxIndices,
@@ -61,7 +61,7 @@ pub fn copy_min_max(
         crate::ffi_extern_TKHLR::HLRAlgo_copy_min_max(IMin, IMax, OMin, OMax)
     })
 }
-/// **Source:** `HLRAlgo.hxx`:85 - `HLRAlgo::AddMinMax`
+/// **Source:** `HLRAlgo.hxx`:81 - `HLRAlgo::AddMinMax`
 pub fn add_min_max(
     IMin: &mut EdgesBlock_MinMaxIndices,
     IMax: &mut EdgesBlock_MinMaxIndices,
@@ -122,7 +122,7 @@ impl TryFrom<i32> for PolyMask {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::HandleStandardTransient;
+pub use crate::ffi_types::Handle_Standard_Transient;
 
 // ========================
 // From HLRAlgo_BiPoint.hxx
@@ -572,9 +572,8 @@ unsafe impl crate::CppDeletable for EdgeIterator {
 }
 
 impl EdgeIterator {
-    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:33 - `HLRAlgo_EdgeIterator::HLRAlgo_EdgeIterator()`
-    /// Iterator  on the  visible or  hidden  parts of  an
-    /// edge.
+    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:32 - `HLRAlgo_EdgeIterator::HLRAlgo_EdgeIterator()`
+    /// Iterator on the visible or hidden parts of an edge.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -583,28 +582,28 @@ impl EdgeIterator {
         }
     }
 
-    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:35 - `HLRAlgo_EdgeIterator::InitHidden()`
+    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:34 - `HLRAlgo_EdgeIterator::InitHidden()`
     pub fn init_hidden(&mut self, status: &mut EdgeStatus) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgeIterator_init_hidden(self as *mut Self, status)
         })
     }
 
-    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:37 - `HLRAlgo_EdgeIterator::MoreHidden()`
+    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:36 - `HLRAlgo_EdgeIterator::MoreHidden()`
     pub fn more_hidden(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgeIterator_more_hidden(self as *const Self)
         })
     }
 
-    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:39 - `HLRAlgo_EdgeIterator::NextHidden()`
+    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:38 - `HLRAlgo_EdgeIterator::NextHidden()`
     pub fn next_hidden(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgeIterator_next_hidden(self as *mut Self)
         })
     }
 
-    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:43 - `HLRAlgo_EdgeIterator::Hidden()`
+    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:42 - `HLRAlgo_EdgeIterator::Hidden()`
     /// Returns the bounds and the tolerances
     /// of the current Hidden Interval
     pub fn hidden(&self, Start: &mut f64, TolStart: &mut f32, End: &mut f64, TolEnd: &mut f32) {
@@ -619,28 +618,28 @@ impl EdgeIterator {
         })
     }
 
-    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:48 - `HLRAlgo_EdgeIterator::InitVisible()`
+    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:44 - `HLRAlgo_EdgeIterator::InitVisible()`
     pub fn init_visible(&mut self, status: &mut EdgeStatus) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgeIterator_init_visible(self as *mut Self, status)
         })
     }
 
-    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:50 - `HLRAlgo_EdgeIterator::MoreVisible()`
+    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:46 - `HLRAlgo_EdgeIterator::MoreVisible()`
     pub fn more_visible(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgeIterator_more_visible(self as *const Self)
         })
     }
 
-    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:52 - `HLRAlgo_EdgeIterator::NextVisible()`
+    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:48 - `HLRAlgo_EdgeIterator::NextVisible()`
     pub fn next_visible(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgeIterator_next_visible(self as *mut Self)
         })
     }
 
-    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:56 - `HLRAlgo_EdgeIterator::Visible()`
+    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:52 - `HLRAlgo_EdgeIterator::Visible()`
     /// Returns the bounds and the tolerances
     /// of the current Visible Interval
     pub fn visible(
@@ -666,16 +665,15 @@ impl EdgeIterator {
 // From HLRAlgo_EdgeStatus.hxx
 // ========================
 
-/// **Source:** `HLRAlgo_EdgeStatus.hxx`:35 - `HLRAlgo_EdgeStatus`
-/// This class describes the Hidden  Line status of an
-/// Edge. It contains :
+/// **Source:** `HLRAlgo_EdgeStatus.hxx`:34 - `HLRAlgo_EdgeStatus`
+/// This class describes the Hidden Line status of an
+/// Edge. It contains:
 ///
 /// The Bounds of the Edge and their tolerances
 ///
 /// Two flags indicating if the edge is full visible
-/// or full hidden.
-///
-/// The Sequence  of visible Intervals  on the Edge.
+/// or full hidden
+/// TheSequenceof visible Intervals on the Edge.
 pub use crate::ffi_types::HLRAlgo_EdgeStatus as EdgeStatus;
 
 unsafe impl crate::CppDeletable for EdgeStatus {
@@ -687,7 +685,7 @@ unsafe impl crate::CppDeletable for EdgeStatus {
 }
 
 impl EdgeStatus {
-    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:40 - `HLRAlgo_EdgeStatus::HLRAlgo_EdgeStatus()`
+    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:39 - `HLRAlgo_EdgeStatus::HLRAlgo_EdgeStatus()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -696,9 +694,9 @@ impl EdgeStatus {
         }
     }
 
-    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:45 - `HLRAlgo_EdgeStatus::HLRAlgo_EdgeStatus()`
-    /// Creates a  new  EdgeStatus.  Default visible.  The
-    /// Edge is   bounded by the  interval  <Start>, <End>
+    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:44 - `HLRAlgo_EdgeStatus::HLRAlgo_EdgeStatus()`
+    /// Creates a new EdgeStatus. Default visible. The
+    /// Edge is bounded by the interval <Start>, <End>
     /// with the tolerances <TolStart>, <TolEnd>.
     pub fn new_real_float_real_float(
         Start: f64,
@@ -715,9 +713,9 @@ impl EdgeStatus {
         }
     }
 
-    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:53 - `HLRAlgo_EdgeStatus::Initialize()`
-    /// Initialize  an  EdgeStatus.  Default visible.  The
-    /// Edge is   bounded by the  interval  <Start>, <End>
+    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:52 - `HLRAlgo_EdgeStatus::Initialize()`
+    /// Initialize an EdgeStatus. Default visible. The
+    /// Edge is bounded by the interval <Start>, <End>
     /// with the tolerances <TolStart>, <TolEnd>.
     pub fn initialize(&mut self, Start: f64, TolStart: f32, End: f64, TolEnd: f32) {
         crate::check_void_result(unsafe {
@@ -731,7 +729,7 @@ impl EdgeStatus {
         })
     }
 
-    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:58 - `HLRAlgo_EdgeStatus::Bounds()`
+    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:57 - `HLRAlgo_EdgeStatus::Bounds()`
     pub fn bounds(
         &self,
         theStart: &mut f64,
@@ -750,14 +748,14 @@ impl EdgeStatus {
         })
     }
 
-    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:69 - `HLRAlgo_EdgeStatus::NbVisiblePart()`
+    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:65 - `HLRAlgo_EdgeStatus::NbVisiblePart()`
     pub fn nb_visible_part(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgeStatus_nb_visible_part(self as *const Self)
         })
     }
 
-    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:71 - `HLRAlgo_EdgeStatus::VisiblePart()`
+    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:67 - `HLRAlgo_EdgeStatus::VisiblePart()`
     pub fn visible_part(
         &self,
         Index: i32,
@@ -778,14 +776,14 @@ impl EdgeStatus {
         })
     }
 
-    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:84 - `HLRAlgo_EdgeStatus::Hide()`
-    /// Hides  the  interval  <Start>,    <End>   with the
-    /// tolerances <TolStart>,  <TolEnd>. This interval is
-    /// subtracted from the visible  parts.  If the hidden
-    /// part is on ( or under ) the face the flag <OnFace>
-    /// is True ( or False ).  If the hidden  part is on (
-    /// or  inside  ) the boundary  of  the  face the flag
-    /// <OnBoundary> is True ( or False ).
+    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:80 - `HLRAlgo_EdgeStatus::Hide()`
+    /// Hides the interval <Start>, <End> with the
+    /// tolerances <TolStart>, <TolEnd>. This interval is
+    /// subtracted from the visible parts. If the hidden
+    /// part is on (or under) the face the flag <OnFace>
+    /// is True (or False). If the hidden part is on
+    /// (or inside) the boundary of the face the flag
+    /// <OnBoundary> is True (or False).
     pub fn hide(
         &mut self,
         Start: f64,
@@ -808,7 +806,7 @@ impl EdgeStatus {
         })
     }
 
-    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:92 - `HLRAlgo_EdgeStatus::HideAll()`
+    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:88 - `HLRAlgo_EdgeStatus::HideAll()`
     /// Hide the whole Edge.
     pub fn hide_all(&mut self) {
         crate::check_void_result(unsafe {
@@ -816,7 +814,7 @@ impl EdgeStatus {
         })
     }
 
-    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:99 - `HLRAlgo_EdgeStatus::ShowAll()`
+    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:95 - `HLRAlgo_EdgeStatus::ShowAll()`
     /// Show the whole Edge.
     pub fn show_all(&mut self) {
         crate::check_void_result(unsafe {
@@ -824,28 +822,28 @@ impl EdgeStatus {
         })
     }
 
-    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:105 - `HLRAlgo_EdgeStatus::AllHidden()`
+    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:101 - `HLRAlgo_EdgeStatus::AllHidden()`
     pub fn all_hidden(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgeStatus_all_hidden(self as *const Self)
         })
     }
 
-    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:107 - `HLRAlgo_EdgeStatus::AllHidden()`
+    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:103 - `HLRAlgo_EdgeStatus::AllHidden()`
     pub fn all_hidden_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgeStatus_all_hidden_bool(self as *mut Self, B)
         })
     }
 
-    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:109 - `HLRAlgo_EdgeStatus::AllVisible()`
+    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:105 - `HLRAlgo_EdgeStatus::AllVisible()`
     pub fn all_visible(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgeStatus_all_visible(self as *const Self)
         })
     }
 
-    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:111 - `HLRAlgo_EdgeStatus::AllVisible()`
+    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:107 - `HLRAlgo_EdgeStatus::AllVisible()`
     pub fn all_visible_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgeStatus_all_visible_bool(self as *mut Self, B)
@@ -857,15 +855,16 @@ impl EdgeStatus {
 // From HLRAlgo_EdgesBlock.hxx
 // ========================
 
-/// **Source:** `HLRAlgo_EdgesBlock.hxx`:44 - `HLRAlgo_EdgesBlock`
+/// **Source:** `HLRAlgo_EdgesBlock.hxx`:41 - `HLRAlgo_EdgesBlock`
 /// An EdgesBlock is a set of Edges. It is used by the
 /// DataStructure to structure the Edges.
 ///
-/// An EdgesBlock contains :
+/// An EdgesBlock contains:
 ///
-/// * An Array  of index of Edges.
+/// * An Array of index of Edges.
 ///
-/// * An Array of flagsf ( Orientation
+/// * An Array of flagsf
+/// (Orientation
 /// OutLine
 /// Internal
 /// Double
@@ -881,7 +880,7 @@ unsafe impl crate::CppDeletable for EdgesBlock {
 }
 
 impl EdgesBlock {
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:86 - `HLRAlgo_EdgesBlock::HLRAlgo_EdgesBlock()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:83 - `HLRAlgo_EdgesBlock::HLRAlgo_EdgesBlock()`
     /// Create a Block of Edges for a wire.
     pub fn new_int(NbEdges: i32) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -891,28 +890,28 @@ impl EdgesBlock {
         }
     }
 
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:88 - `HLRAlgo_EdgesBlock::NbEdges()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:85 - `HLRAlgo_EdgesBlock::NbEdges()`
     pub fn nb_edges(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgesBlock_nb_edges(self as *const Self)
         })
     }
 
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:90 - `HLRAlgo_EdgesBlock::Edge()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:87 - `HLRAlgo_EdgesBlock::Edge()`
     pub fn edge_int2(&mut self, I: i32, EI: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgesBlock_edge_int2(self as *mut Self, I, EI)
         })
     }
 
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:92 - `HLRAlgo_EdgesBlock::Edge()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:89 - `HLRAlgo_EdgesBlock::Edge()`
     pub fn edge_int(&self, I: i32) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgesBlock_edge_int(self as *const Self, I)
         })
     }
 
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:94 - `HLRAlgo_EdgesBlock::Orientation()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:91 - `HLRAlgo_EdgesBlock::Orientation()`
     pub fn orientation_int_orientation(&mut self, I: i32, Or: crate::top_abs::Orientation) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgesBlock_orientation_int_orientation(
@@ -923,7 +922,7 @@ impl EdgesBlock {
         })
     }
 
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:100 - `HLRAlgo_EdgesBlock::Orientation()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:97 - `HLRAlgo_EdgesBlock::Orientation()`
     pub fn orientation_int(&self, I: i32) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgesBlock_orientation_int(self as *const Self, I)
@@ -931,70 +930,70 @@ impl EdgesBlock {
         .unwrap()
     }
 
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:105 - `HLRAlgo_EdgesBlock::OutLine()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:102 - `HLRAlgo_EdgesBlock::OutLine()`
     pub fn out_line_int(&self, I: i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgesBlock_out_line_int(self as *const Self, I)
         })
     }
 
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:110 - `HLRAlgo_EdgesBlock::OutLine()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:104 - `HLRAlgo_EdgesBlock::OutLine()`
     pub fn out_line_int_bool(&mut self, I: i32, B: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgesBlock_out_line_int_bool(self as *mut Self, I, B)
         })
     }
 
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:118 - `HLRAlgo_EdgesBlock::Internal()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:112 - `HLRAlgo_EdgesBlock::Internal()`
     pub fn internal_int(&self, I: i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgesBlock_internal_int(self as *const Self, I)
         })
     }
 
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:123 - `HLRAlgo_EdgesBlock::Internal()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:114 - `HLRAlgo_EdgesBlock::Internal()`
     pub fn internal_int_bool(&mut self, I: i32, B: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgesBlock_internal_int_bool(self as *mut Self, I, B)
         })
     }
 
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:131 - `HLRAlgo_EdgesBlock::Double()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:122 - `HLRAlgo_EdgesBlock::Double()`
     pub fn double_int(&self, I: i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgesBlock_double_int(self as *const Self, I)
         })
     }
 
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:136 - `HLRAlgo_EdgesBlock::Double()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:124 - `HLRAlgo_EdgesBlock::Double()`
     pub fn double_int_bool(&mut self, I: i32, B: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgesBlock_double_int_bool(self as *mut Self, I, B)
         })
     }
 
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:144 - `HLRAlgo_EdgesBlock::IsoLine()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:132 - `HLRAlgo_EdgesBlock::IsoLine()`
     pub fn iso_line_int(&self, I: i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgesBlock_iso_line_int(self as *const Self, I)
         })
     }
 
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:149 - `HLRAlgo_EdgesBlock::IsoLine()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:134 - `HLRAlgo_EdgesBlock::IsoLine()`
     pub fn iso_line_int_bool(&mut self, I: i32, B: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgesBlock_iso_line_int_bool(self as *mut Self, I, B)
         })
     }
 
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:157 - `HLRAlgo_EdgesBlock::UpdateMinMax()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:142 - `HLRAlgo_EdgesBlock::UpdateMinMax()`
     pub fn update_min_max(&mut self, TotMinMax: &EdgesBlock_MinMaxIndices) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgesBlock_update_min_max(self as *mut Self, TotMinMax)
         })
     }
 
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:159 - `HLRAlgo_EdgesBlock::MinMax()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:144 - `HLRAlgo_EdgesBlock::MinMax()`
     pub fn min_max(&mut self) -> &mut EdgesBlock_MinMaxIndices {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_EdgesBlock_min_max(
@@ -1003,8 +1002,8 @@ impl EdgesBlock {
         }
     }
 
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:161 - `HLRAlgo_EdgesBlock::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:146 - `HLRAlgo_EdgesBlock::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_EdgesBlock_dynamic_type(
                 self as *const Self,
@@ -1012,7 +1011,7 @@ impl EdgesBlock {
         }
     }
 
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:161 - `HLRAlgo_EdgesBlock::get_type_name()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:146 - `HLRAlgo_EdgesBlock::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1023,8 +1022,8 @@ impl EdgesBlock {
         .into_owned()
     }
 
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:161 - `HLRAlgo_EdgesBlock::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:146 - `HLRAlgo_EdgesBlock::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKHLR::HLRAlgo_EdgesBlock_get_type_descriptor(),
@@ -1057,7 +1056,7 @@ impl EdgesBlock {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleHLRAlgoEdgesBlock> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_HLRAlgo_EdgesBlock> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKHLR::HLRAlgo_EdgesBlock_to_handle(obj.into_raw()),
@@ -1065,8 +1064,8 @@ impl EdgesBlock {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgesBlock_inherited_IsInstance(
                 self as *const Self,
@@ -1075,8 +1074,8 @@ impl EdgesBlock {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgesBlock_inherited_IsKind(
                 self as *const Self,
@@ -1085,7 +1084,7 @@ impl EdgesBlock {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1099,14 +1098,14 @@ impl EdgesBlock {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgesBlock_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgesBlock_inherited_IncrementRefCounter(
@@ -1115,7 +1114,7 @@ impl EdgesBlock {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgesBlock_inherited_DecrementRefCounter(
@@ -1124,7 +1123,7 @@ impl EdgesBlock {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgesBlock_inherited_Delete(self as *const Self)
@@ -1132,32 +1131,34 @@ impl EdgesBlock {
     }
 }
 
-pub use crate::ffi_types::HandleHLRAlgoEdgesBlock;
+pub use crate::ffi_types::Handle_HLRAlgo_EdgesBlock;
 
-unsafe impl crate::CppDeletable for HandleHLRAlgoEdgesBlock {
+unsafe impl crate::CppDeletable for Handle_HLRAlgo_EdgesBlock {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKHLR::HandleHLRAlgoEdgesBlock_destructor(ptr);
+            crate::ffi_extern_TKHLR::Handle_HLRAlgo_EdgesBlock_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleHLRAlgoEdgesBlock {
+unsafe impl crate::CppCopyable for Handle_HLRAlgo_EdgesBlock {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoEdgesBlock_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKHLR::Handle_HLRAlgo_EdgesBlock_clone(ptr))
+        }
     }
 }
 
-impl HandleHLRAlgoEdgesBlock {
+impl Handle_HLRAlgo_EdgesBlock {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKHLR::HandleHLRAlgoEdgesBlock_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKHLR::Handle_HLRAlgo_EdgesBlock_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying HLRAlgo_EdgesBlock
     pub fn get(&self) -> &crate::ffi_types::HLRAlgo_EdgesBlock {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoEdgesBlock_get(
+            &*crate::check_result(crate::ffi_extern_TKHLR::Handle_HLRAlgo_EdgesBlock_get(
                 self as *const Self,
             ))
         }
@@ -1166,7 +1167,7 @@ impl HandleHLRAlgoEdgesBlock {
     /// Dereference this Handle to mutably access the underlying HLRAlgo_EdgesBlock
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::HLRAlgo_EdgesBlock {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoEdgesBlock_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKHLR::Handle_HLRAlgo_EdgesBlock_get_mut(
                 self as *mut Self,
             ))
         }
@@ -1175,10 +1176,10 @@ impl HandleHLRAlgoEdgesBlock {
     /// Upcast Handle<HLRAlgo_EdgesBlock> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HandleHLRAlgoEdgesBlock_to_HandleStandardTransient(
+                crate::ffi_extern_TKHLR::Handle_HLRAlgo_EdgesBlock_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -1186,1129 +1187,13 @@ impl HandleHLRAlgoEdgesBlock {
     }
 }
 
-/// **Source:** `HLRAlgo_EdgesBlock.hxx`:48 - `HLRAlgo_EdgesBlock_MinMaxIndices`
+/// **Source:** `HLRAlgo_EdgesBlock.hxx`:45 - `HLRAlgo_EdgesBlock_MinMaxIndices`
 pub use crate::ffi_types::HLRAlgo_EdgesBlock_MinMaxIndices as EdgesBlock_MinMaxIndices;
 
 unsafe impl crate::CppDeletable for EdgesBlock_MinMaxIndices {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_EdgesBlock_MinMaxIndices_destructor(ptr);
-        }
-    }
-}
-
-// ========================
-// From HLRAlgo_HArray1OfPHDat.hxx
-// ========================
-
-/// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat`
-pub use crate::ffi_types::HLRAlgo_HArray1OfPHDat as HArray1OfPHDat;
-
-unsafe impl crate::CppDeletable for HArray1OfPHDat {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPHDat_destructor(ptr);
-        }
-    }
-}
-
-impl HArray1OfPHDat {
-    /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::HLRAlgo_HArray1OfPHDat()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPHDat_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::HLRAlgo_HArray1OfPHDat()`
-    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPHDat_ctor_int2(theLower, theUpper),
-            ))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::HLRAlgo_HArray1OfPHDat()`
-    pub fn new_int2_polyhidingdata(
-        theLower: i32,
-        theUpper: i32,
-        theValue: &PolyHidingData,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPHDat_ctor_int2_polyhidingdata(
-                    theLower, theUpper, theValue,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::HLRAlgo_HArray1OfPHDat()`
-    pub fn new_polyhidingdata_int2_bool(
-        theBegin: &PolyHidingData,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPHDat_ctor_polyhidingdata_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::HLRAlgo_HArray1OfPHDat()`
-    pub fn new_array1ofphdat(
-        theOther: &crate::ffi_types::HLRAlgo_Array1OfPHDat,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPHDat_ctor_array1ofphdat(theOther),
-            ))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::Array1()`
-    pub fn array1(&self) -> &crate::ffi_types::HLRAlgo_Array1OfPHDat {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPHDat_array1(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi_types::HLRAlgo_Array1OfPHDat {
-        unsafe {
-            &mut *(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPHDat_change_array1(self as *mut Self),
-            ))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPHDat_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPHDat_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPHDat_get_type_descriptor(),
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPHDat_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPHDat_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleHLRAlgoHArray1OfPHDat> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPHDat_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPHDat_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPHDat_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPHDat_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPHDat_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPHDat_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPHDat_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPHDat_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleHLRAlgoHArray1OfPHDat;
-
-unsafe impl crate::CppDeletable for HandleHLRAlgoHArray1OfPHDat {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPHDat_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleHLRAlgoHArray1OfPHDat {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPHDat_clone(ptr))
-        }
-    }
-}
-
-impl HandleHLRAlgoHArray1OfPHDat {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPHDat_is_null(self as *const Self) }
-    }
-
-    /// Dereference this Handle to access the underlying HLRAlgo_HArray1OfPHDat
-    pub fn get(&self) -> &crate::ffi_types::HLRAlgo_HArray1OfPHDat {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPHDat_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying HLRAlgo_HArray1OfPHDat
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::HLRAlgo_HArray1OfPHDat {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPHDat_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<HLRAlgo_HArray1OfPHDat> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPHDat_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-}
-
-// ========================
-// From HLRAlgo_HArray1OfPINod.hxx
-// ========================
-
-/// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod`
-pub use crate::ffi_types::HLRAlgo_HArray1OfPINod as HArray1OfPINod;
-
-unsafe impl crate::CppDeletable for HArray1OfPINod {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPINod_destructor(ptr);
-        }
-    }
-}
-
-impl HArray1OfPINod {
-    /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::HLRAlgo_HArray1OfPINod()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPINod_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::HLRAlgo_HArray1OfPINod()`
-    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPINod_ctor_int2(theLower, theUpper),
-            ))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::HLRAlgo_HArray1OfPINod()`
-    pub fn new_int2_handlehlralgopolyinternalnode(
-        theLower: i32,
-        theUpper: i32,
-        theValue: &crate::ffi_types::HandleHLRAlgoPolyInternalNode,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPINod_ctor_int2_handlehlralgopolyinternalnode(theLower, theUpper, theValue)))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::HLRAlgo_HArray1OfPINod()`
-    pub fn new_handlehlralgopolyinternalnode_int2_bool(
-        theBegin: &crate::ffi_types::HandleHLRAlgoPolyInternalNode,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPINod_ctor_handlehlralgopolyinternalnode_int2_bool(theBegin, theLower, theUpper, arg3)))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::HLRAlgo_HArray1OfPINod()`
-    pub fn new_array1ofpinod(
-        theOther: &crate::ffi_types::HLRAlgo_Array1OfPINod,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPINod_ctor_array1ofpinod(theOther),
-            ))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::Array1()`
-    pub fn array1(&self) -> &crate::ffi_types::HLRAlgo_Array1OfPINod {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPINod_array1(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi_types::HLRAlgo_Array1OfPINod {
-        unsafe {
-            &mut *(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPINod_change_array1(self as *mut Self),
-            ))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPINod_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPINod_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPINod_get_type_descriptor(),
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPINod_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPINod_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleHLRAlgoHArray1OfPINod> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPINod_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPINod_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPINod_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPINod_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPINod_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPINod_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPINod_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPINod_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleHLRAlgoHArray1OfPINod;
-
-unsafe impl crate::CppDeletable for HandleHLRAlgoHArray1OfPINod {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPINod_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleHLRAlgoHArray1OfPINod {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPINod_clone(ptr))
-        }
-    }
-}
-
-impl HandleHLRAlgoHArray1OfPINod {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPINod_is_null(self as *const Self) }
-    }
-
-    /// Dereference this Handle to access the underlying HLRAlgo_HArray1OfPINod
-    pub fn get(&self) -> &crate::ffi_types::HLRAlgo_HArray1OfPINod {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPINod_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying HLRAlgo_HArray1OfPINod
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::HLRAlgo_HArray1OfPINod {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPINod_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<HLRAlgo_HArray1OfPINod> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPINod_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-}
-
-// ========================
-// From HLRAlgo_HArray1OfPISeg.hxx
-// ========================
-
-/// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg`
-pub use crate::ffi_types::HLRAlgo_HArray1OfPISeg as HArray1OfPISeg;
-
-unsafe impl crate::CppDeletable for HArray1OfPISeg {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPISeg_destructor(ptr);
-        }
-    }
-}
-
-impl HArray1OfPISeg {
-    /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::HLRAlgo_HArray1OfPISeg()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPISeg_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::HLRAlgo_HArray1OfPISeg()`
-    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPISeg_ctor_int2(theLower, theUpper),
-            ))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::HLRAlgo_HArray1OfPISeg()`
-    pub fn new_int2_polyinternalsegment(
-        theLower: i32,
-        theUpper: i32,
-        theValue: &PolyInternalSegment,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPISeg_ctor_int2_polyinternalsegment(
-                    theLower, theUpper, theValue,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::HLRAlgo_HArray1OfPISeg()`
-    pub fn new_polyinternalsegment_int2_bool(
-        theBegin: &PolyInternalSegment,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPISeg_ctor_polyinternalsegment_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::HLRAlgo_HArray1OfPISeg()`
-    pub fn new_array1ofpiseg(
-        theOther: &crate::ffi_types::HLRAlgo_Array1OfPISeg,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPISeg_ctor_array1ofpiseg(theOther),
-            ))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::Array1()`
-    pub fn array1(&self) -> &crate::ffi_types::HLRAlgo_Array1OfPISeg {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPISeg_array1(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi_types::HLRAlgo_Array1OfPISeg {
-        unsafe {
-            &mut *(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPISeg_change_array1(self as *mut Self),
-            ))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPISeg_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPISeg_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPISeg_get_type_descriptor(),
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPISeg_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPISeg_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleHLRAlgoHArray1OfPISeg> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPISeg_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPISeg_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPISeg_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPISeg_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPISeg_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPISeg_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPISeg_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfPISeg_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleHLRAlgoHArray1OfPISeg;
-
-unsafe impl crate::CppDeletable for HandleHLRAlgoHArray1OfPISeg {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPISeg_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleHLRAlgoHArray1OfPISeg {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPISeg_clone(ptr))
-        }
-    }
-}
-
-impl HandleHLRAlgoHArray1OfPISeg {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPISeg_is_null(self as *const Self) }
-    }
-
-    /// Dereference this Handle to access the underlying HLRAlgo_HArray1OfPISeg
-    pub fn get(&self) -> &crate::ffi_types::HLRAlgo_HArray1OfPISeg {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPISeg_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying HLRAlgo_HArray1OfPISeg
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::HLRAlgo_HArray1OfPISeg {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPISeg_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<HLRAlgo_HArray1OfPISeg> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfPISeg_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-}
-
-// ========================
-// From HLRAlgo_HArray1OfTData.hxx
-// ========================
-
-/// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData`
-pub use crate::ffi_types::HLRAlgo_HArray1OfTData as HArray1OfTData;
-
-unsafe impl crate::CppDeletable for HArray1OfTData {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfTData_destructor(ptr);
-        }
-    }
-}
-
-impl HArray1OfTData {
-    /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::HLRAlgo_HArray1OfTData()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfTData_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::HLRAlgo_HArray1OfTData()`
-    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfTData_ctor_int2(theLower, theUpper),
-            ))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::HLRAlgo_HArray1OfTData()`
-    pub fn new_int2_triangledata(
-        theLower: i32,
-        theUpper: i32,
-        theValue: &TriangleData,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfTData_ctor_int2_triangledata(
-                    theLower, theUpper, theValue,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::HLRAlgo_HArray1OfTData()`
-    pub fn new_triangledata_int2_bool(
-        theBegin: &TriangleData,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfTData_ctor_triangledata_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::HLRAlgo_HArray1OfTData()`
-    pub fn new_array1oftdata(
-        theOther: &crate::ffi_types::HLRAlgo_Array1OfTData,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfTData_ctor_array1oftdata(theOther),
-            ))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::Array1()`
-    pub fn array1(&self) -> &crate::ffi_types::HLRAlgo_Array1OfTData {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfTData_array1(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi_types::HLRAlgo_Array1OfTData {
-        unsafe {
-            &mut *(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfTData_change_array1(self as *mut Self),
-            ))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfTData_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfTData_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfTData_get_type_descriptor(),
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfTData_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfTData_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleHLRAlgoHArray1OfTData> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfTData_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfTData_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfTData_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfTData_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfTData_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfTData_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfTData_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_HArray1OfTData_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleHLRAlgoHArray1OfTData;
-
-unsafe impl crate::CppDeletable for HandleHLRAlgoHArray1OfTData {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfTData_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleHLRAlgoHArray1OfTData {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfTData_clone(ptr))
-        }
-    }
-}
-
-impl HandleHLRAlgoHArray1OfTData {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfTData_is_null(self as *const Self) }
-    }
-
-    /// Dereference this Handle to access the underlying HLRAlgo_HArray1OfTData
-    pub fn get(&self) -> &crate::ffi_types::HLRAlgo_HArray1OfTData {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfTData_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying HLRAlgo_HArray1OfTData
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::HLRAlgo_HArray1OfTData {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfTData_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<HLRAlgo_HArray1OfTData> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HandleHLRAlgoHArray1OfTData_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
         }
     }
 }
@@ -2466,8 +1351,8 @@ impl Interference {
 // ========================
 
 /// **Source:** `HLRAlgo_Intersection.hxx`:31 - `HLRAlgo_Intersection`
-/// Describes  an intersection  on   an edge to  hide.
-/// Contains a parameter and   a state (ON =   on  the
+/// Describes an intersection on an edge to hide.
+/// Contains a parameter and a state (ON = on the
 /// face, OUT = above the face, IN = under the Face)
 pub use crate::ffi_types::HLRAlgo_Intersection as Intersection;
 
@@ -2612,7 +1497,7 @@ impl Intersection {
 // From HLRAlgo_PolyAlgo.hxx
 // ========================
 
-/// **Source:** `HLRAlgo_PolyAlgo.hxx`:30 - `HLRAlgo_PolyAlgo`
+/// **Source:** `HLRAlgo_PolyAlgo.hxx`:28 - `HLRAlgo_PolyAlgo`
 /// to remove Hidden lines on Triangulations.
 pub use crate::ffi_types::HLRAlgo_PolyAlgo as PolyAlgo;
 
@@ -2625,7 +1510,7 @@ unsafe impl crate::CppDeletable for PolyAlgo {
 }
 
 impl PolyAlgo {
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:34 - `HLRAlgo_PolyAlgo::HLRAlgo_PolyAlgo()`
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:32 - `HLRAlgo_PolyAlgo::HLRAlgo_PolyAlgo()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2634,43 +1519,21 @@ impl PolyAlgo {
         }
     }
 
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:36 - `HLRAlgo_PolyAlgo::Init()`
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:34 - `HLRAlgo_PolyAlgo::Init()`
     pub fn init(&mut self, theNbShells: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyAlgo_init(self as *mut Self, theNbShells)
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:38 - `HLRAlgo_PolyAlgo::PolyShell()`
-    pub fn poly_shell(
-        &self,
-    ) -> &crate::ffi_types::NCollection_Array1_opencascade_handle_HLRAlgo_PolyShellData {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_PolyAlgo_poly_shell(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:40 - `HLRAlgo_PolyAlgo::ChangePolyShell()`
-    pub fn change_poly_shell(
-        &mut self,
-    ) -> &mut crate::ffi_types::NCollection_Array1_opencascade_handle_HLRAlgo_PolyShellData {
-        unsafe {
-            &mut *(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_PolyAlgo_change_poly_shell(self as *mut Self),
-            ))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:42 - `HLRAlgo_PolyAlgo::Clear()`
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:43 - `HLRAlgo_PolyAlgo::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyAlgo_clear(self as *mut Self)
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:45 - `HLRAlgo_PolyAlgo::Update()`
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:46 - `HLRAlgo_PolyAlgo::Update()`
     /// Prepare all the data to process the algo.
     pub fn update(&mut self) {
         crate::check_void_result(unsafe {
@@ -2678,28 +1541,28 @@ impl PolyAlgo {
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:47 - `HLRAlgo_PolyAlgo::InitHide()`
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:48 - `HLRAlgo_PolyAlgo::InitHide()`
     pub fn init_hide(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyAlgo_init_hide(self as *mut Self)
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:53 - `HLRAlgo_PolyAlgo::MoreHide()`
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:54 - `HLRAlgo_PolyAlgo::MoreHide()`
     pub fn more_hide(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyAlgo_more_hide(self as *const Self)
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:55 - `HLRAlgo_PolyAlgo::NextHide()`
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:56 - `HLRAlgo_PolyAlgo::NextHide()`
     pub fn next_hide(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyAlgo_next_hide(self as *mut Self)
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:58 - `HLRAlgo_PolyAlgo::Hide()`
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:59 - `HLRAlgo_PolyAlgo::Hide()`
     /// process hiding between <Pt1> and <Pt2>.
     ///
     /// # Safety
@@ -2729,28 +1592,28 @@ impl PolyAlgo {
         }
     }
 
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:65 - `HLRAlgo_PolyAlgo::InitShow()`
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:66 - `HLRAlgo_PolyAlgo::InitShow()`
     pub fn init_show(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyAlgo_init_show(self as *mut Self)
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:71 - `HLRAlgo_PolyAlgo::MoreShow()`
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:72 - `HLRAlgo_PolyAlgo::MoreShow()`
     pub fn more_show(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyAlgo_more_show(self as *const Self)
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:73 - `HLRAlgo_PolyAlgo::NextShow()`
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:74 - `HLRAlgo_PolyAlgo::NextShow()`
     pub fn next_show(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyAlgo_next_show(self as *mut Self)
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:76 - `HLRAlgo_PolyAlgo::Show()`
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:77 - `HLRAlgo_PolyAlgo::Show()`
     /// process hiding between <Pt1> and <Pt2>.
     ///
     /// # Safety
@@ -2778,8 +1641,8 @@ impl PolyAlgo {
         }
     }
 
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:82 - `HLRAlgo_PolyAlgo::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:83 - `HLRAlgo_PolyAlgo::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_PolyAlgo_dynamic_type(
                 self as *const Self,
@@ -2787,7 +1650,7 @@ impl PolyAlgo {
         }
     }
 
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:82 - `HLRAlgo_PolyAlgo::get_type_name()`
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:83 - `HLRAlgo_PolyAlgo::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2798,8 +1661,8 @@ impl PolyAlgo {
         .into_owned()
     }
 
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:82 - `HLRAlgo_PolyAlgo::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:83 - `HLRAlgo_PolyAlgo::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_PolyAlgo_get_type_descriptor()))
         }
@@ -2828,7 +1691,7 @@ impl PolyAlgo {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleHLRAlgoPolyAlgo> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_HLRAlgo_PolyAlgo> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKHLR::HLRAlgo_PolyAlgo_to_handle(obj.into_raw()),
@@ -2836,8 +1699,8 @@ impl PolyAlgo {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyAlgo_inherited_IsInstance(
                 self as *const Self,
@@ -2846,14 +1709,14 @@ impl PolyAlgo {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyAlgo_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2867,14 +1730,14 @@ impl PolyAlgo {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyAlgo_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyAlgo_inherited_IncrementRefCounter(
@@ -2883,7 +1746,7 @@ impl PolyAlgo {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyAlgo_inherited_DecrementRefCounter(
@@ -2892,7 +1755,7 @@ impl PolyAlgo {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyAlgo_inherited_Delete(self as *const Self)
@@ -2900,32 +1763,32 @@ impl PolyAlgo {
     }
 }
 
-pub use crate::ffi_types::HandleHLRAlgoPolyAlgo;
+pub use crate::ffi_types::Handle_HLRAlgo_PolyAlgo;
 
-unsafe impl crate::CppDeletable for HandleHLRAlgoPolyAlgo {
+unsafe impl crate::CppDeletable for Handle_HLRAlgo_PolyAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKHLR::HandleHLRAlgoPolyAlgo_destructor(ptr);
+            crate::ffi_extern_TKHLR::Handle_HLRAlgo_PolyAlgo_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleHLRAlgoPolyAlgo {
+unsafe impl crate::CppCopyable for Handle_HLRAlgo_PolyAlgo {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoPolyAlgo_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKHLR::Handle_HLRAlgo_PolyAlgo_clone(ptr)) }
     }
 }
 
-impl HandleHLRAlgoPolyAlgo {
+impl Handle_HLRAlgo_PolyAlgo {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKHLR::HandleHLRAlgoPolyAlgo_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKHLR::Handle_HLRAlgo_PolyAlgo_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying HLRAlgo_PolyAlgo
     pub fn get(&self) -> &crate::ffi_types::HLRAlgo_PolyAlgo {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoPolyAlgo_get(
+            &*crate::check_result(crate::ffi_extern_TKHLR::Handle_HLRAlgo_PolyAlgo_get(
                 self as *const Self,
             ))
         }
@@ -2934,7 +1797,7 @@ impl HandleHLRAlgoPolyAlgo {
     /// Dereference this Handle to mutably access the underlying HLRAlgo_PolyAlgo
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::HLRAlgo_PolyAlgo {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoPolyAlgo_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKHLR::Handle_HLRAlgo_PolyAlgo_get_mut(
                 self as *mut Self,
             ))
         }
@@ -2943,10 +1806,10 @@ impl HandleHLRAlgoPolyAlgo {
     /// Upcast Handle<HLRAlgo_PolyAlgo> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HandleHLRAlgoPolyAlgo_to_HandleStandardTransient(
+                crate::ffi_extern_TKHLR::Handle_HLRAlgo_PolyAlgo_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -2954,11 +1817,21 @@ impl HandleHLRAlgoPolyAlgo {
     }
 }
 
+// ── Skipped symbols for PolyAlgo (2 total) ──
+// SKIPPED: **Source:** `HLRAlgo_PolyAlgo.hxx`:36 - `HLRAlgo_PolyAlgo::PolyShell`
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<occ::handle<HLRAlgo_PolyShellData>> const&)
+//   // pub fn poly_shell(&self) -> /* NCollection_Array1<occ::handle<HLRAlgo_PolyShellData>> const& */;
+//
+// SKIPPED: **Source:** `HLRAlgo_PolyAlgo.hxx`:41 - `HLRAlgo_PolyAlgo::ChangePolyShell`
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<occ::handle<HLRAlgo_PolyShellData>>&)
+//   // pub fn change_poly_shell(&mut self) -> /* NCollection_Array1<occ::handle<HLRAlgo_PolyShellData>>& */;
+//
+
 // ========================
 // From HLRAlgo_PolyData.hxx
 // ========================
 
-/// **Source:** `HLRAlgo_PolyData.hxx`:37 - `HLRAlgo_PolyData`
+/// **Source:** `HLRAlgo_PolyData.hxx`:36 - `HLRAlgo_PolyData`
 /// Data structure of a set of Triangles.
 pub use crate::ffi_types::HLRAlgo_PolyData as PolyData;
 
@@ -2971,7 +1844,7 @@ unsafe impl crate::CppDeletable for PolyData {
 }
 
 impl PolyData {
-    /// **Source:** `HLRAlgo_PolyData.hxx`:92 - `HLRAlgo_PolyData::HLRAlgo_PolyData()`
+    /// **Source:** `HLRAlgo_PolyData.hxx`:59 - `HLRAlgo_PolyData::HLRAlgo_PolyData()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2980,43 +1853,49 @@ impl PolyData {
         }
     }
 
-    /// **Source:** `HLRAlgo_PolyData.hxx`:94 - `HLRAlgo_PolyData::HNodes()`
-    pub fn h_nodes(&mut self, HNodes: &crate::ffi_types::HandleTColgpHArray1OfXYZ) {
+    /// **Source:** `HLRAlgo_PolyData.hxx`:61 - `HLRAlgo_PolyData::HNodes()`
+    pub fn h_nodes(&mut self, HNodes: &crate::ffi_types::Handle_NCollection_HArray1_gp_XYZ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyData_h_nodes(self as *mut Self, HNodes)
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyData.hxx`:96 - `HLRAlgo_PolyData::HTData()`
-    pub fn ht_data(&mut self, HTData: &crate::ffi_types::HandleHLRAlgoHArray1OfTData) {
+    /// **Source:** `HLRAlgo_PolyData.hxx`:63 - `HLRAlgo_PolyData::HTData()`
+    pub fn ht_data(
+        &mut self,
+        HTData: &crate::ffi_types::Handle_NCollection_HArray1_HLRAlgo_TriangleData,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyData_ht_data(self as *mut Self, HTData)
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyData.hxx`:98 - `HLRAlgo_PolyData::HPHDat()`
-    pub fn hph_dat(&mut self, HPHDat: &crate::ffi_types::HandleHLRAlgoHArray1OfPHDat) {
+    /// **Source:** `HLRAlgo_PolyData.hxx`:65 - `HLRAlgo_PolyData::HPHDat()`
+    pub fn hph_dat(
+        &mut self,
+        HPHDat: &crate::ffi_types::Handle_NCollection_HArray1_HLRAlgo_PolyHidingData,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyData_hph_dat(self as *mut Self, HPHDat)
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyData.hxx`:100 - `HLRAlgo_PolyData::FaceIndex()`
+    /// **Source:** `HLRAlgo_PolyData.hxx`:68 - `HLRAlgo_PolyData::FaceIndex()`
     pub fn face_index_int(&mut self, I: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyData_face_index_int(self as *mut Self, I)
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyData.hxx`:102 - `HLRAlgo_PolyData::FaceIndex()`
+    /// **Source:** `HLRAlgo_PolyData.hxx`:70 - `HLRAlgo_PolyData::FaceIndex()`
     pub fn face_index(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyData_face_index(self as *const Self)
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyData.hxx`:104 - `HLRAlgo_PolyData::Nodes()`
-    pub fn nodes(&mut self) -> &mut crate::ffi_types::TColgp_Array1OfXYZ {
+    /// **Source:** `HLRAlgo_PolyData.hxx`:72 - `HLRAlgo_PolyData::Nodes()`
+    pub fn nodes(&mut self) -> &mut crate::ffi_types::NCollection_Array1_gp_XYZ {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_PolyData_nodes(
                 self as *mut Self,
@@ -3024,8 +1903,8 @@ impl PolyData {
         }
     }
 
-    /// **Source:** `HLRAlgo_PolyData.hxx`:106 - `HLRAlgo_PolyData::TData()`
-    pub fn t_data(&mut self) -> &mut crate::ffi_types::HLRAlgo_Array1OfTData {
+    /// **Source:** `HLRAlgo_PolyData.hxx`:74 - `HLRAlgo_PolyData::TData()`
+    pub fn t_data(&mut self) -> &mut crate::ffi_types::NCollection_Array1_HLRAlgo_TriangleData {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_PolyData_t_data(
                 self as *mut Self,
@@ -3033,8 +1912,8 @@ impl PolyData {
         }
     }
 
-    /// **Source:** `HLRAlgo_PolyData.hxx`:108 - `HLRAlgo_PolyData::PHDat()`
-    pub fn ph_dat(&mut self) -> &mut crate::ffi_types::HLRAlgo_Array1OfPHDat {
+    /// **Source:** `HLRAlgo_PolyData.hxx`:76 - `HLRAlgo_PolyData::PHDat()`
+    pub fn ph_dat(&mut self) -> &mut crate::ffi_types::NCollection_Array1_HLRAlgo_PolyHidingData {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_PolyData_ph_dat(
                 self as *mut Self,
@@ -3042,8 +1921,8 @@ impl PolyData {
         }
     }
 
-    /// **Source:** `HLRAlgo_PolyData.hxx`:110 - `HLRAlgo_PolyData::UpdateGlobalMinMax()`
-    pub fn update_global_min_max(&mut self, theBox: &mut PolyData_Box) {
+    /// **Source:** `HLRAlgo_PolyData.hxx`:78 - `HLRAlgo_PolyData::UpdateGlobalMinMax()`
+    pub fn update_global_min_max(&mut self, theBox: &mut crate::bnd::Box) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyData_update_global_min_max(
                 self as *mut Self,
@@ -3052,14 +1931,14 @@ impl PolyData {
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyData.hxx`:112 - `HLRAlgo_PolyData::Hiding()`
+    /// **Source:** `HLRAlgo_PolyData.hxx`:80 - `HLRAlgo_PolyData::Hiding()`
     pub fn hiding(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyData_hiding(self as *const Self)
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyData.hxx`:115 - `HLRAlgo_PolyData::HideByPolyData()`
+    /// **Source:** `HLRAlgo_PolyData.hxx`:83 - `HLRAlgo_PolyData::HideByPolyData()`
     /// process hiding between <Pt1> and <Pt2>.
     pub fn hide_by_poly_data(
         &mut self,
@@ -3081,7 +1960,7 @@ impl PolyData {
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyData.hxx`:121 - `HLRAlgo_PolyData::Indices()`
+    /// **Source:** `HLRAlgo_PolyData.hxx`:89 - `HLRAlgo_PolyData::Indices()`
     pub fn indices(&mut self) -> &mut PolyData_FaceIndices {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_PolyData_indices(
@@ -3090,8 +1969,8 @@ impl PolyData {
         }
     }
 
-    /// **Source:** `HLRAlgo_PolyData.hxx`:123 - `HLRAlgo_PolyData::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `HLRAlgo_PolyData.hxx`:91 - `HLRAlgo_PolyData::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_PolyData_dynamic_type(
                 self as *const Self,
@@ -3099,7 +1978,7 @@ impl PolyData {
         }
     }
 
-    /// **Source:** `HLRAlgo_PolyData.hxx`:123 - `HLRAlgo_PolyData::get_type_name()`
+    /// **Source:** `HLRAlgo_PolyData.hxx`:91 - `HLRAlgo_PolyData::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -3110,8 +1989,8 @@ impl PolyData {
         .into_owned()
     }
 
-    /// **Source:** `HLRAlgo_PolyData.hxx`:123 - `HLRAlgo_PolyData::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `HLRAlgo_PolyData.hxx`:91 - `HLRAlgo_PolyData::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_PolyData_get_type_descriptor()))
         }
@@ -3140,7 +2019,7 @@ impl PolyData {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleHLRAlgoPolyData> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_HLRAlgo_PolyData> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKHLR::HLRAlgo_PolyData_to_handle(obj.into_raw()),
@@ -3148,8 +2027,8 @@ impl PolyData {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyData_inherited_IsInstance(
                 self as *const Self,
@@ -3158,14 +2037,14 @@ impl PolyData {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyData_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3179,14 +2058,14 @@ impl PolyData {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyData_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyData_inherited_IncrementRefCounter(
@@ -3195,7 +2074,7 @@ impl PolyData {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyData_inherited_DecrementRefCounter(
@@ -3204,7 +2083,7 @@ impl PolyData {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyData_inherited_Delete(self as *const Self)
@@ -3212,32 +2091,32 @@ impl PolyData {
     }
 }
 
-pub use crate::ffi_types::HandleHLRAlgoPolyData;
+pub use crate::ffi_types::Handle_HLRAlgo_PolyData;
 
-unsafe impl crate::CppDeletable for HandleHLRAlgoPolyData {
+unsafe impl crate::CppDeletable for Handle_HLRAlgo_PolyData {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKHLR::HandleHLRAlgoPolyData_destructor(ptr);
+            crate::ffi_extern_TKHLR::Handle_HLRAlgo_PolyData_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleHLRAlgoPolyData {
+unsafe impl crate::CppCopyable for Handle_HLRAlgo_PolyData {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoPolyData_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKHLR::Handle_HLRAlgo_PolyData_clone(ptr)) }
     }
 }
 
-impl HandleHLRAlgoPolyData {
+impl Handle_HLRAlgo_PolyData {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKHLR::HandleHLRAlgoPolyData_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKHLR::Handle_HLRAlgo_PolyData_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying HLRAlgo_PolyData
     pub fn get(&self) -> &crate::ffi_types::HLRAlgo_PolyData {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoPolyData_get(
+            &*crate::check_result(crate::ffi_extern_TKHLR::Handle_HLRAlgo_PolyData_get(
                 self as *const Self,
             ))
         }
@@ -3246,7 +2125,7 @@ impl HandleHLRAlgoPolyData {
     /// Dereference this Handle to mutably access the underlying HLRAlgo_PolyData
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::HLRAlgo_PolyData {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoPolyData_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKHLR::Handle_HLRAlgo_PolyData_get_mut(
                 self as *mut Self,
             ))
         }
@@ -3255,10 +2134,10 @@ impl HandleHLRAlgoPolyData {
     /// Upcast Handle<HLRAlgo_PolyData> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HandleHLRAlgoPolyData_to_HandleStandardTransient(
+                crate::ffi_extern_TKHLR::Handle_HLRAlgo_PolyData_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -3266,7 +2145,7 @@ impl HandleHLRAlgoPolyData {
     }
 }
 
-/// **Source:** `HLRAlgo_PolyData.hxx`:41 - `HLRAlgo_PolyData_FaceIndices`
+/// **Source:** `HLRAlgo_PolyData.hxx`:40 - `HLRAlgo_PolyData_FaceIndices`
 pub use crate::ffi_types::HLRAlgo_PolyData_FaceIndices as PolyData_FaceIndices;
 
 unsafe impl crate::CppDeletable for PolyData_FaceIndices {
@@ -3277,7 +2156,7 @@ unsafe impl crate::CppDeletable for PolyData_FaceIndices {
     }
 }
 
-/// **Source:** `HLRAlgo_PolyData.hxx`:54 - `HLRAlgo_PolyData_Triangle`
+/// **Source:** `HLRAlgo_PolyData.hxx`:53 - `HLRAlgo_PolyData_Triangle`
 pub use crate::ffi_types::HLRAlgo_PolyData_Triangle as PolyData_Triangle;
 
 unsafe impl crate::CppDeletable for PolyData_Triangle {
@@ -3296,17 +2175,6 @@ impl PolyData_Triangle {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKHLR::HLRAlgo_PolyData_Triangle_ctor(),
             ))
-        }
-    }
-}
-
-/// **Source:** `HLRAlgo_PolyData.hxx`:60 - `HLRAlgo_PolyData_Box`
-pub use crate::ffi_types::HLRAlgo_PolyData_Box as PolyData_Box;
-
-unsafe impl crate::CppDeletable for PolyData_Box {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_PolyData_Box_destructor(ptr);
         }
     }
 }
@@ -3409,7 +2277,7 @@ impl PolyHidingData_PlaneT {
 // From HLRAlgo_PolyInternalData.hxx
 // ========================
 
-/// **Source:** `HLRAlgo_PolyInternalData.hxx`:32 - `HLRAlgo_PolyInternalData`
+/// **Source:** `HLRAlgo_PolyInternalData.hxx`:31 - `HLRAlgo_PolyInternalData`
 /// to Update OutLines.
 pub use crate::ffi_types::HLRAlgo_PolyInternalData as PolyInternalData;
 
@@ -3422,70 +2290,13 @@ unsafe impl crate::CppDeletable for PolyInternalData {
 }
 
 impl PolyInternalData {
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:36 - `HLRAlgo_PolyInternalData::HLRAlgo_PolyInternalData()`
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:35 - `HLRAlgo_PolyInternalData::HLRAlgo_PolyInternalData()`
     pub fn new_int2(nbNod: i32, nbTri: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_ctor_int2(nbNod, nbTri),
             ))
         }
-    }
-
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:39 - `HLRAlgo_PolyInternalData::UpdateLinks()`
-    pub fn update_links_array1oftdata_array1ofpiseg_array1ofpinod(
-        &mut self,
-        theTData: &mut crate::ffi_types::HLRAlgo_Array1OfTData,
-        thePISeg: &mut crate::ffi_types::HLRAlgo_Array1OfPISeg,
-        thePINod: &mut crate::ffi_types::HLRAlgo_Array1OfPINod,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_update_links_array1oftdata_array1ofpiseg_array1ofpinod(self as *mut Self, theTData, thePISeg, thePINod)
-        })
-    }
-
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:43 - `HLRAlgo_PolyInternalData::AddNode()`
-    pub unsafe fn add_node(
-        &mut self,
-        theNod1RValues: &mut PolyInternalNode_NodeData,
-        theNod2RValues: &mut PolyInternalNode_NodeData,
-        thePINod1: &mut *mut crate::ffi_types::HLRAlgo_Array1OfPINod,
-        thePINod2: &mut *mut crate::ffi_types::HLRAlgo_Array1OfPINod,
-        theCoef1: f64,
-        theX3: f64,
-        theY3: f64,
-        theZ3: f64,
-    ) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_add_node(
-                self as *mut Self,
-                theNod1RValues,
-                theNod2RValues,
-                thePINod1,
-                thePINod2,
-                theCoef1,
-                theX3,
-                theY3,
-                theZ3,
-            )
-        })
-    }
-
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:52 - `HLRAlgo_PolyInternalData::UpdateLinks()`
-    pub unsafe fn update_links_int3_array1oftdataptr2_array1ofpisegptr2_array1ofpinodptr2(
-        &mut self,
-        theIp1: i32,
-        theIp2: i32,
-        theIp3: i32,
-        theTData1: &mut *mut crate::ffi_types::HLRAlgo_Array1OfTData,
-        theTData2: &mut *mut crate::ffi_types::HLRAlgo_Array1OfTData,
-        thePISeg1: &mut *mut crate::ffi_types::HLRAlgo_Array1OfPISeg,
-        thePISeg2: &mut *mut crate::ffi_types::HLRAlgo_Array1OfPISeg,
-        thePINod1: &mut *mut crate::ffi_types::HLRAlgo_Array1OfPINod,
-        thePINod2: &mut *mut crate::ffi_types::HLRAlgo_Array1OfPINod,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_update_links_int3_array1oftdataptr2_array1ofpisegptr2_array1ofpinodptr2(self as *mut Self, theIp1, theIp2, theIp3, theTData1, theTData2, thePISeg1, thePISeg2, thePINod1, thePINod2)
-        })
     }
 
     /// **Source:** `HLRAlgo_PolyInternalData.hxx`:62 - `HLRAlgo_PolyInternalData::Dump()`
@@ -3498,8 +2309,8 @@ impl PolyInternalData {
     /// **Source:** `HLRAlgo_PolyInternalData.hxx`:64 - `HLRAlgo_PolyInternalData::IncTData()`
     pub unsafe fn inc_t_data(
         &mut self,
-        TData1: &mut *mut crate::ffi_types::HLRAlgo_Array1OfTData,
-        TData2: &mut *mut crate::ffi_types::HLRAlgo_Array1OfTData,
+        TData1: &mut *mut crate::ffi_types::NCollection_Array1_HLRAlgo_TriangleData,
+        TData2: &mut *mut crate::ffi_types::NCollection_Array1_HLRAlgo_TriangleData,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_inc_t_data(
@@ -3510,11 +2321,11 @@ impl PolyInternalData {
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:66 - `HLRAlgo_PolyInternalData::IncPISeg()`
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:67 - `HLRAlgo_PolyInternalData::IncPISeg()`
     pub unsafe fn inc_pi_seg(
         &mut self,
-        PISeg1: &mut *mut crate::ffi_types::HLRAlgo_Array1OfPISeg,
-        PISeg2: &mut *mut crate::ffi_types::HLRAlgo_Array1OfPISeg,
+        PISeg1: &mut *mut crate::ffi_types::NCollection_Array1_HLRAlgo_PolyInternalSegment,
+        PISeg2: &mut *mut crate::ffi_types::NCollection_Array1_HLRAlgo_PolyInternalSegment,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_inc_pi_seg(
@@ -3525,93 +2336,78 @@ impl PolyInternalData {
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:68 - `HLRAlgo_PolyInternalData::IncPINod()`
-    pub unsafe fn inc_pi_nod(
-        &mut self,
-        thePINod1: &mut *mut crate::ffi_types::HLRAlgo_Array1OfPINod,
-        thePINod2: &mut *mut crate::ffi_types::HLRAlgo_Array1OfPINod,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_inc_pi_nod(
-                self as *mut Self,
-                thePINod1,
-                thePINod2,
-            )
-        })
-    }
-
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:71 - `HLRAlgo_PolyInternalData::DecTData()`
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:74 - `HLRAlgo_PolyInternalData::DecTData()`
     pub fn dec_t_data(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_dec_t_data(self as *mut Self)
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:73 - `HLRAlgo_PolyInternalData::DecPISeg()`
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:76 - `HLRAlgo_PolyInternalData::DecPISeg()`
     pub fn dec_pi_seg(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_dec_pi_seg(self as *mut Self)
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:75 - `HLRAlgo_PolyInternalData::DecPINod()`
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:78 - `HLRAlgo_PolyInternalData::DecPINod()`
     pub fn dec_pi_nod(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_dec_pi_nod(self as *mut Self)
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:77 - `HLRAlgo_PolyInternalData::NbTData()`
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:80 - `HLRAlgo_PolyInternalData::NbTData()`
     pub fn nb_t_data(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_nb_t_data(self as *const Self)
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:79 - `HLRAlgo_PolyInternalData::NbPISeg()`
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:82 - `HLRAlgo_PolyInternalData::NbPISeg()`
     pub fn nb_pi_seg(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_nb_pi_seg(self as *const Self)
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:81 - `HLRAlgo_PolyInternalData::NbPINod()`
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:84 - `HLRAlgo_PolyInternalData::NbPINod()`
     pub fn nb_pi_nod(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_nb_pi_nod(self as *const Self)
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:83 - `HLRAlgo_PolyInternalData::Planar()`
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:86 - `HLRAlgo_PolyInternalData::Planar()`
     pub fn planar(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_planar(self as *const Self)
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:85 - `HLRAlgo_PolyInternalData::Planar()`
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:88 - `HLRAlgo_PolyInternalData::Planar()`
     pub fn planar_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_planar_bool(self as *mut Self, B)
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:87 - `HLRAlgo_PolyInternalData::IntOutL()`
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:90 - `HLRAlgo_PolyInternalData::IntOutL()`
     pub fn int_out_l(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_int_out_l(self as *const Self)
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:89 - `HLRAlgo_PolyInternalData::IntOutL()`
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:92 - `HLRAlgo_PolyInternalData::IntOutL()`
     pub fn int_out_l_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_int_out_l_bool(self as *mut Self, B)
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:91 - `HLRAlgo_PolyInternalData::TData()`
-    pub fn t_data(&mut self) -> &mut crate::ffi_types::HLRAlgo_Array1OfTData {
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:94 - `HLRAlgo_PolyInternalData::TData()`
+    pub fn t_data(&mut self) -> &mut crate::ffi_types::NCollection_Array1_HLRAlgo_TriangleData {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_t_data(
                 self as *mut Self,
@@ -3619,8 +2415,10 @@ impl PolyInternalData {
         }
     }
 
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:93 - `HLRAlgo_PolyInternalData::PISeg()`
-    pub fn pi_seg(&mut self) -> &mut crate::ffi_types::HLRAlgo_Array1OfPISeg {
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:96 - `HLRAlgo_PolyInternalData::PISeg()`
+    pub fn pi_seg(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_Array1_HLRAlgo_PolyInternalSegment {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_pi_seg(
                 self as *mut Self,
@@ -3628,17 +2426,8 @@ impl PolyInternalData {
         }
     }
 
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:95 - `HLRAlgo_PolyInternalData::PINod()`
-    pub fn pi_nod(&mut self) -> &mut crate::ffi_types::HLRAlgo_Array1OfPINod {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_pi_nod(
-                self as *mut Self,
-            )))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:97 - `HLRAlgo_PolyInternalData::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:100 - `HLRAlgo_PolyInternalData::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_dynamic_type(
                 self as *const Self,
@@ -3646,7 +2435,7 @@ impl PolyInternalData {
         }
     }
 
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:97 - `HLRAlgo_PolyInternalData::get_type_name()`
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:100 - `HLRAlgo_PolyInternalData::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -3657,8 +2446,8 @@ impl PolyInternalData {
         .into_owned()
     }
 
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:97 - `HLRAlgo_PolyInternalData::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:100 - `HLRAlgo_PolyInternalData::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_get_type_descriptor(),
@@ -3691,7 +2480,7 @@ impl PolyInternalData {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleHLRAlgoPolyInternalData> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_HLRAlgo_PolyInternalData> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_to_handle(obj.into_raw()),
@@ -3699,8 +2488,8 @@ impl PolyInternalData {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_inherited_IsInstance(
                 self as *const Self,
@@ -3709,8 +2498,8 @@ impl PolyInternalData {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_inherited_IsKind(
                 self as *const Self,
@@ -3719,7 +2508,7 @@ impl PolyInternalData {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3735,7 +2524,7 @@ impl PolyInternalData {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_inherited_GetRefCount(
@@ -3744,7 +2533,7 @@ impl PolyInternalData {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_inherited_IncrementRefCounter(
@@ -3753,7 +2542,7 @@ impl PolyInternalData {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_inherited_DecrementRefCounter(
@@ -3762,7 +2551,7 @@ impl PolyInternalData {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_inherited_Delete(self as *const Self)
@@ -3770,36 +2559,36 @@ impl PolyInternalData {
     }
 }
 
-pub use crate::ffi_types::HandleHLRAlgoPolyInternalData;
+pub use crate::ffi_types::Handle_HLRAlgo_PolyInternalData;
 
-unsafe impl crate::CppDeletable for HandleHLRAlgoPolyInternalData {
+unsafe impl crate::CppDeletable for Handle_HLRAlgo_PolyInternalData {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKHLR::HandleHLRAlgoPolyInternalData_destructor(ptr);
+            crate::ffi_extern_TKHLR::Handle_HLRAlgo_PolyInternalData_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleHLRAlgoPolyInternalData {
+unsafe impl crate::CppCopyable for Handle_HLRAlgo_PolyInternalData {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoPolyInternalData_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKHLR::Handle_HLRAlgo_PolyInternalData_clone(ptr))
         }
     }
 }
 
-impl HandleHLRAlgoPolyInternalData {
+impl Handle_HLRAlgo_PolyInternalData {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKHLR::HandleHLRAlgoPolyInternalData_is_null(self as *const Self)
+            crate::ffi_extern_TKHLR::Handle_HLRAlgo_PolyInternalData_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying HLRAlgo_PolyInternalData
     pub fn get(&self) -> &crate::ffi_types::HLRAlgo_PolyInternalData {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoPolyInternalData_get(
+            &*crate::check_result(crate::ffi_extern_TKHLR::Handle_HLRAlgo_PolyInternalData_get(
                 self as *const Self,
             ))
         }
@@ -3809,7 +2598,7 @@ impl HandleHLRAlgoPolyInternalData {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::HLRAlgo_PolyInternalData {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKHLR::HandleHLRAlgoPolyInternalData_get_mut(self as *mut Self),
+                crate::ffi_extern_TKHLR::Handle_HLRAlgo_PolyInternalData_get_mut(self as *mut Self),
             )
         }
     }
@@ -3817,22 +2606,40 @@ impl HandleHLRAlgoPolyInternalData {
     /// Upcast Handle<HLRAlgo_PolyInternalData> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HandleHLRAlgoPolyInternalData_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::Handle_HLRAlgo_PolyInternalData_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
+
+// ── Skipped symbols for PolyInternalData (5 total) ──
+// SKIPPED: **Source:** `HLRAlgo_PolyInternalData.hxx`:37 - `HLRAlgo_PolyInternalData::UpdateLinks`
+//   Reason: has unbindable types: param 'thePINod': unresolved template type (NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>&)
+//   // pub fn update_links(&mut self, theTData: &mut Array1_HLRAlgo_TriangleData, thePISeg: &mut Array1_HLRAlgo_PolyInternalSegment, thePINod: /* NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>& */);
+//
+// SKIPPED: **Source:** `HLRAlgo_PolyInternalData.hxx`:42 - `HLRAlgo_PolyInternalData::AddNode`
+//   Reason: has unbindable types: param 'thePINod1': raw pointer (NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>*&); param 'thePINod2': raw pointer (NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>*&)
+//   // pub fn add_node(&mut self, theNod1RValues: &mut PolyInternalNode_NodeData, theNod2RValues: &mut PolyInternalNode_NodeData, thePINod1: /* NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>*& */, thePINod2: /* NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>*& */, theCoef1: f64, theX3: f64, theY3: f64, theZ3: f64) -> i32;
+//
+// SKIPPED: **Source:** `HLRAlgo_PolyInternalData.hxx`:51 - `HLRAlgo_PolyInternalData::UpdateLinks`
+//   Reason: has unbindable types: param 'thePINod1': raw pointer (NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>*&); param 'thePINod2': raw pointer (NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>*&)
+//   // pub fn update_links(&mut self, theIp1: i32, theIp2: i32, theIp3: i32, theTData1: &mut *mut Array1_HLRAlgo_TriangleData, theTData2: &mut *mut Array1_HLRAlgo_TriangleData, thePISeg1: &mut *mut Array1_HLRAlgo_PolyInternalSegment, thePISeg2: &mut *mut Array1_HLRAlgo_PolyInternalSegment, thePINod1: /* NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>*& */, thePINod2: /* NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>*& */);
+//
+// SKIPPED: **Source:** `HLRAlgo_PolyInternalData.hxx`:70 - `HLRAlgo_PolyInternalData::IncPINod`
+//   Reason: has unbindable types: param 'thePINod1': raw pointer (NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>*&); param 'thePINod2': raw pointer (NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>*&)
+//   // pub fn inc_pi_nod(&mut self, thePINod1: /* NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>*& */, thePINod2: /* NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>*& */);
+//
+// SKIPPED: **Source:** `HLRAlgo_PolyInternalData.hxx`:98 - `HLRAlgo_PolyInternalData::PINod`
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>&)
+//   // pub fn pi_nod(&self) -> /* NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>& */;
+//
 
 // ========================
 // From HLRAlgo_PolyInternalNode.hxx
 // ========================
 
-/// **Source:** `HLRAlgo_PolyInternalNode.hxx`:32 - `HLRAlgo_PolyInternalNode`
+/// **Source:** `HLRAlgo_PolyInternalNode.hxx`:30 - `HLRAlgo_PolyInternalNode`
 /// to Update OutLines.
 pub use crate::ffi_types::HLRAlgo_PolyInternalNode as PolyInternalNode;
 
@@ -3845,7 +2652,7 @@ unsafe impl crate::CppDeletable for PolyInternalNode {
 }
 
 impl PolyInternalNode {
-    /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:54 - `HLRAlgo_PolyInternalNode::HLRAlgo_PolyInternalNode()`
+    /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:52 - `HLRAlgo_PolyInternalNode::HLRAlgo_PolyInternalNode()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3854,7 +2661,7 @@ impl PolyInternalNode {
         }
     }
 
-    /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:62 - `HLRAlgo_PolyInternalNode::Indices()`
+    /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:60 - `HLRAlgo_PolyInternalNode::Indices()`
     pub fn indices(&mut self) -> &mut PolyInternalNode_NodeIndices {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalNode_indices(
@@ -3863,7 +2670,7 @@ impl PolyInternalNode {
         }
     }
 
-    /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:64 - `HLRAlgo_PolyInternalNode::Data()`
+    /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:62 - `HLRAlgo_PolyInternalNode::Data()`
     pub fn data(&mut self) -> &mut PolyInternalNode_NodeData {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalNode_data(
@@ -3872,8 +2679,8 @@ impl PolyInternalNode {
         }
     }
 
-    /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:66 - `HLRAlgo_PolyInternalNode::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:64 - `HLRAlgo_PolyInternalNode::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalNode_dynamic_type(
                 self as *const Self,
@@ -3881,7 +2688,7 @@ impl PolyInternalNode {
         }
     }
 
-    /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:66 - `HLRAlgo_PolyInternalNode::get_type_name()`
+    /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:64 - `HLRAlgo_PolyInternalNode::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -3892,8 +2699,8 @@ impl PolyInternalNode {
         .into_owned()
     }
 
-    /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:66 - `HLRAlgo_PolyInternalNode::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:64 - `HLRAlgo_PolyInternalNode::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalNode_get_type_descriptor(),
@@ -3926,7 +2733,7 @@ impl PolyInternalNode {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleHLRAlgoPolyInternalNode> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_HLRAlgo_PolyInternalNode> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalNode_to_handle(obj.into_raw()),
@@ -3934,8 +2741,8 @@ impl PolyInternalNode {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalNode_inherited_IsInstance(
                 self as *const Self,
@@ -3944,8 +2751,8 @@ impl PolyInternalNode {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalNode_inherited_IsKind(
                 self as *const Self,
@@ -3954,7 +2761,7 @@ impl PolyInternalNode {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3970,7 +2777,7 @@ impl PolyInternalNode {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalNode_inherited_GetRefCount(
@@ -3979,7 +2786,7 @@ impl PolyInternalNode {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalNode_inherited_IncrementRefCounter(
@@ -3988,7 +2795,7 @@ impl PolyInternalNode {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalNode_inherited_DecrementRefCounter(
@@ -3997,7 +2804,7 @@ impl PolyInternalNode {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalNode_inherited_Delete(self as *const Self)
@@ -4005,36 +2812,36 @@ impl PolyInternalNode {
     }
 }
 
-pub use crate::ffi_types::HandleHLRAlgoPolyInternalNode;
+pub use crate::ffi_types::Handle_HLRAlgo_PolyInternalNode;
 
-unsafe impl crate::CppDeletable for HandleHLRAlgoPolyInternalNode {
+unsafe impl crate::CppDeletable for Handle_HLRAlgo_PolyInternalNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKHLR::HandleHLRAlgoPolyInternalNode_destructor(ptr);
+            crate::ffi_extern_TKHLR::Handle_HLRAlgo_PolyInternalNode_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleHLRAlgoPolyInternalNode {
+unsafe impl crate::CppCopyable for Handle_HLRAlgo_PolyInternalNode {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoPolyInternalNode_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKHLR::Handle_HLRAlgo_PolyInternalNode_clone(ptr))
         }
     }
 }
 
-impl HandleHLRAlgoPolyInternalNode {
+impl Handle_HLRAlgo_PolyInternalNode {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKHLR::HandleHLRAlgoPolyInternalNode_is_null(self as *const Self)
+            crate::ffi_extern_TKHLR::Handle_HLRAlgo_PolyInternalNode_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying HLRAlgo_PolyInternalNode
     pub fn get(&self) -> &crate::ffi_types::HLRAlgo_PolyInternalNode {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoPolyInternalNode_get(
+            &*crate::check_result(crate::ffi_extern_TKHLR::Handle_HLRAlgo_PolyInternalNode_get(
                 self as *const Self,
             ))
         }
@@ -4044,7 +2851,7 @@ impl HandleHLRAlgoPolyInternalNode {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::HLRAlgo_PolyInternalNode {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKHLR::HandleHLRAlgoPolyInternalNode_get_mut(self as *mut Self),
+                crate::ffi_extern_TKHLR::Handle_HLRAlgo_PolyInternalNode_get_mut(self as *mut Self),
             )
         }
     }
@@ -4052,18 +2859,14 @@ impl HandleHLRAlgoPolyInternalNode {
     /// Upcast Handle<HLRAlgo_PolyInternalNode> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HandleHLRAlgoPolyInternalNode_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::Handle_HLRAlgo_PolyInternalNode_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
 
-/// **Source:** `HLRAlgo_PolyInternalNode.hxx`:35 - `HLRAlgo_PolyInternalNode_NodeIndices`
+/// **Source:** `HLRAlgo_PolyInternalNode.hxx`:33 - `HLRAlgo_PolyInternalNode_NodeIndices`
 pub use crate::ffi_types::HLRAlgo_PolyInternalNode_NodeIndices as PolyInternalNode_NodeIndices;
 
 unsafe impl crate::CppDeletable for PolyInternalNode_NodeIndices {
@@ -4074,7 +2877,7 @@ unsafe impl crate::CppDeletable for PolyInternalNode_NodeIndices {
     }
 }
 
-/// **Source:** `HLRAlgo_PolyInternalNode.hxx`:40 - `HLRAlgo_PolyInternalNode_NodeData`
+/// **Source:** `HLRAlgo_PolyInternalNode.hxx`:38 - `HLRAlgo_PolyInternalNode_NodeData`
 pub use crate::ffi_types::HLRAlgo_PolyInternalNode_NodeData as PolyInternalNode_NodeData;
 
 unsafe impl crate::CppDeletable for PolyInternalNode_NodeData {
@@ -4086,7 +2889,7 @@ unsafe impl crate::CppDeletable for PolyInternalNode_NodeData {
 }
 
 impl PolyInternalNode_NodeData {
-    /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:42 - `HLRAlgo_PolyInternalNode_NodeData::HLRAlgo_PolyInternalNode_NodeData()`
+    /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:40 - `HLRAlgo_PolyInternalNode_NodeData::HLRAlgo_PolyInternalNode_NodeData()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -4116,7 +2919,7 @@ unsafe impl crate::CppDeletable for PolyInternalSegment {
 // From HLRAlgo_PolyShellData.hxx
 // ========================
 
-/// **Source:** `HLRAlgo_PolyShellData.hxx`:29 - `HLRAlgo_PolyShellData`
+/// **Source:** `HLRAlgo_PolyShellData.hxx`:28 - `HLRAlgo_PolyShellData`
 /// All the PolyData of a Shell
 pub use crate::ffi_types::HLRAlgo_PolyShellData as PolyShellData;
 
@@ -4129,7 +2932,7 @@ unsafe impl crate::CppDeletable for PolyShellData {
 }
 
 impl PolyShellData {
-    /// **Source:** `HLRAlgo_PolyShellData.hxx`:38 - `HLRAlgo_PolyShellData::HLRAlgo_PolyShellData()`
+    /// **Source:** `HLRAlgo_PolyShellData.hxx`:37 - `HLRAlgo_PolyShellData::HLRAlgo_PolyShellData()`
     pub fn new_int(nbFace: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -4138,8 +2941,8 @@ impl PolyShellData {
         }
     }
 
-    /// **Source:** `HLRAlgo_PolyShellData.hxx`:40 - `HLRAlgo_PolyShellData::UpdateGlobalMinMax()`
-    pub fn update_global_min_max(&mut self, theBox: &mut PolyData_Box) {
+    /// **Source:** `HLRAlgo_PolyShellData.hxx`:39 - `HLRAlgo_PolyShellData::UpdateGlobalMinMax()`
+    pub fn update_global_min_max(&mut self, theBox: &mut crate::bnd::Box) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyShellData_update_global_min_max(
                 self as *mut Self,
@@ -4148,7 +2951,7 @@ impl PolyShellData {
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyShellData.hxx`:42 - `HLRAlgo_PolyShellData::UpdateHiding()`
+    /// **Source:** `HLRAlgo_PolyShellData.hxx`:41 - `HLRAlgo_PolyShellData::UpdateHiding()`
     pub fn update_hiding(&mut self, nbHiding: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyShellData_update_hiding(
@@ -4158,37 +2961,15 @@ impl PolyShellData {
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyShellData.hxx`:44 - `HLRAlgo_PolyShellData::Hiding()`
+    /// **Source:** `HLRAlgo_PolyShellData.hxx`:43 - `HLRAlgo_PolyShellData::Hiding()`
     pub fn hiding(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyShellData_hiding(self as *const Self)
         })
     }
 
-    /// **Source:** `HLRAlgo_PolyShellData.hxx`:46 - `HLRAlgo_PolyShellData::PolyData()`
-    pub fn poly_data(
-        &mut self,
-    ) -> &mut crate::ffi_types::NCollection_Array1_opencascade_handle_HLRAlgo_PolyData {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_PolyShellData_poly_data(
-                self as *mut Self,
-            )))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_PolyShellData.hxx`:48 - `HLRAlgo_PolyShellData::HidingPolyData()`
-    pub fn hiding_poly_data(
-        &mut self,
-    ) -> &mut crate::ffi_types::NCollection_Array1_opencascade_handle_HLRAlgo_PolyData {
-        unsafe {
-            &mut *(crate::check_result(
-                crate::ffi_extern_TKHLR::HLRAlgo_PolyShellData_hiding_poly_data(self as *mut Self),
-            ))
-        }
-    }
-
-    /// **Source:** `HLRAlgo_PolyShellData.hxx`:50 - `HLRAlgo_PolyShellData::Edges()`
-    pub fn edges(&mut self) -> &mut crate::ffi_types::HLRAlgo_ListOfBPoint {
+    /// **Source:** `HLRAlgo_PolyShellData.hxx`:49 - `HLRAlgo_PolyShellData::Edges()`
+    pub fn edges(&mut self) -> &mut crate::ffi_types::NCollection_List_HLRAlgo_BiPoint {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_PolyShellData_edges(
                 self as *mut Self,
@@ -4196,7 +2977,7 @@ impl PolyShellData {
         }
     }
 
-    /// **Source:** `HLRAlgo_PolyShellData.hxx`:52 - `HLRAlgo_PolyShellData::Indices()`
+    /// **Source:** `HLRAlgo_PolyShellData.hxx`:51 - `HLRAlgo_PolyShellData::Indices()`
     pub fn indices(&mut self) -> &mut PolyShellData_ShellIndices {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_PolyShellData_indices(
@@ -4205,8 +2986,8 @@ impl PolyShellData {
         }
     }
 
-    /// **Source:** `HLRAlgo_PolyShellData.hxx`:54 - `HLRAlgo_PolyShellData::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `HLRAlgo_PolyShellData.hxx`:53 - `HLRAlgo_PolyShellData::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_PolyShellData_dynamic_type(
                 self as *const Self,
@@ -4214,7 +2995,7 @@ impl PolyShellData {
         }
     }
 
-    /// **Source:** `HLRAlgo_PolyShellData.hxx`:54 - `HLRAlgo_PolyShellData::get_type_name()`
+    /// **Source:** `HLRAlgo_PolyShellData.hxx`:53 - `HLRAlgo_PolyShellData::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -4225,8 +3006,8 @@ impl PolyShellData {
         .into_owned()
     }
 
-    /// **Source:** `HLRAlgo_PolyShellData.hxx`:54 - `HLRAlgo_PolyShellData::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `HLRAlgo_PolyShellData.hxx`:53 - `HLRAlgo_PolyShellData::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKHLR::HLRAlgo_PolyShellData_get_type_descriptor(),
@@ -4259,7 +3040,7 @@ impl PolyShellData {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleHLRAlgoPolyShellData> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_HLRAlgo_PolyShellData> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKHLR::HLRAlgo_PolyShellData_to_handle(obj.into_raw()),
@@ -4267,8 +3048,8 @@ impl PolyShellData {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyShellData_inherited_IsInstance(
                 self as *const Self,
@@ -4277,8 +3058,8 @@ impl PolyShellData {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyShellData_inherited_IsKind(
                 self as *const Self,
@@ -4287,7 +3068,7 @@ impl PolyShellData {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -4301,7 +3082,7 @@ impl PolyShellData {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyShellData_inherited_GetRefCount(
@@ -4310,7 +3091,7 @@ impl PolyShellData {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyShellData_inherited_IncrementRefCounter(
@@ -4319,7 +3100,7 @@ impl PolyShellData {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyShellData_inherited_DecrementRefCounter(
@@ -4328,7 +3109,7 @@ impl PolyShellData {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_PolyShellData_inherited_Delete(self as *const Self)
@@ -4336,34 +3117,36 @@ impl PolyShellData {
     }
 }
 
-pub use crate::ffi_types::HandleHLRAlgoPolyShellData;
+pub use crate::ffi_types::Handle_HLRAlgo_PolyShellData;
 
-unsafe impl crate::CppDeletable for HandleHLRAlgoPolyShellData {
+unsafe impl crate::CppDeletable for Handle_HLRAlgo_PolyShellData {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKHLR::HandleHLRAlgoPolyShellData_destructor(ptr);
+            crate::ffi_extern_TKHLR::Handle_HLRAlgo_PolyShellData_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleHLRAlgoPolyShellData {
+unsafe impl crate::CppCopyable for Handle_HLRAlgo_PolyShellData {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoPolyShellData_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKHLR::Handle_HLRAlgo_PolyShellData_clone(ptr))
         }
     }
 }
 
-impl HandleHLRAlgoPolyShellData {
+impl Handle_HLRAlgo_PolyShellData {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKHLR::HandleHLRAlgoPolyShellData_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKHLR::Handle_HLRAlgo_PolyShellData_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying HLRAlgo_PolyShellData
     pub fn get(&self) -> &crate::ffi_types::HLRAlgo_PolyShellData {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoPolyShellData_get(
+            &*crate::check_result(crate::ffi_extern_TKHLR::Handle_HLRAlgo_PolyShellData_get(
                 self as *const Self,
             ))
         }
@@ -4372,19 +3155,19 @@ impl HandleHLRAlgoPolyShellData {
     /// Dereference this Handle to mutably access the underlying HLRAlgo_PolyShellData
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::HLRAlgo_PolyShellData {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoPolyShellData_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKHLR::Handle_HLRAlgo_PolyShellData_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<HLRAlgo_PolyShellData> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HandleHLRAlgoPolyShellData_to_HandleStandardTransient(
+                crate::ffi_extern_TKHLR::Handle_HLRAlgo_PolyShellData_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -4392,7 +3175,17 @@ impl HandleHLRAlgoPolyShellData {
     }
 }
 
-/// **Source:** `HLRAlgo_PolyShellData.hxx`:33 - `HLRAlgo_PolyShellData_ShellIndices`
+// ── Skipped symbols for PolyShellData (2 total) ──
+// SKIPPED: **Source:** `HLRAlgo_PolyShellData.hxx`:45 - `HLRAlgo_PolyShellData::PolyData`
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<occ::handle<HLRAlgo_PolyData>>&)
+//   // pub fn poly_data(&mut self) -> /* NCollection_Array1<occ::handle<HLRAlgo_PolyData>>& */;
+//
+// SKIPPED: **Source:** `HLRAlgo_PolyShellData.hxx`:47 - `HLRAlgo_PolyShellData::HidingPolyData`
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<occ::handle<HLRAlgo_PolyData>>&)
+//   // pub fn hiding_poly_data(&mut self) -> /* NCollection_Array1<occ::handle<HLRAlgo_PolyData>>& */;
+//
+
+/// **Source:** `HLRAlgo_PolyShellData.hxx`:32 - `HLRAlgo_PolyShellData_ShellIndices`
 pub use crate::ffi_types::HLRAlgo_PolyShellData_ShellIndices as PolyShellData_ShellIndices;
 
 unsafe impl crate::CppDeletable for PolyShellData_ShellIndices {
@@ -4408,7 +3201,7 @@ unsafe impl crate::CppDeletable for PolyShellData_ShellIndices {
 // ========================
 
 /// **Source:** `HLRAlgo_Projector.hxx`:44 - `HLRAlgo_Projector`
-/// Implements a  projector object.
+/// Implements a projector object.
 /// To transform and project Points and Planes.
 /// This object is designed to be used in the
 /// removal of hidden lines and is returned by the
@@ -4441,7 +3234,7 @@ impl Projector {
     }
 
     /// **Source:** `HLRAlgo_Projector.hxx`:53 - `HLRAlgo_Projector::HLRAlgo_Projector()`
-    /// Creates   an axonometric  projector.   <CS> is the
+    /// Creates an axonometric projector. <CS> is the
     /// viewing coordinate system.
     pub fn new_ax2(CS: &crate::gp::Ax2) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -4452,7 +3245,7 @@ impl Projector {
     }
 
     /// **Source:** `HLRAlgo_Projector.hxx`:57 - `HLRAlgo_Projector::HLRAlgo_Projector()`
-    /// Creates  a  perspective  projector.   <CS>  is the
+    /// Creates a perspective projector. <CS> is the
     /// viewing coordinate system.
     pub fn new_ax2_real(CS: &crate::gp::Ax2, Focus: f64) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -4476,7 +3269,7 @@ impl Projector {
         }
     }
 
-    /// **Source:** `HLRAlgo_Projector.hxx`:65 - `HLRAlgo_Projector::HLRAlgo_Projector()`
+    /// **Source:** `HLRAlgo_Projector.hxx`:63 - `HLRAlgo_Projector::HLRAlgo_Projector()`
     /// build a Projector with given minmax directions.
     pub fn new_trsf_bool_real_vec2d3(
         T: &crate::gp::Trsf,
@@ -4495,14 +3288,14 @@ impl Projector {
         }
     }
 
-    /// **Source:** `HLRAlgo_Projector.hxx`:72 - `HLRAlgo_Projector::Set()`
+    /// **Source:** `HLRAlgo_Projector.hxx`:70 - `HLRAlgo_Projector::Set()`
     pub fn set(&mut self, T: &crate::gp::Trsf, Persp: bool, Focus: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_Projector_set(self as *mut Self, T, Persp, Focus)
         })
     }
 
-    /// **Source:** `HLRAlgo_Projector.hxx`:76 - `HLRAlgo_Projector::Directions()`
+    /// **Source:** `HLRAlgo_Projector.hxx`:72 - `HLRAlgo_Projector::Directions()`
     pub fn directions(
         &self,
         D1: &mut crate::gp::Vec2d,
@@ -4514,7 +3307,7 @@ impl Projector {
         })
     }
 
-    /// **Source:** `HLRAlgo_Projector.hxx`:79 - `HLRAlgo_Projector::Scaled()`
+    /// **Source:** `HLRAlgo_Projector.hxx`:75 - `HLRAlgo_Projector::Scaled()`
     /// to compute with the given scale and translation.
     pub fn scaled(&mut self, On: bool) {
         crate::check_void_result(unsafe {
@@ -4522,7 +3315,7 @@ impl Projector {
         })
     }
 
-    /// **Source:** `HLRAlgo_Projector.hxx`:82 - `HLRAlgo_Projector::Perspective()`
+    /// **Source:** `HLRAlgo_Projector.hxx`:78 - `HLRAlgo_Projector::Perspective()`
     /// Returns True if there is a perspective transformation.
     pub fn perspective(&self) -> bool {
         crate::check_result(unsafe {
@@ -4530,7 +3323,7 @@ impl Projector {
         })
     }
 
-    /// **Source:** `HLRAlgo_Projector.hxx`:85 - `HLRAlgo_Projector::Transformation()`
+    /// **Source:** `HLRAlgo_Projector.hxx`:81 - `HLRAlgo_Projector::Transformation()`
     /// Returns the active transformation.
     pub fn transformation(&self) -> &crate::gp::Trsf {
         unsafe {
@@ -4540,7 +3333,7 @@ impl Projector {
         }
     }
 
-    /// **Source:** `HLRAlgo_Projector.hxx`:88 - `HLRAlgo_Projector::InvertedTransformation()`
+    /// **Source:** `HLRAlgo_Projector.hxx`:84 - `HLRAlgo_Projector::InvertedTransformation()`
     /// Returns the active inverted transformation.
     pub fn inverted_transformation(&self) -> &crate::gp::Trsf {
         unsafe {
@@ -4552,7 +3345,7 @@ impl Projector {
         }
     }
 
-    /// **Source:** `HLRAlgo_Projector.hxx`:91 - `HLRAlgo_Projector::FullTransformation()`
+    /// **Source:** `HLRAlgo_Projector.hxx`:87 - `HLRAlgo_Projector::FullTransformation()`
     /// Returns the original transformation.
     pub fn full_transformation(&self) -> &crate::gp::Trsf {
         unsafe {
@@ -4562,7 +3355,7 @@ impl Projector {
         }
     }
 
-    /// **Source:** `HLRAlgo_Projector.hxx`:94 - `HLRAlgo_Projector::Focus()`
+    /// **Source:** `HLRAlgo_Projector.hxx`:90 - `HLRAlgo_Projector::Focus()`
     /// Returns the focal length.
     pub fn focus(&self) -> f64 {
         crate::check_result(unsafe {
@@ -4570,21 +3363,21 @@ impl Projector {
         })
     }
 
-    /// **Source:** `HLRAlgo_Projector.hxx`:96 - `HLRAlgo_Projector::Transform()`
+    /// **Source:** `HLRAlgo_Projector.hxx`:92 - `HLRAlgo_Projector::Transform()`
     pub fn transform_vec(&self, D: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_Projector_transform_vec(self as *const Self, D)
         })
     }
 
-    /// **Source:** `HLRAlgo_Projector.hxx`:98 - `HLRAlgo_Projector::Transform()`
+    /// **Source:** `HLRAlgo_Projector.hxx`:94 - `HLRAlgo_Projector::Transform()`
     pub fn transform_pnt(&self, Pnt: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_Projector_transform_pnt(self as *const Self, Pnt)
         })
     }
 
-    /// **Source:** `HLRAlgo_Projector.hxx`:101 - `HLRAlgo_Projector::Project()`
+    /// **Source:** `HLRAlgo_Projector.hxx`:97 - `HLRAlgo_Projector::Project()`
     /// Transform and apply perspective if needed.
     pub fn project_pnt_pnt2d(&self, P: &crate::gp::Pnt, Pout: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
@@ -4596,7 +3389,7 @@ impl Projector {
         })
     }
 
-    /// **Source:** `HLRAlgo_Projector.hxx`:104 - `HLRAlgo_Projector::Project()`
+    /// **Source:** `HLRAlgo_Projector.hxx`:100 - `HLRAlgo_Projector::Project()`
     /// Transform and apply perspective if needed.
     pub fn project_pnt_real3(&self, P: &crate::gp::Pnt, X: &mut f64, Y: &mut f64, Z: &mut f64) {
         crate::check_void_result(unsafe {
@@ -4610,7 +3403,7 @@ impl Projector {
         })
     }
 
-    /// **Source:** `HLRAlgo_Projector.hxx`:110 - `HLRAlgo_Projector::Project()`
+    /// **Source:** `HLRAlgo_Projector.hxx`:103 - `HLRAlgo_Projector::Project()`
     /// Transform and apply perspective if needed.
     pub fn project_pnt_vec_pnt2d_vec2d(
         &self,
@@ -4630,7 +3423,7 @@ impl Projector {
         })
     }
 
-    /// **Source:** `HLRAlgo_Projector.hxx`:117 - `HLRAlgo_Projector::Shoot()`
+    /// **Source:** `HLRAlgo_Projector.hxx`:110 - `HLRAlgo_Projector::Shoot()`
     /// return a line going through the eye towards the
     /// 2d point <X,Y>.
     pub fn shoot(&self, X: f64, Y: f64) -> crate::OwnedPtr<crate::gp::Lin> {
@@ -4662,13 +3455,13 @@ unsafe impl crate::CppDeletable for TriangleData {
 // From HLRAlgo_WiresBlock.hxx
 // ========================
 
-/// **Source:** `HLRAlgo_WiresBlock.hxx`:38 - `HLRAlgo_WiresBlock`
+/// **Source:** `HLRAlgo_WiresBlock.hxx`:35 - `HLRAlgo_WiresBlock`
 /// A WiresBlock is a set of Blocks. It is used by the
 /// DataStructure to structure the Edges.
 ///
-/// A WiresBlock contains :
+/// A WiresBlock contains:
 ///
-/// * An Array  of Blocks.
+/// * An Array of Blocks.
 pub use crate::ffi_types::HLRAlgo_WiresBlock as WiresBlock;
 
 unsafe impl crate::CppDeletable for WiresBlock {
@@ -4680,7 +3473,7 @@ unsafe impl crate::CppDeletable for WiresBlock {
 }
 
 impl WiresBlock {
-    /// **Source:** `HLRAlgo_WiresBlock.hxx`:42 - `HLRAlgo_WiresBlock::HLRAlgo_WiresBlock()`
+    /// **Source:** `HLRAlgo_WiresBlock.hxx`:39 - `HLRAlgo_WiresBlock::HLRAlgo_WiresBlock()`
     /// Create a Block of Blocks.
     pub fn new_int(NbWires: i32) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -4690,22 +3483,22 @@ impl WiresBlock {
         }
     }
 
-    /// **Source:** `HLRAlgo_WiresBlock.hxx`:47 - `HLRAlgo_WiresBlock::NbWires()`
+    /// **Source:** `HLRAlgo_WiresBlock.hxx`:44 - `HLRAlgo_WiresBlock::NbWires()`
     pub fn nb_wires(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_WiresBlock_nb_wires(self as *const Self)
         })
     }
 
-    /// **Source:** `HLRAlgo_WiresBlock.hxx`:49 - `HLRAlgo_WiresBlock::Set()`
-    pub fn set(&mut self, I: i32, W: &crate::ffi_types::HandleHLRAlgoEdgesBlock) {
+    /// **Source:** `HLRAlgo_WiresBlock.hxx`:46 - `HLRAlgo_WiresBlock::Set()`
+    pub fn set(&mut self, I: i32, W: &crate::ffi_types::Handle_HLRAlgo_EdgesBlock) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_WiresBlock_set(self as *mut Self, I, W)
         })
     }
 
-    /// **Source:** `HLRAlgo_WiresBlock.hxx`:51 - `HLRAlgo_WiresBlock::Wire()`
-    pub fn wire(&mut self, I: i32) -> &mut crate::ffi_types::HandleHLRAlgoEdgesBlock {
+    /// **Source:** `HLRAlgo_WiresBlock.hxx`:48 - `HLRAlgo_WiresBlock::Wire()`
+    pub fn wire(&mut self, I: i32) -> &mut crate::ffi_types::Handle_HLRAlgo_EdgesBlock {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_WiresBlock_wire(
                 self as *mut Self,
@@ -4714,7 +3507,7 @@ impl WiresBlock {
         }
     }
 
-    /// **Source:** `HLRAlgo_WiresBlock.hxx`:56 - `HLRAlgo_WiresBlock::UpdateMinMax()`
+    /// **Source:** `HLRAlgo_WiresBlock.hxx`:53 - `HLRAlgo_WiresBlock::UpdateMinMax()`
     pub fn update_min_max(&mut self, theMinMaxes: &EdgesBlock_MinMaxIndices) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_WiresBlock_update_min_max(
@@ -4724,7 +3517,7 @@ impl WiresBlock {
         })
     }
 
-    /// **Source:** `HLRAlgo_WiresBlock.hxx`:61 - `HLRAlgo_WiresBlock::MinMax()`
+    /// **Source:** `HLRAlgo_WiresBlock.hxx`:58 - `HLRAlgo_WiresBlock::MinMax()`
     pub fn min_max(&mut self) -> &mut EdgesBlock_MinMaxIndices {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_WiresBlock_min_max(
@@ -4733,8 +3526,8 @@ impl WiresBlock {
         }
     }
 
-    /// **Source:** `HLRAlgo_WiresBlock.hxx`:63 - `HLRAlgo_WiresBlock::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `HLRAlgo_WiresBlock.hxx`:60 - `HLRAlgo_WiresBlock::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_WiresBlock_dynamic_type(
                 self as *const Self,
@@ -4742,7 +3535,7 @@ impl WiresBlock {
         }
     }
 
-    /// **Source:** `HLRAlgo_WiresBlock.hxx`:63 - `HLRAlgo_WiresBlock::get_type_name()`
+    /// **Source:** `HLRAlgo_WiresBlock.hxx`:60 - `HLRAlgo_WiresBlock::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -4753,8 +3546,8 @@ impl WiresBlock {
         .into_owned()
     }
 
-    /// **Source:** `HLRAlgo_WiresBlock.hxx`:63 - `HLRAlgo_WiresBlock::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `HLRAlgo_WiresBlock.hxx`:60 - `HLRAlgo_WiresBlock::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKHLR::HLRAlgo_WiresBlock_get_type_descriptor(),
@@ -4787,7 +3580,7 @@ impl WiresBlock {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleHLRAlgoWiresBlock> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_HLRAlgo_WiresBlock> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKHLR::HLRAlgo_WiresBlock_to_handle(obj.into_raw()),
@@ -4795,8 +3588,8 @@ impl WiresBlock {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_WiresBlock_inherited_IsInstance(
                 self as *const Self,
@@ -4805,8 +3598,8 @@ impl WiresBlock {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_WiresBlock_inherited_IsKind(
                 self as *const Self,
@@ -4815,7 +3608,7 @@ impl WiresBlock {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -4829,14 +3622,14 @@ impl WiresBlock {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_WiresBlock_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_WiresBlock_inherited_IncrementRefCounter(
@@ -4845,7 +3638,7 @@ impl WiresBlock {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_WiresBlock_inherited_DecrementRefCounter(
@@ -4854,7 +3647,7 @@ impl WiresBlock {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::HLRAlgo_WiresBlock_inherited_Delete(self as *const Self)
@@ -4862,32 +3655,34 @@ impl WiresBlock {
     }
 }
 
-pub use crate::ffi_types::HandleHLRAlgoWiresBlock;
+pub use crate::ffi_types::Handle_HLRAlgo_WiresBlock;
 
-unsafe impl crate::CppDeletable for HandleHLRAlgoWiresBlock {
+unsafe impl crate::CppDeletable for Handle_HLRAlgo_WiresBlock {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKHLR::HandleHLRAlgoWiresBlock_destructor(ptr);
+            crate::ffi_extern_TKHLR::Handle_HLRAlgo_WiresBlock_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleHLRAlgoWiresBlock {
+unsafe impl crate::CppCopyable for Handle_HLRAlgo_WiresBlock {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoWiresBlock_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKHLR::Handle_HLRAlgo_WiresBlock_clone(ptr))
+        }
     }
 }
 
-impl HandleHLRAlgoWiresBlock {
+impl Handle_HLRAlgo_WiresBlock {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKHLR::HandleHLRAlgoWiresBlock_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKHLR::Handle_HLRAlgo_WiresBlock_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying HLRAlgo_WiresBlock
     pub fn get(&self) -> &crate::ffi_types::HLRAlgo_WiresBlock {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoWiresBlock_get(
+            &*crate::check_result(crate::ffi_extern_TKHLR::Handle_HLRAlgo_WiresBlock_get(
                 self as *const Self,
             ))
         }
@@ -4896,7 +3691,7 @@ impl HandleHLRAlgoWiresBlock {
     /// Dereference this Handle to mutably access the underlying HLRAlgo_WiresBlock
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::HLRAlgo_WiresBlock {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKHLR::HandleHLRAlgoWiresBlock_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKHLR::Handle_HLRAlgo_WiresBlock_get_mut(
                 self as *mut Self,
             ))
         }
@@ -4905,25 +3700,13 @@ impl HandleHLRAlgoWiresBlock {
     /// Upcast Handle<HLRAlgo_WiresBlock> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKHLR::HandleHLRAlgoWiresBlock_to_HandleStandardTransient(
+                crate::ffi_extern_TKHLR::Handle_HLRAlgo_WiresBlock_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
         }
     }
 }
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi_types::{
-    HLRAlgo_Array1OfPHDat as Array1OfPHDat, HLRAlgo_Array1OfPINod as Array1OfPINod,
-    HLRAlgo_Array1OfPISeg as Array1OfPISeg, HLRAlgo_Array1OfTData as Array1OfTData,
-    HLRAlgo_InterferenceList as InterferenceList,
-    HLRAlgo_ListIteratorOfInterferenceList as ListIteratorOfInterferenceList,
-    HLRAlgo_ListOfBPoint as ListOfBPoint,
-};

@@ -6,38 +6,38 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `ShapeConstruct.hxx`:51 - `ShapeConstruct::ConvertCurveToBSpline`
+/// **Source:** `ShapeConstruct.hxx`:53 - `ShapeConstruct::ConvertCurveToBSpline`
 /// Tool for wire triangulation
 pub fn convert_curve_to_b_spline_handlegeomcurve_real3_shape_int2(
-    C3D: &crate::ffi_types::HandleGeomCurve,
+    C3D: &crate::ffi_types::Handle_Geom_Curve,
     First: f64,
     Last: f64,
     Tol3d: f64,
     Continuity: crate::geom_abs::Shape,
     MaxSegments: i32,
     MaxDegree: i32,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BSplineCurve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeConstruct_convert_curve_to_b_spline_handlegeomcurve_real3_shape_int2(C3D, First, Last, Tol3d, Continuity.into(), MaxSegments, MaxDegree)))
     }
 }
-/// **Source:** `ShapeConstruct.hxx`:60 - `ShapeConstruct::ConvertCurveToBSpline`
+/// **Source:** `ShapeConstruct.hxx`:62 - `ShapeConstruct::ConvertCurveToBSpline`
 pub fn convert_curve_to_b_spline_handlegeom2dcurve_real3_shape_int2(
-    C2D: &crate::ffi_types::HandleGeom2dCurve,
+    C2D: &crate::ffi_types::Handle_Geom2d_Curve,
     First: f64,
     Last: f64,
     Tol2d: f64,
     Continuity: crate::geom_abs::Shape,
     MaxSegments: i32,
     MaxDegree: i32,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BSplineCurve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeConstruct_convert_curve_to_b_spline_handlegeom2dcurve_real3_shape_int2(C2D, First, Last, Tol2d, Continuity.into(), MaxSegments, MaxDegree)))
     }
 }
-/// **Source:** `ShapeConstruct.hxx`:69 - `ShapeConstruct::ConvertSurfaceToBSpline`
+/// **Source:** `ShapeConstruct.hxx`:71 - `ShapeConstruct::ConvertSurfaceToBSpline`
 pub fn convert_surface_to_b_spline(
-    surf: &crate::ffi_types::HandleGeomSurface,
+    surf: &crate::ffi_types::Handle_Geom_Surface,
     UF: f64,
     UL: f64,
     VF: f64,
@@ -46,7 +46,7 @@ pub fn convert_surface_to_b_spline(
     Continuity: crate::geom_abs::Shape,
     MaxSegments: i32,
     MaxDegree: i32,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineSurface> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BSplineSurface> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKShHealing::ShapeConstruct_convert_surface_to_b_spline(
@@ -63,12 +63,12 @@ pub fn convert_surface_to_b_spline(
         ))
     }
 }
-/// **Source:** `ShapeConstruct.hxx`:83 - `ShapeConstruct::JoinPCurves`
+/// **Source:** `ShapeConstruct.hxx`:85 - `ShapeConstruct::JoinPCurves`
 /// join pcurves of the <theEdge> on the <theFace>
 /// try to use pcurves from originas edges <theEdges>
 /// Returns false if cannot join pcurves
 pub fn join_p_curves(
-    theEdges: &crate::ffi_types::HandleTopToolsHSequenceOfShape,
+    theEdges: &crate::ffi_types::Handle_NCollection_HSequence_TopoDS_Shape,
     theFace: &crate::topo_ds::Face,
     theEdge: &mut crate::topo_ds::Edge,
 ) -> bool {
@@ -76,7 +76,7 @@ pub fn join_p_curves(
         crate::ffi_extern_TKShHealing::ShapeConstruct_join_p_curves(theEdges, theFace, theEdge)
     })
 }
-/// **Source:** `ShapeConstruct.hxx`:97 - `ShapeConstruct::JoinCurves`
+/// **Source:** `ShapeConstruct.hxx`:99 - `ShapeConstruct::JoinCurves`
 /// Method for joininig curves 3D.
 /// Parameters : c3d1,ac3d2 - initial curves
 /// Orient1, Orient2 - initial edges orientations.
@@ -87,15 +87,15 @@ pub fn join_p_curves(
 /// Return value : True - if curves were joined successfully,
 /// else - False.
 pub fn join_curves_handlegeomcurve2_orientation2_real4_handlegeomcurve_bool2(
-    c3d1: &crate::ffi_types::HandleGeomCurve,
-    ac3d2: &crate::ffi_types::HandleGeomCurve,
+    c3d1: &crate::ffi_types::Handle_Geom_Curve,
+    ac3d2: &crate::ffi_types::Handle_Geom_Curve,
     Orient1: crate::top_abs::Orientation,
     Orient2: crate::top_abs::Orientation,
     first1: &mut f64,
     last1: &mut f64,
     first2: &mut f64,
     last2: &mut f64,
-    c3dOut: &mut crate::ffi_types::HandleGeomCurve,
+    c3dOut: &mut crate::ffi_types::Handle_Geom_Curve,
     isRev1: &mut bool,
     isRev2: &mut bool,
 ) -> bool {
@@ -103,7 +103,7 @@ pub fn join_curves_handlegeomcurve2_orientation2_real4_handlegeomcurve_bool2(
         crate::ffi_extern_TKShHealing::ShapeConstruct_join_curves_handlegeomcurve2_orientation2_real4_handlegeomcurve_bool2(c3d1, ac3d2, Orient1.into(), Orient2.into(), first1, last1, first2, last2, c3dOut, isRev1, isRev2)
     })
 }
-/// **Source:** `ShapeConstruct.hxx`:118 - `ShapeConstruct::JoinCurves`
+/// **Source:** `ShapeConstruct.hxx`:120 - `ShapeConstruct::JoinCurves`
 /// Method for joininig curves 3D.
 /// Parameters : c3d1,ac3d2 - initial curves
 /// Orient1, Orient2 - initial edges orientations.
@@ -114,15 +114,15 @@ pub fn join_curves_handlegeomcurve2_orientation2_real4_handlegeomcurve_bool2(
 /// isError - input parameter indicative possible errors due to that one from edges have one
 /// vertex Return value : True - if curves were joined successfully, else - False.
 pub fn join_curves_handlegeom2dcurve2_orientation2_real4_handlegeom2dcurve_bool3(
-    c2d1: &crate::ffi_types::HandleGeom2dCurve,
-    ac2d2: &crate::ffi_types::HandleGeom2dCurve,
+    c2d1: &crate::ffi_types::Handle_Geom2d_Curve,
+    ac2d2: &crate::ffi_types::Handle_Geom2d_Curve,
     Orient1: crate::top_abs::Orientation,
     Orient2: crate::top_abs::Orientation,
     first1: &mut f64,
     last1: &mut f64,
     first2: &mut f64,
     last2: &mut f64,
-    c2dOut: &mut crate::ffi_types::HandleGeom2dCurve,
+    c2dOut: &mut crate::ffi_types::Handle_Geom2d_Curve,
     isRev1: &mut bool,
     isRev2: &mut bool,
     isError: bool,
@@ -133,7 +133,7 @@ pub fn join_curves_handlegeom2dcurve2_orientation2_real4_handlegeom2dcurve_bool3
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::HandleStandardTransient;
+pub use crate::ffi_types::Handle_Standard_Transient;
 
 // ========================
 // From ShapeConstruct_Curve.hxx
@@ -174,7 +174,7 @@ impl Curve {
     /// Warning : Does not check if curve should be reversed
     pub fn adjust_curve(
         &self,
-        C3D: &crate::ffi_types::HandleGeomCurve,
+        C3D: &crate::ffi_types::Handle_Geom_Curve,
         P1: &crate::gp::Pnt,
         P2: &crate::gp::Pnt,
         take1: bool,
@@ -201,7 +201,7 @@ impl Curve {
     /// at the given values and then are adjusted to the points.
     pub fn adjust_curve_segment(
         &self,
-        C3D: &crate::ffi_types::HandleGeomCurve,
+        C3D: &crate::ffi_types::Handle_Geom_Curve,
         P1: &crate::gp::Pnt,
         P2: &crate::gp::Pnt,
         U1: f64,
@@ -219,7 +219,7 @@ impl Curve {
         })
     }
 
-    /// **Source:** `ShapeConstruct_Curve.hxx`:76 - `ShapeConstruct_Curve::AdjustCurve2d()`
+    /// **Source:** `ShapeConstruct_Curve.hxx`:75 - `ShapeConstruct_Curve::AdjustCurve2d()`
     /// Modifies a curve in order to make its bounds confused with
     /// given points.
     /// Works only on lines and B-Splines, returns True in this case,
@@ -231,7 +231,7 @@ impl Curve {
     /// Warning : Does not check if curve should be reversed
     pub fn adjust_curve2d(
         &self,
-        C2D: &crate::ffi_types::HandleGeom2dCurve,
+        C2D: &crate::ffi_types::Handle_Geom2d_Curve,
         P1: &crate::gp::Pnt2d,
         P2: &crate::gp::Pnt2d,
         take1: bool,
@@ -249,7 +249,7 @@ impl Curve {
         })
     }
 
-    /// **Source:** `ShapeConstruct_Curve.hxx`:88 - `ShapeConstruct_Curve::ConvertToBSpline()`
+    /// **Source:** `ShapeConstruct_Curve.hxx`:87 - `ShapeConstruct_Curve::ConvertToBSpline()`
     /// Converts a curve of any type (only part from first to last)
     /// to bspline. The method of conversion depends on the type
     /// of original curve:
@@ -258,17 +258,17 @@ impl Curve {
     /// Conic and Other -> Approx_Curve3d(C[first,last],prec,C1,9,1000)
     pub fn convert_to_b_spline_handlegeomcurve_real3(
         &self,
-        C: &crate::ffi_types::HandleGeomCurve,
+        C: &crate::ffi_types::Handle_Geom_Curve,
         first: f64,
         last: f64,
         prec: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeConstruct_Curve_convert_to_b_spline_handlegeomcurve_real3(self as *const Self, C, first, last, prec)))
         }
     }
 
-    /// **Source:** `ShapeConstruct_Curve.hxx`:99 - `ShapeConstruct_Curve::ConvertToBSpline()`
+    /// **Source:** `ShapeConstruct_Curve.hxx`:98 - `ShapeConstruct_Curve::ConvertToBSpline()`
     /// Converts a curve of any type (only part from first to last)
     /// to bspline. The method of conversion depends on the type
     /// of original curve:
@@ -277,24 +277,22 @@ impl Curve {
     /// Conic and Other -> Approx_Curve2d(C[first,last],prec,C1,9,1000)
     pub fn convert_to_b_spline_handlegeom2dcurve_real3(
         &self,
-        C: &crate::ffi_types::HandleGeom2dCurve,
+        C: &crate::ffi_types::Handle_Geom2d_Curve,
         first: f64,
         last: f64,
         prec: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeConstruct_Curve_convert_to_b_spline_handlegeom2dcurve_real3(self as *const Self, C, first, last, prec)))
         }
     }
 
     /// **Source:** `ShapeConstruct_Curve.hxx`:104 - `ShapeConstruct_Curve::FixKnots()`
-    pub fn fix_knots_handletcolstdharray1ofreal(
-        knots: &mut crate::ffi_types::HandleTColStdHArray1OfReal,
+    pub fn fix_knots_harr1_double(
+        knots: &mut crate::ffi_types::Handle_NCollection_HArray1_double,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKShHealing::ShapeConstruct_Curve_fix_knots_handletcolstdharray1ofreal(
-                knots,
-            )
+            crate::ffi_extern_TKShHealing::ShapeConstruct_Curve_fix_knots_harr1_double(knots)
         })
     }
 
@@ -302,9 +300,9 @@ impl Curve {
     /// Fix bspline knots to ensure that there is enough
     /// gap between neighbouring values
     /// Returns True if something fixed (by shifting knot)
-    pub fn fix_knots_array1ofreal(knots: &mut crate::ffi_types::TColStd_Array1OfReal) -> bool {
+    pub fn fix_knots_arr1_double(knots: &mut crate::ffi_types::NCollection_Array1_double) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKShHealing::ShapeConstruct_Curve_fix_knots_array1ofreal(knots)
+            crate::ffi_extern_TKShHealing::ShapeConstruct_Curve_fix_knots_arr1_double(knots)
         })
     }
 }
@@ -313,7 +311,7 @@ impl Curve {
 // From ShapeConstruct_MakeTriangulation.hxx
 // ========================
 
-/// **Source:** `ShapeConstruct_MakeTriangulation.hxx`:27 - `ShapeConstruct_MakeTriangulation`
+/// **Source:** `ShapeConstruct_MakeTriangulation.hxx`:28 - `ShapeConstruct_MakeTriangulation`
 pub use crate::ffi_types::ShapeConstruct_MakeTriangulation as MakeTriangulation;
 
 unsafe impl crate::CppDeletable for MakeTriangulation {
@@ -325,17 +323,21 @@ unsafe impl crate::CppDeletable for MakeTriangulation {
 }
 
 impl MakeTriangulation {
-    /// **Source:** `ShapeConstruct_MakeTriangulation.hxx`:32 - `ShapeConstruct_MakeTriangulation::ShapeConstruct_MakeTriangulation()`
-    pub fn new_array1ofpnt_real(
-        pnts: &crate::ffi_types::TColgp_Array1OfPnt,
+    /// **Source:** `ShapeConstruct_MakeTriangulation.hxx`:33 - `ShapeConstruct_MakeTriangulation::ShapeConstruct_MakeTriangulation()`
+    pub fn new_arr1_pnt_real(
+        pnts: &crate::ffi_types::NCollection_Array1_gp_Pnt,
         prec: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeConstruct_MakeTriangulation_ctor_array1ofpnt_real(pnts, prec)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeConstruct_MakeTriangulation_ctor_arr1_pnt_real(
+                    pnts, prec,
+                ),
+            ))
         }
     }
 
-    /// **Source:** `ShapeConstruct_MakeTriangulation.hxx`:35 - `ShapeConstruct_MakeTriangulation::ShapeConstruct_MakeTriangulation()`
+    /// **Source:** `ShapeConstruct_MakeTriangulation.hxx`:36 - `ShapeConstruct_MakeTriangulation::ShapeConstruct_MakeTriangulation()`
     pub fn new_wire_real(wire: &crate::topo_ds::Wire, prec: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -346,17 +348,19 @@ impl MakeTriangulation {
         }
     }
 
-    /// **Source:** `ShapeConstruct_MakeTriangulation.hxx`:32 - `ShapeConstruct_MakeTriangulation::ShapeConstruct_MakeTriangulation()`
-    pub fn new_array1ofpnt(pnts: &crate::ffi_types::TColgp_Array1OfPnt) -> crate::OwnedPtr<Self> {
-        Self::new_array1ofpnt_real(pnts, 0.0)
+    /// **Source:** `ShapeConstruct_MakeTriangulation.hxx`:33 - `ShapeConstruct_MakeTriangulation::ShapeConstruct_MakeTriangulation()`
+    pub fn new_arr1_pnt(
+        pnts: &crate::ffi_types::NCollection_Array1_gp_Pnt,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_arr1_pnt_real(pnts, 0.0)
     }
 
-    /// **Source:** `ShapeConstruct_MakeTriangulation.hxx`:35 - `ShapeConstruct_MakeTriangulation::ShapeConstruct_MakeTriangulation()`
+    /// **Source:** `ShapeConstruct_MakeTriangulation.hxx`:36 - `ShapeConstruct_MakeTriangulation::ShapeConstruct_MakeTriangulation()`
     pub fn new_wire(wire: &crate::topo_ds::Wire) -> crate::OwnedPtr<Self> {
         Self::new_wire_real(wire, 0.0)
     }
 
-    /// **Source:** `ShapeConstruct_MakeTriangulation.hxx`:38 - `ShapeConstruct_MakeTriangulation::Build()`
+    /// **Source:** `ShapeConstruct_MakeTriangulation.hxx`:39 - `ShapeConstruct_MakeTriangulation::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeConstruct_MakeTriangulation_build(
@@ -366,7 +370,7 @@ impl MakeTriangulation {
         })
     }
 
-    /// **Source:** `ShapeConstruct_MakeTriangulation.hxx`:41 - `ShapeConstruct_MakeTriangulation::IsDone()`
+    /// **Source:** `ShapeConstruct_MakeTriangulation.hxx`:42 - `ShapeConstruct_MakeTriangulation::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeConstruct_MakeTriangulation_is_done(
@@ -440,7 +444,7 @@ impl MakeTriangulation {
 // From ShapeConstruct_ProjectCurveOnSurface.hxx
 // ========================
 
-/// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:58 - `ShapeConstruct_ProjectCurveOnSurface`
+/// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:52 - `ShapeConstruct_ProjectCurveOnSurface`
 /// This tool provides a method for computing pcurve by projecting
 /// 3d curve onto a surface.
 /// Projection is done by 23 or more points (this number is changed
@@ -462,7 +466,7 @@ unsafe impl crate::CppDeletable for ProjectCurveOnSurface {
 }
 
 impl ProjectCurveOnSurface {
-    /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:63 - `ShapeConstruct_ProjectCurveOnSurface::ShapeConstruct_ProjectCurveOnSurface()`
+    /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:65 - `ShapeConstruct_ProjectCurveOnSurface::ShapeConstruct_ProjectCurveOnSurface()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -472,92 +476,95 @@ impl ProjectCurveOnSurface {
         }
     }
 
-    /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:67 - `ShapeConstruct_ProjectCurveOnSurface::Init()`
-    /// Initializes the object with all necessary parameters,
-    /// i.e. surface and precision
-    pub fn init_handlegeomsurface_real(
-        &mut self,
-        surf: &crate::ffi_types::HandleGeomSurface,
-        preci: f64,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKShHealing::ShapeConstruct_ProjectCurveOnSurface_init_handlegeomsurface_real(self as *mut Self, surf, preci)
-        })
-    }
-
     /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:71 - `ShapeConstruct_ProjectCurveOnSurface::Init()`
     /// Initializes the object with all necessary parameters,
     /// i.e. surface and precision
+    /// @param[in] theSurf the surface to project on
+    /// @param[in] thePreci the precision for projection
+    pub fn init_handlegeomsurface_real(
+        &mut self,
+        theSurf: &crate::ffi_types::Handle_Geom_Surface,
+        thePreci: f64,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeConstruct_ProjectCurveOnSurface_init_handlegeomsurface_real(self as *mut Self, theSurf, thePreci)
+        })
+    }
+
+    /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:78 - `ShapeConstruct_ProjectCurveOnSurface::Init()`
+    /// Initializes the object with all necessary parameters,
+    /// i.e. surface and precision
+    /// @param[in] theSurf the surface to project on (ShapeAnalysis_Surface)
+    /// @param[in] thePreci the precision for projection
     pub fn init_handleshapeanalysissurface_real(
         &mut self,
-        surf: &crate::ffi_types::HandleShapeAnalysisSurface,
-        preci: f64,
+        theSurf: &crate::ffi_types::Handle_ShapeAnalysis_Surface,
+        thePreci: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKShHealing::ShapeConstruct_ProjectCurveOnSurface_init_handleshapeanalysissurface_real(self as *mut Self, surf, preci)
+            crate::ffi_extern_TKShHealing::ShapeConstruct_ProjectCurveOnSurface_init_handleshapeanalysissurface_real(self as *mut Self, theSurf, thePreci)
         })
     }
 
-    /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:75 - `ShapeConstruct_ProjectCurveOnSurface::SetSurface()`
+    /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:83 - `ShapeConstruct_ProjectCurveOnSurface::SetSurface()`
     /// Loads a surface (in the form of Geom_Surface) to project on
-    pub fn set_surface_handlegeomsurface(&mut self, surf: &crate::ffi_types::HandleGeomSurface) {
+    /// @param[in] theSurf the surface to project on
+    pub fn set_surface_handlegeomsurface(
+        &mut self,
+        theSurf: &crate::ffi_types::Handle_Geom_Surface,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKShHealing::ShapeConstruct_ProjectCurveOnSurface_set_surface_handlegeomsurface(self as *mut Self, surf)
+            crate::ffi_extern_TKShHealing::ShapeConstruct_ProjectCurveOnSurface_set_surface_handlegeomsurface(self as *mut Self, theSurf)
         })
     }
 
-    /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:78 - `ShapeConstruct_ProjectCurveOnSurface::SetSurface()`
+    /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:87 - `ShapeConstruct_ProjectCurveOnSurface::SetSurface()`
     /// Loads a surface (in the form of ShapeAnalysis_Surface) to project on
+    /// @param[in] theSurf the surface to project on
     pub fn set_surface_handleshapeanalysissurface(
         &mut self,
-        surf: &crate::ffi_types::HandleShapeAnalysisSurface,
+        theSurf: &crate::ffi_types::Handle_ShapeAnalysis_Surface,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKShHealing::ShapeConstruct_ProjectCurveOnSurface_set_surface_handleshapeanalysissurface(self as *mut Self, surf)
+            crate::ffi_extern_TKShHealing::ShapeConstruct_ProjectCurveOnSurface_set_surface_handleshapeanalysissurface(self as *mut Self, theSurf)
         })
     }
 
-    /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:81 - `ShapeConstruct_ProjectCurveOnSurface::SetPrecision()`
+    /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:91 - `ShapeConstruct_ProjectCurveOnSurface::SetPrecision()`
     /// Sets value for current precision
-    pub fn set_precision(&mut self, preci: f64) {
+    /// @param[in] thePreci the precision value
+    pub fn set_precision(&mut self, thePreci: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeConstruct_ProjectCurveOnSurface_set_precision(
                 self as *mut Self,
-                preci,
+                thePreci,
             )
         })
     }
 
-    /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:86 - `ShapeConstruct_ProjectCurveOnSurface::BuildCurveMode()`
-    /// Returns (modifiable) the build-curve-3d mode, by default False
-    /// If True, if the projected curve has been recomputed by
-    /// interpolation, the 3d curve is also rebuild by interpolation
-    pub fn build_curve_mode(&mut self) -> &mut bool {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi_extern_TKShHealing::ShapeConstruct_ProjectCurveOnSurface_build_curve_mode(self as *mut Self)))
-        }
-    }
-
-    /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:99 - `ShapeConstruct_ProjectCurveOnSurface::AdjustOverDegenMode()`
+    /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:105 - `ShapeConstruct_ProjectCurveOnSurface::AdjustOverDegenMode()`
     /// Returns (modifiable) the flag specifying to which side of
     /// parametrical space adjust part of pcurve which lies on seam.
     /// This is required in very rare case when 3d curve which is
     /// to be projected goes partly along the seam on the closed
     /// surface with singularity (e.g. sphere), goes through the
-    /// degenerated point and paerly lies on internal area of surface.
+    /// degenerated point and partly lies on internal area of surface.
     ///
     /// If this flag is True, the seam part of such curve will be
     /// adjusted to the left side of parametric space (on sphere U=0),
     /// else to the right side (on sphere U=2*PI)
     /// Default value is True
+    /// @return modifiable reference to the adjustment flag
     pub fn adjust_over_degen_mode(&mut self) -> &mut i32 {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKShHealing::ShapeConstruct_ProjectCurveOnSurface_adjust_over_degen_mode(self as *mut Self)))
         }
     }
 
-    /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:102 - `ShapeConstruct_ProjectCurveOnSurface::Status()`
+    /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:110 - `ShapeConstruct_ProjectCurveOnSurface::Status()`
     /// Returns the status of last Perform
+    /// @param[in] theStatus the status to query
+    /// @return true if the specified status is set
     pub fn status(&self, theStatus: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeConstruct_ProjectCurveOnSurface_status(
@@ -567,73 +574,45 @@ impl ProjectCurveOnSurface {
         })
     }
 
-    /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:112 - `ShapeConstruct_ProjectCurveOnSurface::Perform()`
+    /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:126 - `ShapeConstruct_ProjectCurveOnSurface::Perform()`
     /// Computes the projection of 3d curve onto a surface using the
     /// specialized algorithm. Returns False if projector fails,
     /// otherwise, if pcurve computed successfully, returns True.
     /// The output curve 2D is guaranteed to be same-parameter
-    /// with input curve 3D on the interval [First, Last]. If the output curve
+    /// with input curve 3D on the interval [theFirst, theLast]. If the output curve
     /// lies on a direct line the infinite line is returned, in the case
     /// same-parameter condition is satisfied.
-    /// TolFirst and TolLast are the tolerances at the ends of input curve 3D.
+    /// @param[in] theC3D the 3D curve to project
+    /// @param[in] theFirst the first parameter of the curve
+    /// @param[in] theLast the last parameter of the curve
+    /// @param[out] theC2D the resulting 2D curve
+    /// @param[in] theTolFirst the tolerance at the first point (default: Precision::Confusion())
+    /// @param[in] theTolLast the tolerance at the last point (default: Precision::Confusion())
+    /// @return true if projection succeeded
     pub fn perform(
         &mut self,
-        c3d: &mut crate::ffi_types::HandleGeomCurve,
-        First: f64,
-        Last: f64,
-        c2d: &mut crate::ffi_types::HandleGeom2dCurve,
-        TolFirst: f64,
-        TolLast: f64,
+        theC3D: &crate::ffi_types::Handle_Geom_Curve,
+        theFirst: f64,
+        theLast: f64,
+        theC2D: &mut crate::ffi_types::Handle_Geom2d_Curve,
+        theTolFirst: f64,
+        theTolLast: f64,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeConstruct_ProjectCurveOnSurface_perform(
                 self as *mut Self,
-                c3d,
-                First,
-                Last,
-                c2d,
-                TolFirst,
-                TolLast,
+                theC3D,
+                theFirst,
+                theLast,
+                theC2D,
+                theTolFirst,
+                theTolLast,
             )
         })
     }
 
-    /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:128 - `ShapeConstruct_ProjectCurveOnSurface::PerformByProjLib()`
-    /// Computes the projection of 3d curve onto a surface using the
-    /// standard algorithm from ProjLib. Returns False if standard
-    /// projector fails or raises an exception or cuts the curve by
-    /// parametrical bounds of the surface. Else, if pcurve computed
-    /// successfully, returns True.
-    /// The continuity, maxdeg and nbinterval are parameters of call
-    /// to Approx_CurveOnSurface. If nbinterval is equal to -1
-    /// (default), this value is computed depending on source 3d curve
-    /// and surface.
-    pub fn perform_by_proj_lib(
-        &mut self,
-        c3d: &mut crate::ffi_types::HandleGeomCurve,
-        First: f64,
-        Last: f64,
-        c2d: &mut crate::ffi_types::HandleGeom2dCurve,
-        continuity: crate::geom_abs::Shape,
-        maxdeg: i32,
-        nbinterval: i32,
-    ) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKShHealing::ShapeConstruct_ProjectCurveOnSurface_perform_by_proj_lib(
-                self as *mut Self,
-                c3d,
-                First,
-                Last,
-                c2d,
-                continuity.into(),
-                maxdeg,
-                nbinterval,
-            )
-        })
-    }
-
-    /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:136 - `ShapeConstruct_ProjectCurveOnSurface::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:133 - `ShapeConstruct_ProjectCurveOnSurface::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeConstruct_ProjectCurveOnSurface_dynamic_type(
@@ -643,7 +622,7 @@ impl ProjectCurveOnSurface {
         }
     }
 
-    /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:136 - `ShapeConstruct_ProjectCurveOnSurface::get_type_name()`
+    /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:133 - `ShapeConstruct_ProjectCurveOnSurface::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -654,8 +633,8 @@ impl ProjectCurveOnSurface {
         .into_owned()
     }
 
-    /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:136 - `ShapeConstruct_ProjectCurveOnSurface::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:133 - `ShapeConstruct_ProjectCurveOnSurface::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeConstruct_ProjectCurveOnSurface_get_type_descriptor()))
         }
@@ -678,7 +657,7 @@ impl ProjectCurveOnSurface {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeConstructProjectCurveOnSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ShapeConstruct_ProjectCurveOnSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeConstruct_ProjectCurveOnSurface_to_handle(
@@ -688,8 +667,8 @@ impl ProjectCurveOnSurface {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeConstruct_ProjectCurveOnSurface_inherited_IsInstance(
                 self as *const Self,
@@ -698,8 +677,8 @@ impl ProjectCurveOnSurface {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeConstruct_ProjectCurveOnSurface_inherited_IsKind(
                 self as *const Self,
@@ -708,7 +687,7 @@ impl ProjectCurveOnSurface {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -724,28 +703,28 @@ impl ProjectCurveOnSurface {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeConstruct_ProjectCurveOnSurface_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeConstruct_ProjectCurveOnSurface_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeConstruct_ProjectCurveOnSurface_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeConstruct_ProjectCurveOnSurface_inherited_Delete(
@@ -755,33 +734,35 @@ impl ProjectCurveOnSurface {
     }
 }
 
-pub use crate::ffi_types::HandleShapeConstructProjectCurveOnSurface;
+pub use crate::ffi_types::Handle_ShapeConstruct_ProjectCurveOnSurface;
 
-unsafe impl crate::CppDeletable for HandleShapeConstructProjectCurveOnSurface {
+unsafe impl crate::CppDeletable for Handle_ShapeConstruct_ProjectCurveOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeConstructProjectCurveOnSurface_destructor(
+            crate::ffi_extern_TKShHealing::Handle_ShapeConstruct_ProjectCurveOnSurface_destructor(
                 ptr,
             );
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleShapeConstructProjectCurveOnSurface {
+unsafe impl crate::CppCopyable for Handle_ShapeConstruct_ProjectCurveOnSurface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeConstructProjectCurveOnSurface_clone(ptr),
+                crate::ffi_extern_TKShHealing::Handle_ShapeConstruct_ProjectCurveOnSurface_clone(
+                    ptr,
+                ),
             )
         }
     }
 }
 
-impl HandleShapeConstructProjectCurveOnSurface {
+impl Handle_ShapeConstruct_ProjectCurveOnSurface {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeConstructProjectCurveOnSurface_is_null(
+            crate::ffi_extern_TKShHealing::Handle_ShapeConstruct_ProjectCurveOnSurface_is_null(
                 self as *const Self,
             )
         }
@@ -791,7 +772,7 @@ impl HandleShapeConstructProjectCurveOnSurface {
     pub fn get(&self) -> &crate::ffi_types::ShapeConstruct_ProjectCurveOnSurface {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeConstructProjectCurveOnSurface_get(
+                crate::ffi_extern_TKShHealing::Handle_ShapeConstruct_ProjectCurveOnSurface_get(
                     self as *const Self,
                 ),
             )
@@ -802,7 +783,7 @@ impl HandleShapeConstructProjectCurveOnSurface {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeConstruct_ProjectCurveOnSurface {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeConstructProjectCurveOnSurface_get_mut(
+                crate::ffi_extern_TKShHealing::Handle_ShapeConstruct_ProjectCurveOnSurface_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -812,9 +793,9 @@ impl HandleShapeConstructProjectCurveOnSurface {
     /// Upcast Handle<ShapeConstruct_ProjectCurveOnSurface> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeConstructProjectCurveOnSurface_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeConstruct_ProjectCurveOnSurface_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }

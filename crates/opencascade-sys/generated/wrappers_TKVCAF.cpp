@@ -4,17 +4,13 @@
 #include "occt_preamble.hxx"
 
 #include <AIS_InteractiveContext.hxx>
+#include <AIS_InteractiveObject.hxx>
 #include <Graphic3d_NameOfMaterial.hxx>
 #include <Quantity_NameOfColor.hxx>
-#include <Standard_GUID.hxx>
 #include <Standard_Handle.hxx>
-#include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
-#include <TCollection_ExtendedString.hxx>
 #include <TDF_Attribute.hxx>
 #include <TDF_AttributeDelta.hxx>
-#include <TDF_AttributeIndexedMap.hxx>
-#include <TDF_IDFilter.hxx>
 #include <TDF_RelocationTable.hxx>
 #include <TDataXtd_Constraint.hxx>
 #include <TPrsStd_AISPresentation.hxx>
@@ -32,88 +28,88 @@
 #include <XCAFPrs_Driver.hxx>
 
 // Handle type aliases
-typedef opencascade::handle<AIS_InteractiveContext> HandleAISInteractiveContext;
-typedef opencascade::handle<AIS_InteractiveObject> HandleAISInteractiveObject;
-typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
-typedef opencascade::handle<Standard_Type> HandleStandardType;
-typedef opencascade::handle<TDF_Attribute> HandleTDFAttribute;
-typedef opencascade::handle<TDF_AttributeDelta> HandleTDFAttributeDelta;
-typedef opencascade::handle<TDF_RelocationTable> HandleTDFRelocationTable;
-typedef opencascade::handle<TDataXtd_Constraint> HandleTDataXtdConstraint;
-typedef opencascade::handle<TPrsStd_AISPresentation> HandleTPrsStdAISPresentation;
-typedef opencascade::handle<TPrsStd_AISViewer> HandleTPrsStdAISViewer;
-typedef opencascade::handle<TPrsStd_AxisDriver> HandleTPrsStdAxisDriver;
-typedef opencascade::handle<TPrsStd_ConstraintDriver> HandleTPrsStdConstraintDriver;
-typedef opencascade::handle<TPrsStd_Driver> HandleTPrsStdDriver;
-typedef opencascade::handle<TPrsStd_DriverTable> HandleTPrsStdDriverTable;
-typedef opencascade::handle<TPrsStd_GeometryDriver> HandleTPrsStdGeometryDriver;
-typedef opencascade::handle<TPrsStd_NamedShapeDriver> HandleTPrsStdNamedShapeDriver;
-typedef opencascade::handle<TPrsStd_PlaneDriver> HandleTPrsStdPlaneDriver;
-typedef opencascade::handle<TPrsStd_PointDriver> HandleTPrsStdPointDriver;
-typedef opencascade::handle<V3d_Viewer> HandleV3dViewer;
-typedef opencascade::handle<XCAFPrs_Driver> HandleXCAFPrsDriver;
+typedef opencascade::handle<AIS_InteractiveContext> Handle_AIS_InteractiveContext;
+typedef opencascade::handle<AIS_InteractiveObject> Handle_AIS_InteractiveObject;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
+typedef opencascade::handle<TDF_Attribute> Handle_TDF_Attribute;
+typedef opencascade::handle<TDF_AttributeDelta> Handle_TDF_AttributeDelta;
+typedef opencascade::handle<TDF_RelocationTable> Handle_TDF_RelocationTable;
+typedef opencascade::handle<TDataXtd_Constraint> Handle_TDataXtd_Constraint;
+typedef opencascade::handle<TPrsStd_AISPresentation> Handle_TPrsStd_AISPresentation;
+typedef opencascade::handle<TPrsStd_AISViewer> Handle_TPrsStd_AISViewer;
+typedef opencascade::handle<TPrsStd_AxisDriver> Handle_TPrsStd_AxisDriver;
+typedef opencascade::handle<TPrsStd_ConstraintDriver> Handle_TPrsStd_ConstraintDriver;
+typedef opencascade::handle<TPrsStd_Driver> Handle_TPrsStd_Driver;
+typedef opencascade::handle<TPrsStd_DriverTable> Handle_TPrsStd_DriverTable;
+typedef opencascade::handle<TPrsStd_GeometryDriver> Handle_TPrsStd_GeometryDriver;
+typedef opencascade::handle<TPrsStd_NamedShapeDriver> Handle_TPrsStd_NamedShapeDriver;
+typedef opencascade::handle<TPrsStd_PlaneDriver> Handle_TPrsStd_PlaneDriver;
+typedef opencascade::handle<TPrsStd_PointDriver> Handle_TPrsStd_PointDriver;
+typedef opencascade::handle<V3d_Viewer> Handle_V3d_Viewer;
+typedef opencascade::handle<XCAFPrs_Driver> Handle_XCAFPrs_Driver;
 
 // Handle type destructors, clone, and is_null functions
-extern "C" void HandleTPrsStdAISPresentation_destructor(HandleTPrsStdAISPresentation* self_) { delete self_; }
-extern "C" OcctResult<HandleTPrsStdAISPresentation*> HandleTPrsStdAISPresentation_clone(const HandleTPrsStdAISPresentation* self_) {
-    try { return {new HandleTPrsStdAISPresentation(*self_), nullptr}; }
+extern "C" void Handle_TPrsStd_AISPresentation_destructor(Handle_TPrsStd_AISPresentation* self_) { delete self_; }
+extern "C" OcctResult<Handle_TPrsStd_AISPresentation*> Handle_TPrsStd_AISPresentation_clone(const Handle_TPrsStd_AISPresentation* self_) {
+    try { return {new Handle_TPrsStd_AISPresentation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTPrsStdAISPresentation_is_null(const HandleTPrsStdAISPresentation* self_) { return self_->IsNull(); }
-extern "C" void HandleTPrsStdAISViewer_destructor(HandleTPrsStdAISViewer* self_) { delete self_; }
-extern "C" OcctResult<HandleTPrsStdAISViewer*> HandleTPrsStdAISViewer_clone(const HandleTPrsStdAISViewer* self_) {
-    try { return {new HandleTPrsStdAISViewer(*self_), nullptr}; }
+extern "C" bool Handle_TPrsStd_AISPresentation_is_null(const Handle_TPrsStd_AISPresentation* self_) { return self_->IsNull(); }
+extern "C" void Handle_TPrsStd_AISViewer_destructor(Handle_TPrsStd_AISViewer* self_) { delete self_; }
+extern "C" OcctResult<Handle_TPrsStd_AISViewer*> Handle_TPrsStd_AISViewer_clone(const Handle_TPrsStd_AISViewer* self_) {
+    try { return {new Handle_TPrsStd_AISViewer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTPrsStdAISViewer_is_null(const HandleTPrsStdAISViewer* self_) { return self_->IsNull(); }
-extern "C" void HandleTPrsStdAxisDriver_destructor(HandleTPrsStdAxisDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleTPrsStdAxisDriver*> HandleTPrsStdAxisDriver_clone(const HandleTPrsStdAxisDriver* self_) {
-    try { return {new HandleTPrsStdAxisDriver(*self_), nullptr}; }
+extern "C" bool Handle_TPrsStd_AISViewer_is_null(const Handle_TPrsStd_AISViewer* self_) { return self_->IsNull(); }
+extern "C" void Handle_TPrsStd_AxisDriver_destructor(Handle_TPrsStd_AxisDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_TPrsStd_AxisDriver*> Handle_TPrsStd_AxisDriver_clone(const Handle_TPrsStd_AxisDriver* self_) {
+    try { return {new Handle_TPrsStd_AxisDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTPrsStdAxisDriver_is_null(const HandleTPrsStdAxisDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleTPrsStdConstraintDriver_destructor(HandleTPrsStdConstraintDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleTPrsStdConstraintDriver*> HandleTPrsStdConstraintDriver_clone(const HandleTPrsStdConstraintDriver* self_) {
-    try { return {new HandleTPrsStdConstraintDriver(*self_), nullptr}; }
+extern "C" bool Handle_TPrsStd_AxisDriver_is_null(const Handle_TPrsStd_AxisDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_TPrsStd_ConstraintDriver_destructor(Handle_TPrsStd_ConstraintDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_TPrsStd_ConstraintDriver*> Handle_TPrsStd_ConstraintDriver_clone(const Handle_TPrsStd_ConstraintDriver* self_) {
+    try { return {new Handle_TPrsStd_ConstraintDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTPrsStdConstraintDriver_is_null(const HandleTPrsStdConstraintDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleTPrsStdDriver_destructor(HandleTPrsStdDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleTPrsStdDriver*> HandleTPrsStdDriver_clone(const HandleTPrsStdDriver* self_) {
-    try { return {new HandleTPrsStdDriver(*self_), nullptr}; }
+extern "C" bool Handle_TPrsStd_ConstraintDriver_is_null(const Handle_TPrsStd_ConstraintDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_TPrsStd_Driver_destructor(Handle_TPrsStd_Driver* self_) { delete self_; }
+extern "C" OcctResult<Handle_TPrsStd_Driver*> Handle_TPrsStd_Driver_clone(const Handle_TPrsStd_Driver* self_) {
+    try { return {new Handle_TPrsStd_Driver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTPrsStdDriver_is_null(const HandleTPrsStdDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleTPrsStdDriverTable_destructor(HandleTPrsStdDriverTable* self_) { delete self_; }
-extern "C" OcctResult<HandleTPrsStdDriverTable*> HandleTPrsStdDriverTable_clone(const HandleTPrsStdDriverTable* self_) {
-    try { return {new HandleTPrsStdDriverTable(*self_), nullptr}; }
+extern "C" bool Handle_TPrsStd_Driver_is_null(const Handle_TPrsStd_Driver* self_) { return self_->IsNull(); }
+extern "C" void Handle_TPrsStd_DriverTable_destructor(Handle_TPrsStd_DriverTable* self_) { delete self_; }
+extern "C" OcctResult<Handle_TPrsStd_DriverTable*> Handle_TPrsStd_DriverTable_clone(const Handle_TPrsStd_DriverTable* self_) {
+    try { return {new Handle_TPrsStd_DriverTable(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTPrsStdDriverTable_is_null(const HandleTPrsStdDriverTable* self_) { return self_->IsNull(); }
-extern "C" void HandleTPrsStdGeometryDriver_destructor(HandleTPrsStdGeometryDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleTPrsStdGeometryDriver*> HandleTPrsStdGeometryDriver_clone(const HandleTPrsStdGeometryDriver* self_) {
-    try { return {new HandleTPrsStdGeometryDriver(*self_), nullptr}; }
+extern "C" bool Handle_TPrsStd_DriverTable_is_null(const Handle_TPrsStd_DriverTable* self_) { return self_->IsNull(); }
+extern "C" void Handle_TPrsStd_GeometryDriver_destructor(Handle_TPrsStd_GeometryDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_TPrsStd_GeometryDriver*> Handle_TPrsStd_GeometryDriver_clone(const Handle_TPrsStd_GeometryDriver* self_) {
+    try { return {new Handle_TPrsStd_GeometryDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTPrsStdGeometryDriver_is_null(const HandleTPrsStdGeometryDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleTPrsStdNamedShapeDriver_destructor(HandleTPrsStdNamedShapeDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleTPrsStdNamedShapeDriver*> HandleTPrsStdNamedShapeDriver_clone(const HandleTPrsStdNamedShapeDriver* self_) {
-    try { return {new HandleTPrsStdNamedShapeDriver(*self_), nullptr}; }
+extern "C" bool Handle_TPrsStd_GeometryDriver_is_null(const Handle_TPrsStd_GeometryDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_TPrsStd_NamedShapeDriver_destructor(Handle_TPrsStd_NamedShapeDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_TPrsStd_NamedShapeDriver*> Handle_TPrsStd_NamedShapeDriver_clone(const Handle_TPrsStd_NamedShapeDriver* self_) {
+    try { return {new Handle_TPrsStd_NamedShapeDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTPrsStdNamedShapeDriver_is_null(const HandleTPrsStdNamedShapeDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleTPrsStdPlaneDriver_destructor(HandleTPrsStdPlaneDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleTPrsStdPlaneDriver*> HandleTPrsStdPlaneDriver_clone(const HandleTPrsStdPlaneDriver* self_) {
-    try { return {new HandleTPrsStdPlaneDriver(*self_), nullptr}; }
+extern "C" bool Handle_TPrsStd_NamedShapeDriver_is_null(const Handle_TPrsStd_NamedShapeDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_TPrsStd_PlaneDriver_destructor(Handle_TPrsStd_PlaneDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_TPrsStd_PlaneDriver*> Handle_TPrsStd_PlaneDriver_clone(const Handle_TPrsStd_PlaneDriver* self_) {
+    try { return {new Handle_TPrsStd_PlaneDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTPrsStdPlaneDriver_is_null(const HandleTPrsStdPlaneDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleTPrsStdPointDriver_destructor(HandleTPrsStdPointDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleTPrsStdPointDriver*> HandleTPrsStdPointDriver_clone(const HandleTPrsStdPointDriver* self_) {
-    try { return {new HandleTPrsStdPointDriver(*self_), nullptr}; }
+extern "C" bool Handle_TPrsStd_PlaneDriver_is_null(const Handle_TPrsStd_PlaneDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_TPrsStd_PointDriver_destructor(Handle_TPrsStd_PointDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_TPrsStd_PointDriver*> Handle_TPrsStd_PointDriver_clone(const Handle_TPrsStd_PointDriver* self_) {
+    try { return {new Handle_TPrsStd_PointDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTPrsStdPointDriver_is_null(const HandleTPrsStdPointDriver* self_) { return self_->IsNull(); }
+extern "C" bool Handle_TPrsStd_PointDriver_is_null(const Handle_TPrsStd_PointDriver* self_) { return self_->IsNull(); }
 
 // ========================
 // TPrsStd_AISPresentation wrappers
@@ -162,14 +158,6 @@ extern "C" const char* TPrsStd_AISPresentation_set_driver_guid(TPrsStd_AISPresen
 extern "C" OcctResult<bool> TPrsStd_AISPresentation_is_displayed(const TPrsStd_AISPresentation* self_) {
     try { return {self_->IsDisplayed(), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TPrsStd_AISPresentation_material(const TPrsStd_AISPresentation* self_) {
-    try { return {static_cast<int32_t>(self_->Material()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TPrsStd_AISPresentation_set_material(TPrsStd_AISPresentation* self_, int32_t aName) {
-    try { self_->SetMaterial(static_cast<Graphic3d_NameOfMaterial>(aName)); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<bool> TPrsStd_AISPresentation_has_own_material(const TPrsStd_AISPresentation* self_) {
     try { return {self_->HasOwnMaterial(), nullptr}; }
@@ -335,24 +323,24 @@ extern "C" OcctResult<const TDF_Attribute*> TPrsStd_AISPresentation_as_TDF_Attri
 extern "C" OcctResult<TDF_Attribute*> TPrsStd_AISPresentation_as_TDF_Attribute_mut(TPrsStd_AISPresentation* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TPrsStd_AISPresentation_as_Standard_Transient(const TPrsStd_AISPresentation* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TPrsStd_AISPresentation_as_Standard_Transient_mut(TPrsStd_AISPresentation* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTPrsStdAISPresentation*> TPrsStd_AISPresentation_to_handle(TPrsStd_AISPresentation* obj) {
-    try { return {new HandleTPrsStdAISPresentation(obj), nullptr}; }
+extern "C" OcctResult<Handle_TPrsStd_AISPresentation*> TPrsStd_AISPresentation_to_handle(TPrsStd_AISPresentation* obj) {
+    try { return {new Handle_TPrsStd_AISPresentation(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TPrsStd_AISPresentation*> HandleTPrsStdAISPresentation_get(const HandleTPrsStdAISPresentation* handle) {
+extern "C" OcctResult<const TPrsStd_AISPresentation*> Handle_TPrsStd_AISPresentation_get(const Handle_TPrsStd_AISPresentation* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TPrsStd_AISPresentation*> HandleTPrsStdAISPresentation_get_mut(HandleTPrsStdAISPresentation* handle) {
+extern "C" OcctResult<TPrsStd_AISPresentation*> Handle_TPrsStd_AISPresentation_get_mut(Handle_TPrsStd_AISPresentation* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTPrsStdAISPresentation_to_HandleTDFAttribute(const HandleTPrsStdAISPresentation* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TPrsStd_AISPresentation_to_Handle_TDF_Attribute(const Handle_TPrsStd_AISPresentation* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTPrsStdAISPresentation_to_HandleStandardTransient(const HandleTPrsStdAISPresentation* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TPrsStd_AISPresentation_to_Handle_Standard_Transient(const Handle_TPrsStd_AISPresentation* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TPrsStd_AISPresentation_inherited_SetID(TPrsStd_AISPresentation* self, Standard_GUID const& arg0) {
@@ -441,10 +429,6 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TPrsStd_AISPresentation_inher
 }
 extern "C" const char* TPrsStd_AISPresentation_inherited_References(const TPrsStd_AISPresentation* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TPrsStd_AISPresentation_inherited_ExtendedDump(const TPrsStd_AISPresentation* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TPrsStd_AISPresentation_inherited_Forget(TPrsStd_AISPresentation* self, int32_t aTransaction) {
@@ -565,24 +549,24 @@ extern "C" OcctResult<const TDF_Attribute*> TPrsStd_AISViewer_as_TDF_Attribute(c
 extern "C" OcctResult<TDF_Attribute*> TPrsStd_AISViewer_as_TDF_Attribute_mut(TPrsStd_AISViewer* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TPrsStd_AISViewer_as_Standard_Transient(const TPrsStd_AISViewer* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TPrsStd_AISViewer_as_Standard_Transient_mut(TPrsStd_AISViewer* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTPrsStdAISViewer*> TPrsStd_AISViewer_to_handle(TPrsStd_AISViewer* obj) {
-    try { return {new HandleTPrsStdAISViewer(obj), nullptr}; }
+extern "C" OcctResult<Handle_TPrsStd_AISViewer*> TPrsStd_AISViewer_to_handle(TPrsStd_AISViewer* obj) {
+    try { return {new Handle_TPrsStd_AISViewer(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TPrsStd_AISViewer*> HandleTPrsStdAISViewer_get(const HandleTPrsStdAISViewer* handle) {
+extern "C" OcctResult<const TPrsStd_AISViewer*> Handle_TPrsStd_AISViewer_get(const Handle_TPrsStd_AISViewer* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TPrsStd_AISViewer*> HandleTPrsStdAISViewer_get_mut(HandleTPrsStdAISViewer* handle) {
+extern "C" OcctResult<TPrsStd_AISViewer*> Handle_TPrsStd_AISViewer_get_mut(Handle_TPrsStd_AISViewer* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTPrsStdAISViewer_to_HandleTDFAttribute(const HandleTPrsStdAISViewer* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TPrsStd_AISViewer_to_Handle_TDF_Attribute(const Handle_TPrsStd_AISViewer* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTPrsStdAISViewer_to_HandleStandardTransient(const HandleTPrsStdAISViewer* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TPrsStd_AISViewer_to_Handle_Standard_Transient(const Handle_TPrsStd_AISViewer* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TPrsStd_AISViewer_inherited_SetID(TPrsStd_AISViewer* self, Standard_GUID const& arg0) {
@@ -701,10 +685,6 @@ extern "C" const char* TPrsStd_AISViewer_inherited_References(const TPrsStd_AISV
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TPrsStd_AISViewer_inherited_ExtendedDump(const TPrsStd_AISViewer* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TPrsStd_AISViewer_inherited_Forget(TPrsStd_AISViewer* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -767,24 +747,24 @@ extern "C" OcctResult<const TPrsStd_Driver*> TPrsStd_AxisDriver_as_TPrsStd_Drive
 extern "C" OcctResult<TPrsStd_Driver*> TPrsStd_AxisDriver_as_TPrsStd_Driver_mut(TPrsStd_AxisDriver* self_) { return {static_cast<TPrsStd_Driver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TPrsStd_AxisDriver_as_Standard_Transient(const TPrsStd_AxisDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TPrsStd_AxisDriver_as_Standard_Transient_mut(TPrsStd_AxisDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTPrsStdAxisDriver*> TPrsStd_AxisDriver_to_handle(TPrsStd_AxisDriver* obj) {
-    try { return {new HandleTPrsStdAxisDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_TPrsStd_AxisDriver*> TPrsStd_AxisDriver_to_handle(TPrsStd_AxisDriver* obj) {
+    try { return {new Handle_TPrsStd_AxisDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TPrsStd_AxisDriver*> HandleTPrsStdAxisDriver_get(const HandleTPrsStdAxisDriver* handle) {
+extern "C" OcctResult<const TPrsStd_AxisDriver*> Handle_TPrsStd_AxisDriver_get(const Handle_TPrsStd_AxisDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TPrsStd_AxisDriver*> HandleTPrsStdAxisDriver_get_mut(HandleTPrsStdAxisDriver* handle) {
+extern "C" OcctResult<TPrsStd_AxisDriver*> Handle_TPrsStd_AxisDriver_get_mut(Handle_TPrsStd_AxisDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTPrsStdDriver*> HandleTPrsStdAxisDriver_to_HandleTPrsStdDriver(const HandleTPrsStdAxisDriver* self_) {
-    try { return {new HandleTPrsStdDriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TPrsStd_Driver*> Handle_TPrsStd_AxisDriver_to_Handle_TPrsStd_Driver(const Handle_TPrsStd_AxisDriver* self_) {
+    try { return {new Handle_TPrsStd_Driver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTPrsStdAxisDriver_to_HandleStandardTransient(const HandleTPrsStdAxisDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TPrsStd_AxisDriver_to_Handle_Standard_Transient(const Handle_TPrsStd_AxisDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TPrsStd_AxisDriver_inherited_IsInstance(const TPrsStd_AxisDriver* self, Handle(Standard_Type) const& theType) {
@@ -845,24 +825,24 @@ extern "C" OcctResult<const TPrsStd_Driver*> TPrsStd_ConstraintDriver_as_TPrsStd
 extern "C" OcctResult<TPrsStd_Driver*> TPrsStd_ConstraintDriver_as_TPrsStd_Driver_mut(TPrsStd_ConstraintDriver* self_) { return {static_cast<TPrsStd_Driver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TPrsStd_ConstraintDriver_as_Standard_Transient(const TPrsStd_ConstraintDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TPrsStd_ConstraintDriver_as_Standard_Transient_mut(TPrsStd_ConstraintDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTPrsStdConstraintDriver*> TPrsStd_ConstraintDriver_to_handle(TPrsStd_ConstraintDriver* obj) {
-    try { return {new HandleTPrsStdConstraintDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_TPrsStd_ConstraintDriver*> TPrsStd_ConstraintDriver_to_handle(TPrsStd_ConstraintDriver* obj) {
+    try { return {new Handle_TPrsStd_ConstraintDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TPrsStd_ConstraintDriver*> HandleTPrsStdConstraintDriver_get(const HandleTPrsStdConstraintDriver* handle) {
+extern "C" OcctResult<const TPrsStd_ConstraintDriver*> Handle_TPrsStd_ConstraintDriver_get(const Handle_TPrsStd_ConstraintDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TPrsStd_ConstraintDriver*> HandleTPrsStdConstraintDriver_get_mut(HandleTPrsStdConstraintDriver* handle) {
+extern "C" OcctResult<TPrsStd_ConstraintDriver*> Handle_TPrsStd_ConstraintDriver_get_mut(Handle_TPrsStd_ConstraintDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTPrsStdDriver*> HandleTPrsStdConstraintDriver_to_HandleTPrsStdDriver(const HandleTPrsStdConstraintDriver* self_) {
-    try { return {new HandleTPrsStdDriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TPrsStd_Driver*> Handle_TPrsStd_ConstraintDriver_to_Handle_TPrsStd_Driver(const Handle_TPrsStd_ConstraintDriver* self_) {
+    try { return {new Handle_TPrsStd_Driver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTPrsStdConstraintDriver_to_HandleStandardTransient(const HandleTPrsStdConstraintDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TPrsStd_ConstraintDriver_to_Handle_Standard_Transient(const Handle_TPrsStd_ConstraintDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TPrsStd_ConstraintDriver_inherited_IsInstance(const TPrsStd_ConstraintDriver* self, Handle(Standard_Type) const& theType) {
@@ -907,93 +887,93 @@ extern "C" const char* TPrsStd_ConstraintTools_update_only_value(Handle(TDataXtd
     try { TPrsStd_ConstraintTools::UpdateOnlyValue(*aConst, *anAIS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TPrsStd_ConstraintTools_compute_distance(Handle(TDataXtd_Constraint) const* aConst, Handle(AIS_InteractiveObject)* anAIS) {
-    try { TPrsStd_ConstraintTools::ComputeDistance(*aConst, *anAIS); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<Handle(AIS_InteractiveObject)*> TPrsStd_ConstraintTools_compute_distance(Handle(TDataXtd_Constraint) const* aConst) {
+    try { return {new Handle(AIS_InteractiveObject)(TPrsStd_ConstraintTools::ComputeDistance(*aConst)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
-extern "C" const char* TPrsStd_ConstraintTools_compute_parallel(Handle(TDataXtd_Constraint) const* aConst, Handle(AIS_InteractiveObject)* anAIS) {
-    try { TPrsStd_ConstraintTools::ComputeParallel(*aConst, *anAIS); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<Handle(AIS_InteractiveObject)*> TPrsStd_ConstraintTools_compute_parallel(Handle(TDataXtd_Constraint) const* aConst) {
+    try { return {new Handle(AIS_InteractiveObject)(TPrsStd_ConstraintTools::ComputeParallel(*aConst)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
-extern "C" const char* TPrsStd_ConstraintTools_compute_tangent(Handle(TDataXtd_Constraint) const* aConst, Handle(AIS_InteractiveObject)* anAIS) {
-    try { TPrsStd_ConstraintTools::ComputeTangent(*aConst, *anAIS); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<Handle(AIS_InteractiveObject)*> TPrsStd_ConstraintTools_compute_tangent(Handle(TDataXtd_Constraint) const* aConst) {
+    try { return {new Handle(AIS_InteractiveObject)(TPrsStd_ConstraintTools::ComputeTangent(*aConst)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
-extern "C" const char* TPrsStd_ConstraintTools_compute_perpendicular(Handle(TDataXtd_Constraint) const* aConst, Handle(AIS_InteractiveObject)* anAIS) {
-    try { TPrsStd_ConstraintTools::ComputePerpendicular(*aConst, *anAIS); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<Handle(AIS_InteractiveObject)*> TPrsStd_ConstraintTools_compute_perpendicular(Handle(TDataXtd_Constraint) const* aConst) {
+    try { return {new Handle(AIS_InteractiveObject)(TPrsStd_ConstraintTools::ComputePerpendicular(*aConst)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
-extern "C" const char* TPrsStd_ConstraintTools_compute_concentric(Handle(TDataXtd_Constraint) const* aConst, Handle(AIS_InteractiveObject)* anAIS) {
-    try { TPrsStd_ConstraintTools::ComputeConcentric(*aConst, *anAIS); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<Handle(AIS_InteractiveObject)*> TPrsStd_ConstraintTools_compute_concentric(Handle(TDataXtd_Constraint) const* aConst) {
+    try { return {new Handle(AIS_InteractiveObject)(TPrsStd_ConstraintTools::ComputeConcentric(*aConst)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
-extern "C" const char* TPrsStd_ConstraintTools_compute_symmetry(Handle(TDataXtd_Constraint) const* aConst, Handle(AIS_InteractiveObject)* anAIS) {
-    try { TPrsStd_ConstraintTools::ComputeSymmetry(*aConst, *anAIS); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<Handle(AIS_InteractiveObject)*> TPrsStd_ConstraintTools_compute_symmetry(Handle(TDataXtd_Constraint) const* aConst) {
+    try { return {new Handle(AIS_InteractiveObject)(TPrsStd_ConstraintTools::ComputeSymmetry(*aConst)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
-extern "C" const char* TPrsStd_ConstraintTools_compute_mid_point(Handle(TDataXtd_Constraint) const* aConst, Handle(AIS_InteractiveObject)* anAIS) {
-    try { TPrsStd_ConstraintTools::ComputeMidPoint(*aConst, *anAIS); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<Handle(AIS_InteractiveObject)*> TPrsStd_ConstraintTools_compute_mid_point(Handle(TDataXtd_Constraint) const* aConst) {
+    try { return {new Handle(AIS_InteractiveObject)(TPrsStd_ConstraintTools::ComputeMidPoint(*aConst)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
-extern "C" const char* TPrsStd_ConstraintTools_compute_angle(Handle(TDataXtd_Constraint) const* aConst, Handle(AIS_InteractiveObject)* anAIS) {
-    try { TPrsStd_ConstraintTools::ComputeAngle(*aConst, *anAIS); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<Handle(AIS_InteractiveObject)*> TPrsStd_ConstraintTools_compute_angle(Handle(TDataXtd_Constraint) const* aConst) {
+    try { return {new Handle(AIS_InteractiveObject)(TPrsStd_ConstraintTools::ComputeAngle(*aConst)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
-extern "C" const char* TPrsStd_ConstraintTools_compute_radius(Handle(TDataXtd_Constraint) const* aConst, Handle(AIS_InteractiveObject)* anAIS) {
-    try { TPrsStd_ConstraintTools::ComputeRadius(*aConst, *anAIS); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<Handle(AIS_InteractiveObject)*> TPrsStd_ConstraintTools_compute_radius(Handle(TDataXtd_Constraint) const* aConst) {
+    try { return {new Handle(AIS_InteractiveObject)(TPrsStd_ConstraintTools::ComputeRadius(*aConst)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
-extern "C" const char* TPrsStd_ConstraintTools_compute_min_radius(Handle(TDataXtd_Constraint) const* aConst, Handle(AIS_InteractiveObject)* anAIS) {
-    try { TPrsStd_ConstraintTools::ComputeMinRadius(*aConst, *anAIS); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<Handle(AIS_InteractiveObject)*> TPrsStd_ConstraintTools_compute_min_radius(Handle(TDataXtd_Constraint) const* aConst) {
+    try { return {new Handle(AIS_InteractiveObject)(TPrsStd_ConstraintTools::ComputeMinRadius(*aConst)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
-extern "C" const char* TPrsStd_ConstraintTools_compute_max_radius(Handle(TDataXtd_Constraint) const* aConst, Handle(AIS_InteractiveObject)* anAIS) {
-    try { TPrsStd_ConstraintTools::ComputeMaxRadius(*aConst, *anAIS); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<Handle(AIS_InteractiveObject)*> TPrsStd_ConstraintTools_compute_max_radius(Handle(TDataXtd_Constraint) const* aConst) {
+    try { return {new Handle(AIS_InteractiveObject)(TPrsStd_ConstraintTools::ComputeMaxRadius(*aConst)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
-extern "C" const char* TPrsStd_ConstraintTools_compute_equal_distance(Handle(TDataXtd_Constraint) const* aConst, Handle(AIS_InteractiveObject)* anAIS) {
-    try { TPrsStd_ConstraintTools::ComputeEqualDistance(*aConst, *anAIS); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<Handle(AIS_InteractiveObject)*> TPrsStd_ConstraintTools_compute_equal_distance(Handle(TDataXtd_Constraint) const* aConst) {
+    try { return {new Handle(AIS_InteractiveObject)(TPrsStd_ConstraintTools::ComputeEqualDistance(*aConst)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
-extern "C" const char* TPrsStd_ConstraintTools_compute_equal_radius(Handle(TDataXtd_Constraint) const* aConst, Handle(AIS_InteractiveObject)* anAIS) {
-    try { TPrsStd_ConstraintTools::ComputeEqualRadius(*aConst, *anAIS); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<Handle(AIS_InteractiveObject)*> TPrsStd_ConstraintTools_compute_equal_radius(Handle(TDataXtd_Constraint) const* aConst) {
+    try { return {new Handle(AIS_InteractiveObject)(TPrsStd_ConstraintTools::ComputeEqualRadius(*aConst)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
-extern "C" const char* TPrsStd_ConstraintTools_compute_fix(Handle(TDataXtd_Constraint) const* aConst, Handle(AIS_InteractiveObject)* anAIS) {
-    try { TPrsStd_ConstraintTools::ComputeFix(*aConst, *anAIS); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<Handle(AIS_InteractiveObject)*> TPrsStd_ConstraintTools_compute_fix(Handle(TDataXtd_Constraint) const* aConst) {
+    try { return {new Handle(AIS_InteractiveObject)(TPrsStd_ConstraintTools::ComputeFix(*aConst)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
-extern "C" const char* TPrsStd_ConstraintTools_compute_diameter(Handle(TDataXtd_Constraint) const* aConst, Handle(AIS_InteractiveObject)* anAIS) {
-    try { TPrsStd_ConstraintTools::ComputeDiameter(*aConst, *anAIS); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<Handle(AIS_InteractiveObject)*> TPrsStd_ConstraintTools_compute_diameter(Handle(TDataXtd_Constraint) const* aConst) {
+    try { return {new Handle(AIS_InteractiveObject)(TPrsStd_ConstraintTools::ComputeDiameter(*aConst)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
-extern "C" const char* TPrsStd_ConstraintTools_compute_offset(Handle(TDataXtd_Constraint) const* aConst, Handle(AIS_InteractiveObject)* anAIS) {
-    try { TPrsStd_ConstraintTools::ComputeOffset(*aConst, *anAIS); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<Handle(AIS_InteractiveObject)*> TPrsStd_ConstraintTools_compute_offset(Handle(TDataXtd_Constraint) const* aConst) {
+    try { return {new Handle(AIS_InteractiveObject)(TPrsStd_ConstraintTools::ComputeOffset(*aConst)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
-extern "C" const char* TPrsStd_ConstraintTools_compute_placement(Handle(TDataXtd_Constraint) const* aConst, Handle(AIS_InteractiveObject)* anAIS) {
-    try { TPrsStd_ConstraintTools::ComputePlacement(*aConst, *anAIS); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<Handle(AIS_InteractiveObject)*> TPrsStd_ConstraintTools_compute_placement(Handle(TDataXtd_Constraint) const* aConst) {
+    try { return {new Handle(AIS_InteractiveObject)(TPrsStd_ConstraintTools::ComputePlacement(*aConst)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
-extern "C" const char* TPrsStd_ConstraintTools_compute_coincident(Handle(TDataXtd_Constraint) const* aConst, Handle(AIS_InteractiveObject)* anAIS) {
-    try { TPrsStd_ConstraintTools::ComputeCoincident(*aConst, *anAIS); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<Handle(AIS_InteractiveObject)*> TPrsStd_ConstraintTools_compute_coincident(Handle(TDataXtd_Constraint) const* aConst) {
+    try { return {new Handle(AIS_InteractiveObject)(TPrsStd_ConstraintTools::ComputeCoincident(*aConst)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
-extern "C" const char* TPrsStd_ConstraintTools_compute_round(Handle(TDataXtd_Constraint) const* aConst, Handle(AIS_InteractiveObject)* anAIS) {
-    try { TPrsStd_ConstraintTools::ComputeRound(*aConst, *anAIS); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<Handle(AIS_InteractiveObject)*> TPrsStd_ConstraintTools_compute_round(Handle(TDataXtd_Constraint) const* aConst) {
+    try { return {new Handle(AIS_InteractiveObject)(TPrsStd_ConstraintTools::ComputeRound(*aConst)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
-extern "C" const char* TPrsStd_ConstraintTools_compute_others(Handle(TDataXtd_Constraint) const* aConst, Handle(AIS_InteractiveObject)* anAIS) {
-    try { TPrsStd_ConstraintTools::ComputeOthers(*aConst, *anAIS); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<Handle(AIS_InteractiveObject)*> TPrsStd_ConstraintTools_compute_others(Handle(TDataXtd_Constraint) const* aConst) {
+    try { return {new Handle(AIS_InteractiveObject)(TPrsStd_ConstraintTools::ComputeOthers(*aConst)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" const char* TPrsStd_ConstraintTools_compute_text_and_value(Handle(TDataXtd_Constraint) const* aConst, double* aValue, TCollection_ExtendedString* aText, bool anIsAngle) {
     try { TPrsStd_ConstraintTools::ComputeTextAndValue(*aConst, *aValue, *aText, anIsAngle); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TPrsStd_ConstraintTools_compute_angle_for_one_face(Handle(TDataXtd_Constraint) const* aConst, Handle(AIS_InteractiveObject)* anAIS) {
-    try { TPrsStd_ConstraintTools::ComputeAngleForOneFace(*aConst, *anAIS); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<Handle(AIS_InteractiveObject)*> TPrsStd_ConstraintTools_compute_angle_for_one_face(Handle(TDataXtd_Constraint) const* aConst) {
+    try { return {new Handle(AIS_InteractiveObject)(TPrsStd_ConstraintTools::ComputeAngleForOneFace(*aConst)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" void TPrsStd_ConstraintTools_destructor(TPrsStd_ConstraintTools* self_) { delete self_; }
 
@@ -1019,71 +999,71 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TPrsStd_Driver_get_type_desc
 }
 extern "C" OcctResult<const Standard_Transient*> TPrsStd_Driver_as_Standard_Transient(const TPrsStd_Driver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TPrsStd_Driver_as_Standard_Transient_mut(TPrsStd_Driver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const TPrsStd_Driver*> HandleTPrsStdDriver_get(const HandleTPrsStdDriver* handle) {
+extern "C" OcctResult<const TPrsStd_Driver*> Handle_TPrsStd_Driver_get(const Handle_TPrsStd_Driver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TPrsStd_Driver*> HandleTPrsStdDriver_get_mut(HandleTPrsStdDriver* handle) {
+extern "C" OcctResult<TPrsStd_Driver*> Handle_TPrsStd_Driver_get_mut(Handle_TPrsStd_Driver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTPrsStdDriver_to_HandleStandardTransient(const HandleTPrsStdDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TPrsStd_Driver_to_Handle_Standard_Transient(const Handle_TPrsStd_Driver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTPrsStdAxisDriver*> HandleTPrsStdDriver_downcast_to_HandleTPrsStdAxisDriver(const HandleTPrsStdDriver* self_) {
+extern "C" OcctResult<Handle_TPrsStd_AxisDriver*> Handle_TPrsStd_Driver_downcast_to_Handle_TPrsStd_AxisDriver(const Handle_TPrsStd_Driver* self_) {
     try {
     opencascade::handle<TPrsStd_AxisDriver> result = opencascade::handle<TPrsStd_AxisDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTPrsStdAxisDriver(result), nullptr};
+    return {new Handle_TPrsStd_AxisDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTPrsStdConstraintDriver*> HandleTPrsStdDriver_downcast_to_HandleTPrsStdConstraintDriver(const HandleTPrsStdDriver* self_) {
+extern "C" OcctResult<Handle_TPrsStd_ConstraintDriver*> Handle_TPrsStd_Driver_downcast_to_Handle_TPrsStd_ConstraintDriver(const Handle_TPrsStd_Driver* self_) {
     try {
     opencascade::handle<TPrsStd_ConstraintDriver> result = opencascade::handle<TPrsStd_ConstraintDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTPrsStdConstraintDriver(result), nullptr};
+    return {new Handle_TPrsStd_ConstraintDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTPrsStdGeometryDriver*> HandleTPrsStdDriver_downcast_to_HandleTPrsStdGeometryDriver(const HandleTPrsStdDriver* self_) {
+extern "C" OcctResult<Handle_TPrsStd_GeometryDriver*> Handle_TPrsStd_Driver_downcast_to_Handle_TPrsStd_GeometryDriver(const Handle_TPrsStd_Driver* self_) {
     try {
     opencascade::handle<TPrsStd_GeometryDriver> result = opencascade::handle<TPrsStd_GeometryDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTPrsStdGeometryDriver(result), nullptr};
+    return {new Handle_TPrsStd_GeometryDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTPrsStdNamedShapeDriver*> HandleTPrsStdDriver_downcast_to_HandleTPrsStdNamedShapeDriver(const HandleTPrsStdDriver* self_) {
+extern "C" OcctResult<Handle_TPrsStd_NamedShapeDriver*> Handle_TPrsStd_Driver_downcast_to_Handle_TPrsStd_NamedShapeDriver(const Handle_TPrsStd_Driver* self_) {
     try {
     opencascade::handle<TPrsStd_NamedShapeDriver> result = opencascade::handle<TPrsStd_NamedShapeDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTPrsStdNamedShapeDriver(result), nullptr};
+    return {new Handle_TPrsStd_NamedShapeDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTPrsStdPlaneDriver*> HandleTPrsStdDriver_downcast_to_HandleTPrsStdPlaneDriver(const HandleTPrsStdDriver* self_) {
+extern "C" OcctResult<Handle_TPrsStd_PlaneDriver*> Handle_TPrsStd_Driver_downcast_to_Handle_TPrsStd_PlaneDriver(const Handle_TPrsStd_Driver* self_) {
     try {
     opencascade::handle<TPrsStd_PlaneDriver> result = opencascade::handle<TPrsStd_PlaneDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTPrsStdPlaneDriver(result), nullptr};
+    return {new Handle_TPrsStd_PlaneDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTPrsStdPointDriver*> HandleTPrsStdDriver_downcast_to_HandleTPrsStdPointDriver(const HandleTPrsStdDriver* self_) {
+extern "C" OcctResult<Handle_TPrsStd_PointDriver*> Handle_TPrsStd_Driver_downcast_to_Handle_TPrsStd_PointDriver(const Handle_TPrsStd_Driver* self_) {
     try {
     opencascade::handle<TPrsStd_PointDriver> result = opencascade::handle<TPrsStd_PointDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTPrsStdPointDriver(result), nullptr};
+    return {new Handle_TPrsStd_PointDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFPrsDriver*> HandleTPrsStdDriver_downcast_to_HandleXCAFPrsDriver(const HandleTPrsStdDriver* self_) {
+extern "C" OcctResult<Handle_XCAFPrs_Driver*> Handle_TPrsStd_Driver_downcast_to_Handle_XCAFPrs_Driver(const Handle_TPrsStd_Driver* self_) {
     try {
     opencascade::handle<XCAFPrs_Driver> result = opencascade::handle<XCAFPrs_Driver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFPrsDriver(result), nullptr};
+    return {new Handle_XCAFPrs_Driver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -1163,20 +1143,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TPrsStd_DriverTable_get_type
 }
 extern "C" OcctResult<const Standard_Transient*> TPrsStd_DriverTable_as_Standard_Transient(const TPrsStd_DriverTable* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TPrsStd_DriverTable_as_Standard_Transient_mut(TPrsStd_DriverTable* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTPrsStdDriverTable*> TPrsStd_DriverTable_to_handle(TPrsStd_DriverTable* obj) {
-    try { return {new HandleTPrsStdDriverTable(obj), nullptr}; }
+extern "C" OcctResult<Handle_TPrsStd_DriverTable*> TPrsStd_DriverTable_to_handle(TPrsStd_DriverTable* obj) {
+    try { return {new Handle_TPrsStd_DriverTable(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TPrsStd_DriverTable*> HandleTPrsStdDriverTable_get(const HandleTPrsStdDriverTable* handle) {
+extern "C" OcctResult<const TPrsStd_DriverTable*> Handle_TPrsStd_DriverTable_get(const Handle_TPrsStd_DriverTable* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TPrsStd_DriverTable*> HandleTPrsStdDriverTable_get_mut(HandleTPrsStdDriverTable* handle) {
+extern "C" OcctResult<TPrsStd_DriverTable*> Handle_TPrsStd_DriverTable_get_mut(Handle_TPrsStd_DriverTable* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTPrsStdDriverTable_to_HandleStandardTransient(const HandleTPrsStdDriverTable* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TPrsStd_DriverTable_to_Handle_Standard_Transient(const Handle_TPrsStd_DriverTable* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TPrsStd_DriverTable_inherited_IsInstance(const TPrsStd_DriverTable* self, Handle(Standard_Type) const& theType) {
@@ -1237,24 +1217,24 @@ extern "C" OcctResult<const TPrsStd_Driver*> TPrsStd_GeometryDriver_as_TPrsStd_D
 extern "C" OcctResult<TPrsStd_Driver*> TPrsStd_GeometryDriver_as_TPrsStd_Driver_mut(TPrsStd_GeometryDriver* self_) { return {static_cast<TPrsStd_Driver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TPrsStd_GeometryDriver_as_Standard_Transient(const TPrsStd_GeometryDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TPrsStd_GeometryDriver_as_Standard_Transient_mut(TPrsStd_GeometryDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTPrsStdGeometryDriver*> TPrsStd_GeometryDriver_to_handle(TPrsStd_GeometryDriver* obj) {
-    try { return {new HandleTPrsStdGeometryDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_TPrsStd_GeometryDriver*> TPrsStd_GeometryDriver_to_handle(TPrsStd_GeometryDriver* obj) {
+    try { return {new Handle_TPrsStd_GeometryDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TPrsStd_GeometryDriver*> HandleTPrsStdGeometryDriver_get(const HandleTPrsStdGeometryDriver* handle) {
+extern "C" OcctResult<const TPrsStd_GeometryDriver*> Handle_TPrsStd_GeometryDriver_get(const Handle_TPrsStd_GeometryDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TPrsStd_GeometryDriver*> HandleTPrsStdGeometryDriver_get_mut(HandleTPrsStdGeometryDriver* handle) {
+extern "C" OcctResult<TPrsStd_GeometryDriver*> Handle_TPrsStd_GeometryDriver_get_mut(Handle_TPrsStd_GeometryDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTPrsStdDriver*> HandleTPrsStdGeometryDriver_to_HandleTPrsStdDriver(const HandleTPrsStdGeometryDriver* self_) {
-    try { return {new HandleTPrsStdDriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TPrsStd_Driver*> Handle_TPrsStd_GeometryDriver_to_Handle_TPrsStd_Driver(const Handle_TPrsStd_GeometryDriver* self_) {
+    try { return {new Handle_TPrsStd_Driver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTPrsStdGeometryDriver_to_HandleStandardTransient(const HandleTPrsStdGeometryDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TPrsStd_GeometryDriver_to_Handle_Standard_Transient(const Handle_TPrsStd_GeometryDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TPrsStd_GeometryDriver_inherited_IsInstance(const TPrsStd_GeometryDriver* self, Handle(Standard_Type) const& theType) {
@@ -1315,24 +1295,24 @@ extern "C" OcctResult<const TPrsStd_Driver*> TPrsStd_NamedShapeDriver_as_TPrsStd
 extern "C" OcctResult<TPrsStd_Driver*> TPrsStd_NamedShapeDriver_as_TPrsStd_Driver_mut(TPrsStd_NamedShapeDriver* self_) { return {static_cast<TPrsStd_Driver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TPrsStd_NamedShapeDriver_as_Standard_Transient(const TPrsStd_NamedShapeDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TPrsStd_NamedShapeDriver_as_Standard_Transient_mut(TPrsStd_NamedShapeDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTPrsStdNamedShapeDriver*> TPrsStd_NamedShapeDriver_to_handle(TPrsStd_NamedShapeDriver* obj) {
-    try { return {new HandleTPrsStdNamedShapeDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_TPrsStd_NamedShapeDriver*> TPrsStd_NamedShapeDriver_to_handle(TPrsStd_NamedShapeDriver* obj) {
+    try { return {new Handle_TPrsStd_NamedShapeDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TPrsStd_NamedShapeDriver*> HandleTPrsStdNamedShapeDriver_get(const HandleTPrsStdNamedShapeDriver* handle) {
+extern "C" OcctResult<const TPrsStd_NamedShapeDriver*> Handle_TPrsStd_NamedShapeDriver_get(const Handle_TPrsStd_NamedShapeDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TPrsStd_NamedShapeDriver*> HandleTPrsStdNamedShapeDriver_get_mut(HandleTPrsStdNamedShapeDriver* handle) {
+extern "C" OcctResult<TPrsStd_NamedShapeDriver*> Handle_TPrsStd_NamedShapeDriver_get_mut(Handle_TPrsStd_NamedShapeDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTPrsStdDriver*> HandleTPrsStdNamedShapeDriver_to_HandleTPrsStdDriver(const HandleTPrsStdNamedShapeDriver* self_) {
-    try { return {new HandleTPrsStdDriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TPrsStd_Driver*> Handle_TPrsStd_NamedShapeDriver_to_Handle_TPrsStd_Driver(const Handle_TPrsStd_NamedShapeDriver* self_) {
+    try { return {new Handle_TPrsStd_Driver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTPrsStdNamedShapeDriver_to_HandleStandardTransient(const HandleTPrsStdNamedShapeDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TPrsStd_NamedShapeDriver_to_Handle_Standard_Transient(const Handle_TPrsStd_NamedShapeDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TPrsStd_NamedShapeDriver_inherited_IsInstance(const TPrsStd_NamedShapeDriver* self, Handle(Standard_Type) const& theType) {
@@ -1393,24 +1373,24 @@ extern "C" OcctResult<const TPrsStd_Driver*> TPrsStd_PlaneDriver_as_TPrsStd_Driv
 extern "C" OcctResult<TPrsStd_Driver*> TPrsStd_PlaneDriver_as_TPrsStd_Driver_mut(TPrsStd_PlaneDriver* self_) { return {static_cast<TPrsStd_Driver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TPrsStd_PlaneDriver_as_Standard_Transient(const TPrsStd_PlaneDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TPrsStd_PlaneDriver_as_Standard_Transient_mut(TPrsStd_PlaneDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTPrsStdPlaneDriver*> TPrsStd_PlaneDriver_to_handle(TPrsStd_PlaneDriver* obj) {
-    try { return {new HandleTPrsStdPlaneDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_TPrsStd_PlaneDriver*> TPrsStd_PlaneDriver_to_handle(TPrsStd_PlaneDriver* obj) {
+    try { return {new Handle_TPrsStd_PlaneDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TPrsStd_PlaneDriver*> HandleTPrsStdPlaneDriver_get(const HandleTPrsStdPlaneDriver* handle) {
+extern "C" OcctResult<const TPrsStd_PlaneDriver*> Handle_TPrsStd_PlaneDriver_get(const Handle_TPrsStd_PlaneDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TPrsStd_PlaneDriver*> HandleTPrsStdPlaneDriver_get_mut(HandleTPrsStdPlaneDriver* handle) {
+extern "C" OcctResult<TPrsStd_PlaneDriver*> Handle_TPrsStd_PlaneDriver_get_mut(Handle_TPrsStd_PlaneDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTPrsStdDriver*> HandleTPrsStdPlaneDriver_to_HandleTPrsStdDriver(const HandleTPrsStdPlaneDriver* self_) {
-    try { return {new HandleTPrsStdDriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TPrsStd_Driver*> Handle_TPrsStd_PlaneDriver_to_Handle_TPrsStd_Driver(const Handle_TPrsStd_PlaneDriver* self_) {
+    try { return {new Handle_TPrsStd_Driver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTPrsStdPlaneDriver_to_HandleStandardTransient(const HandleTPrsStdPlaneDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TPrsStd_PlaneDriver_to_Handle_Standard_Transient(const Handle_TPrsStd_PlaneDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TPrsStd_PlaneDriver_inherited_IsInstance(const TPrsStd_PlaneDriver* self, Handle(Standard_Type) const& theType) {
@@ -1471,24 +1451,24 @@ extern "C" OcctResult<const TPrsStd_Driver*> TPrsStd_PointDriver_as_TPrsStd_Driv
 extern "C" OcctResult<TPrsStd_Driver*> TPrsStd_PointDriver_as_TPrsStd_Driver_mut(TPrsStd_PointDriver* self_) { return {static_cast<TPrsStd_Driver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TPrsStd_PointDriver_as_Standard_Transient(const TPrsStd_PointDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TPrsStd_PointDriver_as_Standard_Transient_mut(TPrsStd_PointDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTPrsStdPointDriver*> TPrsStd_PointDriver_to_handle(TPrsStd_PointDriver* obj) {
-    try { return {new HandleTPrsStdPointDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_TPrsStd_PointDriver*> TPrsStd_PointDriver_to_handle(TPrsStd_PointDriver* obj) {
+    try { return {new Handle_TPrsStd_PointDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TPrsStd_PointDriver*> HandleTPrsStdPointDriver_get(const HandleTPrsStdPointDriver* handle) {
+extern "C" OcctResult<const TPrsStd_PointDriver*> Handle_TPrsStd_PointDriver_get(const Handle_TPrsStd_PointDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TPrsStd_PointDriver*> HandleTPrsStdPointDriver_get_mut(HandleTPrsStdPointDriver* handle) {
+extern "C" OcctResult<TPrsStd_PointDriver*> Handle_TPrsStd_PointDriver_get_mut(Handle_TPrsStd_PointDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTPrsStdDriver*> HandleTPrsStdPointDriver_to_HandleTPrsStdDriver(const HandleTPrsStdPointDriver* self_) {
-    try { return {new HandleTPrsStdDriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TPrsStd_Driver*> Handle_TPrsStd_PointDriver_to_Handle_TPrsStd_Driver(const Handle_TPrsStd_PointDriver* self_) {
+    try { return {new Handle_TPrsStd_Driver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTPrsStdPointDriver_to_HandleStandardTransient(const HandleTPrsStdPointDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TPrsStd_PointDriver_to_Handle_Standard_Transient(const Handle_TPrsStd_PointDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TPrsStd_PointDriver_inherited_IsInstance(const TPrsStd_PointDriver* self, Handle(Standard_Type) const& theType) {

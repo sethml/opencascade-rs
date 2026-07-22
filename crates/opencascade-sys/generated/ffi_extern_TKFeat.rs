@@ -10,73 +10,73 @@ use crate::ffi_types::*;
 unsafe extern "C" {
     // ======================== BRepFeat_Builder ========================
     pub fn BRepFeat_Builder_destructor(self_: *mut BRepFeat_Builder);
-    /// **Source:** `BRepFeat_Builder.hxx`:50 - `BRepFeat_Builder::BRepFeat_Builder()`
+    /// **Source:** `BRepFeat_Builder.hxx`:52 - `BRepFeat_Builder::BRepFeat_Builder()`
     pub fn BRepFeat_Builder_ctor() -> crate::OcctResult<*mut BRepFeat_Builder>;
-    /// **Source:** `BRepFeat_Builder.hxx`:54 - `BRepFeat_Builder::Clear()`
+    /// **Source:** `BRepFeat_Builder.hxx`:56 - `BRepFeat_Builder::Clear()`
     pub fn BRepFeat_Builder_clear(self_: *mut BRepFeat_Builder) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_Builder.hxx`:57 - `BRepFeat_Builder::Init()`
+    /// **Source:** `BRepFeat_Builder.hxx`:59 - `BRepFeat_Builder::Init()`
     pub fn BRepFeat_Builder_init_shape(
         self_: *mut BRepFeat_Builder,
         theShape: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_Builder.hxx`:60 - `BRepFeat_Builder::Init()`
+    /// **Source:** `BRepFeat_Builder.hxx`:62 - `BRepFeat_Builder::Init()`
     pub fn BRepFeat_Builder_init_shape2(
         self_: *mut BRepFeat_Builder,
         theShape: *const TopoDS_Shape,
         theTool: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_Builder.hxx`:64 - `BRepFeat_Builder::SetOperation()`
+    /// **Source:** `BRepFeat_Builder.hxx`:66 - `BRepFeat_Builder::SetOperation()`
     pub fn BRepFeat_Builder_set_operation_int(
         self_: *mut BRepFeat_Builder,
         theFuse: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_Builder.hxx`:71 - `BRepFeat_Builder::SetOperation()`
+    /// **Source:** `BRepFeat_Builder.hxx`:73 - `BRepFeat_Builder::SetOperation()`
     pub fn BRepFeat_Builder_set_operation_int_bool(
         self_: *mut BRepFeat_Builder,
         theFuse: i32,
         theFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_Builder.hxx`:74 - `BRepFeat_Builder::PartsOfTool()`
+    /// **Source:** `BRepFeat_Builder.hxx`:76 - `BRepFeat_Builder::PartsOfTool()`
     pub fn BRepFeat_Builder_parts_of_tool(
         self_: *mut BRepFeat_Builder,
-        theLT: *mut TopTools_ListOfShape,
+        theLT: *mut NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_Builder.hxx`:78 - `BRepFeat_Builder::KeepParts()`
+    /// **Source:** `BRepFeat_Builder.hxx`:80 - `BRepFeat_Builder::KeepParts()`
     pub fn BRepFeat_Builder_keep_parts(
         self_: *mut BRepFeat_Builder,
-        theIm: *const TopTools_ListOfShape,
+        theIm: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_Builder.hxx`:81 - `BRepFeat_Builder::KeepPart()`
+    /// **Source:** `BRepFeat_Builder.hxx`:83 - `BRepFeat_Builder::KeepPart()`
     pub fn BRepFeat_Builder_keep_part(
         self_: *mut BRepFeat_Builder,
         theS: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_Builder.hxx`:85 - `BRepFeat_Builder::PerformResult()`
+    /// **Source:** `BRepFeat_Builder.hxx`:87 - `BRepFeat_Builder::PerformResult()`
     pub fn BRepFeat_Builder_perform_result(
         self_: *mut BRepFeat_Builder,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_Builder.hxx`:89 - `BRepFeat_Builder::RebuildFaces()`
+    /// **Source:** `BRepFeat_Builder.hxx`:91 - `BRepFeat_Builder::RebuildFaces()`
     pub fn BRepFeat_Builder_rebuild_faces(self_: *mut BRepFeat_Builder) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_Builder.hxx`:92 - `BRepFeat_Builder::RebuildEdge()`
+    /// **Source:** `BRepFeat_Builder.hxx`:94 - `BRepFeat_Builder::RebuildEdge()`
     pub fn BRepFeat_Builder_rebuild_edge(
         self_: *mut BRepFeat_Builder,
         theE: *const TopoDS_Shape,
         theF: *const TopoDS_Face,
-        theME: *const TopTools_MapOfShape,
-        aLEIm: *mut TopTools_ListOfShape,
+        theME: *const NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher,
+        aLEIm: *mut NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_Builder.hxx`:99 - `BRepFeat_Builder::CheckSolidImages()`
+    /// **Source:** `BRepFeat_Builder.hxx`:102 - `BRepFeat_Builder::CheckSolidImages()`
     pub fn BRepFeat_Builder_check_solid_images(
         self_: *mut BRepFeat_Builder,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_Builder.hxx`:102 - `BRepFeat_Builder::FillRemoved()`
-    pub fn BRepFeat_Builder_fill_removed(self_: *mut BRepFeat_Builder) -> *const std::ffi::c_char;
     /// **Source:** `BRepFeat_Builder.hxx`:105 - `BRepFeat_Builder::FillRemoved()`
-    pub fn BRepFeat_Builder_fill_removed_shape_mapofshape(
+    pub fn BRepFeat_Builder_fill_removed(self_: *mut BRepFeat_Builder) -> *const std::ffi::c_char;
+    /// **Source:** `BRepFeat_Builder.hxx`:108 - `BRepFeat_Builder::FillRemoved()`
+    pub fn BRepFeat_Builder_fill_removed_shape_map_shape(
         self_: *mut BRepFeat_Builder,
         theS: *const TopoDS_Shape,
-        theM: *mut TopTools_MapOfShape,
+        theM: *mut NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) -> *const std::ffi::c_char;
     /// Upcast BRepFeat_Builder to BOPAlgo_BOP
     pub fn BRepFeat_Builder_as_BOPAlgo_BOP(
@@ -143,140 +143,138 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_ToolsProvider.hxx`:42 - `BOPAlgo_ToolsProvider::SetTools()`
     pub fn BRepFeat_Builder_inherited_SetTools(
         self_: *mut BRepFeat_Builder,
-        theShapes: *const TopTools_ListOfShape,
+        theShapes: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_ToolsProvider.hxx`:45 - `BOPAlgo_ToolsProvider::Tools()`
     pub fn BRepFeat_Builder_inherited_Tools(
         self_: *const BRepFeat_Builder,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:89 - `BOPAlgo_Builder::PPaveFiller()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:90 - `BOPAlgo_Builder::PPaveFiller()`
     pub fn BRepFeat_Builder_inherited_PPaveFiller(
         self_: *mut BRepFeat_Builder,
     ) -> crate::OcctResult<*mut BOPAlgo_PaveFiller>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:92 - `BOPAlgo_Builder::PDS()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:93 - `BOPAlgo_Builder::PDS()`
     pub fn BRepFeat_Builder_inherited_PDS(
         self_: *mut BRepFeat_Builder,
     ) -> crate::OcctResult<*mut BOPDS_DS>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:95 - `BOPAlgo_Builder::Context()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:96 - `BOPAlgo_Builder::Context()`
     pub fn BRepFeat_Builder_inherited_Context(
         self_: *const BRepFeat_Builder,
-    ) -> crate::OcctResult<*mut HandleIntToolsContext>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:99 - `BOPAlgo_Builder::AddArgument()`
+    ) -> crate::OcctResult<*mut Handle_IntTools_Context>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:100 - `BOPAlgo_Builder::AddArgument()`
     pub fn BRepFeat_Builder_inherited_AddArgument(
         self_: *mut BRepFeat_Builder,
         theShape: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:102 - `BOPAlgo_Builder::SetArguments()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:103 - `BOPAlgo_Builder::SetArguments()`
     pub fn BRepFeat_Builder_inherited_SetArguments(
         self_: *mut BRepFeat_Builder,
-        theLS: *const TopTools_ListOfShape,
+        theLS: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:105 - `BOPAlgo_Builder::Arguments()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:106 - `BOPAlgo_Builder::Arguments()`
     pub fn BRepFeat_Builder_inherited_Arguments(
         self_: *const BRepFeat_Builder,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:114 - `BOPAlgo_Builder::SetNonDestructive()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:115 - `BOPAlgo_Builder::SetNonDestructive()`
     pub fn BRepFeat_Builder_inherited_SetNonDestructive(
         self_: *mut BRepFeat_Builder,
         theFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:119 - `BOPAlgo_Builder::NonDestructive()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:120 - `BOPAlgo_Builder::NonDestructive()`
     pub fn BRepFeat_Builder_inherited_NonDestructive(
         self_: *const BRepFeat_Builder,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:122 - `BOPAlgo_Builder::SetGlue()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:123 - `BOPAlgo_Builder::SetGlue()`
     pub fn BRepFeat_Builder_inherited_SetGlue(
         self_: *mut BRepFeat_Builder,
         theGlue: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:125 - `BOPAlgo_Builder::Glue()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:126 - `BOPAlgo_Builder::Glue()`
     pub fn BRepFeat_Builder_inherited_Glue(
         self_: *const BRepFeat_Builder,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:128 - `BOPAlgo_Builder::SetCheckInverted()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:129 - `BOPAlgo_Builder::SetCheckInverted()`
     pub fn BRepFeat_Builder_inherited_SetCheckInverted(
         self_: *mut BRepFeat_Builder,
         theCheck: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:132 - `BOPAlgo_Builder::CheckInverted()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:133 - `BOPAlgo_Builder::CheckInverted()`
     pub fn BRepFeat_Builder_inherited_CheckInverted(
         self_: *const BRepFeat_Builder,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:142 - `BOPAlgo_Builder::PerformWithFiller()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:143 - `BOPAlgo_Builder::PerformWithFiller()`
     pub fn BRepFeat_Builder_inherited_PerformWithFiller(
         self_: *mut BRepFeat_Builder,
         theFiller: *const BOPAlgo_PaveFiller,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:186 - `BOPAlgo_Builder::BuildBOP()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:187 - `BOPAlgo_Builder::BuildBOP()`
     pub fn BRepFeat_Builder_inherited_BuildBOP(
         self_: *mut BRepFeat_Builder,
-        theObjects: *const TopTools_ListOfShape,
+        theObjects: *const NCollection_List_TopoDS_Shape,
         theObjState: i32,
-        theTools: *const TopTools_ListOfShape,
+        theTools: *const NCollection_List_TopoDS_Shape,
         theToolsState: i32,
         theRange: *const Message_ProgressRange,
-        theReport: *const HandleMessageReport,
+        theReport: *const Handle_Message_Report,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
-    pub fn BRepFeat_Builder_inherited_Images(
-        self_: *const BRepFeat_Builder,
-    ) -> crate::OcctResult<*const TopTools_DataMapOfShapeListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:284 - `BOPAlgo_Builder::Origins()`
-    pub fn BRepFeat_Builder_inherited_Origins(
-        self_: *const BRepFeat_Builder,
-    ) -> crate::OcctResult<*const TopTools_DataMapOfShapeListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:288 - `BOPAlgo_Builder::ShapesSD()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:285 - `BOPAlgo_Builder::Images()`
+    pub fn BRepFeat_Builder_inherited_Images(self_: *const BRepFeat_Builder) -> crate::OcctResult<*const NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:292 - `BOPAlgo_Builder::Origins()`
+    pub fn BRepFeat_Builder_inherited_Origins(self_: *const BRepFeat_Builder) -> crate::OcctResult<*const NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:299 - `BOPAlgo_Builder::ShapesSD()`
     pub fn BRepFeat_Builder_inherited_ShapesSD(
         self_: *const BRepFeat_Builder,
-    ) -> crate::OcctResult<*const TopTools_DataMapOfShapeShape>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
+    ) -> crate::OcctResult<
+        *const NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
+    >;
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:48 - `BOPAlgo_BuilderShape::Shape()`
     pub fn BRepFeat_Builder_inherited_Shape(
         self_: *const BRepFeat_Builder,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:72 - `BOPAlgo_BuilderShape::IsDeleted()`
     pub fn BRepFeat_Builder_inherited_IsDeleted(
         self_: *mut BRepFeat_Builder,
         theS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:77 - `BOPAlgo_BuilderShape::HasModified()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:78 - `BOPAlgo_BuilderShape::HasModified()`
     pub fn BRepFeat_Builder_inherited_HasModified(
         self_: *const BRepFeat_Builder,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:83 - `BOPAlgo_BuilderShape::HasGenerated()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:84 - `BOPAlgo_BuilderShape::HasGenerated()`
     pub fn BRepFeat_Builder_inherited_HasGenerated(
         self_: *const BRepFeat_Builder,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:89 - `BOPAlgo_BuilderShape::HasDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:90 - `BOPAlgo_BuilderShape::HasDeleted()`
     pub fn BRepFeat_Builder_inherited_HasDeleted(
         self_: *const BRepFeat_Builder,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:95 - `BOPAlgo_BuilderShape::History()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:93 - `BOPAlgo_BuilderShape::History()`
     pub fn BRepFeat_Builder_inherited_History(
         self_: *mut BRepFeat_Builder,
-    ) -> crate::OcctResult<*mut HandleBRepToolsHistory>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:116 - `BOPAlgo_BuilderShape::SetToFillHistory()`
+    ) -> crate::OcctResult<*mut Handle_BRepTools_History>;
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:114 - `BOPAlgo_BuilderShape::SetToFillHistory()`
     pub fn BRepFeat_Builder_inherited_SetToFillHistory(
         self_: *mut BRepFeat_Builder,
         theHistFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:119 - `BOPAlgo_BuilderShape::HasHistory()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:117 - `BOPAlgo_BuilderShape::HasHistory()`
     pub fn BRepFeat_Builder_inherited_HasHistory(
         self_: *const BRepFeat_Builder,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
     pub fn BRepFeat_Builder_inherited_Allocator(
         self_: *const BRepFeat_Builder,
-    ) -> crate::OcctResult<*const HandleNCollectionBaseAllocator>;
+    ) -> crate::OcctResult<*const TDF_HAllocator>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
     pub fn BRepFeat_Builder_inherited_AddError(
         self_: *mut BRepFeat_Builder,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
     pub fn BRepFeat_Builder_inherited_AddWarning(
         self_: *mut BRepFeat_Builder,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:73 - `BOPAlgo_Options::HasErrors()`
     pub fn BRepFeat_Builder_inherited_HasErrors(
@@ -285,7 +283,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
     pub fn BRepFeat_Builder_inherited_HasError(
         self_: *const BRepFeat_Builder,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:82 - `BOPAlgo_Options::HasWarnings()`
     pub fn BRepFeat_Builder_inherited_HasWarnings(
@@ -294,12 +292,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     pub fn BRepFeat_Builder_inherited_HasWarning(
         self_: *const BRepFeat_Builder,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn BRepFeat_Builder_inherited_GetReport(
         self_: *const BRepFeat_Builder,
-    ) -> crate::OcctResult<*const HandleMessageReport>;
+    ) -> crate::OcctResult<*const Handle_Message_Report>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
     pub fn BRepFeat_Builder_inherited_DumpErrors(
         self_: *const BRepFeat_Builder,
@@ -343,64 +341,59 @@ unsafe extern "C" {
     ) -> crate::OcctResult<bool>;
     // ======================== BRepFeat_Form ========================
     pub fn BRepFeat_Form_destructor(self_: *mut BRepFeat_Form);
-    /// **Source:** `BRepFeat_Form.hxx`:71 - `BRepFeat_Form::Modified()`
+    /// **Source:** `BRepFeat_Form.hxx`:72 - `BRepFeat_Form::Modified()`
     pub fn BRepFeat_Form_modified(
         self_: *mut BRepFeat_Form,
         F: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// **Source:** `BRepFeat_Form.hxx`:76 - `BRepFeat_Form::Generated()`
     pub fn BRepFeat_Form_generated(
         self_: *mut BRepFeat_Form,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepFeat_Form.hxx`:79 - `BRepFeat_Form::IsDeleted()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepFeat_Form.hxx`:78 - `BRepFeat_Form::IsDeleted()`
     pub fn BRepFeat_Form_is_deleted(
         self_: *mut BRepFeat_Form,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepFeat_Form.hxx`:83 - `BRepFeat_Form::FirstShape()`
+    /// **Source:** `BRepFeat_Form.hxx`:82 - `BRepFeat_Form::FirstShape()`
     pub fn BRepFeat_Form_first_shape(
         self_: *const BRepFeat_Form,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepFeat_Form.hxx`:87 - `BRepFeat_Form::LastShape()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepFeat_Form.hxx`:86 - `BRepFeat_Form::LastShape()`
     pub fn BRepFeat_Form_last_shape(
         self_: *const BRepFeat_Form,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepFeat_Form.hxx`:94 - `BRepFeat_Form::NewEdges()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepFeat_Form.hxx`:93 - `BRepFeat_Form::NewEdges()`
     pub fn BRepFeat_Form_new_edges(
         self_: *const BRepFeat_Form,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepFeat_Form.hxx`:104 - `BRepFeat_Form::TgtEdges()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepFeat_Form.hxx`:103 - `BRepFeat_Form::TgtEdges()`
     pub fn BRepFeat_Form_tgt_edges(
         self_: *const BRepFeat_Form,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepFeat_Form.hxx`:107 - `BRepFeat_Form::BasisShapeValid()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepFeat_Form.hxx`:106 - `BRepFeat_Form::BasisShapeValid()`
     pub fn BRepFeat_Form_basis_shape_valid(self_: *mut BRepFeat_Form) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_Form.hxx`:110 - `BRepFeat_Form::GeneratedShapeValid()`
+    /// **Source:** `BRepFeat_Form.hxx`:109 - `BRepFeat_Form::GeneratedShapeValid()`
     pub fn BRepFeat_Form_generated_shape_valid(
         self_: *mut BRepFeat_Form,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_Form.hxx`:114 - `BRepFeat_Form::ShapeFromValid()`
+    /// **Source:** `BRepFeat_Form.hxx`:113 - `BRepFeat_Form::ShapeFromValid()`
     pub fn BRepFeat_Form_shape_from_valid(self_: *mut BRepFeat_Form) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_Form.hxx`:118 - `BRepFeat_Form::ShapeUntilValid()`
+    /// **Source:** `BRepFeat_Form.hxx`:117 - `BRepFeat_Form::ShapeUntilValid()`
     pub fn BRepFeat_Form_shape_until_valid(self_: *mut BRepFeat_Form) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_Form.hxx`:121 - `BRepFeat_Form::GluedFacesValid()`
+    /// **Source:** `BRepFeat_Form.hxx`:120 - `BRepFeat_Form::GluedFacesValid()`
     pub fn BRepFeat_Form_glued_faces_valid(self_: *mut BRepFeat_Form) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_Form.hxx`:126 - `BRepFeat_Form::SketchFaceValid()`
+    /// **Source:** `BRepFeat_Form.hxx`:125 - `BRepFeat_Form::SketchFaceValid()`
     pub fn BRepFeat_Form_sketch_face_valid(self_: *mut BRepFeat_Form) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_Form.hxx`:129 - `BRepFeat_Form::PerfSelectionValid()`
+    /// **Source:** `BRepFeat_Form.hxx`:128 - `BRepFeat_Form::PerfSelectionValid()`
     pub fn BRepFeat_Form_perf_selection_valid(self_: *mut BRepFeat_Form)
         -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_Form.hxx`:131 - `BRepFeat_Form::Curves()`
-    pub fn BRepFeat_Form_curves(
-        self_: *mut BRepFeat_Form,
-        S: *mut TColGeom_SequenceOfCurve,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_Form.hxx`:133 - `BRepFeat_Form::BarycCurve()`
+    /// **Source:** `BRepFeat_Form.hxx`:132 - `BRepFeat_Form::BarycCurve()`
     pub fn BRepFeat_Form_baryc_curve(
         self_: *mut BRepFeat_Form,
-    ) -> crate::OcctResult<*mut HandleGeomCurve>;
-    /// **Source:** `BRepFeat_Form.hxx`:135 - `BRepFeat_Form::CurrentStatusError()`
+    ) -> crate::OcctResult<*mut Handle_Geom_Curve>;
+    /// **Source:** `BRepFeat_Form.hxx`:134 - `BRepFeat_Form::CurrentStatusError()`
     pub fn BRepFeat_Form_current_status_error(
         self_: *const BRepFeat_Form,
     ) -> crate::OcctResult<i32>;
@@ -435,56 +428,56 @@ unsafe extern "C" {
     pub fn BRepFeat_Form_inherited_Check(self_: *const BRepFeat_Form) -> *const std::ffi::c_char;
     // ======================== BRepFeat_Gluer ========================
     pub fn BRepFeat_Gluer_destructor(self_: *mut BRepFeat_Gluer);
-    /// **Source:** `BRepFeat_Gluer.hxx`:54 - `BRepFeat_Gluer::BRepFeat_Gluer()`
+    /// **Source:** `BRepFeat_Gluer.hxx`:55 - `BRepFeat_Gluer::BRepFeat_Gluer()`
     pub fn BRepFeat_Gluer_ctor() -> crate::OcctResult<*mut BRepFeat_Gluer>;
-    /// **Source:** `BRepFeat_Gluer.hxx`:58 - `BRepFeat_Gluer::BRepFeat_Gluer()`
+    /// **Source:** `BRepFeat_Gluer.hxx`:59 - `BRepFeat_Gluer::BRepFeat_Gluer()`
     pub fn BRepFeat_Gluer_ctor_shape2(
         Snew: *const TopoDS_Shape,
         Sbase: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut BRepFeat_Gluer>;
-    /// **Source:** `BRepFeat_Gluer.hxx`:62 - `BRepFeat_Gluer::Init()`
+    /// **Source:** `BRepFeat_Gluer.hxx`:63 - `BRepFeat_Gluer::Init()`
     pub fn BRepFeat_Gluer_init(
         self_: *mut BRepFeat_Gluer,
         Snew: *const TopoDS_Shape,
         Sbase: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_Gluer.hxx`:71 - `BRepFeat_Gluer::Bind()`
+    /// **Source:** `BRepFeat_Gluer.hxx`:72 - `BRepFeat_Gluer::Bind()`
     pub fn BRepFeat_Gluer_bind_face2(
         self_: *mut BRepFeat_Gluer,
         Fnew: *const TopoDS_Face,
         Fbase: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_Gluer.hxx`:77 - `BRepFeat_Gluer::Bind()`
+    /// **Source:** `BRepFeat_Gluer.hxx`:78 - `BRepFeat_Gluer::Bind()`
     pub fn BRepFeat_Gluer_bind_edge2(
         self_: *mut BRepFeat_Gluer,
         Enew: *const TopoDS_Edge,
         Ebase: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_Gluer.hxx`:80 - `BRepFeat_Gluer::OpeType()`
+    /// **Source:** `BRepFeat_Gluer.hxx`:81 - `BRepFeat_Gluer::OpeType()`
     pub fn BRepFeat_Gluer_ope_type(self_: *const BRepFeat_Gluer) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepFeat_Gluer.hxx`:83 - `BRepFeat_Gluer::BasisShape()`
+    /// **Source:** `BRepFeat_Gluer.hxx`:84 - `BRepFeat_Gluer::BasisShape()`
     pub fn BRepFeat_Gluer_basis_shape(
         self_: *const BRepFeat_Gluer,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BRepFeat_Gluer.hxx`:86 - `BRepFeat_Gluer::GluedShape()`
+    /// **Source:** `BRepFeat_Gluer.hxx`:87 - `BRepFeat_Gluer::GluedShape()`
     pub fn BRepFeat_Gluer_glued_shape(
         self_: *const BRepFeat_Gluer,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BRepFeat_Gluer.hxx`:90 - `BRepFeat_Gluer::Build()`
+    /// **Source:** `BRepFeat_Gluer.hxx`:91 - `BRepFeat_Gluer::Build()`
     pub fn BRepFeat_Gluer_build(
         self_: *mut BRepFeat_Gluer,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_Gluer.hxx`:95 - `BRepFeat_Gluer::IsDeleted()`
+    /// **Source:** `BRepFeat_Gluer.hxx`:96 - `BRepFeat_Gluer::IsDeleted()`
     pub fn BRepFeat_Gluer_is_deleted(
         self_: *mut BRepFeat_Gluer,
         F: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepFeat_Gluer.hxx`:98 - `BRepFeat_Gluer::Modified()`
+    /// **Source:** `BRepFeat_Gluer.hxx`:99 - `BRepFeat_Gluer::Modified()`
     pub fn BRepFeat_Gluer_modified(
         self_: *mut BRepFeat_Gluer,
         F: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// Upcast BRepFeat_Gluer to BRepBuilderAPI_MakeShape
     pub fn BRepFeat_Gluer_as_BRepBuilderAPI_MakeShape(
         self_: *const BRepFeat_Gluer,
@@ -545,24 +538,24 @@ unsafe extern "C" {
         Radius: f64,
         WithControl: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakeCylindricalHole.hxx`:79 - `BRepFeat_MakeCylindricalHole::PerformUntilEnd()`
+    /// **Source:** `BRepFeat_MakeCylindricalHole.hxx`:78 - `BRepFeat_MakeCylindricalHole::PerformUntilEnd()`
     pub fn BRepFeat_MakeCylindricalHole_perform_until_end(
         self_: *mut BRepFeat_MakeCylindricalHole,
         Radius: f64,
         WithControl: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakeCylindricalHole.hxx`:87 - `BRepFeat_MakeCylindricalHole::PerformBlind()`
+    /// **Source:** `BRepFeat_MakeCylindricalHole.hxx`:85 - `BRepFeat_MakeCylindricalHole::PerformBlind()`
     pub fn BRepFeat_MakeCylindricalHole_perform_blind(
         self_: *mut BRepFeat_MakeCylindricalHole,
         Radius: f64,
         Length: f64,
         WithControl: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakeCylindricalHole.hxx`:92 - `BRepFeat_MakeCylindricalHole::Status()`
+    /// **Source:** `BRepFeat_MakeCylindricalHole.hxx`:90 - `BRepFeat_MakeCylindricalHole::Status()`
     pub fn BRepFeat_MakeCylindricalHole_status(
         self_: *const BRepFeat_MakeCylindricalHole,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepFeat_MakeCylindricalHole.hxx`:98 - `BRepFeat_MakeCylindricalHole::Build()`
+    /// **Source:** `BRepFeat_MakeCylindricalHole.hxx`:96 - `BRepFeat_MakeCylindricalHole::Build()`
     pub fn BRepFeat_MakeCylindricalHole_build(
         self_: *mut BRepFeat_MakeCylindricalHole,
     ) -> *const std::ffi::c_char;
@@ -622,52 +615,52 @@ unsafe extern "C" {
     pub fn BRepFeat_MakeCylindricalHole_as_BOPAlgo_Options_mut(
         self_: *mut BRepFeat_MakeCylindricalHole,
     ) -> crate::OcctResult<*mut BOPAlgo_Options>;
-    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:54 - `BRepFeat_Builder::Clear()`
+    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:56 - `BRepFeat_Builder::Clear()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_Clear(
         self_: *mut BRepFeat_MakeCylindricalHole,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:64 - `BRepFeat_Builder::SetOperation()`
+    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:66 - `BRepFeat_Builder::SetOperation()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_SetOperation(
         self_: *mut BRepFeat_MakeCylindricalHole,
         theFuse: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:74 - `BRepFeat_Builder::PartsOfTool()`
+    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:76 - `BRepFeat_Builder::PartsOfTool()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_PartsOfTool(
         self_: *mut BRepFeat_MakeCylindricalHole,
-        theLT: *mut TopTools_ListOfShape,
+        theLT: *mut NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:78 - `BRepFeat_Builder::KeepParts()`
+    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:80 - `BRepFeat_Builder::KeepParts()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_KeepParts(
         self_: *mut BRepFeat_MakeCylindricalHole,
-        theIm: *const TopTools_ListOfShape,
+        theIm: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:81 - `BRepFeat_Builder::KeepPart()`
+    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:83 - `BRepFeat_Builder::KeepPart()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_KeepPart(
         self_: *mut BRepFeat_MakeCylindricalHole,
         theS: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:85 - `BRepFeat_Builder::PerformResult()`
+    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:87 - `BRepFeat_Builder::PerformResult()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_PerformResult(
         self_: *mut BRepFeat_MakeCylindricalHole,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:89 - `BRepFeat_Builder::RebuildFaces()`
+    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:91 - `BRepFeat_Builder::RebuildFaces()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_RebuildFaces(
         self_: *mut BRepFeat_MakeCylindricalHole,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:92 - `BRepFeat_Builder::RebuildEdge()`
+    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:94 - `BRepFeat_Builder::RebuildEdge()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_RebuildEdge(
         self_: *mut BRepFeat_MakeCylindricalHole,
         theE: *const TopoDS_Shape,
         theF: *const TopoDS_Face,
-        theME: *const TopTools_MapOfShape,
-        aLEIm: *mut TopTools_ListOfShape,
+        theME: *const NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher,
+        aLEIm: *mut NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:99 - `BRepFeat_Builder::CheckSolidImages()`
+    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:102 - `BRepFeat_Builder::CheckSolidImages()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_CheckSolidImages(
         self_: *mut BRepFeat_MakeCylindricalHole,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:102 - `BRepFeat_Builder::FillRemoved()`
+    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:105 - `BRepFeat_Builder::FillRemoved()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_FillRemoved(
         self_: *mut BRepFeat_MakeCylindricalHole,
     ) -> *const std::ffi::c_char;
@@ -683,140 +676,138 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_ToolsProvider.hxx`:42 - `BOPAlgo_ToolsProvider::SetTools()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_SetTools(
         self_: *mut BRepFeat_MakeCylindricalHole,
-        theShapes: *const TopTools_ListOfShape,
+        theShapes: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_ToolsProvider.hxx`:45 - `BOPAlgo_ToolsProvider::Tools()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_Tools(
         self_: *const BRepFeat_MakeCylindricalHole,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:89 - `BOPAlgo_Builder::PPaveFiller()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:90 - `BOPAlgo_Builder::PPaveFiller()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_PPaveFiller(
         self_: *mut BRepFeat_MakeCylindricalHole,
     ) -> crate::OcctResult<*mut BOPAlgo_PaveFiller>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:92 - `BOPAlgo_Builder::PDS()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:93 - `BOPAlgo_Builder::PDS()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_PDS(
         self_: *mut BRepFeat_MakeCylindricalHole,
     ) -> crate::OcctResult<*mut BOPDS_DS>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:95 - `BOPAlgo_Builder::Context()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:96 - `BOPAlgo_Builder::Context()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_Context(
         self_: *const BRepFeat_MakeCylindricalHole,
-    ) -> crate::OcctResult<*mut HandleIntToolsContext>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:99 - `BOPAlgo_Builder::AddArgument()`
+    ) -> crate::OcctResult<*mut Handle_IntTools_Context>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:100 - `BOPAlgo_Builder::AddArgument()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_AddArgument(
         self_: *mut BRepFeat_MakeCylindricalHole,
         theShape: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:102 - `BOPAlgo_Builder::SetArguments()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:103 - `BOPAlgo_Builder::SetArguments()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_SetArguments(
         self_: *mut BRepFeat_MakeCylindricalHole,
-        theLS: *const TopTools_ListOfShape,
+        theLS: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:105 - `BOPAlgo_Builder::Arguments()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:106 - `BOPAlgo_Builder::Arguments()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_Arguments(
         self_: *const BRepFeat_MakeCylindricalHole,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:114 - `BOPAlgo_Builder::SetNonDestructive()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:115 - `BOPAlgo_Builder::SetNonDestructive()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_SetNonDestructive(
         self_: *mut BRepFeat_MakeCylindricalHole,
         theFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:119 - `BOPAlgo_Builder::NonDestructive()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:120 - `BOPAlgo_Builder::NonDestructive()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_NonDestructive(
         self_: *const BRepFeat_MakeCylindricalHole,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:122 - `BOPAlgo_Builder::SetGlue()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:123 - `BOPAlgo_Builder::SetGlue()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_SetGlue(
         self_: *mut BRepFeat_MakeCylindricalHole,
         theGlue: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:125 - `BOPAlgo_Builder::Glue()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:126 - `BOPAlgo_Builder::Glue()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_Glue(
         self_: *const BRepFeat_MakeCylindricalHole,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:128 - `BOPAlgo_Builder::SetCheckInverted()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:129 - `BOPAlgo_Builder::SetCheckInverted()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_SetCheckInverted(
         self_: *mut BRepFeat_MakeCylindricalHole,
         theCheck: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:132 - `BOPAlgo_Builder::CheckInverted()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:133 - `BOPAlgo_Builder::CheckInverted()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_CheckInverted(
         self_: *const BRepFeat_MakeCylindricalHole,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:142 - `BOPAlgo_Builder::PerformWithFiller()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:143 - `BOPAlgo_Builder::PerformWithFiller()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_PerformWithFiller(
         self_: *mut BRepFeat_MakeCylindricalHole,
         theFiller: *const BOPAlgo_PaveFiller,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:186 - `BOPAlgo_Builder::BuildBOP()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:187 - `BOPAlgo_Builder::BuildBOP()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_BuildBOP(
         self_: *mut BRepFeat_MakeCylindricalHole,
-        theObjects: *const TopTools_ListOfShape,
+        theObjects: *const NCollection_List_TopoDS_Shape,
         theObjState: i32,
-        theTools: *const TopTools_ListOfShape,
+        theTools: *const NCollection_List_TopoDS_Shape,
         theToolsState: i32,
         theRange: *const Message_ProgressRange,
-        theReport: *const HandleMessageReport,
+        theReport: *const Handle_Message_Report,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
-    pub fn BRepFeat_MakeCylindricalHole_inherited_Images(
-        self_: *const BRepFeat_MakeCylindricalHole,
-    ) -> crate::OcctResult<*const TopTools_DataMapOfShapeListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:284 - `BOPAlgo_Builder::Origins()`
-    pub fn BRepFeat_MakeCylindricalHole_inherited_Origins(
-        self_: *const BRepFeat_MakeCylindricalHole,
-    ) -> crate::OcctResult<*const TopTools_DataMapOfShapeListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:288 - `BOPAlgo_Builder::ShapesSD()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:285 - `BOPAlgo_Builder::Images()`
+    pub fn BRepFeat_MakeCylindricalHole_inherited_Images(self_: *const BRepFeat_MakeCylindricalHole) -> crate::OcctResult<*const NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:292 - `BOPAlgo_Builder::Origins()`
+    pub fn BRepFeat_MakeCylindricalHole_inherited_Origins(self_: *const BRepFeat_MakeCylindricalHole) -> crate::OcctResult<*const NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:299 - `BOPAlgo_Builder::ShapesSD()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_ShapesSD(
         self_: *const BRepFeat_MakeCylindricalHole,
-    ) -> crate::OcctResult<*const TopTools_DataMapOfShapeShape>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
+    ) -> crate::OcctResult<
+        *const NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
+    >;
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:48 - `BOPAlgo_BuilderShape::Shape()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_Shape(
         self_: *const BRepFeat_MakeCylindricalHole,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:72 - `BOPAlgo_BuilderShape::IsDeleted()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_IsDeleted(
         self_: *mut BRepFeat_MakeCylindricalHole,
         theS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:77 - `BOPAlgo_BuilderShape::HasModified()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:78 - `BOPAlgo_BuilderShape::HasModified()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_HasModified(
         self_: *const BRepFeat_MakeCylindricalHole,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:83 - `BOPAlgo_BuilderShape::HasGenerated()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:84 - `BOPAlgo_BuilderShape::HasGenerated()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_HasGenerated(
         self_: *const BRepFeat_MakeCylindricalHole,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:89 - `BOPAlgo_BuilderShape::HasDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:90 - `BOPAlgo_BuilderShape::HasDeleted()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_HasDeleted(
         self_: *const BRepFeat_MakeCylindricalHole,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:95 - `BOPAlgo_BuilderShape::History()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:93 - `BOPAlgo_BuilderShape::History()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_History(
         self_: *mut BRepFeat_MakeCylindricalHole,
-    ) -> crate::OcctResult<*mut HandleBRepToolsHistory>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:116 - `BOPAlgo_BuilderShape::SetToFillHistory()`
+    ) -> crate::OcctResult<*mut Handle_BRepTools_History>;
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:114 - `BOPAlgo_BuilderShape::SetToFillHistory()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_SetToFillHistory(
         self_: *mut BRepFeat_MakeCylindricalHole,
         theHistFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:119 - `BOPAlgo_BuilderShape::HasHistory()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:117 - `BOPAlgo_BuilderShape::HasHistory()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_HasHistory(
         self_: *const BRepFeat_MakeCylindricalHole,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_Allocator(
         self_: *const BRepFeat_MakeCylindricalHole,
-    ) -> crate::OcctResult<*const HandleNCollectionBaseAllocator>;
+    ) -> crate::OcctResult<*const TDF_HAllocator>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_AddError(
         self_: *mut BRepFeat_MakeCylindricalHole,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_AddWarning(
         self_: *mut BRepFeat_MakeCylindricalHole,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:73 - `BOPAlgo_Options::HasErrors()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_HasErrors(
@@ -825,7 +816,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_HasError(
         self_: *const BRepFeat_MakeCylindricalHole,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:82 - `BOPAlgo_Options::HasWarnings()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_HasWarnings(
@@ -834,12 +825,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_HasWarning(
         self_: *const BRepFeat_MakeCylindricalHole,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_GetReport(
         self_: *const BRepFeat_MakeCylindricalHole,
-    ) -> crate::OcctResult<*const HandleMessageReport>;
+    ) -> crate::OcctResult<*const Handle_Message_Report>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
     pub fn BRepFeat_MakeCylindricalHole_inherited_DumpErrors(
         self_: *const BRepFeat_MakeCylindricalHole,
@@ -883,7 +874,7 @@ unsafe extern "C" {
     ) -> crate::OcctResult<bool>;
     // ======================== BRepFeat_MakeDPrism ========================
     pub fn BRepFeat_MakeDPrism_destructor(self_: *mut BRepFeat_MakeDPrism);
-    /// **Source:** `BRepFeat_MakeDPrism.hxx`:64 - `BRepFeat_MakeDPrism::BRepFeat_MakeDPrism()`
+    /// **Source:** `BRepFeat_MakeDPrism.hxx`:66 - `BRepFeat_MakeDPrism::BRepFeat_MakeDPrism()`
     pub fn BRepFeat_MakeDPrism_ctor_shape_face2_real_int_bool(
         Sbase: *const TopoDS_Shape,
         Pbase: *const TopoDS_Face,
@@ -892,9 +883,9 @@ unsafe extern "C" {
         Fuse: i32,
         Modify: bool,
     ) -> crate::OcctResult<*mut BRepFeat_MakeDPrism>;
-    /// **Source:** `BRepFeat_MakeDPrism.hxx`:74 - `BRepFeat_MakeDPrism::BRepFeat_MakeDPrism()`
+    /// **Source:** `BRepFeat_MakeDPrism.hxx`:76 - `BRepFeat_MakeDPrism::BRepFeat_MakeDPrism()`
     pub fn BRepFeat_MakeDPrism_ctor() -> crate::OcctResult<*mut BRepFeat_MakeDPrism>;
-    /// **Source:** `BRepFeat_MakeDPrism.hxx`:89 - `BRepFeat_MakeDPrism::Init()`
+    /// **Source:** `BRepFeat_MakeDPrism.hxx`:91 - `BRepFeat_MakeDPrism::Init()`
     pub fn BRepFeat_MakeDPrism_init(
         self_: *mut BRepFeat_MakeDPrism,
         Sbase: *const TopoDS_Shape,
@@ -904,69 +895,64 @@ unsafe extern "C" {
         Fuse: i32,
         Modify: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakeDPrism.hxx`:100 - `BRepFeat_MakeDPrism::Add()`
+    /// **Source:** `BRepFeat_MakeDPrism.hxx`:102 - `BRepFeat_MakeDPrism::Add()`
     pub fn BRepFeat_MakeDPrism_add(
         self_: *mut BRepFeat_MakeDPrism,
         E: *const TopoDS_Edge,
         OnFace: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakeDPrism.hxx`:102 - `BRepFeat_MakeDPrism::Perform()`
+    /// **Source:** `BRepFeat_MakeDPrism.hxx`:104 - `BRepFeat_MakeDPrism::Perform()`
     pub fn BRepFeat_MakeDPrism_perform_real(
         self_: *mut BRepFeat_MakeDPrism,
         Height: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakeDPrism.hxx`:104 - `BRepFeat_MakeDPrism::Perform()`
+    /// **Source:** `BRepFeat_MakeDPrism.hxx`:106 - `BRepFeat_MakeDPrism::Perform()`
     pub fn BRepFeat_MakeDPrism_perform_shape(
         self_: *mut BRepFeat_MakeDPrism,
         Until: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakeDPrism.hxx`:111 - `BRepFeat_MakeDPrism::Perform()`
+    /// **Source:** `BRepFeat_MakeDPrism.hxx`:113 - `BRepFeat_MakeDPrism::Perform()`
     pub fn BRepFeat_MakeDPrism_perform_shape2(
         self_: *mut BRepFeat_MakeDPrism,
         From: *const TopoDS_Shape,
         Until: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakeDPrism.hxx`:114 - `BRepFeat_MakeDPrism::PerformUntilEnd()`
+    /// **Source:** `BRepFeat_MakeDPrism.hxx`:116 - `BRepFeat_MakeDPrism::PerformUntilEnd()`
     pub fn BRepFeat_MakeDPrism_perform_until_end(
         self_: *mut BRepFeat_MakeDPrism,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakeDPrism.hxx`:117 - `BRepFeat_MakeDPrism::PerformFromEnd()`
+    /// **Source:** `BRepFeat_MakeDPrism.hxx`:119 - `BRepFeat_MakeDPrism::PerformFromEnd()`
     pub fn BRepFeat_MakeDPrism_perform_from_end(
         self_: *mut BRepFeat_MakeDPrism,
         FUntil: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakeDPrism.hxx`:120 - `BRepFeat_MakeDPrism::PerformThruAll()`
+    /// **Source:** `BRepFeat_MakeDPrism.hxx`:122 - `BRepFeat_MakeDPrism::PerformThruAll()`
     pub fn BRepFeat_MakeDPrism_perform_thru_all(
         self_: *mut BRepFeat_MakeDPrism,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakeDPrism.hxx`:125 - `BRepFeat_MakeDPrism::PerformUntilHeight()`
+    /// **Source:** `BRepFeat_MakeDPrism.hxx`:127 - `BRepFeat_MakeDPrism::PerformUntilHeight()`
     pub fn BRepFeat_MakeDPrism_perform_until_height(
         self_: *mut BRepFeat_MakeDPrism,
         Until: *const TopoDS_Shape,
         Height: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakeDPrism.hxx`:127 - `BRepFeat_MakeDPrism::Curves()`
-    pub fn BRepFeat_MakeDPrism_curves(
-        self_: *mut BRepFeat_MakeDPrism,
-        S: *mut TColGeom_SequenceOfCurve,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakeDPrism.hxx`:129 - `BRepFeat_MakeDPrism::BarycCurve()`
+    /// **Source:** `BRepFeat_MakeDPrism.hxx`:131 - `BRepFeat_MakeDPrism::BarycCurve()`
     pub fn BRepFeat_MakeDPrism_baryc_curve(
         self_: *mut BRepFeat_MakeDPrism,
-    ) -> crate::OcctResult<*mut HandleGeomCurve>;
-    /// **Source:** `BRepFeat_MakeDPrism.hxx`:134 - `BRepFeat_MakeDPrism::BossEdges()`
+    ) -> crate::OcctResult<*mut Handle_Geom_Curve>;
+    /// **Source:** `BRepFeat_MakeDPrism.hxx`:136 - `BRepFeat_MakeDPrism::BossEdges()`
     pub fn BRepFeat_MakeDPrism_boss_edges(
         self_: *mut BRepFeat_MakeDPrism,
         sig: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakeDPrism.hxx`:137 - `BRepFeat_MakeDPrism::TopEdges()`
+    /// **Source:** `BRepFeat_MakeDPrism.hxx`:139 - `BRepFeat_MakeDPrism::TopEdges()`
     pub fn BRepFeat_MakeDPrism_top_edges(
         self_: *mut BRepFeat_MakeDPrism,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepFeat_MakeDPrism.hxx`:140 - `BRepFeat_MakeDPrism::LatEdges()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepFeat_MakeDPrism.hxx`:142 - `BRepFeat_MakeDPrism::LatEdges()`
     pub fn BRepFeat_MakeDPrism_lat_edges(
         self_: *mut BRepFeat_MakeDPrism,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// Upcast BRepFeat_MakeDPrism to BRepFeat_Form
     pub fn BRepFeat_MakeDPrism_as_BRepFeat_Form(
         self_: *const BRepFeat_MakeDPrism,
@@ -991,56 +977,56 @@ unsafe extern "C" {
     pub fn BRepFeat_MakeDPrism_as_BRepBuilderAPI_Command_mut(
         self_: *mut BRepFeat_MakeDPrism,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_Command>;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:79 - `BRepFeat_Form::IsDeleted()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:78 - `BRepFeat_Form::IsDeleted()`
     pub fn BRepFeat_MakeDPrism_inherited_IsDeleted(
         self_: *mut BRepFeat_MakeDPrism,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:83 - `BRepFeat_Form::FirstShape()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:82 - `BRepFeat_Form::FirstShape()`
     pub fn BRepFeat_MakeDPrism_inherited_FirstShape(
         self_: *const BRepFeat_MakeDPrism,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:87 - `BRepFeat_Form::LastShape()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:86 - `BRepFeat_Form::LastShape()`
     pub fn BRepFeat_MakeDPrism_inherited_LastShape(
         self_: *const BRepFeat_MakeDPrism,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:94 - `BRepFeat_Form::NewEdges()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:93 - `BRepFeat_Form::NewEdges()`
     pub fn BRepFeat_MakeDPrism_inherited_NewEdges(
         self_: *const BRepFeat_MakeDPrism,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:104 - `BRepFeat_Form::TgtEdges()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:103 - `BRepFeat_Form::TgtEdges()`
     pub fn BRepFeat_MakeDPrism_inherited_TgtEdges(
         self_: *const BRepFeat_MakeDPrism,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:107 - `BRepFeat_Form::BasisShapeValid()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:106 - `BRepFeat_Form::BasisShapeValid()`
     pub fn BRepFeat_MakeDPrism_inherited_BasisShapeValid(
         self_: *mut BRepFeat_MakeDPrism,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:110 - `BRepFeat_Form::GeneratedShapeValid()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:109 - `BRepFeat_Form::GeneratedShapeValid()`
     pub fn BRepFeat_MakeDPrism_inherited_GeneratedShapeValid(
         self_: *mut BRepFeat_MakeDPrism,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:114 - `BRepFeat_Form::ShapeFromValid()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:113 - `BRepFeat_Form::ShapeFromValid()`
     pub fn BRepFeat_MakeDPrism_inherited_ShapeFromValid(
         self_: *mut BRepFeat_MakeDPrism,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:118 - `BRepFeat_Form::ShapeUntilValid()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:117 - `BRepFeat_Form::ShapeUntilValid()`
     pub fn BRepFeat_MakeDPrism_inherited_ShapeUntilValid(
         self_: *mut BRepFeat_MakeDPrism,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:121 - `BRepFeat_Form::GluedFacesValid()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:120 - `BRepFeat_Form::GluedFacesValid()`
     pub fn BRepFeat_MakeDPrism_inherited_GluedFacesValid(
         self_: *mut BRepFeat_MakeDPrism,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:126 - `BRepFeat_Form::SketchFaceValid()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:125 - `BRepFeat_Form::SketchFaceValid()`
     pub fn BRepFeat_MakeDPrism_inherited_SketchFaceValid(
         self_: *mut BRepFeat_MakeDPrism,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:129 - `BRepFeat_Form::PerfSelectionValid()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:128 - `BRepFeat_Form::PerfSelectionValid()`
     pub fn BRepFeat_MakeDPrism_inherited_PerfSelectionValid(
         self_: *mut BRepFeat_MakeDPrism,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:135 - `BRepFeat_Form::CurrentStatusError()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:134 - `BRepFeat_Form::CurrentStatusError()`
     pub fn BRepFeat_MakeDPrism_inherited_CurrentStatusError(
         self_: *const BRepFeat_MakeDPrism,
     ) -> crate::OcctResult<i32>;
@@ -1063,48 +1049,48 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepFeat_MakeLinearForm ========================
     pub fn BRepFeat_MakeLinearForm_destructor(self_: *mut BRepFeat_MakeLinearForm);
-    /// **Source:** `BRepFeat_MakeLinearForm.hxx`:55 - `BRepFeat_MakeLinearForm::BRepFeat_MakeLinearForm()`
+    /// **Source:** `BRepFeat_MakeLinearForm.hxx`:57 - `BRepFeat_MakeLinearForm::BRepFeat_MakeLinearForm()`
     pub fn BRepFeat_MakeLinearForm_ctor() -> crate::OcctResult<*mut BRepFeat_MakeLinearForm>;
-    /// **Source:** `BRepFeat_MakeLinearForm.hxx`:67 - `BRepFeat_MakeLinearForm::BRepFeat_MakeLinearForm()`
+    /// **Source:** `BRepFeat_MakeLinearForm.hxx`:69 - `BRepFeat_MakeLinearForm::BRepFeat_MakeLinearForm()`
     pub fn BRepFeat_MakeLinearForm_ctor_shape_wire_handlegeomplane_vec2_int_bool(
         Sbase: *const TopoDS_Shape,
         W: *const TopoDS_Wire,
-        P: *const HandleGeomPlane,
+        P: *const Handle_Geom_Plane,
         Direction: *const gp_Vec,
         Direction1: *const gp_Vec,
         Fuse: i32,
         Modify: bool,
     ) -> crate::OcctResult<*mut BRepFeat_MakeLinearForm>;
-    /// **Source:** `BRepFeat_MakeLinearForm.hxx`:86 - `BRepFeat_MakeLinearForm::Init()`
+    /// **Source:** `BRepFeat_MakeLinearForm.hxx`:88 - `BRepFeat_MakeLinearForm::Init()`
     pub fn BRepFeat_MakeLinearForm_init(
         self_: *mut BRepFeat_MakeLinearForm,
         Sbase: *const TopoDS_Shape,
         W: *const TopoDS_Wire,
-        P: *const HandleGeomPlane,
+        P: *const Handle_Geom_Plane,
         Direction: *const gp_Vec,
         Direction1: *const gp_Vec,
         Fuse: i32,
         Modify: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakeLinearForm.hxx`:98 - `BRepFeat_MakeLinearForm::Add()`
+    /// **Source:** `BRepFeat_MakeLinearForm.hxx`:100 - `BRepFeat_MakeLinearForm::Add()`
     pub fn BRepFeat_MakeLinearForm_add(
         self_: *mut BRepFeat_MakeLinearForm,
         E: *const TopoDS_Edge,
         OnFace: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakeLinearForm.hxx`:102 - `BRepFeat_MakeLinearForm::Perform()`
+    /// **Source:** `BRepFeat_MakeLinearForm.hxx`:104 - `BRepFeat_MakeLinearForm::Perform()`
     pub fn BRepFeat_MakeLinearForm_perform(
         self_: *mut BRepFeat_MakeLinearForm,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakeLinearForm.hxx`:112 - `BRepFeat_MakeLinearForm::TransformShapeFU()`
+    /// **Source:** `BRepFeat_MakeLinearForm.hxx`:114 - `BRepFeat_MakeLinearForm::TransformShapeFU()`
     pub fn BRepFeat_MakeLinearForm_transform_shape_fu(
         self_: *mut BRepFeat_MakeLinearForm,
         flag: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakeLinearForm.hxx`:114 - `BRepFeat_MakeLinearForm::Propagate()`
+    /// **Source:** `BRepFeat_MakeLinearForm.hxx`:116 - `BRepFeat_MakeLinearForm::Propagate()`
     pub fn BRepFeat_MakeLinearForm_propagate(
         self_: *mut BRepFeat_MakeLinearForm,
-        L: *mut TopTools_ListOfShape,
+        L: *mut NCollection_List_TopoDS_Shape,
         F: *const TopoDS_Face,
         FPoint: *const gp_Pnt,
         LPoint: *const gp_Pnt,
@@ -1139,27 +1125,27 @@ unsafe extern "C" {
         self_: *mut BRepFeat_MakeLinearForm,
         F: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:72 - `BRepFeat_RibSlot::FirstShape()`
+    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:70 - `BRepFeat_RibSlot::FirstShape()`
     pub fn BRepFeat_MakeLinearForm_inherited_FirstShape(
         self_: *const BRepFeat_MakeLinearForm,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:76 - `BRepFeat_RibSlot::LastShape()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:74 - `BRepFeat_RibSlot::LastShape()`
     pub fn BRepFeat_MakeLinearForm_inherited_LastShape(
         self_: *const BRepFeat_MakeLinearForm,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:84 - `BRepFeat_RibSlot::FacesForDraft()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:82 - `BRepFeat_RibSlot::FacesForDraft()`
     pub fn BRepFeat_MakeLinearForm_inherited_FacesForDraft(
         self_: *const BRepFeat_MakeLinearForm,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:90 - `BRepFeat_RibSlot::NewEdges()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:88 - `BRepFeat_RibSlot::NewEdges()`
     pub fn BRepFeat_MakeLinearForm_inherited_NewEdges(
         self_: *const BRepFeat_MakeLinearForm,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:101 - `BRepFeat_RibSlot::TgtEdges()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:99 - `BRepFeat_RibSlot::TgtEdges()`
     pub fn BRepFeat_MakeLinearForm_inherited_TgtEdges(
         self_: *const BRepFeat_MakeLinearForm,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:111 - `BRepFeat_RibSlot::CurrentStatusError()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:109 - `BRepFeat_RibSlot::CurrentStatusError()`
     pub fn BRepFeat_MakeLinearForm_inherited_CurrentStatusError(
         self_: *const BRepFeat_MakeLinearForm,
     ) -> crate::OcctResult<i32>;
@@ -1182,9 +1168,9 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepFeat_MakePipe ========================
     pub fn BRepFeat_MakePipe_destructor(self_: *mut BRepFeat_MakePipe);
-    /// **Source:** `BRepFeat_MakePipe.hxx`:55 - `BRepFeat_MakePipe::BRepFeat_MakePipe()`
+    /// **Source:** `BRepFeat_MakePipe.hxx`:57 - `BRepFeat_MakePipe::BRepFeat_MakePipe()`
     pub fn BRepFeat_MakePipe_ctor() -> crate::OcctResult<*mut BRepFeat_MakePipe>;
-    /// **Source:** `BRepFeat_MakePipe.hxx`:66 - `BRepFeat_MakePipe::BRepFeat_MakePipe()`
+    /// **Source:** `BRepFeat_MakePipe.hxx`:68 - `BRepFeat_MakePipe::BRepFeat_MakePipe()`
     pub fn BRepFeat_MakePipe_ctor_shape2_face_wire_int_bool(
         Sbase: *const TopoDS_Shape,
         Pbase: *const TopoDS_Shape,
@@ -1193,7 +1179,7 @@ unsafe extern "C" {
         Fuse: i32,
         Modify: bool,
     ) -> crate::OcctResult<*mut BRepFeat_MakePipe>;
-    /// **Source:** `BRepFeat_MakePipe.hxx`:82 - `BRepFeat_MakePipe::Init()`
+    /// **Source:** `BRepFeat_MakePipe.hxx`:84 - `BRepFeat_MakePipe::Init()`
     pub fn BRepFeat_MakePipe_init(
         self_: *mut BRepFeat_MakePipe,
         Sbase: *const TopoDS_Shape,
@@ -1203,34 +1189,29 @@ unsafe extern "C" {
         Fuse: i32,
         Modify: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakePipe.hxx`:92 - `BRepFeat_MakePipe::Add()`
+    /// **Source:** `BRepFeat_MakePipe.hxx`:94 - `BRepFeat_MakePipe::Add()`
     pub fn BRepFeat_MakePipe_add(
         self_: *mut BRepFeat_MakePipe,
         E: *const TopoDS_Edge,
         OnFace: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakePipe.hxx`:94 - `BRepFeat_MakePipe::Perform()`
-    pub fn BRepFeat_MakePipe_perform(self_: *mut BRepFeat_MakePipe) -> *const std::ffi::c_char;
     /// **Source:** `BRepFeat_MakePipe.hxx`:96 - `BRepFeat_MakePipe::Perform()`
+    pub fn BRepFeat_MakePipe_perform(self_: *mut BRepFeat_MakePipe) -> *const std::ffi::c_char;
+    /// **Source:** `BRepFeat_MakePipe.hxx`:98 - `BRepFeat_MakePipe::Perform()`
     pub fn BRepFeat_MakePipe_perform_shape(
         self_: *mut BRepFeat_MakePipe,
         Until: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakePipe.hxx`:102 - `BRepFeat_MakePipe::Perform()`
+    /// **Source:** `BRepFeat_MakePipe.hxx`:104 - `BRepFeat_MakePipe::Perform()`
     pub fn BRepFeat_MakePipe_perform_shape2(
         self_: *mut BRepFeat_MakePipe,
         From: *const TopoDS_Shape,
         Until: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakePipe.hxx`:104 - `BRepFeat_MakePipe::Curves()`
-    pub fn BRepFeat_MakePipe_curves(
-        self_: *mut BRepFeat_MakePipe,
-        S: *mut TColGeom_SequenceOfCurve,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakePipe.hxx`:106 - `BRepFeat_MakePipe::BarycCurve()`
+    /// **Source:** `BRepFeat_MakePipe.hxx`:108 - `BRepFeat_MakePipe::BarycCurve()`
     pub fn BRepFeat_MakePipe_baryc_curve(
         self_: *mut BRepFeat_MakePipe,
-    ) -> crate::OcctResult<*mut HandleGeomCurve>;
+    ) -> crate::OcctResult<*mut Handle_Geom_Curve>;
     /// Upcast BRepFeat_MakePipe to BRepFeat_Form
     pub fn BRepFeat_MakePipe_as_BRepFeat_Form(
         self_: *const BRepFeat_MakePipe,
@@ -1255,56 +1236,56 @@ unsafe extern "C" {
     pub fn BRepFeat_MakePipe_as_BRepBuilderAPI_Command_mut(
         self_: *mut BRepFeat_MakePipe,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_Command>;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:79 - `BRepFeat_Form::IsDeleted()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:78 - `BRepFeat_Form::IsDeleted()`
     pub fn BRepFeat_MakePipe_inherited_IsDeleted(
         self_: *mut BRepFeat_MakePipe,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:83 - `BRepFeat_Form::FirstShape()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:82 - `BRepFeat_Form::FirstShape()`
     pub fn BRepFeat_MakePipe_inherited_FirstShape(
         self_: *const BRepFeat_MakePipe,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:87 - `BRepFeat_Form::LastShape()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:86 - `BRepFeat_Form::LastShape()`
     pub fn BRepFeat_MakePipe_inherited_LastShape(
         self_: *const BRepFeat_MakePipe,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:94 - `BRepFeat_Form::NewEdges()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:93 - `BRepFeat_Form::NewEdges()`
     pub fn BRepFeat_MakePipe_inherited_NewEdges(
         self_: *const BRepFeat_MakePipe,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:104 - `BRepFeat_Form::TgtEdges()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:103 - `BRepFeat_Form::TgtEdges()`
     pub fn BRepFeat_MakePipe_inherited_TgtEdges(
         self_: *const BRepFeat_MakePipe,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:107 - `BRepFeat_Form::BasisShapeValid()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:106 - `BRepFeat_Form::BasisShapeValid()`
     pub fn BRepFeat_MakePipe_inherited_BasisShapeValid(
         self_: *mut BRepFeat_MakePipe,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:110 - `BRepFeat_Form::GeneratedShapeValid()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:109 - `BRepFeat_Form::GeneratedShapeValid()`
     pub fn BRepFeat_MakePipe_inherited_GeneratedShapeValid(
         self_: *mut BRepFeat_MakePipe,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:114 - `BRepFeat_Form::ShapeFromValid()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:113 - `BRepFeat_Form::ShapeFromValid()`
     pub fn BRepFeat_MakePipe_inherited_ShapeFromValid(
         self_: *mut BRepFeat_MakePipe,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:118 - `BRepFeat_Form::ShapeUntilValid()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:117 - `BRepFeat_Form::ShapeUntilValid()`
     pub fn BRepFeat_MakePipe_inherited_ShapeUntilValid(
         self_: *mut BRepFeat_MakePipe,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:121 - `BRepFeat_Form::GluedFacesValid()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:120 - `BRepFeat_Form::GluedFacesValid()`
     pub fn BRepFeat_MakePipe_inherited_GluedFacesValid(
         self_: *mut BRepFeat_MakePipe,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:126 - `BRepFeat_Form::SketchFaceValid()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:125 - `BRepFeat_Form::SketchFaceValid()`
     pub fn BRepFeat_MakePipe_inherited_SketchFaceValid(
         self_: *mut BRepFeat_MakePipe,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:129 - `BRepFeat_Form::PerfSelectionValid()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:128 - `BRepFeat_Form::PerfSelectionValid()`
     pub fn BRepFeat_MakePipe_inherited_PerfSelectionValid(
         self_: *mut BRepFeat_MakePipe,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:135 - `BRepFeat_Form::CurrentStatusError()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:134 - `BRepFeat_Form::CurrentStatusError()`
     pub fn BRepFeat_MakePipe_inherited_CurrentStatusError(
         self_: *const BRepFeat_MakePipe,
     ) -> crate::OcctResult<i32>;
@@ -1327,9 +1308,9 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepFeat_MakePrism ========================
     pub fn BRepFeat_MakePrism_destructor(self_: *mut BRepFeat_MakePrism);
-    /// **Source:** `BRepFeat_MakePrism.hxx`:59 - `BRepFeat_MakePrism::BRepFeat_MakePrism()`
+    /// **Source:** `BRepFeat_MakePrism.hxx`:61 - `BRepFeat_MakePrism::BRepFeat_MakePrism()`
     pub fn BRepFeat_MakePrism_ctor() -> crate::OcctResult<*mut BRepFeat_MakePrism>;
-    /// **Source:** `BRepFeat_MakePrism.hxx`:75 - `BRepFeat_MakePrism::BRepFeat_MakePrism()`
+    /// **Source:** `BRepFeat_MakePrism.hxx`:77 - `BRepFeat_MakePrism::BRepFeat_MakePrism()`
     pub fn BRepFeat_MakePrism_ctor_shape2_face_dir_int_bool(
         Sbase: *const TopoDS_Shape,
         Pbase: *const TopoDS_Shape,
@@ -1338,7 +1319,7 @@ unsafe extern "C" {
         Fuse: i32,
         Modify: bool,
     ) -> crate::OcctResult<*mut BRepFeat_MakePrism>;
-    /// **Source:** `BRepFeat_MakePrism.hxx`:92 - `BRepFeat_MakePrism::Init()`
+    /// **Source:** `BRepFeat_MakePrism.hxx`:94 - `BRepFeat_MakePrism::Init()`
     pub fn BRepFeat_MakePrism_init(
         self_: *mut BRepFeat_MakePrism,
         Sbase: *const TopoDS_Shape,
@@ -1348,56 +1329,51 @@ unsafe extern "C" {
         Fuse: i32,
         Modify: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakePrism.hxx`:102 - `BRepFeat_MakePrism::Add()`
+    /// **Source:** `BRepFeat_MakePrism.hxx`:104 - `BRepFeat_MakePrism::Add()`
     pub fn BRepFeat_MakePrism_add(
         self_: *mut BRepFeat_MakePrism,
         E: *const TopoDS_Edge,
         OnFace: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakePrism.hxx`:104 - `BRepFeat_MakePrism::Perform()`
+    /// **Source:** `BRepFeat_MakePrism.hxx`:106 - `BRepFeat_MakePrism::Perform()`
     pub fn BRepFeat_MakePrism_perform_real(
         self_: *mut BRepFeat_MakePrism,
         Length: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakePrism.hxx`:106 - `BRepFeat_MakePrism::Perform()`
+    /// **Source:** `BRepFeat_MakePrism.hxx`:108 - `BRepFeat_MakePrism::Perform()`
     pub fn BRepFeat_MakePrism_perform_shape(
         self_: *mut BRepFeat_MakePrism,
         Until: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakePrism.hxx`:113 - `BRepFeat_MakePrism::Perform()`
+    /// **Source:** `BRepFeat_MakePrism.hxx`:115 - `BRepFeat_MakePrism::Perform()`
     pub fn BRepFeat_MakePrism_perform_shape2(
         self_: *mut BRepFeat_MakePrism,
         From: *const TopoDS_Shape,
         Until: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakePrism.hxx`:117 - `BRepFeat_MakePrism::PerformUntilEnd()`
+    /// **Source:** `BRepFeat_MakePrism.hxx`:119 - `BRepFeat_MakePrism::PerformUntilEnd()`
     pub fn BRepFeat_MakePrism_perform_until_end(
         self_: *mut BRepFeat_MakePrism,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakePrism.hxx`:120 - `BRepFeat_MakePrism::PerformFromEnd()`
+    /// **Source:** `BRepFeat_MakePrism.hxx`:122 - `BRepFeat_MakePrism::PerformFromEnd()`
     pub fn BRepFeat_MakePrism_perform_from_end(
         self_: *mut BRepFeat_MakePrism,
         FUntil: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakePrism.hxx`:123 - `BRepFeat_MakePrism::PerformThruAll()`
+    /// **Source:** `BRepFeat_MakePrism.hxx`:125 - `BRepFeat_MakePrism::PerformThruAll()`
     pub fn BRepFeat_MakePrism_perform_thru_all(
         self_: *mut BRepFeat_MakePrism,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakePrism.hxx`:127 - `BRepFeat_MakePrism::PerformUntilHeight()`
+    /// **Source:** `BRepFeat_MakePrism.hxx`:129 - `BRepFeat_MakePrism::PerformUntilHeight()`
     pub fn BRepFeat_MakePrism_perform_until_height(
         self_: *mut BRepFeat_MakePrism,
         Until: *const TopoDS_Shape,
         Length: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakePrism.hxx`:130 - `BRepFeat_MakePrism::Curves()`
-    pub fn BRepFeat_MakePrism_curves(
-        self_: *mut BRepFeat_MakePrism,
-        S: *mut TColGeom_SequenceOfCurve,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakePrism.hxx`:133 - `BRepFeat_MakePrism::BarycCurve()`
+    /// **Source:** `BRepFeat_MakePrism.hxx`:135 - `BRepFeat_MakePrism::BarycCurve()`
     pub fn BRepFeat_MakePrism_baryc_curve(
         self_: *mut BRepFeat_MakePrism,
-    ) -> crate::OcctResult<*mut HandleGeomCurve>;
+    ) -> crate::OcctResult<*mut Handle_Geom_Curve>;
     /// Upcast BRepFeat_MakePrism to BRepFeat_Form
     pub fn BRepFeat_MakePrism_as_BRepFeat_Form(
         self_: *const BRepFeat_MakePrism,
@@ -1422,56 +1398,56 @@ unsafe extern "C" {
     pub fn BRepFeat_MakePrism_as_BRepBuilderAPI_Command_mut(
         self_: *mut BRepFeat_MakePrism,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_Command>;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:79 - `BRepFeat_Form::IsDeleted()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:78 - `BRepFeat_Form::IsDeleted()`
     pub fn BRepFeat_MakePrism_inherited_IsDeleted(
         self_: *mut BRepFeat_MakePrism,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:83 - `BRepFeat_Form::FirstShape()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:82 - `BRepFeat_Form::FirstShape()`
     pub fn BRepFeat_MakePrism_inherited_FirstShape(
         self_: *const BRepFeat_MakePrism,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:87 - `BRepFeat_Form::LastShape()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:86 - `BRepFeat_Form::LastShape()`
     pub fn BRepFeat_MakePrism_inherited_LastShape(
         self_: *const BRepFeat_MakePrism,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:94 - `BRepFeat_Form::NewEdges()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:93 - `BRepFeat_Form::NewEdges()`
     pub fn BRepFeat_MakePrism_inherited_NewEdges(
         self_: *const BRepFeat_MakePrism,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:104 - `BRepFeat_Form::TgtEdges()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:103 - `BRepFeat_Form::TgtEdges()`
     pub fn BRepFeat_MakePrism_inherited_TgtEdges(
         self_: *const BRepFeat_MakePrism,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:107 - `BRepFeat_Form::BasisShapeValid()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:106 - `BRepFeat_Form::BasisShapeValid()`
     pub fn BRepFeat_MakePrism_inherited_BasisShapeValid(
         self_: *mut BRepFeat_MakePrism,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:110 - `BRepFeat_Form::GeneratedShapeValid()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:109 - `BRepFeat_Form::GeneratedShapeValid()`
     pub fn BRepFeat_MakePrism_inherited_GeneratedShapeValid(
         self_: *mut BRepFeat_MakePrism,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:114 - `BRepFeat_Form::ShapeFromValid()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:113 - `BRepFeat_Form::ShapeFromValid()`
     pub fn BRepFeat_MakePrism_inherited_ShapeFromValid(
         self_: *mut BRepFeat_MakePrism,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:118 - `BRepFeat_Form::ShapeUntilValid()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:117 - `BRepFeat_Form::ShapeUntilValid()`
     pub fn BRepFeat_MakePrism_inherited_ShapeUntilValid(
         self_: *mut BRepFeat_MakePrism,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:121 - `BRepFeat_Form::GluedFacesValid()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:120 - `BRepFeat_Form::GluedFacesValid()`
     pub fn BRepFeat_MakePrism_inherited_GluedFacesValid(
         self_: *mut BRepFeat_MakePrism,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:126 - `BRepFeat_Form::SketchFaceValid()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:125 - `BRepFeat_Form::SketchFaceValid()`
     pub fn BRepFeat_MakePrism_inherited_SketchFaceValid(
         self_: *mut BRepFeat_MakePrism,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:129 - `BRepFeat_Form::PerfSelectionValid()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:128 - `BRepFeat_Form::PerfSelectionValid()`
     pub fn BRepFeat_MakePrism_inherited_PerfSelectionValid(
         self_: *mut BRepFeat_MakePrism,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:135 - `BRepFeat_Form::CurrentStatusError()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:134 - `BRepFeat_Form::CurrentStatusError()`
     pub fn BRepFeat_MakePrism_inherited_CurrentStatusError(
         self_: *const BRepFeat_MakePrism,
     ) -> crate::OcctResult<i32>;
@@ -1494,9 +1470,9 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepFeat_MakeRevol ========================
     pub fn BRepFeat_MakeRevol_destructor(self_: *mut BRepFeat_MakeRevol);
-    /// **Source:** `BRepFeat_MakeRevol.hxx`:41 - `BRepFeat_MakeRevol::BRepFeat_MakeRevol()`
+    /// **Source:** `BRepFeat_MakeRevol.hxx`:43 - `BRepFeat_MakeRevol::BRepFeat_MakeRevol()`
     pub fn BRepFeat_MakeRevol_ctor() -> crate::OcctResult<*mut BRepFeat_MakeRevol>;
-    /// **Source:** `BRepFeat_MakeRevol.hxx`:52 - `BRepFeat_MakeRevol::BRepFeat_MakeRevol()`
+    /// **Source:** `BRepFeat_MakeRevol.hxx`:54 - `BRepFeat_MakeRevol::BRepFeat_MakeRevol()`
     pub fn BRepFeat_MakeRevol_ctor_shape2_face_ax1_int_bool(
         Sbase: *const TopoDS_Shape,
         Pbase: *const TopoDS_Shape,
@@ -1505,7 +1481,7 @@ unsafe extern "C" {
         Fuse: i32,
         Modify: bool,
     ) -> crate::OcctResult<*mut BRepFeat_MakeRevol>;
-    /// **Source:** `BRepFeat_MakeRevol.hxx`:59 - `BRepFeat_MakeRevol::Init()`
+    /// **Source:** `BRepFeat_MakeRevol.hxx`:61 - `BRepFeat_MakeRevol::Init()`
     pub fn BRepFeat_MakeRevol_init(
         self_: *mut BRepFeat_MakeRevol,
         Sbase: *const TopoDS_Shape,
@@ -1515,47 +1491,42 @@ unsafe extern "C" {
         Fuse: i32,
         Modify: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakeRevol.hxx`:69 - `BRepFeat_MakeRevol::Add()`
+    /// **Source:** `BRepFeat_MakeRevol.hxx`:71 - `BRepFeat_MakeRevol::Add()`
     pub fn BRepFeat_MakeRevol_add(
         self_: *mut BRepFeat_MakeRevol,
         E: *const TopoDS_Edge,
         OnFace: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakeRevol.hxx`:71 - `BRepFeat_MakeRevol::Perform()`
+    /// **Source:** `BRepFeat_MakeRevol.hxx`:73 - `BRepFeat_MakeRevol::Perform()`
     pub fn BRepFeat_MakeRevol_perform_real(
         self_: *mut BRepFeat_MakeRevol,
         Angle: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakeRevol.hxx`:73 - `BRepFeat_MakeRevol::Perform()`
+    /// **Source:** `BRepFeat_MakeRevol.hxx`:75 - `BRepFeat_MakeRevol::Perform()`
     pub fn BRepFeat_MakeRevol_perform_shape(
         self_: *mut BRepFeat_MakeRevol,
         Until: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakeRevol.hxx`:76 - `BRepFeat_MakeRevol::Perform()`
+    /// **Source:** `BRepFeat_MakeRevol.hxx`:78 - `BRepFeat_MakeRevol::Perform()`
     pub fn BRepFeat_MakeRevol_perform_shape2(
         self_: *mut BRepFeat_MakeRevol,
         From: *const TopoDS_Shape,
         Until: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakeRevol.hxx`:80 - `BRepFeat_MakeRevol::PerformThruAll()`
+    /// **Source:** `BRepFeat_MakeRevol.hxx`:82 - `BRepFeat_MakeRevol::PerformThruAll()`
     pub fn BRepFeat_MakeRevol_perform_thru_all(
         self_: *mut BRepFeat_MakeRevol,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakeRevol.hxx`:85 - `BRepFeat_MakeRevol::PerformUntilAngle()`
+    /// **Source:** `BRepFeat_MakeRevol.hxx`:87 - `BRepFeat_MakeRevol::PerformUntilAngle()`
     pub fn BRepFeat_MakeRevol_perform_until_angle(
         self_: *mut BRepFeat_MakeRevol,
         Until: *const TopoDS_Shape,
         Angle: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakeRevol.hxx`:87 - `BRepFeat_MakeRevol::Curves()`
-    pub fn BRepFeat_MakeRevol_curves(
-        self_: *mut BRepFeat_MakeRevol,
-        S: *mut TColGeom_SequenceOfCurve,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakeRevol.hxx`:89 - `BRepFeat_MakeRevol::BarycCurve()`
+    /// **Source:** `BRepFeat_MakeRevol.hxx`:91 - `BRepFeat_MakeRevol::BarycCurve()`
     pub fn BRepFeat_MakeRevol_baryc_curve(
         self_: *mut BRepFeat_MakeRevol,
-    ) -> crate::OcctResult<*mut HandleGeomCurve>;
+    ) -> crate::OcctResult<*mut Handle_Geom_Curve>;
     /// Upcast BRepFeat_MakeRevol to BRepFeat_Form
     pub fn BRepFeat_MakeRevol_as_BRepFeat_Form(
         self_: *const BRepFeat_MakeRevol,
@@ -1580,56 +1551,56 @@ unsafe extern "C" {
     pub fn BRepFeat_MakeRevol_as_BRepBuilderAPI_Command_mut(
         self_: *mut BRepFeat_MakeRevol,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_Command>;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:79 - `BRepFeat_Form::IsDeleted()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:78 - `BRepFeat_Form::IsDeleted()`
     pub fn BRepFeat_MakeRevol_inherited_IsDeleted(
         self_: *mut BRepFeat_MakeRevol,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:83 - `BRepFeat_Form::FirstShape()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:82 - `BRepFeat_Form::FirstShape()`
     pub fn BRepFeat_MakeRevol_inherited_FirstShape(
         self_: *const BRepFeat_MakeRevol,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:87 - `BRepFeat_Form::LastShape()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:86 - `BRepFeat_Form::LastShape()`
     pub fn BRepFeat_MakeRevol_inherited_LastShape(
         self_: *const BRepFeat_MakeRevol,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:94 - `BRepFeat_Form::NewEdges()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:93 - `BRepFeat_Form::NewEdges()`
     pub fn BRepFeat_MakeRevol_inherited_NewEdges(
         self_: *const BRepFeat_MakeRevol,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:104 - `BRepFeat_Form::TgtEdges()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:103 - `BRepFeat_Form::TgtEdges()`
     pub fn BRepFeat_MakeRevol_inherited_TgtEdges(
         self_: *const BRepFeat_MakeRevol,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:107 - `BRepFeat_Form::BasisShapeValid()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:106 - `BRepFeat_Form::BasisShapeValid()`
     pub fn BRepFeat_MakeRevol_inherited_BasisShapeValid(
         self_: *mut BRepFeat_MakeRevol,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:110 - `BRepFeat_Form::GeneratedShapeValid()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:109 - `BRepFeat_Form::GeneratedShapeValid()`
     pub fn BRepFeat_MakeRevol_inherited_GeneratedShapeValid(
         self_: *mut BRepFeat_MakeRevol,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:114 - `BRepFeat_Form::ShapeFromValid()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:113 - `BRepFeat_Form::ShapeFromValid()`
     pub fn BRepFeat_MakeRevol_inherited_ShapeFromValid(
         self_: *mut BRepFeat_MakeRevol,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:118 - `BRepFeat_Form::ShapeUntilValid()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:117 - `BRepFeat_Form::ShapeUntilValid()`
     pub fn BRepFeat_MakeRevol_inherited_ShapeUntilValid(
         self_: *mut BRepFeat_MakeRevol,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:121 - `BRepFeat_Form::GluedFacesValid()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:120 - `BRepFeat_Form::GluedFacesValid()`
     pub fn BRepFeat_MakeRevol_inherited_GluedFacesValid(
         self_: *mut BRepFeat_MakeRevol,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:126 - `BRepFeat_Form::SketchFaceValid()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:125 - `BRepFeat_Form::SketchFaceValid()`
     pub fn BRepFeat_MakeRevol_inherited_SketchFaceValid(
         self_: *mut BRepFeat_MakeRevol,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:129 - `BRepFeat_Form::PerfSelectionValid()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:128 - `BRepFeat_Form::PerfSelectionValid()`
     pub fn BRepFeat_MakeRevol_inherited_PerfSelectionValid(
         self_: *mut BRepFeat_MakeRevol,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepFeat_Form.hxx`:135 - `BRepFeat_Form::CurrentStatusError()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:134 - `BRepFeat_Form::CurrentStatusError()`
     pub fn BRepFeat_MakeRevol_inherited_CurrentStatusError(
         self_: *const BRepFeat_MakeRevol,
     ) -> crate::OcctResult<i32>;
@@ -1652,45 +1623,45 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepFeat_MakeRevolutionForm ========================
     pub fn BRepFeat_MakeRevolutionForm_destructor(self_: *mut BRepFeat_MakeRevolutionForm);
-    /// **Source:** `BRepFeat_MakeRevolutionForm.hxx`:56 - `BRepFeat_MakeRevolutionForm::BRepFeat_MakeRevolutionForm()`
+    /// **Source:** `BRepFeat_MakeRevolutionForm.hxx`:58 - `BRepFeat_MakeRevolutionForm::BRepFeat_MakeRevolutionForm()`
     pub fn BRepFeat_MakeRevolutionForm_ctor() -> crate::OcctResult<*mut BRepFeat_MakeRevolutionForm>;
-    /// **Source:** `BRepFeat_MakeRevolutionForm.hxx`:65 - `BRepFeat_MakeRevolutionForm::BRepFeat_MakeRevolutionForm()`
+    /// **Source:** `BRepFeat_MakeRevolutionForm.hxx`:67 - `BRepFeat_MakeRevolutionForm::BRepFeat_MakeRevolutionForm()`
     pub fn BRepFeat_MakeRevolutionForm_ctor_shape_wire_handlegeomplane_ax1_real2_int_bool(
         Sbase: *const TopoDS_Shape,
         W: *const TopoDS_Wire,
-        Plane: *const HandleGeomPlane,
+        Plane: *const Handle_Geom_Plane,
         Axis: *const gp_Ax1,
         Height1: f64,
         Height2: f64,
         Fuse: i32,
         Sliding: *mut bool,
     ) -> crate::OcctResult<*mut BRepFeat_MakeRevolutionForm>;
-    /// **Source:** `BRepFeat_MakeRevolutionForm.hxx`:82 - `BRepFeat_MakeRevolutionForm::Init()`
+    /// **Source:** `BRepFeat_MakeRevolutionForm.hxx`:84 - `BRepFeat_MakeRevolutionForm::Init()`
     pub fn BRepFeat_MakeRevolutionForm_init(
         self_: *mut BRepFeat_MakeRevolutionForm,
         Sbase: *const TopoDS_Shape,
         W: *const TopoDS_Wire,
-        Plane: *const HandleGeomPlane,
+        Plane: *const Handle_Geom_Plane,
         Axis: *const gp_Ax1,
         Height1: f64,
         Height2: f64,
         Fuse: i32,
         Sliding: *mut bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakeRevolutionForm.hxx`:94 - `BRepFeat_MakeRevolutionForm::Add()`
+    /// **Source:** `BRepFeat_MakeRevolutionForm.hxx`:96 - `BRepFeat_MakeRevolutionForm::Add()`
     pub fn BRepFeat_MakeRevolutionForm_add(
         self_: *mut BRepFeat_MakeRevolutionForm,
         E: *const TopoDS_Edge,
         OnFace: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakeRevolutionForm.hxx`:98 - `BRepFeat_MakeRevolutionForm::Perform()`
+    /// **Source:** `BRepFeat_MakeRevolutionForm.hxx`:100 - `BRepFeat_MakeRevolutionForm::Perform()`
     pub fn BRepFeat_MakeRevolutionForm_perform(
         self_: *mut BRepFeat_MakeRevolutionForm,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_MakeRevolutionForm.hxx`:100 - `BRepFeat_MakeRevolutionForm::Propagate()`
+    /// **Source:** `BRepFeat_MakeRevolutionForm.hxx`:102 - `BRepFeat_MakeRevolutionForm::Propagate()`
     pub fn BRepFeat_MakeRevolutionForm_propagate(
         self_: *mut BRepFeat_MakeRevolutionForm,
-        L: *mut TopTools_ListOfShape,
+        L: *mut NCollection_List_TopoDS_Shape,
         F: *const TopoDS_Face,
         FPoint: *const gp_Pnt,
         LPoint: *const gp_Pnt,
@@ -1725,27 +1696,27 @@ unsafe extern "C" {
         self_: *mut BRepFeat_MakeRevolutionForm,
         F: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:72 - `BRepFeat_RibSlot::FirstShape()`
+    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:70 - `BRepFeat_RibSlot::FirstShape()`
     pub fn BRepFeat_MakeRevolutionForm_inherited_FirstShape(
         self_: *const BRepFeat_MakeRevolutionForm,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:76 - `BRepFeat_RibSlot::LastShape()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:74 - `BRepFeat_RibSlot::LastShape()`
     pub fn BRepFeat_MakeRevolutionForm_inherited_LastShape(
         self_: *const BRepFeat_MakeRevolutionForm,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:84 - `BRepFeat_RibSlot::FacesForDraft()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:82 - `BRepFeat_RibSlot::FacesForDraft()`
     pub fn BRepFeat_MakeRevolutionForm_inherited_FacesForDraft(
         self_: *const BRepFeat_MakeRevolutionForm,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:90 - `BRepFeat_RibSlot::NewEdges()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:88 - `BRepFeat_RibSlot::NewEdges()`
     pub fn BRepFeat_MakeRevolutionForm_inherited_NewEdges(
         self_: *const BRepFeat_MakeRevolutionForm,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:101 - `BRepFeat_RibSlot::TgtEdges()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:99 - `BRepFeat_RibSlot::TgtEdges()`
     pub fn BRepFeat_MakeRevolutionForm_inherited_TgtEdges(
         self_: *const BRepFeat_MakeRevolutionForm,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:111 - `BRepFeat_RibSlot::CurrentStatusError()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:109 - `BRepFeat_RibSlot::CurrentStatusError()`
     pub fn BRepFeat_MakeRevolutionForm_inherited_CurrentStatusError(
         self_: *const BRepFeat_MakeRevolutionForm,
     ) -> crate::OcctResult<i32>;
@@ -1777,48 +1748,48 @@ unsafe extern "C" {
     pub fn BRepFeat_RibSlot_modified(
         self_: *mut BRepFeat_RibSlot,
         F: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepFeat_RibSlot.hxx`:67 - `BRepFeat_RibSlot::Generated()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepFeat_RibSlot.hxx`:66 - `BRepFeat_RibSlot::Generated()`
     pub fn BRepFeat_RibSlot_generated(
         self_: *mut BRepFeat_RibSlot,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepFeat_RibSlot.hxx`:72 - `BRepFeat_RibSlot::FirstShape()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepFeat_RibSlot.hxx`:70 - `BRepFeat_RibSlot::FirstShape()`
     pub fn BRepFeat_RibSlot_first_shape(
         self_: *const BRepFeat_RibSlot,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepFeat_RibSlot.hxx`:76 - `BRepFeat_RibSlot::LastShape()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepFeat_RibSlot.hxx`:74 - `BRepFeat_RibSlot::LastShape()`
     pub fn BRepFeat_RibSlot_last_shape(
         self_: *const BRepFeat_RibSlot,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepFeat_RibSlot.hxx`:84 - `BRepFeat_RibSlot::FacesForDraft()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepFeat_RibSlot.hxx`:82 - `BRepFeat_RibSlot::FacesForDraft()`
     pub fn BRepFeat_RibSlot_faces_for_draft(
         self_: *const BRepFeat_RibSlot,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepFeat_RibSlot.hxx`:90 - `BRepFeat_RibSlot::NewEdges()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepFeat_RibSlot.hxx`:88 - `BRepFeat_RibSlot::NewEdges()`
     pub fn BRepFeat_RibSlot_new_edges(
         self_: *const BRepFeat_RibSlot,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepFeat_RibSlot.hxx`:101 - `BRepFeat_RibSlot::TgtEdges()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepFeat_RibSlot.hxx`:99 - `BRepFeat_RibSlot::TgtEdges()`
     pub fn BRepFeat_RibSlot_tgt_edges(
         self_: *const BRepFeat_RibSlot,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepFeat_RibSlot.hxx`:111 - `BRepFeat_RibSlot::CurrentStatusError()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepFeat_RibSlot.hxx`:109 - `BRepFeat_RibSlot::CurrentStatusError()`
     pub fn BRepFeat_RibSlot_current_status_error(
         self_: *const BRepFeat_RibSlot,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepFeat_RibSlot.hxx`:103 - `BRepFeat_RibSlot::IntPar()`
+    /// **Source:** `BRepFeat_RibSlot.hxx`:101 - `BRepFeat_RibSlot::IntPar()`
     pub fn BRepFeat_RibSlot_int_par(
-        C: *const HandleGeomCurve,
+        C: *const Handle_Geom_Curve,
         P: *const gp_Pnt,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepFeat_RibSlot.hxx`:105 - `BRepFeat_RibSlot::ChoiceOfFaces()`
+    /// **Source:** `BRepFeat_RibSlot.hxx`:103 - `BRepFeat_RibSlot::ChoiceOfFaces()`
     pub fn BRepFeat_RibSlot_choice_of_faces(
-        faces: *mut TopTools_ListOfShape,
-        cc: *const HandleGeomCurve,
+        faces: *mut NCollection_List_TopoDS_Shape,
+        cc: *const Handle_Geom_Curve,
         par: f64,
         bnd: f64,
-        Pln: *const HandleGeomPlane,
+        Pln: *const Handle_Geom_Plane,
     ) -> crate::OcctResult<*mut TopoDS_Face>;
     /// Upcast BRepFeat_RibSlot to BRepBuilderAPI_MakeShape
     pub fn BRepFeat_RibSlot_as_BRepBuilderAPI_MakeShape(
@@ -1855,78 +1826,78 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepFeat_SplitShape ========================
     pub fn BRepFeat_SplitShape_destructor(self_: *mut BRepFeat_SplitShape);
-    /// **Source:** `BRepFeat_SplitShape.hxx`:55 - `BRepFeat_SplitShape::BRepFeat_SplitShape()`
+    /// **Source:** `BRepFeat_SplitShape.hxx`:56 - `BRepFeat_SplitShape::BRepFeat_SplitShape()`
     pub fn BRepFeat_SplitShape_ctor() -> crate::OcctResult<*mut BRepFeat_SplitShape>;
-    /// **Source:** `BRepFeat_SplitShape.hxx`:58 - `BRepFeat_SplitShape::BRepFeat_SplitShape()`
+    /// **Source:** `BRepFeat_SplitShape.hxx`:59 - `BRepFeat_SplitShape::BRepFeat_SplitShape()`
     pub fn BRepFeat_SplitShape_ctor_shape(
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut BRepFeat_SplitShape>;
-    /// **Source:** `BRepFeat_SplitShape.hxx`:63 - `BRepFeat_SplitShape::Add()`
-    pub fn BRepFeat_SplitShape_add_sequenceofshape(
+    /// **Source:** `BRepFeat_SplitShape.hxx`:64 - `BRepFeat_SplitShape::Add()`
+    pub fn BRepFeat_SplitShape_add_seq_shape(
         self_: *mut BRepFeat_SplitShape,
-        theEdges: *const TopTools_SequenceOfShape,
+        theEdges: *const NCollection_Sequence_TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepFeat_SplitShape.hxx`:66 - `BRepFeat_SplitShape::Init()`
+    /// **Source:** `BRepFeat_SplitShape.hxx`:67 - `BRepFeat_SplitShape::Init()`
     pub fn BRepFeat_SplitShape_init(
         self_: *mut BRepFeat_SplitShape,
         S: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_SplitShape.hxx`:70 - `BRepFeat_SplitShape::SetCheckInterior()`
+    /// **Source:** `BRepFeat_SplitShape.hxx`:71 - `BRepFeat_SplitShape::SetCheckInterior()`
     pub fn BRepFeat_SplitShape_set_check_interior(
         self_: *mut BRepFeat_SplitShape,
         ToCheckInterior: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_SplitShape.hxx`:74 - `BRepFeat_SplitShape::Add()`
+    /// **Source:** `BRepFeat_SplitShape.hxx`:75 - `BRepFeat_SplitShape::Add()`
     pub fn BRepFeat_SplitShape_add_wire_face(
         self_: *mut BRepFeat_SplitShape,
         W: *const TopoDS_Wire,
         F: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_SplitShape.hxx`:77 - `BRepFeat_SplitShape::Add()`
+    /// **Source:** `BRepFeat_SplitShape.hxx`:78 - `BRepFeat_SplitShape::Add()`
     pub fn BRepFeat_SplitShape_add_edge_face(
         self_: *mut BRepFeat_SplitShape,
         E: *const TopoDS_Edge,
         F: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_SplitShape.hxx`:86 - `BRepFeat_SplitShape::Add()`
+    /// **Source:** `BRepFeat_SplitShape.hxx`:87 - `BRepFeat_SplitShape::Add()`
     pub fn BRepFeat_SplitShape_add_compound_face(
         self_: *mut BRepFeat_SplitShape,
         Comp: *const TopoDS_Compound,
         F: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_SplitShape.hxx`:89 - `BRepFeat_SplitShape::Add()`
+    /// **Source:** `BRepFeat_SplitShape.hxx`:90 - `BRepFeat_SplitShape::Add()`
     pub fn BRepFeat_SplitShape_add_edge2(
         self_: *mut BRepFeat_SplitShape,
         E: *const TopoDS_Edge,
         EOn: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_SplitShape.hxx`:93 - `BRepFeat_SplitShape::DirectLeft()`
+    /// **Source:** `BRepFeat_SplitShape.hxx`:94 - `BRepFeat_SplitShape::DirectLeft()`
     pub fn BRepFeat_SplitShape_direct_left(
         self_: *const BRepFeat_SplitShape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepFeat_SplitShape.hxx`:99 - `BRepFeat_SplitShape::Left()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepFeat_SplitShape.hxx`:100 - `BRepFeat_SplitShape::Left()`
     pub fn BRepFeat_SplitShape_left(
         self_: *const BRepFeat_SplitShape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepFeat_SplitShape.hxx`:102 - `BRepFeat_SplitShape::Right()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepFeat_SplitShape.hxx`:103 - `BRepFeat_SplitShape::Right()`
     pub fn BRepFeat_SplitShape_right(
         self_: *const BRepFeat_SplitShape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepFeat_SplitShape.hxx`:105 - `BRepFeat_SplitShape::Build()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepFeat_SplitShape.hxx`:106 - `BRepFeat_SplitShape::Build()`
     pub fn BRepFeat_SplitShape_build(
         self_: *mut BRepFeat_SplitShape,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat_SplitShape.hxx`:109 - `BRepFeat_SplitShape::IsDeleted()`
+    /// **Source:** `BRepFeat_SplitShape.hxx`:110 - `BRepFeat_SplitShape::IsDeleted()`
     pub fn BRepFeat_SplitShape_is_deleted(
         self_: *mut BRepFeat_SplitShape,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepFeat_SplitShape.hxx`:112 - `BRepFeat_SplitShape::Modified()`
+    /// **Source:** `BRepFeat_SplitShape.hxx`:113 - `BRepFeat_SplitShape::Modified()`
     pub fn BRepFeat_SplitShape_modified(
         self_: *mut BRepFeat_SplitShape,
         F: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// Upcast BRepFeat_SplitShape to BRepBuilderAPI_MakeShape
     pub fn BRepFeat_SplitShape_as_BRepBuilderAPI_MakeShape(
         self_: *const BRepFeat_SplitShape,
@@ -1960,13 +1931,13 @@ unsafe extern "C" {
     /// **Source:** `LocOpe_BuildShape.hxx`:31 - `LocOpe_BuildShape::LocOpe_BuildShape()`
     pub fn LocOpe_BuildShape_ctor() -> crate::OcctResult<*mut LocOpe_BuildShape>;
     /// **Source:** `LocOpe_BuildShape.hxx`:35 - `LocOpe_BuildShape::LocOpe_BuildShape()`
-    pub fn LocOpe_BuildShape_ctor_listofshape(
-        L: *const TopTools_ListOfShape,
+    pub fn LocOpe_BuildShape_ctor_list_shape(
+        L: *const NCollection_List_TopoDS_Shape,
     ) -> crate::OcctResult<*mut LocOpe_BuildShape>;
     /// **Source:** `LocOpe_BuildShape.hxx`:39 - `LocOpe_BuildShape::Perform()`
     pub fn LocOpe_BuildShape_perform(
         self_: *mut LocOpe_BuildShape,
-        L: *const TopTools_ListOfShape,
+        L: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
     /// **Source:** `LocOpe_BuildShape.hxx`:41 - `LocOpe_BuildShape::Shape()`
     pub fn LocOpe_BuildShape_shape(
@@ -1974,63 +1945,58 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*const TopoDS_Shape>;
     // ======================== LocOpe_BuildWires ========================
     pub fn LocOpe_BuildWires_destructor(self_: *mut LocOpe_BuildWires);
-    /// **Source:** `LocOpe_BuildWires.hxx`:32 - `LocOpe_BuildWires::LocOpe_BuildWires()`
+    /// **Source:** `LocOpe_BuildWires.hxx`:33 - `LocOpe_BuildWires::LocOpe_BuildWires()`
     pub fn LocOpe_BuildWires_ctor() -> crate::OcctResult<*mut LocOpe_BuildWires>;
-    /// **Source:** `LocOpe_BuildWires.hxx`:34 - `LocOpe_BuildWires::LocOpe_BuildWires()`
-    pub fn LocOpe_BuildWires_ctor_listofshape_handlelocopewiresonshape(
-        Ledges: *const TopTools_ListOfShape,
-        PW: *const HandleLocOpeWiresOnShape,
+    /// **Source:** `LocOpe_BuildWires.hxx`:35 - `LocOpe_BuildWires::LocOpe_BuildWires()`
+    pub fn LocOpe_BuildWires_ctor_list_shape_handlelocopewiresonshape(
+        Ledges: *const NCollection_List_TopoDS_Shape,
+        PW: *const Handle_LocOpe_WiresOnShape,
     ) -> crate::OcctResult<*mut LocOpe_BuildWires>;
-    /// **Source:** `LocOpe_BuildWires.hxx`:37 - `LocOpe_BuildWires::Perform()`
+    /// **Source:** `LocOpe_BuildWires.hxx`:38 - `LocOpe_BuildWires::Perform()`
     pub fn LocOpe_BuildWires_perform(
         self_: *mut LocOpe_BuildWires,
-        Ledges: *const TopTools_ListOfShape,
-        PW: *const HandleLocOpeWiresOnShape,
+        Ledges: *const NCollection_List_TopoDS_Shape,
+        PW: *const Handle_LocOpe_WiresOnShape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_BuildWires.hxx`:40 - `LocOpe_BuildWires::IsDone()`
+    /// **Source:** `LocOpe_BuildWires.hxx`:41 - `LocOpe_BuildWires::IsDone()`
     pub fn LocOpe_BuildWires_is_done(self_: *const LocOpe_BuildWires) -> crate::OcctResult<bool>;
-    /// **Source:** `LocOpe_BuildWires.hxx`:42 - `LocOpe_BuildWires::Result()`
+    /// **Source:** `LocOpe_BuildWires.hxx`:43 - `LocOpe_BuildWires::Result()`
     pub fn LocOpe_BuildWires_result(
         self_: *const LocOpe_BuildWires,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     // ======================== LocOpe_CSIntersector ========================
     pub fn LocOpe_CSIntersector_destructor(self_: *mut LocOpe_CSIntersector);
-    /// **Source:** `LocOpe_CSIntersector.hxx`:41 - `LocOpe_CSIntersector::LocOpe_CSIntersector()`
+    /// **Source:** `LocOpe_CSIntersector.hxx`:42 - `LocOpe_CSIntersector::LocOpe_CSIntersector()`
     pub fn LocOpe_CSIntersector_ctor() -> crate::OcctResult<*mut LocOpe_CSIntersector>;
-    /// **Source:** `LocOpe_CSIntersector.hxx`:45 - `LocOpe_CSIntersector::LocOpe_CSIntersector()`
+    /// **Source:** `LocOpe_CSIntersector.hxx`:46 - `LocOpe_CSIntersector::LocOpe_CSIntersector()`
     pub fn LocOpe_CSIntersector_ctor_shape(
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut LocOpe_CSIntersector>;
-    /// **Source:** `LocOpe_CSIntersector.hxx`:48 - `LocOpe_CSIntersector::Init()`
+    /// **Source:** `LocOpe_CSIntersector.hxx`:49 - `LocOpe_CSIntersector::Init()`
     pub fn LocOpe_CSIntersector_init(
         self_: *mut LocOpe_CSIntersector,
         S: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_CSIntersector.hxx`:50 - `LocOpe_CSIntersector::Perform()`
-    pub fn LocOpe_CSIntersector_perform_sequenceoflin(
+    /// **Source:** `LocOpe_CSIntersector.hxx`:51 - `LocOpe_CSIntersector::Perform()`
+    pub fn LocOpe_CSIntersector_perform_seq_lin(
         self_: *mut LocOpe_CSIntersector,
-        Slin: *const LocOpe_SequenceOfLin,
+        Slin: *const NCollection_Sequence_gp_Lin,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_CSIntersector.hxx`:52 - `LocOpe_CSIntersector::Perform()`
-    pub fn LocOpe_CSIntersector_perform_sequenceofcirc(
+    /// **Source:** `LocOpe_CSIntersector.hxx`:53 - `LocOpe_CSIntersector::Perform()`
+    pub fn LocOpe_CSIntersector_perform_seq_circ(
         self_: *mut LocOpe_CSIntersector,
-        Scir: *const LocOpe_SequenceOfCirc,
+        Scir: *const NCollection_Sequence_gp_Circ,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_CSIntersector.hxx`:54 - `LocOpe_CSIntersector::Perform()`
-    pub fn LocOpe_CSIntersector_perform_sequenceofcurve(
-        self_: *mut LocOpe_CSIntersector,
-        Scur: *const TColGeom_SequenceOfCurve,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_CSIntersector.hxx`:58 - `LocOpe_CSIntersector::IsDone()`
+    /// **Source:** `LocOpe_CSIntersector.hxx`:59 - `LocOpe_CSIntersector::IsDone()`
     pub fn LocOpe_CSIntersector_is_done(
         self_: *const LocOpe_CSIntersector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `LocOpe_CSIntersector.hxx`:62 - `LocOpe_CSIntersector::NbPoints()`
+    /// **Source:** `LocOpe_CSIntersector.hxx`:63 - `LocOpe_CSIntersector::NbPoints()`
     pub fn LocOpe_CSIntersector_nb_points(
         self_: *const LocOpe_CSIntersector,
         I: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `LocOpe_CSIntersector.hxx`:67 - `LocOpe_CSIntersector::Point()`
+    /// **Source:** `LocOpe_CSIntersector.hxx`:68 - `LocOpe_CSIntersector::Point()`
     pub fn LocOpe_CSIntersector_point(
         self_: *const LocOpe_CSIntersector,
         I: i32,
@@ -2056,7 +2022,7 @@ unsafe extern "C" {
         IndFrom: *mut i32,
         IndTo: *mut i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `LocOpe_CSIntersector.hxx`:118 - `LocOpe_CSIntersector::LocalizeAfter()`
+    /// **Source:** `LocOpe_CSIntersector.hxx`:117 - `LocOpe_CSIntersector::LocalizeAfter()`
     pub fn LocOpe_CSIntersector_localize_after_int2_real_orientation_int2(
         self_: *const LocOpe_CSIntersector,
         I: i32,
@@ -2066,7 +2032,7 @@ unsafe extern "C" {
         IndFrom: *mut i32,
         IndTo: *mut i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `LocOpe_CSIntersector.hxx`:137 - `LocOpe_CSIntersector::LocalizeBefore()`
+    /// **Source:** `LocOpe_CSIntersector.hxx`:135 - `LocOpe_CSIntersector::LocalizeBefore()`
     pub fn LocOpe_CSIntersector_localize_before_int2_real_orientation_int2(
         self_: *const LocOpe_CSIntersector,
         I: i32,
@@ -2076,46 +2042,46 @@ unsafe extern "C" {
         IndFrom: *mut i32,
         IndTo: *mut i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `LocOpe_CSIntersector.hxx`:144 - `LocOpe_CSIntersector::Destroy()`
+    /// **Source:** `LocOpe_CSIntersector.hxx`:142 - `LocOpe_CSIntersector::Destroy()`
     pub fn LocOpe_CSIntersector_destroy(
         self_: *mut LocOpe_CSIntersector,
     ) -> *const std::ffi::c_char;
     // ======================== LocOpe_CurveShapeIntersector ========================
     pub fn LocOpe_CurveShapeIntersector_destructor(self_: *mut LocOpe_CurveShapeIntersector);
-    /// **Source:** `LocOpe_CurveShapeIntersector.hxx`:41 - `LocOpe_CurveShapeIntersector::LocOpe_CurveShapeIntersector()`
+    /// **Source:** `LocOpe_CurveShapeIntersector.hxx`:42 - `LocOpe_CurveShapeIntersector::LocOpe_CurveShapeIntersector()`
     pub fn LocOpe_CurveShapeIntersector_ctor(
     ) -> crate::OcctResult<*mut LocOpe_CurveShapeIntersector>;
-    /// **Source:** `LocOpe_CurveShapeIntersector.hxx`:45 - `LocOpe_CurveShapeIntersector::LocOpe_CurveShapeIntersector()`
+    /// **Source:** `LocOpe_CurveShapeIntersector.hxx`:46 - `LocOpe_CurveShapeIntersector::LocOpe_CurveShapeIntersector()`
     pub fn LocOpe_CurveShapeIntersector_ctor_ax1_shape(
         Axis: *const gp_Ax1,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut LocOpe_CurveShapeIntersector>;
-    /// **Source:** `LocOpe_CurveShapeIntersector.hxx`:49 - `LocOpe_CurveShapeIntersector::LocOpe_CurveShapeIntersector()`
+    /// **Source:** `LocOpe_CurveShapeIntersector.hxx`:50 - `LocOpe_CurveShapeIntersector::LocOpe_CurveShapeIntersector()`
     pub fn LocOpe_CurveShapeIntersector_ctor_circ_shape(
         C: *const gp_Circ,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut LocOpe_CurveShapeIntersector>;
-    /// **Source:** `LocOpe_CurveShapeIntersector.hxx`:52 - `LocOpe_CurveShapeIntersector::Init()`
+    /// **Source:** `LocOpe_CurveShapeIntersector.hxx`:53 - `LocOpe_CurveShapeIntersector::Init()`
     pub fn LocOpe_CurveShapeIntersector_init_ax1_shape(
         self_: *mut LocOpe_CurveShapeIntersector,
         Axis: *const gp_Ax1,
         S: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_CurveShapeIntersector.hxx`:55 - `LocOpe_CurveShapeIntersector::Init()`
+    /// **Source:** `LocOpe_CurveShapeIntersector.hxx`:56 - `LocOpe_CurveShapeIntersector::Init()`
     pub fn LocOpe_CurveShapeIntersector_init_circ_shape(
         self_: *mut LocOpe_CurveShapeIntersector,
         C: *const gp_Circ,
         S: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_CurveShapeIntersector.hxx`:59 - `LocOpe_CurveShapeIntersector::IsDone()`
+    /// **Source:** `LocOpe_CurveShapeIntersector.hxx`:60 - `LocOpe_CurveShapeIntersector::IsDone()`
     pub fn LocOpe_CurveShapeIntersector_is_done(
         self_: *const LocOpe_CurveShapeIntersector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `LocOpe_CurveShapeIntersector.hxx`:62 - `LocOpe_CurveShapeIntersector::NbPoints()`
+    /// **Source:** `LocOpe_CurveShapeIntersector.hxx`:63 - `LocOpe_CurveShapeIntersector::NbPoints()`
     pub fn LocOpe_CurveShapeIntersector_nb_points(
         self_: *const LocOpe_CurveShapeIntersector,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `LocOpe_CurveShapeIntersector.hxx`:67 - `LocOpe_CurveShapeIntersector::Point()`
+    /// **Source:** `LocOpe_CurveShapeIntersector.hxx`:68 - `LocOpe_CurveShapeIntersector::Point()`
     pub fn LocOpe_CurveShapeIntersector_point(
         self_: *const LocOpe_CurveShapeIntersector,
         Index: i32,
@@ -2128,7 +2094,7 @@ unsafe extern "C" {
         IndFrom: *mut i32,
         IndTo: *mut i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `LocOpe_CurveShapeIntersector.hxx`:94 - `LocOpe_CurveShapeIntersector::LocalizeBefore()`
+    /// **Source:** `LocOpe_CurveShapeIntersector.hxx`:93 - `LocOpe_CurveShapeIntersector::LocalizeBefore()`
     pub fn LocOpe_CurveShapeIntersector_localize_before_real_orientation_int2(
         self_: *const LocOpe_CurveShapeIntersector,
         From: f64,
@@ -2136,7 +2102,7 @@ unsafe extern "C" {
         IndFrom: *mut i32,
         IndTo: *mut i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `LocOpe_CurveShapeIntersector.hxx`:109 - `LocOpe_CurveShapeIntersector::LocalizeAfter()`
+    /// **Source:** `LocOpe_CurveShapeIntersector.hxx`:108 - `LocOpe_CurveShapeIntersector::LocalizeAfter()`
     pub fn LocOpe_CurveShapeIntersector_localize_after_int_orientation_int2(
         self_: *const LocOpe_CurveShapeIntersector,
         FromInd: i32,
@@ -2144,7 +2110,7 @@ unsafe extern "C" {
         IndFrom: *mut i32,
         IndTo: *mut i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `LocOpe_CurveShapeIntersector.hxx`:124 - `LocOpe_CurveShapeIntersector::LocalizeBefore()`
+    /// **Source:** `LocOpe_CurveShapeIntersector.hxx`:123 - `LocOpe_CurveShapeIntersector::LocalizeBefore()`
     pub fn LocOpe_CurveShapeIntersector_localize_before_int_orientation_int2(
         self_: *const LocOpe_CurveShapeIntersector,
         FromInd: i32,
@@ -2154,14 +2120,14 @@ unsafe extern "C" {
     ) -> crate::OcctResult<bool>;
     // ======================== LocOpe_DPrism ========================
     pub fn LocOpe_DPrism_destructor(self_: *mut LocOpe_DPrism);
-    /// **Source:** `LocOpe_DPrism.hxx`:41 - `LocOpe_DPrism::LocOpe_DPrism()`
+    /// **Source:** `LocOpe_DPrism.hxx`:43 - `LocOpe_DPrism::LocOpe_DPrism()`
     pub fn LocOpe_DPrism_ctor_face_real3(
         Spine: *const TopoDS_Face,
         Height1: f64,
         Height2: f64,
         Angle: f64,
     ) -> crate::OcctResult<*mut LocOpe_DPrism>;
-    /// **Source:** `LocOpe_DPrism.hxx`:46 - `LocOpe_DPrism::LocOpe_DPrism()`
+    /// **Source:** `LocOpe_DPrism.hxx`:48 - `LocOpe_DPrism::LocOpe_DPrism()`
     pub fn LocOpe_DPrism_ctor_face_real2(
         Spine: *const TopoDS_Face,
         Height: f64,
@@ -2193,44 +2159,39 @@ unsafe extern "C" {
     pub fn LocOpe_DPrism_shapes(
         self_: *const LocOpe_DPrism,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `LocOpe_DPrism.hxx`:64 - `LocOpe_DPrism::Curves()`
-    pub fn LocOpe_DPrism_curves(
-        self_: *const LocOpe_DPrism,
-        SCurves: *mut TColGeom_SequenceOfCurve,
-    ) -> *const std::ffi::c_char;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// **Source:** `LocOpe_DPrism.hxx`:66 - `LocOpe_DPrism::BarycCurve()`
     pub fn LocOpe_DPrism_baryc_curve(
         self_: *const LocOpe_DPrism,
-    ) -> crate::OcctResult<*mut HandleGeomCurve>;
+    ) -> crate::OcctResult<*mut Handle_Geom_Curve>;
     // ======================== LocOpe_FindEdges ========================
     pub fn LocOpe_FindEdges_destructor(self_: *mut LocOpe_FindEdges);
-    /// **Source:** `LocOpe_FindEdges.hxx`:31 - `LocOpe_FindEdges::LocOpe_FindEdges()`
-    pub fn LocOpe_FindEdges_ctor() -> crate::OcctResult<*mut LocOpe_FindEdges>;
     /// **Source:** `LocOpe_FindEdges.hxx`:33 - `LocOpe_FindEdges::LocOpe_FindEdges()`
+    pub fn LocOpe_FindEdges_ctor() -> crate::OcctResult<*mut LocOpe_FindEdges>;
+    /// **Source:** `LocOpe_FindEdges.hxx`:35 - `LocOpe_FindEdges::LocOpe_FindEdges()`
     pub fn LocOpe_FindEdges_ctor_shape2(
         FFrom: *const TopoDS_Shape,
         FTo: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut LocOpe_FindEdges>;
-    /// **Source:** `LocOpe_FindEdges.hxx`:35 - `LocOpe_FindEdges::Set()`
+    /// **Source:** `LocOpe_FindEdges.hxx`:37 - `LocOpe_FindEdges::Set()`
     pub fn LocOpe_FindEdges_set(
         self_: *mut LocOpe_FindEdges,
         FFrom: *const TopoDS_Shape,
         FTo: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_FindEdges.hxx`:37 - `LocOpe_FindEdges::InitIterator()`
+    /// **Source:** `LocOpe_FindEdges.hxx`:39 - `LocOpe_FindEdges::InitIterator()`
     pub fn LocOpe_FindEdges_init_iterator(self_: *mut LocOpe_FindEdges) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_FindEdges.hxx`:39 - `LocOpe_FindEdges::More()`
+    /// **Source:** `LocOpe_FindEdges.hxx`:41 - `LocOpe_FindEdges::More()`
     pub fn LocOpe_FindEdges_more(self_: *const LocOpe_FindEdges) -> crate::OcctResult<bool>;
-    /// **Source:** `LocOpe_FindEdges.hxx`:41 - `LocOpe_FindEdges::EdgeFrom()`
+    /// **Source:** `LocOpe_FindEdges.hxx`:43 - `LocOpe_FindEdges::EdgeFrom()`
     pub fn LocOpe_FindEdges_edge_from(
         self_: *const LocOpe_FindEdges,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `LocOpe_FindEdges.hxx`:43 - `LocOpe_FindEdges::EdgeTo()`
+    /// **Source:** `LocOpe_FindEdges.hxx`:45 - `LocOpe_FindEdges::EdgeTo()`
     pub fn LocOpe_FindEdges_edge_to(
         self_: *const LocOpe_FindEdges,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `LocOpe_FindEdges.hxx`:45 - `LocOpe_FindEdges::Next()`
+    /// **Source:** `LocOpe_FindEdges.hxx`:47 - `LocOpe_FindEdges::Next()`
     pub fn LocOpe_FindEdges_next(self_: *mut LocOpe_FindEdges) -> *const std::ffi::c_char;
     // ======================== LocOpe_FindEdgesInFace ========================
     pub fn LocOpe_FindEdgesInFace_destructor(self_: *mut LocOpe_FindEdgesInFace);
@@ -2265,33 +2226,33 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== LocOpe_GeneratedShape ========================
     pub fn LocOpe_GeneratedShape_destructor(self_: *mut LocOpe_GeneratedShape);
-    /// **Source:** `LocOpe_GeneratedShape.hxx`:35 - `LocOpe_GeneratedShape::GeneratingEdges()`
+    /// **Source:** `LocOpe_GeneratedShape.hxx`:33 - `LocOpe_GeneratedShape::GeneratingEdges()`
     pub fn LocOpe_GeneratedShape_generating_edges(
         self_: *mut LocOpe_GeneratedShape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `LocOpe_GeneratedShape.hxx`:39 - `LocOpe_GeneratedShape::Generated()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `LocOpe_GeneratedShape.hxx`:37 - `LocOpe_GeneratedShape::Generated()`
     pub fn LocOpe_GeneratedShape_generated_vertex(
         self_: *mut LocOpe_GeneratedShape,
         V: *const TopoDS_Vertex,
     ) -> crate::OcctResult<*mut TopoDS_Edge>;
-    /// **Source:** `LocOpe_GeneratedShape.hxx`:43 - `LocOpe_GeneratedShape::Generated()`
+    /// **Source:** `LocOpe_GeneratedShape.hxx`:41 - `LocOpe_GeneratedShape::Generated()`
     pub fn LocOpe_GeneratedShape_generated_edge(
         self_: *mut LocOpe_GeneratedShape,
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<*mut TopoDS_Face>;
-    /// **Source:** `LocOpe_GeneratedShape.hxx`:47 - `LocOpe_GeneratedShape::OrientedFaces()`
+    /// **Source:** `LocOpe_GeneratedShape.hxx`:45 - `LocOpe_GeneratedShape::OrientedFaces()`
     pub fn LocOpe_GeneratedShape_oriented_faces(
         self_: *mut LocOpe_GeneratedShape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `LocOpe_GeneratedShape.hxx`:49 - `LocOpe_GeneratedShape::DynamicType()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `LocOpe_GeneratedShape.hxx`:47 - `LocOpe_GeneratedShape::DynamicType()`
     pub fn LocOpe_GeneratedShape_dynamic_type(
         self_: *const LocOpe_GeneratedShape,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `LocOpe_GeneratedShape.hxx`:49 - `LocOpe_GeneratedShape::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `LocOpe_GeneratedShape.hxx`:47 - `LocOpe_GeneratedShape::get_type_name()`
     pub fn LocOpe_GeneratedShape_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `LocOpe_GeneratedShape.hxx`:49 - `LocOpe_GeneratedShape::get_type_descriptor()`
+    /// **Source:** `LocOpe_GeneratedShape.hxx`:47 - `LocOpe_GeneratedShape::get_type_descriptor()`
     pub fn LocOpe_GeneratedShape_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast LocOpe_GeneratedShape to Standard_Transient
     pub fn LocOpe_GeneratedShape_as_Standard_Transient(
         self_: *const LocOpe_GeneratedShape,
@@ -2301,136 +2262,137 @@ unsafe extern "C" {
         self_: *mut LocOpe_GeneratedShape,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<LocOpe_GeneratedShape>
-    pub fn HandleLocOpeGeneratedShape_destructor(self_: *mut HandleLocOpeGeneratedShape);
+    pub fn Handle_LocOpe_GeneratedShape_destructor(self_: *mut Handle_LocOpe_GeneratedShape);
     /// Clone Handle<LocOpe_GeneratedShape> (increments reference count)
-    pub fn HandleLocOpeGeneratedShape_clone(
-        self_: *const HandleLocOpeGeneratedShape,
-    ) -> crate::OcctResult<*mut HandleLocOpeGeneratedShape>;
+    pub fn Handle_LocOpe_GeneratedShape_clone(
+        self_: *const Handle_LocOpe_GeneratedShape,
+    ) -> crate::OcctResult<*mut Handle_LocOpe_GeneratedShape>;
     /// Check if Handle<LocOpe_GeneratedShape> is null
-    pub fn HandleLocOpeGeneratedShape_is_null(self_: *const HandleLocOpeGeneratedShape) -> bool;
+    pub fn Handle_LocOpe_GeneratedShape_is_null(self_: *const Handle_LocOpe_GeneratedShape)
+        -> bool;
     /// Dereference Handle to get *const LocOpe_GeneratedShape
-    pub fn HandleLocOpeGeneratedShape_get(
-        handle: *const HandleLocOpeGeneratedShape,
+    pub fn Handle_LocOpe_GeneratedShape_get(
+        handle: *const Handle_LocOpe_GeneratedShape,
     ) -> crate::OcctResult<*const LocOpe_GeneratedShape>;
     /// Dereference Handle to get *mut LocOpe_GeneratedShape
-    pub fn HandleLocOpeGeneratedShape_get_mut(
-        handle: *mut HandleLocOpeGeneratedShape,
+    pub fn Handle_LocOpe_GeneratedShape_get_mut(
+        handle: *mut Handle_LocOpe_GeneratedShape,
     ) -> crate::OcctResult<*mut LocOpe_GeneratedShape>;
     /// Upcast Handle<LocOpe_GeneratedShape> to Handle<Standard_Transient>
-    pub fn HandleLocOpeGeneratedShape_to_HandleStandardTransient(
-        self_: *const HandleLocOpeGeneratedShape,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_LocOpe_GeneratedShape_to_Handle_Standard_Transient(
+        self_: *const Handle_LocOpe_GeneratedShape,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<LocOpe_GeneratedShape> to Handle<LocOpe_GluedShape> (returns null on failure)
-    pub fn HandleLocOpeGeneratedShape_downcast_to_HandleLocOpeGluedShape(
-        self_: *const HandleLocOpeGeneratedShape,
-    ) -> crate::OcctResult<*mut HandleLocOpeGluedShape>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_LocOpe_GeneratedShape_downcast_to_Handle_LocOpe_GluedShape(
+        self_: *const Handle_LocOpe_GeneratedShape,
+    ) -> crate::OcctResult<*mut Handle_LocOpe_GluedShape>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn LocOpe_GeneratedShape_inherited_IsInstance(
         self_: *const LocOpe_GeneratedShape,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn LocOpe_GeneratedShape_inherited_IsKind(
         self_: *const LocOpe_GeneratedShape,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn LocOpe_GeneratedShape_inherited_This(
         self_: *const LocOpe_GeneratedShape,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn LocOpe_GeneratedShape_inherited_GetRefCount(
         self_: *const LocOpe_GeneratedShape,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn LocOpe_GeneratedShape_inherited_IncrementRefCounter(
         self_: *mut LocOpe_GeneratedShape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn LocOpe_GeneratedShape_inherited_DecrementRefCounter(
         self_: *mut LocOpe_GeneratedShape,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn LocOpe_GeneratedShape_inherited_Delete(
         self_: *const LocOpe_GeneratedShape,
     ) -> *const std::ffi::c_char;
     // ======================== LocOpe_Generator ========================
     pub fn LocOpe_Generator_destructor(self_: *mut LocOpe_Generator);
-    /// **Source:** `LocOpe_Generator.hxx`:36 - `LocOpe_Generator::LocOpe_Generator()`
+    /// **Source:** `LocOpe_Generator.hxx`:37 - `LocOpe_Generator::LocOpe_Generator()`
     pub fn LocOpe_Generator_ctor() -> crate::OcctResult<*mut LocOpe_Generator>;
-    /// **Source:** `LocOpe_Generator.hxx`:39 - `LocOpe_Generator::LocOpe_Generator()`
+    /// **Source:** `LocOpe_Generator.hxx`:40 - `LocOpe_Generator::LocOpe_Generator()`
     pub fn LocOpe_Generator_ctor_shape(
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut LocOpe_Generator>;
-    /// **Source:** `LocOpe_Generator.hxx`:42 - `LocOpe_Generator::Init()`
+    /// **Source:** `LocOpe_Generator.hxx`:43 - `LocOpe_Generator::Init()`
     pub fn LocOpe_Generator_init(
         self_: *mut LocOpe_Generator,
         S: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_Generator.hxx`:44 - `LocOpe_Generator::Perform()`
+    /// **Source:** `LocOpe_Generator.hxx`:45 - `LocOpe_Generator::Perform()`
     pub fn LocOpe_Generator_perform(
         self_: *mut LocOpe_Generator,
-        G: *const HandleLocOpeGeneratedShape,
+        G: *const Handle_LocOpe_GeneratedShape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_Generator.hxx`:46 - `LocOpe_Generator::IsDone()`
+    /// **Source:** `LocOpe_Generator.hxx`:47 - `LocOpe_Generator::IsDone()`
     pub fn LocOpe_Generator_is_done(self_: *const LocOpe_Generator) -> crate::OcctResult<bool>;
-    /// **Source:** `LocOpe_Generator.hxx`:49 - `LocOpe_Generator::ResultingShape()`
+    /// **Source:** `LocOpe_Generator.hxx`:50 - `LocOpe_Generator::ResultingShape()`
     pub fn LocOpe_Generator_resulting_shape(
         self_: *const LocOpe_Generator,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `LocOpe_Generator.hxx`:52 - `LocOpe_Generator::Shape()`
+    /// **Source:** `LocOpe_Generator.hxx`:53 - `LocOpe_Generator::Shape()`
     pub fn LocOpe_Generator_shape(
         self_: *const LocOpe_Generator,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `LocOpe_Generator.hxx`:58 - `LocOpe_Generator::DescendantFace()`
+    /// **Source:** `LocOpe_Generator.hxx`:59 - `LocOpe_Generator::DescendantFace()`
     pub fn LocOpe_Generator_descendant_face(
         self_: *mut LocOpe_Generator,
         F: *const TopoDS_Face,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     // ======================== LocOpe_GluedShape ========================
     pub fn LocOpe_GluedShape_destructor(self_: *mut LocOpe_GluedShape);
-    /// **Source:** `LocOpe_GluedShape.hxx`:37 - `LocOpe_GluedShape::LocOpe_GluedShape()`
+    /// **Source:** `LocOpe_GluedShape.hxx`:36 - `LocOpe_GluedShape::LocOpe_GluedShape()`
     pub fn LocOpe_GluedShape_ctor() -> crate::OcctResult<*mut LocOpe_GluedShape>;
-    /// **Source:** `LocOpe_GluedShape.hxx`:39 - `LocOpe_GluedShape::LocOpe_GluedShape()`
+    /// **Source:** `LocOpe_GluedShape.hxx`:38 - `LocOpe_GluedShape::LocOpe_GluedShape()`
     pub fn LocOpe_GluedShape_ctor_shape(
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut LocOpe_GluedShape>;
-    /// **Source:** `LocOpe_GluedShape.hxx`:41 - `LocOpe_GluedShape::Init()`
+    /// **Source:** `LocOpe_GluedShape.hxx`:40 - `LocOpe_GluedShape::Init()`
     pub fn LocOpe_GluedShape_init(
         self_: *mut LocOpe_GluedShape,
         S: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_GluedShape.hxx`:43 - `LocOpe_GluedShape::GlueOnFace()`
+    /// **Source:** `LocOpe_GluedShape.hxx`:42 - `LocOpe_GluedShape::GlueOnFace()`
     pub fn LocOpe_GluedShape_glue_on_face(
         self_: *mut LocOpe_GluedShape,
         F: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_GluedShape.hxx`:45 - `LocOpe_GluedShape::GeneratingEdges()`
+    /// **Source:** `LocOpe_GluedShape.hxx`:44 - `LocOpe_GluedShape::GeneratingEdges()`
     pub fn LocOpe_GluedShape_generating_edges(
         self_: *mut LocOpe_GluedShape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `LocOpe_GluedShape.hxx`:49 - `LocOpe_GluedShape::Generated()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `LocOpe_GluedShape.hxx`:48 - `LocOpe_GluedShape::Generated()`
     pub fn LocOpe_GluedShape_generated_vertex(
         self_: *mut LocOpe_GluedShape,
         V: *const TopoDS_Vertex,
     ) -> crate::OcctResult<*mut TopoDS_Edge>;
-    /// **Source:** `LocOpe_GluedShape.hxx`:53 - `LocOpe_GluedShape::Generated()`
+    /// **Source:** `LocOpe_GluedShape.hxx`:52 - `LocOpe_GluedShape::Generated()`
     pub fn LocOpe_GluedShape_generated_edge(
         self_: *mut LocOpe_GluedShape,
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<*mut TopoDS_Face>;
-    /// **Source:** `LocOpe_GluedShape.hxx`:57 - `LocOpe_GluedShape::OrientedFaces()`
+    /// **Source:** `LocOpe_GluedShape.hxx`:56 - `LocOpe_GluedShape::OrientedFaces()`
     pub fn LocOpe_GluedShape_oriented_faces(
         self_: *mut LocOpe_GluedShape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `LocOpe_GluedShape.hxx`:59 - `LocOpe_GluedShape::DynamicType()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `LocOpe_GluedShape.hxx`:58 - `LocOpe_GluedShape::DynamicType()`
     pub fn LocOpe_GluedShape_dynamic_type(
         self_: *const LocOpe_GluedShape,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `LocOpe_GluedShape.hxx`:59 - `LocOpe_GluedShape::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `LocOpe_GluedShape.hxx`:58 - `LocOpe_GluedShape::get_type_name()`
     pub fn LocOpe_GluedShape_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `LocOpe_GluedShape.hxx`:59 - `LocOpe_GluedShape::get_type_descriptor()`
-    pub fn LocOpe_GluedShape_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `LocOpe_GluedShape.hxx`:58 - `LocOpe_GluedShape::get_type_descriptor()`
+    pub fn LocOpe_GluedShape_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast LocOpe_GluedShape to LocOpe_GeneratedShape
     pub fn LocOpe_GluedShape_as_LocOpe_GeneratedShape(
         self_: *const LocOpe_GluedShape,
@@ -2450,58 +2412,58 @@ unsafe extern "C" {
     /// Wrap LocOpe_GluedShape in a Handle
     pub fn LocOpe_GluedShape_to_handle(
         obj: *mut LocOpe_GluedShape,
-    ) -> crate::OcctResult<*mut HandleLocOpeGluedShape>;
+    ) -> crate::OcctResult<*mut Handle_LocOpe_GluedShape>;
     /// Destroy Handle<LocOpe_GluedShape>
-    pub fn HandleLocOpeGluedShape_destructor(self_: *mut HandleLocOpeGluedShape);
+    pub fn Handle_LocOpe_GluedShape_destructor(self_: *mut Handle_LocOpe_GluedShape);
     /// Clone Handle<LocOpe_GluedShape> (increments reference count)
-    pub fn HandleLocOpeGluedShape_clone(
-        self_: *const HandleLocOpeGluedShape,
-    ) -> crate::OcctResult<*mut HandleLocOpeGluedShape>;
+    pub fn Handle_LocOpe_GluedShape_clone(
+        self_: *const Handle_LocOpe_GluedShape,
+    ) -> crate::OcctResult<*mut Handle_LocOpe_GluedShape>;
     /// Check if Handle<LocOpe_GluedShape> is null
-    pub fn HandleLocOpeGluedShape_is_null(self_: *const HandleLocOpeGluedShape) -> bool;
+    pub fn Handle_LocOpe_GluedShape_is_null(self_: *const Handle_LocOpe_GluedShape) -> bool;
     /// Dereference Handle to get *const LocOpe_GluedShape
-    pub fn HandleLocOpeGluedShape_get(
-        handle: *const HandleLocOpeGluedShape,
+    pub fn Handle_LocOpe_GluedShape_get(
+        handle: *const Handle_LocOpe_GluedShape,
     ) -> crate::OcctResult<*const LocOpe_GluedShape>;
     /// Dereference Handle to get *mut LocOpe_GluedShape
-    pub fn HandleLocOpeGluedShape_get_mut(
-        handle: *mut HandleLocOpeGluedShape,
+    pub fn Handle_LocOpe_GluedShape_get_mut(
+        handle: *mut Handle_LocOpe_GluedShape,
     ) -> crate::OcctResult<*mut LocOpe_GluedShape>;
     /// Upcast Handle<LocOpe_GluedShape> to Handle<LocOpe_GeneratedShape>
-    pub fn HandleLocOpeGluedShape_to_HandleLocOpeGeneratedShape(
-        self_: *const HandleLocOpeGluedShape,
-    ) -> crate::OcctResult<*mut HandleLocOpeGeneratedShape>;
+    pub fn Handle_LocOpe_GluedShape_to_Handle_LocOpe_GeneratedShape(
+        self_: *const Handle_LocOpe_GluedShape,
+    ) -> crate::OcctResult<*mut Handle_LocOpe_GeneratedShape>;
     /// Upcast Handle<LocOpe_GluedShape> to Handle<Standard_Transient>
-    pub fn HandleLocOpeGluedShape_to_HandleStandardTransient(
-        self_: *const HandleLocOpeGluedShape,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_LocOpe_GluedShape_to_Handle_Standard_Transient(
+        self_: *const Handle_LocOpe_GluedShape,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn LocOpe_GluedShape_inherited_IsInstance(
         self_: *const LocOpe_GluedShape,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn LocOpe_GluedShape_inherited_IsKind(
         self_: *const LocOpe_GluedShape,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn LocOpe_GluedShape_inherited_This(
         self_: *const LocOpe_GluedShape,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn LocOpe_GluedShape_inherited_GetRefCount(
         self_: *const LocOpe_GluedShape,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn LocOpe_GluedShape_inherited_IncrementRefCounter(
         self_: *mut LocOpe_GluedShape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn LocOpe_GluedShape_inherited_DecrementRefCounter(
         self_: *mut LocOpe_GluedShape,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn LocOpe_GluedShape_inherited_Delete(
         self_: *const LocOpe_GluedShape,
     ) -> *const std::ffi::c_char;
@@ -2546,7 +2508,7 @@ unsafe extern "C" {
     pub fn LocOpe_Gluer_descendant_faces(
         self_: *const LocOpe_Gluer,
         F: *const TopoDS_Face,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// **Source:** `LocOpe_Gluer.hxx`:58 - `LocOpe_Gluer::BasisShape()`
     pub fn LocOpe_Gluer_basis_shape(
         self_: *const LocOpe_Gluer,
@@ -2558,23 +2520,23 @@ unsafe extern "C" {
     /// **Source:** `LocOpe_Gluer.hxx`:62 - `LocOpe_Gluer::Edges()`
     pub fn LocOpe_Gluer_edges(
         self_: *const LocOpe_Gluer,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// **Source:** `LocOpe_Gluer.hxx`:64 - `LocOpe_Gluer::TgtEdges()`
     pub fn LocOpe_Gluer_tgt_edges(
         self_: *const LocOpe_Gluer,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     // ======================== LocOpe_LinearForm ========================
     pub fn LocOpe_LinearForm_destructor(self_: *mut LocOpe_LinearForm);
-    /// **Source:** `LocOpe_LinearForm.hxx`:36 - `LocOpe_LinearForm::LocOpe_LinearForm()`
+    /// **Source:** `LocOpe_LinearForm.hxx`:37 - `LocOpe_LinearForm::LocOpe_LinearForm()`
     pub fn LocOpe_LinearForm_ctor() -> crate::OcctResult<*mut LocOpe_LinearForm>;
-    /// **Source:** `LocOpe_LinearForm.hxx`:38 - `LocOpe_LinearForm::LocOpe_LinearForm()`
+    /// **Source:** `LocOpe_LinearForm.hxx`:39 - `LocOpe_LinearForm::LocOpe_LinearForm()`
     pub fn LocOpe_LinearForm_ctor_shape_vec_pnt2(
         Base: *const TopoDS_Shape,
         V: *const gp_Vec,
         Pnt1: *const gp_Pnt,
         Pnt2: *const gp_Pnt,
     ) -> crate::OcctResult<*mut LocOpe_LinearForm>;
-    /// **Source:** `LocOpe_LinearForm.hxx`:43 - `LocOpe_LinearForm::LocOpe_LinearForm()`
+    /// **Source:** `LocOpe_LinearForm.hxx`:44 - `LocOpe_LinearForm::LocOpe_LinearForm()`
     pub fn LocOpe_LinearForm_ctor_shape_vec2_pnt2(
         Base: *const TopoDS_Shape,
         V: *const gp_Vec,
@@ -2582,7 +2544,7 @@ unsafe extern "C" {
         Pnt1: *const gp_Pnt,
         Pnt2: *const gp_Pnt,
     ) -> crate::OcctResult<*mut LocOpe_LinearForm>;
-    /// **Source:** `LocOpe_LinearForm.hxx`:49 - `LocOpe_LinearForm::Perform()`
+    /// **Source:** `LocOpe_LinearForm.hxx`:50 - `LocOpe_LinearForm::Perform()`
     pub fn LocOpe_LinearForm_perform_shape_vec_pnt2(
         self_: *mut LocOpe_LinearForm,
         Base: *const TopoDS_Shape,
@@ -2590,7 +2552,7 @@ unsafe extern "C" {
         Pnt1: *const gp_Pnt,
         Pnt2: *const gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_LinearForm.hxx`:54 - `LocOpe_LinearForm::Perform()`
+    /// **Source:** `LocOpe_LinearForm.hxx`:55 - `LocOpe_LinearForm::Perform()`
     pub fn LocOpe_LinearForm_perform_shape_vec2_pnt2(
         self_: *mut LocOpe_LinearForm,
         Base: *const TopoDS_Shape,
@@ -2599,59 +2561,54 @@ unsafe extern "C" {
         Pnt1: *const gp_Pnt,
         Pnt2: *const gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_LinearForm.hxx`:60 - `LocOpe_LinearForm::FirstShape()`
+    /// **Source:** `LocOpe_LinearForm.hxx`:61 - `LocOpe_LinearForm::FirstShape()`
     pub fn LocOpe_LinearForm_first_shape(
         self_: *const LocOpe_LinearForm,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `LocOpe_LinearForm.hxx`:62 - `LocOpe_LinearForm::LastShape()`
+    /// **Source:** `LocOpe_LinearForm.hxx`:63 - `LocOpe_LinearForm::LastShape()`
     pub fn LocOpe_LinearForm_last_shape(
         self_: *const LocOpe_LinearForm,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `LocOpe_LinearForm.hxx`:64 - `LocOpe_LinearForm::Shape()`
+    /// **Source:** `LocOpe_LinearForm.hxx`:65 - `LocOpe_LinearForm::Shape()`
     pub fn LocOpe_LinearForm_shape(
         self_: *const LocOpe_LinearForm,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `LocOpe_LinearForm.hxx`:66 - `LocOpe_LinearForm::Shapes()`
+    /// **Source:** `LocOpe_LinearForm.hxx`:67 - `LocOpe_LinearForm::Shapes()`
     pub fn LocOpe_LinearForm_shapes(
         self_: *const LocOpe_LinearForm,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     // ======================== LocOpe_Pipe ========================
     pub fn LocOpe_Pipe_destructor(self_: *mut LocOpe_Pipe);
-    /// **Source:** `LocOpe_Pipe.hxx`:40 - `LocOpe_Pipe::LocOpe_Pipe()`
+    /// **Source:** `LocOpe_Pipe.hxx`:42 - `LocOpe_Pipe::LocOpe_Pipe()`
     pub fn LocOpe_Pipe_ctor_wire_shape(
         Spine: *const TopoDS_Wire,
         Profile: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut LocOpe_Pipe>;
-    /// **Source:** `LocOpe_Pipe.hxx`:42 - `LocOpe_Pipe::Spine()`
+    /// **Source:** `LocOpe_Pipe.hxx`:44 - `LocOpe_Pipe::Spine()`
     pub fn LocOpe_Pipe_spine(self_: *const LocOpe_Pipe) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `LocOpe_Pipe.hxx`:44 - `LocOpe_Pipe::Profile()`
+    /// **Source:** `LocOpe_Pipe.hxx`:46 - `LocOpe_Pipe::Profile()`
     pub fn LocOpe_Pipe_profile(self_: *const LocOpe_Pipe)
         -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `LocOpe_Pipe.hxx`:46 - `LocOpe_Pipe::FirstShape()`
+    /// **Source:** `LocOpe_Pipe.hxx`:48 - `LocOpe_Pipe::FirstShape()`
     pub fn LocOpe_Pipe_first_shape(
         self_: *const LocOpe_Pipe,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `LocOpe_Pipe.hxx`:48 - `LocOpe_Pipe::LastShape()`
+    /// **Source:** `LocOpe_Pipe.hxx`:50 - `LocOpe_Pipe::LastShape()`
     pub fn LocOpe_Pipe_last_shape(
         self_: *const LocOpe_Pipe,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `LocOpe_Pipe.hxx`:50 - `LocOpe_Pipe::Shape()`
+    /// **Source:** `LocOpe_Pipe.hxx`:52 - `LocOpe_Pipe::Shape()`
     pub fn LocOpe_Pipe_shape(self_: *const LocOpe_Pipe) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `LocOpe_Pipe.hxx`:52 - `LocOpe_Pipe::Shapes()`
+    /// **Source:** `LocOpe_Pipe.hxx`:54 - `LocOpe_Pipe::Shapes()`
     pub fn LocOpe_Pipe_shapes(
         self_: *mut LocOpe_Pipe,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `LocOpe_Pipe.hxx`:54 - `LocOpe_Pipe::Curves()`
-    pub fn LocOpe_Pipe_curves(
-        self_: *mut LocOpe_Pipe,
-        Spt: *const TColgp_SequenceOfPnt,
-    ) -> crate::OcctResult<*const TColGeom_SequenceOfCurve>;
-    /// **Source:** `LocOpe_Pipe.hxx`:56 - `LocOpe_Pipe::BarycCurve()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `LocOpe_Pipe.hxx`:59 - `LocOpe_Pipe::BarycCurve()`
     pub fn LocOpe_Pipe_baryc_curve(
         self_: *mut LocOpe_Pipe,
-    ) -> crate::OcctResult<*mut HandleGeomCurve>;
+    ) -> crate::OcctResult<*mut Handle_Geom_Curve>;
     // ======================== LocOpe_PntFace ========================
     pub fn LocOpe_PntFace_destructor(self_: *mut LocOpe_PntFace);
     /// **Source:** `LocOpe_PntFace.hxx`:35 - `LocOpe_PntFace::LocOpe_PntFace()`
@@ -2685,69 +2642,64 @@ unsafe extern "C" {
     pub fn LocOpe_PntFace_v_parameter(self_: *const LocOpe_PntFace) -> crate::OcctResult<f64>;
     // ======================== LocOpe_Prism ========================
     pub fn LocOpe_Prism_destructor(self_: *mut LocOpe_Prism);
-    /// **Source:** `LocOpe_Prism.hxx`:38 - `LocOpe_Prism::LocOpe_Prism()`
-    pub fn LocOpe_Prism_ctor() -> crate::OcctResult<*mut LocOpe_Prism>;
     /// **Source:** `LocOpe_Prism.hxx`:40 - `LocOpe_Prism::LocOpe_Prism()`
+    pub fn LocOpe_Prism_ctor() -> crate::OcctResult<*mut LocOpe_Prism>;
+    /// **Source:** `LocOpe_Prism.hxx`:42 - `LocOpe_Prism::LocOpe_Prism()`
     pub fn LocOpe_Prism_ctor_shape_vec(
         Base: *const TopoDS_Shape,
         V: *const gp_Vec,
     ) -> crate::OcctResult<*mut LocOpe_Prism>;
-    /// **Source:** `LocOpe_Prism.hxx`:42 - `LocOpe_Prism::LocOpe_Prism()`
+    /// **Source:** `LocOpe_Prism.hxx`:44 - `LocOpe_Prism::LocOpe_Prism()`
     pub fn LocOpe_Prism_ctor_shape_vec2(
         Base: *const TopoDS_Shape,
         V: *const gp_Vec,
         Vectra: *const gp_Vec,
     ) -> crate::OcctResult<*mut LocOpe_Prism>;
-    /// **Source:** `LocOpe_Prism.hxx`:44 - `LocOpe_Prism::Perform()`
+    /// **Source:** `LocOpe_Prism.hxx`:46 - `LocOpe_Prism::Perform()`
     pub fn LocOpe_Prism_perform_shape_vec(
         self_: *mut LocOpe_Prism,
         Base: *const TopoDS_Shape,
         V: *const gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_Prism.hxx`:46 - `LocOpe_Prism::Perform()`
+    /// **Source:** `LocOpe_Prism.hxx`:48 - `LocOpe_Prism::Perform()`
     pub fn LocOpe_Prism_perform_shape_vec2(
         self_: *mut LocOpe_Prism,
         Base: *const TopoDS_Shape,
         V: *const gp_Vec,
         Vtra: *const gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_Prism.hxx`:48 - `LocOpe_Prism::FirstShape()`
+    /// **Source:** `LocOpe_Prism.hxx`:50 - `LocOpe_Prism::FirstShape()`
     pub fn LocOpe_Prism_first_shape(
         self_: *const LocOpe_Prism,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `LocOpe_Prism.hxx`:50 - `LocOpe_Prism::LastShape()`
+    /// **Source:** `LocOpe_Prism.hxx`:52 - `LocOpe_Prism::LastShape()`
     pub fn LocOpe_Prism_last_shape(
         self_: *const LocOpe_Prism,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `LocOpe_Prism.hxx`:52 - `LocOpe_Prism::Shape()`
+    /// **Source:** `LocOpe_Prism.hxx`:54 - `LocOpe_Prism::Shape()`
     pub fn LocOpe_Prism_shape(self_: *const LocOpe_Prism)
         -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `LocOpe_Prism.hxx`:54 - `LocOpe_Prism::Shapes()`
+    /// **Source:** `LocOpe_Prism.hxx`:56 - `LocOpe_Prism::Shapes()`
     pub fn LocOpe_Prism_shapes(
         self_: *const LocOpe_Prism,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `LocOpe_Prism.hxx`:56 - `LocOpe_Prism::Curves()`
-    pub fn LocOpe_Prism_curves(
-        self_: *const LocOpe_Prism,
-        SCurves: *mut TColGeom_SequenceOfCurve,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_Prism.hxx`:58 - `LocOpe_Prism::BarycCurve()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `LocOpe_Prism.hxx`:60 - `LocOpe_Prism::BarycCurve()`
     pub fn LocOpe_Prism_baryc_curve(
         self_: *const LocOpe_Prism,
-    ) -> crate::OcctResult<*mut HandleGeomCurve>;
+    ) -> crate::OcctResult<*mut Handle_Geom_Curve>;
     // ======================== LocOpe_Revol ========================
     pub fn LocOpe_Revol_destructor(self_: *mut LocOpe_Revol);
-    /// **Source:** `LocOpe_Revol.hxx`:38 - `LocOpe_Revol::LocOpe_Revol()`
-    pub fn LocOpe_Revol_ctor() -> crate::OcctResult<*mut LocOpe_Revol>;
     /// **Source:** `LocOpe_Revol.hxx`:40 - `LocOpe_Revol::LocOpe_Revol()`
+    pub fn LocOpe_Revol_ctor() -> crate::OcctResult<*mut LocOpe_Revol>;
+    /// **Source:** `LocOpe_Revol.hxx`:42 - `LocOpe_Revol::LocOpe_Revol()`
     pub fn LocOpe_Revol_ctor_shape_ax1_real2(
         Base: *const TopoDS_Shape,
         Axis: *const gp_Ax1,
         Angle: f64,
         angledec: f64,
     ) -> crate::OcctResult<*mut LocOpe_Revol>;
-    /// **Source:** `LocOpe_Revol.hxx`:45 - `LocOpe_Revol::LocOpe_Revol()`
+    /// **Source:** `LocOpe_Revol.hxx`:47 - `LocOpe_Revol::LocOpe_Revol()`
     pub fn LocOpe_Revol_ctor_shape_ax1_real(
         Base: *const TopoDS_Shape,
         Axis: *const gp_Ax1,
@@ -2768,79 +2720,74 @@ unsafe extern "C" {
         Axis: *const gp_Ax1,
         Angle: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_Revol.hxx`:58 - `LocOpe_Revol::FirstShape()`
+    /// **Source:** `LocOpe_Revol.hxx`:56 - `LocOpe_Revol::FirstShape()`
     pub fn LocOpe_Revol_first_shape(
         self_: *const LocOpe_Revol,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `LocOpe_Revol.hxx`:60 - `LocOpe_Revol::LastShape()`
+    /// **Source:** `LocOpe_Revol.hxx`:58 - `LocOpe_Revol::LastShape()`
     pub fn LocOpe_Revol_last_shape(
         self_: *const LocOpe_Revol,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `LocOpe_Revol.hxx`:62 - `LocOpe_Revol::Shape()`
+    /// **Source:** `LocOpe_Revol.hxx`:60 - `LocOpe_Revol::Shape()`
     pub fn LocOpe_Revol_shape(self_: *const LocOpe_Revol)
         -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `LocOpe_Revol.hxx`:64 - `LocOpe_Revol::Shapes()`
+    /// **Source:** `LocOpe_Revol.hxx`:62 - `LocOpe_Revol::Shapes()`
     pub fn LocOpe_Revol_shapes(
         self_: *const LocOpe_Revol,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `LocOpe_Revol.hxx`:66 - `LocOpe_Revol::Curves()`
-    pub fn LocOpe_Revol_curves(
-        self_: *const LocOpe_Revol,
-        SCurves: *mut TColGeom_SequenceOfCurve,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_Revol.hxx`:68 - `LocOpe_Revol::BarycCurve()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `LocOpe_Revol.hxx`:66 - `LocOpe_Revol::BarycCurve()`
     pub fn LocOpe_Revol_baryc_curve(
         self_: *const LocOpe_Revol,
-    ) -> crate::OcctResult<*mut HandleGeomCurve>;
+    ) -> crate::OcctResult<*mut Handle_Geom_Curve>;
     // ======================== LocOpe_RevolutionForm ========================
     pub fn LocOpe_RevolutionForm_destructor(self_: *mut LocOpe_RevolutionForm);
-    /// **Source:** `LocOpe_RevolutionForm.hxx`:37 - `LocOpe_RevolutionForm::LocOpe_RevolutionForm()`
+    /// **Source:** `LocOpe_RevolutionForm.hxx`:38 - `LocOpe_RevolutionForm::LocOpe_RevolutionForm()`
     pub fn LocOpe_RevolutionForm_ctor() -> crate::OcctResult<*mut LocOpe_RevolutionForm>;
-    /// **Source:** `LocOpe_RevolutionForm.hxx`:39 - `LocOpe_RevolutionForm::LocOpe_RevolutionForm()`
+    /// **Source:** `LocOpe_RevolutionForm.hxx`:40 - `LocOpe_RevolutionForm::LocOpe_RevolutionForm()`
     pub fn LocOpe_RevolutionForm_ctor_shape_ax1_real(
         Base: *const TopoDS_Shape,
         Axe: *const gp_Ax1,
         Angle: f64,
     ) -> crate::OcctResult<*mut LocOpe_RevolutionForm>;
-    /// **Source:** `LocOpe_RevolutionForm.hxx`:43 - `LocOpe_RevolutionForm::Perform()`
+    /// **Source:** `LocOpe_RevolutionForm.hxx`:44 - `LocOpe_RevolutionForm::Perform()`
     pub fn LocOpe_RevolutionForm_perform(
         self_: *mut LocOpe_RevolutionForm,
         Base: *const TopoDS_Shape,
         Axe: *const gp_Ax1,
         Angle: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_RevolutionForm.hxx`:47 - `LocOpe_RevolutionForm::FirstShape()`
+    /// **Source:** `LocOpe_RevolutionForm.hxx`:46 - `LocOpe_RevolutionForm::FirstShape()`
     pub fn LocOpe_RevolutionForm_first_shape(
         self_: *const LocOpe_RevolutionForm,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `LocOpe_RevolutionForm.hxx`:49 - `LocOpe_RevolutionForm::LastShape()`
+    /// **Source:** `LocOpe_RevolutionForm.hxx`:48 - `LocOpe_RevolutionForm::LastShape()`
     pub fn LocOpe_RevolutionForm_last_shape(
         self_: *const LocOpe_RevolutionForm,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `LocOpe_RevolutionForm.hxx`:51 - `LocOpe_RevolutionForm::Shape()`
+    /// **Source:** `LocOpe_RevolutionForm.hxx`:50 - `LocOpe_RevolutionForm::Shape()`
     pub fn LocOpe_RevolutionForm_shape(
         self_: *const LocOpe_RevolutionForm,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `LocOpe_RevolutionForm.hxx`:53 - `LocOpe_RevolutionForm::Shapes()`
+    /// **Source:** `LocOpe_RevolutionForm.hxx`:52 - `LocOpe_RevolutionForm::Shapes()`
     pub fn LocOpe_RevolutionForm_shapes(
         self_: *const LocOpe_RevolutionForm,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     // ======================== LocOpe_SplitDrafts ========================
     pub fn LocOpe_SplitDrafts_destructor(self_: *mut LocOpe_SplitDrafts);
-    /// **Source:** `LocOpe_SplitDrafts.hxx`:43 - `LocOpe_SplitDrafts::LocOpe_SplitDrafts()`
+    /// **Source:** `LocOpe_SplitDrafts.hxx`:44 - `LocOpe_SplitDrafts::LocOpe_SplitDrafts()`
     pub fn LocOpe_SplitDrafts_ctor() -> crate::OcctResult<*mut LocOpe_SplitDrafts>;
-    /// **Source:** `LocOpe_SplitDrafts.hxx`:46 - `LocOpe_SplitDrafts::LocOpe_SplitDrafts()`
+    /// **Source:** `LocOpe_SplitDrafts.hxx`:47 - `LocOpe_SplitDrafts::LocOpe_SplitDrafts()`
     pub fn LocOpe_SplitDrafts_ctor_shape(
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut LocOpe_SplitDrafts>;
-    /// **Source:** `LocOpe_SplitDrafts.hxx`:52 - `LocOpe_SplitDrafts::Init()`
+    /// **Source:** `LocOpe_SplitDrafts.hxx`:53 - `LocOpe_SplitDrafts::Init()`
     pub fn LocOpe_SplitDrafts_init(
         self_: *mut LocOpe_SplitDrafts,
         S: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_SplitDrafts.hxx`:69 - `LocOpe_SplitDrafts::Perform()`
+    /// **Source:** `LocOpe_SplitDrafts.hxx`:70 - `LocOpe_SplitDrafts::Perform()`
     pub fn LocOpe_SplitDrafts_perform_face_wire_dir_pln_real_dir_pln_real_bool2(
         self_: *mut LocOpe_SplitDrafts,
         F: *const TopoDS_Face,
@@ -2854,7 +2801,7 @@ unsafe extern "C" {
         ModifyLeft: bool,
         ModifyRight: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_SplitDrafts.hxx`:88 - `LocOpe_SplitDrafts::Perform()`
+    /// **Source:** `LocOpe_SplitDrafts.hxx`:89 - `LocOpe_SplitDrafts::Perform()`
     pub fn LocOpe_SplitDrafts_perform_face_wire_dir_pln_real(
         self_: *mut LocOpe_SplitDrafts,
         F: *const TopoDS_Face,
@@ -2863,205 +2810,205 @@ unsafe extern "C" {
         NPl: *const gp_Pln,
         Angle: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_SplitDrafts.hxx`:95 - `LocOpe_SplitDrafts::IsDone()`
+    /// **Source:** `LocOpe_SplitDrafts.hxx`:96 - `LocOpe_SplitDrafts::IsDone()`
     pub fn LocOpe_SplitDrafts_is_done(self_: *const LocOpe_SplitDrafts) -> crate::OcctResult<bool>;
-    /// **Source:** `LocOpe_SplitDrafts.hxx`:97 - `LocOpe_SplitDrafts::OriginalShape()`
+    /// **Source:** `LocOpe_SplitDrafts.hxx`:98 - `LocOpe_SplitDrafts::OriginalShape()`
     pub fn LocOpe_SplitDrafts_original_shape(
         self_: *const LocOpe_SplitDrafts,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `LocOpe_SplitDrafts.hxx`:100 - `LocOpe_SplitDrafts::Shape()`
+    /// **Source:** `LocOpe_SplitDrafts.hxx`:101 - `LocOpe_SplitDrafts::Shape()`
     pub fn LocOpe_SplitDrafts_shape(
         self_: *const LocOpe_SplitDrafts,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `LocOpe_SplitDrafts.hxx`:103 - `LocOpe_SplitDrafts::ShapesFromShape()`
+    /// **Source:** `LocOpe_SplitDrafts.hxx`:104 - `LocOpe_SplitDrafts::ShapesFromShape()`
     pub fn LocOpe_SplitDrafts_shapes_from_shape(
         self_: *const LocOpe_SplitDrafts,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     // ======================== LocOpe_SplitShape ========================
     pub fn LocOpe_SplitShape_destructor(self_: *mut LocOpe_SplitShape);
-    /// **Source:** `LocOpe_SplitShape.hxx`:43 - `LocOpe_SplitShape::LocOpe_SplitShape()`
+    /// **Source:** `LocOpe_SplitShape.hxx`:44 - `LocOpe_SplitShape::LocOpe_SplitShape()`
     pub fn LocOpe_SplitShape_ctor() -> crate::OcctResult<*mut LocOpe_SplitShape>;
-    /// **Source:** `LocOpe_SplitShape.hxx`:46 - `LocOpe_SplitShape::LocOpe_SplitShape()`
+    /// **Source:** `LocOpe_SplitShape.hxx`:47 - `LocOpe_SplitShape::LocOpe_SplitShape()`
     pub fn LocOpe_SplitShape_ctor_shape(
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut LocOpe_SplitShape>;
-    /// **Source:** `LocOpe_SplitShape.hxx`:49 - `LocOpe_SplitShape::Init()`
+    /// **Source:** `LocOpe_SplitShape.hxx`:50 - `LocOpe_SplitShape::Init()`
     pub fn LocOpe_SplitShape_init(
         self_: *mut LocOpe_SplitShape,
         S: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_SplitShape.hxx`:52 - `LocOpe_SplitShape::CanSplit()`
+    /// **Source:** `LocOpe_SplitShape.hxx`:53 - `LocOpe_SplitShape::CanSplit()`
     pub fn LocOpe_SplitShape_can_split(
         self_: *const LocOpe_SplitShape,
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `LocOpe_SplitShape.hxx`:55 - `LocOpe_SplitShape::Add()`
+    /// **Source:** `LocOpe_SplitShape.hxx`:56 - `LocOpe_SplitShape::Add()`
     pub fn LocOpe_SplitShape_add_vertex_real_edge(
         self_: *mut LocOpe_SplitShape,
         V: *const TopoDS_Vertex,
         P: f64,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_SplitShape.hxx`:58 - `LocOpe_SplitShape::Add()`
+    /// **Source:** `LocOpe_SplitShape.hxx`:59 - `LocOpe_SplitShape::Add()`
     pub fn LocOpe_SplitShape_add_wire_face(
         self_: *mut LocOpe_SplitShape,
         W: *const TopoDS_Wire,
         F: *const TopoDS_Face,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `LocOpe_SplitShape.hxx`:61 - `LocOpe_SplitShape::Add()`
-    pub fn LocOpe_SplitShape_add_listofshape_face(
+    /// **Source:** `LocOpe_SplitShape.hxx`:62 - `LocOpe_SplitShape::Add()`
+    pub fn LocOpe_SplitShape_add_list_shape_face(
         self_: *mut LocOpe_SplitShape,
-        Lwires: *const TopTools_ListOfShape,
+        Lwires: *const NCollection_List_TopoDS_Shape,
         F: *const TopoDS_Face,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `LocOpe_SplitShape.hxx`:64 - `LocOpe_SplitShape::Shape()`
+    /// **Source:** `LocOpe_SplitShape.hxx`:65 - `LocOpe_SplitShape::Shape()`
     pub fn LocOpe_SplitShape_shape(
         self_: *const LocOpe_SplitShape,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `LocOpe_SplitShape.hxx`:67 - `LocOpe_SplitShape::DescendantShapes()`
+    /// **Source:** `LocOpe_SplitShape.hxx`:68 - `LocOpe_SplitShape::DescendantShapes()`
     pub fn LocOpe_SplitShape_descendant_shapes(
         self_: *mut LocOpe_SplitShape,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `LocOpe_SplitShape.hxx`:74 - `LocOpe_SplitShape::LeftOf()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `LocOpe_SplitShape.hxx`:75 - `LocOpe_SplitShape::LeftOf()`
     pub fn LocOpe_SplitShape_left_of(
         self_: *mut LocOpe_SplitShape,
         W: *const TopoDS_Wire,
         F: *const TopoDS_Face,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     // ======================== LocOpe_Spliter ========================
     pub fn LocOpe_Spliter_destructor(self_: *mut LocOpe_Spliter);
-    /// **Source:** `LocOpe_Spliter.hxx`:35 - `LocOpe_Spliter::LocOpe_Spliter()`
+    /// **Source:** `LocOpe_Spliter.hxx`:36 - `LocOpe_Spliter::LocOpe_Spliter()`
     pub fn LocOpe_Spliter_ctor() -> crate::OcctResult<*mut LocOpe_Spliter>;
-    /// **Source:** `LocOpe_Spliter.hxx`:38 - `LocOpe_Spliter::LocOpe_Spliter()`
+    /// **Source:** `LocOpe_Spliter.hxx`:39 - `LocOpe_Spliter::LocOpe_Spliter()`
     pub fn LocOpe_Spliter_ctor_shape(
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut LocOpe_Spliter>;
-    /// **Source:** `LocOpe_Spliter.hxx`:41 - `LocOpe_Spliter::Init()`
+    /// **Source:** `LocOpe_Spliter.hxx`:42 - `LocOpe_Spliter::Init()`
     pub fn LocOpe_Spliter_init(
         self_: *mut LocOpe_Spliter,
         S: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_Spliter.hxx`:43 - `LocOpe_Spliter::Perform()`
+    /// **Source:** `LocOpe_Spliter.hxx`:44 - `LocOpe_Spliter::Perform()`
     pub fn LocOpe_Spliter_perform(
         self_: *mut LocOpe_Spliter,
-        PW: *const HandleLocOpeWiresOnShape,
+        PW: *const Handle_LocOpe_WiresOnShape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_Spliter.hxx`:45 - `LocOpe_Spliter::IsDone()`
+    /// **Source:** `LocOpe_Spliter.hxx`:46 - `LocOpe_Spliter::IsDone()`
     pub fn LocOpe_Spliter_is_done(self_: *const LocOpe_Spliter) -> crate::OcctResult<bool>;
-    /// **Source:** `LocOpe_Spliter.hxx`:48 - `LocOpe_Spliter::ResultingShape()`
+    /// **Source:** `LocOpe_Spliter.hxx`:49 - `LocOpe_Spliter::ResultingShape()`
     pub fn LocOpe_Spliter_resulting_shape(
         self_: *const LocOpe_Spliter,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `LocOpe_Spliter.hxx`:51 - `LocOpe_Spliter::Shape()`
+    /// **Source:** `LocOpe_Spliter.hxx`:52 - `LocOpe_Spliter::Shape()`
     pub fn LocOpe_Spliter_shape(
         self_: *const LocOpe_Spliter,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `LocOpe_Spliter.hxx`:55 - `LocOpe_Spliter::DirectLeft()`
+    /// **Source:** `LocOpe_Spliter.hxx`:56 - `LocOpe_Spliter::DirectLeft()`
     pub fn LocOpe_Spliter_direct_left(
         self_: *const LocOpe_Spliter,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `LocOpe_Spliter.hxx`:60 - `LocOpe_Spliter::Left()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `LocOpe_Spliter.hxx`:61 - `LocOpe_Spliter::Left()`
     pub fn LocOpe_Spliter_left(
         self_: *const LocOpe_Spliter,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `LocOpe_Spliter.hxx`:63 - `LocOpe_Spliter::DescendantShapes()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `LocOpe_Spliter.hxx`:64 - `LocOpe_Spliter::DescendantShapes()`
     pub fn LocOpe_Spliter_descendant_shapes(
         self_: *mut LocOpe_Spliter,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     // ======================== LocOpe_WiresOnShape ========================
     pub fn LocOpe_WiresOnShape_destructor(self_: *mut LocOpe_WiresOnShape);
-    /// **Source:** `LocOpe_WiresOnShape.hxx`:44 - `LocOpe_WiresOnShape::LocOpe_WiresOnShape()`
+    /// **Source:** `LocOpe_WiresOnShape.hxx`:42 - `LocOpe_WiresOnShape::LocOpe_WiresOnShape()`
     pub fn LocOpe_WiresOnShape_ctor_shape(
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut LocOpe_WiresOnShape>;
-    /// **Source:** `LocOpe_WiresOnShape.hxx`:46 - `LocOpe_WiresOnShape::Init()`
+    /// **Source:** `LocOpe_WiresOnShape.hxx`:44 - `LocOpe_WiresOnShape::Init()`
     pub fn LocOpe_WiresOnShape_init(
         self_: *mut LocOpe_WiresOnShape,
         S: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_WiresOnShape.hxx`:51 - `LocOpe_WiresOnShape::Add()`
+    /// **Source:** `LocOpe_WiresOnShape.hxx`:49 - `LocOpe_WiresOnShape::Add()`
     pub fn LocOpe_WiresOnShape_add(
         self_: *mut LocOpe_WiresOnShape,
-        theEdges: *const TopTools_SequenceOfShape,
+        theEdges: *const NCollection_Sequence_TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `LocOpe_WiresOnShape.hxx`:55 - `LocOpe_WiresOnShape::SetCheckInterior()`
+    /// **Source:** `LocOpe_WiresOnShape.hxx`:53 - `LocOpe_WiresOnShape::SetCheckInterior()`
     pub fn LocOpe_WiresOnShape_set_check_interior(
         self_: *mut LocOpe_WiresOnShape,
         ToCheckInterior: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_WiresOnShape.hxx`:57 - `LocOpe_WiresOnShape::Bind()`
+    /// **Source:** `LocOpe_WiresOnShape.hxx`:55 - `LocOpe_WiresOnShape::Bind()`
     pub fn LocOpe_WiresOnShape_bind_wire_face(
         self_: *mut LocOpe_WiresOnShape,
         W: *const TopoDS_Wire,
         F: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_WiresOnShape.hxx`:59 - `LocOpe_WiresOnShape::Bind()`
+    /// **Source:** `LocOpe_WiresOnShape.hxx`:57 - `LocOpe_WiresOnShape::Bind()`
     pub fn LocOpe_WiresOnShape_bind_compound_face(
         self_: *mut LocOpe_WiresOnShape,
         Comp: *const TopoDS_Compound,
         F: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_WiresOnShape.hxx`:61 - `LocOpe_WiresOnShape::Bind()`
+    /// **Source:** `LocOpe_WiresOnShape.hxx`:59 - `LocOpe_WiresOnShape::Bind()`
     pub fn LocOpe_WiresOnShape_bind_edge_face(
         self_: *mut LocOpe_WiresOnShape,
         E: *const TopoDS_Edge,
         F: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_WiresOnShape.hxx`:63 - `LocOpe_WiresOnShape::Bind()`
+    /// **Source:** `LocOpe_WiresOnShape.hxx`:61 - `LocOpe_WiresOnShape::Bind()`
     pub fn LocOpe_WiresOnShape_bind_edge2(
         self_: *mut LocOpe_WiresOnShape,
         EfromW: *const TopoDS_Edge,
         EonFace: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_WiresOnShape.hxx`:65 - `LocOpe_WiresOnShape::BindAll()`
+    /// **Source:** `LocOpe_WiresOnShape.hxx`:63 - `LocOpe_WiresOnShape::BindAll()`
     pub fn LocOpe_WiresOnShape_bind_all(self_: *mut LocOpe_WiresOnShape)
         -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_WiresOnShape.hxx`:67 - `LocOpe_WiresOnShape::IsDone()`
+    /// **Source:** `LocOpe_WiresOnShape.hxx`:65 - `LocOpe_WiresOnShape::IsDone()`
     pub fn LocOpe_WiresOnShape_is_done(
         self_: *const LocOpe_WiresOnShape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `LocOpe_WiresOnShape.hxx`:69 - `LocOpe_WiresOnShape::InitEdgeIterator()`
+    /// **Source:** `LocOpe_WiresOnShape.hxx`:67 - `LocOpe_WiresOnShape::InitEdgeIterator()`
     pub fn LocOpe_WiresOnShape_init_edge_iterator(
         self_: *mut LocOpe_WiresOnShape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_WiresOnShape.hxx`:71 - `LocOpe_WiresOnShape::MoreEdge()`
+    /// **Source:** `LocOpe_WiresOnShape.hxx`:69 - `LocOpe_WiresOnShape::MoreEdge()`
     pub fn LocOpe_WiresOnShape_more_edge(
         self_: *mut LocOpe_WiresOnShape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `LocOpe_WiresOnShape.hxx`:73 - `LocOpe_WiresOnShape::Edge()`
+    /// **Source:** `LocOpe_WiresOnShape.hxx`:71 - `LocOpe_WiresOnShape::Edge()`
     pub fn LocOpe_WiresOnShape_edge(
         self_: *mut LocOpe_WiresOnShape,
     ) -> crate::OcctResult<*mut TopoDS_Edge>;
-    /// **Source:** `LocOpe_WiresOnShape.hxx`:77 - `LocOpe_WiresOnShape::OnFace()`
+    /// **Source:** `LocOpe_WiresOnShape.hxx`:75 - `LocOpe_WiresOnShape::OnFace()`
     pub fn LocOpe_WiresOnShape_on_face(
         self_: *mut LocOpe_WiresOnShape,
     ) -> crate::OcctResult<*mut TopoDS_Face>;
-    /// **Source:** `LocOpe_WiresOnShape.hxx`:82 - `LocOpe_WiresOnShape::OnEdge()`
+    /// **Source:** `LocOpe_WiresOnShape.hxx`:80 - `LocOpe_WiresOnShape::OnEdge()`
     pub fn LocOpe_WiresOnShape_on_edge_edge(
         self_: *mut LocOpe_WiresOnShape,
         E: *mut TopoDS_Edge,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `LocOpe_WiresOnShape.hxx`:84 - `LocOpe_WiresOnShape::NextEdge()`
+    /// **Source:** `LocOpe_WiresOnShape.hxx`:82 - `LocOpe_WiresOnShape::NextEdge()`
     pub fn LocOpe_WiresOnShape_next_edge(
         self_: *mut LocOpe_WiresOnShape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LocOpe_WiresOnShape.hxx`:86 - `LocOpe_WiresOnShape::OnVertex()`
+    /// **Source:** `LocOpe_WiresOnShape.hxx`:84 - `LocOpe_WiresOnShape::OnVertex()`
     pub fn LocOpe_WiresOnShape_on_vertex(
         self_: *mut LocOpe_WiresOnShape,
         Vwire: *const TopoDS_Vertex,
         Vshape: *mut TopoDS_Vertex,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `LocOpe_WiresOnShape.hxx`:93 - `LocOpe_WiresOnShape::OnEdge()`
+    /// **Source:** `LocOpe_WiresOnShape.hxx`:91 - `LocOpe_WiresOnShape::OnEdge()`
     pub fn LocOpe_WiresOnShape_on_edge_vertex_edge_real(
         self_: *mut LocOpe_WiresOnShape,
         V: *const TopoDS_Vertex,
         E: *mut TopoDS_Edge,
         P: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `LocOpe_WiresOnShape.hxx`:100 - `LocOpe_WiresOnShape::OnEdge()`
+    /// **Source:** `LocOpe_WiresOnShape.hxx`:98 - `LocOpe_WiresOnShape::OnEdge()`
     pub fn LocOpe_WiresOnShape_on_edge_vertex_edge2_real(
         self_: *mut LocOpe_WiresOnShape,
         V: *const TopoDS_Vertex,
@@ -3069,19 +3016,20 @@ unsafe extern "C" {
         E: *mut TopoDS_Edge,
         P: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `LocOpe_WiresOnShape.hxx`:106 - `LocOpe_WiresOnShape::IsFaceWithSection()`
+    /// **Source:** `LocOpe_WiresOnShape.hxx`:104 - `LocOpe_WiresOnShape::IsFaceWithSection()`
     pub fn LocOpe_WiresOnShape_is_face_with_section(
         self_: *const LocOpe_WiresOnShape,
         aFace: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `LocOpe_WiresOnShape.hxx`:108 - `LocOpe_WiresOnShape::DynamicType()`
+    /// **Source:** `LocOpe_WiresOnShape.hxx`:106 - `LocOpe_WiresOnShape::DynamicType()`
     pub fn LocOpe_WiresOnShape_dynamic_type(
         self_: *const LocOpe_WiresOnShape,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `LocOpe_WiresOnShape.hxx`:108 - `LocOpe_WiresOnShape::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `LocOpe_WiresOnShape.hxx`:106 - `LocOpe_WiresOnShape::get_type_name()`
     pub fn LocOpe_WiresOnShape_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `LocOpe_WiresOnShape.hxx`:108 - `LocOpe_WiresOnShape::get_type_descriptor()`
-    pub fn LocOpe_WiresOnShape_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `LocOpe_WiresOnShape.hxx`:106 - `LocOpe_WiresOnShape::get_type_descriptor()`
+    pub fn LocOpe_WiresOnShape_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast LocOpe_WiresOnShape to Standard_Transient
     pub fn LocOpe_WiresOnShape_as_Standard_Transient(
         self_: *const LocOpe_WiresOnShape,
@@ -3093,70 +3041,75 @@ unsafe extern "C" {
     /// Wrap LocOpe_WiresOnShape in a Handle
     pub fn LocOpe_WiresOnShape_to_handle(
         obj: *mut LocOpe_WiresOnShape,
-    ) -> crate::OcctResult<*mut HandleLocOpeWiresOnShape>;
+    ) -> crate::OcctResult<*mut Handle_LocOpe_WiresOnShape>;
     /// Destroy Handle<LocOpe_WiresOnShape>
-    pub fn HandleLocOpeWiresOnShape_destructor(self_: *mut HandleLocOpeWiresOnShape);
+    pub fn Handle_LocOpe_WiresOnShape_destructor(self_: *mut Handle_LocOpe_WiresOnShape);
     /// Clone Handle<LocOpe_WiresOnShape> (increments reference count)
-    pub fn HandleLocOpeWiresOnShape_clone(
-        self_: *const HandleLocOpeWiresOnShape,
-    ) -> crate::OcctResult<*mut HandleLocOpeWiresOnShape>;
+    pub fn Handle_LocOpe_WiresOnShape_clone(
+        self_: *const Handle_LocOpe_WiresOnShape,
+    ) -> crate::OcctResult<*mut Handle_LocOpe_WiresOnShape>;
     /// Check if Handle<LocOpe_WiresOnShape> is null
-    pub fn HandleLocOpeWiresOnShape_is_null(self_: *const HandleLocOpeWiresOnShape) -> bool;
+    pub fn Handle_LocOpe_WiresOnShape_is_null(self_: *const Handle_LocOpe_WiresOnShape) -> bool;
     /// Dereference Handle to get *const LocOpe_WiresOnShape
-    pub fn HandleLocOpeWiresOnShape_get(
-        handle: *const HandleLocOpeWiresOnShape,
+    pub fn Handle_LocOpe_WiresOnShape_get(
+        handle: *const Handle_LocOpe_WiresOnShape,
     ) -> crate::OcctResult<*const LocOpe_WiresOnShape>;
     /// Dereference Handle to get *mut LocOpe_WiresOnShape
-    pub fn HandleLocOpeWiresOnShape_get_mut(
-        handle: *mut HandleLocOpeWiresOnShape,
+    pub fn Handle_LocOpe_WiresOnShape_get_mut(
+        handle: *mut Handle_LocOpe_WiresOnShape,
     ) -> crate::OcctResult<*mut LocOpe_WiresOnShape>;
     /// Upcast Handle<LocOpe_WiresOnShape> to Handle<Standard_Transient>
-    pub fn HandleLocOpeWiresOnShape_to_HandleStandardTransient(
-        self_: *const HandleLocOpeWiresOnShape,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_LocOpe_WiresOnShape_to_Handle_Standard_Transient(
+        self_: *const Handle_LocOpe_WiresOnShape,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn LocOpe_WiresOnShape_inherited_IsInstance(
         self_: *const LocOpe_WiresOnShape,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn LocOpe_WiresOnShape_inherited_IsKind(
         self_: *const LocOpe_WiresOnShape,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn LocOpe_WiresOnShape_inherited_This(
         self_: *const LocOpe_WiresOnShape,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn LocOpe_WiresOnShape_inherited_GetRefCount(
         self_: *const LocOpe_WiresOnShape,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn LocOpe_WiresOnShape_inherited_IncrementRefCounter(
         self_: *mut LocOpe_WiresOnShape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn LocOpe_WiresOnShape_inherited_DecrementRefCounter(
         self_: *mut LocOpe_WiresOnShape,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn LocOpe_WiresOnShape_inherited_Delete(
         self_: *const LocOpe_WiresOnShape,
     ) -> *const std::ffi::c_char;
 
     // Free functions
-    /// **Source:** `BRepFeat.hxx`:88 - `BRepFeat::Barycenter`
+    /// **Source:** `BRepFeat.hxx`:87 - `BRepFeat::SampleEdges`
+    pub fn BRepFeat_sample_edges_mut(
+        S: *const TopoDS_Shape,
+        Pt: *mut NCollection_Sequence_gp_Pnt,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BRepFeat.hxx`:89 - `BRepFeat::Barycenter`
     pub fn BRepFeat_barycenter(S: *const TopoDS_Shape, Pt: *mut gp_Pnt) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat.hxx`:90 - `BRepFeat::ParametricBarycenter`
+    /// **Source:** `BRepFeat.hxx`:91 - `BRepFeat::ParametricBarycenter`
     pub fn BRepFeat_parametric_barycenter(
         S: *const TopoDS_Shape,
-        C: *const HandleGeomCurve,
+        C: *const Handle_Geom_Curve,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepFeat.hxx`:94 - `BRepFeat::ParametricMinMax`
+    /// **Source:** `BRepFeat.hxx`:95 - `BRepFeat::ParametricMinMax`
     pub fn BRepFeat_parametric_min_max(
         S: *const TopoDS_Shape,
-        C: *const HandleGeomCurve,
+        C: *const Handle_Geom_Curve,
         prmin: *mut f64,
         prmax: *mut f64,
         prbmin: *mut f64,
@@ -3164,50 +3117,51 @@ unsafe extern "C" {
         flag: *mut bool,
         Ori: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat.hxx`:103 - `BRepFeat::IsInside`
+    /// **Source:** `BRepFeat.hxx`:104 - `BRepFeat::IsInside`
     pub fn BRepFeat_is_inside(
         F1: *const TopoDS_Face,
         F2: *const TopoDS_Face,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepFeat.hxx`:105 - `BRepFeat::IsInOut`
+    /// **Source:** `BRepFeat.hxx`:106 - `BRepFeat::IsInOut`
     pub fn BRepFeat_is_in_out(
         FC: *const BRepTopAdaptor_FClass2d,
         AC: *const Geom2dAdaptor_Curve,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepFeat.hxx`:108 - `BRepFeat::FaceUntil`
+    /// **Source:** `BRepFeat.hxx`:109 - `BRepFeat::FaceUntil`
     pub fn BRepFeat_face_until(
         S: *const TopoDS_Shape,
         F: *mut TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFeat.hxx`:110 - `BRepFeat::Tool`
+    /// **Source:** `BRepFeat.hxx`:111 - `BRepFeat::Tool`
     pub fn BRepFeat_tool(
         SRef: *const TopoDS_Shape,
         Fac: *const TopoDS_Face,
         Orf: i32,
     ) -> crate::OcctResult<*mut TopoDS_Solid>;
-    /// **Source:** `BRepFeat.hxx`:116 - `BRepFeat::Print`
+    /// **Source:** `BRepFeat.hxx`:117 - `BRepFeat::Print`
     pub fn BRepFeat_print_statuserror_ostream(
         SE: i32,
         S: *mut Standard_OStream,
     ) -> crate::OcctResult<*mut Standard_OStream>;
-    /// **Source:** `LocOpe.hxx`:40 - `LocOpe::Closed`
+    /// **Source:** `LocOpe.hxx`:41 - `LocOpe::Closed`
     pub fn LocOpe_closed_wire_face(
         W: *const TopoDS_Wire,
         OnF: *const TopoDS_Face,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `LocOpe.hxx`:44 - `LocOpe::Closed`
+    /// **Source:** `LocOpe.hxx`:45 - `LocOpe::Closed`
     pub fn LocOpe_closed_edge_face(
         E: *const TopoDS_Edge,
         OnF: *const TopoDS_Face,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `LocOpe.hxx`:47 - `LocOpe::TgtFaces`
+    /// **Source:** `LocOpe.hxx`:48 - `LocOpe::TgtFaces`
     pub fn LocOpe_tgt_faces(
         E: *const TopoDS_Edge,
         F1: *const TopoDS_Face,
         F2: *const TopoDS_Face,
     ) -> crate::OcctResult<bool>;
-
-    // Nested type & typedef type destructors
-    pub fn LocOpe_SequenceOfCirc_destructor(self_: *mut LocOpe_SequenceOfCirc);
-    pub fn LocOpe_SequenceOfLin_destructor(self_: *mut LocOpe_SequenceOfLin);
+    /// **Source:** `LocOpe.hxx`:52 - `LocOpe::SampleEdges`
+    pub fn LocOpe_sample_edges_mut(
+        S: *const TopoDS_Shape,
+        Pt: *mut NCollection_Sequence_gp_Pnt,
+    ) -> *const std::ffi::c_char;
 }

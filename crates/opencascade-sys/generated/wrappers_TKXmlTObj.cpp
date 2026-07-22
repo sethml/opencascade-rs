@@ -9,10 +9,8 @@
 #include <PCDM_RetrievalDriver.hxx>
 #include <PCDM_StorageDriver.hxx>
 #include <PCDM_Writer.hxx>
-#include <Standard_GUID.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_Type.hxx>
-#include <TCollection_ExtendedString.hxx>
 #include <TDF_Attribute.hxx>
 #include <TDocStd_Application.hxx>
 #include <XmlLDrivers_DocumentRetrievalDriver.hxx>
@@ -32,69 +30,69 @@
 #include <XmlTObjDrivers_XYZDriver.hxx>
 
 // Handle type aliases
-typedef opencascade::handle<Message_Messenger> HandleMessageMessenger;
-typedef opencascade::handle<PCDM_Reader> HandlePCDMReader;
-typedef opencascade::handle<PCDM_RetrievalDriver> HandlePCDMRetrievalDriver;
-typedef opencascade::handle<PCDM_StorageDriver> HandlePCDMStorageDriver;
-typedef opencascade::handle<PCDM_Writer> HandlePCDMWriter;
-typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
-typedef opencascade::handle<Standard_Type> HandleStandardType;
-typedef opencascade::handle<TDF_Attribute> HandleTDFAttribute;
-typedef opencascade::handle<XmlLDrivers_DocumentRetrievalDriver> HandleXmlLDriversDocumentRetrievalDriver;
-typedef opencascade::handle<XmlLDrivers_DocumentStorageDriver> HandleXmlLDriversDocumentStorageDriver;
-typedef opencascade::handle<XmlMDF_ADriver> HandleXmlMDFADriver;
-typedef opencascade::handle<XmlMDF_ADriverTable> HandleXmlMDFADriverTable;
-typedef opencascade::handle<XmlTObjDrivers_DocumentRetrievalDriver> HandleXmlTObjDriversDocumentRetrievalDriver;
-typedef opencascade::handle<XmlTObjDrivers_DocumentStorageDriver> HandleXmlTObjDriversDocumentStorageDriver;
-typedef opencascade::handle<XmlTObjDrivers_IntSparseArrayDriver> HandleXmlTObjDriversIntSparseArrayDriver;
-typedef opencascade::handle<XmlTObjDrivers_ModelDriver> HandleXmlTObjDriversModelDriver;
-typedef opencascade::handle<XmlTObjDrivers_ObjectDriver> HandleXmlTObjDriversObjectDriver;
-typedef opencascade::handle<XmlTObjDrivers_ReferenceDriver> HandleXmlTObjDriversReferenceDriver;
-typedef opencascade::handle<XmlTObjDrivers_XYZDriver> HandleXmlTObjDriversXYZDriver;
+typedef opencascade::handle<Message_Messenger> Handle_Message_Messenger;
+typedef opencascade::handle<PCDM_Reader> Handle_PCDM_Reader;
+typedef opencascade::handle<PCDM_RetrievalDriver> Handle_PCDM_RetrievalDriver;
+typedef opencascade::handle<PCDM_StorageDriver> Handle_PCDM_StorageDriver;
+typedef opencascade::handle<PCDM_Writer> Handle_PCDM_Writer;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
+typedef opencascade::handle<TDF_Attribute> Handle_TDF_Attribute;
+typedef opencascade::handle<XmlLDrivers_DocumentRetrievalDriver> Handle_XmlLDrivers_DocumentRetrievalDriver;
+typedef opencascade::handle<XmlLDrivers_DocumentStorageDriver> Handle_XmlLDrivers_DocumentStorageDriver;
+typedef opencascade::handle<XmlMDF_ADriver> Handle_XmlMDF_ADriver;
+typedef opencascade::handle<XmlMDF_ADriverTable> Handle_XmlMDF_ADriverTable;
+typedef opencascade::handle<XmlTObjDrivers_DocumentRetrievalDriver> Handle_XmlTObjDrivers_DocumentRetrievalDriver;
+typedef opencascade::handle<XmlTObjDrivers_DocumentStorageDriver> Handle_XmlTObjDrivers_DocumentStorageDriver;
+typedef opencascade::handle<XmlTObjDrivers_IntSparseArrayDriver> Handle_XmlTObjDrivers_IntSparseArrayDriver;
+typedef opencascade::handle<XmlTObjDrivers_ModelDriver> Handle_XmlTObjDrivers_ModelDriver;
+typedef opencascade::handle<XmlTObjDrivers_ObjectDriver> Handle_XmlTObjDrivers_ObjectDriver;
+typedef opencascade::handle<XmlTObjDrivers_ReferenceDriver> Handle_XmlTObjDrivers_ReferenceDriver;
+typedef opencascade::handle<XmlTObjDrivers_XYZDriver> Handle_XmlTObjDrivers_XYZDriver;
 
 // Handle type destructors, clone, and is_null functions
-extern "C" void HandleXmlTObjDriversDocumentRetrievalDriver_destructor(HandleXmlTObjDriversDocumentRetrievalDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleXmlTObjDriversDocumentRetrievalDriver*> HandleXmlTObjDriversDocumentRetrievalDriver_clone(const HandleXmlTObjDriversDocumentRetrievalDriver* self_) {
-    try { return {new HandleXmlTObjDriversDocumentRetrievalDriver(*self_), nullptr}; }
+extern "C" void Handle_XmlTObjDrivers_DocumentRetrievalDriver_destructor(Handle_XmlTObjDrivers_DocumentRetrievalDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_XmlTObjDrivers_DocumentRetrievalDriver*> Handle_XmlTObjDrivers_DocumentRetrievalDriver_clone(const Handle_XmlTObjDrivers_DocumentRetrievalDriver* self_) {
+    try { return {new Handle_XmlTObjDrivers_DocumentRetrievalDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXmlTObjDriversDocumentRetrievalDriver_is_null(const HandleXmlTObjDriversDocumentRetrievalDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleXmlTObjDriversDocumentStorageDriver_destructor(HandleXmlTObjDriversDocumentStorageDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleXmlTObjDriversDocumentStorageDriver*> HandleXmlTObjDriversDocumentStorageDriver_clone(const HandleXmlTObjDriversDocumentStorageDriver* self_) {
-    try { return {new HandleXmlTObjDriversDocumentStorageDriver(*self_), nullptr}; }
+extern "C" bool Handle_XmlTObjDrivers_DocumentRetrievalDriver_is_null(const Handle_XmlTObjDrivers_DocumentRetrievalDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_XmlTObjDrivers_DocumentStorageDriver_destructor(Handle_XmlTObjDrivers_DocumentStorageDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_XmlTObjDrivers_DocumentStorageDriver*> Handle_XmlTObjDrivers_DocumentStorageDriver_clone(const Handle_XmlTObjDrivers_DocumentStorageDriver* self_) {
+    try { return {new Handle_XmlTObjDrivers_DocumentStorageDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXmlTObjDriversDocumentStorageDriver_is_null(const HandleXmlTObjDriversDocumentStorageDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleXmlTObjDriversIntSparseArrayDriver_destructor(HandleXmlTObjDriversIntSparseArrayDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleXmlTObjDriversIntSparseArrayDriver*> HandleXmlTObjDriversIntSparseArrayDriver_clone(const HandleXmlTObjDriversIntSparseArrayDriver* self_) {
-    try { return {new HandleXmlTObjDriversIntSparseArrayDriver(*self_), nullptr}; }
+extern "C" bool Handle_XmlTObjDrivers_DocumentStorageDriver_is_null(const Handle_XmlTObjDrivers_DocumentStorageDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_XmlTObjDrivers_IntSparseArrayDriver_destructor(Handle_XmlTObjDrivers_IntSparseArrayDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_XmlTObjDrivers_IntSparseArrayDriver*> Handle_XmlTObjDrivers_IntSparseArrayDriver_clone(const Handle_XmlTObjDrivers_IntSparseArrayDriver* self_) {
+    try { return {new Handle_XmlTObjDrivers_IntSparseArrayDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXmlTObjDriversIntSparseArrayDriver_is_null(const HandleXmlTObjDriversIntSparseArrayDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleXmlTObjDriversModelDriver_destructor(HandleXmlTObjDriversModelDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleXmlTObjDriversModelDriver*> HandleXmlTObjDriversModelDriver_clone(const HandleXmlTObjDriversModelDriver* self_) {
-    try { return {new HandleXmlTObjDriversModelDriver(*self_), nullptr}; }
+extern "C" bool Handle_XmlTObjDrivers_IntSparseArrayDriver_is_null(const Handle_XmlTObjDrivers_IntSparseArrayDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_XmlTObjDrivers_ModelDriver_destructor(Handle_XmlTObjDrivers_ModelDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_XmlTObjDrivers_ModelDriver*> Handle_XmlTObjDrivers_ModelDriver_clone(const Handle_XmlTObjDrivers_ModelDriver* self_) {
+    try { return {new Handle_XmlTObjDrivers_ModelDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXmlTObjDriversModelDriver_is_null(const HandleXmlTObjDriversModelDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleXmlTObjDriversObjectDriver_destructor(HandleXmlTObjDriversObjectDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleXmlTObjDriversObjectDriver*> HandleXmlTObjDriversObjectDriver_clone(const HandleXmlTObjDriversObjectDriver* self_) {
-    try { return {new HandleXmlTObjDriversObjectDriver(*self_), nullptr}; }
+extern "C" bool Handle_XmlTObjDrivers_ModelDriver_is_null(const Handle_XmlTObjDrivers_ModelDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_XmlTObjDrivers_ObjectDriver_destructor(Handle_XmlTObjDrivers_ObjectDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_XmlTObjDrivers_ObjectDriver*> Handle_XmlTObjDrivers_ObjectDriver_clone(const Handle_XmlTObjDrivers_ObjectDriver* self_) {
+    try { return {new Handle_XmlTObjDrivers_ObjectDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXmlTObjDriversObjectDriver_is_null(const HandleXmlTObjDriversObjectDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleXmlTObjDriversReferenceDriver_destructor(HandleXmlTObjDriversReferenceDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleXmlTObjDriversReferenceDriver*> HandleXmlTObjDriversReferenceDriver_clone(const HandleXmlTObjDriversReferenceDriver* self_) {
-    try { return {new HandleXmlTObjDriversReferenceDriver(*self_), nullptr}; }
+extern "C" bool Handle_XmlTObjDrivers_ObjectDriver_is_null(const Handle_XmlTObjDrivers_ObjectDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_XmlTObjDrivers_ReferenceDriver_destructor(Handle_XmlTObjDrivers_ReferenceDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_XmlTObjDrivers_ReferenceDriver*> Handle_XmlTObjDrivers_ReferenceDriver_clone(const Handle_XmlTObjDrivers_ReferenceDriver* self_) {
+    try { return {new Handle_XmlTObjDrivers_ReferenceDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXmlTObjDriversReferenceDriver_is_null(const HandleXmlTObjDriversReferenceDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleXmlTObjDriversXYZDriver_destructor(HandleXmlTObjDriversXYZDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleXmlTObjDriversXYZDriver*> HandleXmlTObjDriversXYZDriver_clone(const HandleXmlTObjDriversXYZDriver* self_) {
-    try { return {new HandleXmlTObjDriversXYZDriver(*self_), nullptr}; }
+extern "C" bool Handle_XmlTObjDrivers_ReferenceDriver_is_null(const Handle_XmlTObjDrivers_ReferenceDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_XmlTObjDrivers_XYZDriver_destructor(Handle_XmlTObjDrivers_XYZDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_XmlTObjDrivers_XYZDriver*> Handle_XmlTObjDrivers_XYZDriver_clone(const Handle_XmlTObjDrivers_XYZDriver* self_) {
+    try { return {new Handle_XmlTObjDrivers_XYZDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXmlTObjDriversXYZDriver_is_null(const HandleXmlTObjDriversXYZDriver* self_) { return self_->IsNull(); }
+extern "C" bool Handle_XmlTObjDrivers_XYZDriver_is_null(const Handle_XmlTObjDrivers_XYZDriver* self_) { return self_->IsNull(); }
 
 // ========================
 // XmlTObjDrivers_DocumentRetrievalDriver wrappers
@@ -128,32 +126,32 @@ extern "C" OcctResult<const PCDM_Reader*> XmlTObjDrivers_DocumentRetrievalDriver
 extern "C" OcctResult<PCDM_Reader*> XmlTObjDrivers_DocumentRetrievalDriver_as_PCDM_Reader_mut(XmlTObjDrivers_DocumentRetrievalDriver* self_) { return {static_cast<PCDM_Reader*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XmlTObjDrivers_DocumentRetrievalDriver_as_Standard_Transient(const XmlTObjDrivers_DocumentRetrievalDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XmlTObjDrivers_DocumentRetrievalDriver_as_Standard_Transient_mut(XmlTObjDrivers_DocumentRetrievalDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXmlTObjDriversDocumentRetrievalDriver*> XmlTObjDrivers_DocumentRetrievalDriver_to_handle(XmlTObjDrivers_DocumentRetrievalDriver* obj) {
-    try { return {new HandleXmlTObjDriversDocumentRetrievalDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_XmlTObjDrivers_DocumentRetrievalDriver*> XmlTObjDrivers_DocumentRetrievalDriver_to_handle(XmlTObjDrivers_DocumentRetrievalDriver* obj) {
+    try { return {new Handle_XmlTObjDrivers_DocumentRetrievalDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XmlTObjDrivers_DocumentRetrievalDriver*> HandleXmlTObjDriversDocumentRetrievalDriver_get(const HandleXmlTObjDriversDocumentRetrievalDriver* handle) {
+extern "C" OcctResult<const XmlTObjDrivers_DocumentRetrievalDriver*> Handle_XmlTObjDrivers_DocumentRetrievalDriver_get(const Handle_XmlTObjDrivers_DocumentRetrievalDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XmlTObjDrivers_DocumentRetrievalDriver*> HandleXmlTObjDriversDocumentRetrievalDriver_get_mut(HandleXmlTObjDriversDocumentRetrievalDriver* handle) {
+extern "C" OcctResult<XmlTObjDrivers_DocumentRetrievalDriver*> Handle_XmlTObjDrivers_DocumentRetrievalDriver_get_mut(Handle_XmlTObjDrivers_DocumentRetrievalDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlLDriversDocumentRetrievalDriver*> HandleXmlTObjDriversDocumentRetrievalDriver_to_HandleXmlLDriversDocumentRetrievalDriver(const HandleXmlTObjDriversDocumentRetrievalDriver* self_) {
-    try { return {new HandleXmlLDriversDocumentRetrievalDriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_XmlLDrivers_DocumentRetrievalDriver*> Handle_XmlTObjDrivers_DocumentRetrievalDriver_to_Handle_XmlLDrivers_DocumentRetrievalDriver(const Handle_XmlTObjDrivers_DocumentRetrievalDriver* self_) {
+    try { return {new Handle_XmlLDrivers_DocumentRetrievalDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandlePCDMRetrievalDriver*> HandleXmlTObjDriversDocumentRetrievalDriver_to_HandlePCDMRetrievalDriver(const HandleXmlTObjDriversDocumentRetrievalDriver* self_) {
-    try { return {new HandlePCDMRetrievalDriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_PCDM_RetrievalDriver*> Handle_XmlTObjDrivers_DocumentRetrievalDriver_to_Handle_PCDM_RetrievalDriver(const Handle_XmlTObjDrivers_DocumentRetrievalDriver* self_) {
+    try { return {new Handle_PCDM_RetrievalDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandlePCDMReader*> HandleXmlTObjDriversDocumentRetrievalDriver_to_HandlePCDMReader(const HandleXmlTObjDriversDocumentRetrievalDriver* self_) {
-    try { return {new HandlePCDMReader(*self_), nullptr}; }
+extern "C" OcctResult<Handle_PCDM_Reader*> Handle_XmlTObjDrivers_DocumentRetrievalDriver_to_Handle_PCDM_Reader(const Handle_XmlTObjDrivers_DocumentRetrievalDriver* self_) {
+    try { return {new Handle_PCDM_Reader(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXmlTObjDriversDocumentRetrievalDriver_to_HandleStandardTransient(const HandleXmlTObjDriversDocumentRetrievalDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XmlTObjDrivers_DocumentRetrievalDriver_to_Handle_Standard_Transient(const Handle_XmlTObjDrivers_DocumentRetrievalDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XmlTObjDrivers_DocumentRetrievalDriver_inherited_Read(XmlTObjDrivers_DocumentRetrievalDriver* self, TCollection_ExtendedString const& theFileName, Handle(CDM_Document) const& theNewDocument, Handle(CDM_Application) const& theApplication, Handle(PCDM_ReaderFilter) const& theFilter, Message_ProgressRange const& theRange) {
@@ -234,32 +232,32 @@ extern "C" OcctResult<const PCDM_Writer*> XmlTObjDrivers_DocumentStorageDriver_a
 extern "C" OcctResult<PCDM_Writer*> XmlTObjDrivers_DocumentStorageDriver_as_PCDM_Writer_mut(XmlTObjDrivers_DocumentStorageDriver* self_) { return {static_cast<PCDM_Writer*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XmlTObjDrivers_DocumentStorageDriver_as_Standard_Transient(const XmlTObjDrivers_DocumentStorageDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XmlTObjDrivers_DocumentStorageDriver_as_Standard_Transient_mut(XmlTObjDrivers_DocumentStorageDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXmlTObjDriversDocumentStorageDriver*> XmlTObjDrivers_DocumentStorageDriver_to_handle(XmlTObjDrivers_DocumentStorageDriver* obj) {
-    try { return {new HandleXmlTObjDriversDocumentStorageDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_XmlTObjDrivers_DocumentStorageDriver*> XmlTObjDrivers_DocumentStorageDriver_to_handle(XmlTObjDrivers_DocumentStorageDriver* obj) {
+    try { return {new Handle_XmlTObjDrivers_DocumentStorageDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XmlTObjDrivers_DocumentStorageDriver*> HandleXmlTObjDriversDocumentStorageDriver_get(const HandleXmlTObjDriversDocumentStorageDriver* handle) {
+extern "C" OcctResult<const XmlTObjDrivers_DocumentStorageDriver*> Handle_XmlTObjDrivers_DocumentStorageDriver_get(const Handle_XmlTObjDrivers_DocumentStorageDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XmlTObjDrivers_DocumentStorageDriver*> HandleXmlTObjDriversDocumentStorageDriver_get_mut(HandleXmlTObjDriversDocumentStorageDriver* handle) {
+extern "C" OcctResult<XmlTObjDrivers_DocumentStorageDriver*> Handle_XmlTObjDrivers_DocumentStorageDriver_get_mut(Handle_XmlTObjDrivers_DocumentStorageDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlLDriversDocumentStorageDriver*> HandleXmlTObjDriversDocumentStorageDriver_to_HandleXmlLDriversDocumentStorageDriver(const HandleXmlTObjDriversDocumentStorageDriver* self_) {
-    try { return {new HandleXmlLDriversDocumentStorageDriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_XmlLDrivers_DocumentStorageDriver*> Handle_XmlTObjDrivers_DocumentStorageDriver_to_Handle_XmlLDrivers_DocumentStorageDriver(const Handle_XmlTObjDrivers_DocumentStorageDriver* self_) {
+    try { return {new Handle_XmlLDrivers_DocumentStorageDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandlePCDMStorageDriver*> HandleXmlTObjDriversDocumentStorageDriver_to_HandlePCDMStorageDriver(const HandleXmlTObjDriversDocumentStorageDriver* self_) {
-    try { return {new HandlePCDMStorageDriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_PCDM_StorageDriver*> Handle_XmlTObjDrivers_DocumentStorageDriver_to_Handle_PCDM_StorageDriver(const Handle_XmlTObjDrivers_DocumentStorageDriver* self_) {
+    try { return {new Handle_PCDM_StorageDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandlePCDMWriter*> HandleXmlTObjDriversDocumentStorageDriver_to_HandlePCDMWriter(const HandleXmlTObjDriversDocumentStorageDriver* self_) {
-    try { return {new HandlePCDMWriter(*self_), nullptr}; }
+extern "C" OcctResult<Handle_PCDM_Writer*> Handle_XmlTObjDrivers_DocumentStorageDriver_to_Handle_PCDM_Writer(const Handle_XmlTObjDrivers_DocumentStorageDriver* self_) {
+    try { return {new Handle_PCDM_Writer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXmlTObjDriversDocumentStorageDriver_to_HandleStandardTransient(const HandleXmlTObjDriversDocumentStorageDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XmlTObjDrivers_DocumentStorageDriver_to_Handle_Standard_Transient(const Handle_XmlTObjDrivers_DocumentStorageDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XmlTObjDrivers_DocumentStorageDriver_inherited_Write(XmlTObjDrivers_DocumentStorageDriver* self, Handle(CDM_Document) const& theDocument, TCollection_ExtendedString const& theFileName, Message_ProgressRange const& theRange) {
@@ -360,24 +358,24 @@ extern "C" OcctResult<const XmlMDF_ADriver*> XmlTObjDrivers_IntSparseArrayDriver
 extern "C" OcctResult<XmlMDF_ADriver*> XmlTObjDrivers_IntSparseArrayDriver_as_XmlMDF_ADriver_mut(XmlTObjDrivers_IntSparseArrayDriver* self_) { return {static_cast<XmlMDF_ADriver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XmlTObjDrivers_IntSparseArrayDriver_as_Standard_Transient(const XmlTObjDrivers_IntSparseArrayDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XmlTObjDrivers_IntSparseArrayDriver_as_Standard_Transient_mut(XmlTObjDrivers_IntSparseArrayDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXmlTObjDriversIntSparseArrayDriver*> XmlTObjDrivers_IntSparseArrayDriver_to_handle(XmlTObjDrivers_IntSparseArrayDriver* obj) {
-    try { return {new HandleXmlTObjDriversIntSparseArrayDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_XmlTObjDrivers_IntSparseArrayDriver*> XmlTObjDrivers_IntSparseArrayDriver_to_handle(XmlTObjDrivers_IntSparseArrayDriver* obj) {
+    try { return {new Handle_XmlTObjDrivers_IntSparseArrayDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XmlTObjDrivers_IntSparseArrayDriver*> HandleXmlTObjDriversIntSparseArrayDriver_get(const HandleXmlTObjDriversIntSparseArrayDriver* handle) {
+extern "C" OcctResult<const XmlTObjDrivers_IntSparseArrayDriver*> Handle_XmlTObjDrivers_IntSparseArrayDriver_get(const Handle_XmlTObjDrivers_IntSparseArrayDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XmlTObjDrivers_IntSparseArrayDriver*> HandleXmlTObjDriversIntSparseArrayDriver_get_mut(HandleXmlTObjDriversIntSparseArrayDriver* handle) {
+extern "C" OcctResult<XmlTObjDrivers_IntSparseArrayDriver*> Handle_XmlTObjDrivers_IntSparseArrayDriver_get_mut(Handle_XmlTObjDrivers_IntSparseArrayDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlMDFADriver*> HandleXmlTObjDriversIntSparseArrayDriver_to_HandleXmlMDFADriver(const HandleXmlTObjDriversIntSparseArrayDriver* self_) {
-    try { return {new HandleXmlMDFADriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_XmlMDF_ADriver*> Handle_XmlTObjDrivers_IntSparseArrayDriver_to_Handle_XmlMDF_ADriver(const Handle_XmlTObjDrivers_IntSparseArrayDriver* self_) {
+    try { return {new Handle_XmlMDF_ADriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXmlTObjDriversIntSparseArrayDriver_to_HandleStandardTransient(const HandleXmlTObjDriversIntSparseArrayDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XmlTObjDrivers_IntSparseArrayDriver_to_Handle_Standard_Transient(const Handle_XmlTObjDrivers_IntSparseArrayDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> XmlTObjDrivers_IntSparseArrayDriver_inherited_VersionNumber(const XmlTObjDrivers_IntSparseArrayDriver* self) {
@@ -466,24 +464,24 @@ extern "C" OcctResult<const XmlMDF_ADriver*> XmlTObjDrivers_ModelDriver_as_XmlMD
 extern "C" OcctResult<XmlMDF_ADriver*> XmlTObjDrivers_ModelDriver_as_XmlMDF_ADriver_mut(XmlTObjDrivers_ModelDriver* self_) { return {static_cast<XmlMDF_ADriver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XmlTObjDrivers_ModelDriver_as_Standard_Transient(const XmlTObjDrivers_ModelDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XmlTObjDrivers_ModelDriver_as_Standard_Transient_mut(XmlTObjDrivers_ModelDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXmlTObjDriversModelDriver*> XmlTObjDrivers_ModelDriver_to_handle(XmlTObjDrivers_ModelDriver* obj) {
-    try { return {new HandleXmlTObjDriversModelDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_XmlTObjDrivers_ModelDriver*> XmlTObjDrivers_ModelDriver_to_handle(XmlTObjDrivers_ModelDriver* obj) {
+    try { return {new Handle_XmlTObjDrivers_ModelDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XmlTObjDrivers_ModelDriver*> HandleXmlTObjDriversModelDriver_get(const HandleXmlTObjDriversModelDriver* handle) {
+extern "C" OcctResult<const XmlTObjDrivers_ModelDriver*> Handle_XmlTObjDrivers_ModelDriver_get(const Handle_XmlTObjDrivers_ModelDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XmlTObjDrivers_ModelDriver*> HandleXmlTObjDriversModelDriver_get_mut(HandleXmlTObjDriversModelDriver* handle) {
+extern "C" OcctResult<XmlTObjDrivers_ModelDriver*> Handle_XmlTObjDrivers_ModelDriver_get_mut(Handle_XmlTObjDrivers_ModelDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlMDFADriver*> HandleXmlTObjDriversModelDriver_to_HandleXmlMDFADriver(const HandleXmlTObjDriversModelDriver* self_) {
-    try { return {new HandleXmlMDFADriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_XmlMDF_ADriver*> Handle_XmlTObjDrivers_ModelDriver_to_Handle_XmlMDF_ADriver(const Handle_XmlTObjDrivers_ModelDriver* self_) {
+    try { return {new Handle_XmlMDF_ADriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXmlTObjDriversModelDriver_to_HandleStandardTransient(const HandleXmlTObjDriversModelDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XmlTObjDrivers_ModelDriver_to_Handle_Standard_Transient(const Handle_XmlTObjDrivers_ModelDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> XmlTObjDrivers_ModelDriver_inherited_VersionNumber(const XmlTObjDrivers_ModelDriver* self) {
@@ -572,24 +570,24 @@ extern "C" OcctResult<const XmlMDF_ADriver*> XmlTObjDrivers_ObjectDriver_as_XmlM
 extern "C" OcctResult<XmlMDF_ADriver*> XmlTObjDrivers_ObjectDriver_as_XmlMDF_ADriver_mut(XmlTObjDrivers_ObjectDriver* self_) { return {static_cast<XmlMDF_ADriver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XmlTObjDrivers_ObjectDriver_as_Standard_Transient(const XmlTObjDrivers_ObjectDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XmlTObjDrivers_ObjectDriver_as_Standard_Transient_mut(XmlTObjDrivers_ObjectDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXmlTObjDriversObjectDriver*> XmlTObjDrivers_ObjectDriver_to_handle(XmlTObjDrivers_ObjectDriver* obj) {
-    try { return {new HandleXmlTObjDriversObjectDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_XmlTObjDrivers_ObjectDriver*> XmlTObjDrivers_ObjectDriver_to_handle(XmlTObjDrivers_ObjectDriver* obj) {
+    try { return {new Handle_XmlTObjDrivers_ObjectDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XmlTObjDrivers_ObjectDriver*> HandleXmlTObjDriversObjectDriver_get(const HandleXmlTObjDriversObjectDriver* handle) {
+extern "C" OcctResult<const XmlTObjDrivers_ObjectDriver*> Handle_XmlTObjDrivers_ObjectDriver_get(const Handle_XmlTObjDrivers_ObjectDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XmlTObjDrivers_ObjectDriver*> HandleXmlTObjDriversObjectDriver_get_mut(HandleXmlTObjDriversObjectDriver* handle) {
+extern "C" OcctResult<XmlTObjDrivers_ObjectDriver*> Handle_XmlTObjDrivers_ObjectDriver_get_mut(Handle_XmlTObjDrivers_ObjectDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlMDFADriver*> HandleXmlTObjDriversObjectDriver_to_HandleXmlMDFADriver(const HandleXmlTObjDriversObjectDriver* self_) {
-    try { return {new HandleXmlMDFADriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_XmlMDF_ADriver*> Handle_XmlTObjDrivers_ObjectDriver_to_Handle_XmlMDF_ADriver(const Handle_XmlTObjDrivers_ObjectDriver* self_) {
+    try { return {new Handle_XmlMDF_ADriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXmlTObjDriversObjectDriver_to_HandleStandardTransient(const HandleXmlTObjDriversObjectDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XmlTObjDrivers_ObjectDriver_to_Handle_Standard_Transient(const Handle_XmlTObjDrivers_ObjectDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> XmlTObjDrivers_ObjectDriver_inherited_VersionNumber(const XmlTObjDrivers_ObjectDriver* self) {
@@ -678,24 +676,24 @@ extern "C" OcctResult<const XmlMDF_ADriver*> XmlTObjDrivers_ReferenceDriver_as_X
 extern "C" OcctResult<XmlMDF_ADriver*> XmlTObjDrivers_ReferenceDriver_as_XmlMDF_ADriver_mut(XmlTObjDrivers_ReferenceDriver* self_) { return {static_cast<XmlMDF_ADriver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XmlTObjDrivers_ReferenceDriver_as_Standard_Transient(const XmlTObjDrivers_ReferenceDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XmlTObjDrivers_ReferenceDriver_as_Standard_Transient_mut(XmlTObjDrivers_ReferenceDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXmlTObjDriversReferenceDriver*> XmlTObjDrivers_ReferenceDriver_to_handle(XmlTObjDrivers_ReferenceDriver* obj) {
-    try { return {new HandleXmlTObjDriversReferenceDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_XmlTObjDrivers_ReferenceDriver*> XmlTObjDrivers_ReferenceDriver_to_handle(XmlTObjDrivers_ReferenceDriver* obj) {
+    try { return {new Handle_XmlTObjDrivers_ReferenceDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XmlTObjDrivers_ReferenceDriver*> HandleXmlTObjDriversReferenceDriver_get(const HandleXmlTObjDriversReferenceDriver* handle) {
+extern "C" OcctResult<const XmlTObjDrivers_ReferenceDriver*> Handle_XmlTObjDrivers_ReferenceDriver_get(const Handle_XmlTObjDrivers_ReferenceDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XmlTObjDrivers_ReferenceDriver*> HandleXmlTObjDriversReferenceDriver_get_mut(HandleXmlTObjDriversReferenceDriver* handle) {
+extern "C" OcctResult<XmlTObjDrivers_ReferenceDriver*> Handle_XmlTObjDrivers_ReferenceDriver_get_mut(Handle_XmlTObjDrivers_ReferenceDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlMDFADriver*> HandleXmlTObjDriversReferenceDriver_to_HandleXmlMDFADriver(const HandleXmlTObjDriversReferenceDriver* self_) {
-    try { return {new HandleXmlMDFADriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_XmlMDF_ADriver*> Handle_XmlTObjDrivers_ReferenceDriver_to_Handle_XmlMDF_ADriver(const Handle_XmlTObjDrivers_ReferenceDriver* self_) {
+    try { return {new Handle_XmlMDF_ADriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXmlTObjDriversReferenceDriver_to_HandleStandardTransient(const HandleXmlTObjDriversReferenceDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XmlTObjDrivers_ReferenceDriver_to_Handle_Standard_Transient(const Handle_XmlTObjDrivers_ReferenceDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> XmlTObjDrivers_ReferenceDriver_inherited_VersionNumber(const XmlTObjDrivers_ReferenceDriver* self) {
@@ -784,24 +782,24 @@ extern "C" OcctResult<const XmlMDF_ADriver*> XmlTObjDrivers_XYZDriver_as_XmlMDF_
 extern "C" OcctResult<XmlMDF_ADriver*> XmlTObjDrivers_XYZDriver_as_XmlMDF_ADriver_mut(XmlTObjDrivers_XYZDriver* self_) { return {static_cast<XmlMDF_ADriver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XmlTObjDrivers_XYZDriver_as_Standard_Transient(const XmlTObjDrivers_XYZDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XmlTObjDrivers_XYZDriver_as_Standard_Transient_mut(XmlTObjDrivers_XYZDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXmlTObjDriversXYZDriver*> XmlTObjDrivers_XYZDriver_to_handle(XmlTObjDrivers_XYZDriver* obj) {
-    try { return {new HandleXmlTObjDriversXYZDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_XmlTObjDrivers_XYZDriver*> XmlTObjDrivers_XYZDriver_to_handle(XmlTObjDrivers_XYZDriver* obj) {
+    try { return {new Handle_XmlTObjDrivers_XYZDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XmlTObjDrivers_XYZDriver*> HandleXmlTObjDriversXYZDriver_get(const HandleXmlTObjDriversXYZDriver* handle) {
+extern "C" OcctResult<const XmlTObjDrivers_XYZDriver*> Handle_XmlTObjDrivers_XYZDriver_get(const Handle_XmlTObjDrivers_XYZDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XmlTObjDrivers_XYZDriver*> HandleXmlTObjDriversXYZDriver_get_mut(HandleXmlTObjDriversXYZDriver* handle) {
+extern "C" OcctResult<XmlTObjDrivers_XYZDriver*> Handle_XmlTObjDrivers_XYZDriver_get_mut(Handle_XmlTObjDrivers_XYZDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlMDFADriver*> HandleXmlTObjDriversXYZDriver_to_HandleXmlMDFADriver(const HandleXmlTObjDriversXYZDriver* self_) {
-    try { return {new HandleXmlMDFADriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_XmlMDF_ADriver*> Handle_XmlTObjDrivers_XYZDriver_to_Handle_XmlMDF_ADriver(const Handle_XmlTObjDrivers_XYZDriver* self_) {
+    try { return {new Handle_XmlMDF_ADriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXmlTObjDriversXYZDriver_to_HandleStandardTransient(const HandleXmlTObjDriversXYZDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XmlTObjDrivers_XYZDriver_to_Handle_Standard_Transient(const Handle_XmlTObjDrivers_XYZDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> XmlTObjDrivers_XYZDriver_inherited_VersionNumber(const XmlTObjDrivers_XYZDriver* self) {

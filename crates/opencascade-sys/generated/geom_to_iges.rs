@@ -12,7 +12,7 @@
 
 /// **Source:** `GeomToIGES_GeomCurve.hxx`:53 - `GeomToIGES_GeomCurve`
 /// This class implements the transfer of the Curve Entity from Geom
-/// To IGES. These can be :
+/// To IGES. These can be:
 /// Curve
 /// . BoundedCurve
 /// * BSplineCurve
@@ -57,147 +57,147 @@ impl GeomCurve {
     }
 
     /// **Source:** `GeomToIGES_GeomCurve.hxx`:67 - `GeomToIGES_GeomCurve::TransferCurve()`
-    /// Transfert  a  GeometryEntity which  answer True  to  the
-    /// member : BRepToIGES::IsGeomCurve(Geometry).  If this
+    /// Transfer a GeometryEntity which answer True to the
+    /// member : BRepToIGES::IsGeomCurve(Geometry). If this
     /// Entity could not be converted, this member returns a NullEntity.
     pub fn transfer_curve_handlegeomcurve_real2(
         &mut self,
-        start: &crate::ffi_types::HandleGeomCurve,
+        start: &crate::ffi_types::Handle_Geom_Curve,
         Udeb: f64,
         Ufin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_transfer_curve_handlegeomcurve_real2(self as *mut Self, start, Udeb, Ufin)))
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomCurve.hxx`:71 - `GeomToIGES_GeomCurve::TransferCurve()`
+    /// **Source:** `GeomToIGES_GeomCurve.hxx`:72 - `GeomToIGES_GeomCurve::TransferCurve()`
     pub fn transfer_curve_handlegeomboundedcurve_real2(
         &mut self,
-        start: &crate::ffi_types::HandleGeomBoundedCurve,
+        start: &crate::ffi_types::Handle_Geom_BoundedCurve,
         Udeb: f64,
         Ufin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_transfer_curve_handlegeomboundedcurve_real2(self as *mut Self, start, Udeb, Ufin)))
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomCurve.hxx`:75 - `GeomToIGES_GeomCurve::TransferCurve()`
+    /// **Source:** `GeomToIGES_GeomCurve.hxx`:77 - `GeomToIGES_GeomCurve::TransferCurve()`
     pub fn transfer_curve_handlegeombsplinecurve_real2(
         &mut self,
-        start: &crate::ffi_types::HandleGeomBSplineCurve,
+        start: &crate::ffi_types::Handle_Geom_BSplineCurve,
         Udeb: f64,
         Ufin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_transfer_curve_handlegeombsplinecurve_real2(self as *mut Self, start, Udeb, Ufin)))
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomCurve.hxx`:79 - `GeomToIGES_GeomCurve::TransferCurve()`
+    /// **Source:** `GeomToIGES_GeomCurve.hxx`:82 - `GeomToIGES_GeomCurve::TransferCurve()`
     pub fn transfer_curve_handlegeombeziercurve_real2(
         &mut self,
-        start: &crate::ffi_types::HandleGeomBezierCurve,
+        start: &crate::ffi_types::Handle_Geom_BezierCurve,
         Udeb: f64,
         Ufin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_transfer_curve_handlegeombeziercurve_real2(self as *mut Self, start, Udeb, Ufin)))
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomCurve.hxx`:83 - `GeomToIGES_GeomCurve::TransferCurve()`
+    /// **Source:** `GeomToIGES_GeomCurve.hxx`:87 - `GeomToIGES_GeomCurve::TransferCurve()`
     pub fn transfer_curve_handlegeomtrimmedcurve_real2(
         &mut self,
-        start: &crate::ffi_types::HandleGeomTrimmedCurve,
+        start: &crate::ffi_types::Handle_Geom_TrimmedCurve,
         Udeb: f64,
         Ufin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_transfer_curve_handlegeomtrimmedcurve_real2(self as *mut Self, start, Udeb, Ufin)))
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomCurve.hxx`:87 - `GeomToIGES_GeomCurve::TransferCurve()`
+    /// **Source:** `GeomToIGES_GeomCurve.hxx`:92 - `GeomToIGES_GeomCurve::TransferCurve()`
     pub fn transfer_curve_handlegeomconic_real2(
         &mut self,
-        start: &crate::ffi_types::HandleGeomConic,
+        start: &crate::ffi_types::Handle_Geom_Conic,
         Udeb: f64,
         Ufin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_transfer_curve_handlegeomconic_real2(self as *mut Self, start, Udeb, Ufin)))
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomCurve.hxx`:91 - `GeomToIGES_GeomCurve::TransferCurve()`
+    /// **Source:** `GeomToIGES_GeomCurve.hxx`:97 - `GeomToIGES_GeomCurve::TransferCurve()`
     pub fn transfer_curve_handlegeomcircle_real2(
         &mut self,
-        start: &crate::ffi_types::HandleGeomCircle,
+        start: &crate::ffi_types::Handle_Geom_Circle,
         Udeb: f64,
         Ufin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_transfer_curve_handlegeomcircle_real2(self as *mut Self, start, Udeb, Ufin)))
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomCurve.hxx`:95 - `GeomToIGES_GeomCurve::TransferCurve()`
+    /// **Source:** `GeomToIGES_GeomCurve.hxx`:102 - `GeomToIGES_GeomCurve::TransferCurve()`
     pub fn transfer_curve_handlegeomellipse_real2(
         &mut self,
-        start: &crate::ffi_types::HandleGeomEllipse,
+        start: &crate::ffi_types::Handle_Geom_Ellipse,
         Udeb: f64,
         Ufin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_transfer_curve_handlegeomellipse_real2(self as *mut Self, start, Udeb, Ufin)))
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomCurve.hxx`:99 - `GeomToIGES_GeomCurve::TransferCurve()`
+    /// **Source:** `GeomToIGES_GeomCurve.hxx`:107 - `GeomToIGES_GeomCurve::TransferCurve()`
     pub fn transfer_curve_handlegeomhyperbola_real2(
         &mut self,
-        start: &crate::ffi_types::HandleGeomHyperbola,
+        start: &crate::ffi_types::Handle_Geom_Hyperbola,
         Udeb: f64,
         Ufin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_transfer_curve_handlegeomhyperbola_real2(self as *mut Self, start, Udeb, Ufin)))
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomCurve.hxx`:103 - `GeomToIGES_GeomCurve::TransferCurve()`
+    /// **Source:** `GeomToIGES_GeomCurve.hxx`:112 - `GeomToIGES_GeomCurve::TransferCurve()`
     pub fn transfer_curve_handlegeomline_real2(
         &mut self,
-        start: &crate::ffi_types::HandleGeomLine,
+        start: &crate::ffi_types::Handle_Geom_Line,
         Udeb: f64,
         Ufin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_transfer_curve_handlegeomline_real2(self as *mut Self, start, Udeb, Ufin)))
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomCurve.hxx`:107 - `GeomToIGES_GeomCurve::TransferCurve()`
+    /// **Source:** `GeomToIGES_GeomCurve.hxx`:117 - `GeomToIGES_GeomCurve::TransferCurve()`
     pub fn transfer_curve_handlegeomparabola_real2(
         &mut self,
-        start: &crate::ffi_types::HandleGeomParabola,
+        start: &crate::ffi_types::Handle_Geom_Parabola,
         Udeb: f64,
         Ufin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_transfer_curve_handlegeomparabola_real2(self as *mut Self, start, Udeb, Ufin)))
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomCurve.hxx`:111 - `GeomToIGES_GeomCurve::TransferCurve()`
+    /// **Source:** `GeomToIGES_GeomCurve.hxx`:122 - `GeomToIGES_GeomCurve::TransferCurve()`
     pub fn transfer_curve_handlegeomoffsetcurve_real2(
         &mut self,
-        start: &crate::ffi_types::HandleGeomOffsetCurve,
+        start: &crate::ffi_types::Handle_Geom_OffsetCurve,
         Udeb: f64,
         Ufin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_transfer_curve_handlegeomoffsetcurve_real2(self as *mut Self, start, Udeb, Ufin)))
         }
@@ -226,7 +226,7 @@ impl GeomCurve {
     }
 
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:41 - `GeomToIGES_GeomEntity::SetModel()`
-    pub fn set_model(&mut self, model: &crate::ffi_types::HandleIGESDataIGESModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::Handle_IGESData_IGESModel) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_inherited_SetModel(
                 self as *mut Self,
@@ -236,7 +236,7 @@ impl GeomCurve {
     }
 
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:44 - `GeomToIGES_GeomEntity::GetModel()`
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_inherited_GetModel(
@@ -309,7 +309,7 @@ impl GeomEntity {
 
     /// **Source:** `GeomToIGES_GeomEntity.hxx`:41 - `GeomToIGES_GeomEntity::SetModel()`
     /// Set the value of "TheModel"
-    pub fn set_model(&mut self, model: &crate::ffi_types::HandleIGESDataIGESModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::Handle_IGESData_IGESModel) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::GeomToIGES_GeomEntity_set_model(self as *mut Self, model)
         })
@@ -317,7 +317,7 @@ impl GeomEntity {
 
     /// **Source:** `GeomToIGES_GeomEntity.hxx`:44 - `GeomToIGES_GeomEntity::GetModel()`
     /// Returns the value of "TheModel"
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::GeomToIGES_GeomEntity_get_model(self as *const Self),
@@ -349,7 +349,7 @@ impl GeomEntity {
 
 /// **Source:** `GeomToIGES_GeomPoint.hxx`:33 - `GeomToIGES_GeomPoint`
 /// This class implements the transfer of the Point Entity from Geom
-/// to IGES . These are :
+/// to IGES. These are:
 /// . Point
 /// * CartesianPoint
 pub use crate::ffi_types::GeomToIGES_GeomPoint as GeomPoint;
@@ -384,12 +384,12 @@ impl GeomPoint {
     }
 
     /// **Source:** `GeomToIGES_GeomPoint.hxx`:46 - `GeomToIGES_GeomPoint::TransferPoint()`
-    /// Transfert  a  Point from Geom to IGES. If this
+    /// Transfer a Point from Geom to IGES. If this
     /// Entity could not be converted, this member returns a NullEntity.
     pub fn transfer_point_handlegeompoint(
         &mut self,
-        start: &crate::ffi_types::HandleGeomPoint,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGeomPoint> {
+        start: &crate::ffi_types::Handle_Geom_Point,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESGeom_Point> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::GeomToIGES_GeomPoint_transfer_point_handlegeompoint(
@@ -401,12 +401,12 @@ impl GeomPoint {
     }
 
     /// **Source:** `GeomToIGES_GeomPoint.hxx`:50 - `GeomToIGES_GeomPoint::TransferPoint()`
-    /// Transfert  a  CartesianPoint from Geom to IGES. If this
+    /// Transfer a CartesianPoint from Geom to IGES. If this
     /// Entity could not be converted, this member returns a NullEntity.
     pub fn transfer_point_handlegeomcartesianpoint(
         &mut self,
-        start: &crate::ffi_types::HandleGeomCartesianPoint,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGeomPoint> {
+        start: &crate::ffi_types::Handle_Geom_CartesianPoint,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESGeom_Point> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomPoint_transfer_point_handlegeomcartesianpoint(self as *mut Self, start)))
         }
@@ -435,7 +435,7 @@ impl GeomPoint {
     }
 
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:41 - `GeomToIGES_GeomEntity::SetModel()`
-    pub fn set_model(&mut self, model: &crate::ffi_types::HandleIGESDataIGESModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::Handle_IGESData_IGESModel) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::GeomToIGES_GeomPoint_inherited_SetModel(
                 self as *mut Self,
@@ -445,7 +445,7 @@ impl GeomPoint {
     }
 
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:44 - `GeomToIGES_GeomEntity::GetModel()`
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::GeomToIGES_GeomPoint_inherited_GetModel(
@@ -479,7 +479,7 @@ impl GeomPoint {
 
 /// **Source:** `GeomToIGES_GeomSurface.hxx`:58 - `GeomToIGES_GeomSurface`
 /// This class implements the transfer of the Surface Entity from Geom
-/// To IGES. These can be :
+/// To IGES. These can be:
 /// . BoundedSurface
 /// * BSplineSurface
 /// * BezierSurface
@@ -526,227 +526,227 @@ impl GeomSurface {
     }
 
     /// **Source:** `GeomToIGES_GeomSurface.hxx`:72 - `GeomToIGES_GeomSurface::TransferSurface()`
-    /// Transfert  a  GeometryEntity which  answer True  to  the
-    /// member : BRepToIGES::IsGeomSurface(Geometry).  If this
+    /// Transfer a GeometryEntity which answer True to the
+    /// member : BRepToIGES::IsGeomSurface(Geometry). If this
     /// Entity could not be converted, this member returns a NullEntity.
     pub fn transfer_surface_handlegeomsurface_real4(
         &mut self,
-        start: &crate::ffi_types::HandleGeomSurface,
+        start: &crate::ffi_types::Handle_Geom_Surface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_surface_handlegeomsurface_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomSurface.hxx`:78 - `GeomToIGES_GeomSurface::TransferSurface()`
+    /// **Source:** `GeomToIGES_GeomSurface.hxx`:79 - `GeomToIGES_GeomSurface::TransferSurface()`
     pub fn transfer_surface_handlegeomboundedsurface_real4(
         &mut self,
-        start: &crate::ffi_types::HandleGeomBoundedSurface,
+        start: &crate::ffi_types::Handle_Geom_BoundedSurface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_surface_handlegeomboundedsurface_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomSurface.hxx`:85 - `GeomToIGES_GeomSurface::TransferSurface()`
+    /// **Source:** `GeomToIGES_GeomSurface.hxx`:86 - `GeomToIGES_GeomSurface::TransferSurface()`
     pub fn transfer_surface_handlegeombsplinesurface_real4(
         &mut self,
-        start: &crate::ffi_types::HandleGeomBSplineSurface,
+        start: &crate::ffi_types::Handle_Geom_BSplineSurface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_surface_handlegeombsplinesurface_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomSurface.hxx`:92 - `GeomToIGES_GeomSurface::TransferSurface()`
+    /// **Source:** `GeomToIGES_GeomSurface.hxx`:93 - `GeomToIGES_GeomSurface::TransferSurface()`
     pub fn transfer_surface_handlegeombeziersurface_real4(
         &mut self,
-        start: &crate::ffi_types::HandleGeomBezierSurface,
+        start: &crate::ffi_types::Handle_Geom_BezierSurface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_surface_handlegeombeziersurface_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomSurface.hxx`:99 - `GeomToIGES_GeomSurface::TransferSurface()`
+    /// **Source:** `GeomToIGES_GeomSurface.hxx`:100 - `GeomToIGES_GeomSurface::TransferSurface()`
     pub fn transfer_surface_handlegeomrectangulartrimmedsurface_real4(
         &mut self,
-        start: &crate::ffi_types::HandleGeomRectangularTrimmedSurface,
+        start: &crate::ffi_types::Handle_Geom_RectangularTrimmedSurface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_surface_handlegeomrectangulartrimmedsurface_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomSurface.hxx`:106 - `GeomToIGES_GeomSurface::TransferSurface()`
+    /// **Source:** `GeomToIGES_GeomSurface.hxx`:107 - `GeomToIGES_GeomSurface::TransferSurface()`
     pub fn transfer_surface_handlegeomelementarysurface_real4(
         &mut self,
-        start: &crate::ffi_types::HandleGeomElementarySurface,
+        start: &crate::ffi_types::Handle_Geom_ElementarySurface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_surface_handlegeomelementarysurface_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomSurface.hxx`:113 - `GeomToIGES_GeomSurface::TransferSurface()`
+    /// **Source:** `GeomToIGES_GeomSurface.hxx`:114 - `GeomToIGES_GeomSurface::TransferSurface()`
     pub fn transfer_surface_handlegeomplane_real4(
         &mut self,
-        start: &crate::ffi_types::HandleGeomPlane,
+        start: &crate::ffi_types::Handle_Geom_Plane,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_surface_handlegeomplane_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomSurface.hxx`:119 - `GeomToIGES_GeomSurface::TransferSurface()`
+    /// **Source:** `GeomToIGES_GeomSurface.hxx`:121 - `GeomToIGES_GeomSurface::TransferSurface()`
     pub fn transfer_surface_handlegeomcylindricalsurface_real4(
         &mut self,
-        start: &crate::ffi_types::HandleGeomCylindricalSurface,
+        start: &crate::ffi_types::Handle_Geom_CylindricalSurface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_surface_handlegeomcylindricalsurface_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomSurface.hxx`:126 - `GeomToIGES_GeomSurface::TransferSurface()`
+    /// **Source:** `GeomToIGES_GeomSurface.hxx`:128 - `GeomToIGES_GeomSurface::TransferSurface()`
     pub fn transfer_surface_handlegeomconicalsurface_real4(
         &mut self,
-        start: &crate::ffi_types::HandleGeomConicalSurface,
+        start: &crate::ffi_types::Handle_Geom_ConicalSurface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_surface_handlegeomconicalsurface_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomSurface.hxx`:133 - `GeomToIGES_GeomSurface::TransferSurface()`
+    /// **Source:** `GeomToIGES_GeomSurface.hxx`:135 - `GeomToIGES_GeomSurface::TransferSurface()`
     pub fn transfer_surface_handlegeomsphericalsurface_real4(
         &mut self,
-        start: &crate::ffi_types::HandleGeomSphericalSurface,
+        start: &crate::ffi_types::Handle_Geom_SphericalSurface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_surface_handlegeomsphericalsurface_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomSurface.hxx`:140 - `GeomToIGES_GeomSurface::TransferSurface()`
+    /// **Source:** `GeomToIGES_GeomSurface.hxx`:142 - `GeomToIGES_GeomSurface::TransferSurface()`
     pub fn transfer_surface_handlegeomtoroidalsurface_real4(
         &mut self,
-        start: &crate::ffi_types::HandleGeomToroidalSurface,
+        start: &crate::ffi_types::Handle_Geom_ToroidalSurface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_surface_handlegeomtoroidalsurface_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomSurface.hxx`:147 - `GeomToIGES_GeomSurface::TransferSurface()`
+    /// **Source:** `GeomToIGES_GeomSurface.hxx`:149 - `GeomToIGES_GeomSurface::TransferSurface()`
     pub fn transfer_surface_handlegeomsweptsurface_real4(
         &mut self,
-        start: &crate::ffi_types::HandleGeomSweptSurface,
+        start: &crate::ffi_types::Handle_Geom_SweptSurface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_surface_handlegeomsweptsurface_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomSurface.hxx`:154 - `GeomToIGES_GeomSurface::TransferSurface()`
+    /// **Source:** `GeomToIGES_GeomSurface.hxx`:156 - `GeomToIGES_GeomSurface::TransferSurface()`
     pub fn transfer_surface_handlegeomsurfaceoflinearextrusion_real4(
         &mut self,
-        start: &crate::ffi_types::HandleGeomSurfaceOfLinearExtrusion,
+        start: &crate::ffi_types::Handle_Geom_SurfaceOfLinearExtrusion,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_surface_handlegeomsurfaceoflinearextrusion_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomSurface.hxx`:161 - `GeomToIGES_GeomSurface::TransferSurface()`
+    /// **Source:** `GeomToIGES_GeomSurface.hxx`:163 - `GeomToIGES_GeomSurface::TransferSurface()`
     pub fn transfer_surface_handlegeomsurfaceofrevolution_real4(
         &mut self,
-        start: &crate::ffi_types::HandleGeomSurfaceOfRevolution,
+        start: &crate::ffi_types::Handle_Geom_SurfaceOfRevolution,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_surface_handlegeomsurfaceofrevolution_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomSurface.hxx`:168 - `GeomToIGES_GeomSurface::TransferSurface()`
+    /// **Source:** `GeomToIGES_GeomSurface.hxx`:170 - `GeomToIGES_GeomSurface::TransferSurface()`
     pub fn transfer_surface_handlegeomoffsetsurface_real4(
         &mut self,
-        start: &crate::ffi_types::HandleGeomOffsetSurface,
+        start: &crate::ffi_types::Handle_Geom_OffsetSurface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_surface_handlegeomoffsetsurface_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomSurface.hxx`:175 - `GeomToIGES_GeomSurface::TransferPlaneSurface()`
+    /// **Source:** `GeomToIGES_GeomSurface.hxx`:177 - `GeomToIGES_GeomSurface::TransferPlaneSurface()`
     pub fn transfer_plane_surface(
         &mut self,
-        start: &crate::ffi_types::HandleGeomPlane,
+        start: &crate::ffi_types::Handle_Geom_Plane,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_plane_surface(
@@ -761,15 +761,15 @@ impl GeomSurface {
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomSurface.hxx`:181 - `GeomToIGES_GeomSurface::TransferCylindricalSurface()`
+    /// **Source:** `GeomToIGES_GeomSurface.hxx`:184 - `GeomToIGES_GeomSurface::TransferCylindricalSurface()`
     pub fn transfer_cylindrical_surface(
         &mut self,
-        start: &crate::ffi_types::HandleGeomCylindricalSurface,
+        start: &crate::ffi_types::Handle_Geom_CylindricalSurface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_cylindrical_surface(
@@ -784,15 +784,15 @@ impl GeomSurface {
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomSurface.hxx`:188 - `GeomToIGES_GeomSurface::TransferConicalSurface()`
+    /// **Source:** `GeomToIGES_GeomSurface.hxx`:191 - `GeomToIGES_GeomSurface::TransferConicalSurface()`
     pub fn transfer_conical_surface(
         &mut self,
-        start: &crate::ffi_types::HandleGeomConicalSurface,
+        start: &crate::ffi_types::Handle_Geom_ConicalSurface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_conical_surface(
@@ -807,15 +807,15 @@ impl GeomSurface {
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomSurface.hxx`:195 - `GeomToIGES_GeomSurface::TransferSphericalSurface()`
+    /// **Source:** `GeomToIGES_GeomSurface.hxx`:198 - `GeomToIGES_GeomSurface::TransferSphericalSurface()`
     pub fn transfer_spherical_surface(
         &mut self,
-        start: &crate::ffi_types::HandleGeomSphericalSurface,
+        start: &crate::ffi_types::Handle_Geom_SphericalSurface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_spherical_surface(
@@ -830,15 +830,15 @@ impl GeomSurface {
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomSurface.hxx`:202 - `GeomToIGES_GeomSurface::TransferToroidalSurface()`
+    /// **Source:** `GeomToIGES_GeomSurface.hxx`:205 - `GeomToIGES_GeomSurface::TransferToroidalSurface()`
     pub fn transfer_toroidal_surface(
         &mut self,
-        start: &crate::ffi_types::HandleGeomToroidalSurface,
+        start: &crate::ffi_types::Handle_Geom_ToroidalSurface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_toroidal_surface(
@@ -853,7 +853,7 @@ impl GeomSurface {
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomSurface.hxx`:210 - `GeomToIGES_GeomSurface::Length()`
+    /// **Source:** `GeomToIGES_GeomSurface.hxx`:213 - `GeomToIGES_GeomSurface::Length()`
     /// Returns the value of "TheLength"
     pub fn length(&self) -> f64 {
         crate::check_result(unsafe {
@@ -861,7 +861,7 @@ impl GeomSurface {
         })
     }
 
-    /// **Source:** `GeomToIGES_GeomSurface.hxx`:213 - `GeomToIGES_GeomSurface::GetBRepMode()`
+    /// **Source:** `GeomToIGES_GeomSurface.hxx`:216 - `GeomToIGES_GeomSurface::GetBRepMode()`
     /// Returns Brep mode flag.
     pub fn get_b_rep_mode(&self) -> bool {
         crate::check_result(unsafe {
@@ -869,7 +869,7 @@ impl GeomSurface {
         })
     }
 
-    /// **Source:** `GeomToIGES_GeomSurface.hxx`:216 - `GeomToIGES_GeomSurface::SetBRepMode()`
+    /// **Source:** `GeomToIGES_GeomSurface.hxx`:219 - `GeomToIGES_GeomSurface::SetBRepMode()`
     /// Sets BRep mode flag.
     pub fn set_b_rep_mode(&mut self, flag: bool) {
         crate::check_void_result(unsafe {
@@ -880,7 +880,7 @@ impl GeomSurface {
         })
     }
 
-    /// **Source:** `GeomToIGES_GeomSurface.hxx`:219 - `GeomToIGES_GeomSurface::GetAnalyticMode()`
+    /// **Source:** `GeomToIGES_GeomSurface.hxx`:222 - `GeomToIGES_GeomSurface::GetAnalyticMode()`
     /// Returns flag for writing elementary surfaces
     pub fn get_analytic_mode(&self) -> bool {
         crate::check_result(unsafe {
@@ -890,7 +890,7 @@ impl GeomSurface {
         })
     }
 
-    /// **Source:** `GeomToIGES_GeomSurface.hxx`:222 - `GeomToIGES_GeomSurface::SetAnalyticMode()`
+    /// **Source:** `GeomToIGES_GeomSurface.hxx`:225 - `GeomToIGES_GeomSurface::SetAnalyticMode()`
     /// Setst flag for writing elementary surfaces
     pub fn set_analytic_mode(&mut self, flag: bool) {
         crate::check_void_result(unsafe {
@@ -924,7 +924,7 @@ impl GeomSurface {
     }
 
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:41 - `GeomToIGES_GeomEntity::SetModel()`
-    pub fn set_model(&mut self, model: &crate::ffi_types::HandleIGESDataIGESModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::Handle_IGESData_IGESModel) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_inherited_SetModel(
                 self as *mut Self,
@@ -934,7 +934,7 @@ impl GeomSurface {
     }
 
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:44 - `GeomToIGES_GeomEntity::GetModel()`
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_inherited_GetModel(
@@ -970,7 +970,7 @@ impl GeomSurface {
 
 /// **Source:** `GeomToIGES_GeomVector.hxx`:35 - `GeomToIGES_GeomVector`
 /// This class implements the transfer of the Vector from Geom
-/// to IGES . These can be :
+/// to IGES. These can be:
 /// . Vector
 /// * Direction
 /// * VectorWithMagnitude
@@ -1006,13 +1006,13 @@ impl GeomVector {
     }
 
     /// **Source:** `GeomToIGES_GeomVector.hxx`:49 - `GeomToIGES_GeomVector::TransferVector()`
-    /// Transfert  a  GeometryEntity which  answer True  to  the
-    /// member : BRepToIGES::IsGeomVector(Geometry).  If this
+    /// Transfer a GeometryEntity which answer True to the
+    /// member : BRepToIGES::IsGeomVector(Geometry). If this
     /// Entity could not be converted, this member returns a NullEntity.
     pub fn transfer_vector_handlegeomvector(
         &mut self,
-        start: &crate::ffi_types::HandleGeomVector,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGeomDirection> {
+        start: &crate::ffi_types::Handle_Geom_Vector,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESGeom_Direction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::GeomToIGES_GeomVector_transfer_vector_handlegeomvector(
@@ -1023,21 +1023,21 @@ impl GeomVector {
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomVector.hxx`:51 - `GeomToIGES_GeomVector::TransferVector()`
+    /// **Source:** `GeomToIGES_GeomVector.hxx`:52 - `GeomToIGES_GeomVector::TransferVector()`
     pub fn transfer_vector_handlegeomvectorwithmagnitude(
         &mut self,
-        start: &crate::ffi_types::HandleGeomVectorWithMagnitude,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGeomDirection> {
+        start: &crate::ffi_types::Handle_Geom_VectorWithMagnitude,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESGeom_Direction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomVector_transfer_vector_handlegeomvectorwithmagnitude(self as *mut Self, start)))
         }
     }
 
-    /// **Source:** `GeomToIGES_GeomVector.hxx`:54 - `GeomToIGES_GeomVector::TransferVector()`
+    /// **Source:** `GeomToIGES_GeomVector.hxx`:55 - `GeomToIGES_GeomVector::TransferVector()`
     pub fn transfer_vector_handlegeomdirection(
         &mut self,
-        start: &crate::ffi_types::HandleGeomDirection,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGeomDirection> {
+        start: &crate::ffi_types::Handle_Geom_Direction,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESGeom_Direction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomVector_transfer_vector_handlegeomdirection(self as *mut Self, start)))
         }
@@ -1066,7 +1066,7 @@ impl GeomVector {
     }
 
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:41 - `GeomToIGES_GeomEntity::SetModel()`
-    pub fn set_model(&mut self, model: &crate::ffi_types::HandleIGESDataIGESModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::Handle_IGESData_IGESModel) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::GeomToIGES_GeomVector_inherited_SetModel(
                 self as *mut Self,
@@ -1076,7 +1076,7 @@ impl GeomVector {
     }
 
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:44 - `GeomToIGES_GeomEntity::GetModel()`
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::GeomToIGES_GeomVector_inherited_GetModel(

@@ -6,94 +6,102 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `CSLib.hxx`:127 - `CSLib::DNNUV`
-/// -- Computes the derivative  of order Nu in the --
-/// direction U and Nv in the direction V of the not --
-/// normalized  normal vector at  the point  P(U,V) The
-/// array DerSurf contain the derivative (i,j) of the surface
-/// for i=0,Nu+1 ; j=0,Nv+1
-pub fn dnnuv_int2_array2ofvec(
-    Nu: i32,
-    Nv: i32,
-    DerSurf: &crate::ffi_types::TColgp_Array2OfVec,
+/// **Source:** `CSLib.hxx`:146 - `CSLib::DNNUV`
+/// Computes the derivative of order (theNu, theNv) of the non-normalized normal vector.
+///
+/// The non-normalized normal is N = dS/du ^ dS/dv.
+/// This function computes d^(Nu+Nv)N / (du^Nu * dv^Nv).
+///
+/// @param[in] theNu      Derivative order in U direction
+/// @param[in] theNv      Derivative order in V direction
+/// @param[in] theDerSurf Surface derivatives array where theDerSurf(i,j) = d^(i+j)S/(du^i * dv^j)
+/// for i = 0..theNu+1, j = 0..theNv+1
+/// @return The derivative vector d^(Nu+Nv)N / (du^Nu * dv^Nv)
+pub fn dnnuv_int2_arr2_vec(
+    theNu: i32,
+    theNv: i32,
+    theDerSurf: &crate::ffi_types::NCollection_Array2_gp_Vec,
 ) -> crate::OwnedPtr<crate::gp::Vec> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
-            crate::ffi_extern_TKMath::CSLib_dnnuv_int2_array2ofvec(Nu, Nv, DerSurf),
+            crate::ffi_extern_TKMath::CSLib_dnnuv_int2_arr2_vec(theNu, theNv, theDerSurf),
         ))
     }
 }
-/// **Source:** `CSLib.hxx`:135 - `CSLib::DNNUV`
-/// Computes the derivatives of order Nu in the direction Nu
-/// and Nv in the direction Nv of the not normalized vector
-/// N(u,v) = dS1/du * dS2/dv (cases where we use an osculating surface)
-/// DerSurf1 are the derivatives of S1
-pub fn dnnuv_int2_array2ofvec2(
-    Nu: i32,
-    Nv: i32,
-    DerSurf1: &crate::ffi_types::TColgp_Array2OfVec,
-    DerSurf2: &crate::ffi_types::TColgp_Array2OfVec,
+/// **Source:** `CSLib.hxx`:160 - `CSLib::DNNUV`
+/// Computes the derivative of the non-normalized vector N = dS1/du ^ dS2/dv.
+///
+/// This variant is used for osculating surfaces where the normal
+/// is computed from derivatives of two different surfaces.
+///
+/// @param[in] theNu       Derivative order in U direction
+/// @param[in] theNv       Derivative order in V direction
+/// @param[in] theDerSurf1 Derivatives of the first surface S1
+/// @param[in] theDerSurf2 Derivatives of the second surface S2
+/// @return The derivative vector
+pub fn dnnuv_int2_arr2_vec2(
+    theNu: i32,
+    theNv: i32,
+    theDerSurf1: &crate::ffi_types::NCollection_Array2_gp_Vec,
+    theDerSurf2: &crate::ffi_types::NCollection_Array2_gp_Vec,
 ) -> crate::OwnedPtr<crate::gp::Vec> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
-            crate::ffi_extern_TKMath::CSLib_dnnuv_int2_array2ofvec2(Nu, Nv, DerSurf1, DerSurf2),
+            crate::ffi_extern_TKMath::CSLib_dnnuv_int2_arr2_vec2(
+                theNu,
+                theNv,
+                theDerSurf1,
+                theDerSurf2,
+            ),
         ))
     }
 }
-/// **Source:** `CSLib.hxx`:148 - `CSLib::DNNormal`
-/// -- Computes the derivative  of order Nu in the --
-/// direction   U and  Nv in the  direction  V  of the
-/// normalized normal vector  at the point P(U,V) array
-/// DerNUV contain the  derivative  (i+Iduref,j+Idvref)
-/// of D1U ^ D1V for i=0,Nu  ; j=0,Nv Iduref and Idvref
-/// correspond to a derivative  of D1U ^ D1V  which can
-/// be used to compute the normalized normal vector.
-/// In the regular cases , Iduref=Idvref=0.
+/// **Source:** `CSLib.hxx`:175 - `CSLib::DNNormal`
+/// Computes the derivative of order (theNu, theNv) of the normalized normal vector.
+///
+/// @param[in] theNu     Derivative order in U direction
+/// @param[in] theNv     Derivative order in V direction
+/// @param[in] theDerNUV Array of derivatives of the non-normalized normal.
+/// Contains derivatives d^(i+j)(D1U^D1V)/(du^i * dv^j)
+/// for i = theIduref..theNu+theIduref, j = theIdvref..theNv+theIdvref
+/// @param[in] theIduref Reference index offset in U (default 0 for regular cases)
+/// @param[in] theIdvref Reference index offset in V (default 0 for regular cases)
+/// @return The derivative of the normalized normal vector
 pub fn dn_normal(
-    Nu: i32,
-    Nv: i32,
-    DerNUV: &crate::ffi_types::TColgp_Array2OfVec,
-    Iduref: i32,
-    Idvref: i32,
+    theNu: i32,
+    theNv: i32,
+    theDerNUV: &crate::ffi_types::NCollection_Array2_gp_Vec,
+    theIduref: i32,
+    theIdvref: i32,
 ) -> crate::OwnedPtr<crate::gp::Vec> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::CSLib_dn_normal(
-            Nu, Nv, DerNUV, Iduref, Idvref,
+            theNu, theNv, theDerNUV, theIduref, theIdvref,
         )))
     }
 }
 
-/// D1uIsNull : ||D1U|| <= Resolution
+/// Status of surface derivatives computation for normal calculation.
 ///
-/// D1vIsNull : ||D1V|| <= Resolution
-///
-/// D1IsNull  : the first derivatives in the U and V parametric
-/// directions have null length  :
-/// ||D1U|| <= Resolution and ||D1V|| <= Resolution
-///
-/// D1uD1vRatioIsNull : the first derivative in the U direction has
-/// null length by comparison with the derivative
-/// in the V direction
-/// ||D1U|| / ||D1V|| <= RealEpsilon
-///
-/// D1vD1uRatioIsNull : the first derivative in the V direction has
-/// null length by comparison with the derivative
-/// in the U direction
-/// ||D1V|| / ||D1U|| <= RealEpsilon
-///
-/// D1uIsParallelD1v : the angle between the derivatives in the U and
-/// V direction is null (tolerance criterion given
-/// as input data)
+/// Describes the result of attempting to compute a surface normal
+/// from the first derivatives D1U and D1V at a point on a surface.
 /// C++ enum: `CSLib_DerivativeStatus`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum DerivativeStatus {
+    /// < Normal computed successfully.
     Done = 0,
+    /// < D1U has null length: ||D1U|| <= Resolution.
     D1uisnull = 1,
+    /// < D1V has null length: ||D1V|| <= Resolution.
     D1visnull = 2,
+    /// < Both derivatives are null.
     D1isnull = 3,
+    /// < D1U is negligible: ||D1U|| / ||D1V|| <= RealEpsilon.
     D1ud1vratioisnull = 4,
+    /// < D1V is negligible: ||D1V|| / ||D1U|| <= RealEpsilon.
     D1vd1uratioisnull = 5,
+    /// < D1U and D1V are parallel.
     D1uisparalleld1v = 6,
 }
 
@@ -120,33 +128,31 @@ impl TryFrom<i32> for DerivativeStatus {
     }
 }
 
-/// if N is the normal
+/// Status of surface normal computation.
 ///
-/// InfinityOfSolutions : ||DN/du||>Resolution, ||DN/dv||>Resolution
-///
-/// D1NuIsNull          : ||DN/du|| <= Resolution
-///
-/// D1NvIsNull          : ||DN/dv|| <= Resolution
-///
-/// D1NIsNull           : ||DN/du||<=Resolution, ||DN/dv||<=Resolution
-///
-/// D1NuNvRatioIsNull   : ||D1Nu|| / ||D1Nv|| <= RealEpsilon
-///
-/// D1NvNuRatioIsNull   : ||D1Nu|| / ||D1Nv|| <= RealEpsilon
-///
-/// D1NuIsParallelD1Nv  : The angle between D1Nu and D1Nv is Null.
+/// Describes the result of attempting to compute the normal N to a surface,
+/// including cases involving derivatives of the normal (DN/du, DN/dv).
 /// C++ enum: `CSLib_NormalStatus`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum NormalStatus {
+    /// < Surface is singular at the point (normal undefined).
     Singular = 0,
+    /// < Normal is well-defined and computed successfully.
     Defined = 1,
+    /// < Infinite normals possible.
     Infinityofsolutions = 2,
+    /// < DN/du has null length: ||DN/du|| <= Resolution.
     D1nuisnull = 3,
+    /// < DN/dv has null length: ||DN/dv|| <= Resolution.
     D1nvisnull = 4,
+    /// < Both normal derivatives are null.
     D1nisnull = 5,
+    /// < DN/du is negligible compared to DN/dv.
     D1nunvratioisnull = 6,
+    /// < DN/dv is negligible compared to DN/du.
     D1nvnuratioisnull = 7,
+    /// < DN/du and DN/dv are parallel.
     D1nuisparalleld1nv = 8,
 }
 
@@ -179,9 +185,17 @@ impl TryFrom<i32> for NormalStatus {
 // From CSLib_Class2d.hxx
 // ========================
 
-/// **Source:** `CSLib_Class2d.hxx`:33 - `CSLib_Class2d`
-/// *** Class2d    : Low level algorithm for 2d classification
-/// this class was moved from package BRepTopAdaptor
+/// **Source:** `CSLib_Class2d.hxx`:39 - `CSLib_Class2d`
+/// Low-level algorithm for 2D point-in-polygon classification.
+///
+/// This class determines whether a 2D point lies inside, outside, or on the boundary
+/// of a closed polygon. It uses a ray-casting algorithm where a horizontal ray
+/// from the test point is extended to infinity, and the number of polygon edge
+/// crossings determines the classification.
+///
+/// The polygon is internally normalized to [0,1] x [0,1] domain for numerical stability.
+///
+/// @note This class was moved from package BRepTopAdaptor.
 pub use crate::ffi_types::CSLib_Class2d as Class2d;
 
 unsafe impl crate::CppDeletable for Class2d {
@@ -193,17 +207,31 @@ unsafe impl crate::CppDeletable for Class2d {
 }
 
 impl Class2d {
-    /// **Source:** `CSLib_Class2d.hxx`:46 - `CSLib_Class2d::CSLib_Class2d()`
-    /// Constructs the 2D-polygon.
-    /// thePnts2d is the set of the vertices (closed polygon
-    /// will always be created inside of this constructor;
-    /// consequently, there is no point in repeating first and
-    /// last point in thePnts2d).
-    /// theTolu and theTolv are tolerances.
-    /// theUmin, theVmin, theUmax, theVmax are
-    /// UV-bounds of the polygon.
-    pub fn new_array1ofpnt2d_real6(
-        thePnts2d: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    /// **Source:** `CSLib_Class2d.hxx`:53 - `CSLib_Class2d::CSLib_Class2d()`
+    /// Default constructor. Creates an empty classifier.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::CSLib_Class2d_ctor(),
+            ))
+        }
+    }
+
+    /// **Source:** `CSLib_Class2d.hxx`:67 - `CSLib_Class2d::CSLib_Class2d()`
+    /// Constructs a 2D classifier from an array of polygon vertices.
+    ///
+    /// The polygon is automatically closed (no need to repeat the first point at the end).
+    /// Points are normalized internally to the UV bounds for numerical stability.
+    ///
+    /// @param[in] thePnts2d Array of polygon vertices (minimum 3 points required)
+    /// @param[in] theTolU   Tolerance in U direction for boundary detection
+    /// @param[in] theTolV   Tolerance in V direction for boundary detection
+    /// @param[in] theUMin   Minimum U bound of the polygon domain
+    /// @param[in] theVMin   Minimum V bound of the polygon domain
+    /// @param[in] theUMax   Maximum U bound of the polygon domain
+    /// @param[in] theVMax   Maximum V bound of the polygon domain
+    pub fn new_arr1_pnt2d_real6(
+        thePnts2d: &crate::ffi_types::NCollection_Array1_gp_Pnt2d,
         theTolU: f64,
         theTolV: f64,
         theUMin: f64,
@@ -213,24 +241,27 @@ impl Class2d {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::CSLib_Class2d_ctor_array1ofpnt2d_real6(
+                crate::ffi_extern_TKMath::CSLib_Class2d_ctor_arr1_pnt2d_real6(
                     thePnts2d, theTolU, theTolV, theUMin, theVMin, theUMax, theVMax,
                 ),
             ))
         }
     }
 
-    /// **Source:** `CSLib_Class2d.hxx`:62 - `CSLib_Class2d::CSLib_Class2d()`
-    /// Constructs the 2D-polygon.
-    /// thePnts2d is the set of the vertices (closed polygon
-    /// will always be created inside of this constructor;
-    /// consequently, there is no point in repeating first and
-    /// last point in thePnts2d).
-    /// theTolu and theTolv are tolerances.
-    /// theUmin, theVmin, theUmax, theVmax are
-    /// UV-bounds of the polygon.
-    pub fn new_sequenceofpnt2d_real6(
-        thePnts2d: &crate::ffi_types::TColgp_SequenceOfPnt2d,
+    /// **Source:** `CSLib_Class2d.hxx`:86 - `CSLib_Class2d::CSLib_Class2d()`
+    /// Constructs a 2D classifier from a sequence of polygon vertices.
+    ///
+    /// Same as the array constructor but accepts a sequence for convenience.
+    ///
+    /// @param[in] thePnts2d Sequence of polygon vertices (minimum 3 points required)
+    /// @param[in] theTolU   Tolerance in U direction for boundary detection
+    /// @param[in] theTolV   Tolerance in V direction for boundary detection
+    /// @param[in] theUMin   Minimum U bound of the polygon domain
+    /// @param[in] theVMin   Minimum V bound of the polygon domain
+    /// @param[in] theUMax   Maximum U bound of the polygon domain
+    /// @param[in] theVMax   Maximum V bound of the polygon domain
+    pub fn new_seq_pnt2d_real6(
+        thePnts2d: &crate::ffi_types::NCollection_Sequence_gp_Pnt2d,
         theTolU: f64,
         theTolV: f64,
         theUMin: f64,
@@ -240,43 +271,82 @@ impl Class2d {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::CSLib_Class2d_ctor_sequenceofpnt2d_real6(
+                crate::ffi_extern_TKMath::CSLib_Class2d_ctor_seq_pnt2d_real6(
                     thePnts2d, theTolU, theTolV, theUMin, theVMin, theUMax, theVMax,
                 ),
             ))
         }
     }
 
-    /// **Source:** `CSLib_Class2d.hxx`:70 - `CSLib_Class2d::SiDans()`
-    pub fn si_dans(&self, P: &crate::gp::Pnt2d) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKMath::CSLib_Class2d_si_dans(self as *const Self, P)
-        })
+    /// **Source:** `CSLib_Class2d.hxx`:105 - `CSLib_Class2d::CSLib_Class2d()`
+    /// Constructs a 2D classifier from a vector of polygon vertices.
+    ///
+    /// Same as the array constructor but accepts a vector for convenience.
+    ///
+    /// @param[in] thePnts2d Vector of polygon vertices (minimum 3 points required)
+    /// @param[in] theTolU   Tolerance in U direction for boundary detection
+    /// @param[in] theTolV   Tolerance in V direction for boundary detection
+    /// @param[in] theUMin   Minimum U bound of the polygon domain
+    /// @param[in] theVMin   Minimum V bound of the polygon domain
+    /// @param[in] theUMax   Maximum U bound of the polygon domain
+    /// @param[in] theVMax   Maximum V bound of the polygon domain
+    pub fn new_dynamicarray_gp_pnt2d_real6(
+        thePnts2d: &crate::ffi_types::NCollection_DynamicArray_gp_Pnt2d,
+        theTolU: f64,
+        theTolV: f64,
+        theUMin: f64,
+        theVMin: f64,
+        theUMax: f64,
+        theVMax: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::CSLib_Class2d_ctor_dynamicarray_gp_pnt2d_real6(
+                    thePnts2d, theTolU, theTolV, theUMin, theVMin, theUMax, theVMax,
+                ),
+            ))
+        }
     }
 
-    /// **Source:** `CSLib_Class2d.hxx`:72 - `CSLib_Class2d::SiDans_OnMode()`
-    pub fn si_dans_on_mode(&self, P: &crate::gp::Pnt2d, Tol: f64) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKMath::CSLib_Class2d_si_dans_on_mode(self as *const Self, P, Tol)
-        })
+    /// **Source:** `CSLib_Class2d.hxx`:149 - `CSLib_Class2d::SiDans()`
+    /// Classifies a point relative to the polygon.
+    ///
+    /// @param[in] thePoint The 2D point to classify
+    /// @return Classification result
+    pub fn si_dans(
+        &self,
+        thePoint: &crate::gp::Pnt2d,
+    ) -> crate::OwnedPtr<crate::ffi_types::CSLib_Class2d_Result> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::CSLib_Class2d_si_dans(self as *const Self, thePoint),
+            ))
+        }
     }
 
-    /// **Source:** `CSLib_Class2d.hxx`:74 - `CSLib_Class2d::InternalSiDans()`
-    pub fn internal_si_dans(&self, X: f64, Y: f64) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKMath::CSLib_Class2d_internal_si_dans(self as *const Self, X, Y)
-        })
-    }
-
-    /// **Source:** `CSLib_Class2d.hxx`:77 - `CSLib_Class2d::InternalSiDansOuOn()`
-    pub fn internal_si_dans_ou_on(&self, X: f64, Y: f64) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKMath::CSLib_Class2d_internal_si_dans_ou_on(
-                self as *const Self,
-                X,
-                Y,
-            )
-        })
+    /// **Source:** `CSLib_Class2d.hxx`:159 - `CSLib_Class2d::SiDans_OnMode()`
+    /// Classifies a point with explicit ON tolerance.
+    ///
+    /// Similar to SiDans() but uses the specified tolerance for boundary detection
+    /// instead of the tolerances specified at construction.
+    ///
+    /// @param[in] thePoint The 2D point to classify
+    /// @param[in] theTol   Tolerance for boundary detection
+    /// @return Classification result
+    pub fn si_dans_on_mode(
+        &self,
+        thePoint: &crate::gp::Pnt2d,
+        theTol: f64,
+    ) -> crate::OwnedPtr<crate::ffi_types::CSLib_Class2d_Result> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::CSLib_Class2d_si_dans_on_mode(
+                    self as *const Self,
+                    thePoint,
+                    theTol,
+                ),
+            ))
+        }
     }
 }
 
@@ -284,7 +354,20 @@ impl Class2d {
 // From CSLib_NormalPolyDef.hxx
 // ========================
 
-/// **Source:** `CSLib_NormalPolyDef.hxx`:28 - `CSLib_NormalPolyDef`
+/// **Source:** `CSLib_NormalPolyDef.hxx`:39 - `CSLib_NormalPolyDef`
+/// Polynomial definition for surface normal computation at singular points.
+///
+/// This class defines a polynomial function F(X) and its derivative for use
+/// with numerical root-finding algorithms. The function represents a trigonometric
+/// polynomial in terms of cos(X) and sin(X) with binomial coefficients.
+///
+/// The polynomial has the form:
+/// F(X) = Sum_{i=0}^{k0} C(k0,i) * cos^i(X) * sin^(k0-i)(X) * li(i)
+///
+/// where C(k0,i) is the binomial coefficient and li(i) are user-provided coefficients.
+///
+/// This is used internally by CSLib::Normal() to find the normal direction
+/// at singular surface points by solving for zeros of this polynomial.
 pub use crate::ffi_types::CSLib_NormalPolyDef as NormalPolyDef;
 
 unsafe impl crate::CppDeletable for NormalPolyDef {
@@ -296,47 +379,68 @@ unsafe impl crate::CppDeletable for NormalPolyDef {
 }
 
 impl NormalPolyDef {
-    /// **Source:** `CSLib_NormalPolyDef.hxx`:33 - `CSLib_NormalPolyDef::CSLib_NormalPolyDef()`
-    pub fn new_int_array1ofreal(
-        k0: i32,
-        li: &crate::ffi_types::TColStd_Array1OfReal,
+    /// **Source:** `CSLib_NormalPolyDef.hxx`:48 - `CSLib_NormalPolyDef::CSLib_NormalPolyDef()`
+    /// Constructs a polynomial definition for normal computation.
+    ///
+    /// @param[in] theK0 Polynomial degree (must be >= 0)
+    /// @param[in] theLi Array of coefficients with indices 0 to theK0
+    pub fn new_int_arr1_double(
+        theK0: i32,
+        theLi: &crate::ffi_types::NCollection_Array1_double,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::CSLib_NormalPolyDef_ctor_int_array1ofreal(k0, li),
+                crate::ffi_extern_TKMath::CSLib_NormalPolyDef_ctor_int_arr1_double(theK0, theLi),
             ))
         }
     }
 
-    /// **Source:** `CSLib_NormalPolyDef.hxx`:38 - `CSLib_NormalPolyDef::Value()`
-    /// computes the value <F>of the function for the variable <X>.
-    /// Returns True if the calculation were successfully done,
-    /// False otherwise.
-    pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
+    /// **Source:** `CSLib_NormalPolyDef.hxx`:57 - `CSLib_NormalPolyDef::Value()`
+    /// Computes the value of the function for the given variable.
+    ///
+    /// Evaluates F(X) = Sum_{i=0}^{k0} C(k0,i) * cos^i(X) * sin^(k0-i)(X) * li(i)
+    ///
+    /// @param[in]  theX Input variable (angle in radians)
+    /// @param[out] theF Computed function value
+    /// @return true if calculation was successful, false otherwise
+    pub fn value(&mut self, theX: f64, theF: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKMath::CSLib_NormalPolyDef_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKMath::CSLib_NormalPolyDef_value(self as *mut Self, theX, theF)
         })
     }
 
-    /// **Source:** `CSLib_NormalPolyDef.hxx`:44 - `CSLib_NormalPolyDef::Derivative()`
-    /// computes the derivative <D> of the function
-    /// for the variable <X>.
-    /// Returns True if the calculation were successfully done,
-    /// False otherwise.
-    pub fn derivative(&mut self, X: f64, D: &mut f64) -> bool {
+    /// **Source:** `CSLib_NormalPolyDef.hxx`:66 - `CSLib_NormalPolyDef::Derivative()`
+    /// Computes the derivative of the function for the given variable.
+    ///
+    /// Evaluates dF/dX using the chain rule on the trigonometric polynomial.
+    ///
+    /// @param[in]  theX Input variable (angle in radians)
+    /// @param[out] theD Computed derivative value
+    /// @return true if calculation was successful, false otherwise
+    pub fn derivative(&mut self, theX: f64, theD: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKMath::CSLib_NormalPolyDef_derivative(self as *mut Self, X, D)
+            crate::ffi_extern_TKMath::CSLib_NormalPolyDef_derivative(self as *mut Self, theX, theD)
         })
     }
 
-    /// **Source:** `CSLib_NormalPolyDef.hxx`:50 - `CSLib_NormalPolyDef::Values()`
-    /// computes the value <F> and the derivative <D> of the
-    /// function for the variable <X>.
-    /// Returns True if the calculation were successfully done,
-    /// False otherwise.
-    pub fn values(&mut self, X: f64, F: &mut f64, D: &mut f64) -> bool {
+    /// **Source:** `CSLib_NormalPolyDef.hxx`:77 - `CSLib_NormalPolyDef::Values()`
+    /// Computes both the value and derivative of the function.
+    ///
+    /// More efficient than calling Value() and Derivative() separately
+    /// as common subexpressions are computed only once.
+    ///
+    /// @param[in]  theX Input variable (angle in radians)
+    /// @param[out] theF Computed function value
+    /// @param[out] theD Computed derivative value
+    /// @return true if calculation was successful, false otherwise
+    pub fn values(&mut self, theX: f64, theF: &mut f64, theD: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKMath::CSLib_NormalPolyDef_values(self as *mut Self, X, F, D)
+            crate::ffi_extern_TKMath::CSLib_NormalPolyDef_values(
+                self as *mut Self,
+                theX,
+                theF,
+                theD,
+            )
         })
     }
 

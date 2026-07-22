@@ -34,13 +34,13 @@ impl TryFrom<i32> for Side {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::HandleStandardTransient;
+pub use crate::ffi_types::Handle_Standard_Transient;
 
 // ========================
 // From MAT_Arc.hxx
 // ========================
 
-/// **Source:** `MAT_Arc.hxx`:33 - `MAT_Arc`
+/// **Source:** `MAT_Arc.hxx`:30 - `MAT_Arc`
 /// An Arc is associated to each Bisecting of the mat.
 pub use crate::ffi_types::MAT_Arc as Arc;
 
@@ -53,12 +53,12 @@ unsafe impl crate::CppDeletable for Arc {
 }
 
 impl Arc {
-    /// **Source:** `MAT_Arc.hxx`:37 - `MAT_Arc::MAT_Arc()`
+    /// **Source:** `MAT_Arc.hxx`:34 - `MAT_Arc::MAT_Arc()`
     pub fn new_int2_handlematbasicelt2(
         ArcIndex: i32,
         GeomIndex: i32,
-        FirstElement: &crate::ffi_types::HandleMATBasicElt,
-        SecondElement: &crate::ffi_types::HandleMATBasicElt,
+        FirstElement: &crate::ffi_types::Handle_MAT_BasicElt,
+        SecondElement: &crate::ffi_types::Handle_MAT_BasicElt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -72,7 +72,7 @@ impl Arc {
         }
     }
 
-    /// **Source:** `MAT_Arc.hxx`:43 - `MAT_Arc::Index()`
+    /// **Source:** `MAT_Arc.hxx`:40 - `MAT_Arc::Index()`
     /// Returns the index of <me> in Graph.theArcs.
     pub fn index(&self) -> i32 {
         crate::check_result(unsafe {
@@ -80,7 +80,7 @@ impl Arc {
         })
     }
 
-    /// **Source:** `MAT_Arc.hxx`:47 - `MAT_Arc::GeomIndex()`
+    /// **Source:** `MAT_Arc.hxx`:44 - `MAT_Arc::GeomIndex()`
     /// Returns the index associated of the geometric
     /// representation of <me>.
     pub fn geom_index(&self) -> i32 {
@@ -89,9 +89,9 @@ impl Arc {
         })
     }
 
-    /// **Source:** `MAT_Arc.hxx`:50 - `MAT_Arc::FirstElement()`
+    /// **Source:** `MAT_Arc.hxx`:47 - `MAT_Arc::FirstElement()`
     /// Returns one of the BasicElt equidistant from <me>.
-    pub fn first_element(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMATBasicElt> {
+    pub fn first_element(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_BasicElt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_Arc_first_element(self as *const Self),
@@ -99,9 +99,9 @@ impl Arc {
         }
     }
 
-    /// **Source:** `MAT_Arc.hxx`:53 - `MAT_Arc::SecondElement()`
+    /// **Source:** `MAT_Arc.hxx`:50 - `MAT_Arc::SecondElement()`
     /// Returns the other BasicElt equidistant from <me>.
-    pub fn second_element(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMATBasicElt> {
+    pub fn second_element(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_BasicElt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_Arc_second_element(self as *const Self),
@@ -109,9 +109,9 @@ impl Arc {
         }
     }
 
-    /// **Source:** `MAT_Arc.hxx`:56 - `MAT_Arc::FirstNode()`
+    /// **Source:** `MAT_Arc.hxx`:53 - `MAT_Arc::FirstNode()`
     /// Returns one Node extremity of <me>.
-    pub fn first_node(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMATNode> {
+    pub fn first_node(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_Arc_first_node(self as *const Self),
@@ -119,9 +119,9 @@ impl Arc {
         }
     }
 
-    /// **Source:** `MAT_Arc.hxx`:59 - `MAT_Arc::SecondNode()`
+    /// **Source:** `MAT_Arc.hxx`:56 - `MAT_Arc::SecondNode()`
     /// Returns the other Node extremity of <me>.
-    pub fn second_node(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMATNode> {
+    pub fn second_node(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_Arc_second_node(self as *const Self),
@@ -129,15 +129,15 @@ impl Arc {
         }
     }
 
-    /// **Source:** `MAT_Arc.hxx`:65 - `MAT_Arc::TheOtherNode()`
+    /// **Source:** `MAT_Arc.hxx`:62 - `MAT_Arc::TheOtherNode()`
     /// An Arc has two Node, if <aNode> equals one
     /// Returns the other.
     ///
     /// if <aNode> is not oh <me>
     pub fn the_other_node(
         &self,
-        aNode: &crate::ffi_types::HandleMATNode,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMATNode> {
+        aNode: &crate::ffi_types::Handle_MAT_Node,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_Arc_the_other_node(self as *const Self, aNode),
@@ -145,13 +145,13 @@ impl Arc {
         }
     }
 
-    /// **Source:** `MAT_Arc.hxx`:70 - `MAT_Arc::HasNeighbour()`
+    /// **Source:** `MAT_Arc.hxx`:67 - `MAT_Arc::HasNeighbour()`
     /// Returns True if there is an arc linked to
     /// the Node <aNode> located on the side <aSide> of <me>;
     /// if <aNode> is not on <me>
     pub fn has_neighbour(
         &self,
-        aNode: &crate::ffi_types::HandleMATNode,
+        aNode: &crate::ffi_types::Handle_MAT_Node,
         aSide: crate::mat::Side,
     ) -> bool {
         crate::check_result(unsafe {
@@ -163,15 +163,15 @@ impl Arc {
         })
     }
 
-    /// **Source:** `MAT_Arc.hxx`:76 - `MAT_Arc::Neighbour()`
+    /// **Source:** `MAT_Arc.hxx`:72 - `MAT_Arc::Neighbour()`
     /// Returns the first arc linked to the Node <aNode>
     /// located on the side <aSide> of <me>;
     /// if HasNeighbour() returns FALSE.
     pub fn neighbour(
         &self,
-        aNode: &crate::ffi_types::HandleMATNode,
+        aNode: &crate::ffi_types::Handle_MAT_Node,
         aSide: crate::mat::Side,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMATArc> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Arc> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_Arc_neighbour(
@@ -183,53 +183,53 @@ impl Arc {
         }
     }
 
-    /// **Source:** `MAT_Arc.hxx`:79 - `MAT_Arc::SetIndex()`
+    /// **Source:** `MAT_Arc.hxx`:75 - `MAT_Arc::SetIndex()`
     pub fn set_index(&mut self, anInteger: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Arc_set_index(self as *mut Self, anInteger)
         })
     }
 
-    /// **Source:** `MAT_Arc.hxx`:81 - `MAT_Arc::SetGeomIndex()`
+    /// **Source:** `MAT_Arc.hxx`:77 - `MAT_Arc::SetGeomIndex()`
     pub fn set_geom_index(&mut self, anInteger: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Arc_set_geom_index(self as *mut Self, anInteger)
         })
     }
 
-    /// **Source:** `MAT_Arc.hxx`:83 - `MAT_Arc::SetFirstElement()`
-    pub fn set_first_element(&mut self, aBasicElt: &crate::ffi_types::HandleMATBasicElt) {
+    /// **Source:** `MAT_Arc.hxx`:79 - `MAT_Arc::SetFirstElement()`
+    pub fn set_first_element(&mut self, aBasicElt: &crate::ffi_types::Handle_MAT_BasicElt) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Arc_set_first_element(self as *mut Self, aBasicElt)
         })
     }
 
-    /// **Source:** `MAT_Arc.hxx`:85 - `MAT_Arc::SetSecondElement()`
-    pub fn set_second_element(&mut self, aBasicElt: &crate::ffi_types::HandleMATBasicElt) {
+    /// **Source:** `MAT_Arc.hxx`:81 - `MAT_Arc::SetSecondElement()`
+    pub fn set_second_element(&mut self, aBasicElt: &crate::ffi_types::Handle_MAT_BasicElt) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Arc_set_second_element(self as *mut Self, aBasicElt)
         })
     }
 
-    /// **Source:** `MAT_Arc.hxx`:87 - `MAT_Arc::SetFirstNode()`
-    pub fn set_first_node(&mut self, aNode: &crate::ffi_types::HandleMATNode) {
+    /// **Source:** `MAT_Arc.hxx`:83 - `MAT_Arc::SetFirstNode()`
+    pub fn set_first_node(&mut self, aNode: &crate::ffi_types::Handle_MAT_Node) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Arc_set_first_node(self as *mut Self, aNode)
         })
     }
 
-    /// **Source:** `MAT_Arc.hxx`:89 - `MAT_Arc::SetSecondNode()`
-    pub fn set_second_node(&mut self, aNode: &crate::ffi_types::HandleMATNode) {
+    /// **Source:** `MAT_Arc.hxx`:85 - `MAT_Arc::SetSecondNode()`
+    pub fn set_second_node(&mut self, aNode: &crate::ffi_types::Handle_MAT_Node) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Arc_set_second_node(self as *mut Self, aNode)
         })
     }
 
-    /// **Source:** `MAT_Arc.hxx`:91 - `MAT_Arc::SetFirstArc()`
+    /// **Source:** `MAT_Arc.hxx`:87 - `MAT_Arc::SetFirstArc()`
     pub fn set_first_arc(
         &mut self,
         aSide: crate::mat::Side,
-        anArc: &crate::ffi_types::HandleMATArc,
+        anArc: &crate::ffi_types::Handle_MAT_Arc,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Arc_set_first_arc(
@@ -240,11 +240,11 @@ impl Arc {
         })
     }
 
-    /// **Source:** `MAT_Arc.hxx`:93 - `MAT_Arc::SetSecondArc()`
+    /// **Source:** `MAT_Arc.hxx`:89 - `MAT_Arc::SetSecondArc()`
     pub fn set_second_arc(
         &mut self,
         aSide: crate::mat::Side,
-        anArc: &crate::ffi_types::HandleMATArc,
+        anArc: &crate::ffi_types::Handle_MAT_Arc,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Arc_set_second_arc(
@@ -255,12 +255,12 @@ impl Arc {
         })
     }
 
-    /// **Source:** `MAT_Arc.hxx`:95 - `MAT_Arc::SetNeighbour()`
+    /// **Source:** `MAT_Arc.hxx`:91 - `MAT_Arc::SetNeighbour()`
     pub fn set_neighbour(
         &mut self,
         aSide: crate::mat::Side,
-        aNode: &crate::ffi_types::HandleMATNode,
-        anArc: &crate::ffi_types::HandleMATArc,
+        aNode: &crate::ffi_types::Handle_MAT_Node,
+        anArc: &crate::ffi_types::Handle_MAT_Arc,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Arc_set_neighbour(
@@ -272,8 +272,8 @@ impl Arc {
         })
     }
 
-    /// **Source:** `MAT_Arc.hxx`:99 - `MAT_Arc::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `MAT_Arc.hxx`:95 - `MAT_Arc::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::MAT_Arc_dynamic_type(
                 self as *const Self,
@@ -281,7 +281,7 @@ impl Arc {
         }
     }
 
-    /// **Source:** `MAT_Arc.hxx`:99 - `MAT_Arc::get_type_name()`
+    /// **Source:** `MAT_Arc.hxx`:95 - `MAT_Arc::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -292,8 +292,8 @@ impl Arc {
         .into_owned()
     }
 
-    /// **Source:** `MAT_Arc.hxx`:99 - `MAT_Arc::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `MAT_Arc.hxx`:95 - `MAT_Arc::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::MAT_Arc_get_type_descriptor()))
         }
@@ -320,7 +320,7 @@ impl Arc {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMATArc> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Arc> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_Arc_to_handle(obj.into_raw()),
@@ -328,21 +328,21 @@ impl Arc {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Arc_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Arc_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -356,28 +356,28 @@ impl Arc {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Arc_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Arc_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Arc_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Arc_inherited_Delete(self as *const Self)
@@ -385,32 +385,32 @@ impl Arc {
     }
 }
 
-pub use crate::ffi_types::HandleMATArc;
+pub use crate::ffi_types::Handle_MAT_Arc;
 
-unsafe impl crate::CppDeletable for HandleMATArc {
+unsafe impl crate::CppDeletable for Handle_MAT_Arc {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKTopAlgo::HandleMATArc_destructor(ptr);
+            crate::ffi_extern_TKTopAlgo::Handle_MAT_Arc_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleMATArc {
+unsafe impl crate::CppCopyable for Handle_MAT_Arc {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATArc_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_MAT_Arc_clone(ptr)) }
     }
 }
 
-impl HandleMATArc {
+impl Handle_MAT_Arc {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKTopAlgo::HandleMATArc_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKTopAlgo::Handle_MAT_Arc_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying MAT_Arc
     pub fn get(&self) -> &crate::ffi_types::MAT_Arc {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATArc_get(
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_MAT_Arc_get(
                 self as *const Self,
             ))
         }
@@ -419,7 +419,7 @@ impl HandleMATArc {
     /// Dereference this Handle to mutably access the underlying MAT_Arc
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::MAT_Arc {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATArc_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_MAT_Arc_get_mut(
                 self as *mut Self,
             ))
         }
@@ -428,10 +428,10 @@ impl HandleMATArc {
     /// Upcast Handle<MAT_Arc> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleMATArc_to_HandleStandardTransient(
+                crate::ffi_extern_TKTopAlgo::Handle_MAT_Arc_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -443,9 +443,9 @@ impl HandleMATArc {
 // From MAT_BasicElt.hxx
 // ========================
 
-/// **Source:** `MAT_BasicElt.hxx`:32 - `MAT_BasicElt`
-/// A    BasicELt  is  associated   to  each  elementary
-/// constituent of  the figure.
+/// **Source:** `MAT_BasicElt.hxx`:29 - `MAT_BasicElt`
+/// A BasicELt is associated to each elementary
+/// constituent of the figure.
 pub use crate::ffi_types::MAT_BasicElt as BasicElt;
 
 unsafe impl crate::CppDeletable for BasicElt {
@@ -457,7 +457,7 @@ unsafe impl crate::CppDeletable for BasicElt {
 }
 
 impl BasicElt {
-    /// **Source:** `MAT_BasicElt.hxx`:37 - `MAT_BasicElt::MAT_BasicElt()`
+    /// **Source:** `MAT_BasicElt.hxx`:34 - `MAT_BasicElt::MAT_BasicElt()`
     /// Constructor, <anInteger> is the <index> of <me>.
     pub fn new_int(anInteger: i32) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -467,10 +467,10 @@ impl BasicElt {
         }
     }
 
-    /// **Source:** `MAT_BasicElt.hxx`:41 - `MAT_BasicElt::StartArc()`
+    /// **Source:** `MAT_BasicElt.hxx`:38 - `MAT_BasicElt::StartArc()`
     /// Return <startArcLeft> or <startArcRight> corresponding
     /// to <aSide>.
-    pub fn start_arc(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMATArc> {
+    pub fn start_arc(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Arc> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_BasicElt_start_arc(self as *const Self),
@@ -478,10 +478,10 @@ impl BasicElt {
         }
     }
 
-    /// **Source:** `MAT_BasicElt.hxx`:45 - `MAT_BasicElt::EndArc()`
+    /// **Source:** `MAT_BasicElt.hxx`:42 - `MAT_BasicElt::EndArc()`
     /// Return <endArcLeft> or <endArcRight> corresponding
     /// to <aSide>.
-    pub fn end_arc(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMATArc> {
+    pub fn end_arc(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Arc> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_BasicElt_end_arc(self as *const Self),
@@ -489,7 +489,7 @@ impl BasicElt {
         }
     }
 
-    /// **Source:** `MAT_BasicElt.hxx`:48 - `MAT_BasicElt::Index()`
+    /// **Source:** `MAT_BasicElt.hxx`:45 - `MAT_BasicElt::Index()`
     /// Return the <index> of <me> in Graph.TheBasicElts.
     pub fn index(&self) -> i32 {
         crate::check_result(unsafe {
@@ -497,7 +497,7 @@ impl BasicElt {
         })
     }
 
-    /// **Source:** `MAT_BasicElt.hxx`:51 - `MAT_BasicElt::GeomIndex()`
+    /// **Source:** `MAT_BasicElt.hxx`:48 - `MAT_BasicElt::GeomIndex()`
     /// Return the <GeomIndex> of <me>.
     pub fn geom_index(&self) -> i32 {
         crate::check_result(unsafe {
@@ -505,36 +505,36 @@ impl BasicElt {
         })
     }
 
-    /// **Source:** `MAT_BasicElt.hxx`:53 - `MAT_BasicElt::SetStartArc()`
-    pub fn set_start_arc(&mut self, anArc: &crate::ffi_types::HandleMATArc) {
+    /// **Source:** `MAT_BasicElt.hxx`:50 - `MAT_BasicElt::SetStartArc()`
+    pub fn set_start_arc(&mut self, anArc: &crate::ffi_types::Handle_MAT_Arc) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_BasicElt_set_start_arc(self as *mut Self, anArc)
         })
     }
 
-    /// **Source:** `MAT_BasicElt.hxx`:55 - `MAT_BasicElt::SetEndArc()`
-    pub fn set_end_arc(&mut self, anArc: &crate::ffi_types::HandleMATArc) {
+    /// **Source:** `MAT_BasicElt.hxx`:52 - `MAT_BasicElt::SetEndArc()`
+    pub fn set_end_arc(&mut self, anArc: &crate::ffi_types::Handle_MAT_Arc) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_BasicElt_set_end_arc(self as *mut Self, anArc)
         })
     }
 
-    /// **Source:** `MAT_BasicElt.hxx`:57 - `MAT_BasicElt::SetIndex()`
+    /// **Source:** `MAT_BasicElt.hxx`:54 - `MAT_BasicElt::SetIndex()`
     pub fn set_index(&mut self, anInteger: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_BasicElt_set_index(self as *mut Self, anInteger)
         })
     }
 
-    /// **Source:** `MAT_BasicElt.hxx`:59 - `MAT_BasicElt::SetGeomIndex()`
+    /// **Source:** `MAT_BasicElt.hxx`:56 - `MAT_BasicElt::SetGeomIndex()`
     pub fn set_geom_index(&mut self, anInteger: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_BasicElt_set_geom_index(self as *mut Self, anInteger)
         })
     }
 
-    /// **Source:** `MAT_BasicElt.hxx`:61 - `MAT_BasicElt::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `MAT_BasicElt.hxx`:58 - `MAT_BasicElt::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::MAT_BasicElt_dynamic_type(
                 self as *const Self,
@@ -542,7 +542,7 @@ impl BasicElt {
         }
     }
 
-    /// **Source:** `MAT_BasicElt.hxx`:61 - `MAT_BasicElt::get_type_name()`
+    /// **Source:** `MAT_BasicElt.hxx`:58 - `MAT_BasicElt::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -553,8 +553,8 @@ impl BasicElt {
         .into_owned()
     }
 
-    /// **Source:** `MAT_BasicElt.hxx`:61 - `MAT_BasicElt::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `MAT_BasicElt.hxx`:58 - `MAT_BasicElt::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::MAT_BasicElt_get_type_descriptor()))
         }
@@ -583,7 +583,7 @@ impl BasicElt {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMATBasicElt> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_BasicElt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_BasicElt_to_handle(obj.into_raw()),
@@ -591,8 +591,8 @@ impl BasicElt {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_BasicElt_inherited_IsInstance(
                 self as *const Self,
@@ -601,14 +601,14 @@ impl BasicElt {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_BasicElt_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -622,14 +622,14 @@ impl BasicElt {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_BasicElt_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_BasicElt_inherited_IncrementRefCounter(
@@ -638,7 +638,7 @@ impl BasicElt {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_BasicElt_inherited_DecrementRefCounter(
@@ -647,7 +647,7 @@ impl BasicElt {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_BasicElt_inherited_Delete(self as *const Self)
@@ -655,32 +655,32 @@ impl BasicElt {
     }
 }
 
-pub use crate::ffi_types::HandleMATBasicElt;
+pub use crate::ffi_types::Handle_MAT_BasicElt;
 
-unsafe impl crate::CppDeletable for HandleMATBasicElt {
+unsafe impl crate::CppDeletable for Handle_MAT_BasicElt {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKTopAlgo::HandleMATBasicElt_destructor(ptr);
+            crate::ffi_extern_TKTopAlgo::Handle_MAT_BasicElt_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleMATBasicElt {
+unsafe impl crate::CppCopyable for Handle_MAT_BasicElt {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATBasicElt_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_MAT_BasicElt_clone(ptr)) }
     }
 }
 
-impl HandleMATBasicElt {
+impl Handle_MAT_BasicElt {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKTopAlgo::HandleMATBasicElt_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKTopAlgo::Handle_MAT_BasicElt_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying MAT_BasicElt
     pub fn get(&self) -> &crate::ffi_types::MAT_BasicElt {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATBasicElt_get(
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_MAT_BasicElt_get(
                 self as *const Self,
             ))
         }
@@ -689,7 +689,7 @@ impl HandleMATBasicElt {
     /// Dereference this Handle to mutably access the underlying MAT_BasicElt
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::MAT_BasicElt {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATBasicElt_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_MAT_BasicElt_get_mut(
                 self as *mut Self,
             ))
         }
@@ -698,10 +698,10 @@ impl HandleMATBasicElt {
     /// Upcast Handle<MAT_BasicElt> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleMATBasicElt_to_HandleStandardTransient(
+                crate::ffi_extern_TKTopAlgo::Handle_MAT_BasicElt_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -713,7 +713,7 @@ impl HandleMATBasicElt {
 // From MAT_Bisector.hxx
 // ========================
 
-/// **Source:** `MAT_Bisector.hxx`:32 - `MAT_Bisector`
+/// **Source:** `MAT_Bisector.hxx`:29 - `MAT_Bisector`
 pub use crate::ffi_types::MAT_Bisector as Bisector;
 
 unsafe impl crate::CppDeletable for Bisector {
@@ -725,7 +725,7 @@ unsafe impl crate::CppDeletable for Bisector {
 }
 
 impl Bisector {
-    /// **Source:** `MAT_Bisector.hxx`:36 - `MAT_Bisector::MAT_Bisector()`
+    /// **Source:** `MAT_Bisector.hxx`:33 - `MAT_Bisector::MAT_Bisector()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -734,15 +734,15 @@ impl Bisector {
         }
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:38 - `MAT_Bisector::AddBisector()`
-    pub fn add_bisector(&self, abisector: &crate::ffi_types::HandleMATBisector) {
+    /// **Source:** `MAT_Bisector.hxx`:35 - `MAT_Bisector::AddBisector()`
+    pub fn add_bisector(&self, abisector: &crate::ffi_types::Handle_MAT_Bisector) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Bisector_add_bisector(self as *const Self, abisector)
         })
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:40 - `MAT_Bisector::List()`
-    pub fn list(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMATListOfBisector> {
+    /// **Source:** `MAT_Bisector.hxx`:37 - `MAT_Bisector::List()`
+    pub fn list(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_ListOfBisector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_Bisector_list(self as *const Self),
@@ -750,8 +750,8 @@ impl Bisector {
         }
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:42 - `MAT_Bisector::FirstBisector()`
-    pub fn first_bisector(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMATBisector> {
+    /// **Source:** `MAT_Bisector.hxx`:39 - `MAT_Bisector::FirstBisector()`
+    pub fn first_bisector(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Bisector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_Bisector_first_bisector(self as *const Self),
@@ -759,8 +759,8 @@ impl Bisector {
         }
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:44 - `MAT_Bisector::LastBisector()`
-    pub fn last_bisector(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMATBisector> {
+    /// **Source:** `MAT_Bisector.hxx`:41 - `MAT_Bisector::LastBisector()`
+    pub fn last_bisector(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Bisector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_Bisector_last_bisector(self as *const Self),
@@ -768,7 +768,7 @@ impl Bisector {
         }
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:46 - `MAT_Bisector::BisectorNumber()`
+    /// **Source:** `MAT_Bisector.hxx`:43 - `MAT_Bisector::BisectorNumber()`
     pub fn bisector_number_int(&mut self, anumber: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Bisector_bisector_number_int(
@@ -778,15 +778,15 @@ impl Bisector {
         })
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:48 - `MAT_Bisector::IndexNumber()`
+    /// **Source:** `MAT_Bisector.hxx`:45 - `MAT_Bisector::IndexNumber()`
     pub fn index_number_int(&mut self, anumber: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Bisector_index_number_int(self as *mut Self, anumber)
         })
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:50 - `MAT_Bisector::FirstEdge()`
-    pub fn first_edge_handlematedge(&mut self, anedge: &crate::ffi_types::HandleMATEdge) {
+    /// **Source:** `MAT_Bisector.hxx`:47 - `MAT_Bisector::FirstEdge()`
+    pub fn first_edge_handlematedge(&mut self, anedge: &crate::ffi_types::Handle_MAT_Edge) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Bisector_first_edge_handlematedge(
                 self as *mut Self,
@@ -795,8 +795,8 @@ impl Bisector {
         })
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:52 - `MAT_Bisector::SecondEdge()`
-    pub fn second_edge_handlematedge(&mut self, anedge: &crate::ffi_types::HandleMATEdge) {
+    /// **Source:** `MAT_Bisector.hxx`:49 - `MAT_Bisector::SecondEdge()`
+    pub fn second_edge_handlematedge(&mut self, anedge: &crate::ffi_types::Handle_MAT_Edge) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Bisector_second_edge_handlematedge(
                 self as *mut Self,
@@ -805,21 +805,21 @@ impl Bisector {
         })
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:54 - `MAT_Bisector::IssuePoint()`
+    /// **Source:** `MAT_Bisector.hxx`:51 - `MAT_Bisector::IssuePoint()`
     pub fn issue_point_int(&mut self, apoint: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Bisector_issue_point_int(self as *mut Self, apoint)
         })
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:56 - `MAT_Bisector::EndPoint()`
+    /// **Source:** `MAT_Bisector.hxx`:53 - `MAT_Bisector::EndPoint()`
     pub fn end_point_int(&mut self, apoint: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Bisector_end_point_int(self as *mut Self, apoint)
         })
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:58 - `MAT_Bisector::DistIssuePoint()`
+    /// **Source:** `MAT_Bisector.hxx`:55 - `MAT_Bisector::DistIssuePoint()`
     pub fn dist_issue_point_real(&mut self, areal: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Bisector_dist_issue_point_real(
@@ -829,28 +829,28 @@ impl Bisector {
         })
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:60 - `MAT_Bisector::FirstVector()`
+    /// **Source:** `MAT_Bisector.hxx`:57 - `MAT_Bisector::FirstVector()`
     pub fn first_vector_int(&mut self, avector: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Bisector_first_vector_int(self as *mut Self, avector)
         })
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:62 - `MAT_Bisector::SecondVector()`
+    /// **Source:** `MAT_Bisector.hxx`:59 - `MAT_Bisector::SecondVector()`
     pub fn second_vector_int(&mut self, avector: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Bisector_second_vector_int(self as *mut Self, avector)
         })
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:64 - `MAT_Bisector::Sense()`
+    /// **Source:** `MAT_Bisector.hxx`:61 - `MAT_Bisector::Sense()`
     pub fn sense_real(&mut self, asense: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Bisector_sense_real(self as *mut Self, asense)
         })
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:66 - `MAT_Bisector::FirstParameter()`
+    /// **Source:** `MAT_Bisector.hxx`:63 - `MAT_Bisector::FirstParameter()`
     pub fn first_parameter_real(&mut self, aparameter: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Bisector_first_parameter_real(
@@ -860,7 +860,7 @@ impl Bisector {
         })
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:68 - `MAT_Bisector::SecondParameter()`
+    /// **Source:** `MAT_Bisector.hxx`:65 - `MAT_Bisector::SecondParameter()`
     pub fn second_parameter_real(&mut self, aparameter: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Bisector_second_parameter_real(
@@ -870,22 +870,22 @@ impl Bisector {
         })
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:70 - `MAT_Bisector::BisectorNumber()`
+    /// **Source:** `MAT_Bisector.hxx`:67 - `MAT_Bisector::BisectorNumber()`
     pub fn bisector_number(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Bisector_bisector_number(self as *const Self)
         })
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:72 - `MAT_Bisector::IndexNumber()`
+    /// **Source:** `MAT_Bisector.hxx`:69 - `MAT_Bisector::IndexNumber()`
     pub fn index_number(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Bisector_index_number(self as *const Self)
         })
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:74 - `MAT_Bisector::FirstEdge()`
-    pub fn first_edge(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMATEdge> {
+    /// **Source:** `MAT_Bisector.hxx`:71 - `MAT_Bisector::FirstEdge()`
+    pub fn first_edge(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_Bisector_first_edge(self as *const Self),
@@ -893,8 +893,8 @@ impl Bisector {
         }
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:76 - `MAT_Bisector::SecondEdge()`
-    pub fn second_edge(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMATEdge> {
+    /// **Source:** `MAT_Bisector.hxx`:73 - `MAT_Bisector::SecondEdge()`
+    pub fn second_edge(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_Bisector_second_edge(self as *const Self),
@@ -902,71 +902,71 @@ impl Bisector {
         }
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:78 - `MAT_Bisector::IssuePoint()`
+    /// **Source:** `MAT_Bisector.hxx`:75 - `MAT_Bisector::IssuePoint()`
     pub fn issue_point(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Bisector_issue_point(self as *const Self)
         })
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:80 - `MAT_Bisector::EndPoint()`
+    /// **Source:** `MAT_Bisector.hxx`:77 - `MAT_Bisector::EndPoint()`
     pub fn end_point(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Bisector_end_point(self as *const Self)
         })
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:82 - `MAT_Bisector::DistIssuePoint()`
+    /// **Source:** `MAT_Bisector.hxx`:79 - `MAT_Bisector::DistIssuePoint()`
     pub fn dist_issue_point(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Bisector_dist_issue_point(self as *const Self)
         })
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:84 - `MAT_Bisector::FirstVector()`
+    /// **Source:** `MAT_Bisector.hxx`:81 - `MAT_Bisector::FirstVector()`
     pub fn first_vector(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Bisector_first_vector(self as *const Self)
         })
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:86 - `MAT_Bisector::SecondVector()`
+    /// **Source:** `MAT_Bisector.hxx`:83 - `MAT_Bisector::SecondVector()`
     pub fn second_vector(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Bisector_second_vector(self as *const Self)
         })
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:88 - `MAT_Bisector::Sense()`
+    /// **Source:** `MAT_Bisector.hxx`:85 - `MAT_Bisector::Sense()`
     pub fn sense(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Bisector_sense(self as *const Self)
         })
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:90 - `MAT_Bisector::FirstParameter()`
+    /// **Source:** `MAT_Bisector.hxx`:87 - `MAT_Bisector::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Bisector_first_parameter(self as *const Self)
         })
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:92 - `MAT_Bisector::SecondParameter()`
+    /// **Source:** `MAT_Bisector.hxx`:89 - `MAT_Bisector::SecondParameter()`
     pub fn second_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Bisector_second_parameter(self as *const Self)
         })
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:94 - `MAT_Bisector::Dump()`
+    /// **Source:** `MAT_Bisector.hxx`:91 - `MAT_Bisector::Dump()`
     pub fn dump(&self, ashift: i32, alevel: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Bisector_dump(self as *const Self, ashift, alevel)
         })
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:96 - `MAT_Bisector::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `MAT_Bisector.hxx`:93 - `MAT_Bisector::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::MAT_Bisector_dynamic_type(
                 self as *const Self,
@@ -974,7 +974,7 @@ impl Bisector {
         }
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:96 - `MAT_Bisector::get_type_name()`
+    /// **Source:** `MAT_Bisector.hxx`:93 - `MAT_Bisector::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -985,8 +985,8 @@ impl Bisector {
         .into_owned()
     }
 
-    /// **Source:** `MAT_Bisector.hxx`:96 - `MAT_Bisector::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `MAT_Bisector.hxx`:93 - `MAT_Bisector::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::MAT_Bisector_get_type_descriptor()))
         }
@@ -1015,7 +1015,7 @@ impl Bisector {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMATBisector> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Bisector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_Bisector_to_handle(obj.into_raw()),
@@ -1023,8 +1023,8 @@ impl Bisector {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Bisector_inherited_IsInstance(
                 self as *const Self,
@@ -1033,14 +1033,14 @@ impl Bisector {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Bisector_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1054,14 +1054,14 @@ impl Bisector {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Bisector_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Bisector_inherited_IncrementRefCounter(
@@ -1070,7 +1070,7 @@ impl Bisector {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Bisector_inherited_DecrementRefCounter(
@@ -1079,7 +1079,7 @@ impl Bisector {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Bisector_inherited_Delete(self as *const Self)
@@ -1087,32 +1087,32 @@ impl Bisector {
     }
 }
 
-pub use crate::ffi_types::HandleMATBisector;
+pub use crate::ffi_types::Handle_MAT_Bisector;
 
-unsafe impl crate::CppDeletable for HandleMATBisector {
+unsafe impl crate::CppDeletable for Handle_MAT_Bisector {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKTopAlgo::HandleMATBisector_destructor(ptr);
+            crate::ffi_extern_TKTopAlgo::Handle_MAT_Bisector_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleMATBisector {
+unsafe impl crate::CppCopyable for Handle_MAT_Bisector {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATBisector_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_MAT_Bisector_clone(ptr)) }
     }
 }
 
-impl HandleMATBisector {
+impl Handle_MAT_Bisector {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKTopAlgo::HandleMATBisector_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKTopAlgo::Handle_MAT_Bisector_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying MAT_Bisector
     pub fn get(&self) -> &crate::ffi_types::MAT_Bisector {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATBisector_get(
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_MAT_Bisector_get(
                 self as *const Self,
             ))
         }
@@ -1121,7 +1121,7 @@ impl HandleMATBisector {
     /// Dereference this Handle to mutably access the underlying MAT_Bisector
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::MAT_Bisector {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATBisector_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_MAT_Bisector_get_mut(
                 self as *mut Self,
             ))
         }
@@ -1130,10 +1130,10 @@ impl HandleMATBisector {
     /// Upcast Handle<MAT_Bisector> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleMATBisector_to_HandleStandardTransient(
+                crate::ffi_extern_TKTopAlgo::Handle_MAT_Bisector_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -1145,7 +1145,7 @@ impl HandleMATBisector {
 // From MAT_Edge.hxx
 // ========================
 
-/// **Source:** `MAT_Edge.hxx`:30 - `MAT_Edge`
+/// **Source:** `MAT_Edge.hxx`:27 - `MAT_Edge`
 pub use crate::ffi_types::MAT_Edge as Edge;
 
 unsafe impl crate::CppDeletable for Edge {
@@ -1157,7 +1157,7 @@ unsafe impl crate::CppDeletable for Edge {
 }
 
 impl Edge {
-    /// **Source:** `MAT_Edge.hxx`:34 - `MAT_Edge::MAT_Edge()`
+    /// **Source:** `MAT_Edge.hxx`:31 - `MAT_Edge::MAT_Edge()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1166,17 +1166,17 @@ impl Edge {
         }
     }
 
-    /// **Source:** `MAT_Edge.hxx`:36 - `MAT_Edge::EdgeNumber()`
+    /// **Source:** `MAT_Edge.hxx`:33 - `MAT_Edge::EdgeNumber()`
     pub fn edge_number_int(&mut self, anumber: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Edge_edge_number_int(self as *mut Self, anumber)
         })
     }
 
-    /// **Source:** `MAT_Edge.hxx`:38 - `MAT_Edge::FirstBisector()`
+    /// **Source:** `MAT_Edge.hxx`:35 - `MAT_Edge::FirstBisector()`
     pub fn first_bisector_handlematbisector(
         &mut self,
-        abisector: &crate::ffi_types::HandleMATBisector,
+        abisector: &crate::ffi_types::Handle_MAT_Bisector,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Edge_first_bisector_handlematbisector(
@@ -1186,10 +1186,10 @@ impl Edge {
         })
     }
 
-    /// **Source:** `MAT_Edge.hxx`:40 - `MAT_Edge::SecondBisector()`
+    /// **Source:** `MAT_Edge.hxx`:37 - `MAT_Edge::SecondBisector()`
     pub fn second_bisector_handlematbisector(
         &mut self,
-        abisector: &crate::ffi_types::HandleMATBisector,
+        abisector: &crate::ffi_types::Handle_MAT_Bisector,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Edge_second_bisector_handlematbisector(
@@ -1199,29 +1199,29 @@ impl Edge {
         })
     }
 
-    /// **Source:** `MAT_Edge.hxx`:42 - `MAT_Edge::Distance()`
+    /// **Source:** `MAT_Edge.hxx`:39 - `MAT_Edge::Distance()`
     pub fn distance_real(&mut self, adistance: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Edge_distance_real(self as *mut Self, adistance)
         })
     }
 
-    /// **Source:** `MAT_Edge.hxx`:44 - `MAT_Edge::IntersectionPoint()`
+    /// **Source:** `MAT_Edge.hxx`:41 - `MAT_Edge::IntersectionPoint()`
     pub fn intersection_point_int(&mut self, apoint: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Edge_intersection_point_int(self as *mut Self, apoint)
         })
     }
 
-    /// **Source:** `MAT_Edge.hxx`:46 - `MAT_Edge::EdgeNumber()`
+    /// **Source:** `MAT_Edge.hxx`:43 - `MAT_Edge::EdgeNumber()`
     pub fn edge_number(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Edge_edge_number(self as *const Self)
         })
     }
 
-    /// **Source:** `MAT_Edge.hxx`:48 - `MAT_Edge::FirstBisector()`
-    pub fn first_bisector(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMATBisector> {
+    /// **Source:** `MAT_Edge.hxx`:45 - `MAT_Edge::FirstBisector()`
+    pub fn first_bisector(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Bisector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_Edge_first_bisector(self as *const Self),
@@ -1229,8 +1229,8 @@ impl Edge {
         }
     }
 
-    /// **Source:** `MAT_Edge.hxx`:50 - `MAT_Edge::SecondBisector()`
-    pub fn second_bisector(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMATBisector> {
+    /// **Source:** `MAT_Edge.hxx`:47 - `MAT_Edge::SecondBisector()`
+    pub fn second_bisector(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Bisector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_Edge_second_bisector(self as *const Self),
@@ -1238,29 +1238,29 @@ impl Edge {
         }
     }
 
-    /// **Source:** `MAT_Edge.hxx`:52 - `MAT_Edge::Distance()`
+    /// **Source:** `MAT_Edge.hxx`:49 - `MAT_Edge::Distance()`
     pub fn distance(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Edge_distance(self as *const Self)
         })
     }
 
-    /// **Source:** `MAT_Edge.hxx`:54 - `MAT_Edge::IntersectionPoint()`
+    /// **Source:** `MAT_Edge.hxx`:51 - `MAT_Edge::IntersectionPoint()`
     pub fn intersection_point(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Edge_intersection_point(self as *const Self)
         })
     }
 
-    /// **Source:** `MAT_Edge.hxx`:56 - `MAT_Edge::Dump()`
+    /// **Source:** `MAT_Edge.hxx`:53 - `MAT_Edge::Dump()`
     pub fn dump(&self, ashift: i32, alevel: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Edge_dump(self as *const Self, ashift, alevel)
         })
     }
 
-    /// **Source:** `MAT_Edge.hxx`:58 - `MAT_Edge::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `MAT_Edge.hxx`:55 - `MAT_Edge::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::MAT_Edge_dynamic_type(
                 self as *const Self,
@@ -1268,7 +1268,7 @@ impl Edge {
         }
     }
 
-    /// **Source:** `MAT_Edge.hxx`:58 - `MAT_Edge::get_type_name()`
+    /// **Source:** `MAT_Edge.hxx`:55 - `MAT_Edge::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1279,8 +1279,8 @@ impl Edge {
         .into_owned()
     }
 
-    /// **Source:** `MAT_Edge.hxx`:58 - `MAT_Edge::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `MAT_Edge.hxx`:55 - `MAT_Edge::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::MAT_Edge_get_type_descriptor()))
         }
@@ -1307,7 +1307,7 @@ impl Edge {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMATEdge> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_Edge_to_handle(obj.into_raw()),
@@ -1315,21 +1315,21 @@ impl Edge {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Edge_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Edge_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1343,28 +1343,28 @@ impl Edge {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Edge_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Edge_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Edge_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Edge_inherited_Delete(self as *const Self)
@@ -1372,32 +1372,32 @@ impl Edge {
     }
 }
 
-pub use crate::ffi_types::HandleMATEdge;
+pub use crate::ffi_types::Handle_MAT_Edge;
 
-unsafe impl crate::CppDeletable for HandleMATEdge {
+unsafe impl crate::CppDeletable for Handle_MAT_Edge {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKTopAlgo::HandleMATEdge_destructor(ptr);
+            crate::ffi_extern_TKTopAlgo::Handle_MAT_Edge_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleMATEdge {
+unsafe impl crate::CppCopyable for Handle_MAT_Edge {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATEdge_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_MAT_Edge_clone(ptr)) }
     }
 }
 
-impl HandleMATEdge {
+impl Handle_MAT_Edge {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKTopAlgo::HandleMATEdge_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKTopAlgo::Handle_MAT_Edge_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying MAT_Edge
     pub fn get(&self) -> &crate::ffi_types::MAT_Edge {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATEdge_get(
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_MAT_Edge_get(
                 self as *const Self,
             ))
         }
@@ -1406,7 +1406,7 @@ impl HandleMATEdge {
     /// Dereference this Handle to mutably access the underlying MAT_Edge
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::MAT_Edge {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATEdge_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_MAT_Edge_get_mut(
                 self as *mut Self,
             ))
         }
@@ -1415,10 +1415,10 @@ impl HandleMATEdge {
     /// Upcast Handle<MAT_Edge> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleMATEdge_to_HandleStandardTransient(
+                crate::ffi_extern_TKTopAlgo::Handle_MAT_Edge_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -1430,7 +1430,7 @@ impl HandleMATEdge {
 // From MAT_Graph.hxx
 // ========================
 
-/// **Source:** `MAT_Graph.hxx`:38 - `MAT_Graph`
+/// **Source:** `MAT_Graph.hxx`:36 - `MAT_Graph`
 /// The Class Graph permits the exploration of the
 /// Bisector Locus.
 pub use crate::ffi_types::MAT_Graph as Graph;
@@ -1444,7 +1444,7 @@ unsafe impl crate::CppDeletable for Graph {
 }
 
 impl Graph {
-    /// **Source:** `MAT_Graph.hxx`:43 - `MAT_Graph::MAT_Graph()`
+    /// **Source:** `MAT_Graph.hxx`:41 - `MAT_Graph::MAT_Graph()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1454,7 +1454,7 @@ impl Graph {
         }
     }
 
-    /// **Source:** `MAT_Graph.hxx`:52 - `MAT_Graph::Perform()`
+    /// **Source:** `MAT_Graph.hxx`:50 - `MAT_Graph::Perform()`
     /// Construct <me> from the result of the method
     /// <CreateMat> of the class <MAT> from <MAT>.
     ///
@@ -1465,7 +1465,7 @@ impl Graph {
     pub fn perform(
         &mut self,
         SemiInfinite: bool,
-        TheRoots: &crate::ffi_types::HandleMATListOfBisector,
+        TheRoots: &crate::ffi_types::Handle_MAT_ListOfBisector,
         NbBasicElts: i32,
         NbArcs: i32,
     ) {
@@ -1480,9 +1480,9 @@ impl Graph {
         })
     }
 
-    /// **Source:** `MAT_Graph.hxx`:58 - `MAT_Graph::Arc()`
+    /// **Source:** `MAT_Graph.hxx`:56 - `MAT_Graph::Arc()`
     /// Return the Arc of index <Index> in <theArcs>.
-    pub fn arc(&self, Index: i32) -> crate::OwnedPtr<crate::ffi_types::HandleMATArc> {
+    pub fn arc(&self, Index: i32) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Arc> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_Graph_arc(self as *const Self, Index),
@@ -1490,9 +1490,9 @@ impl Graph {
         }
     }
 
-    /// **Source:** `MAT_Graph.hxx`:61 - `MAT_Graph::BasicElt()`
+    /// **Source:** `MAT_Graph.hxx`:59 - `MAT_Graph::BasicElt()`
     /// Return the BasicElt of index <Index> in <theBasicElts>.
-    pub fn basic_elt(&self, Index: i32) -> crate::OwnedPtr<crate::ffi_types::HandleMATBasicElt> {
+    pub fn basic_elt(&self, Index: i32) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_BasicElt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_Graph_basic_elt(self as *const Self, Index),
@@ -1500,9 +1500,9 @@ impl Graph {
         }
     }
 
-    /// **Source:** `MAT_Graph.hxx`:64 - `MAT_Graph::Node()`
+    /// **Source:** `MAT_Graph.hxx`:62 - `MAT_Graph::Node()`
     /// Return the Node of index <Index> in <theNodes>.
-    pub fn node(&self, Index: i32) -> crate::OwnedPtr<crate::ffi_types::HandleMATNode> {
+    pub fn node(&self, Index: i32) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_Graph_node(self as *const Self, Index),
@@ -1510,7 +1510,7 @@ impl Graph {
         }
     }
 
-    /// **Source:** `MAT_Graph.hxx`:67 - `MAT_Graph::NumberOfArcs()`
+    /// **Source:** `MAT_Graph.hxx`:65 - `MAT_Graph::NumberOfArcs()`
     /// Return the number of arcs of <me>.
     pub fn number_of_arcs(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1518,7 +1518,7 @@ impl Graph {
         })
     }
 
-    /// **Source:** `MAT_Graph.hxx`:70 - `MAT_Graph::NumberOfNodes()`
+    /// **Source:** `MAT_Graph.hxx`:68 - `MAT_Graph::NumberOfNodes()`
     /// Return the number of nodes of <me>.
     pub fn number_of_nodes(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1526,7 +1526,7 @@ impl Graph {
         })
     }
 
-    /// **Source:** `MAT_Graph.hxx`:73 - `MAT_Graph::NumberOfBasicElts()`
+    /// **Source:** `MAT_Graph.hxx`:71 - `MAT_Graph::NumberOfBasicElts()`
     /// Return the number of basic elements of <me>.
     pub fn number_of_basic_elts(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1534,7 +1534,7 @@ impl Graph {
         })
     }
 
-    /// **Source:** `MAT_Graph.hxx`:76 - `MAT_Graph::NumberOfInfiniteNodes()`
+    /// **Source:** `MAT_Graph.hxx`:74 - `MAT_Graph::NumberOfInfiniteNodes()`
     /// Return the number of infinites nodes of <me>.
     pub fn number_of_infinite_nodes(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1542,23 +1542,23 @@ impl Graph {
         })
     }
 
-    /// **Source:** `MAT_Graph.hxx`:94 - `MAT_Graph::FusionOfBasicElts()`
-    /// Merge two BasicElts.  The End of the BasicElt Elt1
-    /// of  IndexElt1 becomes The End of the BasicElt Elt2
-    /// of  IndexElt2.   Elt2 is replaced in  the  arcs  by
+    /// **Source:** `MAT_Graph.hxx`:92 - `MAT_Graph::FusionOfBasicElts()`
+    /// Merge two BasicElts. The End of the BasicElt Elt1
+    /// of IndexElt1 becomes The End of the BasicElt Elt2
+    /// of IndexElt2. Elt2 is replaced in the arcs by
     /// Elt1, Elt2 is eliminated.
     ///
-    /// <MergeArc1> is True  if the fusion  of the BasicElts  =>
-    /// a fusion  of two Arcs which separated  the same  elements.
-    /// In this case <GeomIndexArc1> and  <GeomIndexArc2>  are the
-    /// Geometric  Index of this  arcs.
+    /// <MergeArc1> is True if the fusion of the BasicElts =>
+    /// a fusion of two Arcs which separated the same elements.
+    /// In this case <GeomIndexArc1> and <GeomIndexArc2> are the
+    /// Geometric Index of this arcs.
     ///
-    /// If the  BasicElt corresponds to a close line ,
+    /// If the BasicElt corresponds to a close line,
     /// the StartArc and the EndArc of Elt1 can separate the same
-    /// elements .
+    /// elements.
     /// In this case there is a fusion of this arcs, <MergeArc2>
-    /// is true and <GeomIndexArc3> and  <GeomIndexArc4>  are the
-    /// Geometric  Index of this  arcs.
+    /// is true and <GeomIndexArc3> and <GeomIndexArc4> are the
+    /// Geometric Index of this arcs.
     pub fn fusion_of_basic_elts(
         &mut self,
         IndexElt1: i32,
@@ -1585,32 +1585,25 @@ impl Graph {
         })
     }
 
-    /// **Source:** `MAT_Graph.hxx`:103 - `MAT_Graph::CompactArcs()`
+    /// **Source:** `MAT_Graph.hxx`:101 - `MAT_Graph::CompactArcs()`
     pub fn compact_arcs(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Graph_compact_arcs(self as *mut Self)
         })
     }
 
-    /// **Source:** `MAT_Graph.hxx`:105 - `MAT_Graph::CompactNodes()`
+    /// **Source:** `MAT_Graph.hxx`:103 - `MAT_Graph::CompactNodes()`
     pub fn compact_nodes(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Graph_compact_nodes(self as *mut Self)
         })
     }
 
-    /// **Source:** `MAT_Graph.hxx`:107 - `MAT_Graph::ChangeBasicElts()`
-    pub fn change_basic_elts(&mut self, NewMap: &crate::ffi_types::MAT_DataMapOfIntegerBasicElt) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKTopAlgo::MAT_Graph_change_basic_elts(self as *mut Self, NewMap)
-        })
-    }
-
-    /// **Source:** `MAT_Graph.hxx`:109 - `MAT_Graph::ChangeBasicElt()`
+    /// **Source:** `MAT_Graph.hxx`:108 - `MAT_Graph::ChangeBasicElt()`
     pub fn change_basic_elt(
         &mut self,
         Index: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMATBasicElt> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_BasicElt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_Graph_change_basic_elt(self as *mut Self, Index),
@@ -1618,8 +1611,8 @@ impl Graph {
         }
     }
 
-    /// **Source:** `MAT_Graph.hxx`:111 - `MAT_Graph::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `MAT_Graph.hxx`:110 - `MAT_Graph::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::MAT_Graph_dynamic_type(
                 self as *const Self,
@@ -1627,7 +1620,7 @@ impl Graph {
         }
     }
 
-    /// **Source:** `MAT_Graph.hxx`:111 - `MAT_Graph::get_type_name()`
+    /// **Source:** `MAT_Graph.hxx`:110 - `MAT_Graph::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1638,8 +1631,8 @@ impl Graph {
         .into_owned()
     }
 
-    /// **Source:** `MAT_Graph.hxx`:111 - `MAT_Graph::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `MAT_Graph.hxx`:110 - `MAT_Graph::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::MAT_Graph_get_type_descriptor()))
         }
@@ -1666,7 +1659,7 @@ impl Graph {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMATGraph> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Graph> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_Graph_to_handle(obj.into_raw()),
@@ -1674,8 +1667,8 @@ impl Graph {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Graph_inherited_IsInstance(
                 self as *const Self,
@@ -1684,14 +1677,14 @@ impl Graph {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Graph_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1705,28 +1698,28 @@ impl Graph {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Graph_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Graph_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Graph_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Graph_inherited_Delete(self as *const Self)
@@ -1734,32 +1727,32 @@ impl Graph {
     }
 }
 
-pub use crate::ffi_types::HandleMATGraph;
+pub use crate::ffi_types::Handle_MAT_Graph;
 
-unsafe impl crate::CppDeletable for HandleMATGraph {
+unsafe impl crate::CppDeletable for Handle_MAT_Graph {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKTopAlgo::HandleMATGraph_destructor(ptr);
+            crate::ffi_extern_TKTopAlgo::Handle_MAT_Graph_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleMATGraph {
+unsafe impl crate::CppCopyable for Handle_MAT_Graph {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATGraph_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_MAT_Graph_clone(ptr)) }
     }
 }
 
-impl HandleMATGraph {
+impl Handle_MAT_Graph {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKTopAlgo::HandleMATGraph_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKTopAlgo::Handle_MAT_Graph_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying MAT_Graph
     pub fn get(&self) -> &crate::ffi_types::MAT_Graph {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATGraph_get(
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_MAT_Graph_get(
                 self as *const Self,
             ))
         }
@@ -1768,7 +1761,7 @@ impl HandleMATGraph {
     /// Dereference this Handle to mutably access the underlying MAT_Graph
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::MAT_Graph {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATGraph_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_MAT_Graph_get_mut(
                 self as *mut Self,
             ))
         }
@@ -1777,10 +1770,10 @@ impl HandleMATGraph {
     /// Upcast Handle<MAT_Graph> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleMATGraph_to_HandleStandardTransient(
+                crate::ffi_extern_TKTopAlgo::Handle_MAT_Graph_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -1788,11 +1781,17 @@ impl HandleMATGraph {
     }
 }
 
+// ── Skipped symbols for Graph (1 total) ──
+// SKIPPED: **Source:** `MAT_Graph.hxx`:105 - `MAT_Graph::ChangeBasicElts`
+//   Reason: has unbindable types: param 'NewMap': unresolved template type (NCollection_DataMap<int, occ::handle<MAT_BasicElt>> const&)
+//   // pub fn change_basic_elts(&mut self, NewMap: /* NCollection_DataMap<int, occ::handle<MAT_BasicElt>> const& */);
+//
+
 // ========================
 // From MAT_ListOfBisector.hxx
 // ========================
 
-/// **Source:** `MAT_ListOfBisector.hxx`:31 - `MAT_ListOfBisector`
+/// **Source:** `MAT_ListOfBisector.hxx`:28 - `MAT_ListOfBisector`
 pub use crate::ffi_types::MAT_ListOfBisector as ListOfBisector;
 
 unsafe impl crate::CppDeletable for ListOfBisector {
@@ -1804,7 +1803,7 @@ unsafe impl crate::CppDeletable for ListOfBisector {
 }
 
 impl ListOfBisector {
-    /// **Source:** `MAT_ListOfBisector.hxx`:35 - `MAT_ListOfBisector::MAT_ListOfBisector()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:32 - `MAT_ListOfBisector::MAT_ListOfBisector()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1813,50 +1812,50 @@ impl ListOfBisector {
         }
     }
 
-    /// **Source:** `MAT_ListOfBisector.hxx`:39 - `MAT_ListOfBisector::First()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:36 - `MAT_ListOfBisector::First()`
     pub fn first(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_first(self as *mut Self)
         })
     }
 
-    /// **Source:** `MAT_ListOfBisector.hxx`:41 - `MAT_ListOfBisector::Last()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:38 - `MAT_ListOfBisector::Last()`
     pub fn last(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_last(self as *mut Self)
         })
     }
 
-    /// **Source:** `MAT_ListOfBisector.hxx`:43 - `MAT_ListOfBisector::Init()`
-    pub fn init(&mut self, aniten: &crate::ffi_types::HandleMATBisector) {
+    /// **Source:** `MAT_ListOfBisector.hxx`:40 - `MAT_ListOfBisector::Init()`
+    pub fn init(&mut self, aniten: &crate::ffi_types::Handle_MAT_Bisector) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_init(self as *mut Self, aniten)
         })
     }
 
-    /// **Source:** `MAT_ListOfBisector.hxx`:45 - `MAT_ListOfBisector::Next()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:42 - `MAT_ListOfBisector::Next()`
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_next(self as *mut Self)
         })
     }
 
-    /// **Source:** `MAT_ListOfBisector.hxx`:47 - `MAT_ListOfBisector::Previous()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:44 - `MAT_ListOfBisector::Previous()`
     pub fn previous(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_previous(self as *mut Self)
         })
     }
 
-    /// **Source:** `MAT_ListOfBisector.hxx`:49 - `MAT_ListOfBisector::More()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:46 - `MAT_ListOfBisector::More()`
     pub fn more(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_more(self as *const Self)
         })
     }
 
-    /// **Source:** `MAT_ListOfBisector.hxx`:51 - `MAT_ListOfBisector::Current()`
-    pub fn current(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMATBisector> {
+    /// **Source:** `MAT_ListOfBisector.hxx`:48 - `MAT_ListOfBisector::Current()`
+    pub fn current(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Bisector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_current(self as *const Self),
@@ -1864,8 +1863,8 @@ impl ListOfBisector {
         }
     }
 
-    /// **Source:** `MAT_ListOfBisector.hxx`:53 - `MAT_ListOfBisector::Current()`
-    pub fn current_handlematbisector(&self, anitem: &crate::ffi_types::HandleMATBisector) {
+    /// **Source:** `MAT_ListOfBisector.hxx`:50 - `MAT_ListOfBisector::Current()`
+    pub fn current_handlematbisector(&self, anitem: &crate::ffi_types::Handle_MAT_Bisector) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_current_handlematbisector(
                 self as *const Self,
@@ -1874,8 +1873,8 @@ impl ListOfBisector {
         })
     }
 
-    /// **Source:** `MAT_ListOfBisector.hxx`:55 - `MAT_ListOfBisector::FirstItem()`
-    pub fn first_item(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMATBisector> {
+    /// **Source:** `MAT_ListOfBisector.hxx`:52 - `MAT_ListOfBisector::FirstItem()`
+    pub fn first_item(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Bisector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_first_item(self as *const Self),
@@ -1883,8 +1882,8 @@ impl ListOfBisector {
         }
     }
 
-    /// **Source:** `MAT_ListOfBisector.hxx`:57 - `MAT_ListOfBisector::LastItem()`
-    pub fn last_item(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMATBisector> {
+    /// **Source:** `MAT_ListOfBisector.hxx`:54 - `MAT_ListOfBisector::LastItem()`
+    pub fn last_item(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Bisector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_last_item(self as *const Self),
@@ -1892,8 +1891,8 @@ impl ListOfBisector {
         }
     }
 
-    /// **Source:** `MAT_ListOfBisector.hxx`:59 - `MAT_ListOfBisector::PreviousItem()`
-    pub fn previous_item(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMATBisector> {
+    /// **Source:** `MAT_ListOfBisector.hxx`:56 - `MAT_ListOfBisector::PreviousItem()`
+    pub fn previous_item(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Bisector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_previous_item(self as *const Self),
@@ -1901,8 +1900,8 @@ impl ListOfBisector {
         }
     }
 
-    /// **Source:** `MAT_ListOfBisector.hxx`:61 - `MAT_ListOfBisector::NextItem()`
-    pub fn next_item(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMATBisector> {
+    /// **Source:** `MAT_ListOfBisector.hxx`:58 - `MAT_ListOfBisector::NextItem()`
+    pub fn next_item(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Bisector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_next_item(self as *const Self),
@@ -1910,25 +1909,25 @@ impl ListOfBisector {
         }
     }
 
-    /// **Source:** `MAT_ListOfBisector.hxx`:63 - `MAT_ListOfBisector::Number()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:60 - `MAT_ListOfBisector::Number()`
     pub fn number(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_number(self as *const Self)
         })
     }
 
-    /// **Source:** `MAT_ListOfBisector.hxx`:65 - `MAT_ListOfBisector::Index()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:62 - `MAT_ListOfBisector::Index()`
     pub fn index(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_index(self as *const Self)
         })
     }
 
-    /// **Source:** `MAT_ListOfBisector.hxx`:67 - `MAT_ListOfBisector::Brackets()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:64 - `MAT_ListOfBisector::Brackets()`
     pub fn brackets(
         &mut self,
         anindex: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMATBisector> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Bisector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_brackets(
@@ -1939,71 +1938,71 @@ impl ListOfBisector {
         }
     }
 
-    /// **Source:** `MAT_ListOfBisector.hxx`:71 - `MAT_ListOfBisector::Unlink()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:68 - `MAT_ListOfBisector::Unlink()`
     pub fn unlink(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_unlink(self as *mut Self)
         })
     }
 
-    /// **Source:** `MAT_ListOfBisector.hxx`:73 - `MAT_ListOfBisector::LinkBefore()`
-    pub fn link_before(&mut self, anitem: &crate::ffi_types::HandleMATBisector) {
+    /// **Source:** `MAT_ListOfBisector.hxx`:70 - `MAT_ListOfBisector::LinkBefore()`
+    pub fn link_before(&mut self, anitem: &crate::ffi_types::Handle_MAT_Bisector) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_link_before(self as *mut Self, anitem)
         })
     }
 
-    /// **Source:** `MAT_ListOfBisector.hxx`:75 - `MAT_ListOfBisector::LinkAfter()`
-    pub fn link_after(&mut self, anitem: &crate::ffi_types::HandleMATBisector) {
+    /// **Source:** `MAT_ListOfBisector.hxx`:72 - `MAT_ListOfBisector::LinkAfter()`
+    pub fn link_after(&mut self, anitem: &crate::ffi_types::Handle_MAT_Bisector) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_link_after(self as *mut Self, anitem)
         })
     }
 
-    /// **Source:** `MAT_ListOfBisector.hxx`:77 - `MAT_ListOfBisector::FrontAdd()`
-    pub fn front_add(&mut self, anitem: &crate::ffi_types::HandleMATBisector) {
+    /// **Source:** `MAT_ListOfBisector.hxx`:74 - `MAT_ListOfBisector::FrontAdd()`
+    pub fn front_add(&mut self, anitem: &crate::ffi_types::Handle_MAT_Bisector) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_front_add(self as *mut Self, anitem)
         })
     }
 
-    /// **Source:** `MAT_ListOfBisector.hxx`:79 - `MAT_ListOfBisector::BackAdd()`
-    pub fn back_add(&mut self, anitem: &crate::ffi_types::HandleMATBisector) {
+    /// **Source:** `MAT_ListOfBisector.hxx`:76 - `MAT_ListOfBisector::BackAdd()`
+    pub fn back_add(&mut self, anitem: &crate::ffi_types::Handle_MAT_Bisector) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_back_add(self as *mut Self, anitem)
         })
     }
 
-    /// **Source:** `MAT_ListOfBisector.hxx`:81 - `MAT_ListOfBisector::Permute()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:78 - `MAT_ListOfBisector::Permute()`
     pub fn permute(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_permute(self as *mut Self)
         })
     }
 
-    /// **Source:** `MAT_ListOfBisector.hxx`:83 - `MAT_ListOfBisector::Loop()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:80 - `MAT_ListOfBisector::Loop()`
     pub fn loop_(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_loop_(self as *const Self)
         })
     }
 
-    /// **Source:** `MAT_ListOfBisector.hxx`:85 - `MAT_ListOfBisector::IsEmpty()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:82 - `MAT_ListOfBisector::IsEmpty()`
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_is_empty(self as *const Self)
         })
     }
 
-    /// **Source:** `MAT_ListOfBisector.hxx`:87 - `MAT_ListOfBisector::Dump()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:84 - `MAT_ListOfBisector::Dump()`
     pub fn dump(&mut self, ashift: i32, alevel: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_dump(self as *mut Self, ashift, alevel)
         })
     }
 
-    /// **Source:** `MAT_ListOfBisector.hxx`:89 - `MAT_ListOfBisector::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `MAT_ListOfBisector.hxx`:86 - `MAT_ListOfBisector::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_dynamic_type(
                 self as *const Self,
@@ -2011,7 +2010,7 @@ impl ListOfBisector {
         }
     }
 
-    /// **Source:** `MAT_ListOfBisector.hxx`:89 - `MAT_ListOfBisector::get_type_name()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:86 - `MAT_ListOfBisector::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2022,8 +2021,8 @@ impl ListOfBisector {
         .into_owned()
     }
 
-    /// **Source:** `MAT_ListOfBisector.hxx`:89 - `MAT_ListOfBisector::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `MAT_ListOfBisector.hxx`:86 - `MAT_ListOfBisector::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_get_type_descriptor(),
@@ -2056,7 +2055,7 @@ impl ListOfBisector {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMATListOfBisector> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_ListOfBisector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_to_handle(obj.into_raw()),
@@ -2064,8 +2063,8 @@ impl ListOfBisector {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_inherited_IsInstance(
                 self as *const Self,
@@ -2074,8 +2073,8 @@ impl ListOfBisector {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_inherited_IsKind(
                 self as *const Self,
@@ -2084,7 +2083,7 @@ impl ListOfBisector {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2098,7 +2097,7 @@ impl ListOfBisector {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_inherited_GetRefCount(
@@ -2107,7 +2106,7 @@ impl ListOfBisector {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_inherited_IncrementRefCounter(
@@ -2116,7 +2115,7 @@ impl ListOfBisector {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_inherited_DecrementRefCounter(
@@ -2125,7 +2124,7 @@ impl ListOfBisector {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfBisector_inherited_Delete(self as *const Self)
@@ -2133,34 +2132,36 @@ impl ListOfBisector {
     }
 }
 
-pub use crate::ffi_types::HandleMATListOfBisector;
+pub use crate::ffi_types::Handle_MAT_ListOfBisector;
 
-unsafe impl crate::CppDeletable for HandleMATListOfBisector {
+unsafe impl crate::CppDeletable for Handle_MAT_ListOfBisector {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKTopAlgo::HandleMATListOfBisector_destructor(ptr);
+            crate::ffi_extern_TKTopAlgo::Handle_MAT_ListOfBisector_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleMATListOfBisector {
+unsafe impl crate::CppCopyable for Handle_MAT_ListOfBisector {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATListOfBisector_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_MAT_ListOfBisector_clone(ptr))
         }
     }
 }
 
-impl HandleMATListOfBisector {
+impl Handle_MAT_ListOfBisector {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKTopAlgo::HandleMATListOfBisector_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::Handle_MAT_ListOfBisector_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying MAT_ListOfBisector
     pub fn get(&self) -> &crate::ffi_types::MAT_ListOfBisector {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATListOfBisector_get(
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_MAT_ListOfBisector_get(
                 self as *const Self,
             ))
         }
@@ -2169,19 +2170,19 @@ impl HandleMATListOfBisector {
     /// Dereference this Handle to mutably access the underlying MAT_ListOfBisector
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::MAT_ListOfBisector {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATListOfBisector_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTopAlgo::Handle_MAT_ListOfBisector_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<MAT_ListOfBisector> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleMATListOfBisector_to_HandleStandardTransient(
+                crate::ffi_extern_TKTopAlgo::Handle_MAT_ListOfBisector_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -2193,7 +2194,7 @@ impl HandleMATListOfBisector {
 // From MAT_ListOfEdge.hxx
 // ========================
 
-/// **Source:** `MAT_ListOfEdge.hxx`:31 - `MAT_ListOfEdge`
+/// **Source:** `MAT_ListOfEdge.hxx`:28 - `MAT_ListOfEdge`
 pub use crate::ffi_types::MAT_ListOfEdge as ListOfEdge;
 
 unsafe impl crate::CppDeletable for ListOfEdge {
@@ -2205,7 +2206,7 @@ unsafe impl crate::CppDeletable for ListOfEdge {
 }
 
 impl ListOfEdge {
-    /// **Source:** `MAT_ListOfEdge.hxx`:35 - `MAT_ListOfEdge::MAT_ListOfEdge()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:32 - `MAT_ListOfEdge::MAT_ListOfEdge()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2214,50 +2215,50 @@ impl ListOfEdge {
         }
     }
 
-    /// **Source:** `MAT_ListOfEdge.hxx`:39 - `MAT_ListOfEdge::First()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:36 - `MAT_ListOfEdge::First()`
     pub fn first(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_first(self as *mut Self)
         })
     }
 
-    /// **Source:** `MAT_ListOfEdge.hxx`:41 - `MAT_ListOfEdge::Last()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:38 - `MAT_ListOfEdge::Last()`
     pub fn last(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_last(self as *mut Self)
         })
     }
 
-    /// **Source:** `MAT_ListOfEdge.hxx`:43 - `MAT_ListOfEdge::Init()`
-    pub fn init(&mut self, aniten: &crate::ffi_types::HandleMATEdge) {
+    /// **Source:** `MAT_ListOfEdge.hxx`:40 - `MAT_ListOfEdge::Init()`
+    pub fn init(&mut self, aniten: &crate::ffi_types::Handle_MAT_Edge) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_init(self as *mut Self, aniten)
         })
     }
 
-    /// **Source:** `MAT_ListOfEdge.hxx`:45 - `MAT_ListOfEdge::Next()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:42 - `MAT_ListOfEdge::Next()`
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_next(self as *mut Self)
         })
     }
 
-    /// **Source:** `MAT_ListOfEdge.hxx`:47 - `MAT_ListOfEdge::Previous()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:44 - `MAT_ListOfEdge::Previous()`
     pub fn previous(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_previous(self as *mut Self)
         })
     }
 
-    /// **Source:** `MAT_ListOfEdge.hxx`:49 - `MAT_ListOfEdge::More()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:46 - `MAT_ListOfEdge::More()`
     pub fn more(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_more(self as *const Self)
         })
     }
 
-    /// **Source:** `MAT_ListOfEdge.hxx`:51 - `MAT_ListOfEdge::Current()`
-    pub fn current(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMATEdge> {
+    /// **Source:** `MAT_ListOfEdge.hxx`:48 - `MAT_ListOfEdge::Current()`
+    pub fn current(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_current(self as *const Self),
@@ -2265,8 +2266,8 @@ impl ListOfEdge {
         }
     }
 
-    /// **Source:** `MAT_ListOfEdge.hxx`:53 - `MAT_ListOfEdge::Current()`
-    pub fn current_handlematedge(&self, anitem: &crate::ffi_types::HandleMATEdge) {
+    /// **Source:** `MAT_ListOfEdge.hxx`:50 - `MAT_ListOfEdge::Current()`
+    pub fn current_handlematedge(&self, anitem: &crate::ffi_types::Handle_MAT_Edge) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_current_handlematedge(
                 self as *const Self,
@@ -2275,8 +2276,8 @@ impl ListOfEdge {
         })
     }
 
-    /// **Source:** `MAT_ListOfEdge.hxx`:55 - `MAT_ListOfEdge::FirstItem()`
-    pub fn first_item(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMATEdge> {
+    /// **Source:** `MAT_ListOfEdge.hxx`:52 - `MAT_ListOfEdge::FirstItem()`
+    pub fn first_item(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_first_item(self as *const Self),
@@ -2284,8 +2285,8 @@ impl ListOfEdge {
         }
     }
 
-    /// **Source:** `MAT_ListOfEdge.hxx`:57 - `MAT_ListOfEdge::LastItem()`
-    pub fn last_item(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMATEdge> {
+    /// **Source:** `MAT_ListOfEdge.hxx`:54 - `MAT_ListOfEdge::LastItem()`
+    pub fn last_item(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_last_item(self as *const Self),
@@ -2293,8 +2294,8 @@ impl ListOfEdge {
         }
     }
 
-    /// **Source:** `MAT_ListOfEdge.hxx`:59 - `MAT_ListOfEdge::PreviousItem()`
-    pub fn previous_item(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMATEdge> {
+    /// **Source:** `MAT_ListOfEdge.hxx`:56 - `MAT_ListOfEdge::PreviousItem()`
+    pub fn previous_item(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_previous_item(self as *const Self),
@@ -2302,8 +2303,8 @@ impl ListOfEdge {
         }
     }
 
-    /// **Source:** `MAT_ListOfEdge.hxx`:61 - `MAT_ListOfEdge::NextItem()`
-    pub fn next_item(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMATEdge> {
+    /// **Source:** `MAT_ListOfEdge.hxx`:58 - `MAT_ListOfEdge::NextItem()`
+    pub fn next_item(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_next_item(self as *const Self),
@@ -2311,22 +2312,22 @@ impl ListOfEdge {
         }
     }
 
-    /// **Source:** `MAT_ListOfEdge.hxx`:63 - `MAT_ListOfEdge::Number()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:60 - `MAT_ListOfEdge::Number()`
     pub fn number(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_number(self as *const Self)
         })
     }
 
-    /// **Source:** `MAT_ListOfEdge.hxx`:65 - `MAT_ListOfEdge::Index()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:62 - `MAT_ListOfEdge::Index()`
     pub fn index(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_index(self as *const Self)
         })
     }
 
-    /// **Source:** `MAT_ListOfEdge.hxx`:67 - `MAT_ListOfEdge::Brackets()`
-    pub fn brackets(&mut self, anindex: i32) -> crate::OwnedPtr<crate::ffi_types::HandleMATEdge> {
+    /// **Source:** `MAT_ListOfEdge.hxx`:64 - `MAT_ListOfEdge::Brackets()`
+    pub fn brackets(&mut self, anindex: i32) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_brackets(self as *mut Self, anindex),
@@ -2334,71 +2335,71 @@ impl ListOfEdge {
         }
     }
 
-    /// **Source:** `MAT_ListOfEdge.hxx`:71 - `MAT_ListOfEdge::Unlink()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:68 - `MAT_ListOfEdge::Unlink()`
     pub fn unlink(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_unlink(self as *mut Self)
         })
     }
 
-    /// **Source:** `MAT_ListOfEdge.hxx`:73 - `MAT_ListOfEdge::LinkBefore()`
-    pub fn link_before(&mut self, anitem: &crate::ffi_types::HandleMATEdge) {
+    /// **Source:** `MAT_ListOfEdge.hxx`:70 - `MAT_ListOfEdge::LinkBefore()`
+    pub fn link_before(&mut self, anitem: &crate::ffi_types::Handle_MAT_Edge) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_link_before(self as *mut Self, anitem)
         })
     }
 
-    /// **Source:** `MAT_ListOfEdge.hxx`:75 - `MAT_ListOfEdge::LinkAfter()`
-    pub fn link_after(&mut self, anitem: &crate::ffi_types::HandleMATEdge) {
+    /// **Source:** `MAT_ListOfEdge.hxx`:72 - `MAT_ListOfEdge::LinkAfter()`
+    pub fn link_after(&mut self, anitem: &crate::ffi_types::Handle_MAT_Edge) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_link_after(self as *mut Self, anitem)
         })
     }
 
-    /// **Source:** `MAT_ListOfEdge.hxx`:77 - `MAT_ListOfEdge::FrontAdd()`
-    pub fn front_add(&mut self, anitem: &crate::ffi_types::HandleMATEdge) {
+    /// **Source:** `MAT_ListOfEdge.hxx`:74 - `MAT_ListOfEdge::FrontAdd()`
+    pub fn front_add(&mut self, anitem: &crate::ffi_types::Handle_MAT_Edge) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_front_add(self as *mut Self, anitem)
         })
     }
 
-    /// **Source:** `MAT_ListOfEdge.hxx`:79 - `MAT_ListOfEdge::BackAdd()`
-    pub fn back_add(&mut self, anitem: &crate::ffi_types::HandleMATEdge) {
+    /// **Source:** `MAT_ListOfEdge.hxx`:76 - `MAT_ListOfEdge::BackAdd()`
+    pub fn back_add(&mut self, anitem: &crate::ffi_types::Handle_MAT_Edge) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_back_add(self as *mut Self, anitem)
         })
     }
 
-    /// **Source:** `MAT_ListOfEdge.hxx`:81 - `MAT_ListOfEdge::Permute()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:78 - `MAT_ListOfEdge::Permute()`
     pub fn permute(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_permute(self as *mut Self)
         })
     }
 
-    /// **Source:** `MAT_ListOfEdge.hxx`:83 - `MAT_ListOfEdge::Loop()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:80 - `MAT_ListOfEdge::Loop()`
     pub fn loop_(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_loop_(self as *const Self)
         })
     }
 
-    /// **Source:** `MAT_ListOfEdge.hxx`:85 - `MAT_ListOfEdge::IsEmpty()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:82 - `MAT_ListOfEdge::IsEmpty()`
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_is_empty(self as *const Self)
         })
     }
 
-    /// **Source:** `MAT_ListOfEdge.hxx`:87 - `MAT_ListOfEdge::Dump()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:84 - `MAT_ListOfEdge::Dump()`
     pub fn dump(&mut self, ashift: i32, alevel: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_dump(self as *mut Self, ashift, alevel)
         })
     }
 
-    /// **Source:** `MAT_ListOfEdge.hxx`:89 - `MAT_ListOfEdge::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `MAT_ListOfEdge.hxx`:86 - `MAT_ListOfEdge::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_dynamic_type(
                 self as *const Self,
@@ -2406,7 +2407,7 @@ impl ListOfEdge {
         }
     }
 
-    /// **Source:** `MAT_ListOfEdge.hxx`:89 - `MAT_ListOfEdge::get_type_name()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:86 - `MAT_ListOfEdge::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2417,8 +2418,8 @@ impl ListOfEdge {
         .into_owned()
     }
 
-    /// **Source:** `MAT_ListOfEdge.hxx`:89 - `MAT_ListOfEdge::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `MAT_ListOfEdge.hxx`:86 - `MAT_ListOfEdge::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_get_type_descriptor(),
@@ -2451,7 +2452,7 @@ impl ListOfEdge {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMATListOfEdge> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_ListOfEdge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_to_handle(obj.into_raw()),
@@ -2459,8 +2460,8 @@ impl ListOfEdge {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_inherited_IsInstance(
                 self as *const Self,
@@ -2469,8 +2470,8 @@ impl ListOfEdge {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_inherited_IsKind(
                 self as *const Self,
@@ -2479,7 +2480,7 @@ impl ListOfEdge {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2493,14 +2494,14 @@ impl ListOfEdge {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_inherited_IncrementRefCounter(
@@ -2509,7 +2510,7 @@ impl ListOfEdge {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_inherited_DecrementRefCounter(
@@ -2518,7 +2519,7 @@ impl ListOfEdge {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_ListOfEdge_inherited_Delete(self as *const Self)
@@ -2526,32 +2527,34 @@ impl ListOfEdge {
     }
 }
 
-pub use crate::ffi_types::HandleMATListOfEdge;
+pub use crate::ffi_types::Handle_MAT_ListOfEdge;
 
-unsafe impl crate::CppDeletable for HandleMATListOfEdge {
+unsafe impl crate::CppDeletable for Handle_MAT_ListOfEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKTopAlgo::HandleMATListOfEdge_destructor(ptr);
+            crate::ffi_extern_TKTopAlgo::Handle_MAT_ListOfEdge_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleMATListOfEdge {
+unsafe impl crate::CppCopyable for Handle_MAT_ListOfEdge {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATListOfEdge_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_MAT_ListOfEdge_clone(ptr))
+        }
     }
 }
 
-impl HandleMATListOfEdge {
+impl Handle_MAT_ListOfEdge {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKTopAlgo::HandleMATListOfEdge_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKTopAlgo::Handle_MAT_ListOfEdge_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying MAT_ListOfEdge
     pub fn get(&self) -> &crate::ffi_types::MAT_ListOfEdge {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATListOfEdge_get(
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_MAT_ListOfEdge_get(
                 self as *const Self,
             ))
         }
@@ -2560,7 +2563,7 @@ impl HandleMATListOfEdge {
     /// Dereference this Handle to mutably access the underlying MAT_ListOfEdge
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::MAT_ListOfEdge {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATListOfEdge_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_MAT_ListOfEdge_get_mut(
                 self as *mut Self,
             ))
         }
@@ -2569,10 +2572,10 @@ impl HandleMATListOfEdge {
     /// Upcast Handle<MAT_ListOfEdge> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleMATListOfEdge_to_HandleStandardTransient(
+                crate::ffi_extern_TKTopAlgo::Handle_MAT_ListOfEdge_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -2584,7 +2587,7 @@ impl HandleMATListOfEdge {
 // From MAT_Node.hxx
 // ========================
 
-/// **Source:** `MAT_Node.hxx`:34 - `MAT_Node`
+/// **Source:** `MAT_Node.hxx`:32 - `MAT_Node`
 /// Node of Graph.
 pub use crate::ffi_types::MAT_Node as Node;
 
@@ -2597,10 +2600,10 @@ unsafe impl crate::CppDeletable for Node {
 }
 
 impl Node {
-    /// **Source:** `MAT_Node.hxx`:38 - `MAT_Node::MAT_Node()`
+    /// **Source:** `MAT_Node.hxx`:36 - `MAT_Node::MAT_Node()`
     pub fn new_int_handlematarc_real(
         GeomIndex: i32,
-        LinkedArc: &crate::ffi_types::HandleMATArc,
+        LinkedArc: &crate::ffi_types::Handle_MAT_Arc,
         Distance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2612,7 +2615,7 @@ impl Node {
         }
     }
 
-    /// **Source:** `MAT_Node.hxx`:44 - `MAT_Node::GeomIndex()`
+    /// **Source:** `MAT_Node.hxx`:42 - `MAT_Node::GeomIndex()`
     /// Returns the index associated of the geometric
     /// representation of <me>.
     pub fn geom_index(&self) -> i32 {
@@ -2621,7 +2624,7 @@ impl Node {
         })
     }
 
-    /// **Source:** `MAT_Node.hxx`:47 - `MAT_Node::Index()`
+    /// **Source:** `MAT_Node.hxx`:45 - `MAT_Node::Index()`
     /// Returns the index associated of the node
     pub fn index(&self) -> i32 {
         crate::check_result(unsafe {
@@ -2629,31 +2632,14 @@ impl Node {
         })
     }
 
-    /// **Source:** `MAT_Node.hxx`:50 - `MAT_Node::LinkedArcs()`
-    /// Returns in <S> the Arcs linked to <me>.
-    pub fn linked_arcs(&self, S: &mut crate::ffi_types::MAT_SequenceOfArc) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKTopAlgo::MAT_Node_linked_arcs(self as *const Self, S)
-        })
-    }
-
-    /// **Source:** `MAT_Node.hxx`:54 - `MAT_Node::NearElts()`
-    /// Returns  in <S> the BasicElts equidistant
-    /// to <me>.
-    pub fn near_elts(&self, S: &mut crate::ffi_types::MAT_SequenceOfBasicElt) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKTopAlgo::MAT_Node_near_elts(self as *const Self, S)
-        })
-    }
-
-    /// **Source:** `MAT_Node.hxx`:56 - `MAT_Node::Distance()`
+    /// **Source:** `MAT_Node.hxx`:54 - `MAT_Node::Distance()`
     pub fn distance(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Node_distance(self as *const Self)
         })
     }
 
-    /// **Source:** `MAT_Node.hxx`:60 - `MAT_Node::PendingNode()`
+    /// **Source:** `MAT_Node.hxx`:58 - `MAT_Node::PendingNode()`
     /// Returns True if <me> is a pending Node.
     /// (ie : the number of Arc Linked = 1)
     pub fn pending_node(&self) -> bool {
@@ -2662,7 +2648,7 @@ impl Node {
         })
     }
 
-    /// **Source:** `MAT_Node.hxx`:63 - `MAT_Node::OnBasicElt()`
+    /// **Source:** `MAT_Node.hxx`:61 - `MAT_Node::OnBasicElt()`
     /// Returns True if <me> belongs to the figure.
     pub fn on_basic_elt(&self) -> bool {
         crate::check_result(unsafe {
@@ -2670,7 +2656,7 @@ impl Node {
         })
     }
 
-    /// **Source:** `MAT_Node.hxx`:66 - `MAT_Node::Infinite()`
+    /// **Source:** `MAT_Node.hxx`:64 - `MAT_Node::Infinite()`
     /// Returns True if the distance of <me> is Infinite
     pub fn infinite(&self) -> bool {
         crate::check_result(unsafe {
@@ -2678,7 +2664,7 @@ impl Node {
         })
     }
 
-    /// **Source:** `MAT_Node.hxx`:69 - `MAT_Node::SetIndex()`
+    /// **Source:** `MAT_Node.hxx`:67 - `MAT_Node::SetIndex()`
     /// Set the index associated of the node
     pub fn set_index(&mut self, anIndex: i32) {
         crate::check_void_result(unsafe {
@@ -2686,15 +2672,15 @@ impl Node {
         })
     }
 
-    /// **Source:** `MAT_Node.hxx`:71 - `MAT_Node::SetLinkedArc()`
-    pub fn set_linked_arc(&mut self, anArc: &crate::ffi_types::HandleMATArc) {
+    /// **Source:** `MAT_Node.hxx`:69 - `MAT_Node::SetLinkedArc()`
+    pub fn set_linked_arc(&mut self, anArc: &crate::ffi_types::Handle_MAT_Arc) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Node_set_linked_arc(self as *mut Self, anArc)
         })
     }
 
-    /// **Source:** `MAT_Node.hxx`:73 - `MAT_Node::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `MAT_Node.hxx`:71 - `MAT_Node::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::MAT_Node_dynamic_type(
                 self as *const Self,
@@ -2702,7 +2688,7 @@ impl Node {
         }
     }
 
-    /// **Source:** `MAT_Node.hxx`:73 - `MAT_Node::get_type_name()`
+    /// **Source:** `MAT_Node.hxx`:71 - `MAT_Node::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2713,8 +2699,8 @@ impl Node {
         .into_owned()
     }
 
-    /// **Source:** `MAT_Node.hxx`:73 - `MAT_Node::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `MAT_Node.hxx`:71 - `MAT_Node::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::MAT_Node_get_type_descriptor()))
         }
@@ -2741,7 +2727,7 @@ impl Node {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMATNode> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_Node_to_handle(obj.into_raw()),
@@ -2749,21 +2735,21 @@ impl Node {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Node_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Node_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2777,28 +2763,28 @@ impl Node {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Node_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Node_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Node_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Node_inherited_Delete(self as *const Self)
@@ -2806,32 +2792,32 @@ impl Node {
     }
 }
 
-pub use crate::ffi_types::HandleMATNode;
+pub use crate::ffi_types::Handle_MAT_Node;
 
-unsafe impl crate::CppDeletable for HandleMATNode {
+unsafe impl crate::CppDeletable for Handle_MAT_Node {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKTopAlgo::HandleMATNode_destructor(ptr);
+            crate::ffi_extern_TKTopAlgo::Handle_MAT_Node_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleMATNode {
+unsafe impl crate::CppCopyable for Handle_MAT_Node {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATNode_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_MAT_Node_clone(ptr)) }
     }
 }
 
-impl HandleMATNode {
+impl Handle_MAT_Node {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKTopAlgo::HandleMATNode_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKTopAlgo::Handle_MAT_Node_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying MAT_Node
     pub fn get(&self) -> &crate::ffi_types::MAT_Node {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATNode_get(
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_MAT_Node_get(
                 self as *const Self,
             ))
         }
@@ -2840,7 +2826,7 @@ impl HandleMATNode {
     /// Dereference this Handle to mutably access the underlying MAT_Node
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::MAT_Node {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATNode_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_MAT_Node_get_mut(
                 self as *mut Self,
             ))
         }
@@ -2849,10 +2835,10 @@ impl HandleMATNode {
     /// Upcast Handle<MAT_Node> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleMATNode_to_HandleStandardTransient(
+                crate::ffi_extern_TKTopAlgo::Handle_MAT_Node_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -2860,11 +2846,24 @@ impl HandleMATNode {
     }
 }
 
+// ── Skipped symbols for Node (2 total) ──
+// SKIPPED: **Source:** `MAT_Node.hxx`:48 - `MAT_Node::LinkedArcs`
+//   method: Returns in <S> the Arcs linked to <me>.
+//   Reason: has unbindable types: param 'S': unresolved template type (NCollection_Sequence<occ::handle<MAT_Arc>>&)
+//   // pub fn linked_arcs(&self, S: /* NCollection_Sequence<occ::handle<MAT_Arc>>& */);
+//
+// SKIPPED: **Source:** `MAT_Node.hxx`:52 - `MAT_Node::NearElts`
+//   method: Returns in <S> the BasicElts equidistant
+//   method: to <me>.
+//   Reason: has unbindable types: param 'S': unresolved template type (NCollection_Sequence<occ::handle<MAT_BasicElt>>&)
+//   // pub fn near_elts(&self, S: /* NCollection_Sequence<occ::handle<MAT_BasicElt>>& */);
+//
+
 // ========================
 // From MAT_TListNodeOfListOfBisector.hxx
 // ========================
 
-/// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:30 - `MAT_TListNodeOfListOfBisector`
+/// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:27 - `MAT_TListNodeOfListOfBisector`
 pub use crate::ffi_types::MAT_TListNodeOfListOfBisector as TListNodeOfListOfBisector;
 
 unsafe impl crate::CppDeletable for TListNodeOfListOfBisector {
@@ -2876,7 +2875,7 @@ unsafe impl crate::CppDeletable for TListNodeOfListOfBisector {
 }
 
 impl TListNodeOfListOfBisector {
-    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:34 - `MAT_TListNodeOfListOfBisector::MAT_TListNodeOfListOfBisector()`
+    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:31 - `MAT_TListNodeOfListOfBisector::MAT_TListNodeOfListOfBisector()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2885,9 +2884,9 @@ impl TListNodeOfListOfBisector {
         }
     }
 
-    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:36 - `MAT_TListNodeOfListOfBisector::MAT_TListNodeOfListOfBisector()`
+    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:33 - `MAT_TListNodeOfListOfBisector::MAT_TListNodeOfListOfBisector()`
     pub fn new_handlematbisector(
-        anitem: &crate::ffi_types::HandleMATBisector,
+        anitem: &crate::ffi_types::Handle_MAT_Bisector,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2898,8 +2897,8 @@ impl TListNodeOfListOfBisector {
         }
     }
 
-    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:38 - `MAT_TListNodeOfListOfBisector::GetItem()`
-    pub fn get_item(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMATBisector> {
+    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:35 - `MAT_TListNodeOfListOfBisector::GetItem()`
+    pub fn get_item(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Bisector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfBisector_get_item(
@@ -2909,8 +2908,8 @@ impl TListNodeOfListOfBisector {
         }
     }
 
-    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:40 - `MAT_TListNodeOfListOfBisector::Next()`
-    pub fn next(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMATTListNodeOfListOfBisector> {
+    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:37 - `MAT_TListNodeOfListOfBisector::Next()`
+    pub fn next(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_TListNodeOfListOfBisector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfBisector_next(
@@ -2920,10 +2919,10 @@ impl TListNodeOfListOfBisector {
         }
     }
 
-    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:42 - `MAT_TListNodeOfListOfBisector::Previous()`
+    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:39 - `MAT_TListNodeOfListOfBisector::Previous()`
     pub fn previous(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMATTListNodeOfListOfBisector> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_TListNodeOfListOfBisector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfBisector_previous(
@@ -2933,8 +2932,8 @@ impl TListNodeOfListOfBisector {
         }
     }
 
-    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:44 - `MAT_TListNodeOfListOfBisector::SetItem()`
-    pub fn set_item(&mut self, anitem: &crate::ffi_types::HandleMATBisector) {
+    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:41 - `MAT_TListNodeOfListOfBisector::SetItem()`
+    pub fn set_item(&mut self, anitem: &crate::ffi_types::Handle_MAT_Bisector) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfBisector_set_item(
                 self as *mut Self,
@@ -2943,35 +2942,35 @@ impl TListNodeOfListOfBisector {
         })
     }
 
-    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:46 - `MAT_TListNodeOfListOfBisector::Next()`
+    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:43 - `MAT_TListNodeOfListOfBisector::Next()`
     pub fn next_handlemattlistnodeoflistofbisector(
         &mut self,
-        atlistnode: &crate::ffi_types::HandleMATTListNodeOfListOfBisector,
+        atlistnode: &crate::ffi_types::Handle_MAT_TListNodeOfListOfBisector,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfBisector_next_handlemattlistnodeoflistofbisector(self as *mut Self, atlistnode)
         })
     }
 
-    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:48 - `MAT_TListNodeOfListOfBisector::Previous()`
+    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:45 - `MAT_TListNodeOfListOfBisector::Previous()`
     pub fn previous_handlemattlistnodeoflistofbisector(
         &mut self,
-        atlistnode: &crate::ffi_types::HandleMATTListNodeOfListOfBisector,
+        atlistnode: &crate::ffi_types::Handle_MAT_TListNodeOfListOfBisector,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfBisector_previous_handlemattlistnodeoflistofbisector(self as *mut Self, atlistnode)
         })
     }
 
-    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:50 - `MAT_TListNodeOfListOfBisector::Dummy()`
+    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:47 - `MAT_TListNodeOfListOfBisector::Dummy()`
     pub fn dummy(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfBisector_dummy(self as *const Self)
         })
     }
 
-    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:52 - `MAT_TListNodeOfListOfBisector::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:49 - `MAT_TListNodeOfListOfBisector::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfBisector_dynamic_type(
@@ -2981,7 +2980,7 @@ impl TListNodeOfListOfBisector {
         }
     }
 
-    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:52 - `MAT_TListNodeOfListOfBisector::get_type_name()`
+    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:49 - `MAT_TListNodeOfListOfBisector::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2992,8 +2991,8 @@ impl TListNodeOfListOfBisector {
         .into_owned()
     }
 
-    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:52 - `MAT_TListNodeOfListOfBisector::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:49 - `MAT_TListNodeOfListOfBisector::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfBisector_get_type_descriptor(),
@@ -3022,7 +3021,7 @@ impl TListNodeOfListOfBisector {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMATTListNodeOfListOfBisector> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_TListNodeOfListOfBisector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfBisector_to_handle(
@@ -3032,8 +3031,8 @@ impl TListNodeOfListOfBisector {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfBisector_inherited_IsInstance(
                 self as *const Self,
@@ -3042,8 +3041,8 @@ impl TListNodeOfListOfBisector {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfBisector_inherited_IsKind(
                 self as *const Self,
@@ -3052,7 +3051,7 @@ impl TListNodeOfListOfBisector {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3068,7 +3067,7 @@ impl TListNodeOfListOfBisector {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfBisector_inherited_GetRefCount(
@@ -3077,7 +3076,7 @@ impl TListNodeOfListOfBisector {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfBisector_inherited_IncrementRefCounter(
@@ -3086,7 +3085,7 @@ impl TListNodeOfListOfBisector {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfBisector_inherited_DecrementRefCounter(
@@ -3095,7 +3094,7 @@ impl TListNodeOfListOfBisector {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfBisector_inherited_Delete(
@@ -3105,31 +3104,31 @@ impl TListNodeOfListOfBisector {
     }
 }
 
-pub use crate::ffi_types::HandleMATTListNodeOfListOfBisector;
+pub use crate::ffi_types::Handle_MAT_TListNodeOfListOfBisector;
 
-unsafe impl crate::CppDeletable for HandleMATTListNodeOfListOfBisector {
+unsafe impl crate::CppDeletable for Handle_MAT_TListNodeOfListOfBisector {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKTopAlgo::HandleMATTListNodeOfListOfBisector_destructor(ptr);
+            crate::ffi_extern_TKTopAlgo::Handle_MAT_TListNodeOfListOfBisector_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleMATTListNodeOfListOfBisector {
+unsafe impl crate::CppCopyable for Handle_MAT_TListNodeOfListOfBisector {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleMATTListNodeOfListOfBisector_clone(ptr),
+                crate::ffi_extern_TKTopAlgo::Handle_MAT_TListNodeOfListOfBisector_clone(ptr),
             )
         }
     }
 }
 
-impl HandleMATTListNodeOfListOfBisector {
+impl Handle_MAT_TListNodeOfListOfBisector {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKTopAlgo::HandleMATTListNodeOfListOfBisector_is_null(
+            crate::ffi_extern_TKTopAlgo::Handle_MAT_TListNodeOfListOfBisector_is_null(
                 self as *const Self,
             )
         }
@@ -3139,7 +3138,7 @@ impl HandleMATTListNodeOfListOfBisector {
     pub fn get(&self) -> &crate::ffi_types::MAT_TListNodeOfListOfBisector {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleMATTListNodeOfListOfBisector_get(
+                crate::ffi_extern_TKTopAlgo::Handle_MAT_TListNodeOfListOfBisector_get(
                     self as *const Self,
                 ),
             )
@@ -3150,7 +3149,7 @@ impl HandleMATTListNodeOfListOfBisector {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::MAT_TListNodeOfListOfBisector {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleMATTListNodeOfListOfBisector_get_mut(
+                crate::ffi_extern_TKTopAlgo::Handle_MAT_TListNodeOfListOfBisector_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -3160,9 +3159,9 @@ impl HandleMATTListNodeOfListOfBisector {
     /// Upcast Handle<MAT_TListNodeOfListOfBisector> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATTListNodeOfListOfBisector_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_MAT_TListNodeOfListOfBisector_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -3171,7 +3170,7 @@ impl HandleMATTListNodeOfListOfBisector {
 // From MAT_TListNodeOfListOfEdge.hxx
 // ========================
 
-/// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:30 - `MAT_TListNodeOfListOfEdge`
+/// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:27 - `MAT_TListNodeOfListOfEdge`
 pub use crate::ffi_types::MAT_TListNodeOfListOfEdge as TListNodeOfListOfEdge;
 
 unsafe impl crate::CppDeletable for TListNodeOfListOfEdge {
@@ -3183,7 +3182,7 @@ unsafe impl crate::CppDeletable for TListNodeOfListOfEdge {
 }
 
 impl TListNodeOfListOfEdge {
-    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:34 - `MAT_TListNodeOfListOfEdge::MAT_TListNodeOfListOfEdge()`
+    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:31 - `MAT_TListNodeOfListOfEdge::MAT_TListNodeOfListOfEdge()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3192,8 +3191,8 @@ impl TListNodeOfListOfEdge {
         }
     }
 
-    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:36 - `MAT_TListNodeOfListOfEdge::MAT_TListNodeOfListOfEdge()`
-    pub fn new_handlematedge(anitem: &crate::ffi_types::HandleMATEdge) -> crate::OwnedPtr<Self> {
+    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:33 - `MAT_TListNodeOfListOfEdge::MAT_TListNodeOfListOfEdge()`
+    pub fn new_handlematedge(anitem: &crate::ffi_types::Handle_MAT_Edge) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfEdge_ctor_handlematedge(anitem),
@@ -3201,8 +3200,8 @@ impl TListNodeOfListOfEdge {
         }
     }
 
-    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:38 - `MAT_TListNodeOfListOfEdge::GetItem()`
-    pub fn get_item(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMATEdge> {
+    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:35 - `MAT_TListNodeOfListOfEdge::GetItem()`
+    pub fn get_item(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfEdge_get_item(
@@ -3212,8 +3211,8 @@ impl TListNodeOfListOfEdge {
         }
     }
 
-    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:40 - `MAT_TListNodeOfListOfEdge::Next()`
-    pub fn next(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMATTListNodeOfListOfEdge> {
+    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:37 - `MAT_TListNodeOfListOfEdge::Next()`
+    pub fn next(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_TListNodeOfListOfEdge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfEdge_next(self as *const Self),
@@ -3221,8 +3220,8 @@ impl TListNodeOfListOfEdge {
         }
     }
 
-    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:42 - `MAT_TListNodeOfListOfEdge::Previous()`
-    pub fn previous(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMATTListNodeOfListOfEdge> {
+    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:39 - `MAT_TListNodeOfListOfEdge::Previous()`
+    pub fn previous(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_TListNodeOfListOfEdge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfEdge_previous(
@@ -3232,8 +3231,8 @@ impl TListNodeOfListOfEdge {
         }
     }
 
-    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:44 - `MAT_TListNodeOfListOfEdge::SetItem()`
-    pub fn set_item(&mut self, anitem: &crate::ffi_types::HandleMATEdge) {
+    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:41 - `MAT_TListNodeOfListOfEdge::SetItem()`
+    pub fn set_item(&mut self, anitem: &crate::ffi_types::Handle_MAT_Edge) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfEdge_set_item(
                 self as *mut Self,
@@ -3242,35 +3241,35 @@ impl TListNodeOfListOfEdge {
         })
     }
 
-    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:46 - `MAT_TListNodeOfListOfEdge::Next()`
+    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:43 - `MAT_TListNodeOfListOfEdge::Next()`
     pub fn next_handlemattlistnodeoflistofedge(
         &mut self,
-        atlistnode: &crate::ffi_types::HandleMATTListNodeOfListOfEdge,
+        atlistnode: &crate::ffi_types::Handle_MAT_TListNodeOfListOfEdge,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfEdge_next_handlemattlistnodeoflistofedge(self as *mut Self, atlistnode)
         })
     }
 
-    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:48 - `MAT_TListNodeOfListOfEdge::Previous()`
+    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:45 - `MAT_TListNodeOfListOfEdge::Previous()`
     pub fn previous_handlemattlistnodeoflistofedge(
         &mut self,
-        atlistnode: &crate::ffi_types::HandleMATTListNodeOfListOfEdge,
+        atlistnode: &crate::ffi_types::Handle_MAT_TListNodeOfListOfEdge,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfEdge_previous_handlemattlistnodeoflistofedge(self as *mut Self, atlistnode)
         })
     }
 
-    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:50 - `MAT_TListNodeOfListOfEdge::Dummy()`
+    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:47 - `MAT_TListNodeOfListOfEdge::Dummy()`
     pub fn dummy(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfEdge_dummy(self as *const Self)
         })
     }
 
-    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:52 - `MAT_TListNodeOfListOfEdge::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:49 - `MAT_TListNodeOfListOfEdge::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfEdge_dynamic_type(
@@ -3280,7 +3279,7 @@ impl TListNodeOfListOfEdge {
         }
     }
 
-    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:52 - `MAT_TListNodeOfListOfEdge::get_type_name()`
+    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:49 - `MAT_TListNodeOfListOfEdge::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -3291,8 +3290,8 @@ impl TListNodeOfListOfEdge {
         .into_owned()
     }
 
-    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:52 - `MAT_TListNodeOfListOfEdge::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:49 - `MAT_TListNodeOfListOfEdge::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfEdge_get_type_descriptor(),
@@ -3325,7 +3324,7 @@ impl TListNodeOfListOfEdge {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMATTListNodeOfListOfEdge> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_TListNodeOfListOfEdge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfEdge_to_handle(obj.into_raw()),
@@ -3333,8 +3332,8 @@ impl TListNodeOfListOfEdge {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfEdge_inherited_IsInstance(
                 self as *const Self,
@@ -3343,8 +3342,8 @@ impl TListNodeOfListOfEdge {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfEdge_inherited_IsKind(
                 self as *const Self,
@@ -3353,7 +3352,7 @@ impl TListNodeOfListOfEdge {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3369,7 +3368,7 @@ impl TListNodeOfListOfEdge {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfEdge_inherited_GetRefCount(
@@ -3378,7 +3377,7 @@ impl TListNodeOfListOfEdge {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfEdge_inherited_IncrementRefCounter(
@@ -3387,7 +3386,7 @@ impl TListNodeOfListOfEdge {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfEdge_inherited_DecrementRefCounter(
@@ -3396,7 +3395,7 @@ impl TListNodeOfListOfEdge {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_TListNodeOfListOfEdge_inherited_Delete(
@@ -3406,40 +3405,44 @@ impl TListNodeOfListOfEdge {
     }
 }
 
-pub use crate::ffi_types::HandleMATTListNodeOfListOfEdge;
+pub use crate::ffi_types::Handle_MAT_TListNodeOfListOfEdge;
 
-unsafe impl crate::CppDeletable for HandleMATTListNodeOfListOfEdge {
+unsafe impl crate::CppDeletable for Handle_MAT_TListNodeOfListOfEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKTopAlgo::HandleMATTListNodeOfListOfEdge_destructor(ptr);
+            crate::ffi_extern_TKTopAlgo::Handle_MAT_TListNodeOfListOfEdge_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleMATTListNodeOfListOfEdge {
+unsafe impl crate::CppCopyable for Handle_MAT_TListNodeOfListOfEdge {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATTListNodeOfListOfEdge_clone(
-                ptr,
-            ))
+            crate::check_result(
+                crate::ffi_extern_TKTopAlgo::Handle_MAT_TListNodeOfListOfEdge_clone(ptr),
+            )
         }
     }
 }
 
-impl HandleMATTListNodeOfListOfEdge {
+impl Handle_MAT_TListNodeOfListOfEdge {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKTopAlgo::HandleMATTListNodeOfListOfEdge_is_null(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::Handle_MAT_TListNodeOfListOfEdge_is_null(
+                self as *const Self,
+            )
         }
     }
 
     /// Dereference this Handle to access the underlying MAT_TListNodeOfListOfEdge
     pub fn get(&self) -> &crate::ffi_types::MAT_TListNodeOfListOfEdge {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATTListNodeOfListOfEdge_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::Handle_MAT_TListNodeOfListOfEdge_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3447,7 +3450,7 @@ impl HandleMATTListNodeOfListOfEdge {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::MAT_TListNodeOfListOfEdge {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleMATTListNodeOfListOfEdge_get_mut(
+                crate::ffi_extern_TKTopAlgo::Handle_MAT_TListNodeOfListOfEdge_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -3457,9 +3460,9 @@ impl HandleMATTListNodeOfListOfEdge {
     /// Upcast Handle<MAT_TListNodeOfListOfEdge> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATTListNodeOfListOfEdge_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_MAT_TListNodeOfListOfEdge_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -3468,7 +3471,7 @@ impl HandleMATTListNodeOfListOfEdge {
 // From MAT_Zone.hxx
 // ========================
 
-/// **Source:** `MAT_Zone.hxx`:38 - `MAT_Zone`
+/// **Source:** `MAT_Zone.hxx`:36 - `MAT_Zone`
 /// Definition of Zone of Proximity of a BasicElt :
 /// ----------------------------------------------
 /// A Zone of proximity is the set of the points which are
@@ -3484,7 +3487,7 @@ unsafe impl crate::CppDeletable for Zone {
 }
 
 impl Zone {
-    /// **Source:** `MAT_Zone.hxx`:42 - `MAT_Zone::MAT_Zone()`
+    /// **Source:** `MAT_Zone.hxx`:40 - `MAT_Zone::MAT_Zone()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3493,10 +3496,10 @@ impl Zone {
         }
     }
 
-    /// **Source:** `MAT_Zone.hxx`:45 - `MAT_Zone::MAT_Zone()`
+    /// **Source:** `MAT_Zone.hxx`:43 - `MAT_Zone::MAT_Zone()`
     /// Compute the frontier of the Zone of proximity.
     pub fn new_handlematbasicelt(
-        aBasicElt: &crate::ffi_types::HandleMATBasicElt,
+        aBasicElt: &crate::ffi_types::Handle_MAT_BasicElt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3505,15 +3508,15 @@ impl Zone {
         }
     }
 
-    /// **Source:** `MAT_Zone.hxx`:48 - `MAT_Zone::Perform()`
+    /// **Source:** `MAT_Zone.hxx`:46 - `MAT_Zone::Perform()`
     /// Compute the frontier of the Zone of proximity.
-    pub fn perform(&mut self, aBasicElt: &crate::ffi_types::HandleMATBasicElt) {
+    pub fn perform(&mut self, aBasicElt: &crate::ffi_types::Handle_MAT_BasicElt) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Zone_perform(self as *mut Self, aBasicElt)
         })
     }
 
-    /// **Source:** `MAT_Zone.hxx`:51 - `MAT_Zone::NumberOfArcs()`
+    /// **Source:** `MAT_Zone.hxx`:49 - `MAT_Zone::NumberOfArcs()`
     /// Return the number Of Arcs On the frontier of <me>.
     pub fn number_of_arcs(&self) -> i32 {
         crate::check_result(unsafe {
@@ -3521,10 +3524,10 @@ impl Zone {
         })
     }
 
-    /// **Source:** `MAT_Zone.hxx`:55 - `MAT_Zone::ArcOnFrontier()`
-    /// Return the  Arc number <Index>  on the frontier.
-    /// of  <me>.
-    pub fn arc_on_frontier(&self, Index: i32) -> crate::OwnedPtr<crate::ffi_types::HandleMATArc> {
+    /// **Source:** `MAT_Zone.hxx`:53 - `MAT_Zone::ArcOnFrontier()`
+    /// Return the Arc number <Index> on the frontier.
+    /// of <me>.
+    pub fn arc_on_frontier(&self, Index: i32) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Arc> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_Zone_arc_on_frontier(self as *const Self, Index),
@@ -3532,7 +3535,7 @@ impl Zone {
         }
     }
 
-    /// **Source:** `MAT_Zone.hxx`:58 - `MAT_Zone::NoEmptyZone()`
+    /// **Source:** `MAT_Zone.hxx`:56 - `MAT_Zone::NoEmptyZone()`
     /// Return TRUE if <me> is not empty .
     pub fn no_empty_zone(&self) -> bool {
         crate::check_result(unsafe {
@@ -3540,7 +3543,7 @@ impl Zone {
         })
     }
 
-    /// **Source:** `MAT_Zone.hxx`:61 - `MAT_Zone::Limited()`
+    /// **Source:** `MAT_Zone.hxx`:59 - `MAT_Zone::Limited()`
     /// Return TRUE if <me> is Limited.
     pub fn limited(&self) -> bool {
         crate::check_result(unsafe {
@@ -3548,8 +3551,8 @@ impl Zone {
         })
     }
 
-    /// **Source:** `MAT_Zone.hxx`:63 - `MAT_Zone::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `MAT_Zone.hxx`:61 - `MAT_Zone::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::MAT_Zone_dynamic_type(
                 self as *const Self,
@@ -3557,7 +3560,7 @@ impl Zone {
         }
     }
 
-    /// **Source:** `MAT_Zone.hxx`:63 - `MAT_Zone::get_type_name()`
+    /// **Source:** `MAT_Zone.hxx`:61 - `MAT_Zone::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -3568,8 +3571,8 @@ impl Zone {
         .into_owned()
     }
 
-    /// **Source:** `MAT_Zone.hxx`:63 - `MAT_Zone::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `MAT_Zone.hxx`:61 - `MAT_Zone::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::MAT_Zone_get_type_descriptor()))
         }
@@ -3596,7 +3599,7 @@ impl Zone {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMATZone> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_MAT_Zone> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::MAT_Zone_to_handle(obj.into_raw()),
@@ -3604,21 +3607,21 @@ impl Zone {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Zone_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Zone_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3632,28 +3635,28 @@ impl Zone {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Zone_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Zone_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Zone_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::MAT_Zone_inherited_Delete(self as *const Self)
@@ -3661,32 +3664,32 @@ impl Zone {
     }
 }
 
-pub use crate::ffi_types::HandleMATZone;
+pub use crate::ffi_types::Handle_MAT_Zone;
 
-unsafe impl crate::CppDeletable for HandleMATZone {
+unsafe impl crate::CppDeletable for Handle_MAT_Zone {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKTopAlgo::HandleMATZone_destructor(ptr);
+            crate::ffi_extern_TKTopAlgo::Handle_MAT_Zone_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleMATZone {
+unsafe impl crate::CppCopyable for Handle_MAT_Zone {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATZone_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_MAT_Zone_clone(ptr)) }
     }
 }
 
-impl HandleMATZone {
+impl Handle_MAT_Zone {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKTopAlgo::HandleMATZone_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKTopAlgo::Handle_MAT_Zone_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying MAT_Zone
     pub fn get(&self) -> &crate::ffi_types::MAT_Zone {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATZone_get(
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_MAT_Zone_get(
                 self as *const Self,
             ))
         }
@@ -3695,7 +3698,7 @@ impl HandleMATZone {
     /// Dereference this Handle to mutably access the underlying MAT_Zone
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::MAT_Zone {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMATZone_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_MAT_Zone_get_mut(
                 self as *mut Self,
             ))
         }
@@ -3704,22 +3707,13 @@ impl HandleMATZone {
     /// Upcast Handle<MAT_Zone> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleMATZone_to_HandleStandardTransient(
+                crate::ffi_extern_TKTopAlgo::Handle_MAT_Zone_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
         }
     }
 }
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi_types::{
-    MAT_DataMapOfIntegerBasicElt as DataMapOfIntegerBasicElt, MAT_SequenceOfArc as SequenceOfArc,
-    MAT_SequenceOfBasicElt as SequenceOfBasicElt,
-};

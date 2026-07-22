@@ -10,90 +10,90 @@ use crate::ffi_types::*;
 unsafe extern "C" {
     // ======================== DE_ConfigurationContext ========================
     pub fn DE_ConfigurationContext_destructor(self_: *mut DE_ConfigurationContext);
-    /// **Source:** `DE_ConfigurationContext.hxx`:34 - `DE_ConfigurationContext::DE_ConfigurationContext()`
+    /// **Source:** `DE_ConfigurationContext.hxx`:33 - `DE_ConfigurationContext::DE_ConfigurationContext()`
     pub fn DE_ConfigurationContext_ctor() -> crate::OcctResult<*mut DE_ConfigurationContext>;
-    /// **Source:** `DE_ConfigurationContext.hxx`:31 - `DE_ConfigurationContext::DynamicType()`
+    /// **Source:** `DE_ConfigurationContext.hxx`:30 - `DE_ConfigurationContext::DynamicType()`
     pub fn DE_ConfigurationContext_dynamic_type(
         self_: *const DE_ConfigurationContext,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `DE_ConfigurationContext.hxx`:40 - `DE_ConfigurationContext::Load()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `DE_ConfigurationContext.hxx`:39 - `DE_ConfigurationContext::Load()`
     pub fn DE_ConfigurationContext_load(
         self_: *mut DE_ConfigurationContext,
         theConfiguration: *const TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_ConfigurationContext.hxx`:46 - `DE_ConfigurationContext::LoadFile()`
+    /// **Source:** `DE_ConfigurationContext.hxx`:45 - `DE_ConfigurationContext::LoadFile()`
     pub fn DE_ConfigurationContext_load_file(
         self_: *mut DE_ConfigurationContext,
         theFile: *const TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_ConfigurationContext.hxx`:52 - `DE_ConfigurationContext::LoadStr()`
+    /// **Source:** `DE_ConfigurationContext.hxx`:51 - `DE_ConfigurationContext::LoadStr()`
     pub fn DE_ConfigurationContext_load_str(
         self_: *mut DE_ConfigurationContext,
         theResource: *const TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_ConfigurationContext.hxx`:58 - `DE_ConfigurationContext::IsParamSet()`
+    /// **Source:** `DE_ConfigurationContext.hxx`:57 - `DE_ConfigurationContext::IsParamSet()`
     pub fn DE_ConfigurationContext_is_param_set(
         self_: *const DE_ConfigurationContext,
         theParam: *const TCollection_AsciiString,
         theScope: *const TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_ConfigurationContext.hxx`:66 - `DE_ConfigurationContext::GetReal()`
+    /// **Source:** `DE_ConfigurationContext.hxx`:65 - `DE_ConfigurationContext::GetReal()`
     pub fn DE_ConfigurationContext_get_real(
         self_: *const DE_ConfigurationContext,
         theParam: *const TCollection_AsciiString,
         theValue: *mut f64,
         theScope: *const TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_ConfigurationContext.hxx`:75 - `DE_ConfigurationContext::GetInteger()`
+    /// **Source:** `DE_ConfigurationContext.hxx`:74 - `DE_ConfigurationContext::GetInteger()`
     pub fn DE_ConfigurationContext_get_integer(
         self_: *const DE_ConfigurationContext,
         theParam: *const TCollection_AsciiString,
         theValue: *mut i32,
         theScope: *const TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_ConfigurationContext.hxx`:84 - `DE_ConfigurationContext::GetBoolean()`
+    /// **Source:** `DE_ConfigurationContext.hxx`:83 - `DE_ConfigurationContext::GetBoolean()`
     pub fn DE_ConfigurationContext_get_boolean(
         self_: *const DE_ConfigurationContext,
         theParam: *const TCollection_AsciiString,
         theValue: *mut bool,
         theScope: *const TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_ConfigurationContext.hxx`:93 - `DE_ConfigurationContext::GetString()`
+    /// **Source:** `DE_ConfigurationContext.hxx`:92 - `DE_ConfigurationContext::GetString()`
     pub fn DE_ConfigurationContext_get_string(
         self_: *const DE_ConfigurationContext,
         theParam: *const TCollection_AsciiString,
         theValue: *mut TCollection_AsciiString,
         theScope: *const TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_ConfigurationContext.hxx`:102 - `DE_ConfigurationContext::GetStringSeq()`
+    /// **Source:** `DE_ConfigurationContext.hxx`:101 - `DE_ConfigurationContext::GetStringSeq()`
     pub fn DE_ConfigurationContext_get_string_seq(
         self_: *const DE_ConfigurationContext,
         theParam: *const TCollection_AsciiString,
-        theValue: *mut TColStd_ListOfAsciiString,
+        theValue: *mut NCollection_List_TCollection_AsciiString,
         theScope: *const TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_ConfigurationContext.hxx`:111 - `DE_ConfigurationContext::RealVal()`
+    /// **Source:** `DE_ConfigurationContext.hxx`:110 - `DE_ConfigurationContext::RealVal()`
     pub fn DE_ConfigurationContext_real_val(
         self_: *const DE_ConfigurationContext,
         theParam: *const TCollection_AsciiString,
         theDefValue: f64,
         theScope: *const TCollection_AsciiString,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `DE_ConfigurationContext.hxx`:120 - `DE_ConfigurationContext::IntegerVal()`
+    /// **Source:** `DE_ConfigurationContext.hxx`:119 - `DE_ConfigurationContext::IntegerVal()`
     pub fn DE_ConfigurationContext_integer_val(
         self_: *const DE_ConfigurationContext,
         theParam: *const TCollection_AsciiString,
         theDefValue: i32,
         theScope: *const TCollection_AsciiString,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `DE_ConfigurationContext.hxx`:129 - `DE_ConfigurationContext::BooleanVal()`
+    /// **Source:** `DE_ConfigurationContext.hxx`:128 - `DE_ConfigurationContext::BooleanVal()`
     pub fn DE_ConfigurationContext_boolean_val(
         self_: *const DE_ConfigurationContext,
         theParam: *const TCollection_AsciiString,
         theDefValue: bool,
         theScope: *const TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_ConfigurationContext.hxx`:139 - `DE_ConfigurationContext::StringVal()`
+    /// **Source:** `DE_ConfigurationContext.hxx`:138 - `DE_ConfigurationContext::StringVal()`
     pub fn DE_ConfigurationContext_string_val(
         self_: *const DE_ConfigurationContext,
         theParam: *const TCollection_AsciiString,
@@ -103,12 +103,12 @@ unsafe extern "C" {
     /// **Source:** `DE_ConfigurationContext.hxx`:145 - `DE_ConfigurationContext::GetInternalMap()`
     pub fn DE_ConfigurationContext_get_internal_map(
         self_: *const DE_ConfigurationContext,
-    ) -> crate::OcctResult<*const DE_ResourceMap>;
-    /// **Source:** `DE_ConfigurationContext.hxx`:31 - `DE_ConfigurationContext::get_type_name()`
+    ) -> crate::OcctResult<*const NCollection_DataMap_TCollection_AsciiString_TCollection_AsciiString>;
+    /// **Source:** `DE_ConfigurationContext.hxx`:30 - `DE_ConfigurationContext::get_type_name()`
     pub fn DE_ConfigurationContext_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `DE_ConfigurationContext.hxx`:31 - `DE_ConfigurationContext::get_type_descriptor()`
+    /// **Source:** `DE_ConfigurationContext.hxx`:30 - `DE_ConfigurationContext::get_type_descriptor()`
     pub fn DE_ConfigurationContext_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast DE_ConfigurationContext to Standard_Transient
     pub fn DE_ConfigurationContext_as_Standard_Transient(
         self_: *const DE_ConfigurationContext,
@@ -120,145 +120,161 @@ unsafe extern "C" {
     /// Wrap DE_ConfigurationContext in a Handle
     pub fn DE_ConfigurationContext_to_handle(
         obj: *mut DE_ConfigurationContext,
-    ) -> crate::OcctResult<*mut HandleDEConfigurationContext>;
+    ) -> crate::OcctResult<*mut Handle_DE_ConfigurationContext>;
     /// Destroy Handle<DE_ConfigurationContext>
-    pub fn HandleDEConfigurationContext_destructor(self_: *mut HandleDEConfigurationContext);
+    pub fn Handle_DE_ConfigurationContext_destructor(self_: *mut Handle_DE_ConfigurationContext);
     /// Clone Handle<DE_ConfigurationContext> (increments reference count)
-    pub fn HandleDEConfigurationContext_clone(
-        self_: *const HandleDEConfigurationContext,
-    ) -> crate::OcctResult<*mut HandleDEConfigurationContext>;
+    pub fn Handle_DE_ConfigurationContext_clone(
+        self_: *const Handle_DE_ConfigurationContext,
+    ) -> crate::OcctResult<*mut Handle_DE_ConfigurationContext>;
     /// Check if Handle<DE_ConfigurationContext> is null
-    pub fn HandleDEConfigurationContext_is_null(self_: *const HandleDEConfigurationContext)
-        -> bool;
+    pub fn Handle_DE_ConfigurationContext_is_null(
+        self_: *const Handle_DE_ConfigurationContext,
+    ) -> bool;
     /// Dereference Handle to get *const DE_ConfigurationContext
-    pub fn HandleDEConfigurationContext_get(
-        handle: *const HandleDEConfigurationContext,
+    pub fn Handle_DE_ConfigurationContext_get(
+        handle: *const Handle_DE_ConfigurationContext,
     ) -> crate::OcctResult<*const DE_ConfigurationContext>;
     /// Dereference Handle to get *mut DE_ConfigurationContext
-    pub fn HandleDEConfigurationContext_get_mut(
-        handle: *mut HandleDEConfigurationContext,
+    pub fn Handle_DE_ConfigurationContext_get_mut(
+        handle: *mut Handle_DE_ConfigurationContext,
     ) -> crate::OcctResult<*mut DE_ConfigurationContext>;
     /// Upcast Handle<DE_ConfigurationContext> to Handle<Standard_Transient>
-    pub fn HandleDEConfigurationContext_to_HandleStandardTransient(
-        self_: *const HandleDEConfigurationContext,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_DE_ConfigurationContext_to_Handle_Standard_Transient(
+        self_: *const Handle_DE_ConfigurationContext,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn DE_ConfigurationContext_inherited_IsInstance(
         self_: *const DE_ConfigurationContext,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn DE_ConfigurationContext_inherited_IsKind(
         self_: *const DE_ConfigurationContext,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn DE_ConfigurationContext_inherited_This(
         self_: *const DE_ConfigurationContext,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn DE_ConfigurationContext_inherited_GetRefCount(
         self_: *const DE_ConfigurationContext,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn DE_ConfigurationContext_inherited_IncrementRefCounter(
         self_: *mut DE_ConfigurationContext,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn DE_ConfigurationContext_inherited_DecrementRefCounter(
         self_: *mut DE_ConfigurationContext,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn DE_ConfigurationContext_inherited_Delete(
         self_: *const DE_ConfigurationContext,
     ) -> *const std::ffi::c_char;
     // ======================== DE_ConfigurationNode ========================
     pub fn DE_ConfigurationNode_destructor(self_: *mut DE_ConfigurationNode);
-    /// **Source:** `DE_ConfigurationNode.hxx`:51 - `DE_ConfigurationNode::DynamicType()`
+    /// **Source:** `DE_ConfigurationNode.hxx`:53 - `DE_ConfigurationNode::DynamicType()`
     pub fn DE_ConfigurationNode_dynamic_type(
         self_: *const DE_ConfigurationNode,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `DE_ConfigurationNode.hxx`:63 - `DE_ConfigurationNode::Load()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `DE_ConfigurationNode.hxx`:66 - `DE_ConfigurationNode::Load()`
     pub fn DE_ConfigurationNode_load_asciistring(
         self_: *mut DE_ConfigurationNode,
         theResourcePath: *const TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_ConfigurationNode.hxx`:68 - `DE_ConfigurationNode::Load()`
+    /// **Source:** `DE_ConfigurationNode.hxx`:71 - `DE_ConfigurationNode::Load()`
     pub fn DE_ConfigurationNode_load_handledeconfigurationcontext(
         self_: *mut DE_ConfigurationNode,
-        theResource: *const HandleDEConfigurationContext,
+        theResource: *const Handle_DE_ConfigurationContext,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_ConfigurationNode.hxx`:73 - `DE_ConfigurationNode::Save()`
+    /// **Source:** `DE_ConfigurationNode.hxx`:76 - `DE_ConfigurationNode::Save()`
     pub fn DE_ConfigurationNode_save_asciistring(
         self_: *const DE_ConfigurationNode,
         theResourcePath: *const TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_ConfigurationNode.hxx`:77 - `DE_ConfigurationNode::Save()`
+    /// **Source:** `DE_ConfigurationNode.hxx`:80 - `DE_ConfigurationNode::Save()`
     pub fn DE_ConfigurationNode_save(
         self_: *const DE_ConfigurationNode,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `DE_ConfigurationNode.hxx`:81 - `DE_ConfigurationNode::BuildProvider()`
+    /// **Source:** `DE_ConfigurationNode.hxx`:84 - `DE_ConfigurationNode::BuildProvider()`
     pub fn DE_ConfigurationNode_build_provider(
         self_: *mut DE_ConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEProvider>;
-    /// **Source:** `DE_ConfigurationNode.hxx`:85 - `DE_ConfigurationNode::Copy()`
+    ) -> crate::OcctResult<*mut Handle_DE_Provider>;
+    /// **Source:** `DE_ConfigurationNode.hxx`:88 - `DE_ConfigurationNode::Copy()`
     pub fn DE_ConfigurationNode_copy(
         self_: *const DE_ConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEConfigurationNode>;
-    /// **Source:** `DE_ConfigurationNode.hxx`:91 - `DE_ConfigurationNode::UpdateLoad()`
+    ) -> crate::OcctResult<*mut Handle_DE_ConfigurationNode>;
+    /// **Source:** `DE_ConfigurationNode.hxx`:94 - `DE_ConfigurationNode::UpdateLoad()`
     pub fn DE_ConfigurationNode_update_load(
         self_: *mut DE_ConfigurationNode,
         theToImport: bool,
         theToKeep: bool,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_ConfigurationNode.hxx`:97 - `DE_ConfigurationNode::IsImportSupported()`
+    /// **Source:** `DE_ConfigurationNode.hxx`:99 - `DE_ConfigurationNode::IsImportSupported()`
     pub fn DE_ConfigurationNode_is_import_supported(
         self_: *const DE_ConfigurationNode,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_ConfigurationNode.hxx`:101 - `DE_ConfigurationNode::IsExportSupported()`
+    /// **Source:** `DE_ConfigurationNode.hxx`:103 - `DE_ConfigurationNode::IsExportSupported()`
     pub fn DE_ConfigurationNode_is_export_supported(
         self_: *const DE_ConfigurationNode,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_ConfigurationNode.hxx`:105 - `DE_ConfigurationNode::GetFormat()`
+    /// **Source:** `DE_ConfigurationNode.hxx`:107 - `DE_ConfigurationNode::IsStreamSupported()`
+    pub fn DE_ConfigurationNode_is_stream_supported(
+        self_: *const DE_ConfigurationNode,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DE_ConfigurationNode.hxx`:111 - `DE_ConfigurationNode::GetFormat()`
     pub fn DE_ConfigurationNode_get_format(
         self_: *const DE_ConfigurationNode,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `DE_ConfigurationNode.hxx`:109 - `DE_ConfigurationNode::GetVendor()`
+    /// **Source:** `DE_ConfigurationNode.hxx`:115 - `DE_ConfigurationNode::GetVendor()`
     pub fn DE_ConfigurationNode_get_vendor(
         self_: *const DE_ConfigurationNode,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `DE_ConfigurationNode.hxx`:113 - `DE_ConfigurationNode::GetExtensions()`
+    /// **Source:** `DE_ConfigurationNode.hxx`:119 - `DE_ConfigurationNode::GetExtensions()`
     pub fn DE_ConfigurationNode_get_extensions(
         self_: *const DE_ConfigurationNode,
-    ) -> crate::OcctResult<*mut TColStd_ListOfAsciiString>;
-    /// **Source:** `DE_ConfigurationNode.hxx`:118 - `DE_ConfigurationNode::CheckExtension()`
+    ) -> crate::OcctResult<*mut NCollection_List_TCollection_AsciiString>;
+    /// **Source:** `DE_ConfigurationNode.hxx`:124 - `DE_ConfigurationNode::CheckExtension()`
     pub fn DE_ConfigurationNode_check_extension(
         self_: *const DE_ConfigurationNode,
         theExtension: *const TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_ConfigurationNode.hxx`:123 - `DE_ConfigurationNode::CheckContent()`
+    /// **Source:** `DE_ConfigurationNode.hxx`:129 - `DE_ConfigurationNode::CheckContent()`
     pub fn DE_ConfigurationNode_check_content(
         self_: *const DE_ConfigurationNode,
-        theBuffer: *const HandleNCollectionBuffer,
+        theBuffer: *const Handle_NCollection_Buffer,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_ConfigurationNode.hxx`:128 - `DE_ConfigurationNode::IsEnabled()`
+    /// **Source:** `DE_ConfigurationNode.hxx`:134 - `DE_ConfigurationNode::IsEnabled()`
     pub fn DE_ConfigurationNode_is_enabled(
         self_: *const DE_ConfigurationNode,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_ConfigurationNode.hxx`:132 - `DE_ConfigurationNode::SetEnabled()`
+    /// **Source:** `DE_ConfigurationNode.hxx`:138 - `DE_ConfigurationNode::SetEnabled()`
     pub fn DE_ConfigurationNode_set_enabled(
         self_: *mut DE_ConfigurationNode,
         theIsLoaded: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `DE_ConfigurationNode.hxx`:141 - `DE_ConfigurationNode::CustomActivation()`
+    /// **Source:** `DE_ConfigurationNode.hxx`:147 - `DE_ConfigurationNode::CustomActivation()`
     pub fn DE_ConfigurationNode_custom_activation(
         self_: *mut DE_ConfigurationNode,
-        arg0: *const TColStd_ListOfAsciiString,
+        arg0: *const NCollection_List_TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `DE_ConfigurationNode.hxx`:51 - `DE_ConfigurationNode::get_type_name()`
+    /// **Source:** `DE_ConfigurationNode.hxx`:164 - `DE_ConfigurationNode::Register()`
+    pub fn DE_ConfigurationNode_register(
+        self_: *const DE_ConfigurationNode,
+        theWrapper: *const Handle_DE_Wrapper,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `DE_ConfigurationNode.hxx`:168 - `DE_ConfigurationNode::UnRegister()`
+    pub fn DE_ConfigurationNode_un_register(
+        self_: *const DE_ConfigurationNode,
+        theWrapper: *const Handle_DE_Wrapper,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `DE_ConfigurationNode.hxx`:53 - `DE_ConfigurationNode::get_type_name()`
     pub fn DE_ConfigurationNode_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `DE_ConfigurationNode.hxx`:51 - `DE_ConfigurationNode::get_type_descriptor()`
-    pub fn DE_ConfigurationNode_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `DE_ConfigurationNode.hxx`:53 - `DE_ConfigurationNode::get_type_descriptor()`
+    pub fn DE_ConfigurationNode_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast DE_ConfigurationNode to Standard_Transient
     pub fn DE_ConfigurationNode_as_Standard_Transient(
         self_: *const DE_ConfigurationNode,
@@ -268,92 +284,88 @@ unsafe extern "C" {
         self_: *mut DE_ConfigurationNode,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<DE_ConfigurationNode>
-    pub fn HandleDEConfigurationNode_destructor(self_: *mut HandleDEConfigurationNode);
+    pub fn Handle_DE_ConfigurationNode_destructor(self_: *mut Handle_DE_ConfigurationNode);
     /// Clone Handle<DE_ConfigurationNode> (increments reference count)
-    pub fn HandleDEConfigurationNode_clone(
-        self_: *const HandleDEConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEConfigurationNode>;
+    pub fn Handle_DE_ConfigurationNode_clone(
+        self_: *const Handle_DE_ConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_DE_ConfigurationNode>;
     /// Check if Handle<DE_ConfigurationNode> is null
-    pub fn HandleDEConfigurationNode_is_null(self_: *const HandleDEConfigurationNode) -> bool;
+    pub fn Handle_DE_ConfigurationNode_is_null(self_: *const Handle_DE_ConfigurationNode) -> bool;
     /// Dereference Handle to get *const DE_ConfigurationNode
-    pub fn HandleDEConfigurationNode_get(
-        handle: *const HandleDEConfigurationNode,
+    pub fn Handle_DE_ConfigurationNode_get(
+        handle: *const Handle_DE_ConfigurationNode,
     ) -> crate::OcctResult<*const DE_ConfigurationNode>;
     /// Dereference Handle to get *mut DE_ConfigurationNode
-    pub fn HandleDEConfigurationNode_get_mut(
-        handle: *mut HandleDEConfigurationNode,
+    pub fn Handle_DE_ConfigurationNode_get_mut(
+        handle: *mut Handle_DE_ConfigurationNode,
     ) -> crate::OcctResult<*mut DE_ConfigurationNode>;
     /// Upcast Handle<DE_ConfigurationNode> to Handle<Standard_Transient>
-    pub fn HandleDEConfigurationNode_to_HandleStandardTransient(
-        self_: *const HandleDEConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_DE_ConfigurationNode_to_Handle_Standard_Transient(
+        self_: *const Handle_DE_ConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<DE_ConfigurationNode> to Handle<DEBREP_ConfigurationNode> (returns null on failure)
-    pub fn HandleDEConfigurationNode_downcast_to_HandleDEBREPConfigurationNode(
-        self_: *const HandleDEConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEBREPConfigurationNode>;
-    /// Downcast Handle<DE_ConfigurationNode> to Handle<DEGLTF_ConfigurationNode> (returns null on failure)
-    pub fn HandleDEConfigurationNode_downcast_to_HandleDEGLTFConfigurationNode(
-        self_: *const HandleDEConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEGLTFConfigurationNode>;
+    pub fn Handle_DE_ConfigurationNode_downcast_to_Handle_DEBREP_ConfigurationNode(
+        self_: *const Handle_DE_ConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_DEBREP_ConfigurationNode>;
     /// Downcast Handle<DE_ConfigurationNode> to Handle<DEIGES_ConfigurationNode> (returns null on failure)
-    pub fn HandleDEConfigurationNode_downcast_to_HandleDEIGESConfigurationNode(
-        self_: *const HandleDEConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEIGESConfigurationNode>;
+    pub fn Handle_DE_ConfigurationNode_downcast_to_Handle_DEIGES_ConfigurationNode(
+        self_: *const Handle_DE_ConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_DEIGES_ConfigurationNode>;
     /// Downcast Handle<DE_ConfigurationNode> to Handle<DEOBJ_ConfigurationNode> (returns null on failure)
-    pub fn HandleDEConfigurationNode_downcast_to_HandleDEOBJConfigurationNode(
-        self_: *const HandleDEConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEOBJConfigurationNode>;
+    pub fn Handle_DE_ConfigurationNode_downcast_to_Handle_DEOBJ_ConfigurationNode(
+        self_: *const Handle_DE_ConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_DEOBJ_ConfigurationNode>;
     /// Downcast Handle<DE_ConfigurationNode> to Handle<DEPLY_ConfigurationNode> (returns null on failure)
-    pub fn HandleDEConfigurationNode_downcast_to_HandleDEPLYConfigurationNode(
-        self_: *const HandleDEConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEPLYConfigurationNode>;
+    pub fn Handle_DE_ConfigurationNode_downcast_to_Handle_DEPLY_ConfigurationNode(
+        self_: *const Handle_DE_ConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_DEPLY_ConfigurationNode>;
     /// Downcast Handle<DE_ConfigurationNode> to Handle<DESTEP_ConfigurationNode> (returns null on failure)
-    pub fn HandleDEConfigurationNode_downcast_to_HandleDESTEPConfigurationNode(
-        self_: *const HandleDEConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDESTEPConfigurationNode>;
+    pub fn Handle_DE_ConfigurationNode_downcast_to_Handle_DESTEP_ConfigurationNode(
+        self_: *const Handle_DE_ConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_DESTEP_ConfigurationNode>;
     /// Downcast Handle<DE_ConfigurationNode> to Handle<DESTL_ConfigurationNode> (returns null on failure)
-    pub fn HandleDEConfigurationNode_downcast_to_HandleDESTLConfigurationNode(
-        self_: *const HandleDEConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDESTLConfigurationNode>;
+    pub fn Handle_DE_ConfigurationNode_downcast_to_Handle_DESTL_ConfigurationNode(
+        self_: *const Handle_DE_ConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_DESTL_ConfigurationNode>;
     /// Downcast Handle<DE_ConfigurationNode> to Handle<DEVRML_ConfigurationNode> (returns null on failure)
-    pub fn HandleDEConfigurationNode_downcast_to_HandleDEVRMLConfigurationNode(
-        self_: *const HandleDEConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEVRMLConfigurationNode>;
+    pub fn Handle_DE_ConfigurationNode_downcast_to_Handle_DEVRML_ConfigurationNode(
+        self_: *const Handle_DE_ConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_DEVRML_ConfigurationNode>;
     /// Downcast Handle<DE_ConfigurationNode> to Handle<DEXCAF_ConfigurationNode> (returns null on failure)
-    pub fn HandleDEConfigurationNode_downcast_to_HandleDEXCAFConfigurationNode(
-        self_: *const HandleDEConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEXCAFConfigurationNode>;
+    pub fn Handle_DE_ConfigurationNode_downcast_to_Handle_DEXCAF_ConfigurationNode(
+        self_: *const Handle_DE_ConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_DEXCAF_ConfigurationNode>;
     /// Downcast Handle<DE_ConfigurationNode> to Handle<DE_ShapeFixConfigurationNode> (returns null on failure)
-    pub fn HandleDEConfigurationNode_downcast_to_HandleDEShapeFixConfigurationNode(
-        self_: *const HandleDEConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEShapeFixConfigurationNode>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_DE_ConfigurationNode_downcast_to_Handle_DE_ShapeFixConfigurationNode(
+        self_: *const Handle_DE_ConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_DE_ShapeFixConfigurationNode>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn DE_ConfigurationNode_inherited_IsInstance(
         self_: *const DE_ConfigurationNode,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn DE_ConfigurationNode_inherited_IsKind(
         self_: *const DE_ConfigurationNode,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn DE_ConfigurationNode_inherited_This(
         self_: *const DE_ConfigurationNode,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn DE_ConfigurationNode_inherited_GetRefCount(
         self_: *const DE_ConfigurationNode,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn DE_ConfigurationNode_inherited_IncrementRefCounter(
         self_: *mut DE_ConfigurationNode,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn DE_ConfigurationNode_inherited_DecrementRefCounter(
         self_: *mut DE_ConfigurationNode,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn DE_ConfigurationNode_inherited_Delete(
         self_: *const DE_ConfigurationNode,
     ) -> *const std::ffi::c_char;
@@ -364,91 +376,151 @@ unsafe extern "C" {
     pub fn DE_ConfigurationNode_DE_SectionGlobal_sizeof() -> usize;
     // ======================== DE_Provider ========================
     pub fn DE_Provider_destructor(self_: *mut DE_Provider);
-    /// **Source:** `DE_Provider.hxx`:44 - `DE_Provider::DynamicType()`
+    /// **Source:** `DE_Provider.hxx`:47 - `DE_Provider::DynamicType()`
     pub fn DE_Provider_dynamic_type(
         self_: *const DE_Provider,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `DE_Provider.hxx`:62 - `DE_Provider::Read()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `DE_Provider.hxx`:104 - `DE_Provider::Read()`
     pub fn DE_Provider_read_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
         self_: *mut DE_Provider,
         thePath: *const TCollection_AsciiString,
-        theDocument: *const HandleTDocStdDocument,
-        theWS: *mut HandleXSControlWorkSession,
+        theDocument: *const Handle_TDocStd_Document,
+        theWS: *mut Handle_XSControl_WorkSession,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_Provider.hxx`:74 - `DE_Provider::Write()`
+    /// **Source:** `DE_Provider.hxx`:116 - `DE_Provider::Write()`
     pub fn DE_Provider_write_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
         self_: *mut DE_Provider,
         thePath: *const TCollection_AsciiString,
-        theDocument: *const HandleTDocStdDocument,
-        theWS: *mut HandleXSControlWorkSession,
+        theDocument: *const Handle_TDocStd_Document,
+        theWS: *mut Handle_XSControl_WorkSession,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_Provider.hxx`:85 - `DE_Provider::Read()`
+    /// **Source:** `DE_Provider.hxx`:128 - `DE_Provider::Read()`
+    pub fn DE_Provider_read_readstreamlist_handletdocstddocument_handlexscontrolworksession_progressrange(
+        self_: *mut DE_Provider,
+        theStreams: *mut DE_Provider_ReadStreamList,
+        theDocument: *const Handle_TDocStd_Document,
+        theWS: *mut Handle_XSControl_WorkSession,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DE_Provider.hxx`:140 - `DE_Provider::Write()`
+    pub fn DE_Provider_write_writestreamlist_handletdocstddocument_handlexscontrolworksession_progressrange(
+        self_: *mut DE_Provider,
+        theStreams: *mut DE_Provider_WriteStreamList,
+        theDocument: *const Handle_TDocStd_Document,
+        theWS: *mut Handle_XSControl_WorkSession,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DE_Provider.hxx`:151 - `DE_Provider::Read()`
     pub fn DE_Provider_read_asciistring_handletdocstddocument_progressrange(
         self_: *mut DE_Provider,
         thePath: *const TCollection_AsciiString,
-        theDocument: *const HandleTDocStdDocument,
+        theDocument: *const Handle_TDocStd_Document,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_Provider.hxx`:95 - `DE_Provider::Write()`
+    /// **Source:** `DE_Provider.hxx`:161 - `DE_Provider::Write()`
     pub fn DE_Provider_write_asciistring_handletdocstddocument_progressrange(
         self_: *mut DE_Provider,
         thePath: *const TCollection_AsciiString,
-        theDocument: *const HandleTDocStdDocument,
+        theDocument: *const Handle_TDocStd_Document,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_Provider.hxx`:106 - `DE_Provider::Read()`
+    /// **Source:** `DE_Provider.hxx`:171 - `DE_Provider::Read()`
+    pub fn DE_Provider_read_readstreamlist_handletdocstddocument_progressrange(
+        self_: *mut DE_Provider,
+        theStreams: *mut DE_Provider_ReadStreamList,
+        theDocument: *const Handle_TDocStd_Document,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DE_Provider.hxx`:181 - `DE_Provider::Write()`
+    pub fn DE_Provider_write_writestreamlist_handletdocstddocument_progressrange(
+        self_: *mut DE_Provider,
+        theStreams: *mut DE_Provider_WriteStreamList,
+        theDocument: *const Handle_TDocStd_Document,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DE_Provider.hxx`:192 - `DE_Provider::Read()`
     pub fn DE_Provider_read_asciistring_shape_handlexscontrolworksession_progressrange(
         self_: *mut DE_Provider,
         thePath: *const TCollection_AsciiString,
         theShape: *mut TopoDS_Shape,
-        theWS: *mut HandleXSControlWorkSession,
+        theWS: *mut Handle_XSControl_WorkSession,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_Provider.hxx`:118 - `DE_Provider::Write()`
+    /// **Source:** `DE_Provider.hxx`:204 - `DE_Provider::Write()`
     pub fn DE_Provider_write_asciistring_shape_handlexscontrolworksession_progressrange(
         self_: *mut DE_Provider,
         thePath: *const TCollection_AsciiString,
         theShape: *const TopoDS_Shape,
-        theWS: *mut HandleXSControlWorkSession,
+        theWS: *mut Handle_XSControl_WorkSession,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_Provider.hxx`:129 - `DE_Provider::Read()`
+    /// **Source:** `DE_Provider.hxx`:216 - `DE_Provider::Read()`
+    pub fn DE_Provider_read_readstreamlist_shape_handlexscontrolworksession_progressrange(
+        self_: *mut DE_Provider,
+        theStreams: *mut DE_Provider_ReadStreamList,
+        theShape: *mut TopoDS_Shape,
+        theWS: *mut Handle_XSControl_WorkSession,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DE_Provider.hxx`:228 - `DE_Provider::Write()`
+    pub fn DE_Provider_write_writestreamlist_shape_handlexscontrolworksession_progressrange(
+        self_: *mut DE_Provider,
+        theStreams: *mut DE_Provider_WriteStreamList,
+        theShape: *const TopoDS_Shape,
+        theWS: *mut Handle_XSControl_WorkSession,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DE_Provider.hxx`:239 - `DE_Provider::Read()`
     pub fn DE_Provider_read_asciistring_shape_progressrange(
         self_: *mut DE_Provider,
         thePath: *const TCollection_AsciiString,
         theShape: *mut TopoDS_Shape,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_Provider.hxx`:139 - `DE_Provider::Write()`
+    /// **Source:** `DE_Provider.hxx`:249 - `DE_Provider::Write()`
     pub fn DE_Provider_write_asciistring_shape_progressrange(
         self_: *mut DE_Provider,
         thePath: *const TCollection_AsciiString,
         theShape: *const TopoDS_Shape,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_Provider.hxx`:147 - `DE_Provider::GetFormat()`
+    /// **Source:** `DE_Provider.hxx`:259 - `DE_Provider::Read()`
+    pub fn DE_Provider_read_readstreamlist_shape_progressrange(
+        self_: *mut DE_Provider,
+        theStreams: *mut DE_Provider_ReadStreamList,
+        theShape: *mut TopoDS_Shape,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DE_Provider.hxx`:269 - `DE_Provider::Write()`
+    pub fn DE_Provider_write_writestreamlist_shape_progressrange(
+        self_: *mut DE_Provider,
+        theStreams: *mut DE_Provider_WriteStreamList,
+        theShape: *const TopoDS_Shape,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DE_Provider.hxx`:277 - `DE_Provider::GetFormat()`
     pub fn DE_Provider_get_format(
         self_: *const DE_Provider,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `DE_Provider.hxx`:151 - `DE_Provider::GetVendor()`
+    /// **Source:** `DE_Provider.hxx`:281 - `DE_Provider::GetVendor()`
     pub fn DE_Provider_get_vendor(
         self_: *const DE_Provider,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `DE_Provider.hxx`:155 - `DE_Provider::GetNode()`
+    /// **Source:** `DE_Provider.hxx`:285 - `DE_Provider::GetNode()`
     pub fn DE_Provider_get_node(
         self_: *const DE_Provider,
-    ) -> crate::OcctResult<*mut HandleDEConfigurationNode>;
-    /// **Source:** `DE_Provider.hxx`:159 - `DE_Provider::SetNode()`
+    ) -> crate::OcctResult<*mut Handle_DE_ConfigurationNode>;
+    /// **Source:** `DE_Provider.hxx`:289 - `DE_Provider::SetNode()`
     pub fn DE_Provider_set_node(
         self_: *mut DE_Provider,
-        theNode: *const HandleDEConfigurationNode,
+        theNode: *const Handle_DE_ConfigurationNode,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `DE_Provider.hxx`:44 - `DE_Provider::get_type_name()`
+    /// **Source:** `DE_Provider.hxx`:47 - `DE_Provider::get_type_name()`
     pub fn DE_Provider_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `DE_Provider.hxx`:44 - `DE_Provider::get_type_descriptor()`
-    pub fn DE_Provider_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `DE_Provider.hxx`:47 - `DE_Provider::get_type_descriptor()`
+    pub fn DE_Provider_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast DE_Provider to Standard_Transient
     pub fn DE_Provider_as_Standard_Transient(
         self_: *const DE_Provider,
@@ -458,107 +530,117 @@ unsafe extern "C" {
         self_: *mut DE_Provider,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<DE_Provider>
-    pub fn HandleDEProvider_destructor(self_: *mut HandleDEProvider);
+    pub fn Handle_DE_Provider_destructor(self_: *mut Handle_DE_Provider);
     /// Clone Handle<DE_Provider> (increments reference count)
-    pub fn HandleDEProvider_clone(
-        self_: *const HandleDEProvider,
-    ) -> crate::OcctResult<*mut HandleDEProvider>;
+    pub fn Handle_DE_Provider_clone(
+        self_: *const Handle_DE_Provider,
+    ) -> crate::OcctResult<*mut Handle_DE_Provider>;
     /// Check if Handle<DE_Provider> is null
-    pub fn HandleDEProvider_is_null(self_: *const HandleDEProvider) -> bool;
+    pub fn Handle_DE_Provider_is_null(self_: *const Handle_DE_Provider) -> bool;
     /// Dereference Handle to get *const DE_Provider
-    pub fn HandleDEProvider_get(
-        handle: *const HandleDEProvider,
+    pub fn Handle_DE_Provider_get(
+        handle: *const Handle_DE_Provider,
     ) -> crate::OcctResult<*const DE_Provider>;
     /// Dereference Handle to get *mut DE_Provider
-    pub fn HandleDEProvider_get_mut(
-        handle: *mut HandleDEProvider,
+    pub fn Handle_DE_Provider_get_mut(
+        handle: *mut Handle_DE_Provider,
     ) -> crate::OcctResult<*mut DE_Provider>;
     /// Upcast Handle<DE_Provider> to Handle<Standard_Transient>
-    pub fn HandleDEProvider_to_HandleStandardTransient(
-        self_: *const HandleDEProvider,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_DE_Provider_to_Handle_Standard_Transient(
+        self_: *const Handle_DE_Provider,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<DE_Provider> to Handle<DEBREP_Provider> (returns null on failure)
-    pub fn HandleDEProvider_downcast_to_HandleDEBREPProvider(
-        self_: *const HandleDEProvider,
-    ) -> crate::OcctResult<*mut HandleDEBREPProvider>;
-    /// Downcast Handle<DE_Provider> to Handle<DEGLTF_Provider> (returns null on failure)
-    pub fn HandleDEProvider_downcast_to_HandleDEGLTFProvider(
-        self_: *const HandleDEProvider,
-    ) -> crate::OcctResult<*mut HandleDEGLTFProvider>;
+    pub fn Handle_DE_Provider_downcast_to_Handle_DEBREP_Provider(
+        self_: *const Handle_DE_Provider,
+    ) -> crate::OcctResult<*mut Handle_DEBREP_Provider>;
     /// Downcast Handle<DE_Provider> to Handle<DEIGES_Provider> (returns null on failure)
-    pub fn HandleDEProvider_downcast_to_HandleDEIGESProvider(
-        self_: *const HandleDEProvider,
-    ) -> crate::OcctResult<*mut HandleDEIGESProvider>;
+    pub fn Handle_DE_Provider_downcast_to_Handle_DEIGES_Provider(
+        self_: *const Handle_DE_Provider,
+    ) -> crate::OcctResult<*mut Handle_DEIGES_Provider>;
     /// Downcast Handle<DE_Provider> to Handle<DEOBJ_Provider> (returns null on failure)
-    pub fn HandleDEProvider_downcast_to_HandleDEOBJProvider(
-        self_: *const HandleDEProvider,
-    ) -> crate::OcctResult<*mut HandleDEOBJProvider>;
+    pub fn Handle_DE_Provider_downcast_to_Handle_DEOBJ_Provider(
+        self_: *const Handle_DE_Provider,
+    ) -> crate::OcctResult<*mut Handle_DEOBJ_Provider>;
     /// Downcast Handle<DE_Provider> to Handle<DEPLY_Provider> (returns null on failure)
-    pub fn HandleDEProvider_downcast_to_HandleDEPLYProvider(
-        self_: *const HandleDEProvider,
-    ) -> crate::OcctResult<*mut HandleDEPLYProvider>;
+    pub fn Handle_DE_Provider_downcast_to_Handle_DEPLY_Provider(
+        self_: *const Handle_DE_Provider,
+    ) -> crate::OcctResult<*mut Handle_DEPLY_Provider>;
     /// Downcast Handle<DE_Provider> to Handle<DESTEP_Provider> (returns null on failure)
-    pub fn HandleDEProvider_downcast_to_HandleDESTEPProvider(
-        self_: *const HandleDEProvider,
-    ) -> crate::OcctResult<*mut HandleDESTEPProvider>;
+    pub fn Handle_DE_Provider_downcast_to_Handle_DESTEP_Provider(
+        self_: *const Handle_DE_Provider,
+    ) -> crate::OcctResult<*mut Handle_DESTEP_Provider>;
     /// Downcast Handle<DE_Provider> to Handle<DESTL_Provider> (returns null on failure)
-    pub fn HandleDEProvider_downcast_to_HandleDESTLProvider(
-        self_: *const HandleDEProvider,
-    ) -> crate::OcctResult<*mut HandleDESTLProvider>;
+    pub fn Handle_DE_Provider_downcast_to_Handle_DESTL_Provider(
+        self_: *const Handle_DE_Provider,
+    ) -> crate::OcctResult<*mut Handle_DESTL_Provider>;
     /// Downcast Handle<DE_Provider> to Handle<DEVRML_Provider> (returns null on failure)
-    pub fn HandleDEProvider_downcast_to_HandleDEVRMLProvider(
-        self_: *const HandleDEProvider,
-    ) -> crate::OcctResult<*mut HandleDEVRMLProvider>;
+    pub fn Handle_DE_Provider_downcast_to_Handle_DEVRML_Provider(
+        self_: *const Handle_DE_Provider,
+    ) -> crate::OcctResult<*mut Handle_DEVRML_Provider>;
     /// Downcast Handle<DE_Provider> to Handle<DEXCAF_Provider> (returns null on failure)
-    pub fn HandleDEProvider_downcast_to_HandleDEXCAFProvider(
-        self_: *const HandleDEProvider,
-    ) -> crate::OcctResult<*mut HandleDEXCAFProvider>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_DE_Provider_downcast_to_Handle_DEXCAF_Provider(
+        self_: *const Handle_DE_Provider,
+    ) -> crate::OcctResult<*mut Handle_DEXCAF_Provider>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn DE_Provider_inherited_IsInstance(
         self_: *const DE_Provider,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn DE_Provider_inherited_IsKind(
         self_: *const DE_Provider,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn DE_Provider_inherited_This(
         self_: *const DE_Provider,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn DE_Provider_inherited_GetRefCount(self_: *const DE_Provider) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn DE_Provider_inherited_IncrementRefCounter(
         self_: *mut DE_Provider,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn DE_Provider_inherited_DecrementRefCounter(
         self_: *mut DE_Provider,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn DE_Provider_inherited_Delete(self_: *const DE_Provider) -> *const std::ffi::c_char;
+    // ======================== DE_Provider_WriteStreamNode ========================
+    pub fn DE_Provider_WriteStreamNode_destructor(self_: *mut DE_Provider_WriteStreamNode);
+    /// **Source:** `DE_Provider.hxx`:57 - `DE_Provider_WriteStreamNode::DE_Provider_WriteStreamNode()`
+    pub fn DE_Provider_WriteStreamNode_ctor_asciistring_ostream(
+        thePath: *const TCollection_AsciiString,
+        theStream: *mut Standard_OStream,
+    ) -> crate::OcctResult<*mut DE_Provider_WriteStreamNode>;
+    // ======================== DE_Provider_ReadStreamNode ========================
+    pub fn DE_Provider_ReadStreamNode_destructor(self_: *mut DE_Provider_ReadStreamNode);
+    /// **Source:** `DE_Provider.hxx`:72 - `DE_Provider_ReadStreamNode::DE_Provider_ReadStreamNode()`
+    pub fn DE_Provider_ReadStreamNode_ctor_asciistring_istream(
+        thePath: *const TCollection_AsciiString,
+        theStream: *mut Standard_IStream,
+    ) -> crate::OcctResult<*mut DE_Provider_ReadStreamNode>;
     // ======================== DE_ShapeFixConfigurationNode ========================
     pub fn DE_ShapeFixConfigurationNode_destructor(self_: *mut DE_ShapeFixConfigurationNode);
-    /// **Source:** `DE_ShapeFixConfigurationNode.hxx`:26 - `DE_ShapeFixConfigurationNode::DynamicType()`
+    /// **Source:** `DE_ShapeFixConfigurationNode.hxx`:27 - `DE_ShapeFixConfigurationNode::DynamicType()`
     pub fn DE_ShapeFixConfigurationNode_dynamic_type(
         self_: *const DE_ShapeFixConfigurationNode,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `DE_ShapeFixConfigurationNode.hxx`:39 - `DE_ShapeFixConfigurationNode::Load()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `DE_ShapeFixConfigurationNode.hxx`:40 - `DE_ShapeFixConfigurationNode::Load()`
     pub fn DE_ShapeFixConfigurationNode_load(
         self_: *mut DE_ShapeFixConfigurationNode,
-        theResource: *const HandleDEConfigurationContext,
+        theResource: *const Handle_DE_ConfigurationContext,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DE_ShapeFixConfigurationNode.hxx`:44 - `DE_ShapeFixConfigurationNode::Save()`
     pub fn DE_ShapeFixConfigurationNode_save(
         self_: *const DE_ShapeFixConfigurationNode,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `DE_ShapeFixConfigurationNode.hxx`:26 - `DE_ShapeFixConfigurationNode::get_type_name()`
+    /// **Source:** `DE_ShapeFixConfigurationNode.hxx`:27 - `DE_ShapeFixConfigurationNode::get_type_name()`
     pub fn DE_ShapeFixConfigurationNode_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `DE_ShapeFixConfigurationNode.hxx`:26 - `DE_ShapeFixConfigurationNode::get_type_descriptor()`
+    /// **Source:** `DE_ShapeFixConfigurationNode.hxx`:27 - `DE_ShapeFixConfigurationNode::get_type_descriptor()`
     pub fn DE_ShapeFixConfigurationNode_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast DE_ShapeFixConfigurationNode to DE_ConfigurationNode
     pub fn DE_ShapeFixConfigurationNode_as_DE_ConfigurationNode(
         self_: *const DE_ShapeFixConfigurationNode,
@@ -576,126 +658,140 @@ unsafe extern "C" {
         self_: *mut DE_ShapeFixConfigurationNode,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<DE_ShapeFixConfigurationNode>
-    pub fn HandleDEShapeFixConfigurationNode_destructor(
-        self_: *mut HandleDEShapeFixConfigurationNode,
+    pub fn Handle_DE_ShapeFixConfigurationNode_destructor(
+        self_: *mut Handle_DE_ShapeFixConfigurationNode,
     );
     /// Clone Handle<DE_ShapeFixConfigurationNode> (increments reference count)
-    pub fn HandleDEShapeFixConfigurationNode_clone(
-        self_: *const HandleDEShapeFixConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEShapeFixConfigurationNode>;
+    pub fn Handle_DE_ShapeFixConfigurationNode_clone(
+        self_: *const Handle_DE_ShapeFixConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_DE_ShapeFixConfigurationNode>;
     /// Check if Handle<DE_ShapeFixConfigurationNode> is null
-    pub fn HandleDEShapeFixConfigurationNode_is_null(
-        self_: *const HandleDEShapeFixConfigurationNode,
+    pub fn Handle_DE_ShapeFixConfigurationNode_is_null(
+        self_: *const Handle_DE_ShapeFixConfigurationNode,
     ) -> bool;
     /// Dereference Handle to get *const DE_ShapeFixConfigurationNode
-    pub fn HandleDEShapeFixConfigurationNode_get(
-        handle: *const HandleDEShapeFixConfigurationNode,
+    pub fn Handle_DE_ShapeFixConfigurationNode_get(
+        handle: *const Handle_DE_ShapeFixConfigurationNode,
     ) -> crate::OcctResult<*const DE_ShapeFixConfigurationNode>;
     /// Dereference Handle to get *mut DE_ShapeFixConfigurationNode
-    pub fn HandleDEShapeFixConfigurationNode_get_mut(
-        handle: *mut HandleDEShapeFixConfigurationNode,
+    pub fn Handle_DE_ShapeFixConfigurationNode_get_mut(
+        handle: *mut Handle_DE_ShapeFixConfigurationNode,
     ) -> crate::OcctResult<*mut DE_ShapeFixConfigurationNode>;
     /// Upcast Handle<DE_ShapeFixConfigurationNode> to Handle<DE_ConfigurationNode>
-    pub fn HandleDEShapeFixConfigurationNode_to_HandleDEConfigurationNode(
-        self_: *const HandleDEShapeFixConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEConfigurationNode>;
+    pub fn Handle_DE_ShapeFixConfigurationNode_to_Handle_DE_ConfigurationNode(
+        self_: *const Handle_DE_ShapeFixConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_DE_ConfigurationNode>;
     /// Upcast Handle<DE_ShapeFixConfigurationNode> to Handle<Standard_Transient>
-    pub fn HandleDEShapeFixConfigurationNode_to_HandleStandardTransient(
-        self_: *const HandleDEShapeFixConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_DE_ShapeFixConfigurationNode_to_Handle_Standard_Transient(
+        self_: *const Handle_DE_ShapeFixConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<DE_ShapeFixConfigurationNode> to Handle<DEIGES_ConfigurationNode> (returns null on failure)
-    pub fn HandleDEShapeFixConfigurationNode_downcast_to_HandleDEIGESConfigurationNode(
-        self_: *const HandleDEShapeFixConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEIGESConfigurationNode>;
+    pub fn Handle_DE_ShapeFixConfigurationNode_downcast_to_Handle_DEIGES_ConfigurationNode(
+        self_: *const Handle_DE_ShapeFixConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_DEIGES_ConfigurationNode>;
     /// Downcast Handle<DE_ShapeFixConfigurationNode> to Handle<DESTEP_ConfigurationNode> (returns null on failure)
-    pub fn HandleDEShapeFixConfigurationNode_downcast_to_HandleDESTEPConfigurationNode(
-        self_: *const HandleDEShapeFixConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDESTEPConfigurationNode>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:81 - `DE_ConfigurationNode::BuildProvider()`
+    pub fn Handle_DE_ShapeFixConfigurationNode_downcast_to_Handle_DESTEP_ConfigurationNode(
+        self_: *const Handle_DE_ShapeFixConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_DESTEP_ConfigurationNode>;
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:84 - `DE_ConfigurationNode::BuildProvider()`
     pub fn DE_ShapeFixConfigurationNode_inherited_BuildProvider(
         self_: *mut DE_ShapeFixConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEProvider>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:85 - `DE_ConfigurationNode::Copy()`
+    ) -> crate::OcctResult<*mut Handle_DE_Provider>;
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:88 - `DE_ConfigurationNode::Copy()`
     pub fn DE_ShapeFixConfigurationNode_inherited_Copy(
         self_: *const DE_ShapeFixConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEConfigurationNode>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:91 - `DE_ConfigurationNode::UpdateLoad()`
+    ) -> crate::OcctResult<*mut Handle_DE_ConfigurationNode>;
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:94 - `DE_ConfigurationNode::UpdateLoad()`
     pub fn DE_ShapeFixConfigurationNode_inherited_UpdateLoad(
         self_: *mut DE_ShapeFixConfigurationNode,
         theToImport: bool,
         theToKeep: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:97 - `DE_ConfigurationNode::IsImportSupported()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:99 - `DE_ConfigurationNode::IsImportSupported()`
     pub fn DE_ShapeFixConfigurationNode_inherited_IsImportSupported(
         self_: *const DE_ShapeFixConfigurationNode,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:101 - `DE_ConfigurationNode::IsExportSupported()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:103 - `DE_ConfigurationNode::IsExportSupported()`
     pub fn DE_ShapeFixConfigurationNode_inherited_IsExportSupported(
         self_: *const DE_ShapeFixConfigurationNode,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:105 - `DE_ConfigurationNode::GetFormat()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:107 - `DE_ConfigurationNode::IsStreamSupported()`
+    pub fn DE_ShapeFixConfigurationNode_inherited_IsStreamSupported(
+        self_: *const DE_ShapeFixConfigurationNode,
+    ) -> crate::OcctResult<bool>;
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:111 - `DE_ConfigurationNode::GetFormat()`
     pub fn DE_ShapeFixConfigurationNode_inherited_GetFormat(
         self_: *const DE_ShapeFixConfigurationNode,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:109 - `DE_ConfigurationNode::GetVendor()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:115 - `DE_ConfigurationNode::GetVendor()`
     pub fn DE_ShapeFixConfigurationNode_inherited_GetVendor(
         self_: *const DE_ShapeFixConfigurationNode,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:113 - `DE_ConfigurationNode::GetExtensions()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:119 - `DE_ConfigurationNode::GetExtensions()`
     pub fn DE_ShapeFixConfigurationNode_inherited_GetExtensions(
         self_: *const DE_ShapeFixConfigurationNode,
-    ) -> crate::OcctResult<*mut TColStd_ListOfAsciiString>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:118 - `DE_ConfigurationNode::CheckExtension()`
+    ) -> crate::OcctResult<*mut NCollection_List_TCollection_AsciiString>;
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:124 - `DE_ConfigurationNode::CheckExtension()`
     pub fn DE_ShapeFixConfigurationNode_inherited_CheckExtension(
         self_: *const DE_ShapeFixConfigurationNode,
         theExtension: *const TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:123 - `DE_ConfigurationNode::CheckContent()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:129 - `DE_ConfigurationNode::CheckContent()`
     pub fn DE_ShapeFixConfigurationNode_inherited_CheckContent(
         self_: *const DE_ShapeFixConfigurationNode,
-        theBuffer: *const HandleNCollectionBuffer,
+        theBuffer: *const Handle_NCollection_Buffer,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:128 - `DE_ConfigurationNode::IsEnabled()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:134 - `DE_ConfigurationNode::IsEnabled()`
     pub fn DE_ShapeFixConfigurationNode_inherited_IsEnabled(
         self_: *const DE_ShapeFixConfigurationNode,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:132 - `DE_ConfigurationNode::SetEnabled()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:138 - `DE_ConfigurationNode::SetEnabled()`
     pub fn DE_ShapeFixConfigurationNode_inherited_SetEnabled(
         self_: *mut DE_ShapeFixConfigurationNode,
         theIsLoaded: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:141 - `DE_ConfigurationNode::CustomActivation()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:147 - `DE_ConfigurationNode::CustomActivation()`
     pub fn DE_ShapeFixConfigurationNode_inherited_CustomActivation(
         self_: *mut DE_ShapeFixConfigurationNode,
-        arg0: *const TColStd_ListOfAsciiString,
+        arg0: *const NCollection_List_TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:164 - `DE_ConfigurationNode::Register()`
+    pub fn DE_ShapeFixConfigurationNode_inherited_Register(
+        self_: *const DE_ShapeFixConfigurationNode,
+        theWrapper: *const Handle_DE_Wrapper,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:168 - `DE_ConfigurationNode::UnRegister()`
+    pub fn DE_ShapeFixConfigurationNode_inherited_UnRegister(
+        self_: *const DE_ShapeFixConfigurationNode,
+        theWrapper: *const Handle_DE_Wrapper,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn DE_ShapeFixConfigurationNode_inherited_IsInstance(
         self_: *const DE_ShapeFixConfigurationNode,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn DE_ShapeFixConfigurationNode_inherited_IsKind(
         self_: *const DE_ShapeFixConfigurationNode,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn DE_ShapeFixConfigurationNode_inherited_This(
         self_: *const DE_ShapeFixConfigurationNode,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn DE_ShapeFixConfigurationNode_inherited_GetRefCount(
         self_: *const DE_ShapeFixConfigurationNode,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn DE_ShapeFixConfigurationNode_inherited_IncrementRefCounter(
         self_: *mut DE_ShapeFixConfigurationNode,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn DE_ShapeFixConfigurationNode_inherited_DecrementRefCounter(
         self_: *mut DE_ShapeFixConfigurationNode,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn DE_ShapeFixConfigurationNode_inherited_Delete(
         self_: *const DE_ShapeFixConfigurationNode,
     ) -> *const std::ffi::c_char;
@@ -703,172 +799,303 @@ unsafe extern "C" {
     pub fn DE_ShapeFixParameters_destructor(self_: *mut DE_ShapeFixParameters);
     /// **Source:** `DE_ShapeFixParameters.hxx` - `DE_ShapeFixParameters::DE_ShapeFixParameters()`
     pub fn DE_ShapeFixParameters_ctor() -> crate::OcctResult<*mut DE_ShapeFixParameters>;
+    // ======================== DE_ValidationUtils ========================
+    pub fn DE_ValidationUtils_destructor(self_: *mut DE_ValidationUtils);
+    /// **Source:** `DE_ValidationUtils.hxx` - `DE_ValidationUtils::DE_ValidationUtils()`
+    pub fn DE_ValidationUtils_ctor() -> crate::OcctResult<*mut DE_ValidationUtils>;
+    /// **Source:** `DE_ValidationUtils.hxx`:35 - `DE_ValidationUtils::ValidateConfigurationNode()`
+    pub fn DE_ValidationUtils_validate_configuration_node(
+        theNode: *const Handle_DE_ConfigurationNode,
+        theExpectedType: *const Handle_Standard_Type,
+        theContext: *const TCollection_AsciiString,
+        theIsVerbose: bool,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DE_ValidationUtils.hxx`:46 - `DE_ValidationUtils::ValidateFileForReading()`
+    pub fn DE_ValidationUtils_validate_file_for_reading(
+        thePath: *const TCollection_AsciiString,
+        theContext: *const TCollection_AsciiString,
+        theIsVerbose: bool,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DE_ValidationUtils.hxx`:55 - `DE_ValidationUtils::ValidateFileForWriting()`
+    pub fn DE_ValidationUtils_validate_file_for_writing(
+        thePath: *const TCollection_AsciiString,
+        theContext: *const TCollection_AsciiString,
+        theIsVerbose: bool,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DE_ValidationUtils.hxx`:64 - `DE_ValidationUtils::ValidateReadStreamList()`
+    pub fn DE_ValidationUtils_validate_read_stream_list(
+        theStreams: *const DE_Provider_ReadStreamList,
+        theContext: *const TCollection_AsciiString,
+        theIsVerbose: bool,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DE_ValidationUtils.hxx`:73 - `DE_ValidationUtils::ValidateWriteStreamList()`
+    pub fn DE_ValidationUtils_validate_write_stream_list(
+        theStreams: *mut DE_Provider_WriteStreamList,
+        theContext: *const TCollection_AsciiString,
+        theIsVerbose: bool,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DE_ValidationUtils.hxx`:82 - `DE_ValidationUtils::ValidateDocument()`
+    pub fn DE_ValidationUtils_validate_document(
+        theDocument: *const Handle_TDocStd_Document,
+        theContext: *const TCollection_AsciiString,
+        theIsVerbose: bool,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DE_ValidationUtils.hxx`:91 - `DE_ValidationUtils::WarnLengthUnitNotSupported()`
+    pub fn DE_ValidationUtils_warn_length_unit_not_supported(
+        theLengthUnit: f64,
+        theContext: *const TCollection_AsciiString,
+        theIsVerbose: bool,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DE_ValidationUtils.hxx`:99 - `DE_ValidationUtils::CreateContentBuffer()`
+    pub fn DE_ValidationUtils_create_content_buffer_asciistring_handlencollectionbuffer(
+        thePath: *const TCollection_AsciiString,
+        theBuffer: *mut Handle_NCollection_Buffer,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DE_ValidationUtils.hxx`:106 - `DE_ValidationUtils::CreateContentBuffer()`
+    pub fn DE_ValidationUtils_create_content_buffer_istream_handlencollectionbuffer(
+        theStream: *mut Standard_IStream,
+        theBuffer: *mut Handle_NCollection_Buffer,
+    ) -> crate::OcctResult<bool>;
     // ======================== DE_Wrapper ========================
     pub fn DE_Wrapper_destructor(self_: *mut DE_Wrapper);
-    /// **Source:** `DE_Wrapper.hxx`:60 - `DE_Wrapper::DE_Wrapper()`
+    /// **Source:** `DE_Wrapper.hxx`:58 - `DE_Wrapper::DE_Wrapper()`
     pub fn DE_Wrapper_ctor() -> crate::OcctResult<*mut DE_Wrapper>;
-    /// **Source:** `DE_Wrapper.hxx`:64 - `DE_Wrapper::DE_Wrapper()`
+    /// **Source:** `DE_Wrapper.hxx`:62 - `DE_Wrapper::DE_Wrapper()`
     pub fn DE_Wrapper_ctor_handledewrapper(
-        theWrapper: *const HandleDEWrapper,
+        theWrapper: *const Handle_DE_Wrapper,
     ) -> crate::OcctResult<*mut DE_Wrapper>;
-    /// **Source:** `DE_Wrapper.hxx`:56 - `DE_Wrapper::DynamicType()`
+    /// **Source:** `DE_Wrapper.hxx`:54 - `DE_Wrapper::DynamicType()`
     pub fn DE_Wrapper_dynamic_type(
         self_: *const DE_Wrapper,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `DE_Wrapper.hxx`:85 - `DE_Wrapper::Read()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `DE_Wrapper.hxx`:82 - `DE_Wrapper::Read()`
     pub fn DE_Wrapper_read_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
         self_: *mut DE_Wrapper,
         thePath: *const TCollection_AsciiString,
-        theDocument: *const HandleTDocStdDocument,
-        theWS: *mut HandleXSControlWorkSession,
+        theDocument: *const Handle_TDocStd_Document,
+        theWS: *mut Handle_XSControl_WorkSession,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_Wrapper.hxx`:97 - `DE_Wrapper::Write()`
+    /// **Source:** `DE_Wrapper.hxx`:93 - `DE_Wrapper::Write()`
     pub fn DE_Wrapper_write_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
         self_: *mut DE_Wrapper,
         thePath: *const TCollection_AsciiString,
-        theDocument: *const HandleTDocStdDocument,
-        theWS: *mut HandleXSControlWorkSession,
+        theDocument: *const Handle_TDocStd_Document,
+        theWS: *mut Handle_XSControl_WorkSession,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_Wrapper.hxx`:108 - `DE_Wrapper::Read()`
+    /// **Source:** `DE_Wrapper.hxx`:103 - `DE_Wrapper::Read()`
     pub fn DE_Wrapper_read_asciistring_handletdocstddocument_progressrange(
         self_: *mut DE_Wrapper,
         thePath: *const TCollection_AsciiString,
-        theDocument: *const HandleTDocStdDocument,
+        theDocument: *const Handle_TDocStd_Document,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_Wrapper.hxx`:118 - `DE_Wrapper::Write()`
+    /// **Source:** `DE_Wrapper.hxx`:112 - `DE_Wrapper::Write()`
     pub fn DE_Wrapper_write_asciistring_handletdocstddocument_progressrange(
         self_: *mut DE_Wrapper,
         thePath: *const TCollection_AsciiString,
-        theDocument: *const HandleTDocStdDocument,
+        theDocument: *const Handle_TDocStd_Document,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_Wrapper.hxx`:129 - `DE_Wrapper::Read()`
+    /// **Source:** `DE_Wrapper.hxx`:122 - `DE_Wrapper::Read()`
     pub fn DE_Wrapper_read_asciistring_shape_handlexscontrolworksession_progressrange(
         self_: *mut DE_Wrapper,
         thePath: *const TCollection_AsciiString,
         theShape: *mut TopoDS_Shape,
-        theWS: *mut HandleXSControlWorkSession,
+        theWS: *mut Handle_XSControl_WorkSession,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_Wrapper.hxx`:141 - `DE_Wrapper::Write()`
+    /// **Source:** `DE_Wrapper.hxx`:133 - `DE_Wrapper::Write()`
     pub fn DE_Wrapper_write_asciistring_shape_handlexscontrolworksession_progressrange(
         self_: *mut DE_Wrapper,
         thePath: *const TCollection_AsciiString,
         theShape: *const TopoDS_Shape,
-        theWS: *mut HandleXSControlWorkSession,
+        theWS: *mut Handle_XSControl_WorkSession,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_Wrapper.hxx`:152 - `DE_Wrapper::Read()`
+    /// **Source:** `DE_Wrapper.hxx`:143 - `DE_Wrapper::Read()`
     pub fn DE_Wrapper_read_asciistring_shape_progressrange(
         self_: *mut DE_Wrapper,
         thePath: *const TCollection_AsciiString,
         theShape: *mut TopoDS_Shape,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_Wrapper.hxx`:162 - `DE_Wrapper::Write()`
+    /// **Source:** `DE_Wrapper.hxx`:152 - `DE_Wrapper::Write()`
     pub fn DE_Wrapper_write_asciistring_shape_progressrange(
         self_: *mut DE_Wrapper,
         thePath: *const TCollection_AsciiString,
         theShape: *const TopoDS_Shape,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_Wrapper.hxx`:171 - `DE_Wrapper::Load()`
+    /// **Source:** `DE_Wrapper.hxx`:162 - `DE_Wrapper::Read()`
+    pub fn DE_Wrapper_read_readstreamlist_handletdocstddocument_handlexscontrolworksession_progressrange(
+        self_: *mut DE_Wrapper,
+        theStreams: *mut DE_Provider_ReadStreamList,
+        theDocument: *const Handle_TDocStd_Document,
+        theWS: *mut Handle_XSControl_WorkSession,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DE_Wrapper.hxx`:173 - `DE_Wrapper::Write()`
+    pub fn DE_Wrapper_write_writestreamlist_handletdocstddocument_handlexscontrolworksession_progressrange(
+        self_: *mut DE_Wrapper,
+        theStreams: *mut DE_Provider_WriteStreamList,
+        theDocument: *const Handle_TDocStd_Document,
+        theWS: *mut Handle_XSControl_WorkSession,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DE_Wrapper.hxx`:183 - `DE_Wrapper::Read()`
+    pub fn DE_Wrapper_read_readstreamlist_handletdocstddocument_progressrange(
+        self_: *mut DE_Wrapper,
+        theStreams: *mut DE_Provider_ReadStreamList,
+        theDocument: *const Handle_TDocStd_Document,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DE_Wrapper.hxx`:192 - `DE_Wrapper::Write()`
+    pub fn DE_Wrapper_write_writestreamlist_handletdocstddocument_progressrange(
+        self_: *mut DE_Wrapper,
+        theStreams: *mut DE_Provider_WriteStreamList,
+        theDocument: *const Handle_TDocStd_Document,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DE_Wrapper.hxx`:202 - `DE_Wrapper::Read()`
+    pub fn DE_Wrapper_read_readstreamlist_shape_handlexscontrolworksession_progressrange(
+        self_: *mut DE_Wrapper,
+        theStreams: *mut DE_Provider_ReadStreamList,
+        theShape: *mut TopoDS_Shape,
+        theWS: *mut Handle_XSControl_WorkSession,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DE_Wrapper.hxx`:213 - `DE_Wrapper::Write()`
+    pub fn DE_Wrapper_write_writestreamlist_shape_handlexscontrolworksession_progressrange(
+        self_: *mut DE_Wrapper,
+        theStreams: *mut DE_Provider_WriteStreamList,
+        theShape: *const TopoDS_Shape,
+        theWS: *mut Handle_XSControl_WorkSession,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DE_Wrapper.hxx`:223 - `DE_Wrapper::Read()`
+    pub fn DE_Wrapper_read_readstreamlist_shape_progressrange(
+        self_: *mut DE_Wrapper,
+        theStreams: *mut DE_Provider_ReadStreamList,
+        theShape: *mut TopoDS_Shape,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DE_Wrapper.hxx`:232 - `DE_Wrapper::Write()`
+    pub fn DE_Wrapper_write_writestreamlist_shape_progressrange(
+        self_: *mut DE_Wrapper,
+        theStreams: *mut DE_Provider_WriteStreamList,
+        theShape: *const TopoDS_Shape,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DE_Wrapper.hxx`:241 - `DE_Wrapper::Load()`
     pub fn DE_Wrapper_load_asciistring_bool(
         self_: *mut DE_Wrapper,
         theResource: *const TCollection_AsciiString,
         theIsRecursive: bool,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_Wrapper.hxx`:178 - `DE_Wrapper::Load()`
+    /// **Source:** `DE_Wrapper.hxx`:248 - `DE_Wrapper::Load()`
     pub fn DE_Wrapper_load_handledeconfigurationcontext_bool(
         self_: *mut DE_Wrapper,
-        theResource: *const HandleDEConfigurationContext,
+        theResource: *const Handle_DE_ConfigurationContext,
         theIsRecursive: bool,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_Wrapper.hxx`:188 - `DE_Wrapper::Save()`
-    pub fn DE_Wrapper_save_asciistring_bool_listofasciistring2(
+    /// **Source:** `DE_Wrapper.hxx`:257 - `DE_Wrapper::Save()`
+    pub fn DE_Wrapper_save_asciistring_bool_list_asciistring2(
         self_: *mut DE_Wrapper,
         theResourcePath: *const TCollection_AsciiString,
         theIsRecursive: bool,
-        theFormats: *const TColStd_ListOfAsciiString,
-        theVendors: *const TColStd_ListOfAsciiString,
+        theFormats: *const NCollection_List_TCollection_AsciiString,
+        theVendors: *const NCollection_List_TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_Wrapper.hxx`:199 - `DE_Wrapper::Save()`
-    pub fn DE_Wrapper_save_bool_listofasciistring2(
+    /// **Source:** `DE_Wrapper.hxx`:270 - `DE_Wrapper::Save()`
+    pub fn DE_Wrapper_save_bool_list_asciistring2(
         self_: *mut DE_Wrapper,
         theIsRecursive: bool,
-        theFormats: *const TColStd_ListOfAsciiString,
-        theVendors: *const TColStd_ListOfAsciiString,
+        theFormats: *const NCollection_List_TCollection_AsciiString,
+        theVendors: *const NCollection_List_TCollection_AsciiString,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `DE_Wrapper.hxx`:206 - `DE_Wrapper::Bind()`
+    /// **Source:** `DE_Wrapper.hxx`:279 - `DE_Wrapper::Bind()`
     pub fn DE_Wrapper_bind(
         self_: *mut DE_Wrapper,
-        theNode: *const HandleDEConfigurationNode,
+        theNode: *const Handle_DE_ConfigurationNode,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_Wrapper.hxx`:211 - `DE_Wrapper::UnBind()`
+    /// **Source:** `DE_Wrapper.hxx`:284 - `DE_Wrapper::UnBind()`
     pub fn DE_Wrapper_un_bind(
         self_: *mut DE_Wrapper,
-        theNode: *const HandleDEConfigurationNode,
+        theNode: *const Handle_DE_ConfigurationNode,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_Wrapper.hxx`:218 - `DE_Wrapper::Find()`
+    /// **Source:** `DE_Wrapper.hxx`:291 - `DE_Wrapper::Find()`
     pub fn DE_Wrapper_find(
         self_: *const DE_Wrapper,
         theFormat: *const TCollection_AsciiString,
         theVendor: *const TCollection_AsciiString,
-        theNode: *mut HandleDEConfigurationNode,
+        theNode: *mut Handle_DE_ConfigurationNode,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_Wrapper.hxx`:226 - `DE_Wrapper::ChangePriority()`
-    pub fn DE_Wrapper_change_priority_asciistring_listofasciistring_bool(
+    /// **Source:** `DE_Wrapper.hxx`:299 - `DE_Wrapper::ChangePriority()`
+    pub fn DE_Wrapper_change_priority_asciistring_list_asciistring_bool(
         self_: *mut DE_Wrapper,
         theFormat: *const TCollection_AsciiString,
-        theVendorPriority: *const TColStd_ListOfAsciiString,
+        theVendorPriority: *const NCollection_List_TCollection_AsciiString,
         theToDisable: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `DE_Wrapper.hxx`:233 - `DE_Wrapper::ChangePriority()`
-    pub fn DE_Wrapper_change_priority_listofasciistring_bool(
+    /// **Source:** `DE_Wrapper.hxx`:307 - `DE_Wrapper::ChangePriority()`
+    pub fn DE_Wrapper_change_priority_list_asciistring_bool(
         self_: *mut DE_Wrapper,
-        theVendorPriority: *const TColStd_ListOfAsciiString,
+        theVendorPriority: *const NCollection_List_TCollection_AsciiString,
         theToDisable: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `DE_Wrapper.hxx`:242 - `DE_Wrapper::FindProvider()`
+    /// **Source:** `DE_Wrapper.hxx`:317 - `DE_Wrapper::FindProvider()`
     pub fn DE_Wrapper_find_provider(
         self_: *const DE_Wrapper,
         thePath: *const TCollection_AsciiString,
         theToImport: bool,
-        theProvider: *mut HandleDEProvider,
+        theProvider: *mut Handle_DE_Provider,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_Wrapper.hxx`:249 - `DE_Wrapper::UpdateLoad()`
+    /// **Source:** `DE_Wrapper.hxx`:327 - `DE_Wrapper::FindReadProvider()`
+    pub fn DE_Wrapper_find_read_provider_asciistring_bool_handledeprovider(
+        self_: *const DE_Wrapper,
+        thePath: *const TCollection_AsciiString,
+        theCheckContent: bool,
+        theProvider: *mut Handle_DE_Provider,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DE_Wrapper.hxx`:337 - `DE_Wrapper::FindReadProvider()`
+    pub fn DE_Wrapper_find_read_provider_asciistring_istream_handledeprovider(
+        self_: *const DE_Wrapper,
+        thePath: *const TCollection_AsciiString,
+        theStream: *mut Standard_IStream,
+        theProvider: *mut Handle_DE_Provider,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DE_Wrapper.hxx`:346 - `DE_Wrapper::FindWriteProvider()`
+    pub fn DE_Wrapper_find_write_provider(
+        self_: *const DE_Wrapper,
+        thePath: *const TCollection_AsciiString,
+        theProvider: *mut Handle_DE_Provider,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DE_Wrapper.hxx`:352 - `DE_Wrapper::UpdateLoad()`
     pub fn DE_Wrapper_update_load(
         self_: *const DE_Wrapper,
         theToForceUpdate: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `DE_Wrapper.hxx`:252 - `DE_Wrapper::KeepUpdates()`
+    /// **Source:** `DE_Wrapper.hxx`:355 - `DE_Wrapper::KeepUpdates()`
     pub fn DE_Wrapper_keep_updates(self_: *const DE_Wrapper) -> crate::OcctResult<bool>;
-    /// **Source:** `DE_Wrapper.hxx`:255 - `DE_Wrapper::SetKeepUpdates()`
+    /// **Source:** `DE_Wrapper.hxx`:358 - `DE_Wrapper::SetKeepUpdates()`
     pub fn DE_Wrapper_set_keep_updates(
         self_: *mut DE_Wrapper,
         theToKeepUpdates: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `DE_Wrapper.hxx`:259 - `DE_Wrapper::Nodes()`
-    pub fn DE_Wrapper_nodes(
-        self_: *const DE_Wrapper,
-    ) -> crate::OcctResult<*const DE_ConfigurationFormatMap>;
-    /// **Source:** `DE_Wrapper.hxx`:263 - `DE_Wrapper::Copy()`
-    pub fn DE_Wrapper_copy(self_: *const DE_Wrapper) -> crate::OcctResult<*mut HandleDEWrapper>;
-    /// **Source:** `DE_Wrapper.hxx`:56 - `DE_Wrapper::get_type_name()`
+    /// **Source:** `DE_Wrapper.hxx`:369 - `DE_Wrapper::Copy()`
+    pub fn DE_Wrapper_copy(self_: *const DE_Wrapper) -> crate::OcctResult<*mut Handle_DE_Wrapper>;
+    /// **Source:** `DE_Wrapper.hxx`:54 - `DE_Wrapper::get_type_name()`
     pub fn DE_Wrapper_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `DE_Wrapper.hxx`:56 - `DE_Wrapper::get_type_descriptor()`
-    pub fn DE_Wrapper_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `DE_Wrapper.hxx`:69 - `DE_Wrapper::GlobalWrapper()`
-    pub fn DE_Wrapper_global_wrapper() -> crate::OcctResult<*const HandleDEWrapper>;
-    /// **Source:** `DE_Wrapper.hxx`:73 - `DE_Wrapper::SetGlobalWrapper()`
+    /// **Source:** `DE_Wrapper.hxx`:54 - `DE_Wrapper::get_type_descriptor()`
+    pub fn DE_Wrapper_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `DE_Wrapper.hxx`:67 - `DE_Wrapper::GlobalWrapper()`
+    pub fn DE_Wrapper_global_wrapper() -> crate::OcctResult<*const Handle_DE_Wrapper>;
+    /// **Source:** `DE_Wrapper.hxx`:71 - `DE_Wrapper::SetGlobalWrapper()`
     pub fn DE_Wrapper_set_global_wrapper(
-        theWrapper: *const HandleDEWrapper,
+        theWrapper: *const Handle_DE_Wrapper,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `DE_Wrapper.hxx`:75 - `DE_Wrapper::GlobalLoadMutex()`
-    pub fn DE_Wrapper_global_load_mutex() -> crate::OcctResult<*mut Standard_Mutex>;
     /// Upcast DE_Wrapper to Standard_Transient
     pub fn DE_Wrapper_as_Standard_Transient(
         self_: *const DE_Wrapper,
@@ -878,56 +1105,56 @@ unsafe extern "C" {
         self_: *mut DE_Wrapper,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Wrap DE_Wrapper in a Handle
-    pub fn DE_Wrapper_to_handle(obj: *mut DE_Wrapper) -> crate::OcctResult<*mut HandleDEWrapper>;
+    pub fn DE_Wrapper_to_handle(obj: *mut DE_Wrapper) -> crate::OcctResult<*mut Handle_DE_Wrapper>;
     /// Destroy Handle<DE_Wrapper>
-    pub fn HandleDEWrapper_destructor(self_: *mut HandleDEWrapper);
+    pub fn Handle_DE_Wrapper_destructor(self_: *mut Handle_DE_Wrapper);
     /// Clone Handle<DE_Wrapper> (increments reference count)
-    pub fn HandleDEWrapper_clone(
-        self_: *const HandleDEWrapper,
-    ) -> crate::OcctResult<*mut HandleDEWrapper>;
+    pub fn Handle_DE_Wrapper_clone(
+        self_: *const Handle_DE_Wrapper,
+    ) -> crate::OcctResult<*mut Handle_DE_Wrapper>;
     /// Check if Handle<DE_Wrapper> is null
-    pub fn HandleDEWrapper_is_null(self_: *const HandleDEWrapper) -> bool;
+    pub fn Handle_DE_Wrapper_is_null(self_: *const Handle_DE_Wrapper) -> bool;
     /// Dereference Handle to get *const DE_Wrapper
-    pub fn HandleDEWrapper_get(
-        handle: *const HandleDEWrapper,
+    pub fn Handle_DE_Wrapper_get(
+        handle: *const Handle_DE_Wrapper,
     ) -> crate::OcctResult<*const DE_Wrapper>;
     /// Dereference Handle to get *mut DE_Wrapper
-    pub fn HandleDEWrapper_get_mut(
-        handle: *mut HandleDEWrapper,
+    pub fn Handle_DE_Wrapper_get_mut(
+        handle: *mut Handle_DE_Wrapper,
     ) -> crate::OcctResult<*mut DE_Wrapper>;
     /// Upcast Handle<DE_Wrapper> to Handle<Standard_Transient>
-    pub fn HandleDEWrapper_to_HandleStandardTransient(
-        self_: *const HandleDEWrapper,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_DE_Wrapper_to_Handle_Standard_Transient(
+        self_: *const Handle_DE_Wrapper,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn DE_Wrapper_inherited_IsInstance(
         self_: *const DE_Wrapper,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn DE_Wrapper_inherited_IsKind(
         self_: *const DE_Wrapper,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn DE_Wrapper_inherited_This(
         self_: *const DE_Wrapper,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn DE_Wrapper_inherited_GetRefCount(self_: *const DE_Wrapper) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn DE_Wrapper_inherited_IncrementRefCounter(
         self_: *mut DE_Wrapper,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn DE_Wrapper_inherited_DecrementRefCounter(
         self_: *mut DE_Wrapper,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn DE_Wrapper_inherited_Delete(self_: *const DE_Wrapper) -> *const std::ffi::c_char;
 
     // Nested type & typedef type destructors
-    pub fn DE_ConfigurationFormatMap_destructor(self_: *mut DE_ConfigurationFormatMap);
-    pub fn DE_ResourceMap_destructor(self_: *mut DE_ResourceMap);
+    pub fn DE_Provider_ReadStreamList_destructor(self_: *mut DE_Provider_ReadStreamList);
+    pub fn DE_Provider_WriteStreamList_destructor(self_: *mut DE_Provider_WriteStreamList);
     pub fn DE_ShapeFixParameters_FixMode_destructor(self_: *mut DE_ShapeFixParameters_FixMode);
 }

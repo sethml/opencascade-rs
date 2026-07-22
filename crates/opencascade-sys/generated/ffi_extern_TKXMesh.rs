@@ -8,13 +8,101 @@
 use crate::ffi_types::*;
 
 unsafe extern "C" {
-
-    // Free functions
-    /// **Source:** `XBRepMesh.hxx`:31 - `XBRepMesh::Discret`
-    pub fn XBRepMesh_discret(
+    // ======================== XBRepMesh_Factory ========================
+    pub fn XBRepMesh_Factory_destructor(self_: *mut XBRepMesh_Factory);
+    /// **Source:** `XBRepMesh_Factory.hxx`:28 - `XBRepMesh_Factory::XBRepMesh_Factory()`
+    pub fn XBRepMesh_Factory_ctor() -> crate::OcctResult<*mut XBRepMesh_Factory>;
+    /// **Source:** `XBRepMesh_Factory.hxx`:24 - `XBRepMesh_Factory::DynamicType()`
+    pub fn XBRepMesh_Factory_dynamic_type(
+        self_: *const XBRepMesh_Factory,
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `XBRepMesh_Factory.hxx`:35 - `XBRepMesh_Factory::CreateAlgorithm()`
+    pub fn XBRepMesh_Factory_create_algorithm(
+        self_: *mut XBRepMesh_Factory,
         theShape: *const TopoDS_Shape,
-        theDeflection: f64,
-        theAngle: f64,
-        theAlgo: *mut *mut BRepMesh_DiscretRoot,
+        theLinDeflection: f64,
+        theAngDeflection: f64,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_DiscretRoot>;
+    /// **Source:** `XBRepMesh_Factory.hxx`:24 - `XBRepMesh_Factory::get_type_name()`
+    pub fn XBRepMesh_Factory_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
+    /// **Source:** `XBRepMesh_Factory.hxx`:24 - `XBRepMesh_Factory::get_type_descriptor()`
+    pub fn XBRepMesh_Factory_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Upcast XBRepMesh_Factory to BRepMesh_DiscretAlgoFactory
+    pub fn XBRepMesh_Factory_as_BRepMesh_DiscretAlgoFactory(
+        self_: *const XBRepMesh_Factory,
+    ) -> crate::OcctResult<*const BRepMesh_DiscretAlgoFactory>;
+    /// Upcast XBRepMesh_Factory to BRepMesh_DiscretAlgoFactory (mutable)
+    pub fn XBRepMesh_Factory_as_BRepMesh_DiscretAlgoFactory_mut(
+        self_: *mut XBRepMesh_Factory,
+    ) -> crate::OcctResult<*mut BRepMesh_DiscretAlgoFactory>;
+    /// Upcast XBRepMesh_Factory to Standard_Transient
+    pub fn XBRepMesh_Factory_as_Standard_Transient(
+        self_: *const XBRepMesh_Factory,
+    ) -> crate::OcctResult<*const Standard_Transient>;
+    /// Upcast XBRepMesh_Factory to Standard_Transient (mutable)
+    pub fn XBRepMesh_Factory_as_Standard_Transient_mut(
+        self_: *mut XBRepMesh_Factory,
+    ) -> crate::OcctResult<*mut Standard_Transient>;
+    /// Wrap XBRepMesh_Factory in a Handle
+    pub fn XBRepMesh_Factory_to_handle(
+        obj: *mut XBRepMesh_Factory,
+    ) -> crate::OcctResult<*mut Handle_XBRepMesh_Factory>;
+    /// Destroy Handle<XBRepMesh_Factory>
+    pub fn Handle_XBRepMesh_Factory_destructor(self_: *mut Handle_XBRepMesh_Factory);
+    /// Clone Handle<XBRepMesh_Factory> (increments reference count)
+    pub fn Handle_XBRepMesh_Factory_clone(
+        self_: *const Handle_XBRepMesh_Factory,
+    ) -> crate::OcctResult<*mut Handle_XBRepMesh_Factory>;
+    /// Check if Handle<XBRepMesh_Factory> is null
+    pub fn Handle_XBRepMesh_Factory_is_null(self_: *const Handle_XBRepMesh_Factory) -> bool;
+    /// Dereference Handle to get *const XBRepMesh_Factory
+    pub fn Handle_XBRepMesh_Factory_get(
+        handle: *const Handle_XBRepMesh_Factory,
+    ) -> crate::OcctResult<*const XBRepMesh_Factory>;
+    /// Dereference Handle to get *mut XBRepMesh_Factory
+    pub fn Handle_XBRepMesh_Factory_get_mut(
+        handle: *mut Handle_XBRepMesh_Factory,
+    ) -> crate::OcctResult<*mut XBRepMesh_Factory>;
+    /// Upcast Handle<XBRepMesh_Factory> to Handle<BRepMesh_DiscretAlgoFactory>
+    pub fn Handle_XBRepMesh_Factory_to_Handle_BRepMesh_DiscretAlgoFactory(
+        self_: *const Handle_XBRepMesh_Factory,
+    ) -> crate::OcctResult<*mut Handle_BRepMesh_DiscretAlgoFactory>;
+    /// Upcast Handle<XBRepMesh_Factory> to Handle<Standard_Transient>
+    pub fn Handle_XBRepMesh_Factory_to_Handle_Standard_Transient(
+        self_: *const Handle_XBRepMesh_Factory,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BRepMesh_DiscretAlgoFactory.hxx`:70 - `BRepMesh_DiscretAlgoFactory::Name()`
+    pub fn XBRepMesh_Factory_inherited_Name(
+        self_: *const XBRepMesh_Factory,
+    ) -> crate::OcctResult<*const TCollection_AsciiString>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn XBRepMesh_Factory_inherited_IsInstance(
+        self_: *const XBRepMesh_Factory,
+        theType: *const Handle_Standard_Type,
+    ) -> crate::OcctResult<bool>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn XBRepMesh_Factory_inherited_IsKind(
+        self_: *const XBRepMesh_Factory,
+        theType: *const Handle_Standard_Type,
+    ) -> crate::OcctResult<bool>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
+    pub fn XBRepMesh_Factory_inherited_This(
+        self_: *const XBRepMesh_Factory,
+    ) -> crate::OcctResult<*mut Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
+    pub fn XBRepMesh_Factory_inherited_GetRefCount(
+        self_: *const XBRepMesh_Factory,
     ) -> crate::OcctResult<i32>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
+    pub fn XBRepMesh_Factory_inherited_IncrementRefCounter(
+        self_: *mut XBRepMesh_Factory,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
+    pub fn XBRepMesh_Factory_inherited_DecrementRefCounter(
+        self_: *mut XBRepMesh_Factory,
+    ) -> crate::OcctResult<i32>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
+    pub fn XBRepMesh_Factory_inherited_Delete(
+        self_: *const XBRepMesh_Factory,
+    ) -> *const std::ffi::c_char;
 }

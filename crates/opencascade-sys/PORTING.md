@@ -95,13 +95,14 @@ let wire = make_wire.wire();  // returns &TopoDS_Wire
 
 ## Handle Types (Reference-Counted Smart Pointers)
 
-OCCT's `Handle(T)` maps to `OwnedPtr<HandleT>` in Rust (e.g.,
-`Handle(Geom_Curve)` → `OwnedPtr<HandleGeomCurve>`).
+OCCT's `Handle(T)` maps to `OwnedPtr<Handle_T>` in Rust (e.g.,
+`Handle(Geom_Curve)` → `OwnedPtr<Handle_Geom_Curve>`). Handle type names mirror
+OCCT's classic `Handle_<C++name>` spelling.
 
 ### Creating Handles
 
 `to_handle()` is an associated function (not a method) that consumes an
-`OwnedPtr<T>` and returns `OwnedPtr<HandleT>`. This is because
+`OwnedPtr<T>` and returns `OwnedPtr<Handle_T>`. This is because
 `self: OwnedPtr<Self>` receivers require Rust's unstable `arbitrary_self_types`
 feature.
 
@@ -132,8 +133,8 @@ This also works with methods that return `&HandleT` — use `.to_owned()`
 (from the `ToOwned` trait) to create an independently-owned `OwnedPtr`:
 
 ```rust
-let curve_ref: &HandleGeomCurve = geom_api_obj.line(1);  // borrowed
-let owned_curve = curve_ref.to_owned();                    // OwnedPtr<HandleGeomCurve>
+let curve_ref: &Handle_Geom_Curve = geom_api_obj.line(1);  // borrowed
+let owned_curve = curve_ref.to_owned();                     // OwnedPtr<Handle_Geom_Curve>
 ```
 
 ### Handle Upcasting
@@ -141,10 +142,10 @@ let owned_curve = curve_ref.to_owned();                    // OwnedPtr<HandleGeo
 Use `to_handle_*()` methods to upcast handles in the inheritance hierarchy:
 
 ```rust
-// HandleGeomCylindricalSurface → HandleGeomSurface
+// Handle_Geom_CylindricalSurface → Handle_Geom_Surface
 let handle_surface = handle_cyl.to_handle_surface();
 
-// HandleGeomTrimmedCurve → HandleGeomCurve
+// Handle_Geom_TrimmedCurve → Handle_Geom_Curve
 let handle_curve = segment.value().to_handle_curve();
 ```
 
@@ -196,7 +197,7 @@ OCCT's `Handle::DownCast` internally, which performs runtime type checking.
 ```rust
 let surface = b_rep::Tool::surface_face(face);
 
-// Try to downcast HandleGeomSurface to HandleGeomPlane
+// Try to downcast Handle_Geom_Surface to Handle_Geom_Plane
 if let Some(plane_handle) = surface.downcast_to_plane() {
     let plane = plane_handle.get();
     let location = plane.location();
@@ -257,27 +258,47 @@ let shape_enum = top_abs::ShapeEnum::try_from(raw_i32)
 
 ## Collections
 
-Collection types like `TopTools_ListOfShape` have `new()`, `append()`,
-`prepend()`, `size()`, and `clear()` methods:
+OCCT's collections are the `NCollection_*<T>` templates (`NCollection_List<TopoDS_Shape>`,
+`NCollection_Array1<gp_Pnt>`, `NCollection_DataMap<...>`, …). Each instantiation is
+re-exported in the `n_collection` module under a canonical name formed from the template
+and its element type(s): `n_collection::List_TopoDS_Shape`, `n_collection::Array1_gp_Pnt`,
+`n_collection::HArray1_gp_Pnt`, etc. Shape-keyed maps carry the hasher in their name
+(`n_collection::IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher`). Scalar-element
+collections are supported too (`List_int`, `Sequence_double`, `DataMap_TopoDS_Shape_int`);
+their scalar accessors take/return the value by `&i32`/`Option<i32>` rather than a pointer.
+
+List/sequence types have `new()`, `append()`, `prepend()`, `value()`, `size()`, and
+`clear()`; `Array1`/`HArray1` add `new_int2()`, `value()`, `set_value()`; maps add
+`add()`/`bind()`/`find()`/`contains()`/`find_key()`.
 
 ```cpp
 // C++
-TopTools_ListOfShape aList;
+NCollection_List<TopoDS_Shape> aList;
 aList.Append(aFace);
 ```
 
 ```rust
 // Rust
-let mut faces = top_tools::ListOfShape::new();
+let mut faces = n_collection::List_TopoDS_Shape::new();
 faces.append(a_face.as_shape());
 ```
 
-`TopTools_IndexedMapOfShape` provides deduplicated, indexed access to shapes.
-Use `top_exp::map_shapes()` to populate it with sub-shapes of a given type:
+Each collection's iterator implements `Iterator`, so `iter()` works in `for` loops and
+adapters:
+
+```rust
+for face in faces.iter() {
+    // face: OwnedPtr<topo_ds::Shape>
+}
+```
+
+`NCollection_IndexedMap` provides deduplicated, indexed access. Use `TopExp::MapShapes`
+(a free function whose name-suffix encodes the parameter types — collection parameters use
+a short token like `imap_shape`) to populate it with sub-shapes of a given type:
 
 ```cpp
 // C++
-TopTools_IndexedMapOfShape vertexMap;
+NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> vertexMap;
 TopExp::MapShapes(shape, TopAbs_VERTEX, vertexMap);
 for (int i = 1; i <= vertexMap.Extent(); ++i) {
     const TopoDS_Vertex& v = TopoDS::Vertex(vertexMap.FindKey(i));
@@ -286,8 +307,10 @@ for (int i = 1; i <= vertexMap.Extent(); ++i) {
 
 ```rust
 // Rust
-let mut vertex_map = top_tools::IndexedMapOfShape::new();
-top_exp::map_shapes(shape, top_abs::ShapeEnum::Vertex, &mut *vertex_map);
+let mut vertex_map = n_collection::IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher::new();
+top_exp::map_shapes_shape_shapeenum_imap_shape(
+    shape, top_abs::ShapeEnum::Vertex, &mut vertex_map,
+);
 for i in 1..=vertex_map.size() {
     let v = unsafe { &*topo_ds::vertex(vertex_map.find_key(i)) };
 }
@@ -509,7 +532,81 @@ Some OCCT patterns require chaining through multiple handle conversions:
 ```rust
 // Create a Law_Interpol, convert to Handle(Law_Interpol), then to Handle(Law_Function)
 let mut interpol = law::Interpol::new();
-interpol.set_array1ofpnt2d_bool(&array, false);
-let handle = law::Interpol::to_handle(interpol);  // Handle(Law_Interpol)
-let law_handle = handle.to_handle_function();       // Handle(Law_Function)
+interpol.set_array1_gp_pnt2d_bool(&array, false);
+let handle = law::Interpol::to_handle(interpol);  // Handle_Law_Interpol
+let law_handle = handle.to_handle_function();       // Handle_Law_Function
 ```
+
+## Deprecated OCCT symbols are not bound
+
+OCCT 8.0.0 deprecated ~970 backward-compat typedef headers (moved to
+`OCCT/src/Deprecated/`, e.g. `TColgp_HArray1OfPnt.hxx` is now just
+`typedef NCollection_HArray1<gp_Pnt> TColgp_HArray1OfPnt;`) and pivoted its own API to the
+canonical `NCollection_*<T>` names. `opencascade-sys` follows OCCT: deprecated symbols are
+**not generated**, so always reach for the canonical type (`n_collection::List_TopoDS_Shape`,
+not a `TopTools_ListOfShape` alias). Some builders were consolidated as well — e.g. the
+`GCE2d_*` 2D geometry builders are gone; use the `GC_*` equivalents
+(`gce2d::MakeSegment` → `gc::MakeSegment2d`).
+
+## Porting a client from an older opencascade-rs (pre-8.0) to the OCCT 8.0 bindings
+
+If you have downstream Rust code written against the pre-8.0 bindings, here are the
+high-level, client-visible changes to expect (all mechanical; the compiler will point you
+at each site):
+
+### 1. Collections moved to canonical `n_collection::` names
+OCCT 8.0 deprecated the `TColgp_*` / `TColStd_*` / `TopTools_*` collection aliases and
+uses the canonical `NCollection_*<T>` templates directly. The bindings follow suit — every
+collection now lives in the `n_collection` module named after the template + element:
+
+| Old | New |
+|-----|-----|
+| `t_colgp::Array1OfPnt` | `n_collection::Array1_gp_Pnt` |
+| `t_colgp::Array2OfPnt` | `n_collection::Array2_gp_Pnt` |
+| `t_colgp::Array1OfPnt2d` | `n_collection::Array1_gp_Pnt2d` |
+| `t_col_std::Array1OfReal` | `n_collection::Array1_double` |
+| `top_tools::ListOfShape` | `n_collection::List_TopoDS_Shape` |
+| `top_tools::SequenceOfShape` | `n_collection::Sequence_TopoDS_Shape` |
+| `top_tools::IndexedMapOfShape` | `n_collection::IndexedMap_TopoDS_Shape` |
+
+Shape-keyed maps carry the hasher in their name, e.g. a `TopExp::MapShapes` out-parameter is
+`n_collection::IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher` (not the bare `IndexedMap_TopoDS_Shape`).
+Collections of scalars are supported too (`List_int`, `Map_int`, `Sequence_double`,
+`DataMap_TopoDS_Shape_int`, …); scalar map lookups return `Option<T>` by value.
+
+### 2. Handle types use the `Handle_<C++name>` scheme
+`HandleGeomCurve` → `Handle_Geom_Curve`, `HandleGeomSurface` → `Handle_Geom_Surface`,
+`HandleLawFunction` → `Handle_Law_Function`, etc. (matches OCCT's own classic `Handle_X`
+spelling). Handle *methods* (`get`, `get_mut`, `is_null`, `to_handle_*`, `downcast_to_*`)
+are unchanged.
+
+### 3. `HArray1`/`HSequence` are collections now
+Formerly stand-alone classes (`t_colgp::HArray1OfPnt`), they are `n_collection::HArray1_gp_Pnt`
+/ `HSequence_TopoDS_Shape`, etc. Because `NCollection_HArray1<T>` *is* an `NCollection_Array1<T>`,
+call element methods directly: `array.change_array1().set_value(i, v)` becomes
+`array.set_value(i, v)`. `to_handle(owned)` and (on the resulting handle) `get()`/`get_mut()`
+work as before.
+
+### 4. Overloaded method/ctor suffixes use short collection tokens
+Overload suffixes encode parameter types; collection parameters use a short token
+(`arr1_pnt`, `arr2_pnt`, `harr1_pnt`, `imap_shape`, `dmap_shape_int`, … — dropping the
+hasher argument). So:
+`BezierCurve::new_array1ofpnt` → `new_arr1_pnt`,
+`BezierSurface::new_array2ofpnt` → `new_arr2_pnt`,
+`MakeFillet::add_array1ofpnt2d_edge` → `add_arr1_pnt2d_edge`,
+`Interpol::set_array1ofpnt2d_bool` → `set_arr1_pnt2d_bool`,
+`GeomAPI_Interpolate::new_handletcolgpharray1ofpnt_bool_real` → `new_harr1_pnt_bool_real`.
+(Recovering previously-skipped handle-collection overloads can also re-introduce a suffix
+on a method that used to be unambiguous — e.g. `GeomAPI_Interpolate::load` is now
+`load_vec2_bool`.)
+
+### 5. Deprecated OCCT symbols are gone — use the 8.0 replacement
+Deprecated symbols aren't bound at all (see *Deprecated OCCT symbols are not bound* above).
+Notable API relocations/signature changes to watch for:
+- `GCE2d_MakeSegment` (and other `GCE2d_*` builders) → the consolidated `GC_*` equivalents,
+  e.g. `gce2d::MakeSegment` → `gc::MakeSegment2d` (value returns `Handle_Geom2d_TrimmedCurve`).
+- `ShapeAnalysis_FreeBounds::connect_edges_to_wires` now **returns** the wire
+  `Handle_NCollection_HSequence_TopoDS_Shape` and takes 3 args `(edges, tol, shared)`
+  (the wires out-parameter was removed).
+- `StlAPI_Writer::write` → `write_shape_charptr_progressrange(shape, path, progress)`.
+- `GeomAPI_Interpolate::load_vec2_bool` → `load(initial_tangent, final_tangent, scale)`.

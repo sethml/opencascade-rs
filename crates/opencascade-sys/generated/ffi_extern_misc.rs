@@ -8,6 +8,607 @@
 use crate::ffi_types::*;
 
 unsafe extern "C" {
+    // ======================== HelixBRep_BuilderHelix ========================
+    pub fn HelixBRep_BuilderHelix_destructor(self_: *mut HelixBRep_BuilderHelix);
+    /// **Source:** `HelixBRep_BuilderHelix.hxx`:55 - `HelixBRep_BuilderHelix::HelixBRep_BuilderHelix()`
+    pub fn HelixBRep_BuilderHelix_ctor() -> crate::OcctResult<*mut HelixBRep_BuilderHelix>;
+    /// **Source:** `HelixBRep_BuilderHelix.hxx`:59 - `HelixBRep_BuilderHelix::SetParameters()`
+    pub fn HelixBRep_BuilderHelix_set_parameters_ax3_arr1_double3_arr1_bool(
+        self_: *mut HelixBRep_BuilderHelix,
+        theAxis: *const gp_Ax3,
+        theDiams: *const NCollection_Array1_double,
+        theHeights: *const NCollection_Array1_double,
+        thePitches: *const NCollection_Array1_double,
+        theIsPitches: *const NCollection_Array1_bool,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `HelixBRep_BuilderHelix.hxx`:66 - `HelixBRep_BuilderHelix::SetParameters()`
+    pub fn HelixBRep_BuilderHelix_set_parameters_ax3_real_arr1_double2_arr1_bool(
+        self_: *mut HelixBRep_BuilderHelix,
+        theAxis: *const gp_Ax3,
+        theDiam: f64,
+        theHeights: *const NCollection_Array1_double,
+        thePitches: *const NCollection_Array1_double,
+        theIsPitches: *const NCollection_Array1_bool,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `HelixBRep_BuilderHelix.hxx`:73 - `HelixBRep_BuilderHelix::SetParameters()`
+    pub fn HelixBRep_BuilderHelix_set_parameters_ax3_real2_arr1_double2_arr1_bool(
+        self_: *mut HelixBRep_BuilderHelix,
+        theAxis: *const gp_Ax3,
+        theDiam1: f64,
+        theDiam2: f64,
+        theHeights: *const NCollection_Array1_double,
+        thePitches: *const NCollection_Array1_double,
+        theIsPitches: *const NCollection_Array1_bool,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `HelixBRep_BuilderHelix.hxx`:81 - `HelixBRep_BuilderHelix::SetParameters()`
+    pub fn HelixBRep_BuilderHelix_set_parameters_ax3_arr1_double3(
+        self_: *mut HelixBRep_BuilderHelix,
+        theAxis: *const gp_Ax3,
+        theDiams: *const NCollection_Array1_double,
+        thePitches: *const NCollection_Array1_double,
+        theNbTurns: *const NCollection_Array1_double,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `HelixBRep_BuilderHelix.hxx`:87 - `HelixBRep_BuilderHelix::SetParameters()`
+    pub fn HelixBRep_BuilderHelix_set_parameters_ax3_real_arr1_double2(
+        self_: *mut HelixBRep_BuilderHelix,
+        theAxis: *const gp_Ax3,
+        theDiam: f64,
+        thePitches: *const NCollection_Array1_double,
+        theNbTurns: *const NCollection_Array1_double,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `HelixBRep_BuilderHelix.hxx`:93 - `HelixBRep_BuilderHelix::SetParameters()`
+    pub fn HelixBRep_BuilderHelix_set_parameters_ax3_real2_arr1_double2(
+        self_: *mut HelixBRep_BuilderHelix,
+        theAxis: *const gp_Ax3,
+        theDiam1: f64,
+        theDiam2: f64,
+        thePitches: *const NCollection_Array1_double,
+        theNbTurns: *const NCollection_Array1_double,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `HelixBRep_BuilderHelix.hxx`:100 - `HelixBRep_BuilderHelix::SetApproxParameters()`
+    pub fn HelixBRep_BuilderHelix_set_approx_parameters(
+        self_: *mut HelixBRep_BuilderHelix,
+        theTolerance: f64,
+        theMaxDegree: i32,
+        theContinuity: i32,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `HelixBRep_BuilderHelix.hxx`:105 - `HelixBRep_BuilderHelix::Perform()`
+    pub fn HelixBRep_BuilderHelix_perform(
+        self_: *mut HelixBRep_BuilderHelix,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `HelixBRep_BuilderHelix.hxx`:108 - `HelixBRep_BuilderHelix::ToleranceReached()`
+    pub fn HelixBRep_BuilderHelix_tolerance_reached(
+        self_: *const HelixBRep_BuilderHelix,
+    ) -> crate::OcctResult<f64>;
+    /// **Source:** `HelixBRep_BuilderHelix.hxx`:111 - `HelixBRep_BuilderHelix::ErrorStatus()`
+    pub fn HelixBRep_BuilderHelix_error_status(
+        self_: *const HelixBRep_BuilderHelix,
+    ) -> crate::OcctResult<i32>;
+    /// **Source:** `HelixBRep_BuilderHelix.hxx`:114 - `HelixBRep_BuilderHelix::WarningStatus()`
+    pub fn HelixBRep_BuilderHelix_warning_status(
+        self_: *const HelixBRep_BuilderHelix,
+    ) -> crate::OcctResult<i32>;
+    /// **Source:** `HelixBRep_BuilderHelix.hxx`:117 - `HelixBRep_BuilderHelix::Shape()`
+    pub fn HelixBRep_BuilderHelix_shape(
+        self_: *const HelixBRep_BuilderHelix,
+    ) -> crate::OcctResult<*const TopoDS_Shape>;
+    // ======================== HelixGeom_BuilderApproxCurve ========================
+    /// **Source:** `HelixGeom_BuilderApproxCurve.hxx`:47 - `HelixGeom_BuilderApproxCurve::SetApproxParameters()`
+    pub fn HelixGeom_BuilderApproxCurve_set_approx_parameters(
+        self_: *mut HelixGeom_BuilderApproxCurve,
+        aCont: i32,
+        aMaxDegree: i32,
+        aMaxSeg: i32,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `HelixGeom_BuilderApproxCurve.hxx`:52 - `HelixGeom_BuilderApproxCurve::ApproxParameters()`
+    pub fn HelixGeom_BuilderApproxCurve_approx_parameters(
+        self_: *const HelixGeom_BuilderApproxCurve,
+        aCont: &mut i32,
+        aMaxDegree: *mut i32,
+        aMaxSeg: *mut i32,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `HelixGeom_BuilderApproxCurve.hxx`:55 - `HelixGeom_BuilderApproxCurve::SetTolerance()`
+    pub fn HelixGeom_BuilderApproxCurve_set_tolerance(
+        self_: *mut HelixGeom_BuilderApproxCurve,
+        aTolerance: f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `HelixGeom_BuilderApproxCurve.hxx`:58 - `HelixGeom_BuilderApproxCurve::Tolerance()`
+    pub fn HelixGeom_BuilderApproxCurve_tolerance(
+        self_: *const HelixGeom_BuilderApproxCurve,
+    ) -> crate::OcctResult<f64>;
+    /// **Source:** `HelixGeom_BuilderApproxCurve.hxx`:61 - `HelixGeom_BuilderApproxCurve::ToleranceReached()`
+    pub fn HelixGeom_BuilderApproxCurve_tolerance_reached(
+        self_: *const HelixGeom_BuilderApproxCurve,
+    ) -> crate::OcctResult<f64>;
+    /// **Source:** `HelixGeom_BuilderApproxCurve.hxx`:67 - `HelixGeom_BuilderApproxCurve::ErrorStatus()`
+    pub fn HelixGeom_BuilderApproxCurve_error_status(
+        self_: *const HelixGeom_BuilderApproxCurve,
+    ) -> crate::OcctResult<i32>;
+    /// **Source:** `HelixGeom_BuilderApproxCurve.hxx`:70 - `HelixGeom_BuilderApproxCurve::WarningStatus()`
+    pub fn HelixGeom_BuilderApproxCurve_warning_status(
+        self_: *const HelixGeom_BuilderApproxCurve,
+    ) -> crate::OcctResult<i32>;
+    /// **Source:** `HelixGeom_BuilderApproxCurve.hxx`:74 - `HelixGeom_BuilderApproxCurve::Perform()`
+    pub fn HelixGeom_BuilderApproxCurve_perform(
+        self_: *mut HelixGeom_BuilderApproxCurve,
+    ) -> *const std::ffi::c_char;
+    // ======================== HelixGeom_BuilderHelix ========================
+    pub fn HelixGeom_BuilderHelix_destructor(self_: *mut HelixGeom_BuilderHelix);
+    /// **Source:** `HelixGeom_BuilderHelix.hxx`:33 - `HelixGeom_BuilderHelix::HelixGeom_BuilderHelix()`
+    pub fn HelixGeom_BuilderHelix_ctor() -> crate::OcctResult<*mut HelixGeom_BuilderHelix>;
+    /// **Source:** `HelixGeom_BuilderHelix.hxx`:37 - `HelixGeom_BuilderHelix::SetPosition()`
+    pub fn HelixGeom_BuilderHelix_set_position(
+        self_: *mut HelixGeom_BuilderHelix,
+        aAx2: *const gp_Ax2,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `HelixGeom_BuilderHelix.hxx`:40 - `HelixGeom_BuilderHelix::Position()`
+    pub fn HelixGeom_BuilderHelix_position(
+        self_: *const HelixGeom_BuilderHelix,
+    ) -> crate::OcctResult<*const gp_Ax2>;
+    /// **Source:** `HelixGeom_BuilderHelix.hxx`:43 - `HelixGeom_BuilderHelix::Perform()`
+    pub fn HelixGeom_BuilderHelix_perform(
+        self_: *mut HelixGeom_BuilderHelix,
+    ) -> *const std::ffi::c_char;
+    /// Upcast HelixGeom_BuilderHelix to HelixGeom_BuilderHelixGen
+    pub fn HelixGeom_BuilderHelix_as_HelixGeom_BuilderHelixGen(
+        self_: *const HelixGeom_BuilderHelix,
+    ) -> crate::OcctResult<*const HelixGeom_BuilderHelixGen>;
+    /// Upcast HelixGeom_BuilderHelix to HelixGeom_BuilderHelixGen (mutable)
+    pub fn HelixGeom_BuilderHelix_as_HelixGeom_BuilderHelixGen_mut(
+        self_: *mut HelixGeom_BuilderHelix,
+    ) -> crate::OcctResult<*mut HelixGeom_BuilderHelixGen>;
+    /// Upcast HelixGeom_BuilderHelix to HelixGeom_BuilderApproxCurve
+    pub fn HelixGeom_BuilderHelix_as_HelixGeom_BuilderApproxCurve(
+        self_: *const HelixGeom_BuilderHelix,
+    ) -> crate::OcctResult<*const HelixGeom_BuilderApproxCurve>;
+    /// Upcast HelixGeom_BuilderHelix to HelixGeom_BuilderApproxCurve (mutable)
+    pub fn HelixGeom_BuilderHelix_as_HelixGeom_BuilderApproxCurve_mut(
+        self_: *mut HelixGeom_BuilderHelix,
+    ) -> crate::OcctResult<*mut HelixGeom_BuilderApproxCurve>;
+    /// Inherited: **Source:** `HelixGeom_BuilderHelixGen.hxx`:46 - `HelixGeom_BuilderHelixGen::SetCurveParameters()`
+    pub fn HelixGeom_BuilderHelix_inherited_SetCurveParameters(
+        self_: *mut HelixGeom_BuilderHelix,
+        aT1: f64,
+        aT2: f64,
+        aPitch: f64,
+        aRStart: f64,
+        aTaperAngle: f64,
+        bIsClockwise: bool,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `HelixGeom_BuilderHelixGen.hxx`:54 - `HelixGeom_BuilderHelixGen::CurveParameters()`
+    pub fn HelixGeom_BuilderHelix_inherited_CurveParameters(
+        self_: *const HelixGeom_BuilderHelix,
+        aT1: *mut f64,
+        aT2: *mut f64,
+        aPitch: *mut f64,
+        aRStart: *mut f64,
+        aTaperAngle: *mut f64,
+        bIsClockwise: *mut bool,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `HelixGeom_BuilderApproxCurve.hxx`:47 - `HelixGeom_BuilderApproxCurve::SetApproxParameters()`
+    pub fn HelixGeom_BuilderHelix_inherited_SetApproxParameters(
+        self_: *mut HelixGeom_BuilderHelix,
+        aCont: i32,
+        aMaxDegree: i32,
+        aMaxSeg: i32,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `HelixGeom_BuilderApproxCurve.hxx`:55 - `HelixGeom_BuilderApproxCurve::SetTolerance()`
+    pub fn HelixGeom_BuilderHelix_inherited_SetTolerance(
+        self_: *mut HelixGeom_BuilderHelix,
+        aTolerance: f64,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `HelixGeom_BuilderApproxCurve.hxx`:58 - `HelixGeom_BuilderApproxCurve::Tolerance()`
+    pub fn HelixGeom_BuilderHelix_inherited_Tolerance(
+        self_: *const HelixGeom_BuilderHelix,
+    ) -> crate::OcctResult<f64>;
+    /// Inherited: **Source:** `HelixGeom_BuilderApproxCurve.hxx`:61 - `HelixGeom_BuilderApproxCurve::ToleranceReached()`
+    pub fn HelixGeom_BuilderHelix_inherited_ToleranceReached(
+        self_: *const HelixGeom_BuilderHelix,
+    ) -> crate::OcctResult<f64>;
+    /// Inherited: **Source:** `HelixGeom_BuilderApproxCurve.hxx`:67 - `HelixGeom_BuilderApproxCurve::ErrorStatus()`
+    pub fn HelixGeom_BuilderHelix_inherited_ErrorStatus(
+        self_: *const HelixGeom_BuilderHelix,
+    ) -> crate::OcctResult<i32>;
+    /// Inherited: **Source:** `HelixGeom_BuilderApproxCurve.hxx`:70 - `HelixGeom_BuilderApproxCurve::WarningStatus()`
+    pub fn HelixGeom_BuilderHelix_inherited_WarningStatus(
+        self_: *const HelixGeom_BuilderHelix,
+    ) -> crate::OcctResult<i32>;
+    // ======================== HelixGeom_BuilderHelixCoil ========================
+    pub fn HelixGeom_BuilderHelixCoil_destructor(self_: *mut HelixGeom_BuilderHelixCoil);
+    /// **Source:** `HelixGeom_BuilderHelixCoil.hxx`:31 - `HelixGeom_BuilderHelixCoil::HelixGeom_BuilderHelixCoil()`
+    pub fn HelixGeom_BuilderHelixCoil_ctor() -> crate::OcctResult<*mut HelixGeom_BuilderHelixCoil>;
+    /// **Source:** `HelixGeom_BuilderHelixCoil.hxx`:35 - `HelixGeom_BuilderHelixCoil::Perform()`
+    pub fn HelixGeom_BuilderHelixCoil_perform(
+        self_: *mut HelixGeom_BuilderHelixCoil,
+    ) -> *const std::ffi::c_char;
+    /// Upcast HelixGeom_BuilderHelixCoil to HelixGeom_BuilderHelixGen
+    pub fn HelixGeom_BuilderHelixCoil_as_HelixGeom_BuilderHelixGen(
+        self_: *const HelixGeom_BuilderHelixCoil,
+    ) -> crate::OcctResult<*const HelixGeom_BuilderHelixGen>;
+    /// Upcast HelixGeom_BuilderHelixCoil to HelixGeom_BuilderHelixGen (mutable)
+    pub fn HelixGeom_BuilderHelixCoil_as_HelixGeom_BuilderHelixGen_mut(
+        self_: *mut HelixGeom_BuilderHelixCoil,
+    ) -> crate::OcctResult<*mut HelixGeom_BuilderHelixGen>;
+    /// Upcast HelixGeom_BuilderHelixCoil to HelixGeom_BuilderApproxCurve
+    pub fn HelixGeom_BuilderHelixCoil_as_HelixGeom_BuilderApproxCurve(
+        self_: *const HelixGeom_BuilderHelixCoil,
+    ) -> crate::OcctResult<*const HelixGeom_BuilderApproxCurve>;
+    /// Upcast HelixGeom_BuilderHelixCoil to HelixGeom_BuilderApproxCurve (mutable)
+    pub fn HelixGeom_BuilderHelixCoil_as_HelixGeom_BuilderApproxCurve_mut(
+        self_: *mut HelixGeom_BuilderHelixCoil,
+    ) -> crate::OcctResult<*mut HelixGeom_BuilderApproxCurve>;
+    /// Inherited: **Source:** `HelixGeom_BuilderHelixGen.hxx`:46 - `HelixGeom_BuilderHelixGen::SetCurveParameters()`
+    pub fn HelixGeom_BuilderHelixCoil_inherited_SetCurveParameters(
+        self_: *mut HelixGeom_BuilderHelixCoil,
+        aT1: f64,
+        aT2: f64,
+        aPitch: f64,
+        aRStart: f64,
+        aTaperAngle: f64,
+        bIsClockwise: bool,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `HelixGeom_BuilderHelixGen.hxx`:54 - `HelixGeom_BuilderHelixGen::CurveParameters()`
+    pub fn HelixGeom_BuilderHelixCoil_inherited_CurveParameters(
+        self_: *const HelixGeom_BuilderHelixCoil,
+        aT1: *mut f64,
+        aT2: *mut f64,
+        aPitch: *mut f64,
+        aRStart: *mut f64,
+        aTaperAngle: *mut f64,
+        bIsClockwise: *mut bool,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `HelixGeom_BuilderApproxCurve.hxx`:47 - `HelixGeom_BuilderApproxCurve::SetApproxParameters()`
+    pub fn HelixGeom_BuilderHelixCoil_inherited_SetApproxParameters(
+        self_: *mut HelixGeom_BuilderHelixCoil,
+        aCont: i32,
+        aMaxDegree: i32,
+        aMaxSeg: i32,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `HelixGeom_BuilderApproxCurve.hxx`:55 - `HelixGeom_BuilderApproxCurve::SetTolerance()`
+    pub fn HelixGeom_BuilderHelixCoil_inherited_SetTolerance(
+        self_: *mut HelixGeom_BuilderHelixCoil,
+        aTolerance: f64,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `HelixGeom_BuilderApproxCurve.hxx`:58 - `HelixGeom_BuilderApproxCurve::Tolerance()`
+    pub fn HelixGeom_BuilderHelixCoil_inherited_Tolerance(
+        self_: *const HelixGeom_BuilderHelixCoil,
+    ) -> crate::OcctResult<f64>;
+    /// Inherited: **Source:** `HelixGeom_BuilderApproxCurve.hxx`:61 - `HelixGeom_BuilderApproxCurve::ToleranceReached()`
+    pub fn HelixGeom_BuilderHelixCoil_inherited_ToleranceReached(
+        self_: *const HelixGeom_BuilderHelixCoil,
+    ) -> crate::OcctResult<f64>;
+    /// Inherited: **Source:** `HelixGeom_BuilderApproxCurve.hxx`:67 - `HelixGeom_BuilderApproxCurve::ErrorStatus()`
+    pub fn HelixGeom_BuilderHelixCoil_inherited_ErrorStatus(
+        self_: *const HelixGeom_BuilderHelixCoil,
+    ) -> crate::OcctResult<i32>;
+    /// Inherited: **Source:** `HelixGeom_BuilderApproxCurve.hxx`:70 - `HelixGeom_BuilderApproxCurve::WarningStatus()`
+    pub fn HelixGeom_BuilderHelixCoil_inherited_WarningStatus(
+        self_: *const HelixGeom_BuilderHelixCoil,
+    ) -> crate::OcctResult<i32>;
+    // ======================== HelixGeom_BuilderHelixGen ========================
+    /// **Source:** `HelixGeom_BuilderHelixGen.hxx`:46 - `HelixGeom_BuilderHelixGen::SetCurveParameters()`
+    pub fn HelixGeom_BuilderHelixGen_set_curve_parameters(
+        self_: *mut HelixGeom_BuilderHelixGen,
+        aT1: f64,
+        aT2: f64,
+        aPitch: f64,
+        aRStart: f64,
+        aTaperAngle: f64,
+        bIsClockwise: bool,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `HelixGeom_BuilderHelixGen.hxx`:54 - `HelixGeom_BuilderHelixGen::CurveParameters()`
+    pub fn HelixGeom_BuilderHelixGen_curve_parameters(
+        self_: *const HelixGeom_BuilderHelixGen,
+        aT1: *mut f64,
+        aT2: *mut f64,
+        aPitch: *mut f64,
+        aRStart: *mut f64,
+        aTaperAngle: *mut f64,
+        bIsClockwise: *mut bool,
+    ) -> *const std::ffi::c_char;
+    /// Upcast HelixGeom_BuilderHelixGen to HelixGeom_BuilderApproxCurve
+    pub fn HelixGeom_BuilderHelixGen_as_HelixGeom_BuilderApproxCurve(
+        self_: *const HelixGeom_BuilderHelixGen,
+    ) -> crate::OcctResult<*const HelixGeom_BuilderApproxCurve>;
+    /// Upcast HelixGeom_BuilderHelixGen to HelixGeom_BuilderApproxCurve (mutable)
+    pub fn HelixGeom_BuilderHelixGen_as_HelixGeom_BuilderApproxCurve_mut(
+        self_: *mut HelixGeom_BuilderHelixGen,
+    ) -> crate::OcctResult<*mut HelixGeom_BuilderApproxCurve>;
+    // ======================== HelixGeom_HelixCurve ========================
+    pub fn HelixGeom_HelixCurve_destructor(self_: *mut HelixGeom_HelixCurve);
+    /// **Source:** `HelixGeom_HelixCurve.hxx`:43 - `HelixGeom_HelixCurve::HelixGeom_HelixCurve()`
+    pub fn HelixGeom_HelixCurve_ctor() -> crate::OcctResult<*mut HelixGeom_HelixCurve>;
+    /// **Source:** `HelixGeom_HelixCurve.hxx`:40 - `HelixGeom_HelixCurve::DynamicType()`
+    pub fn HelixGeom_HelixCurve_dynamic_type(
+        self_: *const HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `HelixGeom_HelixCurve.hxx`:46 - `HelixGeom_HelixCurve::Load()`
+    pub fn HelixGeom_HelixCurve_load(self_: *mut HelixGeom_HelixCurve) -> *const std::ffi::c_char;
+    /// **Source:** `HelixGeom_HelixCurve.hxx`:49 - `HelixGeom_HelixCurve::Load()`
+    pub fn HelixGeom_HelixCurve_load_real5_bool(
+        self_: *mut HelixGeom_HelixCurve,
+        aT1: f64,
+        aT2: f64,
+        aPitch: f64,
+        aRStart: f64,
+        aTaperAngle: f64,
+        aIsCW: bool,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `HelixGeom_HelixCurve.hxx`:57 - `HelixGeom_HelixCurve::FirstParameter()`
+    pub fn HelixGeom_HelixCurve_first_parameter(
+        self_: *const HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<f64>;
+    /// **Source:** `HelixGeom_HelixCurve.hxx`:60 - `HelixGeom_HelixCurve::LastParameter()`
+    pub fn HelixGeom_HelixCurve_last_parameter(
+        self_: *const HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<f64>;
+    /// **Source:** `HelixGeom_HelixCurve.hxx`:63 - `HelixGeom_HelixCurve::Continuity()`
+    pub fn HelixGeom_HelixCurve_continuity(
+        self_: *const HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<i32>;
+    /// **Source:** `HelixGeom_HelixCurve.hxx`:66 - `HelixGeom_HelixCurve::NbIntervals()`
+    pub fn HelixGeom_HelixCurve_nb_intervals(
+        self_: *const HelixGeom_HelixCurve,
+        S: i32,
+    ) -> crate::OcctResult<i32>;
+    /// **Source:** `HelixGeom_HelixCurve.hxx`:69 - `HelixGeom_HelixCurve::Intervals()`
+    pub fn HelixGeom_HelixCurve_intervals(
+        self_: *const HelixGeom_HelixCurve,
+        T: *mut NCollection_Array1_double,
+        S: i32,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `HelixGeom_HelixCurve.hxx`:73 - `HelixGeom_HelixCurve::Resolution()`
+    pub fn HelixGeom_HelixCurve_resolution(
+        self_: *const HelixGeom_HelixCurve,
+        R3d: f64,
+    ) -> crate::OcctResult<f64>;
+    /// **Source:** `HelixGeom_HelixCurve.hxx`:76 - `HelixGeom_HelixCurve::IsClosed()`
+    pub fn HelixGeom_HelixCurve_is_closed(
+        self_: *const HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `HelixGeom_HelixCurve.hxx`:79 - `HelixGeom_HelixCurve::IsPeriodic()`
+    pub fn HelixGeom_HelixCurve_is_periodic(
+        self_: *const HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `HelixGeom_HelixCurve.hxx`:82 - `HelixGeom_HelixCurve::Period()`
+    pub fn HelixGeom_HelixCurve_period(
+        self_: *const HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<f64>;
+    /// **Source:** `HelixGeom_HelixCurve.hxx`:85 - `HelixGeom_HelixCurve::EvalD0()`
+    pub fn HelixGeom_HelixCurve_eval_d0(
+        self_: *const HelixGeom_HelixCurve,
+        theU: f64,
+    ) -> crate::OcctResult<*mut gp_Pnt>;
+    /// **Source:** `HelixGeom_HelixCurve.hxx`:88 - `HelixGeom_HelixCurve::EvalD1()`
+    pub fn HelixGeom_HelixCurve_eval_d1(
+        self_: *const HelixGeom_HelixCurve,
+        theU: f64,
+    ) -> crate::OcctResult<*mut Geom_Curve_ResD1>;
+    /// **Source:** `HelixGeom_HelixCurve.hxx`:91 - `HelixGeom_HelixCurve::EvalD2()`
+    pub fn HelixGeom_HelixCurve_eval_d2(
+        self_: *const HelixGeom_HelixCurve,
+        theU: f64,
+    ) -> crate::OcctResult<*mut Geom_Curve_ResD2>;
+    /// **Source:** `HelixGeom_HelixCurve.hxx`:94 - `HelixGeom_HelixCurve::EvalDN()`
+    pub fn HelixGeom_HelixCurve_eval_dn(
+        self_: *const HelixGeom_HelixCurve,
+        theU: f64,
+        theN: i32,
+    ) -> crate::OcctResult<*mut gp_Vec>;
+    /// **Source:** `HelixGeom_HelixCurve.hxx`:40 - `HelixGeom_HelixCurve::get_type_name()`
+    pub fn HelixGeom_HelixCurve_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
+    /// **Source:** `HelixGeom_HelixCurve.hxx`:40 - `HelixGeom_HelixCurve::get_type_descriptor()`
+    pub fn HelixGeom_HelixCurve_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Upcast HelixGeom_HelixCurve to Adaptor3d_Curve
+    pub fn HelixGeom_HelixCurve_as_Adaptor3d_Curve(
+        self_: *const HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<*const Adaptor3d_Curve>;
+    /// Upcast HelixGeom_HelixCurve to Adaptor3d_Curve (mutable)
+    pub fn HelixGeom_HelixCurve_as_Adaptor3d_Curve_mut(
+        self_: *mut HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<*mut Adaptor3d_Curve>;
+    /// Upcast HelixGeom_HelixCurve to Standard_Transient
+    pub fn HelixGeom_HelixCurve_as_Standard_Transient(
+        self_: *const HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<*const Standard_Transient>;
+    /// Upcast HelixGeom_HelixCurve to Standard_Transient (mutable)
+    pub fn HelixGeom_HelixCurve_as_Standard_Transient_mut(
+        self_: *mut HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<*mut Standard_Transient>;
+    /// Wrap HelixGeom_HelixCurve in a Handle
+    pub fn HelixGeom_HelixCurve_to_handle(
+        obj: *mut HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<*mut Handle_HelixGeom_HelixCurve>;
+    /// Destroy Handle<HelixGeom_HelixCurve>
+    pub fn Handle_HelixGeom_HelixCurve_destructor(self_: *mut Handle_HelixGeom_HelixCurve);
+    /// Clone Handle<HelixGeom_HelixCurve> (increments reference count)
+    pub fn Handle_HelixGeom_HelixCurve_clone(
+        self_: *const Handle_HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<*mut Handle_HelixGeom_HelixCurve>;
+    /// Check if Handle<HelixGeom_HelixCurve> is null
+    pub fn Handle_HelixGeom_HelixCurve_is_null(self_: *const Handle_HelixGeom_HelixCurve) -> bool;
+    /// Dereference Handle to get *const HelixGeom_HelixCurve
+    pub fn Handle_HelixGeom_HelixCurve_get(
+        handle: *const Handle_HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<*const HelixGeom_HelixCurve>;
+    /// Dereference Handle to get *mut HelixGeom_HelixCurve
+    pub fn Handle_HelixGeom_HelixCurve_get_mut(
+        handle: *mut Handle_HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<*mut HelixGeom_HelixCurve>;
+    /// Upcast Handle<HelixGeom_HelixCurve> to Handle<Adaptor3d_Curve>
+    pub fn Handle_HelixGeom_HelixCurve_to_Handle_Adaptor3d_Curve(
+        self_: *const Handle_HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<*mut Handle_Adaptor3d_Curve>;
+    /// Upcast Handle<HelixGeom_HelixCurve> to Handle<Standard_Transient>
+    pub fn Handle_HelixGeom_HelixCurve_to_Handle_Standard_Transient(
+        self_: *const Handle_HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:54 - `Adaptor3d_Curve::ShallowCopy()`
+    pub fn HelixGeom_HelixCurve_inherited_ShallowCopy(
+        self_: *const HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<*mut Handle_Adaptor3d_Curve>;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:78 - `Adaptor3d_Curve::Trim()`
+    pub fn HelixGeom_HelixCurve_inherited_Trim(
+        self_: *const HelixGeom_HelixCurve,
+        First: f64,
+        Last: f64,
+        Tol: f64,
+    ) -> crate::OcctResult<*mut Handle_Adaptor3d_Curve>;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:89 - `Adaptor3d_Curve::Value()`
+    pub fn HelixGeom_HelixCurve_inherited_Value(
+        self_: *const HelixGeom_HelixCurve,
+        theU: f64,
+    ) -> crate::OcctResult<*mut gp_Pnt>;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:92 - `Adaptor3d_Curve::D0()`
+    pub fn HelixGeom_HelixCurve_inherited_D0(
+        self_: *const HelixGeom_HelixCurve,
+        theU: f64,
+        theP: *mut gp_Pnt,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:98 - `Adaptor3d_Curve::D1()`
+    pub fn HelixGeom_HelixCurve_inherited_D1(
+        self_: *const HelixGeom_HelixCurve,
+        theU: f64,
+        theP: *mut gp_Pnt,
+        theV: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:109 - `Adaptor3d_Curve::D2()`
+    pub fn HelixGeom_HelixCurve_inherited_D2(
+        self_: *const HelixGeom_HelixCurve,
+        theU: f64,
+        theP: *mut gp_Pnt,
+        theV1: *mut gp_Vec,
+        theV2: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:121 - `Adaptor3d_Curve::D3()`
+    pub fn HelixGeom_HelixCurve_inherited_D3(
+        self_: *const HelixGeom_HelixCurve,
+        theU: f64,
+        theP: *mut gp_Pnt,
+        theV1: *mut gp_Vec,
+        theV2: *mut gp_Vec,
+        theV3: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:135 - `Adaptor3d_Curve::DN()`
+    pub fn HelixGeom_HelixCurve_inherited_DN(
+        self_: *const HelixGeom_HelixCurve,
+        theU: f64,
+        theN: i32,
+    ) -> crate::OcctResult<*mut gp_Vec>;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:144 - `Adaptor3d_Curve::GetType()`
+    pub fn HelixGeom_HelixCurve_inherited_GetType(
+        self_: *const HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<i32>;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:146 - `Adaptor3d_Curve::Line()`
+    pub fn HelixGeom_HelixCurve_inherited_Line(
+        self_: *const HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<*mut gp_Lin>;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:148 - `Adaptor3d_Curve::Circle()`
+    pub fn HelixGeom_HelixCurve_inherited_Circle(
+        self_: *const HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<*mut gp_Circ>;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:150 - `Adaptor3d_Curve::Ellipse()`
+    pub fn HelixGeom_HelixCurve_inherited_Ellipse(
+        self_: *const HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<*mut gp_Elips>;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:152 - `Adaptor3d_Curve::Hyperbola()`
+    pub fn HelixGeom_HelixCurve_inherited_Hyperbola(
+        self_: *const HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<*mut gp_Hypr>;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:154 - `Adaptor3d_Curve::Parabola()`
+    pub fn HelixGeom_HelixCurve_inherited_Parabola(
+        self_: *const HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<*mut gp_Parab>;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:156 - `Adaptor3d_Curve::Degree()`
+    pub fn HelixGeom_HelixCurve_inherited_Degree(
+        self_: *const HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<i32>;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:158 - `Adaptor3d_Curve::IsRational()`
+    pub fn HelixGeom_HelixCurve_inherited_IsRational(
+        self_: *const HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<bool>;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:160 - `Adaptor3d_Curve::NbPoles()`
+    pub fn HelixGeom_HelixCurve_inherited_NbPoles(
+        self_: *const HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<i32>;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:162 - `Adaptor3d_Curve::NbKnots()`
+    pub fn HelixGeom_HelixCurve_inherited_NbKnots(
+        self_: *const HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<i32>;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:164 - `Adaptor3d_Curve::Bezier()`
+    pub fn HelixGeom_HelixCurve_inherited_Bezier(
+        self_: *const HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<*mut Handle_Geom_BezierCurve>;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:166 - `Adaptor3d_Curve::BSpline()`
+    pub fn HelixGeom_HelixCurve_inherited_BSpline(
+        self_: *const HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<*mut Handle_Geom_BSplineCurve>;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:168 - `Adaptor3d_Curve::OffsetCurve()`
+    pub fn HelixGeom_HelixCurve_inherited_OffsetCurve(
+        self_: *const HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<*mut Handle_Geom_OffsetCurve>;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:184 - `Adaptor3d_Curve::EvalD3()`
+    pub fn HelixGeom_HelixCurve_inherited_EvalD3(
+        self_: *const HelixGeom_HelixCurve,
+        theU: f64,
+    ) -> crate::OcctResult<*mut Geom_Curve_ResD3>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn HelixGeom_HelixCurve_inherited_IsInstance(
+        self_: *const HelixGeom_HelixCurve,
+        theType: *const Handle_Standard_Type,
+    ) -> crate::OcctResult<bool>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn HelixGeom_HelixCurve_inherited_IsKind(
+        self_: *const HelixGeom_HelixCurve,
+        theType: *const Handle_Standard_Type,
+    ) -> crate::OcctResult<bool>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
+    pub fn HelixGeom_HelixCurve_inherited_This(
+        self_: *const HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<*mut Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
+    pub fn HelixGeom_HelixCurve_inherited_GetRefCount(
+        self_: *const HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<i32>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
+    pub fn HelixGeom_HelixCurve_inherited_IncrementRefCounter(
+        self_: *mut HelixGeom_HelixCurve,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
+    pub fn HelixGeom_HelixCurve_inherited_DecrementRefCounter(
+        self_: *mut HelixGeom_HelixCurve,
+    ) -> crate::OcctResult<i32>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
+    pub fn HelixGeom_HelixCurve_inherited_Delete(
+        self_: *const HelixGeom_HelixCurve,
+    ) -> *const std::ffi::c_char;
+    // ======================== HelixGeom_Tools ========================
+    pub fn HelixGeom_Tools_destructor(self_: *mut HelixGeom_Tools);
+    /// **Source:** `HelixGeom_Tools.hxx` - `HelixGeom_Tools::HelixGeom_Tools()`
+    pub fn HelixGeom_Tools_ctor() -> crate::OcctResult<*mut HelixGeom_Tools>;
+    /// **Source:** `HelixGeom_Tools.hxx`:50 - `HelixGeom_Tools::ApprHelix()`
+    pub fn HelixGeom_Tools_appr_helix(
+        aT1: f64,
+        aT2: f64,
+        aPitch: f64,
+        aRStart: f64,
+        aTaperAngle: f64,
+        aIsCW: bool,
+        aTol: f64,
+        theBSpl: *mut Handle_Geom_BSplineCurve,
+        theMaxError: *mut f64,
+    ) -> crate::OcctResult<i32>;
+    /// **Source:** `HelixGeom_Tools.hxx`:69 - `HelixGeom_Tools::ApprCurve3D()`
+    pub fn HelixGeom_Tools_appr_curve3_d(
+        theHC: *const Handle_Adaptor3d_Curve,
+        theTol: f64,
+        theCont: i32,
+        theMaxSeg: i32,
+        theMaxDeg: i32,
+        theBSpl: *mut Handle_Geom_BSplineCurve,
+        theMaxError: *mut f64,
+    ) -> crate::OcctResult<i32>;
     // ======================== LDOMBasicString ========================
     pub fn LDOMBasicString_destructor(self_: *mut LDOMBasicString);
     /// **Source:** `LDOMBasicString.hxx`:89 - `LDOMBasicString::LDOMBasicString()`
@@ -21,13 +622,13 @@ unsafe extern "C" {
     /// **Source:** `LDOMBasicString.hxx`:110 - `LDOMBasicString::LDOMBasicString()`
     pub fn LDOMBasicString_ctor_charptr_handleldommemmanager(
         aValue: *const std::ffi::c_char,
-        aDoc: *const HandleLDOMMemManager,
+        aDoc: *const Handle_LDOM_MemManager,
     ) -> crate::OcctResult<*mut LDOMBasicString>;
     /// **Source:** `LDOMBasicString.hxx`:113 - `LDOMBasicString::LDOMBasicString()`
     pub fn LDOMBasicString_ctor_charptr_int_handleldommemmanager(
         aValue: *const std::ffi::c_char,
         aLen: i32,
-        aDoc: *const HandleLDOMMemManager,
+        aDoc: *const Handle_LDOM_MemManager,
     ) -> crate::OcctResult<*mut LDOMBasicString>;
     /// **Source:** `LDOMBasicString.hxx`:50 - `LDOMBasicString::Type()`
     pub fn LDOMBasicString_type_(
@@ -83,13 +684,13 @@ unsafe extern "C" {
     pub fn LDOMString_destructor(self_: *mut LDOMString);
     /// **Source:** `LDOMString.hxx`:35 - `LDOMString::LDOMString()`
     pub fn LDOMString_ctor() -> crate::OcctResult<*mut LDOMString>;
-    /// **Source:** `LDOMString.hxx`:50 - `LDOMString::LDOMString()`
+    /// **Source:** `LDOMString.hxx`:48 - `LDOMString::LDOMString()`
     pub fn LDOMString_ctor_int(aValue: i32) -> crate::OcctResult<*mut LDOMString>;
-    /// **Source:** `LDOMString.hxx`:60 - `LDOMString::LDOMString()`
+    /// **Source:** `LDOMString.hxx`:58 - `LDOMString::LDOMString()`
     pub fn LDOMString_ctor_charptr(
         aValue: *const std::ffi::c_char,
     ) -> crate::OcctResult<*mut LDOMString>;
-    /// **Source:** `LDOMString.hxx`:68 - `LDOMString::getOwnerDocument()`
+    /// **Source:** `LDOMString.hxx`:66 - `LDOMString::getOwnerDocument()`
     pub fn LDOMString_get_owner_document(
         self_: *const LDOMString,
     ) -> crate::OcctResult<*const LDOM_MemManager>;
@@ -97,23 +698,210 @@ unsafe extern "C" {
     pub fn LDOMString_clone(self_: *const LDOMString) -> crate::OcctResult<*mut LDOMString>;
 
     // Free functions
-    /// **Source:** `NCollection_Primes.hxx`:34 - `NCollection_Primes::NextPrimeForMap`
-    pub fn NCollection_Primes_next_prime_for_map(theN: i32) -> crate::OcctResult<i32>;
-    /// **Source:** `RWObj_Tools.hxx`:38 - `RWObj_Tools::ReadVec3`
+    /// **Source:** `GeomLProp_SurfaceUtils.hxx`:63 - `LProp_SurfaceUtils::GetSurfBounds`
+    pub fn LProp_SurfaceUtils_get_surf_bounds_surface_real4(
+        theSurf: *const Geom_Surface,
+        theU1: *mut f64,
+        theV1: *mut f64,
+        theU2: *mut f64,
+        theV2: *mut f64,
+    ) -> crate::OcctResult<std::ffi::c_void>;
+    /// **Source:** `GeomLProp_SurfaceUtils.hxx`:74 - `LProp_SurfaceUtils::GetSurfBounds`
+    pub fn LProp_SurfaceUtils_get_surf_bounds_mut(
+        theSurf: *const Adaptor3d_Surface,
+        theU1: *mut f64,
+        theV1: *mut f64,
+        theU2: *mut f64,
+        theV2: *mut f64,
+    ) -> crate::OcctResult<std::ffi::c_void>;
+    /// **Source:** `GeomLProp_SurfaceUtils.hxx`:350 - `LProp_SurfaceUtils::ComputeSurfNormal`
+    pub fn LProp_SurfaceUtils_compute_surf_normal(
+        theD1u: *const gp_Vec,
+        theD1v: *const gp_Vec,
+        theLinTol: f64,
+        theNormal: *mut gp_Dir,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `GeomLProp_SurfaceUtils.hxx`:376 - `LProp_SurfaceUtils::ComputeSurfCurvatures`
+    pub fn LProp_SurfaceUtils_compute_surf_curvatures(
+        theD1u: *const gp_Vec,
+        theD1v: *const gp_Vec,
+        theD2u: *const gp_Vec,
+        theD2v: *const gp_Vec,
+        theDuv: *const gp_Vec,
+        theNormal: *const gp_Dir,
+        theMinCurv: *mut f64,
+        theMaxCurv: *mut f64,
+        theDirMin: *mut gp_Dir,
+        theDirMax: *mut gp_Dir,
+        theMeanCurv: *mut f64,
+        theGausCurv: *mut f64,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `NCollection_Primes.hxx`:37 - `NCollection_Primes::NextPrimeForMap`
+    pub fn NCollection_Primes_next_prime_for_map(theN: usize) -> crate::OcctResult<usize>;
+    /// **Source:** `RWObj_Tools.hxx`:39 - `RWObj_Tools::ReadVec3`
     pub fn RWObj_Tools_read_vec3(
         thePos: *const std::ffi::c_char,
         theNext: *mut *mut std::ffi::c_char,
         theVec: *mut gp_XYZ,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWObj_Tools.hxx`:50 - `RWObj_Tools::ReadName`
+    /// **Source:** `RWObj_Tools.hxx`:51 - `RWObj_Tools::ReadName`
     pub fn RWObj_Tools_read_name(
         thePos: *const std::ffi::c_char,
         theName: *mut TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWObj_Tools.hxx`:78 - `RWObj_Tools::isSpaceChar`
+    /// **Source:** `RWObj_Tools.hxx`:79 - `RWObj_Tools::isSpaceChar`
     pub fn RWObj_Tools_is_space_char(theChar: std::ffi::c_char) -> crate::OcctResult<bool>;
 
     // Nested type & typedef type destructors
+    pub fn BRepGraph_EditorView_destructor(self_: *mut BRepGraph_EditorView);
+    pub fn BRepGraph_EditorView_CoEdgeOps_destructor(self_: *mut BRepGraph_EditorView_CoEdgeOps);
+    pub fn BRepGraph_EditorView_CompSolidOps_destructor(
+        self_: *mut BRepGraph_EditorView_CompSolidOps,
+    );
+    pub fn BRepGraph_EditorView_CompoundOps_destructor(
+        self_: *mut BRepGraph_EditorView_CompoundOps,
+    );
+    pub fn BRepGraph_EditorView_EdgeOps_destructor(self_: *mut BRepGraph_EditorView_EdgeOps);
+    pub fn BRepGraph_EditorView_FaceOps_destructor(self_: *mut BRepGraph_EditorView_FaceOps);
+    pub fn BRepGraph_EditorView_GenOps_destructor(self_: *mut BRepGraph_EditorView_GenOps);
+    pub fn BRepGraph_EditorView_OccurrenceOps_destructor(
+        self_: *mut BRepGraph_EditorView_OccurrenceOps,
+    );
+    pub fn BRepGraph_EditorView_ProductOps_destructor(self_: *mut BRepGraph_EditorView_ProductOps);
+    pub fn BRepGraph_EditorView_ShellOps_destructor(self_: *mut BRepGraph_EditorView_ShellOps);
+    pub fn BRepGraph_EditorView_SolidOps_destructor(self_: *mut BRepGraph_EditorView_SolidOps);
+    pub fn BRepGraph_EditorView_VertexOps_destructor(self_: *mut BRepGraph_EditorView_VertexOps);
+    pub fn BRepGraph_EditorView_WireOps_destructor(self_: *mut BRepGraph_EditorView_WireOps);
+    pub fn BRepGraph_EditorView_WireOps_CoEdgeOrderStatus_destructor(
+        self_: *mut BRepGraph_EditorView_WireOps_CoEdgeOrderStatus,
+    );
+    pub fn BRepGraph_EditorView_WireOps_ReplaceEdgeStatus_destructor(
+        self_: *mut BRepGraph_EditorView_WireOps_ReplaceEdgeStatus,
+    );
+    pub fn BRepGraph_MeshView_destructor(self_: *mut BRepGraph_MeshView);
+    pub fn BRepGraph_MeshView_CacheView_destructor(self_: *mut BRepGraph_MeshView_CacheView);
+    pub fn BRepGraph_MeshView_CacheView_CoEdgeOps_destructor(
+        self_: *mut BRepGraph_MeshView_CacheView_CoEdgeOps,
+    );
+    pub fn BRepGraph_MeshView_CacheView_EdgeOps_destructor(
+        self_: *mut BRepGraph_MeshView_CacheView_EdgeOps,
+    );
+    pub fn BRepGraph_MeshView_CacheView_FaceOps_destructor(
+        self_: *mut BRepGraph_MeshView_CacheView_FaceOps,
+    );
+    pub fn BRepGraph_MeshView_EditorView_destructor(self_: *mut BRepGraph_MeshView_EditorView);
+    pub fn BRepGraph_MeshView_EditorView_CoEdgeOps_destructor(
+        self_: *mut BRepGraph_MeshView_EditorView_CoEdgeOps,
+    );
+    pub fn BRepGraph_MeshView_EditorView_EdgeOps_destructor(
+        self_: *mut BRepGraph_MeshView_EditorView_EdgeOps,
+    );
+    pub fn BRepGraph_MeshView_EditorView_FaceOps_destructor(
+        self_: *mut BRepGraph_MeshView_EditorView_FaceOps,
+    );
+    pub fn BRepGraph_MeshView_EffectiveView_destructor(
+        self_: *mut BRepGraph_MeshView_EffectiveView,
+    );
+    pub fn BRepGraph_MeshView_EffectiveView_CoEdgeOps_destructor(
+        self_: *mut BRepGraph_MeshView_EffectiveView_CoEdgeOps,
+    );
+    pub fn BRepGraph_MeshView_EffectiveView_EdgeOps_destructor(
+        self_: *mut BRepGraph_MeshView_EffectiveView_EdgeOps,
+    );
+    pub fn BRepGraph_MeshView_EffectiveView_FaceOps_destructor(
+        self_: *mut BRepGraph_MeshView_EffectiveView_FaceOps,
+    );
+    pub fn BRepGraph_MeshView_PersistentView_destructor(
+        self_: *mut BRepGraph_MeshView_PersistentView,
+    );
+    pub fn BRepGraph_MeshView_PersistentView_CoEdgeOps_destructor(
+        self_: *mut BRepGraph_MeshView_PersistentView_CoEdgeOps,
+    );
+    pub fn BRepGraph_MeshView_PersistentView_EdgeOps_destructor(
+        self_: *mut BRepGraph_MeshView_PersistentView_EdgeOps,
+    );
+    pub fn BRepGraph_MeshView_PersistentView_FaceOps_destructor(
+        self_: *mut BRepGraph_MeshView_PersistentView_FaceOps,
+    );
+    pub fn BRepGraph_MeshView_PolyOps_destructor(self_: *mut BRepGraph_MeshView_PolyOps);
+    pub fn BRepGraph_RefsView_destructor(self_: *mut BRepGraph_RefsView);
+    pub fn BRepGraph_RefsView_ChildOps_destructor(self_: *mut BRepGraph_RefsView_ChildOps);
+    pub fn BRepGraph_RefsView_FaceOps_destructor(self_: *mut BRepGraph_RefsView_FaceOps);
+    pub fn BRepGraph_RefsView_GenOps_destructor(self_: *mut BRepGraph_RefsView_GenOps);
+    pub fn BRepGraph_RefsView_OccurrenceOps_destructor(
+        self_: *mut BRepGraph_RefsView_OccurrenceOps,
+    );
+    pub fn BRepGraph_RefsView_ShellOps_destructor(self_: *mut BRepGraph_RefsView_ShellOps);
+    pub fn BRepGraph_RefsView_SolidOps_destructor(self_: *mut BRepGraph_RefsView_SolidOps);
+    pub fn BRepGraph_RefsView_VertexOps_destructor(self_: *mut BRepGraph_RefsView_VertexOps);
+    pub fn BRepGraph_RefsView_WireOps_destructor(self_: *mut BRepGraph_RefsView_WireOps);
+    pub fn BRepGraph_ShapesView_destructor(self_: *mut BRepGraph_ShapesView);
+    pub fn BRepGraph_ShapesView_Options_destructor(self_: *mut BRepGraph_ShapesView_Options);
+    pub fn BRepGraph_ShapesView_Result_destructor(self_: *mut BRepGraph_ShapesView_Result);
+    pub fn BRepGraph_TopoView_destructor(self_: *mut BRepGraph_TopoView);
+    pub fn BRepGraph_TopoView_CoEdgeOps_destructor(self_: *mut BRepGraph_TopoView_CoEdgeOps);
+    pub fn BRepGraph_TopoView_CompSolidOps_destructor(self_: *mut BRepGraph_TopoView_CompSolidOps);
+    pub fn BRepGraph_TopoView_CompoundOps_destructor(self_: *mut BRepGraph_TopoView_CompoundOps);
+    pub fn BRepGraph_TopoView_EdgeOps_destructor(self_: *mut BRepGraph_TopoView_EdgeOps);
+    pub fn BRepGraph_TopoView_FaceOps_destructor(self_: *mut BRepGraph_TopoView_FaceOps);
+    pub fn BRepGraph_TopoView_GenOps_destructor(self_: *mut BRepGraph_TopoView_GenOps);
+    pub fn BRepGraph_TopoView_GeometryOps_destructor(self_: *mut BRepGraph_TopoView_GeometryOps);
+    pub fn BRepGraph_TopoView_OccurrenceOps_destructor(
+        self_: *mut BRepGraph_TopoView_OccurrenceOps,
+    );
+    pub fn BRepGraph_TopoView_ProductOps_destructor(self_: *mut BRepGraph_TopoView_ProductOps);
+    pub fn BRepGraph_TopoView_ShellOps_destructor(self_: *mut BRepGraph_TopoView_ShellOps);
+    pub fn BRepGraph_TopoView_SolidOps_destructor(self_: *mut BRepGraph_TopoView_SolidOps);
+    pub fn BRepGraph_TopoView_VertexOps_destructor(self_: *mut BRepGraph_TopoView_VertexOps);
+    pub fn BRepGraph_TopoView_WireOps_destructor(self_: *mut BRepGraph_TopoView_WireOps);
+    pub fn BRepGraph_UIDsView_destructor(self_: *mut BRepGraph_UIDsView);
+    pub fn BRepGraphInc_BaseDef_destructor(self_: *mut BRepGraphInc_BaseDef);
+    pub fn BRepGraphInc_BaseRef_destructor(self_: *mut BRepGraphInc_BaseRef);
+    pub fn BRepGraphInc_ChildRef_destructor(self_: *mut BRepGraphInc_ChildRef);
+    pub fn BRepGraphInc_CoEdgeCurve2DRep_destructor(self_: *mut BRepGraphInc_CoEdgeCurve2DRep);
+    pub fn BRepGraphInc_CoEdgeDef_destructor(self_: *mut BRepGraphInc_CoEdgeDef);
+    pub fn BRepGraphInc_CoEdgePolygon2DRep_destructor(self_: *mut BRepGraphInc_CoEdgePolygon2DRep);
+    pub fn BRepGraphInc_CoEdgePolygonOnTriRep_destructor(
+        self_: *mut BRepGraphInc_CoEdgePolygonOnTriRep,
+    );
+    pub fn BRepGraphInc_CompSolidDef_destructor(self_: *mut BRepGraphInc_CompSolidDef);
+    pub fn BRepGraphInc_CompSolidRelations_destructor(self_: *mut BRepGraphInc_CompSolidRelations);
+    pub fn BRepGraphInc_CompoundDef_destructor(self_: *mut BRepGraphInc_CompoundDef);
+    pub fn BRepGraphInc_CompoundRelations_destructor(self_: *mut BRepGraphInc_CompoundRelations);
+    pub fn BRepGraphInc_EdgeCurve3DRep_destructor(self_: *mut BRepGraphInc_EdgeCurve3DRep);
+    pub fn BRepGraphInc_EdgeDef_destructor(self_: *mut BRepGraphInc_EdgeDef);
+    pub fn BRepGraphInc_EdgePolygon3DRep_destructor(self_: *mut BRepGraphInc_EdgePolygon3DRep);
+    pub fn BRepGraphInc_EdgeRelations_destructor(self_: *mut BRepGraphInc_EdgeRelations);
+    pub fn BRepGraphInc_FaceDef_destructor(self_: *mut BRepGraphInc_FaceDef);
+    pub fn BRepGraphInc_FaceRef_destructor(self_: *mut BRepGraphInc_FaceRef);
+    pub fn BRepGraphInc_FaceRelations_destructor(self_: *mut BRepGraphInc_FaceRelations);
+    pub fn BRepGraphInc_FaceSurfaceRep_destructor(self_: *mut BRepGraphInc_FaceSurfaceRep);
+    pub fn BRepGraphInc_FaceTriangulationRep_destructor(
+        self_: *mut BRepGraphInc_FaceTriangulationRep,
+    );
+    pub fn BRepGraphInc_NodeInstance_destructor(self_: *mut BRepGraphInc_NodeInstance);
+    pub fn BRepGraphInc_OccurrenceDef_destructor(self_: *mut BRepGraphInc_OccurrenceDef);
+    pub fn BRepGraphInc_OccurrenceRef_destructor(self_: *mut BRepGraphInc_OccurrenceRef);
+    pub fn BRepGraphInc_OccurrenceRelations_destructor(
+        self_: *mut BRepGraphInc_OccurrenceRelations,
+    );
+    pub fn BRepGraphInc_ParityOrientation_destructor(self_: *mut BRepGraphInc_ParityOrientation);
+    pub fn BRepGraphInc_ProductDef_destructor(self_: *mut BRepGraphInc_ProductDef);
+    pub fn BRepGraphInc_ProductRelations_destructor(self_: *mut BRepGraphInc_ProductRelations);
+    pub fn BRepGraphInc_ShellDef_destructor(self_: *mut BRepGraphInc_ShellDef);
+    pub fn BRepGraphInc_ShellRef_destructor(self_: *mut BRepGraphInc_ShellRef);
+    pub fn BRepGraphInc_ShellRelations_destructor(self_: *mut BRepGraphInc_ShellRelations);
+    pub fn BRepGraphInc_SolidDef_destructor(self_: *mut BRepGraphInc_SolidDef);
+    pub fn BRepGraphInc_SolidRef_destructor(self_: *mut BRepGraphInc_SolidRef);
+    pub fn BRepGraphInc_SolidRelations_destructor(self_: *mut BRepGraphInc_SolidRelations);
+    pub fn BRepGraphInc_VertexDef_destructor(self_: *mut BRepGraphInc_VertexDef);
+    pub fn BRepGraphInc_VertexRef_destructor(self_: *mut BRepGraphInc_VertexRef);
+    pub fn BRepGraphInc_VertexRelations_destructor(self_: *mut BRepGraphInc_VertexRelations);
+    pub fn BRepGraphInc_WireDef_destructor(self_: *mut BRepGraphInc_WireDef);
+    pub fn BRepGraphInc_WireRef_destructor(self_: *mut BRepGraphInc_WireRef);
+    pub fn BRepGraphInc_WireRelations_destructor(self_: *mut BRepGraphInc_WireRelations);
+    pub fn ExtremaPC_Result_destructor(self_: *mut ExtremaPC_Result);
+    pub fn ExtremaPC_SearchMode_destructor(self_: *mut ExtremaPC_SearchMode);
     pub fn IMeshData_Array1OfVertexOfDelaun_destructor(
         self_: *mut IMeshData_Array1OfVertexOfDelaun,
     );
@@ -123,18 +911,21 @@ unsafe extern "C" {
     pub fn IMeshData_MapOfIntegerInteger_destructor(self_: *mut IMeshData_MapOfIntegerInteger);
     pub fn IMeshData_VectorOfInteger_destructor(self_: *mut IMeshData_VectorOfInteger);
     pub fn LDOMBasicString_StringType_destructor(self_: *mut LDOMBasicString_StringType);
+    pub fn MathUtils_Domain1D_destructor(self_: *mut MathUtils_Domain1D);
+    pub fn MathUtils_PolyResult_destructor(self_: *mut MathUtils_PolyResult);
     pub fn ShapeProcess_OperationsFlags_destructor(self_: *mut ShapeProcess_OperationsFlags);
     pub fn Standard_AllocatorType_destructor(self_: *mut Standard_AllocatorType);
     pub fn std_ios_base_openmode_destructor(self_: *mut std_ios_base_openmode);
+    pub fn std_mutex_destructor(self_: *mut std_mutex);
+    pub fn std_shared_mutex_destructor(self_: *mut std_shared_mutex);
     pub fn std_streampos_destructor(self_: *mut std_streampos);
     pub fn std_streamsize_destructor(self_: *mut std_streamsize);
+    pub fn std_string_view_destructor(self_: *mut std_string_view);
     pub fn std_type_info_destructor(self_: *mut std_type_info);
-    pub fn std_pair_Standard_Integer_Standard_Integer_destructor(
-        self_: *mut std_pair_Standard_Integer_Standard_Integer,
-    );
-    pub fn std_pair_Standard_Real_Standard_Real_destructor(
-        self_: *mut std_pair_Standard_Real_Standard_Real,
-    );
+    pub fn std_u16string_view_destructor(self_: *mut std_u16string_view);
+    pub fn std_pair_double_double_destructor(self_: *mut std_pair_double_double);
+    pub fn std_pair_gp_Pnt2d_gp_Pnt2d_destructor(self_: *mut std_pair_gp_Pnt2d_gp_Pnt2d);
+    pub fn std_pair_int_int_destructor(self_: *mut std_pair_int_int);
     pub fn std_shared_ptr_std_istream_destructor(self_: *mut std_shared_ptr_std_istream);
     pub fn std_shared_ptr_std_ostream_destructor(self_: *mut std_shared_ptr_std_ostream);
     pub fn std_shared_ptr_std_streambuf_destructor(self_: *mut std_shared_ptr_std_streambuf);

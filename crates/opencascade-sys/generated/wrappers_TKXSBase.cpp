@@ -4,12 +4,9 @@
 #include "occt_preamble.hxx"
 
 #include <APIHeaderSection_EditHeader.hxx>
-#include <DE_ConfigurationContext.hxx>
+#include <BinObjMgt_PExtChar.hxx>
 #include <DE_ShapeFixParameters.hxx>
-#include <Geom2d_Curve.hxx>
-#include <Geom_Curve.hxx>
 #include <Geom_Geometry.hxx>
-#include <Geom_Surface.hxx>
 #include <HeaderSection_Protocol.hxx>
 #include <IFGraph_AllConnected.hxx>
 #include <IFGraph_AllShared.hxx>
@@ -43,7 +40,6 @@
 #include <IFSelect_Functions.hxx>
 #include <IFSelect_GeneralModifier.hxx>
 #include <IFSelect_GraphCounter.hxx>
-#include <IFSelect_HSeqOfSelection.hxx>
 #include <IFSelect_IntParam.hxx>
 #include <IFSelect_ListEditor.hxx>
 #include <IFSelect_ModelCopier.hxx>
@@ -101,7 +97,6 @@
 #include <IFSelect_SignValidity.hxx>
 #include <IFSelect_Signature.hxx>
 #include <IFSelect_SignatureList.hxx>
-#include <IFSelect_TSeqOfSelection.hxx>
 #include <IFSelect_TransformStandard.hxx>
 #include <IFSelect_Transformer.hxx>
 #include <IFSelect_WorkLibrary.hxx>
@@ -181,7 +176,6 @@
 #include <IGESSolid_Protocol.hxx>
 #include <IGESSolid_ReadWriteModule.hxx>
 #include <IGESToBRep_Actor.hxx>
-#include <Interface_Array1OfHAsciiString.hxx>
 #include <Interface_BitMap.hxx>
 #include <Interface_Category.hxx>
 #include <Interface_Check.hxx>
@@ -207,10 +201,7 @@
 #include <Interface_GlobalNodeOfReaderLib.hxx>
 #include <Interface_Graph.hxx>
 #include <Interface_GraphContent.hxx>
-#include <Interface_HArray1OfHAsciiString.hxx>
 #include <Interface_HGraph.hxx>
-#include <Interface_HSequenceOfCheck.hxx>
-#include <Interface_IndexedMapOfAsciiString.hxx>
 #include <Interface_IntList.hxx>
 #include <Interface_IntVal.hxx>
 #include <Interface_InterfaceError.hxx>
@@ -228,7 +219,6 @@
 #include <Interface_ReaderModule.hxx>
 #include <Interface_ReportEntity.hxx>
 #include <Interface_STAT.hxx>
-#include <Interface_SequenceOfCheck.hxx>
 #include <Interface_ShareFlags.hxx>
 #include <Interface_ShareTool.hxx>
 #include <Interface_SignLabel.hxx>
@@ -237,19 +227,14 @@
 #include <Interface_TypedValue.hxx>
 #include <Interface_UndefinedContent.hxx>
 #include <Message_Messenger.hxx>
-#include <Message_Msg.hxx>
 #include <Message_Printer.hxx>
 #include <Message_ProgressRange.hxx>
 #include <MoniTool_AttrList.hxx>
 #include <MoniTool_CaseData.hxx>
 #include <MoniTool_DataInfo.hxx>
-#include <MoniTool_DataMapOfShapeTransient.hxx>
-#include <MoniTool_DataMapOfTimer.hxx>
 #include <MoniTool_Element.hxx>
-#include <MoniTool_HSequenceOfElement.hxx>
 #include <MoniTool_IntVal.hxx>
 #include <MoniTool_RealVal.hxx>
-#include <MoniTool_SequenceOfElement.hxx>
 #include <MoniTool_SignShape.hxx>
 #include <MoniTool_SignText.hxx>
 #include <MoniTool_Stat.hxx>
@@ -282,9 +267,7 @@
 #include <Standard_Handle.hxx>
 #include <Standard_IStream.hxx>
 #include <Standard_OStream.hxx>
-#include <Standard_SStream.hxx>
 #include <Standard_Type.hxx>
-#include <Standard_TypeDef.hxx>
 #include <StepAP214_Protocol.hxx>
 #include <StepData_DefaultGeneral.hxx>
 #include <StepData_FileProtocol.hxx>
@@ -295,25 +278,8 @@
 #include <StepSelect_FloatFormat.hxx>
 #include <StepSelect_StepType.hxx>
 #include <StepSelect_WorkLibrary.hxx>
-#include <Storage_PType.hxx>
-#include <TColStd_DataMapOfAsciiStringInteger.hxx>
-#include <TColStd_DataMapOfTransientTransient.hxx>
-#include <TColStd_HArray1OfInteger.hxx>
-#include <TColStd_HArray1OfListOfInteger.hxx>
-#include <TColStd_HSequenceOfAsciiString.hxx>
-#include <TColStd_HSequenceOfHAsciiString.hxx>
-#include <TColStd_HSequenceOfHExtendedString.hxx>
-#include <TColStd_HSequenceOfInteger.hxx>
-#include <TColStd_HSequenceOfReal.hxx>
-#include <TColStd_HSequenceOfTransient.hxx>
-#include <TColStd_IndexedMapOfTransient.hxx>
-#include <TCollection_ExtendedString.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <TCollection_HExtendedString.hxx>
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_ShapeEnum.hxx>
-#include <TopTools_DataMapOfShapeShape.hxx>
-#include <TopTools_HSequenceOfShape.hxx>
 #include <TopoDS_CompSolid.hxx>
 #include <TopoDS_Compound.hxx>
 #include <TopoDS_Edge.hxx>
@@ -324,14 +290,11 @@
 #include <TopoDS_Wire.hxx>
 #include <TransferBRep.hxx>
 #include <TransferBRep_BinderOfShape.hxx>
-#include <TransferBRep_HSequenceOfTransferResultInfo.hxx>
 #include <TransferBRep_Reader.hxx>
-#include <TransferBRep_SequenceOfTransferResultInfo.hxx>
 #include <TransferBRep_ShapeBinder.hxx>
 #include <TransferBRep_ShapeInfo.hxx>
 #include <TransferBRep_ShapeListBinder.hxx>
 #include <TransferBRep_ShapeMapper.hxx>
-#include <TransferBRep_TransferResultInfo.hxx>
 #include <Transfer_ActorDispatch.hxx>
 #include <Transfer_ActorOfFinderProcess.hxx>
 #include <Transfer_ActorOfProcessForFinder.hxx>
@@ -341,10 +304,7 @@
 #include <Transfer_BinderOfTransientInteger.hxx>
 #include <Transfer_DataInfo.hxx>
 #include <Transfer_DispatchControl.hxx>
-#include <Transfer_Finder.hxx>
 #include <Transfer_FinderProcess.hxx>
-#include <Transfer_HSequenceOfBinder.hxx>
-#include <Transfer_HSequenceOfFinder.hxx>
 #include <Transfer_IteratorOfProcessForFinder.hxx>
 #include <Transfer_IteratorOfProcessForTransient.hxx>
 #include <Transfer_MapContainer.hxx>
@@ -353,8 +313,6 @@
 #include <Transfer_ProcessForTransient.hxx>
 #include <Transfer_ResultFromModel.hxx>
 #include <Transfer_ResultFromTransient.hxx>
-#include <Transfer_SequenceOfBinder.hxx>
-#include <Transfer_SequenceOfFinder.hxx>
 #include <Transfer_SimpleBinderOfTransient.hxx>
 #include <Transfer_StatusExec.hxx>
 #include <Transfer_StatusResult.hxx>
@@ -385,1184 +343,1099 @@
 #include <XSControl_Vars.hxx>
 #include <XSControl_WorkSession.hxx>
 #include <XSControl_Writer.hxx>
-#include <gp_XY.hxx>
 
 // Handle type aliases
-typedef opencascade::handle<APIHeaderSection_EditHeader> HandleAPIHeaderSectionEditHeader;
-typedef opencascade::handle<Geom2d_Curve> HandleGeom2dCurve;
-typedef opencascade::handle<Geom_Curve> HandleGeomCurve;
-typedef opencascade::handle<Geom_Geometry> HandleGeomGeometry;
-typedef opencascade::handle<Geom_Surface> HandleGeomSurface;
-typedef opencascade::handle<HeaderSection_Protocol> HandleHeaderSectionProtocol;
-typedef opencascade::handle<IFSelect_Act> HandleIFSelectAct;
-typedef opencascade::handle<IFSelect_Activator> HandleIFSelectActivator;
-typedef opencascade::handle<IFSelect_AppliedModifiers> HandleIFSelectAppliedModifiers;
-typedef opencascade::handle<IFSelect_BasicDumper> HandleIFSelectBasicDumper;
-typedef opencascade::handle<IFSelect_CheckCounter> HandleIFSelectCheckCounter;
-typedef opencascade::handle<IFSelect_DispGlobal> HandleIFSelectDispGlobal;
-typedef opencascade::handle<IFSelect_DispPerCount> HandleIFSelectDispPerCount;
-typedef opencascade::handle<IFSelect_DispPerFiles> HandleIFSelectDispPerFiles;
-typedef opencascade::handle<IFSelect_DispPerOne> HandleIFSelectDispPerOne;
-typedef opencascade::handle<IFSelect_DispPerSignature> HandleIFSelectDispPerSignature;
-typedef opencascade::handle<IFSelect_Dispatch> HandleIFSelectDispatch;
-typedef opencascade::handle<IFSelect_EditForm> HandleIFSelectEditForm;
-typedef opencascade::handle<IFSelect_Editor> HandleIFSelectEditor;
-typedef opencascade::handle<IFSelect_GeneralModifier> HandleIFSelectGeneralModifier;
-typedef opencascade::handle<IFSelect_GraphCounter> HandleIFSelectGraphCounter;
-typedef opencascade::handle<IFSelect_HSeqOfSelection> HandleIFSelectHSeqOfSelection;
-typedef opencascade::handle<IFSelect_IntParam> HandleIFSelectIntParam;
-typedef opencascade::handle<IFSelect_ListEditor> HandleIFSelectListEditor;
-typedef opencascade::handle<IFSelect_ModelCopier> HandleIFSelectModelCopier;
-typedef opencascade::handle<IFSelect_ModifEditForm> HandleIFSelectModifEditForm;
-typedef opencascade::handle<IFSelect_ModifReorder> HandleIFSelectModifReorder;
-typedef opencascade::handle<IFSelect_Modifier> HandleIFSelectModifier;
-typedef opencascade::handle<IFSelect_PacketList> HandleIFSelectPacketList;
-typedef opencascade::handle<IFSelect_ParamEditor> HandleIFSelectParamEditor;
-typedef opencascade::handle<IFSelect_SelectAnyList> HandleIFSelectSelectAnyList;
-typedef opencascade::handle<IFSelect_SelectAnyType> HandleIFSelectSelectAnyType;
-typedef opencascade::handle<IFSelect_SelectBase> HandleIFSelectSelectBase;
-typedef opencascade::handle<IFSelect_SelectCombine> HandleIFSelectSelectCombine;
-typedef opencascade::handle<IFSelect_SelectControl> HandleIFSelectSelectControl;
-typedef opencascade::handle<IFSelect_SelectDeduct> HandleIFSelectSelectDeduct;
-typedef opencascade::handle<IFSelect_SelectDiff> HandleIFSelectSelectDiff;
-typedef opencascade::handle<IFSelect_SelectEntityNumber> HandleIFSelectSelectEntityNumber;
-typedef opencascade::handle<IFSelect_SelectErrorEntities> HandleIFSelectSelectErrorEntities;
-typedef opencascade::handle<IFSelect_SelectExplore> HandleIFSelectSelectExplore;
-typedef opencascade::handle<IFSelect_SelectExtract> HandleIFSelectSelectExtract;
-typedef opencascade::handle<IFSelect_SelectFlag> HandleIFSelectSelectFlag;
-typedef opencascade::handle<IFSelect_SelectInList> HandleIFSelectSelectInList;
-typedef opencascade::handle<IFSelect_SelectIncorrectEntities> HandleIFSelectSelectIncorrectEntities;
-typedef opencascade::handle<IFSelect_SelectIntersection> HandleIFSelectSelectIntersection;
-typedef opencascade::handle<IFSelect_SelectModelEntities> HandleIFSelectSelectModelEntities;
-typedef opencascade::handle<IFSelect_SelectModelRoots> HandleIFSelectSelectModelRoots;
-typedef opencascade::handle<IFSelect_SelectPointed> HandleIFSelectSelectPointed;
-typedef opencascade::handle<IFSelect_SelectRange> HandleIFSelectSelectRange;
-typedef opencascade::handle<IFSelect_SelectRootComps> HandleIFSelectSelectRootComps;
-typedef opencascade::handle<IFSelect_SelectRoots> HandleIFSelectSelectRoots;
-typedef opencascade::handle<IFSelect_SelectSent> HandleIFSelectSelectSent;
-typedef opencascade::handle<IFSelect_SelectShared> HandleIFSelectSelectShared;
-typedef opencascade::handle<IFSelect_SelectSharing> HandleIFSelectSelectSharing;
-typedef opencascade::handle<IFSelect_SelectSignature> HandleIFSelectSelectSignature;
-typedef opencascade::handle<IFSelect_SelectSignedShared> HandleIFSelectSelectSignedShared;
-typedef opencascade::handle<IFSelect_SelectSignedSharing> HandleIFSelectSelectSignedSharing;
-typedef opencascade::handle<IFSelect_SelectSuite> HandleIFSelectSelectSuite;
-typedef opencascade::handle<IFSelect_SelectType> HandleIFSelectSelectType;
-typedef opencascade::handle<IFSelect_SelectUnion> HandleIFSelectSelectUnion;
-typedef opencascade::handle<IFSelect_SelectUnknownEntities> HandleIFSelectSelectUnknownEntities;
-typedef opencascade::handle<IFSelect_Selection> HandleIFSelectSelection;
-typedef opencascade::handle<IFSelect_SessionDumper> HandleIFSelectSessionDumper;
-typedef opencascade::handle<IFSelect_SessionPilot> HandleIFSelectSessionPilot;
-typedef opencascade::handle<IFSelect_ShareOut> HandleIFSelectShareOut;
-typedef opencascade::handle<IFSelect_SignAncestor> HandleIFSelectSignAncestor;
-typedef opencascade::handle<IFSelect_SignCategory> HandleIFSelectSignCategory;
-typedef opencascade::handle<IFSelect_SignCounter> HandleIFSelectSignCounter;
-typedef opencascade::handle<IFSelect_SignMultiple> HandleIFSelectSignMultiple;
-typedef opencascade::handle<IFSelect_SignType> HandleIFSelectSignType;
-typedef opencascade::handle<IFSelect_SignValidity> HandleIFSelectSignValidity;
-typedef opencascade::handle<IFSelect_Signature> HandleIFSelectSignature;
-typedef opencascade::handle<IFSelect_SignatureList> HandleIFSelectSignatureList;
-typedef opencascade::handle<IFSelect_TransformStandard> HandleIFSelectTransformStandard;
-typedef opencascade::handle<IFSelect_Transformer> HandleIFSelectTransformer;
-typedef opencascade::handle<IFSelect_WorkLibrary> HandleIFSelectWorkLibrary;
-typedef opencascade::handle<IFSelect_WorkSession> HandleIFSelectWorkSession;
-typedef opencascade::handle<IGESAppli_GeneralModule> HandleIGESAppliGeneralModule;
-typedef opencascade::handle<IGESAppli_Protocol> HandleIGESAppliProtocol;
-typedef opencascade::handle<IGESAppli_ReadWriteModule> HandleIGESAppliReadWriteModule;
-typedef opencascade::handle<IGESBasic_GeneralModule> HandleIGESBasicGeneralModule;
-typedef opencascade::handle<IGESBasic_Protocol> HandleIGESBasicProtocol;
-typedef opencascade::handle<IGESBasic_ReadWriteModule> HandleIGESBasicReadWriteModule;
-typedef opencascade::handle<IGESControl_ActorWrite> HandleIGESControlActorWrite;
-typedef opencascade::handle<IGESControl_Controller> HandleIGESControlController;
-typedef opencascade::handle<IGESData_DefaultGeneral> HandleIGESDataDefaultGeneral;
-typedef opencascade::handle<IGESData_FileProtocol> HandleIGESDataFileProtocol;
-typedef opencascade::handle<IGESData_IGESModel> HandleIGESDataIGESModel;
-typedef opencascade::handle<IGESData_IGESReaderData> HandleIGESDataIGESReaderData;
-typedef opencascade::handle<IGESData_Protocol> HandleIGESDataProtocol;
-typedef opencascade::handle<IGESDefs_GeneralModule> HandleIGESDefsGeneralModule;
-typedef opencascade::handle<IGESDefs_Protocol> HandleIGESDefsProtocol;
-typedef opencascade::handle<IGESDefs_ReadWriteModule> HandleIGESDefsReadWriteModule;
-typedef opencascade::handle<IGESDimen_GeneralModule> HandleIGESDimenGeneralModule;
-typedef opencascade::handle<IGESDimen_Protocol> HandleIGESDimenProtocol;
-typedef opencascade::handle<IGESDimen_ReadWriteModule> HandleIGESDimenReadWriteModule;
-typedef opencascade::handle<IGESDraw_GeneralModule> HandleIGESDrawGeneralModule;
-typedef opencascade::handle<IGESDraw_Protocol> HandleIGESDrawProtocol;
-typedef opencascade::handle<IGESDraw_ReadWriteModule> HandleIGESDrawReadWriteModule;
-typedef opencascade::handle<IGESGeom_GeneralModule> HandleIGESGeomGeneralModule;
-typedef opencascade::handle<IGESGeom_Protocol> HandleIGESGeomProtocol;
-typedef opencascade::handle<IGESGeom_ReadWriteModule> HandleIGESGeomReadWriteModule;
-typedef opencascade::handle<IGESGraph_GeneralModule> HandleIGESGraphGeneralModule;
-typedef opencascade::handle<IGESGraph_Protocol> HandleIGESGraphProtocol;
-typedef opencascade::handle<IGESGraph_ReadWriteModule> HandleIGESGraphReadWriteModule;
-typedef opencascade::handle<IGESSelect_Activator> HandleIGESSelectActivator;
-typedef opencascade::handle<IGESSelect_AddFileComment> HandleIGESSelectAddFileComment;
-typedef opencascade::handle<IGESSelect_AddGroup> HandleIGESSelectAddGroup;
-typedef opencascade::handle<IGESSelect_AutoCorrect> HandleIGESSelectAutoCorrect;
-typedef opencascade::handle<IGESSelect_ChangeLevelList> HandleIGESSelectChangeLevelList;
-typedef opencascade::handle<IGESSelect_ChangeLevelNumber> HandleIGESSelectChangeLevelNumber;
-typedef opencascade::handle<IGESSelect_ComputeStatus> HandleIGESSelectComputeStatus;
-typedef opencascade::handle<IGESSelect_CounterOfLevelNumber> HandleIGESSelectCounterOfLevelNumber;
-typedef opencascade::handle<IGESSelect_DispPerDrawing> HandleIGESSelectDispPerDrawing;
-typedef opencascade::handle<IGESSelect_DispPerSingleView> HandleIGESSelectDispPerSingleView;
-typedef opencascade::handle<IGESSelect_Dumper> HandleIGESSelectDumper;
-typedef opencascade::handle<IGESSelect_EditDirPart> HandleIGESSelectEditDirPart;
-typedef opencascade::handle<IGESSelect_EditHeader> HandleIGESSelectEditHeader;
-typedef opencascade::handle<IGESSelect_FloatFormat> HandleIGESSelectFloatFormat;
-typedef opencascade::handle<IGESSelect_IGESName> HandleIGESSelectIGESName;
-typedef opencascade::handle<IGESSelect_IGESTypeForm> HandleIGESSelectIGESTypeForm;
-typedef opencascade::handle<IGESSelect_RebuildDrawings> HandleIGESSelectRebuildDrawings;
-typedef opencascade::handle<IGESSelect_RebuildGroups> HandleIGESSelectRebuildGroups;
-typedef opencascade::handle<IGESSelect_RemoveCurves> HandleIGESSelectRemoveCurves;
-typedef opencascade::handle<IGESSelect_SelectBasicGeom> HandleIGESSelectSelectBasicGeom;
-typedef opencascade::handle<IGESSelect_SelectBypassGroup> HandleIGESSelectSelectBypassGroup;
-typedef opencascade::handle<IGESSelect_SelectBypassSubfigure> HandleIGESSelectSelectBypassSubfigure;
-typedef opencascade::handle<IGESSelect_SelectDrawingFrom> HandleIGESSelectSelectDrawingFrom;
-typedef opencascade::handle<IGESSelect_SelectFaces> HandleIGESSelectSelectFaces;
-typedef opencascade::handle<IGESSelect_SelectFromDrawing> HandleIGESSelectSelectFromDrawing;
-typedef opencascade::handle<IGESSelect_SelectFromSingleView> HandleIGESSelectSelectFromSingleView;
-typedef opencascade::handle<IGESSelect_SelectLevelNumber> HandleIGESSelectSelectLevelNumber;
-typedef opencascade::handle<IGESSelect_SelectName> HandleIGESSelectSelectName;
-typedef opencascade::handle<IGESSelect_SelectPCurves> HandleIGESSelectSelectPCurves;
-typedef opencascade::handle<IGESSelect_SelectSingleViewFrom> HandleIGESSelectSelectSingleViewFrom;
-typedef opencascade::handle<IGESSelect_SelectSubordinate> HandleIGESSelectSelectSubordinate;
-typedef opencascade::handle<IGESSelect_SelectVisibleStatus> HandleIGESSelectSelectVisibleStatus;
-typedef opencascade::handle<IGESSelect_SetGlobalParameter> HandleIGESSelectSetGlobalParameter;
-typedef opencascade::handle<IGESSelect_SetLabel> HandleIGESSelectSetLabel;
-typedef opencascade::handle<IGESSelect_SetVersion5> HandleIGESSelectSetVersion5;
-typedef opencascade::handle<IGESSelect_SignColor> HandleIGESSelectSignColor;
-typedef opencascade::handle<IGESSelect_SignLevelNumber> HandleIGESSelectSignLevelNumber;
-typedef opencascade::handle<IGESSelect_SignStatus> HandleIGESSelectSignStatus;
-typedef opencascade::handle<IGESSelect_SplineToBSpline> HandleIGESSelectSplineToBSpline;
-typedef opencascade::handle<IGESSelect_UpdateCreationDate> HandleIGESSelectUpdateCreationDate;
-typedef opencascade::handle<IGESSelect_UpdateFileName> HandleIGESSelectUpdateFileName;
-typedef opencascade::handle<IGESSelect_UpdateLastChange> HandleIGESSelectUpdateLastChange;
-typedef opencascade::handle<IGESSelect_WorkLibrary> HandleIGESSelectWorkLibrary;
-typedef opencascade::handle<IGESSolid_GeneralModule> HandleIGESSolidGeneralModule;
-typedef opencascade::handle<IGESSolid_Protocol> HandleIGESSolidProtocol;
-typedef opencascade::handle<IGESSolid_ReadWriteModule> HandleIGESSolidReadWriteModule;
-typedef opencascade::handle<IGESToBRep_Actor> HandleIGESToBRepActor;
-typedef opencascade::handle<Interface_Check> HandleInterfaceCheck;
-typedef opencascade::handle<Interface_CheckFailure> HandleInterfaceCheckFailure;
-typedef opencascade::handle<Interface_CopyControl> HandleInterfaceCopyControl;
-typedef opencascade::handle<Interface_CopyMap> HandleInterfaceCopyMap;
-typedef opencascade::handle<Interface_EntityCluster> HandleInterfaceEntityCluster;
-typedef opencascade::handle<Interface_FileReaderData> HandleInterfaceFileReaderData;
-typedef opencascade::handle<Interface_GTool> HandleInterfaceGTool;
-typedef opencascade::handle<Interface_GeneralModule> HandleInterfaceGeneralModule;
-typedef opencascade::handle<Interface_GlobalNodeOfGeneralLib> HandleInterfaceGlobalNodeOfGeneralLib;
-typedef opencascade::handle<Interface_GlobalNodeOfReaderLib> HandleInterfaceGlobalNodeOfReaderLib;
-typedef opencascade::handle<Interface_HArray1OfHAsciiString> HandleInterfaceHArray1OfHAsciiString;
-typedef opencascade::handle<Interface_HGraph> HandleInterfaceHGraph;
-typedef opencascade::handle<Interface_HSequenceOfCheck> HandleInterfaceHSequenceOfCheck;
-typedef opencascade::handle<Interface_IntVal> HandleInterfaceIntVal;
-typedef opencascade::handle<Interface_InterfaceError> HandleInterfaceInterfaceError;
-typedef opencascade::handle<Interface_InterfaceMismatch> HandleInterfaceInterfaceMismatch;
-typedef opencascade::handle<Interface_InterfaceModel> HandleInterfaceInterfaceModel;
-typedef opencascade::handle<Interface_NodeOfGeneralLib> HandleInterfaceNodeOfGeneralLib;
-typedef opencascade::handle<Interface_NodeOfReaderLib> HandleInterfaceNodeOfReaderLib;
-typedef opencascade::handle<Interface_ParamList> HandleInterfaceParamList;
-typedef opencascade::handle<Interface_ParamSet> HandleInterfaceParamSet;
-typedef opencascade::handle<Interface_Protocol> HandleInterfaceProtocol;
-typedef opencascade::handle<Interface_ReaderModule> HandleInterfaceReaderModule;
-typedef opencascade::handle<Interface_ReportEntity> HandleInterfaceReportEntity;
-typedef opencascade::handle<Interface_SignLabel> HandleInterfaceSignLabel;
-typedef opencascade::handle<Interface_SignType> HandleInterfaceSignType;
-typedef opencascade::handle<Interface_Static> HandleInterfaceStatic;
-typedef opencascade::handle<Interface_TypedValue> HandleInterfaceTypedValue;
-typedef opencascade::handle<Interface_UndefinedContent> HandleInterfaceUndefinedContent;
-typedef opencascade::handle<Message_Messenger> HandleMessageMessenger;
-typedef opencascade::handle<MoniTool_CaseData> HandleMoniToolCaseData;
-typedef opencascade::handle<MoniTool_Element> HandleMoniToolElement;
-typedef opencascade::handle<MoniTool_HSequenceOfElement> HandleMoniToolHSequenceOfElement;
-typedef opencascade::handle<MoniTool_IntVal> HandleMoniToolIntVal;
-typedef opencascade::handle<MoniTool_RealVal> HandleMoniToolRealVal;
-typedef opencascade::handle<MoniTool_SignShape> HandleMoniToolSignShape;
-typedef opencascade::handle<MoniTool_SignText> HandleMoniToolSignText;
-typedef opencascade::handle<MoniTool_Timer> HandleMoniToolTimer;
-typedef opencascade::handle<MoniTool_TransientElem> HandleMoniToolTransientElem;
-typedef opencascade::handle<MoniTool_TypedValue> HandleMoniToolTypedValue;
-typedef opencascade::handle<RWHeaderSection_GeneralModule> HandleRWHeaderSectionGeneralModule;
-typedef opencascade::handle<RWHeaderSection_ReadWriteModule> HandleRWHeaderSectionReadWriteModule;
-typedef opencascade::handle<STEPCAFControl_ActorWrite> HandleSTEPCAFControlActorWrite;
-typedef opencascade::handle<STEPCAFControl_Controller> HandleSTEPCAFControlController;
-typedef opencascade::handle<STEPControl_ActorRead> HandleSTEPControlActorRead;
-typedef opencascade::handle<STEPControl_ActorWrite> HandleSTEPControlActorWrite;
-typedef opencascade::handle<STEPControl_Controller> HandleSTEPControlController;
-typedef opencascade::handle<STEPEdit_EditContext> HandleSTEPEditEditContext;
-typedef opencascade::handle<STEPEdit_EditSDR> HandleSTEPEditEditSDR;
-typedef opencascade::handle<STEPSelections_SelectAssembly> HandleSTEPSelectionsSelectAssembly;
-typedef opencascade::handle<STEPSelections_SelectDerived> HandleSTEPSelectionsSelectDerived;
-typedef opencascade::handle<STEPSelections_SelectFaces> HandleSTEPSelectionsSelectFaces;
-typedef opencascade::handle<STEPSelections_SelectForTransfer> HandleSTEPSelectionsSelectForTransfer;
-typedef opencascade::handle<STEPSelections_SelectGSCurves> HandleSTEPSelectionsSelectGSCurves;
-typedef opencascade::handle<STEPSelections_SelectInstances> HandleSTEPSelectionsSelectInstances;
-typedef opencascade::handle<ShapeExtend_MsgRegistrator> HandleShapeExtendMsgRegistrator;
-typedef opencascade::handle<ShapeProcess_ShapeContext> HandleShapeProcessShapeContext;
-typedef opencascade::handle<Standard_Failure> HandleStandardFailure;
-typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
-typedef opencascade::handle<Standard_Type> HandleStandardType;
-typedef opencascade::handle<StepAP214_Protocol> HandleStepAP214Protocol;
-typedef opencascade::handle<StepData_DefaultGeneral> HandleStepDataDefaultGeneral;
-typedef opencascade::handle<StepData_FileProtocol> HandleStepDataFileProtocol;
-typedef opencascade::handle<StepData_Protocol> HandleStepDataProtocol;
-typedef opencascade::handle<StepData_StepModel> HandleStepDataStepModel;
-typedef opencascade::handle<StepData_StepReaderData> HandleStepDataStepReaderData;
-typedef opencascade::handle<StepSelect_Activator> HandleStepSelectActivator;
-typedef opencascade::handle<StepSelect_FloatFormat> HandleStepSelectFloatFormat;
-typedef opencascade::handle<StepSelect_StepType> HandleStepSelectStepType;
-typedef opencascade::handle<StepSelect_WorkLibrary> HandleStepSelectWorkLibrary;
-typedef opencascade::handle<TColStd_HArray1OfInteger> HandleTColStdHArray1OfInteger;
-typedef opencascade::handle<TColStd_HArray1OfListOfInteger> HandleTColStdHArray1OfListOfInteger;
-typedef opencascade::handle<TColStd_HSequenceOfAsciiString> HandleTColStdHSequenceOfAsciiString;
-typedef opencascade::handle<TColStd_HSequenceOfHAsciiString> HandleTColStdHSequenceOfHAsciiString;
-typedef opencascade::handle<TColStd_HSequenceOfHExtendedString> HandleTColStdHSequenceOfHExtendedString;
-typedef opencascade::handle<TColStd_HSequenceOfInteger> HandleTColStdHSequenceOfInteger;
-typedef opencascade::handle<TColStd_HSequenceOfReal> HandleTColStdHSequenceOfReal;
-typedef opencascade::handle<TColStd_HSequenceOfTransient> HandleTColStdHSequenceOfTransient;
-typedef opencascade::handle<TCollection_HAsciiString> HandleTCollectionHAsciiString;
-typedef opencascade::handle<TCollection_HExtendedString> HandleTCollectionHExtendedString;
-typedef opencascade::handle<TopTools_HSequenceOfShape> HandleTopToolsHSequenceOfShape;
-typedef opencascade::handle<TransferBRep_BinderOfShape> HandleTransferBRepBinderOfShape;
-typedef opencascade::handle<TransferBRep_HSequenceOfTransferResultInfo> HandleTransferBRepHSequenceOfTransferResultInfo;
-typedef opencascade::handle<TransferBRep_ShapeBinder> HandleTransferBRepShapeBinder;
-typedef opencascade::handle<TransferBRep_ShapeListBinder> HandleTransferBRepShapeListBinder;
-typedef opencascade::handle<TransferBRep_ShapeMapper> HandleTransferBRepShapeMapper;
-typedef opencascade::handle<TransferBRep_TransferResultInfo> HandleTransferBRepTransferResultInfo;
-typedef opencascade::handle<Transfer_ActorDispatch> HandleTransferActorDispatch;
-typedef opencascade::handle<Transfer_ActorOfFinderProcess> HandleTransferActorOfFinderProcess;
-typedef opencascade::handle<Transfer_ActorOfProcessForFinder> HandleTransferActorOfProcessForFinder;
-typedef opencascade::handle<Transfer_ActorOfProcessForTransient> HandleTransferActorOfProcessForTransient;
-typedef opencascade::handle<Transfer_ActorOfTransientProcess> HandleTransferActorOfTransientProcess;
-typedef opencascade::handle<Transfer_Binder> HandleTransferBinder;
-typedef opencascade::handle<Transfer_BinderOfTransientInteger> HandleTransferBinderOfTransientInteger;
-typedef opencascade::handle<Transfer_DispatchControl> HandleTransferDispatchControl;
-typedef opencascade::handle<Transfer_Finder> HandleTransferFinder;
-typedef opencascade::handle<Transfer_FinderProcess> HandleTransferFinderProcess;
-typedef opencascade::handle<Transfer_HSequenceOfBinder> HandleTransferHSequenceOfBinder;
-typedef opencascade::handle<Transfer_HSequenceOfFinder> HandleTransferHSequenceOfFinder;
-typedef opencascade::handle<Transfer_MapContainer> HandleTransferMapContainer;
-typedef opencascade::handle<Transfer_MultipleBinder> HandleTransferMultipleBinder;
-typedef opencascade::handle<Transfer_ProcessForFinder> HandleTransferProcessForFinder;
-typedef opencascade::handle<Transfer_ProcessForTransient> HandleTransferProcessForTransient;
-typedef opencascade::handle<Transfer_ResultFromModel> HandleTransferResultFromModel;
-typedef opencascade::handle<Transfer_ResultFromTransient> HandleTransferResultFromTransient;
-typedef opencascade::handle<Transfer_SimpleBinderOfTransient> HandleTransferSimpleBinderOfTransient;
-typedef opencascade::handle<Transfer_TransferDeadLoop> HandleTransferTransferDeadLoop;
-typedef opencascade::handle<Transfer_TransferFailure> HandleTransferTransferFailure;
-typedef opencascade::handle<Transfer_TransientListBinder> HandleTransferTransientListBinder;
-typedef opencascade::handle<Transfer_TransientMapper> HandleTransferTransientMapper;
-typedef opencascade::handle<Transfer_TransientProcess> HandleTransferTransientProcess;
-typedef opencascade::handle<Transfer_VoidBinder> HandleTransferVoidBinder;
-typedef opencascade::handle<XSAlgo_AlgoContainer> HandleXSAlgoAlgoContainer;
-typedef opencascade::handle<XSControl_ConnectedShapes> HandleXSControlConnectedShapes;
-typedef opencascade::handle<XSControl_Controller> HandleXSControlController;
-typedef opencascade::handle<XSControl_SelectForTransfer> HandleXSControlSelectForTransfer;
-typedef opencascade::handle<XSControl_SignTransferStatus> HandleXSControlSignTransferStatus;
-typedef opencascade::handle<XSControl_TransferReader> HandleXSControlTransferReader;
-typedef opencascade::handle<XSControl_TransferWriter> HandleXSControlTransferWriter;
-typedef opencascade::handle<XSControl_Vars> HandleXSControlVars;
-typedef opencascade::handle<XSControl_WorkSession> HandleXSControlWorkSession;
+typedef opencascade::handle<APIHeaderSection_EditHeader> Handle_APIHeaderSection_EditHeader;
+typedef opencascade::handle<Geom2d_Curve> Handle_Geom2d_Curve;
+typedef opencascade::handle<Geom_Curve> Handle_Geom_Curve;
+typedef opencascade::handle<Geom_Geometry> Handle_Geom_Geometry;
+typedef opencascade::handle<Geom_Surface> Handle_Geom_Surface;
+typedef opencascade::handle<HeaderSection_Protocol> Handle_HeaderSection_Protocol;
+typedef opencascade::handle<IFSelect_Act> Handle_IFSelect_Act;
+typedef opencascade::handle<IFSelect_Activator> Handle_IFSelect_Activator;
+typedef opencascade::handle<IFSelect_AppliedModifiers> Handle_IFSelect_AppliedModifiers;
+typedef opencascade::handle<IFSelect_BasicDumper> Handle_IFSelect_BasicDumper;
+typedef opencascade::handle<IFSelect_CheckCounter> Handle_IFSelect_CheckCounter;
+typedef opencascade::handle<IFSelect_DispGlobal> Handle_IFSelect_DispGlobal;
+typedef opencascade::handle<IFSelect_DispPerCount> Handle_IFSelect_DispPerCount;
+typedef opencascade::handle<IFSelect_DispPerFiles> Handle_IFSelect_DispPerFiles;
+typedef opencascade::handle<IFSelect_DispPerOne> Handle_IFSelect_DispPerOne;
+typedef opencascade::handle<IFSelect_DispPerSignature> Handle_IFSelect_DispPerSignature;
+typedef opencascade::handle<IFSelect_Dispatch> Handle_IFSelect_Dispatch;
+typedef opencascade::handle<IFSelect_EditForm> Handle_IFSelect_EditForm;
+typedef opencascade::handle<IFSelect_Editor> Handle_IFSelect_Editor;
+typedef opencascade::handle<IFSelect_GeneralModifier> Handle_IFSelect_GeneralModifier;
+typedef opencascade::handle<IFSelect_GraphCounter> Handle_IFSelect_GraphCounter;
+typedef opencascade::handle<IFSelect_IntParam> Handle_IFSelect_IntParam;
+typedef opencascade::handle<IFSelect_ListEditor> Handle_IFSelect_ListEditor;
+typedef opencascade::handle<IFSelect_ModelCopier> Handle_IFSelect_ModelCopier;
+typedef opencascade::handle<IFSelect_ModifEditForm> Handle_IFSelect_ModifEditForm;
+typedef opencascade::handle<IFSelect_ModifReorder> Handle_IFSelect_ModifReorder;
+typedef opencascade::handle<IFSelect_Modifier> Handle_IFSelect_Modifier;
+typedef opencascade::handle<IFSelect_PacketList> Handle_IFSelect_PacketList;
+typedef opencascade::handle<IFSelect_ParamEditor> Handle_IFSelect_ParamEditor;
+typedef opencascade::handle<IFSelect_SelectAnyList> Handle_IFSelect_SelectAnyList;
+typedef opencascade::handle<IFSelect_SelectAnyType> Handle_IFSelect_SelectAnyType;
+typedef opencascade::handle<IFSelect_SelectBase> Handle_IFSelect_SelectBase;
+typedef opencascade::handle<IFSelect_SelectCombine> Handle_IFSelect_SelectCombine;
+typedef opencascade::handle<IFSelect_SelectControl> Handle_IFSelect_SelectControl;
+typedef opencascade::handle<IFSelect_SelectDeduct> Handle_IFSelect_SelectDeduct;
+typedef opencascade::handle<IFSelect_SelectDiff> Handle_IFSelect_SelectDiff;
+typedef opencascade::handle<IFSelect_SelectEntityNumber> Handle_IFSelect_SelectEntityNumber;
+typedef opencascade::handle<IFSelect_SelectErrorEntities> Handle_IFSelect_SelectErrorEntities;
+typedef opencascade::handle<IFSelect_SelectExplore> Handle_IFSelect_SelectExplore;
+typedef opencascade::handle<IFSelect_SelectExtract> Handle_IFSelect_SelectExtract;
+typedef opencascade::handle<IFSelect_SelectFlag> Handle_IFSelect_SelectFlag;
+typedef opencascade::handle<IFSelect_SelectInList> Handle_IFSelect_SelectInList;
+typedef opencascade::handle<IFSelect_SelectIncorrectEntities> Handle_IFSelect_SelectIncorrectEntities;
+typedef opencascade::handle<IFSelect_SelectIntersection> Handle_IFSelect_SelectIntersection;
+typedef opencascade::handle<IFSelect_SelectModelEntities> Handle_IFSelect_SelectModelEntities;
+typedef opencascade::handle<IFSelect_SelectModelRoots> Handle_IFSelect_SelectModelRoots;
+typedef opencascade::handle<IFSelect_SelectPointed> Handle_IFSelect_SelectPointed;
+typedef opencascade::handle<IFSelect_SelectRange> Handle_IFSelect_SelectRange;
+typedef opencascade::handle<IFSelect_SelectRootComps> Handle_IFSelect_SelectRootComps;
+typedef opencascade::handle<IFSelect_SelectRoots> Handle_IFSelect_SelectRoots;
+typedef opencascade::handle<IFSelect_SelectSent> Handle_IFSelect_SelectSent;
+typedef opencascade::handle<IFSelect_SelectShared> Handle_IFSelect_SelectShared;
+typedef opencascade::handle<IFSelect_SelectSharing> Handle_IFSelect_SelectSharing;
+typedef opencascade::handle<IFSelect_SelectSignature> Handle_IFSelect_SelectSignature;
+typedef opencascade::handle<IFSelect_SelectSignedShared> Handle_IFSelect_SelectSignedShared;
+typedef opencascade::handle<IFSelect_SelectSignedSharing> Handle_IFSelect_SelectSignedSharing;
+typedef opencascade::handle<IFSelect_SelectSuite> Handle_IFSelect_SelectSuite;
+typedef opencascade::handle<IFSelect_SelectType> Handle_IFSelect_SelectType;
+typedef opencascade::handle<IFSelect_SelectUnion> Handle_IFSelect_SelectUnion;
+typedef opencascade::handle<IFSelect_SelectUnknownEntities> Handle_IFSelect_SelectUnknownEntities;
+typedef opencascade::handle<IFSelect_Selection> Handle_IFSelect_Selection;
+typedef opencascade::handle<IFSelect_SessionDumper> Handle_IFSelect_SessionDumper;
+typedef opencascade::handle<IFSelect_SessionPilot> Handle_IFSelect_SessionPilot;
+typedef opencascade::handle<IFSelect_ShareOut> Handle_IFSelect_ShareOut;
+typedef opencascade::handle<IFSelect_SignAncestor> Handle_IFSelect_SignAncestor;
+typedef opencascade::handle<IFSelect_SignCategory> Handle_IFSelect_SignCategory;
+typedef opencascade::handle<IFSelect_SignCounter> Handle_IFSelect_SignCounter;
+typedef opencascade::handle<IFSelect_SignMultiple> Handle_IFSelect_SignMultiple;
+typedef opencascade::handle<IFSelect_SignType> Handle_IFSelect_SignType;
+typedef opencascade::handle<IFSelect_SignValidity> Handle_IFSelect_SignValidity;
+typedef opencascade::handle<IFSelect_Signature> Handle_IFSelect_Signature;
+typedef opencascade::handle<IFSelect_SignatureList> Handle_IFSelect_SignatureList;
+typedef opencascade::handle<IFSelect_TransformStandard> Handle_IFSelect_TransformStandard;
+typedef opencascade::handle<IFSelect_Transformer> Handle_IFSelect_Transformer;
+typedef opencascade::handle<IFSelect_WorkLibrary> Handle_IFSelect_WorkLibrary;
+typedef opencascade::handle<IFSelect_WorkSession> Handle_IFSelect_WorkSession;
+typedef opencascade::handle<IGESAppli_GeneralModule> Handle_IGESAppli_GeneralModule;
+typedef opencascade::handle<IGESAppli_Protocol> Handle_IGESAppli_Protocol;
+typedef opencascade::handle<IGESAppli_ReadWriteModule> Handle_IGESAppli_ReadWriteModule;
+typedef opencascade::handle<IGESBasic_GeneralModule> Handle_IGESBasic_GeneralModule;
+typedef opencascade::handle<IGESBasic_Protocol> Handle_IGESBasic_Protocol;
+typedef opencascade::handle<IGESBasic_ReadWriteModule> Handle_IGESBasic_ReadWriteModule;
+typedef opencascade::handle<IGESControl_ActorWrite> Handle_IGESControl_ActorWrite;
+typedef opencascade::handle<IGESControl_Controller> Handle_IGESControl_Controller;
+typedef opencascade::handle<IGESData_DefaultGeneral> Handle_IGESData_DefaultGeneral;
+typedef opencascade::handle<IGESData_FileProtocol> Handle_IGESData_FileProtocol;
+typedef opencascade::handle<IGESData_IGESModel> Handle_IGESData_IGESModel;
+typedef opencascade::handle<IGESData_IGESReaderData> Handle_IGESData_IGESReaderData;
+typedef opencascade::handle<IGESData_Protocol> Handle_IGESData_Protocol;
+typedef opencascade::handle<IGESDefs_GeneralModule> Handle_IGESDefs_GeneralModule;
+typedef opencascade::handle<IGESDefs_Protocol> Handle_IGESDefs_Protocol;
+typedef opencascade::handle<IGESDefs_ReadWriteModule> Handle_IGESDefs_ReadWriteModule;
+typedef opencascade::handle<IGESDimen_GeneralModule> Handle_IGESDimen_GeneralModule;
+typedef opencascade::handle<IGESDimen_Protocol> Handle_IGESDimen_Protocol;
+typedef opencascade::handle<IGESDimen_ReadWriteModule> Handle_IGESDimen_ReadWriteModule;
+typedef opencascade::handle<IGESDraw_GeneralModule> Handle_IGESDraw_GeneralModule;
+typedef opencascade::handle<IGESDraw_Protocol> Handle_IGESDraw_Protocol;
+typedef opencascade::handle<IGESDraw_ReadWriteModule> Handle_IGESDraw_ReadWriteModule;
+typedef opencascade::handle<IGESGeom_GeneralModule> Handle_IGESGeom_GeneralModule;
+typedef opencascade::handle<IGESGeom_Protocol> Handle_IGESGeom_Protocol;
+typedef opencascade::handle<IGESGeom_ReadWriteModule> Handle_IGESGeom_ReadWriteModule;
+typedef opencascade::handle<IGESGraph_GeneralModule> Handle_IGESGraph_GeneralModule;
+typedef opencascade::handle<IGESGraph_Protocol> Handle_IGESGraph_Protocol;
+typedef opencascade::handle<IGESGraph_ReadWriteModule> Handle_IGESGraph_ReadWriteModule;
+typedef opencascade::handle<IGESSelect_Activator> Handle_IGESSelect_Activator;
+typedef opencascade::handle<IGESSelect_AddFileComment> Handle_IGESSelect_AddFileComment;
+typedef opencascade::handle<IGESSelect_AddGroup> Handle_IGESSelect_AddGroup;
+typedef opencascade::handle<IGESSelect_AutoCorrect> Handle_IGESSelect_AutoCorrect;
+typedef opencascade::handle<IGESSelect_ChangeLevelList> Handle_IGESSelect_ChangeLevelList;
+typedef opencascade::handle<IGESSelect_ChangeLevelNumber> Handle_IGESSelect_ChangeLevelNumber;
+typedef opencascade::handle<IGESSelect_ComputeStatus> Handle_IGESSelect_ComputeStatus;
+typedef opencascade::handle<IGESSelect_CounterOfLevelNumber> Handle_IGESSelect_CounterOfLevelNumber;
+typedef opencascade::handle<IGESSelect_DispPerDrawing> Handle_IGESSelect_DispPerDrawing;
+typedef opencascade::handle<IGESSelect_DispPerSingleView> Handle_IGESSelect_DispPerSingleView;
+typedef opencascade::handle<IGESSelect_Dumper> Handle_IGESSelect_Dumper;
+typedef opencascade::handle<IGESSelect_EditDirPart> Handle_IGESSelect_EditDirPart;
+typedef opencascade::handle<IGESSelect_EditHeader> Handle_IGESSelect_EditHeader;
+typedef opencascade::handle<IGESSelect_FloatFormat> Handle_IGESSelect_FloatFormat;
+typedef opencascade::handle<IGESSelect_IGESName> Handle_IGESSelect_IGESName;
+typedef opencascade::handle<IGESSelect_IGESTypeForm> Handle_IGESSelect_IGESTypeForm;
+typedef opencascade::handle<IGESSelect_RebuildDrawings> Handle_IGESSelect_RebuildDrawings;
+typedef opencascade::handle<IGESSelect_RebuildGroups> Handle_IGESSelect_RebuildGroups;
+typedef opencascade::handle<IGESSelect_RemoveCurves> Handle_IGESSelect_RemoveCurves;
+typedef opencascade::handle<IGESSelect_SelectBasicGeom> Handle_IGESSelect_SelectBasicGeom;
+typedef opencascade::handle<IGESSelect_SelectBypassGroup> Handle_IGESSelect_SelectBypassGroup;
+typedef opencascade::handle<IGESSelect_SelectBypassSubfigure> Handle_IGESSelect_SelectBypassSubfigure;
+typedef opencascade::handle<IGESSelect_SelectDrawingFrom> Handle_IGESSelect_SelectDrawingFrom;
+typedef opencascade::handle<IGESSelect_SelectFaces> Handle_IGESSelect_SelectFaces;
+typedef opencascade::handle<IGESSelect_SelectFromDrawing> Handle_IGESSelect_SelectFromDrawing;
+typedef opencascade::handle<IGESSelect_SelectFromSingleView> Handle_IGESSelect_SelectFromSingleView;
+typedef opencascade::handle<IGESSelect_SelectLevelNumber> Handle_IGESSelect_SelectLevelNumber;
+typedef opencascade::handle<IGESSelect_SelectName> Handle_IGESSelect_SelectName;
+typedef opencascade::handle<IGESSelect_SelectPCurves> Handle_IGESSelect_SelectPCurves;
+typedef opencascade::handle<IGESSelect_SelectSingleViewFrom> Handle_IGESSelect_SelectSingleViewFrom;
+typedef opencascade::handle<IGESSelect_SelectSubordinate> Handle_IGESSelect_SelectSubordinate;
+typedef opencascade::handle<IGESSelect_SelectVisibleStatus> Handle_IGESSelect_SelectVisibleStatus;
+typedef opencascade::handle<IGESSelect_SetGlobalParameter> Handle_IGESSelect_SetGlobalParameter;
+typedef opencascade::handle<IGESSelect_SetLabel> Handle_IGESSelect_SetLabel;
+typedef opencascade::handle<IGESSelect_SetVersion5> Handle_IGESSelect_SetVersion5;
+typedef opencascade::handle<IGESSelect_SignColor> Handle_IGESSelect_SignColor;
+typedef opencascade::handle<IGESSelect_SignLevelNumber> Handle_IGESSelect_SignLevelNumber;
+typedef opencascade::handle<IGESSelect_SignStatus> Handle_IGESSelect_SignStatus;
+typedef opencascade::handle<IGESSelect_SplineToBSpline> Handle_IGESSelect_SplineToBSpline;
+typedef opencascade::handle<IGESSelect_UpdateCreationDate> Handle_IGESSelect_UpdateCreationDate;
+typedef opencascade::handle<IGESSelect_UpdateFileName> Handle_IGESSelect_UpdateFileName;
+typedef opencascade::handle<IGESSelect_UpdateLastChange> Handle_IGESSelect_UpdateLastChange;
+typedef opencascade::handle<IGESSelect_WorkLibrary> Handle_IGESSelect_WorkLibrary;
+typedef opencascade::handle<IGESSolid_GeneralModule> Handle_IGESSolid_GeneralModule;
+typedef opencascade::handle<IGESSolid_Protocol> Handle_IGESSolid_Protocol;
+typedef opencascade::handle<IGESSolid_ReadWriteModule> Handle_IGESSolid_ReadWriteModule;
+typedef opencascade::handle<IGESToBRep_Actor> Handle_IGESToBRep_Actor;
+typedef opencascade::handle<Interface_Check> Handle_Interface_Check;
+typedef opencascade::handle<Interface_CopyControl> Handle_Interface_CopyControl;
+typedef opencascade::handle<Interface_CopyMap> Handle_Interface_CopyMap;
+typedef opencascade::handle<Interface_EntityCluster> Handle_Interface_EntityCluster;
+typedef opencascade::handle<Interface_FileReaderData> Handle_Interface_FileReaderData;
+typedef opencascade::handle<Interface_GTool> Handle_Interface_GTool;
+typedef opencascade::handle<Interface_GeneralModule> Handle_Interface_GeneralModule;
+typedef opencascade::handle<Interface_GlobalNodeOfGeneralLib> Handle_Interface_GlobalNodeOfGeneralLib;
+typedef opencascade::handle<Interface_GlobalNodeOfReaderLib> Handle_Interface_GlobalNodeOfReaderLib;
+typedef opencascade::handle<Interface_HGraph> Handle_Interface_HGraph;
+typedef opencascade::handle<Interface_IntVal> Handle_Interface_IntVal;
+typedef opencascade::handle<Interface_InterfaceModel> Handle_Interface_InterfaceModel;
+typedef opencascade::handle<Interface_NodeOfGeneralLib> Handle_Interface_NodeOfGeneralLib;
+typedef opencascade::handle<Interface_NodeOfReaderLib> Handle_Interface_NodeOfReaderLib;
+typedef opencascade::handle<Interface_ParamList> Handle_Interface_ParamList;
+typedef opencascade::handle<Interface_ParamSet> Handle_Interface_ParamSet;
+typedef opencascade::handle<Interface_Protocol> Handle_Interface_Protocol;
+typedef opencascade::handle<Interface_ReaderModule> Handle_Interface_ReaderModule;
+typedef opencascade::handle<Interface_ReportEntity> Handle_Interface_ReportEntity;
+typedef opencascade::handle<Interface_SignLabel> Handle_Interface_SignLabel;
+typedef opencascade::handle<Interface_SignType> Handle_Interface_SignType;
+typedef opencascade::handle<Interface_Static> Handle_Interface_Static;
+typedef opencascade::handle<Interface_TypedValue> Handle_Interface_TypedValue;
+typedef opencascade::handle<Interface_UndefinedContent> Handle_Interface_UndefinedContent;
+typedef opencascade::handle<Message_Messenger> Handle_Message_Messenger;
+typedef opencascade::handle<MoniTool_CaseData> Handle_MoniTool_CaseData;
+typedef opencascade::handle<MoniTool_Element> Handle_MoniTool_Element;
+typedef opencascade::handle<MoniTool_IntVal> Handle_MoniTool_IntVal;
+typedef opencascade::handle<MoniTool_RealVal> Handle_MoniTool_RealVal;
+typedef opencascade::handle<MoniTool_SignShape> Handle_MoniTool_SignShape;
+typedef opencascade::handle<MoniTool_SignText> Handle_MoniTool_SignText;
+typedef opencascade::handle<MoniTool_Timer> Handle_MoniTool_Timer;
+typedef opencascade::handle<MoniTool_TransientElem> Handle_MoniTool_TransientElem;
+typedef opencascade::handle<MoniTool_TypedValue> Handle_MoniTool_TypedValue;
+typedef opencascade::handle<NCollection_HArray1_NCollection_List_int> Handle_NCollection_HArray1_NCollection_List_int;
+typedef opencascade::handle<NCollection_HArray1_int> Handle_NCollection_HArray1_int;
+typedef opencascade::handle<NCollection_HSequence_TCollection_AsciiString> Handle_NCollection_HSequence_TCollection_AsciiString;
+typedef opencascade::handle<NCollection_HSequence_TopoDS_Shape> Handle_NCollection_HSequence_TopoDS_Shape;
+typedef opencascade::handle<NCollection_HSequence_double> Handle_NCollection_HSequence_double;
+typedef opencascade::handle<NCollection_HSequence_int> Handle_NCollection_HSequence_int;
+typedef opencascade::handle<NCollection_HSequence_opencascade_handle_Standard_Transient> Handle_NCollection_HSequence_opencascade_handle_Standard_Transient;
+typedef opencascade::handle<NCollection_HSequence_opencascade_handle_TCollection_HAsciiString> Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString;
+typedef opencascade::handle<NCollection_HSequence_opencascade_handle_TCollection_HExtendedString> Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString;
+typedef opencascade::handle<NCollection_HSequence_opencascade_handle_Transfer_Finder> Handle_NCollection_HSequence_opencascade_handle_Transfer_Finder;
+typedef opencascade::handle<RWHeaderSection_GeneralModule> Handle_RWHeaderSection_GeneralModule;
+typedef opencascade::handle<RWHeaderSection_ReadWriteModule> Handle_RWHeaderSection_ReadWriteModule;
+typedef opencascade::handle<STEPCAFControl_ActorWrite> Handle_STEPCAFControl_ActorWrite;
+typedef opencascade::handle<STEPCAFControl_Controller> Handle_STEPCAFControl_Controller;
+typedef opencascade::handle<STEPControl_ActorRead> Handle_STEPControl_ActorRead;
+typedef opencascade::handle<STEPControl_ActorWrite> Handle_STEPControl_ActorWrite;
+typedef opencascade::handle<STEPControl_Controller> Handle_STEPControl_Controller;
+typedef opencascade::handle<STEPEdit_EditContext> Handle_STEPEdit_EditContext;
+typedef opencascade::handle<STEPEdit_EditSDR> Handle_STEPEdit_EditSDR;
+typedef opencascade::handle<STEPSelections_SelectAssembly> Handle_STEPSelections_SelectAssembly;
+typedef opencascade::handle<STEPSelections_SelectDerived> Handle_STEPSelections_SelectDerived;
+typedef opencascade::handle<STEPSelections_SelectFaces> Handle_STEPSelections_SelectFaces;
+typedef opencascade::handle<STEPSelections_SelectForTransfer> Handle_STEPSelections_SelectForTransfer;
+typedef opencascade::handle<STEPSelections_SelectGSCurves> Handle_STEPSelections_SelectGSCurves;
+typedef opencascade::handle<STEPSelections_SelectInstances> Handle_STEPSelections_SelectInstances;
+typedef opencascade::handle<ShapeExtend_MsgRegistrator> Handle_ShapeExtend_MsgRegistrator;
+typedef opencascade::handle<ShapeProcess_ShapeContext> Handle_ShapeProcess_ShapeContext;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
+typedef opencascade::handle<StepAP214_Protocol> Handle_StepAP214_Protocol;
+typedef opencascade::handle<StepData_DefaultGeneral> Handle_StepData_DefaultGeneral;
+typedef opencascade::handle<StepData_FileProtocol> Handle_StepData_FileProtocol;
+typedef opencascade::handle<StepData_Protocol> Handle_StepData_Protocol;
+typedef opencascade::handle<StepData_StepModel> Handle_StepData_StepModel;
+typedef opencascade::handle<StepData_StepReaderData> Handle_StepData_StepReaderData;
+typedef opencascade::handle<StepSelect_Activator> Handle_StepSelect_Activator;
+typedef opencascade::handle<StepSelect_FloatFormat> Handle_StepSelect_FloatFormat;
+typedef opencascade::handle<StepSelect_StepType> Handle_StepSelect_StepType;
+typedef opencascade::handle<StepSelect_WorkLibrary> Handle_StepSelect_WorkLibrary;
+typedef opencascade::handle<TCollection_HAsciiString> Handle_TCollection_HAsciiString;
+typedef opencascade::handle<TCollection_HExtendedString> Handle_TCollection_HExtendedString;
+typedef opencascade::handle<TransferBRep_BinderOfShape> Handle_TransferBRep_BinderOfShape;
+typedef opencascade::handle<TransferBRep_ShapeBinder> Handle_TransferBRep_ShapeBinder;
+typedef opencascade::handle<TransferBRep_ShapeListBinder> Handle_TransferBRep_ShapeListBinder;
+typedef opencascade::handle<TransferBRep_ShapeMapper> Handle_TransferBRep_ShapeMapper;
+typedef opencascade::handle<TransferBRep_TransferResultInfo> Handle_TransferBRep_TransferResultInfo;
+typedef opencascade::handle<Transfer_ActorDispatch> Handle_Transfer_ActorDispatch;
+typedef opencascade::handle<Transfer_ActorOfFinderProcess> Handle_Transfer_ActorOfFinderProcess;
+typedef opencascade::handle<Transfer_ActorOfProcessForFinder> Handle_Transfer_ActorOfProcessForFinder;
+typedef opencascade::handle<Transfer_ActorOfProcessForTransient> Handle_Transfer_ActorOfProcessForTransient;
+typedef opencascade::handle<Transfer_ActorOfTransientProcess> Handle_Transfer_ActorOfTransientProcess;
+typedef opencascade::handle<Transfer_Binder> Handle_Transfer_Binder;
+typedef opencascade::handle<Transfer_BinderOfTransientInteger> Handle_Transfer_BinderOfTransientInteger;
+typedef opencascade::handle<Transfer_DispatchControl> Handle_Transfer_DispatchControl;
+typedef opencascade::handle<Transfer_Finder> Handle_Transfer_Finder;
+typedef opencascade::handle<Transfer_FinderProcess> Handle_Transfer_FinderProcess;
+typedef opencascade::handle<Transfer_MapContainer> Handle_Transfer_MapContainer;
+typedef opencascade::handle<Transfer_MultipleBinder> Handle_Transfer_MultipleBinder;
+typedef opencascade::handle<Transfer_ProcessForFinder> Handle_Transfer_ProcessForFinder;
+typedef opencascade::handle<Transfer_ProcessForTransient> Handle_Transfer_ProcessForTransient;
+typedef opencascade::handle<Transfer_ResultFromModel> Handle_Transfer_ResultFromModel;
+typedef opencascade::handle<Transfer_ResultFromTransient> Handle_Transfer_ResultFromTransient;
+typedef opencascade::handle<Transfer_SimpleBinderOfTransient> Handle_Transfer_SimpleBinderOfTransient;
+typedef opencascade::handle<Transfer_TransientListBinder> Handle_Transfer_TransientListBinder;
+typedef opencascade::handle<Transfer_TransientMapper> Handle_Transfer_TransientMapper;
+typedef opencascade::handle<Transfer_TransientProcess> Handle_Transfer_TransientProcess;
+typedef opencascade::handle<Transfer_VoidBinder> Handle_Transfer_VoidBinder;
+typedef opencascade::handle<XSAlgo_AlgoContainer> Handle_XSAlgo_AlgoContainer;
+typedef opencascade::handle<XSControl_ConnectedShapes> Handle_XSControl_ConnectedShapes;
+typedef opencascade::handle<XSControl_Controller> Handle_XSControl_Controller;
+typedef opencascade::handle<XSControl_SelectForTransfer> Handle_XSControl_SelectForTransfer;
+typedef opencascade::handle<XSControl_SignTransferStatus> Handle_XSControl_SignTransferStatus;
+typedef opencascade::handle<XSControl_TransferReader> Handle_XSControl_TransferReader;
+typedef opencascade::handle<XSControl_TransferWriter> Handle_XSControl_TransferWriter;
+typedef opencascade::handle<XSControl_Vars> Handle_XSControl_Vars;
+typedef opencascade::handle<XSControl_WorkSession> Handle_XSControl_WorkSession;
 
 // Handle type destructors, clone, and is_null functions
-extern "C" void HandleIFSelectAct_destructor(HandleIFSelectAct* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectAct*> HandleIFSelectAct_clone(const HandleIFSelectAct* self_) {
-    try { return {new HandleIFSelectAct(*self_), nullptr}; }
+extern "C" void Handle_IFSelect_Act_destructor(Handle_IFSelect_Act* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_Act*> Handle_IFSelect_Act_clone(const Handle_IFSelect_Act* self_) {
+    try { return {new Handle_IFSelect_Act(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectAct_is_null(const HandleIFSelectAct* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectActivator_destructor(HandleIFSelectActivator* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectActivator*> HandleIFSelectActivator_clone(const HandleIFSelectActivator* self_) {
-    try { return {new HandleIFSelectActivator(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_Act_is_null(const Handle_IFSelect_Act* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_Activator_destructor(Handle_IFSelect_Activator* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_Activator*> Handle_IFSelect_Activator_clone(const Handle_IFSelect_Activator* self_) {
+    try { return {new Handle_IFSelect_Activator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectActivator_is_null(const HandleIFSelectActivator* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectAppliedModifiers_destructor(HandleIFSelectAppliedModifiers* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectAppliedModifiers*> HandleIFSelectAppliedModifiers_clone(const HandleIFSelectAppliedModifiers* self_) {
-    try { return {new HandleIFSelectAppliedModifiers(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_Activator_is_null(const Handle_IFSelect_Activator* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_AppliedModifiers_destructor(Handle_IFSelect_AppliedModifiers* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_AppliedModifiers*> Handle_IFSelect_AppliedModifiers_clone(const Handle_IFSelect_AppliedModifiers* self_) {
+    try { return {new Handle_IFSelect_AppliedModifiers(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectAppliedModifiers_is_null(const HandleIFSelectAppliedModifiers* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectBasicDumper_destructor(HandleIFSelectBasicDumper* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectBasicDumper*> HandleIFSelectBasicDumper_clone(const HandleIFSelectBasicDumper* self_) {
-    try { return {new HandleIFSelectBasicDumper(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_AppliedModifiers_is_null(const Handle_IFSelect_AppliedModifiers* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_BasicDumper_destructor(Handle_IFSelect_BasicDumper* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_BasicDumper*> Handle_IFSelect_BasicDumper_clone(const Handle_IFSelect_BasicDumper* self_) {
+    try { return {new Handle_IFSelect_BasicDumper(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectBasicDumper_is_null(const HandleIFSelectBasicDumper* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectCheckCounter_destructor(HandleIFSelectCheckCounter* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectCheckCounter*> HandleIFSelectCheckCounter_clone(const HandleIFSelectCheckCounter* self_) {
-    try { return {new HandleIFSelectCheckCounter(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_BasicDumper_is_null(const Handle_IFSelect_BasicDumper* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_CheckCounter_destructor(Handle_IFSelect_CheckCounter* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_CheckCounter*> Handle_IFSelect_CheckCounter_clone(const Handle_IFSelect_CheckCounter* self_) {
+    try { return {new Handle_IFSelect_CheckCounter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectCheckCounter_is_null(const HandleIFSelectCheckCounter* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectDispGlobal_destructor(HandleIFSelectDispGlobal* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectDispGlobal*> HandleIFSelectDispGlobal_clone(const HandleIFSelectDispGlobal* self_) {
-    try { return {new HandleIFSelectDispGlobal(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_CheckCounter_is_null(const Handle_IFSelect_CheckCounter* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_DispGlobal_destructor(Handle_IFSelect_DispGlobal* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_DispGlobal*> Handle_IFSelect_DispGlobal_clone(const Handle_IFSelect_DispGlobal* self_) {
+    try { return {new Handle_IFSelect_DispGlobal(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectDispGlobal_is_null(const HandleIFSelectDispGlobal* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectDispPerCount_destructor(HandleIFSelectDispPerCount* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectDispPerCount*> HandleIFSelectDispPerCount_clone(const HandleIFSelectDispPerCount* self_) {
-    try { return {new HandleIFSelectDispPerCount(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_DispGlobal_is_null(const Handle_IFSelect_DispGlobal* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_DispPerCount_destructor(Handle_IFSelect_DispPerCount* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_DispPerCount*> Handle_IFSelect_DispPerCount_clone(const Handle_IFSelect_DispPerCount* self_) {
+    try { return {new Handle_IFSelect_DispPerCount(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectDispPerCount_is_null(const HandleIFSelectDispPerCount* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectDispPerFiles_destructor(HandleIFSelectDispPerFiles* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectDispPerFiles*> HandleIFSelectDispPerFiles_clone(const HandleIFSelectDispPerFiles* self_) {
-    try { return {new HandleIFSelectDispPerFiles(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_DispPerCount_is_null(const Handle_IFSelect_DispPerCount* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_DispPerFiles_destructor(Handle_IFSelect_DispPerFiles* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_DispPerFiles*> Handle_IFSelect_DispPerFiles_clone(const Handle_IFSelect_DispPerFiles* self_) {
+    try { return {new Handle_IFSelect_DispPerFiles(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectDispPerFiles_is_null(const HandleIFSelectDispPerFiles* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectDispPerOne_destructor(HandleIFSelectDispPerOne* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectDispPerOne*> HandleIFSelectDispPerOne_clone(const HandleIFSelectDispPerOne* self_) {
-    try { return {new HandleIFSelectDispPerOne(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_DispPerFiles_is_null(const Handle_IFSelect_DispPerFiles* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_DispPerOne_destructor(Handle_IFSelect_DispPerOne* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_DispPerOne*> Handle_IFSelect_DispPerOne_clone(const Handle_IFSelect_DispPerOne* self_) {
+    try { return {new Handle_IFSelect_DispPerOne(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectDispPerOne_is_null(const HandleIFSelectDispPerOne* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectDispPerSignature_destructor(HandleIFSelectDispPerSignature* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectDispPerSignature*> HandleIFSelectDispPerSignature_clone(const HandleIFSelectDispPerSignature* self_) {
-    try { return {new HandleIFSelectDispPerSignature(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_DispPerOne_is_null(const Handle_IFSelect_DispPerOne* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_DispPerSignature_destructor(Handle_IFSelect_DispPerSignature* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_DispPerSignature*> Handle_IFSelect_DispPerSignature_clone(const Handle_IFSelect_DispPerSignature* self_) {
+    try { return {new Handle_IFSelect_DispPerSignature(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectDispPerSignature_is_null(const HandleIFSelectDispPerSignature* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectDispatch_destructor(HandleIFSelectDispatch* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectDispatch*> HandleIFSelectDispatch_clone(const HandleIFSelectDispatch* self_) {
-    try { return {new HandleIFSelectDispatch(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_DispPerSignature_is_null(const Handle_IFSelect_DispPerSignature* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_Dispatch_destructor(Handle_IFSelect_Dispatch* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_Dispatch*> Handle_IFSelect_Dispatch_clone(const Handle_IFSelect_Dispatch* self_) {
+    try { return {new Handle_IFSelect_Dispatch(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectDispatch_is_null(const HandleIFSelectDispatch* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectEditForm_destructor(HandleIFSelectEditForm* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectEditForm*> HandleIFSelectEditForm_clone(const HandleIFSelectEditForm* self_) {
-    try { return {new HandleIFSelectEditForm(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_Dispatch_is_null(const Handle_IFSelect_Dispatch* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_EditForm_destructor(Handle_IFSelect_EditForm* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_EditForm*> Handle_IFSelect_EditForm_clone(const Handle_IFSelect_EditForm* self_) {
+    try { return {new Handle_IFSelect_EditForm(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectEditForm_is_null(const HandleIFSelectEditForm* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectEditor_destructor(HandleIFSelectEditor* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectEditor*> HandleIFSelectEditor_clone(const HandleIFSelectEditor* self_) {
-    try { return {new HandleIFSelectEditor(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_EditForm_is_null(const Handle_IFSelect_EditForm* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_Editor_destructor(Handle_IFSelect_Editor* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_Editor*> Handle_IFSelect_Editor_clone(const Handle_IFSelect_Editor* self_) {
+    try { return {new Handle_IFSelect_Editor(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectEditor_is_null(const HandleIFSelectEditor* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectGeneralModifier_destructor(HandleIFSelectGeneralModifier* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectGeneralModifier*> HandleIFSelectGeneralModifier_clone(const HandleIFSelectGeneralModifier* self_) {
-    try { return {new HandleIFSelectGeneralModifier(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_Editor_is_null(const Handle_IFSelect_Editor* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_GeneralModifier_destructor(Handle_IFSelect_GeneralModifier* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_GeneralModifier*> Handle_IFSelect_GeneralModifier_clone(const Handle_IFSelect_GeneralModifier* self_) {
+    try { return {new Handle_IFSelect_GeneralModifier(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectGeneralModifier_is_null(const HandleIFSelectGeneralModifier* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectGraphCounter_destructor(HandleIFSelectGraphCounter* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectGraphCounter*> HandleIFSelectGraphCounter_clone(const HandleIFSelectGraphCounter* self_) {
-    try { return {new HandleIFSelectGraphCounter(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_GeneralModifier_is_null(const Handle_IFSelect_GeneralModifier* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_GraphCounter_destructor(Handle_IFSelect_GraphCounter* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_GraphCounter*> Handle_IFSelect_GraphCounter_clone(const Handle_IFSelect_GraphCounter* self_) {
+    try { return {new Handle_IFSelect_GraphCounter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectGraphCounter_is_null(const HandleIFSelectGraphCounter* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectHSeqOfSelection_destructor(HandleIFSelectHSeqOfSelection* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectHSeqOfSelection*> HandleIFSelectHSeqOfSelection_clone(const HandleIFSelectHSeqOfSelection* self_) {
-    try { return {new HandleIFSelectHSeqOfSelection(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_GraphCounter_is_null(const Handle_IFSelect_GraphCounter* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_IntParam_destructor(Handle_IFSelect_IntParam* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_IntParam*> Handle_IFSelect_IntParam_clone(const Handle_IFSelect_IntParam* self_) {
+    try { return {new Handle_IFSelect_IntParam(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectHSeqOfSelection_is_null(const HandleIFSelectHSeqOfSelection* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectIntParam_destructor(HandleIFSelectIntParam* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectIntParam*> HandleIFSelectIntParam_clone(const HandleIFSelectIntParam* self_) {
-    try { return {new HandleIFSelectIntParam(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_IntParam_is_null(const Handle_IFSelect_IntParam* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_ListEditor_destructor(Handle_IFSelect_ListEditor* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_ListEditor*> Handle_IFSelect_ListEditor_clone(const Handle_IFSelect_ListEditor* self_) {
+    try { return {new Handle_IFSelect_ListEditor(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectIntParam_is_null(const HandleIFSelectIntParam* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectListEditor_destructor(HandleIFSelectListEditor* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectListEditor*> HandleIFSelectListEditor_clone(const HandleIFSelectListEditor* self_) {
-    try { return {new HandleIFSelectListEditor(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_ListEditor_is_null(const Handle_IFSelect_ListEditor* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_ModelCopier_destructor(Handle_IFSelect_ModelCopier* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_ModelCopier*> Handle_IFSelect_ModelCopier_clone(const Handle_IFSelect_ModelCopier* self_) {
+    try { return {new Handle_IFSelect_ModelCopier(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectListEditor_is_null(const HandleIFSelectListEditor* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectModelCopier_destructor(HandleIFSelectModelCopier* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectModelCopier*> HandleIFSelectModelCopier_clone(const HandleIFSelectModelCopier* self_) {
-    try { return {new HandleIFSelectModelCopier(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_ModelCopier_is_null(const Handle_IFSelect_ModelCopier* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_ModifEditForm_destructor(Handle_IFSelect_ModifEditForm* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_ModifEditForm*> Handle_IFSelect_ModifEditForm_clone(const Handle_IFSelect_ModifEditForm* self_) {
+    try { return {new Handle_IFSelect_ModifEditForm(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectModelCopier_is_null(const HandleIFSelectModelCopier* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectModifEditForm_destructor(HandleIFSelectModifEditForm* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectModifEditForm*> HandleIFSelectModifEditForm_clone(const HandleIFSelectModifEditForm* self_) {
-    try { return {new HandleIFSelectModifEditForm(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_ModifEditForm_is_null(const Handle_IFSelect_ModifEditForm* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_ModifReorder_destructor(Handle_IFSelect_ModifReorder* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_ModifReorder*> Handle_IFSelect_ModifReorder_clone(const Handle_IFSelect_ModifReorder* self_) {
+    try { return {new Handle_IFSelect_ModifReorder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectModifEditForm_is_null(const HandleIFSelectModifEditForm* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectModifReorder_destructor(HandleIFSelectModifReorder* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectModifReorder*> HandleIFSelectModifReorder_clone(const HandleIFSelectModifReorder* self_) {
-    try { return {new HandleIFSelectModifReorder(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_ModifReorder_is_null(const Handle_IFSelect_ModifReorder* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_Modifier_destructor(Handle_IFSelect_Modifier* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_Modifier*> Handle_IFSelect_Modifier_clone(const Handle_IFSelect_Modifier* self_) {
+    try { return {new Handle_IFSelect_Modifier(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectModifReorder_is_null(const HandleIFSelectModifReorder* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectModifier_destructor(HandleIFSelectModifier* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectModifier*> HandleIFSelectModifier_clone(const HandleIFSelectModifier* self_) {
-    try { return {new HandleIFSelectModifier(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_Modifier_is_null(const Handle_IFSelect_Modifier* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_PacketList_destructor(Handle_IFSelect_PacketList* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_PacketList*> Handle_IFSelect_PacketList_clone(const Handle_IFSelect_PacketList* self_) {
+    try { return {new Handle_IFSelect_PacketList(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectModifier_is_null(const HandleIFSelectModifier* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectPacketList_destructor(HandleIFSelectPacketList* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectPacketList*> HandleIFSelectPacketList_clone(const HandleIFSelectPacketList* self_) {
-    try { return {new HandleIFSelectPacketList(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_PacketList_is_null(const Handle_IFSelect_PacketList* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_ParamEditor_destructor(Handle_IFSelect_ParamEditor* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_ParamEditor*> Handle_IFSelect_ParamEditor_clone(const Handle_IFSelect_ParamEditor* self_) {
+    try { return {new Handle_IFSelect_ParamEditor(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectPacketList_is_null(const HandleIFSelectPacketList* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectParamEditor_destructor(HandleIFSelectParamEditor* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectParamEditor*> HandleIFSelectParamEditor_clone(const HandleIFSelectParamEditor* self_) {
-    try { return {new HandleIFSelectParamEditor(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_ParamEditor_is_null(const Handle_IFSelect_ParamEditor* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SelectAnyList_destructor(Handle_IFSelect_SelectAnyList* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SelectAnyList*> Handle_IFSelect_SelectAnyList_clone(const Handle_IFSelect_SelectAnyList* self_) {
+    try { return {new Handle_IFSelect_SelectAnyList(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectParamEditor_is_null(const HandleIFSelectParamEditor* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelectAnyList_destructor(HandleIFSelectSelectAnyList* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelectAnyList*> HandleIFSelectSelectAnyList_clone(const HandleIFSelectSelectAnyList* self_) {
-    try { return {new HandleIFSelectSelectAnyList(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SelectAnyList_is_null(const Handle_IFSelect_SelectAnyList* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SelectAnyType_destructor(Handle_IFSelect_SelectAnyType* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SelectAnyType*> Handle_IFSelect_SelectAnyType_clone(const Handle_IFSelect_SelectAnyType* self_) {
+    try { return {new Handle_IFSelect_SelectAnyType(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelectAnyList_is_null(const HandleIFSelectSelectAnyList* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelectAnyType_destructor(HandleIFSelectSelectAnyType* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelectAnyType*> HandleIFSelectSelectAnyType_clone(const HandleIFSelectSelectAnyType* self_) {
-    try { return {new HandleIFSelectSelectAnyType(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SelectAnyType_is_null(const Handle_IFSelect_SelectAnyType* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SelectBase_destructor(Handle_IFSelect_SelectBase* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SelectBase*> Handle_IFSelect_SelectBase_clone(const Handle_IFSelect_SelectBase* self_) {
+    try { return {new Handle_IFSelect_SelectBase(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelectAnyType_is_null(const HandleIFSelectSelectAnyType* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelectBase_destructor(HandleIFSelectSelectBase* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelectBase*> HandleIFSelectSelectBase_clone(const HandleIFSelectSelectBase* self_) {
-    try { return {new HandleIFSelectSelectBase(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SelectBase_is_null(const Handle_IFSelect_SelectBase* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SelectCombine_destructor(Handle_IFSelect_SelectCombine* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SelectCombine*> Handle_IFSelect_SelectCombine_clone(const Handle_IFSelect_SelectCombine* self_) {
+    try { return {new Handle_IFSelect_SelectCombine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelectBase_is_null(const HandleIFSelectSelectBase* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelectCombine_destructor(HandleIFSelectSelectCombine* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelectCombine*> HandleIFSelectSelectCombine_clone(const HandleIFSelectSelectCombine* self_) {
-    try { return {new HandleIFSelectSelectCombine(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SelectCombine_is_null(const Handle_IFSelect_SelectCombine* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SelectControl_destructor(Handle_IFSelect_SelectControl* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SelectControl*> Handle_IFSelect_SelectControl_clone(const Handle_IFSelect_SelectControl* self_) {
+    try { return {new Handle_IFSelect_SelectControl(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelectCombine_is_null(const HandleIFSelectSelectCombine* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelectControl_destructor(HandleIFSelectSelectControl* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelectControl*> HandleIFSelectSelectControl_clone(const HandleIFSelectSelectControl* self_) {
-    try { return {new HandleIFSelectSelectControl(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SelectControl_is_null(const Handle_IFSelect_SelectControl* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SelectDeduct_destructor(Handle_IFSelect_SelectDeduct* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SelectDeduct*> Handle_IFSelect_SelectDeduct_clone(const Handle_IFSelect_SelectDeduct* self_) {
+    try { return {new Handle_IFSelect_SelectDeduct(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelectControl_is_null(const HandleIFSelectSelectControl* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelectDeduct_destructor(HandleIFSelectSelectDeduct* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelectDeduct*> HandleIFSelectSelectDeduct_clone(const HandleIFSelectSelectDeduct* self_) {
-    try { return {new HandleIFSelectSelectDeduct(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SelectDeduct_is_null(const Handle_IFSelect_SelectDeduct* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SelectDiff_destructor(Handle_IFSelect_SelectDiff* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SelectDiff*> Handle_IFSelect_SelectDiff_clone(const Handle_IFSelect_SelectDiff* self_) {
+    try { return {new Handle_IFSelect_SelectDiff(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelectDeduct_is_null(const HandleIFSelectSelectDeduct* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelectDiff_destructor(HandleIFSelectSelectDiff* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelectDiff*> HandleIFSelectSelectDiff_clone(const HandleIFSelectSelectDiff* self_) {
-    try { return {new HandleIFSelectSelectDiff(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SelectDiff_is_null(const Handle_IFSelect_SelectDiff* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SelectEntityNumber_destructor(Handle_IFSelect_SelectEntityNumber* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SelectEntityNumber*> Handle_IFSelect_SelectEntityNumber_clone(const Handle_IFSelect_SelectEntityNumber* self_) {
+    try { return {new Handle_IFSelect_SelectEntityNumber(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelectDiff_is_null(const HandleIFSelectSelectDiff* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelectEntityNumber_destructor(HandleIFSelectSelectEntityNumber* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelectEntityNumber*> HandleIFSelectSelectEntityNumber_clone(const HandleIFSelectSelectEntityNumber* self_) {
-    try { return {new HandleIFSelectSelectEntityNumber(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SelectEntityNumber_is_null(const Handle_IFSelect_SelectEntityNumber* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SelectErrorEntities_destructor(Handle_IFSelect_SelectErrorEntities* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SelectErrorEntities*> Handle_IFSelect_SelectErrorEntities_clone(const Handle_IFSelect_SelectErrorEntities* self_) {
+    try { return {new Handle_IFSelect_SelectErrorEntities(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelectEntityNumber_is_null(const HandleIFSelectSelectEntityNumber* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelectErrorEntities_destructor(HandleIFSelectSelectErrorEntities* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelectErrorEntities*> HandleIFSelectSelectErrorEntities_clone(const HandleIFSelectSelectErrorEntities* self_) {
-    try { return {new HandleIFSelectSelectErrorEntities(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SelectErrorEntities_is_null(const Handle_IFSelect_SelectErrorEntities* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SelectExplore_destructor(Handle_IFSelect_SelectExplore* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SelectExplore*> Handle_IFSelect_SelectExplore_clone(const Handle_IFSelect_SelectExplore* self_) {
+    try { return {new Handle_IFSelect_SelectExplore(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelectErrorEntities_is_null(const HandleIFSelectSelectErrorEntities* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelectExplore_destructor(HandleIFSelectSelectExplore* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelectExplore*> HandleIFSelectSelectExplore_clone(const HandleIFSelectSelectExplore* self_) {
-    try { return {new HandleIFSelectSelectExplore(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SelectExplore_is_null(const Handle_IFSelect_SelectExplore* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SelectExtract_destructor(Handle_IFSelect_SelectExtract* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SelectExtract*> Handle_IFSelect_SelectExtract_clone(const Handle_IFSelect_SelectExtract* self_) {
+    try { return {new Handle_IFSelect_SelectExtract(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelectExplore_is_null(const HandleIFSelectSelectExplore* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelectExtract_destructor(HandleIFSelectSelectExtract* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelectExtract*> HandleIFSelectSelectExtract_clone(const HandleIFSelectSelectExtract* self_) {
-    try { return {new HandleIFSelectSelectExtract(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SelectExtract_is_null(const Handle_IFSelect_SelectExtract* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SelectFlag_destructor(Handle_IFSelect_SelectFlag* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SelectFlag*> Handle_IFSelect_SelectFlag_clone(const Handle_IFSelect_SelectFlag* self_) {
+    try { return {new Handle_IFSelect_SelectFlag(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelectExtract_is_null(const HandleIFSelectSelectExtract* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelectFlag_destructor(HandleIFSelectSelectFlag* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelectFlag*> HandleIFSelectSelectFlag_clone(const HandleIFSelectSelectFlag* self_) {
-    try { return {new HandleIFSelectSelectFlag(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SelectFlag_is_null(const Handle_IFSelect_SelectFlag* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SelectInList_destructor(Handle_IFSelect_SelectInList* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SelectInList*> Handle_IFSelect_SelectInList_clone(const Handle_IFSelect_SelectInList* self_) {
+    try { return {new Handle_IFSelect_SelectInList(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelectFlag_is_null(const HandleIFSelectSelectFlag* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelectInList_destructor(HandleIFSelectSelectInList* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelectInList*> HandleIFSelectSelectInList_clone(const HandleIFSelectSelectInList* self_) {
-    try { return {new HandleIFSelectSelectInList(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SelectInList_is_null(const Handle_IFSelect_SelectInList* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SelectIncorrectEntities_destructor(Handle_IFSelect_SelectIncorrectEntities* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SelectIncorrectEntities*> Handle_IFSelect_SelectIncorrectEntities_clone(const Handle_IFSelect_SelectIncorrectEntities* self_) {
+    try { return {new Handle_IFSelect_SelectIncorrectEntities(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelectInList_is_null(const HandleIFSelectSelectInList* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelectIncorrectEntities_destructor(HandleIFSelectSelectIncorrectEntities* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelectIncorrectEntities*> HandleIFSelectSelectIncorrectEntities_clone(const HandleIFSelectSelectIncorrectEntities* self_) {
-    try { return {new HandleIFSelectSelectIncorrectEntities(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SelectIncorrectEntities_is_null(const Handle_IFSelect_SelectIncorrectEntities* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SelectIntersection_destructor(Handle_IFSelect_SelectIntersection* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SelectIntersection*> Handle_IFSelect_SelectIntersection_clone(const Handle_IFSelect_SelectIntersection* self_) {
+    try { return {new Handle_IFSelect_SelectIntersection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelectIncorrectEntities_is_null(const HandleIFSelectSelectIncorrectEntities* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelectIntersection_destructor(HandleIFSelectSelectIntersection* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelectIntersection*> HandleIFSelectSelectIntersection_clone(const HandleIFSelectSelectIntersection* self_) {
-    try { return {new HandleIFSelectSelectIntersection(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SelectIntersection_is_null(const Handle_IFSelect_SelectIntersection* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SelectModelEntities_destructor(Handle_IFSelect_SelectModelEntities* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SelectModelEntities*> Handle_IFSelect_SelectModelEntities_clone(const Handle_IFSelect_SelectModelEntities* self_) {
+    try { return {new Handle_IFSelect_SelectModelEntities(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelectIntersection_is_null(const HandleIFSelectSelectIntersection* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelectModelEntities_destructor(HandleIFSelectSelectModelEntities* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelectModelEntities*> HandleIFSelectSelectModelEntities_clone(const HandleIFSelectSelectModelEntities* self_) {
-    try { return {new HandleIFSelectSelectModelEntities(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SelectModelEntities_is_null(const Handle_IFSelect_SelectModelEntities* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SelectModelRoots_destructor(Handle_IFSelect_SelectModelRoots* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SelectModelRoots*> Handle_IFSelect_SelectModelRoots_clone(const Handle_IFSelect_SelectModelRoots* self_) {
+    try { return {new Handle_IFSelect_SelectModelRoots(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelectModelEntities_is_null(const HandleIFSelectSelectModelEntities* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelectModelRoots_destructor(HandleIFSelectSelectModelRoots* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelectModelRoots*> HandleIFSelectSelectModelRoots_clone(const HandleIFSelectSelectModelRoots* self_) {
-    try { return {new HandleIFSelectSelectModelRoots(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SelectModelRoots_is_null(const Handle_IFSelect_SelectModelRoots* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SelectPointed_destructor(Handle_IFSelect_SelectPointed* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SelectPointed*> Handle_IFSelect_SelectPointed_clone(const Handle_IFSelect_SelectPointed* self_) {
+    try { return {new Handle_IFSelect_SelectPointed(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelectModelRoots_is_null(const HandleIFSelectSelectModelRoots* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelectPointed_destructor(HandleIFSelectSelectPointed* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelectPointed*> HandleIFSelectSelectPointed_clone(const HandleIFSelectSelectPointed* self_) {
-    try { return {new HandleIFSelectSelectPointed(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SelectPointed_is_null(const Handle_IFSelect_SelectPointed* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SelectRange_destructor(Handle_IFSelect_SelectRange* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SelectRange*> Handle_IFSelect_SelectRange_clone(const Handle_IFSelect_SelectRange* self_) {
+    try { return {new Handle_IFSelect_SelectRange(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelectPointed_is_null(const HandleIFSelectSelectPointed* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelectRange_destructor(HandleIFSelectSelectRange* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelectRange*> HandleIFSelectSelectRange_clone(const HandleIFSelectSelectRange* self_) {
-    try { return {new HandleIFSelectSelectRange(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SelectRange_is_null(const Handle_IFSelect_SelectRange* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SelectRootComps_destructor(Handle_IFSelect_SelectRootComps* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SelectRootComps*> Handle_IFSelect_SelectRootComps_clone(const Handle_IFSelect_SelectRootComps* self_) {
+    try { return {new Handle_IFSelect_SelectRootComps(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelectRange_is_null(const HandleIFSelectSelectRange* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelectRootComps_destructor(HandleIFSelectSelectRootComps* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelectRootComps*> HandleIFSelectSelectRootComps_clone(const HandleIFSelectSelectRootComps* self_) {
-    try { return {new HandleIFSelectSelectRootComps(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SelectRootComps_is_null(const Handle_IFSelect_SelectRootComps* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SelectRoots_destructor(Handle_IFSelect_SelectRoots* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SelectRoots*> Handle_IFSelect_SelectRoots_clone(const Handle_IFSelect_SelectRoots* self_) {
+    try { return {new Handle_IFSelect_SelectRoots(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelectRootComps_is_null(const HandleIFSelectSelectRootComps* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelectRoots_destructor(HandleIFSelectSelectRoots* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelectRoots*> HandleIFSelectSelectRoots_clone(const HandleIFSelectSelectRoots* self_) {
-    try { return {new HandleIFSelectSelectRoots(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SelectRoots_is_null(const Handle_IFSelect_SelectRoots* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SelectSent_destructor(Handle_IFSelect_SelectSent* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SelectSent*> Handle_IFSelect_SelectSent_clone(const Handle_IFSelect_SelectSent* self_) {
+    try { return {new Handle_IFSelect_SelectSent(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelectRoots_is_null(const HandleIFSelectSelectRoots* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelectSent_destructor(HandleIFSelectSelectSent* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelectSent*> HandleIFSelectSelectSent_clone(const HandleIFSelectSelectSent* self_) {
-    try { return {new HandleIFSelectSelectSent(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SelectSent_is_null(const Handle_IFSelect_SelectSent* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SelectShared_destructor(Handle_IFSelect_SelectShared* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SelectShared*> Handle_IFSelect_SelectShared_clone(const Handle_IFSelect_SelectShared* self_) {
+    try { return {new Handle_IFSelect_SelectShared(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelectSent_is_null(const HandleIFSelectSelectSent* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelectShared_destructor(HandleIFSelectSelectShared* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelectShared*> HandleIFSelectSelectShared_clone(const HandleIFSelectSelectShared* self_) {
-    try { return {new HandleIFSelectSelectShared(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SelectShared_is_null(const Handle_IFSelect_SelectShared* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SelectSharing_destructor(Handle_IFSelect_SelectSharing* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SelectSharing*> Handle_IFSelect_SelectSharing_clone(const Handle_IFSelect_SelectSharing* self_) {
+    try { return {new Handle_IFSelect_SelectSharing(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelectShared_is_null(const HandleIFSelectSelectShared* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelectSharing_destructor(HandleIFSelectSelectSharing* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelectSharing*> HandleIFSelectSelectSharing_clone(const HandleIFSelectSelectSharing* self_) {
-    try { return {new HandleIFSelectSelectSharing(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SelectSharing_is_null(const Handle_IFSelect_SelectSharing* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SelectSignature_destructor(Handle_IFSelect_SelectSignature* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SelectSignature*> Handle_IFSelect_SelectSignature_clone(const Handle_IFSelect_SelectSignature* self_) {
+    try { return {new Handle_IFSelect_SelectSignature(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelectSharing_is_null(const HandleIFSelectSelectSharing* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelectSignature_destructor(HandleIFSelectSelectSignature* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelectSignature*> HandleIFSelectSelectSignature_clone(const HandleIFSelectSelectSignature* self_) {
-    try { return {new HandleIFSelectSelectSignature(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SelectSignature_is_null(const Handle_IFSelect_SelectSignature* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SelectSignedShared_destructor(Handle_IFSelect_SelectSignedShared* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SelectSignedShared*> Handle_IFSelect_SelectSignedShared_clone(const Handle_IFSelect_SelectSignedShared* self_) {
+    try { return {new Handle_IFSelect_SelectSignedShared(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelectSignature_is_null(const HandleIFSelectSelectSignature* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelectSignedShared_destructor(HandleIFSelectSelectSignedShared* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelectSignedShared*> HandleIFSelectSelectSignedShared_clone(const HandleIFSelectSelectSignedShared* self_) {
-    try { return {new HandleIFSelectSelectSignedShared(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SelectSignedShared_is_null(const Handle_IFSelect_SelectSignedShared* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SelectSignedSharing_destructor(Handle_IFSelect_SelectSignedSharing* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SelectSignedSharing*> Handle_IFSelect_SelectSignedSharing_clone(const Handle_IFSelect_SelectSignedSharing* self_) {
+    try { return {new Handle_IFSelect_SelectSignedSharing(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelectSignedShared_is_null(const HandleIFSelectSelectSignedShared* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelectSignedSharing_destructor(HandleIFSelectSelectSignedSharing* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelectSignedSharing*> HandleIFSelectSelectSignedSharing_clone(const HandleIFSelectSelectSignedSharing* self_) {
-    try { return {new HandleIFSelectSelectSignedSharing(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SelectSignedSharing_is_null(const Handle_IFSelect_SelectSignedSharing* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SelectSuite_destructor(Handle_IFSelect_SelectSuite* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SelectSuite*> Handle_IFSelect_SelectSuite_clone(const Handle_IFSelect_SelectSuite* self_) {
+    try { return {new Handle_IFSelect_SelectSuite(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelectSignedSharing_is_null(const HandleIFSelectSelectSignedSharing* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelectSuite_destructor(HandleIFSelectSelectSuite* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelectSuite*> HandleIFSelectSelectSuite_clone(const HandleIFSelectSelectSuite* self_) {
-    try { return {new HandleIFSelectSelectSuite(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SelectSuite_is_null(const Handle_IFSelect_SelectSuite* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SelectType_destructor(Handle_IFSelect_SelectType* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SelectType*> Handle_IFSelect_SelectType_clone(const Handle_IFSelect_SelectType* self_) {
+    try { return {new Handle_IFSelect_SelectType(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelectSuite_is_null(const HandleIFSelectSelectSuite* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelectType_destructor(HandleIFSelectSelectType* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelectType*> HandleIFSelectSelectType_clone(const HandleIFSelectSelectType* self_) {
-    try { return {new HandleIFSelectSelectType(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SelectType_is_null(const Handle_IFSelect_SelectType* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SelectUnion_destructor(Handle_IFSelect_SelectUnion* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SelectUnion*> Handle_IFSelect_SelectUnion_clone(const Handle_IFSelect_SelectUnion* self_) {
+    try { return {new Handle_IFSelect_SelectUnion(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelectType_is_null(const HandleIFSelectSelectType* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelectUnion_destructor(HandleIFSelectSelectUnion* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelectUnion*> HandleIFSelectSelectUnion_clone(const HandleIFSelectSelectUnion* self_) {
-    try { return {new HandleIFSelectSelectUnion(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SelectUnion_is_null(const Handle_IFSelect_SelectUnion* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SelectUnknownEntities_destructor(Handle_IFSelect_SelectUnknownEntities* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SelectUnknownEntities*> Handle_IFSelect_SelectUnknownEntities_clone(const Handle_IFSelect_SelectUnknownEntities* self_) {
+    try { return {new Handle_IFSelect_SelectUnknownEntities(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelectUnion_is_null(const HandleIFSelectSelectUnion* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelectUnknownEntities_destructor(HandleIFSelectSelectUnknownEntities* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelectUnknownEntities*> HandleIFSelectSelectUnknownEntities_clone(const HandleIFSelectSelectUnknownEntities* self_) {
-    try { return {new HandleIFSelectSelectUnknownEntities(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SelectUnknownEntities_is_null(const Handle_IFSelect_SelectUnknownEntities* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_Selection_destructor(Handle_IFSelect_Selection* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_Selection_clone(const Handle_IFSelect_Selection* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelectUnknownEntities_is_null(const HandleIFSelectSelectUnknownEntities* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSelection_destructor(HandleIFSelectSelection* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelection_clone(const HandleIFSelectSelection* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_Selection_is_null(const Handle_IFSelect_Selection* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SessionDumper_destructor(Handle_IFSelect_SessionDumper* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SessionDumper*> Handle_IFSelect_SessionDumper_clone(const Handle_IFSelect_SessionDumper* self_) {
+    try { return {new Handle_IFSelect_SessionDumper(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSelection_is_null(const HandleIFSelectSelection* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSessionDumper_destructor(HandleIFSelectSessionDumper* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSessionDumper*> HandleIFSelectSessionDumper_clone(const HandleIFSelectSessionDumper* self_) {
-    try { return {new HandleIFSelectSessionDumper(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SessionDumper_is_null(const Handle_IFSelect_SessionDumper* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SessionPilot_destructor(Handle_IFSelect_SessionPilot* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SessionPilot*> Handle_IFSelect_SessionPilot_clone(const Handle_IFSelect_SessionPilot* self_) {
+    try { return {new Handle_IFSelect_SessionPilot(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSessionDumper_is_null(const HandleIFSelectSessionDumper* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSessionPilot_destructor(HandleIFSelectSessionPilot* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSessionPilot*> HandleIFSelectSessionPilot_clone(const HandleIFSelectSessionPilot* self_) {
-    try { return {new HandleIFSelectSessionPilot(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SessionPilot_is_null(const Handle_IFSelect_SessionPilot* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_ShareOut_destructor(Handle_IFSelect_ShareOut* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_ShareOut*> Handle_IFSelect_ShareOut_clone(const Handle_IFSelect_ShareOut* self_) {
+    try { return {new Handle_IFSelect_ShareOut(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSessionPilot_is_null(const HandleIFSelectSessionPilot* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectShareOut_destructor(HandleIFSelectShareOut* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectShareOut*> HandleIFSelectShareOut_clone(const HandleIFSelectShareOut* self_) {
-    try { return {new HandleIFSelectShareOut(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_ShareOut_is_null(const Handle_IFSelect_ShareOut* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SignAncestor_destructor(Handle_IFSelect_SignAncestor* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SignAncestor*> Handle_IFSelect_SignAncestor_clone(const Handle_IFSelect_SignAncestor* self_) {
+    try { return {new Handle_IFSelect_SignAncestor(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectShareOut_is_null(const HandleIFSelectShareOut* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSignAncestor_destructor(HandleIFSelectSignAncestor* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSignAncestor*> HandleIFSelectSignAncestor_clone(const HandleIFSelectSignAncestor* self_) {
-    try { return {new HandleIFSelectSignAncestor(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SignAncestor_is_null(const Handle_IFSelect_SignAncestor* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SignCategory_destructor(Handle_IFSelect_SignCategory* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SignCategory*> Handle_IFSelect_SignCategory_clone(const Handle_IFSelect_SignCategory* self_) {
+    try { return {new Handle_IFSelect_SignCategory(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSignAncestor_is_null(const HandleIFSelectSignAncestor* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSignCategory_destructor(HandleIFSelectSignCategory* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSignCategory*> HandleIFSelectSignCategory_clone(const HandleIFSelectSignCategory* self_) {
-    try { return {new HandleIFSelectSignCategory(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SignCategory_is_null(const Handle_IFSelect_SignCategory* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SignCounter_destructor(Handle_IFSelect_SignCounter* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SignCounter*> Handle_IFSelect_SignCounter_clone(const Handle_IFSelect_SignCounter* self_) {
+    try { return {new Handle_IFSelect_SignCounter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSignCategory_is_null(const HandleIFSelectSignCategory* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSignCounter_destructor(HandleIFSelectSignCounter* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSignCounter*> HandleIFSelectSignCounter_clone(const HandleIFSelectSignCounter* self_) {
-    try { return {new HandleIFSelectSignCounter(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SignCounter_is_null(const Handle_IFSelect_SignCounter* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SignMultiple_destructor(Handle_IFSelect_SignMultiple* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SignMultiple*> Handle_IFSelect_SignMultiple_clone(const Handle_IFSelect_SignMultiple* self_) {
+    try { return {new Handle_IFSelect_SignMultiple(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSignCounter_is_null(const HandleIFSelectSignCounter* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSignMultiple_destructor(HandleIFSelectSignMultiple* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSignMultiple*> HandleIFSelectSignMultiple_clone(const HandleIFSelectSignMultiple* self_) {
-    try { return {new HandleIFSelectSignMultiple(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SignMultiple_is_null(const Handle_IFSelect_SignMultiple* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SignType_destructor(Handle_IFSelect_SignType* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SignType*> Handle_IFSelect_SignType_clone(const Handle_IFSelect_SignType* self_) {
+    try { return {new Handle_IFSelect_SignType(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSignMultiple_is_null(const HandleIFSelectSignMultiple* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSignType_destructor(HandleIFSelectSignType* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSignType*> HandleIFSelectSignType_clone(const HandleIFSelectSignType* self_) {
-    try { return {new HandleIFSelectSignType(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SignType_is_null(const Handle_IFSelect_SignType* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SignValidity_destructor(Handle_IFSelect_SignValidity* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SignValidity*> Handle_IFSelect_SignValidity_clone(const Handle_IFSelect_SignValidity* self_) {
+    try { return {new Handle_IFSelect_SignValidity(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSignType_is_null(const HandleIFSelectSignType* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSignValidity_destructor(HandleIFSelectSignValidity* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSignValidity*> HandleIFSelectSignValidity_clone(const HandleIFSelectSignValidity* self_) {
-    try { return {new HandleIFSelectSignValidity(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SignValidity_is_null(const Handle_IFSelect_SignValidity* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_Signature_destructor(Handle_IFSelect_Signature* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_Signature*> Handle_IFSelect_Signature_clone(const Handle_IFSelect_Signature* self_) {
+    try { return {new Handle_IFSelect_Signature(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSignValidity_is_null(const HandleIFSelectSignValidity* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSignature_destructor(HandleIFSelectSignature* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSignature*> HandleIFSelectSignature_clone(const HandleIFSelectSignature* self_) {
-    try { return {new HandleIFSelectSignature(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_Signature_is_null(const Handle_IFSelect_Signature* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_SignatureList_destructor(Handle_IFSelect_SignatureList* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_SignatureList*> Handle_IFSelect_SignatureList_clone(const Handle_IFSelect_SignatureList* self_) {
+    try { return {new Handle_IFSelect_SignatureList(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSignature_is_null(const HandleIFSelectSignature* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectSignatureList_destructor(HandleIFSelectSignatureList* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectSignatureList*> HandleIFSelectSignatureList_clone(const HandleIFSelectSignatureList* self_) {
-    try { return {new HandleIFSelectSignatureList(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_SignatureList_is_null(const Handle_IFSelect_SignatureList* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_TransformStandard_destructor(Handle_IFSelect_TransformStandard* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_TransformStandard*> Handle_IFSelect_TransformStandard_clone(const Handle_IFSelect_TransformStandard* self_) {
+    try { return {new Handle_IFSelect_TransformStandard(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectSignatureList_is_null(const HandleIFSelectSignatureList* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectTransformStandard_destructor(HandleIFSelectTransformStandard* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectTransformStandard*> HandleIFSelectTransformStandard_clone(const HandleIFSelectTransformStandard* self_) {
-    try { return {new HandleIFSelectTransformStandard(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_TransformStandard_is_null(const Handle_IFSelect_TransformStandard* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_Transformer_destructor(Handle_IFSelect_Transformer* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_Transformer*> Handle_IFSelect_Transformer_clone(const Handle_IFSelect_Transformer* self_) {
+    try { return {new Handle_IFSelect_Transformer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectTransformStandard_is_null(const HandleIFSelectTransformStandard* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectTransformer_destructor(HandleIFSelectTransformer* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectTransformer*> HandleIFSelectTransformer_clone(const HandleIFSelectTransformer* self_) {
-    try { return {new HandleIFSelectTransformer(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_Transformer_is_null(const Handle_IFSelect_Transformer* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_WorkLibrary_destructor(Handle_IFSelect_WorkLibrary* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_WorkLibrary*> Handle_IFSelect_WorkLibrary_clone(const Handle_IFSelect_WorkLibrary* self_) {
+    try { return {new Handle_IFSelect_WorkLibrary(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectTransformer_is_null(const HandleIFSelectTransformer* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectWorkLibrary_destructor(HandleIFSelectWorkLibrary* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectWorkLibrary*> HandleIFSelectWorkLibrary_clone(const HandleIFSelectWorkLibrary* self_) {
-    try { return {new HandleIFSelectWorkLibrary(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_WorkLibrary_is_null(const Handle_IFSelect_WorkLibrary* self_) { return self_->IsNull(); }
+extern "C" void Handle_IFSelect_WorkSession_destructor(Handle_IFSelect_WorkSession* self_) { delete self_; }
+extern "C" OcctResult<Handle_IFSelect_WorkSession*> Handle_IFSelect_WorkSession_clone(const Handle_IFSelect_WorkSession* self_) {
+    try { return {new Handle_IFSelect_WorkSession(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectWorkLibrary_is_null(const HandleIFSelectWorkLibrary* self_) { return self_->IsNull(); }
-extern "C" void HandleIFSelectWorkSession_destructor(HandleIFSelectWorkSession* self_) { delete self_; }
-extern "C" OcctResult<HandleIFSelectWorkSession*> HandleIFSelectWorkSession_clone(const HandleIFSelectWorkSession* self_) {
-    try { return {new HandleIFSelectWorkSession(*self_), nullptr}; }
+extern "C" bool Handle_IFSelect_WorkSession_is_null(const Handle_IFSelect_WorkSession* self_) { return self_->IsNull(); }
+extern "C" void Handle_Interface_Check_destructor(Handle_Interface_Check* self_) { delete self_; }
+extern "C" OcctResult<Handle_Interface_Check*> Handle_Interface_Check_clone(const Handle_Interface_Check* self_) {
+    try { return {new Handle_Interface_Check(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIFSelectWorkSession_is_null(const HandleIFSelectWorkSession* self_) { return self_->IsNull(); }
-extern "C" void HandleInterfaceCheck_destructor(HandleInterfaceCheck* self_) { delete self_; }
-extern "C" OcctResult<HandleInterfaceCheck*> HandleInterfaceCheck_clone(const HandleInterfaceCheck* self_) {
-    try { return {new HandleInterfaceCheck(*self_), nullptr}; }
+extern "C" bool Handle_Interface_Check_is_null(const Handle_Interface_Check* self_) { return self_->IsNull(); }
+extern "C" void Handle_Interface_CopyControl_destructor(Handle_Interface_CopyControl* self_) { delete self_; }
+extern "C" OcctResult<Handle_Interface_CopyControl*> Handle_Interface_CopyControl_clone(const Handle_Interface_CopyControl* self_) {
+    try { return {new Handle_Interface_CopyControl(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleInterfaceCheck_is_null(const HandleInterfaceCheck* self_) { return self_->IsNull(); }
-extern "C" void HandleInterfaceCheckFailure_destructor(HandleInterfaceCheckFailure* self_) { delete self_; }
-extern "C" OcctResult<HandleInterfaceCheckFailure*> HandleInterfaceCheckFailure_clone(const HandleInterfaceCheckFailure* self_) {
-    try { return {new HandleInterfaceCheckFailure(*self_), nullptr}; }
+extern "C" bool Handle_Interface_CopyControl_is_null(const Handle_Interface_CopyControl* self_) { return self_->IsNull(); }
+extern "C" void Handle_Interface_CopyMap_destructor(Handle_Interface_CopyMap* self_) { delete self_; }
+extern "C" OcctResult<Handle_Interface_CopyMap*> Handle_Interface_CopyMap_clone(const Handle_Interface_CopyMap* self_) {
+    try { return {new Handle_Interface_CopyMap(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleInterfaceCheckFailure_is_null(const HandleInterfaceCheckFailure* self_) { return self_->IsNull(); }
-extern "C" void HandleInterfaceCopyControl_destructor(HandleInterfaceCopyControl* self_) { delete self_; }
-extern "C" OcctResult<HandleInterfaceCopyControl*> HandleInterfaceCopyControl_clone(const HandleInterfaceCopyControl* self_) {
-    try { return {new HandleInterfaceCopyControl(*self_), nullptr}; }
+extern "C" bool Handle_Interface_CopyMap_is_null(const Handle_Interface_CopyMap* self_) { return self_->IsNull(); }
+extern "C" void Handle_Interface_EntityCluster_destructor(Handle_Interface_EntityCluster* self_) { delete self_; }
+extern "C" OcctResult<Handle_Interface_EntityCluster*> Handle_Interface_EntityCluster_clone(const Handle_Interface_EntityCluster* self_) {
+    try { return {new Handle_Interface_EntityCluster(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleInterfaceCopyControl_is_null(const HandleInterfaceCopyControl* self_) { return self_->IsNull(); }
-extern "C" void HandleInterfaceCopyMap_destructor(HandleInterfaceCopyMap* self_) { delete self_; }
-extern "C" OcctResult<HandleInterfaceCopyMap*> HandleInterfaceCopyMap_clone(const HandleInterfaceCopyMap* self_) {
-    try { return {new HandleInterfaceCopyMap(*self_), nullptr}; }
+extern "C" bool Handle_Interface_EntityCluster_is_null(const Handle_Interface_EntityCluster* self_) { return self_->IsNull(); }
+extern "C" void Handle_Interface_FileReaderData_destructor(Handle_Interface_FileReaderData* self_) { delete self_; }
+extern "C" OcctResult<Handle_Interface_FileReaderData*> Handle_Interface_FileReaderData_clone(const Handle_Interface_FileReaderData* self_) {
+    try { return {new Handle_Interface_FileReaderData(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleInterfaceCopyMap_is_null(const HandleInterfaceCopyMap* self_) { return self_->IsNull(); }
-extern "C" void HandleInterfaceEntityCluster_destructor(HandleInterfaceEntityCluster* self_) { delete self_; }
-extern "C" OcctResult<HandleInterfaceEntityCluster*> HandleInterfaceEntityCluster_clone(const HandleInterfaceEntityCluster* self_) {
-    try { return {new HandleInterfaceEntityCluster(*self_), nullptr}; }
+extern "C" bool Handle_Interface_FileReaderData_is_null(const Handle_Interface_FileReaderData* self_) { return self_->IsNull(); }
+extern "C" void Handle_Interface_GTool_destructor(Handle_Interface_GTool* self_) { delete self_; }
+extern "C" OcctResult<Handle_Interface_GTool*> Handle_Interface_GTool_clone(const Handle_Interface_GTool* self_) {
+    try { return {new Handle_Interface_GTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleInterfaceEntityCluster_is_null(const HandleInterfaceEntityCluster* self_) { return self_->IsNull(); }
-extern "C" void HandleInterfaceFileReaderData_destructor(HandleInterfaceFileReaderData* self_) { delete self_; }
-extern "C" OcctResult<HandleInterfaceFileReaderData*> HandleInterfaceFileReaderData_clone(const HandleInterfaceFileReaderData* self_) {
-    try { return {new HandleInterfaceFileReaderData(*self_), nullptr}; }
+extern "C" bool Handle_Interface_GTool_is_null(const Handle_Interface_GTool* self_) { return self_->IsNull(); }
+extern "C" void Handle_Interface_GeneralModule_destructor(Handle_Interface_GeneralModule* self_) { delete self_; }
+extern "C" OcctResult<Handle_Interface_GeneralModule*> Handle_Interface_GeneralModule_clone(const Handle_Interface_GeneralModule* self_) {
+    try { return {new Handle_Interface_GeneralModule(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleInterfaceFileReaderData_is_null(const HandleInterfaceFileReaderData* self_) { return self_->IsNull(); }
-extern "C" void HandleInterfaceGTool_destructor(HandleInterfaceGTool* self_) { delete self_; }
-extern "C" OcctResult<HandleInterfaceGTool*> HandleInterfaceGTool_clone(const HandleInterfaceGTool* self_) {
-    try { return {new HandleInterfaceGTool(*self_), nullptr}; }
+extern "C" bool Handle_Interface_GeneralModule_is_null(const Handle_Interface_GeneralModule* self_) { return self_->IsNull(); }
+extern "C" void Handle_Interface_GlobalNodeOfGeneralLib_destructor(Handle_Interface_GlobalNodeOfGeneralLib* self_) { delete self_; }
+extern "C" OcctResult<Handle_Interface_GlobalNodeOfGeneralLib*> Handle_Interface_GlobalNodeOfGeneralLib_clone(const Handle_Interface_GlobalNodeOfGeneralLib* self_) {
+    try { return {new Handle_Interface_GlobalNodeOfGeneralLib(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleInterfaceGTool_is_null(const HandleInterfaceGTool* self_) { return self_->IsNull(); }
-extern "C" void HandleInterfaceGeneralModule_destructor(HandleInterfaceGeneralModule* self_) { delete self_; }
-extern "C" OcctResult<HandleInterfaceGeneralModule*> HandleInterfaceGeneralModule_clone(const HandleInterfaceGeneralModule* self_) {
-    try { return {new HandleInterfaceGeneralModule(*self_), nullptr}; }
+extern "C" bool Handle_Interface_GlobalNodeOfGeneralLib_is_null(const Handle_Interface_GlobalNodeOfGeneralLib* self_) { return self_->IsNull(); }
+extern "C" void Handle_Interface_GlobalNodeOfReaderLib_destructor(Handle_Interface_GlobalNodeOfReaderLib* self_) { delete self_; }
+extern "C" OcctResult<Handle_Interface_GlobalNodeOfReaderLib*> Handle_Interface_GlobalNodeOfReaderLib_clone(const Handle_Interface_GlobalNodeOfReaderLib* self_) {
+    try { return {new Handle_Interface_GlobalNodeOfReaderLib(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleInterfaceGeneralModule_is_null(const HandleInterfaceGeneralModule* self_) { return self_->IsNull(); }
-extern "C" void HandleInterfaceGlobalNodeOfGeneralLib_destructor(HandleInterfaceGlobalNodeOfGeneralLib* self_) { delete self_; }
-extern "C" OcctResult<HandleInterfaceGlobalNodeOfGeneralLib*> HandleInterfaceGlobalNodeOfGeneralLib_clone(const HandleInterfaceGlobalNodeOfGeneralLib* self_) {
-    try { return {new HandleInterfaceGlobalNodeOfGeneralLib(*self_), nullptr}; }
+extern "C" bool Handle_Interface_GlobalNodeOfReaderLib_is_null(const Handle_Interface_GlobalNodeOfReaderLib* self_) { return self_->IsNull(); }
+extern "C" void Handle_Interface_HGraph_destructor(Handle_Interface_HGraph* self_) { delete self_; }
+extern "C" OcctResult<Handle_Interface_HGraph*> Handle_Interface_HGraph_clone(const Handle_Interface_HGraph* self_) {
+    try { return {new Handle_Interface_HGraph(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleInterfaceGlobalNodeOfGeneralLib_is_null(const HandleInterfaceGlobalNodeOfGeneralLib* self_) { return self_->IsNull(); }
-extern "C" void HandleInterfaceGlobalNodeOfReaderLib_destructor(HandleInterfaceGlobalNodeOfReaderLib* self_) { delete self_; }
-extern "C" OcctResult<HandleInterfaceGlobalNodeOfReaderLib*> HandleInterfaceGlobalNodeOfReaderLib_clone(const HandleInterfaceGlobalNodeOfReaderLib* self_) {
-    try { return {new HandleInterfaceGlobalNodeOfReaderLib(*self_), nullptr}; }
+extern "C" bool Handle_Interface_HGraph_is_null(const Handle_Interface_HGraph* self_) { return self_->IsNull(); }
+extern "C" void Handle_Interface_IntVal_destructor(Handle_Interface_IntVal* self_) { delete self_; }
+extern "C" OcctResult<Handle_Interface_IntVal*> Handle_Interface_IntVal_clone(const Handle_Interface_IntVal* self_) {
+    try { return {new Handle_Interface_IntVal(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleInterfaceGlobalNodeOfReaderLib_is_null(const HandleInterfaceGlobalNodeOfReaderLib* self_) { return self_->IsNull(); }
-extern "C" void HandleInterfaceHArray1OfHAsciiString_destructor(HandleInterfaceHArray1OfHAsciiString* self_) { delete self_; }
-extern "C" OcctResult<HandleInterfaceHArray1OfHAsciiString*> HandleInterfaceHArray1OfHAsciiString_clone(const HandleInterfaceHArray1OfHAsciiString* self_) {
-    try { return {new HandleInterfaceHArray1OfHAsciiString(*self_), nullptr}; }
+extern "C" bool Handle_Interface_IntVal_is_null(const Handle_Interface_IntVal* self_) { return self_->IsNull(); }
+extern "C" void Handle_Interface_InterfaceModel_destructor(Handle_Interface_InterfaceModel* self_) { delete self_; }
+extern "C" OcctResult<Handle_Interface_InterfaceModel*> Handle_Interface_InterfaceModel_clone(const Handle_Interface_InterfaceModel* self_) {
+    try { return {new Handle_Interface_InterfaceModel(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleInterfaceHArray1OfHAsciiString_is_null(const HandleInterfaceHArray1OfHAsciiString* self_) { return self_->IsNull(); }
-extern "C" void HandleInterfaceHGraph_destructor(HandleInterfaceHGraph* self_) { delete self_; }
-extern "C" OcctResult<HandleInterfaceHGraph*> HandleInterfaceHGraph_clone(const HandleInterfaceHGraph* self_) {
-    try { return {new HandleInterfaceHGraph(*self_), nullptr}; }
+extern "C" bool Handle_Interface_InterfaceModel_is_null(const Handle_Interface_InterfaceModel* self_) { return self_->IsNull(); }
+extern "C" void Handle_Interface_NodeOfGeneralLib_destructor(Handle_Interface_NodeOfGeneralLib* self_) { delete self_; }
+extern "C" OcctResult<Handle_Interface_NodeOfGeneralLib*> Handle_Interface_NodeOfGeneralLib_clone(const Handle_Interface_NodeOfGeneralLib* self_) {
+    try { return {new Handle_Interface_NodeOfGeneralLib(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleInterfaceHGraph_is_null(const HandleInterfaceHGraph* self_) { return self_->IsNull(); }
-extern "C" void HandleInterfaceHSequenceOfCheck_destructor(HandleInterfaceHSequenceOfCheck* self_) { delete self_; }
-extern "C" OcctResult<HandleInterfaceHSequenceOfCheck*> HandleInterfaceHSequenceOfCheck_clone(const HandleInterfaceHSequenceOfCheck* self_) {
-    try { return {new HandleInterfaceHSequenceOfCheck(*self_), nullptr}; }
+extern "C" bool Handle_Interface_NodeOfGeneralLib_is_null(const Handle_Interface_NodeOfGeneralLib* self_) { return self_->IsNull(); }
+extern "C" void Handle_Interface_NodeOfReaderLib_destructor(Handle_Interface_NodeOfReaderLib* self_) { delete self_; }
+extern "C" OcctResult<Handle_Interface_NodeOfReaderLib*> Handle_Interface_NodeOfReaderLib_clone(const Handle_Interface_NodeOfReaderLib* self_) {
+    try { return {new Handle_Interface_NodeOfReaderLib(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleInterfaceHSequenceOfCheck_is_null(const HandleInterfaceHSequenceOfCheck* self_) { return self_->IsNull(); }
-extern "C" void HandleInterfaceIntVal_destructor(HandleInterfaceIntVal* self_) { delete self_; }
-extern "C" OcctResult<HandleInterfaceIntVal*> HandleInterfaceIntVal_clone(const HandleInterfaceIntVal* self_) {
-    try { return {new HandleInterfaceIntVal(*self_), nullptr}; }
+extern "C" bool Handle_Interface_NodeOfReaderLib_is_null(const Handle_Interface_NodeOfReaderLib* self_) { return self_->IsNull(); }
+extern "C" void Handle_Interface_ParamList_destructor(Handle_Interface_ParamList* self_) { delete self_; }
+extern "C" OcctResult<Handle_Interface_ParamList*> Handle_Interface_ParamList_clone(const Handle_Interface_ParamList* self_) {
+    try { return {new Handle_Interface_ParamList(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleInterfaceIntVal_is_null(const HandleInterfaceIntVal* self_) { return self_->IsNull(); }
-extern "C" void HandleInterfaceInterfaceError_destructor(HandleInterfaceInterfaceError* self_) { delete self_; }
-extern "C" OcctResult<HandleInterfaceInterfaceError*> HandleInterfaceInterfaceError_clone(const HandleInterfaceInterfaceError* self_) {
-    try { return {new HandleInterfaceInterfaceError(*self_), nullptr}; }
+extern "C" bool Handle_Interface_ParamList_is_null(const Handle_Interface_ParamList* self_) { return self_->IsNull(); }
+extern "C" void Handle_Interface_ParamSet_destructor(Handle_Interface_ParamSet* self_) { delete self_; }
+extern "C" OcctResult<Handle_Interface_ParamSet*> Handle_Interface_ParamSet_clone(const Handle_Interface_ParamSet* self_) {
+    try { return {new Handle_Interface_ParamSet(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleInterfaceInterfaceError_is_null(const HandleInterfaceInterfaceError* self_) { return self_->IsNull(); }
-extern "C" void HandleInterfaceInterfaceMismatch_destructor(HandleInterfaceInterfaceMismatch* self_) { delete self_; }
-extern "C" OcctResult<HandleInterfaceInterfaceMismatch*> HandleInterfaceInterfaceMismatch_clone(const HandleInterfaceInterfaceMismatch* self_) {
-    try { return {new HandleInterfaceInterfaceMismatch(*self_), nullptr}; }
+extern "C" bool Handle_Interface_ParamSet_is_null(const Handle_Interface_ParamSet* self_) { return self_->IsNull(); }
+extern "C" void Handle_Interface_Protocol_destructor(Handle_Interface_Protocol* self_) { delete self_; }
+extern "C" OcctResult<Handle_Interface_Protocol*> Handle_Interface_Protocol_clone(const Handle_Interface_Protocol* self_) {
+    try { return {new Handle_Interface_Protocol(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleInterfaceInterfaceMismatch_is_null(const HandleInterfaceInterfaceMismatch* self_) { return self_->IsNull(); }
-extern "C" void HandleInterfaceInterfaceModel_destructor(HandleInterfaceInterfaceModel* self_) { delete self_; }
-extern "C" OcctResult<HandleInterfaceInterfaceModel*> HandleInterfaceInterfaceModel_clone(const HandleInterfaceInterfaceModel* self_) {
-    try { return {new HandleInterfaceInterfaceModel(*self_), nullptr}; }
+extern "C" bool Handle_Interface_Protocol_is_null(const Handle_Interface_Protocol* self_) { return self_->IsNull(); }
+extern "C" void Handle_Interface_ReaderModule_destructor(Handle_Interface_ReaderModule* self_) { delete self_; }
+extern "C" OcctResult<Handle_Interface_ReaderModule*> Handle_Interface_ReaderModule_clone(const Handle_Interface_ReaderModule* self_) {
+    try { return {new Handle_Interface_ReaderModule(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleInterfaceInterfaceModel_is_null(const HandleInterfaceInterfaceModel* self_) { return self_->IsNull(); }
-extern "C" void HandleInterfaceNodeOfGeneralLib_destructor(HandleInterfaceNodeOfGeneralLib* self_) { delete self_; }
-extern "C" OcctResult<HandleInterfaceNodeOfGeneralLib*> HandleInterfaceNodeOfGeneralLib_clone(const HandleInterfaceNodeOfGeneralLib* self_) {
-    try { return {new HandleInterfaceNodeOfGeneralLib(*self_), nullptr}; }
+extern "C" bool Handle_Interface_ReaderModule_is_null(const Handle_Interface_ReaderModule* self_) { return self_->IsNull(); }
+extern "C" void Handle_Interface_ReportEntity_destructor(Handle_Interface_ReportEntity* self_) { delete self_; }
+extern "C" OcctResult<Handle_Interface_ReportEntity*> Handle_Interface_ReportEntity_clone(const Handle_Interface_ReportEntity* self_) {
+    try { return {new Handle_Interface_ReportEntity(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleInterfaceNodeOfGeneralLib_is_null(const HandleInterfaceNodeOfGeneralLib* self_) { return self_->IsNull(); }
-extern "C" void HandleInterfaceNodeOfReaderLib_destructor(HandleInterfaceNodeOfReaderLib* self_) { delete self_; }
-extern "C" OcctResult<HandleInterfaceNodeOfReaderLib*> HandleInterfaceNodeOfReaderLib_clone(const HandleInterfaceNodeOfReaderLib* self_) {
-    try { return {new HandleInterfaceNodeOfReaderLib(*self_), nullptr}; }
+extern "C" bool Handle_Interface_ReportEntity_is_null(const Handle_Interface_ReportEntity* self_) { return self_->IsNull(); }
+extern "C" void Handle_Interface_SignLabel_destructor(Handle_Interface_SignLabel* self_) { delete self_; }
+extern "C" OcctResult<Handle_Interface_SignLabel*> Handle_Interface_SignLabel_clone(const Handle_Interface_SignLabel* self_) {
+    try { return {new Handle_Interface_SignLabel(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleInterfaceNodeOfReaderLib_is_null(const HandleInterfaceNodeOfReaderLib* self_) { return self_->IsNull(); }
-extern "C" void HandleInterfaceParamList_destructor(HandleInterfaceParamList* self_) { delete self_; }
-extern "C" OcctResult<HandleInterfaceParamList*> HandleInterfaceParamList_clone(const HandleInterfaceParamList* self_) {
-    try { return {new HandleInterfaceParamList(*self_), nullptr}; }
+extern "C" bool Handle_Interface_SignLabel_is_null(const Handle_Interface_SignLabel* self_) { return self_->IsNull(); }
+extern "C" void Handle_Interface_SignType_destructor(Handle_Interface_SignType* self_) { delete self_; }
+extern "C" OcctResult<Handle_Interface_SignType*> Handle_Interface_SignType_clone(const Handle_Interface_SignType* self_) {
+    try { return {new Handle_Interface_SignType(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleInterfaceParamList_is_null(const HandleInterfaceParamList* self_) { return self_->IsNull(); }
-extern "C" void HandleInterfaceParamSet_destructor(HandleInterfaceParamSet* self_) { delete self_; }
-extern "C" OcctResult<HandleInterfaceParamSet*> HandleInterfaceParamSet_clone(const HandleInterfaceParamSet* self_) {
-    try { return {new HandleInterfaceParamSet(*self_), nullptr}; }
+extern "C" bool Handle_Interface_SignType_is_null(const Handle_Interface_SignType* self_) { return self_->IsNull(); }
+extern "C" void Handle_Interface_Static_destructor(Handle_Interface_Static* self_) { delete self_; }
+extern "C" OcctResult<Handle_Interface_Static*> Handle_Interface_Static_clone(const Handle_Interface_Static* self_) {
+    try { return {new Handle_Interface_Static(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleInterfaceParamSet_is_null(const HandleInterfaceParamSet* self_) { return self_->IsNull(); }
-extern "C" void HandleInterfaceProtocol_destructor(HandleInterfaceProtocol* self_) { delete self_; }
-extern "C" OcctResult<HandleInterfaceProtocol*> HandleInterfaceProtocol_clone(const HandleInterfaceProtocol* self_) {
-    try { return {new HandleInterfaceProtocol(*self_), nullptr}; }
+extern "C" bool Handle_Interface_Static_is_null(const Handle_Interface_Static* self_) { return self_->IsNull(); }
+extern "C" void Handle_Interface_TypedValue_destructor(Handle_Interface_TypedValue* self_) { delete self_; }
+extern "C" OcctResult<Handle_Interface_TypedValue*> Handle_Interface_TypedValue_clone(const Handle_Interface_TypedValue* self_) {
+    try { return {new Handle_Interface_TypedValue(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleInterfaceProtocol_is_null(const HandleInterfaceProtocol* self_) { return self_->IsNull(); }
-extern "C" void HandleInterfaceReaderModule_destructor(HandleInterfaceReaderModule* self_) { delete self_; }
-extern "C" OcctResult<HandleInterfaceReaderModule*> HandleInterfaceReaderModule_clone(const HandleInterfaceReaderModule* self_) {
-    try { return {new HandleInterfaceReaderModule(*self_), nullptr}; }
+extern "C" bool Handle_Interface_TypedValue_is_null(const Handle_Interface_TypedValue* self_) { return self_->IsNull(); }
+extern "C" void Handle_Interface_UndefinedContent_destructor(Handle_Interface_UndefinedContent* self_) { delete self_; }
+extern "C" OcctResult<Handle_Interface_UndefinedContent*> Handle_Interface_UndefinedContent_clone(const Handle_Interface_UndefinedContent* self_) {
+    try { return {new Handle_Interface_UndefinedContent(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleInterfaceReaderModule_is_null(const HandleInterfaceReaderModule* self_) { return self_->IsNull(); }
-extern "C" void HandleInterfaceReportEntity_destructor(HandleInterfaceReportEntity* self_) { delete self_; }
-extern "C" OcctResult<HandleInterfaceReportEntity*> HandleInterfaceReportEntity_clone(const HandleInterfaceReportEntity* self_) {
-    try { return {new HandleInterfaceReportEntity(*self_), nullptr}; }
+extern "C" bool Handle_Interface_UndefinedContent_is_null(const Handle_Interface_UndefinedContent* self_) { return self_->IsNull(); }
+extern "C" void Handle_MoniTool_CaseData_destructor(Handle_MoniTool_CaseData* self_) { delete self_; }
+extern "C" OcctResult<Handle_MoniTool_CaseData*> Handle_MoniTool_CaseData_clone(const Handle_MoniTool_CaseData* self_) {
+    try { return {new Handle_MoniTool_CaseData(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleInterfaceReportEntity_is_null(const HandleInterfaceReportEntity* self_) { return self_->IsNull(); }
-extern "C" void HandleInterfaceSignLabel_destructor(HandleInterfaceSignLabel* self_) { delete self_; }
-extern "C" OcctResult<HandleInterfaceSignLabel*> HandleInterfaceSignLabel_clone(const HandleInterfaceSignLabel* self_) {
-    try { return {new HandleInterfaceSignLabel(*self_), nullptr}; }
+extern "C" bool Handle_MoniTool_CaseData_is_null(const Handle_MoniTool_CaseData* self_) { return self_->IsNull(); }
+extern "C" void Handle_MoniTool_Element_destructor(Handle_MoniTool_Element* self_) { delete self_; }
+extern "C" OcctResult<Handle_MoniTool_Element*> Handle_MoniTool_Element_clone(const Handle_MoniTool_Element* self_) {
+    try { return {new Handle_MoniTool_Element(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleInterfaceSignLabel_is_null(const HandleInterfaceSignLabel* self_) { return self_->IsNull(); }
-extern "C" void HandleInterfaceSignType_destructor(HandleInterfaceSignType* self_) { delete self_; }
-extern "C" OcctResult<HandleInterfaceSignType*> HandleInterfaceSignType_clone(const HandleInterfaceSignType* self_) {
-    try { return {new HandleInterfaceSignType(*self_), nullptr}; }
+extern "C" bool Handle_MoniTool_Element_is_null(const Handle_MoniTool_Element* self_) { return self_->IsNull(); }
+extern "C" void Handle_MoniTool_IntVal_destructor(Handle_MoniTool_IntVal* self_) { delete self_; }
+extern "C" OcctResult<Handle_MoniTool_IntVal*> Handle_MoniTool_IntVal_clone(const Handle_MoniTool_IntVal* self_) {
+    try { return {new Handle_MoniTool_IntVal(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleInterfaceSignType_is_null(const HandleInterfaceSignType* self_) { return self_->IsNull(); }
-extern "C" void HandleInterfaceStatic_destructor(HandleInterfaceStatic* self_) { delete self_; }
-extern "C" OcctResult<HandleInterfaceStatic*> HandleInterfaceStatic_clone(const HandleInterfaceStatic* self_) {
-    try { return {new HandleInterfaceStatic(*self_), nullptr}; }
+extern "C" bool Handle_MoniTool_IntVal_is_null(const Handle_MoniTool_IntVal* self_) { return self_->IsNull(); }
+extern "C" void Handle_MoniTool_RealVal_destructor(Handle_MoniTool_RealVal* self_) { delete self_; }
+extern "C" OcctResult<Handle_MoniTool_RealVal*> Handle_MoniTool_RealVal_clone(const Handle_MoniTool_RealVal* self_) {
+    try { return {new Handle_MoniTool_RealVal(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleInterfaceStatic_is_null(const HandleInterfaceStatic* self_) { return self_->IsNull(); }
-extern "C" void HandleInterfaceTypedValue_destructor(HandleInterfaceTypedValue* self_) { delete self_; }
-extern "C" OcctResult<HandleInterfaceTypedValue*> HandleInterfaceTypedValue_clone(const HandleInterfaceTypedValue* self_) {
-    try { return {new HandleInterfaceTypedValue(*self_), nullptr}; }
+extern "C" bool Handle_MoniTool_RealVal_is_null(const Handle_MoniTool_RealVal* self_) { return self_->IsNull(); }
+extern "C" void Handle_MoniTool_SignShape_destructor(Handle_MoniTool_SignShape* self_) { delete self_; }
+extern "C" OcctResult<Handle_MoniTool_SignShape*> Handle_MoniTool_SignShape_clone(const Handle_MoniTool_SignShape* self_) {
+    try { return {new Handle_MoniTool_SignShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleInterfaceTypedValue_is_null(const HandleInterfaceTypedValue* self_) { return self_->IsNull(); }
-extern "C" void HandleInterfaceUndefinedContent_destructor(HandleInterfaceUndefinedContent* self_) { delete self_; }
-extern "C" OcctResult<HandleInterfaceUndefinedContent*> HandleInterfaceUndefinedContent_clone(const HandleInterfaceUndefinedContent* self_) {
-    try { return {new HandleInterfaceUndefinedContent(*self_), nullptr}; }
+extern "C" bool Handle_MoniTool_SignShape_is_null(const Handle_MoniTool_SignShape* self_) { return self_->IsNull(); }
+extern "C" void Handle_MoniTool_SignText_destructor(Handle_MoniTool_SignText* self_) { delete self_; }
+extern "C" OcctResult<Handle_MoniTool_SignText*> Handle_MoniTool_SignText_clone(const Handle_MoniTool_SignText* self_) {
+    try { return {new Handle_MoniTool_SignText(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleInterfaceUndefinedContent_is_null(const HandleInterfaceUndefinedContent* self_) { return self_->IsNull(); }
-extern "C" void HandleMoniToolCaseData_destructor(HandleMoniToolCaseData* self_) { delete self_; }
-extern "C" OcctResult<HandleMoniToolCaseData*> HandleMoniToolCaseData_clone(const HandleMoniToolCaseData* self_) {
-    try { return {new HandleMoniToolCaseData(*self_), nullptr}; }
+extern "C" bool Handle_MoniTool_SignText_is_null(const Handle_MoniTool_SignText* self_) { return self_->IsNull(); }
+extern "C" void Handle_MoniTool_Timer_destructor(Handle_MoniTool_Timer* self_) { delete self_; }
+extern "C" OcctResult<Handle_MoniTool_Timer*> Handle_MoniTool_Timer_clone(const Handle_MoniTool_Timer* self_) {
+    try { return {new Handle_MoniTool_Timer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleMoniToolCaseData_is_null(const HandleMoniToolCaseData* self_) { return self_->IsNull(); }
-extern "C" void HandleMoniToolElement_destructor(HandleMoniToolElement* self_) { delete self_; }
-extern "C" OcctResult<HandleMoniToolElement*> HandleMoniToolElement_clone(const HandleMoniToolElement* self_) {
-    try { return {new HandleMoniToolElement(*self_), nullptr}; }
+extern "C" bool Handle_MoniTool_Timer_is_null(const Handle_MoniTool_Timer* self_) { return self_->IsNull(); }
+extern "C" void Handle_MoniTool_TransientElem_destructor(Handle_MoniTool_TransientElem* self_) { delete self_; }
+extern "C" OcctResult<Handle_MoniTool_TransientElem*> Handle_MoniTool_TransientElem_clone(const Handle_MoniTool_TransientElem* self_) {
+    try { return {new Handle_MoniTool_TransientElem(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleMoniToolElement_is_null(const HandleMoniToolElement* self_) { return self_->IsNull(); }
-extern "C" void HandleMoniToolHSequenceOfElement_destructor(HandleMoniToolHSequenceOfElement* self_) { delete self_; }
-extern "C" OcctResult<HandleMoniToolHSequenceOfElement*> HandleMoniToolHSequenceOfElement_clone(const HandleMoniToolHSequenceOfElement* self_) {
-    try { return {new HandleMoniToolHSequenceOfElement(*self_), nullptr}; }
+extern "C" bool Handle_MoniTool_TransientElem_is_null(const Handle_MoniTool_TransientElem* self_) { return self_->IsNull(); }
+extern "C" void Handle_MoniTool_TypedValue_destructor(Handle_MoniTool_TypedValue* self_) { delete self_; }
+extern "C" OcctResult<Handle_MoniTool_TypedValue*> Handle_MoniTool_TypedValue_clone(const Handle_MoniTool_TypedValue* self_) {
+    try { return {new Handle_MoniTool_TypedValue(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleMoniToolHSequenceOfElement_is_null(const HandleMoniToolHSequenceOfElement* self_) { return self_->IsNull(); }
-extern "C" void HandleMoniToolIntVal_destructor(HandleMoniToolIntVal* self_) { delete self_; }
-extern "C" OcctResult<HandleMoniToolIntVal*> HandleMoniToolIntVal_clone(const HandleMoniToolIntVal* self_) {
-    try { return {new HandleMoniToolIntVal(*self_), nullptr}; }
+extern "C" bool Handle_MoniTool_TypedValue_is_null(const Handle_MoniTool_TypedValue* self_) { return self_->IsNull(); }
+extern "C" void Handle_TransferBRep_BinderOfShape_destructor(Handle_TransferBRep_BinderOfShape* self_) { delete self_; }
+extern "C" OcctResult<Handle_TransferBRep_BinderOfShape*> Handle_TransferBRep_BinderOfShape_clone(const Handle_TransferBRep_BinderOfShape* self_) {
+    try { return {new Handle_TransferBRep_BinderOfShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleMoniToolIntVal_is_null(const HandleMoniToolIntVal* self_) { return self_->IsNull(); }
-extern "C" void HandleMoniToolRealVal_destructor(HandleMoniToolRealVal* self_) { delete self_; }
-extern "C" OcctResult<HandleMoniToolRealVal*> HandleMoniToolRealVal_clone(const HandleMoniToolRealVal* self_) {
-    try { return {new HandleMoniToolRealVal(*self_), nullptr}; }
+extern "C" bool Handle_TransferBRep_BinderOfShape_is_null(const Handle_TransferBRep_BinderOfShape* self_) { return self_->IsNull(); }
+extern "C" void Handle_TransferBRep_ShapeBinder_destructor(Handle_TransferBRep_ShapeBinder* self_) { delete self_; }
+extern "C" OcctResult<Handle_TransferBRep_ShapeBinder*> Handle_TransferBRep_ShapeBinder_clone(const Handle_TransferBRep_ShapeBinder* self_) {
+    try { return {new Handle_TransferBRep_ShapeBinder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleMoniToolRealVal_is_null(const HandleMoniToolRealVal* self_) { return self_->IsNull(); }
-extern "C" void HandleMoniToolSignShape_destructor(HandleMoniToolSignShape* self_) { delete self_; }
-extern "C" OcctResult<HandleMoniToolSignShape*> HandleMoniToolSignShape_clone(const HandleMoniToolSignShape* self_) {
-    try { return {new HandleMoniToolSignShape(*self_), nullptr}; }
+extern "C" bool Handle_TransferBRep_ShapeBinder_is_null(const Handle_TransferBRep_ShapeBinder* self_) { return self_->IsNull(); }
+extern "C" void Handle_TransferBRep_ShapeListBinder_destructor(Handle_TransferBRep_ShapeListBinder* self_) { delete self_; }
+extern "C" OcctResult<Handle_TransferBRep_ShapeListBinder*> Handle_TransferBRep_ShapeListBinder_clone(const Handle_TransferBRep_ShapeListBinder* self_) {
+    try { return {new Handle_TransferBRep_ShapeListBinder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleMoniToolSignShape_is_null(const HandleMoniToolSignShape* self_) { return self_->IsNull(); }
-extern "C" void HandleMoniToolSignText_destructor(HandleMoniToolSignText* self_) { delete self_; }
-extern "C" OcctResult<HandleMoniToolSignText*> HandleMoniToolSignText_clone(const HandleMoniToolSignText* self_) {
-    try { return {new HandleMoniToolSignText(*self_), nullptr}; }
+extern "C" bool Handle_TransferBRep_ShapeListBinder_is_null(const Handle_TransferBRep_ShapeListBinder* self_) { return self_->IsNull(); }
+extern "C" void Handle_TransferBRep_ShapeMapper_destructor(Handle_TransferBRep_ShapeMapper* self_) { delete self_; }
+extern "C" OcctResult<Handle_TransferBRep_ShapeMapper*> Handle_TransferBRep_ShapeMapper_clone(const Handle_TransferBRep_ShapeMapper* self_) {
+    try { return {new Handle_TransferBRep_ShapeMapper(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleMoniToolSignText_is_null(const HandleMoniToolSignText* self_) { return self_->IsNull(); }
-extern "C" void HandleMoniToolTimer_destructor(HandleMoniToolTimer* self_) { delete self_; }
-extern "C" OcctResult<HandleMoniToolTimer*> HandleMoniToolTimer_clone(const HandleMoniToolTimer* self_) {
-    try { return {new HandleMoniToolTimer(*self_), nullptr}; }
+extern "C" bool Handle_TransferBRep_ShapeMapper_is_null(const Handle_TransferBRep_ShapeMapper* self_) { return self_->IsNull(); }
+extern "C" void Handle_TransferBRep_TransferResultInfo_destructor(Handle_TransferBRep_TransferResultInfo* self_) { delete self_; }
+extern "C" OcctResult<Handle_TransferBRep_TransferResultInfo*> Handle_TransferBRep_TransferResultInfo_clone(const Handle_TransferBRep_TransferResultInfo* self_) {
+    try { return {new Handle_TransferBRep_TransferResultInfo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleMoniToolTimer_is_null(const HandleMoniToolTimer* self_) { return self_->IsNull(); }
-extern "C" void HandleMoniToolTransientElem_destructor(HandleMoniToolTransientElem* self_) { delete self_; }
-extern "C" OcctResult<HandleMoniToolTransientElem*> HandleMoniToolTransientElem_clone(const HandleMoniToolTransientElem* self_) {
-    try { return {new HandleMoniToolTransientElem(*self_), nullptr}; }
+extern "C" bool Handle_TransferBRep_TransferResultInfo_is_null(const Handle_TransferBRep_TransferResultInfo* self_) { return self_->IsNull(); }
+extern "C" void Handle_Transfer_ActorDispatch_destructor(Handle_Transfer_ActorDispatch* self_) { delete self_; }
+extern "C" OcctResult<Handle_Transfer_ActorDispatch*> Handle_Transfer_ActorDispatch_clone(const Handle_Transfer_ActorDispatch* self_) {
+    try { return {new Handle_Transfer_ActorDispatch(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleMoniToolTransientElem_is_null(const HandleMoniToolTransientElem* self_) { return self_->IsNull(); }
-extern "C" void HandleMoniToolTypedValue_destructor(HandleMoniToolTypedValue* self_) { delete self_; }
-extern "C" OcctResult<HandleMoniToolTypedValue*> HandleMoniToolTypedValue_clone(const HandleMoniToolTypedValue* self_) {
-    try { return {new HandleMoniToolTypedValue(*self_), nullptr}; }
+extern "C" bool Handle_Transfer_ActorDispatch_is_null(const Handle_Transfer_ActorDispatch* self_) { return self_->IsNull(); }
+extern "C" void Handle_Transfer_ActorOfFinderProcess_destructor(Handle_Transfer_ActorOfFinderProcess* self_) { delete self_; }
+extern "C" OcctResult<Handle_Transfer_ActorOfFinderProcess*> Handle_Transfer_ActorOfFinderProcess_clone(const Handle_Transfer_ActorOfFinderProcess* self_) {
+    try { return {new Handle_Transfer_ActorOfFinderProcess(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleMoniToolTypedValue_is_null(const HandleMoniToolTypedValue* self_) { return self_->IsNull(); }
-extern "C" void HandleTransferBRepBinderOfShape_destructor(HandleTransferBRepBinderOfShape* self_) { delete self_; }
-extern "C" OcctResult<HandleTransferBRepBinderOfShape*> HandleTransferBRepBinderOfShape_clone(const HandleTransferBRepBinderOfShape* self_) {
-    try { return {new HandleTransferBRepBinderOfShape(*self_), nullptr}; }
+extern "C" bool Handle_Transfer_ActorOfFinderProcess_is_null(const Handle_Transfer_ActorOfFinderProcess* self_) { return self_->IsNull(); }
+extern "C" void Handle_Transfer_ActorOfProcessForFinder_destructor(Handle_Transfer_ActorOfProcessForFinder* self_) { delete self_; }
+extern "C" OcctResult<Handle_Transfer_ActorOfProcessForFinder*> Handle_Transfer_ActorOfProcessForFinder_clone(const Handle_Transfer_ActorOfProcessForFinder* self_) {
+    try { return {new Handle_Transfer_ActorOfProcessForFinder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTransferBRepBinderOfShape_is_null(const HandleTransferBRepBinderOfShape* self_) { return self_->IsNull(); }
-extern "C" void HandleTransferBRepHSequenceOfTransferResultInfo_destructor(HandleTransferBRepHSequenceOfTransferResultInfo* self_) { delete self_; }
-extern "C" OcctResult<HandleTransferBRepHSequenceOfTransferResultInfo*> HandleTransferBRepHSequenceOfTransferResultInfo_clone(const HandleTransferBRepHSequenceOfTransferResultInfo* self_) {
-    try { return {new HandleTransferBRepHSequenceOfTransferResultInfo(*self_), nullptr}; }
+extern "C" bool Handle_Transfer_ActorOfProcessForFinder_is_null(const Handle_Transfer_ActorOfProcessForFinder* self_) { return self_->IsNull(); }
+extern "C" void Handle_Transfer_ActorOfProcessForTransient_destructor(Handle_Transfer_ActorOfProcessForTransient* self_) { delete self_; }
+extern "C" OcctResult<Handle_Transfer_ActorOfProcessForTransient*> Handle_Transfer_ActorOfProcessForTransient_clone(const Handle_Transfer_ActorOfProcessForTransient* self_) {
+    try { return {new Handle_Transfer_ActorOfProcessForTransient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTransferBRepHSequenceOfTransferResultInfo_is_null(const HandleTransferBRepHSequenceOfTransferResultInfo* self_) { return self_->IsNull(); }
-extern "C" void HandleTransferBRepShapeBinder_destructor(HandleTransferBRepShapeBinder* self_) { delete self_; }
-extern "C" OcctResult<HandleTransferBRepShapeBinder*> HandleTransferBRepShapeBinder_clone(const HandleTransferBRepShapeBinder* self_) {
-    try { return {new HandleTransferBRepShapeBinder(*self_), nullptr}; }
+extern "C" bool Handle_Transfer_ActorOfProcessForTransient_is_null(const Handle_Transfer_ActorOfProcessForTransient* self_) { return self_->IsNull(); }
+extern "C" void Handle_Transfer_ActorOfTransientProcess_destructor(Handle_Transfer_ActorOfTransientProcess* self_) { delete self_; }
+extern "C" OcctResult<Handle_Transfer_ActorOfTransientProcess*> Handle_Transfer_ActorOfTransientProcess_clone(const Handle_Transfer_ActorOfTransientProcess* self_) {
+    try { return {new Handle_Transfer_ActorOfTransientProcess(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTransferBRepShapeBinder_is_null(const HandleTransferBRepShapeBinder* self_) { return self_->IsNull(); }
-extern "C" void HandleTransferBRepShapeListBinder_destructor(HandleTransferBRepShapeListBinder* self_) { delete self_; }
-extern "C" OcctResult<HandleTransferBRepShapeListBinder*> HandleTransferBRepShapeListBinder_clone(const HandleTransferBRepShapeListBinder* self_) {
-    try { return {new HandleTransferBRepShapeListBinder(*self_), nullptr}; }
+extern "C" bool Handle_Transfer_ActorOfTransientProcess_is_null(const Handle_Transfer_ActorOfTransientProcess* self_) { return self_->IsNull(); }
+extern "C" void Handle_Transfer_Binder_destructor(Handle_Transfer_Binder* self_) { delete self_; }
+extern "C" OcctResult<Handle_Transfer_Binder*> Handle_Transfer_Binder_clone(const Handle_Transfer_Binder* self_) {
+    try { return {new Handle_Transfer_Binder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTransferBRepShapeListBinder_is_null(const HandleTransferBRepShapeListBinder* self_) { return self_->IsNull(); }
-extern "C" void HandleTransferBRepShapeMapper_destructor(HandleTransferBRepShapeMapper* self_) { delete self_; }
-extern "C" OcctResult<HandleTransferBRepShapeMapper*> HandleTransferBRepShapeMapper_clone(const HandleTransferBRepShapeMapper* self_) {
-    try { return {new HandleTransferBRepShapeMapper(*self_), nullptr}; }
+extern "C" bool Handle_Transfer_Binder_is_null(const Handle_Transfer_Binder* self_) { return self_->IsNull(); }
+extern "C" void Handle_Transfer_BinderOfTransientInteger_destructor(Handle_Transfer_BinderOfTransientInteger* self_) { delete self_; }
+extern "C" OcctResult<Handle_Transfer_BinderOfTransientInteger*> Handle_Transfer_BinderOfTransientInteger_clone(const Handle_Transfer_BinderOfTransientInteger* self_) {
+    try { return {new Handle_Transfer_BinderOfTransientInteger(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTransferBRepShapeMapper_is_null(const HandleTransferBRepShapeMapper* self_) { return self_->IsNull(); }
-extern "C" void HandleTransferBRepTransferResultInfo_destructor(HandleTransferBRepTransferResultInfo* self_) { delete self_; }
-extern "C" OcctResult<HandleTransferBRepTransferResultInfo*> HandleTransferBRepTransferResultInfo_clone(const HandleTransferBRepTransferResultInfo* self_) {
-    try { return {new HandleTransferBRepTransferResultInfo(*self_), nullptr}; }
+extern "C" bool Handle_Transfer_BinderOfTransientInteger_is_null(const Handle_Transfer_BinderOfTransientInteger* self_) { return self_->IsNull(); }
+extern "C" void Handle_Transfer_DispatchControl_destructor(Handle_Transfer_DispatchControl* self_) { delete self_; }
+extern "C" OcctResult<Handle_Transfer_DispatchControl*> Handle_Transfer_DispatchControl_clone(const Handle_Transfer_DispatchControl* self_) {
+    try { return {new Handle_Transfer_DispatchControl(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTransferBRepTransferResultInfo_is_null(const HandleTransferBRepTransferResultInfo* self_) { return self_->IsNull(); }
-extern "C" void HandleTransferActorDispatch_destructor(HandleTransferActorDispatch* self_) { delete self_; }
-extern "C" OcctResult<HandleTransferActorDispatch*> HandleTransferActorDispatch_clone(const HandleTransferActorDispatch* self_) {
-    try { return {new HandleTransferActorDispatch(*self_), nullptr}; }
+extern "C" bool Handle_Transfer_DispatchControl_is_null(const Handle_Transfer_DispatchControl* self_) { return self_->IsNull(); }
+extern "C" void Handle_Transfer_Finder_destructor(Handle_Transfer_Finder* self_) { delete self_; }
+extern "C" OcctResult<Handle_Transfer_Finder*> Handle_Transfer_Finder_clone(const Handle_Transfer_Finder* self_) {
+    try { return {new Handle_Transfer_Finder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTransferActorDispatch_is_null(const HandleTransferActorDispatch* self_) { return self_->IsNull(); }
-extern "C" void HandleTransferActorOfFinderProcess_destructor(HandleTransferActorOfFinderProcess* self_) { delete self_; }
-extern "C" OcctResult<HandleTransferActorOfFinderProcess*> HandleTransferActorOfFinderProcess_clone(const HandleTransferActorOfFinderProcess* self_) {
-    try { return {new HandleTransferActorOfFinderProcess(*self_), nullptr}; }
+extern "C" bool Handle_Transfer_Finder_is_null(const Handle_Transfer_Finder* self_) { return self_->IsNull(); }
+extern "C" void Handle_Transfer_FinderProcess_destructor(Handle_Transfer_FinderProcess* self_) { delete self_; }
+extern "C" OcctResult<Handle_Transfer_FinderProcess*> Handle_Transfer_FinderProcess_clone(const Handle_Transfer_FinderProcess* self_) {
+    try { return {new Handle_Transfer_FinderProcess(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTransferActorOfFinderProcess_is_null(const HandleTransferActorOfFinderProcess* self_) { return self_->IsNull(); }
-extern "C" void HandleTransferActorOfProcessForFinder_destructor(HandleTransferActorOfProcessForFinder* self_) { delete self_; }
-extern "C" OcctResult<HandleTransferActorOfProcessForFinder*> HandleTransferActorOfProcessForFinder_clone(const HandleTransferActorOfProcessForFinder* self_) {
-    try { return {new HandleTransferActorOfProcessForFinder(*self_), nullptr}; }
+extern "C" bool Handle_Transfer_FinderProcess_is_null(const Handle_Transfer_FinderProcess* self_) { return self_->IsNull(); }
+extern "C" void Handle_Transfer_MapContainer_destructor(Handle_Transfer_MapContainer* self_) { delete self_; }
+extern "C" OcctResult<Handle_Transfer_MapContainer*> Handle_Transfer_MapContainer_clone(const Handle_Transfer_MapContainer* self_) {
+    try { return {new Handle_Transfer_MapContainer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTransferActorOfProcessForFinder_is_null(const HandleTransferActorOfProcessForFinder* self_) { return self_->IsNull(); }
-extern "C" void HandleTransferActorOfProcessForTransient_destructor(HandleTransferActorOfProcessForTransient* self_) { delete self_; }
-extern "C" OcctResult<HandleTransferActorOfProcessForTransient*> HandleTransferActorOfProcessForTransient_clone(const HandleTransferActorOfProcessForTransient* self_) {
-    try { return {new HandleTransferActorOfProcessForTransient(*self_), nullptr}; }
+extern "C" bool Handle_Transfer_MapContainer_is_null(const Handle_Transfer_MapContainer* self_) { return self_->IsNull(); }
+extern "C" void Handle_Transfer_MultipleBinder_destructor(Handle_Transfer_MultipleBinder* self_) { delete self_; }
+extern "C" OcctResult<Handle_Transfer_MultipleBinder*> Handle_Transfer_MultipleBinder_clone(const Handle_Transfer_MultipleBinder* self_) {
+    try { return {new Handle_Transfer_MultipleBinder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTransferActorOfProcessForTransient_is_null(const HandleTransferActorOfProcessForTransient* self_) { return self_->IsNull(); }
-extern "C" void HandleTransferActorOfTransientProcess_destructor(HandleTransferActorOfTransientProcess* self_) { delete self_; }
-extern "C" OcctResult<HandleTransferActorOfTransientProcess*> HandleTransferActorOfTransientProcess_clone(const HandleTransferActorOfTransientProcess* self_) {
-    try { return {new HandleTransferActorOfTransientProcess(*self_), nullptr}; }
+extern "C" bool Handle_Transfer_MultipleBinder_is_null(const Handle_Transfer_MultipleBinder* self_) { return self_->IsNull(); }
+extern "C" void Handle_Transfer_ProcessForFinder_destructor(Handle_Transfer_ProcessForFinder* self_) { delete self_; }
+extern "C" OcctResult<Handle_Transfer_ProcessForFinder*> Handle_Transfer_ProcessForFinder_clone(const Handle_Transfer_ProcessForFinder* self_) {
+    try { return {new Handle_Transfer_ProcessForFinder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTransferActorOfTransientProcess_is_null(const HandleTransferActorOfTransientProcess* self_) { return self_->IsNull(); }
-extern "C" void HandleTransferBinder_destructor(HandleTransferBinder* self_) { delete self_; }
-extern "C" OcctResult<HandleTransferBinder*> HandleTransferBinder_clone(const HandleTransferBinder* self_) {
-    try { return {new HandleTransferBinder(*self_), nullptr}; }
+extern "C" bool Handle_Transfer_ProcessForFinder_is_null(const Handle_Transfer_ProcessForFinder* self_) { return self_->IsNull(); }
+extern "C" void Handle_Transfer_ProcessForTransient_destructor(Handle_Transfer_ProcessForTransient* self_) { delete self_; }
+extern "C" OcctResult<Handle_Transfer_ProcessForTransient*> Handle_Transfer_ProcessForTransient_clone(const Handle_Transfer_ProcessForTransient* self_) {
+    try { return {new Handle_Transfer_ProcessForTransient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTransferBinder_is_null(const HandleTransferBinder* self_) { return self_->IsNull(); }
-extern "C" void HandleTransferBinderOfTransientInteger_destructor(HandleTransferBinderOfTransientInteger* self_) { delete self_; }
-extern "C" OcctResult<HandleTransferBinderOfTransientInteger*> HandleTransferBinderOfTransientInteger_clone(const HandleTransferBinderOfTransientInteger* self_) {
-    try { return {new HandleTransferBinderOfTransientInteger(*self_), nullptr}; }
+extern "C" bool Handle_Transfer_ProcessForTransient_is_null(const Handle_Transfer_ProcessForTransient* self_) { return self_->IsNull(); }
+extern "C" void Handle_Transfer_ResultFromModel_destructor(Handle_Transfer_ResultFromModel* self_) { delete self_; }
+extern "C" OcctResult<Handle_Transfer_ResultFromModel*> Handle_Transfer_ResultFromModel_clone(const Handle_Transfer_ResultFromModel* self_) {
+    try { return {new Handle_Transfer_ResultFromModel(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTransferBinderOfTransientInteger_is_null(const HandleTransferBinderOfTransientInteger* self_) { return self_->IsNull(); }
-extern "C" void HandleTransferDispatchControl_destructor(HandleTransferDispatchControl* self_) { delete self_; }
-extern "C" OcctResult<HandleTransferDispatchControl*> HandleTransferDispatchControl_clone(const HandleTransferDispatchControl* self_) {
-    try { return {new HandleTransferDispatchControl(*self_), nullptr}; }
+extern "C" bool Handle_Transfer_ResultFromModel_is_null(const Handle_Transfer_ResultFromModel* self_) { return self_->IsNull(); }
+extern "C" void Handle_Transfer_ResultFromTransient_destructor(Handle_Transfer_ResultFromTransient* self_) { delete self_; }
+extern "C" OcctResult<Handle_Transfer_ResultFromTransient*> Handle_Transfer_ResultFromTransient_clone(const Handle_Transfer_ResultFromTransient* self_) {
+    try { return {new Handle_Transfer_ResultFromTransient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTransferDispatchControl_is_null(const HandleTransferDispatchControl* self_) { return self_->IsNull(); }
-extern "C" void HandleTransferFinder_destructor(HandleTransferFinder* self_) { delete self_; }
-extern "C" OcctResult<HandleTransferFinder*> HandleTransferFinder_clone(const HandleTransferFinder* self_) {
-    try { return {new HandleTransferFinder(*self_), nullptr}; }
+extern "C" bool Handle_Transfer_ResultFromTransient_is_null(const Handle_Transfer_ResultFromTransient* self_) { return self_->IsNull(); }
+extern "C" void Handle_Transfer_SimpleBinderOfTransient_destructor(Handle_Transfer_SimpleBinderOfTransient* self_) { delete self_; }
+extern "C" OcctResult<Handle_Transfer_SimpleBinderOfTransient*> Handle_Transfer_SimpleBinderOfTransient_clone(const Handle_Transfer_SimpleBinderOfTransient* self_) {
+    try { return {new Handle_Transfer_SimpleBinderOfTransient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTransferFinder_is_null(const HandleTransferFinder* self_) { return self_->IsNull(); }
-extern "C" void HandleTransferFinderProcess_destructor(HandleTransferFinderProcess* self_) { delete self_; }
-extern "C" OcctResult<HandleTransferFinderProcess*> HandleTransferFinderProcess_clone(const HandleTransferFinderProcess* self_) {
-    try { return {new HandleTransferFinderProcess(*self_), nullptr}; }
+extern "C" bool Handle_Transfer_SimpleBinderOfTransient_is_null(const Handle_Transfer_SimpleBinderOfTransient* self_) { return self_->IsNull(); }
+extern "C" void Handle_Transfer_TransientListBinder_destructor(Handle_Transfer_TransientListBinder* self_) { delete self_; }
+extern "C" OcctResult<Handle_Transfer_TransientListBinder*> Handle_Transfer_TransientListBinder_clone(const Handle_Transfer_TransientListBinder* self_) {
+    try { return {new Handle_Transfer_TransientListBinder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTransferFinderProcess_is_null(const HandleTransferFinderProcess* self_) { return self_->IsNull(); }
-extern "C" void HandleTransferHSequenceOfBinder_destructor(HandleTransferHSequenceOfBinder* self_) { delete self_; }
-extern "C" OcctResult<HandleTransferHSequenceOfBinder*> HandleTransferHSequenceOfBinder_clone(const HandleTransferHSequenceOfBinder* self_) {
-    try { return {new HandleTransferHSequenceOfBinder(*self_), nullptr}; }
+extern "C" bool Handle_Transfer_TransientListBinder_is_null(const Handle_Transfer_TransientListBinder* self_) { return self_->IsNull(); }
+extern "C" void Handle_Transfer_TransientMapper_destructor(Handle_Transfer_TransientMapper* self_) { delete self_; }
+extern "C" OcctResult<Handle_Transfer_TransientMapper*> Handle_Transfer_TransientMapper_clone(const Handle_Transfer_TransientMapper* self_) {
+    try { return {new Handle_Transfer_TransientMapper(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTransferHSequenceOfBinder_is_null(const HandleTransferHSequenceOfBinder* self_) { return self_->IsNull(); }
-extern "C" void HandleTransferHSequenceOfFinder_destructor(HandleTransferHSequenceOfFinder* self_) { delete self_; }
-extern "C" OcctResult<HandleTransferHSequenceOfFinder*> HandleTransferHSequenceOfFinder_clone(const HandleTransferHSequenceOfFinder* self_) {
-    try { return {new HandleTransferHSequenceOfFinder(*self_), nullptr}; }
+extern "C" bool Handle_Transfer_TransientMapper_is_null(const Handle_Transfer_TransientMapper* self_) { return self_->IsNull(); }
+extern "C" void Handle_Transfer_TransientProcess_destructor(Handle_Transfer_TransientProcess* self_) { delete self_; }
+extern "C" OcctResult<Handle_Transfer_TransientProcess*> Handle_Transfer_TransientProcess_clone(const Handle_Transfer_TransientProcess* self_) {
+    try { return {new Handle_Transfer_TransientProcess(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTransferHSequenceOfFinder_is_null(const HandleTransferHSequenceOfFinder* self_) { return self_->IsNull(); }
-extern "C" void HandleTransferMapContainer_destructor(HandleTransferMapContainer* self_) { delete self_; }
-extern "C" OcctResult<HandleTransferMapContainer*> HandleTransferMapContainer_clone(const HandleTransferMapContainer* self_) {
-    try { return {new HandleTransferMapContainer(*self_), nullptr}; }
+extern "C" bool Handle_Transfer_TransientProcess_is_null(const Handle_Transfer_TransientProcess* self_) { return self_->IsNull(); }
+extern "C" void Handle_Transfer_VoidBinder_destructor(Handle_Transfer_VoidBinder* self_) { delete self_; }
+extern "C" OcctResult<Handle_Transfer_VoidBinder*> Handle_Transfer_VoidBinder_clone(const Handle_Transfer_VoidBinder* self_) {
+    try { return {new Handle_Transfer_VoidBinder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTransferMapContainer_is_null(const HandleTransferMapContainer* self_) { return self_->IsNull(); }
-extern "C" void HandleTransferMultipleBinder_destructor(HandleTransferMultipleBinder* self_) { delete self_; }
-extern "C" OcctResult<HandleTransferMultipleBinder*> HandleTransferMultipleBinder_clone(const HandleTransferMultipleBinder* self_) {
-    try { return {new HandleTransferMultipleBinder(*self_), nullptr}; }
+extern "C" bool Handle_Transfer_VoidBinder_is_null(const Handle_Transfer_VoidBinder* self_) { return self_->IsNull(); }
+extern "C" void Handle_XSAlgo_AlgoContainer_destructor(Handle_XSAlgo_AlgoContainer* self_) { delete self_; }
+extern "C" OcctResult<Handle_XSAlgo_AlgoContainer*> Handle_XSAlgo_AlgoContainer_clone(const Handle_XSAlgo_AlgoContainer* self_) {
+    try { return {new Handle_XSAlgo_AlgoContainer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTransferMultipleBinder_is_null(const HandleTransferMultipleBinder* self_) { return self_->IsNull(); }
-extern "C" void HandleTransferProcessForFinder_destructor(HandleTransferProcessForFinder* self_) { delete self_; }
-extern "C" OcctResult<HandleTransferProcessForFinder*> HandleTransferProcessForFinder_clone(const HandleTransferProcessForFinder* self_) {
-    try { return {new HandleTransferProcessForFinder(*self_), nullptr}; }
+extern "C" bool Handle_XSAlgo_AlgoContainer_is_null(const Handle_XSAlgo_AlgoContainer* self_) { return self_->IsNull(); }
+extern "C" void Handle_XSControl_ConnectedShapes_destructor(Handle_XSControl_ConnectedShapes* self_) { delete self_; }
+extern "C" OcctResult<Handle_XSControl_ConnectedShapes*> Handle_XSControl_ConnectedShapes_clone(const Handle_XSControl_ConnectedShapes* self_) {
+    try { return {new Handle_XSControl_ConnectedShapes(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTransferProcessForFinder_is_null(const HandleTransferProcessForFinder* self_) { return self_->IsNull(); }
-extern "C" void HandleTransferProcessForTransient_destructor(HandleTransferProcessForTransient* self_) { delete self_; }
-extern "C" OcctResult<HandleTransferProcessForTransient*> HandleTransferProcessForTransient_clone(const HandleTransferProcessForTransient* self_) {
-    try { return {new HandleTransferProcessForTransient(*self_), nullptr}; }
+extern "C" bool Handle_XSControl_ConnectedShapes_is_null(const Handle_XSControl_ConnectedShapes* self_) { return self_->IsNull(); }
+extern "C" void Handle_XSControl_Controller_destructor(Handle_XSControl_Controller* self_) { delete self_; }
+extern "C" OcctResult<Handle_XSControl_Controller*> Handle_XSControl_Controller_clone(const Handle_XSControl_Controller* self_) {
+    try { return {new Handle_XSControl_Controller(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTransferProcessForTransient_is_null(const HandleTransferProcessForTransient* self_) { return self_->IsNull(); }
-extern "C" void HandleTransferResultFromModel_destructor(HandleTransferResultFromModel* self_) { delete self_; }
-extern "C" OcctResult<HandleTransferResultFromModel*> HandleTransferResultFromModel_clone(const HandleTransferResultFromModel* self_) {
-    try { return {new HandleTransferResultFromModel(*self_), nullptr}; }
+extern "C" bool Handle_XSControl_Controller_is_null(const Handle_XSControl_Controller* self_) { return self_->IsNull(); }
+extern "C" void Handle_XSControl_SelectForTransfer_destructor(Handle_XSControl_SelectForTransfer* self_) { delete self_; }
+extern "C" OcctResult<Handle_XSControl_SelectForTransfer*> Handle_XSControl_SelectForTransfer_clone(const Handle_XSControl_SelectForTransfer* self_) {
+    try { return {new Handle_XSControl_SelectForTransfer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTransferResultFromModel_is_null(const HandleTransferResultFromModel* self_) { return self_->IsNull(); }
-extern "C" void HandleTransferResultFromTransient_destructor(HandleTransferResultFromTransient* self_) { delete self_; }
-extern "C" OcctResult<HandleTransferResultFromTransient*> HandleTransferResultFromTransient_clone(const HandleTransferResultFromTransient* self_) {
-    try { return {new HandleTransferResultFromTransient(*self_), nullptr}; }
+extern "C" bool Handle_XSControl_SelectForTransfer_is_null(const Handle_XSControl_SelectForTransfer* self_) { return self_->IsNull(); }
+extern "C" void Handle_XSControl_SignTransferStatus_destructor(Handle_XSControl_SignTransferStatus* self_) { delete self_; }
+extern "C" OcctResult<Handle_XSControl_SignTransferStatus*> Handle_XSControl_SignTransferStatus_clone(const Handle_XSControl_SignTransferStatus* self_) {
+    try { return {new Handle_XSControl_SignTransferStatus(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTransferResultFromTransient_is_null(const HandleTransferResultFromTransient* self_) { return self_->IsNull(); }
-extern "C" void HandleTransferSimpleBinderOfTransient_destructor(HandleTransferSimpleBinderOfTransient* self_) { delete self_; }
-extern "C" OcctResult<HandleTransferSimpleBinderOfTransient*> HandleTransferSimpleBinderOfTransient_clone(const HandleTransferSimpleBinderOfTransient* self_) {
-    try { return {new HandleTransferSimpleBinderOfTransient(*self_), nullptr}; }
+extern "C" bool Handle_XSControl_SignTransferStatus_is_null(const Handle_XSControl_SignTransferStatus* self_) { return self_->IsNull(); }
+extern "C" void Handle_XSControl_TransferReader_destructor(Handle_XSControl_TransferReader* self_) { delete self_; }
+extern "C" OcctResult<Handle_XSControl_TransferReader*> Handle_XSControl_TransferReader_clone(const Handle_XSControl_TransferReader* self_) {
+    try { return {new Handle_XSControl_TransferReader(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTransferSimpleBinderOfTransient_is_null(const HandleTransferSimpleBinderOfTransient* self_) { return self_->IsNull(); }
-extern "C" void HandleTransferTransferDeadLoop_destructor(HandleTransferTransferDeadLoop* self_) { delete self_; }
-extern "C" OcctResult<HandleTransferTransferDeadLoop*> HandleTransferTransferDeadLoop_clone(const HandleTransferTransferDeadLoop* self_) {
-    try { return {new HandleTransferTransferDeadLoop(*self_), nullptr}; }
+extern "C" bool Handle_XSControl_TransferReader_is_null(const Handle_XSControl_TransferReader* self_) { return self_->IsNull(); }
+extern "C" void Handle_XSControl_TransferWriter_destructor(Handle_XSControl_TransferWriter* self_) { delete self_; }
+extern "C" OcctResult<Handle_XSControl_TransferWriter*> Handle_XSControl_TransferWriter_clone(const Handle_XSControl_TransferWriter* self_) {
+    try { return {new Handle_XSControl_TransferWriter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTransferTransferDeadLoop_is_null(const HandleTransferTransferDeadLoop* self_) { return self_->IsNull(); }
-extern "C" void HandleTransferTransferFailure_destructor(HandleTransferTransferFailure* self_) { delete self_; }
-extern "C" OcctResult<HandleTransferTransferFailure*> HandleTransferTransferFailure_clone(const HandleTransferTransferFailure* self_) {
-    try { return {new HandleTransferTransferFailure(*self_), nullptr}; }
+extern "C" bool Handle_XSControl_TransferWriter_is_null(const Handle_XSControl_TransferWriter* self_) { return self_->IsNull(); }
+extern "C" void Handle_XSControl_Vars_destructor(Handle_XSControl_Vars* self_) { delete self_; }
+extern "C" OcctResult<Handle_XSControl_Vars*> Handle_XSControl_Vars_clone(const Handle_XSControl_Vars* self_) {
+    try { return {new Handle_XSControl_Vars(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTransferTransferFailure_is_null(const HandleTransferTransferFailure* self_) { return self_->IsNull(); }
-extern "C" void HandleTransferTransientListBinder_destructor(HandleTransferTransientListBinder* self_) { delete self_; }
-extern "C" OcctResult<HandleTransferTransientListBinder*> HandleTransferTransientListBinder_clone(const HandleTransferTransientListBinder* self_) {
-    try { return {new HandleTransferTransientListBinder(*self_), nullptr}; }
+extern "C" bool Handle_XSControl_Vars_is_null(const Handle_XSControl_Vars* self_) { return self_->IsNull(); }
+extern "C" void Handle_XSControl_WorkSession_destructor(Handle_XSControl_WorkSession* self_) { delete self_; }
+extern "C" OcctResult<Handle_XSControl_WorkSession*> Handle_XSControl_WorkSession_clone(const Handle_XSControl_WorkSession* self_) {
+    try { return {new Handle_XSControl_WorkSession(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTransferTransientListBinder_is_null(const HandleTransferTransientListBinder* self_) { return self_->IsNull(); }
-extern "C" void HandleTransferTransientMapper_destructor(HandleTransferTransientMapper* self_) { delete self_; }
-extern "C" OcctResult<HandleTransferTransientMapper*> HandleTransferTransientMapper_clone(const HandleTransferTransientMapper* self_) {
-    try { return {new HandleTransferTransientMapper(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTransferTransientMapper_is_null(const HandleTransferTransientMapper* self_) { return self_->IsNull(); }
-extern "C" void HandleTransferTransientProcess_destructor(HandleTransferTransientProcess* self_) { delete self_; }
-extern "C" OcctResult<HandleTransferTransientProcess*> HandleTransferTransientProcess_clone(const HandleTransferTransientProcess* self_) {
-    try { return {new HandleTransferTransientProcess(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTransferTransientProcess_is_null(const HandleTransferTransientProcess* self_) { return self_->IsNull(); }
-extern "C" void HandleTransferVoidBinder_destructor(HandleTransferVoidBinder* self_) { delete self_; }
-extern "C" OcctResult<HandleTransferVoidBinder*> HandleTransferVoidBinder_clone(const HandleTransferVoidBinder* self_) {
-    try { return {new HandleTransferVoidBinder(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTransferVoidBinder_is_null(const HandleTransferVoidBinder* self_) { return self_->IsNull(); }
-extern "C" void HandleXSAlgoAlgoContainer_destructor(HandleXSAlgoAlgoContainer* self_) { delete self_; }
-extern "C" OcctResult<HandleXSAlgoAlgoContainer*> HandleXSAlgoAlgoContainer_clone(const HandleXSAlgoAlgoContainer* self_) {
-    try { return {new HandleXSAlgoAlgoContainer(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleXSAlgoAlgoContainer_is_null(const HandleXSAlgoAlgoContainer* self_) { return self_->IsNull(); }
-extern "C" void HandleXSControlConnectedShapes_destructor(HandleXSControlConnectedShapes* self_) { delete self_; }
-extern "C" OcctResult<HandleXSControlConnectedShapes*> HandleXSControlConnectedShapes_clone(const HandleXSControlConnectedShapes* self_) {
-    try { return {new HandleXSControlConnectedShapes(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleXSControlConnectedShapes_is_null(const HandleXSControlConnectedShapes* self_) { return self_->IsNull(); }
-extern "C" void HandleXSControlController_destructor(HandleXSControlController* self_) { delete self_; }
-extern "C" OcctResult<HandleXSControlController*> HandleXSControlController_clone(const HandleXSControlController* self_) {
-    try { return {new HandleXSControlController(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleXSControlController_is_null(const HandleXSControlController* self_) { return self_->IsNull(); }
-extern "C" void HandleXSControlSelectForTransfer_destructor(HandleXSControlSelectForTransfer* self_) { delete self_; }
-extern "C" OcctResult<HandleXSControlSelectForTransfer*> HandleXSControlSelectForTransfer_clone(const HandleXSControlSelectForTransfer* self_) {
-    try { return {new HandleXSControlSelectForTransfer(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleXSControlSelectForTransfer_is_null(const HandleXSControlSelectForTransfer* self_) { return self_->IsNull(); }
-extern "C" void HandleXSControlSignTransferStatus_destructor(HandleXSControlSignTransferStatus* self_) { delete self_; }
-extern "C" OcctResult<HandleXSControlSignTransferStatus*> HandleXSControlSignTransferStatus_clone(const HandleXSControlSignTransferStatus* self_) {
-    try { return {new HandleXSControlSignTransferStatus(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleXSControlSignTransferStatus_is_null(const HandleXSControlSignTransferStatus* self_) { return self_->IsNull(); }
-extern "C" void HandleXSControlTransferReader_destructor(HandleXSControlTransferReader* self_) { delete self_; }
-extern "C" OcctResult<HandleXSControlTransferReader*> HandleXSControlTransferReader_clone(const HandleXSControlTransferReader* self_) {
-    try { return {new HandleXSControlTransferReader(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleXSControlTransferReader_is_null(const HandleXSControlTransferReader* self_) { return self_->IsNull(); }
-extern "C" void HandleXSControlTransferWriter_destructor(HandleXSControlTransferWriter* self_) { delete self_; }
-extern "C" OcctResult<HandleXSControlTransferWriter*> HandleXSControlTransferWriter_clone(const HandleXSControlTransferWriter* self_) {
-    try { return {new HandleXSControlTransferWriter(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleXSControlTransferWriter_is_null(const HandleXSControlTransferWriter* self_) { return self_->IsNull(); }
-extern "C" void HandleXSControlVars_destructor(HandleXSControlVars* self_) { delete self_; }
-extern "C" OcctResult<HandleXSControlVars*> HandleXSControlVars_clone(const HandleXSControlVars* self_) {
-    try { return {new HandleXSControlVars(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleXSControlVars_is_null(const HandleXSControlVars* self_) { return self_->IsNull(); }
-extern "C" void HandleXSControlWorkSession_destructor(HandleXSControlWorkSession* self_) { delete self_; }
-extern "C" OcctResult<HandleXSControlWorkSession*> HandleXSControlWorkSession_clone(const HandleXSControlWorkSession* self_) {
-    try { return {new HandleXSControlWorkSession(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleXSControlWorkSession_is_null(const HandleXSControlWorkSession* self_) { return self_->IsNull(); }
+extern "C" bool Handle_XSControl_WorkSession_is_null(const Handle_XSControl_WorkSession* self_) { return self_->IsNull(); }
 
 // ========================
 // IFGraph_AllConnected wrappers
@@ -1604,7 +1477,7 @@ extern "C" const char* IFGraph_AllConnected_inherited_Begin(IFGraph_AllConnected
     try { self->Begin(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IFGraph_AllConnected_inherited_AddList(IFGraph_AllConnected* self, Handle(TColStd_HSequenceOfTransient) const& list) {
+extern "C" const char* IFGraph_AllConnected_inherited_AddList(IFGraph_AllConnected* self, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& list) {
     try { self->AddList(list); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1648,8 +1521,8 @@ extern "C" OcctResult<Handle(Standard_Transient) const*> IFGraph_AllConnected_in
     try { return {&(self->Value()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> IFGraph_AllConnected_inherited_Content(const IFGraph_AllConnected* self) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self->Content()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFGraph_AllConnected_inherited_Content(const IFGraph_AllConnected* self) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self->Content()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFGraph_AllConnected_inherited_Destroy(IFGraph_AllConnected* self) {
@@ -1702,7 +1575,7 @@ extern "C" const char* IFGraph_AllShared_inherited_Begin(IFGraph_AllShared* self
     try { self->Begin(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IFGraph_AllShared_inherited_AddList(IFGraph_AllShared* self, Handle(TColStd_HSequenceOfTransient) const& list) {
+extern "C" const char* IFGraph_AllShared_inherited_AddList(IFGraph_AllShared* self, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& list) {
     try { self->AddList(list); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1746,8 +1619,8 @@ extern "C" OcctResult<Handle(Standard_Transient) const*> IFGraph_AllShared_inher
     try { return {&(self->Value()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> IFGraph_AllShared_inherited_Content(const IFGraph_AllShared* self) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self->Content()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFGraph_AllShared_inherited_Content(const IFGraph_AllShared* self) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self->Content()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFGraph_AllShared_inherited_Destroy(IFGraph_AllShared* self) {
@@ -1796,7 +1669,7 @@ extern "C" const char* IFGraph_Articulations_inherited_Begin(IFGraph_Articulatio
     try { self->Begin(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IFGraph_Articulations_inherited_AddList(IFGraph_Articulations* self, Handle(TColStd_HSequenceOfTransient) const& list) {
+extern "C" const char* IFGraph_Articulations_inherited_AddList(IFGraph_Articulations* self, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& list) {
     try { self->AddList(list); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1840,8 +1713,8 @@ extern "C" OcctResult<Handle(Standard_Transient) const*> IFGraph_Articulations_i
     try { return {&(self->Value()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> IFGraph_Articulations_inherited_Content(const IFGraph_Articulations* self) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self->Content()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFGraph_Articulations_inherited_Content(const IFGraph_Articulations* self) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self->Content()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFGraph_Articulations_inherited_Destroy(IFGraph_Articulations* self) {
@@ -1914,7 +1787,7 @@ extern "C" const char* IFGraph_Compare_inherited_Begin(IFGraph_Compare* self) {
     try { self->Begin(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IFGraph_Compare_inherited_AddList(IFGraph_Compare* self, Handle(TColStd_HSequenceOfTransient) const& list) {
+extern "C" const char* IFGraph_Compare_inherited_AddList(IFGraph_Compare* self, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& list) {
     try { self->AddList(list); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1958,8 +1831,8 @@ extern "C" OcctResult<Handle(Standard_Transient) const*> IFGraph_Compare_inherit
     try { return {&(self->Value()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> IFGraph_Compare_inherited_Content(const IFGraph_Compare* self) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self->Content()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFGraph_Compare_inherited_Content(const IFGraph_Compare* self) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self->Content()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFGraph_Compare_inherited_Destroy(IFGraph_Compare* self) {
@@ -2128,7 +2001,7 @@ extern "C" const char* IFGraph_Cumulate_inherited_Begin(IFGraph_Cumulate* self) 
     try { self->Begin(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IFGraph_Cumulate_inherited_AddList(IFGraph_Cumulate* self, Handle(TColStd_HSequenceOfTransient) const& list) {
+extern "C" const char* IFGraph_Cumulate_inherited_AddList(IFGraph_Cumulate* self, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& list) {
     try { self->AddList(list); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -2172,8 +2045,8 @@ extern "C" OcctResult<Handle(Standard_Transient) const*> IFGraph_Cumulate_inheri
     try { return {&(self->Value()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> IFGraph_Cumulate_inherited_Content(const IFGraph_Cumulate* self) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self->Content()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFGraph_Cumulate_inherited_Content(const IFGraph_Cumulate* self) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self->Content()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFGraph_Cumulate_inherited_Destroy(IFGraph_Cumulate* self) {
@@ -2330,7 +2203,7 @@ extern "C" const char* IFGraph_ExternalSources_inherited_Begin(IFGraph_ExternalS
     try { self->Begin(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IFGraph_ExternalSources_inherited_AddList(IFGraph_ExternalSources* self, Handle(TColStd_HSequenceOfTransient) const& list) {
+extern "C" const char* IFGraph_ExternalSources_inherited_AddList(IFGraph_ExternalSources* self, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& list) {
     try { self->AddList(list); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -2374,8 +2247,8 @@ extern "C" OcctResult<Handle(Standard_Transient) const*> IFGraph_ExternalSources
     try { return {&(self->Value()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> IFGraph_ExternalSources_inherited_Content(const IFGraph_ExternalSources* self) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self->Content()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFGraph_ExternalSources_inherited_Content(const IFGraph_ExternalSources* self) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self->Content()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFGraph_ExternalSources_inherited_Destroy(IFGraph_ExternalSources* self) {
@@ -2732,24 +2605,24 @@ extern "C" OcctResult<const IFSelect_Activator*> IFSelect_Act_as_IFSelect_Activa
 extern "C" OcctResult<IFSelect_Activator*> IFSelect_Act_as_IFSelect_Activator_mut(IFSelect_Act* self_) { return {static_cast<IFSelect_Activator*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_Act_as_Standard_Transient(const IFSelect_Act* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_Act_as_Standard_Transient_mut(IFSelect_Act* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectAct*> IFSelect_Act_to_handle(IFSelect_Act* obj) {
-    try { return {new HandleIFSelectAct(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Act*> IFSelect_Act_to_handle(IFSelect_Act* obj) {
+    try { return {new Handle_IFSelect_Act(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_Act*> HandleIFSelectAct_get(const HandleIFSelectAct* handle) {
+extern "C" OcctResult<const IFSelect_Act*> Handle_IFSelect_Act_get(const Handle_IFSelect_Act* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_Act*> HandleIFSelectAct_get_mut(HandleIFSelectAct* handle) {
+extern "C" OcctResult<IFSelect_Act*> Handle_IFSelect_Act_get_mut(Handle_IFSelect_Act* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectActivator*> HandleIFSelectAct_to_HandleIFSelectActivator(const HandleIFSelectAct* self_) {
-    try { return {new HandleIFSelectActivator(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Activator*> Handle_IFSelect_Act_to_Handle_IFSelect_Activator(const Handle_IFSelect_Act* self_) {
+    try { return {new Handle_IFSelect_Activator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectAct_to_HandleStandardTransient(const HandleIFSelectAct* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_Act_to_Handle_Standard_Transient(const Handle_IFSelect_Act* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IFSelect_Act_inherited_IsInstance(const IFSelect_Act* self, Handle(Standard_Type) const& theType) {
@@ -2834,8 +2707,8 @@ extern "C" OcctResult<int32_t> IFSelect_Activator_mode(const char* command) {
     try { return {IFSelect_Activator::Mode(command), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfAsciiString)*> IFSelect_Activator_commands(int32_t mode, const char* command) {
-    try { return {new Handle(TColStd_HSequenceOfAsciiString)(IFSelect_Activator::Commands(mode, command)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_TCollection_AsciiString)*> IFSelect_Activator_commands(int32_t mode, const char* command) {
+    try { return {new Handle(NCollection_HSequence_TCollection_AsciiString)(IFSelect_Activator::Commands(mode, command)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<char const*> IFSelect_Activator_get_type_name() {
@@ -2848,47 +2721,47 @@ extern "C" OcctResult<Handle(Standard_Type) const*> IFSelect_Activator_get_type_
 }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_Activator_as_Standard_Transient(const IFSelect_Activator* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_Activator_as_Standard_Transient_mut(IFSelect_Activator* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IFSelect_Activator*> HandleIFSelectActivator_get(const HandleIFSelectActivator* handle) {
+extern "C" OcctResult<const IFSelect_Activator*> Handle_IFSelect_Activator_get(const Handle_IFSelect_Activator* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_Activator*> HandleIFSelectActivator_get_mut(HandleIFSelectActivator* handle) {
+extern "C" OcctResult<IFSelect_Activator*> Handle_IFSelect_Activator_get_mut(Handle_IFSelect_Activator* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectActivator_to_HandleStandardTransient(const HandleIFSelectActivator* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_Activator_to_Handle_Standard_Transient(const Handle_IFSelect_Activator* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectAct*> HandleIFSelectActivator_downcast_to_HandleIFSelectAct(const HandleIFSelectActivator* self_) {
+extern "C" OcctResult<Handle_IFSelect_Act*> Handle_IFSelect_Activator_downcast_to_Handle_IFSelect_Act(const Handle_IFSelect_Activator* self_) {
     try {
     opencascade::handle<IFSelect_Act> result = opencascade::handle<IFSelect_Act>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectAct(result), nullptr};
+    return {new Handle_IFSelect_Act(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSessionPilot*> HandleIFSelectActivator_downcast_to_HandleIFSelectSessionPilot(const HandleIFSelectActivator* self_) {
+extern "C" OcctResult<Handle_IFSelect_SessionPilot*> Handle_IFSelect_Activator_downcast_to_Handle_IFSelect_SessionPilot(const Handle_IFSelect_Activator* self_) {
     try {
     opencascade::handle<IFSelect_SessionPilot> result = opencascade::handle<IFSelect_SessionPilot>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSessionPilot(result), nullptr};
+    return {new Handle_IFSelect_SessionPilot(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectActivator*> HandleIFSelectActivator_downcast_to_HandleIGESSelectActivator(const HandleIFSelectActivator* self_) {
+extern "C" OcctResult<Handle_IGESSelect_Activator*> Handle_IFSelect_Activator_downcast_to_Handle_IGESSelect_Activator(const Handle_IFSelect_Activator* self_) {
     try {
     opencascade::handle<IGESSelect_Activator> result = opencascade::handle<IGESSelect_Activator>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectActivator(result), nullptr};
+    return {new Handle_IGESSelect_Activator(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStepSelectActivator*> HandleIFSelectActivator_downcast_to_HandleStepSelectActivator(const HandleIFSelectActivator* self_) {
+extern "C" OcctResult<Handle_StepSelect_Activator*> Handle_IFSelect_Activator_downcast_to_Handle_StepSelect_Activator(const Handle_IFSelect_Activator* self_) {
     try {
     opencascade::handle<StepSelect_Activator> result = opencascade::handle<StepSelect_Activator>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleStepSelectActivator(result), nullptr};
+    return {new Handle_StepSelect_Activator(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -2930,8 +2803,8 @@ extern "C" OcctResult<IFSelect_AppliedModifiers*> IFSelect_AppliedModifiers_ctor
     try { return {new IFSelect_AppliedModifiers(nbmax, nbent), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfInteger)*> IFSelect_AppliedModifiers_item_list(const IFSelect_AppliedModifiers* self_) {
-    try { return {new Handle(TColStd_HSequenceOfInteger)(self_->ItemList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_int)*> IFSelect_AppliedModifiers_item_list(const IFSelect_AppliedModifiers* self_) {
+    try { return {new Handle(NCollection_HSequence_int)(self_->ItemList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IFSelect_AppliedModifiers_add_modif(IFSelect_AppliedModifiers* self_, Handle(IFSelect_GeneralModifier) const* modif) {
@@ -2972,20 +2845,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> IFSelect_AppliedModifiers_ge
 }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_AppliedModifiers_as_Standard_Transient(const IFSelect_AppliedModifiers* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_AppliedModifiers_as_Standard_Transient_mut(IFSelect_AppliedModifiers* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectAppliedModifiers*> IFSelect_AppliedModifiers_to_handle(IFSelect_AppliedModifiers* obj) {
-    try { return {new HandleIFSelectAppliedModifiers(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_AppliedModifiers*> IFSelect_AppliedModifiers_to_handle(IFSelect_AppliedModifiers* obj) {
+    try { return {new Handle_IFSelect_AppliedModifiers(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_AppliedModifiers*> HandleIFSelectAppliedModifiers_get(const HandleIFSelectAppliedModifiers* handle) {
+extern "C" OcctResult<const IFSelect_AppliedModifiers*> Handle_IFSelect_AppliedModifiers_get(const Handle_IFSelect_AppliedModifiers* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_AppliedModifiers*> HandleIFSelectAppliedModifiers_get_mut(HandleIFSelectAppliedModifiers* handle) {
+extern "C" OcctResult<IFSelect_AppliedModifiers*> Handle_IFSelect_AppliedModifiers_get_mut(Handle_IFSelect_AppliedModifiers* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectAppliedModifiers_to_HandleStandardTransient(const HandleIFSelectAppliedModifiers* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_AppliedModifiers_to_Handle_Standard_Transient(const Handle_IFSelect_AppliedModifiers* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IFSelect_AppliedModifiers_inherited_IsInstance(const IFSelect_AppliedModifiers* self, Handle(Standard_Type) const& theType) {
@@ -3050,24 +2923,24 @@ extern "C" OcctResult<const IFSelect_SessionDumper*> IFSelect_BasicDumper_as_IFS
 extern "C" OcctResult<IFSelect_SessionDumper*> IFSelect_BasicDumper_as_IFSelect_SessionDumper_mut(IFSelect_BasicDumper* self_) { return {static_cast<IFSelect_SessionDumper*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_BasicDumper_as_Standard_Transient(const IFSelect_BasicDumper* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_BasicDumper_as_Standard_Transient_mut(IFSelect_BasicDumper* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectBasicDumper*> IFSelect_BasicDumper_to_handle(IFSelect_BasicDumper* obj) {
-    try { return {new HandleIFSelectBasicDumper(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_BasicDumper*> IFSelect_BasicDumper_to_handle(IFSelect_BasicDumper* obj) {
+    try { return {new Handle_IFSelect_BasicDumper(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_BasicDumper*> HandleIFSelectBasicDumper_get(const HandleIFSelectBasicDumper* handle) {
+extern "C" OcctResult<const IFSelect_BasicDumper*> Handle_IFSelect_BasicDumper_get(const Handle_IFSelect_BasicDumper* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_BasicDumper*> HandleIFSelectBasicDumper_get_mut(HandleIFSelectBasicDumper* handle) {
+extern "C" OcctResult<IFSelect_BasicDumper*> Handle_IFSelect_BasicDumper_get_mut(Handle_IFSelect_BasicDumper* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSessionDumper*> HandleIFSelectBasicDumper_to_HandleIFSelectSessionDumper(const HandleIFSelectBasicDumper* self_) {
-    try { return {new HandleIFSelectSessionDumper(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SessionDumper*> Handle_IFSelect_BasicDumper_to_Handle_IFSelect_SessionDumper(const Handle_IFSelect_BasicDumper* self_) {
+    try { return {new Handle_IFSelect_SessionDumper(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectBasicDumper_to_HandleStandardTransient(const HandleIFSelectBasicDumper* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_BasicDumper_to_Handle_Standard_Transient(const Handle_IFSelect_BasicDumper* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(IFSelect_SessionDumper)*> IFSelect_BasicDumper_inherited_Next(const IFSelect_BasicDumper* self) {
@@ -3140,24 +3013,24 @@ extern "C" OcctResult<const IFSelect_SignatureList*> IFSelect_CheckCounter_as_IF
 extern "C" OcctResult<IFSelect_SignatureList*> IFSelect_CheckCounter_as_IFSelect_SignatureList_mut(IFSelect_CheckCounter* self_) { return {static_cast<IFSelect_SignatureList*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_CheckCounter_as_Standard_Transient(const IFSelect_CheckCounter* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_CheckCounter_as_Standard_Transient_mut(IFSelect_CheckCounter* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectCheckCounter*> IFSelect_CheckCounter_to_handle(IFSelect_CheckCounter* obj) {
-    try { return {new HandleIFSelectCheckCounter(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_CheckCounter*> IFSelect_CheckCounter_to_handle(IFSelect_CheckCounter* obj) {
+    try { return {new Handle_IFSelect_CheckCounter(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_CheckCounter*> HandleIFSelectCheckCounter_get(const HandleIFSelectCheckCounter* handle) {
+extern "C" OcctResult<const IFSelect_CheckCounter*> Handle_IFSelect_CheckCounter_get(const Handle_IFSelect_CheckCounter* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_CheckCounter*> HandleIFSelectCheckCounter_get_mut(HandleIFSelectCheckCounter* handle) {
+extern "C" OcctResult<IFSelect_CheckCounter*> Handle_IFSelect_CheckCounter_get_mut(Handle_IFSelect_CheckCounter* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSignatureList*> HandleIFSelectCheckCounter_to_HandleIFSelectSignatureList(const HandleIFSelectCheckCounter* self_) {
-    try { return {new HandleIFSelectSignatureList(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SignatureList*> Handle_IFSelect_CheckCounter_to_Handle_IFSelect_SignatureList(const Handle_IFSelect_CheckCounter* self_) {
+    try { return {new Handle_IFSelect_SignatureList(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectCheckCounter_to_HandleStandardTransient(const HandleIFSelectCheckCounter* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_CheckCounter_to_Handle_Standard_Transient(const Handle_IFSelect_CheckCounter* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFSelect_CheckCounter_inherited_SetList(IFSelect_CheckCounter* self, bool withlist) {
@@ -3486,24 +3359,24 @@ extern "C" OcctResult<const IFSelect_Dispatch*> IFSelect_DispGlobal_as_IFSelect_
 extern "C" OcctResult<IFSelect_Dispatch*> IFSelect_DispGlobal_as_IFSelect_Dispatch_mut(IFSelect_DispGlobal* self_) { return {static_cast<IFSelect_Dispatch*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_DispGlobal_as_Standard_Transient(const IFSelect_DispGlobal* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_DispGlobal_as_Standard_Transient_mut(IFSelect_DispGlobal* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectDispGlobal*> IFSelect_DispGlobal_to_handle(IFSelect_DispGlobal* obj) {
-    try { return {new HandleIFSelectDispGlobal(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_DispGlobal*> IFSelect_DispGlobal_to_handle(IFSelect_DispGlobal* obj) {
+    try { return {new Handle_IFSelect_DispGlobal(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_DispGlobal*> HandleIFSelectDispGlobal_get(const HandleIFSelectDispGlobal* handle) {
+extern "C" OcctResult<const IFSelect_DispGlobal*> Handle_IFSelect_DispGlobal_get(const Handle_IFSelect_DispGlobal* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_DispGlobal*> HandleIFSelectDispGlobal_get_mut(HandleIFSelectDispGlobal* handle) {
+extern "C" OcctResult<IFSelect_DispGlobal*> Handle_IFSelect_DispGlobal_get_mut(Handle_IFSelect_DispGlobal* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectDispatch*> HandleIFSelectDispGlobal_to_HandleIFSelectDispatch(const HandleIFSelectDispGlobal* self_) {
-    try { return {new HandleIFSelectDispatch(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Dispatch*> Handle_IFSelect_DispGlobal_to_Handle_IFSelect_Dispatch(const Handle_IFSelect_DispGlobal* self_) {
+    try { return {new Handle_IFSelect_Dispatch(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectDispGlobal_to_HandleStandardTransient(const HandleIFSelectDispGlobal* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_DispGlobal_to_Handle_Standard_Transient(const Handle_IFSelect_DispGlobal* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFSelect_DispGlobal_inherited_SetRootName(IFSelect_DispGlobal* self, Handle(TCollection_HAsciiString) const& name) {
@@ -3624,24 +3497,24 @@ extern "C" OcctResult<const IFSelect_Dispatch*> IFSelect_DispPerCount_as_IFSelec
 extern "C" OcctResult<IFSelect_Dispatch*> IFSelect_DispPerCount_as_IFSelect_Dispatch_mut(IFSelect_DispPerCount* self_) { return {static_cast<IFSelect_Dispatch*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_DispPerCount_as_Standard_Transient(const IFSelect_DispPerCount* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_DispPerCount_as_Standard_Transient_mut(IFSelect_DispPerCount* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectDispPerCount*> IFSelect_DispPerCount_to_handle(IFSelect_DispPerCount* obj) {
-    try { return {new HandleIFSelectDispPerCount(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_DispPerCount*> IFSelect_DispPerCount_to_handle(IFSelect_DispPerCount* obj) {
+    try { return {new Handle_IFSelect_DispPerCount(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_DispPerCount*> HandleIFSelectDispPerCount_get(const HandleIFSelectDispPerCount* handle) {
+extern "C" OcctResult<const IFSelect_DispPerCount*> Handle_IFSelect_DispPerCount_get(const Handle_IFSelect_DispPerCount* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_DispPerCount*> HandleIFSelectDispPerCount_get_mut(HandleIFSelectDispPerCount* handle) {
+extern "C" OcctResult<IFSelect_DispPerCount*> Handle_IFSelect_DispPerCount_get_mut(Handle_IFSelect_DispPerCount* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectDispatch*> HandleIFSelectDispPerCount_to_HandleIFSelectDispatch(const HandleIFSelectDispPerCount* self_) {
-    try { return {new HandleIFSelectDispatch(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Dispatch*> Handle_IFSelect_DispPerCount_to_Handle_IFSelect_Dispatch(const Handle_IFSelect_DispPerCount* self_) {
+    try { return {new Handle_IFSelect_Dispatch(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectDispPerCount_to_HandleStandardTransient(const HandleIFSelectDispPerCount* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_DispPerCount_to_Handle_Standard_Transient(const Handle_IFSelect_DispPerCount* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFSelect_DispPerCount_inherited_SetRootName(IFSelect_DispPerCount* self, Handle(TCollection_HAsciiString) const& name) {
@@ -3762,24 +3635,24 @@ extern "C" OcctResult<const IFSelect_Dispatch*> IFSelect_DispPerFiles_as_IFSelec
 extern "C" OcctResult<IFSelect_Dispatch*> IFSelect_DispPerFiles_as_IFSelect_Dispatch_mut(IFSelect_DispPerFiles* self_) { return {static_cast<IFSelect_Dispatch*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_DispPerFiles_as_Standard_Transient(const IFSelect_DispPerFiles* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_DispPerFiles_as_Standard_Transient_mut(IFSelect_DispPerFiles* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectDispPerFiles*> IFSelect_DispPerFiles_to_handle(IFSelect_DispPerFiles* obj) {
-    try { return {new HandleIFSelectDispPerFiles(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_DispPerFiles*> IFSelect_DispPerFiles_to_handle(IFSelect_DispPerFiles* obj) {
+    try { return {new Handle_IFSelect_DispPerFiles(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_DispPerFiles*> HandleIFSelectDispPerFiles_get(const HandleIFSelectDispPerFiles* handle) {
+extern "C" OcctResult<const IFSelect_DispPerFiles*> Handle_IFSelect_DispPerFiles_get(const Handle_IFSelect_DispPerFiles* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_DispPerFiles*> HandleIFSelectDispPerFiles_get_mut(HandleIFSelectDispPerFiles* handle) {
+extern "C" OcctResult<IFSelect_DispPerFiles*> Handle_IFSelect_DispPerFiles_get_mut(Handle_IFSelect_DispPerFiles* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectDispatch*> HandleIFSelectDispPerFiles_to_HandleIFSelectDispatch(const HandleIFSelectDispPerFiles* self_) {
-    try { return {new HandleIFSelectDispatch(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Dispatch*> Handle_IFSelect_DispPerFiles_to_Handle_IFSelect_Dispatch(const Handle_IFSelect_DispPerFiles* self_) {
+    try { return {new Handle_IFSelect_Dispatch(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectDispPerFiles_to_HandleStandardTransient(const HandleIFSelectDispPerFiles* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_DispPerFiles_to_Handle_Standard_Transient(const Handle_IFSelect_DispPerFiles* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFSelect_DispPerFiles_inherited_SetRootName(IFSelect_DispPerFiles* self, Handle(TCollection_HAsciiString) const& name) {
@@ -3888,24 +3761,24 @@ extern "C" OcctResult<const IFSelect_Dispatch*> IFSelect_DispPerOne_as_IFSelect_
 extern "C" OcctResult<IFSelect_Dispatch*> IFSelect_DispPerOne_as_IFSelect_Dispatch_mut(IFSelect_DispPerOne* self_) { return {static_cast<IFSelect_Dispatch*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_DispPerOne_as_Standard_Transient(const IFSelect_DispPerOne* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_DispPerOne_as_Standard_Transient_mut(IFSelect_DispPerOne* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectDispPerOne*> IFSelect_DispPerOne_to_handle(IFSelect_DispPerOne* obj) {
-    try { return {new HandleIFSelectDispPerOne(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_DispPerOne*> IFSelect_DispPerOne_to_handle(IFSelect_DispPerOne* obj) {
+    try { return {new Handle_IFSelect_DispPerOne(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_DispPerOne*> HandleIFSelectDispPerOne_get(const HandleIFSelectDispPerOne* handle) {
+extern "C" OcctResult<const IFSelect_DispPerOne*> Handle_IFSelect_DispPerOne_get(const Handle_IFSelect_DispPerOne* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_DispPerOne*> HandleIFSelectDispPerOne_get_mut(HandleIFSelectDispPerOne* handle) {
+extern "C" OcctResult<IFSelect_DispPerOne*> Handle_IFSelect_DispPerOne_get_mut(Handle_IFSelect_DispPerOne* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectDispatch*> HandleIFSelectDispPerOne_to_HandleIFSelectDispatch(const HandleIFSelectDispPerOne* self_) {
-    try { return {new HandleIFSelectDispatch(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Dispatch*> Handle_IFSelect_DispPerOne_to_Handle_IFSelect_Dispatch(const Handle_IFSelect_DispPerOne* self_) {
+    try { return {new Handle_IFSelect_Dispatch(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectDispPerOne_to_HandleStandardTransient(const HandleIFSelectDispPerOne* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_DispPerOne_to_Handle_Standard_Transient(const Handle_IFSelect_DispPerOne* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFSelect_DispPerOne_inherited_SetRootName(IFSelect_DispPerOne* self, Handle(TCollection_HAsciiString) const& name) {
@@ -4026,24 +3899,24 @@ extern "C" OcctResult<const IFSelect_Dispatch*> IFSelect_DispPerSignature_as_IFS
 extern "C" OcctResult<IFSelect_Dispatch*> IFSelect_DispPerSignature_as_IFSelect_Dispatch_mut(IFSelect_DispPerSignature* self_) { return {static_cast<IFSelect_Dispatch*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_DispPerSignature_as_Standard_Transient(const IFSelect_DispPerSignature* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_DispPerSignature_as_Standard_Transient_mut(IFSelect_DispPerSignature* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectDispPerSignature*> IFSelect_DispPerSignature_to_handle(IFSelect_DispPerSignature* obj) {
-    try { return {new HandleIFSelectDispPerSignature(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_DispPerSignature*> IFSelect_DispPerSignature_to_handle(IFSelect_DispPerSignature* obj) {
+    try { return {new Handle_IFSelect_DispPerSignature(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_DispPerSignature*> HandleIFSelectDispPerSignature_get(const HandleIFSelectDispPerSignature* handle) {
+extern "C" OcctResult<const IFSelect_DispPerSignature*> Handle_IFSelect_DispPerSignature_get(const Handle_IFSelect_DispPerSignature* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_DispPerSignature*> HandleIFSelectDispPerSignature_get_mut(HandleIFSelectDispPerSignature* handle) {
+extern "C" OcctResult<IFSelect_DispPerSignature*> Handle_IFSelect_DispPerSignature_get_mut(Handle_IFSelect_DispPerSignature* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectDispatch*> HandleIFSelectDispPerSignature_to_HandleIFSelectDispatch(const HandleIFSelectDispPerSignature* self_) {
-    try { return {new HandleIFSelectDispatch(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Dispatch*> Handle_IFSelect_DispPerSignature_to_Handle_IFSelect_Dispatch(const Handle_IFSelect_DispPerSignature* self_) {
+    try { return {new Handle_IFSelect_Dispatch(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectDispPerSignature_to_HandleStandardTransient(const HandleIFSelectDispPerSignature* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_DispPerSignature_to_Handle_Standard_Transient(const Handle_IFSelect_DispPerSignature* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFSelect_DispPerSignature_inherited_SetRootName(IFSelect_DispPerSignature* self, Handle(TCollection_HAsciiString) const& name) {
@@ -4186,71 +4059,71 @@ extern "C" OcctResult<Handle(Standard_Type) const*> IFSelect_Dispatch_get_type_d
 }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_Dispatch_as_Standard_Transient(const IFSelect_Dispatch* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_Dispatch_as_Standard_Transient_mut(IFSelect_Dispatch* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IFSelect_Dispatch*> HandleIFSelectDispatch_get(const HandleIFSelectDispatch* handle) {
+extern "C" OcctResult<const IFSelect_Dispatch*> Handle_IFSelect_Dispatch_get(const Handle_IFSelect_Dispatch* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_Dispatch*> HandleIFSelectDispatch_get_mut(HandleIFSelectDispatch* handle) {
+extern "C" OcctResult<IFSelect_Dispatch*> Handle_IFSelect_Dispatch_get_mut(Handle_IFSelect_Dispatch* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectDispatch_to_HandleStandardTransient(const HandleIFSelectDispatch* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_Dispatch_to_Handle_Standard_Transient(const Handle_IFSelect_Dispatch* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectDispGlobal*> HandleIFSelectDispatch_downcast_to_HandleIFSelectDispGlobal(const HandleIFSelectDispatch* self_) {
+extern "C" OcctResult<Handle_IFSelect_DispGlobal*> Handle_IFSelect_Dispatch_downcast_to_Handle_IFSelect_DispGlobal(const Handle_IFSelect_Dispatch* self_) {
     try {
     opencascade::handle<IFSelect_DispGlobal> result = opencascade::handle<IFSelect_DispGlobal>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectDispGlobal(result), nullptr};
+    return {new Handle_IFSelect_DispGlobal(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectDispPerCount*> HandleIFSelectDispatch_downcast_to_HandleIFSelectDispPerCount(const HandleIFSelectDispatch* self_) {
+extern "C" OcctResult<Handle_IFSelect_DispPerCount*> Handle_IFSelect_Dispatch_downcast_to_Handle_IFSelect_DispPerCount(const Handle_IFSelect_Dispatch* self_) {
     try {
     opencascade::handle<IFSelect_DispPerCount> result = opencascade::handle<IFSelect_DispPerCount>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectDispPerCount(result), nullptr};
+    return {new Handle_IFSelect_DispPerCount(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectDispPerFiles*> HandleIFSelectDispatch_downcast_to_HandleIFSelectDispPerFiles(const HandleIFSelectDispatch* self_) {
+extern "C" OcctResult<Handle_IFSelect_DispPerFiles*> Handle_IFSelect_Dispatch_downcast_to_Handle_IFSelect_DispPerFiles(const Handle_IFSelect_Dispatch* self_) {
     try {
     opencascade::handle<IFSelect_DispPerFiles> result = opencascade::handle<IFSelect_DispPerFiles>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectDispPerFiles(result), nullptr};
+    return {new Handle_IFSelect_DispPerFiles(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectDispPerOne*> HandleIFSelectDispatch_downcast_to_HandleIFSelectDispPerOne(const HandleIFSelectDispatch* self_) {
+extern "C" OcctResult<Handle_IFSelect_DispPerOne*> Handle_IFSelect_Dispatch_downcast_to_Handle_IFSelect_DispPerOne(const Handle_IFSelect_Dispatch* self_) {
     try {
     opencascade::handle<IFSelect_DispPerOne> result = opencascade::handle<IFSelect_DispPerOne>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectDispPerOne(result), nullptr};
+    return {new Handle_IFSelect_DispPerOne(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectDispPerSignature*> HandleIFSelectDispatch_downcast_to_HandleIFSelectDispPerSignature(const HandleIFSelectDispatch* self_) {
+extern "C" OcctResult<Handle_IFSelect_DispPerSignature*> Handle_IFSelect_Dispatch_downcast_to_Handle_IFSelect_DispPerSignature(const Handle_IFSelect_Dispatch* self_) {
     try {
     opencascade::handle<IFSelect_DispPerSignature> result = opencascade::handle<IFSelect_DispPerSignature>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectDispPerSignature(result), nullptr};
+    return {new Handle_IFSelect_DispPerSignature(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectDispPerDrawing*> HandleIFSelectDispatch_downcast_to_HandleIGESSelectDispPerDrawing(const HandleIFSelectDispatch* self_) {
+extern "C" OcctResult<Handle_IGESSelect_DispPerDrawing*> Handle_IFSelect_Dispatch_downcast_to_Handle_IGESSelect_DispPerDrawing(const Handle_IFSelect_Dispatch* self_) {
     try {
     opencascade::handle<IGESSelect_DispPerDrawing> result = opencascade::handle<IGESSelect_DispPerDrawing>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectDispPerDrawing(result), nullptr};
+    return {new Handle_IGESSelect_DispPerDrawing(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectDispPerSingleView*> HandleIFSelectDispatch_downcast_to_HandleIGESSelectDispPerSingleView(const HandleIFSelectDispatch* self_) {
+extern "C" OcctResult<Handle_IGESSelect_DispPerSingleView*> Handle_IFSelect_Dispatch_downcast_to_Handle_IGESSelect_DispPerSingleView(const Handle_IFSelect_Dispatch* self_) {
     try {
     opencascade::handle<IGESSelect_DispPerSingleView> result = opencascade::handle<IGESSelect_DispPerSingleView>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectDispPerSingleView(result), nullptr};
+    return {new Handle_IGESSelect_DispPerSingleView(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -4292,7 +4165,7 @@ extern "C" OcctResult<IFSelect_EditForm*> IFSelect_EditForm_ctor_handleifselecte
     try { return {new IFSelect_EditForm(*editor, readonly, undoable, label), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_EditForm*> IFSelect_EditForm_ctor_handleifselecteditor_sequenceofinteger_bool2_charptr(Handle(IFSelect_Editor) const* editor, TColStd_SequenceOfInteger const* nums, bool readonly, bool undoable, const char* label) {
+extern "C" OcctResult<IFSelect_EditForm*> IFSelect_EditForm_ctor_handleifselecteditor_seq_int_bool2_charptr(Handle(IFSelect_Editor) const* editor, NCollection_Sequence_int const* nums, bool readonly, bool undoable, const char* label) {
     try { return {new IFSelect_EditForm(*editor, *nums, readonly, undoable, label), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4316,16 +4189,16 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> IFSelect_EditForm_origi
     try { return {new Handle(TCollection_HAsciiString)(self_->OriginalValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfHAsciiString)*> IFSelect_EditForm_original_list(const IFSelect_EditForm* self_, int32_t num) {
-    try { return {new Handle(TColStd_HSequenceOfHAsciiString)(self_->OriginalList(num)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> IFSelect_EditForm_original_list(const IFSelect_EditForm* self_, int32_t num) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->OriginalList(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(TCollection_HAsciiString)*> IFSelect_EditForm_edited_value(const IFSelect_EditForm* self_, int32_t num) {
     try { return {new Handle(TCollection_HAsciiString)(self_->EditedValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfHAsciiString)*> IFSelect_EditForm_edited_list(const IFSelect_EditForm* self_, int32_t num) {
-    try { return {new Handle(TColStd_HSequenceOfHAsciiString)(self_->EditedList(num)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> IFSelect_EditForm_edited_list(const IFSelect_EditForm* self_, int32_t num) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->EditedList(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool*> IFSelect_EditForm_edit_keep_status(IFSelect_EditForm* self_) {
@@ -4404,7 +4277,7 @@ extern "C" const char* IFSelect_EditForm_load_value(IFSelect_EditForm* self_, in
     try { self_->LoadValue(num, *val); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IFSelect_EditForm_load_list(IFSelect_EditForm* self_, int32_t num, Handle(TColStd_HSequenceOfHAsciiString) const* list) {
+extern "C" const char* IFSelect_EditForm_load_list(IFSelect_EditForm* self_, int32_t num, Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString) const* list) {
     try { self_->LoadList(num, *list); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4424,7 +4297,7 @@ extern "C" OcctResult<bool> IFSelect_EditForm_modify_list(IFSelect_EditForm* sel
     try { return {self_->ModifyList(num, *edited, enforce), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> IFSelect_EditForm_modify_list_value(IFSelect_EditForm* self_, int32_t num, Handle(TColStd_HSequenceOfHAsciiString) const* list, bool enforce) {
+extern "C" OcctResult<bool> IFSelect_EditForm_modify_list_value(IFSelect_EditForm* self_, int32_t num, Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString) const* list, bool enforce) {
     try { return {self_->ModifyListValue(num, *list, enforce), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4432,7 +4305,7 @@ extern "C" OcctResult<bool> IFSelect_EditForm_touch(IFSelect_EditForm* self_, in
     try { return {self_->Touch(num, *newval), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> IFSelect_EditForm_touch_list(IFSelect_EditForm* self_, int32_t num, Handle(TColStd_HSequenceOfHAsciiString) const* newlist) {
+extern "C" OcctResult<bool> IFSelect_EditForm_touch_list(IFSelect_EditForm* self_, int32_t num, Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString) const* newlist) {
     try { return {self_->TouchList(num, *newlist), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4482,20 +4355,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> IFSelect_EditForm_get_type_d
 }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_EditForm_as_Standard_Transient(const IFSelect_EditForm* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_EditForm_as_Standard_Transient_mut(IFSelect_EditForm* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectEditForm*> IFSelect_EditForm_to_handle(IFSelect_EditForm* obj) {
-    try { return {new HandleIFSelectEditForm(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_EditForm*> IFSelect_EditForm_to_handle(IFSelect_EditForm* obj) {
+    try { return {new Handle_IFSelect_EditForm(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_EditForm*> HandleIFSelectEditForm_get(const HandleIFSelectEditForm* handle) {
+extern "C" OcctResult<const IFSelect_EditForm*> Handle_IFSelect_EditForm_get(const Handle_IFSelect_EditForm* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_EditForm*> HandleIFSelectEditForm_get_mut(HandleIFSelectEditForm* handle) {
+extern "C" OcctResult<IFSelect_EditForm*> Handle_IFSelect_EditForm_get_mut(Handle_IFSelect_EditForm* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectEditForm_to_HandleStandardTransient(const HandleIFSelectEditForm* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_EditForm_to_Handle_Standard_Transient(const Handle_IFSelect_EditForm* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IFSelect_EditForm_inherited_IsInstance(const IFSelect_EditForm* self, Handle(Standard_Type) const& theType) {
@@ -4552,8 +4425,8 @@ extern "C" OcctResult<Handle(IFSelect_ListEditor)*> IFSelect_Editor_list_editor(
     try { return {new Handle(IFSelect_ListEditor)(self_->ListEditor(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfHAsciiString)*> IFSelect_Editor_list_value(const IFSelect_Editor* self_, Handle(IFSelect_EditForm) const* form, int32_t num) {
-    try { return {new Handle(TColStd_HSequenceOfHAsciiString)(self_->ListValue(*form, num)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> IFSelect_Editor_list_value(const IFSelect_Editor* self_, Handle(IFSelect_EditForm) const* form, int32_t num) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->ListValue(*form, num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFSelect_Editor_set_value(IFSelect_Editor* self_, int32_t num, Handle(Interface_TypedValue) const* typval, const char* shortname, int32_t accessmode) {
@@ -4612,7 +4485,7 @@ extern "C" OcctResult<bool> IFSelect_Editor_update(const IFSelect_Editor* self_,
     try { return {self_->Update(*form, num, *newval, enforce), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> IFSelect_Editor_update_list(const IFSelect_Editor* self_, Handle(IFSelect_EditForm) const* form, int32_t num, Handle(TColStd_HSequenceOfHAsciiString) const* newlist, bool enforce) {
+extern "C" OcctResult<bool> IFSelect_Editor_update_list(const IFSelect_Editor* self_, Handle(IFSelect_EditForm) const* form, int32_t num, Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString) const* newlist, bool enforce) {
     try { return {self_->UpdateList(*form, num, *newlist, enforce), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4634,63 +4507,63 @@ extern "C" OcctResult<Handle(Standard_Type) const*> IFSelect_Editor_get_type_des
 }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_Editor_as_Standard_Transient(const IFSelect_Editor* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_Editor_as_Standard_Transient_mut(IFSelect_Editor* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IFSelect_Editor*> HandleIFSelectEditor_get(const HandleIFSelectEditor* handle) {
+extern "C" OcctResult<const IFSelect_Editor*> Handle_IFSelect_Editor_get(const Handle_IFSelect_Editor* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_Editor*> HandleIFSelectEditor_get_mut(HandleIFSelectEditor* handle) {
+extern "C" OcctResult<IFSelect_Editor*> Handle_IFSelect_Editor_get_mut(Handle_IFSelect_Editor* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectEditor_to_HandleStandardTransient(const HandleIFSelectEditor* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_Editor_to_Handle_Standard_Transient(const Handle_IFSelect_Editor* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleAPIHeaderSectionEditHeader*> HandleIFSelectEditor_downcast_to_HandleAPIHeaderSectionEditHeader(const HandleIFSelectEditor* self_) {
+extern "C" OcctResult<Handle_APIHeaderSection_EditHeader*> Handle_IFSelect_Editor_downcast_to_Handle_APIHeaderSection_EditHeader(const Handle_IFSelect_Editor* self_) {
     try {
     opencascade::handle<APIHeaderSection_EditHeader> result = opencascade::handle<APIHeaderSection_EditHeader>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleAPIHeaderSectionEditHeader(result), nullptr};
+    return {new Handle_APIHeaderSection_EditHeader(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectParamEditor*> HandleIFSelectEditor_downcast_to_HandleIFSelectParamEditor(const HandleIFSelectEditor* self_) {
+extern "C" OcctResult<Handle_IFSelect_ParamEditor*> Handle_IFSelect_Editor_downcast_to_Handle_IFSelect_ParamEditor(const Handle_IFSelect_Editor* self_) {
     try {
     opencascade::handle<IFSelect_ParamEditor> result = opencascade::handle<IFSelect_ParamEditor>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectParamEditor(result), nullptr};
+    return {new Handle_IFSelect_ParamEditor(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectEditDirPart*> HandleIFSelectEditor_downcast_to_HandleIGESSelectEditDirPart(const HandleIFSelectEditor* self_) {
+extern "C" OcctResult<Handle_IGESSelect_EditDirPart*> Handle_IFSelect_Editor_downcast_to_Handle_IGESSelect_EditDirPart(const Handle_IFSelect_Editor* self_) {
     try {
     opencascade::handle<IGESSelect_EditDirPart> result = opencascade::handle<IGESSelect_EditDirPart>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectEditDirPart(result), nullptr};
+    return {new Handle_IGESSelect_EditDirPart(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectEditHeader*> HandleIFSelectEditor_downcast_to_HandleIGESSelectEditHeader(const HandleIFSelectEditor* self_) {
+extern "C" OcctResult<Handle_IGESSelect_EditHeader*> Handle_IFSelect_Editor_downcast_to_Handle_IGESSelect_EditHeader(const Handle_IFSelect_Editor* self_) {
     try {
     opencascade::handle<IGESSelect_EditHeader> result = opencascade::handle<IGESSelect_EditHeader>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectEditHeader(result), nullptr};
+    return {new Handle_IGESSelect_EditHeader(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleSTEPEditEditContext*> HandleIFSelectEditor_downcast_to_HandleSTEPEditEditContext(const HandleIFSelectEditor* self_) {
+extern "C" OcctResult<Handle_STEPEdit_EditContext*> Handle_IFSelect_Editor_downcast_to_Handle_STEPEdit_EditContext(const Handle_IFSelect_Editor* self_) {
     try {
     opencascade::handle<STEPEdit_EditContext> result = opencascade::handle<STEPEdit_EditContext>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleSTEPEditEditContext(result), nullptr};
+    return {new Handle_STEPEdit_EditContext(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleSTEPEditEditSDR*> HandleIFSelectEditor_downcast_to_HandleSTEPEditEditSDR(const HandleIFSelectEditor* self_) {
+extern "C" OcctResult<Handle_STEPEdit_EditSDR*> Handle_IFSelect_Editor_downcast_to_Handle_STEPEdit_EditSDR(const Handle_IFSelect_Editor* self_) {
     try {
     opencascade::handle<STEPEdit_EditSDR> result = opencascade::handle<STEPEdit_EditSDR>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleSTEPEditEditSDR(result), nullptr};
+    return {new Handle_STEPEdit_EditSDR(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -4740,8 +4613,8 @@ extern "C" OcctResult<int32_t> IFSelect_Functions_give_entity_number(Handle(IFSe
     try { return {IFSelect_Functions::GiveEntityNumber(*WS, name), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> IFSelect_Functions_give_list(Handle(IFSelect_WorkSession) const* WS, const char* first, const char* second) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(IFSelect_Functions::GiveList(*WS, first, second)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFSelect_Functions_give_list(Handle(IFSelect_WorkSession) const* WS, const char* first, const char* second) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(IFSelect_Functions::GiveList(*WS, first, second)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(IFSelect_Dispatch)*> IFSelect_Functions_give_dispatch(Handle(IFSelect_WorkSession) const* WS, const char* name, bool mode) {
@@ -4808,167 +4681,167 @@ extern "C" OcctResult<Handle(Standard_Type) const*> IFSelect_GeneralModifier_get
 }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_GeneralModifier_as_Standard_Transient(const IFSelect_GeneralModifier* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_GeneralModifier_as_Standard_Transient_mut(IFSelect_GeneralModifier* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IFSelect_GeneralModifier*> HandleIFSelectGeneralModifier_get(const HandleIFSelectGeneralModifier* handle) {
+extern "C" OcctResult<const IFSelect_GeneralModifier*> Handle_IFSelect_GeneralModifier_get(const Handle_IFSelect_GeneralModifier* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_GeneralModifier*> HandleIFSelectGeneralModifier_get_mut(HandleIFSelectGeneralModifier* handle) {
+extern "C" OcctResult<IFSelect_GeneralModifier*> Handle_IFSelect_GeneralModifier_get_mut(Handle_IFSelect_GeneralModifier* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectGeneralModifier_to_HandleStandardTransient(const HandleIFSelectGeneralModifier* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_GeneralModifier_to_Handle_Standard_Transient(const Handle_IFSelect_GeneralModifier* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectModifEditForm*> HandleIFSelectGeneralModifier_downcast_to_HandleIFSelectModifEditForm(const HandleIFSelectGeneralModifier* self_) {
+extern "C" OcctResult<Handle_IFSelect_ModifEditForm*> Handle_IFSelect_GeneralModifier_downcast_to_Handle_IFSelect_ModifEditForm(const Handle_IFSelect_GeneralModifier* self_) {
     try {
     opencascade::handle<IFSelect_ModifEditForm> result = opencascade::handle<IFSelect_ModifEditForm>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectModifEditForm(result), nullptr};
+    return {new Handle_IFSelect_ModifEditForm(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectModifReorder*> HandleIFSelectGeneralModifier_downcast_to_HandleIFSelectModifReorder(const HandleIFSelectGeneralModifier* self_) {
+extern "C" OcctResult<Handle_IFSelect_ModifReorder*> Handle_IFSelect_GeneralModifier_downcast_to_Handle_IFSelect_ModifReorder(const Handle_IFSelect_GeneralModifier* self_) {
     try {
     opencascade::handle<IFSelect_ModifReorder> result = opencascade::handle<IFSelect_ModifReorder>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectModifReorder(result), nullptr};
+    return {new Handle_IFSelect_ModifReorder(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectAddFileComment*> HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectAddFileComment(const HandleIFSelectGeneralModifier* self_) {
+extern "C" OcctResult<Handle_IGESSelect_AddFileComment*> Handle_IFSelect_GeneralModifier_downcast_to_Handle_IGESSelect_AddFileComment(const Handle_IFSelect_GeneralModifier* self_) {
     try {
     opencascade::handle<IGESSelect_AddFileComment> result = opencascade::handle<IGESSelect_AddFileComment>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectAddFileComment(result), nullptr};
+    return {new Handle_IGESSelect_AddFileComment(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectAddGroup*> HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectAddGroup(const HandleIFSelectGeneralModifier* self_) {
+extern "C" OcctResult<Handle_IGESSelect_AddGroup*> Handle_IFSelect_GeneralModifier_downcast_to_Handle_IGESSelect_AddGroup(const Handle_IFSelect_GeneralModifier* self_) {
     try {
     opencascade::handle<IGESSelect_AddGroup> result = opencascade::handle<IGESSelect_AddGroup>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectAddGroup(result), nullptr};
+    return {new Handle_IGESSelect_AddGroup(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectAutoCorrect*> HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectAutoCorrect(const HandleIFSelectGeneralModifier* self_) {
+extern "C" OcctResult<Handle_IGESSelect_AutoCorrect*> Handle_IFSelect_GeneralModifier_downcast_to_Handle_IGESSelect_AutoCorrect(const Handle_IFSelect_GeneralModifier* self_) {
     try {
     opencascade::handle<IGESSelect_AutoCorrect> result = opencascade::handle<IGESSelect_AutoCorrect>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectAutoCorrect(result), nullptr};
+    return {new Handle_IGESSelect_AutoCorrect(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectChangeLevelList*> HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectChangeLevelList(const HandleIFSelectGeneralModifier* self_) {
+extern "C" OcctResult<Handle_IGESSelect_ChangeLevelList*> Handle_IFSelect_GeneralModifier_downcast_to_Handle_IGESSelect_ChangeLevelList(const Handle_IFSelect_GeneralModifier* self_) {
     try {
     opencascade::handle<IGESSelect_ChangeLevelList> result = opencascade::handle<IGESSelect_ChangeLevelList>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectChangeLevelList(result), nullptr};
+    return {new Handle_IGESSelect_ChangeLevelList(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectChangeLevelNumber*> HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectChangeLevelNumber(const HandleIFSelectGeneralModifier* self_) {
+extern "C" OcctResult<Handle_IGESSelect_ChangeLevelNumber*> Handle_IFSelect_GeneralModifier_downcast_to_Handle_IGESSelect_ChangeLevelNumber(const Handle_IFSelect_GeneralModifier* self_) {
     try {
     opencascade::handle<IGESSelect_ChangeLevelNumber> result = opencascade::handle<IGESSelect_ChangeLevelNumber>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectChangeLevelNumber(result), nullptr};
+    return {new Handle_IGESSelect_ChangeLevelNumber(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectComputeStatus*> HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectComputeStatus(const HandleIFSelectGeneralModifier* self_) {
+extern "C" OcctResult<Handle_IGESSelect_ComputeStatus*> Handle_IFSelect_GeneralModifier_downcast_to_Handle_IGESSelect_ComputeStatus(const Handle_IFSelect_GeneralModifier* self_) {
     try {
     opencascade::handle<IGESSelect_ComputeStatus> result = opencascade::handle<IGESSelect_ComputeStatus>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectComputeStatus(result), nullptr};
+    return {new Handle_IGESSelect_ComputeStatus(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectFloatFormat*> HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectFloatFormat(const HandleIFSelectGeneralModifier* self_) {
+extern "C" OcctResult<Handle_IGESSelect_FloatFormat*> Handle_IFSelect_GeneralModifier_downcast_to_Handle_IGESSelect_FloatFormat(const Handle_IFSelect_GeneralModifier* self_) {
     try {
     opencascade::handle<IGESSelect_FloatFormat> result = opencascade::handle<IGESSelect_FloatFormat>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectFloatFormat(result), nullptr};
+    return {new Handle_IGESSelect_FloatFormat(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectRebuildDrawings*> HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectRebuildDrawings(const HandleIFSelectGeneralModifier* self_) {
+extern "C" OcctResult<Handle_IGESSelect_RebuildDrawings*> Handle_IFSelect_GeneralModifier_downcast_to_Handle_IGESSelect_RebuildDrawings(const Handle_IFSelect_GeneralModifier* self_) {
     try {
     opencascade::handle<IGESSelect_RebuildDrawings> result = opencascade::handle<IGESSelect_RebuildDrawings>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectRebuildDrawings(result), nullptr};
+    return {new Handle_IGESSelect_RebuildDrawings(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectRebuildGroups*> HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectRebuildGroups(const HandleIFSelectGeneralModifier* self_) {
+extern "C" OcctResult<Handle_IGESSelect_RebuildGroups*> Handle_IFSelect_GeneralModifier_downcast_to_Handle_IGESSelect_RebuildGroups(const Handle_IFSelect_GeneralModifier* self_) {
     try {
     opencascade::handle<IGESSelect_RebuildGroups> result = opencascade::handle<IGESSelect_RebuildGroups>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectRebuildGroups(result), nullptr};
+    return {new Handle_IGESSelect_RebuildGroups(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectRemoveCurves*> HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectRemoveCurves(const HandleIFSelectGeneralModifier* self_) {
+extern "C" OcctResult<Handle_IGESSelect_RemoveCurves*> Handle_IFSelect_GeneralModifier_downcast_to_Handle_IGESSelect_RemoveCurves(const Handle_IFSelect_GeneralModifier* self_) {
     try {
     opencascade::handle<IGESSelect_RemoveCurves> result = opencascade::handle<IGESSelect_RemoveCurves>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectRemoveCurves(result), nullptr};
+    return {new Handle_IGESSelect_RemoveCurves(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSetGlobalParameter*> HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectSetGlobalParameter(const HandleIFSelectGeneralModifier* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SetGlobalParameter*> Handle_IFSelect_GeneralModifier_downcast_to_Handle_IGESSelect_SetGlobalParameter(const Handle_IFSelect_GeneralModifier* self_) {
     try {
     opencascade::handle<IGESSelect_SetGlobalParameter> result = opencascade::handle<IGESSelect_SetGlobalParameter>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSetGlobalParameter(result), nullptr};
+    return {new Handle_IGESSelect_SetGlobalParameter(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSetLabel*> HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectSetLabel(const HandleIFSelectGeneralModifier* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SetLabel*> Handle_IFSelect_GeneralModifier_downcast_to_Handle_IGESSelect_SetLabel(const Handle_IFSelect_GeneralModifier* self_) {
     try {
     opencascade::handle<IGESSelect_SetLabel> result = opencascade::handle<IGESSelect_SetLabel>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSetLabel(result), nullptr};
+    return {new Handle_IGESSelect_SetLabel(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSetVersion5*> HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectSetVersion5(const HandleIFSelectGeneralModifier* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SetVersion5*> Handle_IFSelect_GeneralModifier_downcast_to_Handle_IGESSelect_SetVersion5(const Handle_IFSelect_GeneralModifier* self_) {
     try {
     opencascade::handle<IGESSelect_SetVersion5> result = opencascade::handle<IGESSelect_SetVersion5>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSetVersion5(result), nullptr};
+    return {new Handle_IGESSelect_SetVersion5(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectUpdateCreationDate*> HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectUpdateCreationDate(const HandleIFSelectGeneralModifier* self_) {
+extern "C" OcctResult<Handle_IGESSelect_UpdateCreationDate*> Handle_IFSelect_GeneralModifier_downcast_to_Handle_IGESSelect_UpdateCreationDate(const Handle_IFSelect_GeneralModifier* self_) {
     try {
     opencascade::handle<IGESSelect_UpdateCreationDate> result = opencascade::handle<IGESSelect_UpdateCreationDate>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectUpdateCreationDate(result), nullptr};
+    return {new Handle_IGESSelect_UpdateCreationDate(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectUpdateFileName*> HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectUpdateFileName(const HandleIFSelectGeneralModifier* self_) {
+extern "C" OcctResult<Handle_IGESSelect_UpdateFileName*> Handle_IFSelect_GeneralModifier_downcast_to_Handle_IGESSelect_UpdateFileName(const Handle_IFSelect_GeneralModifier* self_) {
     try {
     opencascade::handle<IGESSelect_UpdateFileName> result = opencascade::handle<IGESSelect_UpdateFileName>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectUpdateFileName(result), nullptr};
+    return {new Handle_IGESSelect_UpdateFileName(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectUpdateLastChange*> HandleIFSelectGeneralModifier_downcast_to_HandleIGESSelectUpdateLastChange(const HandleIFSelectGeneralModifier* self_) {
+extern "C" OcctResult<Handle_IGESSelect_UpdateLastChange*> Handle_IFSelect_GeneralModifier_downcast_to_Handle_IGESSelect_UpdateLastChange(const Handle_IFSelect_GeneralModifier* self_) {
     try {
     opencascade::handle<IGESSelect_UpdateLastChange> result = opencascade::handle<IGESSelect_UpdateLastChange>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectUpdateLastChange(result), nullptr};
+    return {new Handle_IGESSelect_UpdateLastChange(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStepSelectFloatFormat*> HandleIFSelectGeneralModifier_downcast_to_HandleStepSelectFloatFormat(const HandleIFSelectGeneralModifier* self_) {
+extern "C" OcctResult<Handle_StepSelect_FloatFormat*> Handle_IFSelect_GeneralModifier_downcast_to_Handle_StepSelect_FloatFormat(const Handle_IFSelect_GeneralModifier* self_) {
     try {
     opencascade::handle<StepSelect_FloatFormat> result = opencascade::handle<StepSelect_FloatFormat>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleStepSelectFloatFormat(result), nullptr};
+    return {new Handle_StepSelect_FloatFormat(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -5018,7 +4891,7 @@ extern "C" const char* IFSelect_GraphCounter_set_applied(IFSelect_GraphCounter* 
     try { self_->SetApplied(*sel); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IFSelect_GraphCounter_add_with_graph(IFSelect_GraphCounter* self_, Handle(TColStd_HSequenceOfTransient) const* list, Interface_Graph const* graph) {
+extern "C" const char* IFSelect_GraphCounter_add_with_graph(IFSelect_GraphCounter* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list, Interface_Graph const* graph) {
     try { self_->AddWithGraph(*list, *graph); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5040,28 +4913,28 @@ extern "C" OcctResult<const IFSelect_SignatureList*> IFSelect_GraphCounter_as_IF
 extern "C" OcctResult<IFSelect_SignatureList*> IFSelect_GraphCounter_as_IFSelect_SignatureList_mut(IFSelect_GraphCounter* self_) { return {static_cast<IFSelect_SignatureList*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_GraphCounter_as_Standard_Transient(const IFSelect_GraphCounter* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_GraphCounter_as_Standard_Transient_mut(IFSelect_GraphCounter* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectGraphCounter*> IFSelect_GraphCounter_to_handle(IFSelect_GraphCounter* obj) {
-    try { return {new HandleIFSelectGraphCounter(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_GraphCounter*> IFSelect_GraphCounter_to_handle(IFSelect_GraphCounter* obj) {
+    try { return {new Handle_IFSelect_GraphCounter(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_GraphCounter*> HandleIFSelectGraphCounter_get(const HandleIFSelectGraphCounter* handle) {
+extern "C" OcctResult<const IFSelect_GraphCounter*> Handle_IFSelect_GraphCounter_get(const Handle_IFSelect_GraphCounter* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_GraphCounter*> HandleIFSelectGraphCounter_get_mut(HandleIFSelectGraphCounter* handle) {
+extern "C" OcctResult<IFSelect_GraphCounter*> Handle_IFSelect_GraphCounter_get_mut(Handle_IFSelect_GraphCounter* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSignCounter*> HandleIFSelectGraphCounter_to_HandleIFSelectSignCounter(const HandleIFSelectGraphCounter* self_) {
-    try { return {new HandleIFSelectSignCounter(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SignCounter*> Handle_IFSelect_GraphCounter_to_Handle_IFSelect_SignCounter(const Handle_IFSelect_GraphCounter* self_) {
+    try { return {new Handle_IFSelect_SignCounter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSignatureList*> HandleIFSelectGraphCounter_to_HandleIFSelectSignatureList(const HandleIFSelectGraphCounter* self_) {
-    try { return {new HandleIFSelectSignatureList(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SignatureList*> Handle_IFSelect_GraphCounter_to_Handle_IFSelect_SignatureList(const Handle_IFSelect_GraphCounter* self_) {
+    try { return {new Handle_IFSelect_SignatureList(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectGraphCounter_to_HandleStandardTransient(const HandleIFSelectGraphCounter* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_GraphCounter_to_Handle_Standard_Transient(const Handle_IFSelect_GraphCounter* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(IFSelect_Signature)*> IFSelect_GraphCounter_inherited_Signature(const IFSelect_GraphCounter* self) {
@@ -5080,7 +4953,7 @@ extern "C" const char* IFSelect_GraphCounter_inherited_AddSign(IFSelect_GraphCou
     try { self->AddSign(ent, model); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IFSelect_GraphCounter_inherited_AddList(IFSelect_GraphCounter* self, Handle(TColStd_HSequenceOfTransient) const& list, Handle(Interface_InterfaceModel) const& model) {
+extern "C" const char* IFSelect_GraphCounter_inherited_AddList(IFSelect_GraphCounter* self, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& list, Handle(Interface_InterfaceModel) const& model) {
     try { self->AddList(list, model); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5179,94 +5052,6 @@ extern "C" const char* IFSelect_GraphCounter_inherited_Delete(const IFSelect_Gra
 extern "C" void IFSelect_GraphCounter_destructor(IFSelect_GraphCounter* self_) { delete self_; }
 
 // ========================
-// IFSelect_HSeqOfSelection wrappers
-// ========================
-
-extern "C" OcctResult<IFSelect_HSeqOfSelection*> IFSelect_HSeqOfSelection_ctor() {
-    try { return {new IFSelect_HSeqOfSelection(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<IFSelect_HSeqOfSelection*> IFSelect_HSeqOfSelection_ctor_tseqofselection(IFSelect_TSeqOfSelection const* theOther) {
-    try { return {new IFSelect_HSeqOfSelection(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<IFSelect_TSeqOfSelection const*> IFSelect_HSeqOfSelection_sequence(const IFSelect_HSeqOfSelection* self_) {
-    try { return {&(self_->Sequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* IFSelect_HSeqOfSelection_append_handleifselectselection(IFSelect_HSeqOfSelection* self_, Handle(IFSelect_Selection) const* theItem) {
-    try { self_->Append(*theItem); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* IFSelect_HSeqOfSelection_append_tseqofselection(IFSelect_HSeqOfSelection* self_, IFSelect_TSeqOfSelection* theSequence) {
-    try { self_->Append(*theSequence); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<IFSelect_TSeqOfSelection*> IFSelect_HSeqOfSelection_change_sequence(IFSelect_HSeqOfSelection* self_) {
-    try { return {&(self_->ChangeSequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> IFSelect_HSeqOfSelection_dynamic_type(const IFSelect_HSeqOfSelection* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> IFSelect_HSeqOfSelection_get_type_name() {
-    try { return {IFSelect_HSeqOfSelection::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> IFSelect_HSeqOfSelection_get_type_descriptor() {
-    try { return {&(IFSelect_HSeqOfSelection::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> IFSelect_HSeqOfSelection_as_Standard_Transient(const IFSelect_HSeqOfSelection* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> IFSelect_HSeqOfSelection_as_Standard_Transient_mut(IFSelect_HSeqOfSelection* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectHSeqOfSelection*> IFSelect_HSeqOfSelection_to_handle(IFSelect_HSeqOfSelection* obj) {
-    try { return {new HandleIFSelectHSeqOfSelection(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const IFSelect_HSeqOfSelection*> HandleIFSelectHSeqOfSelection_get(const HandleIFSelectHSeqOfSelection* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<IFSelect_HSeqOfSelection*> HandleIFSelectHSeqOfSelection_get_mut(HandleIFSelectHSeqOfSelection* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectHSeqOfSelection_to_HandleStandardTransient(const HandleIFSelectHSeqOfSelection* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> IFSelect_HSeqOfSelection_inherited_IsInstance(const IFSelect_HSeqOfSelection* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> IFSelect_HSeqOfSelection_inherited_IsKind(const IFSelect_HSeqOfSelection* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> IFSelect_HSeqOfSelection_inherited_This(const IFSelect_HSeqOfSelection* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> IFSelect_HSeqOfSelection_inherited_GetRefCount(const IFSelect_HSeqOfSelection* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* IFSelect_HSeqOfSelection_inherited_IncrementRefCounter(IFSelect_HSeqOfSelection* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> IFSelect_HSeqOfSelection_inherited_DecrementRefCounter(IFSelect_HSeqOfSelection* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* IFSelect_HSeqOfSelection_inherited_Delete(const IFSelect_HSeqOfSelection* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void IFSelect_HSeqOfSelection_destructor(IFSelect_HSeqOfSelection* self_) { delete self_; }
-
-// ========================
 // IFSelect_IntParam wrappers
 // ========================
 
@@ -5304,20 +5089,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> IFSelect_IntParam_get_type_d
 }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_IntParam_as_Standard_Transient(const IFSelect_IntParam* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_IntParam_as_Standard_Transient_mut(IFSelect_IntParam* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectIntParam*> IFSelect_IntParam_to_handle(IFSelect_IntParam* obj) {
-    try { return {new HandleIFSelectIntParam(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_IntParam*> IFSelect_IntParam_to_handle(IFSelect_IntParam* obj) {
+    try { return {new Handle_IFSelect_IntParam(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_IntParam*> HandleIFSelectIntParam_get(const HandleIFSelectIntParam* handle) {
+extern "C" OcctResult<const IFSelect_IntParam*> Handle_IFSelect_IntParam_get(const Handle_IFSelect_IntParam* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_IntParam*> HandleIFSelectIntParam_get_mut(HandleIFSelectIntParam* handle) {
+extern "C" OcctResult<IFSelect_IntParam*> Handle_IFSelect_IntParam_get_mut(Handle_IFSelect_IntParam* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectIntParam_to_HandleStandardTransient(const HandleIFSelectIntParam* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_IntParam_to_Handle_Standard_Transient(const Handle_IFSelect_IntParam* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IFSelect_IntParam_inherited_IsInstance(const IFSelect_IntParam* self, Handle(Standard_Type) const& theType) {
@@ -5362,12 +5147,12 @@ extern "C" OcctResult<IFSelect_ListEditor*> IFSelect_ListEditor_ctor_handleinter
     try { return {new IFSelect_ListEditor(*def, max), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfHAsciiString)*> IFSelect_ListEditor_original_values(const IFSelect_ListEditor* self_) {
-    try { return {new Handle(TColStd_HSequenceOfHAsciiString)(self_->OriginalValues()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> IFSelect_ListEditor_original_values(const IFSelect_ListEditor* self_) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->OriginalValues()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfHAsciiString)*> IFSelect_ListEditor_edited_values(const IFSelect_ListEditor* self_) {
-    try { return {new Handle(TColStd_HSequenceOfHAsciiString)(self_->EditedValues()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> IFSelect_ListEditor_edited_values(const IFSelect_ListEditor* self_) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->EditedValues()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(TCollection_HAsciiString)*> IFSelect_ListEditor_value(const IFSelect_ListEditor* self_, int32_t num, bool edited) {
@@ -5378,7 +5163,7 @@ extern "C" const char* IFSelect_ListEditor_load_model(IFSelect_ListEditor* self_
     try { self_->LoadModel(*model); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IFSelect_ListEditor_load_values(IFSelect_ListEditor* self_, Handle(TColStd_HSequenceOfHAsciiString) const* vals) {
+extern "C" const char* IFSelect_ListEditor_load_values(IFSelect_ListEditor* self_, Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString) const* vals) {
     try { self_->LoadValues(*vals); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5390,7 +5175,7 @@ extern "C" const char* IFSelect_ListEditor_clear_edit(IFSelect_ListEditor* self_
     try { self_->ClearEdit(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> IFSelect_ListEditor_load_edited(IFSelect_ListEditor* self_, Handle(TColStd_HSequenceOfHAsciiString) const* list) {
+extern "C" OcctResult<bool> IFSelect_ListEditor_load_edited(IFSelect_ListEditor* self_, Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString) const* list) {
     try { return {self_->LoadEdited(*list), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5440,20 +5225,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> IFSelect_ListEditor_get_type
 }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_ListEditor_as_Standard_Transient(const IFSelect_ListEditor* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_ListEditor_as_Standard_Transient_mut(IFSelect_ListEditor* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectListEditor*> IFSelect_ListEditor_to_handle(IFSelect_ListEditor* obj) {
-    try { return {new HandleIFSelectListEditor(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_ListEditor*> IFSelect_ListEditor_to_handle(IFSelect_ListEditor* obj) {
+    try { return {new Handle_IFSelect_ListEditor(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_ListEditor*> HandleIFSelectListEditor_get(const HandleIFSelectListEditor* handle) {
+extern "C" OcctResult<const IFSelect_ListEditor*> Handle_IFSelect_ListEditor_get(const Handle_IFSelect_ListEditor* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_ListEditor*> HandleIFSelectListEditor_get_mut(HandleIFSelectListEditor* handle) {
+extern "C" OcctResult<IFSelect_ListEditor*> Handle_IFSelect_ListEditor_get_mut(Handle_IFSelect_ListEditor* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectListEditor_to_HandleStandardTransient(const HandleIFSelectListEditor* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_ListEditor_to_Handle_Standard_Transient(const Handle_IFSelect_ListEditor* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IFSelect_ListEditor_inherited_IsInstance(const IFSelect_ListEditor* self, Handle(Standard_Type) const& theType) {
@@ -5514,6 +5299,10 @@ extern "C" OcctResult<Interface_CheckIterator*> IFSelect_ModelCopier_send_select
     try { return {new Interface_CheckIterator(self_->SendSelected(filename, *G, *WL, *protocol, *iter)), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<Handle(Interface_InterfaceModel)*> IFSelect_ModelCopier_copied_remaining(IFSelect_ModelCopier* self_, Interface_Graph const* G, Handle(IFSelect_WorkLibrary) const* WL, Interface_CopyTool* TC) {
+    try { return {new Handle(Interface_InterfaceModel)(self_->CopiedRemaining(*G, *WL, *TC)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<TCollection_AsciiString*> IFSelect_ModelCopier_file_name(const IFSelect_ModelCopier* self_, int32_t num) {
     try { return {new TCollection_AsciiString(self_->FileName(num)), nullptr}; }
     OCCT_CATCH_RETURN
@@ -5526,8 +5315,8 @@ extern "C" OcctResult<Handle(IFSelect_AppliedModifiers)*> IFSelect_ModelCopier_a
     try { return {new Handle(IFSelect_AppliedModifiers)(self_->AppliedModifiers(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfHAsciiString)*> IFSelect_ModelCopier_sent_files(const IFSelect_ModelCopier* self_) {
-    try { return {new Handle(TColStd_HSequenceOfHAsciiString)(self_->SentFiles()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> IFSelect_ModelCopier_sent_files(const IFSelect_ModelCopier* self_) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->SentFiles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFSelect_ModelCopier_set_share_out(IFSelect_ModelCopier* self_, Handle(IFSelect_ShareOut) const* sho) {
@@ -5557,10 +5346,6 @@ extern "C" OcctResult<bool> IFSelect_ModelCopier_set_applied_modifiers(IFSelect_
 extern "C" OcctResult<bool> IFSelect_ModelCopier_clear_applied_modifiers(IFSelect_ModelCopier* self_, int32_t num) {
     try { return {self_->ClearAppliedModifiers(num), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* IFSelect_ModelCopier_copied_remaining(IFSelect_ModelCopier* self_, Interface_Graph const* G, Handle(IFSelect_WorkLibrary) const* WL, Interface_CopyTool* TC, Handle(Interface_InterfaceModel)* newmod) {
-    try { self_->CopiedRemaining(*G, *WL, *TC, *newmod); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<bool> IFSelect_ModelCopier_set_remaining(const IFSelect_ModelCopier* self_, Interface_Graph* CG) {
     try { return {self_->SetRemaining(*CG), nullptr}; }
@@ -5592,20 +5377,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> IFSelect_ModelCopier_get_typ
 }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_ModelCopier_as_Standard_Transient(const IFSelect_ModelCopier* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_ModelCopier_as_Standard_Transient_mut(IFSelect_ModelCopier* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectModelCopier*> IFSelect_ModelCopier_to_handle(IFSelect_ModelCopier* obj) {
-    try { return {new HandleIFSelectModelCopier(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_ModelCopier*> IFSelect_ModelCopier_to_handle(IFSelect_ModelCopier* obj) {
+    try { return {new Handle_IFSelect_ModelCopier(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_ModelCopier*> HandleIFSelectModelCopier_get(const HandleIFSelectModelCopier* handle) {
+extern "C" OcctResult<const IFSelect_ModelCopier*> Handle_IFSelect_ModelCopier_get(const Handle_IFSelect_ModelCopier* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_ModelCopier*> HandleIFSelectModelCopier_get_mut(HandleIFSelectModelCopier* handle) {
+extern "C" OcctResult<IFSelect_ModelCopier*> Handle_IFSelect_ModelCopier_get_mut(Handle_IFSelect_ModelCopier* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectModelCopier_to_HandleStandardTransient(const HandleIFSelectModelCopier* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_ModelCopier_to_Handle_Standard_Transient(const Handle_IFSelect_ModelCopier* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IFSelect_ModelCopier_inherited_IsInstance(const IFSelect_ModelCopier* self, Handle(Standard_Type) const& theType) {
@@ -5676,28 +5461,28 @@ extern "C" OcctResult<const IFSelect_GeneralModifier*> IFSelect_ModifEditForm_as
 extern "C" OcctResult<IFSelect_GeneralModifier*> IFSelect_ModifEditForm_as_IFSelect_GeneralModifier_mut(IFSelect_ModifEditForm* self_) { return {static_cast<IFSelect_GeneralModifier*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_ModifEditForm_as_Standard_Transient(const IFSelect_ModifEditForm* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_ModifEditForm_as_Standard_Transient_mut(IFSelect_ModifEditForm* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectModifEditForm*> IFSelect_ModifEditForm_to_handle(IFSelect_ModifEditForm* obj) {
-    try { return {new HandleIFSelectModifEditForm(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_ModifEditForm*> IFSelect_ModifEditForm_to_handle(IFSelect_ModifEditForm* obj) {
+    try { return {new Handle_IFSelect_ModifEditForm(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_ModifEditForm*> HandleIFSelectModifEditForm_get(const HandleIFSelectModifEditForm* handle) {
+extern "C" OcctResult<const IFSelect_ModifEditForm*> Handle_IFSelect_ModifEditForm_get(const Handle_IFSelect_ModifEditForm* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_ModifEditForm*> HandleIFSelectModifEditForm_get_mut(HandleIFSelectModifEditForm* handle) {
+extern "C" OcctResult<IFSelect_ModifEditForm*> Handle_IFSelect_ModifEditForm_get_mut(Handle_IFSelect_ModifEditForm* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectModifier*> HandleIFSelectModifEditForm_to_HandleIFSelectModifier(const HandleIFSelectModifEditForm* self_) {
-    try { return {new HandleIFSelectModifier(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Modifier*> Handle_IFSelect_ModifEditForm_to_Handle_IFSelect_Modifier(const Handle_IFSelect_ModifEditForm* self_) {
+    try { return {new Handle_IFSelect_Modifier(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectGeneralModifier*> HandleIFSelectModifEditForm_to_HandleIFSelectGeneralModifier(const HandleIFSelectModifEditForm* self_) {
-    try { return {new HandleIFSelectGeneralModifier(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_GeneralModifier*> Handle_IFSelect_ModifEditForm_to_Handle_IFSelect_GeneralModifier(const Handle_IFSelect_ModifEditForm* self_) {
+    try { return {new Handle_IFSelect_GeneralModifier(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectModifEditForm_to_HandleStandardTransient(const HandleIFSelectModifEditForm* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_ModifEditForm_to_Handle_Standard_Transient(const Handle_IFSelect_ModifEditForm* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IFSelect_ModifEditForm_inherited_MayChangeGraph(const IFSelect_ModifEditForm* self) {
@@ -5796,28 +5581,28 @@ extern "C" OcctResult<const IFSelect_GeneralModifier*> IFSelect_ModifReorder_as_
 extern "C" OcctResult<IFSelect_GeneralModifier*> IFSelect_ModifReorder_as_IFSelect_GeneralModifier_mut(IFSelect_ModifReorder* self_) { return {static_cast<IFSelect_GeneralModifier*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_ModifReorder_as_Standard_Transient(const IFSelect_ModifReorder* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_ModifReorder_as_Standard_Transient_mut(IFSelect_ModifReorder* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectModifReorder*> IFSelect_ModifReorder_to_handle(IFSelect_ModifReorder* obj) {
-    try { return {new HandleIFSelectModifReorder(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_ModifReorder*> IFSelect_ModifReorder_to_handle(IFSelect_ModifReorder* obj) {
+    try { return {new Handle_IFSelect_ModifReorder(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_ModifReorder*> HandleIFSelectModifReorder_get(const HandleIFSelectModifReorder* handle) {
+extern "C" OcctResult<const IFSelect_ModifReorder*> Handle_IFSelect_ModifReorder_get(const Handle_IFSelect_ModifReorder* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_ModifReorder*> HandleIFSelectModifReorder_get_mut(HandleIFSelectModifReorder* handle) {
+extern "C" OcctResult<IFSelect_ModifReorder*> Handle_IFSelect_ModifReorder_get_mut(Handle_IFSelect_ModifReorder* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectModifier*> HandleIFSelectModifReorder_to_HandleIFSelectModifier(const HandleIFSelectModifReorder* self_) {
-    try { return {new HandleIFSelectModifier(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Modifier*> Handle_IFSelect_ModifReorder_to_Handle_IFSelect_Modifier(const Handle_IFSelect_ModifReorder* self_) {
+    try { return {new Handle_IFSelect_Modifier(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectGeneralModifier*> HandleIFSelectModifReorder_to_HandleIFSelectGeneralModifier(const HandleIFSelectModifReorder* self_) {
-    try { return {new HandleIFSelectGeneralModifier(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_GeneralModifier*> Handle_IFSelect_ModifReorder_to_Handle_IFSelect_GeneralModifier(const Handle_IFSelect_ModifReorder* self_) {
+    try { return {new Handle_IFSelect_GeneralModifier(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectModifReorder_to_HandleStandardTransient(const HandleIFSelectModifReorder* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_ModifReorder_to_Handle_Standard_Transient(const Handle_IFSelect_ModifReorder* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IFSelect_ModifReorder_inherited_MayChangeGraph(const IFSelect_ModifReorder* self) {
@@ -5906,147 +5691,147 @@ extern "C" OcctResult<const IFSelect_GeneralModifier*> IFSelect_Modifier_as_IFSe
 extern "C" OcctResult<IFSelect_GeneralModifier*> IFSelect_Modifier_as_IFSelect_GeneralModifier_mut(IFSelect_Modifier* self_) { return {static_cast<IFSelect_GeneralModifier*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_Modifier_as_Standard_Transient(const IFSelect_Modifier* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_Modifier_as_Standard_Transient_mut(IFSelect_Modifier* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IFSelect_Modifier*> HandleIFSelectModifier_get(const HandleIFSelectModifier* handle) {
+extern "C" OcctResult<const IFSelect_Modifier*> Handle_IFSelect_Modifier_get(const Handle_IFSelect_Modifier* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_Modifier*> HandleIFSelectModifier_get_mut(HandleIFSelectModifier* handle) {
+extern "C" OcctResult<IFSelect_Modifier*> Handle_IFSelect_Modifier_get_mut(Handle_IFSelect_Modifier* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectGeneralModifier*> HandleIFSelectModifier_to_HandleIFSelectGeneralModifier(const HandleIFSelectModifier* self_) {
-    try { return {new HandleIFSelectGeneralModifier(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_GeneralModifier*> Handle_IFSelect_Modifier_to_Handle_IFSelect_GeneralModifier(const Handle_IFSelect_Modifier* self_) {
+    try { return {new Handle_IFSelect_GeneralModifier(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectModifier_to_HandleStandardTransient(const HandleIFSelectModifier* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_Modifier_to_Handle_Standard_Transient(const Handle_IFSelect_Modifier* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectModifEditForm*> HandleIFSelectModifier_downcast_to_HandleIFSelectModifEditForm(const HandleIFSelectModifier* self_) {
+extern "C" OcctResult<Handle_IFSelect_ModifEditForm*> Handle_IFSelect_Modifier_downcast_to_Handle_IFSelect_ModifEditForm(const Handle_IFSelect_Modifier* self_) {
     try {
     opencascade::handle<IFSelect_ModifEditForm> result = opencascade::handle<IFSelect_ModifEditForm>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectModifEditForm(result), nullptr};
+    return {new Handle_IFSelect_ModifEditForm(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectModifReorder*> HandleIFSelectModifier_downcast_to_HandleIFSelectModifReorder(const HandleIFSelectModifier* self_) {
+extern "C" OcctResult<Handle_IFSelect_ModifReorder*> Handle_IFSelect_Modifier_downcast_to_Handle_IFSelect_ModifReorder(const Handle_IFSelect_Modifier* self_) {
     try {
     opencascade::handle<IFSelect_ModifReorder> result = opencascade::handle<IFSelect_ModifReorder>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectModifReorder(result), nullptr};
+    return {new Handle_IFSelect_ModifReorder(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectAddGroup*> HandleIFSelectModifier_downcast_to_HandleIGESSelectAddGroup(const HandleIFSelectModifier* self_) {
+extern "C" OcctResult<Handle_IGESSelect_AddGroup*> Handle_IFSelect_Modifier_downcast_to_Handle_IGESSelect_AddGroup(const Handle_IFSelect_Modifier* self_) {
     try {
     opencascade::handle<IGESSelect_AddGroup> result = opencascade::handle<IGESSelect_AddGroup>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectAddGroup(result), nullptr};
+    return {new Handle_IGESSelect_AddGroup(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectAutoCorrect*> HandleIFSelectModifier_downcast_to_HandleIGESSelectAutoCorrect(const HandleIFSelectModifier* self_) {
+extern "C" OcctResult<Handle_IGESSelect_AutoCorrect*> Handle_IFSelect_Modifier_downcast_to_Handle_IGESSelect_AutoCorrect(const Handle_IFSelect_Modifier* self_) {
     try {
     opencascade::handle<IGESSelect_AutoCorrect> result = opencascade::handle<IGESSelect_AutoCorrect>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectAutoCorrect(result), nullptr};
+    return {new Handle_IGESSelect_AutoCorrect(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectChangeLevelList*> HandleIFSelectModifier_downcast_to_HandleIGESSelectChangeLevelList(const HandleIFSelectModifier* self_) {
+extern "C" OcctResult<Handle_IGESSelect_ChangeLevelList*> Handle_IFSelect_Modifier_downcast_to_Handle_IGESSelect_ChangeLevelList(const Handle_IFSelect_Modifier* self_) {
     try {
     opencascade::handle<IGESSelect_ChangeLevelList> result = opencascade::handle<IGESSelect_ChangeLevelList>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectChangeLevelList(result), nullptr};
+    return {new Handle_IGESSelect_ChangeLevelList(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectChangeLevelNumber*> HandleIFSelectModifier_downcast_to_HandleIGESSelectChangeLevelNumber(const HandleIFSelectModifier* self_) {
+extern "C" OcctResult<Handle_IGESSelect_ChangeLevelNumber*> Handle_IFSelect_Modifier_downcast_to_Handle_IGESSelect_ChangeLevelNumber(const Handle_IFSelect_Modifier* self_) {
     try {
     opencascade::handle<IGESSelect_ChangeLevelNumber> result = opencascade::handle<IGESSelect_ChangeLevelNumber>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectChangeLevelNumber(result), nullptr};
+    return {new Handle_IGESSelect_ChangeLevelNumber(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectComputeStatus*> HandleIFSelectModifier_downcast_to_HandleIGESSelectComputeStatus(const HandleIFSelectModifier* self_) {
+extern "C" OcctResult<Handle_IGESSelect_ComputeStatus*> Handle_IFSelect_Modifier_downcast_to_Handle_IGESSelect_ComputeStatus(const Handle_IFSelect_Modifier* self_) {
     try {
     opencascade::handle<IGESSelect_ComputeStatus> result = opencascade::handle<IGESSelect_ComputeStatus>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectComputeStatus(result), nullptr};
+    return {new Handle_IGESSelect_ComputeStatus(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectRebuildDrawings*> HandleIFSelectModifier_downcast_to_HandleIGESSelectRebuildDrawings(const HandleIFSelectModifier* self_) {
+extern "C" OcctResult<Handle_IGESSelect_RebuildDrawings*> Handle_IFSelect_Modifier_downcast_to_Handle_IGESSelect_RebuildDrawings(const Handle_IFSelect_Modifier* self_) {
     try {
     opencascade::handle<IGESSelect_RebuildDrawings> result = opencascade::handle<IGESSelect_RebuildDrawings>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectRebuildDrawings(result), nullptr};
+    return {new Handle_IGESSelect_RebuildDrawings(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectRebuildGroups*> HandleIFSelectModifier_downcast_to_HandleIGESSelectRebuildGroups(const HandleIFSelectModifier* self_) {
+extern "C" OcctResult<Handle_IGESSelect_RebuildGroups*> Handle_IFSelect_Modifier_downcast_to_Handle_IGESSelect_RebuildGroups(const Handle_IFSelect_Modifier* self_) {
     try {
     opencascade::handle<IGESSelect_RebuildGroups> result = opencascade::handle<IGESSelect_RebuildGroups>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectRebuildGroups(result), nullptr};
+    return {new Handle_IGESSelect_RebuildGroups(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectRemoveCurves*> HandleIFSelectModifier_downcast_to_HandleIGESSelectRemoveCurves(const HandleIFSelectModifier* self_) {
+extern "C" OcctResult<Handle_IGESSelect_RemoveCurves*> Handle_IFSelect_Modifier_downcast_to_Handle_IGESSelect_RemoveCurves(const Handle_IFSelect_Modifier* self_) {
     try {
     opencascade::handle<IGESSelect_RemoveCurves> result = opencascade::handle<IGESSelect_RemoveCurves>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectRemoveCurves(result), nullptr};
+    return {new Handle_IGESSelect_RemoveCurves(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSetGlobalParameter*> HandleIFSelectModifier_downcast_to_HandleIGESSelectSetGlobalParameter(const HandleIFSelectModifier* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SetGlobalParameter*> Handle_IFSelect_Modifier_downcast_to_Handle_IGESSelect_SetGlobalParameter(const Handle_IFSelect_Modifier* self_) {
     try {
     opencascade::handle<IGESSelect_SetGlobalParameter> result = opencascade::handle<IGESSelect_SetGlobalParameter>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSetGlobalParameter(result), nullptr};
+    return {new Handle_IGESSelect_SetGlobalParameter(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSetLabel*> HandleIFSelectModifier_downcast_to_HandleIGESSelectSetLabel(const HandleIFSelectModifier* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SetLabel*> Handle_IFSelect_Modifier_downcast_to_Handle_IGESSelect_SetLabel(const Handle_IFSelect_Modifier* self_) {
     try {
     opencascade::handle<IGESSelect_SetLabel> result = opencascade::handle<IGESSelect_SetLabel>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSetLabel(result), nullptr};
+    return {new Handle_IGESSelect_SetLabel(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSetVersion5*> HandleIFSelectModifier_downcast_to_HandleIGESSelectSetVersion5(const HandleIFSelectModifier* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SetVersion5*> Handle_IFSelect_Modifier_downcast_to_Handle_IGESSelect_SetVersion5(const Handle_IFSelect_Modifier* self_) {
     try {
     opencascade::handle<IGESSelect_SetVersion5> result = opencascade::handle<IGESSelect_SetVersion5>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSetVersion5(result), nullptr};
+    return {new Handle_IGESSelect_SetVersion5(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectUpdateCreationDate*> HandleIFSelectModifier_downcast_to_HandleIGESSelectUpdateCreationDate(const HandleIFSelectModifier* self_) {
+extern "C" OcctResult<Handle_IGESSelect_UpdateCreationDate*> Handle_IFSelect_Modifier_downcast_to_Handle_IGESSelect_UpdateCreationDate(const Handle_IFSelect_Modifier* self_) {
     try {
     opencascade::handle<IGESSelect_UpdateCreationDate> result = opencascade::handle<IGESSelect_UpdateCreationDate>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectUpdateCreationDate(result), nullptr};
+    return {new Handle_IGESSelect_UpdateCreationDate(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectUpdateFileName*> HandleIFSelectModifier_downcast_to_HandleIGESSelectUpdateFileName(const HandleIFSelectModifier* self_) {
+extern "C" OcctResult<Handle_IGESSelect_UpdateFileName*> Handle_IFSelect_Modifier_downcast_to_Handle_IGESSelect_UpdateFileName(const Handle_IFSelect_Modifier* self_) {
     try {
     opencascade::handle<IGESSelect_UpdateFileName> result = opencascade::handle<IGESSelect_UpdateFileName>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectUpdateFileName(result), nullptr};
+    return {new Handle_IGESSelect_UpdateFileName(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectUpdateLastChange*> HandleIFSelectModifier_downcast_to_HandleIGESSelectUpdateLastChange(const HandleIFSelectModifier* self_) {
+extern "C" OcctResult<Handle_IGESSelect_UpdateLastChange*> Handle_IFSelect_Modifier_downcast_to_Handle_IGESSelect_UpdateLastChange(const Handle_IFSelect_Modifier* self_) {
     try {
     opencascade::handle<IGESSelect_UpdateLastChange> result = opencascade::handle<IGESSelect_UpdateLastChange>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectUpdateLastChange(result), nullptr};
+    return {new Handle_IGESSelect_UpdateLastChange(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -6152,7 +5937,7 @@ extern "C" const char* IFSelect_PacketList_add(IFSelect_PacketList* self_, Handl
     try { self_->Add(*ent); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IFSelect_PacketList_add_list(IFSelect_PacketList* self_, Handle(TColStd_HSequenceOfTransient) const* list) {
+extern "C" const char* IFSelect_PacketList_add_list(IFSelect_PacketList* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list) {
     try { self_->AddList(*list); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6186,20 +5971,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> IFSelect_PacketList_get_type
 }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_PacketList_as_Standard_Transient(const IFSelect_PacketList* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_PacketList_as_Standard_Transient_mut(IFSelect_PacketList* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectPacketList*> IFSelect_PacketList_to_handle(IFSelect_PacketList* obj) {
-    try { return {new HandleIFSelectPacketList(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_PacketList*> IFSelect_PacketList_to_handle(IFSelect_PacketList* obj) {
+    try { return {new Handle_IFSelect_PacketList(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_PacketList*> HandleIFSelectPacketList_get(const HandleIFSelectPacketList* handle) {
+extern "C" OcctResult<const IFSelect_PacketList*> Handle_IFSelect_PacketList_get(const Handle_IFSelect_PacketList* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_PacketList*> HandleIFSelectPacketList_get_mut(HandleIFSelectPacketList* handle) {
+extern "C" OcctResult<IFSelect_PacketList*> Handle_IFSelect_PacketList_get_mut(Handle_IFSelect_PacketList* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectPacketList_to_HandleStandardTransient(const HandleIFSelectPacketList* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_PacketList_to_Handle_Standard_Transient(const Handle_IFSelect_PacketList* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IFSelect_PacketList_inherited_IsInstance(const IFSelect_PacketList* self, Handle(Standard_Type) const& theType) {
@@ -6272,7 +6057,7 @@ extern "C" OcctResult<Handle(Standard_Type) const*> IFSelect_ParamEditor_dynamic
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(IFSelect_ParamEditor)*> IFSelect_ParamEditor_static_editor(Handle(TColStd_HSequenceOfHAsciiString) const* list, const char* label) {
+extern "C" OcctResult<Handle(IFSelect_ParamEditor)*> IFSelect_ParamEditor_static_editor(Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString) const* list, const char* label) {
     try { return {new Handle(IFSelect_ParamEditor)(IFSelect_ParamEditor::StaticEditor(*list, label)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6288,24 +6073,24 @@ extern "C" OcctResult<const IFSelect_Editor*> IFSelect_ParamEditor_as_IFSelect_E
 extern "C" OcctResult<IFSelect_Editor*> IFSelect_ParamEditor_as_IFSelect_Editor_mut(IFSelect_ParamEditor* self_) { return {static_cast<IFSelect_Editor*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_ParamEditor_as_Standard_Transient(const IFSelect_ParamEditor* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_ParamEditor_as_Standard_Transient_mut(IFSelect_ParamEditor* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectParamEditor*> IFSelect_ParamEditor_to_handle(IFSelect_ParamEditor* obj) {
-    try { return {new HandleIFSelectParamEditor(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_ParamEditor*> IFSelect_ParamEditor_to_handle(IFSelect_ParamEditor* obj) {
+    try { return {new Handle_IFSelect_ParamEditor(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_ParamEditor*> HandleIFSelectParamEditor_get(const HandleIFSelectParamEditor* handle) {
+extern "C" OcctResult<const IFSelect_ParamEditor*> Handle_IFSelect_ParamEditor_get(const Handle_IFSelect_ParamEditor* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_ParamEditor*> HandleIFSelectParamEditor_get_mut(HandleIFSelectParamEditor* handle) {
+extern "C" OcctResult<IFSelect_ParamEditor*> Handle_IFSelect_ParamEditor_get_mut(Handle_IFSelect_ParamEditor* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectEditor*> HandleIFSelectParamEditor_to_HandleIFSelectEditor(const HandleIFSelectParamEditor* self_) {
-    try { return {new HandleIFSelectEditor(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Editor*> Handle_IFSelect_ParamEditor_to_Handle_IFSelect_Editor(const Handle_IFSelect_ParamEditor* self_) {
+    try { return {new Handle_IFSelect_Editor(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectParamEditor_to_HandleStandardTransient(const HandleIFSelectParamEditor* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_ParamEditor_to_Handle_Standard_Transient(const Handle_IFSelect_ParamEditor* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFSelect_ParamEditor_inherited_SetList(IFSelect_ParamEditor* self, int32_t num, int32_t max) {
@@ -6352,15 +6137,15 @@ extern "C" OcctResult<Handle(IFSelect_ListEditor)*> IFSelect_ParamEditor_inherit
     try { return {new Handle(IFSelect_ListEditor)(self->ListEditor(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfHAsciiString)*> IFSelect_ParamEditor_inherited_ListValue(const IFSelect_ParamEditor* self, Handle(IFSelect_EditForm) const& form, int32_t num) {
-    try { return {new Handle(TColStd_HSequenceOfHAsciiString)(self->ListValue(form, num)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> IFSelect_ParamEditor_inherited_ListValue(const IFSelect_ParamEditor* self, Handle(IFSelect_EditForm) const& form, int32_t num) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self->ListValue(form, num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IFSelect_ParamEditor_inherited_Update(const IFSelect_ParamEditor* self, Handle(IFSelect_EditForm) const& form, int32_t num, Handle(TCollection_HAsciiString) const& newval, bool enforce) {
     try { return {self->Update(form, num, newval, enforce), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> IFSelect_ParamEditor_inherited_UpdateList(const IFSelect_ParamEditor* self, Handle(IFSelect_EditForm) const& form, int32_t num, Handle(TColStd_HSequenceOfHAsciiString) const& newlist, bool enforce) {
+extern "C" OcctResult<bool> IFSelect_ParamEditor_inherited_UpdateList(const IFSelect_ParamEditor* self, Handle(IFSelect_EditForm) const& form, int32_t num, Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString) const& newlist, bool enforce) {
     try { return {self->UpdateList(form, num, newlist, enforce), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6480,24 +6265,24 @@ extern "C" OcctResult<const IFSelect_Selection*> IFSelect_SelectAnyList_as_IFSel
 extern "C" OcctResult<IFSelect_Selection*> IFSelect_SelectAnyList_as_IFSelect_Selection_mut(IFSelect_SelectAnyList* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SelectAnyList_as_Standard_Transient(const IFSelect_SelectAnyList* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SelectAnyList_as_Standard_Transient_mut(IFSelect_SelectAnyList* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IFSelect_SelectAnyList*> HandleIFSelectSelectAnyList_get(const HandleIFSelectSelectAnyList* handle) {
+extern "C" OcctResult<const IFSelect_SelectAnyList*> Handle_IFSelect_SelectAnyList_get(const Handle_IFSelect_SelectAnyList* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SelectAnyList*> HandleIFSelectSelectAnyList_get_mut(HandleIFSelectSelectAnyList* handle) {
+extern "C" OcctResult<IFSelect_SelectAnyList*> Handle_IFSelect_SelectAnyList_get_mut(Handle_IFSelect_SelectAnyList* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectDeduct*> HandleIFSelectSelectAnyList_to_HandleIFSelectSelectDeduct(const HandleIFSelectSelectAnyList* self_) {
-    try { return {new HandleIFSelectSelectDeduct(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectDeduct*> Handle_IFSelect_SelectAnyList_to_Handle_IFSelect_SelectDeduct(const Handle_IFSelect_SelectAnyList* self_) {
+    try { return {new Handle_IFSelect_SelectDeduct(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelectAnyList_to_HandleIFSelectSelection(const HandleIFSelectSelectAnyList* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_SelectAnyList_to_Handle_IFSelect_Selection(const Handle_IFSelect_SelectAnyList* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelectAnyList_to_HandleStandardTransient(const HandleIFSelectSelectAnyList* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SelectAnyList_to_Handle_Standard_Transient(const Handle_IFSelect_SelectAnyList* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFSelect_SelectAnyList_inherited_SetInput(IFSelect_SelectAnyList* self, Handle(IFSelect_Selection) const& sel) {
@@ -6598,35 +6383,35 @@ extern "C" OcctResult<const IFSelect_Selection*> IFSelect_SelectAnyType_as_IFSel
 extern "C" OcctResult<IFSelect_Selection*> IFSelect_SelectAnyType_as_IFSelect_Selection_mut(IFSelect_SelectAnyType* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SelectAnyType_as_Standard_Transient(const IFSelect_SelectAnyType* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SelectAnyType_as_Standard_Transient_mut(IFSelect_SelectAnyType* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IFSelect_SelectAnyType*> HandleIFSelectSelectAnyType_get(const HandleIFSelectSelectAnyType* handle) {
+extern "C" OcctResult<const IFSelect_SelectAnyType*> Handle_IFSelect_SelectAnyType_get(const Handle_IFSelect_SelectAnyType* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SelectAnyType*> HandleIFSelectSelectAnyType_get_mut(HandleIFSelectSelectAnyType* handle) {
+extern "C" OcctResult<IFSelect_SelectAnyType*> Handle_IFSelect_SelectAnyType_get_mut(Handle_IFSelect_SelectAnyType* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectExtract*> HandleIFSelectSelectAnyType_to_HandleIFSelectSelectExtract(const HandleIFSelectSelectAnyType* self_) {
-    try { return {new HandleIFSelectSelectExtract(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectExtract*> Handle_IFSelect_SelectAnyType_to_Handle_IFSelect_SelectExtract(const Handle_IFSelect_SelectAnyType* self_) {
+    try { return {new Handle_IFSelect_SelectExtract(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectDeduct*> HandleIFSelectSelectAnyType_to_HandleIFSelectSelectDeduct(const HandleIFSelectSelectAnyType* self_) {
-    try { return {new HandleIFSelectSelectDeduct(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectDeduct*> Handle_IFSelect_SelectAnyType_to_Handle_IFSelect_SelectDeduct(const Handle_IFSelect_SelectAnyType* self_) {
+    try { return {new Handle_IFSelect_SelectDeduct(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelectAnyType_to_HandleIFSelectSelection(const HandleIFSelectSelectAnyType* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_SelectAnyType_to_Handle_IFSelect_Selection(const Handle_IFSelect_SelectAnyType* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelectAnyType_to_HandleStandardTransient(const HandleIFSelectSelectAnyType* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SelectAnyType_to_Handle_Standard_Transient(const Handle_IFSelect_SelectAnyType* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectType*> HandleIFSelectSelectAnyType_downcast_to_HandleIFSelectSelectType(const HandleIFSelectSelectAnyType* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectType*> Handle_IFSelect_SelectAnyType_downcast_to_Handle_IFSelect_SelectType(const Handle_IFSelect_SelectAnyType* self_) {
     try {
     opencascade::handle<IFSelect_SelectType> result = opencascade::handle<IFSelect_SelectType>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectType(result), nullptr};
+    return {new Handle_IFSelect_SelectType(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -6744,51 +6529,51 @@ extern "C" OcctResult<const IFSelect_Selection*> IFSelect_SelectBase_as_IFSelect
 extern "C" OcctResult<IFSelect_Selection*> IFSelect_SelectBase_as_IFSelect_Selection_mut(IFSelect_SelectBase* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SelectBase_as_Standard_Transient(const IFSelect_SelectBase* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SelectBase_as_Standard_Transient_mut(IFSelect_SelectBase* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IFSelect_SelectBase*> HandleIFSelectSelectBase_get(const HandleIFSelectSelectBase* handle) {
+extern "C" OcctResult<const IFSelect_SelectBase*> Handle_IFSelect_SelectBase_get(const Handle_IFSelect_SelectBase* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SelectBase*> HandleIFSelectSelectBase_get_mut(HandleIFSelectSelectBase* handle) {
+extern "C" OcctResult<IFSelect_SelectBase*> Handle_IFSelect_SelectBase_get_mut(Handle_IFSelect_SelectBase* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelectBase_to_HandleIFSelectSelection(const HandleIFSelectSelectBase* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_SelectBase_to_Handle_IFSelect_Selection(const Handle_IFSelect_SelectBase* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelectBase_to_HandleStandardTransient(const HandleIFSelectSelectBase* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SelectBase_to_Handle_Standard_Transient(const Handle_IFSelect_SelectBase* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectEntityNumber*> HandleIFSelectSelectBase_downcast_to_HandleIFSelectSelectEntityNumber(const HandleIFSelectSelectBase* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectEntityNumber*> Handle_IFSelect_SelectBase_downcast_to_Handle_IFSelect_SelectEntityNumber(const Handle_IFSelect_SelectBase* self_) {
     try {
     opencascade::handle<IFSelect_SelectEntityNumber> result = opencascade::handle<IFSelect_SelectEntityNumber>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectEntityNumber(result), nullptr};
+    return {new Handle_IFSelect_SelectEntityNumber(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectModelEntities*> HandleIFSelectSelectBase_downcast_to_HandleIFSelectSelectModelEntities(const HandleIFSelectSelectBase* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectModelEntities*> Handle_IFSelect_SelectBase_downcast_to_Handle_IFSelect_SelectModelEntities(const Handle_IFSelect_SelectBase* self_) {
     try {
     opencascade::handle<IFSelect_SelectModelEntities> result = opencascade::handle<IFSelect_SelectModelEntities>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectModelEntities(result), nullptr};
+    return {new Handle_IFSelect_SelectModelEntities(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectModelRoots*> HandleIFSelectSelectBase_downcast_to_HandleIFSelectSelectModelRoots(const HandleIFSelectSelectBase* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectModelRoots*> Handle_IFSelect_SelectBase_downcast_to_Handle_IFSelect_SelectModelRoots(const Handle_IFSelect_SelectBase* self_) {
     try {
     opencascade::handle<IFSelect_SelectModelRoots> result = opencascade::handle<IFSelect_SelectModelRoots>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectModelRoots(result), nullptr};
+    return {new Handle_IFSelect_SelectModelRoots(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectPointed*> HandleIFSelectSelectBase_downcast_to_HandleIFSelectSelectPointed(const HandleIFSelectSelectBase* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectPointed*> Handle_IFSelect_SelectBase_downcast_to_Handle_IFSelect_SelectPointed(const Handle_IFSelect_SelectBase* self_) {
     try {
     opencascade::handle<IFSelect_SelectPointed> result = opencascade::handle<IFSelect_SelectPointed>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectPointed(result), nullptr};
+    return {new Handle_IFSelect_SelectPointed(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -6886,35 +6671,35 @@ extern "C" OcctResult<const IFSelect_Selection*> IFSelect_SelectCombine_as_IFSel
 extern "C" OcctResult<IFSelect_Selection*> IFSelect_SelectCombine_as_IFSelect_Selection_mut(IFSelect_SelectCombine* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SelectCombine_as_Standard_Transient(const IFSelect_SelectCombine* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SelectCombine_as_Standard_Transient_mut(IFSelect_SelectCombine* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IFSelect_SelectCombine*> HandleIFSelectSelectCombine_get(const HandleIFSelectSelectCombine* handle) {
+extern "C" OcctResult<const IFSelect_SelectCombine*> Handle_IFSelect_SelectCombine_get(const Handle_IFSelect_SelectCombine* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SelectCombine*> HandleIFSelectSelectCombine_get_mut(HandleIFSelectSelectCombine* handle) {
+extern "C" OcctResult<IFSelect_SelectCombine*> Handle_IFSelect_SelectCombine_get_mut(Handle_IFSelect_SelectCombine* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelectCombine_to_HandleIFSelectSelection(const HandleIFSelectSelectCombine* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_SelectCombine_to_Handle_IFSelect_Selection(const Handle_IFSelect_SelectCombine* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelectCombine_to_HandleStandardTransient(const HandleIFSelectSelectCombine* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SelectCombine_to_Handle_Standard_Transient(const Handle_IFSelect_SelectCombine* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectIntersection*> HandleIFSelectSelectCombine_downcast_to_HandleIFSelectSelectIntersection(const HandleIFSelectSelectCombine* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectIntersection*> Handle_IFSelect_SelectCombine_downcast_to_Handle_IFSelect_SelectIntersection(const Handle_IFSelect_SelectCombine* self_) {
     try {
     opencascade::handle<IFSelect_SelectIntersection> result = opencascade::handle<IFSelect_SelectIntersection>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectIntersection(result), nullptr};
+    return {new Handle_IFSelect_SelectIntersection(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectUnion*> HandleIFSelectSelectCombine_downcast_to_HandleIFSelectSelectUnion(const HandleIFSelectSelectCombine* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectUnion*> Handle_IFSelect_SelectCombine_downcast_to_Handle_IFSelect_SelectUnion(const Handle_IFSelect_SelectCombine* self_) {
     try {
     opencascade::handle<IFSelect_SelectUnion> result = opencascade::handle<IFSelect_SelectUnion>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectUnion(result), nullptr};
+    return {new Handle_IFSelect_SelectUnion(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -7008,27 +6793,27 @@ extern "C" OcctResult<const IFSelect_Selection*> IFSelect_SelectControl_as_IFSel
 extern "C" OcctResult<IFSelect_Selection*> IFSelect_SelectControl_as_IFSelect_Selection_mut(IFSelect_SelectControl* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SelectControl_as_Standard_Transient(const IFSelect_SelectControl* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SelectControl_as_Standard_Transient_mut(IFSelect_SelectControl* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IFSelect_SelectControl*> HandleIFSelectSelectControl_get(const HandleIFSelectSelectControl* handle) {
+extern "C" OcctResult<const IFSelect_SelectControl*> Handle_IFSelect_SelectControl_get(const Handle_IFSelect_SelectControl* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SelectControl*> HandleIFSelectSelectControl_get_mut(HandleIFSelectSelectControl* handle) {
+extern "C" OcctResult<IFSelect_SelectControl*> Handle_IFSelect_SelectControl_get_mut(Handle_IFSelect_SelectControl* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelectControl_to_HandleIFSelectSelection(const HandleIFSelectSelectControl* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_SelectControl_to_Handle_IFSelect_Selection(const Handle_IFSelect_SelectControl* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelectControl_to_HandleStandardTransient(const HandleIFSelectSelectControl* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SelectControl_to_Handle_Standard_Transient(const Handle_IFSelect_SelectControl* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectDiff*> HandleIFSelectSelectControl_downcast_to_HandleIFSelectSelectDiff(const HandleIFSelectSelectControl* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectDiff*> Handle_IFSelect_SelectControl_downcast_to_Handle_IFSelect_SelectDiff(const Handle_IFSelect_SelectControl* self_) {
     try {
     opencascade::handle<IFSelect_SelectDiff> result = opencascade::handle<IFSelect_SelectDiff>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectDiff(result), nullptr};
+    return {new Handle_IFSelect_SelectDiff(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -7126,299 +6911,299 @@ extern "C" OcctResult<const IFSelect_Selection*> IFSelect_SelectDeduct_as_IFSele
 extern "C" OcctResult<IFSelect_Selection*> IFSelect_SelectDeduct_as_IFSelect_Selection_mut(IFSelect_SelectDeduct* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SelectDeduct_as_Standard_Transient(const IFSelect_SelectDeduct* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SelectDeduct_as_Standard_Transient_mut(IFSelect_SelectDeduct* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IFSelect_SelectDeduct*> HandleIFSelectSelectDeduct_get(const HandleIFSelectSelectDeduct* handle) {
+extern "C" OcctResult<const IFSelect_SelectDeduct*> Handle_IFSelect_SelectDeduct_get(const Handle_IFSelect_SelectDeduct* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SelectDeduct*> HandleIFSelectSelectDeduct_get_mut(HandleIFSelectSelectDeduct* handle) {
+extern "C" OcctResult<IFSelect_SelectDeduct*> Handle_IFSelect_SelectDeduct_get_mut(Handle_IFSelect_SelectDeduct* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelectDeduct_to_HandleIFSelectSelection(const HandleIFSelectSelectDeduct* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_SelectDeduct_to_Handle_IFSelect_Selection(const Handle_IFSelect_SelectDeduct* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelectDeduct_to_HandleStandardTransient(const HandleIFSelectSelectDeduct* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SelectDeduct_to_Handle_Standard_Transient(const Handle_IFSelect_SelectDeduct* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectErrorEntities*> HandleIFSelectSelectDeduct_downcast_to_HandleIFSelectSelectErrorEntities(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectErrorEntities*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_IFSelect_SelectErrorEntities(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<IFSelect_SelectErrorEntities> result = opencascade::handle<IFSelect_SelectErrorEntities>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectErrorEntities(result), nullptr};
+    return {new Handle_IFSelect_SelectErrorEntities(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectFlag*> HandleIFSelectSelectDeduct_downcast_to_HandleIFSelectSelectFlag(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectFlag*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_IFSelect_SelectFlag(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<IFSelect_SelectFlag> result = opencascade::handle<IFSelect_SelectFlag>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectFlag(result), nullptr};
+    return {new Handle_IFSelect_SelectFlag(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectIncorrectEntities*> HandleIFSelectSelectDeduct_downcast_to_HandleIFSelectSelectIncorrectEntities(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectIncorrectEntities*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_IFSelect_SelectIncorrectEntities(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<IFSelect_SelectIncorrectEntities> result = opencascade::handle<IFSelect_SelectIncorrectEntities>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectIncorrectEntities(result), nullptr};
+    return {new Handle_IFSelect_SelectIncorrectEntities(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectRange*> HandleIFSelectSelectDeduct_downcast_to_HandleIFSelectSelectRange(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectRange*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_IFSelect_SelectRange(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<IFSelect_SelectRange> result = opencascade::handle<IFSelect_SelectRange>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectRange(result), nullptr};
+    return {new Handle_IFSelect_SelectRange(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectRootComps*> HandleIFSelectSelectDeduct_downcast_to_HandleIFSelectSelectRootComps(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectRootComps*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_IFSelect_SelectRootComps(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<IFSelect_SelectRootComps> result = opencascade::handle<IFSelect_SelectRootComps>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectRootComps(result), nullptr};
+    return {new Handle_IFSelect_SelectRootComps(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectRoots*> HandleIFSelectSelectDeduct_downcast_to_HandleIFSelectSelectRoots(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectRoots*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_IFSelect_SelectRoots(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<IFSelect_SelectRoots> result = opencascade::handle<IFSelect_SelectRoots>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectRoots(result), nullptr};
+    return {new Handle_IFSelect_SelectRoots(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectSent*> HandleIFSelectSelectDeduct_downcast_to_HandleIFSelectSelectSent(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectSent*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_IFSelect_SelectSent(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<IFSelect_SelectSent> result = opencascade::handle<IFSelect_SelectSent>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectSent(result), nullptr};
+    return {new Handle_IFSelect_SelectSent(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectShared*> HandleIFSelectSelectDeduct_downcast_to_HandleIFSelectSelectShared(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectShared*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_IFSelect_SelectShared(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<IFSelect_SelectShared> result = opencascade::handle<IFSelect_SelectShared>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectShared(result), nullptr};
+    return {new Handle_IFSelect_SelectShared(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectSharing*> HandleIFSelectSelectDeduct_downcast_to_HandleIFSelectSelectSharing(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectSharing*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_IFSelect_SelectSharing(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<IFSelect_SelectSharing> result = opencascade::handle<IFSelect_SelectSharing>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectSharing(result), nullptr};
+    return {new Handle_IFSelect_SelectSharing(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectSignature*> HandleIFSelectSelectDeduct_downcast_to_HandleIFSelectSelectSignature(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectSignature*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_IFSelect_SelectSignature(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<IFSelect_SelectSignature> result = opencascade::handle<IFSelect_SelectSignature>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectSignature(result), nullptr};
+    return {new Handle_IFSelect_SelectSignature(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectSignedShared*> HandleIFSelectSelectDeduct_downcast_to_HandleIFSelectSelectSignedShared(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectSignedShared*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_IFSelect_SelectSignedShared(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<IFSelect_SelectSignedShared> result = opencascade::handle<IFSelect_SelectSignedShared>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectSignedShared(result), nullptr};
+    return {new Handle_IFSelect_SelectSignedShared(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectSignedSharing*> HandleIFSelectSelectDeduct_downcast_to_HandleIFSelectSelectSignedSharing(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectSignedSharing*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_IFSelect_SelectSignedSharing(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<IFSelect_SelectSignedSharing> result = opencascade::handle<IFSelect_SelectSignedSharing>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectSignedSharing(result), nullptr};
+    return {new Handle_IFSelect_SelectSignedSharing(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectSuite*> HandleIFSelectSelectDeduct_downcast_to_HandleIFSelectSelectSuite(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectSuite*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_IFSelect_SelectSuite(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<IFSelect_SelectSuite> result = opencascade::handle<IFSelect_SelectSuite>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectSuite(result), nullptr};
+    return {new Handle_IFSelect_SelectSuite(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectType*> HandleIFSelectSelectDeduct_downcast_to_HandleIFSelectSelectType(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectType*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_IFSelect_SelectType(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<IFSelect_SelectType> result = opencascade::handle<IFSelect_SelectType>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectType(result), nullptr};
+    return {new Handle_IFSelect_SelectType(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectUnknownEntities*> HandleIFSelectSelectDeduct_downcast_to_HandleIFSelectSelectUnknownEntities(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectUnknownEntities*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_IFSelect_SelectUnknownEntities(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<IFSelect_SelectUnknownEntities> result = opencascade::handle<IFSelect_SelectUnknownEntities>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectUnknownEntities(result), nullptr};
+    return {new Handle_IFSelect_SelectUnknownEntities(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectBasicGeom*> HandleIFSelectSelectDeduct_downcast_to_HandleIGESSelectSelectBasicGeom(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectBasicGeom*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_IGESSelect_SelectBasicGeom(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<IGESSelect_SelectBasicGeom> result = opencascade::handle<IGESSelect_SelectBasicGeom>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectBasicGeom(result), nullptr};
+    return {new Handle_IGESSelect_SelectBasicGeom(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectBypassGroup*> HandleIFSelectSelectDeduct_downcast_to_HandleIGESSelectSelectBypassGroup(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectBypassGroup*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_IGESSelect_SelectBypassGroup(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<IGESSelect_SelectBypassGroup> result = opencascade::handle<IGESSelect_SelectBypassGroup>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectBypassGroup(result), nullptr};
+    return {new Handle_IGESSelect_SelectBypassGroup(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectBypassSubfigure*> HandleIFSelectSelectDeduct_downcast_to_HandleIGESSelectSelectBypassSubfigure(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectBypassSubfigure*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_IGESSelect_SelectBypassSubfigure(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<IGESSelect_SelectBypassSubfigure> result = opencascade::handle<IGESSelect_SelectBypassSubfigure>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectBypassSubfigure(result), nullptr};
+    return {new Handle_IGESSelect_SelectBypassSubfigure(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectDrawingFrom*> HandleIFSelectSelectDeduct_downcast_to_HandleIGESSelectSelectDrawingFrom(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectDrawingFrom*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_IGESSelect_SelectDrawingFrom(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<IGESSelect_SelectDrawingFrom> result = opencascade::handle<IGESSelect_SelectDrawingFrom>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectDrawingFrom(result), nullptr};
+    return {new Handle_IGESSelect_SelectDrawingFrom(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectFaces*> HandleIFSelectSelectDeduct_downcast_to_HandleIGESSelectSelectFaces(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectFaces*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_IGESSelect_SelectFaces(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<IGESSelect_SelectFaces> result = opencascade::handle<IGESSelect_SelectFaces>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectFaces(result), nullptr};
+    return {new Handle_IGESSelect_SelectFaces(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectFromDrawing*> HandleIFSelectSelectDeduct_downcast_to_HandleIGESSelectSelectFromDrawing(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectFromDrawing*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_IGESSelect_SelectFromDrawing(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<IGESSelect_SelectFromDrawing> result = opencascade::handle<IGESSelect_SelectFromDrawing>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectFromDrawing(result), nullptr};
+    return {new Handle_IGESSelect_SelectFromDrawing(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectFromSingleView*> HandleIFSelectSelectDeduct_downcast_to_HandleIGESSelectSelectFromSingleView(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectFromSingleView*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_IGESSelect_SelectFromSingleView(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<IGESSelect_SelectFromSingleView> result = opencascade::handle<IGESSelect_SelectFromSingleView>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectFromSingleView(result), nullptr};
+    return {new Handle_IGESSelect_SelectFromSingleView(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectLevelNumber*> HandleIFSelectSelectDeduct_downcast_to_HandleIGESSelectSelectLevelNumber(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectLevelNumber*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_IGESSelect_SelectLevelNumber(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<IGESSelect_SelectLevelNumber> result = opencascade::handle<IGESSelect_SelectLevelNumber>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectLevelNumber(result), nullptr};
+    return {new Handle_IGESSelect_SelectLevelNumber(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectName*> HandleIFSelectSelectDeduct_downcast_to_HandleIGESSelectSelectName(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectName*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_IGESSelect_SelectName(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<IGESSelect_SelectName> result = opencascade::handle<IGESSelect_SelectName>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectName(result), nullptr};
+    return {new Handle_IGESSelect_SelectName(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectPCurves*> HandleIFSelectSelectDeduct_downcast_to_HandleIGESSelectSelectPCurves(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectPCurves*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_IGESSelect_SelectPCurves(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<IGESSelect_SelectPCurves> result = opencascade::handle<IGESSelect_SelectPCurves>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectPCurves(result), nullptr};
+    return {new Handle_IGESSelect_SelectPCurves(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectSingleViewFrom*> HandleIFSelectSelectDeduct_downcast_to_HandleIGESSelectSelectSingleViewFrom(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectSingleViewFrom*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_IGESSelect_SelectSingleViewFrom(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<IGESSelect_SelectSingleViewFrom> result = opencascade::handle<IGESSelect_SelectSingleViewFrom>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectSingleViewFrom(result), nullptr};
+    return {new Handle_IGESSelect_SelectSingleViewFrom(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectSubordinate*> HandleIFSelectSelectDeduct_downcast_to_HandleIGESSelectSelectSubordinate(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectSubordinate*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_IGESSelect_SelectSubordinate(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<IGESSelect_SelectSubordinate> result = opencascade::handle<IGESSelect_SelectSubordinate>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectSubordinate(result), nullptr};
+    return {new Handle_IGESSelect_SelectSubordinate(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectVisibleStatus*> HandleIFSelectSelectDeduct_downcast_to_HandleIGESSelectSelectVisibleStatus(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectVisibleStatus*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_IGESSelect_SelectVisibleStatus(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<IGESSelect_SelectVisibleStatus> result = opencascade::handle<IGESSelect_SelectVisibleStatus>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectVisibleStatus(result), nullptr};
+    return {new Handle_IGESSelect_SelectVisibleStatus(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleSTEPSelectionsSelectAssembly*> HandleIFSelectSelectDeduct_downcast_to_HandleSTEPSelectionsSelectAssembly(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_STEPSelections_SelectAssembly*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_STEPSelections_SelectAssembly(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<STEPSelections_SelectAssembly> result = opencascade::handle<STEPSelections_SelectAssembly>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleSTEPSelectionsSelectAssembly(result), nullptr};
+    return {new Handle_STEPSelections_SelectAssembly(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleSTEPSelectionsSelectFaces*> HandleIFSelectSelectDeduct_downcast_to_HandleSTEPSelectionsSelectFaces(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_STEPSelections_SelectFaces*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_STEPSelections_SelectFaces(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<STEPSelections_SelectFaces> result = opencascade::handle<STEPSelections_SelectFaces>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleSTEPSelectionsSelectFaces(result), nullptr};
+    return {new Handle_STEPSelections_SelectFaces(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleSTEPSelectionsSelectForTransfer*> HandleIFSelectSelectDeduct_downcast_to_HandleSTEPSelectionsSelectForTransfer(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_STEPSelections_SelectForTransfer*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_STEPSelections_SelectForTransfer(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<STEPSelections_SelectForTransfer> result = opencascade::handle<STEPSelections_SelectForTransfer>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleSTEPSelectionsSelectForTransfer(result), nullptr};
+    return {new Handle_STEPSelections_SelectForTransfer(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleSTEPSelectionsSelectGSCurves*> HandleIFSelectSelectDeduct_downcast_to_HandleSTEPSelectionsSelectGSCurves(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_STEPSelections_SelectGSCurves*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_STEPSelections_SelectGSCurves(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<STEPSelections_SelectGSCurves> result = opencascade::handle<STEPSelections_SelectGSCurves>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleSTEPSelectionsSelectGSCurves(result), nullptr};
+    return {new Handle_STEPSelections_SelectGSCurves(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleSTEPSelectionsSelectInstances*> HandleIFSelectSelectDeduct_downcast_to_HandleSTEPSelectionsSelectInstances(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_STEPSelections_SelectInstances*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_STEPSelections_SelectInstances(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<STEPSelections_SelectInstances> result = opencascade::handle<STEPSelections_SelectInstances>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleSTEPSelectionsSelectInstances(result), nullptr};
+    return {new Handle_STEPSelections_SelectInstances(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXSControlConnectedShapes*> HandleIFSelectSelectDeduct_downcast_to_HandleXSControlConnectedShapes(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_XSControl_ConnectedShapes*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_XSControl_ConnectedShapes(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<XSControl_ConnectedShapes> result = opencascade::handle<XSControl_ConnectedShapes>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXSControlConnectedShapes(result), nullptr};
+    return {new Handle_XSControl_ConnectedShapes(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXSControlSelectForTransfer*> HandleIFSelectSelectDeduct_downcast_to_HandleXSControlSelectForTransfer(const HandleIFSelectSelectDeduct* self_) {
+extern "C" OcctResult<Handle_XSControl_SelectForTransfer*> Handle_IFSelect_SelectDeduct_downcast_to_Handle_XSControl_SelectForTransfer(const Handle_IFSelect_SelectDeduct* self_) {
     try {
     opencascade::handle<XSControl_SelectForTransfer> result = opencascade::handle<XSControl_SelectForTransfer>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXSControlSelectForTransfer(result), nullptr};
+    return {new Handle_XSControl_SelectForTransfer(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -7502,28 +7287,28 @@ extern "C" OcctResult<const IFSelect_Selection*> IFSelect_SelectDiff_as_IFSelect
 extern "C" OcctResult<IFSelect_Selection*> IFSelect_SelectDiff_as_IFSelect_Selection_mut(IFSelect_SelectDiff* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SelectDiff_as_Standard_Transient(const IFSelect_SelectDiff* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SelectDiff_as_Standard_Transient_mut(IFSelect_SelectDiff* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectSelectDiff*> IFSelect_SelectDiff_to_handle(IFSelect_SelectDiff* obj) {
-    try { return {new HandleIFSelectSelectDiff(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectDiff*> IFSelect_SelectDiff_to_handle(IFSelect_SelectDiff* obj) {
+    try { return {new Handle_IFSelect_SelectDiff(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_SelectDiff*> HandleIFSelectSelectDiff_get(const HandleIFSelectSelectDiff* handle) {
+extern "C" OcctResult<const IFSelect_SelectDiff*> Handle_IFSelect_SelectDiff_get(const Handle_IFSelect_SelectDiff* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SelectDiff*> HandleIFSelectSelectDiff_get_mut(HandleIFSelectSelectDiff* handle) {
+extern "C" OcctResult<IFSelect_SelectDiff*> Handle_IFSelect_SelectDiff_get_mut(Handle_IFSelect_SelectDiff* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectControl*> HandleIFSelectSelectDiff_to_HandleIFSelectSelectControl(const HandleIFSelectSelectDiff* self_) {
-    try { return {new HandleIFSelectSelectControl(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectControl*> Handle_IFSelect_SelectDiff_to_Handle_IFSelect_SelectControl(const Handle_IFSelect_SelectDiff* self_) {
+    try { return {new Handle_IFSelect_SelectControl(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelectDiff_to_HandleIFSelectSelection(const HandleIFSelectSelectDiff* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_SelectDiff_to_Handle_IFSelect_Selection(const Handle_IFSelect_SelectDiff* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelectDiff_to_HandleStandardTransient(const HandleIFSelectSelectDiff* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SelectDiff_to_Handle_Standard_Transient(const Handle_IFSelect_SelectDiff* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(IFSelect_Selection)*> IFSelect_SelectDiff_inherited_MainInput(const IFSelect_SelectDiff* self) {
@@ -7630,28 +7415,28 @@ extern "C" OcctResult<const IFSelect_Selection*> IFSelect_SelectEntityNumber_as_
 extern "C" OcctResult<IFSelect_Selection*> IFSelect_SelectEntityNumber_as_IFSelect_Selection_mut(IFSelect_SelectEntityNumber* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SelectEntityNumber_as_Standard_Transient(const IFSelect_SelectEntityNumber* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SelectEntityNumber_as_Standard_Transient_mut(IFSelect_SelectEntityNumber* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectSelectEntityNumber*> IFSelect_SelectEntityNumber_to_handle(IFSelect_SelectEntityNumber* obj) {
-    try { return {new HandleIFSelectSelectEntityNumber(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectEntityNumber*> IFSelect_SelectEntityNumber_to_handle(IFSelect_SelectEntityNumber* obj) {
+    try { return {new Handle_IFSelect_SelectEntityNumber(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_SelectEntityNumber*> HandleIFSelectSelectEntityNumber_get(const HandleIFSelectSelectEntityNumber* handle) {
+extern "C" OcctResult<const IFSelect_SelectEntityNumber*> Handle_IFSelect_SelectEntityNumber_get(const Handle_IFSelect_SelectEntityNumber* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SelectEntityNumber*> HandleIFSelectSelectEntityNumber_get_mut(HandleIFSelectSelectEntityNumber* handle) {
+extern "C" OcctResult<IFSelect_SelectEntityNumber*> Handle_IFSelect_SelectEntityNumber_get_mut(Handle_IFSelect_SelectEntityNumber* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectBase*> HandleIFSelectSelectEntityNumber_to_HandleIFSelectSelectBase(const HandleIFSelectSelectEntityNumber* self_) {
-    try { return {new HandleIFSelectSelectBase(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectBase*> Handle_IFSelect_SelectEntityNumber_to_Handle_IFSelect_SelectBase(const Handle_IFSelect_SelectEntityNumber* self_) {
+    try { return {new Handle_IFSelect_SelectBase(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelectEntityNumber_to_HandleIFSelectSelection(const HandleIFSelectSelectEntityNumber* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_SelectEntityNumber_to_Handle_IFSelect_Selection(const Handle_IFSelect_SelectEntityNumber* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelectEntityNumber_to_HandleStandardTransient(const HandleIFSelectSelectEntityNumber* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SelectEntityNumber_to_Handle_Standard_Transient(const Handle_IFSelect_SelectEntityNumber* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFSelect_SelectEntityNumber_inherited_FillIterator(const IFSelect_SelectEntityNumber* self, IFSelect_SelectionIterator& iter) {
@@ -7732,32 +7517,32 @@ extern "C" OcctResult<const IFSelect_Selection*> IFSelect_SelectErrorEntities_as
 extern "C" OcctResult<IFSelect_Selection*> IFSelect_SelectErrorEntities_as_IFSelect_Selection_mut(IFSelect_SelectErrorEntities* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SelectErrorEntities_as_Standard_Transient(const IFSelect_SelectErrorEntities* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SelectErrorEntities_as_Standard_Transient_mut(IFSelect_SelectErrorEntities* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectSelectErrorEntities*> IFSelect_SelectErrorEntities_to_handle(IFSelect_SelectErrorEntities* obj) {
-    try { return {new HandleIFSelectSelectErrorEntities(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectErrorEntities*> IFSelect_SelectErrorEntities_to_handle(IFSelect_SelectErrorEntities* obj) {
+    try { return {new Handle_IFSelect_SelectErrorEntities(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_SelectErrorEntities*> HandleIFSelectSelectErrorEntities_get(const HandleIFSelectSelectErrorEntities* handle) {
+extern "C" OcctResult<const IFSelect_SelectErrorEntities*> Handle_IFSelect_SelectErrorEntities_get(const Handle_IFSelect_SelectErrorEntities* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SelectErrorEntities*> HandleIFSelectSelectErrorEntities_get_mut(HandleIFSelectSelectErrorEntities* handle) {
+extern "C" OcctResult<IFSelect_SelectErrorEntities*> Handle_IFSelect_SelectErrorEntities_get_mut(Handle_IFSelect_SelectErrorEntities* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectExtract*> HandleIFSelectSelectErrorEntities_to_HandleIFSelectSelectExtract(const HandleIFSelectSelectErrorEntities* self_) {
-    try { return {new HandleIFSelectSelectExtract(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectExtract*> Handle_IFSelect_SelectErrorEntities_to_Handle_IFSelect_SelectExtract(const Handle_IFSelect_SelectErrorEntities* self_) {
+    try { return {new Handle_IFSelect_SelectExtract(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectDeduct*> HandleIFSelectSelectErrorEntities_to_HandleIFSelectSelectDeduct(const HandleIFSelectSelectErrorEntities* self_) {
-    try { return {new HandleIFSelectSelectDeduct(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectDeduct*> Handle_IFSelect_SelectErrorEntities_to_Handle_IFSelect_SelectDeduct(const Handle_IFSelect_SelectErrorEntities* self_) {
+    try { return {new Handle_IFSelect_SelectDeduct(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelectErrorEntities_to_HandleIFSelectSelection(const HandleIFSelectSelectErrorEntities* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_SelectErrorEntities_to_Handle_IFSelect_Selection(const Handle_IFSelect_SelectErrorEntities* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelectErrorEntities_to_HandleStandardTransient(const HandleIFSelectSelectErrorEntities* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SelectErrorEntities_to_Handle_Standard_Transient(const Handle_IFSelect_SelectErrorEntities* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IFSelect_SelectErrorEntities_inherited_IsDirect(const IFSelect_SelectErrorEntities* self) {
@@ -7888,119 +7673,119 @@ extern "C" OcctResult<const IFSelect_Selection*> IFSelect_SelectExplore_as_IFSel
 extern "C" OcctResult<IFSelect_Selection*> IFSelect_SelectExplore_as_IFSelect_Selection_mut(IFSelect_SelectExplore* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SelectExplore_as_Standard_Transient(const IFSelect_SelectExplore* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SelectExplore_as_Standard_Transient_mut(IFSelect_SelectExplore* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IFSelect_SelectExplore*> HandleIFSelectSelectExplore_get(const HandleIFSelectSelectExplore* handle) {
+extern "C" OcctResult<const IFSelect_SelectExplore*> Handle_IFSelect_SelectExplore_get(const Handle_IFSelect_SelectExplore* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SelectExplore*> HandleIFSelectSelectExplore_get_mut(HandleIFSelectSelectExplore* handle) {
+extern "C" OcctResult<IFSelect_SelectExplore*> Handle_IFSelect_SelectExplore_get_mut(Handle_IFSelect_SelectExplore* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectDeduct*> HandleIFSelectSelectExplore_to_HandleIFSelectSelectDeduct(const HandleIFSelectSelectExplore* self_) {
-    try { return {new HandleIFSelectSelectDeduct(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectDeduct*> Handle_IFSelect_SelectExplore_to_Handle_IFSelect_SelectDeduct(const Handle_IFSelect_SelectExplore* self_) {
+    try { return {new Handle_IFSelect_SelectDeduct(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelectExplore_to_HandleIFSelectSelection(const HandleIFSelectSelectExplore* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_SelectExplore_to_Handle_IFSelect_Selection(const Handle_IFSelect_SelectExplore* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelectExplore_to_HandleStandardTransient(const HandleIFSelectSelectExplore* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SelectExplore_to_Handle_Standard_Transient(const Handle_IFSelect_SelectExplore* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectSignedShared*> HandleIFSelectSelectExplore_downcast_to_HandleIFSelectSelectSignedShared(const HandleIFSelectSelectExplore* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectSignedShared*> Handle_IFSelect_SelectExplore_downcast_to_Handle_IFSelect_SelectSignedShared(const Handle_IFSelect_SelectExplore* self_) {
     try {
     opencascade::handle<IFSelect_SelectSignedShared> result = opencascade::handle<IFSelect_SelectSignedShared>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectSignedShared(result), nullptr};
+    return {new Handle_IFSelect_SelectSignedShared(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectSignedSharing*> HandleIFSelectSelectExplore_downcast_to_HandleIFSelectSelectSignedSharing(const HandleIFSelectSelectExplore* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectSignedSharing*> Handle_IFSelect_SelectExplore_downcast_to_Handle_IFSelect_SelectSignedSharing(const Handle_IFSelect_SelectExplore* self_) {
     try {
     opencascade::handle<IFSelect_SelectSignedSharing> result = opencascade::handle<IFSelect_SelectSignedSharing>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectSignedSharing(result), nullptr};
+    return {new Handle_IFSelect_SelectSignedSharing(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectBasicGeom*> HandleIFSelectSelectExplore_downcast_to_HandleIGESSelectSelectBasicGeom(const HandleIFSelectSelectExplore* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectBasicGeom*> Handle_IFSelect_SelectExplore_downcast_to_Handle_IGESSelect_SelectBasicGeom(const Handle_IFSelect_SelectExplore* self_) {
     try {
     opencascade::handle<IGESSelect_SelectBasicGeom> result = opencascade::handle<IGESSelect_SelectBasicGeom>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectBasicGeom(result), nullptr};
+    return {new Handle_IGESSelect_SelectBasicGeom(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectBypassGroup*> HandleIFSelectSelectExplore_downcast_to_HandleIGESSelectSelectBypassGroup(const HandleIFSelectSelectExplore* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectBypassGroup*> Handle_IFSelect_SelectExplore_downcast_to_Handle_IGESSelect_SelectBypassGroup(const Handle_IFSelect_SelectExplore* self_) {
     try {
     opencascade::handle<IGESSelect_SelectBypassGroup> result = opencascade::handle<IGESSelect_SelectBypassGroup>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectBypassGroup(result), nullptr};
+    return {new Handle_IGESSelect_SelectBypassGroup(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectBypassSubfigure*> HandleIFSelectSelectExplore_downcast_to_HandleIGESSelectSelectBypassSubfigure(const HandleIFSelectSelectExplore* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectBypassSubfigure*> Handle_IFSelect_SelectExplore_downcast_to_Handle_IGESSelect_SelectBypassSubfigure(const Handle_IFSelect_SelectExplore* self_) {
     try {
     opencascade::handle<IGESSelect_SelectBypassSubfigure> result = opencascade::handle<IGESSelect_SelectBypassSubfigure>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectBypassSubfigure(result), nullptr};
+    return {new Handle_IGESSelect_SelectBypassSubfigure(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectFaces*> HandleIFSelectSelectExplore_downcast_to_HandleIGESSelectSelectFaces(const HandleIFSelectSelectExplore* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectFaces*> Handle_IFSelect_SelectExplore_downcast_to_Handle_IGESSelect_SelectFaces(const Handle_IFSelect_SelectExplore* self_) {
     try {
     opencascade::handle<IGESSelect_SelectFaces> result = opencascade::handle<IGESSelect_SelectFaces>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectFaces(result), nullptr};
+    return {new Handle_IGESSelect_SelectFaces(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectPCurves*> HandleIFSelectSelectExplore_downcast_to_HandleIGESSelectSelectPCurves(const HandleIFSelectSelectExplore* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectPCurves*> Handle_IFSelect_SelectExplore_downcast_to_Handle_IGESSelect_SelectPCurves(const Handle_IFSelect_SelectExplore* self_) {
     try {
     opencascade::handle<IGESSelect_SelectPCurves> result = opencascade::handle<IGESSelect_SelectPCurves>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectPCurves(result), nullptr};
+    return {new Handle_IGESSelect_SelectPCurves(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleSTEPSelectionsSelectAssembly*> HandleIFSelectSelectExplore_downcast_to_HandleSTEPSelectionsSelectAssembly(const HandleIFSelectSelectExplore* self_) {
+extern "C" OcctResult<Handle_STEPSelections_SelectAssembly*> Handle_IFSelect_SelectExplore_downcast_to_Handle_STEPSelections_SelectAssembly(const Handle_IFSelect_SelectExplore* self_) {
     try {
     opencascade::handle<STEPSelections_SelectAssembly> result = opencascade::handle<STEPSelections_SelectAssembly>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleSTEPSelectionsSelectAssembly(result), nullptr};
+    return {new Handle_STEPSelections_SelectAssembly(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleSTEPSelectionsSelectFaces*> HandleIFSelectSelectExplore_downcast_to_HandleSTEPSelectionsSelectFaces(const HandleIFSelectSelectExplore* self_) {
+extern "C" OcctResult<Handle_STEPSelections_SelectFaces*> Handle_IFSelect_SelectExplore_downcast_to_Handle_STEPSelections_SelectFaces(const Handle_IFSelect_SelectExplore* self_) {
     try {
     opencascade::handle<STEPSelections_SelectFaces> result = opencascade::handle<STEPSelections_SelectFaces>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleSTEPSelectionsSelectFaces(result), nullptr};
+    return {new Handle_STEPSelections_SelectFaces(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleSTEPSelectionsSelectGSCurves*> HandleIFSelectSelectExplore_downcast_to_HandleSTEPSelectionsSelectGSCurves(const HandleIFSelectSelectExplore* self_) {
+extern "C" OcctResult<Handle_STEPSelections_SelectGSCurves*> Handle_IFSelect_SelectExplore_downcast_to_Handle_STEPSelections_SelectGSCurves(const Handle_IFSelect_SelectExplore* self_) {
     try {
     opencascade::handle<STEPSelections_SelectGSCurves> result = opencascade::handle<STEPSelections_SelectGSCurves>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleSTEPSelectionsSelectGSCurves(result), nullptr};
+    return {new Handle_STEPSelections_SelectGSCurves(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleSTEPSelectionsSelectInstances*> HandleIFSelectSelectExplore_downcast_to_HandleSTEPSelectionsSelectInstances(const HandleIFSelectSelectExplore* self_) {
+extern "C" OcctResult<Handle_STEPSelections_SelectInstances*> Handle_IFSelect_SelectExplore_downcast_to_Handle_STEPSelections_SelectInstances(const Handle_IFSelect_SelectExplore* self_) {
     try {
     opencascade::handle<STEPSelections_SelectInstances> result = opencascade::handle<STEPSelections_SelectInstances>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleSTEPSelectionsSelectInstances(result), nullptr};
+    return {new Handle_STEPSelections_SelectInstances(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXSControlConnectedShapes*> HandleIFSelectSelectExplore_downcast_to_HandleXSControlConnectedShapes(const HandleIFSelectSelectExplore* self_) {
+extern "C" OcctResult<Handle_XSControl_ConnectedShapes*> Handle_IFSelect_SelectExplore_downcast_to_Handle_XSControl_ConnectedShapes(const Handle_IFSelect_SelectExplore* self_) {
     try {
     opencascade::handle<XSControl_ConnectedShapes> result = opencascade::handle<XSControl_ConnectedShapes>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXSControlConnectedShapes(result), nullptr};
+    return {new Handle_XSControl_ConnectedShapes(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -8120,151 +7905,151 @@ extern "C" OcctResult<const IFSelect_Selection*> IFSelect_SelectExtract_as_IFSel
 extern "C" OcctResult<IFSelect_Selection*> IFSelect_SelectExtract_as_IFSelect_Selection_mut(IFSelect_SelectExtract* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SelectExtract_as_Standard_Transient(const IFSelect_SelectExtract* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SelectExtract_as_Standard_Transient_mut(IFSelect_SelectExtract* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IFSelect_SelectExtract*> HandleIFSelectSelectExtract_get(const HandleIFSelectSelectExtract* handle) {
+extern "C" OcctResult<const IFSelect_SelectExtract*> Handle_IFSelect_SelectExtract_get(const Handle_IFSelect_SelectExtract* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SelectExtract*> HandleIFSelectSelectExtract_get_mut(HandleIFSelectSelectExtract* handle) {
+extern "C" OcctResult<IFSelect_SelectExtract*> Handle_IFSelect_SelectExtract_get_mut(Handle_IFSelect_SelectExtract* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectDeduct*> HandleIFSelectSelectExtract_to_HandleIFSelectSelectDeduct(const HandleIFSelectSelectExtract* self_) {
-    try { return {new HandleIFSelectSelectDeduct(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectDeduct*> Handle_IFSelect_SelectExtract_to_Handle_IFSelect_SelectDeduct(const Handle_IFSelect_SelectExtract* self_) {
+    try { return {new Handle_IFSelect_SelectDeduct(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelectExtract_to_HandleIFSelectSelection(const HandleIFSelectSelectExtract* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_SelectExtract_to_Handle_IFSelect_Selection(const Handle_IFSelect_SelectExtract* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelectExtract_to_HandleStandardTransient(const HandleIFSelectSelectExtract* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SelectExtract_to_Handle_Standard_Transient(const Handle_IFSelect_SelectExtract* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectErrorEntities*> HandleIFSelectSelectExtract_downcast_to_HandleIFSelectSelectErrorEntities(const HandleIFSelectSelectExtract* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectErrorEntities*> Handle_IFSelect_SelectExtract_downcast_to_Handle_IFSelect_SelectErrorEntities(const Handle_IFSelect_SelectExtract* self_) {
     try {
     opencascade::handle<IFSelect_SelectErrorEntities> result = opencascade::handle<IFSelect_SelectErrorEntities>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectErrorEntities(result), nullptr};
+    return {new Handle_IFSelect_SelectErrorEntities(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectFlag*> HandleIFSelectSelectExtract_downcast_to_HandleIFSelectSelectFlag(const HandleIFSelectSelectExtract* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectFlag*> Handle_IFSelect_SelectExtract_downcast_to_Handle_IFSelect_SelectFlag(const Handle_IFSelect_SelectExtract* self_) {
     try {
     opencascade::handle<IFSelect_SelectFlag> result = opencascade::handle<IFSelect_SelectFlag>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectFlag(result), nullptr};
+    return {new Handle_IFSelect_SelectFlag(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectIncorrectEntities*> HandleIFSelectSelectExtract_downcast_to_HandleIFSelectSelectIncorrectEntities(const HandleIFSelectSelectExtract* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectIncorrectEntities*> Handle_IFSelect_SelectExtract_downcast_to_Handle_IFSelect_SelectIncorrectEntities(const Handle_IFSelect_SelectExtract* self_) {
     try {
     opencascade::handle<IFSelect_SelectIncorrectEntities> result = opencascade::handle<IFSelect_SelectIncorrectEntities>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectIncorrectEntities(result), nullptr};
+    return {new Handle_IFSelect_SelectIncorrectEntities(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectRange*> HandleIFSelectSelectExtract_downcast_to_HandleIFSelectSelectRange(const HandleIFSelectSelectExtract* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectRange*> Handle_IFSelect_SelectExtract_downcast_to_Handle_IFSelect_SelectRange(const Handle_IFSelect_SelectExtract* self_) {
     try {
     opencascade::handle<IFSelect_SelectRange> result = opencascade::handle<IFSelect_SelectRange>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectRange(result), nullptr};
+    return {new Handle_IFSelect_SelectRange(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectRootComps*> HandleIFSelectSelectExtract_downcast_to_HandleIFSelectSelectRootComps(const HandleIFSelectSelectExtract* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectRootComps*> Handle_IFSelect_SelectExtract_downcast_to_Handle_IFSelect_SelectRootComps(const Handle_IFSelect_SelectExtract* self_) {
     try {
     opencascade::handle<IFSelect_SelectRootComps> result = opencascade::handle<IFSelect_SelectRootComps>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectRootComps(result), nullptr};
+    return {new Handle_IFSelect_SelectRootComps(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectRoots*> HandleIFSelectSelectExtract_downcast_to_HandleIFSelectSelectRoots(const HandleIFSelectSelectExtract* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectRoots*> Handle_IFSelect_SelectExtract_downcast_to_Handle_IFSelect_SelectRoots(const Handle_IFSelect_SelectExtract* self_) {
     try {
     opencascade::handle<IFSelect_SelectRoots> result = opencascade::handle<IFSelect_SelectRoots>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectRoots(result), nullptr};
+    return {new Handle_IFSelect_SelectRoots(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectSent*> HandleIFSelectSelectExtract_downcast_to_HandleIFSelectSelectSent(const HandleIFSelectSelectExtract* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectSent*> Handle_IFSelect_SelectExtract_downcast_to_Handle_IFSelect_SelectSent(const Handle_IFSelect_SelectExtract* self_) {
     try {
     opencascade::handle<IFSelect_SelectSent> result = opencascade::handle<IFSelect_SelectSent>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectSent(result), nullptr};
+    return {new Handle_IFSelect_SelectSent(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectSignature*> HandleIFSelectSelectExtract_downcast_to_HandleIFSelectSelectSignature(const HandleIFSelectSelectExtract* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectSignature*> Handle_IFSelect_SelectExtract_downcast_to_Handle_IFSelect_SelectSignature(const Handle_IFSelect_SelectExtract* self_) {
     try {
     opencascade::handle<IFSelect_SelectSignature> result = opencascade::handle<IFSelect_SelectSignature>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectSignature(result), nullptr};
+    return {new Handle_IFSelect_SelectSignature(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectType*> HandleIFSelectSelectExtract_downcast_to_HandleIFSelectSelectType(const HandleIFSelectSelectExtract* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectType*> Handle_IFSelect_SelectExtract_downcast_to_Handle_IFSelect_SelectType(const Handle_IFSelect_SelectExtract* self_) {
     try {
     opencascade::handle<IFSelect_SelectType> result = opencascade::handle<IFSelect_SelectType>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectType(result), nullptr};
+    return {new Handle_IFSelect_SelectType(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectUnknownEntities*> HandleIFSelectSelectExtract_downcast_to_HandleIFSelectSelectUnknownEntities(const HandleIFSelectSelectExtract* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectUnknownEntities*> Handle_IFSelect_SelectExtract_downcast_to_Handle_IFSelect_SelectUnknownEntities(const Handle_IFSelect_SelectExtract* self_) {
     try {
     opencascade::handle<IFSelect_SelectUnknownEntities> result = opencascade::handle<IFSelect_SelectUnknownEntities>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectUnknownEntities(result), nullptr};
+    return {new Handle_IFSelect_SelectUnknownEntities(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectLevelNumber*> HandleIFSelectSelectExtract_downcast_to_HandleIGESSelectSelectLevelNumber(const HandleIFSelectSelectExtract* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectLevelNumber*> Handle_IFSelect_SelectExtract_downcast_to_Handle_IGESSelect_SelectLevelNumber(const Handle_IFSelect_SelectExtract* self_) {
     try {
     opencascade::handle<IGESSelect_SelectLevelNumber> result = opencascade::handle<IGESSelect_SelectLevelNumber>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectLevelNumber(result), nullptr};
+    return {new Handle_IGESSelect_SelectLevelNumber(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectName*> HandleIFSelectSelectExtract_downcast_to_HandleIGESSelectSelectName(const HandleIFSelectSelectExtract* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectName*> Handle_IFSelect_SelectExtract_downcast_to_Handle_IGESSelect_SelectName(const Handle_IFSelect_SelectExtract* self_) {
     try {
     opencascade::handle<IGESSelect_SelectName> result = opencascade::handle<IGESSelect_SelectName>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectName(result), nullptr};
+    return {new Handle_IGESSelect_SelectName(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectSubordinate*> HandleIFSelectSelectExtract_downcast_to_HandleIGESSelectSelectSubordinate(const HandleIFSelectSelectExtract* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectSubordinate*> Handle_IFSelect_SelectExtract_downcast_to_Handle_IGESSelect_SelectSubordinate(const Handle_IFSelect_SelectExtract* self_) {
     try {
     opencascade::handle<IGESSelect_SelectSubordinate> result = opencascade::handle<IGESSelect_SelectSubordinate>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectSubordinate(result), nullptr};
+    return {new Handle_IGESSelect_SelectSubordinate(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectVisibleStatus*> HandleIFSelectSelectExtract_downcast_to_HandleIGESSelectSelectVisibleStatus(const HandleIFSelectSelectExtract* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectVisibleStatus*> Handle_IFSelect_SelectExtract_downcast_to_Handle_IGESSelect_SelectVisibleStatus(const Handle_IFSelect_SelectExtract* self_) {
     try {
     opencascade::handle<IGESSelect_SelectVisibleStatus> result = opencascade::handle<IGESSelect_SelectVisibleStatus>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectVisibleStatus(result), nullptr};
+    return {new Handle_IGESSelect_SelectVisibleStatus(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleSTEPSelectionsSelectForTransfer*> HandleIFSelectSelectExtract_downcast_to_HandleSTEPSelectionsSelectForTransfer(const HandleIFSelectSelectExtract* self_) {
+extern "C" OcctResult<Handle_STEPSelections_SelectForTransfer*> Handle_IFSelect_SelectExtract_downcast_to_Handle_STEPSelections_SelectForTransfer(const Handle_IFSelect_SelectExtract* self_) {
     try {
     opencascade::handle<STEPSelections_SelectForTransfer> result = opencascade::handle<STEPSelections_SelectForTransfer>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleSTEPSelectionsSelectForTransfer(result), nullptr};
+    return {new Handle_STEPSelections_SelectForTransfer(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXSControlSelectForTransfer*> HandleIFSelectSelectExtract_downcast_to_HandleXSControlSelectForTransfer(const HandleIFSelectSelectExtract* self_) {
+extern "C" OcctResult<Handle_XSControl_SelectForTransfer*> Handle_IFSelect_SelectExtract_downcast_to_Handle_XSControl_SelectForTransfer(const Handle_IFSelect_SelectExtract* self_) {
     try {
     opencascade::handle<XSControl_SelectForTransfer> result = opencascade::handle<XSControl_SelectForTransfer>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXSControlSelectForTransfer(result), nullptr};
+    return {new Handle_XSControl_SelectForTransfer(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -8378,39 +8163,39 @@ extern "C" OcctResult<const IFSelect_Selection*> IFSelect_SelectFlag_as_IFSelect
 extern "C" OcctResult<IFSelect_Selection*> IFSelect_SelectFlag_as_IFSelect_Selection_mut(IFSelect_SelectFlag* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SelectFlag_as_Standard_Transient(const IFSelect_SelectFlag* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SelectFlag_as_Standard_Transient_mut(IFSelect_SelectFlag* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectSelectFlag*> IFSelect_SelectFlag_to_handle(IFSelect_SelectFlag* obj) {
-    try { return {new HandleIFSelectSelectFlag(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectFlag*> IFSelect_SelectFlag_to_handle(IFSelect_SelectFlag* obj) {
+    try { return {new Handle_IFSelect_SelectFlag(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_SelectFlag*> HandleIFSelectSelectFlag_get(const HandleIFSelectSelectFlag* handle) {
+extern "C" OcctResult<const IFSelect_SelectFlag*> Handle_IFSelect_SelectFlag_get(const Handle_IFSelect_SelectFlag* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SelectFlag*> HandleIFSelectSelectFlag_get_mut(HandleIFSelectSelectFlag* handle) {
+extern "C" OcctResult<IFSelect_SelectFlag*> Handle_IFSelect_SelectFlag_get_mut(Handle_IFSelect_SelectFlag* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectExtract*> HandleIFSelectSelectFlag_to_HandleIFSelectSelectExtract(const HandleIFSelectSelectFlag* self_) {
-    try { return {new HandleIFSelectSelectExtract(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectExtract*> Handle_IFSelect_SelectFlag_to_Handle_IFSelect_SelectExtract(const Handle_IFSelect_SelectFlag* self_) {
+    try { return {new Handle_IFSelect_SelectExtract(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectDeduct*> HandleIFSelectSelectFlag_to_HandleIFSelectSelectDeduct(const HandleIFSelectSelectFlag* self_) {
-    try { return {new HandleIFSelectSelectDeduct(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectDeduct*> Handle_IFSelect_SelectFlag_to_Handle_IFSelect_SelectDeduct(const Handle_IFSelect_SelectFlag* self_) {
+    try { return {new Handle_IFSelect_SelectDeduct(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelectFlag_to_HandleIFSelectSelection(const HandleIFSelectSelectFlag* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_SelectFlag_to_Handle_IFSelect_Selection(const Handle_IFSelect_SelectFlag* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelectFlag_to_HandleStandardTransient(const HandleIFSelectSelectFlag* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SelectFlag_to_Handle_Standard_Transient(const Handle_IFSelect_SelectFlag* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectIncorrectEntities*> HandleIFSelectSelectFlag_downcast_to_HandleIFSelectSelectIncorrectEntities(const HandleIFSelectSelectFlag* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectIncorrectEntities*> Handle_IFSelect_SelectFlag_downcast_to_Handle_IFSelect_SelectIncorrectEntities(const Handle_IFSelect_SelectFlag* self_) {
     try {
     opencascade::handle<IFSelect_SelectIncorrectEntities> result = opencascade::handle<IFSelect_SelectIncorrectEntities>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectIncorrectEntities(result), nullptr};
+    return {new Handle_IFSelect_SelectIncorrectEntities(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -8528,28 +8313,28 @@ extern "C" OcctResult<const IFSelect_Selection*> IFSelect_SelectInList_as_IFSele
 extern "C" OcctResult<IFSelect_Selection*> IFSelect_SelectInList_as_IFSelect_Selection_mut(IFSelect_SelectInList* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SelectInList_as_Standard_Transient(const IFSelect_SelectInList* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SelectInList_as_Standard_Transient_mut(IFSelect_SelectInList* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IFSelect_SelectInList*> HandleIFSelectSelectInList_get(const HandleIFSelectSelectInList* handle) {
+extern "C" OcctResult<const IFSelect_SelectInList*> Handle_IFSelect_SelectInList_get(const Handle_IFSelect_SelectInList* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SelectInList*> HandleIFSelectSelectInList_get_mut(HandleIFSelectSelectInList* handle) {
+extern "C" OcctResult<IFSelect_SelectInList*> Handle_IFSelect_SelectInList_get_mut(Handle_IFSelect_SelectInList* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectAnyList*> HandleIFSelectSelectInList_to_HandleIFSelectSelectAnyList(const HandleIFSelectSelectInList* self_) {
-    try { return {new HandleIFSelectSelectAnyList(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectAnyList*> Handle_IFSelect_SelectInList_to_Handle_IFSelect_SelectAnyList(const Handle_IFSelect_SelectInList* self_) {
+    try { return {new Handle_IFSelect_SelectAnyList(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectDeduct*> HandleIFSelectSelectInList_to_HandleIFSelectSelectDeduct(const HandleIFSelectSelectInList* self_) {
-    try { return {new HandleIFSelectSelectDeduct(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectDeduct*> Handle_IFSelect_SelectInList_to_Handle_IFSelect_SelectDeduct(const Handle_IFSelect_SelectInList* self_) {
+    try { return {new Handle_IFSelect_SelectDeduct(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelectInList_to_HandleIFSelectSelection(const HandleIFSelectSelectInList* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_SelectInList_to_Handle_IFSelect_Selection(const Handle_IFSelect_SelectInList* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelectInList_to_HandleStandardTransient(const HandleIFSelectSelectInList* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SelectInList_to_Handle_Standard_Transient(const Handle_IFSelect_SelectInList* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFSelect_SelectInList_inherited_KeepInputEntity(const IFSelect_SelectInList* self, Interface_EntityIterator& iter) {
@@ -8708,36 +8493,36 @@ extern "C" OcctResult<const IFSelect_Selection*> IFSelect_SelectIncorrectEntitie
 extern "C" OcctResult<IFSelect_Selection*> IFSelect_SelectIncorrectEntities_as_IFSelect_Selection_mut(IFSelect_SelectIncorrectEntities* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SelectIncorrectEntities_as_Standard_Transient(const IFSelect_SelectIncorrectEntities* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SelectIncorrectEntities_as_Standard_Transient_mut(IFSelect_SelectIncorrectEntities* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectSelectIncorrectEntities*> IFSelect_SelectIncorrectEntities_to_handle(IFSelect_SelectIncorrectEntities* obj) {
-    try { return {new HandleIFSelectSelectIncorrectEntities(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectIncorrectEntities*> IFSelect_SelectIncorrectEntities_to_handle(IFSelect_SelectIncorrectEntities* obj) {
+    try { return {new Handle_IFSelect_SelectIncorrectEntities(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_SelectIncorrectEntities*> HandleIFSelectSelectIncorrectEntities_get(const HandleIFSelectSelectIncorrectEntities* handle) {
+extern "C" OcctResult<const IFSelect_SelectIncorrectEntities*> Handle_IFSelect_SelectIncorrectEntities_get(const Handle_IFSelect_SelectIncorrectEntities* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SelectIncorrectEntities*> HandleIFSelectSelectIncorrectEntities_get_mut(HandleIFSelectSelectIncorrectEntities* handle) {
+extern "C" OcctResult<IFSelect_SelectIncorrectEntities*> Handle_IFSelect_SelectIncorrectEntities_get_mut(Handle_IFSelect_SelectIncorrectEntities* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectFlag*> HandleIFSelectSelectIncorrectEntities_to_HandleIFSelectSelectFlag(const HandleIFSelectSelectIncorrectEntities* self_) {
-    try { return {new HandleIFSelectSelectFlag(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectFlag*> Handle_IFSelect_SelectIncorrectEntities_to_Handle_IFSelect_SelectFlag(const Handle_IFSelect_SelectIncorrectEntities* self_) {
+    try { return {new Handle_IFSelect_SelectFlag(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectExtract*> HandleIFSelectSelectIncorrectEntities_to_HandleIFSelectSelectExtract(const HandleIFSelectSelectIncorrectEntities* self_) {
-    try { return {new HandleIFSelectSelectExtract(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectExtract*> Handle_IFSelect_SelectIncorrectEntities_to_Handle_IFSelect_SelectExtract(const Handle_IFSelect_SelectIncorrectEntities* self_) {
+    try { return {new Handle_IFSelect_SelectExtract(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectDeduct*> HandleIFSelectSelectIncorrectEntities_to_HandleIFSelectSelectDeduct(const HandleIFSelectSelectIncorrectEntities* self_) {
-    try { return {new HandleIFSelectSelectDeduct(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectDeduct*> Handle_IFSelect_SelectIncorrectEntities_to_Handle_IFSelect_SelectDeduct(const Handle_IFSelect_SelectIncorrectEntities* self_) {
+    try { return {new Handle_IFSelect_SelectDeduct(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelectIncorrectEntities_to_HandleIFSelectSelection(const HandleIFSelectSelectIncorrectEntities* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_SelectIncorrectEntities_to_Handle_IFSelect_Selection(const Handle_IFSelect_SelectIncorrectEntities* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelectIncorrectEntities_to_HandleStandardTransient(const HandleIFSelectSelectIncorrectEntities* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SelectIncorrectEntities_to_Handle_Standard_Transient(const Handle_IFSelect_SelectIncorrectEntities* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Interface_EntityIterator*> IFSelect_SelectIncorrectEntities_inherited_RootResult(const IFSelect_SelectIncorrectEntities* self, Interface_Graph const& G) {
@@ -8868,28 +8653,28 @@ extern "C" OcctResult<const IFSelect_Selection*> IFSelect_SelectIntersection_as_
 extern "C" OcctResult<IFSelect_Selection*> IFSelect_SelectIntersection_as_IFSelect_Selection_mut(IFSelect_SelectIntersection* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SelectIntersection_as_Standard_Transient(const IFSelect_SelectIntersection* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SelectIntersection_as_Standard_Transient_mut(IFSelect_SelectIntersection* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectSelectIntersection*> IFSelect_SelectIntersection_to_handle(IFSelect_SelectIntersection* obj) {
-    try { return {new HandleIFSelectSelectIntersection(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectIntersection*> IFSelect_SelectIntersection_to_handle(IFSelect_SelectIntersection* obj) {
+    try { return {new Handle_IFSelect_SelectIntersection(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_SelectIntersection*> HandleIFSelectSelectIntersection_get(const HandleIFSelectSelectIntersection* handle) {
+extern "C" OcctResult<const IFSelect_SelectIntersection*> Handle_IFSelect_SelectIntersection_get(const Handle_IFSelect_SelectIntersection* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SelectIntersection*> HandleIFSelectSelectIntersection_get_mut(HandleIFSelectSelectIntersection* handle) {
+extern "C" OcctResult<IFSelect_SelectIntersection*> Handle_IFSelect_SelectIntersection_get_mut(Handle_IFSelect_SelectIntersection* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectCombine*> HandleIFSelectSelectIntersection_to_HandleIFSelectSelectCombine(const HandleIFSelectSelectIntersection* self_) {
-    try { return {new HandleIFSelectSelectCombine(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectCombine*> Handle_IFSelect_SelectIntersection_to_Handle_IFSelect_SelectCombine(const Handle_IFSelect_SelectIntersection* self_) {
+    try { return {new Handle_IFSelect_SelectCombine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelectIntersection_to_HandleIFSelectSelection(const HandleIFSelectSelectIntersection* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_SelectIntersection_to_Handle_IFSelect_Selection(const Handle_IFSelect_SelectIntersection* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelectIntersection_to_HandleStandardTransient(const HandleIFSelectSelectIntersection* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SelectIntersection_to_Handle_Standard_Transient(const Handle_IFSelect_SelectIntersection* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> IFSelect_SelectIntersection_inherited_NbInputs(const IFSelect_SelectIntersection* self) {
@@ -8992,28 +8777,28 @@ extern "C" OcctResult<const IFSelect_Selection*> IFSelect_SelectModelEntities_as
 extern "C" OcctResult<IFSelect_Selection*> IFSelect_SelectModelEntities_as_IFSelect_Selection_mut(IFSelect_SelectModelEntities* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SelectModelEntities_as_Standard_Transient(const IFSelect_SelectModelEntities* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SelectModelEntities_as_Standard_Transient_mut(IFSelect_SelectModelEntities* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectSelectModelEntities*> IFSelect_SelectModelEntities_to_handle(IFSelect_SelectModelEntities* obj) {
-    try { return {new HandleIFSelectSelectModelEntities(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectModelEntities*> IFSelect_SelectModelEntities_to_handle(IFSelect_SelectModelEntities* obj) {
+    try { return {new Handle_IFSelect_SelectModelEntities(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_SelectModelEntities*> HandleIFSelectSelectModelEntities_get(const HandleIFSelectSelectModelEntities* handle) {
+extern "C" OcctResult<const IFSelect_SelectModelEntities*> Handle_IFSelect_SelectModelEntities_get(const Handle_IFSelect_SelectModelEntities* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SelectModelEntities*> HandleIFSelectSelectModelEntities_get_mut(HandleIFSelectSelectModelEntities* handle) {
+extern "C" OcctResult<IFSelect_SelectModelEntities*> Handle_IFSelect_SelectModelEntities_get_mut(Handle_IFSelect_SelectModelEntities* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectBase*> HandleIFSelectSelectModelEntities_to_HandleIFSelectSelectBase(const HandleIFSelectSelectModelEntities* self_) {
-    try { return {new HandleIFSelectSelectBase(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectBase*> Handle_IFSelect_SelectModelEntities_to_Handle_IFSelect_SelectBase(const Handle_IFSelect_SelectModelEntities* self_) {
+    try { return {new Handle_IFSelect_SelectBase(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelectModelEntities_to_HandleIFSelectSelection(const HandleIFSelectSelectModelEntities* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_SelectModelEntities_to_Handle_IFSelect_Selection(const Handle_IFSelect_SelectModelEntities* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelectModelEntities_to_HandleStandardTransient(const HandleIFSelectSelectModelEntities* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SelectModelEntities_to_Handle_Standard_Transient(const Handle_IFSelect_SelectModelEntities* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFSelect_SelectModelEntities_inherited_FillIterator(const IFSelect_SelectModelEntities* self, IFSelect_SelectionIterator& iter) {
@@ -9088,28 +8873,28 @@ extern "C" OcctResult<const IFSelect_Selection*> IFSelect_SelectModelRoots_as_IF
 extern "C" OcctResult<IFSelect_Selection*> IFSelect_SelectModelRoots_as_IFSelect_Selection_mut(IFSelect_SelectModelRoots* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SelectModelRoots_as_Standard_Transient(const IFSelect_SelectModelRoots* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SelectModelRoots_as_Standard_Transient_mut(IFSelect_SelectModelRoots* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectSelectModelRoots*> IFSelect_SelectModelRoots_to_handle(IFSelect_SelectModelRoots* obj) {
-    try { return {new HandleIFSelectSelectModelRoots(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectModelRoots*> IFSelect_SelectModelRoots_to_handle(IFSelect_SelectModelRoots* obj) {
+    try { return {new Handle_IFSelect_SelectModelRoots(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_SelectModelRoots*> HandleIFSelectSelectModelRoots_get(const HandleIFSelectSelectModelRoots* handle) {
+extern "C" OcctResult<const IFSelect_SelectModelRoots*> Handle_IFSelect_SelectModelRoots_get(const Handle_IFSelect_SelectModelRoots* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SelectModelRoots*> HandleIFSelectSelectModelRoots_get_mut(HandleIFSelectSelectModelRoots* handle) {
+extern "C" OcctResult<IFSelect_SelectModelRoots*> Handle_IFSelect_SelectModelRoots_get_mut(Handle_IFSelect_SelectModelRoots* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectBase*> HandleIFSelectSelectModelRoots_to_HandleIFSelectSelectBase(const HandleIFSelectSelectModelRoots* self_) {
-    try { return {new HandleIFSelectSelectBase(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectBase*> Handle_IFSelect_SelectModelRoots_to_Handle_IFSelect_SelectBase(const Handle_IFSelect_SelectModelRoots* self_) {
+    try { return {new Handle_IFSelect_SelectBase(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelectModelRoots_to_HandleIFSelectSelection(const HandleIFSelectSelectModelRoots* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_SelectModelRoots_to_Handle_IFSelect_Selection(const Handle_IFSelect_SelectModelRoots* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelectModelRoots_to_HandleStandardTransient(const HandleIFSelectSelectModelRoots* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SelectModelRoots_to_Handle_Standard_Transient(const Handle_IFSelect_SelectModelRoots* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFSelect_SelectModelRoots_inherited_FillIterator(const IFSelect_SelectModelRoots* self, IFSelect_SelectionIterator& iter) {
@@ -9186,7 +8971,7 @@ extern "C" const char* IFSelect_SelectPointed_set_entity(IFSelect_SelectPointed*
     try { self_->SetEntity(*item); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IFSelect_SelectPointed_set_list(IFSelect_SelectPointed* self_, Handle(TColStd_HSequenceOfTransient) const* list) {
+extern "C" const char* IFSelect_SelectPointed_set_list(IFSelect_SelectPointed* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list) {
     try { self_->SetList(*list); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -9202,15 +8987,15 @@ extern "C" OcctResult<bool> IFSelect_SelectPointed_toggle(IFSelect_SelectPointed
     try { return {self_->Toggle(*item), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> IFSelect_SelectPointed_add_list(IFSelect_SelectPointed* self_, Handle(TColStd_HSequenceOfTransient) const* list) {
+extern "C" OcctResult<bool> IFSelect_SelectPointed_add_list(IFSelect_SelectPointed* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list) {
     try { return {self_->AddList(*list), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> IFSelect_SelectPointed_remove_list(IFSelect_SelectPointed* self_, Handle(TColStd_HSequenceOfTransient) const* list) {
+extern "C" OcctResult<bool> IFSelect_SelectPointed_remove_list(IFSelect_SelectPointed* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list) {
     try { return {self_->RemoveList(*list), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> IFSelect_SelectPointed_toggle_list(IFSelect_SelectPointed* self_, Handle(TColStd_HSequenceOfTransient) const* list) {
+extern "C" OcctResult<bool> IFSelect_SelectPointed_toggle_list(IFSelect_SelectPointed* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list) {
     try { return {self_->ToggleList(*list), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9248,28 +9033,28 @@ extern "C" OcctResult<const IFSelect_Selection*> IFSelect_SelectPointed_as_IFSel
 extern "C" OcctResult<IFSelect_Selection*> IFSelect_SelectPointed_as_IFSelect_Selection_mut(IFSelect_SelectPointed* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SelectPointed_as_Standard_Transient(const IFSelect_SelectPointed* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SelectPointed_as_Standard_Transient_mut(IFSelect_SelectPointed* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectSelectPointed*> IFSelect_SelectPointed_to_handle(IFSelect_SelectPointed* obj) {
-    try { return {new HandleIFSelectSelectPointed(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectPointed*> IFSelect_SelectPointed_to_handle(IFSelect_SelectPointed* obj) {
+    try { return {new Handle_IFSelect_SelectPointed(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_SelectPointed*> HandleIFSelectSelectPointed_get(const HandleIFSelectSelectPointed* handle) {
+extern "C" OcctResult<const IFSelect_SelectPointed*> Handle_IFSelect_SelectPointed_get(const Handle_IFSelect_SelectPointed* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SelectPointed*> HandleIFSelectSelectPointed_get_mut(HandleIFSelectSelectPointed* handle) {
+extern "C" OcctResult<IFSelect_SelectPointed*> Handle_IFSelect_SelectPointed_get_mut(Handle_IFSelect_SelectPointed* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectBase*> HandleIFSelectSelectPointed_to_HandleIFSelectSelectBase(const HandleIFSelectSelectPointed* self_) {
-    try { return {new HandleIFSelectSelectBase(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectBase*> Handle_IFSelect_SelectPointed_to_Handle_IFSelect_SelectBase(const Handle_IFSelect_SelectPointed* self_) {
+    try { return {new Handle_IFSelect_SelectBase(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelectPointed_to_HandleIFSelectSelection(const HandleIFSelectSelectPointed* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_SelectPointed_to_Handle_IFSelect_Selection(const Handle_IFSelect_SelectPointed* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelectPointed_to_HandleStandardTransient(const HandleIFSelectSelectPointed* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SelectPointed_to_Handle_Standard_Transient(const Handle_IFSelect_SelectPointed* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFSelect_SelectPointed_inherited_FillIterator(const IFSelect_SelectPointed* self, IFSelect_SelectionIterator& iter) {
@@ -9390,32 +9175,32 @@ extern "C" OcctResult<const IFSelect_Selection*> IFSelect_SelectRange_as_IFSelec
 extern "C" OcctResult<IFSelect_Selection*> IFSelect_SelectRange_as_IFSelect_Selection_mut(IFSelect_SelectRange* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SelectRange_as_Standard_Transient(const IFSelect_SelectRange* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SelectRange_as_Standard_Transient_mut(IFSelect_SelectRange* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectSelectRange*> IFSelect_SelectRange_to_handle(IFSelect_SelectRange* obj) {
-    try { return {new HandleIFSelectSelectRange(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectRange*> IFSelect_SelectRange_to_handle(IFSelect_SelectRange* obj) {
+    try { return {new Handle_IFSelect_SelectRange(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_SelectRange*> HandleIFSelectSelectRange_get(const HandleIFSelectSelectRange* handle) {
+extern "C" OcctResult<const IFSelect_SelectRange*> Handle_IFSelect_SelectRange_get(const Handle_IFSelect_SelectRange* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SelectRange*> HandleIFSelectSelectRange_get_mut(HandleIFSelectSelectRange* handle) {
+extern "C" OcctResult<IFSelect_SelectRange*> Handle_IFSelect_SelectRange_get_mut(Handle_IFSelect_SelectRange* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectExtract*> HandleIFSelectSelectRange_to_HandleIFSelectSelectExtract(const HandleIFSelectSelectRange* self_) {
-    try { return {new HandleIFSelectSelectExtract(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectExtract*> Handle_IFSelect_SelectRange_to_Handle_IFSelect_SelectExtract(const Handle_IFSelect_SelectRange* self_) {
+    try { return {new Handle_IFSelect_SelectExtract(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectDeduct*> HandleIFSelectSelectRange_to_HandleIFSelectSelectDeduct(const HandleIFSelectSelectRange* self_) {
-    try { return {new HandleIFSelectSelectDeduct(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectDeduct*> Handle_IFSelect_SelectRange_to_Handle_IFSelect_SelectDeduct(const Handle_IFSelect_SelectRange* self_) {
+    try { return {new Handle_IFSelect_SelectDeduct(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelectRange_to_HandleIFSelectSelection(const HandleIFSelectSelectRange* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_SelectRange_to_Handle_IFSelect_Selection(const Handle_IFSelect_SelectRange* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelectRange_to_HandleStandardTransient(const HandleIFSelectSelectRange* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SelectRange_to_Handle_Standard_Transient(const Handle_IFSelect_SelectRange* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IFSelect_SelectRange_inherited_IsDirect(const IFSelect_SelectRange* self) {
@@ -9544,32 +9329,32 @@ extern "C" OcctResult<const IFSelect_Selection*> IFSelect_SelectRootComps_as_IFS
 extern "C" OcctResult<IFSelect_Selection*> IFSelect_SelectRootComps_as_IFSelect_Selection_mut(IFSelect_SelectRootComps* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SelectRootComps_as_Standard_Transient(const IFSelect_SelectRootComps* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SelectRootComps_as_Standard_Transient_mut(IFSelect_SelectRootComps* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectSelectRootComps*> IFSelect_SelectRootComps_to_handle(IFSelect_SelectRootComps* obj) {
-    try { return {new HandleIFSelectSelectRootComps(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectRootComps*> IFSelect_SelectRootComps_to_handle(IFSelect_SelectRootComps* obj) {
+    try { return {new Handle_IFSelect_SelectRootComps(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_SelectRootComps*> HandleIFSelectSelectRootComps_get(const HandleIFSelectSelectRootComps* handle) {
+extern "C" OcctResult<const IFSelect_SelectRootComps*> Handle_IFSelect_SelectRootComps_get(const Handle_IFSelect_SelectRootComps* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SelectRootComps*> HandleIFSelectSelectRootComps_get_mut(HandleIFSelectSelectRootComps* handle) {
+extern "C" OcctResult<IFSelect_SelectRootComps*> Handle_IFSelect_SelectRootComps_get_mut(Handle_IFSelect_SelectRootComps* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectExtract*> HandleIFSelectSelectRootComps_to_HandleIFSelectSelectExtract(const HandleIFSelectSelectRootComps* self_) {
-    try { return {new HandleIFSelectSelectExtract(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectExtract*> Handle_IFSelect_SelectRootComps_to_Handle_IFSelect_SelectExtract(const Handle_IFSelect_SelectRootComps* self_) {
+    try { return {new Handle_IFSelect_SelectExtract(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectDeduct*> HandleIFSelectSelectRootComps_to_HandleIFSelectSelectDeduct(const HandleIFSelectSelectRootComps* self_) {
-    try { return {new HandleIFSelectSelectDeduct(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectDeduct*> Handle_IFSelect_SelectRootComps_to_Handle_IFSelect_SelectDeduct(const Handle_IFSelect_SelectRootComps* self_) {
+    try { return {new Handle_IFSelect_SelectDeduct(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelectRootComps_to_HandleIFSelectSelection(const HandleIFSelectSelectRootComps* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_SelectRootComps_to_Handle_IFSelect_Selection(const Handle_IFSelect_SelectRootComps* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelectRootComps_to_HandleStandardTransient(const HandleIFSelectSelectRootComps* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SelectRootComps_to_Handle_Standard_Transient(const Handle_IFSelect_SelectRootComps* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IFSelect_SelectRootComps_inherited_IsDirect(const IFSelect_SelectRootComps* self) {
@@ -9694,32 +9479,32 @@ extern "C" OcctResult<const IFSelect_Selection*> IFSelect_SelectRoots_as_IFSelec
 extern "C" OcctResult<IFSelect_Selection*> IFSelect_SelectRoots_as_IFSelect_Selection_mut(IFSelect_SelectRoots* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SelectRoots_as_Standard_Transient(const IFSelect_SelectRoots* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SelectRoots_as_Standard_Transient_mut(IFSelect_SelectRoots* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectSelectRoots*> IFSelect_SelectRoots_to_handle(IFSelect_SelectRoots* obj) {
-    try { return {new HandleIFSelectSelectRoots(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectRoots*> IFSelect_SelectRoots_to_handle(IFSelect_SelectRoots* obj) {
+    try { return {new Handle_IFSelect_SelectRoots(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_SelectRoots*> HandleIFSelectSelectRoots_get(const HandleIFSelectSelectRoots* handle) {
+extern "C" OcctResult<const IFSelect_SelectRoots*> Handle_IFSelect_SelectRoots_get(const Handle_IFSelect_SelectRoots* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SelectRoots*> HandleIFSelectSelectRoots_get_mut(HandleIFSelectSelectRoots* handle) {
+extern "C" OcctResult<IFSelect_SelectRoots*> Handle_IFSelect_SelectRoots_get_mut(Handle_IFSelect_SelectRoots* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectExtract*> HandleIFSelectSelectRoots_to_HandleIFSelectSelectExtract(const HandleIFSelectSelectRoots* self_) {
-    try { return {new HandleIFSelectSelectExtract(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectExtract*> Handle_IFSelect_SelectRoots_to_Handle_IFSelect_SelectExtract(const Handle_IFSelect_SelectRoots* self_) {
+    try { return {new Handle_IFSelect_SelectExtract(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectDeduct*> HandleIFSelectSelectRoots_to_HandleIFSelectSelectDeduct(const HandleIFSelectSelectRoots* self_) {
-    try { return {new HandleIFSelectSelectDeduct(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectDeduct*> Handle_IFSelect_SelectRoots_to_Handle_IFSelect_SelectDeduct(const Handle_IFSelect_SelectRoots* self_) {
+    try { return {new Handle_IFSelect_SelectDeduct(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelectRoots_to_HandleIFSelectSelection(const HandleIFSelectSelectRoots* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_SelectRoots_to_Handle_IFSelect_Selection(const Handle_IFSelect_SelectRoots* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelectRoots_to_HandleStandardTransient(const HandleIFSelectSelectRoots* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SelectRoots_to_Handle_Standard_Transient(const Handle_IFSelect_SelectRoots* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IFSelect_SelectRoots_inherited_IsDirect(const IFSelect_SelectRoots* self) {
@@ -9852,32 +9637,32 @@ extern "C" OcctResult<const IFSelect_Selection*> IFSelect_SelectSent_as_IFSelect
 extern "C" OcctResult<IFSelect_Selection*> IFSelect_SelectSent_as_IFSelect_Selection_mut(IFSelect_SelectSent* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SelectSent_as_Standard_Transient(const IFSelect_SelectSent* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SelectSent_as_Standard_Transient_mut(IFSelect_SelectSent* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectSelectSent*> IFSelect_SelectSent_to_handle(IFSelect_SelectSent* obj) {
-    try { return {new HandleIFSelectSelectSent(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectSent*> IFSelect_SelectSent_to_handle(IFSelect_SelectSent* obj) {
+    try { return {new Handle_IFSelect_SelectSent(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_SelectSent*> HandleIFSelectSelectSent_get(const HandleIFSelectSelectSent* handle) {
+extern "C" OcctResult<const IFSelect_SelectSent*> Handle_IFSelect_SelectSent_get(const Handle_IFSelect_SelectSent* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SelectSent*> HandleIFSelectSelectSent_get_mut(HandleIFSelectSelectSent* handle) {
+extern "C" OcctResult<IFSelect_SelectSent*> Handle_IFSelect_SelectSent_get_mut(Handle_IFSelect_SelectSent* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectExtract*> HandleIFSelectSelectSent_to_HandleIFSelectSelectExtract(const HandleIFSelectSelectSent* self_) {
-    try { return {new HandleIFSelectSelectExtract(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectExtract*> Handle_IFSelect_SelectSent_to_Handle_IFSelect_SelectExtract(const Handle_IFSelect_SelectSent* self_) {
+    try { return {new Handle_IFSelect_SelectExtract(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectDeduct*> HandleIFSelectSelectSent_to_HandleIFSelectSelectDeduct(const HandleIFSelectSelectSent* self_) {
-    try { return {new HandleIFSelectSelectDeduct(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectDeduct*> Handle_IFSelect_SelectSent_to_Handle_IFSelect_SelectDeduct(const Handle_IFSelect_SelectSent* self_) {
+    try { return {new Handle_IFSelect_SelectDeduct(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelectSent_to_HandleIFSelectSelection(const HandleIFSelectSelectSent* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_SelectSent_to_Handle_IFSelect_Selection(const Handle_IFSelect_SelectSent* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelectSent_to_HandleStandardTransient(const HandleIFSelectSelectSent* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SelectSent_to_Handle_Standard_Transient(const Handle_IFSelect_SelectSent* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IFSelect_SelectSent_inherited_IsDirect(const IFSelect_SelectSent* self) {
@@ -9996,28 +9781,28 @@ extern "C" OcctResult<const IFSelect_Selection*> IFSelect_SelectShared_as_IFSele
 extern "C" OcctResult<IFSelect_Selection*> IFSelect_SelectShared_as_IFSelect_Selection_mut(IFSelect_SelectShared* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SelectShared_as_Standard_Transient(const IFSelect_SelectShared* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SelectShared_as_Standard_Transient_mut(IFSelect_SelectShared* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectSelectShared*> IFSelect_SelectShared_to_handle(IFSelect_SelectShared* obj) {
-    try { return {new HandleIFSelectSelectShared(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectShared*> IFSelect_SelectShared_to_handle(IFSelect_SelectShared* obj) {
+    try { return {new Handle_IFSelect_SelectShared(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_SelectShared*> HandleIFSelectSelectShared_get(const HandleIFSelectSelectShared* handle) {
+extern "C" OcctResult<const IFSelect_SelectShared*> Handle_IFSelect_SelectShared_get(const Handle_IFSelect_SelectShared* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SelectShared*> HandleIFSelectSelectShared_get_mut(HandleIFSelectSelectShared* handle) {
+extern "C" OcctResult<IFSelect_SelectShared*> Handle_IFSelect_SelectShared_get_mut(Handle_IFSelect_SelectShared* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectDeduct*> HandleIFSelectSelectShared_to_HandleIFSelectSelectDeduct(const HandleIFSelectSelectShared* self_) {
-    try { return {new HandleIFSelectSelectDeduct(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectDeduct*> Handle_IFSelect_SelectShared_to_Handle_IFSelect_SelectDeduct(const Handle_IFSelect_SelectShared* self_) {
+    try { return {new Handle_IFSelect_SelectDeduct(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelectShared_to_HandleIFSelectSelection(const HandleIFSelectSelectShared* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_SelectShared_to_Handle_IFSelect_Selection(const Handle_IFSelect_SelectShared* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelectShared_to_HandleStandardTransient(const HandleIFSelectSelectShared* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SelectShared_to_Handle_Standard_Transient(const Handle_IFSelect_SelectShared* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFSelect_SelectShared_inherited_SetInput(IFSelect_SelectShared* self, Handle(IFSelect_Selection) const& sel) {
@@ -10120,28 +9905,28 @@ extern "C" OcctResult<const IFSelect_Selection*> IFSelect_SelectSharing_as_IFSel
 extern "C" OcctResult<IFSelect_Selection*> IFSelect_SelectSharing_as_IFSelect_Selection_mut(IFSelect_SelectSharing* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SelectSharing_as_Standard_Transient(const IFSelect_SelectSharing* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SelectSharing_as_Standard_Transient_mut(IFSelect_SelectSharing* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectSelectSharing*> IFSelect_SelectSharing_to_handle(IFSelect_SelectSharing* obj) {
-    try { return {new HandleIFSelectSelectSharing(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectSharing*> IFSelect_SelectSharing_to_handle(IFSelect_SelectSharing* obj) {
+    try { return {new Handle_IFSelect_SelectSharing(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_SelectSharing*> HandleIFSelectSelectSharing_get(const HandleIFSelectSelectSharing* handle) {
+extern "C" OcctResult<const IFSelect_SelectSharing*> Handle_IFSelect_SelectSharing_get(const Handle_IFSelect_SelectSharing* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SelectSharing*> HandleIFSelectSelectSharing_get_mut(HandleIFSelectSelectSharing* handle) {
+extern "C" OcctResult<IFSelect_SelectSharing*> Handle_IFSelect_SelectSharing_get_mut(Handle_IFSelect_SelectSharing* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectDeduct*> HandleIFSelectSelectSharing_to_HandleIFSelectSelectDeduct(const HandleIFSelectSelectSharing* self_) {
-    try { return {new HandleIFSelectSelectDeduct(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectDeduct*> Handle_IFSelect_SelectSharing_to_Handle_IFSelect_SelectDeduct(const Handle_IFSelect_SelectSharing* self_) {
+    try { return {new Handle_IFSelect_SelectDeduct(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelectSharing_to_HandleIFSelectSelection(const HandleIFSelectSelectSharing* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_SelectSharing_to_Handle_IFSelect_Selection(const Handle_IFSelect_SelectSharing* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelectSharing_to_HandleStandardTransient(const HandleIFSelectSelectSharing* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SelectSharing_to_Handle_Standard_Transient(const Handle_IFSelect_SelectSharing* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFSelect_SelectSharing_inherited_SetInput(IFSelect_SelectSharing* self, Handle(IFSelect_Selection) const& sel) {
@@ -10274,32 +10059,32 @@ extern "C" OcctResult<const IFSelect_Selection*> IFSelect_SelectSignature_as_IFS
 extern "C" OcctResult<IFSelect_Selection*> IFSelect_SelectSignature_as_IFSelect_Selection_mut(IFSelect_SelectSignature* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SelectSignature_as_Standard_Transient(const IFSelect_SelectSignature* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SelectSignature_as_Standard_Transient_mut(IFSelect_SelectSignature* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectSelectSignature*> IFSelect_SelectSignature_to_handle(IFSelect_SelectSignature* obj) {
-    try { return {new HandleIFSelectSelectSignature(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectSignature*> IFSelect_SelectSignature_to_handle(IFSelect_SelectSignature* obj) {
+    try { return {new Handle_IFSelect_SelectSignature(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_SelectSignature*> HandleIFSelectSelectSignature_get(const HandleIFSelectSelectSignature* handle) {
+extern "C" OcctResult<const IFSelect_SelectSignature*> Handle_IFSelect_SelectSignature_get(const Handle_IFSelect_SelectSignature* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SelectSignature*> HandleIFSelectSelectSignature_get_mut(HandleIFSelectSelectSignature* handle) {
+extern "C" OcctResult<IFSelect_SelectSignature*> Handle_IFSelect_SelectSignature_get_mut(Handle_IFSelect_SelectSignature* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectExtract*> HandleIFSelectSelectSignature_to_HandleIFSelectSelectExtract(const HandleIFSelectSelectSignature* self_) {
-    try { return {new HandleIFSelectSelectExtract(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectExtract*> Handle_IFSelect_SelectSignature_to_Handle_IFSelect_SelectExtract(const Handle_IFSelect_SelectSignature* self_) {
+    try { return {new Handle_IFSelect_SelectExtract(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectDeduct*> HandleIFSelectSelectSignature_to_HandleIFSelectSelectDeduct(const HandleIFSelectSelectSignature* self_) {
-    try { return {new HandleIFSelectSelectDeduct(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectDeduct*> Handle_IFSelect_SelectSignature_to_Handle_IFSelect_SelectDeduct(const Handle_IFSelect_SelectSignature* self_) {
+    try { return {new Handle_IFSelect_SelectDeduct(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelectSignature_to_HandleIFSelectSelection(const HandleIFSelectSelectSignature* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_SelectSignature_to_Handle_IFSelect_Selection(const Handle_IFSelect_SelectSignature* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelectSignature_to_HandleStandardTransient(const HandleIFSelectSelectSignature* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SelectSignature_to_Handle_Standard_Transient(const Handle_IFSelect_SelectSignature* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IFSelect_SelectSignature_inherited_IsDirect(const IFSelect_SelectSignature* self) {
@@ -10432,32 +10217,32 @@ extern "C" OcctResult<const IFSelect_Selection*> IFSelect_SelectSignedShared_as_
 extern "C" OcctResult<IFSelect_Selection*> IFSelect_SelectSignedShared_as_IFSelect_Selection_mut(IFSelect_SelectSignedShared* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SelectSignedShared_as_Standard_Transient(const IFSelect_SelectSignedShared* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SelectSignedShared_as_Standard_Transient_mut(IFSelect_SelectSignedShared* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectSelectSignedShared*> IFSelect_SelectSignedShared_to_handle(IFSelect_SelectSignedShared* obj) {
-    try { return {new HandleIFSelectSelectSignedShared(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectSignedShared*> IFSelect_SelectSignedShared_to_handle(IFSelect_SelectSignedShared* obj) {
+    try { return {new Handle_IFSelect_SelectSignedShared(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_SelectSignedShared*> HandleIFSelectSelectSignedShared_get(const HandleIFSelectSelectSignedShared* handle) {
+extern "C" OcctResult<const IFSelect_SelectSignedShared*> Handle_IFSelect_SelectSignedShared_get(const Handle_IFSelect_SelectSignedShared* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SelectSignedShared*> HandleIFSelectSelectSignedShared_get_mut(HandleIFSelectSelectSignedShared* handle) {
+extern "C" OcctResult<IFSelect_SelectSignedShared*> Handle_IFSelect_SelectSignedShared_get_mut(Handle_IFSelect_SelectSignedShared* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectExplore*> HandleIFSelectSelectSignedShared_to_HandleIFSelectSelectExplore(const HandleIFSelectSelectSignedShared* self_) {
-    try { return {new HandleIFSelectSelectExplore(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectExplore*> Handle_IFSelect_SelectSignedShared_to_Handle_IFSelect_SelectExplore(const Handle_IFSelect_SelectSignedShared* self_) {
+    try { return {new Handle_IFSelect_SelectExplore(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectDeduct*> HandleIFSelectSelectSignedShared_to_HandleIFSelectSelectDeduct(const HandleIFSelectSelectSignedShared* self_) {
-    try { return {new HandleIFSelectSelectDeduct(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectDeduct*> Handle_IFSelect_SelectSignedShared_to_Handle_IFSelect_SelectDeduct(const Handle_IFSelect_SelectSignedShared* self_) {
+    try { return {new Handle_IFSelect_SelectDeduct(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelectSignedShared_to_HandleIFSelectSelection(const HandleIFSelectSelectSignedShared* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_SelectSignedShared_to_Handle_IFSelect_Selection(const Handle_IFSelect_SelectSignedShared* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelectSignedShared_to_HandleStandardTransient(const HandleIFSelectSelectSignedShared* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SelectSignedShared_to_Handle_Standard_Transient(const Handle_IFSelect_SelectSignedShared* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> IFSelect_SelectSignedShared_inherited_Level(const IFSelect_SelectSignedShared* self) {
@@ -10586,32 +10371,32 @@ extern "C" OcctResult<const IFSelect_Selection*> IFSelect_SelectSignedSharing_as
 extern "C" OcctResult<IFSelect_Selection*> IFSelect_SelectSignedSharing_as_IFSelect_Selection_mut(IFSelect_SelectSignedSharing* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SelectSignedSharing_as_Standard_Transient(const IFSelect_SelectSignedSharing* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SelectSignedSharing_as_Standard_Transient_mut(IFSelect_SelectSignedSharing* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectSelectSignedSharing*> IFSelect_SelectSignedSharing_to_handle(IFSelect_SelectSignedSharing* obj) {
-    try { return {new HandleIFSelectSelectSignedSharing(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectSignedSharing*> IFSelect_SelectSignedSharing_to_handle(IFSelect_SelectSignedSharing* obj) {
+    try { return {new Handle_IFSelect_SelectSignedSharing(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_SelectSignedSharing*> HandleIFSelectSelectSignedSharing_get(const HandleIFSelectSelectSignedSharing* handle) {
+extern "C" OcctResult<const IFSelect_SelectSignedSharing*> Handle_IFSelect_SelectSignedSharing_get(const Handle_IFSelect_SelectSignedSharing* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SelectSignedSharing*> HandleIFSelectSelectSignedSharing_get_mut(HandleIFSelectSelectSignedSharing* handle) {
+extern "C" OcctResult<IFSelect_SelectSignedSharing*> Handle_IFSelect_SelectSignedSharing_get_mut(Handle_IFSelect_SelectSignedSharing* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectExplore*> HandleIFSelectSelectSignedSharing_to_HandleIFSelectSelectExplore(const HandleIFSelectSelectSignedSharing* self_) {
-    try { return {new HandleIFSelectSelectExplore(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectExplore*> Handle_IFSelect_SelectSignedSharing_to_Handle_IFSelect_SelectExplore(const Handle_IFSelect_SelectSignedSharing* self_) {
+    try { return {new Handle_IFSelect_SelectExplore(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectDeduct*> HandleIFSelectSelectSignedSharing_to_HandleIFSelectSelectDeduct(const HandleIFSelectSelectSignedSharing* self_) {
-    try { return {new HandleIFSelectSelectDeduct(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectDeduct*> Handle_IFSelect_SelectSignedSharing_to_Handle_IFSelect_SelectDeduct(const Handle_IFSelect_SelectSignedSharing* self_) {
+    try { return {new Handle_IFSelect_SelectDeduct(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelectSignedSharing_to_HandleIFSelectSelection(const HandleIFSelectSelectSignedSharing* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_SelectSignedSharing_to_Handle_IFSelect_Selection(const Handle_IFSelect_SelectSignedSharing* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelectSignedSharing_to_HandleStandardTransient(const HandleIFSelectSelectSignedSharing* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SelectSignedSharing_to_Handle_Standard_Transient(const Handle_IFSelect_SelectSignedSharing* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> IFSelect_SelectSignedSharing_inherited_Level(const IFSelect_SelectSignedSharing* self) {
@@ -10750,28 +10535,28 @@ extern "C" OcctResult<const IFSelect_Selection*> IFSelect_SelectSuite_as_IFSelec
 extern "C" OcctResult<IFSelect_Selection*> IFSelect_SelectSuite_as_IFSelect_Selection_mut(IFSelect_SelectSuite* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SelectSuite_as_Standard_Transient(const IFSelect_SelectSuite* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SelectSuite_as_Standard_Transient_mut(IFSelect_SelectSuite* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectSelectSuite*> IFSelect_SelectSuite_to_handle(IFSelect_SelectSuite* obj) {
-    try { return {new HandleIFSelectSelectSuite(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectSuite*> IFSelect_SelectSuite_to_handle(IFSelect_SelectSuite* obj) {
+    try { return {new Handle_IFSelect_SelectSuite(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_SelectSuite*> HandleIFSelectSelectSuite_get(const HandleIFSelectSelectSuite* handle) {
+extern "C" OcctResult<const IFSelect_SelectSuite*> Handle_IFSelect_SelectSuite_get(const Handle_IFSelect_SelectSuite* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SelectSuite*> HandleIFSelectSelectSuite_get_mut(HandleIFSelectSelectSuite* handle) {
+extern "C" OcctResult<IFSelect_SelectSuite*> Handle_IFSelect_SelectSuite_get_mut(Handle_IFSelect_SelectSuite* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectDeduct*> HandleIFSelectSelectSuite_to_HandleIFSelectSelectDeduct(const HandleIFSelectSelectSuite* self_) {
-    try { return {new HandleIFSelectSelectDeduct(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectDeduct*> Handle_IFSelect_SelectSuite_to_Handle_IFSelect_SelectDeduct(const Handle_IFSelect_SelectSuite* self_) {
+    try { return {new Handle_IFSelect_SelectDeduct(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelectSuite_to_HandleIFSelectSelection(const HandleIFSelectSelectSuite* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_SelectSuite_to_Handle_IFSelect_Selection(const Handle_IFSelect_SelectSuite* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelectSuite_to_HandleStandardTransient(const HandleIFSelectSelectSuite* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SelectSuite_to_Handle_Standard_Transient(const Handle_IFSelect_SelectSuite* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFSelect_SelectSuite_inherited_SetInput(IFSelect_SelectSuite* self, Handle(IFSelect_Selection) const& sel) {
@@ -10886,36 +10671,36 @@ extern "C" OcctResult<const IFSelect_Selection*> IFSelect_SelectType_as_IFSelect
 extern "C" OcctResult<IFSelect_Selection*> IFSelect_SelectType_as_IFSelect_Selection_mut(IFSelect_SelectType* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SelectType_as_Standard_Transient(const IFSelect_SelectType* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SelectType_as_Standard_Transient_mut(IFSelect_SelectType* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectSelectType*> IFSelect_SelectType_to_handle(IFSelect_SelectType* obj) {
-    try { return {new HandleIFSelectSelectType(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectType*> IFSelect_SelectType_to_handle(IFSelect_SelectType* obj) {
+    try { return {new Handle_IFSelect_SelectType(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_SelectType*> HandleIFSelectSelectType_get(const HandleIFSelectSelectType* handle) {
+extern "C" OcctResult<const IFSelect_SelectType*> Handle_IFSelect_SelectType_get(const Handle_IFSelect_SelectType* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SelectType*> HandleIFSelectSelectType_get_mut(HandleIFSelectSelectType* handle) {
+extern "C" OcctResult<IFSelect_SelectType*> Handle_IFSelect_SelectType_get_mut(Handle_IFSelect_SelectType* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectAnyType*> HandleIFSelectSelectType_to_HandleIFSelectSelectAnyType(const HandleIFSelectSelectType* self_) {
-    try { return {new HandleIFSelectSelectAnyType(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectAnyType*> Handle_IFSelect_SelectType_to_Handle_IFSelect_SelectAnyType(const Handle_IFSelect_SelectType* self_) {
+    try { return {new Handle_IFSelect_SelectAnyType(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectExtract*> HandleIFSelectSelectType_to_HandleIFSelectSelectExtract(const HandleIFSelectSelectType* self_) {
-    try { return {new HandleIFSelectSelectExtract(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectExtract*> Handle_IFSelect_SelectType_to_Handle_IFSelect_SelectExtract(const Handle_IFSelect_SelectType* self_) {
+    try { return {new Handle_IFSelect_SelectExtract(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectDeduct*> HandleIFSelectSelectType_to_HandleIFSelectSelectDeduct(const HandleIFSelectSelectType* self_) {
-    try { return {new HandleIFSelectSelectDeduct(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectDeduct*> Handle_IFSelect_SelectType_to_Handle_IFSelect_SelectDeduct(const Handle_IFSelect_SelectType* self_) {
+    try { return {new Handle_IFSelect_SelectDeduct(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelectType_to_HandleIFSelectSelection(const HandleIFSelectSelectType* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_SelectType_to_Handle_IFSelect_Selection(const Handle_IFSelect_SelectType* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelectType_to_HandleStandardTransient(const HandleIFSelectSelectType* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SelectType_to_Handle_Standard_Transient(const Handle_IFSelect_SelectType* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IFSelect_SelectType_inherited_Sort(const IFSelect_SelectType* self, int32_t rank, Handle(Standard_Transient) const& ent, Handle(Interface_InterfaceModel) const& model) {
@@ -11042,28 +10827,28 @@ extern "C" OcctResult<const IFSelect_Selection*> IFSelect_SelectUnion_as_IFSelec
 extern "C" OcctResult<IFSelect_Selection*> IFSelect_SelectUnion_as_IFSelect_Selection_mut(IFSelect_SelectUnion* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SelectUnion_as_Standard_Transient(const IFSelect_SelectUnion* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SelectUnion_as_Standard_Transient_mut(IFSelect_SelectUnion* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectSelectUnion*> IFSelect_SelectUnion_to_handle(IFSelect_SelectUnion* obj) {
-    try { return {new HandleIFSelectSelectUnion(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectUnion*> IFSelect_SelectUnion_to_handle(IFSelect_SelectUnion* obj) {
+    try { return {new Handle_IFSelect_SelectUnion(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_SelectUnion*> HandleIFSelectSelectUnion_get(const HandleIFSelectSelectUnion* handle) {
+extern "C" OcctResult<const IFSelect_SelectUnion*> Handle_IFSelect_SelectUnion_get(const Handle_IFSelect_SelectUnion* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SelectUnion*> HandleIFSelectSelectUnion_get_mut(HandleIFSelectSelectUnion* handle) {
+extern "C" OcctResult<IFSelect_SelectUnion*> Handle_IFSelect_SelectUnion_get_mut(Handle_IFSelect_SelectUnion* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectCombine*> HandleIFSelectSelectUnion_to_HandleIFSelectSelectCombine(const HandleIFSelectSelectUnion* self_) {
-    try { return {new HandleIFSelectSelectCombine(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectCombine*> Handle_IFSelect_SelectUnion_to_Handle_IFSelect_SelectCombine(const Handle_IFSelect_SelectUnion* self_) {
+    try { return {new Handle_IFSelect_SelectCombine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelectUnion_to_HandleIFSelectSelection(const HandleIFSelectSelectUnion* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_SelectUnion_to_Handle_IFSelect_Selection(const Handle_IFSelect_SelectUnion* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelectUnion_to_HandleStandardTransient(const HandleIFSelectSelectUnion* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SelectUnion_to_Handle_Standard_Transient(const Handle_IFSelect_SelectUnion* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> IFSelect_SelectUnion_inherited_NbInputs(const IFSelect_SelectUnion* self) {
@@ -11164,32 +10949,32 @@ extern "C" OcctResult<const IFSelect_Selection*> IFSelect_SelectUnknownEntities_
 extern "C" OcctResult<IFSelect_Selection*> IFSelect_SelectUnknownEntities_as_IFSelect_Selection_mut(IFSelect_SelectUnknownEntities* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SelectUnknownEntities_as_Standard_Transient(const IFSelect_SelectUnknownEntities* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SelectUnknownEntities_as_Standard_Transient_mut(IFSelect_SelectUnknownEntities* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectSelectUnknownEntities*> IFSelect_SelectUnknownEntities_to_handle(IFSelect_SelectUnknownEntities* obj) {
-    try { return {new HandleIFSelectSelectUnknownEntities(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectUnknownEntities*> IFSelect_SelectUnknownEntities_to_handle(IFSelect_SelectUnknownEntities* obj) {
+    try { return {new Handle_IFSelect_SelectUnknownEntities(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_SelectUnknownEntities*> HandleIFSelectSelectUnknownEntities_get(const HandleIFSelectSelectUnknownEntities* handle) {
+extern "C" OcctResult<const IFSelect_SelectUnknownEntities*> Handle_IFSelect_SelectUnknownEntities_get(const Handle_IFSelect_SelectUnknownEntities* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SelectUnknownEntities*> HandleIFSelectSelectUnknownEntities_get_mut(HandleIFSelectSelectUnknownEntities* handle) {
+extern "C" OcctResult<IFSelect_SelectUnknownEntities*> Handle_IFSelect_SelectUnknownEntities_get_mut(Handle_IFSelect_SelectUnknownEntities* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectExtract*> HandleIFSelectSelectUnknownEntities_to_HandleIFSelectSelectExtract(const HandleIFSelectSelectUnknownEntities* self_) {
-    try { return {new HandleIFSelectSelectExtract(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectExtract*> Handle_IFSelect_SelectUnknownEntities_to_Handle_IFSelect_SelectExtract(const Handle_IFSelect_SelectUnknownEntities* self_) {
+    try { return {new Handle_IFSelect_SelectExtract(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectDeduct*> HandleIFSelectSelectUnknownEntities_to_HandleIFSelectSelectDeduct(const HandleIFSelectSelectUnknownEntities* self_) {
-    try { return {new HandleIFSelectSelectDeduct(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectDeduct*> Handle_IFSelect_SelectUnknownEntities_to_Handle_IFSelect_SelectDeduct(const Handle_IFSelect_SelectUnknownEntities* self_) {
+    try { return {new Handle_IFSelect_SelectDeduct(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleIFSelectSelectUnknownEntities_to_HandleIFSelectSelection(const HandleIFSelectSelectUnknownEntities* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_IFSelect_SelectUnknownEntities_to_Handle_IFSelect_Selection(const Handle_IFSelect_SelectUnknownEntities* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelectUnknownEntities_to_HandleStandardTransient(const HandleIFSelectSelectUnknownEntities* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SelectUnknownEntities_to_Handle_Standard_Transient(const Handle_IFSelect_SelectUnknownEntities* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IFSelect_SelectUnknownEntities_inherited_IsDirect(const IFSelect_SelectUnknownEntities* self) {
@@ -11316,383 +11101,383 @@ extern "C" OcctResult<Handle(Standard_Type) const*> IFSelect_Selection_get_type_
 }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_Selection_as_Standard_Transient(const IFSelect_Selection* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_Selection_as_Standard_Transient_mut(IFSelect_Selection* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IFSelect_Selection*> HandleIFSelectSelection_get(const HandleIFSelectSelection* handle) {
+extern "C" OcctResult<const IFSelect_Selection*> Handle_IFSelect_Selection_get(const Handle_IFSelect_Selection* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_Selection*> HandleIFSelectSelection_get_mut(HandleIFSelectSelection* handle) {
+extern "C" OcctResult<IFSelect_Selection*> Handle_IFSelect_Selection_get_mut(Handle_IFSelect_Selection* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSelection_to_HandleStandardTransient(const HandleIFSelectSelection* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_Selection_to_Handle_Standard_Transient(const Handle_IFSelect_Selection* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectBase*> HandleIFSelectSelection_downcast_to_HandleIFSelectSelectBase(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectBase*> Handle_IFSelect_Selection_downcast_to_Handle_IFSelect_SelectBase(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IFSelect_SelectBase> result = opencascade::handle<IFSelect_SelectBase>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectBase(result), nullptr};
+    return {new Handle_IFSelect_SelectBase(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectCombine*> HandleIFSelectSelection_downcast_to_HandleIFSelectSelectCombine(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectCombine*> Handle_IFSelect_Selection_downcast_to_Handle_IFSelect_SelectCombine(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IFSelect_SelectCombine> result = opencascade::handle<IFSelect_SelectCombine>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectCombine(result), nullptr};
+    return {new Handle_IFSelect_SelectCombine(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectControl*> HandleIFSelectSelection_downcast_to_HandleIFSelectSelectControl(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectControl*> Handle_IFSelect_Selection_downcast_to_Handle_IFSelect_SelectControl(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IFSelect_SelectControl> result = opencascade::handle<IFSelect_SelectControl>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectControl(result), nullptr};
+    return {new Handle_IFSelect_SelectControl(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectDeduct*> HandleIFSelectSelection_downcast_to_HandleIFSelectSelectDeduct(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectDeduct*> Handle_IFSelect_Selection_downcast_to_Handle_IFSelect_SelectDeduct(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IFSelect_SelectDeduct> result = opencascade::handle<IFSelect_SelectDeduct>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectDeduct(result), nullptr};
+    return {new Handle_IFSelect_SelectDeduct(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectDiff*> HandleIFSelectSelection_downcast_to_HandleIFSelectSelectDiff(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectDiff*> Handle_IFSelect_Selection_downcast_to_Handle_IFSelect_SelectDiff(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IFSelect_SelectDiff> result = opencascade::handle<IFSelect_SelectDiff>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectDiff(result), nullptr};
+    return {new Handle_IFSelect_SelectDiff(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectEntityNumber*> HandleIFSelectSelection_downcast_to_HandleIFSelectSelectEntityNumber(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectEntityNumber*> Handle_IFSelect_Selection_downcast_to_Handle_IFSelect_SelectEntityNumber(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IFSelect_SelectEntityNumber> result = opencascade::handle<IFSelect_SelectEntityNumber>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectEntityNumber(result), nullptr};
+    return {new Handle_IFSelect_SelectEntityNumber(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectErrorEntities*> HandleIFSelectSelection_downcast_to_HandleIFSelectSelectErrorEntities(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectErrorEntities*> Handle_IFSelect_Selection_downcast_to_Handle_IFSelect_SelectErrorEntities(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IFSelect_SelectErrorEntities> result = opencascade::handle<IFSelect_SelectErrorEntities>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectErrorEntities(result), nullptr};
+    return {new Handle_IFSelect_SelectErrorEntities(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectFlag*> HandleIFSelectSelection_downcast_to_HandleIFSelectSelectFlag(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectFlag*> Handle_IFSelect_Selection_downcast_to_Handle_IFSelect_SelectFlag(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IFSelect_SelectFlag> result = opencascade::handle<IFSelect_SelectFlag>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectFlag(result), nullptr};
+    return {new Handle_IFSelect_SelectFlag(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectIncorrectEntities*> HandleIFSelectSelection_downcast_to_HandleIFSelectSelectIncorrectEntities(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectIncorrectEntities*> Handle_IFSelect_Selection_downcast_to_Handle_IFSelect_SelectIncorrectEntities(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IFSelect_SelectIncorrectEntities> result = opencascade::handle<IFSelect_SelectIncorrectEntities>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectIncorrectEntities(result), nullptr};
+    return {new Handle_IFSelect_SelectIncorrectEntities(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectIntersection*> HandleIFSelectSelection_downcast_to_HandleIFSelectSelectIntersection(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectIntersection*> Handle_IFSelect_Selection_downcast_to_Handle_IFSelect_SelectIntersection(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IFSelect_SelectIntersection> result = opencascade::handle<IFSelect_SelectIntersection>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectIntersection(result), nullptr};
+    return {new Handle_IFSelect_SelectIntersection(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectModelEntities*> HandleIFSelectSelection_downcast_to_HandleIFSelectSelectModelEntities(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectModelEntities*> Handle_IFSelect_Selection_downcast_to_Handle_IFSelect_SelectModelEntities(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IFSelect_SelectModelEntities> result = opencascade::handle<IFSelect_SelectModelEntities>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectModelEntities(result), nullptr};
+    return {new Handle_IFSelect_SelectModelEntities(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectModelRoots*> HandleIFSelectSelection_downcast_to_HandleIFSelectSelectModelRoots(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectModelRoots*> Handle_IFSelect_Selection_downcast_to_Handle_IFSelect_SelectModelRoots(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IFSelect_SelectModelRoots> result = opencascade::handle<IFSelect_SelectModelRoots>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectModelRoots(result), nullptr};
+    return {new Handle_IFSelect_SelectModelRoots(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectPointed*> HandleIFSelectSelection_downcast_to_HandleIFSelectSelectPointed(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectPointed*> Handle_IFSelect_Selection_downcast_to_Handle_IFSelect_SelectPointed(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IFSelect_SelectPointed> result = opencascade::handle<IFSelect_SelectPointed>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectPointed(result), nullptr};
+    return {new Handle_IFSelect_SelectPointed(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectRange*> HandleIFSelectSelection_downcast_to_HandleIFSelectSelectRange(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectRange*> Handle_IFSelect_Selection_downcast_to_Handle_IFSelect_SelectRange(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IFSelect_SelectRange> result = opencascade::handle<IFSelect_SelectRange>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectRange(result), nullptr};
+    return {new Handle_IFSelect_SelectRange(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectRootComps*> HandleIFSelectSelection_downcast_to_HandleIFSelectSelectRootComps(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectRootComps*> Handle_IFSelect_Selection_downcast_to_Handle_IFSelect_SelectRootComps(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IFSelect_SelectRootComps> result = opencascade::handle<IFSelect_SelectRootComps>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectRootComps(result), nullptr};
+    return {new Handle_IFSelect_SelectRootComps(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectRoots*> HandleIFSelectSelection_downcast_to_HandleIFSelectSelectRoots(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectRoots*> Handle_IFSelect_Selection_downcast_to_Handle_IFSelect_SelectRoots(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IFSelect_SelectRoots> result = opencascade::handle<IFSelect_SelectRoots>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectRoots(result), nullptr};
+    return {new Handle_IFSelect_SelectRoots(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectSent*> HandleIFSelectSelection_downcast_to_HandleIFSelectSelectSent(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectSent*> Handle_IFSelect_Selection_downcast_to_Handle_IFSelect_SelectSent(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IFSelect_SelectSent> result = opencascade::handle<IFSelect_SelectSent>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectSent(result), nullptr};
+    return {new Handle_IFSelect_SelectSent(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectShared*> HandleIFSelectSelection_downcast_to_HandleIFSelectSelectShared(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectShared*> Handle_IFSelect_Selection_downcast_to_Handle_IFSelect_SelectShared(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IFSelect_SelectShared> result = opencascade::handle<IFSelect_SelectShared>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectShared(result), nullptr};
+    return {new Handle_IFSelect_SelectShared(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectSharing*> HandleIFSelectSelection_downcast_to_HandleIFSelectSelectSharing(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectSharing*> Handle_IFSelect_Selection_downcast_to_Handle_IFSelect_SelectSharing(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IFSelect_SelectSharing> result = opencascade::handle<IFSelect_SelectSharing>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectSharing(result), nullptr};
+    return {new Handle_IFSelect_SelectSharing(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectSignature*> HandleIFSelectSelection_downcast_to_HandleIFSelectSelectSignature(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectSignature*> Handle_IFSelect_Selection_downcast_to_Handle_IFSelect_SelectSignature(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IFSelect_SelectSignature> result = opencascade::handle<IFSelect_SelectSignature>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectSignature(result), nullptr};
+    return {new Handle_IFSelect_SelectSignature(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectSignedShared*> HandleIFSelectSelection_downcast_to_HandleIFSelectSelectSignedShared(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectSignedShared*> Handle_IFSelect_Selection_downcast_to_Handle_IFSelect_SelectSignedShared(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IFSelect_SelectSignedShared> result = opencascade::handle<IFSelect_SelectSignedShared>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectSignedShared(result), nullptr};
+    return {new Handle_IFSelect_SelectSignedShared(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectSignedSharing*> HandleIFSelectSelection_downcast_to_HandleIFSelectSelectSignedSharing(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectSignedSharing*> Handle_IFSelect_Selection_downcast_to_Handle_IFSelect_SelectSignedSharing(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IFSelect_SelectSignedSharing> result = opencascade::handle<IFSelect_SelectSignedSharing>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectSignedSharing(result), nullptr};
+    return {new Handle_IFSelect_SelectSignedSharing(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectSuite*> HandleIFSelectSelection_downcast_to_HandleIFSelectSelectSuite(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectSuite*> Handle_IFSelect_Selection_downcast_to_Handle_IFSelect_SelectSuite(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IFSelect_SelectSuite> result = opencascade::handle<IFSelect_SelectSuite>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectSuite(result), nullptr};
+    return {new Handle_IFSelect_SelectSuite(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectType*> HandleIFSelectSelection_downcast_to_HandleIFSelectSelectType(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectType*> Handle_IFSelect_Selection_downcast_to_Handle_IFSelect_SelectType(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IFSelect_SelectType> result = opencascade::handle<IFSelect_SelectType>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectType(result), nullptr};
+    return {new Handle_IFSelect_SelectType(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectUnion*> HandleIFSelectSelection_downcast_to_HandleIFSelectSelectUnion(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectUnion*> Handle_IFSelect_Selection_downcast_to_Handle_IFSelect_SelectUnion(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IFSelect_SelectUnion> result = opencascade::handle<IFSelect_SelectUnion>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectUnion(result), nullptr};
+    return {new Handle_IFSelect_SelectUnion(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectUnknownEntities*> HandleIFSelectSelection_downcast_to_HandleIFSelectSelectUnknownEntities(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IFSelect_SelectUnknownEntities*> Handle_IFSelect_Selection_downcast_to_Handle_IFSelect_SelectUnknownEntities(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IFSelect_SelectUnknownEntities> result = opencascade::handle<IFSelect_SelectUnknownEntities>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSelectUnknownEntities(result), nullptr};
+    return {new Handle_IFSelect_SelectUnknownEntities(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectBasicGeom*> HandleIFSelectSelection_downcast_to_HandleIGESSelectSelectBasicGeom(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectBasicGeom*> Handle_IFSelect_Selection_downcast_to_Handle_IGESSelect_SelectBasicGeom(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IGESSelect_SelectBasicGeom> result = opencascade::handle<IGESSelect_SelectBasicGeom>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectBasicGeom(result), nullptr};
+    return {new Handle_IGESSelect_SelectBasicGeom(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectBypassGroup*> HandleIFSelectSelection_downcast_to_HandleIGESSelectSelectBypassGroup(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectBypassGroup*> Handle_IFSelect_Selection_downcast_to_Handle_IGESSelect_SelectBypassGroup(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IGESSelect_SelectBypassGroup> result = opencascade::handle<IGESSelect_SelectBypassGroup>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectBypassGroup(result), nullptr};
+    return {new Handle_IGESSelect_SelectBypassGroup(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectBypassSubfigure*> HandleIFSelectSelection_downcast_to_HandleIGESSelectSelectBypassSubfigure(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectBypassSubfigure*> Handle_IFSelect_Selection_downcast_to_Handle_IGESSelect_SelectBypassSubfigure(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IGESSelect_SelectBypassSubfigure> result = opencascade::handle<IGESSelect_SelectBypassSubfigure>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectBypassSubfigure(result), nullptr};
+    return {new Handle_IGESSelect_SelectBypassSubfigure(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectDrawingFrom*> HandleIFSelectSelection_downcast_to_HandleIGESSelectSelectDrawingFrom(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectDrawingFrom*> Handle_IFSelect_Selection_downcast_to_Handle_IGESSelect_SelectDrawingFrom(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IGESSelect_SelectDrawingFrom> result = opencascade::handle<IGESSelect_SelectDrawingFrom>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectDrawingFrom(result), nullptr};
+    return {new Handle_IGESSelect_SelectDrawingFrom(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectFaces*> HandleIFSelectSelection_downcast_to_HandleIGESSelectSelectFaces(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectFaces*> Handle_IFSelect_Selection_downcast_to_Handle_IGESSelect_SelectFaces(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IGESSelect_SelectFaces> result = opencascade::handle<IGESSelect_SelectFaces>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectFaces(result), nullptr};
+    return {new Handle_IGESSelect_SelectFaces(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectFromDrawing*> HandleIFSelectSelection_downcast_to_HandleIGESSelectSelectFromDrawing(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectFromDrawing*> Handle_IFSelect_Selection_downcast_to_Handle_IGESSelect_SelectFromDrawing(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IGESSelect_SelectFromDrawing> result = opencascade::handle<IGESSelect_SelectFromDrawing>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectFromDrawing(result), nullptr};
+    return {new Handle_IGESSelect_SelectFromDrawing(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectFromSingleView*> HandleIFSelectSelection_downcast_to_HandleIGESSelectSelectFromSingleView(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectFromSingleView*> Handle_IFSelect_Selection_downcast_to_Handle_IGESSelect_SelectFromSingleView(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IGESSelect_SelectFromSingleView> result = opencascade::handle<IGESSelect_SelectFromSingleView>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectFromSingleView(result), nullptr};
+    return {new Handle_IGESSelect_SelectFromSingleView(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectLevelNumber*> HandleIFSelectSelection_downcast_to_HandleIGESSelectSelectLevelNumber(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectLevelNumber*> Handle_IFSelect_Selection_downcast_to_Handle_IGESSelect_SelectLevelNumber(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IGESSelect_SelectLevelNumber> result = opencascade::handle<IGESSelect_SelectLevelNumber>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectLevelNumber(result), nullptr};
+    return {new Handle_IGESSelect_SelectLevelNumber(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectName*> HandleIFSelectSelection_downcast_to_HandleIGESSelectSelectName(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectName*> Handle_IFSelect_Selection_downcast_to_Handle_IGESSelect_SelectName(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IGESSelect_SelectName> result = opencascade::handle<IGESSelect_SelectName>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectName(result), nullptr};
+    return {new Handle_IGESSelect_SelectName(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectPCurves*> HandleIFSelectSelection_downcast_to_HandleIGESSelectSelectPCurves(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectPCurves*> Handle_IFSelect_Selection_downcast_to_Handle_IGESSelect_SelectPCurves(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IGESSelect_SelectPCurves> result = opencascade::handle<IGESSelect_SelectPCurves>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectPCurves(result), nullptr};
+    return {new Handle_IGESSelect_SelectPCurves(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectSingleViewFrom*> HandleIFSelectSelection_downcast_to_HandleIGESSelectSelectSingleViewFrom(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectSingleViewFrom*> Handle_IFSelect_Selection_downcast_to_Handle_IGESSelect_SelectSingleViewFrom(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IGESSelect_SelectSingleViewFrom> result = opencascade::handle<IGESSelect_SelectSingleViewFrom>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectSingleViewFrom(result), nullptr};
+    return {new Handle_IGESSelect_SelectSingleViewFrom(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectSubordinate*> HandleIFSelectSelection_downcast_to_HandleIGESSelectSelectSubordinate(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectSubordinate*> Handle_IFSelect_Selection_downcast_to_Handle_IGESSelect_SelectSubordinate(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IGESSelect_SelectSubordinate> result = opencascade::handle<IGESSelect_SelectSubordinate>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectSubordinate(result), nullptr};
+    return {new Handle_IGESSelect_SelectSubordinate(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSelectVisibleStatus*> HandleIFSelectSelection_downcast_to_HandleIGESSelectSelectVisibleStatus(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SelectVisibleStatus*> Handle_IFSelect_Selection_downcast_to_Handle_IGESSelect_SelectVisibleStatus(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<IGESSelect_SelectVisibleStatus> result = opencascade::handle<IGESSelect_SelectVisibleStatus>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSelectVisibleStatus(result), nullptr};
+    return {new Handle_IGESSelect_SelectVisibleStatus(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleSTEPSelectionsSelectAssembly*> HandleIFSelectSelection_downcast_to_HandleSTEPSelectionsSelectAssembly(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_STEPSelections_SelectAssembly*> Handle_IFSelect_Selection_downcast_to_Handle_STEPSelections_SelectAssembly(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<STEPSelections_SelectAssembly> result = opencascade::handle<STEPSelections_SelectAssembly>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleSTEPSelectionsSelectAssembly(result), nullptr};
+    return {new Handle_STEPSelections_SelectAssembly(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleSTEPSelectionsSelectFaces*> HandleIFSelectSelection_downcast_to_HandleSTEPSelectionsSelectFaces(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_STEPSelections_SelectFaces*> Handle_IFSelect_Selection_downcast_to_Handle_STEPSelections_SelectFaces(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<STEPSelections_SelectFaces> result = opencascade::handle<STEPSelections_SelectFaces>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleSTEPSelectionsSelectFaces(result), nullptr};
+    return {new Handle_STEPSelections_SelectFaces(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleSTEPSelectionsSelectForTransfer*> HandleIFSelectSelection_downcast_to_HandleSTEPSelectionsSelectForTransfer(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_STEPSelections_SelectForTransfer*> Handle_IFSelect_Selection_downcast_to_Handle_STEPSelections_SelectForTransfer(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<STEPSelections_SelectForTransfer> result = opencascade::handle<STEPSelections_SelectForTransfer>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleSTEPSelectionsSelectForTransfer(result), nullptr};
+    return {new Handle_STEPSelections_SelectForTransfer(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleSTEPSelectionsSelectGSCurves*> HandleIFSelectSelection_downcast_to_HandleSTEPSelectionsSelectGSCurves(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_STEPSelections_SelectGSCurves*> Handle_IFSelect_Selection_downcast_to_Handle_STEPSelections_SelectGSCurves(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<STEPSelections_SelectGSCurves> result = opencascade::handle<STEPSelections_SelectGSCurves>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleSTEPSelectionsSelectGSCurves(result), nullptr};
+    return {new Handle_STEPSelections_SelectGSCurves(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleSTEPSelectionsSelectInstances*> HandleIFSelectSelection_downcast_to_HandleSTEPSelectionsSelectInstances(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_STEPSelections_SelectInstances*> Handle_IFSelect_Selection_downcast_to_Handle_STEPSelections_SelectInstances(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<STEPSelections_SelectInstances> result = opencascade::handle<STEPSelections_SelectInstances>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleSTEPSelectionsSelectInstances(result), nullptr};
+    return {new Handle_STEPSelections_SelectInstances(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXSControlConnectedShapes*> HandleIFSelectSelection_downcast_to_HandleXSControlConnectedShapes(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_XSControl_ConnectedShapes*> Handle_IFSelect_Selection_downcast_to_Handle_XSControl_ConnectedShapes(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<XSControl_ConnectedShapes> result = opencascade::handle<XSControl_ConnectedShapes>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXSControlConnectedShapes(result), nullptr};
+    return {new Handle_XSControl_ConnectedShapes(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXSControlSelectForTransfer*> HandleIFSelectSelection_downcast_to_HandleXSControlSelectForTransfer(const HandleIFSelectSelection* self_) {
+extern "C" OcctResult<Handle_XSControl_SelectForTransfer*> Handle_IFSelect_Selection_downcast_to_Handle_XSControl_SelectForTransfer(const Handle_IFSelect_Selection* self_) {
     try {
     opencascade::handle<XSControl_SelectForTransfer> result = opencascade::handle<XSControl_SelectForTransfer>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXSControlSelectForTransfer(result), nullptr};
+    return {new Handle_XSControl_SelectForTransfer(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -11746,10 +11531,6 @@ extern "C" const char* IFSelect_SelectionIterator_add_item(IFSelect_SelectionIte
     try { self_->AddItem(*sel); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IFSelect_SelectionIterator_add_list(IFSelect_SelectionIterator* self_, IFSelect_TSeqOfSelection const* list) {
-    try { self_->AddList(*list); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" OcctResult<bool> IFSelect_SelectionIterator_more(const IFSelect_SelectionIterator* self_) {
     try { return {self_->More(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -11798,31 +11579,31 @@ extern "C" OcctResult<Handle(Standard_Type) const*> IFSelect_SessionDumper_get_t
 }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SessionDumper_as_Standard_Transient(const IFSelect_SessionDumper* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SessionDumper_as_Standard_Transient_mut(IFSelect_SessionDumper* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IFSelect_SessionDumper*> HandleIFSelectSessionDumper_get(const HandleIFSelectSessionDumper* handle) {
+extern "C" OcctResult<const IFSelect_SessionDumper*> Handle_IFSelect_SessionDumper_get(const Handle_IFSelect_SessionDumper* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SessionDumper*> HandleIFSelectSessionDumper_get_mut(HandleIFSelectSessionDumper* handle) {
+extern "C" OcctResult<IFSelect_SessionDumper*> Handle_IFSelect_SessionDumper_get_mut(Handle_IFSelect_SessionDumper* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSessionDumper_to_HandleStandardTransient(const HandleIFSelectSessionDumper* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SessionDumper_to_Handle_Standard_Transient(const Handle_IFSelect_SessionDumper* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectBasicDumper*> HandleIFSelectSessionDumper_downcast_to_HandleIFSelectBasicDumper(const HandleIFSelectSessionDumper* self_) {
+extern "C" OcctResult<Handle_IFSelect_BasicDumper*> Handle_IFSelect_SessionDumper_downcast_to_Handle_IFSelect_BasicDumper(const Handle_IFSelect_SessionDumper* self_) {
     try {
     opencascade::handle<IFSelect_BasicDumper> result = opencascade::handle<IFSelect_BasicDumper>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectBasicDumper(result), nullptr};
+    return {new Handle_IFSelect_BasicDumper(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectDumper*> HandleIFSelectSessionDumper_downcast_to_HandleIGESSelectDumper(const HandleIFSelectSessionDumper* self_) {
+extern "C" OcctResult<Handle_IGESSelect_Dumper*> Handle_IFSelect_SessionDumper_downcast_to_Handle_IGESSelect_Dumper(const Handle_IFSelect_SessionDumper* self_) {
     try {
     opencascade::handle<IGESSelect_Dumper> result = opencascade::handle<IGESSelect_Dumper>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectDumper(result), nullptr};
+    return {new Handle_IGESSelect_Dumper(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -12138,24 +11919,24 @@ extern "C" OcctResult<const IFSelect_Activator*> IFSelect_SessionPilot_as_IFSele
 extern "C" OcctResult<IFSelect_Activator*> IFSelect_SessionPilot_as_IFSelect_Activator_mut(IFSelect_SessionPilot* self_) { return {static_cast<IFSelect_Activator*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SessionPilot_as_Standard_Transient(const IFSelect_SessionPilot* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SessionPilot_as_Standard_Transient_mut(IFSelect_SessionPilot* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectSessionPilot*> IFSelect_SessionPilot_to_handle(IFSelect_SessionPilot* obj) {
-    try { return {new HandleIFSelectSessionPilot(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SessionPilot*> IFSelect_SessionPilot_to_handle(IFSelect_SessionPilot* obj) {
+    try { return {new Handle_IFSelect_SessionPilot(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_SessionPilot*> HandleIFSelectSessionPilot_get(const HandleIFSelectSessionPilot* handle) {
+extern "C" OcctResult<const IFSelect_SessionPilot*> Handle_IFSelect_SessionPilot_get(const Handle_IFSelect_SessionPilot* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SessionPilot*> HandleIFSelectSessionPilot_get_mut(HandleIFSelectSessionPilot* handle) {
+extern "C" OcctResult<IFSelect_SessionPilot*> Handle_IFSelect_SessionPilot_get_mut(Handle_IFSelect_SessionPilot* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectActivator*> HandleIFSelectSessionPilot_to_HandleIFSelectActivator(const HandleIFSelectSessionPilot* self_) {
-    try { return {new HandleIFSelectActivator(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Activator*> Handle_IFSelect_SessionPilot_to_Handle_IFSelect_Activator(const Handle_IFSelect_SessionPilot* self_) {
+    try { return {new Handle_IFSelect_Activator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSessionPilot_to_HandleStandardTransient(const HandleIFSelectSessionPilot* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SessionPilot_to_Handle_Standard_Transient(const Handle_IFSelect_SessionPilot* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IFSelect_SessionPilot_inherited_IsInstance(const IFSelect_SessionPilot* self, Handle(Standard_Type) const& theType) {
@@ -12330,20 +12111,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> IFSelect_ShareOut_get_type_d
 }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_ShareOut_as_Standard_Transient(const IFSelect_ShareOut* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_ShareOut_as_Standard_Transient_mut(IFSelect_ShareOut* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectShareOut*> IFSelect_ShareOut_to_handle(IFSelect_ShareOut* obj) {
-    try { return {new HandleIFSelectShareOut(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_ShareOut*> IFSelect_ShareOut_to_handle(IFSelect_ShareOut* obj) {
+    try { return {new Handle_IFSelect_ShareOut(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_ShareOut*> HandleIFSelectShareOut_get(const HandleIFSelectShareOut* handle) {
+extern "C" OcctResult<const IFSelect_ShareOut*> Handle_IFSelect_ShareOut_get(const Handle_IFSelect_ShareOut* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_ShareOut*> HandleIFSelectShareOut_get_mut(HandleIFSelectShareOut* handle) {
+extern "C" OcctResult<IFSelect_ShareOut*> Handle_IFSelect_ShareOut_get_mut(Handle_IFSelect_ShareOut* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectShareOut_to_HandleStandardTransient(const HandleIFSelectShareOut* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_ShareOut_to_Handle_Standard_Transient(const Handle_IFSelect_ShareOut* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IFSelect_ShareOut_inherited_IsInstance(const IFSelect_ShareOut* self, Handle(Standard_Type) const& theType) {
@@ -12496,36 +12277,36 @@ extern "C" OcctResult<const MoniTool_SignText*> IFSelect_SignAncestor_as_MoniToo
 extern "C" OcctResult<MoniTool_SignText*> IFSelect_SignAncestor_as_MoniTool_SignText_mut(IFSelect_SignAncestor* self_) { return {static_cast<MoniTool_SignText*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SignAncestor_as_Standard_Transient(const IFSelect_SignAncestor* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SignAncestor_as_Standard_Transient_mut(IFSelect_SignAncestor* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectSignAncestor*> IFSelect_SignAncestor_to_handle(IFSelect_SignAncestor* obj) {
-    try { return {new HandleIFSelectSignAncestor(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SignAncestor*> IFSelect_SignAncestor_to_handle(IFSelect_SignAncestor* obj) {
+    try { return {new Handle_IFSelect_SignAncestor(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_SignAncestor*> HandleIFSelectSignAncestor_get(const HandleIFSelectSignAncestor* handle) {
+extern "C" OcctResult<const IFSelect_SignAncestor*> Handle_IFSelect_SignAncestor_get(const Handle_IFSelect_SignAncestor* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SignAncestor*> HandleIFSelectSignAncestor_get_mut(HandleIFSelectSignAncestor* handle) {
+extern "C" OcctResult<IFSelect_SignAncestor*> Handle_IFSelect_SignAncestor_get_mut(Handle_IFSelect_SignAncestor* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSignType*> HandleIFSelectSignAncestor_to_HandleIFSelectSignType(const HandleIFSelectSignAncestor* self_) {
-    try { return {new HandleIFSelectSignType(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SignType*> Handle_IFSelect_SignAncestor_to_Handle_IFSelect_SignType(const Handle_IFSelect_SignAncestor* self_) {
+    try { return {new Handle_IFSelect_SignType(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSignature*> HandleIFSelectSignAncestor_to_HandleIFSelectSignature(const HandleIFSelectSignAncestor* self_) {
-    try { return {new HandleIFSelectSignature(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Signature*> Handle_IFSelect_SignAncestor_to_Handle_IFSelect_Signature(const Handle_IFSelect_SignAncestor* self_) {
+    try { return {new Handle_IFSelect_Signature(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleInterfaceSignType*> HandleIFSelectSignAncestor_to_HandleInterfaceSignType(const HandleIFSelectSignAncestor* self_) {
-    try { return {new HandleInterfaceSignType(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Interface_SignType*> Handle_IFSelect_SignAncestor_to_Handle_Interface_SignType(const Handle_IFSelect_SignAncestor* self_) {
+    try { return {new Handle_Interface_SignType(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMoniToolSignText*> HandleIFSelectSignAncestor_to_HandleMoniToolSignText(const HandleIFSelectSignAncestor* self_) {
-    try { return {new HandleMoniToolSignText(*self_), nullptr}; }
+extern "C" OcctResult<Handle_MoniTool_SignText*> Handle_IFSelect_SignAncestor_to_Handle_MoniTool_SignText(const Handle_IFSelect_SignAncestor* self_) {
+    try { return {new Handle_MoniTool_SignText(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSignAncestor_to_HandleStandardTransient(const HandleIFSelectSignAncestor* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SignAncestor_to_Handle_Standard_Transient(const Handle_IFSelect_SignAncestor* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFSelect_SignAncestor_inherited_SetIntCase(IFSelect_SignAncestor* self, bool hasmin, int32_t valmin, bool hasmax, int32_t valmax) {
@@ -12536,8 +12317,8 @@ extern "C" OcctResult<bool> IFSelect_SignAncestor_inherited_IsIntCase(const IFSe
     try { return {self->IsIntCase(hasmin, valmin, hasmax, valmax), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfAsciiString)*> IFSelect_SignAncestor_inherited_CaseList(const IFSelect_SignAncestor* self) {
-    try { return {new Handle(TColStd_HSequenceOfAsciiString)(self->CaseList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_TCollection_AsciiString)*> IFSelect_SignAncestor_inherited_CaseList(const IFSelect_SignAncestor* self) {
+    try { return {new Handle(NCollection_HSequence_TCollection_AsciiString)(self->CaseList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TCollection_AsciiString*> IFSelect_SignAncestor_inherited_Label(const IFSelect_SignAncestor* self) {
@@ -12614,32 +12395,32 @@ extern "C" OcctResult<const MoniTool_SignText*> IFSelect_SignCategory_as_MoniToo
 extern "C" OcctResult<MoniTool_SignText*> IFSelect_SignCategory_as_MoniTool_SignText_mut(IFSelect_SignCategory* self_) { return {static_cast<MoniTool_SignText*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SignCategory_as_Standard_Transient(const IFSelect_SignCategory* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SignCategory_as_Standard_Transient_mut(IFSelect_SignCategory* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectSignCategory*> IFSelect_SignCategory_to_handle(IFSelect_SignCategory* obj) {
-    try { return {new HandleIFSelectSignCategory(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SignCategory*> IFSelect_SignCategory_to_handle(IFSelect_SignCategory* obj) {
+    try { return {new Handle_IFSelect_SignCategory(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_SignCategory*> HandleIFSelectSignCategory_get(const HandleIFSelectSignCategory* handle) {
+extern "C" OcctResult<const IFSelect_SignCategory*> Handle_IFSelect_SignCategory_get(const Handle_IFSelect_SignCategory* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SignCategory*> HandleIFSelectSignCategory_get_mut(HandleIFSelectSignCategory* handle) {
+extern "C" OcctResult<IFSelect_SignCategory*> Handle_IFSelect_SignCategory_get_mut(Handle_IFSelect_SignCategory* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSignature*> HandleIFSelectSignCategory_to_HandleIFSelectSignature(const HandleIFSelectSignCategory* self_) {
-    try { return {new HandleIFSelectSignature(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Signature*> Handle_IFSelect_SignCategory_to_Handle_IFSelect_Signature(const Handle_IFSelect_SignCategory* self_) {
+    try { return {new Handle_IFSelect_Signature(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleInterfaceSignType*> HandleIFSelectSignCategory_to_HandleInterfaceSignType(const HandleIFSelectSignCategory* self_) {
-    try { return {new HandleInterfaceSignType(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Interface_SignType*> Handle_IFSelect_SignCategory_to_Handle_Interface_SignType(const Handle_IFSelect_SignCategory* self_) {
+    try { return {new Handle_Interface_SignType(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMoniToolSignText*> HandleIFSelectSignCategory_to_HandleMoniToolSignText(const HandleIFSelectSignCategory* self_) {
-    try { return {new HandleMoniToolSignText(*self_), nullptr}; }
+extern "C" OcctResult<Handle_MoniTool_SignText*> Handle_IFSelect_SignCategory_to_Handle_MoniTool_SignText(const Handle_IFSelect_SignCategory* self_) {
+    try { return {new Handle_MoniTool_SignText(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSignCategory_to_HandleStandardTransient(const HandleIFSelectSignCategory* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SignCategory_to_Handle_Standard_Transient(const Handle_IFSelect_SignCategory* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFSelect_SignCategory_inherited_SetIntCase(IFSelect_SignCategory* self, bool hasmin, int32_t valmin, bool hasmax, int32_t valmax) {
@@ -12650,8 +12431,8 @@ extern "C" OcctResult<bool> IFSelect_SignCategory_inherited_IsIntCase(const IFSe
     try { return {self->IsIntCase(hasmin, valmin, hasmax, valmax), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfAsciiString)*> IFSelect_SignCategory_inherited_CaseList(const IFSelect_SignCategory* self) {
-    try { return {new Handle(TColStd_HSequenceOfAsciiString)(self->CaseList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_TCollection_AsciiString)*> IFSelect_SignCategory_inherited_CaseList(const IFSelect_SignCategory* self) {
+    try { return {new Handle(NCollection_HSequence_TCollection_AsciiString)(self->CaseList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TCollection_AsciiString*> IFSelect_SignCategory_inherited_Label(const IFSelect_SignCategory* self) {
@@ -12736,11 +12517,11 @@ extern "C" const char* IFSelect_SignCounter_add_sign(IFSelect_SignCounter* self_
     try { self_->AddSign(*ent, *model); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IFSelect_SignCounter_add_list(IFSelect_SignCounter* self_, Handle(TColStd_HSequenceOfTransient) const* list, Handle(Interface_InterfaceModel) const* model) {
+extern "C" const char* IFSelect_SignCounter_add_list(IFSelect_SignCounter* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list, Handle(Interface_InterfaceModel) const* model) {
     try { self_->AddList(*list, *model); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IFSelect_SignCounter_add_with_graph(IFSelect_SignCounter* self_, Handle(TColStd_HSequenceOfTransient) const* list, Interface_Graph const* graph) {
+extern "C" const char* IFSelect_SignCounter_add_with_graph(IFSelect_SignCounter* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list, Interface_Graph const* graph) {
     try { self_->AddWithGraph(*list, *graph); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -12788,39 +12569,39 @@ extern "C" OcctResult<const IFSelect_SignatureList*> IFSelect_SignCounter_as_IFS
 extern "C" OcctResult<IFSelect_SignatureList*> IFSelect_SignCounter_as_IFSelect_SignatureList_mut(IFSelect_SignCounter* self_) { return {static_cast<IFSelect_SignatureList*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SignCounter_as_Standard_Transient(const IFSelect_SignCounter* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SignCounter_as_Standard_Transient_mut(IFSelect_SignCounter* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectSignCounter*> IFSelect_SignCounter_to_handle(IFSelect_SignCounter* obj) {
-    try { return {new HandleIFSelectSignCounter(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SignCounter*> IFSelect_SignCounter_to_handle(IFSelect_SignCounter* obj) {
+    try { return {new Handle_IFSelect_SignCounter(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_SignCounter*> HandleIFSelectSignCounter_get(const HandleIFSelectSignCounter* handle) {
+extern "C" OcctResult<const IFSelect_SignCounter*> Handle_IFSelect_SignCounter_get(const Handle_IFSelect_SignCounter* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SignCounter*> HandleIFSelectSignCounter_get_mut(HandleIFSelectSignCounter* handle) {
+extern "C" OcctResult<IFSelect_SignCounter*> Handle_IFSelect_SignCounter_get_mut(Handle_IFSelect_SignCounter* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSignatureList*> HandleIFSelectSignCounter_to_HandleIFSelectSignatureList(const HandleIFSelectSignCounter* self_) {
-    try { return {new HandleIFSelectSignatureList(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SignatureList*> Handle_IFSelect_SignCounter_to_Handle_IFSelect_SignatureList(const Handle_IFSelect_SignCounter* self_) {
+    try { return {new Handle_IFSelect_SignatureList(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSignCounter_to_HandleStandardTransient(const HandleIFSelectSignCounter* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SignCounter_to_Handle_Standard_Transient(const Handle_IFSelect_SignCounter* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectGraphCounter*> HandleIFSelectSignCounter_downcast_to_HandleIFSelectGraphCounter(const HandleIFSelectSignCounter* self_) {
+extern "C" OcctResult<Handle_IFSelect_GraphCounter*> Handle_IFSelect_SignCounter_downcast_to_Handle_IFSelect_GraphCounter(const Handle_IFSelect_SignCounter* self_) {
     try {
     opencascade::handle<IFSelect_GraphCounter> result = opencascade::handle<IFSelect_GraphCounter>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectGraphCounter(result), nullptr};
+    return {new Handle_IFSelect_GraphCounter(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectCounterOfLevelNumber*> HandleIFSelectSignCounter_downcast_to_HandleIGESSelectCounterOfLevelNumber(const HandleIFSelectSignCounter* self_) {
+extern "C" OcctResult<Handle_IGESSelect_CounterOfLevelNumber*> Handle_IFSelect_SignCounter_downcast_to_Handle_IGESSelect_CounterOfLevelNumber(const Handle_IFSelect_SignCounter* self_) {
     try {
     opencascade::handle<IGESSelect_CounterOfLevelNumber> result = opencascade::handle<IGESSelect_CounterOfLevelNumber>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectCounterOfLevelNumber(result), nullptr};
+    return {new Handle_IGESSelect_CounterOfLevelNumber(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -12926,32 +12707,32 @@ extern "C" OcctResult<const MoniTool_SignText*> IFSelect_SignMultiple_as_MoniToo
 extern "C" OcctResult<MoniTool_SignText*> IFSelect_SignMultiple_as_MoniTool_SignText_mut(IFSelect_SignMultiple* self_) { return {static_cast<MoniTool_SignText*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SignMultiple_as_Standard_Transient(const IFSelect_SignMultiple* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SignMultiple_as_Standard_Transient_mut(IFSelect_SignMultiple* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectSignMultiple*> IFSelect_SignMultiple_to_handle(IFSelect_SignMultiple* obj) {
-    try { return {new HandleIFSelectSignMultiple(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SignMultiple*> IFSelect_SignMultiple_to_handle(IFSelect_SignMultiple* obj) {
+    try { return {new Handle_IFSelect_SignMultiple(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_SignMultiple*> HandleIFSelectSignMultiple_get(const HandleIFSelectSignMultiple* handle) {
+extern "C" OcctResult<const IFSelect_SignMultiple*> Handle_IFSelect_SignMultiple_get(const Handle_IFSelect_SignMultiple* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SignMultiple*> HandleIFSelectSignMultiple_get_mut(HandleIFSelectSignMultiple* handle) {
+extern "C" OcctResult<IFSelect_SignMultiple*> Handle_IFSelect_SignMultiple_get_mut(Handle_IFSelect_SignMultiple* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSignature*> HandleIFSelectSignMultiple_to_HandleIFSelectSignature(const HandleIFSelectSignMultiple* self_) {
-    try { return {new HandleIFSelectSignature(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Signature*> Handle_IFSelect_SignMultiple_to_Handle_IFSelect_Signature(const Handle_IFSelect_SignMultiple* self_) {
+    try { return {new Handle_IFSelect_Signature(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleInterfaceSignType*> HandleIFSelectSignMultiple_to_HandleInterfaceSignType(const HandleIFSelectSignMultiple* self_) {
-    try { return {new HandleInterfaceSignType(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Interface_SignType*> Handle_IFSelect_SignMultiple_to_Handle_Interface_SignType(const Handle_IFSelect_SignMultiple* self_) {
+    try { return {new Handle_Interface_SignType(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMoniToolSignText*> HandleIFSelectSignMultiple_to_HandleMoniToolSignText(const HandleIFSelectSignMultiple* self_) {
-    try { return {new HandleMoniToolSignText(*self_), nullptr}; }
+extern "C" OcctResult<Handle_MoniTool_SignText*> Handle_IFSelect_SignMultiple_to_Handle_MoniTool_SignText(const Handle_IFSelect_SignMultiple* self_) {
+    try { return {new Handle_MoniTool_SignText(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSignMultiple_to_HandleStandardTransient(const HandleIFSelectSignMultiple* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SignMultiple_to_Handle_Standard_Transient(const Handle_IFSelect_SignMultiple* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFSelect_SignMultiple_inherited_SetIntCase(IFSelect_SignMultiple* self, bool hasmin, int32_t valmin, bool hasmax, int32_t valmax) {
@@ -12962,8 +12743,8 @@ extern "C" OcctResult<bool> IFSelect_SignMultiple_inherited_IsIntCase(const IFSe
     try { return {self->IsIntCase(hasmin, valmin, hasmax, valmax), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfAsciiString)*> IFSelect_SignMultiple_inherited_CaseList(const IFSelect_SignMultiple* self) {
-    try { return {new Handle(TColStd_HSequenceOfAsciiString)(self->CaseList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_TCollection_AsciiString)*> IFSelect_SignMultiple_inherited_CaseList(const IFSelect_SignMultiple* self) {
+    try { return {new Handle(NCollection_HSequence_TCollection_AsciiString)(self->CaseList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TCollection_AsciiString*> IFSelect_SignMultiple_inherited_Label(const IFSelect_SignMultiple* self) {
@@ -13040,39 +12821,39 @@ extern "C" OcctResult<const MoniTool_SignText*> IFSelect_SignType_as_MoniTool_Si
 extern "C" OcctResult<MoniTool_SignText*> IFSelect_SignType_as_MoniTool_SignText_mut(IFSelect_SignType* self_) { return {static_cast<MoniTool_SignText*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SignType_as_Standard_Transient(const IFSelect_SignType* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SignType_as_Standard_Transient_mut(IFSelect_SignType* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectSignType*> IFSelect_SignType_to_handle(IFSelect_SignType* obj) {
-    try { return {new HandleIFSelectSignType(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SignType*> IFSelect_SignType_to_handle(IFSelect_SignType* obj) {
+    try { return {new Handle_IFSelect_SignType(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_SignType*> HandleIFSelectSignType_get(const HandleIFSelectSignType* handle) {
+extern "C" OcctResult<const IFSelect_SignType*> Handle_IFSelect_SignType_get(const Handle_IFSelect_SignType* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SignType*> HandleIFSelectSignType_get_mut(HandleIFSelectSignType* handle) {
+extern "C" OcctResult<IFSelect_SignType*> Handle_IFSelect_SignType_get_mut(Handle_IFSelect_SignType* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSignature*> HandleIFSelectSignType_to_HandleIFSelectSignature(const HandleIFSelectSignType* self_) {
-    try { return {new HandleIFSelectSignature(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Signature*> Handle_IFSelect_SignType_to_Handle_IFSelect_Signature(const Handle_IFSelect_SignType* self_) {
+    try { return {new Handle_IFSelect_Signature(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleInterfaceSignType*> HandleIFSelectSignType_to_HandleInterfaceSignType(const HandleIFSelectSignType* self_) {
-    try { return {new HandleInterfaceSignType(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Interface_SignType*> Handle_IFSelect_SignType_to_Handle_Interface_SignType(const Handle_IFSelect_SignType* self_) {
+    try { return {new Handle_Interface_SignType(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMoniToolSignText*> HandleIFSelectSignType_to_HandleMoniToolSignText(const HandleIFSelectSignType* self_) {
-    try { return {new HandleMoniToolSignText(*self_), nullptr}; }
+extern "C" OcctResult<Handle_MoniTool_SignText*> Handle_IFSelect_SignType_to_Handle_MoniTool_SignText(const Handle_IFSelect_SignType* self_) {
+    try { return {new Handle_MoniTool_SignText(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSignType_to_HandleStandardTransient(const HandleIFSelectSignType* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SignType_to_Handle_Standard_Transient(const Handle_IFSelect_SignType* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSignAncestor*> HandleIFSelectSignType_downcast_to_HandleIFSelectSignAncestor(const HandleIFSelectSignType* self_) {
+extern "C" OcctResult<Handle_IFSelect_SignAncestor*> Handle_IFSelect_SignType_downcast_to_Handle_IFSelect_SignAncestor(const Handle_IFSelect_SignType* self_) {
     try {
     opencascade::handle<IFSelect_SignAncestor> result = opencascade::handle<IFSelect_SignAncestor>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSignAncestor(result), nullptr};
+    return {new Handle_IFSelect_SignAncestor(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -13084,8 +12865,8 @@ extern "C" OcctResult<bool> IFSelect_SignType_inherited_IsIntCase(const IFSelect
     try { return {self->IsIntCase(hasmin, valmin, hasmax, valmax), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfAsciiString)*> IFSelect_SignType_inherited_CaseList(const IFSelect_SignType* self) {
-    try { return {new Handle(TColStd_HSequenceOfAsciiString)(self->CaseList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_TCollection_AsciiString)*> IFSelect_SignType_inherited_CaseList(const IFSelect_SignType* self) {
+    try { return {new Handle(NCollection_HSequence_TCollection_AsciiString)(self->CaseList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TCollection_AsciiString*> IFSelect_SignType_inherited_Label(const IFSelect_SignType* self) {
@@ -13170,32 +12951,32 @@ extern "C" OcctResult<const MoniTool_SignText*> IFSelect_SignValidity_as_MoniToo
 extern "C" OcctResult<MoniTool_SignText*> IFSelect_SignValidity_as_MoniTool_SignText_mut(IFSelect_SignValidity* self_) { return {static_cast<MoniTool_SignText*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SignValidity_as_Standard_Transient(const IFSelect_SignValidity* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SignValidity_as_Standard_Transient_mut(IFSelect_SignValidity* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectSignValidity*> IFSelect_SignValidity_to_handle(IFSelect_SignValidity* obj) {
-    try { return {new HandleIFSelectSignValidity(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SignValidity*> IFSelect_SignValidity_to_handle(IFSelect_SignValidity* obj) {
+    try { return {new Handle_IFSelect_SignValidity(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_SignValidity*> HandleIFSelectSignValidity_get(const HandleIFSelectSignValidity* handle) {
+extern "C" OcctResult<const IFSelect_SignValidity*> Handle_IFSelect_SignValidity_get(const Handle_IFSelect_SignValidity* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SignValidity*> HandleIFSelectSignValidity_get_mut(HandleIFSelectSignValidity* handle) {
+extern "C" OcctResult<IFSelect_SignValidity*> Handle_IFSelect_SignValidity_get_mut(Handle_IFSelect_SignValidity* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSignature*> HandleIFSelectSignValidity_to_HandleIFSelectSignature(const HandleIFSelectSignValidity* self_) {
-    try { return {new HandleIFSelectSignature(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Signature*> Handle_IFSelect_SignValidity_to_Handle_IFSelect_Signature(const Handle_IFSelect_SignValidity* self_) {
+    try { return {new Handle_IFSelect_Signature(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleInterfaceSignType*> HandleIFSelectSignValidity_to_HandleInterfaceSignType(const HandleIFSelectSignValidity* self_) {
-    try { return {new HandleInterfaceSignType(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Interface_SignType*> Handle_IFSelect_SignValidity_to_Handle_Interface_SignType(const Handle_IFSelect_SignValidity* self_) {
+    try { return {new Handle_Interface_SignType(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMoniToolSignText*> HandleIFSelectSignValidity_to_HandleMoniToolSignText(const HandleIFSelectSignValidity* self_) {
-    try { return {new HandleMoniToolSignText(*self_), nullptr}; }
+extern "C" OcctResult<Handle_MoniTool_SignText*> Handle_IFSelect_SignValidity_to_Handle_MoniTool_SignText(const Handle_IFSelect_SignValidity* self_) {
+    try { return {new Handle_MoniTool_SignText(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSignValidity_to_HandleStandardTransient(const HandleIFSelectSignValidity* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SignValidity_to_Handle_Standard_Transient(const Handle_IFSelect_SignValidity* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFSelect_SignValidity_inherited_SetIntCase(IFSelect_SignValidity* self, bool hasmin, int32_t valmin, bool hasmax, int32_t valmax) {
@@ -13206,8 +12987,8 @@ extern "C" OcctResult<bool> IFSelect_SignValidity_inherited_IsIntCase(const IFSe
     try { return {self->IsIntCase(hasmin, valmin, hasmax, valmax), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfAsciiString)*> IFSelect_SignValidity_inherited_CaseList(const IFSelect_SignValidity* self) {
-    try { return {new Handle(TColStd_HSequenceOfAsciiString)(self->CaseList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_TCollection_AsciiString)*> IFSelect_SignValidity_inherited_CaseList(const IFSelect_SignValidity* self) {
+    try { return {new Handle(NCollection_HSequence_TCollection_AsciiString)(self->CaseList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TCollection_AsciiString*> IFSelect_SignValidity_inherited_Label(const IFSelect_SignValidity* self) {
@@ -13260,8 +13041,8 @@ extern "C" void IFSelect_SignValidity_destructor(IFSelect_SignValidity* self_) {
 // IFSelect_Signature wrappers
 // ========================
 
-extern "C" OcctResult<Handle(TColStd_HSequenceOfAsciiString)*> IFSelect_Signature_case_list(const IFSelect_Signature* self_) {
-    try { return {new Handle(TColStd_HSequenceOfAsciiString)(self_->CaseList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_TCollection_AsciiString)*> IFSelect_Signature_case_list(const IFSelect_Signature* self_) {
+    try { return {new Handle(NCollection_HSequence_TCollection_AsciiString)(self_->CaseList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TCollection_AsciiString*> IFSelect_Signature_label(const IFSelect_Signature* self_) {
@@ -13314,127 +13095,127 @@ extern "C" OcctResult<const MoniTool_SignText*> IFSelect_Signature_as_MoniTool_S
 extern "C" OcctResult<MoniTool_SignText*> IFSelect_Signature_as_MoniTool_SignText_mut(IFSelect_Signature* self_) { return {static_cast<MoniTool_SignText*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_Signature_as_Standard_Transient(const IFSelect_Signature* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_Signature_as_Standard_Transient_mut(IFSelect_Signature* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IFSelect_Signature*> HandleIFSelectSignature_get(const HandleIFSelectSignature* handle) {
+extern "C" OcctResult<const IFSelect_Signature*> Handle_IFSelect_Signature_get(const Handle_IFSelect_Signature* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_Signature*> HandleIFSelectSignature_get_mut(HandleIFSelectSignature* handle) {
+extern "C" OcctResult<IFSelect_Signature*> Handle_IFSelect_Signature_get_mut(Handle_IFSelect_Signature* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleInterfaceSignType*> HandleIFSelectSignature_to_HandleInterfaceSignType(const HandleIFSelectSignature* self_) {
-    try { return {new HandleInterfaceSignType(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Interface_SignType*> Handle_IFSelect_Signature_to_Handle_Interface_SignType(const Handle_IFSelect_Signature* self_) {
+    try { return {new Handle_Interface_SignType(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMoniToolSignText*> HandleIFSelectSignature_to_HandleMoniToolSignText(const HandleIFSelectSignature* self_) {
-    try { return {new HandleMoniToolSignText(*self_), nullptr}; }
+extern "C" OcctResult<Handle_MoniTool_SignText*> Handle_IFSelect_Signature_to_Handle_MoniTool_SignText(const Handle_IFSelect_Signature* self_) {
+    try { return {new Handle_MoniTool_SignText(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSignature_to_HandleStandardTransient(const HandleIFSelectSignature* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_Signature_to_Handle_Standard_Transient(const Handle_IFSelect_Signature* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSignAncestor*> HandleIFSelectSignature_downcast_to_HandleIFSelectSignAncestor(const HandleIFSelectSignature* self_) {
+extern "C" OcctResult<Handle_IFSelect_SignAncestor*> Handle_IFSelect_Signature_downcast_to_Handle_IFSelect_SignAncestor(const Handle_IFSelect_Signature* self_) {
     try {
     opencascade::handle<IFSelect_SignAncestor> result = opencascade::handle<IFSelect_SignAncestor>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSignAncestor(result), nullptr};
+    return {new Handle_IFSelect_SignAncestor(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSignCategory*> HandleIFSelectSignature_downcast_to_HandleIFSelectSignCategory(const HandleIFSelectSignature* self_) {
+extern "C" OcctResult<Handle_IFSelect_SignCategory*> Handle_IFSelect_Signature_downcast_to_Handle_IFSelect_SignCategory(const Handle_IFSelect_Signature* self_) {
     try {
     opencascade::handle<IFSelect_SignCategory> result = opencascade::handle<IFSelect_SignCategory>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSignCategory(result), nullptr};
+    return {new Handle_IFSelect_SignCategory(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSignMultiple*> HandleIFSelectSignature_downcast_to_HandleIFSelectSignMultiple(const HandleIFSelectSignature* self_) {
+extern "C" OcctResult<Handle_IFSelect_SignMultiple*> Handle_IFSelect_Signature_downcast_to_Handle_IFSelect_SignMultiple(const Handle_IFSelect_Signature* self_) {
     try {
     opencascade::handle<IFSelect_SignMultiple> result = opencascade::handle<IFSelect_SignMultiple>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSignMultiple(result), nullptr};
+    return {new Handle_IFSelect_SignMultiple(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSignType*> HandleIFSelectSignature_downcast_to_HandleIFSelectSignType(const HandleIFSelectSignature* self_) {
+extern "C" OcctResult<Handle_IFSelect_SignType*> Handle_IFSelect_Signature_downcast_to_Handle_IFSelect_SignType(const Handle_IFSelect_Signature* self_) {
     try {
     opencascade::handle<IFSelect_SignType> result = opencascade::handle<IFSelect_SignType>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSignType(result), nullptr};
+    return {new Handle_IFSelect_SignType(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSignValidity*> HandleIFSelectSignature_downcast_to_HandleIFSelectSignValidity(const HandleIFSelectSignature* self_) {
+extern "C" OcctResult<Handle_IFSelect_SignValidity*> Handle_IFSelect_Signature_downcast_to_Handle_IFSelect_SignValidity(const Handle_IFSelect_Signature* self_) {
     try {
     opencascade::handle<IFSelect_SignValidity> result = opencascade::handle<IFSelect_SignValidity>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSignValidity(result), nullptr};
+    return {new Handle_IFSelect_SignValidity(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectIGESName*> HandleIFSelectSignature_downcast_to_HandleIGESSelectIGESName(const HandleIFSelectSignature* self_) {
+extern "C" OcctResult<Handle_IGESSelect_IGESName*> Handle_IFSelect_Signature_downcast_to_Handle_IGESSelect_IGESName(const Handle_IFSelect_Signature* self_) {
     try {
     opencascade::handle<IGESSelect_IGESName> result = opencascade::handle<IGESSelect_IGESName>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectIGESName(result), nullptr};
+    return {new Handle_IGESSelect_IGESName(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectIGESTypeForm*> HandleIFSelectSignature_downcast_to_HandleIGESSelectIGESTypeForm(const HandleIFSelectSignature* self_) {
+extern "C" OcctResult<Handle_IGESSelect_IGESTypeForm*> Handle_IFSelect_Signature_downcast_to_Handle_IGESSelect_IGESTypeForm(const Handle_IFSelect_Signature* self_) {
     try {
     opencascade::handle<IGESSelect_IGESTypeForm> result = opencascade::handle<IGESSelect_IGESTypeForm>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectIGESTypeForm(result), nullptr};
+    return {new Handle_IGESSelect_IGESTypeForm(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSignColor*> HandleIFSelectSignature_downcast_to_HandleIGESSelectSignColor(const HandleIFSelectSignature* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SignColor*> Handle_IFSelect_Signature_downcast_to_Handle_IGESSelect_SignColor(const Handle_IFSelect_Signature* self_) {
     try {
     opencascade::handle<IGESSelect_SignColor> result = opencascade::handle<IGESSelect_SignColor>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSignColor(result), nullptr};
+    return {new Handle_IGESSelect_SignColor(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSignLevelNumber*> HandleIFSelectSignature_downcast_to_HandleIGESSelectSignLevelNumber(const HandleIFSelectSignature* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SignLevelNumber*> Handle_IFSelect_Signature_downcast_to_Handle_IGESSelect_SignLevelNumber(const Handle_IFSelect_Signature* self_) {
     try {
     opencascade::handle<IGESSelect_SignLevelNumber> result = opencascade::handle<IGESSelect_SignLevelNumber>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSignLevelNumber(result), nullptr};
+    return {new Handle_IGESSelect_SignLevelNumber(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSignStatus*> HandleIFSelectSignature_downcast_to_HandleIGESSelectSignStatus(const HandleIFSelectSignature* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SignStatus*> Handle_IFSelect_Signature_downcast_to_Handle_IGESSelect_SignStatus(const Handle_IFSelect_Signature* self_) {
     try {
     opencascade::handle<IGESSelect_SignStatus> result = opencascade::handle<IGESSelect_SignStatus>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSignStatus(result), nullptr};
+    return {new Handle_IGESSelect_SignStatus(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleSTEPSelectionsSelectDerived*> HandleIFSelectSignature_downcast_to_HandleSTEPSelectionsSelectDerived(const HandleIFSelectSignature* self_) {
+extern "C" OcctResult<Handle_STEPSelections_SelectDerived*> Handle_IFSelect_Signature_downcast_to_Handle_STEPSelections_SelectDerived(const Handle_IFSelect_Signature* self_) {
     try {
     opencascade::handle<STEPSelections_SelectDerived> result = opencascade::handle<STEPSelections_SelectDerived>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleSTEPSelectionsSelectDerived(result), nullptr};
+    return {new Handle_STEPSelections_SelectDerived(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStepSelectStepType*> HandleIFSelectSignature_downcast_to_HandleStepSelectStepType(const HandleIFSelectSignature* self_) {
+extern "C" OcctResult<Handle_StepSelect_StepType*> Handle_IFSelect_Signature_downcast_to_Handle_StepSelect_StepType(const Handle_IFSelect_Signature* self_) {
     try {
     opencascade::handle<StepSelect_StepType> result = opencascade::handle<StepSelect_StepType>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleStepSelectStepType(result), nullptr};
+    return {new Handle_StepSelect_StepType(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXSControlSignTransferStatus*> HandleIFSelectSignature_downcast_to_HandleXSControlSignTransferStatus(const HandleIFSelectSignature* self_) {
+extern "C" OcctResult<Handle_XSControl_SignTransferStatus*> Handle_IFSelect_Signature_downcast_to_Handle_XSControl_SignTransferStatus(const Handle_IFSelect_Signature* self_) {
     try {
     opencascade::handle<XSControl_SignTransferStatus> result = opencascade::handle<XSControl_SignTransferStatus>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXSControlSignTransferStatus(result), nullptr};
+    return {new Handle_XSControl_SignTransferStatus(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -13484,12 +13265,12 @@ extern "C" OcctResult<IFSelect_SignatureList*> IFSelect_SignatureList_ctor_bool(
     try { return {new IFSelect_SignatureList(withlist), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfHAsciiString)*> IFSelect_SignatureList_list(const IFSelect_SignatureList* self_, const char* root) {
-    try { return {new Handle(TColStd_HSequenceOfHAsciiString)(self_->List(root)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> IFSelect_SignatureList_list(const IFSelect_SignatureList* self_, const char* root) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->List(root)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> IFSelect_SignatureList_entities(const IFSelect_SignatureList* self_, const char* sign) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self_->Entities(sign)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFSelect_SignatureList_entities(const IFSelect_SignatureList* self_, const char* sign) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->Entities(sign)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFSelect_SignatureList_set_list(IFSelect_SignatureList* self_, bool withlist) {
@@ -13511,10 +13292,6 @@ extern "C" const char* IFSelect_SignatureList_add(IFSelect_SignatureList* self_,
 extern "C" OcctResult<char const*> IFSelect_SignatureList_last_value(const IFSelect_SignatureList* self_) {
     try { return {self_->LastValue(), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* IFSelect_SignatureList_init(IFSelect_SignatureList* self_, const char* name, Storage_PType const* count, NCollection_IndexedDataMap_TCollection_AsciiString_opencascade_handle_Standard_Transient const* list, int32_t nbnuls) {
-    try { self_->Init(name, *count, *list, nbnuls); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<bool> IFSelect_SignatureList_has_entities(const IFSelect_SignatureList* self_) {
     try { return {self_->HasEntities(), nullptr}; }
@@ -13562,51 +13339,51 @@ extern "C" OcctResult<Handle(Standard_Type) const*> IFSelect_SignatureList_get_t
 }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_SignatureList_as_Standard_Transient(const IFSelect_SignatureList* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_SignatureList_as_Standard_Transient_mut(IFSelect_SignatureList* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectSignatureList*> IFSelect_SignatureList_to_handle(IFSelect_SignatureList* obj) {
-    try { return {new HandleIFSelectSignatureList(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SignatureList*> IFSelect_SignatureList_to_handle(IFSelect_SignatureList* obj) {
+    try { return {new Handle_IFSelect_SignatureList(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_SignatureList*> HandleIFSelectSignatureList_get(const HandleIFSelectSignatureList* handle) {
+extern "C" OcctResult<const IFSelect_SignatureList*> Handle_IFSelect_SignatureList_get(const Handle_IFSelect_SignatureList* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_SignatureList*> HandleIFSelectSignatureList_get_mut(HandleIFSelectSignatureList* handle) {
+extern "C" OcctResult<IFSelect_SignatureList*> Handle_IFSelect_SignatureList_get_mut(Handle_IFSelect_SignatureList* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectSignatureList_to_HandleStandardTransient(const HandleIFSelectSignatureList* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_SignatureList_to_Handle_Standard_Transient(const Handle_IFSelect_SignatureList* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectCheckCounter*> HandleIFSelectSignatureList_downcast_to_HandleIFSelectCheckCounter(const HandleIFSelectSignatureList* self_) {
+extern "C" OcctResult<Handle_IFSelect_CheckCounter*> Handle_IFSelect_SignatureList_downcast_to_Handle_IFSelect_CheckCounter(const Handle_IFSelect_SignatureList* self_) {
     try {
     opencascade::handle<IFSelect_CheckCounter> result = opencascade::handle<IFSelect_CheckCounter>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectCheckCounter(result), nullptr};
+    return {new Handle_IFSelect_CheckCounter(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectGraphCounter*> HandleIFSelectSignatureList_downcast_to_HandleIFSelectGraphCounter(const HandleIFSelectSignatureList* self_) {
+extern "C" OcctResult<Handle_IFSelect_GraphCounter*> Handle_IFSelect_SignatureList_downcast_to_Handle_IFSelect_GraphCounter(const Handle_IFSelect_SignatureList* self_) {
     try {
     opencascade::handle<IFSelect_GraphCounter> result = opencascade::handle<IFSelect_GraphCounter>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectGraphCounter(result), nullptr};
+    return {new Handle_IFSelect_GraphCounter(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSignCounter*> HandleIFSelectSignatureList_downcast_to_HandleIFSelectSignCounter(const HandleIFSelectSignatureList* self_) {
+extern "C" OcctResult<Handle_IFSelect_SignCounter*> Handle_IFSelect_SignatureList_downcast_to_Handle_IFSelect_SignCounter(const Handle_IFSelect_SignatureList* self_) {
     try {
     opencascade::handle<IFSelect_SignCounter> result = opencascade::handle<IFSelect_SignCounter>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSignCounter(result), nullptr};
+    return {new Handle_IFSelect_SignCounter(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectCounterOfLevelNumber*> HandleIFSelectSignatureList_downcast_to_HandleIGESSelectCounterOfLevelNumber(const HandleIFSelectSignatureList* self_) {
+extern "C" OcctResult<Handle_IGESSelect_CounterOfLevelNumber*> Handle_IFSelect_SignatureList_downcast_to_Handle_IGESSelect_CounterOfLevelNumber(const Handle_IFSelect_SignatureList* self_) {
     try {
     opencascade::handle<IGESSelect_CounterOfLevelNumber> result = opencascade::handle<IGESSelect_CounterOfLevelNumber>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectCounterOfLevelNumber(result), nullptr};
+    return {new Handle_IGESSelect_CounterOfLevelNumber(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -13656,6 +13433,18 @@ extern "C" OcctResult<Handle(IFSelect_Modifier)*> IFSelect_TransformStandard_mod
     try { return {new Handle(IFSelect_Modifier)(self_->Modifier(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<Handle(Interface_InterfaceModel)*> IFSelect_TransformStandard_copy(const IFSelect_TransformStandard* self_, Interface_Graph const* G, Interface_CopyTool* TC) {
+    try { return {new Handle(Interface_InterfaceModel)(self_->Copy(*G, *TC)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Interface_InterfaceModel)*> IFSelect_TransformStandard_standard_copy(const IFSelect_TransformStandard* self_, Interface_Graph const* G, Interface_CopyTool* TC) {
+    try { return {new Handle(Interface_InterfaceModel)(self_->StandardCopy(*G, *TC)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Interface_InterfaceModel)*> IFSelect_TransformStandard_on_the_spot(const IFSelect_TransformStandard* self_, Interface_Graph const* G, Interface_CopyTool* TC) {
+    try { return {new Handle(Interface_InterfaceModel)(self_->OnTheSpot(*G, *TC)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<TCollection_AsciiString*> IFSelect_TransformStandard_label(const IFSelect_TransformStandard* self_) {
     try { return {new TCollection_AsciiString(self_->Label()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -13696,18 +13485,6 @@ extern "C" OcctResult<bool> IFSelect_TransformStandard_perform(IFSelect_Transfor
     try { return {self_->Perform(*G, *protocol, *checks, *newmod), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IFSelect_TransformStandard_copy(const IFSelect_TransformStandard* self_, Interface_Graph const* G, Interface_CopyTool* TC, Handle(Interface_InterfaceModel)* newmod) {
-    try { self_->Copy(*G, *TC, *newmod); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* IFSelect_TransformStandard_standard_copy(const IFSelect_TransformStandard* self_, Interface_Graph const* G, Interface_CopyTool* TC, Handle(Interface_InterfaceModel)* newmod) {
-    try { self_->StandardCopy(*G, *TC, *newmod); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* IFSelect_TransformStandard_on_the_spot(const IFSelect_TransformStandard* self_, Interface_Graph const* G, Interface_CopyTool* TC, Handle(Interface_InterfaceModel)* newmod) {
-    try { self_->OnTheSpot(*G, *TC, *newmod); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" OcctResult<bool> IFSelect_TransformStandard_apply_modifiers(const IFSelect_TransformStandard* self_, Interface_Graph const* G, Handle(Interface_Protocol) const* protocol, Interface_CopyTool* TC, Interface_CheckIterator* checks, Handle(Interface_InterfaceModel)* newmod) {
     try { return {self_->ApplyModifiers(*G, *protocol, *TC, *checks, *newmod), nullptr}; }
     OCCT_CATCH_RETURN
@@ -13732,24 +13509,24 @@ extern "C" OcctResult<const IFSelect_Transformer*> IFSelect_TransformStandard_as
 extern "C" OcctResult<IFSelect_Transformer*> IFSelect_TransformStandard_as_IFSelect_Transformer_mut(IFSelect_TransformStandard* self_) { return {static_cast<IFSelect_Transformer*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_TransformStandard_as_Standard_Transient(const IFSelect_TransformStandard* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_TransformStandard_as_Standard_Transient_mut(IFSelect_TransformStandard* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectTransformStandard*> IFSelect_TransformStandard_to_handle(IFSelect_TransformStandard* obj) {
-    try { return {new HandleIFSelectTransformStandard(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_TransformStandard*> IFSelect_TransformStandard_to_handle(IFSelect_TransformStandard* obj) {
+    try { return {new Handle_IFSelect_TransformStandard(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_TransformStandard*> HandleIFSelectTransformStandard_get(const HandleIFSelectTransformStandard* handle) {
+extern "C" OcctResult<const IFSelect_TransformStandard*> Handle_IFSelect_TransformStandard_get(const Handle_IFSelect_TransformStandard* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_TransformStandard*> HandleIFSelectTransformStandard_get_mut(HandleIFSelectTransformStandard* handle) {
+extern "C" OcctResult<IFSelect_TransformStandard*> Handle_IFSelect_TransformStandard_get_mut(Handle_IFSelect_TransformStandard* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectTransformer*> HandleIFSelectTransformStandard_to_HandleIFSelectTransformer(const HandleIFSelectTransformStandard* self_) {
-    try { return {new HandleIFSelectTransformer(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Transformer*> Handle_IFSelect_TransformStandard_to_Handle_IFSelect_Transformer(const Handle_IFSelect_TransformStandard* self_) {
+    try { return {new Handle_IFSelect_Transformer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectTransformStandard_to_HandleStandardTransient(const HandleIFSelectTransformStandard* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_TransformStandard_to_Handle_Standard_Transient(const Handle_IFSelect_TransformStandard* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IFSelect_TransformStandard_inherited_ChangeProtocol(const IFSelect_TransformStandard* self, Handle(Interface_Protocol)& newproto) {
@@ -13820,31 +13597,31 @@ extern "C" OcctResult<Handle(Standard_Type) const*> IFSelect_Transformer_get_typ
 }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_Transformer_as_Standard_Transient(const IFSelect_Transformer* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_Transformer_as_Standard_Transient_mut(IFSelect_Transformer* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IFSelect_Transformer*> HandleIFSelectTransformer_get(const HandleIFSelectTransformer* handle) {
+extern "C" OcctResult<const IFSelect_Transformer*> Handle_IFSelect_Transformer_get(const Handle_IFSelect_Transformer* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_Transformer*> HandleIFSelectTransformer_get_mut(HandleIFSelectTransformer* handle) {
+extern "C" OcctResult<IFSelect_Transformer*> Handle_IFSelect_Transformer_get_mut(Handle_IFSelect_Transformer* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectTransformer_to_HandleStandardTransient(const HandleIFSelectTransformer* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_Transformer_to_Handle_Standard_Transient(const Handle_IFSelect_Transformer* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectTransformStandard*> HandleIFSelectTransformer_downcast_to_HandleIFSelectTransformStandard(const HandleIFSelectTransformer* self_) {
+extern "C" OcctResult<Handle_IFSelect_TransformStandard*> Handle_IFSelect_Transformer_downcast_to_Handle_IFSelect_TransformStandard(const Handle_IFSelect_Transformer* self_) {
     try {
     opencascade::handle<IFSelect_TransformStandard> result = opencascade::handle<IFSelect_TransformStandard>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectTransformStandard(result), nullptr};
+    return {new Handle_IFSelect_TransformStandard(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSplineToBSpline*> HandleIFSelectTransformer_downcast_to_HandleIGESSelectSplineToBSpline(const HandleIFSelectTransformer* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SplineToBSpline*> Handle_IFSelect_Transformer_downcast_to_Handle_IGESSelect_SplineToBSpline(const Handle_IFSelect_Transformer* self_) {
     try {
     opencascade::handle<IGESSelect_SplineToBSpline> result = opencascade::handle<IGESSelect_SplineToBSpline>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSplineToBSpline(result), nullptr};
+    return {new Handle_IGESSelect_SplineToBSpline(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -13936,31 +13713,31 @@ extern "C" OcctResult<Handle(Standard_Type) const*> IFSelect_WorkLibrary_get_typ
 }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_WorkLibrary_as_Standard_Transient(const IFSelect_WorkLibrary* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_WorkLibrary_as_Standard_Transient_mut(IFSelect_WorkLibrary* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IFSelect_WorkLibrary*> HandleIFSelectWorkLibrary_get(const HandleIFSelectWorkLibrary* handle) {
+extern "C" OcctResult<const IFSelect_WorkLibrary*> Handle_IFSelect_WorkLibrary_get(const Handle_IFSelect_WorkLibrary* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_WorkLibrary*> HandleIFSelectWorkLibrary_get_mut(HandleIFSelectWorkLibrary* handle) {
+extern "C" OcctResult<IFSelect_WorkLibrary*> Handle_IFSelect_WorkLibrary_get_mut(Handle_IFSelect_WorkLibrary* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectWorkLibrary_to_HandleStandardTransient(const HandleIFSelectWorkLibrary* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_WorkLibrary_to_Handle_Standard_Transient(const Handle_IFSelect_WorkLibrary* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectWorkLibrary*> HandleIFSelectWorkLibrary_downcast_to_HandleIGESSelectWorkLibrary(const HandleIFSelectWorkLibrary* self_) {
+extern "C" OcctResult<Handle_IGESSelect_WorkLibrary*> Handle_IFSelect_WorkLibrary_downcast_to_Handle_IGESSelect_WorkLibrary(const Handle_IFSelect_WorkLibrary* self_) {
     try {
     opencascade::handle<IGESSelect_WorkLibrary> result = opencascade::handle<IGESSelect_WorkLibrary>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectWorkLibrary(result), nullptr};
+    return {new Handle_IGESSelect_WorkLibrary(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStepSelectWorkLibrary*> HandleIFSelectWorkLibrary_downcast_to_HandleStepSelectWorkLibrary(const HandleIFSelectWorkLibrary* self_) {
+extern "C" OcctResult<Handle_StepSelect_WorkLibrary*> Handle_IFSelect_WorkLibrary_downcast_to_Handle_StepSelect_WorkLibrary(const Handle_IFSelect_WorkLibrary* self_) {
     try {
     opencascade::handle<StepSelect_WorkLibrary> result = opencascade::handle<StepSelect_WorkLibrary>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleStepSelectWorkLibrary(result), nullptr};
+    return {new Handle_StepSelect_WorkLibrary(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -14022,12 +13799,12 @@ extern "C" OcctResult<Handle(Interface_HGraph)*> IFSelect_WorkSession_h_graph(IF
     try { return {new Handle(Interface_HGraph)(self_->HGraph()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> IFSelect_WorkSession_shareds(IFSelect_WorkSession* self_, Handle(Standard_Transient) const* ent) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self_->Shareds(*ent)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFSelect_WorkSession_shareds(IFSelect_WorkSession* self_, Handle(Standard_Transient) const* ent) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->Shareds(*ent)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> IFSelect_WorkSession_sharings(IFSelect_WorkSession* self_, Handle(Standard_Transient) const* ent) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self_->Sharings(*ent)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFSelect_WorkSession_sharings(IFSelect_WorkSession* self_, Handle(Standard_Transient) const* ent) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->Sharings(*ent)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Interface_CheckIterator*> IFSelect_WorkSession_model_check_list(IFSelect_WorkSession* self_, bool complete) {
@@ -14062,16 +13839,16 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> IFSelect_WorkSession_it
     try { return {new Handle(TCollection_HAsciiString)(self_->ItemLabel(id)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfInteger)*> IFSelect_WorkSession_item_idents(const IFSelect_WorkSession* self_, Handle(Standard_Type) const* type) {
-    try { return {new Handle(TColStd_HSequenceOfInteger)(self_->ItemIdents(*type)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_int)*> IFSelect_WorkSession_item_idents(const IFSelect_WorkSession* self_, Handle(Standard_Type) const* type) {
+    try { return {new Handle(NCollection_HSequence_int)(self_->ItemIdents(*type)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfHAsciiString)*> IFSelect_WorkSession_item_names(const IFSelect_WorkSession* self_, Handle(Standard_Type) const* type) {
-    try { return {new Handle(TColStd_HSequenceOfHAsciiString)(self_->ItemNames(*type)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> IFSelect_WorkSession_item_names(const IFSelect_WorkSession* self_, Handle(Standard_Type) const* type) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->ItemNames(*type)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfHAsciiString)*> IFSelect_WorkSession_item_names_for_label(const IFSelect_WorkSession* self_, const char* label) {
-    try { return {new Handle(TColStd_HSequenceOfHAsciiString)(self_->ItemNamesForLabel(label)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> IFSelect_WorkSession_item_names_for_label(const IFSelect_WorkSession* self_, const char* label) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->ItemNamesForLabel(label)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Transient)*> IFSelect_WorkSession_new_param_from_static(IFSelect_WorkSession* self_, const char* statname, const char* name) {
@@ -14114,12 +13891,12 @@ extern "C" OcctResult<IFSelect_SelectionIterator*> IFSelect_WorkSession_sources(
     try { return {new IFSelect_SelectionIterator(self_->Sources(*sel)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> IFSelect_WorkSession_selection_result(const IFSelect_WorkSession* self_, Handle(IFSelect_Selection) const* sel) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self_->SelectionResult(*sel)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFSelect_WorkSession_selection_result(const IFSelect_WorkSession* self_, Handle(IFSelect_Selection) const* sel) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->SelectionResult(*sel)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> IFSelect_WorkSession_selection_result_from_list(const IFSelect_WorkSession* self_, Handle(IFSelect_Selection) const* sel, Handle(TColStd_HSequenceOfTransient) const* list) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self_->SelectionResultFromList(*sel, *list)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFSelect_WorkSession_selection_result_from_list(const IFSelect_WorkSession* self_, Handle(IFSelect_Selection) const* sel, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->SelectionResultFromList(*sel, *list)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(IFSelect_Selection)*> IFSelect_WorkSession_item_selection(const IFSelect_WorkSession* self_, Handle(Standard_Transient) const* item) {
@@ -14130,16 +13907,16 @@ extern "C" OcctResult<Handle(IFSelect_SignCounter)*> IFSelect_WorkSession_sign_c
     try { return {new Handle(IFSelect_SignCounter)(self_->SignCounter(id)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfInteger)*> IFSelect_WorkSession_applied_dispatches(const IFSelect_WorkSession* self_) {
-    try { return {new Handle(TColStd_HSequenceOfInteger)(self_->AppliedDispatches()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_int)*> IFSelect_WorkSession_applied_dispatches(const IFSelect_WorkSession* self_) {
+    try { return {new Handle(NCollection_HSequence_int)(self_->AppliedDispatches()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(IFSelect_Dispatch)*> IFSelect_WorkSession_dispatch(const IFSelect_WorkSession* self_, int32_t id) {
     try { return {new Handle(IFSelect_Dispatch)(self_->Dispatch(id)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfInteger)*> IFSelect_WorkSession_final_modifier_idents(const IFSelect_WorkSession* self_, bool formodel) {
-    try { return {new Handle(TColStd_HSequenceOfInteger)(self_->FinalModifierIdents(formodel)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_int)*> IFSelect_WorkSession_final_modifier_idents(const IFSelect_WorkSession* self_, bool formodel) {
+    try { return {new Handle(NCollection_HSequence_int)(self_->FinalModifierIdents(formodel)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(IFSelect_GeneralModifier)*> IFSelect_WorkSession_general_modifier(const IFSelect_WorkSession* self_, int32_t id) {
@@ -14186,8 +13963,8 @@ extern "C" OcctResult<TCollection_AsciiString*> IFSelect_WorkSession_file_name(c
     try { return {new TCollection_AsciiString(self_->FileName(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfHAsciiString)*> IFSelect_WorkSession_sent_files(const IFSelect_WorkSession* self_) {
-    try { return {new Handle(TColStd_HSequenceOfHAsciiString)(self_->SentFiles()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> IFSelect_WorkSession_sent_files(const IFSelect_WorkSession* self_) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->SentFiles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(IFSelect_PacketList)*> IFSelect_WorkSession_eval_split(const IFSelect_WorkSession* self_) {
@@ -14202,7 +13979,7 @@ extern "C" OcctResult<Handle(IFSelect_Selection)*> IFSelect_WorkSession_source(c
     try { return {new Handle(IFSelect_Selection)(self_->Source(*sel, num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(IFSelect_Selection)*> IFSelect_WorkSession_new_select_pointed(IFSelect_WorkSession* self_, Handle(TColStd_HSequenceOfTransient) const* list, const char* name) {
+extern "C" OcctResult<Handle(IFSelect_Selection)*> IFSelect_WorkSession_new_select_pointed(IFSelect_WorkSession* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list, const char* name) {
     try { return {new Handle(IFSelect_Selection)(self_->NewSelectPointed(*list, name)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14210,20 +13987,20 @@ extern "C" OcctResult<Handle(IFSelect_Selection)*> IFSelect_WorkSession_give_sel
     try { return {new Handle(IFSelect_Selection)(self_->GiveSelection(selname)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> IFSelect_WorkSession_give_list_handlestandardtransient(const IFSelect_WorkSession* self_, Handle(Standard_Transient) const* obj) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self_->GiveList(*obj)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFSelect_WorkSession_give_list_handlestandardtransient(const IFSelect_WorkSession* self_, Handle(Standard_Transient) const* obj) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->GiveList(*obj)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> IFSelect_WorkSession_give_list_charptr2(const IFSelect_WorkSession* self_, const char* first, const char* second) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self_->GiveList(first, second)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFSelect_WorkSession_give_list_charptr2(const IFSelect_WorkSession* self_, const char* first, const char* second) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->GiveList(first, second)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> IFSelect_WorkSession_give_list_from_list(const IFSelect_WorkSession* self_, const char* selname, Handle(Standard_Transient) const* ent) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self_->GiveListFromList(selname, *ent)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFSelect_WorkSession_give_list_from_list(const IFSelect_WorkSession* self_, const char* selname, Handle(Standard_Transient) const* ent) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->GiveListFromList(selname, *ent)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> IFSelect_WorkSession_give_list_combined(const IFSelect_WorkSession* self_, Handle(TColStd_HSequenceOfTransient) const* l1, Handle(TColStd_HSequenceOfTransient) const* l2, int32_t mode) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self_->GiveListCombined(*l1, *l2, mode)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFSelect_WorkSession_give_list_combined(const IFSelect_WorkSession* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* l1, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* l2, int32_t mode) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->GiveListCombined(*l1, *l2, mode)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFSelect_WorkSession_set_error_handle(IFSelect_WorkSession* self_, bool toHandle) {
@@ -14418,7 +14195,7 @@ extern "C" OcctResult<bool> IFSelect_WorkSession_compute_counter(IFSelect_WorkSe
     try { return {self_->ComputeCounter(*counter, forced), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> IFSelect_WorkSession_compute_counter_from_list(IFSelect_WorkSession* self_, Handle(IFSelect_SignCounter) const* counter, Handle(TColStd_HSequenceOfTransient) const* list, bool clear) {
+extern "C" OcctResult<bool> IFSelect_WorkSession_compute_counter_from_list(IFSelect_WorkSession* self_, Handle(IFSelect_SignCounter) const* counter, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list, bool clear) {
     try { return {self_->ComputeCounterFromList(*counter, *list, clear), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14574,7 +14351,7 @@ extern "C" OcctResult<bool> IFSelect_WorkSession_combine_remove(IFSelect_WorkSes
     try { return {self_->CombineRemove(*selcomb, *selrem), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> IFSelect_WorkSession_set_select_pointed(const IFSelect_WorkSession* self_, Handle(IFSelect_Selection) const* sel, Handle(TColStd_HSequenceOfTransient) const* list, int32_t mode) {
+extern "C" OcctResult<bool> IFSelect_WorkSession_set_select_pointed(const IFSelect_WorkSession* self_, Handle(IFSelect_Selection) const* sel, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list, int32_t mode) {
     try { return {self_->SetSelectPointed(*sel, *list, mode), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14589,10 +14366,6 @@ extern "C" OcctResult<int32_t> IFSelect_WorkSession_query_check_status(const IFS
 extern "C" OcctResult<int32_t> IFSelect_WorkSession_query_parent(const IFSelect_WorkSession* self_, Handle(Standard_Transient) const* entdad, Handle(Standard_Transient) const* entson) {
     try { return {self_->QueryParent(*entdad, *entson), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* IFSelect_WorkSession_set_params(IFSelect_WorkSession* self_, NCollection_Vector_opencascade_handle_Standard_Transient const* params, NCollection_Vector_Standard_Integer const* uselist) {
-    try { self_->SetParams(*params, *uselist); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* IFSelect_WorkSession_trace_statics(const IFSelect_WorkSession* self_, int32_t use, int32_t mode) {
     try { self_->TraceStatics(use, mode); return nullptr; }
@@ -14672,27 +14445,27 @@ extern "C" OcctResult<Handle(Standard_Type) const*> IFSelect_WorkSession_get_typ
 }
 extern "C" OcctResult<const Standard_Transient*> IFSelect_WorkSession_as_Standard_Transient(const IFSelect_WorkSession* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IFSelect_WorkSession_as_Standard_Transient_mut(IFSelect_WorkSession* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIFSelectWorkSession*> IFSelect_WorkSession_to_handle(IFSelect_WorkSession* obj) {
-    try { return {new HandleIFSelectWorkSession(obj), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_WorkSession*> IFSelect_WorkSession_to_handle(IFSelect_WorkSession* obj) {
+    try { return {new Handle_IFSelect_WorkSession(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IFSelect_WorkSession*> HandleIFSelectWorkSession_get(const HandleIFSelectWorkSession* handle) {
+extern "C" OcctResult<const IFSelect_WorkSession*> Handle_IFSelect_WorkSession_get(const Handle_IFSelect_WorkSession* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IFSelect_WorkSession*> HandleIFSelectWorkSession_get_mut(HandleIFSelectWorkSession* handle) {
+extern "C" OcctResult<IFSelect_WorkSession*> Handle_IFSelect_WorkSession_get_mut(Handle_IFSelect_WorkSession* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIFSelectWorkSession_to_HandleStandardTransient(const HandleIFSelectWorkSession* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IFSelect_WorkSession_to_Handle_Standard_Transient(const Handle_IFSelect_WorkSession* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXSControlWorkSession*> HandleIFSelectWorkSession_downcast_to_HandleXSControlWorkSession(const HandleIFSelectWorkSession* self_) {
+extern "C" OcctResult<Handle_XSControl_WorkSession*> Handle_IFSelect_WorkSession_downcast_to_Handle_XSControl_WorkSession(const Handle_IFSelect_WorkSession* self_) {
     try {
     opencascade::handle<XSControl_WorkSession> result = opencascade::handle<XSControl_WorkSession>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXSControlWorkSession(result), nullptr};
+    return {new Handle_XSControl_WorkSession(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -14894,16 +14667,16 @@ extern "C" OcctResult<Interface_Check*> Interface_Check_ctor_handlestandardtrans
     try { return {new Interface_Check(*anentity), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfHAsciiString)*> Interface_Check_fails(const Interface_Check* self_, bool final) {
-    try { return {new Handle(TColStd_HSequenceOfHAsciiString)(self_->Fails(final)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> Interface_Check_fails(const Interface_Check* self_, bool final) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->Fails(final)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfHAsciiString)*> Interface_Check_warnings(const Interface_Check* self_, bool final) {
-    try { return {new Handle(TColStd_HSequenceOfHAsciiString)(self_->Warnings(final)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> Interface_Check_warnings(const Interface_Check* self_, bool final) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->Warnings(final)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfHAsciiString)*> Interface_Check_info_msgs(const Interface_Check* self_, bool final) {
-    try { return {new Handle(TColStd_HSequenceOfHAsciiString)(self_->InfoMsgs(final)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> Interface_Check_info_msgs(const Interface_Check* self_, bool final) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->InfoMsgs(final)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Interface_Check_send_fail(Interface_Check* self_, Message_Msg const* amsg) {
@@ -15076,20 +14849,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Interface_Check_get_type_des
 }
 extern "C" OcctResult<const Standard_Transient*> Interface_Check_as_Standard_Transient(const Interface_Check* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Interface_Check_as_Standard_Transient_mut(Interface_Check* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleInterfaceCheck*> Interface_Check_to_handle(Interface_Check* obj) {
-    try { return {new HandleInterfaceCheck(obj), nullptr}; }
+extern "C" OcctResult<Handle_Interface_Check*> Interface_Check_to_handle(Interface_Check* obj) {
+    try { return {new Handle_Interface_Check(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Interface_Check*> HandleInterfaceCheck_get(const HandleInterfaceCheck* handle) {
+extern "C" OcctResult<const Interface_Check*> Handle_Interface_Check_get(const Handle_Interface_Check* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Interface_Check*> HandleInterfaceCheck_get_mut(HandleInterfaceCheck* handle) {
+extern "C" OcctResult<Interface_Check*> Handle_Interface_Check_get_mut(Handle_Interface_Check* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleInterfaceCheck_to_HandleStandardTransient(const HandleInterfaceCheck* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Interface_Check_to_Handle_Standard_Transient(const Handle_Interface_Check* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Interface_Check_inherited_IsInstance(const Interface_Check* self, Handle(Standard_Type) const& theType) {
@@ -15126,10 +14899,6 @@ extern "C" void Interface_Check_destructor(Interface_Check* self_) { delete self
 // Interface_CheckFailure wrappers
 // ========================
 
-extern "C" OcctResult<Interface_CheckFailure*> Interface_CheckFailure_ctor() {
-    try { return {new Interface_CheckFailure(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Interface_CheckFailure*> Interface_CheckFailure_ctor_charptr(const char* theMessage) {
     try { return {new Interface_CheckFailure(theMessage), nullptr}; }
     OCCT_CATCH_RETURN
@@ -15138,102 +14907,16 @@ extern "C" OcctResult<Interface_CheckFailure*> Interface_CheckFailure_ctor_charp
     try { return {new Interface_CheckFailure(theMessage, theStackTrace), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> Interface_CheckFailure_dynamic_type(const Interface_CheckFailure* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Interface_CheckFailure_raise_charptr(const char* theMessage) {
-    try { Interface_CheckFailure::Raise(theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Interface_CheckFailure_raise_sstream(Standard_SStream* theMessage) {
-    try { Interface_CheckFailure::Raise(*theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(Interface_CheckFailure)*> Interface_CheckFailure_new_instance_charptr(const char* theMessage) {
-    try { return {new Handle(Interface_CheckFailure)(Interface_CheckFailure::NewInstance(theMessage)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Interface_CheckFailure)*> Interface_CheckFailure_new_instance_charptr2(const char* theMessage, const char* theStackTrace) {
-    try { return {new Handle(Interface_CheckFailure)(Interface_CheckFailure::NewInstance(theMessage, theStackTrace)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> Interface_CheckFailure_get_type_name() {
-    try { return {Interface_CheckFailure::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Interface_CheckFailure_get_type_descriptor() {
-    try { return {&(Interface_CheckFailure::get_type_descriptor()), nullptr}; }
+extern "C" OcctResult<char const*> Interface_CheckFailure_exception_type(const Interface_CheckFailure* self_) {
+    try { return {self_->ExceptionType(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<const Interface_InterfaceError*> Interface_CheckFailure_as_Interface_InterfaceError(const Interface_CheckFailure* self_) { return {static_cast<const Interface_InterfaceError*>(self_), nullptr}; }
 extern "C" OcctResult<Interface_InterfaceError*> Interface_CheckFailure_as_Interface_InterfaceError_mut(Interface_CheckFailure* self_) { return {static_cast<Interface_InterfaceError*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Failure*> Interface_CheckFailure_as_Standard_Failure(const Interface_CheckFailure* self_) { return {static_cast<const Standard_Failure*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Failure*> Interface_CheckFailure_as_Standard_Failure_mut(Interface_CheckFailure* self_) { return {static_cast<Standard_Failure*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> Interface_CheckFailure_as_Standard_Transient(const Interface_CheckFailure* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> Interface_CheckFailure_as_Standard_Transient_mut(Interface_CheckFailure* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleInterfaceCheckFailure*> Interface_CheckFailure_to_handle(Interface_CheckFailure* obj) {
-    try { return {new HandleInterfaceCheckFailure(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Interface_CheckFailure*> HandleInterfaceCheckFailure_get(const HandleInterfaceCheckFailure* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Interface_CheckFailure*> HandleInterfaceCheckFailure_get_mut(HandleInterfaceCheckFailure* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleInterfaceInterfaceError*> HandleInterfaceCheckFailure_to_HandleInterfaceInterfaceError(const HandleInterfaceCheckFailure* self_) {
-    try { return {new HandleInterfaceInterfaceError(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardFailure*> HandleInterfaceCheckFailure_to_HandleStandardFailure(const HandleInterfaceCheckFailure* self_) {
-    try { return {new HandleStandardFailure(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleInterfaceCheckFailure_to_HandleStandardTransient(const HandleInterfaceCheckFailure* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* Interface_CheckFailure_inherited_Print(const Interface_CheckFailure* self, Standard_OStream& theStream) {
     try { self->Print(theStream); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Interface_CheckFailure_inherited_Reraise(Interface_CheckFailure* self) {
-    try { self->Reraise(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Interface_CheckFailure_inherited_Jump(Interface_CheckFailure* self) {
-    try { self->Jump(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> Interface_CheckFailure_inherited_IsInstance(const Interface_CheckFailure* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Interface_CheckFailure_inherited_IsKind(const Interface_CheckFailure* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> Interface_CheckFailure_inherited_This(const Interface_CheckFailure* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> Interface_CheckFailure_inherited_GetRefCount(const Interface_CheckFailure* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Interface_CheckFailure_inherited_IncrementRefCounter(Interface_CheckFailure* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> Interface_CheckFailure_inherited_DecrementRefCounter(Interface_CheckFailure* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Interface_CheckFailure_inherited_Delete(const Interface_CheckFailure* self) {
-    try { self->Delete(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void Interface_CheckFailure_destructor(Interface_CheckFailure* self_) { delete self_; }
@@ -15262,8 +14945,8 @@ extern "C" OcctResult<Interface_CheckIterator*> Interface_CheckIterator_extract_
     try { return {new Interface_CheckIterator(self_->Extract(mess, incl, static_cast<Interface_CheckStatus>(status))), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> Interface_CheckIterator_checkeds(const Interface_CheckIterator* self_, bool failsonly, bool global) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self_->Checkeds(failsonly, global)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> Interface_CheckIterator_checkeds(const Interface_CheckIterator* self_, bool failsonly, bool global) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->Checkeds(failsonly, global)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Interface_CheckIterator_set_name(Interface_CheckIterator* self_, const char* name) {
@@ -15452,31 +15135,31 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Interface_CopyControl_get_ty
 }
 extern "C" OcctResult<const Standard_Transient*> Interface_CopyControl_as_Standard_Transient(const Interface_CopyControl* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Interface_CopyControl_as_Standard_Transient_mut(Interface_CopyControl* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const Interface_CopyControl*> HandleInterfaceCopyControl_get(const HandleInterfaceCopyControl* handle) {
+extern "C" OcctResult<const Interface_CopyControl*> Handle_Interface_CopyControl_get(const Handle_Interface_CopyControl* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Interface_CopyControl*> HandleInterfaceCopyControl_get_mut(HandleInterfaceCopyControl* handle) {
+extern "C" OcctResult<Interface_CopyControl*> Handle_Interface_CopyControl_get_mut(Handle_Interface_CopyControl* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleInterfaceCopyControl_to_HandleStandardTransient(const HandleInterfaceCopyControl* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Interface_CopyControl_to_Handle_Standard_Transient(const Handle_Interface_CopyControl* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleInterfaceCopyMap*> HandleInterfaceCopyControl_downcast_to_HandleInterfaceCopyMap(const HandleInterfaceCopyControl* self_) {
+extern "C" OcctResult<Handle_Interface_CopyMap*> Handle_Interface_CopyControl_downcast_to_Handle_Interface_CopyMap(const Handle_Interface_CopyControl* self_) {
     try {
     opencascade::handle<Interface_CopyMap> result = opencascade::handle<Interface_CopyMap>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleInterfaceCopyMap(result), nullptr};
+    return {new Handle_Interface_CopyMap(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferDispatchControl*> HandleInterfaceCopyControl_downcast_to_HandleTransferDispatchControl(const HandleInterfaceCopyControl* self_) {
+extern "C" OcctResult<Handle_Transfer_DispatchControl*> Handle_Interface_CopyControl_downcast_to_Handle_Transfer_DispatchControl(const Handle_Interface_CopyControl* self_) {
     try {
     opencascade::handle<Transfer_DispatchControl> result = opencascade::handle<Transfer_DispatchControl>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTransferDispatchControl(result), nullptr};
+    return {new Handle_Transfer_DispatchControl(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -15550,24 +15233,24 @@ extern "C" OcctResult<const Interface_CopyControl*> Interface_CopyMap_as_Interfa
 extern "C" OcctResult<Interface_CopyControl*> Interface_CopyMap_as_Interface_CopyControl_mut(Interface_CopyMap* self_) { return {static_cast<Interface_CopyControl*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Interface_CopyMap_as_Standard_Transient(const Interface_CopyMap* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Interface_CopyMap_as_Standard_Transient_mut(Interface_CopyMap* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleInterfaceCopyMap*> Interface_CopyMap_to_handle(Interface_CopyMap* obj) {
-    try { return {new HandleInterfaceCopyMap(obj), nullptr}; }
+extern "C" OcctResult<Handle_Interface_CopyMap*> Interface_CopyMap_to_handle(Interface_CopyMap* obj) {
+    try { return {new Handle_Interface_CopyMap(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Interface_CopyMap*> HandleInterfaceCopyMap_get(const HandleInterfaceCopyMap* handle) {
+extern "C" OcctResult<const Interface_CopyMap*> Handle_Interface_CopyMap_get(const Handle_Interface_CopyMap* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Interface_CopyMap*> HandleInterfaceCopyMap_get_mut(HandleInterfaceCopyMap* handle) {
+extern "C" OcctResult<Interface_CopyMap*> Handle_Interface_CopyMap_get_mut(Handle_Interface_CopyMap* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleInterfaceCopyControl*> HandleInterfaceCopyMap_to_HandleInterfaceCopyControl(const HandleInterfaceCopyMap* self_) {
-    try { return {new HandleInterfaceCopyControl(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Interface_CopyControl*> Handle_Interface_CopyMap_to_Handle_Interface_CopyControl(const Handle_Interface_CopyMap* self_) {
+    try { return {new Handle_Interface_CopyControl(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleInterfaceCopyMap_to_HandleStandardTransient(const HandleInterfaceCopyMap* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Interface_CopyMap_to_Handle_Standard_Transient(const Handle_Interface_CopyMap* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Interface_CopyMap_inherited_IsInstance(const Interface_CopyMap* self, Handle(Standard_Type) const& theType) {
@@ -15740,20 +15423,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Interface_EntityCluster_get_
 }
 extern "C" OcctResult<const Standard_Transient*> Interface_EntityCluster_as_Standard_Transient(const Interface_EntityCluster* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Interface_EntityCluster_as_Standard_Transient_mut(Interface_EntityCluster* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleInterfaceEntityCluster*> Interface_EntityCluster_to_handle(Interface_EntityCluster* obj) {
-    try { return {new HandleInterfaceEntityCluster(obj), nullptr}; }
+extern "C" OcctResult<Handle_Interface_EntityCluster*> Interface_EntityCluster_to_handle(Interface_EntityCluster* obj) {
+    try { return {new Handle_Interface_EntityCluster(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Interface_EntityCluster*> HandleInterfaceEntityCluster_get(const HandleInterfaceEntityCluster* handle) {
+extern "C" OcctResult<const Interface_EntityCluster*> Handle_Interface_EntityCluster_get(const Handle_Interface_EntityCluster* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Interface_EntityCluster*> HandleInterfaceEntityCluster_get_mut(HandleInterfaceEntityCluster* handle) {
+extern "C" OcctResult<Interface_EntityCluster*> Handle_Interface_EntityCluster_get_mut(Handle_Interface_EntityCluster* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleInterfaceEntityCluster_to_HandleStandardTransient(const HandleInterfaceEntityCluster* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Interface_EntityCluster_to_Handle_Standard_Transient(const Handle_Interface_EntityCluster* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Interface_EntityCluster_inherited_IsInstance(const Interface_EntityCluster* self, Handle(Standard_Type) const& theType) {
@@ -15794,7 +15477,7 @@ extern "C" OcctResult<Interface_EntityIterator*> Interface_EntityIterator_ctor()
     try { return {new Interface_EntityIterator(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Interface_EntityIterator*> Interface_EntityIterator_ctor_handletcolstdhsequenceoftransient(Handle(TColStd_HSequenceOfTransient) const* list) {
+extern "C" OcctResult<Interface_EntityIterator*> Interface_EntityIterator_ctor_handlencollectionhsequenceopencascadehandlestandardtransient(Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list) {
     try { return {new Interface_EntityIterator(*list), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -15802,11 +15485,11 @@ extern "C" OcctResult<Interface_EntityIterator*> Interface_EntityIterator_typed(
     try { return {new Interface_EntityIterator(self_->Typed(*type)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> Interface_EntityIterator_content(const Interface_EntityIterator* self_) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self_->Content()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> Interface_EntityIterator_content(const Interface_EntityIterator* self_) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->Content()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Interface_EntityIterator_add_list(Interface_EntityIterator* self_, Handle(TColStd_HSequenceOfTransient) const* list) {
+extern "C" const char* Interface_EntityIterator_add_list(Interface_EntityIterator* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list) {
     try { self_->AddList(*list); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -16070,31 +15753,31 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Interface_FileReaderData_get
 }
 extern "C" OcctResult<const Standard_Transient*> Interface_FileReaderData_as_Standard_Transient(const Interface_FileReaderData* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Interface_FileReaderData_as_Standard_Transient_mut(Interface_FileReaderData* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const Interface_FileReaderData*> HandleInterfaceFileReaderData_get(const HandleInterfaceFileReaderData* handle) {
+extern "C" OcctResult<const Interface_FileReaderData*> Handle_Interface_FileReaderData_get(const Handle_Interface_FileReaderData* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Interface_FileReaderData*> HandleInterfaceFileReaderData_get_mut(HandleInterfaceFileReaderData* handle) {
+extern "C" OcctResult<Interface_FileReaderData*> Handle_Interface_FileReaderData_get_mut(Handle_Interface_FileReaderData* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleInterfaceFileReaderData_to_HandleStandardTransient(const HandleInterfaceFileReaderData* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Interface_FileReaderData_to_Handle_Standard_Transient(const Handle_Interface_FileReaderData* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESDataIGESReaderData*> HandleInterfaceFileReaderData_downcast_to_HandleIGESDataIGESReaderData(const HandleInterfaceFileReaderData* self_) {
+extern "C" OcctResult<Handle_IGESData_IGESReaderData*> Handle_Interface_FileReaderData_downcast_to_Handle_IGESData_IGESReaderData(const Handle_Interface_FileReaderData* self_) {
     try {
     opencascade::handle<IGESData_IGESReaderData> result = opencascade::handle<IGESData_IGESReaderData>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESDataIGESReaderData(result), nullptr};
+    return {new Handle_IGESData_IGESReaderData(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStepDataStepReaderData*> HandleInterfaceFileReaderData_downcast_to_HandleStepDataStepReaderData(const HandleInterfaceFileReaderData* self_) {
+extern "C" OcctResult<Handle_StepData_StepReaderData*> Handle_Interface_FileReaderData_downcast_to_Handle_StepData_StepReaderData(const Handle_Interface_FileReaderData* self_) {
     try {
     opencascade::handle<StepData_StepReaderData> result = opencascade::handle<StepData_StepReaderData>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleStepDataStepReaderData(result), nullptr};
+    return {new Handle_StepData_StepReaderData(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -16334,20 +16017,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Interface_GTool_get_type_des
 }
 extern "C" OcctResult<const Standard_Transient*> Interface_GTool_as_Standard_Transient(const Interface_GTool* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Interface_GTool_as_Standard_Transient_mut(Interface_GTool* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleInterfaceGTool*> Interface_GTool_to_handle(Interface_GTool* obj) {
-    try { return {new HandleInterfaceGTool(obj), nullptr}; }
+extern "C" OcctResult<Handle_Interface_GTool*> Interface_GTool_to_handle(Interface_GTool* obj) {
+    try { return {new Handle_Interface_GTool(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Interface_GTool*> HandleInterfaceGTool_get(const HandleInterfaceGTool* handle) {
+extern "C" OcctResult<const Interface_GTool*> Handle_Interface_GTool_get(const Handle_Interface_GTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Interface_GTool*> HandleInterfaceGTool_get_mut(HandleInterfaceGTool* handle) {
+extern "C" OcctResult<Interface_GTool*> Handle_Interface_GTool_get_mut(Handle_Interface_GTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleInterfaceGTool_to_HandleStandardTransient(const HandleInterfaceGTool* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Interface_GTool_to_Handle_Standard_Transient(const Handle_Interface_GTool* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Interface_GTool_inherited_IsInstance(const Interface_GTool* self, Handle(Standard_Type) const& theType) {
@@ -16512,103 +16195,103 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Interface_GeneralModule_get_
 }
 extern "C" OcctResult<const Standard_Transient*> Interface_GeneralModule_as_Standard_Transient(const Interface_GeneralModule* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Interface_GeneralModule_as_Standard_Transient_mut(Interface_GeneralModule* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const Interface_GeneralModule*> HandleInterfaceGeneralModule_get(const HandleInterfaceGeneralModule* handle) {
+extern "C" OcctResult<const Interface_GeneralModule*> Handle_Interface_GeneralModule_get(const Handle_Interface_GeneralModule* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Interface_GeneralModule*> HandleInterfaceGeneralModule_get_mut(HandleInterfaceGeneralModule* handle) {
+extern "C" OcctResult<Interface_GeneralModule*> Handle_Interface_GeneralModule_get_mut(Handle_Interface_GeneralModule* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleInterfaceGeneralModule_to_HandleStandardTransient(const HandleInterfaceGeneralModule* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Interface_GeneralModule_to_Handle_Standard_Transient(const Handle_Interface_GeneralModule* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESAppliGeneralModule*> HandleInterfaceGeneralModule_downcast_to_HandleIGESAppliGeneralModule(const HandleInterfaceGeneralModule* self_) {
+extern "C" OcctResult<Handle_IGESAppli_GeneralModule*> Handle_Interface_GeneralModule_downcast_to_Handle_IGESAppli_GeneralModule(const Handle_Interface_GeneralModule* self_) {
     try {
     opencascade::handle<IGESAppli_GeneralModule> result = opencascade::handle<IGESAppli_GeneralModule>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESAppliGeneralModule(result), nullptr};
+    return {new Handle_IGESAppli_GeneralModule(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESBasicGeneralModule*> HandleInterfaceGeneralModule_downcast_to_HandleIGESBasicGeneralModule(const HandleInterfaceGeneralModule* self_) {
+extern "C" OcctResult<Handle_IGESBasic_GeneralModule*> Handle_Interface_GeneralModule_downcast_to_Handle_IGESBasic_GeneralModule(const Handle_Interface_GeneralModule* self_) {
     try {
     opencascade::handle<IGESBasic_GeneralModule> result = opencascade::handle<IGESBasic_GeneralModule>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESBasicGeneralModule(result), nullptr};
+    return {new Handle_IGESBasic_GeneralModule(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESDataDefaultGeneral*> HandleInterfaceGeneralModule_downcast_to_HandleIGESDataDefaultGeneral(const HandleInterfaceGeneralModule* self_) {
+extern "C" OcctResult<Handle_IGESData_DefaultGeneral*> Handle_Interface_GeneralModule_downcast_to_Handle_IGESData_DefaultGeneral(const Handle_Interface_GeneralModule* self_) {
     try {
     opencascade::handle<IGESData_DefaultGeneral> result = opencascade::handle<IGESData_DefaultGeneral>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESDataDefaultGeneral(result), nullptr};
+    return {new Handle_IGESData_DefaultGeneral(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESDefsGeneralModule*> HandleInterfaceGeneralModule_downcast_to_HandleIGESDefsGeneralModule(const HandleInterfaceGeneralModule* self_) {
+extern "C" OcctResult<Handle_IGESDefs_GeneralModule*> Handle_Interface_GeneralModule_downcast_to_Handle_IGESDefs_GeneralModule(const Handle_Interface_GeneralModule* self_) {
     try {
     opencascade::handle<IGESDefs_GeneralModule> result = opencascade::handle<IGESDefs_GeneralModule>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESDefsGeneralModule(result), nullptr};
+    return {new Handle_IGESDefs_GeneralModule(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESDimenGeneralModule*> HandleInterfaceGeneralModule_downcast_to_HandleIGESDimenGeneralModule(const HandleInterfaceGeneralModule* self_) {
+extern "C" OcctResult<Handle_IGESDimen_GeneralModule*> Handle_Interface_GeneralModule_downcast_to_Handle_IGESDimen_GeneralModule(const Handle_Interface_GeneralModule* self_) {
     try {
     opencascade::handle<IGESDimen_GeneralModule> result = opencascade::handle<IGESDimen_GeneralModule>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESDimenGeneralModule(result), nullptr};
+    return {new Handle_IGESDimen_GeneralModule(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESDrawGeneralModule*> HandleInterfaceGeneralModule_downcast_to_HandleIGESDrawGeneralModule(const HandleInterfaceGeneralModule* self_) {
+extern "C" OcctResult<Handle_IGESDraw_GeneralModule*> Handle_Interface_GeneralModule_downcast_to_Handle_IGESDraw_GeneralModule(const Handle_Interface_GeneralModule* self_) {
     try {
     opencascade::handle<IGESDraw_GeneralModule> result = opencascade::handle<IGESDraw_GeneralModule>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESDrawGeneralModule(result), nullptr};
+    return {new Handle_IGESDraw_GeneralModule(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESGeomGeneralModule*> HandleInterfaceGeneralModule_downcast_to_HandleIGESGeomGeneralModule(const HandleInterfaceGeneralModule* self_) {
+extern "C" OcctResult<Handle_IGESGeom_GeneralModule*> Handle_Interface_GeneralModule_downcast_to_Handle_IGESGeom_GeneralModule(const Handle_Interface_GeneralModule* self_) {
     try {
     opencascade::handle<IGESGeom_GeneralModule> result = opencascade::handle<IGESGeom_GeneralModule>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESGeomGeneralModule(result), nullptr};
+    return {new Handle_IGESGeom_GeneralModule(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESGraphGeneralModule*> HandleInterfaceGeneralModule_downcast_to_HandleIGESGraphGeneralModule(const HandleInterfaceGeneralModule* self_) {
+extern "C" OcctResult<Handle_IGESGraph_GeneralModule*> Handle_Interface_GeneralModule_downcast_to_Handle_IGESGraph_GeneralModule(const Handle_Interface_GeneralModule* self_) {
     try {
     opencascade::handle<IGESGraph_GeneralModule> result = opencascade::handle<IGESGraph_GeneralModule>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESGraphGeneralModule(result), nullptr};
+    return {new Handle_IGESGraph_GeneralModule(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSolidGeneralModule*> HandleInterfaceGeneralModule_downcast_to_HandleIGESSolidGeneralModule(const HandleInterfaceGeneralModule* self_) {
+extern "C" OcctResult<Handle_IGESSolid_GeneralModule*> Handle_Interface_GeneralModule_downcast_to_Handle_IGESSolid_GeneralModule(const Handle_Interface_GeneralModule* self_) {
     try {
     opencascade::handle<IGESSolid_GeneralModule> result = opencascade::handle<IGESSolid_GeneralModule>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSolidGeneralModule(result), nullptr};
+    return {new Handle_IGESSolid_GeneralModule(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleRWHeaderSectionGeneralModule*> HandleInterfaceGeneralModule_downcast_to_HandleRWHeaderSectionGeneralModule(const HandleInterfaceGeneralModule* self_) {
+extern "C" OcctResult<Handle_RWHeaderSection_GeneralModule*> Handle_Interface_GeneralModule_downcast_to_Handle_RWHeaderSection_GeneralModule(const Handle_Interface_GeneralModule* self_) {
     try {
     opencascade::handle<RWHeaderSection_GeneralModule> result = opencascade::handle<RWHeaderSection_GeneralModule>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleRWHeaderSectionGeneralModule(result), nullptr};
+    return {new Handle_RWHeaderSection_GeneralModule(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStepDataDefaultGeneral*> HandleInterfaceGeneralModule_downcast_to_HandleStepDataDefaultGeneral(const HandleInterfaceGeneralModule* self_) {
+extern "C" OcctResult<Handle_StepData_DefaultGeneral*> Handle_Interface_GeneralModule_downcast_to_Handle_StepData_DefaultGeneral(const Handle_Interface_GeneralModule* self_) {
     try {
     opencascade::handle<StepData_DefaultGeneral> result = opencascade::handle<StepData_DefaultGeneral>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleStepDataDefaultGeneral(result), nullptr};
+    return {new Handle_StepData_DefaultGeneral(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -16680,20 +16363,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Interface_GlobalNodeOfGenera
 }
 extern "C" OcctResult<const Standard_Transient*> Interface_GlobalNodeOfGeneralLib_as_Standard_Transient(const Interface_GlobalNodeOfGeneralLib* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Interface_GlobalNodeOfGeneralLib_as_Standard_Transient_mut(Interface_GlobalNodeOfGeneralLib* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleInterfaceGlobalNodeOfGeneralLib*> Interface_GlobalNodeOfGeneralLib_to_handle(Interface_GlobalNodeOfGeneralLib* obj) {
-    try { return {new HandleInterfaceGlobalNodeOfGeneralLib(obj), nullptr}; }
+extern "C" OcctResult<Handle_Interface_GlobalNodeOfGeneralLib*> Interface_GlobalNodeOfGeneralLib_to_handle(Interface_GlobalNodeOfGeneralLib* obj) {
+    try { return {new Handle_Interface_GlobalNodeOfGeneralLib(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Interface_GlobalNodeOfGeneralLib*> HandleInterfaceGlobalNodeOfGeneralLib_get(const HandleInterfaceGlobalNodeOfGeneralLib* handle) {
+extern "C" OcctResult<const Interface_GlobalNodeOfGeneralLib*> Handle_Interface_GlobalNodeOfGeneralLib_get(const Handle_Interface_GlobalNodeOfGeneralLib* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Interface_GlobalNodeOfGeneralLib*> HandleInterfaceGlobalNodeOfGeneralLib_get_mut(HandleInterfaceGlobalNodeOfGeneralLib* handle) {
+extern "C" OcctResult<Interface_GlobalNodeOfGeneralLib*> Handle_Interface_GlobalNodeOfGeneralLib_get_mut(Handle_Interface_GlobalNodeOfGeneralLib* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleInterfaceGlobalNodeOfGeneralLib_to_HandleStandardTransient(const HandleInterfaceGlobalNodeOfGeneralLib* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Interface_GlobalNodeOfGeneralLib_to_Handle_Standard_Transient(const Handle_Interface_GlobalNodeOfGeneralLib* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Interface_GlobalNodeOfGeneralLib_inherited_IsInstance(const Interface_GlobalNodeOfGeneralLib* self, Handle(Standard_Type) const& theType) {
@@ -16764,20 +16447,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Interface_GlobalNodeOfReader
 }
 extern "C" OcctResult<const Standard_Transient*> Interface_GlobalNodeOfReaderLib_as_Standard_Transient(const Interface_GlobalNodeOfReaderLib* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Interface_GlobalNodeOfReaderLib_as_Standard_Transient_mut(Interface_GlobalNodeOfReaderLib* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleInterfaceGlobalNodeOfReaderLib*> Interface_GlobalNodeOfReaderLib_to_handle(Interface_GlobalNodeOfReaderLib* obj) {
-    try { return {new HandleInterfaceGlobalNodeOfReaderLib(obj), nullptr}; }
+extern "C" OcctResult<Handle_Interface_GlobalNodeOfReaderLib*> Interface_GlobalNodeOfReaderLib_to_handle(Interface_GlobalNodeOfReaderLib* obj) {
+    try { return {new Handle_Interface_GlobalNodeOfReaderLib(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Interface_GlobalNodeOfReaderLib*> HandleInterfaceGlobalNodeOfReaderLib_get(const HandleInterfaceGlobalNodeOfReaderLib* handle) {
+extern "C" OcctResult<const Interface_GlobalNodeOfReaderLib*> Handle_Interface_GlobalNodeOfReaderLib_get(const Handle_Interface_GlobalNodeOfReaderLib* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Interface_GlobalNodeOfReaderLib*> HandleInterfaceGlobalNodeOfReaderLib_get_mut(HandleInterfaceGlobalNodeOfReaderLib* handle) {
+extern "C" OcctResult<Interface_GlobalNodeOfReaderLib*> Handle_Interface_GlobalNodeOfReaderLib_get_mut(Handle_Interface_GlobalNodeOfReaderLib* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleInterfaceGlobalNodeOfReaderLib_to_HandleStandardTransient(const HandleInterfaceGlobalNodeOfReaderLib* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Interface_GlobalNodeOfReaderLib_to_Handle_Standard_Transient(const Handle_Interface_GlobalNodeOfReaderLib* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Interface_GlobalNodeOfReaderLib_inherited_IsInstance(const Interface_GlobalNodeOfReaderLib* self, Handle(Standard_Type) const& theType) {
@@ -16830,8 +16513,8 @@ extern "C" OcctResult<Interface_Graph*> Interface_Graph_ctor_handleinterfaceinte
     try { return {new Interface_Graph(*amodel, theModeStats), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> Interface_Graph_get_shareds(const Interface_Graph* self_, Handle(Standard_Transient) const* ent) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self_->GetShareds(*ent)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> Interface_Graph_get_shareds(const Interface_Graph* self_, Handle(Standard_Transient) const* ent) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->GetShareds(*ent)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Interface_EntityIterator*> Interface_Graph_shareds(const Interface_Graph* self_, Handle(Standard_Transient) const* ent) {
@@ -16842,8 +16525,8 @@ extern "C" OcctResult<Interface_EntityIterator*> Interface_Graph_sharings(const 
     try { return {new Interface_EntityIterator(self_->Sharings(*ent)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> Interface_Graph_get_sharings(const Interface_Graph* self_, Handle(Standard_Transient) const* ent) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self_->GetSharings(*ent)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> Interface_Graph_get_sharings(const Interface_Graph* self_, Handle(Standard_Transient) const* ent) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->GetSharings(*ent)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Interface_EntityIterator*> Interface_Graph_typed_sharings(const Interface_Graph* self_, Handle(Standard_Transient) const* ent, Handle(Standard_Type) const* type) {
@@ -16954,7 +16637,7 @@ extern "C" OcctResult<bool> Interface_Graph_has_share_errors(const Interface_Gra
     try { return {self_->HasShareErrors(*ent), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfListOfInteger) const*> Interface_Graph_sharing_table(const Interface_Graph* self_) {
+extern "C" OcctResult<Handle(NCollection_HArray1_NCollection_List_int) const*> Interface_Graph_sharing_table(const Interface_Graph* self_) {
     try { return {&(self_->SharingTable()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -17010,7 +16693,7 @@ extern "C" const char* Interface_GraphContent_evaluate(Interface_GraphContent* s
 }
 extern "C" OcctResult<const Interface_EntityIterator*> Interface_GraphContent_as_Interface_EntityIterator(const Interface_GraphContent* self_) { return {static_cast<const Interface_EntityIterator*>(self_), nullptr}; }
 extern "C" OcctResult<Interface_EntityIterator*> Interface_GraphContent_as_Interface_EntityIterator_mut(Interface_GraphContent* self_) { return {static_cast<Interface_EntityIterator*>(self_), nullptr}; }
-extern "C" const char* Interface_GraphContent_inherited_AddList(Interface_GraphContent* self, Handle(TColStd_HSequenceOfTransient) const& list) {
+extern "C" const char* Interface_GraphContent_inherited_AddList(Interface_GraphContent* self, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& list) {
     try { self->AddList(list); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -17054,8 +16737,8 @@ extern "C" OcctResult<Handle(Standard_Transient) const*> Interface_GraphContent_
     try { return {&(self->Value()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> Interface_GraphContent_inherited_Content(const Interface_GraphContent* self) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self->Content()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> Interface_GraphContent_inherited_Content(const Interface_GraphContent* self) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self->Content()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Interface_GraphContent_inherited_Destroy(Interface_GraphContent* self) {
@@ -17063,98 +16746,6 @@ extern "C" const char* Interface_GraphContent_inherited_Destroy(Interface_GraphC
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void Interface_GraphContent_destructor(Interface_GraphContent* self_) { delete self_; }
-
-// ========================
-// Interface_HArray1OfHAsciiString wrappers
-// ========================
-
-extern "C" OcctResult<Interface_HArray1OfHAsciiString*> Interface_HArray1OfHAsciiString_ctor() {
-    try { return {new Interface_HArray1OfHAsciiString(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Interface_HArray1OfHAsciiString*> Interface_HArray1OfHAsciiString_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new Interface_HArray1OfHAsciiString(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Interface_HArray1OfHAsciiString*> Interface_HArray1OfHAsciiString_ctor_int2_handletcollectionhasciistring(int32_t theLower, int32_t theUpper, Handle(TCollection_HAsciiString) const* theValue) {
-    try { return {new Interface_HArray1OfHAsciiString(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Interface_HArray1OfHAsciiString*> Interface_HArray1OfHAsciiString_ctor_handletcollectionhasciistring_int2_bool(Handle(TCollection_HAsciiString) const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new Interface_HArray1OfHAsciiString(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Interface_HArray1OfHAsciiString*> Interface_HArray1OfHAsciiString_ctor_array1ofhasciistring(Interface_Array1OfHAsciiString const* theOther) {
-    try { return {new Interface_HArray1OfHAsciiString(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Interface_Array1OfHAsciiString const*> Interface_HArray1OfHAsciiString_array1(const Interface_HArray1OfHAsciiString* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Interface_Array1OfHAsciiString*> Interface_HArray1OfHAsciiString_change_array1(Interface_HArray1OfHAsciiString* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Interface_HArray1OfHAsciiString_dynamic_type(const Interface_HArray1OfHAsciiString* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> Interface_HArray1OfHAsciiString_get_type_name() {
-    try { return {Interface_HArray1OfHAsciiString::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Interface_HArray1OfHAsciiString_get_type_descriptor() {
-    try { return {&(Interface_HArray1OfHAsciiString::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> Interface_HArray1OfHAsciiString_as_Standard_Transient(const Interface_HArray1OfHAsciiString* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> Interface_HArray1OfHAsciiString_as_Standard_Transient_mut(Interface_HArray1OfHAsciiString* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleInterfaceHArray1OfHAsciiString*> Interface_HArray1OfHAsciiString_to_handle(Interface_HArray1OfHAsciiString* obj) {
-    try { return {new HandleInterfaceHArray1OfHAsciiString(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Interface_HArray1OfHAsciiString*> HandleInterfaceHArray1OfHAsciiString_get(const HandleInterfaceHArray1OfHAsciiString* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Interface_HArray1OfHAsciiString*> HandleInterfaceHArray1OfHAsciiString_get_mut(HandleInterfaceHArray1OfHAsciiString* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleInterfaceHArray1OfHAsciiString_to_HandleStandardTransient(const HandleInterfaceHArray1OfHAsciiString* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Interface_HArray1OfHAsciiString_inherited_IsInstance(const Interface_HArray1OfHAsciiString* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Interface_HArray1OfHAsciiString_inherited_IsKind(const Interface_HArray1OfHAsciiString* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> Interface_HArray1OfHAsciiString_inherited_This(const Interface_HArray1OfHAsciiString* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> Interface_HArray1OfHAsciiString_inherited_GetRefCount(const Interface_HArray1OfHAsciiString* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Interface_HArray1OfHAsciiString_inherited_IncrementRefCounter(Interface_HArray1OfHAsciiString* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> Interface_HArray1OfHAsciiString_inherited_DecrementRefCounter(Interface_HArray1OfHAsciiString* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Interface_HArray1OfHAsciiString_inherited_Delete(const Interface_HArray1OfHAsciiString* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void Interface_HArray1OfHAsciiString_destructor(Interface_HArray1OfHAsciiString* self_) { delete self_; }
 
 // ========================
 // Interface_HGraph wrappers
@@ -17202,20 +16793,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Interface_HGraph_get_type_de
 }
 extern "C" OcctResult<const Standard_Transient*> Interface_HGraph_as_Standard_Transient(const Interface_HGraph* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Interface_HGraph_as_Standard_Transient_mut(Interface_HGraph* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleInterfaceHGraph*> Interface_HGraph_to_handle(Interface_HGraph* obj) {
-    try { return {new HandleInterfaceHGraph(obj), nullptr}; }
+extern "C" OcctResult<Handle_Interface_HGraph*> Interface_HGraph_to_handle(Interface_HGraph* obj) {
+    try { return {new Handle_Interface_HGraph(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Interface_HGraph*> HandleInterfaceHGraph_get(const HandleInterfaceHGraph* handle) {
+extern "C" OcctResult<const Interface_HGraph*> Handle_Interface_HGraph_get(const Handle_Interface_HGraph* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Interface_HGraph*> HandleInterfaceHGraph_get_mut(HandleInterfaceHGraph* handle) {
+extern "C" OcctResult<Interface_HGraph*> Handle_Interface_HGraph_get_mut(Handle_Interface_HGraph* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleInterfaceHGraph_to_HandleStandardTransient(const HandleInterfaceHGraph* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Interface_HGraph_to_Handle_Standard_Transient(const Handle_Interface_HGraph* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Interface_HGraph_inherited_IsInstance(const Interface_HGraph* self, Handle(Standard_Type) const& theType) {
@@ -17249,94 +16840,6 @@ extern "C" const char* Interface_HGraph_inherited_Delete(const Interface_HGraph*
 extern "C" void Interface_HGraph_destructor(Interface_HGraph* self_) { delete self_; }
 
 // ========================
-// Interface_HSequenceOfCheck wrappers
-// ========================
-
-extern "C" OcctResult<Interface_HSequenceOfCheck*> Interface_HSequenceOfCheck_ctor() {
-    try { return {new Interface_HSequenceOfCheck(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Interface_HSequenceOfCheck*> Interface_HSequenceOfCheck_ctor_sequenceofcheck(Interface_SequenceOfCheck const* theOther) {
-    try { return {new Interface_HSequenceOfCheck(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Interface_SequenceOfCheck const*> Interface_HSequenceOfCheck_sequence(const Interface_HSequenceOfCheck* self_) {
-    try { return {&(self_->Sequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Interface_HSequenceOfCheck_append_handleinterfacecheck(Interface_HSequenceOfCheck* self_, Handle(Interface_Check) const* theItem) {
-    try { self_->Append(*theItem); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Interface_HSequenceOfCheck_append_sequenceofcheck(Interface_HSequenceOfCheck* self_, Interface_SequenceOfCheck* theSequence) {
-    try { self_->Append(*theSequence); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Interface_SequenceOfCheck*> Interface_HSequenceOfCheck_change_sequence(Interface_HSequenceOfCheck* self_) {
-    try { return {&(self_->ChangeSequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Interface_HSequenceOfCheck_dynamic_type(const Interface_HSequenceOfCheck* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> Interface_HSequenceOfCheck_get_type_name() {
-    try { return {Interface_HSequenceOfCheck::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Interface_HSequenceOfCheck_get_type_descriptor() {
-    try { return {&(Interface_HSequenceOfCheck::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> Interface_HSequenceOfCheck_as_Standard_Transient(const Interface_HSequenceOfCheck* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> Interface_HSequenceOfCheck_as_Standard_Transient_mut(Interface_HSequenceOfCheck* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleInterfaceHSequenceOfCheck*> Interface_HSequenceOfCheck_to_handle(Interface_HSequenceOfCheck* obj) {
-    try { return {new HandleInterfaceHSequenceOfCheck(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Interface_HSequenceOfCheck*> HandleInterfaceHSequenceOfCheck_get(const HandleInterfaceHSequenceOfCheck* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Interface_HSequenceOfCheck*> HandleInterfaceHSequenceOfCheck_get_mut(HandleInterfaceHSequenceOfCheck* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleInterfaceHSequenceOfCheck_to_HandleStandardTransient(const HandleInterfaceHSequenceOfCheck* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Interface_HSequenceOfCheck_inherited_IsInstance(const Interface_HSequenceOfCheck* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Interface_HSequenceOfCheck_inherited_IsKind(const Interface_HSequenceOfCheck* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> Interface_HSequenceOfCheck_inherited_This(const Interface_HSequenceOfCheck* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> Interface_HSequenceOfCheck_inherited_GetRefCount(const Interface_HSequenceOfCheck* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Interface_HSequenceOfCheck_inherited_IncrementRefCounter(Interface_HSequenceOfCheck* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> Interface_HSequenceOfCheck_inherited_DecrementRefCounter(Interface_HSequenceOfCheck* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Interface_HSequenceOfCheck_inherited_Delete(const Interface_HSequenceOfCheck* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void Interface_HSequenceOfCheck_destructor(Interface_HSequenceOfCheck* self_) { delete self_; }
-
-// ========================
 // Interface_IntList wrappers
 // ========================
 
@@ -17360,9 +16863,17 @@ extern "C" const char* Interface_IntList_initialize(Interface_IntList* self_, in
     try { self_->Initialize(nbe); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Interface_IntList_internals(const Interface_IntList* self_, int32_t* nbrefs, Handle(TColStd_HArray1OfInteger)* ents, Handle(TColStd_HArray1OfInteger)* refs) {
-    try { self_->Internals(*nbrefs, *ents, *refs); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<int32_t> Interface_IntList_nb_references(const Interface_IntList* self_) {
+    try { return {self_->NbReferences(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(NCollection_HArray1_int) const*> Interface_IntList_entities(const Interface_IntList* self_) {
+    try { return {&(self_->Entities()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(NCollection_HArray1_int) const*> Interface_IntList_references(const Interface_IntList* self_) {
+    try { return {&(self_->References()), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> Interface_IntList_nb_entities(const Interface_IntList* self_) {
     try { return {self_->NbEntities(), nullptr}; }
@@ -17448,20 +16959,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Interface_IntVal_get_type_de
 }
 extern "C" OcctResult<const Standard_Transient*> Interface_IntVal_as_Standard_Transient(const Interface_IntVal* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Interface_IntVal_as_Standard_Transient_mut(Interface_IntVal* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleInterfaceIntVal*> Interface_IntVal_to_handle(Interface_IntVal* obj) {
-    try { return {new HandleInterfaceIntVal(obj), nullptr}; }
+extern "C" OcctResult<Handle_Interface_IntVal*> Interface_IntVal_to_handle(Interface_IntVal* obj) {
+    try { return {new Handle_Interface_IntVal(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Interface_IntVal*> HandleInterfaceIntVal_get(const HandleInterfaceIntVal* handle) {
+extern "C" OcctResult<const Interface_IntVal*> Handle_Interface_IntVal_get(const Handle_Interface_IntVal* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Interface_IntVal*> HandleInterfaceIntVal_get_mut(HandleInterfaceIntVal* handle) {
+extern "C" OcctResult<Interface_IntVal*> Handle_Interface_IntVal_get_mut(Handle_Interface_IntVal* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleInterfaceIntVal_to_HandleStandardTransient(const HandleInterfaceIntVal* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Interface_IntVal_to_Handle_Standard_Transient(const Handle_Interface_IntVal* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Interface_IntVal_inherited_IsInstance(const Interface_IntVal* self, Handle(Standard_Type) const& theType) {
@@ -17498,10 +17009,6 @@ extern "C" void Interface_IntVal_destructor(Interface_IntVal* self_) { delete se
 // Interface_InterfaceError wrappers
 // ========================
 
-extern "C" OcctResult<Interface_InterfaceError*> Interface_InterfaceError_ctor() {
-    try { return {new Interface_InterfaceError(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Interface_InterfaceError*> Interface_InterfaceError_ctor_charptr(const char* theMessage) {
     try { return {new Interface_InterfaceError(theMessage), nullptr}; }
     OCCT_CATCH_RETURN
@@ -17510,128 +17017,14 @@ extern "C" OcctResult<Interface_InterfaceError*> Interface_InterfaceError_ctor_c
     try { return {new Interface_InterfaceError(theMessage, theStackTrace), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> Interface_InterfaceError_dynamic_type(const Interface_InterfaceError* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Interface_InterfaceError_raise_charptr(const char* theMessage) {
-    try { Interface_InterfaceError::Raise(theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Interface_InterfaceError_raise_sstream(Standard_SStream* theMessage) {
-    try { Interface_InterfaceError::Raise(*theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(Interface_InterfaceError)*> Interface_InterfaceError_new_instance_charptr(const char* theMessage) {
-    try { return {new Handle(Interface_InterfaceError)(Interface_InterfaceError::NewInstance(theMessage)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Interface_InterfaceError)*> Interface_InterfaceError_new_instance_charptr2(const char* theMessage, const char* theStackTrace) {
-    try { return {new Handle(Interface_InterfaceError)(Interface_InterfaceError::NewInstance(theMessage, theStackTrace)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> Interface_InterfaceError_get_type_name() {
-    try { return {Interface_InterfaceError::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Interface_InterfaceError_get_type_descriptor() {
-    try { return {&(Interface_InterfaceError::get_type_descriptor()), nullptr}; }
+extern "C" OcctResult<char const*> Interface_InterfaceError_exception_type(const Interface_InterfaceError* self_) {
+    try { return {self_->ExceptionType(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<const Standard_Failure*> Interface_InterfaceError_as_Standard_Failure(const Interface_InterfaceError* self_) { return {static_cast<const Standard_Failure*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Failure*> Interface_InterfaceError_as_Standard_Failure_mut(Interface_InterfaceError* self_) { return {static_cast<Standard_Failure*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> Interface_InterfaceError_as_Standard_Transient(const Interface_InterfaceError* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> Interface_InterfaceError_as_Standard_Transient_mut(Interface_InterfaceError* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleInterfaceInterfaceError*> Interface_InterfaceError_to_handle(Interface_InterfaceError* obj) {
-    try { return {new HandleInterfaceInterfaceError(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Interface_InterfaceError*> HandleInterfaceInterfaceError_get(const HandleInterfaceInterfaceError* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Interface_InterfaceError*> HandleInterfaceInterfaceError_get_mut(HandleInterfaceInterfaceError* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardFailure*> HandleInterfaceInterfaceError_to_HandleStandardFailure(const HandleInterfaceInterfaceError* self_) {
-    try { return {new HandleStandardFailure(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleInterfaceInterfaceError_to_HandleStandardTransient(const HandleInterfaceInterfaceError* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleInterfaceCheckFailure*> HandleInterfaceInterfaceError_downcast_to_HandleInterfaceCheckFailure(const HandleInterfaceInterfaceError* self_) {
-    try {
-    opencascade::handle<Interface_CheckFailure> result = opencascade::handle<Interface_CheckFailure>::DownCast(*self_);
-    if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleInterfaceCheckFailure(result), nullptr};
-    }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleInterfaceInterfaceMismatch*> HandleInterfaceInterfaceError_downcast_to_HandleInterfaceInterfaceMismatch(const HandleInterfaceInterfaceError* self_) {
-    try {
-    opencascade::handle<Interface_InterfaceMismatch> result = opencascade::handle<Interface_InterfaceMismatch>::DownCast(*self_);
-    if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleInterfaceInterfaceMismatch(result), nullptr};
-    }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleTransferTransferDeadLoop*> HandleInterfaceInterfaceError_downcast_to_HandleTransferTransferDeadLoop(const HandleInterfaceInterfaceError* self_) {
-    try {
-    opencascade::handle<Transfer_TransferDeadLoop> result = opencascade::handle<Transfer_TransferDeadLoop>::DownCast(*self_);
-    if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTransferTransferDeadLoop(result), nullptr};
-    }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleTransferTransferFailure*> HandleInterfaceInterfaceError_downcast_to_HandleTransferTransferFailure(const HandleInterfaceInterfaceError* self_) {
-    try {
-    opencascade::handle<Transfer_TransferFailure> result = opencascade::handle<Transfer_TransferFailure>::DownCast(*self_);
-    if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTransferTransferFailure(result), nullptr};
-    }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* Interface_InterfaceError_inherited_Print(const Interface_InterfaceError* self, Standard_OStream& theStream) {
     try { self->Print(theStream); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Interface_InterfaceError_inherited_Reraise(Interface_InterfaceError* self) {
-    try { self->Reraise(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Interface_InterfaceError_inherited_Jump(Interface_InterfaceError* self) {
-    try { self->Jump(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> Interface_InterfaceError_inherited_IsInstance(const Interface_InterfaceError* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Interface_InterfaceError_inherited_IsKind(const Interface_InterfaceError* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> Interface_InterfaceError_inherited_This(const Interface_InterfaceError* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> Interface_InterfaceError_inherited_GetRefCount(const Interface_InterfaceError* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Interface_InterfaceError_inherited_IncrementRefCounter(Interface_InterfaceError* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> Interface_InterfaceError_inherited_DecrementRefCounter(Interface_InterfaceError* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Interface_InterfaceError_inherited_Delete(const Interface_InterfaceError* self) {
-    try { self->Delete(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void Interface_InterfaceError_destructor(Interface_InterfaceError* self_) { delete self_; }
@@ -17640,10 +17033,6 @@ extern "C" void Interface_InterfaceError_destructor(Interface_InterfaceError* se
 // Interface_InterfaceMismatch wrappers
 // ========================
 
-extern "C" OcctResult<Interface_InterfaceMismatch*> Interface_InterfaceMismatch_ctor() {
-    try { return {new Interface_InterfaceMismatch(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Interface_InterfaceMismatch*> Interface_InterfaceMismatch_ctor_charptr(const char* theMessage) {
     try { return {new Interface_InterfaceMismatch(theMessage), nullptr}; }
     OCCT_CATCH_RETURN
@@ -17652,102 +17041,16 @@ extern "C" OcctResult<Interface_InterfaceMismatch*> Interface_InterfaceMismatch_
     try { return {new Interface_InterfaceMismatch(theMessage, theStackTrace), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> Interface_InterfaceMismatch_dynamic_type(const Interface_InterfaceMismatch* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Interface_InterfaceMismatch_raise_charptr(const char* theMessage) {
-    try { Interface_InterfaceMismatch::Raise(theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Interface_InterfaceMismatch_raise_sstream(Standard_SStream* theMessage) {
-    try { Interface_InterfaceMismatch::Raise(*theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(Interface_InterfaceMismatch)*> Interface_InterfaceMismatch_new_instance_charptr(const char* theMessage) {
-    try { return {new Handle(Interface_InterfaceMismatch)(Interface_InterfaceMismatch::NewInstance(theMessage)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Interface_InterfaceMismatch)*> Interface_InterfaceMismatch_new_instance_charptr2(const char* theMessage, const char* theStackTrace) {
-    try { return {new Handle(Interface_InterfaceMismatch)(Interface_InterfaceMismatch::NewInstance(theMessage, theStackTrace)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> Interface_InterfaceMismatch_get_type_name() {
-    try { return {Interface_InterfaceMismatch::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Interface_InterfaceMismatch_get_type_descriptor() {
-    try { return {&(Interface_InterfaceMismatch::get_type_descriptor()), nullptr}; }
+extern "C" OcctResult<char const*> Interface_InterfaceMismatch_exception_type(const Interface_InterfaceMismatch* self_) {
+    try { return {self_->ExceptionType(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<const Interface_InterfaceError*> Interface_InterfaceMismatch_as_Interface_InterfaceError(const Interface_InterfaceMismatch* self_) { return {static_cast<const Interface_InterfaceError*>(self_), nullptr}; }
 extern "C" OcctResult<Interface_InterfaceError*> Interface_InterfaceMismatch_as_Interface_InterfaceError_mut(Interface_InterfaceMismatch* self_) { return {static_cast<Interface_InterfaceError*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Failure*> Interface_InterfaceMismatch_as_Standard_Failure(const Interface_InterfaceMismatch* self_) { return {static_cast<const Standard_Failure*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Failure*> Interface_InterfaceMismatch_as_Standard_Failure_mut(Interface_InterfaceMismatch* self_) { return {static_cast<Standard_Failure*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> Interface_InterfaceMismatch_as_Standard_Transient(const Interface_InterfaceMismatch* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> Interface_InterfaceMismatch_as_Standard_Transient_mut(Interface_InterfaceMismatch* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleInterfaceInterfaceMismatch*> Interface_InterfaceMismatch_to_handle(Interface_InterfaceMismatch* obj) {
-    try { return {new HandleInterfaceInterfaceMismatch(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Interface_InterfaceMismatch*> HandleInterfaceInterfaceMismatch_get(const HandleInterfaceInterfaceMismatch* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Interface_InterfaceMismatch*> HandleInterfaceInterfaceMismatch_get_mut(HandleInterfaceInterfaceMismatch* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleInterfaceInterfaceError*> HandleInterfaceInterfaceMismatch_to_HandleInterfaceInterfaceError(const HandleInterfaceInterfaceMismatch* self_) {
-    try { return {new HandleInterfaceInterfaceError(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardFailure*> HandleInterfaceInterfaceMismatch_to_HandleStandardFailure(const HandleInterfaceInterfaceMismatch* self_) {
-    try { return {new HandleStandardFailure(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleInterfaceInterfaceMismatch_to_HandleStandardTransient(const HandleInterfaceInterfaceMismatch* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* Interface_InterfaceMismatch_inherited_Print(const Interface_InterfaceMismatch* self, Standard_OStream& theStream) {
     try { self->Print(theStream); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Interface_InterfaceMismatch_inherited_Reraise(Interface_InterfaceMismatch* self) {
-    try { self->Reraise(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Interface_InterfaceMismatch_inherited_Jump(Interface_InterfaceMismatch* self) {
-    try { self->Jump(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> Interface_InterfaceMismatch_inherited_IsInstance(const Interface_InterfaceMismatch* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Interface_InterfaceMismatch_inherited_IsKind(const Interface_InterfaceMismatch* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> Interface_InterfaceMismatch_inherited_This(const Interface_InterfaceMismatch* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> Interface_InterfaceMismatch_inherited_GetRefCount(const Interface_InterfaceMismatch* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Interface_InterfaceMismatch_inherited_IncrementRefCounter(Interface_InterfaceMismatch* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> Interface_InterfaceMismatch_inherited_DecrementRefCounter(Interface_InterfaceMismatch* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Interface_InterfaceMismatch_inherited_Delete(const Interface_InterfaceMismatch* self) {
-    try { self->Delete(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void Interface_InterfaceMismatch_destructor(Interface_InterfaceMismatch* self_) { delete self_; }
@@ -17996,8 +17299,8 @@ extern "C" OcctResult<bool> Interface_InterfaceModel_set_template(const char* na
     try { return {Interface_InterfaceModel::SetTemplate(name, *model), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfHAsciiString)*> Interface_InterfaceModel_list_templates() {
-    try { return {new Handle(TColStd_HSequenceOfHAsciiString)(Interface_InterfaceModel::ListTemplates()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> Interface_InterfaceModel_list_templates() {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(Interface_InterfaceModel::ListTemplates()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<char const*> Interface_InterfaceModel_get_type_name() {
@@ -18010,31 +17313,31 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Interface_InterfaceModel_get
 }
 extern "C" OcctResult<const Standard_Transient*> Interface_InterfaceModel_as_Standard_Transient(const Interface_InterfaceModel* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Interface_InterfaceModel_as_Standard_Transient_mut(Interface_InterfaceModel* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const Interface_InterfaceModel*> HandleInterfaceInterfaceModel_get(const HandleInterfaceInterfaceModel* handle) {
+extern "C" OcctResult<const Interface_InterfaceModel*> Handle_Interface_InterfaceModel_get(const Handle_Interface_InterfaceModel* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Interface_InterfaceModel*> HandleInterfaceInterfaceModel_get_mut(HandleInterfaceInterfaceModel* handle) {
+extern "C" OcctResult<Interface_InterfaceModel*> Handle_Interface_InterfaceModel_get_mut(Handle_Interface_InterfaceModel* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleInterfaceInterfaceModel_to_HandleStandardTransient(const HandleInterfaceInterfaceModel* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Interface_InterfaceModel_to_Handle_Standard_Transient(const Handle_Interface_InterfaceModel* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESDataIGESModel*> HandleInterfaceInterfaceModel_downcast_to_HandleIGESDataIGESModel(const HandleInterfaceInterfaceModel* self_) {
+extern "C" OcctResult<Handle_IGESData_IGESModel*> Handle_Interface_InterfaceModel_downcast_to_Handle_IGESData_IGESModel(const Handle_Interface_InterfaceModel* self_) {
     try {
     opencascade::handle<IGESData_IGESModel> result = opencascade::handle<IGESData_IGESModel>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESDataIGESModel(result), nullptr};
+    return {new Handle_IGESData_IGESModel(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStepDataStepModel*> HandleInterfaceInterfaceModel_downcast_to_HandleStepDataStepModel(const HandleInterfaceInterfaceModel* self_) {
+extern "C" OcctResult<Handle_StepData_StepModel*> Handle_Interface_InterfaceModel_downcast_to_Handle_StepData_StepModel(const Handle_Interface_InterfaceModel* self_) {
     try {
     opencascade::handle<StepData_StepModel> result = opencascade::handle<StepData_StepModel>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleStepDataStepModel(result), nullptr};
+    return {new Handle_StepData_StepModel(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -18282,20 +17585,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Interface_NodeOfGeneralLib_g
 }
 extern "C" OcctResult<const Standard_Transient*> Interface_NodeOfGeneralLib_as_Standard_Transient(const Interface_NodeOfGeneralLib* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Interface_NodeOfGeneralLib_as_Standard_Transient_mut(Interface_NodeOfGeneralLib* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleInterfaceNodeOfGeneralLib*> Interface_NodeOfGeneralLib_to_handle(Interface_NodeOfGeneralLib* obj) {
-    try { return {new HandleInterfaceNodeOfGeneralLib(obj), nullptr}; }
+extern "C" OcctResult<Handle_Interface_NodeOfGeneralLib*> Interface_NodeOfGeneralLib_to_handle(Interface_NodeOfGeneralLib* obj) {
+    try { return {new Handle_Interface_NodeOfGeneralLib(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Interface_NodeOfGeneralLib*> HandleInterfaceNodeOfGeneralLib_get(const HandleInterfaceNodeOfGeneralLib* handle) {
+extern "C" OcctResult<const Interface_NodeOfGeneralLib*> Handle_Interface_NodeOfGeneralLib_get(const Handle_Interface_NodeOfGeneralLib* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Interface_NodeOfGeneralLib*> HandleInterfaceNodeOfGeneralLib_get_mut(HandleInterfaceNodeOfGeneralLib* handle) {
+extern "C" OcctResult<Interface_NodeOfGeneralLib*> Handle_Interface_NodeOfGeneralLib_get_mut(Handle_Interface_NodeOfGeneralLib* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleInterfaceNodeOfGeneralLib_to_HandleStandardTransient(const HandleInterfaceNodeOfGeneralLib* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Interface_NodeOfGeneralLib_to_Handle_Standard_Transient(const Handle_Interface_NodeOfGeneralLib* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Interface_NodeOfGeneralLib_inherited_IsInstance(const Interface_NodeOfGeneralLib* self, Handle(Standard_Type) const& theType) {
@@ -18366,20 +17669,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Interface_NodeOfReaderLib_ge
 }
 extern "C" OcctResult<const Standard_Transient*> Interface_NodeOfReaderLib_as_Standard_Transient(const Interface_NodeOfReaderLib* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Interface_NodeOfReaderLib_as_Standard_Transient_mut(Interface_NodeOfReaderLib* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleInterfaceNodeOfReaderLib*> Interface_NodeOfReaderLib_to_handle(Interface_NodeOfReaderLib* obj) {
-    try { return {new HandleInterfaceNodeOfReaderLib(obj), nullptr}; }
+extern "C" OcctResult<Handle_Interface_NodeOfReaderLib*> Interface_NodeOfReaderLib_to_handle(Interface_NodeOfReaderLib* obj) {
+    try { return {new Handle_Interface_NodeOfReaderLib(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Interface_NodeOfReaderLib*> HandleInterfaceNodeOfReaderLib_get(const HandleInterfaceNodeOfReaderLib* handle) {
+extern "C" OcctResult<const Interface_NodeOfReaderLib*> Handle_Interface_NodeOfReaderLib_get(const Handle_Interface_NodeOfReaderLib* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Interface_NodeOfReaderLib*> HandleInterfaceNodeOfReaderLib_get_mut(HandleInterfaceNodeOfReaderLib* handle) {
+extern "C" OcctResult<Interface_NodeOfReaderLib*> Handle_Interface_NodeOfReaderLib_get_mut(Handle_Interface_NodeOfReaderLib* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleInterfaceNodeOfReaderLib_to_HandleStandardTransient(const HandleInterfaceNodeOfReaderLib* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Interface_NodeOfReaderLib_to_Handle_Standard_Transient(const Handle_Interface_NodeOfReaderLib* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Interface_NodeOfReaderLib_inherited_IsInstance(const Interface_NodeOfReaderLib* self, Handle(Standard_Type) const& theType) {
@@ -18462,20 +17765,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Interface_ParamList_get_type
 }
 extern "C" OcctResult<const Standard_Transient*> Interface_ParamList_as_Standard_Transient(const Interface_ParamList* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Interface_ParamList_as_Standard_Transient_mut(Interface_ParamList* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleInterfaceParamList*> Interface_ParamList_to_handle(Interface_ParamList* obj) {
-    try { return {new HandleInterfaceParamList(obj), nullptr}; }
+extern "C" OcctResult<Handle_Interface_ParamList*> Interface_ParamList_to_handle(Interface_ParamList* obj) {
+    try { return {new Handle_Interface_ParamList(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Interface_ParamList*> HandleInterfaceParamList_get(const HandleInterfaceParamList* handle) {
+extern "C" OcctResult<const Interface_ParamList*> Handle_Interface_ParamList_get(const Handle_Interface_ParamList* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Interface_ParamList*> HandleInterfaceParamList_get_mut(HandleInterfaceParamList* handle) {
+extern "C" OcctResult<Interface_ParamList*> Handle_Interface_ParamList_get_mut(Handle_Interface_ParamList* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleInterfaceParamList_to_HandleStandardTransient(const HandleInterfaceParamList* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Interface_ParamList_to_Handle_Standard_Transient(const Handle_Interface_ParamList* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Interface_ParamList_inherited_IsInstance(const Interface_ParamList* self, Handle(Standard_Type) const& theType) {
@@ -18562,20 +17865,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Interface_ParamSet_get_type_
 }
 extern "C" OcctResult<const Standard_Transient*> Interface_ParamSet_as_Standard_Transient(const Interface_ParamSet* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Interface_ParamSet_as_Standard_Transient_mut(Interface_ParamSet* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleInterfaceParamSet*> Interface_ParamSet_to_handle(Interface_ParamSet* obj) {
-    try { return {new HandleInterfaceParamSet(obj), nullptr}; }
+extern "C" OcctResult<Handle_Interface_ParamSet*> Interface_ParamSet_to_handle(Interface_ParamSet* obj) {
+    try { return {new Handle_Interface_ParamSet(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Interface_ParamSet*> HandleInterfaceParamSet_get(const HandleInterfaceParamSet* handle) {
+extern "C" OcctResult<const Interface_ParamSet*> Handle_Interface_ParamSet_get(const Handle_Interface_ParamSet* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Interface_ParamSet*> HandleInterfaceParamSet_get_mut(HandleInterfaceParamSet* handle) {
+extern "C" OcctResult<Interface_ParamSet*> Handle_Interface_ParamSet_get_mut(Handle_Interface_ParamSet* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleInterfaceParamSet_to_HandleStandardTransient(const HandleInterfaceParamSet* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Interface_ParamSet_to_Handle_Standard_Transient(const Handle_Interface_ParamSet* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Interface_ParamSet_inherited_IsInstance(const Interface_ParamSet* self, Handle(Standard_Type) const& theType) {
@@ -18686,127 +17989,127 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Interface_Protocol_get_type_
 }
 extern "C" OcctResult<const Standard_Transient*> Interface_Protocol_as_Standard_Transient(const Interface_Protocol* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Interface_Protocol_as_Standard_Transient_mut(Interface_Protocol* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const Interface_Protocol*> HandleInterfaceProtocol_get(const HandleInterfaceProtocol* handle) {
+extern "C" OcctResult<const Interface_Protocol*> Handle_Interface_Protocol_get(const Handle_Interface_Protocol* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Interface_Protocol*> HandleInterfaceProtocol_get_mut(HandleInterfaceProtocol* handle) {
+extern "C" OcctResult<Interface_Protocol*> Handle_Interface_Protocol_get_mut(Handle_Interface_Protocol* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleInterfaceProtocol_to_HandleStandardTransient(const HandleInterfaceProtocol* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Interface_Protocol_to_Handle_Standard_Transient(const Handle_Interface_Protocol* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleHeaderSectionProtocol*> HandleInterfaceProtocol_downcast_to_HandleHeaderSectionProtocol(const HandleInterfaceProtocol* self_) {
+extern "C" OcctResult<Handle_HeaderSection_Protocol*> Handle_Interface_Protocol_downcast_to_Handle_HeaderSection_Protocol(const Handle_Interface_Protocol* self_) {
     try {
     opencascade::handle<HeaderSection_Protocol> result = opencascade::handle<HeaderSection_Protocol>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleHeaderSectionProtocol(result), nullptr};
+    return {new Handle_HeaderSection_Protocol(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESAppliProtocol*> HandleInterfaceProtocol_downcast_to_HandleIGESAppliProtocol(const HandleInterfaceProtocol* self_) {
+extern "C" OcctResult<Handle_IGESAppli_Protocol*> Handle_Interface_Protocol_downcast_to_Handle_IGESAppli_Protocol(const Handle_Interface_Protocol* self_) {
     try {
     opencascade::handle<IGESAppli_Protocol> result = opencascade::handle<IGESAppli_Protocol>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESAppliProtocol(result), nullptr};
+    return {new Handle_IGESAppli_Protocol(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESBasicProtocol*> HandleInterfaceProtocol_downcast_to_HandleIGESBasicProtocol(const HandleInterfaceProtocol* self_) {
+extern "C" OcctResult<Handle_IGESBasic_Protocol*> Handle_Interface_Protocol_downcast_to_Handle_IGESBasic_Protocol(const Handle_Interface_Protocol* self_) {
     try {
     opencascade::handle<IGESBasic_Protocol> result = opencascade::handle<IGESBasic_Protocol>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESBasicProtocol(result), nullptr};
+    return {new Handle_IGESBasic_Protocol(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESDataFileProtocol*> HandleInterfaceProtocol_downcast_to_HandleIGESDataFileProtocol(const HandleInterfaceProtocol* self_) {
+extern "C" OcctResult<Handle_IGESData_FileProtocol*> Handle_Interface_Protocol_downcast_to_Handle_IGESData_FileProtocol(const Handle_Interface_Protocol* self_) {
     try {
     opencascade::handle<IGESData_FileProtocol> result = opencascade::handle<IGESData_FileProtocol>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESDataFileProtocol(result), nullptr};
+    return {new Handle_IGESData_FileProtocol(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESDataProtocol*> HandleInterfaceProtocol_downcast_to_HandleIGESDataProtocol(const HandleInterfaceProtocol* self_) {
+extern "C" OcctResult<Handle_IGESData_Protocol*> Handle_Interface_Protocol_downcast_to_Handle_IGESData_Protocol(const Handle_Interface_Protocol* self_) {
     try {
     opencascade::handle<IGESData_Protocol> result = opencascade::handle<IGESData_Protocol>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESDataProtocol(result), nullptr};
+    return {new Handle_IGESData_Protocol(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESDefsProtocol*> HandleInterfaceProtocol_downcast_to_HandleIGESDefsProtocol(const HandleInterfaceProtocol* self_) {
+extern "C" OcctResult<Handle_IGESDefs_Protocol*> Handle_Interface_Protocol_downcast_to_Handle_IGESDefs_Protocol(const Handle_Interface_Protocol* self_) {
     try {
     opencascade::handle<IGESDefs_Protocol> result = opencascade::handle<IGESDefs_Protocol>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESDefsProtocol(result), nullptr};
+    return {new Handle_IGESDefs_Protocol(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESDimenProtocol*> HandleInterfaceProtocol_downcast_to_HandleIGESDimenProtocol(const HandleInterfaceProtocol* self_) {
+extern "C" OcctResult<Handle_IGESDimen_Protocol*> Handle_Interface_Protocol_downcast_to_Handle_IGESDimen_Protocol(const Handle_Interface_Protocol* self_) {
     try {
     opencascade::handle<IGESDimen_Protocol> result = opencascade::handle<IGESDimen_Protocol>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESDimenProtocol(result), nullptr};
+    return {new Handle_IGESDimen_Protocol(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESDrawProtocol*> HandleInterfaceProtocol_downcast_to_HandleIGESDrawProtocol(const HandleInterfaceProtocol* self_) {
+extern "C" OcctResult<Handle_IGESDraw_Protocol*> Handle_Interface_Protocol_downcast_to_Handle_IGESDraw_Protocol(const Handle_Interface_Protocol* self_) {
     try {
     opencascade::handle<IGESDraw_Protocol> result = opencascade::handle<IGESDraw_Protocol>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESDrawProtocol(result), nullptr};
+    return {new Handle_IGESDraw_Protocol(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESGeomProtocol*> HandleInterfaceProtocol_downcast_to_HandleIGESGeomProtocol(const HandleInterfaceProtocol* self_) {
+extern "C" OcctResult<Handle_IGESGeom_Protocol*> Handle_Interface_Protocol_downcast_to_Handle_IGESGeom_Protocol(const Handle_Interface_Protocol* self_) {
     try {
     opencascade::handle<IGESGeom_Protocol> result = opencascade::handle<IGESGeom_Protocol>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESGeomProtocol(result), nullptr};
+    return {new Handle_IGESGeom_Protocol(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESGraphProtocol*> HandleInterfaceProtocol_downcast_to_HandleIGESGraphProtocol(const HandleInterfaceProtocol* self_) {
+extern "C" OcctResult<Handle_IGESGraph_Protocol*> Handle_Interface_Protocol_downcast_to_Handle_IGESGraph_Protocol(const Handle_Interface_Protocol* self_) {
     try {
     opencascade::handle<IGESGraph_Protocol> result = opencascade::handle<IGESGraph_Protocol>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESGraphProtocol(result), nullptr};
+    return {new Handle_IGESGraph_Protocol(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSolidProtocol*> HandleInterfaceProtocol_downcast_to_HandleIGESSolidProtocol(const HandleInterfaceProtocol* self_) {
+extern "C" OcctResult<Handle_IGESSolid_Protocol*> Handle_Interface_Protocol_downcast_to_Handle_IGESSolid_Protocol(const Handle_Interface_Protocol* self_) {
     try {
     opencascade::handle<IGESSolid_Protocol> result = opencascade::handle<IGESSolid_Protocol>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSolidProtocol(result), nullptr};
+    return {new Handle_IGESSolid_Protocol(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStepAP214Protocol*> HandleInterfaceProtocol_downcast_to_HandleStepAP214Protocol(const HandleInterfaceProtocol* self_) {
+extern "C" OcctResult<Handle_StepAP214_Protocol*> Handle_Interface_Protocol_downcast_to_Handle_StepAP214_Protocol(const Handle_Interface_Protocol* self_) {
     try {
     opencascade::handle<StepAP214_Protocol> result = opencascade::handle<StepAP214_Protocol>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleStepAP214Protocol(result), nullptr};
+    return {new Handle_StepAP214_Protocol(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStepDataFileProtocol*> HandleInterfaceProtocol_downcast_to_HandleStepDataFileProtocol(const HandleInterfaceProtocol* self_) {
+extern "C" OcctResult<Handle_StepData_FileProtocol*> Handle_Interface_Protocol_downcast_to_Handle_StepData_FileProtocol(const Handle_Interface_Protocol* self_) {
     try {
     opencascade::handle<StepData_FileProtocol> result = opencascade::handle<StepData_FileProtocol>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleStepDataFileProtocol(result), nullptr};
+    return {new Handle_StepData_FileProtocol(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStepDataProtocol*> HandleInterfaceProtocol_downcast_to_HandleStepDataProtocol(const HandleInterfaceProtocol* self_) {
+extern "C" OcctResult<Handle_StepData_Protocol*> Handle_Interface_Protocol_downcast_to_Handle_StepData_Protocol(const Handle_Interface_Protocol* self_) {
     try {
     opencascade::handle<StepData_Protocol> result = opencascade::handle<StepData_Protocol>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleStepDataProtocol(result), nullptr};
+    return {new Handle_StepData_Protocol(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -18924,87 +18227,87 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Interface_ReaderModule_get_t
 }
 extern "C" OcctResult<const Standard_Transient*> Interface_ReaderModule_as_Standard_Transient(const Interface_ReaderModule* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Interface_ReaderModule_as_Standard_Transient_mut(Interface_ReaderModule* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const Interface_ReaderModule*> HandleInterfaceReaderModule_get(const HandleInterfaceReaderModule* handle) {
+extern "C" OcctResult<const Interface_ReaderModule*> Handle_Interface_ReaderModule_get(const Handle_Interface_ReaderModule* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Interface_ReaderModule*> HandleInterfaceReaderModule_get_mut(HandleInterfaceReaderModule* handle) {
+extern "C" OcctResult<Interface_ReaderModule*> Handle_Interface_ReaderModule_get_mut(Handle_Interface_ReaderModule* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleInterfaceReaderModule_to_HandleStandardTransient(const HandleInterfaceReaderModule* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Interface_ReaderModule_to_Handle_Standard_Transient(const Handle_Interface_ReaderModule* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESAppliReadWriteModule*> HandleInterfaceReaderModule_downcast_to_HandleIGESAppliReadWriteModule(const HandleInterfaceReaderModule* self_) {
+extern "C" OcctResult<Handle_IGESAppli_ReadWriteModule*> Handle_Interface_ReaderModule_downcast_to_Handle_IGESAppli_ReadWriteModule(const Handle_Interface_ReaderModule* self_) {
     try {
     opencascade::handle<IGESAppli_ReadWriteModule> result = opencascade::handle<IGESAppli_ReadWriteModule>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESAppliReadWriteModule(result), nullptr};
+    return {new Handle_IGESAppli_ReadWriteModule(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESBasicReadWriteModule*> HandleInterfaceReaderModule_downcast_to_HandleIGESBasicReadWriteModule(const HandleInterfaceReaderModule* self_) {
+extern "C" OcctResult<Handle_IGESBasic_ReadWriteModule*> Handle_Interface_ReaderModule_downcast_to_Handle_IGESBasic_ReadWriteModule(const Handle_Interface_ReaderModule* self_) {
     try {
     opencascade::handle<IGESBasic_ReadWriteModule> result = opencascade::handle<IGESBasic_ReadWriteModule>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESBasicReadWriteModule(result), nullptr};
+    return {new Handle_IGESBasic_ReadWriteModule(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESDefsReadWriteModule*> HandleInterfaceReaderModule_downcast_to_HandleIGESDefsReadWriteModule(const HandleInterfaceReaderModule* self_) {
+extern "C" OcctResult<Handle_IGESDefs_ReadWriteModule*> Handle_Interface_ReaderModule_downcast_to_Handle_IGESDefs_ReadWriteModule(const Handle_Interface_ReaderModule* self_) {
     try {
     opencascade::handle<IGESDefs_ReadWriteModule> result = opencascade::handle<IGESDefs_ReadWriteModule>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESDefsReadWriteModule(result), nullptr};
+    return {new Handle_IGESDefs_ReadWriteModule(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESDimenReadWriteModule*> HandleInterfaceReaderModule_downcast_to_HandleIGESDimenReadWriteModule(const HandleInterfaceReaderModule* self_) {
+extern "C" OcctResult<Handle_IGESDimen_ReadWriteModule*> Handle_Interface_ReaderModule_downcast_to_Handle_IGESDimen_ReadWriteModule(const Handle_Interface_ReaderModule* self_) {
     try {
     opencascade::handle<IGESDimen_ReadWriteModule> result = opencascade::handle<IGESDimen_ReadWriteModule>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESDimenReadWriteModule(result), nullptr};
+    return {new Handle_IGESDimen_ReadWriteModule(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESDrawReadWriteModule*> HandleInterfaceReaderModule_downcast_to_HandleIGESDrawReadWriteModule(const HandleInterfaceReaderModule* self_) {
+extern "C" OcctResult<Handle_IGESDraw_ReadWriteModule*> Handle_Interface_ReaderModule_downcast_to_Handle_IGESDraw_ReadWriteModule(const Handle_Interface_ReaderModule* self_) {
     try {
     opencascade::handle<IGESDraw_ReadWriteModule> result = opencascade::handle<IGESDraw_ReadWriteModule>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESDrawReadWriteModule(result), nullptr};
+    return {new Handle_IGESDraw_ReadWriteModule(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESGeomReadWriteModule*> HandleInterfaceReaderModule_downcast_to_HandleIGESGeomReadWriteModule(const HandleInterfaceReaderModule* self_) {
+extern "C" OcctResult<Handle_IGESGeom_ReadWriteModule*> Handle_Interface_ReaderModule_downcast_to_Handle_IGESGeom_ReadWriteModule(const Handle_Interface_ReaderModule* self_) {
     try {
     opencascade::handle<IGESGeom_ReadWriteModule> result = opencascade::handle<IGESGeom_ReadWriteModule>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESGeomReadWriteModule(result), nullptr};
+    return {new Handle_IGESGeom_ReadWriteModule(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESGraphReadWriteModule*> HandleInterfaceReaderModule_downcast_to_HandleIGESGraphReadWriteModule(const HandleInterfaceReaderModule* self_) {
+extern "C" OcctResult<Handle_IGESGraph_ReadWriteModule*> Handle_Interface_ReaderModule_downcast_to_Handle_IGESGraph_ReadWriteModule(const Handle_Interface_ReaderModule* self_) {
     try {
     opencascade::handle<IGESGraph_ReadWriteModule> result = opencascade::handle<IGESGraph_ReadWriteModule>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESGraphReadWriteModule(result), nullptr};
+    return {new Handle_IGESGraph_ReadWriteModule(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSolidReadWriteModule*> HandleInterfaceReaderModule_downcast_to_HandleIGESSolidReadWriteModule(const HandleInterfaceReaderModule* self_) {
+extern "C" OcctResult<Handle_IGESSolid_ReadWriteModule*> Handle_Interface_ReaderModule_downcast_to_Handle_IGESSolid_ReadWriteModule(const Handle_Interface_ReaderModule* self_) {
     try {
     opencascade::handle<IGESSolid_ReadWriteModule> result = opencascade::handle<IGESSolid_ReadWriteModule>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSolidReadWriteModule(result), nullptr};
+    return {new Handle_IGESSolid_ReadWriteModule(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleRWHeaderSectionReadWriteModule*> HandleInterfaceReaderModule_downcast_to_HandleRWHeaderSectionReadWriteModule(const HandleInterfaceReaderModule* self_) {
+extern "C" OcctResult<Handle_RWHeaderSection_ReadWriteModule*> Handle_Interface_ReaderModule_downcast_to_Handle_RWHeaderSection_ReadWriteModule(const Handle_Interface_ReaderModule* self_) {
     try {
     opencascade::handle<RWHeaderSection_ReadWriteModule> result = opencascade::handle<RWHeaderSection_ReadWriteModule>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleRWHeaderSectionReadWriteModule(result), nullptr};
+    return {new Handle_RWHeaderSection_ReadWriteModule(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -19100,20 +18403,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Interface_ReportEntity_get_t
 }
 extern "C" OcctResult<const Standard_Transient*> Interface_ReportEntity_as_Standard_Transient(const Interface_ReportEntity* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Interface_ReportEntity_as_Standard_Transient_mut(Interface_ReportEntity* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleInterfaceReportEntity*> Interface_ReportEntity_to_handle(Interface_ReportEntity* obj) {
-    try { return {new HandleInterfaceReportEntity(obj), nullptr}; }
+extern "C" OcctResult<Handle_Interface_ReportEntity*> Interface_ReportEntity_to_handle(Interface_ReportEntity* obj) {
+    try { return {new Handle_Interface_ReportEntity(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Interface_ReportEntity*> HandleInterfaceReportEntity_get(const HandleInterfaceReportEntity* handle) {
+extern "C" OcctResult<const Interface_ReportEntity*> Handle_Interface_ReportEntity_get(const Handle_Interface_ReportEntity* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Interface_ReportEntity*> HandleInterfaceReportEntity_get_mut(HandleInterfaceReportEntity* handle) {
+extern "C" OcctResult<Interface_ReportEntity*> Handle_Interface_ReportEntity_get_mut(Handle_Interface_ReportEntity* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleInterfaceReportEntity_to_HandleStandardTransient(const HandleInterfaceReportEntity* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Interface_ReportEntity_to_Handle_Standard_Transient(const Handle_Interface_ReportEntity* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Interface_ReportEntity_inherited_IsInstance(const Interface_ReportEntity* self, Handle(Standard_Type) const& theType) {
@@ -19154,7 +18457,7 @@ extern "C" OcctResult<Interface_STAT*> Interface_STAT_ctor_charptr(const char* t
     try { return {new Interface_STAT(title), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Interface_STAT_internals(const Interface_STAT* self_, Handle(TCollection_HAsciiString)* tit, double* total, Handle(TColStd_HSequenceOfAsciiString)* phn, Handle(TColStd_HSequenceOfReal)* phw, Handle(TColStd_HSequenceOfInteger)* phdeb, Handle(TColStd_HSequenceOfInteger)* phfin, Handle(TColStd_HSequenceOfReal)* stw) {
+extern "C" const char* Interface_STAT_internals(const Interface_STAT* self_, Handle(TCollection_HAsciiString)* tit, double* total, Handle(NCollection_HSequence_TCollection_AsciiString)* phn, Handle(NCollection_HSequence_double)* phw, Handle(NCollection_HSequence_int)* phdeb, Handle(NCollection_HSequence_int)* phfin, Handle(NCollection_HSequence_double)* stw) {
     try { self_->Internals(*tit, *total, *phn, *phw, *phdeb, *phfin, *stw); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -19372,24 +18675,24 @@ extern "C" OcctResult<const MoniTool_SignText*> Interface_SignLabel_as_MoniTool_
 extern "C" OcctResult<MoniTool_SignText*> Interface_SignLabel_as_MoniTool_SignText_mut(Interface_SignLabel* self_) { return {static_cast<MoniTool_SignText*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Interface_SignLabel_as_Standard_Transient(const Interface_SignLabel* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Interface_SignLabel_as_Standard_Transient_mut(Interface_SignLabel* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleInterfaceSignLabel*> Interface_SignLabel_to_handle(Interface_SignLabel* obj) {
-    try { return {new HandleInterfaceSignLabel(obj), nullptr}; }
+extern "C" OcctResult<Handle_Interface_SignLabel*> Interface_SignLabel_to_handle(Interface_SignLabel* obj) {
+    try { return {new Handle_Interface_SignLabel(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Interface_SignLabel*> HandleInterfaceSignLabel_get(const HandleInterfaceSignLabel* handle) {
+extern "C" OcctResult<const Interface_SignLabel*> Handle_Interface_SignLabel_get(const Handle_Interface_SignLabel* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Interface_SignLabel*> HandleInterfaceSignLabel_get_mut(HandleInterfaceSignLabel* handle) {
+extern "C" OcctResult<Interface_SignLabel*> Handle_Interface_SignLabel_get_mut(Handle_Interface_SignLabel* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMoniToolSignText*> HandleInterfaceSignLabel_to_HandleMoniToolSignText(const HandleInterfaceSignLabel* self_) {
-    try { return {new HandleMoniToolSignText(*self_), nullptr}; }
+extern "C" OcctResult<Handle_MoniTool_SignText*> Handle_Interface_SignLabel_to_Handle_MoniTool_SignText(const Handle_Interface_SignLabel* self_) {
+    try { return {new Handle_MoniTool_SignText(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleInterfaceSignLabel_to_HandleStandardTransient(const HandleInterfaceSignLabel* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Interface_SignLabel_to_Handle_Standard_Transient(const Handle_Interface_SignLabel* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TCollection_AsciiString*> Interface_SignLabel_inherited_TextAlone(const Interface_SignLabel* self, Handle(Standard_Transient) const& ent) {
@@ -19458,131 +18761,131 @@ extern "C" OcctResult<const MoniTool_SignText*> Interface_SignType_as_MoniTool_S
 extern "C" OcctResult<MoniTool_SignText*> Interface_SignType_as_MoniTool_SignText_mut(Interface_SignType* self_) { return {static_cast<MoniTool_SignText*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Interface_SignType_as_Standard_Transient(const Interface_SignType* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Interface_SignType_as_Standard_Transient_mut(Interface_SignType* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const Interface_SignType*> HandleInterfaceSignType_get(const HandleInterfaceSignType* handle) {
+extern "C" OcctResult<const Interface_SignType*> Handle_Interface_SignType_get(const Handle_Interface_SignType* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Interface_SignType*> HandleInterfaceSignType_get_mut(HandleInterfaceSignType* handle) {
+extern "C" OcctResult<Interface_SignType*> Handle_Interface_SignType_get_mut(Handle_Interface_SignType* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMoniToolSignText*> HandleInterfaceSignType_to_HandleMoniToolSignText(const HandleInterfaceSignType* self_) {
-    try { return {new HandleMoniToolSignText(*self_), nullptr}; }
+extern "C" OcctResult<Handle_MoniTool_SignText*> Handle_Interface_SignType_to_Handle_MoniTool_SignText(const Handle_Interface_SignType* self_) {
+    try { return {new Handle_MoniTool_SignText(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleInterfaceSignType_to_HandleStandardTransient(const HandleInterfaceSignType* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Interface_SignType_to_Handle_Standard_Transient(const Handle_Interface_SignType* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSignAncestor*> HandleInterfaceSignType_downcast_to_HandleIFSelectSignAncestor(const HandleInterfaceSignType* self_) {
+extern "C" OcctResult<Handle_IFSelect_SignAncestor*> Handle_Interface_SignType_downcast_to_Handle_IFSelect_SignAncestor(const Handle_Interface_SignType* self_) {
     try {
     opencascade::handle<IFSelect_SignAncestor> result = opencascade::handle<IFSelect_SignAncestor>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSignAncestor(result), nullptr};
+    return {new Handle_IFSelect_SignAncestor(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSignCategory*> HandleInterfaceSignType_downcast_to_HandleIFSelectSignCategory(const HandleInterfaceSignType* self_) {
+extern "C" OcctResult<Handle_IFSelect_SignCategory*> Handle_Interface_SignType_downcast_to_Handle_IFSelect_SignCategory(const Handle_Interface_SignType* self_) {
     try {
     opencascade::handle<IFSelect_SignCategory> result = opencascade::handle<IFSelect_SignCategory>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSignCategory(result), nullptr};
+    return {new Handle_IFSelect_SignCategory(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSignMultiple*> HandleInterfaceSignType_downcast_to_HandleIFSelectSignMultiple(const HandleInterfaceSignType* self_) {
+extern "C" OcctResult<Handle_IFSelect_SignMultiple*> Handle_Interface_SignType_downcast_to_Handle_IFSelect_SignMultiple(const Handle_Interface_SignType* self_) {
     try {
     opencascade::handle<IFSelect_SignMultiple> result = opencascade::handle<IFSelect_SignMultiple>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSignMultiple(result), nullptr};
+    return {new Handle_IFSelect_SignMultiple(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSignType*> HandleInterfaceSignType_downcast_to_HandleIFSelectSignType(const HandleInterfaceSignType* self_) {
+extern "C" OcctResult<Handle_IFSelect_SignType*> Handle_Interface_SignType_downcast_to_Handle_IFSelect_SignType(const Handle_Interface_SignType* self_) {
     try {
     opencascade::handle<IFSelect_SignType> result = opencascade::handle<IFSelect_SignType>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSignType(result), nullptr};
+    return {new Handle_IFSelect_SignType(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSignValidity*> HandleInterfaceSignType_downcast_to_HandleIFSelectSignValidity(const HandleInterfaceSignType* self_) {
+extern "C" OcctResult<Handle_IFSelect_SignValidity*> Handle_Interface_SignType_downcast_to_Handle_IFSelect_SignValidity(const Handle_Interface_SignType* self_) {
     try {
     opencascade::handle<IFSelect_SignValidity> result = opencascade::handle<IFSelect_SignValidity>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSignValidity(result), nullptr};
+    return {new Handle_IFSelect_SignValidity(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSignature*> HandleInterfaceSignType_downcast_to_HandleIFSelectSignature(const HandleInterfaceSignType* self_) {
+extern "C" OcctResult<Handle_IFSelect_Signature*> Handle_Interface_SignType_downcast_to_Handle_IFSelect_Signature(const Handle_Interface_SignType* self_) {
     try {
     opencascade::handle<IFSelect_Signature> result = opencascade::handle<IFSelect_Signature>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSignature(result), nullptr};
+    return {new Handle_IFSelect_Signature(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectIGESName*> HandleInterfaceSignType_downcast_to_HandleIGESSelectIGESName(const HandleInterfaceSignType* self_) {
+extern "C" OcctResult<Handle_IGESSelect_IGESName*> Handle_Interface_SignType_downcast_to_Handle_IGESSelect_IGESName(const Handle_Interface_SignType* self_) {
     try {
     opencascade::handle<IGESSelect_IGESName> result = opencascade::handle<IGESSelect_IGESName>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectIGESName(result), nullptr};
+    return {new Handle_IGESSelect_IGESName(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectIGESTypeForm*> HandleInterfaceSignType_downcast_to_HandleIGESSelectIGESTypeForm(const HandleInterfaceSignType* self_) {
+extern "C" OcctResult<Handle_IGESSelect_IGESTypeForm*> Handle_Interface_SignType_downcast_to_Handle_IGESSelect_IGESTypeForm(const Handle_Interface_SignType* self_) {
     try {
     opencascade::handle<IGESSelect_IGESTypeForm> result = opencascade::handle<IGESSelect_IGESTypeForm>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectIGESTypeForm(result), nullptr};
+    return {new Handle_IGESSelect_IGESTypeForm(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSignColor*> HandleInterfaceSignType_downcast_to_HandleIGESSelectSignColor(const HandleInterfaceSignType* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SignColor*> Handle_Interface_SignType_downcast_to_Handle_IGESSelect_SignColor(const Handle_Interface_SignType* self_) {
     try {
     opencascade::handle<IGESSelect_SignColor> result = opencascade::handle<IGESSelect_SignColor>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSignColor(result), nullptr};
+    return {new Handle_IGESSelect_SignColor(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSignLevelNumber*> HandleInterfaceSignType_downcast_to_HandleIGESSelectSignLevelNumber(const HandleInterfaceSignType* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SignLevelNumber*> Handle_Interface_SignType_downcast_to_Handle_IGESSelect_SignLevelNumber(const Handle_Interface_SignType* self_) {
     try {
     opencascade::handle<IGESSelect_SignLevelNumber> result = opencascade::handle<IGESSelect_SignLevelNumber>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSignLevelNumber(result), nullptr};
+    return {new Handle_IGESSelect_SignLevelNumber(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSignStatus*> HandleInterfaceSignType_downcast_to_HandleIGESSelectSignStatus(const HandleInterfaceSignType* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SignStatus*> Handle_Interface_SignType_downcast_to_Handle_IGESSelect_SignStatus(const Handle_Interface_SignType* self_) {
     try {
     opencascade::handle<IGESSelect_SignStatus> result = opencascade::handle<IGESSelect_SignStatus>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSignStatus(result), nullptr};
+    return {new Handle_IGESSelect_SignStatus(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleSTEPSelectionsSelectDerived*> HandleInterfaceSignType_downcast_to_HandleSTEPSelectionsSelectDerived(const HandleInterfaceSignType* self_) {
+extern "C" OcctResult<Handle_STEPSelections_SelectDerived*> Handle_Interface_SignType_downcast_to_Handle_STEPSelections_SelectDerived(const Handle_Interface_SignType* self_) {
     try {
     opencascade::handle<STEPSelections_SelectDerived> result = opencascade::handle<STEPSelections_SelectDerived>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleSTEPSelectionsSelectDerived(result), nullptr};
+    return {new Handle_STEPSelections_SelectDerived(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStepSelectStepType*> HandleInterfaceSignType_downcast_to_HandleStepSelectStepType(const HandleInterfaceSignType* self_) {
+extern "C" OcctResult<Handle_StepSelect_StepType*> Handle_Interface_SignType_downcast_to_Handle_StepSelect_StepType(const Handle_Interface_SignType* self_) {
     try {
     opencascade::handle<StepSelect_StepType> result = opencascade::handle<StepSelect_StepType>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleStepSelectStepType(result), nullptr};
+    return {new Handle_StepSelect_StepType(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXSControlSignTransferStatus*> HandleInterfaceSignType_downcast_to_HandleXSControlSignTransferStatus(const HandleInterfaceSignType* self_) {
+extern "C" OcctResult<Handle_XSControl_SignTransferStatus*> Handle_Interface_SignType_downcast_to_Handle_XSControl_SignTransferStatus(const Handle_Interface_SignType* self_) {
     try {
     opencascade::handle<XSControl_SignTransferStatus> result = opencascade::handle<XSControl_SignTransferStatus>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXSControlSignTransferStatus(result), nullptr};
+    return {new Handle_XSControl_SignTransferStatus(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -19720,15 +19023,15 @@ extern "C" OcctResult<bool> Interface_Static_is_updated(const char* name) {
     try { return {Interface_Static::IsUpdated(name), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfHAsciiString)*> Interface_Static_items(int32_t mode, const char* criter) {
-    try { return {new Handle(TColStd_HSequenceOfHAsciiString)(Interface_Static::Items(mode, criter)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> Interface_Static_items(int32_t mode, const char* criter) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(Interface_Static::Items(mode, criter)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Interface_Static_standards() {
     try { Interface_Static::Standards(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Interface_Static_fill_map(DE_ResourceMap* theMap) {
+extern "C" const char* Interface_Static_fill_map(NCollection_DataMap_TCollection_AsciiString_TCollection_AsciiString* theMap) {
     try { Interface_Static::FillMap(*theMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -19746,28 +19049,28 @@ extern "C" OcctResult<const MoniTool_TypedValue*> Interface_Static_as_MoniTool_T
 extern "C" OcctResult<MoniTool_TypedValue*> Interface_Static_as_MoniTool_TypedValue_mut(Interface_Static* self_) { return {static_cast<MoniTool_TypedValue*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Interface_Static_as_Standard_Transient(const Interface_Static* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Interface_Static_as_Standard_Transient_mut(Interface_Static* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleInterfaceStatic*> Interface_Static_to_handle(Interface_Static* obj) {
-    try { return {new HandleInterfaceStatic(obj), nullptr}; }
+extern "C" OcctResult<Handle_Interface_Static*> Interface_Static_to_handle(Interface_Static* obj) {
+    try { return {new Handle_Interface_Static(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Interface_Static*> HandleInterfaceStatic_get(const HandleInterfaceStatic* handle) {
+extern "C" OcctResult<const Interface_Static*> Handle_Interface_Static_get(const Handle_Interface_Static* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Interface_Static*> HandleInterfaceStatic_get_mut(HandleInterfaceStatic* handle) {
+extern "C" OcctResult<Interface_Static*> Handle_Interface_Static_get_mut(Handle_Interface_Static* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleInterfaceTypedValue*> HandleInterfaceStatic_to_HandleInterfaceTypedValue(const HandleInterfaceStatic* self_) {
-    try { return {new HandleInterfaceTypedValue(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Interface_TypedValue*> Handle_Interface_Static_to_Handle_Interface_TypedValue(const Handle_Interface_Static* self_) {
+    try { return {new Handle_Interface_TypedValue(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMoniToolTypedValue*> HandleInterfaceStatic_to_HandleMoniToolTypedValue(const HandleInterfaceStatic* self_) {
-    try { return {new HandleMoniToolTypedValue(*self_), nullptr}; }
+extern "C" OcctResult<Handle_MoniTool_TypedValue*> Handle_Interface_Static_to_Handle_MoniTool_TypedValue(const Handle_Interface_Static* self_) {
+    try { return {new Handle_MoniTool_TypedValue(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleInterfaceStatic_to_HandleStandardTransient(const HandleInterfaceStatic* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Interface_Static_to_Handle_Standard_Transient(const Handle_Interface_Static* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> Interface_Static_inherited_Type(const Interface_Static* self) {
@@ -19956,31 +19259,31 @@ extern "C" OcctResult<const MoniTool_TypedValue*> Interface_TypedValue_as_MoniTo
 extern "C" OcctResult<MoniTool_TypedValue*> Interface_TypedValue_as_MoniTool_TypedValue_mut(Interface_TypedValue* self_) { return {static_cast<MoniTool_TypedValue*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Interface_TypedValue_as_Standard_Transient(const Interface_TypedValue* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Interface_TypedValue_as_Standard_Transient_mut(Interface_TypedValue* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleInterfaceTypedValue*> Interface_TypedValue_to_handle(Interface_TypedValue* obj) {
-    try { return {new HandleInterfaceTypedValue(obj), nullptr}; }
+extern "C" OcctResult<Handle_Interface_TypedValue*> Interface_TypedValue_to_handle(Interface_TypedValue* obj) {
+    try { return {new Handle_Interface_TypedValue(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Interface_TypedValue*> HandleInterfaceTypedValue_get(const HandleInterfaceTypedValue* handle) {
+extern "C" OcctResult<const Interface_TypedValue*> Handle_Interface_TypedValue_get(const Handle_Interface_TypedValue* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Interface_TypedValue*> HandleInterfaceTypedValue_get_mut(HandleInterfaceTypedValue* handle) {
+extern "C" OcctResult<Interface_TypedValue*> Handle_Interface_TypedValue_get_mut(Handle_Interface_TypedValue* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMoniToolTypedValue*> HandleInterfaceTypedValue_to_HandleMoniToolTypedValue(const HandleInterfaceTypedValue* self_) {
-    try { return {new HandleMoniToolTypedValue(*self_), nullptr}; }
+extern "C" OcctResult<Handle_MoniTool_TypedValue*> Handle_Interface_TypedValue_to_Handle_MoniTool_TypedValue(const Handle_Interface_TypedValue* self_) {
+    try { return {new Handle_MoniTool_TypedValue(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleInterfaceTypedValue_to_HandleStandardTransient(const HandleInterfaceTypedValue* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Interface_TypedValue_to_Handle_Standard_Transient(const Handle_Interface_TypedValue* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleInterfaceStatic*> HandleInterfaceTypedValue_downcast_to_HandleInterfaceStatic(const HandleInterfaceTypedValue* self_) {
+extern "C" OcctResult<Handle_Interface_Static*> Handle_Interface_TypedValue_downcast_to_Handle_Interface_Static(const Handle_Interface_TypedValue* self_) {
     try {
     opencascade::handle<Interface_Static> result = opencascade::handle<Interface_Static>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleInterfaceStatic(result), nullptr};
+    return {new Handle_Interface_Static(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -20221,20 +19524,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Interface_UndefinedContent_g
 }
 extern "C" OcctResult<const Standard_Transient*> Interface_UndefinedContent_as_Standard_Transient(const Interface_UndefinedContent* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Interface_UndefinedContent_as_Standard_Transient_mut(Interface_UndefinedContent* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleInterfaceUndefinedContent*> Interface_UndefinedContent_to_handle(Interface_UndefinedContent* obj) {
-    try { return {new HandleInterfaceUndefinedContent(obj), nullptr}; }
+extern "C" OcctResult<Handle_Interface_UndefinedContent*> Interface_UndefinedContent_to_handle(Interface_UndefinedContent* obj) {
+    try { return {new Handle_Interface_UndefinedContent(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Interface_UndefinedContent*> HandleInterfaceUndefinedContent_get(const HandleInterfaceUndefinedContent* handle) {
+extern "C" OcctResult<const Interface_UndefinedContent*> Handle_Interface_UndefinedContent_get(const Handle_Interface_UndefinedContent* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Interface_UndefinedContent*> HandleInterfaceUndefinedContent_get_mut(HandleInterfaceUndefinedContent* handle) {
+extern "C" OcctResult<Interface_UndefinedContent*> Handle_Interface_UndefinedContent_get_mut(Handle_Interface_UndefinedContent* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleInterfaceUndefinedContent_to_HandleStandardTransient(const HandleInterfaceUndefinedContent* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Interface_UndefinedContent_to_Handle_Standard_Transient(const Handle_Interface_UndefinedContent* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Interface_UndefinedContent_inherited_IsInstance(const Interface_UndefinedContent* self, Handle(Standard_Type) const& theType) {
@@ -20421,7 +19724,7 @@ extern "C" const char* MoniTool_CaseData_add_data(MoniTool_CaseData* self_, Hand
     try { self_->AddData(*val, kind, name); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* MoniTool_CaseData_add_raised(MoniTool_CaseData* self_, Handle(Standard_Failure) const* theException, const char* name) {
+extern "C" const char* MoniTool_CaseData_add_raised(MoniTool_CaseData* self_, Standard_Failure const* theException, const char* name) {
     try { self_->AddRaised(*theException, name); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -20559,20 +19862,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> MoniTool_CaseData_get_type_d
 }
 extern "C" OcctResult<const Standard_Transient*> MoniTool_CaseData_as_Standard_Transient(const MoniTool_CaseData* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> MoniTool_CaseData_as_Standard_Transient_mut(MoniTool_CaseData* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleMoniToolCaseData*> MoniTool_CaseData_to_handle(MoniTool_CaseData* obj) {
-    try { return {new HandleMoniToolCaseData(obj), nullptr}; }
+extern "C" OcctResult<Handle_MoniTool_CaseData*> MoniTool_CaseData_to_handle(MoniTool_CaseData* obj) {
+    try { return {new Handle_MoniTool_CaseData(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const MoniTool_CaseData*> HandleMoniToolCaseData_get(const HandleMoniToolCaseData* handle) {
+extern "C" OcctResult<const MoniTool_CaseData*> Handle_MoniTool_CaseData_get(const Handle_MoniTool_CaseData* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<MoniTool_CaseData*> HandleMoniToolCaseData_get_mut(HandleMoniToolCaseData* handle) {
+extern "C" OcctResult<MoniTool_CaseData*> Handle_MoniTool_CaseData_get_mut(Handle_MoniTool_CaseData* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleMoniToolCaseData_to_HandleStandardTransient(const HandleMoniToolCaseData* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_MoniTool_CaseData_to_Handle_Standard_Transient(const Handle_MoniTool_CaseData* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> MoniTool_CaseData_inherited_IsInstance(const MoniTool_CaseData* self, Handle(Standard_Type) const& theType) {
@@ -20665,23 +19968,23 @@ extern "C" OcctResult<Handle(Standard_Type) const*> MoniTool_Element_get_type_de
 }
 extern "C" OcctResult<const Standard_Transient*> MoniTool_Element_as_Standard_Transient(const MoniTool_Element* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> MoniTool_Element_as_Standard_Transient_mut(MoniTool_Element* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const MoniTool_Element*> HandleMoniToolElement_get(const HandleMoniToolElement* handle) {
+extern "C" OcctResult<const MoniTool_Element*> Handle_MoniTool_Element_get(const Handle_MoniTool_Element* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<MoniTool_Element*> HandleMoniToolElement_get_mut(HandleMoniToolElement* handle) {
+extern "C" OcctResult<MoniTool_Element*> Handle_MoniTool_Element_get_mut(Handle_MoniTool_Element* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleMoniToolElement_to_HandleStandardTransient(const HandleMoniToolElement* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_MoniTool_Element_to_Handle_Standard_Transient(const Handle_MoniTool_Element* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMoniToolTransientElem*> HandleMoniToolElement_downcast_to_HandleMoniToolTransientElem(const HandleMoniToolElement* self_) {
+extern "C" OcctResult<Handle_MoniTool_TransientElem*> Handle_MoniTool_Element_downcast_to_Handle_MoniTool_TransientElem(const Handle_MoniTool_Element* self_) {
     try {
     opencascade::handle<MoniTool_TransientElem> result = opencascade::handle<MoniTool_TransientElem>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleMoniToolTransientElem(result), nullptr};
+    return {new Handle_MoniTool_TransientElem(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -20716,94 +20019,6 @@ extern "C" const char* MoniTool_Element_inherited_Delete(const MoniTool_Element*
 extern "C" void MoniTool_Element_destructor(MoniTool_Element* self_) { delete self_; }
 
 // ========================
-// MoniTool_HSequenceOfElement wrappers
-// ========================
-
-extern "C" OcctResult<MoniTool_HSequenceOfElement*> MoniTool_HSequenceOfElement_ctor() {
-    try { return {new MoniTool_HSequenceOfElement(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<MoniTool_HSequenceOfElement*> MoniTool_HSequenceOfElement_ctor_sequenceofelement(MoniTool_SequenceOfElement const* theOther) {
-    try { return {new MoniTool_HSequenceOfElement(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<MoniTool_SequenceOfElement const*> MoniTool_HSequenceOfElement_sequence(const MoniTool_HSequenceOfElement* self_) {
-    try { return {&(self_->Sequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* MoniTool_HSequenceOfElement_append_handlemonitoolelement(MoniTool_HSequenceOfElement* self_, Handle(MoniTool_Element) const* theItem) {
-    try { self_->Append(*theItem); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* MoniTool_HSequenceOfElement_append_sequenceofelement(MoniTool_HSequenceOfElement* self_, MoniTool_SequenceOfElement* theSequence) {
-    try { self_->Append(*theSequence); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<MoniTool_SequenceOfElement*> MoniTool_HSequenceOfElement_change_sequence(MoniTool_HSequenceOfElement* self_) {
-    try { return {&(self_->ChangeSequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> MoniTool_HSequenceOfElement_dynamic_type(const MoniTool_HSequenceOfElement* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> MoniTool_HSequenceOfElement_get_type_name() {
-    try { return {MoniTool_HSequenceOfElement::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> MoniTool_HSequenceOfElement_get_type_descriptor() {
-    try { return {&(MoniTool_HSequenceOfElement::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> MoniTool_HSequenceOfElement_as_Standard_Transient(const MoniTool_HSequenceOfElement* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> MoniTool_HSequenceOfElement_as_Standard_Transient_mut(MoniTool_HSequenceOfElement* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleMoniToolHSequenceOfElement*> MoniTool_HSequenceOfElement_to_handle(MoniTool_HSequenceOfElement* obj) {
-    try { return {new HandleMoniToolHSequenceOfElement(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const MoniTool_HSequenceOfElement*> HandleMoniToolHSequenceOfElement_get(const HandleMoniToolHSequenceOfElement* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<MoniTool_HSequenceOfElement*> HandleMoniToolHSequenceOfElement_get_mut(HandleMoniToolHSequenceOfElement* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleMoniToolHSequenceOfElement_to_HandleStandardTransient(const HandleMoniToolHSequenceOfElement* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> MoniTool_HSequenceOfElement_inherited_IsInstance(const MoniTool_HSequenceOfElement* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> MoniTool_HSequenceOfElement_inherited_IsKind(const MoniTool_HSequenceOfElement* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> MoniTool_HSequenceOfElement_inherited_This(const MoniTool_HSequenceOfElement* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> MoniTool_HSequenceOfElement_inherited_GetRefCount(const MoniTool_HSequenceOfElement* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* MoniTool_HSequenceOfElement_inherited_IncrementRefCounter(MoniTool_HSequenceOfElement* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> MoniTool_HSequenceOfElement_inherited_DecrementRefCounter(MoniTool_HSequenceOfElement* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* MoniTool_HSequenceOfElement_inherited_Delete(const MoniTool_HSequenceOfElement* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void MoniTool_HSequenceOfElement_destructor(MoniTool_HSequenceOfElement* self_) { delete self_; }
-
-// ========================
 // MoniTool_IntVal wrappers
 // ========================
 
@@ -20833,20 +20048,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> MoniTool_IntVal_get_type_des
 }
 extern "C" OcctResult<const Standard_Transient*> MoniTool_IntVal_as_Standard_Transient(const MoniTool_IntVal* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> MoniTool_IntVal_as_Standard_Transient_mut(MoniTool_IntVal* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleMoniToolIntVal*> MoniTool_IntVal_to_handle(MoniTool_IntVal* obj) {
-    try { return {new HandleMoniToolIntVal(obj), nullptr}; }
+extern "C" OcctResult<Handle_MoniTool_IntVal*> MoniTool_IntVal_to_handle(MoniTool_IntVal* obj) {
+    try { return {new Handle_MoniTool_IntVal(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const MoniTool_IntVal*> HandleMoniToolIntVal_get(const HandleMoniToolIntVal* handle) {
+extern "C" OcctResult<const MoniTool_IntVal*> Handle_MoniTool_IntVal_get(const Handle_MoniTool_IntVal* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<MoniTool_IntVal*> HandleMoniToolIntVal_get_mut(HandleMoniToolIntVal* handle) {
+extern "C" OcctResult<MoniTool_IntVal*> Handle_MoniTool_IntVal_get_mut(Handle_MoniTool_IntVal* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleMoniToolIntVal_to_HandleStandardTransient(const HandleMoniToolIntVal* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_MoniTool_IntVal_to_Handle_Standard_Transient(const Handle_MoniTool_IntVal* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> MoniTool_IntVal_inherited_IsInstance(const MoniTool_IntVal* self, Handle(Standard_Type) const& theType) {
@@ -20909,20 +20124,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> MoniTool_RealVal_get_type_de
 }
 extern "C" OcctResult<const Standard_Transient*> MoniTool_RealVal_as_Standard_Transient(const MoniTool_RealVal* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> MoniTool_RealVal_as_Standard_Transient_mut(MoniTool_RealVal* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleMoniToolRealVal*> MoniTool_RealVal_to_handle(MoniTool_RealVal* obj) {
-    try { return {new HandleMoniToolRealVal(obj), nullptr}; }
+extern "C" OcctResult<Handle_MoniTool_RealVal*> MoniTool_RealVal_to_handle(MoniTool_RealVal* obj) {
+    try { return {new Handle_MoniTool_RealVal(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const MoniTool_RealVal*> HandleMoniToolRealVal_get(const HandleMoniToolRealVal* handle) {
+extern "C" OcctResult<const MoniTool_RealVal*> Handle_MoniTool_RealVal_get(const Handle_MoniTool_RealVal* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<MoniTool_RealVal*> HandleMoniToolRealVal_get_mut(HandleMoniToolRealVal* handle) {
+extern "C" OcctResult<MoniTool_RealVal*> Handle_MoniTool_RealVal_get_mut(Handle_MoniTool_RealVal* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleMoniToolRealVal_to_HandleStandardTransient(const HandleMoniToolRealVal* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_MoniTool_RealVal_to_Handle_Standard_Transient(const Handle_MoniTool_RealVal* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> MoniTool_RealVal_inherited_IsInstance(const MoniTool_RealVal* self, Handle(Standard_Type) const& theType) {
@@ -20987,24 +20202,24 @@ extern "C" OcctResult<const MoniTool_SignText*> MoniTool_SignShape_as_MoniTool_S
 extern "C" OcctResult<MoniTool_SignText*> MoniTool_SignShape_as_MoniTool_SignText_mut(MoniTool_SignShape* self_) { return {static_cast<MoniTool_SignText*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> MoniTool_SignShape_as_Standard_Transient(const MoniTool_SignShape* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> MoniTool_SignShape_as_Standard_Transient_mut(MoniTool_SignShape* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleMoniToolSignShape*> MoniTool_SignShape_to_handle(MoniTool_SignShape* obj) {
-    try { return {new HandleMoniToolSignShape(obj), nullptr}; }
+extern "C" OcctResult<Handle_MoniTool_SignShape*> MoniTool_SignShape_to_handle(MoniTool_SignShape* obj) {
+    try { return {new Handle_MoniTool_SignShape(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const MoniTool_SignShape*> HandleMoniToolSignShape_get(const HandleMoniToolSignShape* handle) {
+extern "C" OcctResult<const MoniTool_SignShape*> Handle_MoniTool_SignShape_get(const Handle_MoniTool_SignShape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<MoniTool_SignShape*> HandleMoniToolSignShape_get_mut(HandleMoniToolSignShape* handle) {
+extern "C" OcctResult<MoniTool_SignShape*> Handle_MoniTool_SignShape_get_mut(Handle_MoniTool_SignShape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMoniToolSignText*> HandleMoniToolSignShape_to_HandleMoniToolSignText(const HandleMoniToolSignShape* self_) {
-    try { return {new HandleMoniToolSignText(*self_), nullptr}; }
+extern "C" OcctResult<Handle_MoniTool_SignText*> Handle_MoniTool_SignShape_to_Handle_MoniTool_SignText(const Handle_MoniTool_SignShape* self_) {
+    try { return {new Handle_MoniTool_SignText(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleMoniToolSignShape_to_HandleStandardTransient(const HandleMoniToolSignShape* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_MoniTool_SignShape_to_Handle_Standard_Transient(const Handle_MoniTool_SignShape* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TCollection_AsciiString*> MoniTool_SignShape_inherited_TextAlone(const MoniTool_SignShape* self, Handle(Standard_Transient) const& ent) {
@@ -21071,143 +20286,143 @@ extern "C" OcctResult<Handle(Standard_Type) const*> MoniTool_SignText_get_type_d
 }
 extern "C" OcctResult<const Standard_Transient*> MoniTool_SignText_as_Standard_Transient(const MoniTool_SignText* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> MoniTool_SignText_as_Standard_Transient_mut(MoniTool_SignText* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const MoniTool_SignText*> HandleMoniToolSignText_get(const HandleMoniToolSignText* handle) {
+extern "C" OcctResult<const MoniTool_SignText*> Handle_MoniTool_SignText_get(const Handle_MoniTool_SignText* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<MoniTool_SignText*> HandleMoniToolSignText_get_mut(HandleMoniToolSignText* handle) {
+extern "C" OcctResult<MoniTool_SignText*> Handle_MoniTool_SignText_get_mut(Handle_MoniTool_SignText* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleMoniToolSignText_to_HandleStandardTransient(const HandleMoniToolSignText* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_MoniTool_SignText_to_Handle_Standard_Transient(const Handle_MoniTool_SignText* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSignAncestor*> HandleMoniToolSignText_downcast_to_HandleIFSelectSignAncestor(const HandleMoniToolSignText* self_) {
+extern "C" OcctResult<Handle_IFSelect_SignAncestor*> Handle_MoniTool_SignText_downcast_to_Handle_IFSelect_SignAncestor(const Handle_MoniTool_SignText* self_) {
     try {
     opencascade::handle<IFSelect_SignAncestor> result = opencascade::handle<IFSelect_SignAncestor>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSignAncestor(result), nullptr};
+    return {new Handle_IFSelect_SignAncestor(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSignCategory*> HandleMoniToolSignText_downcast_to_HandleIFSelectSignCategory(const HandleMoniToolSignText* self_) {
+extern "C" OcctResult<Handle_IFSelect_SignCategory*> Handle_MoniTool_SignText_downcast_to_Handle_IFSelect_SignCategory(const Handle_MoniTool_SignText* self_) {
     try {
     opencascade::handle<IFSelect_SignCategory> result = opencascade::handle<IFSelect_SignCategory>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSignCategory(result), nullptr};
+    return {new Handle_IFSelect_SignCategory(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSignMultiple*> HandleMoniToolSignText_downcast_to_HandleIFSelectSignMultiple(const HandleMoniToolSignText* self_) {
+extern "C" OcctResult<Handle_IFSelect_SignMultiple*> Handle_MoniTool_SignText_downcast_to_Handle_IFSelect_SignMultiple(const Handle_MoniTool_SignText* self_) {
     try {
     opencascade::handle<IFSelect_SignMultiple> result = opencascade::handle<IFSelect_SignMultiple>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSignMultiple(result), nullptr};
+    return {new Handle_IFSelect_SignMultiple(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSignType*> HandleMoniToolSignText_downcast_to_HandleIFSelectSignType(const HandleMoniToolSignText* self_) {
+extern "C" OcctResult<Handle_IFSelect_SignType*> Handle_MoniTool_SignText_downcast_to_Handle_IFSelect_SignType(const Handle_MoniTool_SignText* self_) {
     try {
     opencascade::handle<IFSelect_SignType> result = opencascade::handle<IFSelect_SignType>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSignType(result), nullptr};
+    return {new Handle_IFSelect_SignType(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSignValidity*> HandleMoniToolSignText_downcast_to_HandleIFSelectSignValidity(const HandleMoniToolSignText* self_) {
+extern "C" OcctResult<Handle_IFSelect_SignValidity*> Handle_MoniTool_SignText_downcast_to_Handle_IFSelect_SignValidity(const Handle_MoniTool_SignText* self_) {
     try {
     opencascade::handle<IFSelect_SignValidity> result = opencascade::handle<IFSelect_SignValidity>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSignValidity(result), nullptr};
+    return {new Handle_IFSelect_SignValidity(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSignature*> HandleMoniToolSignText_downcast_to_HandleIFSelectSignature(const HandleMoniToolSignText* self_) {
+extern "C" OcctResult<Handle_IFSelect_Signature*> Handle_MoniTool_SignText_downcast_to_Handle_IFSelect_Signature(const Handle_MoniTool_SignText* self_) {
     try {
     opencascade::handle<IFSelect_Signature> result = opencascade::handle<IFSelect_Signature>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIFSelectSignature(result), nullptr};
+    return {new Handle_IFSelect_Signature(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectIGESName*> HandleMoniToolSignText_downcast_to_HandleIGESSelectIGESName(const HandleMoniToolSignText* self_) {
+extern "C" OcctResult<Handle_IGESSelect_IGESName*> Handle_MoniTool_SignText_downcast_to_Handle_IGESSelect_IGESName(const Handle_MoniTool_SignText* self_) {
     try {
     opencascade::handle<IGESSelect_IGESName> result = opencascade::handle<IGESSelect_IGESName>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectIGESName(result), nullptr};
+    return {new Handle_IGESSelect_IGESName(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectIGESTypeForm*> HandleMoniToolSignText_downcast_to_HandleIGESSelectIGESTypeForm(const HandleMoniToolSignText* self_) {
+extern "C" OcctResult<Handle_IGESSelect_IGESTypeForm*> Handle_MoniTool_SignText_downcast_to_Handle_IGESSelect_IGESTypeForm(const Handle_MoniTool_SignText* self_) {
     try {
     opencascade::handle<IGESSelect_IGESTypeForm> result = opencascade::handle<IGESSelect_IGESTypeForm>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectIGESTypeForm(result), nullptr};
+    return {new Handle_IGESSelect_IGESTypeForm(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSignColor*> HandleMoniToolSignText_downcast_to_HandleIGESSelectSignColor(const HandleMoniToolSignText* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SignColor*> Handle_MoniTool_SignText_downcast_to_Handle_IGESSelect_SignColor(const Handle_MoniTool_SignText* self_) {
     try {
     opencascade::handle<IGESSelect_SignColor> result = opencascade::handle<IGESSelect_SignColor>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSignColor(result), nullptr};
+    return {new Handle_IGESSelect_SignColor(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSignLevelNumber*> HandleMoniToolSignText_downcast_to_HandleIGESSelectSignLevelNumber(const HandleMoniToolSignText* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SignLevelNumber*> Handle_MoniTool_SignText_downcast_to_Handle_IGESSelect_SignLevelNumber(const Handle_MoniTool_SignText* self_) {
     try {
     opencascade::handle<IGESSelect_SignLevelNumber> result = opencascade::handle<IGESSelect_SignLevelNumber>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSignLevelNumber(result), nullptr};
+    return {new Handle_IGESSelect_SignLevelNumber(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESSelectSignStatus*> HandleMoniToolSignText_downcast_to_HandleIGESSelectSignStatus(const HandleMoniToolSignText* self_) {
+extern "C" OcctResult<Handle_IGESSelect_SignStatus*> Handle_MoniTool_SignText_downcast_to_Handle_IGESSelect_SignStatus(const Handle_MoniTool_SignText* self_) {
     try {
     opencascade::handle<IGESSelect_SignStatus> result = opencascade::handle<IGESSelect_SignStatus>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESSelectSignStatus(result), nullptr};
+    return {new Handle_IGESSelect_SignStatus(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleInterfaceSignLabel*> HandleMoniToolSignText_downcast_to_HandleInterfaceSignLabel(const HandleMoniToolSignText* self_) {
+extern "C" OcctResult<Handle_Interface_SignLabel*> Handle_MoniTool_SignText_downcast_to_Handle_Interface_SignLabel(const Handle_MoniTool_SignText* self_) {
     try {
     opencascade::handle<Interface_SignLabel> result = opencascade::handle<Interface_SignLabel>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleInterfaceSignLabel(result), nullptr};
+    return {new Handle_Interface_SignLabel(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMoniToolSignShape*> HandleMoniToolSignText_downcast_to_HandleMoniToolSignShape(const HandleMoniToolSignText* self_) {
+extern "C" OcctResult<Handle_MoniTool_SignShape*> Handle_MoniTool_SignText_downcast_to_Handle_MoniTool_SignShape(const Handle_MoniTool_SignText* self_) {
     try {
     opencascade::handle<MoniTool_SignShape> result = opencascade::handle<MoniTool_SignShape>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleMoniToolSignShape(result), nullptr};
+    return {new Handle_MoniTool_SignShape(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleSTEPSelectionsSelectDerived*> HandleMoniToolSignText_downcast_to_HandleSTEPSelectionsSelectDerived(const HandleMoniToolSignText* self_) {
+extern "C" OcctResult<Handle_STEPSelections_SelectDerived*> Handle_MoniTool_SignText_downcast_to_Handle_STEPSelections_SelectDerived(const Handle_MoniTool_SignText* self_) {
     try {
     opencascade::handle<STEPSelections_SelectDerived> result = opencascade::handle<STEPSelections_SelectDerived>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleSTEPSelectionsSelectDerived(result), nullptr};
+    return {new Handle_STEPSelections_SelectDerived(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStepSelectStepType*> HandleMoniToolSignText_downcast_to_HandleStepSelectStepType(const HandleMoniToolSignText* self_) {
+extern "C" OcctResult<Handle_StepSelect_StepType*> Handle_MoniTool_SignText_downcast_to_Handle_StepSelect_StepType(const Handle_MoniTool_SignText* self_) {
     try {
     opencascade::handle<StepSelect_StepType> result = opencascade::handle<StepSelect_StepType>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleStepSelectStepType(result), nullptr};
+    return {new Handle_StepSelect_StepType(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXSControlSignTransferStatus*> HandleMoniToolSignText_downcast_to_HandleXSControlSignTransferStatus(const HandleMoniToolSignText* self_) {
+extern "C" OcctResult<Handle_XSControl_SignTransferStatus*> Handle_MoniTool_SignText_downcast_to_Handle_XSControl_SignTransferStatus(const Handle_MoniTool_SignText* self_) {
     try {
     opencascade::handle<XSControl_SignTransferStatus> result = opencascade::handle<XSControl_SignTransferStatus>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXSControlSignTransferStatus(result), nullptr};
+    return {new Handle_XSControl_SignTransferStatus(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -21355,10 +20570,6 @@ extern "C" const char* MoniTool_Timer_stop_charptr(const char* name) {
     try { MoniTool_Timer::Stop(name); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<MoniTool_DataMapOfTimer*> MoniTool_Timer_dictionary() {
-    try { return {&(MoniTool_Timer::Dictionary()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* MoniTool_Timer_clear_timers() {
     try { MoniTool_Timer::ClearTimers(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -21385,20 +20596,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> MoniTool_Timer_get_type_desc
 }
 extern "C" OcctResult<const Standard_Transient*> MoniTool_Timer_as_Standard_Transient(const MoniTool_Timer* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> MoniTool_Timer_as_Standard_Transient_mut(MoniTool_Timer* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleMoniToolTimer*> MoniTool_Timer_to_handle(MoniTool_Timer* obj) {
-    try { return {new HandleMoniToolTimer(obj), nullptr}; }
+extern "C" OcctResult<Handle_MoniTool_Timer*> MoniTool_Timer_to_handle(MoniTool_Timer* obj) {
+    try { return {new Handle_MoniTool_Timer(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const MoniTool_Timer*> HandleMoniToolTimer_get(const HandleMoniToolTimer* handle) {
+extern "C" OcctResult<const MoniTool_Timer*> Handle_MoniTool_Timer_get(const Handle_MoniTool_Timer* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<MoniTool_Timer*> HandleMoniToolTimer_get_mut(HandleMoniToolTimer* handle) {
+extern "C" OcctResult<MoniTool_Timer*> Handle_MoniTool_Timer_get_mut(Handle_MoniTool_Timer* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleMoniToolTimer_to_HandleStandardTransient(const HandleMoniToolTimer* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_MoniTool_Timer_to_Handle_Standard_Transient(const Handle_MoniTool_Timer* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> MoniTool_Timer_inherited_IsInstance(const MoniTool_Timer* self, Handle(Standard_Type) const& theType) {
@@ -21493,24 +20704,24 @@ extern "C" OcctResult<const MoniTool_Element*> MoniTool_TransientElem_as_MoniToo
 extern "C" OcctResult<MoniTool_Element*> MoniTool_TransientElem_as_MoniTool_Element_mut(MoniTool_TransientElem* self_) { return {static_cast<MoniTool_Element*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> MoniTool_TransientElem_as_Standard_Transient(const MoniTool_TransientElem* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> MoniTool_TransientElem_as_Standard_Transient_mut(MoniTool_TransientElem* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleMoniToolTransientElem*> MoniTool_TransientElem_to_handle(MoniTool_TransientElem* obj) {
-    try { return {new HandleMoniToolTransientElem(obj), nullptr}; }
+extern "C" OcctResult<Handle_MoniTool_TransientElem*> MoniTool_TransientElem_to_handle(MoniTool_TransientElem* obj) {
+    try { return {new Handle_MoniTool_TransientElem(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const MoniTool_TransientElem*> HandleMoniToolTransientElem_get(const HandleMoniToolTransientElem* handle) {
+extern "C" OcctResult<const MoniTool_TransientElem*> Handle_MoniTool_TransientElem_get(const Handle_MoniTool_TransientElem* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<MoniTool_TransientElem*> HandleMoniToolTransientElem_get_mut(HandleMoniToolTransientElem* handle) {
+extern "C" OcctResult<MoniTool_TransientElem*> Handle_MoniTool_TransientElem_get_mut(Handle_MoniTool_TransientElem* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMoniToolElement*> HandleMoniToolTransientElem_to_HandleMoniToolElement(const HandleMoniToolTransientElem* self_) {
-    try { return {new HandleMoniToolElement(*self_), nullptr}; }
+extern "C" OcctResult<Handle_MoniTool_Element*> Handle_MoniTool_TransientElem_to_Handle_MoniTool_Element(const Handle_MoniTool_TransientElem* self_) {
+    try { return {new Handle_MoniTool_Element(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleMoniToolTransientElem_to_HandleStandardTransient(const HandleMoniToolTransientElem* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_MoniTool_TransientElem_to_Handle_Standard_Transient(const Handle_MoniTool_TransientElem* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<size_t> MoniTool_TransientElem_inherited_GetHashCode(const MoniTool_TransientElem* self) {
@@ -21587,7 +20798,7 @@ extern "C" OcctResult<Handle(Standard_Transient)*> MoniTool_TypedValue_object_va
     try { return {new Handle(Standard_Transient)(self_->ObjectValue()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* MoniTool_TypedValue_internals(const MoniTool_TypedValue* self_, MoniTool_ValueInterpret* interp, MoniTool_ValueSatisfies* satisf, char const** satisname, TColStd_DataMapOfAsciiStringInteger* enums) {
+extern "C" const char* MoniTool_TypedValue_internals(const MoniTool_TypedValue* self_, MoniTool_ValueInterpret* interp, MoniTool_ValueSatisfies* satisf, char const** satisname, NCollection_DataMap_TCollection_AsciiString_int* enums) {
     try { self_->Internals(*interp, *satisf, *satisname, *enums); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -21767,8 +20978,8 @@ extern "C" OcctResult<Handle(MoniTool_TypedValue)*> MoniTool_TypedValue_from_lib
     try { return {new Handle(MoniTool_TypedValue)(MoniTool_TypedValue::FromLib(def)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfAsciiString)*> MoniTool_TypedValue_lib_list() {
-    try { return {new Handle(TColStd_HSequenceOfAsciiString)(MoniTool_TypedValue::LibList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_TCollection_AsciiString)*> MoniTool_TypedValue_lib_list() {
+    try { return {new Handle(NCollection_HSequence_TCollection_AsciiString)(MoniTool_TypedValue::LibList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(MoniTool_TypedValue)*> MoniTool_TypedValue_static_value(const char* name) {
@@ -21785,35 +20996,35 @@ extern "C" OcctResult<Handle(Standard_Type) const*> MoniTool_TypedValue_get_type
 }
 extern "C" OcctResult<const Standard_Transient*> MoniTool_TypedValue_as_Standard_Transient(const MoniTool_TypedValue* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> MoniTool_TypedValue_as_Standard_Transient_mut(MoniTool_TypedValue* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleMoniToolTypedValue*> MoniTool_TypedValue_to_handle(MoniTool_TypedValue* obj) {
-    try { return {new HandleMoniToolTypedValue(obj), nullptr}; }
+extern "C" OcctResult<Handle_MoniTool_TypedValue*> MoniTool_TypedValue_to_handle(MoniTool_TypedValue* obj) {
+    try { return {new Handle_MoniTool_TypedValue(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const MoniTool_TypedValue*> HandleMoniToolTypedValue_get(const HandleMoniToolTypedValue* handle) {
+extern "C" OcctResult<const MoniTool_TypedValue*> Handle_MoniTool_TypedValue_get(const Handle_MoniTool_TypedValue* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<MoniTool_TypedValue*> HandleMoniToolTypedValue_get_mut(HandleMoniToolTypedValue* handle) {
+extern "C" OcctResult<MoniTool_TypedValue*> Handle_MoniTool_TypedValue_get_mut(Handle_MoniTool_TypedValue* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleMoniToolTypedValue_to_HandleStandardTransient(const HandleMoniToolTypedValue* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_MoniTool_TypedValue_to_Handle_Standard_Transient(const Handle_MoniTool_TypedValue* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleInterfaceStatic*> HandleMoniToolTypedValue_downcast_to_HandleInterfaceStatic(const HandleMoniToolTypedValue* self_) {
+extern "C" OcctResult<Handle_Interface_Static*> Handle_MoniTool_TypedValue_downcast_to_Handle_Interface_Static(const Handle_MoniTool_TypedValue* self_) {
     try {
     opencascade::handle<Interface_Static> result = opencascade::handle<Interface_Static>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleInterfaceStatic(result), nullptr};
+    return {new Handle_Interface_Static(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleInterfaceTypedValue*> HandleMoniToolTypedValue_downcast_to_HandleInterfaceTypedValue(const HandleMoniToolTypedValue* self_) {
+extern "C" OcctResult<Handle_Interface_TypedValue*> Handle_MoniTool_TypedValue_downcast_to_Handle_Interface_TypedValue(const Handle_MoniTool_TypedValue* self_) {
     try {
     opencascade::handle<Interface_TypedValue> result = opencascade::handle<Interface_TypedValue>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleInterfaceTypedValue(result), nullptr};
+    return {new Handle_Interface_TypedValue(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -21893,28 +21104,28 @@ extern "C" OcctResult<const Transfer_ActorOfProcessForTransient*> Transfer_Actor
 extern "C" OcctResult<Transfer_ActorOfProcessForTransient*> Transfer_ActorDispatch_as_Transfer_ActorOfProcessForTransient_mut(Transfer_ActorDispatch* self_) { return {static_cast<Transfer_ActorOfProcessForTransient*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Transfer_ActorDispatch_as_Standard_Transient(const Transfer_ActorDispatch* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Transfer_ActorDispatch_as_Standard_Transient_mut(Transfer_ActorDispatch* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTransferActorDispatch*> Transfer_ActorDispatch_to_handle(Transfer_ActorDispatch* obj) {
-    try { return {new HandleTransferActorDispatch(obj), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_ActorDispatch*> Transfer_ActorDispatch_to_handle(Transfer_ActorDispatch* obj) {
+    try { return {new Handle_Transfer_ActorDispatch(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Transfer_ActorDispatch*> HandleTransferActorDispatch_get(const HandleTransferActorDispatch* handle) {
+extern "C" OcctResult<const Transfer_ActorDispatch*> Handle_Transfer_ActorDispatch_get(const Handle_Transfer_ActorDispatch* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Transfer_ActorDispatch*> HandleTransferActorDispatch_get_mut(HandleTransferActorDispatch* handle) {
+extern "C" OcctResult<Transfer_ActorDispatch*> Handle_Transfer_ActorDispatch_get_mut(Handle_Transfer_ActorDispatch* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferActorOfTransientProcess*> HandleTransferActorDispatch_to_HandleTransferActorOfTransientProcess(const HandleTransferActorDispatch* self_) {
-    try { return {new HandleTransferActorOfTransientProcess(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_ActorOfTransientProcess*> Handle_Transfer_ActorDispatch_to_Handle_Transfer_ActorOfTransientProcess(const Handle_Transfer_ActorDispatch* self_) {
+    try { return {new Handle_Transfer_ActorOfTransientProcess(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferActorOfProcessForTransient*> HandleTransferActorDispatch_to_HandleTransferActorOfProcessForTransient(const HandleTransferActorDispatch* self_) {
-    try { return {new HandleTransferActorOfProcessForTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_ActorOfProcessForTransient*> Handle_Transfer_ActorDispatch_to_Handle_Transfer_ActorOfProcessForTransient(const Handle_Transfer_ActorDispatch* self_) {
+    try { return {new Handle_Transfer_ActorOfProcessForTransient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTransferActorDispatch_to_HandleStandardTransient(const HandleTransferActorDispatch* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Transfer_ActorDispatch_to_Handle_Standard_Transient(const Handle_Transfer_ActorDispatch* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Transfer_Binder)*> Transfer_ActorDispatch_inherited_Transferring(Transfer_ActorDispatch* self, Handle(Standard_Transient) const& start, Handle(Transfer_ProcessForTransient) const& TP, Message_ProgressRange const& theProgress) {
@@ -22059,47 +21270,47 @@ extern "C" OcctResult<const Transfer_ActorOfProcessForFinder*> Transfer_ActorOfF
 extern "C" OcctResult<Transfer_ActorOfProcessForFinder*> Transfer_ActorOfFinderProcess_as_Transfer_ActorOfProcessForFinder_mut(Transfer_ActorOfFinderProcess* self_) { return {static_cast<Transfer_ActorOfProcessForFinder*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Transfer_ActorOfFinderProcess_as_Standard_Transient(const Transfer_ActorOfFinderProcess* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Transfer_ActorOfFinderProcess_as_Standard_Transient_mut(Transfer_ActorOfFinderProcess* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTransferActorOfFinderProcess*> Transfer_ActorOfFinderProcess_to_handle(Transfer_ActorOfFinderProcess* obj) {
-    try { return {new HandleTransferActorOfFinderProcess(obj), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_ActorOfFinderProcess*> Transfer_ActorOfFinderProcess_to_handle(Transfer_ActorOfFinderProcess* obj) {
+    try { return {new Handle_Transfer_ActorOfFinderProcess(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Transfer_ActorOfFinderProcess*> HandleTransferActorOfFinderProcess_get(const HandleTransferActorOfFinderProcess* handle) {
+extern "C" OcctResult<const Transfer_ActorOfFinderProcess*> Handle_Transfer_ActorOfFinderProcess_get(const Handle_Transfer_ActorOfFinderProcess* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Transfer_ActorOfFinderProcess*> HandleTransferActorOfFinderProcess_get_mut(HandleTransferActorOfFinderProcess* handle) {
+extern "C" OcctResult<Transfer_ActorOfFinderProcess*> Handle_Transfer_ActorOfFinderProcess_get_mut(Handle_Transfer_ActorOfFinderProcess* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferActorOfProcessForFinder*> HandleTransferActorOfFinderProcess_to_HandleTransferActorOfProcessForFinder(const HandleTransferActorOfFinderProcess* self_) {
-    try { return {new HandleTransferActorOfProcessForFinder(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_ActorOfProcessForFinder*> Handle_Transfer_ActorOfFinderProcess_to_Handle_Transfer_ActorOfProcessForFinder(const Handle_Transfer_ActorOfFinderProcess* self_) {
+    try { return {new Handle_Transfer_ActorOfProcessForFinder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTransferActorOfFinderProcess_to_HandleStandardTransient(const HandleTransferActorOfFinderProcess* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Transfer_ActorOfFinderProcess_to_Handle_Standard_Transient(const Handle_Transfer_ActorOfFinderProcess* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESControlActorWrite*> HandleTransferActorOfFinderProcess_downcast_to_HandleIGESControlActorWrite(const HandleTransferActorOfFinderProcess* self_) {
+extern "C" OcctResult<Handle_IGESControl_ActorWrite*> Handle_Transfer_ActorOfFinderProcess_downcast_to_Handle_IGESControl_ActorWrite(const Handle_Transfer_ActorOfFinderProcess* self_) {
     try {
     opencascade::handle<IGESControl_ActorWrite> result = opencascade::handle<IGESControl_ActorWrite>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESControlActorWrite(result), nullptr};
+    return {new Handle_IGESControl_ActorWrite(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleSTEPCAFControlActorWrite*> HandleTransferActorOfFinderProcess_downcast_to_HandleSTEPCAFControlActorWrite(const HandleTransferActorOfFinderProcess* self_) {
+extern "C" OcctResult<Handle_STEPCAFControl_ActorWrite*> Handle_Transfer_ActorOfFinderProcess_downcast_to_Handle_STEPCAFControl_ActorWrite(const Handle_Transfer_ActorOfFinderProcess* self_) {
     try {
     opencascade::handle<STEPCAFControl_ActorWrite> result = opencascade::handle<STEPCAFControl_ActorWrite>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleSTEPCAFControlActorWrite(result), nullptr};
+    return {new Handle_STEPCAFControl_ActorWrite(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleSTEPControlActorWrite*> HandleTransferActorOfFinderProcess_downcast_to_HandleSTEPControlActorWrite(const HandleTransferActorOfFinderProcess* self_) {
+extern "C" OcctResult<Handle_STEPControl_ActorWrite*> Handle_Transfer_ActorOfFinderProcess_downcast_to_Handle_STEPControl_ActorWrite(const Handle_Transfer_ActorOfFinderProcess* self_) {
     try {
     opencascade::handle<STEPControl_ActorWrite> result = opencascade::handle<STEPControl_ActorWrite>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleSTEPControlActorWrite(result), nullptr};
+    return {new Handle_STEPControl_ActorWrite(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -22215,51 +21426,51 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Transfer_ActorOfProcessForFi
 }
 extern "C" OcctResult<const Standard_Transient*> Transfer_ActorOfProcessForFinder_as_Standard_Transient(const Transfer_ActorOfProcessForFinder* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Transfer_ActorOfProcessForFinder_as_Standard_Transient_mut(Transfer_ActorOfProcessForFinder* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTransferActorOfProcessForFinder*> Transfer_ActorOfProcessForFinder_to_handle(Transfer_ActorOfProcessForFinder* obj) {
-    try { return {new HandleTransferActorOfProcessForFinder(obj), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_ActorOfProcessForFinder*> Transfer_ActorOfProcessForFinder_to_handle(Transfer_ActorOfProcessForFinder* obj) {
+    try { return {new Handle_Transfer_ActorOfProcessForFinder(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Transfer_ActorOfProcessForFinder*> HandleTransferActorOfProcessForFinder_get(const HandleTransferActorOfProcessForFinder* handle) {
+extern "C" OcctResult<const Transfer_ActorOfProcessForFinder*> Handle_Transfer_ActorOfProcessForFinder_get(const Handle_Transfer_ActorOfProcessForFinder* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Transfer_ActorOfProcessForFinder*> HandleTransferActorOfProcessForFinder_get_mut(HandleTransferActorOfProcessForFinder* handle) {
+extern "C" OcctResult<Transfer_ActorOfProcessForFinder*> Handle_Transfer_ActorOfProcessForFinder_get_mut(Handle_Transfer_ActorOfProcessForFinder* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTransferActorOfProcessForFinder_to_HandleStandardTransient(const HandleTransferActorOfProcessForFinder* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Transfer_ActorOfProcessForFinder_to_Handle_Standard_Transient(const Handle_Transfer_ActorOfProcessForFinder* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESControlActorWrite*> HandleTransferActorOfProcessForFinder_downcast_to_HandleIGESControlActorWrite(const HandleTransferActorOfProcessForFinder* self_) {
+extern "C" OcctResult<Handle_IGESControl_ActorWrite*> Handle_Transfer_ActorOfProcessForFinder_downcast_to_Handle_IGESControl_ActorWrite(const Handle_Transfer_ActorOfProcessForFinder* self_) {
     try {
     opencascade::handle<IGESControl_ActorWrite> result = opencascade::handle<IGESControl_ActorWrite>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESControlActorWrite(result), nullptr};
+    return {new Handle_IGESControl_ActorWrite(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleSTEPCAFControlActorWrite*> HandleTransferActorOfProcessForFinder_downcast_to_HandleSTEPCAFControlActorWrite(const HandleTransferActorOfProcessForFinder* self_) {
+extern "C" OcctResult<Handle_STEPCAFControl_ActorWrite*> Handle_Transfer_ActorOfProcessForFinder_downcast_to_Handle_STEPCAFControl_ActorWrite(const Handle_Transfer_ActorOfProcessForFinder* self_) {
     try {
     opencascade::handle<STEPCAFControl_ActorWrite> result = opencascade::handle<STEPCAFControl_ActorWrite>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleSTEPCAFControlActorWrite(result), nullptr};
+    return {new Handle_STEPCAFControl_ActorWrite(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleSTEPControlActorWrite*> HandleTransferActorOfProcessForFinder_downcast_to_HandleSTEPControlActorWrite(const HandleTransferActorOfProcessForFinder* self_) {
+extern "C" OcctResult<Handle_STEPControl_ActorWrite*> Handle_Transfer_ActorOfProcessForFinder_downcast_to_Handle_STEPControl_ActorWrite(const Handle_Transfer_ActorOfProcessForFinder* self_) {
     try {
     opencascade::handle<STEPControl_ActorWrite> result = opencascade::handle<STEPControl_ActorWrite>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleSTEPControlActorWrite(result), nullptr};
+    return {new Handle_STEPControl_ActorWrite(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferActorOfFinderProcess*> HandleTransferActorOfProcessForFinder_downcast_to_HandleTransferActorOfFinderProcess(const HandleTransferActorOfProcessForFinder* self_) {
+extern "C" OcctResult<Handle_Transfer_ActorOfFinderProcess*> Handle_Transfer_ActorOfProcessForFinder_downcast_to_Handle_Transfer_ActorOfFinderProcess(const Handle_Transfer_ActorOfProcessForFinder* self_) {
     try {
     opencascade::handle<Transfer_ActorOfFinderProcess> result = opencascade::handle<Transfer_ActorOfFinderProcess>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTransferActorOfFinderProcess(result), nullptr};
+    return {new Handle_Transfer_ActorOfFinderProcess(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -22347,51 +21558,51 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Transfer_ActorOfProcessForTr
 }
 extern "C" OcctResult<const Standard_Transient*> Transfer_ActorOfProcessForTransient_as_Standard_Transient(const Transfer_ActorOfProcessForTransient* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Transfer_ActorOfProcessForTransient_as_Standard_Transient_mut(Transfer_ActorOfProcessForTransient* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTransferActorOfProcessForTransient*> Transfer_ActorOfProcessForTransient_to_handle(Transfer_ActorOfProcessForTransient* obj) {
-    try { return {new HandleTransferActorOfProcessForTransient(obj), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_ActorOfProcessForTransient*> Transfer_ActorOfProcessForTransient_to_handle(Transfer_ActorOfProcessForTransient* obj) {
+    try { return {new Handle_Transfer_ActorOfProcessForTransient(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Transfer_ActorOfProcessForTransient*> HandleTransferActorOfProcessForTransient_get(const HandleTransferActorOfProcessForTransient* handle) {
+extern "C" OcctResult<const Transfer_ActorOfProcessForTransient*> Handle_Transfer_ActorOfProcessForTransient_get(const Handle_Transfer_ActorOfProcessForTransient* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Transfer_ActorOfProcessForTransient*> HandleTransferActorOfProcessForTransient_get_mut(HandleTransferActorOfProcessForTransient* handle) {
+extern "C" OcctResult<Transfer_ActorOfProcessForTransient*> Handle_Transfer_ActorOfProcessForTransient_get_mut(Handle_Transfer_ActorOfProcessForTransient* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTransferActorOfProcessForTransient_to_HandleStandardTransient(const HandleTransferActorOfProcessForTransient* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Transfer_ActorOfProcessForTransient_to_Handle_Standard_Transient(const Handle_Transfer_ActorOfProcessForTransient* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESToBRepActor*> HandleTransferActorOfProcessForTransient_downcast_to_HandleIGESToBRepActor(const HandleTransferActorOfProcessForTransient* self_) {
+extern "C" OcctResult<Handle_IGESToBRep_Actor*> Handle_Transfer_ActorOfProcessForTransient_downcast_to_Handle_IGESToBRep_Actor(const Handle_Transfer_ActorOfProcessForTransient* self_) {
     try {
     opencascade::handle<IGESToBRep_Actor> result = opencascade::handle<IGESToBRep_Actor>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESToBRepActor(result), nullptr};
+    return {new Handle_IGESToBRep_Actor(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleSTEPControlActorRead*> HandleTransferActorOfProcessForTransient_downcast_to_HandleSTEPControlActorRead(const HandleTransferActorOfProcessForTransient* self_) {
+extern "C" OcctResult<Handle_STEPControl_ActorRead*> Handle_Transfer_ActorOfProcessForTransient_downcast_to_Handle_STEPControl_ActorRead(const Handle_Transfer_ActorOfProcessForTransient* self_) {
     try {
     opencascade::handle<STEPControl_ActorRead> result = opencascade::handle<STEPControl_ActorRead>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleSTEPControlActorRead(result), nullptr};
+    return {new Handle_STEPControl_ActorRead(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferActorDispatch*> HandleTransferActorOfProcessForTransient_downcast_to_HandleTransferActorDispatch(const HandleTransferActorOfProcessForTransient* self_) {
+extern "C" OcctResult<Handle_Transfer_ActorDispatch*> Handle_Transfer_ActorOfProcessForTransient_downcast_to_Handle_Transfer_ActorDispatch(const Handle_Transfer_ActorOfProcessForTransient* self_) {
     try {
     opencascade::handle<Transfer_ActorDispatch> result = opencascade::handle<Transfer_ActorDispatch>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTransferActorDispatch(result), nullptr};
+    return {new Handle_Transfer_ActorDispatch(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferActorOfTransientProcess*> HandleTransferActorOfProcessForTransient_downcast_to_HandleTransferActorOfTransientProcess(const HandleTransferActorOfProcessForTransient* self_) {
+extern "C" OcctResult<Handle_Transfer_ActorOfTransientProcess*> Handle_Transfer_ActorOfProcessForTransient_downcast_to_Handle_Transfer_ActorOfTransientProcess(const Handle_Transfer_ActorOfProcessForTransient* self_) {
     try {
     opencascade::handle<Transfer_ActorOfTransientProcess> result = opencascade::handle<Transfer_ActorOfTransientProcess>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTransferActorOfTransientProcess(result), nullptr};
+    return {new Handle_Transfer_ActorOfTransientProcess(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -22481,47 +21692,47 @@ extern "C" OcctResult<const Transfer_ActorOfProcessForTransient*> Transfer_Actor
 extern "C" OcctResult<Transfer_ActorOfProcessForTransient*> Transfer_ActorOfTransientProcess_as_Transfer_ActorOfProcessForTransient_mut(Transfer_ActorOfTransientProcess* self_) { return {static_cast<Transfer_ActorOfProcessForTransient*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Transfer_ActorOfTransientProcess_as_Standard_Transient(const Transfer_ActorOfTransientProcess* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Transfer_ActorOfTransientProcess_as_Standard_Transient_mut(Transfer_ActorOfTransientProcess* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTransferActorOfTransientProcess*> Transfer_ActorOfTransientProcess_to_handle(Transfer_ActorOfTransientProcess* obj) {
-    try { return {new HandleTransferActorOfTransientProcess(obj), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_ActorOfTransientProcess*> Transfer_ActorOfTransientProcess_to_handle(Transfer_ActorOfTransientProcess* obj) {
+    try { return {new Handle_Transfer_ActorOfTransientProcess(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Transfer_ActorOfTransientProcess*> HandleTransferActorOfTransientProcess_get(const HandleTransferActorOfTransientProcess* handle) {
+extern "C" OcctResult<const Transfer_ActorOfTransientProcess*> Handle_Transfer_ActorOfTransientProcess_get(const Handle_Transfer_ActorOfTransientProcess* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Transfer_ActorOfTransientProcess*> HandleTransferActorOfTransientProcess_get_mut(HandleTransferActorOfTransientProcess* handle) {
+extern "C" OcctResult<Transfer_ActorOfTransientProcess*> Handle_Transfer_ActorOfTransientProcess_get_mut(Handle_Transfer_ActorOfTransientProcess* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferActorOfProcessForTransient*> HandleTransferActorOfTransientProcess_to_HandleTransferActorOfProcessForTransient(const HandleTransferActorOfTransientProcess* self_) {
-    try { return {new HandleTransferActorOfProcessForTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_ActorOfProcessForTransient*> Handle_Transfer_ActorOfTransientProcess_to_Handle_Transfer_ActorOfProcessForTransient(const Handle_Transfer_ActorOfTransientProcess* self_) {
+    try { return {new Handle_Transfer_ActorOfProcessForTransient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTransferActorOfTransientProcess_to_HandleStandardTransient(const HandleTransferActorOfTransientProcess* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Transfer_ActorOfTransientProcess_to_Handle_Standard_Transient(const Handle_Transfer_ActorOfTransientProcess* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESToBRepActor*> HandleTransferActorOfTransientProcess_downcast_to_HandleIGESToBRepActor(const HandleTransferActorOfTransientProcess* self_) {
+extern "C" OcctResult<Handle_IGESToBRep_Actor*> Handle_Transfer_ActorOfTransientProcess_downcast_to_Handle_IGESToBRep_Actor(const Handle_Transfer_ActorOfTransientProcess* self_) {
     try {
     opencascade::handle<IGESToBRep_Actor> result = opencascade::handle<IGESToBRep_Actor>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESToBRepActor(result), nullptr};
+    return {new Handle_IGESToBRep_Actor(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleSTEPControlActorRead*> HandleTransferActorOfTransientProcess_downcast_to_HandleSTEPControlActorRead(const HandleTransferActorOfTransientProcess* self_) {
+extern "C" OcctResult<Handle_STEPControl_ActorRead*> Handle_Transfer_ActorOfTransientProcess_downcast_to_Handle_STEPControl_ActorRead(const Handle_Transfer_ActorOfTransientProcess* self_) {
     try {
     opencascade::handle<STEPControl_ActorRead> result = opencascade::handle<STEPControl_ActorRead>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleSTEPControlActorRead(result), nullptr};
+    return {new Handle_STEPControl_ActorRead(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferActorDispatch*> HandleTransferActorOfTransientProcess_downcast_to_HandleTransferActorDispatch(const HandleTransferActorOfTransientProcess* self_) {
+extern "C" OcctResult<Handle_Transfer_ActorDispatch*> Handle_Transfer_ActorOfTransientProcess_downcast_to_Handle_Transfer_ActorDispatch(const Handle_Transfer_ActorOfTransientProcess* self_) {
     try {
     opencascade::handle<Transfer_ActorDispatch> result = opencascade::handle<Transfer_ActorDispatch>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTransferActorDispatch(result), nullptr};
+    return {new Handle_Transfer_ActorDispatch(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -22661,79 +21872,79 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Transfer_Binder_get_type_des
 }
 extern "C" OcctResult<const Standard_Transient*> Transfer_Binder_as_Standard_Transient(const Transfer_Binder* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Transfer_Binder_as_Standard_Transient_mut(Transfer_Binder* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const Transfer_Binder*> HandleTransferBinder_get(const HandleTransferBinder* handle) {
+extern "C" OcctResult<const Transfer_Binder*> Handle_Transfer_Binder_get(const Handle_Transfer_Binder* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Transfer_Binder*> HandleTransferBinder_get_mut(HandleTransferBinder* handle) {
+extern "C" OcctResult<Transfer_Binder*> Handle_Transfer_Binder_get_mut(Handle_Transfer_Binder* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTransferBinder_to_HandleStandardTransient(const HandleTransferBinder* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Transfer_Binder_to_Handle_Standard_Transient(const Handle_Transfer_Binder* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferBRepBinderOfShape*> HandleTransferBinder_downcast_to_HandleTransferBRepBinderOfShape(const HandleTransferBinder* self_) {
+extern "C" OcctResult<Handle_TransferBRep_BinderOfShape*> Handle_Transfer_Binder_downcast_to_Handle_TransferBRep_BinderOfShape(const Handle_Transfer_Binder* self_) {
     try {
     opencascade::handle<TransferBRep_BinderOfShape> result = opencascade::handle<TransferBRep_BinderOfShape>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTransferBRepBinderOfShape(result), nullptr};
+    return {new Handle_TransferBRep_BinderOfShape(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferBRepShapeBinder*> HandleTransferBinder_downcast_to_HandleTransferBRepShapeBinder(const HandleTransferBinder* self_) {
+extern "C" OcctResult<Handle_TransferBRep_ShapeBinder*> Handle_Transfer_Binder_downcast_to_Handle_TransferBRep_ShapeBinder(const Handle_Transfer_Binder* self_) {
     try {
     opencascade::handle<TransferBRep_ShapeBinder> result = opencascade::handle<TransferBRep_ShapeBinder>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTransferBRepShapeBinder(result), nullptr};
+    return {new Handle_TransferBRep_ShapeBinder(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferBRepShapeListBinder*> HandleTransferBinder_downcast_to_HandleTransferBRepShapeListBinder(const HandleTransferBinder* self_) {
+extern "C" OcctResult<Handle_TransferBRep_ShapeListBinder*> Handle_Transfer_Binder_downcast_to_Handle_TransferBRep_ShapeListBinder(const Handle_Transfer_Binder* self_) {
     try {
     opencascade::handle<TransferBRep_ShapeListBinder> result = opencascade::handle<TransferBRep_ShapeListBinder>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTransferBRepShapeListBinder(result), nullptr};
+    return {new Handle_TransferBRep_ShapeListBinder(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferBinderOfTransientInteger*> HandleTransferBinder_downcast_to_HandleTransferBinderOfTransientInteger(const HandleTransferBinder* self_) {
+extern "C" OcctResult<Handle_Transfer_BinderOfTransientInteger*> Handle_Transfer_Binder_downcast_to_Handle_Transfer_BinderOfTransientInteger(const Handle_Transfer_Binder* self_) {
     try {
     opencascade::handle<Transfer_BinderOfTransientInteger> result = opencascade::handle<Transfer_BinderOfTransientInteger>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTransferBinderOfTransientInteger(result), nullptr};
+    return {new Handle_Transfer_BinderOfTransientInteger(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferMultipleBinder*> HandleTransferBinder_downcast_to_HandleTransferMultipleBinder(const HandleTransferBinder* self_) {
+extern "C" OcctResult<Handle_Transfer_MultipleBinder*> Handle_Transfer_Binder_downcast_to_Handle_Transfer_MultipleBinder(const Handle_Transfer_Binder* self_) {
     try {
     opencascade::handle<Transfer_MultipleBinder> result = opencascade::handle<Transfer_MultipleBinder>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTransferMultipleBinder(result), nullptr};
+    return {new Handle_Transfer_MultipleBinder(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferSimpleBinderOfTransient*> HandleTransferBinder_downcast_to_HandleTransferSimpleBinderOfTransient(const HandleTransferBinder* self_) {
+extern "C" OcctResult<Handle_Transfer_SimpleBinderOfTransient*> Handle_Transfer_Binder_downcast_to_Handle_Transfer_SimpleBinderOfTransient(const Handle_Transfer_Binder* self_) {
     try {
     opencascade::handle<Transfer_SimpleBinderOfTransient> result = opencascade::handle<Transfer_SimpleBinderOfTransient>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTransferSimpleBinderOfTransient(result), nullptr};
+    return {new Handle_Transfer_SimpleBinderOfTransient(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferTransientListBinder*> HandleTransferBinder_downcast_to_HandleTransferTransientListBinder(const HandleTransferBinder* self_) {
+extern "C" OcctResult<Handle_Transfer_TransientListBinder*> Handle_Transfer_Binder_downcast_to_Handle_Transfer_TransientListBinder(const Handle_Transfer_Binder* self_) {
     try {
     opencascade::handle<Transfer_TransientListBinder> result = opencascade::handle<Transfer_TransientListBinder>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTransferTransientListBinder(result), nullptr};
+    return {new Handle_Transfer_TransientListBinder(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferVoidBinder*> HandleTransferBinder_downcast_to_HandleTransferVoidBinder(const HandleTransferBinder* self_) {
+extern "C" OcctResult<Handle_Transfer_VoidBinder*> Handle_Transfer_Binder_downcast_to_Handle_Transfer_VoidBinder(const Handle_Transfer_Binder* self_) {
     try {
     opencascade::handle<Transfer_VoidBinder> result = opencascade::handle<Transfer_VoidBinder>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTransferVoidBinder(result), nullptr};
+    return {new Handle_Transfer_VoidBinder(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -22801,28 +22012,28 @@ extern "C" OcctResult<const Transfer_Binder*> Transfer_BinderOfTransientInteger_
 extern "C" OcctResult<Transfer_Binder*> Transfer_BinderOfTransientInteger_as_Transfer_Binder_mut(Transfer_BinderOfTransientInteger* self_) { return {static_cast<Transfer_Binder*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Transfer_BinderOfTransientInteger_as_Standard_Transient(const Transfer_BinderOfTransientInteger* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Transfer_BinderOfTransientInteger_as_Standard_Transient_mut(Transfer_BinderOfTransientInteger* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTransferBinderOfTransientInteger*> Transfer_BinderOfTransientInteger_to_handle(Transfer_BinderOfTransientInteger* obj) {
-    try { return {new HandleTransferBinderOfTransientInteger(obj), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_BinderOfTransientInteger*> Transfer_BinderOfTransientInteger_to_handle(Transfer_BinderOfTransientInteger* obj) {
+    try { return {new Handle_Transfer_BinderOfTransientInteger(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Transfer_BinderOfTransientInteger*> HandleTransferBinderOfTransientInteger_get(const HandleTransferBinderOfTransientInteger* handle) {
+extern "C" OcctResult<const Transfer_BinderOfTransientInteger*> Handle_Transfer_BinderOfTransientInteger_get(const Handle_Transfer_BinderOfTransientInteger* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Transfer_BinderOfTransientInteger*> HandleTransferBinderOfTransientInteger_get_mut(HandleTransferBinderOfTransientInteger* handle) {
+extern "C" OcctResult<Transfer_BinderOfTransientInteger*> Handle_Transfer_BinderOfTransientInteger_get_mut(Handle_Transfer_BinderOfTransientInteger* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferSimpleBinderOfTransient*> HandleTransferBinderOfTransientInteger_to_HandleTransferSimpleBinderOfTransient(const HandleTransferBinderOfTransientInteger* self_) {
-    try { return {new HandleTransferSimpleBinderOfTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_SimpleBinderOfTransient*> Handle_Transfer_BinderOfTransientInteger_to_Handle_Transfer_SimpleBinderOfTransient(const Handle_Transfer_BinderOfTransientInteger* self_) {
+    try { return {new Handle_Transfer_SimpleBinderOfTransient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferBinder*> HandleTransferBinderOfTransientInteger_to_HandleTransferBinder(const HandleTransferBinderOfTransientInteger* self_) {
-    try { return {new HandleTransferBinder(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_Binder*> Handle_Transfer_BinderOfTransientInteger_to_Handle_Transfer_Binder(const Handle_Transfer_BinderOfTransientInteger* self_) {
+    try { return {new Handle_Transfer_Binder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTransferBinderOfTransientInteger_to_HandleStandardTransient(const HandleTransferBinderOfTransientInteger* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Transfer_BinderOfTransientInteger_to_Handle_Standard_Transient(const Handle_Transfer_BinderOfTransientInteger* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type)*> Transfer_BinderOfTransientInteger_inherited_ResultType(const Transfer_BinderOfTransientInteger* self) {
@@ -22973,24 +22184,24 @@ extern "C" OcctResult<const Interface_CopyControl*> Transfer_DispatchControl_as_
 extern "C" OcctResult<Interface_CopyControl*> Transfer_DispatchControl_as_Interface_CopyControl_mut(Transfer_DispatchControl* self_) { return {static_cast<Interface_CopyControl*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Transfer_DispatchControl_as_Standard_Transient(const Transfer_DispatchControl* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Transfer_DispatchControl_as_Standard_Transient_mut(Transfer_DispatchControl* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTransferDispatchControl*> Transfer_DispatchControl_to_handle(Transfer_DispatchControl* obj) {
-    try { return {new HandleTransferDispatchControl(obj), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_DispatchControl*> Transfer_DispatchControl_to_handle(Transfer_DispatchControl* obj) {
+    try { return {new Handle_Transfer_DispatchControl(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Transfer_DispatchControl*> HandleTransferDispatchControl_get(const HandleTransferDispatchControl* handle) {
+extern "C" OcctResult<const Transfer_DispatchControl*> Handle_Transfer_DispatchControl_get(const Handle_Transfer_DispatchControl* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Transfer_DispatchControl*> HandleTransferDispatchControl_get_mut(HandleTransferDispatchControl* handle) {
+extern "C" OcctResult<Transfer_DispatchControl*> Handle_Transfer_DispatchControl_get_mut(Handle_Transfer_DispatchControl* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleInterfaceCopyControl*> HandleTransferDispatchControl_to_HandleInterfaceCopyControl(const HandleTransferDispatchControl* self_) {
-    try { return {new HandleInterfaceCopyControl(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Interface_CopyControl*> Handle_Transfer_DispatchControl_to_Handle_Interface_CopyControl(const Handle_Transfer_DispatchControl* self_) {
+    try { return {new Handle_Interface_CopyControl(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTransferDispatchControl_to_HandleStandardTransient(const HandleTransferDispatchControl* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Transfer_DispatchControl_to_Handle_Standard_Transient(const Handle_Transfer_DispatchControl* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Transfer_DispatchControl_inherited_IsInstance(const Transfer_DispatchControl* self, Handle(Standard_Type) const& theType) {
@@ -23125,31 +22336,31 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Transfer_Finder_get_type_des
 }
 extern "C" OcctResult<const Standard_Transient*> Transfer_Finder_as_Standard_Transient(const Transfer_Finder* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Transfer_Finder_as_Standard_Transient_mut(Transfer_Finder* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const Transfer_Finder*> HandleTransferFinder_get(const HandleTransferFinder* handle) {
+extern "C" OcctResult<const Transfer_Finder*> Handle_Transfer_Finder_get(const Handle_Transfer_Finder* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Transfer_Finder*> HandleTransferFinder_get_mut(HandleTransferFinder* handle) {
+extern "C" OcctResult<Transfer_Finder*> Handle_Transfer_Finder_get_mut(Handle_Transfer_Finder* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTransferFinder_to_HandleStandardTransient(const HandleTransferFinder* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Transfer_Finder_to_Handle_Standard_Transient(const Handle_Transfer_Finder* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferBRepShapeMapper*> HandleTransferFinder_downcast_to_HandleTransferBRepShapeMapper(const HandleTransferFinder* self_) {
+extern "C" OcctResult<Handle_TransferBRep_ShapeMapper*> Handle_Transfer_Finder_downcast_to_Handle_TransferBRep_ShapeMapper(const Handle_Transfer_Finder* self_) {
     try {
     opencascade::handle<TransferBRep_ShapeMapper> result = opencascade::handle<TransferBRep_ShapeMapper>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTransferBRepShapeMapper(result), nullptr};
+    return {new Handle_TransferBRep_ShapeMapper(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferTransientMapper*> HandleTransferFinder_downcast_to_HandleTransferTransientMapper(const HandleTransferFinder* self_) {
+extern "C" OcctResult<Handle_Transfer_TransientMapper*> Handle_Transfer_Finder_downcast_to_Handle_Transfer_TransientMapper(const Handle_Transfer_Finder* self_) {
     try {
     opencascade::handle<Transfer_TransientMapper> result = opencascade::handle<Transfer_TransientMapper>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTransferTransientMapper(result), nullptr};
+    return {new Handle_Transfer_TransientMapper(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -23231,24 +22442,24 @@ extern "C" OcctResult<const Transfer_ProcessForFinder*> Transfer_FinderProcess_a
 extern "C" OcctResult<Transfer_ProcessForFinder*> Transfer_FinderProcess_as_Transfer_ProcessForFinder_mut(Transfer_FinderProcess* self_) { return {static_cast<Transfer_ProcessForFinder*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Transfer_FinderProcess_as_Standard_Transient(const Transfer_FinderProcess* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Transfer_FinderProcess_as_Standard_Transient_mut(Transfer_FinderProcess* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTransferFinderProcess*> Transfer_FinderProcess_to_handle(Transfer_FinderProcess* obj) {
-    try { return {new HandleTransferFinderProcess(obj), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_FinderProcess*> Transfer_FinderProcess_to_handle(Transfer_FinderProcess* obj) {
+    try { return {new Handle_Transfer_FinderProcess(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Transfer_FinderProcess*> HandleTransferFinderProcess_get(const HandleTransferFinderProcess* handle) {
+extern "C" OcctResult<const Transfer_FinderProcess*> Handle_Transfer_FinderProcess_get(const Handle_Transfer_FinderProcess* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Transfer_FinderProcess*> HandleTransferFinderProcess_get_mut(HandleTransferFinderProcess* handle) {
+extern "C" OcctResult<Transfer_FinderProcess*> Handle_Transfer_FinderProcess_get_mut(Handle_Transfer_FinderProcess* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferProcessForFinder*> HandleTransferFinderProcess_to_HandleTransferProcessForFinder(const HandleTransferFinderProcess* self_) {
-    try { return {new HandleTransferProcessForFinder(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_ProcessForFinder*> Handle_Transfer_FinderProcess_to_Handle_Transfer_ProcessForFinder(const Handle_Transfer_FinderProcess* self_) {
+    try { return {new Handle_Transfer_ProcessForFinder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTransferFinderProcess_to_HandleStandardTransient(const HandleTransferFinderProcess* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Transfer_FinderProcess_to_Handle_Standard_Transient(const Handle_Transfer_FinderProcess* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Transfer_FinderProcess_inherited_Clear(Transfer_FinderProcess* self) {
@@ -23494,182 +22705,6 @@ extern "C" const char* Transfer_FinderProcess_inherited_Delete(const Transfer_Fi
 extern "C" void Transfer_FinderProcess_destructor(Transfer_FinderProcess* self_) { delete self_; }
 
 // ========================
-// Transfer_HSequenceOfBinder wrappers
-// ========================
-
-extern "C" OcctResult<Transfer_HSequenceOfBinder*> Transfer_HSequenceOfBinder_ctor() {
-    try { return {new Transfer_HSequenceOfBinder(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Transfer_HSequenceOfBinder*> Transfer_HSequenceOfBinder_ctor_sequenceofbinder(Transfer_SequenceOfBinder const* theOther) {
-    try { return {new Transfer_HSequenceOfBinder(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Transfer_SequenceOfBinder const*> Transfer_HSequenceOfBinder_sequence(const Transfer_HSequenceOfBinder* self_) {
-    try { return {&(self_->Sequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Transfer_HSequenceOfBinder_append_handletransferbinder(Transfer_HSequenceOfBinder* self_, Handle(Transfer_Binder) const* theItem) {
-    try { self_->Append(*theItem); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Transfer_HSequenceOfBinder_append_sequenceofbinder(Transfer_HSequenceOfBinder* self_, Transfer_SequenceOfBinder* theSequence) {
-    try { self_->Append(*theSequence); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Transfer_SequenceOfBinder*> Transfer_HSequenceOfBinder_change_sequence(Transfer_HSequenceOfBinder* self_) {
-    try { return {&(self_->ChangeSequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Transfer_HSequenceOfBinder_dynamic_type(const Transfer_HSequenceOfBinder* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> Transfer_HSequenceOfBinder_get_type_name() {
-    try { return {Transfer_HSequenceOfBinder::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Transfer_HSequenceOfBinder_get_type_descriptor() {
-    try { return {&(Transfer_HSequenceOfBinder::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> Transfer_HSequenceOfBinder_as_Standard_Transient(const Transfer_HSequenceOfBinder* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> Transfer_HSequenceOfBinder_as_Standard_Transient_mut(Transfer_HSequenceOfBinder* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTransferHSequenceOfBinder*> Transfer_HSequenceOfBinder_to_handle(Transfer_HSequenceOfBinder* obj) {
-    try { return {new HandleTransferHSequenceOfBinder(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Transfer_HSequenceOfBinder*> HandleTransferHSequenceOfBinder_get(const HandleTransferHSequenceOfBinder* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Transfer_HSequenceOfBinder*> HandleTransferHSequenceOfBinder_get_mut(HandleTransferHSequenceOfBinder* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTransferHSequenceOfBinder_to_HandleStandardTransient(const HandleTransferHSequenceOfBinder* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Transfer_HSequenceOfBinder_inherited_IsInstance(const Transfer_HSequenceOfBinder* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Transfer_HSequenceOfBinder_inherited_IsKind(const Transfer_HSequenceOfBinder* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> Transfer_HSequenceOfBinder_inherited_This(const Transfer_HSequenceOfBinder* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> Transfer_HSequenceOfBinder_inherited_GetRefCount(const Transfer_HSequenceOfBinder* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Transfer_HSequenceOfBinder_inherited_IncrementRefCounter(Transfer_HSequenceOfBinder* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> Transfer_HSequenceOfBinder_inherited_DecrementRefCounter(Transfer_HSequenceOfBinder* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Transfer_HSequenceOfBinder_inherited_Delete(const Transfer_HSequenceOfBinder* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void Transfer_HSequenceOfBinder_destructor(Transfer_HSequenceOfBinder* self_) { delete self_; }
-
-// ========================
-// Transfer_HSequenceOfFinder wrappers
-// ========================
-
-extern "C" OcctResult<Transfer_HSequenceOfFinder*> Transfer_HSequenceOfFinder_ctor() {
-    try { return {new Transfer_HSequenceOfFinder(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Transfer_HSequenceOfFinder*> Transfer_HSequenceOfFinder_ctor_sequenceoffinder(Transfer_SequenceOfFinder const* theOther) {
-    try { return {new Transfer_HSequenceOfFinder(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Transfer_SequenceOfFinder const*> Transfer_HSequenceOfFinder_sequence(const Transfer_HSequenceOfFinder* self_) {
-    try { return {&(self_->Sequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Transfer_HSequenceOfFinder_append_handletransferfinder(Transfer_HSequenceOfFinder* self_, Handle(Transfer_Finder) const* theItem) {
-    try { self_->Append(*theItem); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Transfer_HSequenceOfFinder_append_sequenceoffinder(Transfer_HSequenceOfFinder* self_, Transfer_SequenceOfFinder* theSequence) {
-    try { self_->Append(*theSequence); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Transfer_SequenceOfFinder*> Transfer_HSequenceOfFinder_change_sequence(Transfer_HSequenceOfFinder* self_) {
-    try { return {&(self_->ChangeSequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Transfer_HSequenceOfFinder_dynamic_type(const Transfer_HSequenceOfFinder* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> Transfer_HSequenceOfFinder_get_type_name() {
-    try { return {Transfer_HSequenceOfFinder::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Transfer_HSequenceOfFinder_get_type_descriptor() {
-    try { return {&(Transfer_HSequenceOfFinder::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> Transfer_HSequenceOfFinder_as_Standard_Transient(const Transfer_HSequenceOfFinder* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> Transfer_HSequenceOfFinder_as_Standard_Transient_mut(Transfer_HSequenceOfFinder* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTransferHSequenceOfFinder*> Transfer_HSequenceOfFinder_to_handle(Transfer_HSequenceOfFinder* obj) {
-    try { return {new HandleTransferHSequenceOfFinder(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Transfer_HSequenceOfFinder*> HandleTransferHSequenceOfFinder_get(const HandleTransferHSequenceOfFinder* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Transfer_HSequenceOfFinder*> HandleTransferHSequenceOfFinder_get_mut(HandleTransferHSequenceOfFinder* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTransferHSequenceOfFinder_to_HandleStandardTransient(const HandleTransferHSequenceOfFinder* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Transfer_HSequenceOfFinder_inherited_IsInstance(const Transfer_HSequenceOfFinder* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Transfer_HSequenceOfFinder_inherited_IsKind(const Transfer_HSequenceOfFinder* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> Transfer_HSequenceOfFinder_inherited_This(const Transfer_HSequenceOfFinder* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> Transfer_HSequenceOfFinder_inherited_GetRefCount(const Transfer_HSequenceOfFinder* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Transfer_HSequenceOfFinder_inherited_IncrementRefCounter(Transfer_HSequenceOfFinder* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> Transfer_HSequenceOfFinder_inherited_DecrementRefCounter(Transfer_HSequenceOfFinder* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Transfer_HSequenceOfFinder_inherited_Delete(const Transfer_HSequenceOfFinder* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void Transfer_HSequenceOfFinder_destructor(Transfer_HSequenceOfFinder* self_) { delete self_; }
-
-// ========================
 // Transfer_IteratorOfProcessForFinder wrappers
 // ========================
 
@@ -23685,7 +22720,7 @@ extern "C" const char* Transfer_IteratorOfProcessForFinder_add_handletransferbin
     try { self_->Add(*binder, *start); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Transfer_IteratorOfProcessForFinder_filter(Transfer_IteratorOfProcessForFinder* self_, Handle(Transfer_HSequenceOfFinder) const* list, bool keep) {
+extern "C" const char* Transfer_IteratorOfProcessForFinder_filter(Transfer_IteratorOfProcessForFinder* self_, Handle(NCollection_HSequence_opencascade_handle_Transfer_Finder) const* list, bool keep) {
     try { self_->Filter(*list, keep); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -23793,7 +22828,7 @@ extern "C" const char* Transfer_IteratorOfProcessForTransient_add_handletransfer
     try { self_->Add(*binder, *start); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Transfer_IteratorOfProcessForTransient_filter(Transfer_IteratorOfProcessForTransient* self_, Handle(TColStd_HSequenceOfTransient) const* list, bool keep) {
+extern "C" const char* Transfer_IteratorOfProcessForTransient_filter(Transfer_IteratorOfProcessForTransient* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list, bool keep) {
     try { self_->Filter(*list, keep); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -23893,14 +22928,6 @@ extern "C" OcctResult<Transfer_MapContainer*> Transfer_MapContainer_ctor() {
     try { return {new Transfer_MapContainer(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Transfer_MapContainer_set_map_objects(Transfer_MapContainer* self_, TColStd_DataMapOfTransientTransient* theMapObjects) {
-    try { self_->SetMapObjects(*theMapObjects); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<TColStd_DataMapOfTransientTransient*> Transfer_MapContainer_get_map_objects(Transfer_MapContainer* self_) {
-    try { return {&(self_->GetMapObjects()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Transfer_MapContainer_dynamic_type(const Transfer_MapContainer* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -23915,20 +22942,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Transfer_MapContainer_get_ty
 }
 extern "C" OcctResult<const Standard_Transient*> Transfer_MapContainer_as_Standard_Transient(const Transfer_MapContainer* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Transfer_MapContainer_as_Standard_Transient_mut(Transfer_MapContainer* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTransferMapContainer*> Transfer_MapContainer_to_handle(Transfer_MapContainer* obj) {
-    try { return {new HandleTransferMapContainer(obj), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_MapContainer*> Transfer_MapContainer_to_handle(Transfer_MapContainer* obj) {
+    try { return {new Handle_Transfer_MapContainer(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Transfer_MapContainer*> HandleTransferMapContainer_get(const HandleTransferMapContainer* handle) {
+extern "C" OcctResult<const Transfer_MapContainer*> Handle_Transfer_MapContainer_get(const Handle_Transfer_MapContainer* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Transfer_MapContainer*> HandleTransferMapContainer_get_mut(HandleTransferMapContainer* handle) {
+extern "C" OcctResult<Transfer_MapContainer*> Handle_Transfer_MapContainer_get_mut(Handle_Transfer_MapContainer* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTransferMapContainer_to_HandleStandardTransient(const HandleTransferMapContainer* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Transfer_MapContainer_to_Handle_Standard_Transient(const Handle_Transfer_MapContainer* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Transfer_MapContainer_inherited_IsInstance(const Transfer_MapContainer* self, Handle(Standard_Type) const& theType) {
@@ -23977,8 +23004,8 @@ extern "C" OcctResult<Handle(Standard_Transient)*> Transfer_MultipleBinder_resul
     try { return {new Handle(Standard_Transient)(self_->ResultValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> Transfer_MultipleBinder_multiple_result(const Transfer_MultipleBinder* self_) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self_->MultipleResult()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> Transfer_MultipleBinder_multiple_result(const Transfer_MultipleBinder* self_) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->MultipleResult()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Transfer_MultipleBinder_is_multiple(const Transfer_MultipleBinder* self_) {
@@ -23997,7 +23024,7 @@ extern "C" OcctResult<int32_t> Transfer_MultipleBinder_nb_results(const Transfer
     try { return {self_->NbResults(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Transfer_MultipleBinder_set_multiple_result(Transfer_MultipleBinder* self_, Handle(TColStd_HSequenceOfTransient) const* mulres) {
+extern "C" const char* Transfer_MultipleBinder_set_multiple_result(Transfer_MultipleBinder* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* mulres) {
     try { self_->SetMultipleResult(*mulres); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -24017,24 +23044,24 @@ extern "C" OcctResult<const Transfer_Binder*> Transfer_MultipleBinder_as_Transfe
 extern "C" OcctResult<Transfer_Binder*> Transfer_MultipleBinder_as_Transfer_Binder_mut(Transfer_MultipleBinder* self_) { return {static_cast<Transfer_Binder*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Transfer_MultipleBinder_as_Standard_Transient(const Transfer_MultipleBinder* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Transfer_MultipleBinder_as_Standard_Transient_mut(Transfer_MultipleBinder* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTransferMultipleBinder*> Transfer_MultipleBinder_to_handle(Transfer_MultipleBinder* obj) {
-    try { return {new HandleTransferMultipleBinder(obj), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_MultipleBinder*> Transfer_MultipleBinder_to_handle(Transfer_MultipleBinder* obj) {
+    try { return {new Handle_Transfer_MultipleBinder(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Transfer_MultipleBinder*> HandleTransferMultipleBinder_get(const HandleTransferMultipleBinder* handle) {
+extern "C" OcctResult<const Transfer_MultipleBinder*> Handle_Transfer_MultipleBinder_get(const Handle_Transfer_MultipleBinder* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Transfer_MultipleBinder*> HandleTransferMultipleBinder_get_mut(HandleTransferMultipleBinder* handle) {
+extern "C" OcctResult<Transfer_MultipleBinder*> Handle_Transfer_MultipleBinder_get_mut(Handle_Transfer_MultipleBinder* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferBinder*> HandleTransferMultipleBinder_to_HandleTransferBinder(const HandleTransferMultipleBinder* self_) {
-    try { return {new HandleTransferBinder(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_Binder*> Handle_Transfer_MultipleBinder_to_Handle_Transfer_Binder(const Handle_Transfer_MultipleBinder* self_) {
+    try { return {new Handle_Transfer_Binder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTransferMultipleBinder_to_HandleStandardTransient(const HandleTransferMultipleBinder* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Transfer_MultipleBinder_to_Handle_Standard_Transient(const Handle_Transfer_MultipleBinder* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Transfer_MultipleBinder_inherited_Merge(Transfer_MultipleBinder* self, Handle(Transfer_Binder) const& other) {
@@ -24373,27 +23400,27 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Transfer_ProcessForFinder_ge
 }
 extern "C" OcctResult<const Standard_Transient*> Transfer_ProcessForFinder_as_Standard_Transient(const Transfer_ProcessForFinder* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Transfer_ProcessForFinder_as_Standard_Transient_mut(Transfer_ProcessForFinder* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTransferProcessForFinder*> Transfer_ProcessForFinder_to_handle(Transfer_ProcessForFinder* obj) {
-    try { return {new HandleTransferProcessForFinder(obj), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_ProcessForFinder*> Transfer_ProcessForFinder_to_handle(Transfer_ProcessForFinder* obj) {
+    try { return {new Handle_Transfer_ProcessForFinder(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Transfer_ProcessForFinder*> HandleTransferProcessForFinder_get(const HandleTransferProcessForFinder* handle) {
+extern "C" OcctResult<const Transfer_ProcessForFinder*> Handle_Transfer_ProcessForFinder_get(const Handle_Transfer_ProcessForFinder* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Transfer_ProcessForFinder*> HandleTransferProcessForFinder_get_mut(HandleTransferProcessForFinder* handle) {
+extern "C" OcctResult<Transfer_ProcessForFinder*> Handle_Transfer_ProcessForFinder_get_mut(Handle_Transfer_ProcessForFinder* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTransferProcessForFinder_to_HandleStandardTransient(const HandleTransferProcessForFinder* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Transfer_ProcessForFinder_to_Handle_Standard_Transient(const Handle_Transfer_ProcessForFinder* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferFinderProcess*> HandleTransferProcessForFinder_downcast_to_HandleTransferFinderProcess(const HandleTransferProcessForFinder* self_) {
+extern "C" OcctResult<Handle_Transfer_FinderProcess*> Handle_Transfer_ProcessForFinder_downcast_to_Handle_Transfer_FinderProcess(const Handle_Transfer_ProcessForFinder* self_) {
     try {
     opencascade::handle<Transfer_FinderProcess> result = opencascade::handle<Transfer_FinderProcess>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTransferFinderProcess(result), nullptr};
+    return {new Handle_Transfer_FinderProcess(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -24697,27 +23724,27 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Transfer_ProcessForTransient
 }
 extern "C" OcctResult<const Standard_Transient*> Transfer_ProcessForTransient_as_Standard_Transient(const Transfer_ProcessForTransient* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Transfer_ProcessForTransient_as_Standard_Transient_mut(Transfer_ProcessForTransient* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTransferProcessForTransient*> Transfer_ProcessForTransient_to_handle(Transfer_ProcessForTransient* obj) {
-    try { return {new HandleTransferProcessForTransient(obj), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_ProcessForTransient*> Transfer_ProcessForTransient_to_handle(Transfer_ProcessForTransient* obj) {
+    try { return {new Handle_Transfer_ProcessForTransient(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Transfer_ProcessForTransient*> HandleTransferProcessForTransient_get(const HandleTransferProcessForTransient* handle) {
+extern "C" OcctResult<const Transfer_ProcessForTransient*> Handle_Transfer_ProcessForTransient_get(const Handle_Transfer_ProcessForTransient* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Transfer_ProcessForTransient*> HandleTransferProcessForTransient_get_mut(HandleTransferProcessForTransient* handle) {
+extern "C" OcctResult<Transfer_ProcessForTransient*> Handle_Transfer_ProcessForTransient_get_mut(Handle_Transfer_ProcessForTransient* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTransferProcessForTransient_to_HandleStandardTransient(const HandleTransferProcessForTransient* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Transfer_ProcessForTransient_to_Handle_Standard_Transient(const Handle_Transfer_ProcessForTransient* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferTransientProcess*> HandleTransferProcessForTransient_downcast_to_HandleTransferTransientProcess(const HandleTransferProcessForTransient* self_) {
+extern "C" OcctResult<Handle_Transfer_TransientProcess*> Handle_Transfer_ProcessForTransient_downcast_to_Handle_Transfer_TransientProcess(const Handle_Transfer_ProcessForTransient* self_) {
     try {
     opencascade::handle<Transfer_TransientProcess> result = opencascade::handle<Transfer_TransientProcess>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTransferTransientProcess(result), nullptr};
+    return {new Handle_Transfer_TransientProcess(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -24771,16 +23798,16 @@ extern "C" OcctResult<Handle(Transfer_ResultFromTransient)*> Transfer_ResultFrom
     try { return {new Handle(Transfer_ResultFromTransient)(self_->ResultFromKey(*start)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> Transfer_ResultFromModel_results(const Transfer_ResultFromModel* self_, int32_t level) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self_->Results(level)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> Transfer_ResultFromModel_results(const Transfer_ResultFromModel* self_, int32_t level) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->Results(level)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> Transfer_ResultFromModel_transferred_list(const Transfer_ResultFromModel* self_, int32_t level) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self_->TransferredList(level)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> Transfer_ResultFromModel_transferred_list(const Transfer_ResultFromModel* self_, int32_t level) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->TransferredList(level)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> Transfer_ResultFromModel_checked_list(const Transfer_ResultFromModel* self_, int32_t check, bool result) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self_->CheckedList(static_cast<Interface_CheckStatus>(check), result)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> Transfer_ResultFromModel_checked_list(const Transfer_ResultFromModel* self_, int32_t check, bool result) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->CheckedList(static_cast<Interface_CheckStatus>(check), result)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Interface_CheckIterator*> Transfer_ResultFromModel_check_list(const Transfer_ResultFromModel* self_, bool erronly, int32_t level) {
@@ -24849,20 +23876,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Transfer_ResultFromModel_get
 }
 extern "C" OcctResult<const Standard_Transient*> Transfer_ResultFromModel_as_Standard_Transient(const Transfer_ResultFromModel* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Transfer_ResultFromModel_as_Standard_Transient_mut(Transfer_ResultFromModel* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTransferResultFromModel*> Transfer_ResultFromModel_to_handle(Transfer_ResultFromModel* obj) {
-    try { return {new HandleTransferResultFromModel(obj), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_ResultFromModel*> Transfer_ResultFromModel_to_handle(Transfer_ResultFromModel* obj) {
+    try { return {new Handle_Transfer_ResultFromModel(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Transfer_ResultFromModel*> HandleTransferResultFromModel_get(const HandleTransferResultFromModel* handle) {
+extern "C" OcctResult<const Transfer_ResultFromModel*> Handle_Transfer_ResultFromModel_get(const Handle_Transfer_ResultFromModel* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Transfer_ResultFromModel*> HandleTransferResultFromModel_get_mut(HandleTransferResultFromModel* handle) {
+extern "C" OcctResult<Transfer_ResultFromModel*> Handle_Transfer_ResultFromModel_get_mut(Handle_Transfer_ResultFromModel* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTransferResultFromModel_to_HandleStandardTransient(const HandleTransferResultFromModel* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Transfer_ResultFromModel_to_Handle_Standard_Transient(const Handle_Transfer_ResultFromModel* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Transfer_ResultFromModel_inherited_IsInstance(const Transfer_ResultFromModel* self, Handle(Standard_Type) const& theType) {
@@ -24951,10 +23978,6 @@ extern "C" OcctResult<int32_t> Transfer_ResultFromTransient_nb_sub_results(const
     try { return {self_->NbSubResults(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Transfer_ResultFromTransient_fill_map(const Transfer_ResultFromTransient* self_, TColStd_IndexedMapOfTransient* map) {
-    try { self_->FillMap(*map); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* Transfer_ResultFromTransient_fill(Transfer_ResultFromTransient* self_, Handle(Transfer_TransientProcess) const* TP) {
     try { self_->Fill(*TP); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -24981,20 +24004,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Transfer_ResultFromTransient
 }
 extern "C" OcctResult<const Standard_Transient*> Transfer_ResultFromTransient_as_Standard_Transient(const Transfer_ResultFromTransient* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Transfer_ResultFromTransient_as_Standard_Transient_mut(Transfer_ResultFromTransient* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTransferResultFromTransient*> Transfer_ResultFromTransient_to_handle(Transfer_ResultFromTransient* obj) {
-    try { return {new HandleTransferResultFromTransient(obj), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_ResultFromTransient*> Transfer_ResultFromTransient_to_handle(Transfer_ResultFromTransient* obj) {
+    try { return {new Handle_Transfer_ResultFromTransient(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Transfer_ResultFromTransient*> HandleTransferResultFromTransient_get(const HandleTransferResultFromTransient* handle) {
+extern "C" OcctResult<const Transfer_ResultFromTransient*> Handle_Transfer_ResultFromTransient_get(const Handle_Transfer_ResultFromTransient* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Transfer_ResultFromTransient*> HandleTransferResultFromTransient_get_mut(HandleTransferResultFromTransient* handle) {
+extern "C" OcctResult<Transfer_ResultFromTransient*> Handle_Transfer_ResultFromTransient_get_mut(Handle_Transfer_ResultFromTransient* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTransferResultFromTransient_to_HandleStandardTransient(const HandleTransferResultFromTransient* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Transfer_ResultFromTransient_to_Handle_Standard_Transient(const Handle_Transfer_ResultFromTransient* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Transfer_ResultFromTransient_inherited_IsInstance(const Transfer_ResultFromTransient* self, Handle(Standard_Type) const& theType) {
@@ -25071,31 +24094,31 @@ extern "C" OcctResult<const Transfer_Binder*> Transfer_SimpleBinderOfTransient_a
 extern "C" OcctResult<Transfer_Binder*> Transfer_SimpleBinderOfTransient_as_Transfer_Binder_mut(Transfer_SimpleBinderOfTransient* self_) { return {static_cast<Transfer_Binder*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Transfer_SimpleBinderOfTransient_as_Standard_Transient(const Transfer_SimpleBinderOfTransient* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Transfer_SimpleBinderOfTransient_as_Standard_Transient_mut(Transfer_SimpleBinderOfTransient* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTransferSimpleBinderOfTransient*> Transfer_SimpleBinderOfTransient_to_handle(Transfer_SimpleBinderOfTransient* obj) {
-    try { return {new HandleTransferSimpleBinderOfTransient(obj), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_SimpleBinderOfTransient*> Transfer_SimpleBinderOfTransient_to_handle(Transfer_SimpleBinderOfTransient* obj) {
+    try { return {new Handle_Transfer_SimpleBinderOfTransient(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Transfer_SimpleBinderOfTransient*> HandleTransferSimpleBinderOfTransient_get(const HandleTransferSimpleBinderOfTransient* handle) {
+extern "C" OcctResult<const Transfer_SimpleBinderOfTransient*> Handle_Transfer_SimpleBinderOfTransient_get(const Handle_Transfer_SimpleBinderOfTransient* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Transfer_SimpleBinderOfTransient*> HandleTransferSimpleBinderOfTransient_get_mut(HandleTransferSimpleBinderOfTransient* handle) {
+extern "C" OcctResult<Transfer_SimpleBinderOfTransient*> Handle_Transfer_SimpleBinderOfTransient_get_mut(Handle_Transfer_SimpleBinderOfTransient* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferBinder*> HandleTransferSimpleBinderOfTransient_to_HandleTransferBinder(const HandleTransferSimpleBinderOfTransient* self_) {
-    try { return {new HandleTransferBinder(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_Binder*> Handle_Transfer_SimpleBinderOfTransient_to_Handle_Transfer_Binder(const Handle_Transfer_SimpleBinderOfTransient* self_) {
+    try { return {new Handle_Transfer_Binder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTransferSimpleBinderOfTransient_to_HandleStandardTransient(const HandleTransferSimpleBinderOfTransient* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Transfer_SimpleBinderOfTransient_to_Handle_Standard_Transient(const Handle_Transfer_SimpleBinderOfTransient* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferBinderOfTransientInteger*> HandleTransferSimpleBinderOfTransient_downcast_to_HandleTransferBinderOfTransientInteger(const HandleTransferSimpleBinderOfTransient* self_) {
+extern "C" OcctResult<Handle_Transfer_BinderOfTransientInteger*> Handle_Transfer_SimpleBinderOfTransient_downcast_to_Handle_Transfer_BinderOfTransientInteger(const Handle_Transfer_SimpleBinderOfTransient* self_) {
     try {
     opencascade::handle<Transfer_BinderOfTransientInteger> result = opencascade::handle<Transfer_BinderOfTransientInteger>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTransferBinderOfTransientInteger(result), nullptr};
+    return {new Handle_Transfer_BinderOfTransientInteger(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -25177,10 +24200,6 @@ extern "C" void Transfer_SimpleBinderOfTransient_destructor(Transfer_SimpleBinde
 // Transfer_TransferDeadLoop wrappers
 // ========================
 
-extern "C" OcctResult<Transfer_TransferDeadLoop*> Transfer_TransferDeadLoop_ctor() {
-    try { return {new Transfer_TransferDeadLoop(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Transfer_TransferDeadLoop*> Transfer_TransferDeadLoop_ctor_charptr(const char* theMessage) {
     try { return {new Transfer_TransferDeadLoop(theMessage), nullptr}; }
     OCCT_CATCH_RETURN
@@ -25189,32 +24208,8 @@ extern "C" OcctResult<Transfer_TransferDeadLoop*> Transfer_TransferDeadLoop_ctor
     try { return {new Transfer_TransferDeadLoop(theMessage, theStackTrace), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> Transfer_TransferDeadLoop_dynamic_type(const Transfer_TransferDeadLoop* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Transfer_TransferDeadLoop_raise_charptr(const char* theMessage) {
-    try { Transfer_TransferDeadLoop::Raise(theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Transfer_TransferDeadLoop_raise_sstream(Standard_SStream* theMessage) {
-    try { Transfer_TransferDeadLoop::Raise(*theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(Transfer_TransferDeadLoop)*> Transfer_TransferDeadLoop_new_instance_charptr(const char* theMessage) {
-    try { return {new Handle(Transfer_TransferDeadLoop)(Transfer_TransferDeadLoop::NewInstance(theMessage)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Transfer_TransferDeadLoop)*> Transfer_TransferDeadLoop_new_instance_charptr2(const char* theMessage, const char* theStackTrace) {
-    try { return {new Handle(Transfer_TransferDeadLoop)(Transfer_TransferDeadLoop::NewInstance(theMessage, theStackTrace)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> Transfer_TransferDeadLoop_get_type_name() {
-    try { return {Transfer_TransferDeadLoop::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Transfer_TransferDeadLoop_get_type_descriptor() {
-    try { return {&(Transfer_TransferDeadLoop::get_type_descriptor()), nullptr}; }
+extern "C" OcctResult<char const*> Transfer_TransferDeadLoop_exception_type(const Transfer_TransferDeadLoop* self_) {
+    try { return {self_->ExceptionType(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<const Transfer_TransferFailure*> Transfer_TransferDeadLoop_as_Transfer_TransferFailure(const Transfer_TransferDeadLoop* self_) { return {static_cast<const Transfer_TransferFailure*>(self_), nullptr}; }
@@ -25223,74 +24218,8 @@ extern "C" OcctResult<const Interface_InterfaceError*> Transfer_TransferDeadLoop
 extern "C" OcctResult<Interface_InterfaceError*> Transfer_TransferDeadLoop_as_Interface_InterfaceError_mut(Transfer_TransferDeadLoop* self_) { return {static_cast<Interface_InterfaceError*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Failure*> Transfer_TransferDeadLoop_as_Standard_Failure(const Transfer_TransferDeadLoop* self_) { return {static_cast<const Standard_Failure*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Failure*> Transfer_TransferDeadLoop_as_Standard_Failure_mut(Transfer_TransferDeadLoop* self_) { return {static_cast<Standard_Failure*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> Transfer_TransferDeadLoop_as_Standard_Transient(const Transfer_TransferDeadLoop* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> Transfer_TransferDeadLoop_as_Standard_Transient_mut(Transfer_TransferDeadLoop* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTransferTransferDeadLoop*> Transfer_TransferDeadLoop_to_handle(Transfer_TransferDeadLoop* obj) {
-    try { return {new HandleTransferTransferDeadLoop(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Transfer_TransferDeadLoop*> HandleTransferTransferDeadLoop_get(const HandleTransferTransferDeadLoop* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Transfer_TransferDeadLoop*> HandleTransferTransferDeadLoop_get_mut(HandleTransferTransferDeadLoop* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleTransferTransferFailure*> HandleTransferTransferDeadLoop_to_HandleTransferTransferFailure(const HandleTransferTransferDeadLoop* self_) {
-    try { return {new HandleTransferTransferFailure(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleInterfaceInterfaceError*> HandleTransferTransferDeadLoop_to_HandleInterfaceInterfaceError(const HandleTransferTransferDeadLoop* self_) {
-    try { return {new HandleInterfaceInterfaceError(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardFailure*> HandleTransferTransferDeadLoop_to_HandleStandardFailure(const HandleTransferTransferDeadLoop* self_) {
-    try { return {new HandleStandardFailure(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTransferTransferDeadLoop_to_HandleStandardTransient(const HandleTransferTransferDeadLoop* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* Transfer_TransferDeadLoop_inherited_Print(const Transfer_TransferDeadLoop* self, Standard_OStream& theStream) {
     try { self->Print(theStream); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Transfer_TransferDeadLoop_inherited_Reraise(Transfer_TransferDeadLoop* self) {
-    try { self->Reraise(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Transfer_TransferDeadLoop_inherited_Jump(Transfer_TransferDeadLoop* self) {
-    try { self->Jump(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> Transfer_TransferDeadLoop_inherited_IsInstance(const Transfer_TransferDeadLoop* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Transfer_TransferDeadLoop_inherited_IsKind(const Transfer_TransferDeadLoop* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> Transfer_TransferDeadLoop_inherited_This(const Transfer_TransferDeadLoop* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> Transfer_TransferDeadLoop_inherited_GetRefCount(const Transfer_TransferDeadLoop* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Transfer_TransferDeadLoop_inherited_IncrementRefCounter(Transfer_TransferDeadLoop* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> Transfer_TransferDeadLoop_inherited_DecrementRefCounter(Transfer_TransferDeadLoop* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Transfer_TransferDeadLoop_inherited_Delete(const Transfer_TransferDeadLoop* self) {
-    try { self->Delete(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void Transfer_TransferDeadLoop_destructor(Transfer_TransferDeadLoop* self_) { delete self_; }
@@ -25383,10 +24312,6 @@ extern "C" void Transfer_TransferDispatch_destructor(Transfer_TransferDispatch* 
 // Transfer_TransferFailure wrappers
 // ========================
 
-extern "C" OcctResult<Transfer_TransferFailure*> Transfer_TransferFailure_ctor() {
-    try { return {new Transfer_TransferFailure(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Transfer_TransferFailure*> Transfer_TransferFailure_ctor_charptr(const char* theMessage) {
     try { return {new Transfer_TransferFailure(theMessage), nullptr}; }
     OCCT_CATCH_RETURN
@@ -25395,110 +24320,16 @@ extern "C" OcctResult<Transfer_TransferFailure*> Transfer_TransferFailure_ctor_c
     try { return {new Transfer_TransferFailure(theMessage, theStackTrace), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> Transfer_TransferFailure_dynamic_type(const Transfer_TransferFailure* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Transfer_TransferFailure_raise_charptr(const char* theMessage) {
-    try { Transfer_TransferFailure::Raise(theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Transfer_TransferFailure_raise_sstream(Standard_SStream* theMessage) {
-    try { Transfer_TransferFailure::Raise(*theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(Transfer_TransferFailure)*> Transfer_TransferFailure_new_instance_charptr(const char* theMessage) {
-    try { return {new Handle(Transfer_TransferFailure)(Transfer_TransferFailure::NewInstance(theMessage)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Transfer_TransferFailure)*> Transfer_TransferFailure_new_instance_charptr2(const char* theMessage, const char* theStackTrace) {
-    try { return {new Handle(Transfer_TransferFailure)(Transfer_TransferFailure::NewInstance(theMessage, theStackTrace)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> Transfer_TransferFailure_get_type_name() {
-    try { return {Transfer_TransferFailure::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Transfer_TransferFailure_get_type_descriptor() {
-    try { return {&(Transfer_TransferFailure::get_type_descriptor()), nullptr}; }
+extern "C" OcctResult<char const*> Transfer_TransferFailure_exception_type(const Transfer_TransferFailure* self_) {
+    try { return {self_->ExceptionType(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<const Interface_InterfaceError*> Transfer_TransferFailure_as_Interface_InterfaceError(const Transfer_TransferFailure* self_) { return {static_cast<const Interface_InterfaceError*>(self_), nullptr}; }
 extern "C" OcctResult<Interface_InterfaceError*> Transfer_TransferFailure_as_Interface_InterfaceError_mut(Transfer_TransferFailure* self_) { return {static_cast<Interface_InterfaceError*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Failure*> Transfer_TransferFailure_as_Standard_Failure(const Transfer_TransferFailure* self_) { return {static_cast<const Standard_Failure*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Failure*> Transfer_TransferFailure_as_Standard_Failure_mut(Transfer_TransferFailure* self_) { return {static_cast<Standard_Failure*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> Transfer_TransferFailure_as_Standard_Transient(const Transfer_TransferFailure* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> Transfer_TransferFailure_as_Standard_Transient_mut(Transfer_TransferFailure* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTransferTransferFailure*> Transfer_TransferFailure_to_handle(Transfer_TransferFailure* obj) {
-    try { return {new HandleTransferTransferFailure(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Transfer_TransferFailure*> HandleTransferTransferFailure_get(const HandleTransferTransferFailure* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Transfer_TransferFailure*> HandleTransferTransferFailure_get_mut(HandleTransferTransferFailure* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleInterfaceInterfaceError*> HandleTransferTransferFailure_to_HandleInterfaceInterfaceError(const HandleTransferTransferFailure* self_) {
-    try { return {new HandleInterfaceInterfaceError(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardFailure*> HandleTransferTransferFailure_to_HandleStandardFailure(const HandleTransferTransferFailure* self_) {
-    try { return {new HandleStandardFailure(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTransferTransferFailure_to_HandleStandardTransient(const HandleTransferTransferFailure* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleTransferTransferDeadLoop*> HandleTransferTransferFailure_downcast_to_HandleTransferTransferDeadLoop(const HandleTransferTransferFailure* self_) {
-    try {
-    opencascade::handle<Transfer_TransferDeadLoop> result = opencascade::handle<Transfer_TransferDeadLoop>::DownCast(*self_);
-    if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTransferTransferDeadLoop(result), nullptr};
-    }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* Transfer_TransferFailure_inherited_Print(const Transfer_TransferFailure* self, Standard_OStream& theStream) {
     try { self->Print(theStream); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Transfer_TransferFailure_inherited_Reraise(Transfer_TransferFailure* self) {
-    try { self->Reraise(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Transfer_TransferFailure_inherited_Jump(Transfer_TransferFailure* self) {
-    try { self->Jump(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> Transfer_TransferFailure_inherited_IsInstance(const Transfer_TransferFailure* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Transfer_TransferFailure_inherited_IsKind(const Transfer_TransferFailure* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> Transfer_TransferFailure_inherited_This(const Transfer_TransferFailure* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> Transfer_TransferFailure_inherited_GetRefCount(const Transfer_TransferFailure* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Transfer_TransferFailure_inherited_IncrementRefCounter(Transfer_TransferFailure* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> Transfer_TransferFailure_inherited_DecrementRefCounter(Transfer_TransferFailure* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Transfer_TransferFailure_inherited_Delete(const Transfer_TransferFailure* self) {
-    try { self->Delete(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void Transfer_TransferFailure_destructor(Transfer_TransferFailure* self_) { delete self_; }
@@ -25673,7 +24504,7 @@ extern "C" OcctResult<Transfer_TransientListBinder*> Transfer_TransientListBinde
     try { return {new Transfer_TransientListBinder(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Transfer_TransientListBinder*> Transfer_TransientListBinder_ctor_handletcolstdhsequenceoftransient(Handle(TColStd_HSequenceOfTransient) const* list) {
+extern "C" OcctResult<Transfer_TransientListBinder*> Transfer_TransientListBinder_ctor_handlencollectionhsequenceopencascadehandlestandardtransient(Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list) {
     try { return {new Transfer_TransientListBinder(*list), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -25681,8 +24512,8 @@ extern "C" OcctResult<Handle(Standard_Type)*> Transfer_TransientListBinder_resul
     try { return {new Handle(Standard_Type)(self_->ResultType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> Transfer_TransientListBinder_result(const Transfer_TransientListBinder* self_) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self_->Result()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> Transfer_TransientListBinder_result(const Transfer_TransientListBinder* self_) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->Result()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Transfer_TransientListBinder_is_multiple(const Transfer_TransientListBinder* self_) {
@@ -25725,24 +24556,24 @@ extern "C" OcctResult<const Transfer_Binder*> Transfer_TransientListBinder_as_Tr
 extern "C" OcctResult<Transfer_Binder*> Transfer_TransientListBinder_as_Transfer_Binder_mut(Transfer_TransientListBinder* self_) { return {static_cast<Transfer_Binder*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Transfer_TransientListBinder_as_Standard_Transient(const Transfer_TransientListBinder* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Transfer_TransientListBinder_as_Standard_Transient_mut(Transfer_TransientListBinder* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTransferTransientListBinder*> Transfer_TransientListBinder_to_handle(Transfer_TransientListBinder* obj) {
-    try { return {new HandleTransferTransientListBinder(obj), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_TransientListBinder*> Transfer_TransientListBinder_to_handle(Transfer_TransientListBinder* obj) {
+    try { return {new Handle_Transfer_TransientListBinder(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Transfer_TransientListBinder*> HandleTransferTransientListBinder_get(const HandleTransferTransientListBinder* handle) {
+extern "C" OcctResult<const Transfer_TransientListBinder*> Handle_Transfer_TransientListBinder_get(const Handle_Transfer_TransientListBinder* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Transfer_TransientListBinder*> HandleTransferTransientListBinder_get_mut(HandleTransferTransientListBinder* handle) {
+extern "C" OcctResult<Transfer_TransientListBinder*> Handle_Transfer_TransientListBinder_get_mut(Handle_Transfer_TransientListBinder* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferBinder*> HandleTransferTransientListBinder_to_HandleTransferBinder(const HandleTransferTransientListBinder* self_) {
-    try { return {new HandleTransferBinder(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_Binder*> Handle_Transfer_TransientListBinder_to_Handle_Transfer_Binder(const Handle_Transfer_TransientListBinder* self_) {
+    try { return {new Handle_Transfer_Binder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTransferTransientListBinder_to_HandleStandardTransient(const HandleTransferTransientListBinder* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Transfer_TransientListBinder_to_Handle_Standard_Transient(const Handle_Transfer_TransientListBinder* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Transfer_TransientListBinder_inherited_Merge(Transfer_TransientListBinder* self, Handle(Transfer_Binder) const& other) {
@@ -25851,24 +24682,24 @@ extern "C" OcctResult<const Transfer_Finder*> Transfer_TransientMapper_as_Transf
 extern "C" OcctResult<Transfer_Finder*> Transfer_TransientMapper_as_Transfer_Finder_mut(Transfer_TransientMapper* self_) { return {static_cast<Transfer_Finder*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Transfer_TransientMapper_as_Standard_Transient(const Transfer_TransientMapper* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Transfer_TransientMapper_as_Standard_Transient_mut(Transfer_TransientMapper* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTransferTransientMapper*> Transfer_TransientMapper_to_handle(Transfer_TransientMapper* obj) {
-    try { return {new HandleTransferTransientMapper(obj), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_TransientMapper*> Transfer_TransientMapper_to_handle(Transfer_TransientMapper* obj) {
+    try { return {new Handle_Transfer_TransientMapper(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Transfer_TransientMapper*> HandleTransferTransientMapper_get(const HandleTransferTransientMapper* handle) {
+extern "C" OcctResult<const Transfer_TransientMapper*> Handle_Transfer_TransientMapper_get(const Handle_Transfer_TransientMapper* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Transfer_TransientMapper*> HandleTransferTransientMapper_get_mut(HandleTransferTransientMapper* handle) {
+extern "C" OcctResult<Transfer_TransientMapper*> Handle_Transfer_TransientMapper_get_mut(Handle_Transfer_TransientMapper* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferFinder*> HandleTransferTransientMapper_to_HandleTransferFinder(const HandleTransferTransientMapper* self_) {
-    try { return {new HandleTransferFinder(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_Finder*> Handle_Transfer_TransientMapper_to_Handle_Transfer_Finder(const Handle_Transfer_TransientMapper* self_) {
+    try { return {new Handle_Transfer_Finder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTransferTransientMapper_to_HandleStandardTransient(const HandleTransferTransientMapper* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Transfer_TransientMapper_to_Handle_Standard_Transient(const Handle_Transfer_TransientMapper* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<size_t> Transfer_TransientMapper_inherited_GetHashCode(const Transfer_TransientMapper* self) {
@@ -25933,8 +24764,8 @@ extern "C" OcctResult<Interface_EntityIterator*> Transfer_TransientProcess_typed
     try { return {new Interface_EntityIterator(self_->TypedSharings(*start, *type)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> Transfer_TransientProcess_roots_for_transfer(Transfer_TransientProcess* self_) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self_->RootsForTransfer()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> Transfer_TransientProcess_roots_for_transfer(Transfer_TransientProcess* self_) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->RootsForTransfer()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Transfer_TransientProcess_set_model(Transfer_TransientProcess* self_, Handle(Interface_InterfaceModel) const* model) {
@@ -26001,24 +24832,24 @@ extern "C" OcctResult<const Transfer_ProcessForTransient*> Transfer_TransientPro
 extern "C" OcctResult<Transfer_ProcessForTransient*> Transfer_TransientProcess_as_Transfer_ProcessForTransient_mut(Transfer_TransientProcess* self_) { return {static_cast<Transfer_ProcessForTransient*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Transfer_TransientProcess_as_Standard_Transient(const Transfer_TransientProcess* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Transfer_TransientProcess_as_Standard_Transient_mut(Transfer_TransientProcess* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTransferTransientProcess*> Transfer_TransientProcess_to_handle(Transfer_TransientProcess* obj) {
-    try { return {new HandleTransferTransientProcess(obj), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_TransientProcess*> Transfer_TransientProcess_to_handle(Transfer_TransientProcess* obj) {
+    try { return {new Handle_Transfer_TransientProcess(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Transfer_TransientProcess*> HandleTransferTransientProcess_get(const HandleTransferTransientProcess* handle) {
+extern "C" OcctResult<const Transfer_TransientProcess*> Handle_Transfer_TransientProcess_get(const Handle_Transfer_TransientProcess* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Transfer_TransientProcess*> HandleTransferTransientProcess_get_mut(HandleTransferTransientProcess* handle) {
+extern "C" OcctResult<Transfer_TransientProcess*> Handle_Transfer_TransientProcess_get_mut(Handle_Transfer_TransientProcess* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferProcessForTransient*> HandleTransferTransientProcess_to_HandleTransferProcessForTransient(const HandleTransferTransientProcess* self_) {
-    try { return {new HandleTransferProcessForTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_ProcessForTransient*> Handle_Transfer_TransientProcess_to_Handle_Transfer_ProcessForTransient(const Handle_Transfer_TransientProcess* self_) {
+    try { return {new Handle_Transfer_ProcessForTransient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTransferTransientProcess_to_HandleStandardTransient(const HandleTransferTransientProcess* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Transfer_TransientProcess_to_Handle_Standard_Transient(const Handle_Transfer_TransientProcess* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Transfer_TransientProcess_inherited_Clear(Transfer_TransientProcess* self) {
@@ -26291,24 +25122,24 @@ extern "C" OcctResult<const Transfer_Binder*> Transfer_VoidBinder_as_Transfer_Bi
 extern "C" OcctResult<Transfer_Binder*> Transfer_VoidBinder_as_Transfer_Binder_mut(Transfer_VoidBinder* self_) { return {static_cast<Transfer_Binder*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Transfer_VoidBinder_as_Standard_Transient(const Transfer_VoidBinder* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Transfer_VoidBinder_as_Standard_Transient_mut(Transfer_VoidBinder* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTransferVoidBinder*> Transfer_VoidBinder_to_handle(Transfer_VoidBinder* obj) {
-    try { return {new HandleTransferVoidBinder(obj), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_VoidBinder*> Transfer_VoidBinder_to_handle(Transfer_VoidBinder* obj) {
+    try { return {new Handle_Transfer_VoidBinder(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Transfer_VoidBinder*> HandleTransferVoidBinder_get(const HandleTransferVoidBinder* handle) {
+extern "C" OcctResult<const Transfer_VoidBinder*> Handle_Transfer_VoidBinder_get(const Handle_Transfer_VoidBinder* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Transfer_VoidBinder*> HandleTransferVoidBinder_get_mut(HandleTransferVoidBinder* handle) {
+extern "C" OcctResult<Transfer_VoidBinder*> Handle_Transfer_VoidBinder_get_mut(Handle_Transfer_VoidBinder* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferBinder*> HandleTransferVoidBinder_to_HandleTransferBinder(const HandleTransferVoidBinder* self_) {
-    try { return {new HandleTransferBinder(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_Binder*> Handle_Transfer_VoidBinder_to_Handle_Transfer_Binder(const Handle_Transfer_VoidBinder* self_) {
+    try { return {new Handle_Transfer_Binder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTransferVoidBinder_to_HandleStandardTransient(const HandleTransferVoidBinder* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Transfer_VoidBinder_to_Handle_Standard_Transient(const Handle_Transfer_VoidBinder* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Transfer_VoidBinder_inherited_Merge(Transfer_VoidBinder* self, Handle(Transfer_Binder) const& other) {
@@ -26433,31 +25264,31 @@ extern "C" OcctResult<const Transfer_Binder*> TransferBRep_BinderOfShape_as_Tran
 extern "C" OcctResult<Transfer_Binder*> TransferBRep_BinderOfShape_as_Transfer_Binder_mut(TransferBRep_BinderOfShape* self_) { return {static_cast<Transfer_Binder*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TransferBRep_BinderOfShape_as_Standard_Transient(const TransferBRep_BinderOfShape* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TransferBRep_BinderOfShape_as_Standard_Transient_mut(TransferBRep_BinderOfShape* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTransferBRepBinderOfShape*> TransferBRep_BinderOfShape_to_handle(TransferBRep_BinderOfShape* obj) {
-    try { return {new HandleTransferBRepBinderOfShape(obj), nullptr}; }
+extern "C" OcctResult<Handle_TransferBRep_BinderOfShape*> TransferBRep_BinderOfShape_to_handle(TransferBRep_BinderOfShape* obj) {
+    try { return {new Handle_TransferBRep_BinderOfShape(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TransferBRep_BinderOfShape*> HandleTransferBRepBinderOfShape_get(const HandleTransferBRepBinderOfShape* handle) {
+extern "C" OcctResult<const TransferBRep_BinderOfShape*> Handle_TransferBRep_BinderOfShape_get(const Handle_TransferBRep_BinderOfShape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TransferBRep_BinderOfShape*> HandleTransferBRepBinderOfShape_get_mut(HandleTransferBRepBinderOfShape* handle) {
+extern "C" OcctResult<TransferBRep_BinderOfShape*> Handle_TransferBRep_BinderOfShape_get_mut(Handle_TransferBRep_BinderOfShape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferBinder*> HandleTransferBRepBinderOfShape_to_HandleTransferBinder(const HandleTransferBRepBinderOfShape* self_) {
-    try { return {new HandleTransferBinder(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_Binder*> Handle_TransferBRep_BinderOfShape_to_Handle_Transfer_Binder(const Handle_TransferBRep_BinderOfShape* self_) {
+    try { return {new Handle_Transfer_Binder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTransferBRepBinderOfShape_to_HandleStandardTransient(const HandleTransferBRepBinderOfShape* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TransferBRep_BinderOfShape_to_Handle_Standard_Transient(const Handle_TransferBRep_BinderOfShape* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferBRepShapeBinder*> HandleTransferBRepBinderOfShape_downcast_to_HandleTransferBRepShapeBinder(const HandleTransferBRepBinderOfShape* self_) {
+extern "C" OcctResult<Handle_TransferBRep_ShapeBinder*> Handle_TransferBRep_BinderOfShape_downcast_to_Handle_TransferBRep_ShapeBinder(const Handle_TransferBRep_BinderOfShape* self_) {
     try {
     opencascade::handle<TransferBRep_ShapeBinder> result = opencascade::handle<TransferBRep_ShapeBinder>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTransferBRepShapeBinder(result), nullptr};
+    return {new Handle_TransferBRep_ShapeBinder(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -26536,94 +25367,6 @@ extern "C" const char* TransferBRep_BinderOfShape_inherited_Delete(const Transfe
 extern "C" void TransferBRep_BinderOfShape_destructor(TransferBRep_BinderOfShape* self_) { delete self_; }
 
 // ========================
-// TransferBRep_HSequenceOfTransferResultInfo wrappers
-// ========================
-
-extern "C" OcctResult<TransferBRep_HSequenceOfTransferResultInfo*> TransferBRep_HSequenceOfTransferResultInfo_ctor() {
-    try { return {new TransferBRep_HSequenceOfTransferResultInfo(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TransferBRep_HSequenceOfTransferResultInfo*> TransferBRep_HSequenceOfTransferResultInfo_ctor_sequenceoftransferresultinfo(TransferBRep_SequenceOfTransferResultInfo const* theOther) {
-    try { return {new TransferBRep_HSequenceOfTransferResultInfo(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TransferBRep_SequenceOfTransferResultInfo const*> TransferBRep_HSequenceOfTransferResultInfo_sequence(const TransferBRep_HSequenceOfTransferResultInfo* self_) {
-    try { return {&(self_->Sequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TransferBRep_HSequenceOfTransferResultInfo_append_handletransferbreptransferresultinfo(TransferBRep_HSequenceOfTransferResultInfo* self_, Handle(TransferBRep_TransferResultInfo) const* theItem) {
-    try { self_->Append(*theItem); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TransferBRep_HSequenceOfTransferResultInfo_append_sequenceoftransferresultinfo(TransferBRep_HSequenceOfTransferResultInfo* self_, TransferBRep_SequenceOfTransferResultInfo* theSequence) {
-    try { self_->Append(*theSequence); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<TransferBRep_SequenceOfTransferResultInfo*> TransferBRep_HSequenceOfTransferResultInfo_change_sequence(TransferBRep_HSequenceOfTransferResultInfo* self_) {
-    try { return {&(self_->ChangeSequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TransferBRep_HSequenceOfTransferResultInfo_dynamic_type(const TransferBRep_HSequenceOfTransferResultInfo* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TransferBRep_HSequenceOfTransferResultInfo_get_type_name() {
-    try { return {TransferBRep_HSequenceOfTransferResultInfo::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TransferBRep_HSequenceOfTransferResultInfo_get_type_descriptor() {
-    try { return {&(TransferBRep_HSequenceOfTransferResultInfo::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> TransferBRep_HSequenceOfTransferResultInfo_as_Standard_Transient(const TransferBRep_HSequenceOfTransferResultInfo* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TransferBRep_HSequenceOfTransferResultInfo_as_Standard_Transient_mut(TransferBRep_HSequenceOfTransferResultInfo* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTransferBRepHSequenceOfTransferResultInfo*> TransferBRep_HSequenceOfTransferResultInfo_to_handle(TransferBRep_HSequenceOfTransferResultInfo* obj) {
-    try { return {new HandleTransferBRepHSequenceOfTransferResultInfo(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TransferBRep_HSequenceOfTransferResultInfo*> HandleTransferBRepHSequenceOfTransferResultInfo_get(const HandleTransferBRepHSequenceOfTransferResultInfo* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TransferBRep_HSequenceOfTransferResultInfo*> HandleTransferBRepHSequenceOfTransferResultInfo_get_mut(HandleTransferBRepHSequenceOfTransferResultInfo* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTransferBRepHSequenceOfTransferResultInfo_to_HandleStandardTransient(const HandleTransferBRepHSequenceOfTransferResultInfo* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TransferBRep_HSequenceOfTransferResultInfo_inherited_IsInstance(const TransferBRep_HSequenceOfTransferResultInfo* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TransferBRep_HSequenceOfTransferResultInfo_inherited_IsKind(const TransferBRep_HSequenceOfTransferResultInfo* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TransferBRep_HSequenceOfTransferResultInfo_inherited_This(const TransferBRep_HSequenceOfTransferResultInfo* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TransferBRep_HSequenceOfTransferResultInfo_inherited_GetRefCount(const TransferBRep_HSequenceOfTransferResultInfo* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TransferBRep_HSequenceOfTransferResultInfo_inherited_IncrementRefCounter(TransferBRep_HSequenceOfTransferResultInfo* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TransferBRep_HSequenceOfTransferResultInfo_inherited_DecrementRefCounter(TransferBRep_HSequenceOfTransferResultInfo* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TransferBRep_HSequenceOfTransferResultInfo_inherited_Delete(const TransferBRep_HSequenceOfTransferResultInfo* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TransferBRep_HSequenceOfTransferResultInfo_destructor(TransferBRep_HSequenceOfTransferResultInfo* self_) { delete self_; }
-
-// ========================
 // TransferBRep_Reader wrappers
 // ========================
 
@@ -26647,8 +25390,8 @@ extern "C" OcctResult<Interface_CheckIterator*> TransferBRep_Reader_check_list_m
     try { return {new Interface_CheckIterator(self_->CheckListModel()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TopTools_HSequenceOfShape)*> TransferBRep_Reader_shapes(const TransferBRep_Reader* self_) {
-    try { return {new Handle(TopTools_HSequenceOfShape)(self_->Shapes()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_TopoDS_Shape)*> TransferBRep_Reader_shapes(const TransferBRep_Reader* self_) {
+    try { return {new Handle(NCollection_HSequence_TopoDS_Shape)(self_->Shapes()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape*> TransferBRep_Reader_shape_result(const TransferBRep_Reader* self_, Handle(Standard_Transient) const* ent) {
@@ -26659,8 +25402,8 @@ extern "C" OcctResult<TopoDS_Shape*> TransferBRep_Reader_one_shape(const Transfe
     try { return {new TopoDS_Shape(self_->OneShape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> TransferBRep_Reader_transients(const TransferBRep_Reader* self_) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self_->Transients()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> TransferBRep_Reader_transients(const TransferBRep_Reader* self_) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->Transients()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Transient)*> TransferBRep_Reader_transient(const TransferBRep_Reader* self_, int32_t num) {
@@ -26735,7 +25478,7 @@ extern "C" OcctResult<bool> TransferBRep_Reader_transfer(TransferBRep_Reader* se
     try { return {self_->Transfer(num, *theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TransferBRep_Reader_transfer_list(TransferBRep_Reader* self_, Handle(TColStd_HSequenceOfTransient) const* list, Message_ProgressRange const* theProgress) {
+extern "C" const char* TransferBRep_Reader_transfer_list(TransferBRep_Reader* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list, Message_ProgressRange const* theProgress) {
     try { self_->TransferList(*list, *theProgress); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -26827,28 +25570,28 @@ extern "C" OcctResult<const Transfer_Binder*> TransferBRep_ShapeBinder_as_Transf
 extern "C" OcctResult<Transfer_Binder*> TransferBRep_ShapeBinder_as_Transfer_Binder_mut(TransferBRep_ShapeBinder* self_) { return {static_cast<Transfer_Binder*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TransferBRep_ShapeBinder_as_Standard_Transient(const TransferBRep_ShapeBinder* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TransferBRep_ShapeBinder_as_Standard_Transient_mut(TransferBRep_ShapeBinder* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTransferBRepShapeBinder*> TransferBRep_ShapeBinder_to_handle(TransferBRep_ShapeBinder* obj) {
-    try { return {new HandleTransferBRepShapeBinder(obj), nullptr}; }
+extern "C" OcctResult<Handle_TransferBRep_ShapeBinder*> TransferBRep_ShapeBinder_to_handle(TransferBRep_ShapeBinder* obj) {
+    try { return {new Handle_TransferBRep_ShapeBinder(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TransferBRep_ShapeBinder*> HandleTransferBRepShapeBinder_get(const HandleTransferBRepShapeBinder* handle) {
+extern "C" OcctResult<const TransferBRep_ShapeBinder*> Handle_TransferBRep_ShapeBinder_get(const Handle_TransferBRep_ShapeBinder* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TransferBRep_ShapeBinder*> HandleTransferBRepShapeBinder_get_mut(HandleTransferBRepShapeBinder* handle) {
+extern "C" OcctResult<TransferBRep_ShapeBinder*> Handle_TransferBRep_ShapeBinder_get_mut(Handle_TransferBRep_ShapeBinder* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferBRepBinderOfShape*> HandleTransferBRepShapeBinder_to_HandleTransferBRepBinderOfShape(const HandleTransferBRepShapeBinder* self_) {
-    try { return {new HandleTransferBRepBinderOfShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TransferBRep_BinderOfShape*> Handle_TransferBRep_ShapeBinder_to_Handle_TransferBRep_BinderOfShape(const Handle_TransferBRep_ShapeBinder* self_) {
+    try { return {new Handle_TransferBRep_BinderOfShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferBinder*> HandleTransferBRepShapeBinder_to_HandleTransferBinder(const HandleTransferBRepShapeBinder* self_) {
-    try { return {new HandleTransferBinder(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_Binder*> Handle_TransferBRep_ShapeBinder_to_Handle_Transfer_Binder(const Handle_TransferBRep_ShapeBinder* self_) {
+    try { return {new Handle_Transfer_Binder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTransferBRepShapeBinder_to_HandleStandardTransient(const HandleTransferBRepShapeBinder* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TransferBRep_ShapeBinder_to_Handle_Standard_Transient(const Handle_TransferBRep_ShapeBinder* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type)*> TransferBRep_ShapeBinder_inherited_ResultType(const TransferBRep_ShapeBinder* self) {
@@ -26967,7 +25710,7 @@ extern "C" OcctResult<TransferBRep_ShapeListBinder*> TransferBRep_ShapeListBinde
     try { return {new TransferBRep_ShapeListBinder(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TransferBRep_ShapeListBinder*> TransferBRep_ShapeListBinder_ctor_handletoptoolshsequenceofshape(Handle(TopTools_HSequenceOfShape) const* list) {
+extern "C" OcctResult<TransferBRep_ShapeListBinder*> TransferBRep_ShapeListBinder_ctor_hseq_shape(Handle(NCollection_HSequence_TopoDS_Shape) const* list) {
     try { return {new TransferBRep_ShapeListBinder(*list), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -26975,8 +25718,8 @@ extern "C" OcctResult<Handle(Standard_Type)*> TransferBRep_ShapeListBinder_resul
     try { return {new Handle(Standard_Type)(self_->ResultType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TopTools_HSequenceOfShape)*> TransferBRep_ShapeListBinder_result(const TransferBRep_ShapeListBinder* self_) {
-    try { return {new Handle(TopTools_HSequenceOfShape)(self_->Result()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_TopoDS_Shape)*> TransferBRep_ShapeListBinder_result(const TransferBRep_ShapeListBinder* self_) {
+    try { return {new Handle(NCollection_HSequence_TopoDS_Shape)(self_->Result()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Vertex*> TransferBRep_ShapeListBinder_vertex(const TransferBRep_ShapeListBinder* self_, int32_t num) {
@@ -27055,24 +25798,24 @@ extern "C" OcctResult<const Transfer_Binder*> TransferBRep_ShapeListBinder_as_Tr
 extern "C" OcctResult<Transfer_Binder*> TransferBRep_ShapeListBinder_as_Transfer_Binder_mut(TransferBRep_ShapeListBinder* self_) { return {static_cast<Transfer_Binder*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TransferBRep_ShapeListBinder_as_Standard_Transient(const TransferBRep_ShapeListBinder* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TransferBRep_ShapeListBinder_as_Standard_Transient_mut(TransferBRep_ShapeListBinder* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTransferBRepShapeListBinder*> TransferBRep_ShapeListBinder_to_handle(TransferBRep_ShapeListBinder* obj) {
-    try { return {new HandleTransferBRepShapeListBinder(obj), nullptr}; }
+extern "C" OcctResult<Handle_TransferBRep_ShapeListBinder*> TransferBRep_ShapeListBinder_to_handle(TransferBRep_ShapeListBinder* obj) {
+    try { return {new Handle_TransferBRep_ShapeListBinder(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TransferBRep_ShapeListBinder*> HandleTransferBRepShapeListBinder_get(const HandleTransferBRepShapeListBinder* handle) {
+extern "C" OcctResult<const TransferBRep_ShapeListBinder*> Handle_TransferBRep_ShapeListBinder_get(const Handle_TransferBRep_ShapeListBinder* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TransferBRep_ShapeListBinder*> HandleTransferBRepShapeListBinder_get_mut(HandleTransferBRepShapeListBinder* handle) {
+extern "C" OcctResult<TransferBRep_ShapeListBinder*> Handle_TransferBRep_ShapeListBinder_get_mut(Handle_TransferBRep_ShapeListBinder* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferBinder*> HandleTransferBRepShapeListBinder_to_HandleTransferBinder(const HandleTransferBRepShapeListBinder* self_) {
-    try { return {new HandleTransferBinder(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_Binder*> Handle_TransferBRep_ShapeListBinder_to_Handle_Transfer_Binder(const Handle_TransferBRep_ShapeListBinder* self_) {
+    try { return {new Handle_Transfer_Binder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTransferBRepShapeListBinder_to_HandleStandardTransient(const HandleTransferBRepShapeListBinder* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TransferBRep_ShapeListBinder_to_Handle_Standard_Transient(const Handle_TransferBRep_ShapeListBinder* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TransferBRep_ShapeListBinder_inherited_Merge(TransferBRep_ShapeListBinder* self, Handle(Transfer_Binder) const& other) {
@@ -27181,24 +25924,24 @@ extern "C" OcctResult<const Transfer_Finder*> TransferBRep_ShapeMapper_as_Transf
 extern "C" OcctResult<Transfer_Finder*> TransferBRep_ShapeMapper_as_Transfer_Finder_mut(TransferBRep_ShapeMapper* self_) { return {static_cast<Transfer_Finder*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TransferBRep_ShapeMapper_as_Standard_Transient(const TransferBRep_ShapeMapper* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TransferBRep_ShapeMapper_as_Standard_Transient_mut(TransferBRep_ShapeMapper* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTransferBRepShapeMapper*> TransferBRep_ShapeMapper_to_handle(TransferBRep_ShapeMapper* obj) {
-    try { return {new HandleTransferBRepShapeMapper(obj), nullptr}; }
+extern "C" OcctResult<Handle_TransferBRep_ShapeMapper*> TransferBRep_ShapeMapper_to_handle(TransferBRep_ShapeMapper* obj) {
+    try { return {new Handle_TransferBRep_ShapeMapper(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TransferBRep_ShapeMapper*> HandleTransferBRepShapeMapper_get(const HandleTransferBRepShapeMapper* handle) {
+extern "C" OcctResult<const TransferBRep_ShapeMapper*> Handle_TransferBRep_ShapeMapper_get(const Handle_TransferBRep_ShapeMapper* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TransferBRep_ShapeMapper*> HandleTransferBRepShapeMapper_get_mut(HandleTransferBRepShapeMapper* handle) {
+extern "C" OcctResult<TransferBRep_ShapeMapper*> Handle_TransferBRep_ShapeMapper_get_mut(Handle_TransferBRep_ShapeMapper* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTransferFinder*> HandleTransferBRepShapeMapper_to_HandleTransferFinder(const HandleTransferBRepShapeMapper* self_) {
-    try { return {new HandleTransferFinder(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Transfer_Finder*> Handle_TransferBRep_ShapeMapper_to_Handle_Transfer_Finder(const Handle_TransferBRep_ShapeMapper* self_) {
+    try { return {new Handle_Transfer_Finder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTransferBRepShapeMapper_to_HandleStandardTransient(const HandleTransferBRepShapeMapper* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TransferBRep_ShapeMapper_to_Handle_Standard_Transient(const Handle_TransferBRep_ShapeMapper* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<size_t> TransferBRep_ShapeMapper_inherited_GetHashCode(const TransferBRep_ShapeMapper* self) {
@@ -27301,20 +26044,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TransferBRep_TransferResultI
 }
 extern "C" OcctResult<const Standard_Transient*> TransferBRep_TransferResultInfo_as_Standard_Transient(const TransferBRep_TransferResultInfo* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TransferBRep_TransferResultInfo_as_Standard_Transient_mut(TransferBRep_TransferResultInfo* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTransferBRepTransferResultInfo*> TransferBRep_TransferResultInfo_to_handle(TransferBRep_TransferResultInfo* obj) {
-    try { return {new HandleTransferBRepTransferResultInfo(obj), nullptr}; }
+extern "C" OcctResult<Handle_TransferBRep_TransferResultInfo*> TransferBRep_TransferResultInfo_to_handle(TransferBRep_TransferResultInfo* obj) {
+    try { return {new Handle_TransferBRep_TransferResultInfo(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TransferBRep_TransferResultInfo*> HandleTransferBRepTransferResultInfo_get(const HandleTransferBRepTransferResultInfo* handle) {
+extern "C" OcctResult<const TransferBRep_TransferResultInfo*> Handle_TransferBRep_TransferResultInfo_get(const Handle_TransferBRep_TransferResultInfo* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TransferBRep_TransferResultInfo*> HandleTransferBRepTransferResultInfo_get_mut(HandleTransferBRepTransferResultInfo* handle) {
+extern "C" OcctResult<TransferBRep_TransferResultInfo*> Handle_TransferBRep_TransferResultInfo_get_mut(Handle_TransferBRep_TransferResultInfo* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTransferBRepTransferResultInfo_to_HandleStandardTransient(const HandleTransferBRepTransferResultInfo* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TransferBRep_TransferResultInfo_to_Handle_Standard_Transient(const Handle_TransferBRep_TransferResultInfo* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TransferBRep_TransferResultInfo_inherited_IsInstance(const TransferBRep_TransferResultInfo* self, Handle(Standard_Type) const& theType) {
@@ -27389,20 +26132,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> XSAlgo_AlgoContainer_get_typ
 }
 extern "C" OcctResult<const Standard_Transient*> XSAlgo_AlgoContainer_as_Standard_Transient(const XSAlgo_AlgoContainer* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XSAlgo_AlgoContainer_as_Standard_Transient_mut(XSAlgo_AlgoContainer* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXSAlgoAlgoContainer*> XSAlgo_AlgoContainer_to_handle(XSAlgo_AlgoContainer* obj) {
-    try { return {new HandleXSAlgoAlgoContainer(obj), nullptr}; }
+extern "C" OcctResult<Handle_XSAlgo_AlgoContainer*> XSAlgo_AlgoContainer_to_handle(XSAlgo_AlgoContainer* obj) {
+    try { return {new Handle_XSAlgo_AlgoContainer(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XSAlgo_AlgoContainer*> HandleXSAlgoAlgoContainer_get(const HandleXSAlgoAlgoContainer* handle) {
+extern "C" OcctResult<const XSAlgo_AlgoContainer*> Handle_XSAlgo_AlgoContainer_get(const Handle_XSAlgo_AlgoContainer* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XSAlgo_AlgoContainer*> HandleXSAlgoAlgoContainer_get_mut(HandleXSAlgoAlgoContainer* handle) {
+extern "C" OcctResult<XSAlgo_AlgoContainer*> Handle_XSAlgo_AlgoContainer_get_mut(Handle_XSAlgo_AlgoContainer* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXSAlgoAlgoContainer_to_HandleStandardTransient(const HandleXSAlgoAlgoContainer* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XSAlgo_AlgoContainer_to_Handle_Standard_Transient(const Handle_XSAlgo_AlgoContainer* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> XSAlgo_AlgoContainer_inherited_IsInstance(const XSAlgo_AlgoContainer* self, Handle(Standard_Type) const& theType) {
@@ -27495,11 +26238,11 @@ extern "C" const char* XSAlgo_ShapeProcessor_prepare_for_transfer() {
     try { XSAlgo_ShapeProcessor::PrepareForTransfer(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XSAlgo_ShapeProcessor_merge_shape_transfer_info_handletransfertransientprocess_datamapofshapeshape_int_handleshapeextendmsgregistrator(Handle(Transfer_TransientProcess) const* theFinderProcess, TopTools_DataMapOfShapeShape const* theModifiedShapesMap, int32_t theFirstTPItemIndex, Handle(ShapeExtend_MsgRegistrator) const* theMessages) {
+extern "C" const char* XSAlgo_ShapeProcessor_merge_shape_transfer_info_handletransfertransientprocess_dmap_shape_shape_int_handleshapeextendmsgregistrator(Handle(Transfer_TransientProcess) const* theFinderProcess, NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher const* theModifiedShapesMap, int32_t theFirstTPItemIndex, Handle(ShapeExtend_MsgRegistrator) const* theMessages) {
     try { XSAlgo_ShapeProcessor::MergeShapeTransferInfo(*theFinderProcess, *theModifiedShapesMap, theFirstTPItemIndex, *theMessages); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XSAlgo_ShapeProcessor_merge_shape_transfer_info_handletransferfinderprocess_datamapofshapeshape_handleshapeextendmsgregistrator(Handle(Transfer_FinderProcess) const* theTransientProcess, TopTools_DataMapOfShapeShape const* theModifiedShapesMap, Handle(ShapeExtend_MsgRegistrator) const* theMessages) {
+extern "C" const char* XSAlgo_ShapeProcessor_merge_shape_transfer_info_handletransferfinderprocess_dmap_shape_shape_handleshapeextendmsgregistrator(Handle(Transfer_FinderProcess) const* theTransientProcess, NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher const* theModifiedShapesMap, Handle(ShapeExtend_MsgRegistrator) const* theMessages) {
     try { XSAlgo_ShapeProcessor::MergeShapeTransferInfo(*theTransientProcess, *theModifiedShapesMap, *theMessages); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -27533,8 +26276,8 @@ extern "C" OcctResult<Handle(Standard_Type) const*> XSControl_ConnectedShapes_dy
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> XSControl_ConnectedShapes_adjacent_entities(TopoDS_Shape const* ashape, Handle(Transfer_TransientProcess) const* TP, int32_t type) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(XSControl_ConnectedShapes::AdjacentEntities(*ashape, *TP, static_cast<TopAbs_ShapeEnum>(type))), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> XSControl_ConnectedShapes_adjacent_entities(TopoDS_Shape const* ashape, Handle(Transfer_TransientProcess) const* TP, int32_t type) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(XSControl_ConnectedShapes::AdjacentEntities(*ashape, *TP, static_cast<TopAbs_ShapeEnum>(type))), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<char const*> XSControl_ConnectedShapes_get_type_name() {
@@ -27553,32 +26296,32 @@ extern "C" OcctResult<const IFSelect_Selection*> XSControl_ConnectedShapes_as_IF
 extern "C" OcctResult<IFSelect_Selection*> XSControl_ConnectedShapes_as_IFSelect_Selection_mut(XSControl_ConnectedShapes* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XSControl_ConnectedShapes_as_Standard_Transient(const XSControl_ConnectedShapes* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XSControl_ConnectedShapes_as_Standard_Transient_mut(XSControl_ConnectedShapes* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXSControlConnectedShapes*> XSControl_ConnectedShapes_to_handle(XSControl_ConnectedShapes* obj) {
-    try { return {new HandleXSControlConnectedShapes(obj), nullptr}; }
+extern "C" OcctResult<Handle_XSControl_ConnectedShapes*> XSControl_ConnectedShapes_to_handle(XSControl_ConnectedShapes* obj) {
+    try { return {new Handle_XSControl_ConnectedShapes(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XSControl_ConnectedShapes*> HandleXSControlConnectedShapes_get(const HandleXSControlConnectedShapes* handle) {
+extern "C" OcctResult<const XSControl_ConnectedShapes*> Handle_XSControl_ConnectedShapes_get(const Handle_XSControl_ConnectedShapes* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XSControl_ConnectedShapes*> HandleXSControlConnectedShapes_get_mut(HandleXSControlConnectedShapes* handle) {
+extern "C" OcctResult<XSControl_ConnectedShapes*> Handle_XSControl_ConnectedShapes_get_mut(Handle_XSControl_ConnectedShapes* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectExplore*> HandleXSControlConnectedShapes_to_HandleIFSelectSelectExplore(const HandleXSControlConnectedShapes* self_) {
-    try { return {new HandleIFSelectSelectExplore(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectExplore*> Handle_XSControl_ConnectedShapes_to_Handle_IFSelect_SelectExplore(const Handle_XSControl_ConnectedShapes* self_) {
+    try { return {new Handle_IFSelect_SelectExplore(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectDeduct*> HandleXSControlConnectedShapes_to_HandleIFSelectSelectDeduct(const HandleXSControlConnectedShapes* self_) {
-    try { return {new HandleIFSelectSelectDeduct(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectDeduct*> Handle_XSControl_ConnectedShapes_to_Handle_IFSelect_SelectDeduct(const Handle_XSControl_ConnectedShapes* self_) {
+    try { return {new Handle_IFSelect_SelectDeduct(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleXSControlConnectedShapes_to_HandleIFSelectSelection(const HandleXSControlConnectedShapes* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_XSControl_ConnectedShapes_to_Handle_IFSelect_Selection(const Handle_XSControl_ConnectedShapes* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXSControlConnectedShapes_to_HandleStandardTransient(const HandleXSControlConnectedShapes* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XSControl_ConnectedShapes_to_Handle_Standard_Transient(const Handle_XSControl_ConnectedShapes* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> XSControl_ConnectedShapes_inherited_Level(const XSControl_ConnectedShapes* self) {
@@ -27769,39 +26512,39 @@ extern "C" OcctResult<Handle(Standard_Type) const*> XSControl_Controller_get_typ
 }
 extern "C" OcctResult<const Standard_Transient*> XSControl_Controller_as_Standard_Transient(const XSControl_Controller* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XSControl_Controller_as_Standard_Transient_mut(XSControl_Controller* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const XSControl_Controller*> HandleXSControlController_get(const HandleXSControlController* handle) {
+extern "C" OcctResult<const XSControl_Controller*> Handle_XSControl_Controller_get(const Handle_XSControl_Controller* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XSControl_Controller*> HandleXSControlController_get_mut(HandleXSControlController* handle) {
+extern "C" OcctResult<XSControl_Controller*> Handle_XSControl_Controller_get_mut(Handle_XSControl_Controller* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXSControlController_to_HandleStandardTransient(const HandleXSControlController* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XSControl_Controller_to_Handle_Standard_Transient(const Handle_XSControl_Controller* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIGESControlController*> HandleXSControlController_downcast_to_HandleIGESControlController(const HandleXSControlController* self_) {
+extern "C" OcctResult<Handle_IGESControl_Controller*> Handle_XSControl_Controller_downcast_to_Handle_IGESControl_Controller(const Handle_XSControl_Controller* self_) {
     try {
     opencascade::handle<IGESControl_Controller> result = opencascade::handle<IGESControl_Controller>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIGESControlController(result), nullptr};
+    return {new Handle_IGESControl_Controller(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleSTEPCAFControlController*> HandleXSControlController_downcast_to_HandleSTEPCAFControlController(const HandleXSControlController* self_) {
+extern "C" OcctResult<Handle_STEPCAFControl_Controller*> Handle_XSControl_Controller_downcast_to_Handle_STEPCAFControl_Controller(const Handle_XSControl_Controller* self_) {
     try {
     opencascade::handle<STEPCAFControl_Controller> result = opencascade::handle<STEPCAFControl_Controller>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleSTEPCAFControlController(result), nullptr};
+    return {new Handle_STEPCAFControl_Controller(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleSTEPControlController*> HandleXSControlController_downcast_to_HandleSTEPControlController(const HandleXSControlController* self_) {
+extern "C" OcctResult<Handle_STEPControl_Controller*> Handle_XSControl_Controller_downcast_to_Handle_STEPControl_Controller(const Handle_XSControl_Controller* self_) {
     try {
     opencascade::handle<STEPControl_Controller> result = opencascade::handle<STEPControl_Controller>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleSTEPControlController(result), nullptr};
+    return {new Handle_STEPControl_Controller(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -27847,7 +26590,7 @@ extern "C" const char* XSControl_FuncShape_init() {
     try { XSControl_FuncShape::Init(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<int32_t> XSControl_FuncShape_more_shapes(Handle(XSControl_WorkSession) const* session, Handle(TopTools_HSequenceOfShape)* list, const char* name) {
+extern "C" OcctResult<int32_t> XSControl_FuncShape_more_shapes(Handle(XSControl_WorkSession) const* session, Handle(NCollection_HSequence_TopoDS_Shape)* list, const char* name) {
     try { return {XSControl_FuncShape::MoreShapes(*session, *list, name), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -27895,12 +26638,12 @@ extern "C" OcctResult<Handle(Interface_InterfaceModel)*> XSControl_Reader_model(
     try { return {new Handle(Interface_InterfaceModel)(self_->Model()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> XSControl_Reader_give_list_charptr2(XSControl_Reader* self_, const char* first, const char* second) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self_->GiveList(first, second)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> XSControl_Reader_give_list_charptr2(XSControl_Reader* self_, const char* first, const char* second) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->GiveList(first, second)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> XSControl_Reader_give_list_charptr_handlestandardtransient(XSControl_Reader* self_, const char* first, Handle(Standard_Transient) const* ent) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self_->GiveList(first, *ent)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> XSControl_Reader_give_list_charptr_handlestandardtransient(XSControl_Reader* self_, const char* first, Handle(Standard_Transient) const* ent) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->GiveList(first, *ent)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Transient)*> XSControl_Reader_root_for_transfer(XSControl_Reader* self_, int32_t num) {
@@ -27947,7 +26690,7 @@ extern "C" OcctResult<bool> XSControl_Reader_transfer_entity(XSControl_Reader* s
     try { return {self_->TransferEntity(*start, *theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> XSControl_Reader_transfer_list(XSControl_Reader* self_, Handle(TColStd_HSequenceOfTransient) const* list, Message_ProgressRange const* theProgress) {
+extern "C" OcctResult<int32_t> XSControl_Reader_transfer_list(XSControl_Reader* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list, Message_ProgressRange const* theProgress) {
     try { return {self_->TransferList(*list, *theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -27987,7 +26730,7 @@ extern "C" const char* XSControl_Reader_print_stats_transfer_ostream_int2(const 
     try { self_->PrintStatsTransfer(*theStream, what, mode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XSControl_Reader_get_stats_transfer(const XSControl_Reader* self_, Handle(TColStd_HSequenceOfTransient) const* list, int32_t* nbMapped, int32_t* nbWithResult, int32_t* nbWithFail) {
+extern "C" const char* XSControl_Reader_get_stats_transfer(const XSControl_Reader* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list, int32_t* nbMapped, int32_t* nbWithResult, int32_t* nbWithFail) {
     try { self_->GetStatsTransfer(*list, *nbMapped, *nbWithResult, *nbWithFail); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -28069,39 +26812,39 @@ extern "C" OcctResult<const IFSelect_Selection*> XSControl_SelectForTransfer_as_
 extern "C" OcctResult<IFSelect_Selection*> XSControl_SelectForTransfer_as_IFSelect_Selection_mut(XSControl_SelectForTransfer* self_) { return {static_cast<IFSelect_Selection*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XSControl_SelectForTransfer_as_Standard_Transient(const XSControl_SelectForTransfer* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XSControl_SelectForTransfer_as_Standard_Transient_mut(XSControl_SelectForTransfer* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXSControlSelectForTransfer*> XSControl_SelectForTransfer_to_handle(XSControl_SelectForTransfer* obj) {
-    try { return {new HandleXSControlSelectForTransfer(obj), nullptr}; }
+extern "C" OcctResult<Handle_XSControl_SelectForTransfer*> XSControl_SelectForTransfer_to_handle(XSControl_SelectForTransfer* obj) {
+    try { return {new Handle_XSControl_SelectForTransfer(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XSControl_SelectForTransfer*> HandleXSControlSelectForTransfer_get(const HandleXSControlSelectForTransfer* handle) {
+extern "C" OcctResult<const XSControl_SelectForTransfer*> Handle_XSControl_SelectForTransfer_get(const Handle_XSControl_SelectForTransfer* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XSControl_SelectForTransfer*> HandleXSControlSelectForTransfer_get_mut(HandleXSControlSelectForTransfer* handle) {
+extern "C" OcctResult<XSControl_SelectForTransfer*> Handle_XSControl_SelectForTransfer_get_mut(Handle_XSControl_SelectForTransfer* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectExtract*> HandleXSControlSelectForTransfer_to_HandleIFSelectSelectExtract(const HandleXSControlSelectForTransfer* self_) {
-    try { return {new HandleIFSelectSelectExtract(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectExtract*> Handle_XSControl_SelectForTransfer_to_Handle_IFSelect_SelectExtract(const Handle_XSControl_SelectForTransfer* self_) {
+    try { return {new Handle_IFSelect_SelectExtract(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelectDeduct*> HandleXSControlSelectForTransfer_to_HandleIFSelectSelectDeduct(const HandleXSControlSelectForTransfer* self_) {
-    try { return {new HandleIFSelectSelectDeduct(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_SelectDeduct*> Handle_XSControl_SelectForTransfer_to_Handle_IFSelect_SelectDeduct(const Handle_XSControl_SelectForTransfer* self_) {
+    try { return {new Handle_IFSelect_SelectDeduct(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSelection*> HandleXSControlSelectForTransfer_to_HandleIFSelectSelection(const HandleXSControlSelectForTransfer* self_) {
-    try { return {new HandleIFSelectSelection(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Selection*> Handle_XSControl_SelectForTransfer_to_Handle_IFSelect_Selection(const Handle_XSControl_SelectForTransfer* self_) {
+    try { return {new Handle_IFSelect_Selection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXSControlSelectForTransfer_to_HandleStandardTransient(const HandleXSControlSelectForTransfer* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XSControl_SelectForTransfer_to_Handle_Standard_Transient(const Handle_XSControl_SelectForTransfer* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleSTEPSelectionsSelectForTransfer*> HandleXSControlSelectForTransfer_downcast_to_HandleSTEPSelectionsSelectForTransfer(const HandleXSControlSelectForTransfer* self_) {
+extern "C" OcctResult<Handle_STEPSelections_SelectForTransfer*> Handle_XSControl_SelectForTransfer_downcast_to_Handle_STEPSelections_SelectForTransfer(const Handle_XSControl_SelectForTransfer* self_) {
     try {
     opencascade::handle<STEPSelections_SelectForTransfer> result = opencascade::handle<STEPSelections_SelectForTransfer>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleSTEPSelectionsSelectForTransfer(result), nullptr};
+    return {new Handle_STEPSelections_SelectForTransfer(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -28243,32 +26986,32 @@ extern "C" OcctResult<const MoniTool_SignText*> XSControl_SignTransferStatus_as_
 extern "C" OcctResult<MoniTool_SignText*> XSControl_SignTransferStatus_as_MoniTool_SignText_mut(XSControl_SignTransferStatus* self_) { return {static_cast<MoniTool_SignText*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XSControl_SignTransferStatus_as_Standard_Transient(const XSControl_SignTransferStatus* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XSControl_SignTransferStatus_as_Standard_Transient_mut(XSControl_SignTransferStatus* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXSControlSignTransferStatus*> XSControl_SignTransferStatus_to_handle(XSControl_SignTransferStatus* obj) {
-    try { return {new HandleXSControlSignTransferStatus(obj), nullptr}; }
+extern "C" OcctResult<Handle_XSControl_SignTransferStatus*> XSControl_SignTransferStatus_to_handle(XSControl_SignTransferStatus* obj) {
+    try { return {new Handle_XSControl_SignTransferStatus(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XSControl_SignTransferStatus*> HandleXSControlSignTransferStatus_get(const HandleXSControlSignTransferStatus* handle) {
+extern "C" OcctResult<const XSControl_SignTransferStatus*> Handle_XSControl_SignTransferStatus_get(const Handle_XSControl_SignTransferStatus* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XSControl_SignTransferStatus*> HandleXSControlSignTransferStatus_get_mut(HandleXSControlSignTransferStatus* handle) {
+extern "C" OcctResult<XSControl_SignTransferStatus*> Handle_XSControl_SignTransferStatus_get_mut(Handle_XSControl_SignTransferStatus* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectSignature*> HandleXSControlSignTransferStatus_to_HandleIFSelectSignature(const HandleXSControlSignTransferStatus* self_) {
-    try { return {new HandleIFSelectSignature(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_Signature*> Handle_XSControl_SignTransferStatus_to_Handle_IFSelect_Signature(const Handle_XSControl_SignTransferStatus* self_) {
+    try { return {new Handle_IFSelect_Signature(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleInterfaceSignType*> HandleXSControlSignTransferStatus_to_HandleInterfaceSignType(const HandleXSControlSignTransferStatus* self_) {
-    try { return {new HandleInterfaceSignType(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Interface_SignType*> Handle_XSControl_SignTransferStatus_to_Handle_Interface_SignType(const Handle_XSControl_SignTransferStatus* self_) {
+    try { return {new Handle_Interface_SignType(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMoniToolSignText*> HandleXSControlSignTransferStatus_to_HandleMoniToolSignText(const HandleXSControlSignTransferStatus* self_) {
-    try { return {new HandleMoniToolSignText(*self_), nullptr}; }
+extern "C" OcctResult<Handle_MoniTool_SignText*> Handle_XSControl_SignTransferStatus_to_Handle_MoniTool_SignText(const Handle_XSControl_SignTransferStatus* self_) {
+    try { return {new Handle_MoniTool_SignText(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXSControlSignTransferStatus_to_HandleStandardTransient(const HandleXSControlSignTransferStatus* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XSControl_SignTransferStatus_to_Handle_Standard_Transient(const Handle_XSControl_SignTransferStatus* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XSControl_SignTransferStatus_inherited_SetIntCase(XSControl_SignTransferStatus* self, bool hasmin, int32_t valmin, bool hasmax, int32_t valmax) {
@@ -28279,8 +27022,8 @@ extern "C" OcctResult<bool> XSControl_SignTransferStatus_inherited_IsIntCase(con
     try { return {self->IsIntCase(hasmin, valmin, hasmax, valmax), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfAsciiString)*> XSControl_SignTransferStatus_inherited_CaseList(const XSControl_SignTransferStatus* self) {
-    try { return {new Handle(TColStd_HSequenceOfAsciiString)(self->CaseList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_TCollection_AsciiString)*> XSControl_SignTransferStatus_inherited_CaseList(const XSControl_SignTransferStatus* self) {
+    try { return {new Handle(NCollection_HSequence_TCollection_AsciiString)(self->CaseList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TCollection_AsciiString*> XSControl_SignTransferStatus_inherited_Label(const XSControl_SignTransferStatus* self) {
@@ -28341,8 +27084,8 @@ extern "C" OcctResult<Handle(Transfer_ActorOfTransientProcess)*> XSControl_Trans
     try { return {new Handle(Transfer_ActorOfTransientProcess)(self_->Actor()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> XSControl_TransferReader_recorded_list(const XSControl_TransferReader* self_) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self_->RecordedList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> XSControl_TransferReader_recorded_list(const XSControl_TransferReader* self_) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->RecordedList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Transfer_ResultFromModel)*> XSControl_TransferReader_final_result(const XSControl_TransferReader* self_, Handle(Standard_Transient) const* theEnt) {
@@ -28369,24 +27112,24 @@ extern "C" OcctResult<Handle(Standard_Transient)*> XSControl_TransferReader_enti
     try { return {new Handle(Standard_Transient)(self_->EntityFromShapeResult(*theRes, theMode)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> XSControl_TransferReader_entities_from_shape_list(const XSControl_TransferReader* self_, Handle(TopTools_HSequenceOfShape) const* theRes, int32_t theMode) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self_->EntitiesFromShapeList(*theRes, theMode)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> XSControl_TransferReader_entities_from_shape_list(const XSControl_TransferReader* self_, Handle(NCollection_HSequence_TopoDS_Shape) const* theRes, int32_t theMode) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->EntitiesFromShapeList(*theRes, theMode)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Interface_CheckIterator*> XSControl_TransferReader_check_list(const XSControl_TransferReader* self_, Handle(Standard_Transient) const* theEnt, int32_t theLevel) {
     try { return {new Interface_CheckIterator(self_->CheckList(*theEnt, theLevel)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> XSControl_TransferReader_checked_list(const XSControl_TransferReader* self_, Handle(Standard_Transient) const* theEnt, int32_t WithCheck, bool theResult) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self_->CheckedList(*theEnt, static_cast<Interface_CheckStatus>(WithCheck), theResult)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> XSControl_TransferReader_checked_list(const XSControl_TransferReader* self_, Handle(Standard_Transient) const* theEnt, int32_t WithCheck, bool theResult) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->CheckedList(*theEnt, static_cast<Interface_CheckStatus>(WithCheck), theResult)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Interface_CheckIterator*> XSControl_TransferReader_last_check_list(const XSControl_TransferReader* self_) {
     try { return {new Interface_CheckIterator(self_->LastCheckList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> XSControl_TransferReader_last_transfer_list(const XSControl_TransferReader* self_, bool theRoots) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self_->LastTransferList(theRoots)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> XSControl_TransferReader_last_transfer_list(const XSControl_TransferReader* self_, bool theRoots) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->LastTransferList(theRoots)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XSControl_TransferReader_set_controller(XSControl_TransferReader* self_, Handle(XSControl_Controller) const* theControl) {
@@ -28493,7 +27236,7 @@ extern "C" OcctResult<int32_t> XSControl_TransferReader_transfer_one(XSControl_T
     try { return {self_->TransferOne(*theEnt, theRec, *theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> XSControl_TransferReader_transfer_list(XSControl_TransferReader* self_, Handle(TColStd_HSequenceOfTransient) const* theList, bool theRec, Message_ProgressRange const* theProgress) {
+extern "C" OcctResult<int32_t> XSControl_TransferReader_transfer_list(XSControl_TransferReader* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* theList, bool theRec, Message_ProgressRange const* theProgress) {
     try { return {self_->TransferList(*theList, theRec, *theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -28509,7 +27252,7 @@ extern "C" const char* XSControl_TransferReader_print_stats(const XSControl_Tran
     try { self_->PrintStats(*theStream, theWhat, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(TopTools_HSequenceOfShape) const*> XSControl_TransferReader_shape_result_list(XSControl_TransferReader* self_, bool theRec) {
+extern "C" OcctResult<Handle(NCollection_HSequence_TopoDS_Shape) const*> XSControl_TransferReader_shape_result_list(XSControl_TransferReader* self_, bool theRec) {
     try { return {&(self_->ShapeResultList(theRec)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -28521,7 +27264,7 @@ extern "C" const char* XSControl_TransferReader_print_stats_process(Handle(Trans
     try { XSControl_TransferReader::PrintStatsProcess(*theTP, theWhat, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XSControl_TransferReader_print_stats_on_list(Handle(Transfer_TransientProcess) const* theTP, Handle(TColStd_HSequenceOfTransient) const* theList, int32_t theWhat, int32_t theMode) {
+extern "C" const char* XSControl_TransferReader_print_stats_on_list(Handle(Transfer_TransientProcess) const* theTP, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* theList, int32_t theWhat, int32_t theMode) {
     try { XSControl_TransferReader::PrintStatsOnList(*theTP, *theList, theWhat, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -28535,20 +27278,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> XSControl_TransferReader_get
 }
 extern "C" OcctResult<const Standard_Transient*> XSControl_TransferReader_as_Standard_Transient(const XSControl_TransferReader* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XSControl_TransferReader_as_Standard_Transient_mut(XSControl_TransferReader* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXSControlTransferReader*> XSControl_TransferReader_to_handle(XSControl_TransferReader* obj) {
-    try { return {new HandleXSControlTransferReader(obj), nullptr}; }
+extern "C" OcctResult<Handle_XSControl_TransferReader*> XSControl_TransferReader_to_handle(XSControl_TransferReader* obj) {
+    try { return {new Handle_XSControl_TransferReader(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XSControl_TransferReader*> HandleXSControlTransferReader_get(const HandleXSControlTransferReader* handle) {
+extern "C" OcctResult<const XSControl_TransferReader*> Handle_XSControl_TransferReader_get(const Handle_XSControl_TransferReader* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XSControl_TransferReader*> HandleXSControlTransferReader_get_mut(HandleXSControlTransferReader* handle) {
+extern "C" OcctResult<XSControl_TransferReader*> Handle_XSControl_TransferReader_get_mut(Handle_XSControl_TransferReader* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXSControlTransferReader_to_HandleStandardTransient(const HandleXSControlTransferReader* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XSControl_TransferReader_to_Handle_Standard_Transient(const Handle_XSControl_TransferReader* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> XSControl_TransferReader_inherited_IsInstance(const XSControl_TransferReader* self, Handle(Standard_Type) const& theType) {
@@ -28659,20 +27402,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> XSControl_TransferWriter_get
 }
 extern "C" OcctResult<const Standard_Transient*> XSControl_TransferWriter_as_Standard_Transient(const XSControl_TransferWriter* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XSControl_TransferWriter_as_Standard_Transient_mut(XSControl_TransferWriter* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXSControlTransferWriter*> XSControl_TransferWriter_to_handle(XSControl_TransferWriter* obj) {
-    try { return {new HandleXSControlTransferWriter(obj), nullptr}; }
+extern "C" OcctResult<Handle_XSControl_TransferWriter*> XSControl_TransferWriter_to_handle(XSControl_TransferWriter* obj) {
+    try { return {new Handle_XSControl_TransferWriter(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XSControl_TransferWriter*> HandleXSControlTransferWriter_get(const HandleXSControlTransferWriter* handle) {
+extern "C" OcctResult<const XSControl_TransferWriter*> Handle_XSControl_TransferWriter_get(const Handle_XSControl_TransferWriter* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XSControl_TransferWriter*> HandleXSControlTransferWriter_get_mut(HandleXSControlTransferWriter* handle) {
+extern "C" OcctResult<XSControl_TransferWriter*> Handle_XSControl_TransferWriter_get_mut(Handle_XSControl_TransferWriter* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXSControlTransferWriter_to_HandleStandardTransient(const HandleXSControlTransferWriter* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XSControl_TransferWriter_to_Handle_Standard_Transient(const Handle_XSControl_TransferWriter* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> XSControl_TransferWriter_inherited_IsInstance(const XSControl_TransferWriter* self, Handle(Standard_Type) const& theType) {
@@ -28717,8 +27460,8 @@ extern "C" OcctResult<Handle(Standard_Transient)*> XSControl_Utils_tra_value(con
     try { return {new Handle(Standard_Transient)(self_->TraValue(*list, num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> XSControl_Utils_new_seq_tra(const XSControl_Utils* self_) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self_->NewSeqTra()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> XSControl_Utils_new_seq_tra(const XSControl_Utils* self_) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->NewSeqTra()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(TCollection_HAsciiString)*> XSControl_Utils_to_h_string_charptr(const XSControl_Utils* self_, const char* strcon) {
@@ -28737,15 +27480,15 @@ extern "C" OcctResult<TCollection_ExtendedString*> XSControl_Utils_to_x_string(c
     try { return {new TCollection_ExtendedString(self_->ToXString(strcon)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfHAsciiString)*> XSControl_Utils_new_seq_c_str(const XSControl_Utils* self_) {
-    try { return {new Handle(TColStd_HSequenceOfHAsciiString)(self_->NewSeqCStr()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> XSControl_Utils_new_seq_c_str(const XSControl_Utils* self_) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->NewSeqCStr()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfHExtendedString)*> XSControl_Utils_new_seq_e_str(const XSControl_Utils* self_) {
-    try { return {new Handle(TColStd_HSequenceOfHExtendedString)(self_->NewSeqEStr()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HExtendedString)*> XSControl_Utils_new_seq_e_str(const XSControl_Utils* self_) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HExtendedString)(self_->NewSeqEStr()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopoDS_Shape*> XSControl_Utils_compound_from_seq(const XSControl_Utils* self_, Handle(TopTools_HSequenceOfShape) const* seqval) {
+extern "C" OcctResult<TopoDS_Shape*> XSControl_Utils_compound_from_seq(const XSControl_Utils* self_, Handle(NCollection_HSequence_TopoDS_Shape) const* seqval) {
     try { return {new TopoDS_Shape(self_->CompoundFromSeq(*seqval)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -28753,12 +27496,12 @@ extern "C" OcctResult<TopoDS_Shape*> XSControl_Utils_sorted_compound(const XSCon
     try { return {new TopoDS_Shape(self_->SortedCompound(*shape, static_cast<TopAbs_ShapeEnum>(type), explore, compound)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopoDS_Shape*> XSControl_Utils_shape_value(const XSControl_Utils* self_, Handle(TopTools_HSequenceOfShape) const* seqv, int32_t num) {
+extern "C" OcctResult<TopoDS_Shape*> XSControl_Utils_shape_value(const XSControl_Utils* self_, Handle(NCollection_HSequence_TopoDS_Shape) const* seqv, int32_t num) {
     try { return {new TopoDS_Shape(self_->ShapeValue(*seqv, num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TopTools_HSequenceOfShape)*> XSControl_Utils_new_seq_shape(const XSControl_Utils* self_) {
-    try { return {new Handle(TopTools_HSequenceOfShape)(self_->NewSeqShape()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_TopoDS_Shape)*> XSControl_Utils_new_seq_shape(const XSControl_Utils* self_) {
+    try { return {new Handle(NCollection_HSequence_TopoDS_Shape)(self_->NewSeqShape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Transient)*> XSControl_Utils_shape_binder(const XSControl_Utils* self_, TopoDS_Shape const* shape, bool hs) {
@@ -28793,7 +27536,7 @@ extern "C" OcctResult<char const*> XSControl_Utils_type_name(const XSControl_Uti
     try { return {self_->TypeName(*item, nopk), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* XSControl_Utils_append_tra(const XSControl_Utils* self_, Handle(TColStd_HSequenceOfTransient) const* seqval, Handle(Standard_Transient) const* traval) {
+extern "C" const char* XSControl_Utils_append_tra(const XSControl_Utils* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* seqval, Handle(Standard_Transient) const* traval) {
     try { self_->AppendTra(*seqval, *traval); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -28841,11 +27584,11 @@ extern "C" OcctResult<char16_t const*> XSControl_Utils_e_str_value(const XSContr
     try { return {self_->EStrValue(*list, num), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* XSControl_Utils_append_c_str(const XSControl_Utils* self_, Handle(TColStd_HSequenceOfHAsciiString) const* seqval, const char* strval) {
+extern "C" const char* XSControl_Utils_append_c_str(const XSControl_Utils* self_, Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString) const* seqval, const char* strval) {
     try { self_->AppendCStr(*seqval, strval); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XSControl_Utils_append_e_str(const XSControl_Utils* self_, Handle(TColStd_HSequenceOfHExtendedString) const* seqval, char16_t const* strval) {
+extern "C" const char* XSControl_Utils_append_e_str(const XSControl_Utils* self_, Handle(NCollection_HSequence_opencascade_handle_TCollection_HExtendedString) const* seqval, char16_t const* strval) {
     try { self_->AppendEStr(*seqval, strval); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -28853,7 +27596,7 @@ extern "C" OcctResult<int32_t> XSControl_Utils_shape_type(const XSControl_Utils*
     try { return {static_cast<int32_t>(self_->ShapeType(*shape, compound)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* XSControl_Utils_append_shape(const XSControl_Utils* self_, Handle(TopTools_HSequenceOfShape) const* seqv, TopoDS_Shape const* shape) {
+extern "C" const char* XSControl_Utils_append_shape(const XSControl_Utils* self_, Handle(NCollection_HSequence_TopoDS_Shape) const* seqv, TopoDS_Shape const* shape) {
     try { self_->AppendShape(*seqv, *shape); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -28861,7 +27604,7 @@ extern "C" OcctResult<int32_t> XSControl_Utils_seq_length(const XSControl_Utils*
     try { return {self_->SeqLength(*list), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> XSControl_Utils_seq_int_value(const XSControl_Utils* self_, Handle(TColStd_HSequenceOfInteger) const* list, int32_t num) {
+extern "C" OcctResult<int32_t> XSControl_Utils_seq_int_value(const XSControl_Utils* self_, Handle(NCollection_HSequence_int) const* list, int32_t num) {
     try { return {self_->SeqIntValue(*list, num), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -28937,20 +27680,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> XSControl_Vars_get_type_desc
 }
 extern "C" OcctResult<const Standard_Transient*> XSControl_Vars_as_Standard_Transient(const XSControl_Vars* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XSControl_Vars_as_Standard_Transient_mut(XSControl_Vars* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXSControlVars*> XSControl_Vars_to_handle(XSControl_Vars* obj) {
-    try { return {new HandleXSControlVars(obj), nullptr}; }
+extern "C" OcctResult<Handle_XSControl_Vars*> XSControl_Vars_to_handle(XSControl_Vars* obj) {
+    try { return {new Handle_XSControl_Vars(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XSControl_Vars*> HandleXSControlVars_get(const HandleXSControlVars* handle) {
+extern "C" OcctResult<const XSControl_Vars*> Handle_XSControl_Vars_get(const Handle_XSControl_Vars* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XSControl_Vars*> HandleXSControlVars_get_mut(HandleXSControlVars* handle) {
+extern "C" OcctResult<XSControl_Vars*> Handle_XSControl_Vars_get_mut(Handle_XSControl_Vars* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXSControlVars_to_HandleStandardTransient(const HandleXSControlVars* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XSControl_Vars_to_Handle_Standard_Transient(const Handle_XSControl_Vars* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> XSControl_Vars_inherited_IsInstance(const XSControl_Vars* self, Handle(Standard_Type) const& theType) {
@@ -29103,24 +27846,24 @@ extern "C" OcctResult<const IFSelect_WorkSession*> XSControl_WorkSession_as_IFSe
 extern "C" OcctResult<IFSelect_WorkSession*> XSControl_WorkSession_as_IFSelect_WorkSession_mut(XSControl_WorkSession* self_) { return {static_cast<IFSelect_WorkSession*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XSControl_WorkSession_as_Standard_Transient(const XSControl_WorkSession* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XSControl_WorkSession_as_Standard_Transient_mut(XSControl_WorkSession* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXSControlWorkSession*> XSControl_WorkSession_to_handle(XSControl_WorkSession* obj) {
-    try { return {new HandleXSControlWorkSession(obj), nullptr}; }
+extern "C" OcctResult<Handle_XSControl_WorkSession*> XSControl_WorkSession_to_handle(XSControl_WorkSession* obj) {
+    try { return {new Handle_XSControl_WorkSession(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XSControl_WorkSession*> HandleXSControlWorkSession_get(const HandleXSControlWorkSession* handle) {
+extern "C" OcctResult<const XSControl_WorkSession*> Handle_XSControl_WorkSession_get(const Handle_XSControl_WorkSession* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XSControl_WorkSession*> HandleXSControlWorkSession_get_mut(HandleXSControlWorkSession* handle) {
+extern "C" OcctResult<XSControl_WorkSession*> Handle_XSControl_WorkSession_get_mut(Handle_XSControl_WorkSession* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIFSelectWorkSession*> HandleXSControlWorkSession_to_HandleIFSelectWorkSession(const HandleXSControlWorkSession* self_) {
-    try { return {new HandleIFSelectWorkSession(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IFSelect_WorkSession*> Handle_XSControl_WorkSession_to_Handle_IFSelect_WorkSession(const Handle_XSControl_WorkSession* self_) {
+    try { return {new Handle_IFSelect_WorkSession(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXSControlWorkSession_to_HandleStandardTransient(const HandleXSControlWorkSession* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XSControl_WorkSession_to_Handle_Standard_Transient(const Handle_XSControl_WorkSession* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XSControl_WorkSession_inherited_SetErrorHandle(XSControl_WorkSession* self, bool toHandle) {
@@ -29219,12 +27962,12 @@ extern "C" OcctResult<Interface_Graph const*> XSControl_WorkSession_inherited_Gr
     try { return {&(self->Graph()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> XSControl_WorkSession_inherited_Shareds(XSControl_WorkSession* self, Handle(Standard_Transient) const& ent) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self->Shareds(ent)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> XSControl_WorkSession_inherited_Shareds(XSControl_WorkSession* self, Handle(Standard_Transient) const& ent) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self->Shareds(ent)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> XSControl_WorkSession_inherited_Sharings(XSControl_WorkSession* self, Handle(Standard_Transient) const& ent) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self->Sharings(ent)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> XSControl_WorkSession_inherited_Sharings(XSControl_WorkSession* self, Handle(Standard_Transient) const& ent) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self->Sharings(ent)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> XSControl_WorkSession_inherited_IsLoaded(const XSControl_WorkSession* self) {
@@ -29287,12 +28030,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> XSControl_WorkSession_i
     try { return {new Handle(TCollection_HAsciiString)(self->ItemLabel(id)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfInteger)*> XSControl_WorkSession_inherited_ItemIdents(const XSControl_WorkSession* self, Handle(Standard_Type) const& type) {
-    try { return {new Handle(TColStd_HSequenceOfInteger)(self->ItemIdents(type)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_int)*> XSControl_WorkSession_inherited_ItemIdents(const XSControl_WorkSession* self, Handle(Standard_Type) const& type) {
+    try { return {new Handle(NCollection_HSequence_int)(self->ItemIdents(type)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfHAsciiString)*> XSControl_WorkSession_inherited_ItemNames(const XSControl_WorkSession* self, Handle(Standard_Type) const& type) {
-    try { return {new Handle(TColStd_HSequenceOfHAsciiString)(self->ItemNames(type)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> XSControl_WorkSession_inherited_ItemNames(const XSControl_WorkSession* self, Handle(Standard_Type) const& type) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self->ItemNames(type)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(IFSelect_IntParam)*> XSControl_WorkSession_inherited_IntParam(const XSControl_WorkSession* self, int32_t id) {
@@ -29331,12 +28074,12 @@ extern "C" OcctResult<IFSelect_SelectionIterator*> XSControl_WorkSession_inherit
     try { return {new IFSelect_SelectionIterator(self->Sources(sel)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> XSControl_WorkSession_inherited_SelectionResult(const XSControl_WorkSession* self, Handle(IFSelect_Selection) const& sel) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self->SelectionResult(sel)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> XSControl_WorkSession_inherited_SelectionResult(const XSControl_WorkSession* self, Handle(IFSelect_Selection) const& sel) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self->SelectionResult(sel)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> XSControl_WorkSession_inherited_SelectionResultFromList(const XSControl_WorkSession* self, Handle(IFSelect_Selection) const& sel, Handle(TColStd_HSequenceOfTransient) const& list) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self->SelectionResultFromList(sel, list)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> XSControl_WorkSession_inherited_SelectionResultFromList(const XSControl_WorkSession* self, Handle(IFSelect_Selection) const& sel, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& list) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self->SelectionResultFromList(sel, list)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> XSControl_WorkSession_inherited_SetItemSelection(XSControl_WorkSession* self, Handle(Standard_Transient) const& item, Handle(IFSelect_Selection) const& sel) {
@@ -29359,12 +28102,12 @@ extern "C" OcctResult<bool> XSControl_WorkSession_inherited_ComputeCounter(XSCon
     try { return {self->ComputeCounter(counter, forced), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> XSControl_WorkSession_inherited_ComputeCounterFromList(XSControl_WorkSession* self, Handle(IFSelect_SignCounter) const& counter, Handle(TColStd_HSequenceOfTransient) const& list, bool clear) {
+extern "C" OcctResult<bool> XSControl_WorkSession_inherited_ComputeCounterFromList(XSControl_WorkSession* self, Handle(IFSelect_SignCounter) const& counter, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& list, bool clear) {
     try { return {self->ComputeCounterFromList(counter, list, clear), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfInteger)*> XSControl_WorkSession_inherited_AppliedDispatches(const XSControl_WorkSession* self) {
-    try { return {new Handle(TColStd_HSequenceOfInteger)(self->AppliedDispatches()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_int)*> XSControl_WorkSession_inherited_AppliedDispatches(const XSControl_WorkSession* self) {
+    try { return {new Handle(NCollection_HSequence_int)(self->AppliedDispatches()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XSControl_WorkSession_inherited_ClearShareOut(XSControl_WorkSession* self, bool onlydisp) {
@@ -29391,8 +28134,8 @@ extern "C" OcctResult<int32_t> XSControl_WorkSession_inherited_NbFinalModifiers(
     try { return {self->NbFinalModifiers(formodel), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfInteger)*> XSControl_WorkSession_inherited_FinalModifierIdents(const XSControl_WorkSession* self, bool formodel) {
-    try { return {new Handle(TColStd_HSequenceOfInteger)(self->FinalModifierIdents(formodel)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_int)*> XSControl_WorkSession_inherited_FinalModifierIdents(const XSControl_WorkSession* self, bool formodel) {
+    try { return {new Handle(NCollection_HSequence_int)(self->FinalModifierIdents(formodel)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(IFSelect_GeneralModifier)*> XSControl_WorkSession_inherited_GeneralModifier(const XSControl_WorkSession* self, int32_t id) {
@@ -29487,8 +28230,8 @@ extern "C" const char* XSControl_WorkSession_inherited_BeginSentFiles(XSControl_
     try { self->BeginSentFiles(record); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfHAsciiString)*> XSControl_WorkSession_inherited_SentFiles(const XSControl_WorkSession* self) {
-    try { return {new Handle(TColStd_HSequenceOfHAsciiString)(self->SentFiles()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> XSControl_WorkSession_inherited_SentFiles(const XSControl_WorkSession* self) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self->SentFiles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> XSControl_WorkSession_inherited_SendSplit(XSControl_WorkSession* self) {
@@ -29543,16 +28286,16 @@ extern "C" OcctResult<bool> XSControl_WorkSession_inherited_CombineRemove(XSCont
     try { return {self->CombineRemove(selcomb, selrem), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> XSControl_WorkSession_inherited_SetSelectPointed(const XSControl_WorkSession* self, Handle(IFSelect_Selection) const& sel, Handle(TColStd_HSequenceOfTransient) const& list, int32_t mode) {
+extern "C" OcctResult<bool> XSControl_WorkSession_inherited_SetSelectPointed(const XSControl_WorkSession* self, Handle(IFSelect_Selection) const& sel, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& list, int32_t mode) {
     try { return {self->SetSelectPointed(sel, list, mode), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> XSControl_WorkSession_inherited_GiveList(const XSControl_WorkSession* self, Handle(Standard_Transient) const& obj) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self->GiveList(obj)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> XSControl_WorkSession_inherited_GiveList(const XSControl_WorkSession* self, Handle(Standard_Transient) const& obj) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self->GiveList(obj)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> XSControl_WorkSession_inherited_GiveListCombined(const XSControl_WorkSession* self, Handle(TColStd_HSequenceOfTransient) const& l1, Handle(TColStd_HSequenceOfTransient) const& l2, int32_t mode) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(self->GiveListCombined(l1, l2, mode)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> XSControl_WorkSession_inherited_GiveListCombined(const XSControl_WorkSession* self, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& l1, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& l2, int32_t mode) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self->GiveListCombined(l1, l2, mode)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XSControl_WorkSession_inherited_QueryCheckList(XSControl_WorkSession* self, Interface_CheckIterator const& chl) {
@@ -29566,10 +28309,6 @@ extern "C" OcctResult<int32_t> XSControl_WorkSession_inherited_QueryCheckStatus(
 extern "C" OcctResult<int32_t> XSControl_WorkSession_inherited_QueryParent(const XSControl_WorkSession* self, Handle(Standard_Transient) const& entdad, Handle(Standard_Transient) const& entson) {
     try { return {self->QueryParent(entdad, entson), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* XSControl_WorkSession_inherited_SetParams(XSControl_WorkSession* self, NCollection_Vector_opencascade_handle_Standard_Transient const& params, NCollection_Vector_Standard_Integer const& uselist) {
-    try { self->SetParams(params, uselist); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* XSControl_WorkSession_inherited_TraceStatics(const XSControl_WorkSession* self, int32_t use, int32_t mode) {
     try { self->TraceStatics(use, mode); return nullptr; }
@@ -29734,12 +28473,12 @@ extern "C" const char* TransferBRep_set_shape_result(Handle(Transfer_TransientPr
     try { TransferBRep::SetShapeResult(*TP, *ent, *result); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(TopTools_HSequenceOfShape)*> TransferBRep_shapes_handletransfertransientprocess_bool(Handle(Transfer_TransientProcess) const* TP, bool rootsonly) {
-    try { return {new Handle(TopTools_HSequenceOfShape)(TransferBRep::Shapes(*TP, rootsonly)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_TopoDS_Shape)*> TransferBRep_shapes_handletransfertransientprocess_bool(Handle(Transfer_TransientProcess) const* TP, bool rootsonly) {
+    try { return {new Handle(NCollection_HSequence_TopoDS_Shape)(TransferBRep::Shapes(*TP, rootsonly)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TopTools_HSequenceOfShape)*> TransferBRep_shapes_handletransfertransientprocess_handletcolstdhsequenceoftransient(Handle(Transfer_TransientProcess) const* TP, Handle(TColStd_HSequenceOfTransient) const* list) {
-    try { return {new Handle(TopTools_HSequenceOfShape)(TransferBRep::Shapes(*TP, *list)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_TopoDS_Shape)*> TransferBRep_shapes_handletransfertransientprocess_handlencollectionhsequenceopencascadehandlestandardtransient(Handle(Transfer_TransientProcess) const* TP, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list) {
+    try { return {new Handle(NCollection_HSequence_TopoDS_Shape)(TransferBRep::Shapes(*TP, *list)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> TransferBRep_shape_state(Handle(Transfer_FinderProcess) const* FP, TopoDS_Shape const* shape) {
@@ -29762,11 +28501,11 @@ extern "C" OcctResult<Handle(TransferBRep_ShapeMapper)*> TransferBRep_shape_mapp
     try { return {new Handle(TransferBRep_ShapeMapper)(TransferBRep::ShapeMapper(*FP, *shape)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TransferBRep_transfer_result_info_handletransfertransientprocess_handletcolstdhsequenceoftransient_handletransferbrephsequenceoftransferresultinfo(Handle(Transfer_TransientProcess) const* TP, Handle(TColStd_HSequenceOfTransient) const* EntityTypes, Handle(TransferBRep_HSequenceOfTransferResultInfo)* InfoSeq) {
+extern "C" const char* TransferBRep_transfer_result_info_handletransfertransientprocess_handlencollectionhsequenceopencascadehandlestandardtransient_handlencollectionhsequenceopencascadehandletransferbreptransferresultinfo(Handle(Transfer_TransientProcess) const* TP, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* EntityTypes, Handle(NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo)* InfoSeq) {
     try { TransferBRep::TransferResultInfo(*TP, *EntityTypes, *InfoSeq); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TransferBRep_transfer_result_info_handletransferfinderprocess_handletcolstdhsequenceofinteger_handletransferbrephsequenceoftransferresultinfo(Handle(Transfer_FinderProcess) const* FP, Handle(TColStd_HSequenceOfInteger) const* ShapeTypes, Handle(TransferBRep_HSequenceOfTransferResultInfo)* InfoSeq) {
+extern "C" const char* TransferBRep_transfer_result_info_handletransferfinderprocess_hseq_int_handlencollectionhsequenceopencascadehandletransferbreptransferresultinfo(Handle(Transfer_FinderProcess) const* FP, Handle(NCollection_HSequence_int) const* ShapeTypes, Handle(NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo)* InfoSeq) {
     try { TransferBRep::TransferResultInfo(*FP, *ShapeTypes, *InfoSeq); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -29782,12 +28521,12 @@ extern "C" OcctResult<Interface_CheckIterator*> TransferBRep_result_check_list(I
     try { return {new Interface_CheckIterator(TransferBRep::ResultCheckList(*chl, *FP, *model)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfTransient)*> TransferBRep_checked(Interface_CheckIterator const* chl, bool alsoshapes) {
-    try { return {new Handle(TColStd_HSequenceOfTransient)(TransferBRep::Checked(*chl, alsoshapes)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> TransferBRep_checked(Interface_CheckIterator const* chl, bool alsoshapes) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(TransferBRep::Checked(*chl, alsoshapes)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TopTools_HSequenceOfShape)*> TransferBRep_checked_shapes(Interface_CheckIterator const* chl) {
-    try { return {new Handle(TopTools_HSequenceOfShape)(TransferBRep::CheckedShapes(*chl)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_TopoDS_Shape)*> TransferBRep_checked_shapes(Interface_CheckIterator const* chl) {
+    try { return {new Handle(NCollection_HSequence_TopoDS_Shape)(TransferBRep::CheckedShapes(*chl)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Interface_CheckIterator*> TransferBRep_check_object(Interface_CheckIterator const* chl, Handle(Standard_Transient) const* obj) {
@@ -29826,18 +28565,8 @@ extern "C" OcctResult<Handle(XSControl_Vars)*> XSControl_vars(Handle(IFSelect_Se
 
 // Nested type and typedef type destructors
 extern "C" void IFSelect_ActFunc_destructor(IFSelect_ActFunc* self_) { delete self_; }
-extern "C" void IFSelect_TSeqOfSelection_destructor(IFSelect_TSeqOfSelection* self_) { delete self_; }
-extern "C" void Interface_Array1OfHAsciiString_destructor(Interface_Array1OfHAsciiString* self_) { delete self_; }
-extern "C" void Interface_IndexedMapOfAsciiString_destructor(Interface_IndexedMapOfAsciiString* self_) { delete self_; }
-extern "C" void Interface_SequenceOfCheck_destructor(Interface_SequenceOfCheck* self_) { delete self_; }
-extern "C" void MoniTool_DataMapOfShapeTransient_destructor(MoniTool_DataMapOfShapeTransient* self_) { delete self_; }
-extern "C" void MoniTool_DataMapOfTimer_destructor(MoniTool_DataMapOfTimer* self_) { delete self_; }
-extern "C" void MoniTool_SequenceOfElement_destructor(MoniTool_SequenceOfElement* self_) { delete self_; }
 extern "C" void MoniTool_ValueInterpret_destructor(MoniTool_ValueInterpret* self_) { delete self_; }
 extern "C" void MoniTool_ValueSatisfies_destructor(MoniTool_ValueSatisfies* self_) { delete self_; }
-extern "C" void TransferBRep_SequenceOfTransferResultInfo_destructor(TransferBRep_SequenceOfTransferResultInfo* self_) { delete self_; }
-extern "C" void Transfer_SequenceOfBinder_destructor(Transfer_SequenceOfBinder* self_) { delete self_; }
-extern "C" void Transfer_SequenceOfFinder_destructor(Transfer_SequenceOfFinder* self_) { delete self_; }
 extern "C" void XSAlgo_ShapeProcessor_ParameterMap_destructor(XSAlgo_ShapeProcessor::ParameterMap* self_) { delete self_; }
 extern "C" void XSAlgo_ShapeProcessor_ProcessingData_destructor(XSAlgo_ShapeProcessor::ProcessingData* self_) { delete self_; }
 extern "C" void XSAlgo_ShapeProcessor_ProcessingFlags_destructor(XSAlgo_ShapeProcessor::ProcessingFlags* self_) { delete self_; }

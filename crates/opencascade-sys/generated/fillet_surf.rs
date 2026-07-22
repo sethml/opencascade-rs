@@ -100,11 +100,11 @@ impl TryFrom<i32> for StatusType {
 // From FilletSurf_Builder.hxx
 // ========================
 
-/// **Source:** `FilletSurf_Builder.hxx`:46 - `FilletSurf_Builder`
-/// API giving the  following  geometric information about fillets
+/// **Source:** `FilletSurf_Builder.hxx`:47 - `FilletSurf_Builder`
+/// API giving the following geometric information about fillets
 /// list of corresponding NUBS surfaces
 /// for each surface:
-/// the 2  support faces
+/// the 2 support faces
 /// on each face: the 3d curve and the corresponding 2d curve
 /// the 2d curves on the fillet
 /// status of start and end section of the fillet
@@ -120,17 +120,17 @@ unsafe impl crate::CppDeletable for Builder {
 }
 
 impl Builder {
-    /// **Source:** `FilletSurf_Builder.hxx`:58 - `FilletSurf_Builder::FilletSurf_Builder()`
-    /// initialize  of the information  necessary for  the
-    /// computation of  the fillet on the
+    /// **Source:** `FilletSurf_Builder.hxx`:59 - `FilletSurf_Builder::FilletSurf_Builder()`
+    /// initialize of the information necessary for the
+    /// computation of the fillet on the
     /// Shape S from a list of edges E and a radius R.
     ///
     /// Ta is the angular tolerance
     /// Tapp3d is the 3d approximation tolerance
     /// Tapp2d is the 2d approximation tolerance
-    pub fn new_shape_listofshape_real4(
+    pub fn new_shape_list_shape_real4(
         S: &crate::topo_ds::Shape,
-        E: &crate::ffi_types::TopTools_ListOfShape,
+        E: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         R: f64,
         Ta: f64,
         Tapp3d: f64,
@@ -138,80 +138,80 @@ impl Builder {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKFillet::FilletSurf_Builder_ctor_shape_listofshape_real4(
+                crate::ffi_extern_TKFillet::FilletSurf_Builder_ctor_shape_list_shape_real4(
                     S, E, R, Ta, Tapp3d, Tapp2d,
                 ),
             ))
         }
     }
 
-    /// **Source:** `FilletSurf_Builder.hxx`:58 - `FilletSurf_Builder::FilletSurf_Builder()`
-    /// initialize  of the information  necessary for  the
-    /// computation of  the fillet on the
+    /// **Source:** `FilletSurf_Builder.hxx`:59 - `FilletSurf_Builder::FilletSurf_Builder()`
+    /// initialize of the information necessary for the
+    /// computation of the fillet on the
     /// Shape S from a list of edges E and a radius R.
     ///
     /// Ta is the angular tolerance
     /// Tapp3d is the 3d approximation tolerance
     /// Tapp2d is the 2d approximation tolerance
-    pub fn new_shape_listofshape_real3(
+    pub fn new_shape_list_shape_real3(
         S: &crate::topo_ds::Shape,
-        E: &crate::ffi_types::TopTools_ListOfShape,
+        E: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         R: f64,
         Ta: f64,
         Tapp3d: f64,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_shape_listofshape_real4(S, E, R, Ta, Tapp3d, 1.0e-5)
+        Self::new_shape_list_shape_real4(S, E, R, Ta, Tapp3d, 1.0e-5)
     }
 
-    /// **Source:** `FilletSurf_Builder.hxx`:58 - `FilletSurf_Builder::FilletSurf_Builder()`
-    /// initialize  of the information  necessary for  the
-    /// computation of  the fillet on the
+    /// **Source:** `FilletSurf_Builder.hxx`:59 - `FilletSurf_Builder::FilletSurf_Builder()`
+    /// initialize of the information necessary for the
+    /// computation of the fillet on the
     /// Shape S from a list of edges E and a radius R.
     ///
     /// Ta is the angular tolerance
     /// Tapp3d is the 3d approximation tolerance
     /// Tapp2d is the 2d approximation tolerance
-    pub fn new_shape_listofshape_real2(
+    pub fn new_shape_list_shape_real2(
         S: &crate::topo_ds::Shape,
-        E: &crate::ffi_types::TopTools_ListOfShape,
+        E: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         R: f64,
         Ta: f64,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_shape_listofshape_real4(S, E, R, Ta, 1.0e-4, 1.0e-5)
+        Self::new_shape_list_shape_real4(S, E, R, Ta, 1.0e-4, 1.0e-5)
     }
 
-    /// **Source:** `FilletSurf_Builder.hxx`:58 - `FilletSurf_Builder::FilletSurf_Builder()`
-    /// initialize  of the information  necessary for  the
-    /// computation of  the fillet on the
+    /// **Source:** `FilletSurf_Builder.hxx`:59 - `FilletSurf_Builder::FilletSurf_Builder()`
+    /// initialize of the information necessary for the
+    /// computation of the fillet on the
     /// Shape S from a list of edges E and a radius R.
     ///
     /// Ta is the angular tolerance
     /// Tapp3d is the 3d approximation tolerance
     /// Tapp2d is the 2d approximation tolerance
-    pub fn new_shape_listofshape_real(
+    pub fn new_shape_list_shape_real(
         S: &crate::topo_ds::Shape,
-        E: &crate::ffi_types::TopTools_ListOfShape,
+        E: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         R: f64,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_shape_listofshape_real4(S, E, R, 1.0e-2, 1.0e-4, 1.0e-5)
+        Self::new_shape_list_shape_real4(S, E, R, 1.0e-2, 1.0e-4, 1.0e-5)
     }
 
-    /// **Source:** `FilletSurf_Builder.hxx`:66 - `FilletSurf_Builder::Perform()`
-    /// ---Purpose computation  of the fillet (list of NUBS)
+    /// **Source:** `FilletSurf_Builder.hxx`:67 - `FilletSurf_Builder::Perform()`
+    /// ---Purpose computation of the fillet (list of NUBS)
     pub fn perform(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_Builder_perform(self as *mut Self)
         })
     }
 
-    /// **Source:** `FilletSurf_Builder.hxx`:68 - `FilletSurf_Builder::Simulate()`
+    /// **Source:** `FilletSurf_Builder.hxx`:69 - `FilletSurf_Builder::Simulate()`
     pub fn simulate(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_Builder_simulate(self as *mut Self)
         })
     }
 
-    /// **Source:** `FilletSurf_Builder.hxx`:75 - `FilletSurf_Builder::IsDone()`
+    /// **Source:** `FilletSurf_Builder.hxx`:76 - `FilletSurf_Builder::IsDone()`
     /// gives the status about the computation of the fillet
     /// returns:
     /// IsOK :no problem during the computation
@@ -224,15 +224,15 @@ impl Builder {
         .unwrap()
     }
 
-    /// **Source:** `FilletSurf_Builder.hxx`:86 - `FilletSurf_Builder::StatusError()`
-    /// gives    information     about   error   status     if
+    /// **Source:** `FilletSurf_Builder.hxx`:87 - `FilletSurf_Builder::StatusError()`
+    /// gives information about error status if
     /// IsDone=IsNotOk
     /// returns
     /// EdgeNotG1: the edges are not G1
     /// FacesNotG1 : two connected faces on a same support are
-    /// not  G1
-    /// EdgeNotOnShape: the  edge   is  not on  shape
-    /// NotSharpEdge: the  edge is not sharp
+    /// not G1
+    /// EdgeNotOnShape: the edge is not on shape
+    /// NotSharpEdge: the edge is not sharp
     /// PbFilletCompute: problem during the computation of the fillet
     pub fn status_error(&self) -> crate::fillet_surf::ErrorTypeStatus {
         crate::fillet_surf::ErrorTypeStatus::try_from(crate::check_result(unsafe {
@@ -241,17 +241,39 @@ impl Builder {
         .unwrap()
     }
 
-    /// **Source:** `FilletSurf_Builder.hxx`:89 - `FilletSurf_Builder::NbSurface()`
-    /// gives the number of NUBS surfaces  of the Fillet.
+    /// **Source:** `FilletSurf_Builder.hxx`:90 - `FilletSurf_Builder::NbSurface()`
+    /// gives the number of NUBS surfaces of the Fillet.
     pub fn nb_surface(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_Builder_nb_surface(self as *const Self)
         })
     }
 
-    /// **Source:** `FilletSurf_Builder.hxx`:92 - `FilletSurf_Builder::SurfaceFillet()`
+    /// **Source:** `FilletSurf_Builder.hxx`:97 - `FilletSurf_Builder::Section()`
+    /// Returns the arc of the section of index IndexSec of surface
+    /// of index IndexSurf. The basis curve of the trimmed curve is a Geom_Circle.
+    /// @param[in] IndexSurf 1-based surface index
+    /// @param[in] IndexSec 1-based section index
+    /// @return the section as a trimmed circular arc
+    pub fn section(
+        &self,
+        IndexSurf: i32,
+        IndexSec: i32,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_TrimmedCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::FilletSurf_Builder_section(
+                    self as *const Self,
+                    IndexSurf,
+                    IndexSec,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `FilletSurf_Builder.hxx`:107 - `FilletSurf_Builder::SurfaceFillet()`
     /// gives the NUBS surface of index Index.
-    pub fn surface_fillet(&self, Index: i32) -> &crate::ffi_types::HandleGeomSurface {
+    pub fn surface_fillet(&self, Index: i32) -> &crate::ffi_types::Handle_Geom_Surface {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKFillet::FilletSurf_Builder_surface_fillet(
                 self as *const Self,
@@ -260,8 +282,8 @@ impl Builder {
         }
     }
 
-    /// **Source:** `FilletSurf_Builder.hxx`:96 - `FilletSurf_Builder::TolApp3d()`
-    /// gives  the  3d  tolerance reached during approximation
+    /// **Source:** `FilletSurf_Builder.hxx`:111 - `FilletSurf_Builder::TolApp3d()`
+    /// gives the 3d tolerance reached during approximation
     /// of surface of index Index
     pub fn tol_app3d(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
@@ -269,8 +291,8 @@ impl Builder {
         })
     }
 
-    /// **Source:** `FilletSurf_Builder.hxx`:99 - `FilletSurf_Builder::SupportFace1()`
-    /// gives the first support  face relative to SurfaceFillet(Index);
+    /// **Source:** `FilletSurf_Builder.hxx`:114 - `FilletSurf_Builder::SupportFace1()`
+    /// gives the first support face relative to SurfaceFillet(Index);
     pub fn support_face1(&self, Index: i32) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKFillet::FilletSurf_Builder_support_face1(
@@ -280,8 +302,8 @@ impl Builder {
         }
     }
 
-    /// **Source:** `FilletSurf_Builder.hxx`:102 - `FilletSurf_Builder::SupportFace2()`
-    /// gives the second support  face relative to SurfaceFillet(Index);
+    /// **Source:** `FilletSurf_Builder.hxx`:117 - `FilletSurf_Builder::SupportFace2()`
+    /// gives the second support face relative to SurfaceFillet(Index);
     pub fn support_face2(&self, Index: i32) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKFillet::FilletSurf_Builder_support_face2(
@@ -291,9 +313,9 @@ impl Builder {
         }
     }
 
-    /// **Source:** `FilletSurf_Builder.hxx`:105 - `FilletSurf_Builder::CurveOnFace1()`
-    /// gives  the 3d curve  of SurfaceFillet(Index)  on SupportFace1(Index)
-    pub fn curve_on_face1(&self, Index: i32) -> &crate::ffi_types::HandleGeomCurve {
+    /// **Source:** `FilletSurf_Builder.hxx`:120 - `FilletSurf_Builder::CurveOnFace1()`
+    /// gives the 3d curve of SurfaceFillet(Index) on SupportFace1(Index)
+    pub fn curve_on_face1(&self, Index: i32) -> &crate::ffi_types::Handle_Geom_Curve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKFillet::FilletSurf_Builder_curve_on_face1(
                 self as *const Self,
@@ -302,9 +324,9 @@ impl Builder {
         }
     }
 
-    /// **Source:** `FilletSurf_Builder.hxx`:108 - `FilletSurf_Builder::CurveOnFace2()`
-    /// gives the     3d  curve of  SurfaceFillet(Index) on SupportFace2(Index)
-    pub fn curve_on_face2(&self, Index: i32) -> &crate::ffi_types::HandleGeomCurve {
+    /// **Source:** `FilletSurf_Builder.hxx`:123 - `FilletSurf_Builder::CurveOnFace2()`
+    /// gives the 3d curve of SurfaceFillet(Index) on SupportFace2(Index)
+    pub fn curve_on_face2(&self, Index: i32) -> &crate::ffi_types::Handle_Geom_Curve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKFillet::FilletSurf_Builder_curve_on_face2(
                 self as *const Self,
@@ -313,9 +335,9 @@ impl Builder {
         }
     }
 
-    /// **Source:** `FilletSurf_Builder.hxx`:111 - `FilletSurf_Builder::PCurveOnFace1()`
-    /// gives the  PCurve associated to CurvOnSup1(Index)  on the support face
-    pub fn p_curve_on_face1(&self, Index: i32) -> &crate::ffi_types::HandleGeom2dCurve {
+    /// **Source:** `FilletSurf_Builder.hxx`:126 - `FilletSurf_Builder::PCurveOnFace1()`
+    /// gives the PCurve associated to CurvOnSup1(Index) on the support face
+    pub fn p_curve_on_face1(&self, Index: i32) -> &crate::ffi_types::Handle_Geom2d_Curve {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKFillet::FilletSurf_Builder_p_curve_on_face1(
@@ -326,9 +348,9 @@ impl Builder {
         }
     }
 
-    /// **Source:** `FilletSurf_Builder.hxx`:114 - `FilletSurf_Builder::PCurve1OnFillet()`
+    /// **Source:** `FilletSurf_Builder.hxx`:129 - `FilletSurf_Builder::PCurve1OnFillet()`
     /// gives the PCurve associated to CurveOnFace1(Index) on the Fillet
-    pub fn p_curve1_on_fillet(&self, Index: i32) -> &crate::ffi_types::HandleGeom2dCurve {
+    pub fn p_curve1_on_fillet(&self, Index: i32) -> &crate::ffi_types::Handle_Geom2d_Curve {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKFillet::FilletSurf_Builder_p_curve1_on_fillet(
@@ -339,9 +361,9 @@ impl Builder {
         }
     }
 
-    /// **Source:** `FilletSurf_Builder.hxx`:117 - `FilletSurf_Builder::PCurveOnFace2()`
-    /// gives the PCurve  associated to CurveOnSup2(Index) on  the  support face
-    pub fn p_curve_on_face2(&self, Index: i32) -> &crate::ffi_types::HandleGeom2dCurve {
+    /// **Source:** `FilletSurf_Builder.hxx`:132 - `FilletSurf_Builder::PCurveOnFace2()`
+    /// gives the PCurve associated to CurveOnSup2(Index) on the support face
+    pub fn p_curve_on_face2(&self, Index: i32) -> &crate::ffi_types::Handle_Geom2d_Curve {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKFillet::FilletSurf_Builder_p_curve_on_face2(
@@ -352,9 +374,9 @@ impl Builder {
         }
     }
 
-    /// **Source:** `FilletSurf_Builder.hxx`:120 - `FilletSurf_Builder::PCurve2OnFillet()`
-    /// gives the PCurve  associated to CurveOnSup2(Index) on  the  fillet
-    pub fn p_curve2_on_fillet(&self, Index: i32) -> &crate::ffi_types::HandleGeom2dCurve {
+    /// **Source:** `FilletSurf_Builder.hxx`:135 - `FilletSurf_Builder::PCurve2OnFillet()`
+    /// gives the PCurve associated to CurveOnSup2(Index) on the fillet
+    pub fn p_curve2_on_fillet(&self, Index: i32) -> &crate::ffi_types::Handle_Geom2d_Curve {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKFillet::FilletSurf_Builder_p_curve2_on_fillet(
@@ -365,23 +387,23 @@ impl Builder {
         }
     }
 
-    /// **Source:** `FilletSurf_Builder.hxx`:123 - `FilletSurf_Builder::FirstParameter()`
-    /// gives the parameter of the fillet  on the first edge.
+    /// **Source:** `FilletSurf_Builder.hxx`:138 - `FilletSurf_Builder::FirstParameter()`
+    /// gives the parameter of the fillet on the first edge.
     pub fn first_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_Builder_first_parameter(self as *const Self)
         })
     }
 
-    /// **Source:** `FilletSurf_Builder.hxx`:126 - `FilletSurf_Builder::LastParameter()`
-    /// gives the  parameter of the fillet  on the last edge
+    /// **Source:** `FilletSurf_Builder.hxx`:141 - `FilletSurf_Builder::LastParameter()`
+    /// gives the parameter of the fillet on the last edge
     pub fn last_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_Builder_last_parameter(self as *const Self)
         })
     }
 
-    /// **Source:** `FilletSurf_Builder.hxx`:128 - `FilletSurf_Builder::StartSectionStatus()`
+    /// **Source:** `FilletSurf_Builder.hxx`:143 - `FilletSurf_Builder::StartSectionStatus()`
     pub fn start_section_status(&self) -> crate::fillet_surf::StatusType {
         crate::fillet_surf::StatusType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_Builder_start_section_status(self as *const Self)
@@ -389,7 +411,7 @@ impl Builder {
         .unwrap()
     }
 
-    /// **Source:** `FilletSurf_Builder.hxx`:130 - `FilletSurf_Builder::EndSectionStatus()`
+    /// **Source:** `FilletSurf_Builder.hxx`:145 - `FilletSurf_Builder::EndSectionStatus()`
     pub fn end_section_status(&self) -> crate::fillet_surf::StatusType {
         crate::fillet_surf::StatusType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_Builder_end_section_status(self as *const Self)
@@ -397,29 +419,12 @@ impl Builder {
         .unwrap()
     }
 
-    /// **Source:** `FilletSurf_Builder.hxx`:132 - `FilletSurf_Builder::NbSection()`
+    /// **Source:** `FilletSurf_Builder.hxx`:147 - `FilletSurf_Builder::NbSection()`
     pub fn nb_section(&self, IndexSurf: i32) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_Builder_nb_section(
                 self as *const Self,
                 IndexSurf,
-            )
-        })
-    }
-
-    /// **Source:** `FilletSurf_Builder.hxx`:134 - `FilletSurf_Builder::Section()`
-    pub fn section(
-        &self,
-        IndexSurf: i32,
-        IndexSec: i32,
-        Circ: &mut crate::ffi_types::HandleGeomTrimmedCurve,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKFillet::FilletSurf_Builder_section(
-                self as *const Self,
-                IndexSurf,
-                IndexSec,
-                Circ,
             )
         })
     }
@@ -429,8 +434,8 @@ impl Builder {
 // From FilletSurf_InternalBuilder.hxx
 // ========================
 
-/// **Source:** `FilletSurf_InternalBuilder.hxx`:40 - `FilletSurf_InternalBuilder`
-/// This class is private. It is  used by the class Builder
+/// **Source:** `FilletSurf_InternalBuilder.hxx`:42 - `FilletSurf_InternalBuilder`
+/// This class is private. It is used by the class Builder
 /// from FilletSurf. It computes geometric information about fillets.
 pub use crate::ffi_types::FilletSurf_InternalBuilder as InternalBuilder;
 
@@ -443,7 +448,7 @@ unsafe impl crate::CppDeletable for InternalBuilder {
 }
 
 impl InternalBuilder {
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:45 - `FilletSurf_InternalBuilder::FilletSurf_InternalBuilder()`
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:47 - `FilletSurf_InternalBuilder::FilletSurf_InternalBuilder()`
     pub fn new_shape_filletshape_real3(
         S: &crate::topo_ds::Shape,
         FShape: crate::ch_fi3d::FilletShape,
@@ -464,7 +469,7 @@ impl InternalBuilder {
         }
     }
 
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:45 - `FilletSurf_InternalBuilder::FilletSurf_InternalBuilder()`
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:47 - `FilletSurf_InternalBuilder::FilletSurf_InternalBuilder()`
     pub fn new_shape_filletshape_real2(
         S: &crate::topo_ds::Shape,
         FShape: crate::ch_fi3d::FilletShape,
@@ -474,7 +479,7 @@ impl InternalBuilder {
         Self::new_shape_filletshape_real3(S, FShape, Ta, Tapp3d, 1.0e-5)
     }
 
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:45 - `FilletSurf_InternalBuilder::FilletSurf_InternalBuilder()`
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:47 - `FilletSurf_InternalBuilder::FilletSurf_InternalBuilder()`
     pub fn new_shape_filletshape_real(
         S: &crate::topo_ds::Shape,
         FShape: crate::ch_fi3d::FilletShape,
@@ -483,7 +488,7 @@ impl InternalBuilder {
         Self::new_shape_filletshape_real3(S, FShape, Ta, 1.0e-4, 1.0e-5)
     }
 
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:45 - `FilletSurf_InternalBuilder::FilletSurf_InternalBuilder()`
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:47 - `FilletSurf_InternalBuilder::FilletSurf_InternalBuilder()`
     pub fn new_shape_filletshape(
         S: &crate::topo_ds::Shape,
         FShape: crate::ch_fi3d::FilletShape,
@@ -491,45 +496,45 @@ impl InternalBuilder {
         Self::new_shape_filletshape_real3(S, FShape, 1.0e-2, 1.0e-4, 1.0e-5)
     }
 
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:58 - `FilletSurf_InternalBuilder::Add()`
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:60 - `FilletSurf_InternalBuilder::Add()`
     /// Initializes the contour with a list of Edges
     /// 0 : no problem
     /// 1 : empty list
     /// 2 : the edges are not G1
     /// 3 : two connected faces on a same support are not G1
-    /// 4 : the  edge   is  not on  shape
-    /// 5 :  NotSharpEdge: the  edge is not sharp
-    pub fn add(&mut self, E: &crate::ffi_types::TopTools_ListOfShape, R: f64) -> i32 {
+    /// 4 : the edge is not on shape
+    /// 5 : NotSharpEdge: the edge is not sharp
+    pub fn add(&mut self, E: &crate::ffi_types::NCollection_List_TopoDS_Shape, R: f64) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_add(self as *mut Self, E, R)
         })
     }
 
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:60 - `FilletSurf_InternalBuilder::Perform()`
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:62 - `FilletSurf_InternalBuilder::Perform()`
     pub fn perform(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_perform(self as *mut Self)
         })
     }
 
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:62 - `FilletSurf_InternalBuilder::Done()`
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:64 - `FilletSurf_InternalBuilder::Done()`
     pub fn done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_done(self as *const Self)
         })
     }
 
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:65 - `FilletSurf_InternalBuilder::NbSurface()`
-    /// gives the number of NUBS surfaces  of the Fillet.
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:67 - `FilletSurf_InternalBuilder::NbSurface()`
+    /// gives the number of NUBS surfaces of the Fillet.
     pub fn nb_surface(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_nb_surface(self as *const Self)
         })
     }
 
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:68 - `FilletSurf_InternalBuilder::SurfaceFillet()`
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:70 - `FilletSurf_InternalBuilder::SurfaceFillet()`
     /// gives the NUBS surface of index Index.
-    pub fn surface_fillet(&self, Index: i32) -> &crate::ffi_types::HandleGeomSurface {
+    pub fn surface_fillet(&self, Index: i32) -> &crate::ffi_types::Handle_Geom_Surface {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_surface_fillet(
@@ -540,8 +545,8 @@ impl InternalBuilder {
         }
     }
 
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:72 - `FilletSurf_InternalBuilder::TolApp3d()`
-    /// gives  the  3d  tolerance reached during approximation
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:74 - `FilletSurf_InternalBuilder::TolApp3d()`
+    /// gives the 3d tolerance reached during approximation
     /// of the surface of index Index
     pub fn tol_app3d(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
@@ -552,8 +557,8 @@ impl InternalBuilder {
         })
     }
 
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:75 - `FilletSurf_InternalBuilder::SupportFace1()`
-    /// gives the first support  face relative to SurfaceFillet(Index);
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:77 - `FilletSurf_InternalBuilder::SupportFace1()`
+    /// gives the first support face relative to SurfaceFillet(Index);
     pub fn support_face1(&self, Index: i32) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(
@@ -565,8 +570,8 @@ impl InternalBuilder {
         }
     }
 
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:78 - `FilletSurf_InternalBuilder::SupportFace2()`
-    /// gives the second support  face relative to SurfaceFillet(Index);
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:80 - `FilletSurf_InternalBuilder::SupportFace2()`
+    /// gives the second support face relative to SurfaceFillet(Index);
     pub fn support_face2(&self, Index: i32) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(
@@ -578,9 +583,9 @@ impl InternalBuilder {
         }
     }
 
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:81 - `FilletSurf_InternalBuilder::CurveOnFace1()`
-    /// gives  the 3d curve  of SurfaceFillet(Index)  on SupportFace1(Index)
-    pub fn curve_on_face1(&self, Index: i32) -> &crate::ffi_types::HandleGeomCurve {
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:83 - `FilletSurf_InternalBuilder::CurveOnFace1()`
+    /// gives the 3d curve of SurfaceFillet(Index) on SupportFace1(Index)
+    pub fn curve_on_face1(&self, Index: i32) -> &crate::ffi_types::Handle_Geom_Curve {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_curve_on_face1(
@@ -591,9 +596,9 @@ impl InternalBuilder {
         }
     }
 
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:84 - `FilletSurf_InternalBuilder::CurveOnFace2()`
-    /// gives the     3d  curve of  SurfaceFillet(Index) on SupportFace2(Index)
-    pub fn curve_on_face2(&self, Index: i32) -> &crate::ffi_types::HandleGeomCurve {
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:86 - `FilletSurf_InternalBuilder::CurveOnFace2()`
+    /// gives the 3d curve of SurfaceFillet(Index) on SupportFace2(Index)
+    pub fn curve_on_face2(&self, Index: i32) -> &crate::ffi_types::Handle_Geom_Curve {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_curve_on_face2(
@@ -604,9 +609,9 @@ impl InternalBuilder {
         }
     }
 
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:87 - `FilletSurf_InternalBuilder::PCurveOnFace1()`
-    /// gives the  PCurve associated to CurvOnSup1(Index)  on the support face
-    pub fn p_curve_on_face1(&self, Index: i32) -> &crate::ffi_types::HandleGeom2dCurve {
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:89 - `FilletSurf_InternalBuilder::PCurveOnFace1()`
+    /// gives the PCurve associated to CurvOnSup1(Index) on the support face
+    pub fn p_curve_on_face1(&self, Index: i32) -> &crate::ffi_types::Handle_Geom2d_Curve {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_p_curve_on_face1(
@@ -617,9 +622,9 @@ impl InternalBuilder {
         }
     }
 
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:90 - `FilletSurf_InternalBuilder::PCurve1OnFillet()`
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:92 - `FilletSurf_InternalBuilder::PCurve1OnFillet()`
     /// gives the PCurve associated to CurveOnFace1(Index) on the Fillet
-    pub fn p_curve1_on_fillet(&self, Index: i32) -> &crate::ffi_types::HandleGeom2dCurve {
+    pub fn p_curve1_on_fillet(&self, Index: i32) -> &crate::ffi_types::Handle_Geom2d_Curve {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_p_curve1_on_fillet(
@@ -630,9 +635,9 @@ impl InternalBuilder {
         }
     }
 
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:93 - `FilletSurf_InternalBuilder::PCurveOnFace2()`
-    /// gives the PCurve  associated to CurveOnSup2(Index) on  the  support face
-    pub fn p_curve_on_face2(&self, Index: i32) -> &crate::ffi_types::HandleGeom2dCurve {
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:95 - `FilletSurf_InternalBuilder::PCurveOnFace2()`
+    /// gives the PCurve associated to CurveOnSup2(Index) on the support face
+    pub fn p_curve_on_face2(&self, Index: i32) -> &crate::ffi_types::Handle_Geom2d_Curve {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_p_curve_on_face2(
@@ -643,9 +648,9 @@ impl InternalBuilder {
         }
     }
 
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:96 - `FilletSurf_InternalBuilder::PCurve2OnFillet()`
-    /// gives the PCurve  associated to CurveOnSup2(Index) on  the  fillet
-    pub fn p_curve2_on_fillet(&self, Index: i32) -> &crate::ffi_types::HandleGeom2dCurve {
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:98 - `FilletSurf_InternalBuilder::PCurve2OnFillet()`
+    /// gives the PCurve associated to CurveOnSup2(Index) on the fillet
+    pub fn p_curve2_on_fillet(&self, Index: i32) -> &crate::ffi_types::Handle_Geom2d_Curve {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_p_curve2_on_fillet(
@@ -656,8 +661,8 @@ impl InternalBuilder {
         }
     }
 
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:99 - `FilletSurf_InternalBuilder::FirstParameter()`
-    /// gives the parameter of the fillet  on the first edge.
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:101 - `FilletSurf_InternalBuilder::FirstParameter()`
+    /// gives the parameter of the fillet on the first edge.
     pub fn first_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_first_parameter(
@@ -666,8 +671,8 @@ impl InternalBuilder {
         })
     }
 
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:102 - `FilletSurf_InternalBuilder::LastParameter()`
-    /// gives the  parameter of the fillet  on the last edge
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:104 - `FilletSurf_InternalBuilder::LastParameter()`
+    /// gives the parameter of the fillet on the last edge
     pub fn last_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_last_parameter(
@@ -676,7 +681,7 @@ impl InternalBuilder {
         })
     }
 
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:104 - `FilletSurf_InternalBuilder::StartSectionStatus()`
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:106 - `FilletSurf_InternalBuilder::StartSectionStatus()`
     pub fn start_section_status(&self) -> crate::fillet_surf::StatusType {
         crate::fillet_surf::StatusType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_start_section_status(
@@ -686,7 +691,7 @@ impl InternalBuilder {
         .unwrap()
     }
 
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:106 - `FilletSurf_InternalBuilder::EndSectionStatus()`
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:108 - `FilletSurf_InternalBuilder::EndSectionStatus()`
     pub fn end_section_status(&self) -> crate::fillet_surf::StatusType {
         crate::fillet_surf::StatusType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_end_section_status(
@@ -696,14 +701,14 @@ impl InternalBuilder {
         .unwrap()
     }
 
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:108 - `FilletSurf_InternalBuilder::Simulate()`
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:110 - `FilletSurf_InternalBuilder::Simulate()`
     pub fn simulate(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_simulate(self as *mut Self)
         })
     }
 
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:110 - `FilletSurf_InternalBuilder::NbSection()`
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:112 - `FilletSurf_InternalBuilder::NbSection()`
     pub fn nb_section(&self, IndexSurf: i32) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_nb_section(
@@ -713,21 +718,26 @@ impl InternalBuilder {
         })
     }
 
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:112 - `FilletSurf_InternalBuilder::Section()`
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:119 - `FilletSurf_InternalBuilder::Section()`
+    /// Returns the arc of the section of index IndexSec of surface
+    /// of index IndexSurf. The basis curve of the trimmed curve is a Geom_Circle.
+    /// @param[in] IndexSurf 1-based surface index
+    /// @param[in] IndexSec 1-based section index
+    /// @return the section as a trimmed circular arc
     pub fn section(
         &self,
         IndexSurf: i32,
         IndexSec: i32,
-        Circ: &mut crate::ffi_types::HandleGeomTrimmedCurve,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_section(
-                self as *const Self,
-                IndexSurf,
-                IndexSec,
-                Circ,
-            )
-        })
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_TrimmedCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_section(
+                    self as *const Self,
+                    IndexSurf,
+                    IndexSec,
+                ),
+            ))
+        }
     }
 
     /// Upcast to ChFi3d_FilBuilder
@@ -774,7 +784,7 @@ impl InternalBuilder {
         }
     }
 
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:54 - `ChFi3d_FilBuilder::SetFilletShape()`
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:58 - `ChFi3d_FilBuilder::SetFilletShape()`
     pub fn set_fillet_shape(&mut self, FShape: crate::ch_fi3d::FilletShape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_inherited_SetFilletShape(
@@ -784,7 +794,7 @@ impl InternalBuilder {
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:57 - `ChFi3d_FilBuilder::GetFilletShape()`
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:61 - `ChFi3d_FilBuilder::GetFilletShape()`
     pub fn get_fillet_shape(&self) -> crate::ch_fi3d::FilletShape {
         crate::ch_fi3d::FilletShape::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_inherited_GetFilletShape(
@@ -794,8 +804,8 @@ impl InternalBuilder {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:68 - `ChFi3d_FilBuilder::SetRadius()`
-    pub fn set_radius(&mut self, C: &crate::ffi_types::HandleLawFunction, IC: i32, IinC: i32) {
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:72 - `ChFi3d_FilBuilder::SetRadius()`
+    pub fn set_radius(&mut self, C: &crate::ffi_types::Handle_Law_Function, IC: i32, IinC: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_inherited_SetRadius(
                 self as *mut Self,
@@ -806,7 +816,7 @@ impl InternalBuilder {
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:73 - `ChFi3d_FilBuilder::IsConstant()`
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:75 - `ChFi3d_FilBuilder::IsConstant()`
     pub fn is_constant(&mut self, IC: i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_inherited_IsConstant(
@@ -816,7 +826,7 @@ impl InternalBuilder {
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:77 - `ChFi3d_FilBuilder::Radius()`
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:79 - `ChFi3d_FilBuilder::Radius()`
     pub fn radius(&mut self, IC: i32) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_inherited_Radius(
@@ -826,7 +836,7 @@ impl InternalBuilder {
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:80 - `ChFi3d_FilBuilder::ResetContour()`
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:82 - `ChFi3d_FilBuilder::ResetContour()`
     pub fn reset_contour(&mut self, IC: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_inherited_ResetContour(
@@ -847,7 +857,7 @@ impl InternalBuilder {
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:114 - `ChFi3d_FilBuilder::GetBounds()`
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:110 - `ChFi3d_FilBuilder::GetBounds()`
     pub fn get_bounds(
         &mut self,
         IC: i32,
@@ -866,12 +876,12 @@ impl InternalBuilder {
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:122 - `ChFi3d_FilBuilder::GetLaw()`
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:115 - `ChFi3d_FilBuilder::GetLaw()`
     pub fn get_law(
         &mut self,
         IC: i32,
         E: &crate::topo_ds::Edge,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleLawFunction> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_Function> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_inherited_GetLaw(
@@ -883,12 +893,12 @@ impl InternalBuilder {
         }
     }
 
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:126 - `ChFi3d_FilBuilder::SetLaw()`
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:119 - `ChFi3d_FilBuilder::SetLaw()`
     pub fn set_law(
         &mut self,
         IC: i32,
         E: &crate::topo_ds::Edge,
-        L: &crate::ffi_types::HandleLawFunction,
+        L: &crate::ffi_types::Handle_Law_Function,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_inherited_SetLaw(
@@ -900,7 +910,7 @@ impl InternalBuilder {
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:132 - `ChFi3d_FilBuilder::NbSurf()`
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:125 - `ChFi3d_FilBuilder::NbSurf()`
     pub fn nb_surf(&self, IC: i32) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_inherited_NbSurf(
@@ -910,12 +920,12 @@ impl InternalBuilder {
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:134 - `ChFi3d_FilBuilder::Sect()`
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:127 - `ChFi3d_FilBuilder::Sect()`
     pub fn sect(
         &self,
         IC: i32,
         IS: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleChFiDSSecHArray1> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_ChFiDS_CircSection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_inherited_Sect(
@@ -927,7 +937,7 @@ impl InternalBuilder {
         }
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:71 - `ChFi3d_Builder::SetParams()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:73 - `ChFi3d_Builder::SetParams()`
     pub fn set_params(
         &mut self,
         Tang: f64,
@@ -950,7 +960,7 @@ impl InternalBuilder {
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:78 - `ChFi3d_Builder::SetContinuity()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:80 - `ChFi3d_Builder::SetContinuity()`
     pub fn set_continuity(
         &mut self,
         InternalContinuity: crate::geom_abs::Shape,
@@ -965,7 +975,7 @@ impl InternalBuilder {
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:82 - `ChFi3d_Builder::Remove()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:84 - `ChFi3d_Builder::Remove()`
     pub fn remove(&mut self, E: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_inherited_Remove(
@@ -975,7 +985,7 @@ impl InternalBuilder {
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:86 - `ChFi3d_Builder::Contains()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:88 - `ChFi3d_Builder::Contains()`
     pub fn contains(&self, E: &crate::topo_ds::Edge) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_inherited_Contains(
@@ -985,7 +995,7 @@ impl InternalBuilder {
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:96 - `ChFi3d_Builder::NbElements()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:97 - `ChFi3d_Builder::NbElements()`
     pub fn nb_elements(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_inherited_NbElements(
@@ -994,8 +1004,8 @@ impl InternalBuilder {
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:100 - `ChFi3d_Builder::Value()`
-    pub fn value(&self, I: i32) -> crate::OwnedPtr<crate::ffi_types::HandleChFiDSSpine> {
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:101 - `ChFi3d_Builder::Value()`
+    pub fn value(&self, I: i32) -> crate::OwnedPtr<crate::ffi_types::Handle_ChFiDS_Spine> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_inherited_Value(
@@ -1006,7 +1016,7 @@ impl InternalBuilder {
         }
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:103 - `ChFi3d_Builder::Length()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:104 - `ChFi3d_Builder::Length()`
     pub fn length(&self, IC: i32) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_inherited_Length(
@@ -1016,7 +1026,7 @@ impl InternalBuilder {
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:107 - `ChFi3d_Builder::FirstVertex()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:108 - `ChFi3d_Builder::FirstVertex()`
     pub fn first_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1028,7 +1038,7 @@ impl InternalBuilder {
         }
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:111 - `ChFi3d_Builder::LastVertex()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:112 - `ChFi3d_Builder::LastVertex()`
     pub fn last_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1040,7 +1050,7 @@ impl InternalBuilder {
         }
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:115 - `ChFi3d_Builder::Abscissa()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:116 - `ChFi3d_Builder::Abscissa()`
     pub fn abscissa(&self, IC: i32, V: &crate::topo_ds::Vertex) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_inherited_Abscissa(
@@ -1051,7 +1061,7 @@ impl InternalBuilder {
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:119 - `ChFi3d_Builder::RelativeAbscissa()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:120 - `ChFi3d_Builder::RelativeAbscissa()`
     pub fn relative_abscissa(&self, IC: i32, V: &crate::topo_ds::Vertex) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_inherited_RelativeAbscissa(
@@ -1145,7 +1155,7 @@ impl InternalBuilder {
         &self,
         IC: i32,
         IS: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Surface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_inherited_ComputedSurface(
@@ -1157,7 +1167,7 @@ impl InternalBuilder {
         }
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:160 - `ChFi3d_Builder::NbFaultyVertices()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:159 - `ChFi3d_Builder::NbFaultyVertices()`
     pub fn nb_faulty_vertices(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_inherited_NbFaultyVertices(
@@ -1166,7 +1176,7 @@ impl InternalBuilder {
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:163 - `ChFi3d_Builder::FaultyVertex()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:162 - `ChFi3d_Builder::FaultyVertex()`
     pub fn faulty_vertex(&self, IV: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1178,7 +1188,7 @@ impl InternalBuilder {
         }
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:166 - `ChFi3d_Builder::HasResult()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:165 - `ChFi3d_Builder::HasResult()`
     pub fn has_result(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_inherited_HasResult(
@@ -1187,7 +1197,7 @@ impl InternalBuilder {
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:170 - `ChFi3d_Builder::BadShape()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:169 - `ChFi3d_Builder::BadShape()`
     pub fn bad_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1198,7 +1208,7 @@ impl InternalBuilder {
         }
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:174 - `ChFi3d_Builder::StripeStatus()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:173 - `ChFi3d_Builder::StripeStatus()`
     pub fn stripe_status(&self, IC: i32) -> crate::ch_fi_ds::ErrorStatus {
         crate::ch_fi_ds::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_inherited_StripeStatus(
@@ -1209,7 +1219,7 @@ impl InternalBuilder {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:178 - `ChFi3d_Builder::Reset()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:177 - `ChFi3d_Builder::Reset()`
     pub fn reset(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_inherited_Reset(
@@ -1218,8 +1228,8 @@ impl InternalBuilder {
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:181 - `ChFi3d_Builder::Builder()`
-    pub fn builder(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopOpeBRepBuildHBuilder> {
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:180 - `ChFi3d_Builder::Builder()`
+    pub fn builder(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TopOpeBRepBuild_HBuilder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_inherited_Builder(
@@ -1229,38 +1239,7 @@ impl InternalBuilder {
         }
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:186 - `ChFi3d_Builder::SplitKPart()`
-    pub fn split_k_part(
-        &mut self,
-        Data: &crate::ffi_types::HandleChFiDSSurfData,
-        SetData: &mut crate::ffi_types::ChFiDS_SequenceOfSurfData,
-        Spine: &crate::ffi_types::HandleChFiDSSpine,
-        Iedge: i32,
-        S1: &crate::ffi_types::HandleAdaptor3dSurface,
-        I1: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        S2: &crate::ffi_types::HandleAdaptor3dSurface,
-        I2: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        Intf: &mut bool,
-        Intl: &mut bool,
-    ) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_inherited_SplitKPart(
-                self as *mut Self,
-                Data,
-                SetData,
-                Spine,
-                Iedge,
-                S1,
-                I1,
-                S2,
-                I2,
-                Intf,
-                Intl,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:197 - `ChFi3d_Builder::PerformTwoCornerbyInter()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:196 - `ChFi3d_Builder::PerformTwoCornerbyInter()`
     pub fn perform_two_cornerby_inter(&mut self, Index: i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_inherited_PerformTwoCornerbyInter(

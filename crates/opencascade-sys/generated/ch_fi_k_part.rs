@@ -11,8 +11,8 @@
 // ========================
 
 /// **Source:** `ChFiKPart_ComputeData.hxx`:36 - `ChFiKPart_ComputeData`
-/// Methodes de classe   permettant de  remplir    une
-/// SurfData dans  les cas  particuliers  de  conges
+/// Methodes de classe permettant de remplir une
+/// SurfData dans les cas particuliers de conges
 /// suivants:
 /// - cylindre entre 2 surfaces planes,
 /// - tore/sphere entre un plan et un cylindre othogonal,
@@ -45,12 +45,12 @@ impl ComputeData {
     /// cases.
     pub fn compute(
         DStr: &mut crate::top_ope_b_rep_ds::DataStructure,
-        Data: &mut crate::ffi_types::HandleChFiDSSurfData,
-        S1: &crate::ffi_types::HandleAdaptor3dSurface,
-        S2: &crate::ffi_types::HandleAdaptor3dSurface,
+        Data: &mut crate::ffi_types::Handle_ChFiDS_SurfData,
+        S1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        S2: &crate::ffi_types::Handle_Adaptor3d_Surface,
         Or1: crate::top_abs::Orientation,
         Or2: crate::top_abs::Orientation,
-        Sp: &crate::ffi_types::HandleChFiDSSpine,
+        Sp: &crate::ffi_types::Handle_ChFiDS_Spine,
         Iedge: i32,
     ) -> bool {
         crate::check_result(unsafe {
@@ -71,9 +71,9 @@ impl ComputeData {
     /// Computes a toric or spheric corner fillet.
     pub fn compute_corner_datastructure_handlechfidssurfdata_handleadaptor3dsurface2_orientation4_real2_pnt2d4(
         DStr: &mut crate::top_ope_b_rep_ds::DataStructure,
-        Data: &crate::ffi_types::HandleChFiDSSurfData,
-        S1: &crate::ffi_types::HandleAdaptor3dSurface,
-        S2: &crate::ffi_types::HandleAdaptor3dSurface,
+        Data: &crate::ffi_types::Handle_ChFiDS_SurfData,
+        S1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        S2: &crate::ffi_types::Handle_Adaptor3d_Surface,
         OrFace1: crate::top_abs::Orientation,
         OrFace2: crate::top_abs::Orientation,
         Or1: crate::top_abs::Orientation,
@@ -94,9 +94,9 @@ impl ComputeData {
     /// Computes spheric corner fillet with non iso pcurve on S2.
     pub fn compute_corner_datastructure_handlechfidssurfdata_handleadaptor3dsurface2_orientation4_real_pnt2d3(
         DStr: &mut crate::top_ope_b_rep_ds::DataStructure,
-        Data: &crate::ffi_types::HandleChFiDSSurfData,
-        S1: &crate::ffi_types::HandleAdaptor3dSurface,
-        S2: &crate::ffi_types::HandleAdaptor3dSurface,
+        Data: &crate::ffi_types::Handle_ChFiDS_SurfData,
+        S1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        S2: &crate::ffi_types::Handle_Adaptor3d_Surface,
         OrFace1: crate::top_abs::Orientation,
         OrFace2: crate::top_abs::Orientation,
         Or1: crate::top_abs::Orientation,
@@ -115,10 +115,10 @@ impl ComputeData {
     /// Computes a toric corner rotule.
     pub fn compute_corner_datastructure_handlechfidssurfdata_handleadaptor3dsurface3_orientation4_real(
         DStr: &mut crate::top_ope_b_rep_ds::DataStructure,
-        Data: &crate::ffi_types::HandleChFiDSSurfData,
-        S: &crate::ffi_types::HandleAdaptor3dSurface,
-        S1: &crate::ffi_types::HandleAdaptor3dSurface,
-        S2: &crate::ffi_types::HandleAdaptor3dSurface,
+        Data: &crate::ffi_types::Handle_ChFiDS_SurfData,
+        S: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        S1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        S2: &crate::ffi_types::Handle_Adaptor3d_Surface,
         OfS: crate::top_abs::Orientation,
         OS: crate::top_abs::Orientation,
         OS1: crate::top_abs::Orientation,

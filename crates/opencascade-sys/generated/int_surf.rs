@@ -38,8 +38,8 @@ pub fn make_transition(
 /// If surface is not periodic in correspond direction then
 /// its period is considered to be equal to 0.
 pub fn set_period(
-    theFirstSurf: &crate::ffi_types::HandleAdaptor3dSurface,
-    theSecondSurf: &crate::ffi_types::HandleAdaptor3dSurface,
+    theFirstSurf: &crate::ffi_types::Handle_Adaptor3d_Surface,
+    theSecondSurf: &crate::ffi_types::Handle_Adaptor3d_Surface,
     theArrOfPeriod: &mut [f64; 4],
 ) {
     crate::check_void_result(unsafe {
@@ -110,7 +110,7 @@ impl TryFrom<i32> for TypeTrans {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::HandleStandardTransient;
+pub use crate::ffi_types::Handle_Standard_Transient;
 
 // ========================
 // From IntSurf_Couple.hxx
@@ -376,7 +376,7 @@ impl InteriorPointTool {
 // From IntSurf_LineOn2S.hxx
 // ========================
 
-/// **Source:** `IntSurf_LineOn2S.hxx`:34 - `IntSurf_LineOn2S`
+/// **Source:** `IntSurf_LineOn2S.hxx`:32 - `IntSurf_LineOn2S`
 pub use crate::ffi_types::IntSurf_LineOn2S as LineOn2S;
 
 unsafe impl crate::CppDeletable for LineOn2S {
@@ -388,9 +388,9 @@ unsafe impl crate::CppDeletable for LineOn2S {
 }
 
 impl LineOn2S {
-    /// **Source:** `IntSurf_LineOn2S.hxx`:38 - `IntSurf_LineOn2S::IntSurf_LineOn2S()`
+    /// **Source:** `IntSurf_LineOn2S.hxx`:36 - `IntSurf_LineOn2S::IntSurf_LineOn2S()`
     pub fn new_handlencollectionbaseallocator(
-        theAllocator: &crate::ffi_types::HandleNCollectionBaseAllocator,
+        theAllocator: &crate::ffi_types::Handle_NCollection_BaseAllocator,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -401,7 +401,7 @@ impl LineOn2S {
         }
     }
 
-    /// **Source:** `IntSurf_LineOn2S.hxx`:41 - `IntSurf_LineOn2S::Add()`
+    /// **Source:** `IntSurf_LineOn2S.hxx`:39 - `IntSurf_LineOn2S::Add()`
     /// Adds a point in the line.
     pub fn add(&mut self, P: &PntOn2S) {
         crate::check_void_result(unsafe {
@@ -409,7 +409,7 @@ impl LineOn2S {
         })
     }
 
-    /// **Source:** `IntSurf_LineOn2S.hxx`:44 - `IntSurf_LineOn2S::NbPoints()`
+    /// **Source:** `IntSurf_LineOn2S.hxx`:42 - `IntSurf_LineOn2S::NbPoints()`
     /// Returns the number of points in the line.
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
@@ -417,7 +417,7 @@ impl LineOn2S {
         })
     }
 
-    /// **Source:** `IntSurf_LineOn2S.hxx`:47 - `IntSurf_LineOn2S::Value()`
+    /// **Source:** `IntSurf_LineOn2S.hxx`:45 - `IntSurf_LineOn2S::Value()`
     /// Returns the point of range Index in the line.
     pub fn value_int(&self, Index: i32) -> &PntOn2S {
         unsafe {
@@ -428,7 +428,7 @@ impl LineOn2S {
         }
     }
 
-    /// **Source:** `IntSurf_LineOn2S.hxx`:50 - `IntSurf_LineOn2S::Reverse()`
+    /// **Source:** `IntSurf_LineOn2S.hxx`:48 - `IntSurf_LineOn2S::Reverse()`
     /// Reverses the order of points of the line.
     pub fn reverse(&mut self) {
         crate::check_void_result(unsafe {
@@ -436,13 +436,13 @@ impl LineOn2S {
         })
     }
 
-    /// **Source:** `IntSurf_LineOn2S.hxx`:54 - `IntSurf_LineOn2S::Split()`
+    /// **Source:** `IntSurf_LineOn2S.hxx`:52 - `IntSurf_LineOn2S::Split()`
     /// Keeps in <me> the points 1 to Index-1, and returns
     /// the items Index to the end.
     pub fn split(
         &mut self,
         Index: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIntSurfLineOn2S> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IntSurf_LineOn2S> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntSurf_LineOn2S_split(self as *mut Self, Index),
@@ -450,7 +450,7 @@ impl LineOn2S {
         }
     }
 
-    /// **Source:** `IntSurf_LineOn2S.hxx`:57 - `IntSurf_LineOn2S::Value()`
+    /// **Source:** `IntSurf_LineOn2S.hxx`:55 - `IntSurf_LineOn2S::Value()`
     /// Replaces the point of range Index in the line.
     pub fn value_int_pnton2s(&mut self, Index: i32, P: &PntOn2S) {
         crate::check_void_result(unsafe {
@@ -462,7 +462,7 @@ impl LineOn2S {
         })
     }
 
-    /// **Source:** `IntSurf_LineOn2S.hxx`:60 - `IntSurf_LineOn2S::SetPoint()`
+    /// **Source:** `IntSurf_LineOn2S.hxx`:58 - `IntSurf_LineOn2S::SetPoint()`
     /// Sets the 3D point of the Index-th PntOn2S
     pub fn set_point(&mut self, Index: i32, thePnt: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
@@ -474,7 +474,7 @@ impl LineOn2S {
         })
     }
 
-    /// **Source:** `IntSurf_LineOn2S.hxx`:64 - `IntSurf_LineOn2S::SetUV()`
+    /// **Source:** `IntSurf_LineOn2S.hxx`:62 - `IntSurf_LineOn2S::SetUV()`
     /// Sets the parametric coordinates on one of the surfaces
     /// of the point of range Index in the line.
     pub fn set_uv(&mut self, Index: i32, OnFirst: bool, U: f64, V: f64) {
@@ -489,28 +489,28 @@ impl LineOn2S {
         })
     }
 
-    /// **Source:** `IntSurf_LineOn2S.hxx`:69 - `IntSurf_LineOn2S::Clear()`
+    /// **Source:** `IntSurf_LineOn2S.hxx`:64 - `IntSurf_LineOn2S::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntSurf_LineOn2S_clear(self as *mut Self)
         })
     }
 
-    /// **Source:** `IntSurf_LineOn2S.hxx`:71 - `IntSurf_LineOn2S::InsertBefore()`
+    /// **Source:** `IntSurf_LineOn2S.hxx`:66 - `IntSurf_LineOn2S::InsertBefore()`
     pub fn insert_before(&mut self, I: i32, P: &PntOn2S) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntSurf_LineOn2S_insert_before(self as *mut Self, I, P)
         })
     }
 
-    /// **Source:** `IntSurf_LineOn2S.hxx`:73 - `IntSurf_LineOn2S::RemovePoint()`
+    /// **Source:** `IntSurf_LineOn2S.hxx`:68 - `IntSurf_LineOn2S::RemovePoint()`
     pub fn remove_point(&mut self, I: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntSurf_LineOn2S_remove_point(self as *mut Self, I)
         })
     }
 
-    /// **Source:** `IntSurf_LineOn2S.hxx`:77 - `IntSurf_LineOn2S::IsOutSurf1Box()`
+    /// **Source:** `IntSurf_LineOn2S.hxx`:72 - `IntSurf_LineOn2S::IsOutSurf1Box()`
     /// Returns TRUE if theP is out of the box built from
     /// the points on 1st surface
     pub fn is_out_surf1_box(&mut self, theP: &crate::gp::Pnt2d) -> bool {
@@ -519,7 +519,7 @@ impl LineOn2S {
         })
     }
 
-    /// **Source:** `IntSurf_LineOn2S.hxx`:81 - `IntSurf_LineOn2S::IsOutSurf2Box()`
+    /// **Source:** `IntSurf_LineOn2S.hxx`:76 - `IntSurf_LineOn2S::IsOutSurf2Box()`
     /// Returns TRUE if theP is out of the box built from
     /// the points on 2nd surface
     pub fn is_out_surf2_box(&mut self, theP: &crate::gp::Pnt2d) -> bool {
@@ -528,7 +528,7 @@ impl LineOn2S {
         })
     }
 
-    /// **Source:** `IntSurf_LineOn2S.hxx`:84 - `IntSurf_LineOn2S::IsOutBox()`
+    /// **Source:** `IntSurf_LineOn2S.hxx`:79 - `IntSurf_LineOn2S::IsOutBox()`
     /// Returns TRUE if theP is out of the box built from 3D-points.
     pub fn is_out_box(&mut self, theP: &crate::gp::Pnt) -> bool {
         crate::check_result(unsafe {
@@ -536,8 +536,8 @@ impl LineOn2S {
         })
     }
 
-    /// **Source:** `IntSurf_LineOn2S.hxx`:86 - `IntSurf_LineOn2S::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IntSurf_LineOn2S.hxx`:81 - `IntSurf_LineOn2S::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntSurf_LineOn2S_dynamic_type(
                 self as *const Self,
@@ -545,7 +545,7 @@ impl LineOn2S {
         }
     }
 
-    /// **Source:** `IntSurf_LineOn2S.hxx`:86 - `IntSurf_LineOn2S::get_type_name()`
+    /// **Source:** `IntSurf_LineOn2S.hxx`:81 - `IntSurf_LineOn2S::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -556,8 +556,8 @@ impl LineOn2S {
         .into_owned()
     }
 
-    /// **Source:** `IntSurf_LineOn2S.hxx`:86 - `IntSurf_LineOn2S::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IntSurf_LineOn2S.hxx`:81 - `IntSurf_LineOn2S::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntSurf_LineOn2S_get_type_descriptor(),
@@ -590,7 +590,7 @@ impl LineOn2S {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIntSurfLineOn2S> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IntSurf_LineOn2S> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntSurf_LineOn2S_to_handle(obj.into_raw()),
@@ -598,8 +598,8 @@ impl LineOn2S {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntSurf_LineOn2S_inherited_IsInstance(
                 self as *const Self,
@@ -608,8 +608,8 @@ impl LineOn2S {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntSurf_LineOn2S_inherited_IsKind(
                 self as *const Self,
@@ -618,7 +618,7 @@ impl LineOn2S {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -632,7 +632,7 @@ impl LineOn2S {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntSurf_LineOn2S_inherited_GetRefCount(
@@ -641,7 +641,7 @@ impl LineOn2S {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntSurf_LineOn2S_inherited_IncrementRefCounter(
@@ -650,7 +650,7 @@ impl LineOn2S {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntSurf_LineOn2S_inherited_DecrementRefCounter(
@@ -659,7 +659,7 @@ impl LineOn2S {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntSurf_LineOn2S_inherited_Delete(self as *const Self)
@@ -667,34 +667,36 @@ impl LineOn2S {
     }
 }
 
-pub use crate::ffi_types::HandleIntSurfLineOn2S;
+pub use crate::ffi_types::Handle_IntSurf_LineOn2S;
 
-unsafe impl crate::CppDeletable for HandleIntSurfLineOn2S {
+unsafe impl crate::CppDeletable for Handle_IntSurf_LineOn2S {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleIntSurfLineOn2S_destructor(ptr);
+            crate::ffi_extern_TKGeomAlgo::Handle_IntSurf_LineOn2S_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIntSurfLineOn2S {
+unsafe impl crate::CppCopyable for Handle_IntSurf_LineOn2S {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntSurfLineOn2S_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_IntSurf_LineOn2S_clone(ptr))
         }
     }
 }
 
-impl HandleIntSurfLineOn2S {
+impl Handle_IntSurf_LineOn2S {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKGeomAlgo::HandleIntSurfLineOn2S_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKGeomAlgo::Handle_IntSurf_LineOn2S_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying IntSurf_LineOn2S
     pub fn get(&self) -> &crate::ffi_types::IntSurf_LineOn2S {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntSurfLineOn2S_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_IntSurf_LineOn2S_get(
                 self as *const Self,
             ))
         }
@@ -703,19 +705,19 @@ impl HandleIntSurfLineOn2S {
     /// Dereference this Handle to mutably access the underlying IntSurf_LineOn2S
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IntSurf_LineOn2S {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntSurfLineOn2S_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Handle_IntSurf_LineOn2S_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<IntSurf_LineOn2S> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleIntSurfLineOn2S_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomAlgo::Handle_IntSurf_LineOn2S_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -727,7 +729,7 @@ impl HandleIntSurfLineOn2S {
 // From IntSurf_PathPoint.hxx
 // ========================
 
-/// **Source:** `IntSurf_PathPoint.hxx`:30 - `IntSurf_PathPoint`
+/// **Source:** `IntSurf_PathPoint.hxx`:32 - `IntSurf_PathPoint`
 pub use crate::ffi_types::IntSurf_PathPoint as PathPoint;
 
 unsafe impl crate::CppDeletable for PathPoint {
@@ -739,7 +741,7 @@ unsafe impl crate::CppDeletable for PathPoint {
 }
 
 impl PathPoint {
-    /// **Source:** `IntSurf_PathPoint.hxx`:35 - `IntSurf_PathPoint::IntSurf_PathPoint()`
+    /// **Source:** `IntSurf_PathPoint.hxx`:37 - `IntSurf_PathPoint::IntSurf_PathPoint()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -748,7 +750,7 @@ impl PathPoint {
         }
     }
 
-    /// **Source:** `IntSurf_PathPoint.hxx`:37 - `IntSurf_PathPoint::IntSurf_PathPoint()`
+    /// **Source:** `IntSurf_PathPoint.hxx`:39 - `IntSurf_PathPoint::IntSurf_PathPoint()`
     pub fn new_pnt_real2(P: &crate::gp::Pnt, U: f64, V: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -757,42 +759,42 @@ impl PathPoint {
         }
     }
 
-    /// **Source:** `IntSurf_PathPoint.hxx`:39 - `IntSurf_PathPoint::SetValue()`
+    /// **Source:** `IntSurf_PathPoint.hxx`:41 - `IntSurf_PathPoint::SetValue()`
     pub fn set_value(&mut self, P: &crate::gp::Pnt, U: f64, V: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntSurf_PathPoint_set_value(self as *mut Self, P, U, V)
         })
     }
 
-    /// **Source:** `IntSurf_PathPoint.hxx`:41 - `IntSurf_PathPoint::AddUV()`
+    /// **Source:** `IntSurf_PathPoint.hxx`:43 - `IntSurf_PathPoint::AddUV()`
     pub fn add_uv(&mut self, U: f64, V: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntSurf_PathPoint_add_uv(self as *mut Self, U, V)
         })
     }
 
-    /// **Source:** `IntSurf_PathPoint.hxx`:43 - `IntSurf_PathPoint::SetDirections()`
+    /// **Source:** `IntSurf_PathPoint.hxx`:45 - `IntSurf_PathPoint::SetDirections()`
     pub fn set_directions(&mut self, V: &crate::gp::Vec, D: &crate::gp::Dir2d) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntSurf_PathPoint_set_directions(self as *mut Self, V, D)
         })
     }
 
-    /// **Source:** `IntSurf_PathPoint.hxx`:45 - `IntSurf_PathPoint::SetTangency()`
+    /// **Source:** `IntSurf_PathPoint.hxx`:47 - `IntSurf_PathPoint::SetTangency()`
     pub fn set_tangency(&mut self, Tang: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntSurf_PathPoint_set_tangency(self as *mut Self, Tang)
         })
     }
 
-    /// **Source:** `IntSurf_PathPoint.hxx`:47 - `IntSurf_PathPoint::SetPassing()`
+    /// **Source:** `IntSurf_PathPoint.hxx`:49 - `IntSurf_PathPoint::SetPassing()`
     pub fn set_passing(&mut self, Pass: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntSurf_PathPoint_set_passing(self as *mut Self, Pass)
         })
     }
 
-    /// **Source:** `IntSurf_PathPoint.hxx`:49 - `IntSurf_PathPoint::Value()`
+    /// **Source:** `IntSurf_PathPoint.hxx`:51 - `IntSurf_PathPoint::Value()`
     pub fn value(&self) -> &crate::gp::Pnt {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntSurf_PathPoint_value(
@@ -801,28 +803,28 @@ impl PathPoint {
         }
     }
 
-    /// **Source:** `IntSurf_PathPoint.hxx`:51 - `IntSurf_PathPoint::Value2d()`
+    /// **Source:** `IntSurf_PathPoint.hxx`:53 - `IntSurf_PathPoint::Value2d()`
     pub fn value2d(&self, U: &mut f64, V: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntSurf_PathPoint_value2d(self as *const Self, U, V)
         })
     }
 
-    /// **Source:** `IntSurf_PathPoint.hxx`:53 - `IntSurf_PathPoint::IsPassingPnt()`
+    /// **Source:** `IntSurf_PathPoint.hxx`:55 - `IntSurf_PathPoint::IsPassingPnt()`
     pub fn is_passing_pnt(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntSurf_PathPoint_is_passing_pnt(self as *const Self)
         })
     }
 
-    /// **Source:** `IntSurf_PathPoint.hxx`:55 - `IntSurf_PathPoint::IsTangent()`
+    /// **Source:** `IntSurf_PathPoint.hxx`:57 - `IntSurf_PathPoint::IsTangent()`
     pub fn is_tangent(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntSurf_PathPoint_is_tangent(self as *const Self)
         })
     }
 
-    /// **Source:** `IntSurf_PathPoint.hxx`:57 - `IntSurf_PathPoint::Direction3d()`
+    /// **Source:** `IntSurf_PathPoint.hxx`:59 - `IntSurf_PathPoint::Direction3d()`
     pub fn direction3d(&self) -> &crate::gp::Vec {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntSurf_PathPoint_direction3d(
@@ -831,7 +833,7 @@ impl PathPoint {
         }
     }
 
-    /// **Source:** `IntSurf_PathPoint.hxx`:59 - `IntSurf_PathPoint::Direction2d()`
+    /// **Source:** `IntSurf_PathPoint.hxx`:61 - `IntSurf_PathPoint::Direction2d()`
     pub fn direction2d(&self) -> &crate::gp::Dir2d {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntSurf_PathPoint_direction2d(
@@ -840,14 +842,14 @@ impl PathPoint {
         }
     }
 
-    /// **Source:** `IntSurf_PathPoint.hxx`:61 - `IntSurf_PathPoint::Multiplicity()`
+    /// **Source:** `IntSurf_PathPoint.hxx`:63 - `IntSurf_PathPoint::Multiplicity()`
     pub fn multiplicity(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntSurf_PathPoint_multiplicity(self as *const Self)
         })
     }
 
-    /// **Source:** `IntSurf_PathPoint.hxx`:63 - `IntSurf_PathPoint::Parameters()`
+    /// **Source:** `IntSurf_PathPoint.hxx`:65 - `IntSurf_PathPoint::Parameters()`
     pub fn parameters(&self, Index: i32, U: &mut f64, V: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntSurf_PathPoint_parameters(
@@ -1058,7 +1060,7 @@ impl PntOn2S {
         })
     }
 
-    /// **Source:** `IntSurf_PntOn2S.hxx`:66 - `IntSurf_PntOn2S::SetValue()`
+    /// **Source:** `IntSurf_PntOn2S.hxx`:64 - `IntSurf_PntOn2S::SetValue()`
     /// Set the values of the point in the parametric
     /// space of one of the surface.
     pub fn set_value_real4(&mut self, U1: f64, V1: f64, U2: f64, V2: f64) {
@@ -1073,7 +1075,7 @@ impl PntOn2S {
         })
     }
 
-    /// **Source:** `IntSurf_PntOn2S.hxx`:72 - `IntSurf_PntOn2S::Value()`
+    /// **Source:** `IntSurf_PntOn2S.hxx`:67 - `IntSurf_PntOn2S::Value()`
     /// Returns the point in 3d space.
     pub fn value(&self) -> &crate::gp::Pnt {
         unsafe {
@@ -1083,7 +1085,7 @@ impl PntOn2S {
         }
     }
 
-    /// **Source:** `IntSurf_PntOn2S.hxx`:75 - `IntSurf_PntOn2S::ValueOnSurface()`
+    /// **Source:** `IntSurf_PntOn2S.hxx`:70 - `IntSurf_PntOn2S::ValueOnSurface()`
     /// Returns the point in 2d space of one of the surfaces.
     pub fn value_on_surface(&self, OnFirst: bool) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
@@ -1096,7 +1098,7 @@ impl PntOn2S {
         }
     }
 
-    /// **Source:** `IntSurf_PntOn2S.hxx`:78 - `IntSurf_PntOn2S::ParametersOnS1()`
+    /// **Source:** `IntSurf_PntOn2S.hxx`:73 - `IntSurf_PntOn2S::ParametersOnS1()`
     /// Returns the parameters of the point on the first surface.
     pub fn parameters_on_s1(&self, U1: &mut f64, V1: &mut f64) {
         crate::check_void_result(unsafe {
@@ -1108,7 +1110,7 @@ impl PntOn2S {
         })
     }
 
-    /// **Source:** `IntSurf_PntOn2S.hxx`:81 - `IntSurf_PntOn2S::ParametersOnS2()`
+    /// **Source:** `IntSurf_PntOn2S.hxx`:76 - `IntSurf_PntOn2S::ParametersOnS2()`
     /// Returns the parameters of the point on the second surface.
     pub fn parameters_on_s2(&self, U2: &mut f64, V2: &mut f64) {
         crate::check_void_result(unsafe {
@@ -1120,7 +1122,7 @@ impl PntOn2S {
         })
     }
 
-    /// **Source:** `IntSurf_PntOn2S.hxx`:85 - `IntSurf_PntOn2S::ParametersOnSurface()`
+    /// **Source:** `IntSurf_PntOn2S.hxx`:80 - `IntSurf_PntOn2S::ParametersOnSurface()`
     /// Returns the parameters of the point in the
     /// parametric space of one of the surface.
     pub fn parameters_on_surface(&self, OnFirst: bool, U: &mut f64, V: &mut f64) {
@@ -1134,7 +1136,7 @@ impl PntOn2S {
         })
     }
 
-    /// **Source:** `IntSurf_PntOn2S.hxx`:90 - `IntSurf_PntOn2S::Parameters()`
+    /// **Source:** `IntSurf_PntOn2S.hxx`:83 - `IntSurf_PntOn2S::Parameters()`
     /// Returns the parameters of the point on both surfaces.
     pub fn parameters(&self, U1: &mut f64, V1: &mut f64, U2: &mut f64, V2: &mut f64) {
         crate::check_void_result(unsafe {
@@ -1148,7 +1150,7 @@ impl PntOn2S {
         })
     }
 
-    /// **Source:** `IntSurf_PntOn2S.hxx`:95 - `IntSurf_PntOn2S::IsSame()`
+    /// **Source:** `IntSurf_PntOn2S.hxx`:88 - `IntSurf_PntOn2S::IsSame()`
     /// Returns TRUE if 2D- and 3D-coordinates of theOterPoint are equal to
     /// corresponding coordinates of me (with given tolerance).
     /// If theTol2D < 0.0 we will compare 3D-points only.
@@ -1382,7 +1384,7 @@ impl Quadric {
         }
     }
 
-    /// **Source:** `IntSurf_Quadric.hxx`:98 - `IntSurf_Quadric::Normale()`
+    /// **Source:** `IntSurf_Quadric.hxx`:95 - `IntSurf_Quadric::Normale()`
     pub fn normale_real2(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1395,14 +1397,14 @@ impl Quadric {
         }
     }
 
-    /// **Source:** `IntSurf_Quadric.hxx`:100 - `IntSurf_Quadric::Parameters()`
+    /// **Source:** `IntSurf_Quadric.hxx`:97 - `IntSurf_Quadric::Parameters()`
     pub fn parameters(&self, P: &crate::gp::Pnt, U: &mut f64, V: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntSurf_Quadric_parameters(self as *const Self, P, U, V)
         })
     }
 
-    /// **Source:** `IntSurf_Quadric.hxx`:102 - `IntSurf_Quadric::Normale()`
+    /// **Source:** `IntSurf_Quadric.hxx`:99 - `IntSurf_Quadric::Normale()`
     pub fn normale_pnt(&self, P: &crate::gp::Pnt) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1450,7 +1452,7 @@ impl QuadricTool {
         })
     }
 
-    /// **Source:** `IntSurf_QuadricTool.hxx`:44 - `IntSurf_QuadricTool::Gradient()`
+    /// **Source:** `IntSurf_QuadricTool.hxx`:41 - `IntSurf_QuadricTool::Gradient()`
     /// Returns the gradient of the function.
     pub fn gradient(Quad: &Quadric, X: f64, Y: f64, Z: f64, V: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
@@ -1458,7 +1460,7 @@ impl QuadricTool {
         })
     }
 
-    /// **Source:** `IntSurf_QuadricTool.hxx`:51 - `IntSurf_QuadricTool::ValueAndGradient()`
+    /// **Source:** `IntSurf_QuadricTool.hxx`:48 - `IntSurf_QuadricTool::ValueAndGradient()`
     /// Returns the value and the gradient.
     pub fn value_and_gradient(
         Quad: &Quadric,
@@ -1475,7 +1477,7 @@ impl QuadricTool {
         })
     }
 
-    /// **Source:** `IntSurf_QuadricTool.hxx`:59 - `IntSurf_QuadricTool::Tolerance()`
+    /// **Source:** `IntSurf_QuadricTool.hxx`:56 - `IntSurf_QuadricTool::Tolerance()`
     /// returns the tolerance of the zero of the implicit function
     pub fn tolerance(Quad: &Quadric) -> f64 {
         crate::check_result(unsafe {
@@ -1577,7 +1579,7 @@ impl Transition {
         })
     }
 
-    /// **Source:** `IntSurf_Transition.hxx`:56 - `IntSurf_Transition::SetValue()`
+    /// **Source:** `IntSurf_Transition.hxx`:54 - `IntSurf_Transition::SetValue()`
     /// Set the values of an UNDECIDED transition.
     pub fn set_value(&mut self) {
         crate::check_void_result(unsafe {
@@ -1585,7 +1587,7 @@ impl Transition {
         })
     }
 
-    /// **Source:** `IntSurf_Transition.hxx`:64 - `IntSurf_Transition::TransitionType()`
+    /// **Source:** `IntSurf_Transition.hxx`:62 - `IntSurf_Transition::TransitionType()`
     /// Returns the type of Transition (in/out/touch/undecided)
     /// for the arc given by value. This the transition of
     /// the intersection line compared to the Arc of restriction,
@@ -1599,7 +1601,7 @@ impl Transition {
         .unwrap()
     }
 
-    /// **Source:** `IntSurf_Transition.hxx`:69 - `IntSurf_Transition::IsTangent()`
+    /// **Source:** `IntSurf_Transition.hxx`:67 - `IntSurf_Transition::IsTangent()`
     /// Returns TRUE if the point is tangent to the arc
     /// given by Value.
     /// An exception is raised if TransitionType returns UNDECIDED.
@@ -1609,7 +1611,7 @@ impl Transition {
         })
     }
 
-    /// **Source:** `IntSurf_Transition.hxx`:78 - `IntSurf_Transition::Situation()`
+    /// **Source:** `IntSurf_Transition.hxx`:76 - `IntSurf_Transition::Situation()`
     /// Returns a significant value if TransitionType returns
     /// TOUCH. In this case, the function returns :
     /// INSIDE when the intersection line remains inside the Arc,
@@ -1624,7 +1626,7 @@ impl Transition {
         .unwrap()
     }
 
-    /// **Source:** `IntSurf_Transition.hxx`:87 - `IntSurf_Transition::IsOpposite()`
+    /// **Source:** `IntSurf_Transition.hxx`:85 - `IntSurf_Transition::IsOpposite()`
     /// returns a significant value if TransitionType returns
     /// TOUCH.
     /// In this case, the function returns true when
@@ -1638,13 +1640,3 @@ impl Transition {
         })
     }
 }
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi_types::{
-    IntSurf_ListOfPntOn2S as ListOfPntOn2S,
-    IntSurf_SequenceOfInteriorPoint as SequenceOfInteriorPoint,
-    IntSurf_SequenceOfPathPoint as SequenceOfPathPoint,
-};

@@ -91,543 +91,13 @@ impl TryFrom<i32> for ExtFlag {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::HandleStandardTransient;
-
-// ========================
-// From Extrema_CCLocFOfLocECC.hxx
-// ========================
-
-/// **Source:** `Extrema_CCLocFOfLocECC.hxx`:39 - `Extrema_CCLocFOfLocECC`
-pub use crate::ffi_types::Extrema_CCLocFOfLocECC as CCLocFOfLocECC;
-
-unsafe impl crate::CppDeletable for CCLocFOfLocECC {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC_destructor(ptr);
-        }
-    }
-}
-
-impl CCLocFOfLocECC {
-    /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:44 - `Extrema_CCLocFOfLocECC::Extrema_CCLocFOfLocECC()`
-    pub fn new_real(thetol: f64) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC_ctor_real(thetol),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:46 - `Extrema_CCLocFOfLocECC::Extrema_CCLocFOfLocECC()`
-    pub fn new_curve2_real(
-        C1: &crate::adaptor3d::Curve,
-        C2: &crate::adaptor3d::Curve,
-        thetol: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC_ctor_curve2_real(
-                    C1, C2, thetol,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:44 - `Extrema_CCLocFOfLocECC::Extrema_CCLocFOfLocECC()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        Self::new_real(1.0e-10)
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:46 - `Extrema_CCLocFOfLocECC::Extrema_CCLocFOfLocECC()`
-    pub fn new_curve2(
-        C1: &crate::adaptor3d::Curve,
-        C2: &crate::adaptor3d::Curve,
-    ) -> crate::OwnedPtr<Self> {
-        Self::new_curve2_real(C1, C2, 1.0e-10)
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:50 - `Extrema_CCLocFOfLocECC::SetCurve()`
-    pub fn set_curve(&mut self, theRank: i32, C1: &crate::adaptor3d::Curve) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC_set_curve(
-                self as *mut Self,
-                theRank,
-                C1,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:52 - `Extrema_CCLocFOfLocECC::SetTolerance()`
-    pub fn set_tolerance(&mut self, theTol: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC_set_tolerance(
-                self as *mut Self,
-                theTol,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:54 - `Extrema_CCLocFOfLocECC::NbVariables()`
-    pub fn nb_variables(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC_nb_variables(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:56 - `Extrema_CCLocFOfLocECC::NbEquations()`
-    pub fn nb_equations(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC_nb_equations(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:59 - `Extrema_CCLocFOfLocECC::Value()`
-    /// Calculate Fi(U,V).
-    pub fn value(
-        &mut self,
-        UV: &crate::ffi_types::math_Vector,
-        F: &mut crate::ffi_types::math_Vector,
-    ) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC_value(self as *mut Self, UV, F)
-        })
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:63 - `Extrema_CCLocFOfLocECC::Derivatives()`
-    /// Calculate Fi'(U,V).
-    pub fn derivatives(
-        &mut self,
-        UV: &crate::ffi_types::math_Vector,
-        DF: &mut crate::math::Matrix,
-    ) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC_derivatives(
-                self as *mut Self,
-                UV,
-                DF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:67 - `Extrema_CCLocFOfLocECC::Values()`
-    /// Calculate Fi(U,V) and Fi'(U,V).
-    pub fn values(
-        &mut self,
-        UV: &crate::ffi_types::math_Vector,
-        F: &mut crate::ffi_types::math_Vector,
-        DF: &mut crate::math::Matrix,
-    ) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC_values(
-                self as *mut Self,
-                UV,
-                F,
-                DF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:72 - `Extrema_CCLocFOfLocECC::GetStateNumber()`
-    /// Save the found extremum.
-    pub fn get_state_number(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC_get_state_number(self as *mut Self)
-        })
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:75 - `Extrema_CCLocFOfLocECC::NbExt()`
-    /// Return the number of found extrema.
-    pub fn nb_ext(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC_nb_ext(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:78 - `Extrema_CCLocFOfLocECC::SquareDistance()`
-    /// Return the value of the Nth distance.
-    pub fn square_distance(&self, N: i32) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC_square_distance(
-                self as *const Self,
-                N,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:81 - `Extrema_CCLocFOfLocECC::Points()`
-    /// Return the points of the Nth extreme distance.
-    pub fn points(&self, N: i32, P1: &mut POnCurv, P2: &mut POnCurv) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC_points(
-                self as *const Self,
-                N,
-                P1,
-                P2,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:87 - `Extrema_CCLocFOfLocECC::CurvePtr()`
-    /// Returns a pointer to the curve specified in the constructor
-    /// or in SetCurve() method.
-    pub unsafe fn curve_ptr(&self, theRank: i32) -> *mut std::ffi::c_void {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC_curve_ptr(
-                self as *const Self,
-                theRank,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:91 - `Extrema_CCLocFOfLocECC::Tolerance()`
-    /// Returns a tolerance specified in the constructor
-    /// or in SetTolerance() method.
-    pub fn tolerance(&self) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC_tolerance(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:94 - `Extrema_CCLocFOfLocECC::SubIntervalInitialize()`
-    /// Determines of boundaries of subinterval for find of root.
-    pub fn sub_interval_initialize(
-        &mut self,
-        theUfirst: &crate::ffi_types::math_Vector,
-        theUlast: &crate::ffi_types::math_Vector,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC_sub_interval_initialize(
-                self as *mut Self,
-                theUfirst,
-                theUlast,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:99 - `Extrema_CCLocFOfLocECC::SearchOfTolerance()`
-    /// Computes a Tol value. If 1st derivative of curve
-    /// |D1|<Tol, it is considered D1=0.
-    pub unsafe fn search_of_tolerance(&mut self, C: *mut std::ffi::c_void) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC_search_of_tolerance(
-                self as *mut Self,
-                C,
-            )
-        })
-    }
-
-    /// Upcast to math_FunctionSetWithDerivatives
-    pub fn as_math_function_set_with_derivatives(
-        &self,
-    ) -> &crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC_as_math_FunctionSetWithDerivatives(self as *const Self))
-        }
-    }
-
-    /// Upcast to math_FunctionSetWithDerivatives (mutable)
-    pub fn as_math_function_set_with_derivatives_mut(
-        &mut self,
-    ) -> &mut crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
-        }
-    }
-
-    /// Upcast to math_FunctionSet
-    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC_as_math_FunctionSet(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to math_FunctionSet (mutable)
-    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC_as_math_FunctionSet_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-}
-
-// ========================
-// From Extrema_CCLocFOfLocECC2d.hxx
-// ========================
-
-/// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:39 - `Extrema_CCLocFOfLocECC2d`
-pub use crate::ffi_types::Extrema_CCLocFOfLocECC2d as CCLocFOfLocECC2d;
-
-unsafe impl crate::CppDeletable for CCLocFOfLocECC2d {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC2d_destructor(ptr);
-        }
-    }
-}
-
-impl CCLocFOfLocECC2d {
-    /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:44 - `Extrema_CCLocFOfLocECC2d::Extrema_CCLocFOfLocECC2d()`
-    pub fn new_real(thetol: f64) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC2d_ctor_real(thetol),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:46 - `Extrema_CCLocFOfLocECC2d::Extrema_CCLocFOfLocECC2d()`
-    pub fn new_curve2d2_real(
-        C1: &crate::adaptor2d::Curve2d,
-        C2: &crate::adaptor2d::Curve2d,
-        thetol: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC2d_ctor_curve2d2_real(
-                    C1, C2, thetol,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:44 - `Extrema_CCLocFOfLocECC2d::Extrema_CCLocFOfLocECC2d()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        Self::new_real(1.0e-10)
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:46 - `Extrema_CCLocFOfLocECC2d::Extrema_CCLocFOfLocECC2d()`
-    pub fn new_curve2d2(
-        C1: &crate::adaptor2d::Curve2d,
-        C2: &crate::adaptor2d::Curve2d,
-    ) -> crate::OwnedPtr<Self> {
-        Self::new_curve2d2_real(C1, C2, 1.0e-10)
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:50 - `Extrema_CCLocFOfLocECC2d::SetCurve()`
-    pub fn set_curve(&mut self, theRank: i32, C1: &crate::adaptor2d::Curve2d) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC2d_set_curve(
-                self as *mut Self,
-                theRank,
-                C1,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:52 - `Extrema_CCLocFOfLocECC2d::SetTolerance()`
-    pub fn set_tolerance(&mut self, theTol: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC2d_set_tolerance(
-                self as *mut Self,
-                theTol,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:54 - `Extrema_CCLocFOfLocECC2d::NbVariables()`
-    pub fn nb_variables(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC2d_nb_variables(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:56 - `Extrema_CCLocFOfLocECC2d::NbEquations()`
-    pub fn nb_equations(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC2d_nb_equations(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:59 - `Extrema_CCLocFOfLocECC2d::Value()`
-    /// Calculate Fi(U,V).
-    pub fn value(
-        &mut self,
-        UV: &crate::ffi_types::math_Vector,
-        F: &mut crate::ffi_types::math_Vector,
-    ) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC2d_value(self as *mut Self, UV, F)
-        })
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:63 - `Extrema_CCLocFOfLocECC2d::Derivatives()`
-    /// Calculate Fi'(U,V).
-    pub fn derivatives(
-        &mut self,
-        UV: &crate::ffi_types::math_Vector,
-        DF: &mut crate::math::Matrix,
-    ) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC2d_derivatives(
-                self as *mut Self,
-                UV,
-                DF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:67 - `Extrema_CCLocFOfLocECC2d::Values()`
-    /// Calculate Fi(U,V) and Fi'(U,V).
-    pub fn values(
-        &mut self,
-        UV: &crate::ffi_types::math_Vector,
-        F: &mut crate::ffi_types::math_Vector,
-        DF: &mut crate::math::Matrix,
-    ) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC2d_values(
-                self as *mut Self,
-                UV,
-                F,
-                DF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:72 - `Extrema_CCLocFOfLocECC2d::GetStateNumber()`
-    /// Save the found extremum.
-    pub fn get_state_number(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC2d_get_state_number(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:75 - `Extrema_CCLocFOfLocECC2d::NbExt()`
-    /// Return the number of found extrema.
-    pub fn nb_ext(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC2d_nb_ext(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:78 - `Extrema_CCLocFOfLocECC2d::SquareDistance()`
-    /// Return the value of the Nth distance.
-    pub fn square_distance(&self, N: i32) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC2d_square_distance(
-                self as *const Self,
-                N,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:81 - `Extrema_CCLocFOfLocECC2d::Points()`
-    /// Return the points of the Nth extreme distance.
-    pub fn points(&self, N: i32, P1: &mut POnCurv2d, P2: &mut POnCurv2d) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC2d_points(
-                self as *const Self,
-                N,
-                P1,
-                P2,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:87 - `Extrema_CCLocFOfLocECC2d::CurvePtr()`
-    /// Returns a pointer to the curve specified in the constructor
-    /// or in SetCurve() method.
-    pub unsafe fn curve_ptr(&self, theRank: i32) -> *mut std::ffi::c_void {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC2d_curve_ptr(
-                self as *const Self,
-                theRank,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:91 - `Extrema_CCLocFOfLocECC2d::Tolerance()`
-    /// Returns a tolerance specified in the constructor
-    /// or in SetTolerance() method.
-    pub fn tolerance(&self) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC2d_tolerance(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:94 - `Extrema_CCLocFOfLocECC2d::SubIntervalInitialize()`
-    /// Determines of boundaries of subinterval for find of root.
-    pub fn sub_interval_initialize(
-        &mut self,
-        theUfirst: &crate::ffi_types::math_Vector,
-        theUlast: &crate::ffi_types::math_Vector,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC2d_sub_interval_initialize(
-                self as *mut Self,
-                theUfirst,
-                theUlast,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:99 - `Extrema_CCLocFOfLocECC2d::SearchOfTolerance()`
-    /// Computes a Tol value. If 1st derivative of curve
-    /// |D1|<Tol, it is considered D1=0.
-    pub unsafe fn search_of_tolerance(&mut self, C: *mut std::ffi::c_void) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC2d_search_of_tolerance(
-                self as *mut Self,
-                C,
-            )
-        })
-    }
-
-    /// Upcast to math_FunctionSetWithDerivatives
-    pub fn as_math_function_set_with_derivatives(
-        &self,
-    ) -> &crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC2d_as_math_FunctionSetWithDerivatives(self as *const Self))
-        }
-    }
-
-    /// Upcast to math_FunctionSetWithDerivatives (mutable)
-    pub fn as_math_function_set_with_derivatives_mut(
-        &mut self,
-    ) -> &mut crate::math::FunctionSetWithDerivatives {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC2d_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
-        }
-    }
-
-    /// Upcast to math_FunctionSet
-    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC2d_as_math_FunctionSet(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to math_FunctionSet (mutable)
-    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_CCLocFOfLocECC2d_as_math_FunctionSet_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-}
+pub use crate::ffi_types::Handle_Standard_Transient;
 
 // ========================
 // From Extrema_Curve2dTool.hxx
 // ========================
 
-/// **Source:** `Extrema_Curve2dTool.hxx`:42 - `Extrema_Curve2dTool`
+/// **Source:** `Extrema_Curve2dTool.hxx`:38 - `Extrema_Curve2dTool`
 pub use crate::ffi_types::Extrema_Curve2dTool as Curve2dTool;
 
 unsafe impl crate::CppDeletable for Curve2dTool {
@@ -649,266 +119,268 @@ impl Curve2dTool {
         }
     }
 
-    /// **Source:** `Extrema_Curve2dTool.hxx`:47 - `Extrema_Curve2dTool::FirstParameter()`
-    pub fn first_parameter(C: &crate::adaptor2d::Curve2d) -> f64 {
+    /// **Source:** `Extrema_Curve2dTool.hxx`:43 - `Extrema_Curve2dTool::FirstParameter()`
+    pub fn first_parameter(theC: &crate::adaptor2d::Curve2d) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_first_parameter(C)
+            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_first_parameter(theC)
         })
     }
 
-    /// **Source:** `Extrema_Curve2dTool.hxx`:49 - `Extrema_Curve2dTool::LastParameter()`
-    pub fn last_parameter(C: &crate::adaptor2d::Curve2d) -> f64 {
+    /// **Source:** `Extrema_Curve2dTool.hxx`:45 - `Extrema_Curve2dTool::LastParameter()`
+    pub fn last_parameter(theC: &crate::adaptor2d::Curve2d) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_last_parameter(C)
+            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_last_parameter(theC)
         })
     }
 
-    /// **Source:** `Extrema_Curve2dTool.hxx`:51 - `Extrema_Curve2dTool::Continuity()`
-    pub fn continuity(C: &crate::adaptor2d::Curve2d) -> crate::geom_abs::Shape {
+    /// **Source:** `Extrema_Curve2dTool.hxx`:47 - `Extrema_Curve2dTool::Continuity()`
+    pub fn continuity(theC: &crate::adaptor2d::Curve2d) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_continuity(C)
+            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_continuity(theC)
         }))
         .unwrap()
     }
 
-    /// **Source:** `Extrema_Curve2dTool.hxx`:56 - `Extrema_Curve2dTool::NbIntervals()`
-    /// If necessary,   breaks the curve  in  intervals of
-    /// continuity <S>.     And   returns  the  number  of
-    /// intervals.
-    pub fn nb_intervals(C: &crate::adaptor2d::Curve2d, S: crate::geom_abs::Shape) -> i32 {
+    /// **Source:** `Extrema_Curve2dTool.hxx`:51 - `Extrema_Curve2dTool::NbIntervals()`
+    /// If necessary, breaks the curve in intervals of continuity <S>.
+    /// And returns the number of intervals.
+    pub fn nb_intervals(theC: &crate::adaptor2d::Curve2d, theS: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_nb_intervals(C, S.into())
+            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_nb_intervals(theC, theS.into())
         })
     }
 
-    /// **Source:** `Extrema_Curve2dTool.hxx`:60 - `Extrema_Curve2dTool::Intervals()`
-    /// Stores in <T> the  parameters bounding the intervals
-    /// of continuity <S>.
+    /// **Source:** `Extrema_Curve2dTool.hxx`:57 - `Extrema_Curve2dTool::Intervals()`
+    /// Stores in <T> the parameters bounding the intervals of continuity <S>.
     pub fn intervals(
-        C: &crate::adaptor2d::Curve2d,
-        T: &mut crate::ffi_types::TColStd_Array1OfReal,
-        S: crate::geom_abs::Shape,
+        theC: &crate::adaptor2d::Curve2d,
+        theT: &mut crate::ffi_types::NCollection_Array1_double,
+        theS: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_intervals(C, T, S.into())
+            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_intervals(theC, theT, theS.into())
         })
     }
 
-    /// **Source:** `Extrema_Curve2dTool.hxx`:65 - `Extrema_Curve2dTool::DeflCurvIntervals()`
+    /// **Source:** `Extrema_Curve2dTool.hxx`:66 - `Extrema_Curve2dTool::DeflCurvIntervals()`
     /// Returns the parameters bounding the intervals of subdivision of curve
     /// according to Curvature deflection. Value of deflection is defined in method.
     pub fn defl_curv_intervals(
-        C: &crate::adaptor2d::Curve2d,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
+        theC: &crate::adaptor2d::Curve2d,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_double> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_defl_curv_intervals(C),
+                crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_defl_curv_intervals(theC),
             ))
         }
     }
 
-    /// **Source:** `Extrema_Curve2dTool.hxx`:68 - `Extrema_Curve2dTool::IsClosed()`
-    pub fn is_closed(C: &crate::adaptor2d::Curve2d) -> bool {
+    /// **Source:** `Extrema_Curve2dTool.hxx`:69 - `Extrema_Curve2dTool::IsClosed()`
+    pub fn is_closed(theC: &crate::adaptor2d::Curve2d) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_is_closed(C)
+            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_is_closed(theC)
         })
     }
 
-    /// **Source:** `Extrema_Curve2dTool.hxx`:70 - `Extrema_Curve2dTool::IsPeriodic()`
-    pub fn is_periodic(C: &crate::adaptor2d::Curve2d) -> bool {
+    /// **Source:** `Extrema_Curve2dTool.hxx`:71 - `Extrema_Curve2dTool::IsPeriodic()`
+    pub fn is_periodic(theC: &crate::adaptor2d::Curve2d) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_is_periodic(C)
+            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_is_periodic(theC)
         })
     }
 
-    /// **Source:** `Extrema_Curve2dTool.hxx`:72 - `Extrema_Curve2dTool::Period()`
-    pub fn period(C: &crate::adaptor2d::Curve2d) -> f64 {
-        crate::check_result(unsafe { crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_period(C) })
+    /// **Source:** `Extrema_Curve2dTool.hxx`:73 - `Extrema_Curve2dTool::Period()`
+    pub fn period(theC: &crate::adaptor2d::Curve2d) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_period(theC)
+        })
     }
 
-    /// **Source:** `Extrema_Curve2dTool.hxx`:75 - `Extrema_Curve2dTool::Value()`
+    /// **Source:** `Extrema_Curve2dTool.hxx`:76 - `Extrema_Curve2dTool::Value()`
     /// Computes the point of parameter U on the curve.
-    pub fn value(C: &crate::adaptor2d::Curve2d, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
+    pub fn value(theC: &crate::adaptor2d::Curve2d, theU: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_value(C, U),
+                crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_value(theC, theU),
             ))
         }
     }
 
-    /// **Source:** `Extrema_Curve2dTool.hxx`:78 - `Extrema_Curve2dTool::D0()`
+    /// **Source:** `Extrema_Curve2dTool.hxx`:82 - `Extrema_Curve2dTool::D0()`
     /// Computes the point of parameter U on the curve.
-    pub fn d0(C: &crate::adaptor2d::Curve2d, U: f64, P: &mut crate::gp::Pnt2d) {
+    pub fn d0(theC: &crate::adaptor2d::Curve2d, theU: f64, theP: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_d0(C, U, P)
+            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_d0(theC, theU, theP)
         })
     }
 
-    /// **Source:** `Extrema_Curve2dTool.hxx`:82 - `Extrema_Curve2dTool::D1()`
-    /// Computes the point of parameter U on the curve with its
-    /// first derivative.
+    /// **Source:** `Extrema_Curve2dTool.hxx`:88 - `Extrema_Curve2dTool::D1()`
+    /// Computes the point of parameter U on the curve with its first derivative.
     pub fn d1(
-        C: &crate::adaptor2d::Curve2d,
-        U: f64,
-        P: &mut crate::gp::Pnt2d,
-        V: &mut crate::gp::Vec2d,
+        theC: &crate::adaptor2d::Curve2d,
+        theU: f64,
+        theP: &mut crate::gp::Pnt2d,
+        theV: &mut crate::gp::Vec2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_d1(C, U, P, V)
+            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_d1(theC, theU, theP, theV)
         })
     }
 
-    /// **Source:** `Extrema_Curve2dTool.hxx`:86 - `Extrema_Curve2dTool::D2()`
-    /// Returns the point P of parameter U, the first and second
-    /// derivatives V1 and V2.
+    /// **Source:** `Extrema_Curve2dTool.hxx`:94 - `Extrema_Curve2dTool::D2()`
+    /// Returns the point P of parameter U, the first and second derivatives V1 and V2.
     pub fn d2(
-        C: &crate::adaptor2d::Curve2d,
-        U: f64,
-        P: &mut crate::gp::Pnt2d,
-        V1: &mut crate::gp::Vec2d,
-        V2: &mut crate::gp::Vec2d,
+        theC: &crate::adaptor2d::Curve2d,
+        theU: f64,
+        theP: &mut crate::gp::Pnt2d,
+        theV1: &mut crate::gp::Vec2d,
+        theV2: &mut crate::gp::Vec2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_d2(C, U, P, V1, V2)
+            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_d2(theC, theU, theP, theV1, theV2)
         })
     }
 
-    /// **Source:** `Extrema_Curve2dTool.hxx`:94 - `Extrema_Curve2dTool::D3()`
-    /// Returns the point P of parameter U, the first, the second
-    /// and the third derivative.
+    /// **Source:** `Extrema_Curve2dTool.hxx`:104 - `Extrema_Curve2dTool::D3()`
+    /// Returns the point P of parameter U, the first, the second and the third derivative.
     pub fn d3(
-        C: &crate::adaptor2d::Curve2d,
-        U: f64,
-        P: &mut crate::gp::Pnt2d,
-        V1: &mut crate::gp::Vec2d,
-        V2: &mut crate::gp::Vec2d,
-        V3: &mut crate::gp::Vec2d,
+        theC: &crate::adaptor2d::Curve2d,
+        theU: f64,
+        theP: &mut crate::gp::Pnt2d,
+        theV1: &mut crate::gp::Vec2d,
+        theV2: &mut crate::gp::Vec2d,
+        theV3: &mut crate::gp::Vec2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_d3(C, U, P, V1, V2, V3)
+            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_d3(
+                theC, theU, theP, theV1, theV2, theV3,
+            )
         })
     }
 
-    /// **Source:** `Extrema_Curve2dTool.hxx`:103 - `Extrema_Curve2dTool::DN()`
-    /// The returned vector gives the value of the derivative for the
-    /// order of derivation N.
-    pub fn dn(C: &crate::adaptor2d::Curve2d, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
+    /// **Source:** `Extrema_Curve2dTool.hxx`:115 - `Extrema_Curve2dTool::DN()`
+    /// The returned vector gives the value of the derivative for the order of derivation N.
+    pub fn dn(
+        theC: &crate::adaptor2d::Curve2d,
+        theU: f64,
+        theN: i32,
+    ) -> crate::OwnedPtr<crate::gp::Vec2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_dn(C, U, N),
+                crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_dn(theC, theU, theN),
             ))
         }
     }
 
-    /// **Source:** `Extrema_Curve2dTool.hxx`:107 - `Extrema_Curve2dTool::Resolution()`
-    /// Returns the parametric  resolution corresponding
-    /// to the real space resolution <R3d>.
-    pub fn resolution(C: &crate::adaptor2d::Curve2d, R3d: f64) -> f64 {
+    /// **Source:** `Extrema_Curve2dTool.hxx`:121 - `Extrema_Curve2dTool::Resolution()`
+    /// Returns the parametric resolution corresponding to the real space resolution <R3d>.
+    pub fn resolution(theC: &crate::adaptor2d::Curve2d, theR3d: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_resolution(C, R3d)
+            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_resolution(theC, theR3d)
         })
     }
 
-    /// **Source:** `Extrema_Curve2dTool.hxx`:112 - `Extrema_Curve2dTool::GetType()`
-    /// Returns  the  type of the   curve  in the  current
-    /// interval :   Line,   Circle,   Ellipse, Hyperbola,
-    /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
-    pub fn get_type(C: &crate::adaptor2d::Curve2d) -> crate::geom_abs::CurveType {
+    /// **Source:** `Extrema_Curve2dTool.hxx`:128 - `Extrema_Curve2dTool::GetType()`
+    /// Returns the type of the curve in the current interval:
+    /// Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
+    pub fn get_type(theC: &crate::adaptor2d::Curve2d) -> crate::geom_abs::CurveType {
         crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_get_type(C)
+            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_get_type(theC)
         }))
         .unwrap()
     }
 
-    /// **Source:** `Extrema_Curve2dTool.hxx`:114 - `Extrema_Curve2dTool::Line()`
-    pub fn line(C: &crate::adaptor2d::Curve2d) -> crate::OwnedPtr<crate::gp::Lin2d> {
+    /// **Source:** `Extrema_Curve2dTool.hxx`:130 - `Extrema_Curve2dTool::Line()`
+    pub fn line(theC: &crate::adaptor2d::Curve2d) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_line(C),
+                crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_line(theC),
             ))
         }
     }
 
-    /// **Source:** `Extrema_Curve2dTool.hxx`:116 - `Extrema_Curve2dTool::Circle()`
-    pub fn circle(C: &crate::adaptor2d::Curve2d) -> crate::OwnedPtr<crate::gp::Circ2d> {
+    /// **Source:** `Extrema_Curve2dTool.hxx`:132 - `Extrema_Curve2dTool::Circle()`
+    pub fn circle(theC: &crate::adaptor2d::Curve2d) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_circle(C),
+                crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_circle(theC),
             ))
         }
     }
 
-    /// **Source:** `Extrema_Curve2dTool.hxx`:118 - `Extrema_Curve2dTool::Ellipse()`
-    pub fn ellipse(C: &crate::adaptor2d::Curve2d) -> crate::OwnedPtr<crate::gp::Elips2d> {
+    /// **Source:** `Extrema_Curve2dTool.hxx`:134 - `Extrema_Curve2dTool::Ellipse()`
+    pub fn ellipse(theC: &crate::adaptor2d::Curve2d) -> crate::OwnedPtr<crate::gp::Elips2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_ellipse(C),
+                crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_ellipse(theC),
             ))
         }
     }
 
-    /// **Source:** `Extrema_Curve2dTool.hxx`:120 - `Extrema_Curve2dTool::Hyperbola()`
-    pub fn hyperbola(C: &crate::adaptor2d::Curve2d) -> crate::OwnedPtr<crate::gp::Hypr2d> {
+    /// **Source:** `Extrema_Curve2dTool.hxx`:136 - `Extrema_Curve2dTool::Hyperbola()`
+    pub fn hyperbola(theC: &crate::adaptor2d::Curve2d) -> crate::OwnedPtr<crate::gp::Hypr2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_hyperbola(C),
+                crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_hyperbola(theC),
             ))
         }
     }
 
-    /// **Source:** `Extrema_Curve2dTool.hxx`:122 - `Extrema_Curve2dTool::Parabola()`
-    pub fn parabola(C: &crate::adaptor2d::Curve2d) -> crate::OwnedPtr<crate::gp::Parab2d> {
+    /// **Source:** `Extrema_Curve2dTool.hxx`:138 - `Extrema_Curve2dTool::Parabola()`
+    pub fn parabola(theC: &crate::adaptor2d::Curve2d) -> crate::OwnedPtr<crate::gp::Parab2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_parabola(C),
+                crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_parabola(theC),
             ))
         }
     }
 
-    /// **Source:** `Extrema_Curve2dTool.hxx`:124 - `Extrema_Curve2dTool::Degree()`
-    pub fn degree(C: &crate::adaptor2d::Curve2d) -> i32 {
-        crate::check_result(unsafe { crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_degree(C) })
-    }
-
-    /// **Source:** `Extrema_Curve2dTool.hxx`:126 - `Extrema_Curve2dTool::IsRational()`
-    pub fn is_rational(C: &crate::adaptor2d::Curve2d) -> bool {
+    /// **Source:** `Extrema_Curve2dTool.hxx`:140 - `Extrema_Curve2dTool::Degree()`
+    pub fn degree(theC: &crate::adaptor2d::Curve2d) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_is_rational(C)
+            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_degree(theC)
         })
     }
 
-    /// **Source:** `Extrema_Curve2dTool.hxx`:128 - `Extrema_Curve2dTool::NbPoles()`
-    pub fn nb_poles(C: &crate::adaptor2d::Curve2d) -> i32 {
+    /// **Source:** `Extrema_Curve2dTool.hxx`:142 - `Extrema_Curve2dTool::IsRational()`
+    pub fn is_rational(theC: &crate::adaptor2d::Curve2d) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_nb_poles(C)
+            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_is_rational(theC)
         })
     }
 
-    /// **Source:** `Extrema_Curve2dTool.hxx`:130 - `Extrema_Curve2dTool::NbKnots()`
-    pub fn nb_knots(C: &crate::adaptor2d::Curve2d) -> i32 {
+    /// **Source:** `Extrema_Curve2dTool.hxx`:144 - `Extrema_Curve2dTool::NbPoles()`
+    pub fn nb_poles(theC: &crate::adaptor2d::Curve2d) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_nb_knots(C)
+            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_nb_poles(theC)
         })
     }
 
-    /// **Source:** `Extrema_Curve2dTool.hxx`:132 - `Extrema_Curve2dTool::Bezier()`
+    /// **Source:** `Extrema_Curve2dTool.hxx`:146 - `Extrema_Curve2dTool::NbKnots()`
+    pub fn nb_knots(theC: &crate::adaptor2d::Curve2d) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_nb_knots(theC)
+        })
+    }
+
+    /// **Source:** `Extrema_Curve2dTool.hxx`:148 - `Extrema_Curve2dTool::Bezier()`
     pub fn bezier(
-        C: &crate::adaptor2d::Curve2d,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBezierCurve> {
+        theC: &crate::adaptor2d::Curve2d,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BezierCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_bezier(C),
+                crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_bezier(theC),
             ))
         }
     }
 
-    /// **Source:** `Extrema_Curve2dTool.hxx`:134 - `Extrema_Curve2dTool::BSpline()`
+    /// **Source:** `Extrema_Curve2dTool.hxx`:153 - `Extrema_Curve2dTool::BSpline()`
     pub fn b_spline(
-        C: &crate::adaptor2d::Curve2d,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
+        theC: &crate::adaptor2d::Curve2d,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_b_spline(C),
+                crate::ffi_extern_TKGeomBase::Extrema_Curve2dTool_b_spline(theC),
             ))
         }
     }
@@ -918,7 +390,7 @@ impl Curve2dTool {
 // From Extrema_CurveTool.hxx
 // ========================
 
-/// **Source:** `Extrema_CurveTool.hxx`:42 - `Extrema_CurveTool`
+/// **Source:** `Extrema_CurveTool.hxx`:38 - `Extrema_CurveTool`
 pub use crate::ffi_types::Extrema_CurveTool as CurveTool;
 
 unsafe impl crate::CppDeletable for CurveTool {
@@ -940,1803 +412,251 @@ impl CurveTool {
         }
     }
 
-    /// **Source:** `Extrema_CurveTool.hxx`:47 - `Extrema_CurveTool::FirstParameter()`
-    pub fn first_parameter(C: &crate::adaptor3d::Curve) -> f64 {
+    /// **Source:** `Extrema_CurveTool.hxx`:43 - `Extrema_CurveTool::FirstParameter()`
+    pub fn first_parameter(theC: &crate::adaptor3d::Curve) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CurveTool_first_parameter(C)
+            crate::ffi_extern_TKGeomBase::Extrema_CurveTool_first_parameter(theC)
         })
     }
 
-    /// **Source:** `Extrema_CurveTool.hxx`:49 - `Extrema_CurveTool::LastParameter()`
-    pub fn last_parameter(C: &crate::adaptor3d::Curve) -> f64 {
+    /// **Source:** `Extrema_CurveTool.hxx`:45 - `Extrema_CurveTool::LastParameter()`
+    pub fn last_parameter(theC: &crate::adaptor3d::Curve) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CurveTool_last_parameter(C)
+            crate::ffi_extern_TKGeomBase::Extrema_CurveTool_last_parameter(theC)
         })
     }
 
-    /// **Source:** `Extrema_CurveTool.hxx`:51 - `Extrema_CurveTool::Continuity()`
-    pub fn continuity(C: &crate::adaptor3d::Curve) -> crate::geom_abs::Shape {
+    /// **Source:** `Extrema_CurveTool.hxx`:47 - `Extrema_CurveTool::Continuity()`
+    pub fn continuity(theC: &crate::adaptor3d::Curve) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CurveTool_continuity(C)
+            crate::ffi_extern_TKGeomBase::Extrema_CurveTool_continuity(theC)
         }))
         .unwrap()
     }
 
-    /// **Source:** `Extrema_CurveTool.hxx`:55 - `Extrema_CurveTool::NbIntervals()`
-    /// Returns  the number  of  intervals for  continuity
-    /// <S>. May be one if Continuity(me) >= <S>
-    pub fn nb_intervals(C: &mut crate::adaptor3d::Curve, S: crate::geom_abs::Shape) -> i32 {
+    /// **Source:** `Extrema_CurveTool.hxx`:51 - `Extrema_CurveTool::NbIntervals()`
+    /// Returns the number of intervals for continuity <S>.
+    /// May be one if Continuity(me) >= <S>
+    pub fn nb_intervals(theC: &mut crate::adaptor3d::Curve, theS: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CurveTool_nb_intervals(C, S.into())
+            crate::ffi_extern_TKGeomBase::Extrema_CurveTool_nb_intervals(theC, theS.into())
         })
     }
 
-    /// **Source:** `Extrema_CurveTool.hxx`:62 - `Extrema_CurveTool::Intervals()`
-    /// Stores in <T> the  parameters bounding the intervals
-    /// of continuity <S>.
-    ///
-    /// The array must provide  enough room to  accommodate
-    /// for the parameters. i.e. T.Length() > NbIntervals()
+    /// **Source:** `Extrema_CurveTool.hxx`:59 - `Extrema_CurveTool::Intervals()`
+    /// Stores in <T> the parameters bounding the intervals of continuity <S>.
+    /// The array must provide enough room to accommodate for the parameters.
+    /// i.e. T.Length() > NbIntervals()
     pub fn intervals(
-        C: &mut crate::adaptor3d::Curve,
-        T: &mut crate::ffi_types::TColStd_Array1OfReal,
-        S: crate::geom_abs::Shape,
+        theC: &mut crate::adaptor3d::Curve,
+        theT: &mut crate::ffi_types::NCollection_Array1_double,
+        theS: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CurveTool_intervals(C, T, S.into())
+            crate::ffi_extern_TKGeomBase::Extrema_CurveTool_intervals(theC, theT, theS.into())
         })
     }
 
-    /// **Source:** `Extrema_CurveTool.hxx`:67 - `Extrema_CurveTool::DeflCurvIntervals()`
+    /// **Source:** `Extrema_CurveTool.hxx`:68 - `Extrema_CurveTool::DeflCurvIntervals()`
     /// Returns the parameters bounding the intervals of subdivision of curve
     /// according to Curvature deflection. Value of deflection is defined in method.
     pub fn defl_curv_intervals(
-        C: &crate::adaptor3d::Curve,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
+        theC: &crate::adaptor3d::Curve,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_double> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_CurveTool_defl_curv_intervals(C),
+                crate::ffi_extern_TKGeomBase::Extrema_CurveTool_defl_curv_intervals(theC),
             ))
         }
     }
 
-    /// **Source:** `Extrema_CurveTool.hxx`:69 - `Extrema_CurveTool::IsPeriodic()`
-    pub fn is_periodic(C: &crate::adaptor3d::Curve) -> bool {
+    /// **Source:** `Extrema_CurveTool.hxx`:71 - `Extrema_CurveTool::IsPeriodic()`
+    pub fn is_periodic(theC: &crate::adaptor3d::Curve) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CurveTool_is_periodic(C)
+            crate::ffi_extern_TKGeomBase::Extrema_CurveTool_is_periodic(theC)
         })
     }
 
-    /// **Source:** `Extrema_CurveTool.hxx`:71 - `Extrema_CurveTool::Period()`
-    pub fn period(C: &crate::adaptor3d::Curve) -> f64 {
-        crate::check_result(unsafe { crate::ffi_extern_TKGeomBase::Extrema_CurveTool_period(C) })
+    /// **Source:** `Extrema_CurveTool.hxx`:73 - `Extrema_CurveTool::Period()`
+    pub fn period(theC: &crate::adaptor3d::Curve) -> f64 {
+        crate::check_result(unsafe { crate::ffi_extern_TKGeomBase::Extrema_CurveTool_period(theC) })
     }
 
-    /// **Source:** `Extrema_CurveTool.hxx`:73 - `Extrema_CurveTool::Resolution()`
-    pub fn resolution(C: &crate::adaptor3d::Curve, R3d: f64) -> f64 {
+    /// **Source:** `Extrema_CurveTool.hxx`:75 - `Extrema_CurveTool::Resolution()`
+    pub fn resolution(theC: &crate::adaptor3d::Curve, theR3d: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CurveTool_resolution(C, R3d)
+            crate::ffi_extern_TKGeomBase::Extrema_CurveTool_resolution(theC, theR3d)
         })
     }
 
-    /// **Source:** `Extrema_CurveTool.hxx`:75 - `Extrema_CurveTool::GetType()`
-    pub fn get_type(C: &crate::adaptor3d::Curve) -> crate::geom_abs::CurveType {
+    /// **Source:** `Extrema_CurveTool.hxx`:80 - `Extrema_CurveTool::GetType()`
+    pub fn get_type(theC: &crate::adaptor3d::Curve) -> crate::geom_abs::CurveType {
         crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CurveTool_get_type(C)
+            crate::ffi_extern_TKGeomBase::Extrema_CurveTool_get_type(theC)
         }))
         .unwrap()
     }
 
-    /// **Source:** `Extrema_CurveTool.hxx`:77 - `Extrema_CurveTool::Value()`
-    pub fn value(C: &crate::adaptor3d::Curve, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
+    /// **Source:** `Extrema_CurveTool.hxx`:82 - `Extrema_CurveTool::Value()`
+    pub fn value(theC: &crate::adaptor3d::Curve, theU: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_CurveTool_value(C, U),
+                crate::ffi_extern_TKGeomBase::Extrema_CurveTool_value(theC, theU),
             ))
         }
     }
 
-    /// **Source:** `Extrema_CurveTool.hxx`:79 - `Extrema_CurveTool::D0()`
-    pub fn d0(C: &crate::adaptor3d::Curve, U: f64, P: &mut crate::gp::Pnt) {
+    /// **Source:** `Extrema_CurveTool.hxx`:84 - `Extrema_CurveTool::D0()`
+    pub fn d0(theC: &crate::adaptor3d::Curve, theU: f64, theP: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CurveTool_d0(C, U, P)
+            crate::ffi_extern_TKGeomBase::Extrema_CurveTool_d0(theC, theU, theP)
         })
     }
 
-    /// **Source:** `Extrema_CurveTool.hxx`:81 - `Extrema_CurveTool::D1()`
-    pub fn d1(C: &crate::adaptor3d::Curve, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
+    /// **Source:** `Extrema_CurveTool.hxx`:89 - `Extrema_CurveTool::D1()`
+    pub fn d1(
+        theC: &crate::adaptor3d::Curve,
+        theU: f64,
+        theP: &mut crate::gp::Pnt,
+        theV: &mut crate::gp::Vec,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CurveTool_d1(C, U, P, V)
+            crate::ffi_extern_TKGeomBase::Extrema_CurveTool_d1(theC, theU, theP, theV)
         })
     }
 
-    /// **Source:** `Extrema_CurveTool.hxx`:83 - `Extrema_CurveTool::D2()`
+    /// **Source:** `Extrema_CurveTool.hxx`:94 - `Extrema_CurveTool::D2()`
     pub fn d2(
-        C: &crate::adaptor3d::Curve,
-        U: f64,
-        P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
+        theC: &crate::adaptor3d::Curve,
+        theU: f64,
+        theP: &mut crate::gp::Pnt,
+        theV1: &mut crate::gp::Vec,
+        theV2: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CurveTool_d2(C, U, P, V1, V2)
+            crate::ffi_extern_TKGeomBase::Extrema_CurveTool_d2(theC, theU, theP, theV1, theV2)
         })
     }
 
-    /// **Source:** `Extrema_CurveTool.hxx`:89 - `Extrema_CurveTool::D3()`
+    /// **Source:** `Extrema_CurveTool.hxx`:103 - `Extrema_CurveTool::D3()`
     pub fn d3(
-        C: &crate::adaptor3d::Curve,
-        U: f64,
-        P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-        V3: &mut crate::gp::Vec,
+        theC: &crate::adaptor3d::Curve,
+        theU: f64,
+        theP: &mut crate::gp::Pnt,
+        theV1: &mut crate::gp::Vec,
+        theV2: &mut crate::gp::Vec,
+        theV3: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CurveTool_d3(C, U, P, V1, V2, V3)
+            crate::ffi_extern_TKGeomBase::Extrema_CurveTool_d3(
+                theC, theU, theP, theV1, theV2, theV3,
+            )
         })
     }
 
-    /// **Source:** `Extrema_CurveTool.hxx`:96 - `Extrema_CurveTool::DN()`
-    pub fn dn(C: &crate::adaptor3d::Curve, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    /// **Source:** `Extrema_CurveTool.hxx`:113 - `Extrema_CurveTool::DN()`
+    pub fn dn(
+        theC: &crate::adaptor3d::Curve,
+        theU: f64,
+        theN: i32,
+    ) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_CurveTool_dn(C, U, N),
+                crate::ffi_extern_TKGeomBase::Extrema_CurveTool_dn(theC, theU, theN),
             ))
         }
     }
 
-    /// **Source:** `Extrema_CurveTool.hxx`:98 - `Extrema_CurveTool::Line()`
-    pub fn line(C: &crate::adaptor3d::Curve) -> crate::OwnedPtr<crate::gp::Lin> {
+    /// **Source:** `Extrema_CurveTool.hxx`:118 - `Extrema_CurveTool::Line()`
+    pub fn line(theC: &crate::adaptor3d::Curve) -> crate::OwnedPtr<crate::gp::Lin> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_CurveTool_line(C),
+                crate::ffi_extern_TKGeomBase::Extrema_CurveTool_line(theC),
             ))
         }
     }
 
-    /// **Source:** `Extrema_CurveTool.hxx`:100 - `Extrema_CurveTool::Circle()`
-    pub fn circle(C: &crate::adaptor3d::Curve) -> crate::OwnedPtr<crate::gp::Circ> {
+    /// **Source:** `Extrema_CurveTool.hxx`:120 - `Extrema_CurveTool::Circle()`
+    pub fn circle(theC: &crate::adaptor3d::Curve) -> crate::OwnedPtr<crate::gp::Circ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_CurveTool_circle(C),
+                crate::ffi_extern_TKGeomBase::Extrema_CurveTool_circle(theC),
             ))
         }
     }
 
-    /// **Source:** `Extrema_CurveTool.hxx`:102 - `Extrema_CurveTool::Ellipse()`
-    pub fn ellipse(C: &crate::adaptor3d::Curve) -> crate::OwnedPtr<crate::gp::Elips> {
+    /// **Source:** `Extrema_CurveTool.hxx`:122 - `Extrema_CurveTool::Ellipse()`
+    pub fn ellipse(theC: &crate::adaptor3d::Curve) -> crate::OwnedPtr<crate::gp::Elips> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_CurveTool_ellipse(C),
+                crate::ffi_extern_TKGeomBase::Extrema_CurveTool_ellipse(theC),
             ))
         }
     }
 
-    /// **Source:** `Extrema_CurveTool.hxx`:104 - `Extrema_CurveTool::Hyperbola()`
-    pub fn hyperbola(C: &crate::adaptor3d::Curve) -> crate::OwnedPtr<crate::gp::Hypr> {
+    /// **Source:** `Extrema_CurveTool.hxx`:124 - `Extrema_CurveTool::Hyperbola()`
+    pub fn hyperbola(theC: &crate::adaptor3d::Curve) -> crate::OwnedPtr<crate::gp::Hypr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_CurveTool_hyperbola(C),
+                crate::ffi_extern_TKGeomBase::Extrema_CurveTool_hyperbola(theC),
             ))
         }
     }
 
-    /// **Source:** `Extrema_CurveTool.hxx`:106 - `Extrema_CurveTool::Parabola()`
-    pub fn parabola(C: &crate::adaptor3d::Curve) -> crate::OwnedPtr<crate::gp::Parab> {
+    /// **Source:** `Extrema_CurveTool.hxx`:126 - `Extrema_CurveTool::Parabola()`
+    pub fn parabola(theC: &crate::adaptor3d::Curve) -> crate::OwnedPtr<crate::gp::Parab> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_CurveTool_parabola(C),
+                crate::ffi_extern_TKGeomBase::Extrema_CurveTool_parabola(theC),
             ))
         }
     }
 
-    /// **Source:** `Extrema_CurveTool.hxx`:108 - `Extrema_CurveTool::Degree()`
-    pub fn degree(C: &crate::adaptor3d::Curve) -> i32 {
-        crate::check_result(unsafe { crate::ffi_extern_TKGeomBase::Extrema_CurveTool_degree(C) })
+    /// **Source:** `Extrema_CurveTool.hxx`:128 - `Extrema_CurveTool::Degree()`
+    pub fn degree(theC: &crate::adaptor3d::Curve) -> i32 {
+        crate::check_result(unsafe { crate::ffi_extern_TKGeomBase::Extrema_CurveTool_degree(theC) })
     }
 
-    /// **Source:** `Extrema_CurveTool.hxx`:110 - `Extrema_CurveTool::IsRational()`
-    pub fn is_rational(C: &crate::adaptor3d::Curve) -> bool {
+    /// **Source:** `Extrema_CurveTool.hxx`:130 - `Extrema_CurveTool::IsRational()`
+    pub fn is_rational(theC: &crate::adaptor3d::Curve) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_CurveTool_is_rational(C)
+            crate::ffi_extern_TKGeomBase::Extrema_CurveTool_is_rational(theC)
         })
     }
 
-    /// **Source:** `Extrema_CurveTool.hxx`:112 - `Extrema_CurveTool::NbPoles()`
-    pub fn nb_poles(C: &crate::adaptor3d::Curve) -> i32 {
-        crate::check_result(unsafe { crate::ffi_extern_TKGeomBase::Extrema_CurveTool_nb_poles(C) })
+    /// **Source:** `Extrema_CurveTool.hxx`:132 - `Extrema_CurveTool::NbPoles()`
+    pub fn nb_poles(theC: &crate::adaptor3d::Curve) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_CurveTool_nb_poles(theC)
+        })
     }
 
-    /// **Source:** `Extrema_CurveTool.hxx`:114 - `Extrema_CurveTool::NbKnots()`
-    pub fn nb_knots(C: &crate::adaptor3d::Curve) -> i32 {
-        crate::check_result(unsafe { crate::ffi_extern_TKGeomBase::Extrema_CurveTool_nb_knots(C) })
+    /// **Source:** `Extrema_CurveTool.hxx`:134 - `Extrema_CurveTool::NbKnots()`
+    pub fn nb_knots(theC: &crate::adaptor3d::Curve) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::Extrema_CurveTool_nb_knots(theC)
+        })
     }
 
-    /// **Source:** `Extrema_CurveTool.hxx`:116 - `Extrema_CurveTool::Bezier()`
+    /// **Source:** `Extrema_CurveTool.hxx`:136 - `Extrema_CurveTool::Bezier()`
     pub fn bezier(
-        C: &crate::adaptor3d::Curve,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBezierCurve> {
+        theC: &crate::adaptor3d::Curve,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BezierCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_CurveTool_bezier(C),
+                crate::ffi_extern_TKGeomBase::Extrema_CurveTool_bezier(theC),
             ))
         }
     }
 
-    /// **Source:** `Extrema_CurveTool.hxx`:118 - `Extrema_CurveTool::BSpline()`
+    /// **Source:** `Extrema_CurveTool.hxx`:138 - `Extrema_CurveTool::BSpline()`
     pub fn b_spline(
-        C: &crate::adaptor3d::Curve,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineCurve> {
+        theC: &crate::adaptor3d::Curve,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_CurveTool_b_spline(C),
+                crate::ffi_extern_TKGeomBase::Extrema_CurveTool_b_spline(theC),
             ))
-        }
-    }
-}
-
-// ========================
-// From Extrema_ECC.hxx
-// ========================
-
-/// **Source:** `Extrema_ECC.hxx`:34 - `Extrema_ECC`
-pub use crate::ffi_types::Extrema_ECC as ECC;
-
-unsafe impl crate::CppDeletable for ECC {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ECC_destructor(ptr);
-        }
-    }
-}
-
-impl ECC {
-    /// **Source:** `Extrema_ECC.hxx`:42 - `Extrema_ECC::Extrema_ECC()`
-    /// Calculates all the distances as above
-    /// between Uinf and Usup for C1 and  between Vinf and Vsup
-    /// for C2.
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_ECC_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_ECC.hxx`:48 - `Extrema_ECC::Extrema_ECC()`
-    /// It calculates all the distances.
-    /// The function F(u,v)=distance(C1(u),C2(v)) has an
-    /// extremum when gradient(f)=0. The algorithm uses
-    /// Evtushenko's global optimization solver.
-    pub fn new_curve2(
-        C1: &crate::adaptor3d::Curve,
-        C2: &crate::adaptor3d::Curve,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_ECC_ctor_curve2(C1, C2),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_ECC.hxx`:53 - `Extrema_ECC::Extrema_ECC()`
-    /// Calculates all the distances as above
-    /// between Uinf and Usup for C1 and  between Vinf and Vsup
-    /// for C2.
-    pub fn new_curve2_real4(
-        C1: &crate::adaptor3d::Curve,
-        C2: &crate::adaptor3d::Curve,
-        Uinf: f64,
-        Usup: f64,
-        Vinf: f64,
-        Vsup: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_ECC_ctor_curve2_real4(
-                    C1, C2, Uinf, Usup, Vinf, Vsup,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_ECC.hxx`:61 - `Extrema_ECC::SetParams()`
-    /// Set params in case of empty constructor is usage.
-    pub fn set_params(
-        &mut self,
-        C1: &crate::adaptor3d::Curve,
-        C2: &crate::adaptor3d::Curve,
-        Uinf: f64,
-        Usup: f64,
-        Vinf: f64,
-        Vsup: f64,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ECC_set_params(
-                self as *mut Self,
-                C1,
-                C2,
-                Uinf,
-                Usup,
-                Vinf,
-                Vsup,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_ECC.hxx`:68 - `Extrema_ECC::SetTolerance()`
-    pub fn set_tolerance(&mut self, Tol: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ECC_set_tolerance(self as *mut Self, Tol)
-        })
-    }
-
-    /// **Source:** `Extrema_ECC.hxx`:71 - `Extrema_ECC::SetSingleSolutionFlag()`
-    /// Set flag for single extrema computation. Works on parametric solver only.
-    pub fn set_single_solution_flag(&mut self, theSingleSolutionFlag: bool) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ECC_set_single_solution_flag(
-                self as *mut Self,
-                theSingleSolutionFlag,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_ECC.hxx`:74 - `Extrema_ECC::GetSingleSolutionFlag()`
-    /// Get flag for single extrema computation. Works on parametric solver only.
-    pub fn get_single_solution_flag(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ECC_get_single_solution_flag(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_ECC.hxx`:77 - `Extrema_ECC::Perform()`
-    /// Performs calculations.
-    pub fn perform(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ECC_perform(self as *mut Self)
-        })
-    }
-
-    /// **Source:** `Extrema_ECC.hxx`:80 - `Extrema_ECC::IsDone()`
-    /// Returns True if the distances are found.
-    pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ECC_is_done(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_ECC.hxx`:83 - `Extrema_ECC::IsParallel()`
-    /// Returns state of myParallel flag.
-    pub fn is_parallel(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ECC_is_parallel(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_ECC.hxx`:86 - `Extrema_ECC::NbExt()`
-    /// Returns the number of extremum distances.
-    pub fn nb_ext(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ECC_nb_ext(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_ECC.hxx`:89 - `Extrema_ECC::SquareDistance()`
-    /// Returns the value of the Nth square extremum distance.
-    pub fn square_distance(&self, N: i32) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ECC_square_distance(self as *const Self, N)
-        })
-    }
-
-    /// **Source:** `Extrema_ECC.hxx`:93 - `Extrema_ECC::Points()`
-    /// Returns the points of the Nth extremum distance.
-    /// P1 is on the first curve, P2 on the second one.
-    pub fn points(&self, N: i32, P1: &mut POnCurv, P2: &mut POnCurv) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ECC_points(self as *const Self, N, P1, P2)
-        })
-    }
-}
-
-// ========================
-// From Extrema_ECC2d.hxx
-// ========================
-
-/// **Source:** `Extrema_ECC2d.hxx`:32 - `Extrema_ECC2d`
-pub use crate::ffi_types::Extrema_ECC2d as ECC2d;
-
-unsafe impl crate::CppDeletable for ECC2d {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ECC2d_destructor(ptr);
-        }
-    }
-}
-
-impl ECC2d {
-    /// **Source:** `Extrema_ECC2d.hxx`:40 - `Extrema_ECC2d::Extrema_ECC2d()`
-    /// Calculates all the distances as above
-    /// between Uinf and Usup for C1 and  between Vinf and Vsup
-    /// for C2.
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_ECC2d_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_ECC2d.hxx`:46 - `Extrema_ECC2d::Extrema_ECC2d()`
-    /// It calculates all the distances.
-    /// The function F(u,v)=distance(C1(u),C2(v)) has an
-    /// extremum when gradient(f)=0. The algorithm uses
-    /// Evtushenko's global optimization solver.
-    pub fn new_curve2d2(
-        C1: &crate::adaptor2d::Curve2d,
-        C2: &crate::adaptor2d::Curve2d,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_ECC2d_ctor_curve2d2(C1, C2),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_ECC2d.hxx`:51 - `Extrema_ECC2d::Extrema_ECC2d()`
-    /// Calculates all the distances as above
-    /// between Uinf and Usup for C1 and  between Vinf and Vsup
-    /// for C2.
-    pub fn new_curve2d2_real4(
-        C1: &crate::adaptor2d::Curve2d,
-        C2: &crate::adaptor2d::Curve2d,
-        Uinf: f64,
-        Usup: f64,
-        Vinf: f64,
-        Vsup: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_ECC2d_ctor_curve2d2_real4(
-                    C1, C2, Uinf, Usup, Vinf, Vsup,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_ECC2d.hxx`:59 - `Extrema_ECC2d::SetParams()`
-    /// Set params in case of empty constructor is usage.
-    pub fn set_params(
-        &mut self,
-        C1: &crate::adaptor2d::Curve2d,
-        C2: &crate::adaptor2d::Curve2d,
-        Uinf: f64,
-        Usup: f64,
-        Vinf: f64,
-        Vsup: f64,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ECC2d_set_params(
-                self as *mut Self,
-                C1,
-                C2,
-                Uinf,
-                Usup,
-                Vinf,
-                Vsup,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_ECC2d.hxx`:66 - `Extrema_ECC2d::SetTolerance()`
-    pub fn set_tolerance(&mut self, Tol: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ECC2d_set_tolerance(self as *mut Self, Tol)
-        })
-    }
-
-    /// **Source:** `Extrema_ECC2d.hxx`:69 - `Extrema_ECC2d::SetSingleSolutionFlag()`
-    /// Set flag for single extrema computation. Works on parametric solver only.
-    pub fn set_single_solution_flag(&mut self, theSingleSolutionFlag: bool) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ECC2d_set_single_solution_flag(
-                self as *mut Self,
-                theSingleSolutionFlag,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_ECC2d.hxx`:72 - `Extrema_ECC2d::GetSingleSolutionFlag()`
-    /// Get flag for single extrema computation. Works on parametric solver only.
-    pub fn get_single_solution_flag(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ECC2d_get_single_solution_flag(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_ECC2d.hxx`:75 - `Extrema_ECC2d::Perform()`
-    /// Performs calculations.
-    pub fn perform(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ECC2d_perform(self as *mut Self)
-        })
-    }
-
-    /// **Source:** `Extrema_ECC2d.hxx`:78 - `Extrema_ECC2d::IsDone()`
-    /// Returns True if the distances are found.
-    pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ECC2d_is_done(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_ECC2d.hxx`:81 - `Extrema_ECC2d::IsParallel()`
-    /// Returns state of myParallel flag.
-    pub fn is_parallel(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ECC2d_is_parallel(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_ECC2d.hxx`:84 - `Extrema_ECC2d::NbExt()`
-    /// Returns the number of extremum distances.
-    pub fn nb_ext(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ECC2d_nb_ext(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_ECC2d.hxx`:87 - `Extrema_ECC2d::SquareDistance()`
-    /// Returns the value of the Nth square extremum distance.
-    pub fn square_distance(&self, N: i32) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ECC2d_square_distance(self as *const Self, N)
-        })
-    }
-
-    /// **Source:** `Extrema_ECC2d.hxx`:91 - `Extrema_ECC2d::Points()`
-    /// Returns the points of the Nth extremum distance.
-    /// P1 is on the first curve, P2 on the second one.
-    pub fn points(&self, N: i32, P1: &mut POnCurv2d, P2: &mut POnCurv2d) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ECC2d_points(self as *const Self, N, P1, P2)
-        })
-    }
-}
-
-// ========================
-// From Extrema_ELPCOfLocateExtPC.hxx
-// ========================
-
-/// **Source:** `Extrema_ELPCOfLocateExtPC.hxx`:43 - `Extrema_ELPCOfLocateExtPC`
-pub use crate::ffi_types::Extrema_ELPCOfLocateExtPC as ELPCOfLocateExtPC;
-
-unsafe impl crate::CppDeletable for ELPCOfLocateExtPC {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ELPCOfLocateExtPC_destructor(ptr);
-        }
-    }
-}
-
-impl ELPCOfLocateExtPC {
-    /// **Source:** `Extrema_ELPCOfLocateExtPC.hxx`:48 - `Extrema_ELPCOfLocateExtPC::Extrema_ELPCOfLocateExtPC()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_ELPCOfLocateExtPC_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_ELPCOfLocateExtPC.hxx`:59 - `Extrema_ELPCOfLocateExtPC::Extrema_ELPCOfLocateExtPC()`
-    /// It calculates all the distances.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches all the
-    /// zeros inside the definition range of the curve.
-    /// Zeros are searched between uinf and usup.
-    /// Tol  is used to decide to stop the
-    /// iterations according to the following condition:
-    /// if n is the number of iterations,
-    /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
-    pub fn new_pnt_curve_real3(
-        P: &crate::gp::Pnt,
-        C: &crate::adaptor3d::Curve,
-        Uinf: f64,
-        Usup: f64,
-        TolF: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_ELPCOfLocateExtPC_ctor_pnt_curve_real3(
-                    P, C, Uinf, Usup, TolF,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_ELPCOfLocateExtPC.hxx`:73 - `Extrema_ELPCOfLocateExtPC::Extrema_ELPCOfLocateExtPC()`
-    /// It calculates all the distances.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches all the
-    /// zeros inside the definition range of the curve.
-    /// Tol is used to decide to stop the
-    /// iterations according to the following condition:
-    /// if n is the number of iterations,
-    /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
-    pub fn new_pnt_curve_real(
-        P: &crate::gp::Pnt,
-        C: &crate::adaptor3d::Curve,
-        TolF: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_ELPCOfLocateExtPC_ctor_pnt_curve_real(
-                    P, C, TolF,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_ELPCOfLocateExtPC.hxx`:59 - `Extrema_ELPCOfLocateExtPC::Extrema_ELPCOfLocateExtPC()`
-    /// It calculates all the distances.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches all the
-    /// zeros inside the definition range of the curve.
-    /// Zeros are searched between uinf and usup.
-    /// Tol  is used to decide to stop the
-    /// iterations according to the following condition:
-    /// if n is the number of iterations,
-    /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
-    pub fn new_pnt_curve_real2(
-        P: &crate::gp::Pnt,
-        C: &crate::adaptor3d::Curve,
-        Uinf: f64,
-        Usup: f64,
-    ) -> crate::OwnedPtr<Self> {
-        Self::new_pnt_curve_real3(P, C, Uinf, Usup, 1.0e-10)
-    }
-
-    /// **Source:** `Extrema_ELPCOfLocateExtPC.hxx`:73 - `Extrema_ELPCOfLocateExtPC::Extrema_ELPCOfLocateExtPC()`
-    /// It calculates all the distances.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches all the
-    /// zeros inside the definition range of the curve.
-    /// Tol is used to decide to stop the
-    /// iterations according to the following condition:
-    /// if n is the number of iterations,
-    /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
-    pub fn new_pnt_curve(P: &crate::gp::Pnt, C: &crate::adaptor3d::Curve) -> crate::OwnedPtr<Self> {
-        Self::new_pnt_curve_real(P, C, 1.0e-10)
-    }
-
-    /// **Source:** `Extrema_ELPCOfLocateExtPC.hxx`:78 - `Extrema_ELPCOfLocateExtPC::Initialize()`
-    /// initializes the fields of the algorithm.
-    pub fn initialize(&mut self, C: &crate::adaptor3d::Curve, Uinf: f64, Usup: f64, TolF: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ELPCOfLocateExtPC_initialize(
-                self as *mut Self,
-                C,
-                Uinf,
-                Usup,
-                TolF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_ELPCOfLocateExtPC.hxx`:85 - `Extrema_ELPCOfLocateExtPC::Perform()`
-    /// An exception is raised if the fields have not been
-    /// initialized.
-    pub fn perform(&mut self, P: &crate::gp::Pnt) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ELPCOfLocateExtPC_perform(self as *mut Self, P)
-        })
-    }
-
-    /// **Source:** `Extrema_ELPCOfLocateExtPC.hxx`:88 - `Extrema_ELPCOfLocateExtPC::IsDone()`
-    /// True if the distances are found.
-    pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ELPCOfLocateExtPC_is_done(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_ELPCOfLocateExtPC.hxx`:91 - `Extrema_ELPCOfLocateExtPC::SquareDistance()`
-    /// Returns the value of the <N>th extremum square distance.
-    pub fn square_distance(&self, N: i32) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ELPCOfLocateExtPC_square_distance(
-                self as *const Self,
-                N,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_ELPCOfLocateExtPC.hxx`:94 - `Extrema_ELPCOfLocateExtPC::NbExt()`
-    /// Returns the number of extremum distances.
-    pub fn nb_ext(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ELPCOfLocateExtPC_nb_ext(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_ELPCOfLocateExtPC.hxx`:98 - `Extrema_ELPCOfLocateExtPC::IsMin()`
-    /// Returns True if the <N>th extremum distance is a
-    /// minimum.
-    pub fn is_min(&self, N: i32) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ELPCOfLocateExtPC_is_min(self as *const Self, N)
-        })
-    }
-
-    /// **Source:** `Extrema_ELPCOfLocateExtPC.hxx`:101 - `Extrema_ELPCOfLocateExtPC::Point()`
-    /// Returns the point of the <N>th extremum distance.
-    pub fn point(&self, N: i32) -> &POnCurv {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_ELPCOfLocateExtPC_point(
-                self as *const Self,
-                N,
-            )))
-        }
-    }
-
-    /// **Source:** `Extrema_ELPCOfLocateExtPC.hxx`:108 - `Extrema_ELPCOfLocateExtPC::TrimmedSquareDistances()`
-    /// if the curve is a trimmed curve,
-    /// dist1 is a square distance between <P> and the point
-    /// of parameter FirstParameter <P1> and
-    /// dist2 is a square distance between <P> and the point
-    /// of parameter LastParameter <P2>.
-    pub fn trimmed_square_distances(
-        &self,
-        dist1: &mut f64,
-        dist2: &mut f64,
-        P1: &mut crate::gp::Pnt,
-        P2: &mut crate::gp::Pnt,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ELPCOfLocateExtPC_trimmed_square_distances(
-                self as *const Self,
-                dist1,
-                dist2,
-                P1,
-                P2,
-            )
-        })
-    }
-}
-
-// ========================
-// From Extrema_ELPCOfLocateExtPC2d.hxx
-// ========================
-
-/// **Source:** `Extrema_ELPCOfLocateExtPC2d.hxx`:43 - `Extrema_ELPCOfLocateExtPC2d`
-pub use crate::ffi_types::Extrema_ELPCOfLocateExtPC2d as ELPCOfLocateExtPC2d;
-
-unsafe impl crate::CppDeletable for ELPCOfLocateExtPC2d {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ELPCOfLocateExtPC2d_destructor(ptr);
-        }
-    }
-}
-
-impl ELPCOfLocateExtPC2d {
-    /// **Source:** `Extrema_ELPCOfLocateExtPC2d.hxx`:48 - `Extrema_ELPCOfLocateExtPC2d::Extrema_ELPCOfLocateExtPC2d()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_ELPCOfLocateExtPC2d_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_ELPCOfLocateExtPC2d.hxx`:59 - `Extrema_ELPCOfLocateExtPC2d::Extrema_ELPCOfLocateExtPC2d()`
-    /// It calculates all the distances.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches all the
-    /// zeros inside the definition range of the curve.
-    /// Zeros are searched between uinf and usup.
-    /// Tol  is used to decide to stop the
-    /// iterations according to the following condition:
-    /// if n is the number of iterations,
-    /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
-    pub fn new_pnt2d_curve2d_real3(
-        P: &crate::gp::Pnt2d,
-        C: &crate::adaptor2d::Curve2d,
-        Uinf: f64,
-        Usup: f64,
-        TolF: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_ELPCOfLocateExtPC2d_ctor_pnt2d_curve2d_real3(
-                    P, C, Uinf, Usup, TolF,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_ELPCOfLocateExtPC2d.hxx`:73 - `Extrema_ELPCOfLocateExtPC2d::Extrema_ELPCOfLocateExtPC2d()`
-    /// It calculates all the distances.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches all the
-    /// zeros inside the definition range of the curve.
-    /// Tol is used to decide to stop the
-    /// iterations according to the following condition:
-    /// if n is the number of iterations,
-    /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
-    pub fn new_pnt2d_curve2d_real(
-        P: &crate::gp::Pnt2d,
-        C: &crate::adaptor2d::Curve2d,
-        TolF: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_ELPCOfLocateExtPC2d_ctor_pnt2d_curve2d_real(
-                    P, C, TolF,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_ELPCOfLocateExtPC2d.hxx`:59 - `Extrema_ELPCOfLocateExtPC2d::Extrema_ELPCOfLocateExtPC2d()`
-    /// It calculates all the distances.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches all the
-    /// zeros inside the definition range of the curve.
-    /// Zeros are searched between uinf and usup.
-    /// Tol  is used to decide to stop the
-    /// iterations according to the following condition:
-    /// if n is the number of iterations,
-    /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
-    pub fn new_pnt2d_curve2d_real2(
-        P: &crate::gp::Pnt2d,
-        C: &crate::adaptor2d::Curve2d,
-        Uinf: f64,
-        Usup: f64,
-    ) -> crate::OwnedPtr<Self> {
-        Self::new_pnt2d_curve2d_real3(P, C, Uinf, Usup, 1.0e-10)
-    }
-
-    /// **Source:** `Extrema_ELPCOfLocateExtPC2d.hxx`:73 - `Extrema_ELPCOfLocateExtPC2d::Extrema_ELPCOfLocateExtPC2d()`
-    /// It calculates all the distances.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches all the
-    /// zeros inside the definition range of the curve.
-    /// Tol is used to decide to stop the
-    /// iterations according to the following condition:
-    /// if n is the number of iterations,
-    /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
-    pub fn new_pnt2d_curve2d(
-        P: &crate::gp::Pnt2d,
-        C: &crate::adaptor2d::Curve2d,
-    ) -> crate::OwnedPtr<Self> {
-        Self::new_pnt2d_curve2d_real(P, C, 1.0e-10)
-    }
-
-    /// **Source:** `Extrema_ELPCOfLocateExtPC2d.hxx`:78 - `Extrema_ELPCOfLocateExtPC2d::Initialize()`
-    /// initializes the fields of the algorithm.
-    pub fn initialize(&mut self, C: &crate::adaptor2d::Curve2d, Uinf: f64, Usup: f64, TolF: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ELPCOfLocateExtPC2d_initialize(
-                self as *mut Self,
-                C,
-                Uinf,
-                Usup,
-                TolF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_ELPCOfLocateExtPC2d.hxx`:85 - `Extrema_ELPCOfLocateExtPC2d::Perform()`
-    /// An exception is raised if the fields have not been
-    /// initialized.
-    pub fn perform(&mut self, P: &crate::gp::Pnt2d) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ELPCOfLocateExtPC2d_perform(self as *mut Self, P)
-        })
-    }
-
-    /// **Source:** `Extrema_ELPCOfLocateExtPC2d.hxx`:88 - `Extrema_ELPCOfLocateExtPC2d::IsDone()`
-    /// True if the distances are found.
-    pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ELPCOfLocateExtPC2d_is_done(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_ELPCOfLocateExtPC2d.hxx`:91 - `Extrema_ELPCOfLocateExtPC2d::SquareDistance()`
-    /// Returns the value of the <N>th extremum square distance.
-    pub fn square_distance(&self, N: i32) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ELPCOfLocateExtPC2d_square_distance(
-                self as *const Self,
-                N,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_ELPCOfLocateExtPC2d.hxx`:94 - `Extrema_ELPCOfLocateExtPC2d::NbExt()`
-    /// Returns the number of extremum distances.
-    pub fn nb_ext(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ELPCOfLocateExtPC2d_nb_ext(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_ELPCOfLocateExtPC2d.hxx`:98 - `Extrema_ELPCOfLocateExtPC2d::IsMin()`
-    /// Returns True if the <N>th extremum distance is a
-    /// minimum.
-    pub fn is_min(&self, N: i32) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ELPCOfLocateExtPC2d_is_min(self as *const Self, N)
-        })
-    }
-
-    /// **Source:** `Extrema_ELPCOfLocateExtPC2d.hxx`:101 - `Extrema_ELPCOfLocateExtPC2d::Point()`
-    /// Returns the point of the <N>th extremum distance.
-    pub fn point(&self, N: i32) -> &POnCurv2d {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_ELPCOfLocateExtPC2d_point(
-                    self as *const Self,
-                    N,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_ELPCOfLocateExtPC2d.hxx`:108 - `Extrema_ELPCOfLocateExtPC2d::TrimmedSquareDistances()`
-    /// if the curve is a trimmed curve,
-    /// dist1 is a square distance between <P> and the point
-    /// of parameter FirstParameter <P1> and
-    /// dist2 is a square distance between <P> and the point
-    /// of parameter LastParameter <P2>.
-    pub fn trimmed_square_distances(
-        &self,
-        dist1: &mut f64,
-        dist2: &mut f64,
-        P1: &mut crate::gp::Pnt2d,
-        P2: &mut crate::gp::Pnt2d,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ELPCOfLocateExtPC2d_trimmed_square_distances(
-                self as *const Self,
-                dist1,
-                dist2,
-                P1,
-                P2,
-            )
-        })
-    }
-}
-
-// ========================
-// From Extrema_EPCOfELPCOfLocateExtPC.hxx
-// ========================
-
-/// **Source:** `Extrema_EPCOfELPCOfLocateExtPC.hxx`:35 - `Extrema_EPCOfELPCOfLocateExtPC`
-pub use crate::ffi_types::Extrema_EPCOfELPCOfLocateExtPC as EPCOfELPCOfLocateExtPC;
-
-unsafe impl crate::CppDeletable for EPCOfELPCOfLocateExtPC {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC_destructor(ptr);
-        }
-    }
-}
-
-impl EPCOfELPCOfLocateExtPC {
-    /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC.hxx`:40 - `Extrema_EPCOfELPCOfLocateExtPC::Extrema_EPCOfELPCOfLocateExtPC()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC.hxx`:52 - `Extrema_EPCOfELPCOfLocateExtPC::Extrema_EPCOfELPCOfLocateExtPC()`
-    /// It calculates all the distances.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches all the
-    /// zeros inside the definition range of the curve.
-    /// NbU is used to locate the close points to
-    /// find the zeros.
-    /// Tol and TolU are used to decide to stop the
-    /// iterations according to the following condition:
-    /// if n is the number of iterations,
-    /// abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
-    pub fn new_pnt_curve_int_real2(
-        P: &crate::gp::Pnt,
-        C: &crate::adaptor3d::Curve,
-        NbU: i32,
-        TolU: f64,
-        TolF: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC_ctor_pnt_curve_int_real2(P, C, NbU, TolU, TolF)))
-        }
-    }
-
-    /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC.hxx`:69 - `Extrema_EPCOfELPCOfLocateExtPC::Extrema_EPCOfELPCOfLocateExtPC()`
-    /// It calculates all the distances.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches all the
-    /// zeros inside the definition range of the curve.
-    /// NbU is used to locate the close points to
-    /// find the zeros.
-    /// Zeros are searched between umin and usup.
-    /// Tol and TolU are used to decide to stop the
-    /// iterations according to the following condition:
-    /// if n is the number of iterations,
-    /// abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
-    pub fn new_pnt_curve_int_real4(
-        P: &crate::gp::Pnt,
-        C: &crate::adaptor3d::Curve,
-        NbU: i32,
-        Umin: f64,
-        Usup: f64,
-        TolU: f64,
-        TolF: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC_ctor_pnt_curve_int_real4(P, C, NbU, Umin, Usup, TolU, TolF)))
-        }
-    }
-
-    /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC.hxx`:78 - `Extrema_EPCOfELPCOfLocateExtPC::Initialize()`
-    /// sets the fields of the algorithm.
-    pub fn initialize_curve_int_real2(
-        &mut self,
-        C: &crate::adaptor3d::Curve,
-        NbU: i32,
-        TolU: f64,
-        TolF: f64,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC_initialize_curve_int_real2(
-                self as *mut Self,
-                C,
-                NbU,
-                TolU,
-                TolF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC.hxx`:84 - `Extrema_EPCOfELPCOfLocateExtPC::Initialize()`
-    /// sets the fields of the algorithm.
-    pub fn initialize_curve_int_real4(
-        &mut self,
-        C: &crate::adaptor3d::Curve,
-        NbU: i32,
-        Umin: f64,
-        Usup: f64,
-        TolU: f64,
-        TolF: f64,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC_initialize_curve_int_real4(
-                self as *mut Self,
-                C,
-                NbU,
-                Umin,
-                Usup,
-                TolU,
-                TolF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC.hxx`:92 - `Extrema_EPCOfELPCOfLocateExtPC::Initialize()`
-    /// sets the fields of the algorithm.
-    pub fn initialize_curve(&mut self, C: &crate::adaptor3d::Curve) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC_initialize_curve(
-                self as *mut Self,
-                C,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC.hxx`:95 - `Extrema_EPCOfELPCOfLocateExtPC::Initialize()`
-    /// sets the fields of the algorithm.
-    pub fn initialize_int_real4(&mut self, NbU: i32, Umin: f64, Usup: f64, TolU: f64, TolF: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC_initialize_int_real4(
-                self as *mut Self,
-                NbU,
-                Umin,
-                Usup,
-                TolU,
-                TolF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC.hxx`:104 - `Extrema_EPCOfELPCOfLocateExtPC::Perform()`
-    /// the algorithm is done with the point P.
-    /// An exception is raised if the fields have not
-    /// been initialized.
-    pub fn perform(&mut self, P: &crate::gp::Pnt) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC_perform(
-                self as *mut Self,
-                P,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC.hxx`:107 - `Extrema_EPCOfELPCOfLocateExtPC::IsDone()`
-    /// True if the distances are found.
-    pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC_is_done(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC.hxx`:110 - `Extrema_EPCOfELPCOfLocateExtPC::NbExt()`
-    /// Returns the number of extremum distances.
-    pub fn nb_ext(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC_nb_ext(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC.hxx`:113 - `Extrema_EPCOfELPCOfLocateExtPC::SquareDistance()`
-    /// Returns the value of the Nth extremum square distance.
-    pub fn square_distance(&self, N: i32) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC_square_distance(
-                self as *const Self,
-                N,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC.hxx`:117 - `Extrema_EPCOfELPCOfLocateExtPC::IsMin()`
-    /// Returns True if the Nth extremum distance is a
-    /// minimum.
-    pub fn is_min(&self, N: i32) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC_is_min(
-                self as *const Self,
-                N,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC.hxx`:120 - `Extrema_EPCOfELPCOfLocateExtPC::Point()`
-    /// Returns the point of the Nth extremum distance.
-    pub fn point(&self, N: i32) -> &POnCurv {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC_point(
-                    self as *const Self,
-                    N,
-                ),
-            ))
-        }
-    }
-}
-
-// ========================
-// From Extrema_EPCOfELPCOfLocateExtPC2d.hxx
-// ========================
-
-/// **Source:** `Extrema_EPCOfELPCOfLocateExtPC2d.hxx`:36 - `Extrema_EPCOfELPCOfLocateExtPC2d`
-pub use crate::ffi_types::Extrema_EPCOfELPCOfLocateExtPC2d as EPCOfELPCOfLocateExtPC2d;
-
-unsafe impl crate::CppDeletable for EPCOfELPCOfLocateExtPC2d {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC2d_destructor(ptr);
-        }
-    }
-}
-
-impl EPCOfELPCOfLocateExtPC2d {
-    /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC2d.hxx`:41 - `Extrema_EPCOfELPCOfLocateExtPC2d::Extrema_EPCOfELPCOfLocateExtPC2d()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC2d_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC2d.hxx`:53 - `Extrema_EPCOfELPCOfLocateExtPC2d::Extrema_EPCOfELPCOfLocateExtPC2d()`
-    /// It calculates all the distances.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches all the
-    /// zeros inside the definition range of the curve.
-    /// NbU is used to locate the close points to
-    /// find the zeros.
-    /// Tol and TolU are used to decide to stop the
-    /// iterations according to the following condition:
-    /// if n is the number of iterations,
-    /// abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
-    pub fn new_pnt2d_curve2d_int_real2(
-        P: &crate::gp::Pnt2d,
-        C: &crate::adaptor2d::Curve2d,
-        NbU: i32,
-        TolU: f64,
-        TolF: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC2d_ctor_pnt2d_curve2d_int_real2(P, C, NbU, TolU, TolF)))
-        }
-    }
-
-    /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC2d.hxx`:70 - `Extrema_EPCOfELPCOfLocateExtPC2d::Extrema_EPCOfELPCOfLocateExtPC2d()`
-    /// It calculates all the distances.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches all the
-    /// zeros inside the definition range of the curve.
-    /// NbU is used to locate the close points to
-    /// find the zeros.
-    /// Zeros are searched between umin and usup.
-    /// Tol and TolU are used to decide to stop the
-    /// iterations according to the following condition:
-    /// if n is the number of iterations,
-    /// abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
-    pub fn new_pnt2d_curve2d_int_real4(
-        P: &crate::gp::Pnt2d,
-        C: &crate::adaptor2d::Curve2d,
-        NbU: i32,
-        Umin: f64,
-        Usup: f64,
-        TolU: f64,
-        TolF: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC2d_ctor_pnt2d_curve2d_int_real4(P, C, NbU, Umin, Usup, TolU, TolF)))
-        }
-    }
-
-    /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC2d.hxx`:79 - `Extrema_EPCOfELPCOfLocateExtPC2d::Initialize()`
-    /// sets the fields of the algorithm.
-    pub fn initialize_curve2d_int_real2(
-        &mut self,
-        C: &crate::adaptor2d::Curve2d,
-        NbU: i32,
-        TolU: f64,
-        TolF: f64,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC2d_initialize_curve2d_int_real2(self as *mut Self, C, NbU, TolU, TolF)
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC2d.hxx`:85 - `Extrema_EPCOfELPCOfLocateExtPC2d::Initialize()`
-    /// sets the fields of the algorithm.
-    pub fn initialize_curve2d_int_real4(
-        &mut self,
-        C: &crate::adaptor2d::Curve2d,
-        NbU: i32,
-        Umin: f64,
-        Usup: f64,
-        TolU: f64,
-        TolF: f64,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC2d_initialize_curve2d_int_real4(self as *mut Self, C, NbU, Umin, Usup, TolU, TolF)
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC2d.hxx`:93 - `Extrema_EPCOfELPCOfLocateExtPC2d::Initialize()`
-    /// sets the fields of the algorithm.
-    pub fn initialize_curve2d(&mut self, C: &crate::adaptor2d::Curve2d) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC2d_initialize_curve2d(
-                self as *mut Self,
-                C,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC2d.hxx`:96 - `Extrema_EPCOfELPCOfLocateExtPC2d::Initialize()`
-    /// sets the fields of the algorithm.
-    pub fn initialize_int_real4(&mut self, NbU: i32, Umin: f64, Usup: f64, TolU: f64, TolF: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC2d_initialize_int_real4(
-                self as *mut Self,
-                NbU,
-                Umin,
-                Usup,
-                TolU,
-                TolF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC2d.hxx`:105 - `Extrema_EPCOfELPCOfLocateExtPC2d::Perform()`
-    /// the algorithm is done with the point P.
-    /// An exception is raised if the fields have not
-    /// been initialized.
-    pub fn perform(&mut self, P: &crate::gp::Pnt2d) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC2d_perform(
-                self as *mut Self,
-                P,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC2d.hxx`:108 - `Extrema_EPCOfELPCOfLocateExtPC2d::IsDone()`
-    /// True if the distances are found.
-    pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC2d_is_done(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC2d.hxx`:111 - `Extrema_EPCOfELPCOfLocateExtPC2d::NbExt()`
-    /// Returns the number of extremum distances.
-    pub fn nb_ext(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC2d_nb_ext(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC2d.hxx`:114 - `Extrema_EPCOfELPCOfLocateExtPC2d::SquareDistance()`
-    /// Returns the value of the Nth extremum square distance.
-    pub fn square_distance(&self, N: i32) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC2d_square_distance(
-                self as *const Self,
-                N,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC2d.hxx`:118 - `Extrema_EPCOfELPCOfLocateExtPC2d::IsMin()`
-    /// Returns True if the Nth extremum distance is a
-    /// minimum.
-    pub fn is_min(&self, N: i32) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC2d_is_min(
-                self as *const Self,
-                N,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfELPCOfLocateExtPC2d.hxx`:121 - `Extrema_EPCOfELPCOfLocateExtPC2d::Point()`
-    /// Returns the point of the Nth extremum distance.
-    pub fn point(&self, N: i32) -> &POnCurv2d {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_EPCOfELPCOfLocateExtPC2d_point(
-                    self as *const Self,
-                    N,
-                ),
-            ))
-        }
-    }
-}
-
-// ========================
-// From Extrema_EPCOfExtPC.hxx
-// ========================
-
-/// **Source:** `Extrema_EPCOfExtPC.hxx`:35 - `Extrema_EPCOfExtPC`
-pub use crate::ffi_types::Extrema_EPCOfExtPC as EPCOfExtPC;
-
-unsafe impl crate::CppDeletable for EPCOfExtPC {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC_destructor(ptr);
-        }
-    }
-}
-
-impl EPCOfExtPC {
-    /// **Source:** `Extrema_EPCOfExtPC.hxx`:40 - `Extrema_EPCOfExtPC::Extrema_EPCOfExtPC()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_EPCOfExtPC.hxx`:52 - `Extrema_EPCOfExtPC::Extrema_EPCOfExtPC()`
-    /// It calculates all the distances.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches all the
-    /// zeros inside the definition range of the curve.
-    /// NbU is used to locate the close points to
-    /// find the zeros.
-    /// Tol and TolU are used to decide to stop the
-    /// iterations according to the following condition:
-    /// if n is the number of iterations,
-    /// abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
-    pub fn new_pnt_curve_int_real2(
-        P: &crate::gp::Pnt,
-        C: &crate::adaptor3d::Curve,
-        NbU: i32,
-        TolU: f64,
-        TolF: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC_ctor_pnt_curve_int_real2(
-                    P, C, NbU, TolU, TolF,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_EPCOfExtPC.hxx`:69 - `Extrema_EPCOfExtPC::Extrema_EPCOfExtPC()`
-    /// It calculates all the distances.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches all the
-    /// zeros inside the definition range of the curve.
-    /// NbU is used to locate the close points to
-    /// find the zeros.
-    /// Zeros are searched between umin and usup.
-    /// Tol and TolU are used to decide to stop the
-    /// iterations according to the following condition:
-    /// if n is the number of iterations,
-    /// abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
-    pub fn new_pnt_curve_int_real4(
-        P: &crate::gp::Pnt,
-        C: &crate::adaptor3d::Curve,
-        NbU: i32,
-        Umin: f64,
-        Usup: f64,
-        TolU: f64,
-        TolF: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC_ctor_pnt_curve_int_real4(
-                    P, C, NbU, Umin, Usup, TolU, TolF,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_EPCOfExtPC.hxx`:78 - `Extrema_EPCOfExtPC::Initialize()`
-    /// sets the fields of the algorithm.
-    pub fn initialize_curve_int_real2(
-        &mut self,
-        C: &crate::adaptor3d::Curve,
-        NbU: i32,
-        TolU: f64,
-        TolF: f64,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC_initialize_curve_int_real2(
-                self as *mut Self,
-                C,
-                NbU,
-                TolU,
-                TolF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfExtPC.hxx`:84 - `Extrema_EPCOfExtPC::Initialize()`
-    /// sets the fields of the algorithm.
-    pub fn initialize_curve_int_real4(
-        &mut self,
-        C: &crate::adaptor3d::Curve,
-        NbU: i32,
-        Umin: f64,
-        Usup: f64,
-        TolU: f64,
-        TolF: f64,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC_initialize_curve_int_real4(
-                self as *mut Self,
-                C,
-                NbU,
-                Umin,
-                Usup,
-                TolU,
-                TolF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfExtPC.hxx`:92 - `Extrema_EPCOfExtPC::Initialize()`
-    /// sets the fields of the algorithm.
-    pub fn initialize_curve(&mut self, C: &crate::adaptor3d::Curve) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC_initialize_curve(self as *mut Self, C)
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfExtPC.hxx`:95 - `Extrema_EPCOfExtPC::Initialize()`
-    /// sets the fields of the algorithm.
-    pub fn initialize_int_real4(&mut self, NbU: i32, Umin: f64, Usup: f64, TolU: f64, TolF: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC_initialize_int_real4(
-                self as *mut Self,
-                NbU,
-                Umin,
-                Usup,
-                TolU,
-                TolF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfExtPC.hxx`:104 - `Extrema_EPCOfExtPC::Perform()`
-    /// the algorithm is done with the point P.
-    /// An exception is raised if the fields have not
-    /// been initialized.
-    pub fn perform(&mut self, P: &crate::gp::Pnt) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC_perform(self as *mut Self, P)
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfExtPC.hxx`:107 - `Extrema_EPCOfExtPC::IsDone()`
-    /// True if the distances are found.
-    pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC_is_done(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfExtPC.hxx`:110 - `Extrema_EPCOfExtPC::NbExt()`
-    /// Returns the number of extremum distances.
-    pub fn nb_ext(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC_nb_ext(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfExtPC.hxx`:113 - `Extrema_EPCOfExtPC::SquareDistance()`
-    /// Returns the value of the Nth extremum square distance.
-    pub fn square_distance(&self, N: i32) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC_square_distance(self as *const Self, N)
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfExtPC.hxx`:117 - `Extrema_EPCOfExtPC::IsMin()`
-    /// Returns True if the Nth extremum distance is a
-    /// minimum.
-    pub fn is_min(&self, N: i32) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC_is_min(self as *const Self, N)
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfExtPC.hxx`:120 - `Extrema_EPCOfExtPC::Point()`
-    /// Returns the point of the Nth extremum distance.
-    pub fn point(&self, N: i32) -> &POnCurv {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC_point(
-                self as *const Self,
-                N,
-            )))
-        }
-    }
-}
-
-// ========================
-// From Extrema_EPCOfExtPC2d.hxx
-// ========================
-
-/// **Source:** `Extrema_EPCOfExtPC2d.hxx`:35 - `Extrema_EPCOfExtPC2d`
-pub use crate::ffi_types::Extrema_EPCOfExtPC2d as EPCOfExtPC2d;
-
-unsafe impl crate::CppDeletable for EPCOfExtPC2d {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC2d_destructor(ptr);
-        }
-    }
-}
-
-impl EPCOfExtPC2d {
-    /// **Source:** `Extrema_EPCOfExtPC2d.hxx`:40 - `Extrema_EPCOfExtPC2d::Extrema_EPCOfExtPC2d()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC2d_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_EPCOfExtPC2d.hxx`:52 - `Extrema_EPCOfExtPC2d::Extrema_EPCOfExtPC2d()`
-    /// It calculates all the distances.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches all the
-    /// zeros inside the definition range of the curve.
-    /// NbU is used to locate the close points to
-    /// find the zeros.
-    /// Tol and TolU are used to decide to stop the
-    /// iterations according to the following condition:
-    /// if n is the number of iterations,
-    /// abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
-    pub fn new_pnt2d_curve2d_int_real2(
-        P: &crate::gp::Pnt2d,
-        C: &crate::adaptor2d::Curve2d,
-        NbU: i32,
-        TolU: f64,
-        TolF: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC2d_ctor_pnt2d_curve2d_int_real2(
-                    P, C, NbU, TolU, TolF,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_EPCOfExtPC2d.hxx`:69 - `Extrema_EPCOfExtPC2d::Extrema_EPCOfExtPC2d()`
-    /// It calculates all the distances.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches all the
-    /// zeros inside the definition range of the curve.
-    /// NbU is used to locate the close points to
-    /// find the zeros.
-    /// Zeros are searched between umin and usup.
-    /// Tol and TolU are used to decide to stop the
-    /// iterations according to the following condition:
-    /// if n is the number of iterations,
-    /// abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
-    pub fn new_pnt2d_curve2d_int_real4(
-        P: &crate::gp::Pnt2d,
-        C: &crate::adaptor2d::Curve2d,
-        NbU: i32,
-        Umin: f64,
-        Usup: f64,
-        TolU: f64,
-        TolF: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC2d_ctor_pnt2d_curve2d_int_real4(
-                    P, C, NbU, Umin, Usup, TolU, TolF,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_EPCOfExtPC2d.hxx`:78 - `Extrema_EPCOfExtPC2d::Initialize()`
-    /// sets the fields of the algorithm.
-    pub fn initialize_curve2d_int_real2(
-        &mut self,
-        C: &crate::adaptor2d::Curve2d,
-        NbU: i32,
-        TolU: f64,
-        TolF: f64,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC2d_initialize_curve2d_int_real2(
-                self as *mut Self,
-                C,
-                NbU,
-                TolU,
-                TolF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfExtPC2d.hxx`:84 - `Extrema_EPCOfExtPC2d::Initialize()`
-    /// sets the fields of the algorithm.
-    pub fn initialize_curve2d_int_real4(
-        &mut self,
-        C: &crate::adaptor2d::Curve2d,
-        NbU: i32,
-        Umin: f64,
-        Usup: f64,
-        TolU: f64,
-        TolF: f64,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC2d_initialize_curve2d_int_real4(
-                self as *mut Self,
-                C,
-                NbU,
-                Umin,
-                Usup,
-                TolU,
-                TolF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfExtPC2d.hxx`:92 - `Extrema_EPCOfExtPC2d::Initialize()`
-    /// sets the fields of the algorithm.
-    pub fn initialize_curve2d(&mut self, C: &crate::adaptor2d::Curve2d) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC2d_initialize_curve2d(
-                self as *mut Self,
-                C,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfExtPC2d.hxx`:95 - `Extrema_EPCOfExtPC2d::Initialize()`
-    /// sets the fields of the algorithm.
-    pub fn initialize_int_real4(&mut self, NbU: i32, Umin: f64, Usup: f64, TolU: f64, TolF: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC2d_initialize_int_real4(
-                self as *mut Self,
-                NbU,
-                Umin,
-                Usup,
-                TolU,
-                TolF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfExtPC2d.hxx`:104 - `Extrema_EPCOfExtPC2d::Perform()`
-    /// the algorithm is done with the point P.
-    /// An exception is raised if the fields have not
-    /// been initialized.
-    pub fn perform(&mut self, P: &crate::gp::Pnt2d) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC2d_perform(self as *mut Self, P)
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfExtPC2d.hxx`:107 - `Extrema_EPCOfExtPC2d::IsDone()`
-    /// True if the distances are found.
-    pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC2d_is_done(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfExtPC2d.hxx`:110 - `Extrema_EPCOfExtPC2d::NbExt()`
-    /// Returns the number of extremum distances.
-    pub fn nb_ext(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC2d_nb_ext(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfExtPC2d.hxx`:113 - `Extrema_EPCOfExtPC2d::SquareDistance()`
-    /// Returns the value of the Nth extremum square distance.
-    pub fn square_distance(&self, N: i32) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC2d_square_distance(
-                self as *const Self,
-                N,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfExtPC2d.hxx`:117 - `Extrema_EPCOfExtPC2d::IsMin()`
-    /// Returns True if the Nth extremum distance is a
-    /// minimum.
-    pub fn is_min(&self, N: i32) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC2d_is_min(self as *const Self, N)
-        })
-    }
-
-    /// **Source:** `Extrema_EPCOfExtPC2d.hxx`:120 - `Extrema_EPCOfExtPC2d::Point()`
-    /// Returns the point of the Nth extremum distance.
-    pub fn point(&self, N: i32) -> &POnCurv2d {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_EPCOfExtPC2d_point(
-                self as *const Self,
-                N,
-            )))
         }
     }
 }
@@ -2768,7 +688,7 @@ impl ExtCC {
         }
     }
 
-    /// **Source:** `Extrema_ExtCC.hxx`:43 - `Extrema_ExtCC::Extrema_ExtCC()`
+    /// **Source:** `Extrema_ExtCC.hxx`:42 - `Extrema_ExtCC::Extrema_ExtCC()`
     /// It calculates all the distances.
     pub fn new_curve2_real2(
         C1: &crate::adaptor3d::Curve,
@@ -2783,7 +703,7 @@ impl ExtCC {
         }
     }
 
-    /// **Source:** `Extrema_ExtCC.hxx`:49 - `Extrema_ExtCC::Extrema_ExtCC()`
+    /// **Source:** `Extrema_ExtCC.hxx`:48 - `Extrema_ExtCC::Extrema_ExtCC()`
     /// It calculates all the distances.
     pub fn new_curve2_real6(
         C1: &crate::adaptor3d::Curve,
@@ -2814,7 +734,7 @@ impl ExtCC {
         Self::new_real2(1.0e-10, 1.0e-10)
     }
 
-    /// **Source:** `Extrema_ExtCC.hxx`:43 - `Extrema_ExtCC::Extrema_ExtCC()`
+    /// **Source:** `Extrema_ExtCC.hxx`:42 - `Extrema_ExtCC::Extrema_ExtCC()`
     /// It calculates all the distances.
     pub fn new_curve2_real(
         C1: &crate::adaptor3d::Curve,
@@ -2824,7 +744,7 @@ impl ExtCC {
         Self::new_curve2_real2(C1, C2, TolC1, 1.0e-10)
     }
 
-    /// **Source:** `Extrema_ExtCC.hxx`:43 - `Extrema_ExtCC::Extrema_ExtCC()`
+    /// **Source:** `Extrema_ExtCC.hxx`:42 - `Extrema_ExtCC::Extrema_ExtCC()`
     /// It calculates all the distances.
     pub fn new_curve2(
         C1: &crate::adaptor3d::Curve,
@@ -2833,7 +753,7 @@ impl ExtCC {
         Self::new_curve2_real2(C1, C2, 1.0e-10, 1.0e-10)
     }
 
-    /// **Source:** `Extrema_ExtCC.hxx`:49 - `Extrema_ExtCC::Extrema_ExtCC()`
+    /// **Source:** `Extrema_ExtCC.hxx`:48 - `Extrema_ExtCC::Extrema_ExtCC()`
     /// It calculates all the distances.
     pub fn new_curve2_real5(
         C1: &crate::adaptor3d::Curve,
@@ -2847,7 +767,7 @@ impl ExtCC {
         Self::new_curve2_real6(C1, C2, U1, U2, V1, V2, TolC1, 1.0e-10)
     }
 
-    /// **Source:** `Extrema_ExtCC.hxx`:49 - `Extrema_ExtCC::Extrema_ExtCC()`
+    /// **Source:** `Extrema_ExtCC.hxx`:48 - `Extrema_ExtCC::Extrema_ExtCC()`
     /// It calculates all the distances.
     pub fn new_curve2_real4(
         C1: &crate::adaptor3d::Curve,
@@ -2860,7 +780,7 @@ impl ExtCC {
         Self::new_curve2_real6(C1, C2, U1, U2, V1, V2, 1.0e-10, 1.0e-10)
     }
 
-    /// **Source:** `Extrema_ExtCC.hxx`:59 - `Extrema_ExtCC::Initialize()`
+    /// **Source:** `Extrema_ExtCC.hxx`:58 - `Extrema_ExtCC::Initialize()`
     /// Initializes but does not perform algorithm.
     pub fn initialize_curve2_real2(
         &mut self,
@@ -2880,7 +800,7 @@ impl ExtCC {
         })
     }
 
-    /// **Source:** `Extrema_ExtCC.hxx`:65 - `Extrema_ExtCC::Initialize()`
+    /// **Source:** `Extrema_ExtCC.hxx`:64 - `Extrema_ExtCC::Initialize()`
     /// Initializes but does not perform algorithm.
     pub fn initialize_curve2_real6(
         &mut self,
@@ -2908,7 +828,7 @@ impl ExtCC {
         })
     }
 
-    /// **Source:** `Extrema_ExtCC.hxx`:74 - `Extrema_ExtCC::SetCurve()`
+    /// **Source:** `Extrema_ExtCC.hxx`:73 - `Extrema_ExtCC::SetCurve()`
     pub fn set_curve_int_curve(&mut self, theRank: i32, C: &crate::adaptor3d::Curve) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtCC_set_curve_int_curve(
@@ -2919,7 +839,7 @@ impl ExtCC {
         })
     }
 
-    /// **Source:** `Extrema_ExtCC.hxx`:76 - `Extrema_ExtCC::SetCurve()`
+    /// **Source:** `Extrema_ExtCC.hxx`:75 - `Extrema_ExtCC::SetCurve()`
     pub fn set_curve_int_curve_real2(
         &mut self,
         theRank: i32,
@@ -2938,7 +858,7 @@ impl ExtCC {
         })
     }
 
-    /// **Source:** `Extrema_ExtCC.hxx`:81 - `Extrema_ExtCC::SetRange()`
+    /// **Source:** `Extrema_ExtCC.hxx`:80 - `Extrema_ExtCC::SetRange()`
     pub fn set_range(&mut self, theRank: i32, Uinf: f64, Usup: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtCC_set_range(
@@ -2950,7 +870,7 @@ impl ExtCC {
         })
     }
 
-    /// **Source:** `Extrema_ExtCC.hxx`:85 - `Extrema_ExtCC::SetTolerance()`
+    /// **Source:** `Extrema_ExtCC.hxx`:82 - `Extrema_ExtCC::SetTolerance()`
     pub fn set_tolerance(&mut self, theRank: i32, Tol: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtCC_set_tolerance(
@@ -2961,14 +881,14 @@ impl ExtCC {
         })
     }
 
-    /// **Source:** `Extrema_ExtCC.hxx`:87 - `Extrema_ExtCC::Perform()`
+    /// **Source:** `Extrema_ExtCC.hxx`:84 - `Extrema_ExtCC::Perform()`
     pub fn perform(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtCC_perform(self as *mut Self)
         })
     }
 
-    /// **Source:** `Extrema_ExtCC.hxx`:90 - `Extrema_ExtCC::IsDone()`
+    /// **Source:** `Extrema_ExtCC.hxx`:87 - `Extrema_ExtCC::IsDone()`
     /// Returns True if the distances are found.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -2976,7 +896,7 @@ impl ExtCC {
         })
     }
 
-    /// **Source:** `Extrema_ExtCC.hxx`:93 - `Extrema_ExtCC::NbExt()`
+    /// **Source:** `Extrema_ExtCC.hxx`:90 - `Extrema_ExtCC::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
         crate::check_result(unsafe {
@@ -2984,7 +904,7 @@ impl ExtCC {
         })
     }
 
-    /// **Source:** `Extrema_ExtCC.hxx`:96 - `Extrema_ExtCC::IsParallel()`
+    /// **Source:** `Extrema_ExtCC.hxx`:93 - `Extrema_ExtCC::IsParallel()`
     /// Returns True if the two curves are parallel.
     pub fn is_parallel(&self) -> bool {
         crate::check_result(unsafe {
@@ -2992,7 +912,7 @@ impl ExtCC {
         })
     }
 
-    /// **Source:** `Extrema_ExtCC.hxx`:99 - `Extrema_ExtCC::SquareDistance()`
+    /// **Source:** `Extrema_ExtCC.hxx`:96 - `Extrema_ExtCC::SquareDistance()`
     /// Returns the value of the Nth extremum square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
         crate::check_result(unsafe {
@@ -3000,7 +920,7 @@ impl ExtCC {
         })
     }
 
-    /// **Source:** `Extrema_ExtCC.hxx`:103 - `Extrema_ExtCC::Points()`
+    /// **Source:** `Extrema_ExtCC.hxx`:100 - `Extrema_ExtCC::Points()`
     /// Returns the points of the Nth extremum distance.
     /// P1 is on the first curve, P2 on the second one.
     pub fn points(&self, N: i32, P1: &mut POnCurv, P2: &mut POnCurv) {
@@ -3009,7 +929,7 @@ impl ExtCC {
         })
     }
 
-    /// **Source:** `Extrema_ExtCC.hxx`:111 - `Extrema_ExtCC::TrimmedSquareDistances()`
+    /// **Source:** `Extrema_ExtCC.hxx`:106 - `Extrema_ExtCC::TrimmedSquareDistances()`
     /// if the curve is a trimmed curve,
     /// dist11 is a square distance between the point on C1
     /// of parameter FirstParameter and the point of
@@ -3040,7 +960,7 @@ impl ExtCC {
         })
     }
 
-    /// **Source:** `Extrema_ExtCC.hxx`:121 - `Extrema_ExtCC::SetSingleSolutionFlag()`
+    /// **Source:** `Extrema_ExtCC.hxx`:116 - `Extrema_ExtCC::SetSingleSolutionFlag()`
     /// Set flag for single extrema computation. Works on parametric solver only.
     pub fn set_single_solution_flag(&mut self, theSingleSolutionFlag: bool) {
         crate::check_void_result(unsafe {
@@ -3051,7 +971,7 @@ impl ExtCC {
         })
     }
 
-    /// **Source:** `Extrema_ExtCC.hxx`:124 - `Extrema_ExtCC::GetSingleSolutionFlag()`
+    /// **Source:** `Extrema_ExtCC.hxx`:119 - `Extrema_ExtCC::GetSingleSolutionFlag()`
     /// Get flag for single extrema computation. Works on parametric solver only.
     pub fn get_single_solution_flag(&self) -> bool {
         crate::check_result(unsafe {
@@ -3066,7 +986,7 @@ impl ExtCC {
 // From Extrema_ExtCC2d.hxx
 // ========================
 
-/// **Source:** `Extrema_ExtCC2d.hxx`:35 - `Extrema_ExtCC2d`
+/// **Source:** `Extrema_ExtCC2d.hxx`:36 - `Extrema_ExtCC2d`
 /// It calculates all the distance between two curves.
 /// These distances can be maximum or minimum.
 pub use crate::ffi_types::Extrema_ExtCC2d as ExtCC2d;
@@ -3080,7 +1000,7 @@ unsafe impl crate::CppDeletable for ExtCC2d {
 }
 
 impl ExtCC2d {
-    /// **Source:** `Extrema_ExtCC2d.hxx`:40 - `Extrema_ExtCC2d::Extrema_ExtCC2d()`
+    /// **Source:** `Extrema_ExtCC2d.hxx`:41 - `Extrema_ExtCC2d::Extrema_ExtCC2d()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3089,7 +1009,7 @@ impl ExtCC2d {
         }
     }
 
-    /// **Source:** `Extrema_ExtCC2d.hxx`:43 - `Extrema_ExtCC2d::Extrema_ExtCC2d()`
+    /// **Source:** `Extrema_ExtCC2d.hxx`:44 - `Extrema_ExtCC2d::Extrema_ExtCC2d()`
     /// It calculates all the distances.
     pub fn new_curve2d2_real2(
         C1: &crate::adaptor2d::Curve2d,
@@ -3106,7 +1026,7 @@ impl ExtCC2d {
         }
     }
 
-    /// **Source:** `Extrema_ExtCC2d.hxx`:49 - `Extrema_ExtCC2d::Extrema_ExtCC2d()`
+    /// **Source:** `Extrema_ExtCC2d.hxx`:50 - `Extrema_ExtCC2d::Extrema_ExtCC2d()`
     /// It calculates all the distances.
     pub fn new_curve2d2_real6(
         C1: &crate::adaptor2d::Curve2d,
@@ -3127,7 +1047,7 @@ impl ExtCC2d {
         }
     }
 
-    /// **Source:** `Extrema_ExtCC2d.hxx`:43 - `Extrema_ExtCC2d::Extrema_ExtCC2d()`
+    /// **Source:** `Extrema_ExtCC2d.hxx`:44 - `Extrema_ExtCC2d::Extrema_ExtCC2d()`
     /// It calculates all the distances.
     pub fn new_curve2d2_real(
         C1: &crate::adaptor2d::Curve2d,
@@ -3137,7 +1057,7 @@ impl ExtCC2d {
         Self::new_curve2d2_real2(C1, C2, TolC1, 1.0e-10)
     }
 
-    /// **Source:** `Extrema_ExtCC2d.hxx`:43 - `Extrema_ExtCC2d::Extrema_ExtCC2d()`
+    /// **Source:** `Extrema_ExtCC2d.hxx`:44 - `Extrema_ExtCC2d::Extrema_ExtCC2d()`
     /// It calculates all the distances.
     pub fn new_curve2d2(
         C1: &crate::adaptor2d::Curve2d,
@@ -3146,7 +1066,7 @@ impl ExtCC2d {
         Self::new_curve2d2_real2(C1, C2, 1.0e-10, 1.0e-10)
     }
 
-    /// **Source:** `Extrema_ExtCC2d.hxx`:49 - `Extrema_ExtCC2d::Extrema_ExtCC2d()`
+    /// **Source:** `Extrema_ExtCC2d.hxx`:50 - `Extrema_ExtCC2d::Extrema_ExtCC2d()`
     /// It calculates all the distances.
     pub fn new_curve2d2_real5(
         C1: &crate::adaptor2d::Curve2d,
@@ -3160,7 +1080,7 @@ impl ExtCC2d {
         Self::new_curve2d2_real6(C1, C2, U1, U2, V1, V2, TolC1, 1.0e-10)
     }
 
-    /// **Source:** `Extrema_ExtCC2d.hxx`:49 - `Extrema_ExtCC2d::Extrema_ExtCC2d()`
+    /// **Source:** `Extrema_ExtCC2d.hxx`:50 - `Extrema_ExtCC2d::Extrema_ExtCC2d()`
     /// It calculates all the distances.
     pub fn new_curve2d2_real4(
         C1: &crate::adaptor2d::Curve2d,
@@ -3173,7 +1093,7 @@ impl ExtCC2d {
         Self::new_curve2d2_real6(C1, C2, U1, U2, V1, V2, 1.0e-10, 1.0e-10)
     }
 
-    /// **Source:** `Extrema_ExtCC2d.hxx`:59 - `Extrema_ExtCC2d::Initialize()`
+    /// **Source:** `Extrema_ExtCC2d.hxx`:60 - `Extrema_ExtCC2d::Initialize()`
     /// initializes the fields.
     pub fn initialize(
         &mut self,
@@ -3195,14 +1115,14 @@ impl ExtCC2d {
         })
     }
 
-    /// **Source:** `Extrema_ExtCC2d.hxx`:65 - `Extrema_ExtCC2d::Perform()`
+    /// **Source:** `Extrema_ExtCC2d.hxx`:66 - `Extrema_ExtCC2d::Perform()`
     pub fn perform(&mut self, C1: &crate::adaptor2d::Curve2d, U1: f64, U2: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtCC2d_perform(self as *mut Self, C1, U1, U2)
         })
     }
 
-    /// **Source:** `Extrema_ExtCC2d.hxx`:70 - `Extrema_ExtCC2d::IsDone()`
+    /// **Source:** `Extrema_ExtCC2d.hxx`:69 - `Extrema_ExtCC2d::IsDone()`
     /// Returns True if the distances are found.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -3210,7 +1130,7 @@ impl ExtCC2d {
         })
     }
 
-    /// **Source:** `Extrema_ExtCC2d.hxx`:73 - `Extrema_ExtCC2d::NbExt()`
+    /// **Source:** `Extrema_ExtCC2d.hxx`:72 - `Extrema_ExtCC2d::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
         crate::check_result(unsafe {
@@ -3218,7 +1138,7 @@ impl ExtCC2d {
         })
     }
 
-    /// **Source:** `Extrema_ExtCC2d.hxx`:76 - `Extrema_ExtCC2d::IsParallel()`
+    /// **Source:** `Extrema_ExtCC2d.hxx`:75 - `Extrema_ExtCC2d::IsParallel()`
     /// Returns True if the two curves are parallel.
     pub fn is_parallel(&self) -> bool {
         crate::check_result(unsafe {
@@ -3226,7 +1146,7 @@ impl ExtCC2d {
         })
     }
 
-    /// **Source:** `Extrema_ExtCC2d.hxx`:79 - `Extrema_ExtCC2d::SquareDistance()`
+    /// **Source:** `Extrema_ExtCC2d.hxx`:78 - `Extrema_ExtCC2d::SquareDistance()`
     /// Returns the value of the Nth extremum square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
         crate::check_result(unsafe {
@@ -3234,7 +1154,7 @@ impl ExtCC2d {
         })
     }
 
-    /// **Source:** `Extrema_ExtCC2d.hxx`:83 - `Extrema_ExtCC2d::Points()`
+    /// **Source:** `Extrema_ExtCC2d.hxx`:82 - `Extrema_ExtCC2d::Points()`
     /// Returns the points of the Nth extremum distance.
     /// P1 is on the first curve, P2 on the second one.
     pub fn points(&self, N: i32, P1: &mut POnCurv2d, P2: &mut POnCurv2d) {
@@ -3243,7 +1163,7 @@ impl ExtCC2d {
         })
     }
 
-    /// **Source:** `Extrema_ExtCC2d.hxx`:91 - `Extrema_ExtCC2d::TrimmedSquareDistances()`
+    /// **Source:** `Extrema_ExtCC2d.hxx`:88 - `Extrema_ExtCC2d::TrimmedSquareDistances()`
     /// if the curve is a trimmed curve,
     /// dist11 is a square distance between the point on C1
     /// of parameter FirstParameter and the point of
@@ -3274,7 +1194,7 @@ impl ExtCC2d {
         })
     }
 
-    /// **Source:** `Extrema_ExtCC2d.hxx`:101 - `Extrema_ExtCC2d::SetSingleSolutionFlag()`
+    /// **Source:** `Extrema_ExtCC2d.hxx`:98 - `Extrema_ExtCC2d::SetSingleSolutionFlag()`
     /// Set flag for single extrema computation. Works on parametric solver only.
     pub fn set_single_solution_flag(&mut self, theSingleSolutionFlag: bool) {
         crate::check_void_result(unsafe {
@@ -3285,7 +1205,7 @@ impl ExtCC2d {
         })
     }
 
-    /// **Source:** `Extrema_ExtCC2d.hxx`:104 - `Extrema_ExtCC2d::GetSingleSolutionFlag()`
+    /// **Source:** `Extrema_ExtCC2d.hxx`:101 - `Extrema_ExtCC2d::GetSingleSolutionFlag()`
     /// Get flag for single extrema computation. Works on parametric solver only.
     pub fn get_single_solution_flag(&self) -> bool {
         crate::check_result(unsafe {
@@ -3384,7 +1304,7 @@ impl ExtCS {
         })
     }
 
-    /// **Source:** `Extrema_ExtCS.hxx`:71 - `Extrema_ExtCS::Initialize()`
+    /// **Source:** `Extrema_ExtCS.hxx`:69 - `Extrema_ExtCS::Initialize()`
     /// Initializes the fields of the algorithm.
     pub fn initialize_surface_real6(
         &mut self,
@@ -3410,7 +1330,7 @@ impl ExtCS {
         })
     }
 
-    /// **Source:** `Extrema_ExtCS.hxx`:82 - `Extrema_ExtCS::Perform()`
+    /// **Source:** `Extrema_ExtCS.hxx`:80 - `Extrema_ExtCS::Perform()`
     /// Computes the distances.
     /// An exception is raised if the fields have not been
     /// initialized.
@@ -3420,7 +1340,7 @@ impl ExtCS {
         })
     }
 
-    /// **Source:** `Extrema_ExtCS.hxx`:87 - `Extrema_ExtCS::IsDone()`
+    /// **Source:** `Extrema_ExtCS.hxx`:83 - `Extrema_ExtCS::IsDone()`
     /// Returns True if the distances are found.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -3428,7 +1348,7 @@ impl ExtCS {
         })
     }
 
-    /// **Source:** `Extrema_ExtCS.hxx`:90 - `Extrema_ExtCS::IsParallel()`
+    /// **Source:** `Extrema_ExtCS.hxx`:86 - `Extrema_ExtCS::IsParallel()`
     /// Returns True if the curve is on a parallel surface.
     pub fn is_parallel(&self) -> bool {
         crate::check_result(unsafe {
@@ -3436,7 +1356,7 @@ impl ExtCS {
         })
     }
 
-    /// **Source:** `Extrema_ExtCS.hxx`:93 - `Extrema_ExtCS::NbExt()`
+    /// **Source:** `Extrema_ExtCS.hxx`:89 - `Extrema_ExtCS::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
         crate::check_result(unsafe {
@@ -3444,7 +1364,7 @@ impl ExtCS {
         })
     }
 
-    /// **Source:** `Extrema_ExtCS.hxx`:96 - `Extrema_ExtCS::SquareDistance()`
+    /// **Source:** `Extrema_ExtCS.hxx`:92 - `Extrema_ExtCS::SquareDistance()`
     /// Returns the value of the Nth resulting square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
         crate::check_result(unsafe {
@@ -3452,7 +1372,7 @@ impl ExtCS {
         })
     }
 
-    /// **Source:** `Extrema_ExtCS.hxx`:99 - `Extrema_ExtCS::Points()`
+    /// **Source:** `Extrema_ExtCS.hxx`:95 - `Extrema_ExtCS::Points()`
     /// Returns the point of the Nth resulting distance.
     pub fn points(&self, N: i32, P1: &mut POnCurv, P2: &mut POnSurf) {
         crate::check_void_result(unsafe {
@@ -3650,7 +1570,7 @@ impl ExtElC2d {
         }
     }
 
-    /// **Source:** `Extrema_ExtElC2d.hxx`:51 - `Extrema_ExtElC2d::Extrema_ExtElC2d()`
+    /// **Source:** `Extrema_ExtElC2d.hxx`:49 - `Extrema_ExtElC2d::Extrema_ExtElC2d()`
     /// Calculates the distance between a line and a
     /// circle.
     pub fn new_lin2d_circ2d_real(
@@ -3665,7 +1585,7 @@ impl ExtElC2d {
         }
     }
 
-    /// **Source:** `Extrema_ExtElC2d.hxx`:57 - `Extrema_ExtElC2d::Extrema_ExtElC2d()`
+    /// **Source:** `Extrema_ExtElC2d.hxx`:53 - `Extrema_ExtElC2d::Extrema_ExtElC2d()`
     /// Calculates the distance between a line and an
     /// ellipse.
     pub fn new_lin2d_elips2d(
@@ -3679,7 +1599,7 @@ impl ExtElC2d {
         }
     }
 
-    /// **Source:** `Extrema_ExtElC2d.hxx`:61 - `Extrema_ExtElC2d::Extrema_ExtElC2d()`
+    /// **Source:** `Extrema_ExtElC2d.hxx`:57 - `Extrema_ExtElC2d::Extrema_ExtElC2d()`
     /// Calculates the distance between a line and a
     /// hyperbola.
     pub fn new_lin2d_hypr2d(
@@ -3693,7 +1613,7 @@ impl ExtElC2d {
         }
     }
 
-    /// **Source:** `Extrema_ExtElC2d.hxx`:65 - `Extrema_ExtElC2d::Extrema_ExtElC2d()`
+    /// **Source:** `Extrema_ExtElC2d.hxx`:61 - `Extrema_ExtElC2d::Extrema_ExtElC2d()`
     /// Calculates the distance between a line and a
     /// parabola.
     pub fn new_lin2d_parab2d(
@@ -3707,7 +1627,7 @@ impl ExtElC2d {
         }
     }
 
-    /// **Source:** `Extrema_ExtElC2d.hxx`:69 - `Extrema_ExtElC2d::Extrema_ExtElC2d()`
+    /// **Source:** `Extrema_ExtElC2d.hxx`:65 - `Extrema_ExtElC2d::Extrema_ExtElC2d()`
     /// Calculates the distance between two circles.
     /// The circles can be parallel or identical.
     pub fn new_circ2d2(C1: &crate::gp::Circ2d, C2: &crate::gp::Circ2d) -> crate::OwnedPtr<Self> {
@@ -3718,7 +1638,7 @@ impl ExtElC2d {
         }
     }
 
-    /// **Source:** `Extrema_ExtElC2d.hxx`:73 - `Extrema_ExtElC2d::Extrema_ExtElC2d()`
+    /// **Source:** `Extrema_ExtElC2d.hxx`:69 - `Extrema_ExtElC2d::Extrema_ExtElC2d()`
     /// Calculates the distance between a circle and an
     /// ellipse.
     pub fn new_circ2d_elips2d(
@@ -3732,7 +1652,7 @@ impl ExtElC2d {
         }
     }
 
-    /// **Source:** `Extrema_ExtElC2d.hxx`:77 - `Extrema_ExtElC2d::Extrema_ExtElC2d()`
+    /// **Source:** `Extrema_ExtElC2d.hxx`:73 - `Extrema_ExtElC2d::Extrema_ExtElC2d()`
     /// Calculates the distance between a circle and a
     /// hyperbola.
     pub fn new_circ2d_hypr2d(
@@ -3746,7 +1666,7 @@ impl ExtElC2d {
         }
     }
 
-    /// **Source:** `Extrema_ExtElC2d.hxx`:81 - `Extrema_ExtElC2d::Extrema_ExtElC2d()`
+    /// **Source:** `Extrema_ExtElC2d.hxx`:77 - `Extrema_ExtElC2d::Extrema_ExtElC2d()`
     /// Calculates the distance between a circle and a
     /// parabola.
     pub fn new_circ2d_parab2d(
@@ -3760,7 +1680,7 @@ impl ExtElC2d {
         }
     }
 
-    /// **Source:** `Extrema_ExtElC2d.hxx`:84 - `Extrema_ExtElC2d::IsDone()`
+    /// **Source:** `Extrema_ExtElC2d.hxx`:80 - `Extrema_ExtElC2d::IsDone()`
     /// Returns True if the distances are found.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -3768,7 +1688,7 @@ impl ExtElC2d {
         })
     }
 
-    /// **Source:** `Extrema_ExtElC2d.hxx`:87 - `Extrema_ExtElC2d::IsParallel()`
+    /// **Source:** `Extrema_ExtElC2d.hxx`:83 - `Extrema_ExtElC2d::IsParallel()`
     /// Returns True if the two curves are parallel.
     pub fn is_parallel(&self) -> bool {
         crate::check_result(unsafe {
@@ -3776,7 +1696,7 @@ impl ExtElC2d {
         })
     }
 
-    /// **Source:** `Extrema_ExtElC2d.hxx`:90 - `Extrema_ExtElC2d::NbExt()`
+    /// **Source:** `Extrema_ExtElC2d.hxx`:86 - `Extrema_ExtElC2d::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
         crate::check_result(unsafe {
@@ -3784,7 +1704,7 @@ impl ExtElC2d {
         })
     }
 
-    /// **Source:** `Extrema_ExtElC2d.hxx`:93 - `Extrema_ExtElC2d::SquareDistance()`
+    /// **Source:** `Extrema_ExtElC2d.hxx`:89 - `Extrema_ExtElC2d::SquareDistance()`
     /// Returns the value of the Nth extremum square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
         crate::check_result(unsafe {
@@ -3792,7 +1712,7 @@ impl ExtElC2d {
         })
     }
 
-    /// **Source:** `Extrema_ExtElC2d.hxx`:97 - `Extrema_ExtElC2d::Points()`
+    /// **Source:** `Extrema_ExtElC2d.hxx`:93 - `Extrema_ExtElC2d::Points()`
     /// Returns the points of the Nth extremum distance.
     /// P1 is on the first curve, P2 on the second one.
     pub fn points(&self, N: i32, P1: &mut POnCurv2d, P2: &mut POnCurv2d) {
@@ -3806,7 +1726,7 @@ impl ExtElC2d {
 // From Extrema_ExtElCS.hxx
 // ========================
 
-/// **Source:** `Extrema_ExtElCS.hxx`:43 - `Extrema_ExtElCS`
+/// **Source:** `Extrema_ExtElCS.hxx`:44 - `Extrema_ExtElCS`
 /// It calculates all the distances between a curve and
 /// a surface.
 /// These distances can be maximum or minimum.
@@ -3821,7 +1741,7 @@ unsafe impl crate::CppDeletable for ExtElCS {
 }
 
 impl ExtElCS {
-    /// **Source:** `Extrema_ExtElCS.hxx`:48 - `Extrema_ExtElCS::Extrema_ExtElCS()`
+    /// **Source:** `Extrema_ExtElCS.hxx`:49 - `Extrema_ExtElCS::Extrema_ExtElCS()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3830,7 +1750,7 @@ impl ExtElCS {
         }
     }
 
-    /// **Source:** `Extrema_ExtElCS.hxx`:53 - `Extrema_ExtElCS::Extrema_ExtElCS()`
+    /// **Source:** `Extrema_ExtElCS.hxx`:54 - `Extrema_ExtElCS::Extrema_ExtElCS()`
     /// Calculates the distances between a line and a
     /// plane. The line can be on the plane or on a parallel
     /// plane.
@@ -3842,7 +1762,7 @@ impl ExtElCS {
         }
     }
 
-    /// **Source:** `Extrema_ExtElCS.hxx`:59 - `Extrema_ExtElCS::Extrema_ExtElCS()`
+    /// **Source:** `Extrema_ExtElCS.hxx`:60 - `Extrema_ExtElCS::Extrema_ExtElCS()`
     /// Calculates the distances between a line and a
     /// cylinder.
     pub fn new_lin_cylinder(C: &crate::gp::Lin, S: &crate::gp::Cylinder) -> crate::OwnedPtr<Self> {
@@ -3853,7 +1773,7 @@ impl ExtElCS {
         }
     }
 
-    /// **Source:** `Extrema_ExtElCS.hxx`:64 - `Extrema_ExtElCS::Extrema_ExtElCS()`
+    /// **Source:** `Extrema_ExtElCS.hxx`:65 - `Extrema_ExtElCS::Extrema_ExtElCS()`
     /// Calculates the distances between a line and a cone.
     pub fn new_lin_cone(C: &crate::gp::Lin, S: &crate::gp::Cone) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3863,7 +1783,7 @@ impl ExtElCS {
         }
     }
 
-    /// **Source:** `Extrema_ExtElCS.hxx`:70 - `Extrema_ExtElCS::Extrema_ExtElCS()`
+    /// **Source:** `Extrema_ExtElCS.hxx`:71 - `Extrema_ExtElCS::Extrema_ExtElCS()`
     /// Calculates the distances between a line and a
     /// sphere.
     pub fn new_lin_sphere(C: &crate::gp::Lin, S: &crate::gp::Sphere) -> crate::OwnedPtr<Self> {
@@ -3874,7 +1794,7 @@ impl ExtElCS {
         }
     }
 
-    /// **Source:** `Extrema_ExtElCS.hxx`:76 - `Extrema_ExtElCS::Extrema_ExtElCS()`
+    /// **Source:** `Extrema_ExtElCS.hxx`:77 - `Extrema_ExtElCS::Extrema_ExtElCS()`
     /// Calculates the distances between a line and a
     /// torus.
     pub fn new_lin_torus(C: &crate::gp::Lin, S: &crate::gp::Torus) -> crate::OwnedPtr<Self> {
@@ -3885,7 +1805,7 @@ impl ExtElCS {
         }
     }
 
-    /// **Source:** `Extrema_ExtElCS.hxx`:82 - `Extrema_ExtElCS::Extrema_ExtElCS()`
+    /// **Source:** `Extrema_ExtElCS.hxx`:83 - `Extrema_ExtElCS::Extrema_ExtElCS()`
     /// Calculates the distances between a circle and a
     /// plane.
     pub fn new_circ_pln(C: &crate::gp::Circ, S: &crate::gp::Pln) -> crate::OwnedPtr<Self> {
@@ -3896,7 +1816,7 @@ impl ExtElCS {
         }
     }
 
-    /// **Source:** `Extrema_ExtElCS.hxx`:88 - `Extrema_ExtElCS::Extrema_ExtElCS()`
+    /// **Source:** `Extrema_ExtElCS.hxx`:89 - `Extrema_ExtElCS::Extrema_ExtElCS()`
     /// Calculates the distances between a circle and a
     /// cylinder.
     pub fn new_circ_cylinder(
@@ -3910,7 +1830,7 @@ impl ExtElCS {
         }
     }
 
-    /// **Source:** `Extrema_ExtElCS.hxx`:94 - `Extrema_ExtElCS::Extrema_ExtElCS()`
+    /// **Source:** `Extrema_ExtElCS.hxx`:95 - `Extrema_ExtElCS::Extrema_ExtElCS()`
     /// Calculates the distances between a circle and a
     /// cone.
     pub fn new_circ_cone(C: &crate::gp::Circ, S: &crate::gp::Cone) -> crate::OwnedPtr<Self> {
@@ -3921,7 +1841,7 @@ impl ExtElCS {
         }
     }
 
-    /// **Source:** `Extrema_ExtElCS.hxx`:100 - `Extrema_ExtElCS::Extrema_ExtElCS()`
+    /// **Source:** `Extrema_ExtElCS.hxx`:101 - `Extrema_ExtElCS::Extrema_ExtElCS()`
     /// Calculates the distances between a circle and a
     /// sphere.
     pub fn new_circ_sphere(C: &crate::gp::Circ, S: &crate::gp::Sphere) -> crate::OwnedPtr<Self> {
@@ -3932,7 +1852,7 @@ impl ExtElCS {
         }
     }
 
-    /// **Source:** `Extrema_ExtElCS.hxx`:106 - `Extrema_ExtElCS::Extrema_ExtElCS()`
+    /// **Source:** `Extrema_ExtElCS.hxx`:107 - `Extrema_ExtElCS::Extrema_ExtElCS()`
     /// Calculates the distances between a circle and a
     /// torus.
     pub fn new_circ_torus(C: &crate::gp::Circ, S: &crate::gp::Torus) -> crate::OwnedPtr<Self> {
@@ -3943,7 +1863,7 @@ impl ExtElCS {
         }
     }
 
-    /// **Source:** `Extrema_ExtElCS.hxx`:112 - `Extrema_ExtElCS::Extrema_ExtElCS()`
+    /// **Source:** `Extrema_ExtElCS.hxx`:113 - `Extrema_ExtElCS::Extrema_ExtElCS()`
     /// Calculates the distances between a hyperbola and a
     /// plane.
     pub fn new_hypr_pln(C: &crate::gp::Hypr, S: &crate::gp::Pln) -> crate::OwnedPtr<Self> {
@@ -3954,14 +1874,14 @@ impl ExtElCS {
         }
     }
 
-    /// **Source:** `Extrema_ExtElCS.hxx`:55 - `Extrema_ExtElCS::Perform()`
+    /// **Source:** `Extrema_ExtElCS.hxx`:56 - `Extrema_ExtElCS::Perform()`
     pub fn perform_lin_pln(&mut self, C: &crate::gp::Lin, S: &crate::gp::Pln) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtElCS_perform_lin_pln(self as *mut Self, C, S)
         })
     }
 
-    /// **Source:** `Extrema_ExtElCS.hxx`:61 - `Extrema_ExtElCS::Perform()`
+    /// **Source:** `Extrema_ExtElCS.hxx`:62 - `Extrema_ExtElCS::Perform()`
     pub fn perform_lin_cylinder(&mut self, C: &crate::gp::Lin, S: &crate::gp::Cylinder) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtElCS_perform_lin_cylinder(
@@ -3972,14 +1892,14 @@ impl ExtElCS {
         })
     }
 
-    /// **Source:** `Extrema_ExtElCS.hxx`:66 - `Extrema_ExtElCS::Perform()`
+    /// **Source:** `Extrema_ExtElCS.hxx`:67 - `Extrema_ExtElCS::Perform()`
     pub fn perform_lin_cone(&mut self, C: &crate::gp::Lin, S: &crate::gp::Cone) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtElCS_perform_lin_cone(self as *mut Self, C, S)
         })
     }
 
-    /// **Source:** `Extrema_ExtElCS.hxx`:72 - `Extrema_ExtElCS::Perform()`
+    /// **Source:** `Extrema_ExtElCS.hxx`:73 - `Extrema_ExtElCS::Perform()`
     pub fn perform_lin_sphere(&mut self, C: &crate::gp::Lin, S: &crate::gp::Sphere) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtElCS_perform_lin_sphere(
@@ -3990,21 +1910,21 @@ impl ExtElCS {
         })
     }
 
-    /// **Source:** `Extrema_ExtElCS.hxx`:78 - `Extrema_ExtElCS::Perform()`
+    /// **Source:** `Extrema_ExtElCS.hxx`:79 - `Extrema_ExtElCS::Perform()`
     pub fn perform_lin_torus(&mut self, C: &crate::gp::Lin, S: &crate::gp::Torus) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtElCS_perform_lin_torus(self as *mut Self, C, S)
         })
     }
 
-    /// **Source:** `Extrema_ExtElCS.hxx`:84 - `Extrema_ExtElCS::Perform()`
+    /// **Source:** `Extrema_ExtElCS.hxx`:85 - `Extrema_ExtElCS::Perform()`
     pub fn perform_circ_pln(&mut self, C: &crate::gp::Circ, S: &crate::gp::Pln) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtElCS_perform_circ_pln(self as *mut Self, C, S)
         })
     }
 
-    /// **Source:** `Extrema_ExtElCS.hxx`:90 - `Extrema_ExtElCS::Perform()`
+    /// **Source:** `Extrema_ExtElCS.hxx`:91 - `Extrema_ExtElCS::Perform()`
     pub fn perform_circ_cylinder(&mut self, C: &crate::gp::Circ, S: &crate::gp::Cylinder) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtElCS_perform_circ_cylinder(
@@ -4015,14 +1935,14 @@ impl ExtElCS {
         })
     }
 
-    /// **Source:** `Extrema_ExtElCS.hxx`:96 - `Extrema_ExtElCS::Perform()`
+    /// **Source:** `Extrema_ExtElCS.hxx`:97 - `Extrema_ExtElCS::Perform()`
     pub fn perform_circ_cone(&mut self, C: &crate::gp::Circ, S: &crate::gp::Cone) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtElCS_perform_circ_cone(self as *mut Self, C, S)
         })
     }
 
-    /// **Source:** `Extrema_ExtElCS.hxx`:102 - `Extrema_ExtElCS::Perform()`
+    /// **Source:** `Extrema_ExtElCS.hxx`:103 - `Extrema_ExtElCS::Perform()`
     pub fn perform_circ_sphere(&mut self, C: &crate::gp::Circ, S: &crate::gp::Sphere) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtElCS_perform_circ_sphere(
@@ -4033,7 +1953,7 @@ impl ExtElCS {
         })
     }
 
-    /// **Source:** `Extrema_ExtElCS.hxx`:108 - `Extrema_ExtElCS::Perform()`
+    /// **Source:** `Extrema_ExtElCS.hxx`:109 - `Extrema_ExtElCS::Perform()`
     pub fn perform_circ_torus(&mut self, C: &crate::gp::Circ, S: &crate::gp::Torus) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtElCS_perform_circ_torus(
@@ -4044,14 +1964,14 @@ impl ExtElCS {
         })
     }
 
-    /// **Source:** `Extrema_ExtElCS.hxx`:114 - `Extrema_ExtElCS::Perform()`
+    /// **Source:** `Extrema_ExtElCS.hxx`:115 - `Extrema_ExtElCS::Perform()`
     pub fn perform_hypr_pln(&mut self, C: &crate::gp::Hypr, S: &crate::gp::Pln) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtElCS_perform_hypr_pln(self as *mut Self, C, S)
         })
     }
 
-    /// **Source:** `Extrema_ExtElCS.hxx`:117 - `Extrema_ExtElCS::IsDone()`
+    /// **Source:** `Extrema_ExtElCS.hxx`:118 - `Extrema_ExtElCS::IsDone()`
     /// Returns True if the distances are found.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -4059,7 +1979,7 @@ impl ExtElCS {
         })
     }
 
-    /// **Source:** `Extrema_ExtElCS.hxx`:120 - `Extrema_ExtElCS::IsParallel()`
+    /// **Source:** `Extrema_ExtElCS.hxx`:121 - `Extrema_ExtElCS::IsParallel()`
     /// Returns True if the curve is on a parallel surface.
     pub fn is_parallel(&self) -> bool {
         crate::check_result(unsafe {
@@ -4067,7 +1987,7 @@ impl ExtElCS {
         })
     }
 
-    /// **Source:** `Extrema_ExtElCS.hxx`:123 - `Extrema_ExtElCS::NbExt()`
+    /// **Source:** `Extrema_ExtElCS.hxx`:124 - `Extrema_ExtElCS::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
         crate::check_result(unsafe {
@@ -4075,7 +1995,7 @@ impl ExtElCS {
         })
     }
 
-    /// **Source:** `Extrema_ExtElCS.hxx`:126 - `Extrema_ExtElCS::SquareDistance()`
+    /// **Source:** `Extrema_ExtElCS.hxx`:127 - `Extrema_ExtElCS::SquareDistance()`
     /// Returns the value of the Nth extremum square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
         crate::check_result(unsafe {
@@ -4083,7 +2003,7 @@ impl ExtElCS {
         })
     }
 
-    /// **Source:** `Extrema_ExtElCS.hxx`:130 - `Extrema_ExtElCS::Points()`
+    /// **Source:** `Extrema_ExtElCS.hxx`:131 - `Extrema_ExtElCS::Points()`
     /// Returns the points of the Nth extremum distance.
     /// P1 is on the curve, P2 on the surface.
     pub fn points(&self, N: i32, P1: &mut POnCurv, P2: &mut POnSurf) {
@@ -4097,7 +2017,7 @@ impl ExtElCS {
 // From Extrema_ExtElSS.hxx
 // ========================
 
-/// **Source:** `Extrema_ExtElSS.hxx`:40 - `Extrema_ExtElSS`
+/// **Source:** `Extrema_ExtElSS.hxx`:41 - `Extrema_ExtElSS`
 /// It calculates all the distances between 2 elementary
 /// surfaces.
 /// These distances can be maximum or minimum.
@@ -4112,7 +2032,7 @@ unsafe impl crate::CppDeletable for ExtElSS {
 }
 
 impl ExtElSS {
-    /// **Source:** `Extrema_ExtElSS.hxx`:45 - `Extrema_ExtElSS::Extrema_ExtElSS()`
+    /// **Source:** `Extrema_ExtElSS.hxx`:46 - `Extrema_ExtElSS::Extrema_ExtElSS()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -4121,7 +2041,7 @@ impl ExtElSS {
         }
     }
 
-    /// **Source:** `Extrema_ExtElSS.hxx`:49 - `Extrema_ExtElSS::Extrema_ExtElSS()`
+    /// **Source:** `Extrema_ExtElSS.hxx`:50 - `Extrema_ExtElSS::Extrema_ExtElSS()`
     /// Calculates the distances between 2 planes.
     /// These planes can be parallel.
     pub fn new_pln2(S1: &crate::gp::Pln, S2: &crate::gp::Pln) -> crate::OwnedPtr<Self> {
@@ -4132,7 +2052,7 @@ impl ExtElSS {
         }
     }
 
-    /// **Source:** `Extrema_ExtElSS.hxx`:55 - `Extrema_ExtElSS::Extrema_ExtElSS()`
+    /// **Source:** `Extrema_ExtElSS.hxx`:56 - `Extrema_ExtElSS::Extrema_ExtElSS()`
     /// Calculates the distances between a plane
     /// and a sphere.
     pub fn new_pln_sphere(S1: &crate::gp::Pln, S2: &crate::gp::Sphere) -> crate::OwnedPtr<Self> {
@@ -4143,7 +2063,7 @@ impl ExtElSS {
         }
     }
 
-    /// **Source:** `Extrema_ExtElSS.hxx`:61 - `Extrema_ExtElSS::Extrema_ExtElSS()`
+    /// **Source:** `Extrema_ExtElSS.hxx`:62 - `Extrema_ExtElSS::Extrema_ExtElSS()`
     /// Calculates the distances between 2 spheres.
     /// These spheres can be parallel.
     pub fn new_sphere2(S1: &crate::gp::Sphere, S2: &crate::gp::Sphere) -> crate::OwnedPtr<Self> {
@@ -4154,7 +2074,7 @@ impl ExtElSS {
         }
     }
 
-    /// **Source:** `Extrema_ExtElSS.hxx`:67 - `Extrema_ExtElSS::Extrema_ExtElSS()`
+    /// **Source:** `Extrema_ExtElSS.hxx`:68 - `Extrema_ExtElSS::Extrema_ExtElSS()`
     /// Calculates the distances between a sphere
     /// and a cylinder.
     pub fn new_sphere_cylinder(
@@ -4168,7 +2088,7 @@ impl ExtElSS {
         }
     }
 
-    /// **Source:** `Extrema_ExtElSS.hxx`:73 - `Extrema_ExtElSS::Extrema_ExtElSS()`
+    /// **Source:** `Extrema_ExtElSS.hxx`:74 - `Extrema_ExtElSS::Extrema_ExtElSS()`
     /// Calculates the distances between a sphere
     /// and a cone.
     pub fn new_sphere_cone(S1: &crate::gp::Sphere, S2: &crate::gp::Cone) -> crate::OwnedPtr<Self> {
@@ -4179,7 +2099,7 @@ impl ExtElSS {
         }
     }
 
-    /// **Source:** `Extrema_ExtElSS.hxx`:79 - `Extrema_ExtElSS::Extrema_ExtElSS()`
+    /// **Source:** `Extrema_ExtElSS.hxx`:80 - `Extrema_ExtElSS::Extrema_ExtElSS()`
     /// Calculates the distances between a sphere
     /// and a torus.
     pub fn new_sphere_torus(
@@ -4193,14 +2113,14 @@ impl ExtElSS {
         }
     }
 
-    /// **Source:** `Extrema_ExtElSS.hxx`:51 - `Extrema_ExtElSS::Perform()`
+    /// **Source:** `Extrema_ExtElSS.hxx`:52 - `Extrema_ExtElSS::Perform()`
     pub fn perform_pln2(&mut self, S1: &crate::gp::Pln, S2: &crate::gp::Pln) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtElSS_perform_pln2(self as *mut Self, S1, S2)
         })
     }
 
-    /// **Source:** `Extrema_ExtElSS.hxx`:57 - `Extrema_ExtElSS::Perform()`
+    /// **Source:** `Extrema_ExtElSS.hxx`:58 - `Extrema_ExtElSS::Perform()`
     pub fn perform_pln_sphere(&mut self, S1: &crate::gp::Pln, S2: &crate::gp::Sphere) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtElSS_perform_pln_sphere(
@@ -4211,14 +2131,14 @@ impl ExtElSS {
         })
     }
 
-    /// **Source:** `Extrema_ExtElSS.hxx`:63 - `Extrema_ExtElSS::Perform()`
+    /// **Source:** `Extrema_ExtElSS.hxx`:64 - `Extrema_ExtElSS::Perform()`
     pub fn perform_sphere2(&mut self, S1: &crate::gp::Sphere, S2: &crate::gp::Sphere) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtElSS_perform_sphere2(self as *mut Self, S1, S2)
         })
     }
 
-    /// **Source:** `Extrema_ExtElSS.hxx`:69 - `Extrema_ExtElSS::Perform()`
+    /// **Source:** `Extrema_ExtElSS.hxx`:70 - `Extrema_ExtElSS::Perform()`
     pub fn perform_sphere_cylinder(&mut self, S1: &crate::gp::Sphere, S2: &crate::gp::Cylinder) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtElSS_perform_sphere_cylinder(
@@ -4229,7 +2149,7 @@ impl ExtElSS {
         })
     }
 
-    /// **Source:** `Extrema_ExtElSS.hxx`:75 - `Extrema_ExtElSS::Perform()`
+    /// **Source:** `Extrema_ExtElSS.hxx`:76 - `Extrema_ExtElSS::Perform()`
     pub fn perform_sphere_cone(&mut self, S1: &crate::gp::Sphere, S2: &crate::gp::Cone) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtElSS_perform_sphere_cone(
@@ -4240,7 +2160,7 @@ impl ExtElSS {
         })
     }
 
-    /// **Source:** `Extrema_ExtElSS.hxx`:81 - `Extrema_ExtElSS::Perform()`
+    /// **Source:** `Extrema_ExtElSS.hxx`:82 - `Extrema_ExtElSS::Perform()`
     pub fn perform_sphere_torus(&mut self, S1: &crate::gp::Sphere, S2: &crate::gp::Torus) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtElSS_perform_sphere_torus(
@@ -4251,7 +2171,7 @@ impl ExtElSS {
         })
     }
 
-    /// **Source:** `Extrema_ExtElSS.hxx`:84 - `Extrema_ExtElSS::IsDone()`
+    /// **Source:** `Extrema_ExtElSS.hxx`:85 - `Extrema_ExtElSS::IsDone()`
     /// Returns True if the distances are found.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -4259,7 +2179,7 @@ impl ExtElSS {
         })
     }
 
-    /// **Source:** `Extrema_ExtElSS.hxx`:87 - `Extrema_ExtElSS::IsParallel()`
+    /// **Source:** `Extrema_ExtElSS.hxx`:88 - `Extrema_ExtElSS::IsParallel()`
     /// Returns True if the two surfaces are parallel.
     pub fn is_parallel(&self) -> bool {
         crate::check_result(unsafe {
@@ -4267,7 +2187,7 @@ impl ExtElSS {
         })
     }
 
-    /// **Source:** `Extrema_ExtElSS.hxx`:90 - `Extrema_ExtElSS::NbExt()`
+    /// **Source:** `Extrema_ExtElSS.hxx`:91 - `Extrema_ExtElSS::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
         crate::check_result(unsafe {
@@ -4275,7 +2195,7 @@ impl ExtElSS {
         })
     }
 
-    /// **Source:** `Extrema_ExtElSS.hxx`:93 - `Extrema_ExtElSS::SquareDistance()`
+    /// **Source:** `Extrema_ExtElSS.hxx`:94 - `Extrema_ExtElSS::SquareDistance()`
     /// Returns the value of the Nth extremum square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
         crate::check_result(unsafe {
@@ -4283,407 +2203,12 @@ impl ExtElSS {
         })
     }
 
-    /// **Source:** `Extrema_ExtElSS.hxx`:97 - `Extrema_ExtElSS::Points()`
+    /// **Source:** `Extrema_ExtElSS.hxx`:98 - `Extrema_ExtElSS::Points()`
     /// Returns the points for the Nth resulting distance.
     /// P1 is on the first surface, P2 on the second one.
     pub fn points(&self, N: i32, P1: &mut POnSurf, P2: &mut POnSurf) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtElSS_points(self as *const Self, N, P1, P2)
-        })
-    }
-}
-
-// ========================
-// From Extrema_ExtPC.hxx
-// ========================
-
-/// **Source:** `Extrema_ExtPC.hxx`:42 - `Extrema_ExtPC`
-pub use crate::ffi_types::Extrema_ExtPC as ExtPC;
-
-unsafe impl crate::CppDeletable for ExtPC {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ExtPC_destructor(ptr);
-        }
-    }
-}
-
-impl ExtPC {
-    /// **Source:** `Extrema_ExtPC.hxx`:47 - `Extrema_ExtPC::Extrema_ExtPC()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_ExtPC_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_ExtPC.hxx`:58 - `Extrema_ExtPC::Extrema_ExtPC()`
-    /// It calculates all the distances.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches all the
-    /// zeros inside the definition range of the curve.
-    /// Zeros are searched between uinf and usup.
-    /// Tol  is used to decide to stop the
-    /// iterations according to the following condition:
-    /// if n is the number of iterations,
-    /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
-    pub fn new_pnt_curve_real3(
-        P: &crate::gp::Pnt,
-        C: &crate::adaptor3d::Curve,
-        Uinf: f64,
-        Usup: f64,
-        TolF: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_ExtPC_ctor_pnt_curve_real3(
-                    P, C, Uinf, Usup, TolF,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_ExtPC.hxx`:72 - `Extrema_ExtPC::Extrema_ExtPC()`
-    /// It calculates all the distances.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches all the
-    /// zeros inside the definition range of the curve.
-    /// Tol is used to decide to stop the
-    /// iterations according to the following condition:
-    /// if n is the number of iterations,
-    /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
-    pub fn new_pnt_curve_real(
-        P: &crate::gp::Pnt,
-        C: &crate::adaptor3d::Curve,
-        TolF: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_ExtPC_ctor_pnt_curve_real(P, C, TolF),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_ExtPC.hxx`:58 - `Extrema_ExtPC::Extrema_ExtPC()`
-    /// It calculates all the distances.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches all the
-    /// zeros inside the definition range of the curve.
-    /// Zeros are searched between uinf and usup.
-    /// Tol  is used to decide to stop the
-    /// iterations according to the following condition:
-    /// if n is the number of iterations,
-    /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
-    pub fn new_pnt_curve_real2(
-        P: &crate::gp::Pnt,
-        C: &crate::adaptor3d::Curve,
-        Uinf: f64,
-        Usup: f64,
-    ) -> crate::OwnedPtr<Self> {
-        Self::new_pnt_curve_real3(P, C, Uinf, Usup, 1.0e-10)
-    }
-
-    /// **Source:** `Extrema_ExtPC.hxx`:72 - `Extrema_ExtPC::Extrema_ExtPC()`
-    /// It calculates all the distances.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches all the
-    /// zeros inside the definition range of the curve.
-    /// Tol is used to decide to stop the
-    /// iterations according to the following condition:
-    /// if n is the number of iterations,
-    /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
-    pub fn new_pnt_curve(P: &crate::gp::Pnt, C: &crate::adaptor3d::Curve) -> crate::OwnedPtr<Self> {
-        Self::new_pnt_curve_real(P, C, 1.0e-10)
-    }
-
-    /// **Source:** `Extrema_ExtPC.hxx`:77 - `Extrema_ExtPC::Initialize()`
-    /// initializes the fields of the algorithm.
-    pub fn initialize(&mut self, C: &crate::adaptor3d::Curve, Uinf: f64, Usup: f64, TolF: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ExtPC_initialize(
-                self as *mut Self,
-                C,
-                Uinf,
-                Usup,
-                TolF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_ExtPC.hxx`:84 - `Extrema_ExtPC::Perform()`
-    /// An exception is raised if the fields have not been
-    /// initialized.
-    pub fn perform(&mut self, P: &crate::gp::Pnt) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ExtPC_perform(self as *mut Self, P)
-        })
-    }
-
-    /// **Source:** `Extrema_ExtPC.hxx`:87 - `Extrema_ExtPC::IsDone()`
-    /// True if the distances are found.
-    pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ExtPC_is_done(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_ExtPC.hxx`:90 - `Extrema_ExtPC::SquareDistance()`
-    /// Returns the value of the <N>th extremum square distance.
-    pub fn square_distance(&self, N: i32) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ExtPC_square_distance(self as *const Self, N)
-        })
-    }
-
-    /// **Source:** `Extrema_ExtPC.hxx`:93 - `Extrema_ExtPC::NbExt()`
-    /// Returns the number of extremum distances.
-    pub fn nb_ext(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ExtPC_nb_ext(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_ExtPC.hxx`:97 - `Extrema_ExtPC::IsMin()`
-    /// Returns True if the <N>th extremum distance is a
-    /// minimum.
-    pub fn is_min(&self, N: i32) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ExtPC_is_min(self as *const Self, N)
-        })
-    }
-
-    /// **Source:** `Extrema_ExtPC.hxx`:100 - `Extrema_ExtPC::Point()`
-    /// Returns the point of the <N>th extremum distance.
-    pub fn point(&self, N: i32) -> &POnCurv {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_ExtPC_point(
-                self as *const Self,
-                N,
-            )))
-        }
-    }
-
-    /// **Source:** `Extrema_ExtPC.hxx`:107 - `Extrema_ExtPC::TrimmedSquareDistances()`
-    /// if the curve is a trimmed curve,
-    /// dist1 is a square distance between <P> and the point
-    /// of parameter FirstParameter <P1> and
-    /// dist2 is a square distance between <P> and the point
-    /// of parameter LastParameter <P2>.
-    pub fn trimmed_square_distances(
-        &self,
-        dist1: &mut f64,
-        dist2: &mut f64,
-        P1: &mut crate::gp::Pnt,
-        P2: &mut crate::gp::Pnt,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ExtPC_trimmed_square_distances(
-                self as *const Self,
-                dist1,
-                dist2,
-                P1,
-                P2,
-            )
-        })
-    }
-}
-
-// ========================
-// From Extrema_ExtPC2d.hxx
-// ========================
-
-/// **Source:** `Extrema_ExtPC2d.hxx`:42 - `Extrema_ExtPC2d`
-pub use crate::ffi_types::Extrema_ExtPC2d as ExtPC2d;
-
-unsafe impl crate::CppDeletable for ExtPC2d {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ExtPC2d_destructor(ptr);
-        }
-    }
-}
-
-impl ExtPC2d {
-    /// **Source:** `Extrema_ExtPC2d.hxx`:47 - `Extrema_ExtPC2d::Extrema_ExtPC2d()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_ExtPC2d_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_ExtPC2d.hxx`:58 - `Extrema_ExtPC2d::Extrema_ExtPC2d()`
-    /// It calculates all the distances.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches all the
-    /// zeros inside the definition range of the curve.
-    /// Zeros are searched between uinf and usup.
-    /// Tol  is used to decide to stop the
-    /// iterations according to the following condition:
-    /// if n is the number of iterations,
-    /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
-    pub fn new_pnt2d_curve2d_real3(
-        P: &crate::gp::Pnt2d,
-        C: &crate::adaptor2d::Curve2d,
-        Uinf: f64,
-        Usup: f64,
-        TolF: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_ExtPC2d_ctor_pnt2d_curve2d_real3(
-                    P, C, Uinf, Usup, TolF,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_ExtPC2d.hxx`:72 - `Extrema_ExtPC2d::Extrema_ExtPC2d()`
-    /// It calculates all the distances.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches all the
-    /// zeros inside the definition range of the curve.
-    /// Tol is used to decide to stop the
-    /// iterations according to the following condition:
-    /// if n is the number of iterations,
-    /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
-    pub fn new_pnt2d_curve2d_real(
-        P: &crate::gp::Pnt2d,
-        C: &crate::adaptor2d::Curve2d,
-        TolF: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_ExtPC2d_ctor_pnt2d_curve2d_real(P, C, TolF),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_ExtPC2d.hxx`:58 - `Extrema_ExtPC2d::Extrema_ExtPC2d()`
-    /// It calculates all the distances.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches all the
-    /// zeros inside the definition range of the curve.
-    /// Zeros are searched between uinf and usup.
-    /// Tol  is used to decide to stop the
-    /// iterations according to the following condition:
-    /// if n is the number of iterations,
-    /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
-    pub fn new_pnt2d_curve2d_real2(
-        P: &crate::gp::Pnt2d,
-        C: &crate::adaptor2d::Curve2d,
-        Uinf: f64,
-        Usup: f64,
-    ) -> crate::OwnedPtr<Self> {
-        Self::new_pnt2d_curve2d_real3(P, C, Uinf, Usup, 1.0e-10)
-    }
-
-    /// **Source:** `Extrema_ExtPC2d.hxx`:72 - `Extrema_ExtPC2d::Extrema_ExtPC2d()`
-    /// It calculates all the distances.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches all the
-    /// zeros inside the definition range of the curve.
-    /// Tol is used to decide to stop the
-    /// iterations according to the following condition:
-    /// if n is the number of iterations,
-    /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
-    pub fn new_pnt2d_curve2d(
-        P: &crate::gp::Pnt2d,
-        C: &crate::adaptor2d::Curve2d,
-    ) -> crate::OwnedPtr<Self> {
-        Self::new_pnt2d_curve2d_real(P, C, 1.0e-10)
-    }
-
-    /// **Source:** `Extrema_ExtPC2d.hxx`:77 - `Extrema_ExtPC2d::Initialize()`
-    /// initializes the fields of the algorithm.
-    pub fn initialize(&mut self, C: &crate::adaptor2d::Curve2d, Uinf: f64, Usup: f64, TolF: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ExtPC2d_initialize(
-                self as *mut Self,
-                C,
-                Uinf,
-                Usup,
-                TolF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_ExtPC2d.hxx`:84 - `Extrema_ExtPC2d::Perform()`
-    /// An exception is raised if the fields have not been
-    /// initialized.
-    pub fn perform(&mut self, P: &crate::gp::Pnt2d) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ExtPC2d_perform(self as *mut Self, P)
-        })
-    }
-
-    /// **Source:** `Extrema_ExtPC2d.hxx`:87 - `Extrema_ExtPC2d::IsDone()`
-    /// True if the distances are found.
-    pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ExtPC2d_is_done(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_ExtPC2d.hxx`:90 - `Extrema_ExtPC2d::SquareDistance()`
-    /// Returns the value of the <N>th extremum square distance.
-    pub fn square_distance(&self, N: i32) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ExtPC2d_square_distance(self as *const Self, N)
-        })
-    }
-
-    /// **Source:** `Extrema_ExtPC2d.hxx`:93 - `Extrema_ExtPC2d::NbExt()`
-    /// Returns the number of extremum distances.
-    pub fn nb_ext(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ExtPC2d_nb_ext(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_ExtPC2d.hxx`:97 - `Extrema_ExtPC2d::IsMin()`
-    /// Returns True if the <N>th extremum distance is a
-    /// minimum.
-    pub fn is_min(&self, N: i32) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ExtPC2d_is_min(self as *const Self, N)
-        })
-    }
-
-    /// **Source:** `Extrema_ExtPC2d.hxx`:100 - `Extrema_ExtPC2d::Point()`
-    /// Returns the point of the <N>th extremum distance.
-    pub fn point(&self, N: i32) -> &POnCurv2d {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_ExtPC2d_point(
-                self as *const Self,
-                N,
-            )))
-        }
-    }
-
-    /// **Source:** `Extrema_ExtPC2d.hxx`:107 - `Extrema_ExtPC2d::TrimmedSquareDistances()`
-    /// if the curve is a trimmed curve,
-    /// dist1 is a square distance between <P> and the point
-    /// of parameter FirstParameter <P1> and
-    /// dist2 is a square distance between <P> and the point
-    /// of parameter LastParameter <P2>.
-    pub fn trimmed_square_distances(
-        &self,
-        dist1: &mut f64,
-        dist2: &mut f64,
-        P1: &mut crate::gp::Pnt2d,
-        P2: &mut crate::gp::Pnt2d,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_ExtPC2d_trimmed_square_distances(
-                self as *const Self,
-                dist1,
-                dist2,
-                P1,
-                P2,
-            )
         })
     }
 }
@@ -5502,7 +3027,7 @@ impl ExtPElS {
 // From Extrema_ExtPExtS.hxx
 // ========================
 
-/// **Source:** `Extrema_ExtPExtS.hxx`:32 - `Extrema_ExtPExtS`
+/// **Source:** `Extrema_ExtPExtS.hxx`:30 - `Extrema_ExtPExtS`
 /// It calculates all the extremum (minimum and
 /// maximum) distances between a point and a linear
 /// extrusion surface.
@@ -5517,7 +3042,7 @@ unsafe impl crate::CppDeletable for ExtPExtS {
 }
 
 impl ExtPExtS {
-    /// **Source:** `Extrema_ExtPExtS.hxx`:36 - `Extrema_ExtPExtS::Extrema_ExtPExtS()`
+    /// **Source:** `Extrema_ExtPExtS.hxx`:34 - `Extrema_ExtPExtS::Extrema_ExtPExtS()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -5526,12 +3051,12 @@ impl ExtPExtS {
         }
     }
 
-    /// **Source:** `Extrema_ExtPExtS.hxx`:40 - `Extrema_ExtPExtS::Extrema_ExtPExtS()`
+    /// **Source:** `Extrema_ExtPExtS.hxx`:38 - `Extrema_ExtPExtS::Extrema_ExtPExtS()`
     /// It calculates all the distances between a point
     /// from gp and a Surface.
     pub fn new_pnt_handlegeomadaptorsurfaceoflinearextrusion_real6(
         P: &crate::gp::Pnt,
-        S: &crate::ffi_types::HandleGeomAdaptorSurfaceOfLinearExtrusion,
+        S: &crate::ffi_types::Handle_GeomAdaptor_SurfaceOfLinearExtrusion,
         Umin: f64,
         Usup: f64,
         Vmin: f64,
@@ -5544,12 +3069,12 @@ impl ExtPExtS {
         }
     }
 
-    /// **Source:** `Extrema_ExtPExtS.hxx`:51 - `Extrema_ExtPExtS::Extrema_ExtPExtS()`
+    /// **Source:** `Extrema_ExtPExtS.hxx`:49 - `Extrema_ExtPExtS::Extrema_ExtPExtS()`
     /// It calculates all the distances between a point
     /// from gp and a Surface.
     pub fn new_pnt_handlegeomadaptorsurfaceoflinearextrusion_real2(
         P: &crate::gp::Pnt,
-        S: &crate::ffi_types::HandleGeomAdaptorSurfaceOfLinearExtrusion,
+        S: &crate::ffi_types::Handle_GeomAdaptor_SurfaceOfLinearExtrusion,
         TolU: f64,
         TolV: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -5558,11 +3083,11 @@ impl ExtPExtS {
         }
     }
 
-    /// **Source:** `Extrema_ExtPExtS.hxx`:57 - `Extrema_ExtPExtS::Initialize()`
+    /// **Source:** `Extrema_ExtPExtS.hxx`:55 - `Extrema_ExtPExtS::Initialize()`
     /// Initializes the fields of the algorithm.
     pub fn initialize(
         &mut self,
-        S: &crate::ffi_types::HandleGeomAdaptorSurfaceOfLinearExtrusion,
+        S: &crate::ffi_types::Handle_GeomAdaptor_SurfaceOfLinearExtrusion,
         Uinf: f64,
         Usup: f64,
         Vinf: f64,
@@ -5584,14 +3109,14 @@ impl ExtPExtS {
         })
     }
 
-    /// **Source:** `Extrema_ExtPExtS.hxx`:65 - `Extrema_ExtPExtS::Perform()`
+    /// **Source:** `Extrema_ExtPExtS.hxx`:63 - `Extrema_ExtPExtS::Perform()`
     pub fn perform(&mut self, P: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtPExtS_perform(self as *mut Self, P)
         })
     }
 
-    /// **Source:** `Extrema_ExtPExtS.hxx`:68 - `Extrema_ExtPExtS::IsDone()`
+    /// **Source:** `Extrema_ExtPExtS.hxx`:66 - `Extrema_ExtPExtS::IsDone()`
     /// Returns True if the distances are found.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -5599,7 +3124,7 @@ impl ExtPExtS {
         })
     }
 
-    /// **Source:** `Extrema_ExtPExtS.hxx`:71 - `Extrema_ExtPExtS::NbExt()`
+    /// **Source:** `Extrema_ExtPExtS.hxx`:69 - `Extrema_ExtPExtS::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
         crate::check_result(unsafe {
@@ -5607,7 +3132,7 @@ impl ExtPExtS {
         })
     }
 
-    /// **Source:** `Extrema_ExtPExtS.hxx`:74 - `Extrema_ExtPExtS::SquareDistance()`
+    /// **Source:** `Extrema_ExtPExtS.hxx`:72 - `Extrema_ExtPExtS::SquareDistance()`
     /// Returns the value of the Nth resulting square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
         crate::check_result(unsafe {
@@ -5615,7 +3140,7 @@ impl ExtPExtS {
         })
     }
 
-    /// **Source:** `Extrema_ExtPExtS.hxx`:77 - `Extrema_ExtPExtS::Point()`
+    /// **Source:** `Extrema_ExtPExtS.hxx`:75 - `Extrema_ExtPExtS::Point()`
     /// Returns the point of the Nth resulting distance.
     pub fn point(&self, N: i32) -> &POnSurf {
         unsafe {
@@ -5626,8 +3151,8 @@ impl ExtPExtS {
         }
     }
 
-    /// **Source:** `Extrema_ExtPExtS.hxx`:79 - `Extrema_ExtPExtS::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Extrema_ExtPExtS.hxx`:77 - `Extrema_ExtPExtS::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_ExtPExtS_dynamic_type(
                 self as *const Self,
@@ -5635,7 +3160,7 @@ impl ExtPExtS {
         }
     }
 
-    /// **Source:** `Extrema_ExtPExtS.hxx`:79 - `Extrema_ExtPExtS::get_type_name()`
+    /// **Source:** `Extrema_ExtPExtS.hxx`:77 - `Extrema_ExtPExtS::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -5646,8 +3171,8 @@ impl ExtPExtS {
         .into_owned()
     }
 
-    /// **Source:** `Extrema_ExtPExtS.hxx`:79 - `Extrema_ExtPExtS::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Extrema_ExtPExtS.hxx`:77 - `Extrema_ExtPExtS::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomBase::Extrema_ExtPExtS_get_type_descriptor(),
@@ -5680,7 +3205,7 @@ impl ExtPExtS {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleExtremaExtPExtS> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Extrema_ExtPExtS> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::Extrema_ExtPExtS_to_handle(obj.into_raw()),
@@ -5688,8 +3213,8 @@ impl ExtPExtS {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtPExtS_inherited_IsInstance(
                 self as *const Self,
@@ -5698,8 +3223,8 @@ impl ExtPExtS {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtPExtS_inherited_IsKind(
                 self as *const Self,
@@ -5708,7 +3233,7 @@ impl ExtPExtS {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -5722,7 +3247,7 @@ impl ExtPExtS {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtPExtS_inherited_GetRefCount(
@@ -5731,7 +3256,7 @@ impl ExtPExtS {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtPExtS_inherited_IncrementRefCounter(
@@ -5740,7 +3265,7 @@ impl ExtPExtS {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtPExtS_inherited_DecrementRefCounter(
@@ -5749,7 +3274,7 @@ impl ExtPExtS {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtPExtS_inherited_Delete(self as *const Self)
@@ -5757,34 +3282,36 @@ impl ExtPExtS {
     }
 }
 
-pub use crate::ffi_types::HandleExtremaExtPExtS;
+pub use crate::ffi_types::Handle_Extrema_ExtPExtS;
 
-unsafe impl crate::CppDeletable for HandleExtremaExtPExtS {
+unsafe impl crate::CppDeletable for Handle_Extrema_ExtPExtS {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomBase::HandleExtremaExtPExtS_destructor(ptr);
+            crate::ffi_extern_TKGeomBase::Handle_Extrema_ExtPExtS_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleExtremaExtPExtS {
+unsafe impl crate::CppCopyable for Handle_Extrema_ExtPExtS {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaExtPExtS_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKGeomBase::Handle_Extrema_ExtPExtS_clone(ptr))
         }
     }
 }
 
-impl HandleExtremaExtPExtS {
+impl Handle_Extrema_ExtPExtS {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKGeomBase::HandleExtremaExtPExtS_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Handle_Extrema_ExtPExtS_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying Extrema_ExtPExtS
     pub fn get(&self) -> &crate::ffi_types::Extrema_ExtPExtS {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaExtPExtS_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::Handle_Extrema_ExtPExtS_get(
                 self as *const Self,
             ))
         }
@@ -5793,19 +3320,19 @@ impl HandleExtremaExtPExtS {
     /// Dereference this Handle to mutably access the underlying Extrema_ExtPExtS
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Extrema_ExtPExtS {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaExtPExtS_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::Handle_Extrema_ExtPExtS_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<Extrema_ExtPExtS> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::HandleExtremaExtPExtS_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomBase::Handle_Extrema_ExtPExtS_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -5817,7 +3344,7 @@ impl HandleExtremaExtPExtS {
 // From Extrema_ExtPRevS.hxx
 // ========================
 
-/// **Source:** `Extrema_ExtPRevS.hxx`:30 - `Extrema_ExtPRevS`
+/// **Source:** `Extrema_ExtPRevS.hxx`:28 - `Extrema_ExtPRevS`
 /// It calculates all the extremum (minimum and
 /// maximum) distances between a point and a surface
 /// of revolution.
@@ -5832,7 +3359,7 @@ unsafe impl crate::CppDeletable for ExtPRevS {
 }
 
 impl ExtPRevS {
-    /// **Source:** `Extrema_ExtPRevS.hxx`:34 - `Extrema_ExtPRevS::Extrema_ExtPRevS()`
+    /// **Source:** `Extrema_ExtPRevS.hxx`:32 - `Extrema_ExtPRevS::Extrema_ExtPRevS()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -5841,12 +3368,12 @@ impl ExtPRevS {
         }
     }
 
-    /// **Source:** `Extrema_ExtPRevS.hxx`:38 - `Extrema_ExtPRevS::Extrema_ExtPRevS()`
+    /// **Source:** `Extrema_ExtPRevS.hxx`:36 - `Extrema_ExtPRevS::Extrema_ExtPRevS()`
     /// It calculates all the distances between a point
     /// from gp and a SurfacePtr from Adaptor3d.
     pub fn new_pnt_handlegeomadaptorsurfaceofrevolution_real6(
         P: &crate::gp::Pnt,
-        S: &crate::ffi_types::HandleGeomAdaptorSurfaceOfRevolution,
+        S: &crate::ffi_types::Handle_GeomAdaptor_SurfaceOfRevolution,
         Umin: f64,
         Usup: f64,
         Vmin: f64,
@@ -5859,12 +3386,12 @@ impl ExtPRevS {
         }
     }
 
-    /// **Source:** `Extrema_ExtPRevS.hxx`:49 - `Extrema_ExtPRevS::Extrema_ExtPRevS()`
+    /// **Source:** `Extrema_ExtPRevS.hxx`:47 - `Extrema_ExtPRevS::Extrema_ExtPRevS()`
     /// It calculates all the distances between a point
     /// from gp and a SurfacePtr from Adaptor3d.
     pub fn new_pnt_handlegeomadaptorsurfaceofrevolution_real2(
         P: &crate::gp::Pnt,
-        S: &crate::ffi_types::HandleGeomAdaptorSurfaceOfRevolution,
+        S: &crate::ffi_types::Handle_GeomAdaptor_SurfaceOfRevolution,
         TolU: f64,
         TolV: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -5873,10 +3400,10 @@ impl ExtPRevS {
         }
     }
 
-    /// **Source:** `Extrema_ExtPRevS.hxx`:54 - `Extrema_ExtPRevS::Initialize()`
+    /// **Source:** `Extrema_ExtPRevS.hxx`:52 - `Extrema_ExtPRevS::Initialize()`
     pub fn initialize(
         &mut self,
-        S: &crate::ffi_types::HandleGeomAdaptorSurfaceOfRevolution,
+        S: &crate::ffi_types::Handle_GeomAdaptor_SurfaceOfRevolution,
         Umin: f64,
         Usup: f64,
         Vmin: f64,
@@ -5898,14 +3425,14 @@ impl ExtPRevS {
         })
     }
 
-    /// **Source:** `Extrema_ExtPRevS.hxx`:62 - `Extrema_ExtPRevS::Perform()`
+    /// **Source:** `Extrema_ExtPRevS.hxx`:60 - `Extrema_ExtPRevS::Perform()`
     pub fn perform(&mut self, P: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtPRevS_perform(self as *mut Self, P)
         })
     }
 
-    /// **Source:** `Extrema_ExtPRevS.hxx`:65 - `Extrema_ExtPRevS::IsDone()`
+    /// **Source:** `Extrema_ExtPRevS.hxx`:63 - `Extrema_ExtPRevS::IsDone()`
     /// Returns True if the distances are found.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -5913,7 +3440,7 @@ impl ExtPRevS {
         })
     }
 
-    /// **Source:** `Extrema_ExtPRevS.hxx`:68 - `Extrema_ExtPRevS::NbExt()`
+    /// **Source:** `Extrema_ExtPRevS.hxx`:66 - `Extrema_ExtPRevS::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
         crate::check_result(unsafe {
@@ -5921,7 +3448,7 @@ impl ExtPRevS {
         })
     }
 
-    /// **Source:** `Extrema_ExtPRevS.hxx`:71 - `Extrema_ExtPRevS::SquareDistance()`
+    /// **Source:** `Extrema_ExtPRevS.hxx`:69 - `Extrema_ExtPRevS::SquareDistance()`
     /// Returns the value of the Nth resulting square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
         crate::check_result(unsafe {
@@ -5929,7 +3456,7 @@ impl ExtPRevS {
         })
     }
 
-    /// **Source:** `Extrema_ExtPRevS.hxx`:74 - `Extrema_ExtPRevS::Point()`
+    /// **Source:** `Extrema_ExtPRevS.hxx`:72 - `Extrema_ExtPRevS::Point()`
     /// Returns the point of the Nth resulting distance.
     pub fn point(&self, N: i32) -> &POnSurf {
         unsafe {
@@ -5940,8 +3467,8 @@ impl ExtPRevS {
         }
     }
 
-    /// **Source:** `Extrema_ExtPRevS.hxx`:76 - `Extrema_ExtPRevS::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Extrema_ExtPRevS.hxx`:74 - `Extrema_ExtPRevS::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_ExtPRevS_dynamic_type(
                 self as *const Self,
@@ -5949,7 +3476,7 @@ impl ExtPRevS {
         }
     }
 
-    /// **Source:** `Extrema_ExtPRevS.hxx`:76 - `Extrema_ExtPRevS::get_type_name()`
+    /// **Source:** `Extrema_ExtPRevS.hxx`:74 - `Extrema_ExtPRevS::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -5960,8 +3487,8 @@ impl ExtPRevS {
         .into_owned()
     }
 
-    /// **Source:** `Extrema_ExtPRevS.hxx`:76 - `Extrema_ExtPRevS::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Extrema_ExtPRevS.hxx`:74 - `Extrema_ExtPRevS::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomBase::Extrema_ExtPRevS_get_type_descriptor(),
@@ -5994,7 +3521,7 @@ impl ExtPRevS {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleExtremaExtPRevS> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Extrema_ExtPRevS> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::Extrema_ExtPRevS_to_handle(obj.into_raw()),
@@ -6002,8 +3529,8 @@ impl ExtPRevS {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtPRevS_inherited_IsInstance(
                 self as *const Self,
@@ -6012,8 +3539,8 @@ impl ExtPRevS {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtPRevS_inherited_IsKind(
                 self as *const Self,
@@ -6022,7 +3549,7 @@ impl ExtPRevS {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -6036,7 +3563,7 @@ impl ExtPRevS {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtPRevS_inherited_GetRefCount(
@@ -6045,7 +3572,7 @@ impl ExtPRevS {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtPRevS_inherited_IncrementRefCounter(
@@ -6054,7 +3581,7 @@ impl ExtPRevS {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtPRevS_inherited_DecrementRefCounter(
@@ -6063,7 +3590,7 @@ impl ExtPRevS {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_ExtPRevS_inherited_Delete(self as *const Self)
@@ -6071,34 +3598,36 @@ impl ExtPRevS {
     }
 }
 
-pub use crate::ffi_types::HandleExtremaExtPRevS;
+pub use crate::ffi_types::Handle_Extrema_ExtPRevS;
 
-unsafe impl crate::CppDeletable for HandleExtremaExtPRevS {
+unsafe impl crate::CppDeletable for Handle_Extrema_ExtPRevS {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomBase::HandleExtremaExtPRevS_destructor(ptr);
+            crate::ffi_extern_TKGeomBase::Handle_Extrema_ExtPRevS_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleExtremaExtPRevS {
+unsafe impl crate::CppCopyable for Handle_Extrema_ExtPRevS {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaExtPRevS_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKGeomBase::Handle_Extrema_ExtPRevS_clone(ptr))
         }
     }
 }
 
-impl HandleExtremaExtPRevS {
+impl Handle_Extrema_ExtPRevS {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKGeomBase::HandleExtremaExtPRevS_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKGeomBase::Handle_Extrema_ExtPRevS_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying Extrema_ExtPRevS
     pub fn get(&self) -> &crate::ffi_types::Extrema_ExtPRevS {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaExtPRevS_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::Handle_Extrema_ExtPRevS_get(
                 self as *const Self,
             ))
         }
@@ -6107,19 +3636,19 @@ impl HandleExtremaExtPRevS {
     /// Dereference this Handle to mutably access the underlying Extrema_ExtPRevS
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Extrema_ExtPRevS {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaExtPRevS_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::Handle_Extrema_ExtPRevS_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<Extrema_ExtPRevS> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::HandleExtremaExtPRevS_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomBase::Handle_Extrema_ExtPRevS_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -6593,7 +4122,7 @@ impl FuncExtCS {
         })
     }
 
-    /// **Source:** `Extrema_FuncExtCS.hxx`:61 - `Extrema_FuncExtCS::Values()`
+    /// **Source:** `Extrema_FuncExtCS.hxx`:60 - `Extrema_FuncExtCS::Values()`
     /// Calculation of Fi(U,V) and Fi'(U,V).
     pub fn values(
         &mut self,
@@ -6606,7 +4135,7 @@ impl FuncExtCS {
         })
     }
 
-    /// **Source:** `Extrema_FuncExtCS.hxx`:66 - `Extrema_FuncExtCS::GetStateNumber()`
+    /// **Source:** `Extrema_FuncExtCS.hxx`:63 - `Extrema_FuncExtCS::GetStateNumber()`
     /// Save the found extremum.
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
@@ -6614,7 +4143,7 @@ impl FuncExtCS {
         })
     }
 
-    /// **Source:** `Extrema_FuncExtCS.hxx`:69 - `Extrema_FuncExtCS::NbExt()`
+    /// **Source:** `Extrema_FuncExtCS.hxx`:66 - `Extrema_FuncExtCS::NbExt()`
     /// Return the number of found extrema.
     pub fn nb_ext(&self) -> i32 {
         crate::check_result(unsafe {
@@ -6622,7 +4151,7 @@ impl FuncExtCS {
         })
     }
 
-    /// **Source:** `Extrema_FuncExtCS.hxx`:72 - `Extrema_FuncExtCS::SquareDistance()`
+    /// **Source:** `Extrema_FuncExtCS.hxx`:69 - `Extrema_FuncExtCS::SquareDistance()`
     /// Return the value of the Nth distance.
     pub fn square_distance(&self, N: i32) -> f64 {
         crate::check_result(unsafe {
@@ -6630,7 +4159,7 @@ impl FuncExtCS {
         })
     }
 
-    /// **Source:** `Extrema_FuncExtCS.hxx`:75 - `Extrema_FuncExtCS::PointOnCurve()`
+    /// **Source:** `Extrema_FuncExtCS.hxx`:72 - `Extrema_FuncExtCS::PointOnCurve()`
     /// Returns the Nth extremum on C.
     pub fn point_on_curve(&self, N: i32) -> &POnCurv {
         unsafe {
@@ -6641,7 +4170,7 @@ impl FuncExtCS {
         }
     }
 
-    /// **Source:** `Extrema_FuncExtCS.hxx`:78 - `Extrema_FuncExtCS::PointOnSurface()`
+    /// **Source:** `Extrema_FuncExtCS.hxx`:75 - `Extrema_FuncExtCS::PointOnSurface()`
     /// Return the Nth extremum on S.
     pub fn point_on_surface(&self, N: i32) -> &POnSurf {
         unsafe {
@@ -6654,9 +4183,9 @@ impl FuncExtCS {
         }
     }
 
-    /// **Source:** `Extrema_FuncExtCS.hxx`:81 - `Extrema_FuncExtCS::SquareDistances()`
+    /// **Source:** `Extrema_FuncExtCS.hxx`:78 - `Extrema_FuncExtCS::SquareDistances()`
     /// Change Sequence of SquareDistance
-    pub fn square_distances(&mut self) -> &mut crate::ffi_types::TColStd_SequenceOfReal {
+    pub fn square_distances(&mut self) -> &mut crate::ffi_types::NCollection_Sequence_double {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKGeomBase::Extrema_FuncExtCS_square_distances(self as *mut Self),
@@ -6664,9 +4193,11 @@ impl FuncExtCS {
         }
     }
 
-    /// **Source:** `Extrema_FuncExtCS.hxx`:84 - `Extrema_FuncExtCS::PointsOnCurve()`
+    /// **Source:** `Extrema_FuncExtCS.hxx`:81 - `Extrema_FuncExtCS::PointsOnCurve()`
     /// Change Sequence of PointOnCurv
-    pub fn points_on_curve(&mut self) -> &mut crate::ffi_types::Extrema_SequenceOfPOnCurv {
+    pub fn points_on_curve(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_Sequence_Extrema_POnCurv {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKGeomBase::Extrema_FuncExtCS_points_on_curve(self as *mut Self),
@@ -6674,9 +4205,11 @@ impl FuncExtCS {
         }
     }
 
-    /// **Source:** `Extrema_FuncExtCS.hxx`:87 - `Extrema_FuncExtCS::PointsOnSurf()`
+    /// **Source:** `Extrema_FuncExtCS.hxx`:84 - `Extrema_FuncExtCS::PointsOnSurf()`
     /// Change Sequence of PointOnSurf
-    pub fn points_on_surf(&mut self) -> &mut crate::ffi_types::Extrema_SequenceOfPOnSurf {
+    pub fn points_on_surf(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_Sequence_Extrema_POnSurf {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKGeomBase::Extrema_FuncExtCS_points_on_surf(self as *mut Self),
@@ -6814,7 +4347,7 @@ impl FuncExtSS {
         })
     }
 
-    /// **Source:** `Extrema_FuncExtSS.hxx`:58 - `Extrema_FuncExtSS::Values()`
+    /// **Source:** `Extrema_FuncExtSS.hxx`:57 - `Extrema_FuncExtSS::Values()`
     /// Calculate Fi(U,V) and Fi'(U,V).
     pub fn values(
         &mut self,
@@ -6827,7 +4360,7 @@ impl FuncExtSS {
         })
     }
 
-    /// **Source:** `Extrema_FuncExtSS.hxx`:63 - `Extrema_FuncExtSS::GetStateNumber()`
+    /// **Source:** `Extrema_FuncExtSS.hxx`:60 - `Extrema_FuncExtSS::GetStateNumber()`
     /// Save the found extremum.
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
@@ -6835,7 +4368,7 @@ impl FuncExtSS {
         })
     }
 
-    /// **Source:** `Extrema_FuncExtSS.hxx`:66 - `Extrema_FuncExtSS::NbExt()`
+    /// **Source:** `Extrema_FuncExtSS.hxx`:63 - `Extrema_FuncExtSS::NbExt()`
     /// Return the number of found extrema.
     pub fn nb_ext(&self) -> i32 {
         crate::check_result(unsafe {
@@ -6843,7 +4376,7 @@ impl FuncExtSS {
         })
     }
 
-    /// **Source:** `Extrema_FuncExtSS.hxx`:69 - `Extrema_FuncExtSS::SquareDistance()`
+    /// **Source:** `Extrema_FuncExtSS.hxx`:66 - `Extrema_FuncExtSS::SquareDistance()`
     /// Return the value of the Nth distance.
     pub fn square_distance(&self, N: i32) -> f64 {
         crate::check_result(unsafe {
@@ -6851,7 +4384,7 @@ impl FuncExtSS {
         })
     }
 
-    /// **Source:** `Extrema_FuncExtSS.hxx`:72 - `Extrema_FuncExtSS::PointOnS1()`
+    /// **Source:** `Extrema_FuncExtSS.hxx`:69 - `Extrema_FuncExtSS::PointOnS1()`
     /// Return the Nth extremum on S1.
     pub fn point_on_s1(&self, N: i32) -> &POnSurf {
         unsafe {
@@ -6862,7 +4395,7 @@ impl FuncExtSS {
         }
     }
 
-    /// **Source:** `Extrema_FuncExtSS.hxx`:75 - `Extrema_FuncExtSS::PointOnS2()`
+    /// **Source:** `Extrema_FuncExtSS.hxx`:72 - `Extrema_FuncExtSS::PointOnS2()`
     /// Renvoie le Nieme extremum sur S2.
     pub fn point_on_s2(&self, N: i32) -> &POnSurf {
         unsafe {
@@ -7163,7 +4696,7 @@ impl FuncPSNorm {
         })
     }
 
-    /// **Source:** `Extrema_FuncPSNorm.hxx`:81 - `Extrema_FuncPSNorm::Values()`
+    /// **Source:** `Extrema_FuncPSNorm.hxx`:80 - `Extrema_FuncPSNorm::Values()`
     /// Calculate Fi(U,V) and Fi'(U,V).
     pub fn values(
         &mut self,
@@ -7176,7 +4709,7 @@ impl FuncPSNorm {
         })
     }
 
-    /// **Source:** `Extrema_FuncPSNorm.hxx`:86 - `Extrema_FuncPSNorm::GetStateNumber()`
+    /// **Source:** `Extrema_FuncPSNorm.hxx`:83 - `Extrema_FuncPSNorm::GetStateNumber()`
     /// Save the found extremum.
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
@@ -7184,7 +4717,7 @@ impl FuncPSNorm {
         })
     }
 
-    /// **Source:** `Extrema_FuncPSNorm.hxx`:89 - `Extrema_FuncPSNorm::NbExt()`
+    /// **Source:** `Extrema_FuncPSNorm.hxx`:86 - `Extrema_FuncPSNorm::NbExt()`
     /// Return the number of found extrema.
     pub fn nb_ext(&self) -> i32 {
         crate::check_result(unsafe {
@@ -7192,7 +4725,7 @@ impl FuncPSNorm {
         })
     }
 
-    /// **Source:** `Extrema_FuncPSNorm.hxx`:92 - `Extrema_FuncPSNorm::SquareDistance()`
+    /// **Source:** `Extrema_FuncPSNorm.hxx`:89 - `Extrema_FuncPSNorm::SquareDistance()`
     /// Return the value of the Nth distance.
     pub fn square_distance(&self, N: i32) -> f64 {
         crate::check_result(unsafe {
@@ -7200,7 +4733,7 @@ impl FuncPSNorm {
         })
     }
 
-    /// **Source:** `Extrema_FuncPSNorm.hxx`:95 - `Extrema_FuncPSNorm::Point()`
+    /// **Source:** `Extrema_FuncPSNorm.hxx`:92 - `Extrema_FuncPSNorm::Point()`
     /// Returns the Nth extremum.
     pub fn point(&self, N: i32) -> &POnSurf {
         unsafe {
@@ -7260,7 +4793,7 @@ impl FuncPSNorm {
 // From Extrema_GenExtCS.hxx
 // ========================
 
-/// **Source:** `Extrema_GenExtCS.hxx`:31 - `Extrema_GenExtCS`
+/// **Source:** `Extrema_GenExtCS.hxx`:33 - `Extrema_GenExtCS`
 /// It calculates all the extremum distances
 /// between acurve and a surface.
 /// These distances can be minimum or maximum.
@@ -7275,7 +4808,7 @@ unsafe impl crate::CppDeletable for GenExtCS {
 }
 
 impl GenExtCS {
-    /// **Source:** `Extrema_GenExtCS.hxx`:37 - `Extrema_GenExtCS::Extrema_GenExtCS()`
+    /// **Source:** `Extrema_GenExtCS.hxx`:39 - `Extrema_GenExtCS::Extrema_GenExtCS()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -7285,7 +4818,7 @@ impl GenExtCS {
         }
     }
 
-    /// **Source:** `Extrema_GenExtCS.hxx`:49 - `Extrema_GenExtCS::Extrema_GenExtCS()`
+    /// **Source:** `Extrema_GenExtCS.hxx`:51 - `Extrema_GenExtCS::Extrema_GenExtCS()`
     /// It calculates all the distances.
     /// The function F(u,v)=distance(S1(u1,v1),S2(u2,v2)) has an
     /// extremum when gradient(F)=0. The algorithm searches
@@ -7311,7 +4844,7 @@ impl GenExtCS {
         }
     }
 
-    /// **Source:** `Extrema_GenExtCS.hxx`:64 - `Extrema_GenExtCS::Extrema_GenExtCS()`
+    /// **Source:** `Extrema_GenExtCS.hxx`:66 - `Extrema_GenExtCS::Extrema_GenExtCS()`
     /// It calculates all the distances.
     /// The function F(u,v)=distance(P,S(u,v)) has an
     /// extremum when gradient(F)=0. The algorithm searches
@@ -7343,7 +4876,7 @@ impl GenExtCS {
         }
     }
 
-    /// **Source:** `Extrema_GenExtCS.hxx`:78 - `Extrema_GenExtCS::Initialize()`
+    /// **Source:** `Extrema_GenExtCS.hxx`:80 - `Extrema_GenExtCS::Initialize()`
     pub fn initialize_surface_int2_real(
         &mut self,
         S: &crate::adaptor3d::Surface,
@@ -7362,7 +4895,7 @@ impl GenExtCS {
         })
     }
 
-    /// **Source:** `Extrema_GenExtCS.hxx`:83 - `Extrema_GenExtCS::Initialize()`
+    /// **Source:** `Extrema_GenExtCS.hxx`:85 - `Extrema_GenExtCS::Initialize()`
     pub fn initialize_surface_int2_real5(
         &mut self,
         S: &crate::adaptor3d::Surface,
@@ -7389,7 +4922,7 @@ impl GenExtCS {
         })
     }
 
-    /// **Source:** `Extrema_GenExtCS.hxx`:95 - `Extrema_GenExtCS::Perform()`
+    /// **Source:** `Extrema_GenExtCS.hxx`:97 - `Extrema_GenExtCS::Perform()`
     /// the algorithm is done with S
     /// An exception is raised if the fields have not
     /// been initialized.
@@ -7481,7 +5014,7 @@ impl GenExtCS {
 // From Extrema_GenExtPS.hxx
 // ========================
 
-/// **Source:** `Extrema_GenExtPS.hxx`:34 - `Extrema_GenExtPS`
+/// **Source:** `Extrema_GenExtPS.hxx`:36 - `Extrema_GenExtPS`
 /// It calculates all the extremum distances
 /// between a point and a surface.
 /// These distances can be minimum or maximum.
@@ -7496,7 +5029,7 @@ unsafe impl crate::CppDeletable for GenExtPS {
 }
 
 impl GenExtPS {
-    /// **Source:** `Extrema_GenExtPS.hxx`:40 - `Extrema_GenExtPS::Extrema_GenExtPS()`
+    /// **Source:** `Extrema_GenExtPS.hxx`:42 - `Extrema_GenExtPS::Extrema_GenExtPS()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -7506,7 +5039,7 @@ impl GenExtPS {
         }
     }
 
-    /// **Source:** `Extrema_GenExtPS.hxx`:57 - `Extrema_GenExtPS::Extrema_GenExtPS()`
+    /// **Source:** `Extrema_GenExtPS.hxx`:59 - `Extrema_GenExtPS::Extrema_GenExtPS()`
     /// It calculates all the distances.
     /// The function F(u,v)=distance(P,S(u,v)) has an
     /// extremum when gradient(F)=0. The algorithm searches
@@ -7534,7 +5067,7 @@ impl GenExtPS {
         }
     }
 
-    /// **Source:** `Extrema_GenExtPS.hxx`:78 - `Extrema_GenExtPS::Extrema_GenExtPS()`
+    /// **Source:** `Extrema_GenExtPS.hxx`:80 - `Extrema_GenExtPS::Extrema_GenExtPS()`
     /// It calculates all the distances.
     /// The function F(u,v)=distance(P,S(u,v)) has an
     /// extremum when gradient(F)=0. The algorithm searches
@@ -7566,7 +5099,7 @@ impl GenExtPS {
         }
     }
 
-    /// **Source:** `Extrema_GenExtPS.hxx`:91 - `Extrema_GenExtPS::Initialize()`
+    /// **Source:** `Extrema_GenExtPS.hxx`:93 - `Extrema_GenExtPS::Initialize()`
     pub fn initialize_surface_int2_real2(
         &mut self,
         S: &crate::adaptor3d::Surface,
@@ -7587,7 +5120,7 @@ impl GenExtPS {
         })
     }
 
-    /// **Source:** `Extrema_GenExtPS.hxx`:97 - `Extrema_GenExtPS::Initialize()`
+    /// **Source:** `Extrema_GenExtPS.hxx`:99 - `Extrema_GenExtPS::Initialize()`
     pub fn initialize_surface_int2_real6(
         &mut self,
         S: &crate::adaptor3d::Surface,
@@ -7616,7 +5149,7 @@ impl GenExtPS {
         })
     }
 
-    /// **Source:** `Extrema_GenExtPS.hxx`:110 - `Extrema_GenExtPS::Perform()`
+    /// **Source:** `Extrema_GenExtPS.hxx`:112 - `Extrema_GenExtPS::Perform()`
     /// the algorithm is done with the point P.
     /// An exception is raised if the fields have not
     /// been initialized.
@@ -7626,21 +5159,21 @@ impl GenExtPS {
         })
     }
 
-    /// **Source:** `Extrema_GenExtPS.hxx`:112 - `Extrema_GenExtPS::SetFlag()`
+    /// **Source:** `Extrema_GenExtPS.hxx`:114 - `Extrema_GenExtPS::SetFlag()`
     pub fn set_flag(&mut self, F: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_GenExtPS_set_flag(self as *mut Self, F)
         })
     }
 
-    /// **Source:** `Extrema_GenExtPS.hxx`:114 - `Extrema_GenExtPS::SetAlgo()`
+    /// **Source:** `Extrema_GenExtPS.hxx`:116 - `Extrema_GenExtPS::SetAlgo()`
     pub fn set_algo(&mut self, A: crate::extrema::ExtAlgo) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_GenExtPS_set_algo(self as *mut Self, A.into())
         })
     }
 
-    /// **Source:** `Extrema_GenExtPS.hxx`:117 - `Extrema_GenExtPS::IsDone()`
+    /// **Source:** `Extrema_GenExtPS.hxx`:119 - `Extrema_GenExtPS::IsDone()`
     /// Returns True if the distances are found.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -7648,7 +5181,7 @@ impl GenExtPS {
         })
     }
 
-    /// **Source:** `Extrema_GenExtPS.hxx`:120 - `Extrema_GenExtPS::NbExt()`
+    /// **Source:** `Extrema_GenExtPS.hxx`:122 - `Extrema_GenExtPS::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
         crate::check_result(unsafe {
@@ -7656,7 +5189,7 @@ impl GenExtPS {
         })
     }
 
-    /// **Source:** `Extrema_GenExtPS.hxx`:123 - `Extrema_GenExtPS::SquareDistance()`
+    /// **Source:** `Extrema_GenExtPS.hxx`:125 - `Extrema_GenExtPS::SquareDistance()`
     /// Returns the value of the Nth resulting square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
         crate::check_result(unsafe {
@@ -7664,7 +5197,7 @@ impl GenExtPS {
         })
     }
 
-    /// **Source:** `Extrema_GenExtPS.hxx`:126 - `Extrema_GenExtPS::Point()`
+    /// **Source:** `Extrema_GenExtPS.hxx`:128 - `Extrema_GenExtPS::Point()`
     /// Returns the point of the Nth resulting distance.
     pub fn point(&self, N: i32) -> &POnSurf {
         unsafe {
@@ -7680,7 +5213,7 @@ impl GenExtPS {
 // From Extrema_GenExtSS.hxx
 // ========================
 
-/// **Source:** `Extrema_GenExtSS.hxx`:33 - `Extrema_GenExtSS`
+/// **Source:** `Extrema_GenExtSS.hxx`:35 - `Extrema_GenExtSS`
 /// It calculates all the extremum distances
 /// between two surfaces.
 /// These distances can be minimum or maximum.
@@ -7695,7 +5228,7 @@ unsafe impl crate::CppDeletable for GenExtSS {
 }
 
 impl GenExtSS {
-    /// **Source:** `Extrema_GenExtSS.hxx`:39 - `Extrema_GenExtSS::Extrema_GenExtSS()`
+    /// **Source:** `Extrema_GenExtSS.hxx`:41 - `Extrema_GenExtSS::Extrema_GenExtSS()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -7705,7 +5238,7 @@ impl GenExtSS {
         }
     }
 
-    /// **Source:** `Extrema_GenExtSS.hxx`:51 - `Extrema_GenExtSS::Extrema_GenExtSS()`
+    /// **Source:** `Extrema_GenExtSS.hxx`:53 - `Extrema_GenExtSS::Extrema_GenExtSS()`
     /// It calculates all the distances.
     /// The function F(u,v)=distance(S1(u1,v1),S2(u2,v2)) has an
     /// extremum when gradient(F)=0. The algorithm searches
@@ -7730,7 +5263,7 @@ impl GenExtSS {
         }
     }
 
-    /// **Source:** `Extrema_GenExtSS.hxx`:65 - `Extrema_GenExtSS::Extrema_GenExtSS()`
+    /// **Source:** `Extrema_GenExtSS.hxx`:67 - `Extrema_GenExtSS::Extrema_GenExtSS()`
     /// It calculates all the distances.
     /// The function F(u,v)=distance(P,S(u,v)) has an
     /// extremum when gradient(F)=0. The algorithm searches
@@ -7764,7 +5297,7 @@ impl GenExtSS {
         }
     }
 
-    /// **Source:** `Extrema_GenExtSS.hxx`:80 - `Extrema_GenExtSS::Initialize()`
+    /// **Source:** `Extrema_GenExtSS.hxx`:82 - `Extrema_GenExtSS::Initialize()`
     pub fn initialize_surface_int2_real(
         &mut self,
         S2: &crate::adaptor3d::Surface,
@@ -7783,7 +5316,7 @@ impl GenExtSS {
         })
     }
 
-    /// **Source:** `Extrema_GenExtSS.hxx`:85 - `Extrema_GenExtSS::Initialize()`
+    /// **Source:** `Extrema_GenExtSS.hxx`:87 - `Extrema_GenExtSS::Initialize()`
     pub fn initialize_surface_int2_real5(
         &mut self,
         S2: &crate::adaptor3d::Surface,
@@ -7810,7 +5343,7 @@ impl GenExtSS {
         })
     }
 
-    /// **Source:** `Extrema_GenExtSS.hxx`:97 - `Extrema_GenExtSS::Perform()`
+    /// **Source:** `Extrema_GenExtSS.hxx`:99 - `Extrema_GenExtSS::Perform()`
     /// the algorithm is done with S1
     /// An exception is raised if the fields have not
     /// been initialized.
@@ -7824,7 +5357,7 @@ impl GenExtSS {
         })
     }
 
-    /// **Source:** `Extrema_GenExtSS.hxx`:102 - `Extrema_GenExtSS::Perform()`
+    /// **Source:** `Extrema_GenExtSS.hxx`:104 - `Extrema_GenExtSS::Perform()`
     /// the algorithm is done withS1
     /// An exception is raised if the fields have not
     /// been initialized.
@@ -7850,7 +5383,7 @@ impl GenExtSS {
         })
     }
 
-    /// **Source:** `Extrema_GenExtSS.hxx`:110 - `Extrema_GenExtSS::IsDone()`
+    /// **Source:** `Extrema_GenExtSS.hxx`:112 - `Extrema_GenExtSS::IsDone()`
     /// Returns True if the distances are found.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -7858,7 +5391,7 @@ impl GenExtSS {
         })
     }
 
-    /// **Source:** `Extrema_GenExtSS.hxx`:113 - `Extrema_GenExtSS::NbExt()`
+    /// **Source:** `Extrema_GenExtSS.hxx`:115 - `Extrema_GenExtSS::NbExt()`
     /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
         crate::check_result(unsafe {
@@ -7866,7 +5399,7 @@ impl GenExtSS {
         })
     }
 
-    /// **Source:** `Extrema_GenExtSS.hxx`:116 - `Extrema_GenExtSS::SquareDistance()`
+    /// **Source:** `Extrema_GenExtSS.hxx`:118 - `Extrema_GenExtSS::SquareDistance()`
     /// Returns the value of the Nth resulting square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
         crate::check_result(unsafe {
@@ -7874,7 +5407,7 @@ impl GenExtSS {
         })
     }
 
-    /// **Source:** `Extrema_GenExtSS.hxx`:119 - `Extrema_GenExtSS::PointOnS1()`
+    /// **Source:** `Extrema_GenExtSS.hxx`:121 - `Extrema_GenExtSS::PointOnS1()`
     /// Returns the point of the Nth resulting distance.
     pub fn point_on_s1(&self, N: i32) -> &POnSurf {
         unsafe {
@@ -7885,7 +5418,7 @@ impl GenExtSS {
         }
     }
 
-    /// **Source:** `Extrema_GenExtSS.hxx`:122 - `Extrema_GenExtSS::PointOnS2()`
+    /// **Source:** `Extrema_GenExtSS.hxx`:124 - `Extrema_GenExtSS::PointOnS2()`
     /// Returns the point of the Nth resulting distance.
     pub fn point_on_s2(&self, N: i32) -> &POnSurf {
         unsafe {
@@ -8451,7 +5984,7 @@ impl GlobOptFuncCCC1 {
     }
 }
 
-/// **Source:** `Extrema_GlobOptFuncCC.hxx`:75 - `Extrema_GlobOptFuncCCC2`
+/// **Source:** `Extrema_GlobOptFuncCC.hxx`:73 - `Extrema_GlobOptFuncCCC2`
 /// This class implements function which calculate Eucluidean distance
 /// between point on curve and point on other curve in case of C1 and C2 continuity is C2.
 pub use crate::ffi_types::Extrema_GlobOptFuncCCC2 as GlobOptFuncCCC2;
@@ -8465,7 +5998,7 @@ unsafe impl crate::CppDeletable for GlobOptFuncCCC2 {
 }
 
 impl GlobOptFuncCCC2 {
-    /// **Source:** `Extrema_GlobOptFuncCC.hxx`:78 - `Extrema_GlobOptFuncCCC2::Extrema_GlobOptFuncCCC2()`
+    /// **Source:** `Extrema_GlobOptFuncCC.hxx`:76 - `Extrema_GlobOptFuncCCC2::Extrema_GlobOptFuncCCC2()`
     pub fn new_curve2(
         C1: &crate::adaptor3d::Curve,
         C2: &crate::adaptor3d::Curve,
@@ -8477,7 +6010,7 @@ impl GlobOptFuncCCC2 {
         }
     }
 
-    /// **Source:** `Extrema_GlobOptFuncCC.hxx`:80 - `Extrema_GlobOptFuncCCC2::Extrema_GlobOptFuncCCC2()`
+    /// **Source:** `Extrema_GlobOptFuncCC.hxx`:78 - `Extrema_GlobOptFuncCCC2::Extrema_GlobOptFuncCCC2()`
     pub fn new_curve2d2(
         C1: &crate::adaptor2d::Curve2d,
         C2: &crate::adaptor2d::Curve2d,
@@ -8489,21 +6022,21 @@ impl GlobOptFuncCCC2 {
         }
     }
 
-    /// **Source:** `Extrema_GlobOptFuncCC.hxx`:82 - `Extrema_GlobOptFuncCCC2::NbVariables()`
+    /// **Source:** `Extrema_GlobOptFuncCC.hxx`:80 - `Extrema_GlobOptFuncCCC2::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_GlobOptFuncCCC2_nb_variables(self as *const Self)
         })
     }
 
-    /// **Source:** `Extrema_GlobOptFuncCC.hxx`:84 - `Extrema_GlobOptFuncCCC2::Value()`
+    /// **Source:** `Extrema_GlobOptFuncCC.hxx`:82 - `Extrema_GlobOptFuncCCC2::Value()`
     pub fn value(&mut self, X: &crate::ffi_types::math_Vector, F: &mut f64) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_GlobOptFuncCCC2_value(self as *mut Self, X, F)
         })
     }
 
-    /// **Source:** `Extrema_GlobOptFuncCC.hxx`:86 - `Extrema_GlobOptFuncCCC2::Gradient()`
+    /// **Source:** `Extrema_GlobOptFuncCC.hxx`:84 - `Extrema_GlobOptFuncCCC2::Gradient()`
     pub fn gradient(
         &mut self,
         X: &crate::ffi_types::math_Vector,
@@ -8514,7 +6047,7 @@ impl GlobOptFuncCCC2 {
         })
     }
 
-    /// **Source:** `Extrema_GlobOptFuncCC.hxx`:88 - `Extrema_GlobOptFuncCCC2::Values()`
+    /// **Source:** `Extrema_GlobOptFuncCC.hxx`:86 - `Extrema_GlobOptFuncCCC2::Values()`
     pub fn values_vector_real_vector(
         &mut self,
         X: &crate::ffi_types::math_Vector,
@@ -8531,7 +6064,7 @@ impl GlobOptFuncCCC2 {
         })
     }
 
-    /// **Source:** `Extrema_GlobOptFuncCC.hxx`:92 - `Extrema_GlobOptFuncCCC2::Values()`
+    /// **Source:** `Extrema_GlobOptFuncCC.hxx`:88 - `Extrema_GlobOptFuncCCC2::Values()`
     pub fn values_vector_real_vector_matrix(
         &mut self,
         X: &crate::ffi_types::math_Vector,
@@ -8837,7 +6370,7 @@ impl GlobOptFuncCS {
         })
     }
 
-    /// **Source:** `Extrema_GlobOptFuncCS.hxx`:42 - `Extrema_GlobOptFuncCS::Values()`
+    /// **Source:** `Extrema_GlobOptFuncCS.hxx`:40 - `Extrema_GlobOptFuncCS::Values()`
     pub fn values_vector_real_vector_matrix(
         &mut self,
         theX: &crate::ffi_types::math_Vector,
@@ -9002,7 +6535,7 @@ impl GlobOptFuncConicS {
         })
     }
 
-    /// **Source:** `Extrema_GlobOptFuncConicS.hxx`:47 - `Extrema_GlobOptFuncConicS::NbVariables()`
+    /// **Source:** `Extrema_GlobOptFuncConicS.hxx`:45 - `Extrema_GlobOptFuncConicS::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_GlobOptFuncConicS_nb_variables(
@@ -9011,7 +6544,7 @@ impl GlobOptFuncConicS {
         })
     }
 
-    /// **Source:** `Extrema_GlobOptFuncConicS.hxx`:49 - `Extrema_GlobOptFuncConicS::Value()`
+    /// **Source:** `Extrema_GlobOptFuncConicS.hxx`:47 - `Extrema_GlobOptFuncConicS::Value()`
     pub fn value(&mut self, theX: &crate::ffi_types::math_Vector, theF: &mut f64) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_GlobOptFuncConicS_value(
@@ -9022,7 +6555,7 @@ impl GlobOptFuncConicS {
         })
     }
 
-    /// **Source:** `Extrema_GlobOptFuncConicS.hxx`:52 - `Extrema_GlobOptFuncConicS::ConicParameter()`
+    /// **Source:** `Extrema_GlobOptFuncConicS.hxx`:50 - `Extrema_GlobOptFuncConicS::ConicParameter()`
     /// Parameter of conic for point on surface defined by theUV
     pub fn conic_parameter(&self, theUV: &crate::ffi_types::math_Vector) -> f64 {
         crate::check_result(unsafe {
@@ -9058,2148 +6591,6 @@ impl GlobOptFuncConicS {
                 self as *mut Self,
             )
         })
-    }
-}
-
-// ========================
-// From Extrema_HArray1OfPOnCurv.hxx
-// ========================
-
-/// **Source:** `Extrema_HArray1OfPOnCurv.hxx`:23 - `Extrema_HArray1OfPOnCurv`
-pub use crate::ffi_types::Extrema_HArray1OfPOnCurv as HArray1OfPOnCurv;
-
-unsafe impl crate::CppDeletable for HArray1OfPOnCurv {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv_destructor(ptr);
-        }
-    }
-}
-
-impl HArray1OfPOnCurv {
-    /// **Source:** `Extrema_HArray1OfPOnCurv.hxx`:23 - `Extrema_HArray1OfPOnCurv::Extrema_HArray1OfPOnCurv()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray1OfPOnCurv.hxx`:23 - `Extrema_HArray1OfPOnCurv::Extrema_HArray1OfPOnCurv()`
-    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv_ctor_int2(
-                    theLower, theUpper,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray1OfPOnCurv.hxx`:23 - `Extrema_HArray1OfPOnCurv::Extrema_HArray1OfPOnCurv()`
-    pub fn new_int2_poncurv(
-        theLower: i32,
-        theUpper: i32,
-        theValue: &POnCurv,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv_ctor_int2_poncurv(
-                    theLower, theUpper, theValue,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray1OfPOnCurv.hxx`:23 - `Extrema_HArray1OfPOnCurv::Extrema_HArray1OfPOnCurv()`
-    pub fn new_poncurv_int2_bool(
-        theBegin: &POnCurv,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv_ctor_poncurv_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray1OfPOnCurv.hxx`:23 - `Extrema_HArray1OfPOnCurv::Extrema_HArray1OfPOnCurv()`
-    pub fn new_array1ofponcurv(
-        theOther: &crate::ffi_types::Extrema_Array1OfPOnCurv,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv_ctor_array1ofponcurv(
-                    theOther,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray1OfPOnCurv.hxx`:23 - `Extrema_HArray1OfPOnCurv::Array1()`
-    pub fn array1(&self) -> &crate::ffi_types::Extrema_Array1OfPOnCurv {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv_array1(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray1OfPOnCurv.hxx`:23 - `Extrema_HArray1OfPOnCurv::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi_types::Extrema_Array1OfPOnCurv {
-        unsafe {
-            &mut *(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv_change_array1(
-                    self as *mut Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray1OfPOnCurv.hxx`:23 - `Extrema_HArray1OfPOnCurv::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv_dynamic_type(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray1OfPOnCurv.hxx`:23 - `Extrema_HArray1OfPOnCurv::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `Extrema_HArray1OfPOnCurv.hxx`:23 - `Extrema_HArray1OfPOnCurv::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv_get_type_descriptor(),
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleExtremaHArray1OfPOnCurv> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleExtremaHArray1OfPOnCurv;
-
-unsafe impl crate::CppDeletable for HandleExtremaHArray1OfPOnCurv {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnCurv_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleExtremaHArray1OfPOnCurv {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnCurv_clone(
-                ptr,
-            ))
-        }
-    }
-}
-
-impl HandleExtremaHArray1OfPOnCurv {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnCurv_is_null(self as *const Self)
-        }
-    }
-
-    /// Dereference this Handle to access the underlying Extrema_HArray1OfPOnCurv
-    pub fn get(&self) -> &crate::ffi_types::Extrema_HArray1OfPOnCurv {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnCurv_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Extrema_HArray1OfPOnCurv
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Extrema_HArray1OfPOnCurv {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnCurv_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<Extrema_HArray1OfPOnCurv> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnCurv_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
-}
-
-// ========================
-// From Extrema_HArray1OfPOnCurv2d.hxx
-// ========================
-
-/// **Source:** `Extrema_HArray1OfPOnCurv2d.hxx`:24 - `Extrema_HArray1OfPOnCurv2d`
-pub use crate::ffi_types::Extrema_HArray1OfPOnCurv2d as HArray1OfPOnCurv2d;
-
-unsafe impl crate::CppDeletable for HArray1OfPOnCurv2d {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv2d_destructor(ptr);
-        }
-    }
-}
-
-impl HArray1OfPOnCurv2d {
-    /// **Source:** `Extrema_HArray1OfPOnCurv2d.hxx`:24 - `Extrema_HArray1OfPOnCurv2d::Extrema_HArray1OfPOnCurv2d()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv2d_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray1OfPOnCurv2d.hxx`:24 - `Extrema_HArray1OfPOnCurv2d::Extrema_HArray1OfPOnCurv2d()`
-    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv2d_ctor_int2(
-                    theLower, theUpper,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray1OfPOnCurv2d.hxx`:24 - `Extrema_HArray1OfPOnCurv2d::Extrema_HArray1OfPOnCurv2d()`
-    pub fn new_int2_poncurv2d(
-        theLower: i32,
-        theUpper: i32,
-        theValue: &POnCurv2d,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv2d_ctor_int2_poncurv2d(
-                    theLower, theUpper, theValue,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray1OfPOnCurv2d.hxx`:24 - `Extrema_HArray1OfPOnCurv2d::Extrema_HArray1OfPOnCurv2d()`
-    pub fn new_poncurv2d_int2_bool(
-        theBegin: &POnCurv2d,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv2d_ctor_poncurv2d_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray1OfPOnCurv2d.hxx`:24 - `Extrema_HArray1OfPOnCurv2d::Extrema_HArray1OfPOnCurv2d()`
-    pub fn new_array1ofponcurv2d(
-        theOther: &crate::ffi_types::Extrema_Array1OfPOnCurv2d,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv2d_ctor_array1ofponcurv2d(
-                    theOther,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray1OfPOnCurv2d.hxx`:24 - `Extrema_HArray1OfPOnCurv2d::Array1()`
-    pub fn array1(&self) -> &crate::ffi_types::Extrema_Array1OfPOnCurv2d {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv2d_array1(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray1OfPOnCurv2d.hxx`:24 - `Extrema_HArray1OfPOnCurv2d::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi_types::Extrema_Array1OfPOnCurv2d {
-        unsafe {
-            &mut *(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv2d_change_array1(
-                    self as *mut Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray1OfPOnCurv2d.hxx`:24 - `Extrema_HArray1OfPOnCurv2d::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv2d_dynamic_type(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray1OfPOnCurv2d.hxx`:24 - `Extrema_HArray1OfPOnCurv2d::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv2d_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `Extrema_HArray1OfPOnCurv2d.hxx`:24 - `Extrema_HArray1OfPOnCurv2d::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv2d_get_type_descriptor(),
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv2d_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv2d_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleExtremaHArray1OfPOnCurv2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv2d_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv2d_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv2d_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv2d_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv2d_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv2d_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv2d_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnCurv2d_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleExtremaHArray1OfPOnCurv2d;
-
-unsafe impl crate::CppDeletable for HandleExtremaHArray1OfPOnCurv2d {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnCurv2d_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleExtremaHArray1OfPOnCurv2d {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnCurv2d_clone(ptr),
-            )
-        }
-    }
-}
-
-impl HandleExtremaHArray1OfPOnCurv2d {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnCurv2d_is_null(
-                self as *const Self,
-            )
-        }
-    }
-
-    /// Dereference this Handle to access the underlying Extrema_HArray1OfPOnCurv2d
-    pub fn get(&self) -> &crate::ffi_types::Extrema_HArray1OfPOnCurv2d {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnCurv2d_get(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Extrema_HArray1OfPOnCurv2d
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Extrema_HArray1OfPOnCurv2d {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnCurv2d_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<Extrema_HArray1OfPOnCurv2d> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnCurv2d_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
-}
-
-// ========================
-// From Extrema_HArray1OfPOnSurf.hxx
-// ========================
-
-/// **Source:** `Extrema_HArray1OfPOnSurf.hxx`:23 - `Extrema_HArray1OfPOnSurf`
-pub use crate::ffi_types::Extrema_HArray1OfPOnSurf as HArray1OfPOnSurf;
-
-unsafe impl crate::CppDeletable for HArray1OfPOnSurf {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnSurf_destructor(ptr);
-        }
-    }
-}
-
-impl HArray1OfPOnSurf {
-    /// **Source:** `Extrema_HArray1OfPOnSurf.hxx`:23 - `Extrema_HArray1OfPOnSurf::Extrema_HArray1OfPOnSurf()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnSurf_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray1OfPOnSurf.hxx`:23 - `Extrema_HArray1OfPOnSurf::Extrema_HArray1OfPOnSurf()`
-    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnSurf_ctor_int2(
-                    theLower, theUpper,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray1OfPOnSurf.hxx`:23 - `Extrema_HArray1OfPOnSurf::Extrema_HArray1OfPOnSurf()`
-    pub fn new_int2_ponsurf(
-        theLower: i32,
-        theUpper: i32,
-        theValue: &POnSurf,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnSurf_ctor_int2_ponsurf(
-                    theLower, theUpper, theValue,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray1OfPOnSurf.hxx`:23 - `Extrema_HArray1OfPOnSurf::Extrema_HArray1OfPOnSurf()`
-    pub fn new_ponsurf_int2_bool(
-        theBegin: &POnSurf,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnSurf_ctor_ponsurf_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray1OfPOnSurf.hxx`:23 - `Extrema_HArray1OfPOnSurf::Extrema_HArray1OfPOnSurf()`
-    pub fn new_array1ofponsurf(
-        theOther: &crate::ffi_types::Extrema_Array1OfPOnSurf,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnSurf_ctor_array1ofponsurf(
-                    theOther,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray1OfPOnSurf.hxx`:23 - `Extrema_HArray1OfPOnSurf::Array1()`
-    pub fn array1(&self) -> &crate::ffi_types::Extrema_Array1OfPOnSurf {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnSurf_array1(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray1OfPOnSurf.hxx`:23 - `Extrema_HArray1OfPOnSurf::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi_types::Extrema_Array1OfPOnSurf {
-        unsafe {
-            &mut *(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnSurf_change_array1(
-                    self as *mut Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray1OfPOnSurf.hxx`:23 - `Extrema_HArray1OfPOnSurf::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnSurf_dynamic_type(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray1OfPOnSurf.hxx`:23 - `Extrema_HArray1OfPOnSurf::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnSurf_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `Extrema_HArray1OfPOnSurf.hxx`:23 - `Extrema_HArray1OfPOnSurf::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnSurf_get_type_descriptor(),
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnSurf_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnSurf_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleExtremaHArray1OfPOnSurf> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnSurf_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnSurf_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnSurf_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnSurf_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnSurf_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnSurf_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnSurf_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray1OfPOnSurf_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleExtremaHArray1OfPOnSurf;
-
-unsafe impl crate::CppDeletable for HandleExtremaHArray1OfPOnSurf {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnSurf_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleExtremaHArray1OfPOnSurf {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnSurf_clone(
-                ptr,
-            ))
-        }
-    }
-}
-
-impl HandleExtremaHArray1OfPOnSurf {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnSurf_is_null(self as *const Self)
-        }
-    }
-
-    /// Dereference this Handle to access the underlying Extrema_HArray1OfPOnSurf
-    pub fn get(&self) -> &crate::ffi_types::Extrema_HArray1OfPOnSurf {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnSurf_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Extrema_HArray1OfPOnSurf
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Extrema_HArray1OfPOnSurf {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnSurf_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<Extrema_HArray1OfPOnSurf> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaHArray1OfPOnSurf_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
-}
-
-// ========================
-// From Extrema_HArray2OfPOnCurv.hxx
-// ========================
-
-/// **Source:** `Extrema_HArray2OfPOnCurv.hxx`:24 - `Extrema_HArray2OfPOnCurv`
-pub use crate::ffi_types::Extrema_HArray2OfPOnCurv as HArray2OfPOnCurv;
-
-unsafe impl crate::CppDeletable for HArray2OfPOnCurv {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv_destructor(ptr);
-        }
-    }
-}
-
-impl HArray2OfPOnCurv {
-    /// **Source:** `Extrema_HArray2OfPOnCurv.hxx`:24 - `Extrema_HArray2OfPOnCurv::Extrema_HArray2OfPOnCurv()`
-    pub fn new_int4(
-        theRowLow: i32,
-        theRowUpp: i32,
-        theColLow: i32,
-        theColUpp: i32,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv_ctor_int4(
-                    theRowLow, theRowUpp, theColLow, theColUpp,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray2OfPOnCurv.hxx`:24 - `Extrema_HArray2OfPOnCurv::Extrema_HArray2OfPOnCurv()`
-    pub fn new_int4_poncurv(
-        theRowLow: i32,
-        theRowUpp: i32,
-        theColLow: i32,
-        theColUpp: i32,
-        theValue: &POnCurv,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv_ctor_int4_poncurv(
-                    theRowLow, theRowUpp, theColLow, theColUpp, theValue,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray2OfPOnCurv.hxx`:24 - `Extrema_HArray2OfPOnCurv::Extrema_HArray2OfPOnCurv()`
-    pub fn new_array2ofponcurv(
-        theOther: &crate::ffi_types::Extrema_Array2OfPOnCurv,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv_ctor_array2ofponcurv(
-                    theOther,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray2OfPOnCurv.hxx`:24 - `Extrema_HArray2OfPOnCurv::Array2()`
-    pub fn array2(&self) -> &crate::ffi_types::Extrema_Array2OfPOnCurv {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv_array2(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray2OfPOnCurv.hxx`:24 - `Extrema_HArray2OfPOnCurv::ChangeArray2()`
-    pub fn change_array2(&mut self) -> &mut crate::ffi_types::Extrema_Array2OfPOnCurv {
-        unsafe {
-            &mut *(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv_change_array2(
-                    self as *mut Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray2OfPOnCurv.hxx`:24 - `Extrema_HArray2OfPOnCurv::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv_dynamic_type(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray2OfPOnCurv.hxx`:24 - `Extrema_HArray2OfPOnCurv::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `Extrema_HArray2OfPOnCurv.hxx`:24 - `Extrema_HArray2OfPOnCurv::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv_get_type_descriptor(),
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleExtremaHArray2OfPOnCurv> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleExtremaHArray2OfPOnCurv;
-
-unsafe impl crate::CppDeletable for HandleExtremaHArray2OfPOnCurv {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnCurv_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleExtremaHArray2OfPOnCurv {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnCurv_clone(
-                ptr,
-            ))
-        }
-    }
-}
-
-impl HandleExtremaHArray2OfPOnCurv {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnCurv_is_null(self as *const Self)
-        }
-    }
-
-    /// Dereference this Handle to access the underlying Extrema_HArray2OfPOnCurv
-    pub fn get(&self) -> &crate::ffi_types::Extrema_HArray2OfPOnCurv {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnCurv_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Extrema_HArray2OfPOnCurv
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Extrema_HArray2OfPOnCurv {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnCurv_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<Extrema_HArray2OfPOnCurv> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnCurv_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
-}
-
-// ========================
-// From Extrema_HArray2OfPOnCurv2d.hxx
-// ========================
-
-/// **Source:** `Extrema_HArray2OfPOnCurv2d.hxx`:24 - `Extrema_HArray2OfPOnCurv2d`
-pub use crate::ffi_types::Extrema_HArray2OfPOnCurv2d as HArray2OfPOnCurv2d;
-
-unsafe impl crate::CppDeletable for HArray2OfPOnCurv2d {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv2d_destructor(ptr);
-        }
-    }
-}
-
-impl HArray2OfPOnCurv2d {
-    /// **Source:** `Extrema_HArray2OfPOnCurv2d.hxx`:24 - `Extrema_HArray2OfPOnCurv2d::Extrema_HArray2OfPOnCurv2d()`
-    pub fn new_int4(
-        theRowLow: i32,
-        theRowUpp: i32,
-        theColLow: i32,
-        theColUpp: i32,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv2d_ctor_int4(
-                    theRowLow, theRowUpp, theColLow, theColUpp,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray2OfPOnCurv2d.hxx`:24 - `Extrema_HArray2OfPOnCurv2d::Extrema_HArray2OfPOnCurv2d()`
-    pub fn new_int4_poncurv2d(
-        theRowLow: i32,
-        theRowUpp: i32,
-        theColLow: i32,
-        theColUpp: i32,
-        theValue: &POnCurv2d,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv2d_ctor_int4_poncurv2d(
-                    theRowLow, theRowUpp, theColLow, theColUpp, theValue,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray2OfPOnCurv2d.hxx`:24 - `Extrema_HArray2OfPOnCurv2d::Extrema_HArray2OfPOnCurv2d()`
-    pub fn new_array2ofponcurv2d(
-        theOther: &crate::ffi_types::Extrema_Array2OfPOnCurv2d,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv2d_ctor_array2ofponcurv2d(
-                    theOther,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray2OfPOnCurv2d.hxx`:24 - `Extrema_HArray2OfPOnCurv2d::Array2()`
-    pub fn array2(&self) -> &crate::ffi_types::Extrema_Array2OfPOnCurv2d {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv2d_array2(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray2OfPOnCurv2d.hxx`:24 - `Extrema_HArray2OfPOnCurv2d::ChangeArray2()`
-    pub fn change_array2(&mut self) -> &mut crate::ffi_types::Extrema_Array2OfPOnCurv2d {
-        unsafe {
-            &mut *(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv2d_change_array2(
-                    self as *mut Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray2OfPOnCurv2d.hxx`:24 - `Extrema_HArray2OfPOnCurv2d::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv2d_dynamic_type(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray2OfPOnCurv2d.hxx`:24 - `Extrema_HArray2OfPOnCurv2d::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv2d_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `Extrema_HArray2OfPOnCurv2d.hxx`:24 - `Extrema_HArray2OfPOnCurv2d::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv2d_get_type_descriptor(),
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv2d_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv2d_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleExtremaHArray2OfPOnCurv2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv2d_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv2d_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv2d_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv2d_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv2d_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv2d_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv2d_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnCurv2d_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleExtremaHArray2OfPOnCurv2d;
-
-unsafe impl crate::CppDeletable for HandleExtremaHArray2OfPOnCurv2d {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnCurv2d_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleExtremaHArray2OfPOnCurv2d {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnCurv2d_clone(ptr),
-            )
-        }
-    }
-}
-
-impl HandleExtremaHArray2OfPOnCurv2d {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnCurv2d_is_null(
-                self as *const Self,
-            )
-        }
-    }
-
-    /// Dereference this Handle to access the underlying Extrema_HArray2OfPOnCurv2d
-    pub fn get(&self) -> &crate::ffi_types::Extrema_HArray2OfPOnCurv2d {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnCurv2d_get(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Extrema_HArray2OfPOnCurv2d
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Extrema_HArray2OfPOnCurv2d {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnCurv2d_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<Extrema_HArray2OfPOnCurv2d> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnCurv2d_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
-}
-
-// ========================
-// From Extrema_HArray2OfPOnSurf.hxx
-// ========================
-
-/// **Source:** `Extrema_HArray2OfPOnSurf.hxx`:24 - `Extrema_HArray2OfPOnSurf`
-pub use crate::ffi_types::Extrema_HArray2OfPOnSurf as HArray2OfPOnSurf;
-
-unsafe impl crate::CppDeletable for HArray2OfPOnSurf {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnSurf_destructor(ptr);
-        }
-    }
-}
-
-impl HArray2OfPOnSurf {
-    /// **Source:** `Extrema_HArray2OfPOnSurf.hxx`:24 - `Extrema_HArray2OfPOnSurf::Extrema_HArray2OfPOnSurf()`
-    pub fn new_int4(
-        theRowLow: i32,
-        theRowUpp: i32,
-        theColLow: i32,
-        theColUpp: i32,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnSurf_ctor_int4(
-                    theRowLow, theRowUpp, theColLow, theColUpp,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray2OfPOnSurf.hxx`:24 - `Extrema_HArray2OfPOnSurf::Extrema_HArray2OfPOnSurf()`
-    pub fn new_int4_ponsurf(
-        theRowLow: i32,
-        theRowUpp: i32,
-        theColLow: i32,
-        theColUpp: i32,
-        theValue: &POnSurf,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnSurf_ctor_int4_ponsurf(
-                    theRowLow, theRowUpp, theColLow, theColUpp, theValue,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray2OfPOnSurf.hxx`:24 - `Extrema_HArray2OfPOnSurf::Extrema_HArray2OfPOnSurf()`
-    pub fn new_array2ofponsurf(
-        theOther: &crate::ffi_types::Extrema_Array2OfPOnSurf,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnSurf_ctor_array2ofponsurf(
-                    theOther,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray2OfPOnSurf.hxx`:24 - `Extrema_HArray2OfPOnSurf::Array2()`
-    pub fn array2(&self) -> &crate::ffi_types::Extrema_Array2OfPOnSurf {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnSurf_array2(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray2OfPOnSurf.hxx`:24 - `Extrema_HArray2OfPOnSurf::ChangeArray2()`
-    pub fn change_array2(&mut self) -> &mut crate::ffi_types::Extrema_Array2OfPOnSurf {
-        unsafe {
-            &mut *(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnSurf_change_array2(
-                    self as *mut Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray2OfPOnSurf.hxx`:24 - `Extrema_HArray2OfPOnSurf::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnSurf_dynamic_type(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_HArray2OfPOnSurf.hxx`:24 - `Extrema_HArray2OfPOnSurf::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnSurf_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `Extrema_HArray2OfPOnSurf.hxx`:24 - `Extrema_HArray2OfPOnSurf::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnSurf_get_type_descriptor(),
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnSurf_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnSurf_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleExtremaHArray2OfPOnSurf> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnSurf_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnSurf_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnSurf_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnSurf_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnSurf_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnSurf_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnSurf_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_HArray2OfPOnSurf_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleExtremaHArray2OfPOnSurf;
-
-unsafe impl crate::CppDeletable for HandleExtremaHArray2OfPOnSurf {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnSurf_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleExtremaHArray2OfPOnSurf {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnSurf_clone(
-                ptr,
-            ))
-        }
-    }
-}
-
-impl HandleExtremaHArray2OfPOnSurf {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnSurf_is_null(self as *const Self)
-        }
-    }
-
-    /// Dereference this Handle to access the underlying Extrema_HArray2OfPOnSurf
-    pub fn get(&self) -> &crate::ffi_types::Extrema_HArray2OfPOnSurf {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnSurf_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Extrema_HArray2OfPOnSurf
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Extrema_HArray2OfPOnSurf {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnSurf_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<Extrema_HArray2OfPOnSurf> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::HandleExtremaHArray2OfPOnSurf_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
-}
-
-// ========================
-// From Extrema_LocECC.hxx
-// ========================
-
-/// **Source:** `Extrema_LocECC.hxx`:34 - `Extrema_LocECC`
-pub use crate::ffi_types::Extrema_LocECC as LocECC;
-
-unsafe impl crate::CppDeletable for LocECC {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocECC_destructor(ptr);
-        }
-    }
-}
-
-impl LocECC {
-    /// **Source:** `Extrema_LocECC.hxx`:45 - `Extrema_LocECC::Extrema_LocECC()`
-    /// Calculates the distance with a close point. The
-    /// close point is defined by a parameter value on each
-    /// curve.
-    /// The function F(u,v)=distance(C1(u),C2(v)) has an
-    /// extremun when gradient(f)=0. The algorithm searches
-    /// the zero near the close point.
-    pub fn new_curve2_real4(
-        C1: &crate::adaptor3d::Curve,
-        C2: &crate::adaptor3d::Curve,
-        U0: f64,
-        V0: f64,
-        TolU: f64,
-        TolV: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_LocECC_ctor_curve2_real4(
-                    C1, C2, U0, V0, TolU, TolV,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_LocECC.hxx`:53 - `Extrema_LocECC::IsDone()`
-    /// Returns True if the distance is found.
-    pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocECC_is_done(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_LocECC.hxx`:56 - `Extrema_LocECC::SquareDistance()`
-    /// Returns the value of the extremum square distance.
-    pub fn square_distance(&self) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocECC_square_distance(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_LocECC.hxx`:60 - `Extrema_LocECC::Point()`
-    /// Returns the points of the extremum distance.
-    /// P1 is on the first curve, P2 on the second one.
-    pub fn point(&self, P1: &mut POnCurv, P2: &mut POnCurv) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocECC_point(self as *const Self, P1, P2)
-        })
-    }
-}
-
-// ========================
-// From Extrema_LocECC2d.hxx
-// ========================
-
-/// **Source:** `Extrema_LocECC2d.hxx`:34 - `Extrema_LocECC2d`
-pub use crate::ffi_types::Extrema_LocECC2d as LocECC2d;
-
-unsafe impl crate::CppDeletable for LocECC2d {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocECC2d_destructor(ptr);
-        }
-    }
-}
-
-impl LocECC2d {
-    /// **Source:** `Extrema_LocECC2d.hxx`:45 - `Extrema_LocECC2d::Extrema_LocECC2d()`
-    /// Calculates the distance with a close point. The
-    /// close point is defined by a parameter value on each
-    /// curve.
-    /// The function F(u,v)=distance(C1(u),C2(v)) has an
-    /// extremun when gradient(f)=0. The algorithm searches
-    /// the zero near the close point.
-    pub fn new_curve2d2_real4(
-        C1: &crate::adaptor2d::Curve2d,
-        C2: &crate::adaptor2d::Curve2d,
-        U0: f64,
-        V0: f64,
-        TolU: f64,
-        TolV: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_LocECC2d_ctor_curve2d2_real4(
-                    C1, C2, U0, V0, TolU, TolV,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_LocECC2d.hxx`:53 - `Extrema_LocECC2d::IsDone()`
-    /// Returns True if the distance is found.
-    pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocECC2d_is_done(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_LocECC2d.hxx`:56 - `Extrema_LocECC2d::SquareDistance()`
-    /// Returns the value of the extremum square distance.
-    pub fn square_distance(&self) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocECC2d_square_distance(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_LocECC2d.hxx`:60 - `Extrema_LocECC2d::Point()`
-    /// Returns the points of the extremum distance.
-    /// P1 is on the first curve, P2 on the second one.
-    pub fn point(&self, P1: &mut POnCurv2d, P2: &mut POnCurv2d) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocECC2d_point(self as *const Self, P1, P2)
-        })
-    }
-}
-
-// ========================
-// From Extrema_LocEPCOfLocateExtPC.hxx
-// ========================
-
-/// **Source:** `Extrema_LocEPCOfLocateExtPC.hxx`:34 - `Extrema_LocEPCOfLocateExtPC`
-pub use crate::ffi_types::Extrema_LocEPCOfLocateExtPC as LocEPCOfLocateExtPC;
-
-unsafe impl crate::CppDeletable for LocEPCOfLocateExtPC {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocEPCOfLocateExtPC_destructor(ptr);
-        }
-    }
-}
-
-impl LocEPCOfLocateExtPC {
-    /// **Source:** `Extrema_LocEPCOfLocateExtPC.hxx`:39 - `Extrema_LocEPCOfLocateExtPC::Extrema_LocEPCOfLocateExtPC()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_LocEPCOfLocateExtPC_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_LocEPCOfLocateExtPC.hxx`:50 - `Extrema_LocEPCOfLocateExtPC::Extrema_LocEPCOfLocateExtPC()`
-    /// Calculates the distance with a close point.
-    /// The close point is defined by the parameter value
-    /// U0.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches a zero
-    /// near the close point.
-    /// TolU is used to decide to stop the iterations.
-    /// At the nth iteration, the criteria is:
-    /// abs(Un - Un-1) < TolU.
-    pub fn new_pnt_curve_real2(
-        P: &crate::gp::Pnt,
-        C: &crate::adaptor3d::Curve,
-        U0: f64,
-        TolU: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_LocEPCOfLocateExtPC_ctor_pnt_curve_real2(
-                    P, C, U0, TolU,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_LocEPCOfLocateExtPC.hxx`:65 - `Extrema_LocEPCOfLocateExtPC::Extrema_LocEPCOfLocateExtPC()`
-    /// Calculates the distance with a close point.
-    /// The close point is defined by the parameter value
-    /// U0.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches a zero
-    /// near the close point.
-    /// Zeros are searched between Umin et Usup.
-    /// TolU is used to decide to stop the iterations.
-    /// At the nth iteration, the criteria is:
-    /// abs(Un - Un-1) < TolU.
-    pub fn new_pnt_curve_real4(
-        P: &crate::gp::Pnt,
-        C: &crate::adaptor3d::Curve,
-        U0: f64,
-        Umin: f64,
-        Usup: f64,
-        TolU: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_LocEPCOfLocateExtPC_ctor_pnt_curve_real4(
-                    P, C, U0, Umin, Usup, TolU,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_LocEPCOfLocateExtPC.hxx`:73 - `Extrema_LocEPCOfLocateExtPC::Initialize()`
-    /// sets the fields of the algorithm.
-    pub fn initialize(&mut self, C: &crate::adaptor3d::Curve, Umin: f64, Usup: f64, TolU: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocEPCOfLocateExtPC_initialize(
-                self as *mut Self,
-                C,
-                Umin,
-                Usup,
-                TolU,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_LocEPCOfLocateExtPC.hxx`:81 - `Extrema_LocEPCOfLocateExtPC::Perform()`
-    /// the algorithm is done with the point P.
-    /// An exception is raised if the fields have not
-    /// been initialized.
-    pub fn perform(&mut self, P: &crate::gp::Pnt, U0: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocEPCOfLocateExtPC_perform(
-                self as *mut Self,
-                P,
-                U0,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_LocEPCOfLocateExtPC.hxx`:84 - `Extrema_LocEPCOfLocateExtPC::IsDone()`
-    /// Returns True if the distance is found.
-    pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocEPCOfLocateExtPC_is_done(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_LocEPCOfLocateExtPC.hxx`:87 - `Extrema_LocEPCOfLocateExtPC::SquareDistance()`
-    /// Returns the value of the extremum square distance.
-    pub fn square_distance(&self) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocEPCOfLocateExtPC_square_distance(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_LocEPCOfLocateExtPC.hxx`:90 - `Extrema_LocEPCOfLocateExtPC::IsMin()`
-    /// Returns True if the extremum distance is a minimum.
-    pub fn is_min(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocEPCOfLocateExtPC_is_min(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_LocEPCOfLocateExtPC.hxx`:93 - `Extrema_LocEPCOfLocateExtPC::Point()`
-    /// Returns the point of the extremum distance.
-    pub fn point(&self) -> &POnCurv {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_LocEPCOfLocateExtPC_point(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-}
-
-// ========================
-// From Extrema_LocEPCOfLocateExtPC2d.hxx
-// ========================
-
-/// **Source:** `Extrema_LocEPCOfLocateExtPC2d.hxx`:36 - `Extrema_LocEPCOfLocateExtPC2d`
-pub use crate::ffi_types::Extrema_LocEPCOfLocateExtPC2d as LocEPCOfLocateExtPC2d;
-
-unsafe impl crate::CppDeletable for LocEPCOfLocateExtPC2d {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocEPCOfLocateExtPC2d_destructor(ptr);
-        }
-    }
-}
-
-impl LocEPCOfLocateExtPC2d {
-    /// **Source:** `Extrema_LocEPCOfLocateExtPC2d.hxx`:41 - `Extrema_LocEPCOfLocateExtPC2d::Extrema_LocEPCOfLocateExtPC2d()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_LocEPCOfLocateExtPC2d_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_LocEPCOfLocateExtPC2d.hxx`:52 - `Extrema_LocEPCOfLocateExtPC2d::Extrema_LocEPCOfLocateExtPC2d()`
-    /// Calculates the distance with a close point.
-    /// The close point is defined by the parameter value
-    /// U0.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches a zero
-    /// near the close point.
-    /// TolU is used to decide to stop the iterations.
-    /// At the nth iteration, the criteria is:
-    /// abs(Un - Un-1) < TolU.
-    pub fn new_pnt2d_curve2d_real2(
-        P: &crate::gp::Pnt2d,
-        C: &crate::adaptor2d::Curve2d,
-        U0: f64,
-        TolU: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_LocEPCOfLocateExtPC2d_ctor_pnt2d_curve2d_real2(P, C, U0, TolU)))
-        }
-    }
-
-    /// **Source:** `Extrema_LocEPCOfLocateExtPC2d.hxx`:67 - `Extrema_LocEPCOfLocateExtPC2d::Extrema_LocEPCOfLocateExtPC2d()`
-    /// Calculates the distance with a close point.
-    /// The close point is defined by the parameter value
-    /// U0.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches a zero
-    /// near the close point.
-    /// Zeros are searched between Umin et Usup.
-    /// TolU is used to decide to stop the iterations.
-    /// At the nth iteration, the criteria is:
-    /// abs(Un - Un-1) < TolU.
-    pub fn new_pnt2d_curve2d_real4(
-        P: &crate::gp::Pnt2d,
-        C: &crate::adaptor2d::Curve2d,
-        U0: f64,
-        Umin: f64,
-        Usup: f64,
-        TolU: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_LocEPCOfLocateExtPC2d_ctor_pnt2d_curve2d_real4(P, C, U0, Umin, Usup, TolU)))
-        }
-    }
-
-    /// **Source:** `Extrema_LocEPCOfLocateExtPC2d.hxx`:75 - `Extrema_LocEPCOfLocateExtPC2d::Initialize()`
-    /// sets the fields of the algorithm.
-    pub fn initialize(&mut self, C: &crate::adaptor2d::Curve2d, Umin: f64, Usup: f64, TolU: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocEPCOfLocateExtPC2d_initialize(
-                self as *mut Self,
-                C,
-                Umin,
-                Usup,
-                TolU,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_LocEPCOfLocateExtPC2d.hxx`:83 - `Extrema_LocEPCOfLocateExtPC2d::Perform()`
-    /// the algorithm is done with the point P.
-    /// An exception is raised if the fields have not
-    /// been initialized.
-    pub fn perform(&mut self, P: &crate::gp::Pnt2d, U0: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocEPCOfLocateExtPC2d_perform(
-                self as *mut Self,
-                P,
-                U0,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_LocEPCOfLocateExtPC2d.hxx`:86 - `Extrema_LocEPCOfLocateExtPC2d::IsDone()`
-    /// Returns True if the distance is found.
-    pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocEPCOfLocateExtPC2d_is_done(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_LocEPCOfLocateExtPC2d.hxx`:89 - `Extrema_LocEPCOfLocateExtPC2d::SquareDistance()`
-    /// Returns the value of the extremum square distance.
-    pub fn square_distance(&self) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocEPCOfLocateExtPC2d_square_distance(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_LocEPCOfLocateExtPC2d.hxx`:92 - `Extrema_LocEPCOfLocateExtPC2d::IsMin()`
-    /// Returns True if the extremum distance is a minimum.
-    pub fn is_min(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocEPCOfLocateExtPC2d_is_min(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_LocEPCOfLocateExtPC2d.hxx`:95 - `Extrema_LocEPCOfLocateExtPC2d::Point()`
-    /// Returns the point of the extremum distance.
-    pub fn point(&self) -> &POnCurv2d {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_LocEPCOfLocateExtPC2d_point(
-                    self as *const Self,
-                ),
-            ))
-        }
     }
 }
 
@@ -11336,1473 +6727,11 @@ impl LocateExtCC2d {
 }
 
 // ========================
-// From Extrema_LocateExtPC.hxx
-// ========================
-
-/// **Source:** `Extrema_LocateExtPC.hxx`:40 - `Extrema_LocateExtPC`
-pub use crate::ffi_types::Extrema_LocateExtPC as LocateExtPC;
-
-unsafe impl crate::CppDeletable for LocateExtPC {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocateExtPC_destructor(ptr);
-        }
-    }
-}
-
-impl LocateExtPC {
-    /// **Source:** `Extrema_LocateExtPC.hxx`:45 - `Extrema_LocateExtPC::Extrema_LocateExtPC()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_LocateExtPC_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_LocateExtPC.hxx`:56 - `Extrema_LocateExtPC::Extrema_LocateExtPC()`
-    /// Calculates the distance with a close point.
-    /// The close point is defined by the parameter value
-    /// U0.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches a zero
-    /// near the close point.
-    /// TolF is used to decide to stop the iterations.
-    /// At the nth iteration, the criteria is:
-    /// abs(Un - Un-1) < TolF.
-    pub fn new_pnt_curve_real2(
-        P: &crate::gp::Pnt,
-        C: &crate::adaptor3d::Curve,
-        U0: f64,
-        TolF: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_LocateExtPC_ctor_pnt_curve_real2(
-                    P, C, U0, TolF,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_LocateExtPC.hxx`:71 - `Extrema_LocateExtPC::Extrema_LocateExtPC()`
-    /// Calculates the distance with a close point.
-    /// The close point is defined by the parameter value
-    /// U0.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches a zero
-    /// near the close point.
-    /// Zeros are searched between Umin et Usup.
-    /// TolF is used to decide to stop the iterations.
-    /// At the nth iteration, the criteria is:
-    /// abs(Un - Un-1) < TolF.
-    pub fn new_pnt_curve_real4(
-        P: &crate::gp::Pnt,
-        C: &crate::adaptor3d::Curve,
-        U0: f64,
-        Umin: f64,
-        Usup: f64,
-        TolF: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_LocateExtPC_ctor_pnt_curve_real4(
-                    P, C, U0, Umin, Usup, TolF,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_LocateExtPC.hxx`:79 - `Extrema_LocateExtPC::Initialize()`
-    /// sets the fields of the algorithm.
-    pub fn initialize(&mut self, C: &crate::adaptor3d::Curve, Umin: f64, Usup: f64, TolF: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocateExtPC_initialize(
-                self as *mut Self,
-                C,
-                Umin,
-                Usup,
-                TolF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_LocateExtPC.hxx`:84 - `Extrema_LocateExtPC::Perform()`
-    pub fn perform(&mut self, P: &crate::gp::Pnt, U0: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocateExtPC_perform(self as *mut Self, P, U0)
-        })
-    }
-
-    /// **Source:** `Extrema_LocateExtPC.hxx`:87 - `Extrema_LocateExtPC::IsDone()`
-    /// Returns True if the distance is found.
-    pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocateExtPC_is_done(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_LocateExtPC.hxx`:90 - `Extrema_LocateExtPC::SquareDistance()`
-    /// Returns the value of the extremum square distance.
-    pub fn square_distance(&self) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocateExtPC_square_distance(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_LocateExtPC.hxx`:93 - `Extrema_LocateExtPC::IsMin()`
-    /// Returns True if the extremum distance is a minimum.
-    pub fn is_min(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocateExtPC_is_min(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_LocateExtPC.hxx`:96 - `Extrema_LocateExtPC::Point()`
-    /// Returns the point of the extremum distance.
-    pub fn point(&self) -> &POnCurv {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_LocateExtPC_point(
-                self as *const Self,
-            )))
-        }
-    }
-}
-
-// ========================
-// From Extrema_LocateExtPC2d.hxx
-// ========================
-
-/// **Source:** `Extrema_LocateExtPC2d.hxx`:42 - `Extrema_LocateExtPC2d`
-pub use crate::ffi_types::Extrema_LocateExtPC2d as LocateExtPC2d;
-
-unsafe impl crate::CppDeletable for LocateExtPC2d {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocateExtPC2d_destructor(ptr);
-        }
-    }
-}
-
-impl LocateExtPC2d {
-    /// **Source:** `Extrema_LocateExtPC2d.hxx`:47 - `Extrema_LocateExtPC2d::Extrema_LocateExtPC2d()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_LocateExtPC2d_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_LocateExtPC2d.hxx`:58 - `Extrema_LocateExtPC2d::Extrema_LocateExtPC2d()`
-    /// Calculates the distance with a close point.
-    /// The close point is defined by the parameter value
-    /// U0.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches a zero
-    /// near the close point.
-    /// TolF is used to decide to stop the iterations.
-    /// At the nth iteration, the criteria is:
-    /// abs(Un - Un-1) < TolF.
-    pub fn new_pnt2d_curve2d_real2(
-        P: &crate::gp::Pnt2d,
-        C: &crate::adaptor2d::Curve2d,
-        U0: f64,
-        TolF: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_LocateExtPC2d_ctor_pnt2d_curve2d_real2(
-                    P, C, U0, TolF,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_LocateExtPC2d.hxx`:73 - `Extrema_LocateExtPC2d::Extrema_LocateExtPC2d()`
-    /// Calculates the distance with a close point.
-    /// The close point is defined by the parameter value
-    /// U0.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches a zero
-    /// near the close point.
-    /// Zeros are searched between Umin et Usup.
-    /// TolF is used to decide to stop the iterations.
-    /// At the nth iteration, the criteria is:
-    /// abs(Un - Un-1) < TolF.
-    pub fn new_pnt2d_curve2d_real4(
-        P: &crate::gp::Pnt2d,
-        C: &crate::adaptor2d::Curve2d,
-        U0: f64,
-        Umin: f64,
-        Usup: f64,
-        TolF: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_LocateExtPC2d_ctor_pnt2d_curve2d_real4(
-                    P, C, U0, Umin, Usup, TolF,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_LocateExtPC2d.hxx`:81 - `Extrema_LocateExtPC2d::Initialize()`
-    /// sets the fields of the algorithm.
-    pub fn initialize(&mut self, C: &crate::adaptor2d::Curve2d, Umin: f64, Usup: f64, TolF: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocateExtPC2d_initialize(
-                self as *mut Self,
-                C,
-                Umin,
-                Usup,
-                TolF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_LocateExtPC2d.hxx`:86 - `Extrema_LocateExtPC2d::Perform()`
-    pub fn perform(&mut self, P: &crate::gp::Pnt2d, U0: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocateExtPC2d_perform(self as *mut Self, P, U0)
-        })
-    }
-
-    /// **Source:** `Extrema_LocateExtPC2d.hxx`:89 - `Extrema_LocateExtPC2d::IsDone()`
-    /// Returns True if the distance is found.
-    pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocateExtPC2d_is_done(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_LocateExtPC2d.hxx`:92 - `Extrema_LocateExtPC2d::SquareDistance()`
-    /// Returns the value of the extremum square distance.
-    pub fn square_distance(&self) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocateExtPC2d_square_distance(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_LocateExtPC2d.hxx`:95 - `Extrema_LocateExtPC2d::IsMin()`
-    /// Returns True if the extremum distance is a minimum.
-    pub fn is_min(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_LocateExtPC2d_is_min(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_LocateExtPC2d.hxx`:98 - `Extrema_LocateExtPC2d::Point()`
-    /// Returns the point of the extremum distance.
-    pub fn point(&self) -> &POnCurv2d {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_LocateExtPC2d_point(
-                self as *const Self,
-            )))
-        }
-    }
-}
-
-// ========================
-// From Extrema_PCFOfEPCOfELPCOfLocateExtPC.hxx
-// ========================
-
-/// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC.hxx`:37 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC`
-pub use crate::ffi_types::Extrema_PCFOfEPCOfELPCOfLocateExtPC as PCFOfEPCOfELPCOfLocateExtPC;
-
-unsafe impl crate::CppDeletable for PCFOfEPCOfELPCOfLocateExtPC {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC_destructor(ptr);
-        }
-    }
-}
-
-impl PCFOfEPCOfELPCOfLocateExtPC {
-    /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC.hxx`:42 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC::Extrema_PCFOfEPCOfELPCOfLocateExtPC()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC.hxx`:44 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC::Extrema_PCFOfEPCOfELPCOfLocateExtPC()`
-    pub fn new_pnt_curve(P: &crate::gp::Pnt, C: &crate::adaptor3d::Curve) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC_ctor_pnt_curve(
-                    P, C,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC.hxx`:47 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC::Initialize()`
-    /// sets the field mycurve of the function.
-    pub fn initialize(&mut self, C: &crate::adaptor3d::Curve) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC_initialize(
-                self as *mut Self,
-                C,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC.hxx`:50 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC::SetPoint()`
-    /// sets the field P of the function.
-    pub fn set_point(&mut self, P: &crate::gp::Pnt) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC_set_point(
-                self as *mut Self,
-                P,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC.hxx`:53 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC::Value()`
-    /// Calculation of F(U).
-    pub fn value(&mut self, U: f64, F: &mut f64) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC_value(
-                self as *mut Self,
-                U,
-                F,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC.hxx`:56 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC::Derivative()`
-    /// Calculation of F'(U).
-    pub fn derivative(&mut self, U: f64, DF: &mut f64) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC_derivative(
-                self as *mut Self,
-                U,
-                DF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC.hxx`:60 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC::Values()`
-    /// Calculation of F(U) and F'(U).
-    pub fn values(&mut self, U: f64, F: &mut f64, DF: &mut f64) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC_values(
-                self as *mut Self,
-                U,
-                F,
-                DF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC.hxx`:65 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC::GetStateNumber()`
-    /// Save the found extremum.
-    pub fn get_state_number(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC_get_state_number(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC.hxx`:68 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC::NbExt()`
-    /// Return the number of found extrema.
-    pub fn nb_ext(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC_nb_ext(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC.hxx`:71 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC::SquareDistance()`
-    /// Returns the Nth distance.
-    pub fn square_distance(&self, N: i32) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC_square_distance(
-                self as *const Self,
-                N,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC.hxx`:74 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC::IsMin()`
-    /// Shows if the Nth distance is a minimum.
-    pub fn is_min(&self, N: i32) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC_is_min(
-                self as *const Self,
-                N,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC.hxx`:77 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC::Point()`
-    /// Returns the Nth extremum.
-    pub fn point(&self, N: i32) -> &POnCurv {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC_point(
-                    self as *const Self,
-                    N,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC.hxx`:80 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC::SubIntervalInitialize()`
-    /// Determines boundaries of subinterval for find of root.
-    pub fn sub_interval_initialize(&mut self, theUfirst: f64, theUlast: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC_sub_interval_initialize(self as *mut Self, theUfirst, theUlast)
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC.hxx`:85 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC::SearchOfTolerance()`
-    /// Computes a Tol value. If 1st derivative of curve
-    /// |D1|<Tol, it is considered D1=0.
-    pub fn search_of_tolerance(&mut self) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC_search_of_tolerance(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Upcast to math_FunctionWithDerivative
-    pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_FunctionWithDerivative(self as *const Self))
-        }
-    }
-
-    /// Upcast to math_FunctionWithDerivative (mutable)
-    pub fn as_math_function_with_derivative_mut(
-        &mut self,
-    ) -> &mut crate::math::FunctionWithDerivative {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_FunctionWithDerivative_mut(self as *mut Self))
-        }
-    }
-
-    /// Upcast to math_Function
-    pub fn as_math_function(&self) -> &crate::math::Function {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_Function(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to math_Function (mutable)
-    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_Function_mut(self as *mut Self))
-        }
-    }
-}
-
-// ========================
-// From Extrema_PCFOfEPCOfELPCOfLocateExtPC2d.hxx
-// ========================
-
-/// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d.hxx`:38 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d`
-pub use crate::ffi_types::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d as PCFOfEPCOfELPCOfLocateExtPC2d;
-
-unsafe impl crate::CppDeletable for PCFOfEPCOfELPCOfLocateExtPC2d {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_destructor(ptr);
-        }
-    }
-}
-
-impl PCFOfEPCOfELPCOfLocateExtPC2d {
-    /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d.hxx`:43 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d.hxx`:45 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d()`
-    pub fn new_pnt2d_curve2d(
-        P: &crate::gp::Pnt2d,
-        C: &crate::adaptor2d::Curve2d,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_ctor_pnt2d_curve2d(P, C)))
-        }
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d.hxx`:49 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::Initialize()`
-    /// sets the field mycurve of the function.
-    pub fn initialize(&mut self, C: &crate::adaptor2d::Curve2d) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_initialize(
-                self as *mut Self,
-                C,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d.hxx`:52 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::SetPoint()`
-    /// sets the field P of the function.
-    pub fn set_point(&mut self, P: &crate::gp::Pnt2d) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_set_point(
-                self as *mut Self,
-                P,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d.hxx`:55 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::Value()`
-    /// Calculation of F(U).
-    pub fn value(&mut self, U: f64, F: &mut f64) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_value(
-                self as *mut Self,
-                U,
-                F,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d.hxx`:58 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::Derivative()`
-    /// Calculation of F'(U).
-    pub fn derivative(&mut self, U: f64, DF: &mut f64) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_derivative(
-                self as *mut Self,
-                U,
-                DF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d.hxx`:62 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::Values()`
-    /// Calculation of F(U) and F'(U).
-    pub fn values(&mut self, U: f64, F: &mut f64, DF: &mut f64) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_values(
-                self as *mut Self,
-                U,
-                F,
-                DF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d.hxx`:67 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::GetStateNumber()`
-    /// Save the found extremum.
-    pub fn get_state_number(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_get_state_number(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d.hxx`:70 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::NbExt()`
-    /// Return the number of found extrema.
-    pub fn nb_ext(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_nb_ext(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d.hxx`:73 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::SquareDistance()`
-    /// Returns the Nth distance.
-    pub fn square_distance(&self, N: i32) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_square_distance(
-                self as *const Self,
-                N,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d.hxx`:76 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::IsMin()`
-    /// Shows if the Nth distance is a minimum.
-    pub fn is_min(&self, N: i32) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_is_min(
-                self as *const Self,
-                N,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d.hxx`:79 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::Point()`
-    /// Returns the Nth extremum.
-    pub fn point(&self, N: i32) -> &POnCurv2d {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_point(
-                    self as *const Self,
-                    N,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d.hxx`:82 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::SubIntervalInitialize()`
-    /// Determines boundaries of subinterval for find of root.
-    pub fn sub_interval_initialize(&mut self, theUfirst: f64, theUlast: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_sub_interval_initialize(self as *mut Self, theUfirst, theUlast)
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d.hxx`:87 - `Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::SearchOfTolerance()`
-    /// Computes a Tol value. If 1st derivative of curve
-    /// |D1|<Tol, it is considered D1=0.
-    pub fn search_of_tolerance(&mut self) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_search_of_tolerance(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Upcast to math_FunctionWithDerivative
-    pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_FunctionWithDerivative(self as *const Self))
-        }
-    }
-
-    /// Upcast to math_FunctionWithDerivative (mutable)
-    pub fn as_math_function_with_derivative_mut(
-        &mut self,
-    ) -> &mut crate::math::FunctionWithDerivative {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_FunctionWithDerivative_mut(self as *mut Self))
-        }
-    }
-
-    /// Upcast to math_Function
-    pub fn as_math_function(&self) -> &crate::math::Function {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_Function(self as *const Self))
-        }
-    }
-
-    /// Upcast to math_Function (mutable)
-    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_Function_mut(self as *mut Self))
-        }
-    }
-}
-
-// ========================
-// From Extrema_PCFOfEPCOfExtPC.hxx
-// ========================
-
-/// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:37 - `Extrema_PCFOfEPCOfExtPC`
-pub use crate::ffi_types::Extrema_PCFOfEPCOfExtPC as PCFOfEPCOfExtPC;
-
-unsafe impl crate::CppDeletable for PCFOfEPCOfExtPC {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC_destructor(ptr);
-        }
-    }
-}
-
-impl PCFOfEPCOfExtPC {
-    /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:42 - `Extrema_PCFOfEPCOfExtPC::Extrema_PCFOfEPCOfExtPC()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:44 - `Extrema_PCFOfEPCOfExtPC::Extrema_PCFOfEPCOfExtPC()`
-    pub fn new_pnt_curve(P: &crate::gp::Pnt, C: &crate::adaptor3d::Curve) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC_ctor_pnt_curve(P, C),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:47 - `Extrema_PCFOfEPCOfExtPC::Initialize()`
-    /// sets the field mycurve of the function.
-    pub fn initialize(&mut self, C: &crate::adaptor3d::Curve) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC_initialize(self as *mut Self, C)
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:50 - `Extrema_PCFOfEPCOfExtPC::SetPoint()`
-    /// sets the field P of the function.
-    pub fn set_point(&mut self, P: &crate::gp::Pnt) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC_set_point(self as *mut Self, P)
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:53 - `Extrema_PCFOfEPCOfExtPC::Value()`
-    /// Calculation of F(U).
-    pub fn value(&mut self, U: f64, F: &mut f64) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC_value(self as *mut Self, U, F)
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:56 - `Extrema_PCFOfEPCOfExtPC::Derivative()`
-    /// Calculation of F'(U).
-    pub fn derivative(&mut self, U: f64, DF: &mut f64) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC_derivative(
-                self as *mut Self,
-                U,
-                DF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:60 - `Extrema_PCFOfEPCOfExtPC::Values()`
-    /// Calculation of F(U) and F'(U).
-    pub fn values(&mut self, U: f64, F: &mut f64, DF: &mut f64) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC_values(
-                self as *mut Self,
-                U,
-                F,
-                DF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:65 - `Extrema_PCFOfEPCOfExtPC::GetStateNumber()`
-    /// Save the found extremum.
-    pub fn get_state_number(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC_get_state_number(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:68 - `Extrema_PCFOfEPCOfExtPC::NbExt()`
-    /// Return the number of found extrema.
-    pub fn nb_ext(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC_nb_ext(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:71 - `Extrema_PCFOfEPCOfExtPC::SquareDistance()`
-    /// Returns the Nth distance.
-    pub fn square_distance(&self, N: i32) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC_square_distance(
-                self as *const Self,
-                N,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:74 - `Extrema_PCFOfEPCOfExtPC::IsMin()`
-    /// Shows if the Nth distance is a minimum.
-    pub fn is_min(&self, N: i32) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC_is_min(self as *const Self, N)
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:77 - `Extrema_PCFOfEPCOfExtPC::Point()`
-    /// Returns the Nth extremum.
-    pub fn point(&self, N: i32) -> &POnCurv {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC_point(
-                self as *const Self,
-                N,
-            )))
-        }
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:80 - `Extrema_PCFOfEPCOfExtPC::SubIntervalInitialize()`
-    /// Determines boundaries of subinterval for find of root.
-    pub fn sub_interval_initialize(&mut self, theUfirst: f64, theUlast: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC_sub_interval_initialize(
-                self as *mut Self,
-                theUfirst,
-                theUlast,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:85 - `Extrema_PCFOfEPCOfExtPC::SearchOfTolerance()`
-    /// Computes a Tol value. If 1st derivative of curve
-    /// |D1|<Tol, it is considered D1=0.
-    pub fn search_of_tolerance(&mut self) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC_search_of_tolerance(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Upcast to math_FunctionWithDerivative
-    pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC_as_math_FunctionWithDerivative(self as *const Self))
-        }
-    }
-
-    /// Upcast to math_FunctionWithDerivative (mutable)
-    pub fn as_math_function_with_derivative_mut(
-        &mut self,
-    ) -> &mut crate::math::FunctionWithDerivative {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC_as_math_FunctionWithDerivative_mut(self as *mut Self))
-        }
-    }
-
-    /// Upcast to math_Function
-    pub fn as_math_function(&self) -> &crate::math::Function {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC_as_math_Function(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to math_Function (mutable)
-    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC_as_math_Function_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-}
-
-// ========================
-// From Extrema_PCFOfEPCOfExtPC2d.hxx
-// ========================
-
-/// **Source:** `Extrema_PCFOfEPCOfExtPC2d.hxx`:37 - `Extrema_PCFOfEPCOfExtPC2d`
-pub use crate::ffi_types::Extrema_PCFOfEPCOfExtPC2d as PCFOfEPCOfExtPC2d;
-
-unsafe impl crate::CppDeletable for PCFOfEPCOfExtPC2d {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC2d_destructor(ptr);
-        }
-    }
-}
-
-impl PCFOfEPCOfExtPC2d {
-    /// **Source:** `Extrema_PCFOfEPCOfExtPC2d.hxx`:42 - `Extrema_PCFOfEPCOfExtPC2d::Extrema_PCFOfEPCOfExtPC2d()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC2d_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfExtPC2d.hxx`:44 - `Extrema_PCFOfEPCOfExtPC2d::Extrema_PCFOfEPCOfExtPC2d()`
-    pub fn new_pnt2d_curve2d(
-        P: &crate::gp::Pnt2d,
-        C: &crate::adaptor2d::Curve2d,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC2d_ctor_pnt2d_curve2d(P, C),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfExtPC2d.hxx`:47 - `Extrema_PCFOfEPCOfExtPC2d::Initialize()`
-    /// sets the field mycurve of the function.
-    pub fn initialize(&mut self, C: &crate::adaptor2d::Curve2d) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC2d_initialize(self as *mut Self, C)
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfExtPC2d.hxx`:50 - `Extrema_PCFOfEPCOfExtPC2d::SetPoint()`
-    /// sets the field P of the function.
-    pub fn set_point(&mut self, P: &crate::gp::Pnt2d) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC2d_set_point(self as *mut Self, P)
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfExtPC2d.hxx`:53 - `Extrema_PCFOfEPCOfExtPC2d::Value()`
-    /// Calculation of F(U).
-    pub fn value(&mut self, U: f64, F: &mut f64) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC2d_value(self as *mut Self, U, F)
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfExtPC2d.hxx`:56 - `Extrema_PCFOfEPCOfExtPC2d::Derivative()`
-    /// Calculation of F'(U).
-    pub fn derivative(&mut self, U: f64, DF: &mut f64) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC2d_derivative(
-                self as *mut Self,
-                U,
-                DF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfExtPC2d.hxx`:60 - `Extrema_PCFOfEPCOfExtPC2d::Values()`
-    /// Calculation of F(U) and F'(U).
-    pub fn values(&mut self, U: f64, F: &mut f64, DF: &mut f64) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC2d_values(
-                self as *mut Self,
-                U,
-                F,
-                DF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfExtPC2d.hxx`:65 - `Extrema_PCFOfEPCOfExtPC2d::GetStateNumber()`
-    /// Save the found extremum.
-    pub fn get_state_number(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC2d_get_state_number(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfExtPC2d.hxx`:68 - `Extrema_PCFOfEPCOfExtPC2d::NbExt()`
-    /// Return the number of found extrema.
-    pub fn nb_ext(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC2d_nb_ext(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfExtPC2d.hxx`:71 - `Extrema_PCFOfEPCOfExtPC2d::SquareDistance()`
-    /// Returns the Nth distance.
-    pub fn square_distance(&self, N: i32) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC2d_square_distance(
-                self as *const Self,
-                N,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfExtPC2d.hxx`:74 - `Extrema_PCFOfEPCOfExtPC2d::IsMin()`
-    /// Shows if the Nth distance is a minimum.
-    pub fn is_min(&self, N: i32) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC2d_is_min(self as *const Self, N)
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfExtPC2d.hxx`:77 - `Extrema_PCFOfEPCOfExtPC2d::Point()`
-    /// Returns the Nth extremum.
-    pub fn point(&self, N: i32) -> &POnCurv2d {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC2d_point(
-                self as *const Self,
-                N,
-            )))
-        }
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfExtPC2d.hxx`:80 - `Extrema_PCFOfEPCOfExtPC2d::SubIntervalInitialize()`
-    /// Determines boundaries of subinterval for find of root.
-    pub fn sub_interval_initialize(&mut self, theUfirst: f64, theUlast: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC2d_sub_interval_initialize(
-                self as *mut Self,
-                theUfirst,
-                theUlast,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCFOfEPCOfExtPC2d.hxx`:85 - `Extrema_PCFOfEPCOfExtPC2d::SearchOfTolerance()`
-    /// Computes a Tol value. If 1st derivative of curve
-    /// |D1|<Tol, it is considered D1=0.
-    pub fn search_of_tolerance(&mut self) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC2d_search_of_tolerance(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Upcast to math_FunctionWithDerivative
-    pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC2d_as_math_FunctionWithDerivative(self as *const Self))
-        }
-    }
-
-    /// Upcast to math_FunctionWithDerivative (mutable)
-    pub fn as_math_function_with_derivative_mut(
-        &mut self,
-    ) -> &mut crate::math::FunctionWithDerivative {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC2d_as_math_FunctionWithDerivative_mut(self as *mut Self))
-        }
-    }
-
-    /// Upcast to math_Function
-    pub fn as_math_function(&self) -> &crate::math::Function {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC2d_as_math_Function(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to math_Function (mutable)
-    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_PCFOfEPCOfExtPC2d_as_math_Function_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-}
-
-// ========================
-// From Extrema_PCLocFOfLocEPCOfLocateExtPC.hxx
-// ========================
-
-/// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC.hxx`:37 - `Extrema_PCLocFOfLocEPCOfLocateExtPC`
-pub use crate::ffi_types::Extrema_PCLocFOfLocEPCOfLocateExtPC as PCLocFOfLocEPCOfLocateExtPC;
-
-unsafe impl crate::CppDeletable for PCLocFOfLocEPCOfLocateExtPC {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC_destructor(ptr);
-        }
-    }
-}
-
-impl PCLocFOfLocEPCOfLocateExtPC {
-    /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC.hxx`:42 - `Extrema_PCLocFOfLocEPCOfLocateExtPC::Extrema_PCLocFOfLocEPCOfLocateExtPC()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC.hxx`:44 - `Extrema_PCLocFOfLocEPCOfLocateExtPC::Extrema_PCLocFOfLocEPCOfLocateExtPC()`
-    pub fn new_pnt_curve(P: &crate::gp::Pnt, C: &crate::adaptor3d::Curve) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC_ctor_pnt_curve(
-                    P, C,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC.hxx`:47 - `Extrema_PCLocFOfLocEPCOfLocateExtPC::Initialize()`
-    /// sets the field mycurve of the function.
-    pub fn initialize(&mut self, C: &crate::adaptor3d::Curve) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC_initialize(
-                self as *mut Self,
-                C,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC.hxx`:50 - `Extrema_PCLocFOfLocEPCOfLocateExtPC::SetPoint()`
-    /// sets the field P of the function.
-    pub fn set_point(&mut self, P: &crate::gp::Pnt) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC_set_point(
-                self as *mut Self,
-                P,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC.hxx`:53 - `Extrema_PCLocFOfLocEPCOfLocateExtPC::Value()`
-    /// Calculation of F(U).
-    pub fn value(&mut self, U: f64, F: &mut f64) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC_value(
-                self as *mut Self,
-                U,
-                F,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC.hxx`:56 - `Extrema_PCLocFOfLocEPCOfLocateExtPC::Derivative()`
-    /// Calculation of F'(U).
-    pub fn derivative(&mut self, U: f64, DF: &mut f64) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC_derivative(
-                self as *mut Self,
-                U,
-                DF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC.hxx`:60 - `Extrema_PCLocFOfLocEPCOfLocateExtPC::Values()`
-    /// Calculation of F(U) and F'(U).
-    pub fn values(&mut self, U: f64, F: &mut f64, DF: &mut f64) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC_values(
-                self as *mut Self,
-                U,
-                F,
-                DF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC.hxx`:65 - `Extrema_PCLocFOfLocEPCOfLocateExtPC::GetStateNumber()`
-    /// Save the found extremum.
-    pub fn get_state_number(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC_get_state_number(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC.hxx`:68 - `Extrema_PCLocFOfLocEPCOfLocateExtPC::NbExt()`
-    /// Return the number of found extrema.
-    pub fn nb_ext(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC_nb_ext(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC.hxx`:71 - `Extrema_PCLocFOfLocEPCOfLocateExtPC::SquareDistance()`
-    /// Returns the Nth distance.
-    pub fn square_distance(&self, N: i32) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC_square_distance(
-                self as *const Self,
-                N,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC.hxx`:74 - `Extrema_PCLocFOfLocEPCOfLocateExtPC::IsMin()`
-    /// Shows if the Nth distance is a minimum.
-    pub fn is_min(&self, N: i32) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC_is_min(
-                self as *const Self,
-                N,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC.hxx`:77 - `Extrema_PCLocFOfLocEPCOfLocateExtPC::Point()`
-    /// Returns the Nth extremum.
-    pub fn point(&self, N: i32) -> &POnCurv {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC_point(
-                    self as *const Self,
-                    N,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC.hxx`:80 - `Extrema_PCLocFOfLocEPCOfLocateExtPC::SubIntervalInitialize()`
-    /// Determines boundaries of subinterval for find of root.
-    pub fn sub_interval_initialize(&mut self, theUfirst: f64, theUlast: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC_sub_interval_initialize(self as *mut Self, theUfirst, theUlast)
-        })
-    }
-
-    /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC.hxx`:85 - `Extrema_PCLocFOfLocEPCOfLocateExtPC::SearchOfTolerance()`
-    /// Computes a Tol value. If 1st derivative of curve
-    /// |D1|<Tol, it is considered D1=0.
-    pub fn search_of_tolerance(&mut self) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC_search_of_tolerance(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Upcast to math_FunctionWithDerivative
-    pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_FunctionWithDerivative(self as *const Self))
-        }
-    }
-
-    /// Upcast to math_FunctionWithDerivative (mutable)
-    pub fn as_math_function_with_derivative_mut(
-        &mut self,
-    ) -> &mut crate::math::FunctionWithDerivative {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_FunctionWithDerivative_mut(self as *mut Self))
-        }
-    }
-
-    /// Upcast to math_Function
-    pub fn as_math_function(&self) -> &crate::math::Function {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_Function(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to math_Function (mutable)
-    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_Function_mut(self as *mut Self))
-        }
-    }
-}
-
-// ========================
-// From Extrema_PCLocFOfLocEPCOfLocateExtPC2d.hxx
-// ========================
-
-/// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC2d.hxx`:38 - `Extrema_PCLocFOfLocEPCOfLocateExtPC2d`
-pub use crate::ffi_types::Extrema_PCLocFOfLocEPCOfLocateExtPC2d as PCLocFOfLocEPCOfLocateExtPC2d;
-
-unsafe impl crate::CppDeletable for PCLocFOfLocEPCOfLocateExtPC2d {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_destructor(ptr);
-        }
-    }
-}
-
-impl PCLocFOfLocEPCOfLocateExtPC2d {
-    /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC2d.hxx`:43 - `Extrema_PCLocFOfLocEPCOfLocateExtPC2d::Extrema_PCLocFOfLocEPCOfLocateExtPC2d()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC2d.hxx`:45 - `Extrema_PCLocFOfLocEPCOfLocateExtPC2d::Extrema_PCLocFOfLocEPCOfLocateExtPC2d()`
-    pub fn new_pnt2d_curve2d(
-        P: &crate::gp::Pnt2d,
-        C: &crate::adaptor2d::Curve2d,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_ctor_pnt2d_curve2d(P, C)))
-        }
-    }
-
-    /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC2d.hxx`:49 - `Extrema_PCLocFOfLocEPCOfLocateExtPC2d::Initialize()`
-    /// sets the field mycurve of the function.
-    pub fn initialize(&mut self, C: &crate::adaptor2d::Curve2d) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_initialize(
-                self as *mut Self,
-                C,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC2d.hxx`:52 - `Extrema_PCLocFOfLocEPCOfLocateExtPC2d::SetPoint()`
-    /// sets the field P of the function.
-    pub fn set_point(&mut self, P: &crate::gp::Pnt2d) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_set_point(
-                self as *mut Self,
-                P,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC2d.hxx`:55 - `Extrema_PCLocFOfLocEPCOfLocateExtPC2d::Value()`
-    /// Calculation of F(U).
-    pub fn value(&mut self, U: f64, F: &mut f64) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_value(
-                self as *mut Self,
-                U,
-                F,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC2d.hxx`:58 - `Extrema_PCLocFOfLocEPCOfLocateExtPC2d::Derivative()`
-    /// Calculation of F'(U).
-    pub fn derivative(&mut self, U: f64, DF: &mut f64) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_derivative(
-                self as *mut Self,
-                U,
-                DF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC2d.hxx`:62 - `Extrema_PCLocFOfLocEPCOfLocateExtPC2d::Values()`
-    /// Calculation of F(U) and F'(U).
-    pub fn values(&mut self, U: f64, F: &mut f64, DF: &mut f64) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_values(
-                self as *mut Self,
-                U,
-                F,
-                DF,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC2d.hxx`:67 - `Extrema_PCLocFOfLocEPCOfLocateExtPC2d::GetStateNumber()`
-    /// Save the found extremum.
-    pub fn get_state_number(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_get_state_number(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC2d.hxx`:70 - `Extrema_PCLocFOfLocEPCOfLocateExtPC2d::NbExt()`
-    /// Return the number of found extrema.
-    pub fn nb_ext(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_nb_ext(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC2d.hxx`:73 - `Extrema_PCLocFOfLocEPCOfLocateExtPC2d::SquareDistance()`
-    /// Returns the Nth distance.
-    pub fn square_distance(&self, N: i32) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_square_distance(
-                self as *const Self,
-                N,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC2d.hxx`:76 - `Extrema_PCLocFOfLocEPCOfLocateExtPC2d::IsMin()`
-    /// Shows if the Nth distance is a minimum.
-    pub fn is_min(&self, N: i32) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_is_min(
-                self as *const Self,
-                N,
-            )
-        })
-    }
-
-    /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC2d.hxx`:79 - `Extrema_PCLocFOfLocEPCOfLocateExtPC2d::Point()`
-    /// Returns the Nth extremum.
-    pub fn point(&self, N: i32) -> &POnCurv2d {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_point(
-                    self as *const Self,
-                    N,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC2d.hxx`:82 - `Extrema_PCLocFOfLocEPCOfLocateExtPC2d::SubIntervalInitialize()`
-    /// Determines boundaries of subinterval for find of root.
-    pub fn sub_interval_initialize(&mut self, theUfirst: f64, theUlast: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_sub_interval_initialize(self as *mut Self, theUfirst, theUlast)
-        })
-    }
-
-    /// **Source:** `Extrema_PCLocFOfLocEPCOfLocateExtPC2d.hxx`:87 - `Extrema_PCLocFOfLocEPCOfLocateExtPC2d::SearchOfTolerance()`
-    /// Computes a Tol value. If 1st derivative of curve
-    /// |D1|<Tol, it is considered D1=0.
-    pub fn search_of_tolerance(&mut self) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_search_of_tolerance(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Upcast to math_FunctionWithDerivative
-    pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_FunctionWithDerivative(self as *const Self))
-        }
-    }
-
-    /// Upcast to math_FunctionWithDerivative (mutable)
-    pub fn as_math_function_with_derivative_mut(
-        &mut self,
-    ) -> &mut crate::math::FunctionWithDerivative {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_FunctionWithDerivative_mut(self as *mut Self))
-        }
-    }
-
-    /// Upcast to math_Function
-    pub fn as_math_function(&self) -> &crate::math::Function {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_Function(self as *const Self))
-        }
-    }
-
-    /// Upcast to math_Function (mutable)
-    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_Function_mut(self as *mut Self))
-        }
-    }
-}
-
-// ========================
 // From Extrema_POnCurv.hxx
 // ========================
 
-/// **Source:** `Extrema_POnCurv.hxx`:27 - `Extrema_POnCurv`
+/// **Source:** `Extrema_POnCurv.hxx`:25 - `Extrema_POnCurv`
+/// Definition of a point on curve.
 pub use crate::ffi_types::Extrema_POnCurv as POnCurv;
 
 unsafe impl crate::CppDeletable for POnCurv {
@@ -12814,7 +6743,7 @@ unsafe impl crate::CppDeletable for POnCurv {
 }
 
 impl POnCurv {
-    /// **Source:** `Extrema_POnCurv.hxx`:33 - `Extrema_POnCurv::Extrema_POnCurv()`
+    /// **Source:** `Extrema_POnCurv.hxx`:31 - `Extrema_POnCurv::Extrema_POnCurv()`
     /// Creation of an indefinite point on curve.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -12824,26 +6753,26 @@ impl POnCurv {
         }
     }
 
-    /// **Source:** `Extrema_POnCurv.hxx`:37 - `Extrema_POnCurv::Extrema_POnCurv()`
+    /// **Source:** `Extrema_POnCurv.hxx`:38 - `Extrema_POnCurv::Extrema_POnCurv()`
     /// Creation of a point on curve with a parameter
     /// value on the curve and a Pnt from gp.
-    pub fn new_real_pnt(U: f64, P: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
+    pub fn new_real_pnt(theU: f64, theP: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_POnCurv_ctor_real_pnt(U, P),
+                crate::ffi_extern_TKGeomBase::Extrema_POnCurv_ctor_real_pnt(theU, theP),
             ))
         }
     }
 
-    /// **Source:** `Extrema_POnCurv.hxx`:40 - `Extrema_POnCurv::SetValues()`
-    /// sets the point and parameter values.
-    pub fn set_values(&mut self, U: f64, P: &crate::gp::Pnt) {
+    /// **Source:** `Extrema_POnCurv.hxx`:45 - `Extrema_POnCurv::SetValues()`
+    /// Sets the point and parameter values.
+    pub fn set_values(&mut self, theU: f64, theP: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_POnCurv_set_values(self as *mut Self, U, P)
+            crate::ffi_extern_TKGeomBase::Extrema_POnCurv_set_values(self as *mut Self, theU, theP)
         })
     }
 
-    /// **Source:** `Extrema_POnCurv.hxx`:43 - `Extrema_POnCurv::Value()`
+    /// **Source:** `Extrema_POnCurv.hxx`:52 - `Extrema_POnCurv::Value()`
     /// Returns the point.
     pub fn value(&self) -> &crate::gp::Pnt {
         unsafe {
@@ -12853,7 +6782,7 @@ impl POnCurv {
         }
     }
 
-    /// **Source:** `Extrema_POnCurv.hxx`:46 - `Extrema_POnCurv::Parameter()`
+    /// **Source:** `Extrema_POnCurv.hxx`:55 - `Extrema_POnCurv::Parameter()`
     /// Returns the parameter on the curve.
     pub fn parameter(&self) -> f64 {
         crate::check_result(unsafe {
@@ -12866,7 +6795,8 @@ impl POnCurv {
 // From Extrema_POnCurv2d.hxx
 // ========================
 
-/// **Source:** `Extrema_POnCurv2d.hxx`:26 - `Extrema_POnCurv2d`
+/// **Source:** `Extrema_POnCurv2d.hxx`:25 - `Extrema_POnCurv2d`
+/// Definition of a point on 2D curve.
 pub use crate::ffi_types::Extrema_POnCurv2d as POnCurv2d;
 
 unsafe impl crate::CppDeletable for POnCurv2d {
@@ -12878,7 +6808,7 @@ unsafe impl crate::CppDeletable for POnCurv2d {
 }
 
 impl POnCurv2d {
-    /// **Source:** `Extrema_POnCurv2d.hxx`:32 - `Extrema_POnCurv2d::Extrema_POnCurv2d()`
+    /// **Source:** `Extrema_POnCurv2d.hxx`:31 - `Extrema_POnCurv2d::Extrema_POnCurv2d()`
     /// Creation of an indefinite point on curve.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -12888,26 +6818,30 @@ impl POnCurv2d {
         }
     }
 
-    /// **Source:** `Extrema_POnCurv2d.hxx`:36 - `Extrema_POnCurv2d::Extrema_POnCurv2d()`
+    /// **Source:** `Extrema_POnCurv2d.hxx`:38 - `Extrema_POnCurv2d::Extrema_POnCurv2d()`
     /// Creation of a point on curve with a parameter
     /// value on the curve and a Pnt from gp.
-    pub fn new_real_pnt2d(U: f64, P: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
+    pub fn new_real_pnt2d(theU: f64, theP: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_POnCurv2d_ctor_real_pnt2d(U, P),
+                crate::ffi_extern_TKGeomBase::Extrema_POnCurv2d_ctor_real_pnt2d(theU, theP),
             ))
         }
     }
 
-    /// **Source:** `Extrema_POnCurv2d.hxx`:39 - `Extrema_POnCurv2d::SetValues()`
-    /// sets the point and parameter values.
-    pub fn set_values(&mut self, U: f64, P: &crate::gp::Pnt2d) {
+    /// **Source:** `Extrema_POnCurv2d.hxx`:45 - `Extrema_POnCurv2d::SetValues()`
+    /// Sets the point and parameter values.
+    pub fn set_values(&mut self, theU: f64, theP: &crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_POnCurv2d_set_values(self as *mut Self, U, P)
+            crate::ffi_extern_TKGeomBase::Extrema_POnCurv2d_set_values(
+                self as *mut Self,
+                theU,
+                theP,
+            )
         })
     }
 
-    /// **Source:** `Extrema_POnCurv2d.hxx`:42 - `Extrema_POnCurv2d::Value()`
+    /// **Source:** `Extrema_POnCurv2d.hxx`:52 - `Extrema_POnCurv2d::Value()`
     /// Returns the point.
     pub fn value(&self) -> &crate::gp::Pnt2d {
         unsafe {
@@ -12917,7 +6851,7 @@ impl POnCurv2d {
         }
     }
 
-    /// **Source:** `Extrema_POnCurv2d.hxx`:45 - `Extrema_POnCurv2d::Parameter()`
+    /// **Source:** `Extrema_POnCurv2d.hxx`:55 - `Extrema_POnCurv2d::Parameter()`
     /// Returns the parameter on the curve.
     pub fn parameter(&self) -> f64 {
         crate::check_result(unsafe {
@@ -12930,7 +6864,7 @@ impl POnCurv2d {
 // From Extrema_POnSurf.hxx
 // ========================
 
-/// **Source:** `Extrema_POnSurf.hxx`:27 - `Extrema_POnSurf`
+/// **Source:** `Extrema_POnSurf.hxx`:26 - `Extrema_POnSurf`
 /// Definition of a point on surface.
 pub use crate::ffi_types::Extrema_POnSurf as POnSurf;
 
@@ -12943,7 +6877,7 @@ unsafe impl crate::CppDeletable for POnSurf {
 }
 
 impl POnSurf {
-    /// **Source:** `Extrema_POnSurf.hxx`:33 - `Extrema_POnSurf::Extrema_POnSurf()`
+    /// **Source:** `Extrema_POnSurf.hxx`:32 - `Extrema_POnSurf::Extrema_POnSurf()`
     /// Creation of an indefinite point on surface.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -12953,18 +6887,18 @@ impl POnSurf {
         }
     }
 
-    /// **Source:** `Extrema_POnSurf.hxx`:37 - `Extrema_POnSurf::Extrema_POnSurf()`
+    /// **Source:** `Extrema_POnSurf.hxx`:41 - `Extrema_POnSurf::Extrema_POnSurf()`
     /// Creation of a point on surface with parameter
     /// values on the surface and a Pnt from gp.
-    pub fn new_real2_pnt(U: f64, V: f64, P: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
+    pub fn new_real2_pnt(theU: f64, theV: f64, theP: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Extrema_POnSurf_ctor_real2_pnt(U, V, P),
+                crate::ffi_extern_TKGeomBase::Extrema_POnSurf_ctor_real2_pnt(theU, theV, theP),
             ))
         }
     }
 
-    /// **Source:** `Extrema_POnSurf.hxx`:40 - `Extrema_POnSurf::Value()`
+    /// **Source:** `Extrema_POnSurf.hxx`:49 - `Extrema_POnSurf::Value()`
     /// Returns the 3d point.
     pub fn value(&self) -> &crate::gp::Pnt {
         unsafe {
@@ -12974,7 +6908,7 @@ impl POnSurf {
         }
     }
 
-    /// **Source:** `Extrema_POnSurf.hxx`:44 - `Extrema_POnSurf::SetParameters()`
+    /// **Source:** `Extrema_POnSurf.hxx`:53 - `Extrema_POnSurf::SetParameters()`
     /// Sets the params of current POnSurf instance.
     /// (e.g. to the point to be projected).
     pub fn set_parameters(&mut self, theU: f64, theV: f64, thePnt: &crate::gp::Pnt) {
@@ -12988,11 +6922,11 @@ impl POnSurf {
         })
     }
 
-    /// **Source:** `Extrema_POnSurf.hxx`:47 - `Extrema_POnSurf::Parameter()`
+    /// **Source:** `Extrema_POnSurf.hxx`:61 - `Extrema_POnSurf::Parameter()`
     /// Returns the parameter values on the surface.
-    pub fn parameter(&self, U: &mut f64, V: &mut f64) {
+    pub fn parameter(&self, theU: &mut f64, theV: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Extrema_POnSurf_parameter(self as *const Self, U, V)
+            crate::ffi_extern_TKGeomBase::Extrema_POnSurf_parameter(self as *const Self, theU, theV)
         })
     }
 }
@@ -13001,7 +6935,7 @@ impl POnSurf {
 // From Extrema_POnSurfParams.hxx
 // ========================
 
-/// **Source:** `Extrema_POnSurfParams.hxx`:30 - `Extrema_POnSurfParams`
+/// **Source:** `Extrema_POnSurfParams.hxx`:29 - `Extrema_POnSurfParams`
 /// Data container for point on surface parameters. These parameters
 /// are required to compute an initial approximation for extrema
 /// computation.
@@ -13016,7 +6950,7 @@ unsafe impl crate::CppDeletable for POnSurfParams {
 }
 
 impl POnSurfParams {
-    /// **Source:** `Extrema_POnSurfParams.hxx`:36 - `Extrema_POnSurfParams::Extrema_POnSurfParams()`
+    /// **Source:** `Extrema_POnSurfParams.hxx`:35 - `Extrema_POnSurfParams::Extrema_POnSurfParams()`
     /// empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -13026,7 +6960,7 @@ impl POnSurfParams {
         }
     }
 
-    /// **Source:** `Extrema_POnSurfParams.hxx`:40 - `Extrema_POnSurfParams::Extrema_POnSurfParams()`
+    /// **Source:** `Extrema_POnSurfParams.hxx`:45 - `Extrema_POnSurfParams::Extrema_POnSurfParams()`
     /// Creation of a point on surface with parameter
     /// values on the surface and a Pnt from gp.
     pub fn new_real2_pnt(theU: f64, theV: f64, thePnt: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
@@ -13039,7 +6973,7 @@ impl POnSurfParams {
         }
     }
 
-    /// **Source:** `Extrema_POnSurfParams.hxx`:44 - `Extrema_POnSurfParams::SetSqrDistance()`
+    /// **Source:** `Extrema_POnSurfParams.hxx`:56 - `Extrema_POnSurfParams::SetSqrDistance()`
     /// Sets the square distance from this point to another one
     /// (e.g. to the point to be projected).
     pub fn set_sqr_distance(&mut self, theSqrDistance: f64) {
@@ -13051,7 +6985,7 @@ impl POnSurfParams {
         })
     }
 
-    /// **Source:** `Extrema_POnSurfParams.hxx`:47 - `Extrema_POnSurfParams::GetSqrDistance()`
+    /// **Source:** `Extrema_POnSurfParams.hxx`:59 - `Extrema_POnSurfParams::GetSqrDistance()`
     /// Query the square distance from this point to another one.
     pub fn get_sqr_distance(&self) -> f64 {
         crate::check_result(unsafe {
@@ -13061,7 +6995,7 @@ impl POnSurfParams {
         })
     }
 
-    /// **Source:** `Extrema_POnSurfParams.hxx`:50 - `Extrema_POnSurfParams::SetElementType()`
+    /// **Source:** `Extrema_POnSurfParams.hxx`:62 - `Extrema_POnSurfParams::SetElementType()`
     /// Sets the element type on which this point is situated.
     pub fn set_element_type(&mut self, theElementType: crate::extrema::ElementType) {
         crate::check_void_result(unsafe {
@@ -13072,7 +7006,7 @@ impl POnSurfParams {
         })
     }
 
-    /// **Source:** `Extrema_POnSurfParams.hxx`:53 - `Extrema_POnSurfParams::GetElementType()`
+    /// **Source:** `Extrema_POnSurfParams.hxx`:65 - `Extrema_POnSurfParams::GetElementType()`
     /// Query the element type on which this point is situated.
     pub fn get_element_type(&self) -> crate::extrema::ElementType {
         crate::extrema::ElementType::try_from(crate::check_result(unsafe {
@@ -13083,7 +7017,7 @@ impl POnSurfParams {
         .unwrap()
     }
 
-    /// **Source:** `Extrema_POnSurfParams.hxx`:57 - `Extrema_POnSurfParams::SetIndices()`
+    /// **Source:** `Extrema_POnSurfParams.hxx`:69 - `Extrema_POnSurfParams::SetIndices()`
     /// Sets the U and V indices of an element that contains
     /// this point.
     pub fn set_indices(&mut self, theIndexU: i32, theIndexV: i32) {
@@ -13096,7 +7030,7 @@ impl POnSurfParams {
         })
     }
 
-    /// **Source:** `Extrema_POnSurfParams.hxx`:61 - `Extrema_POnSurfParams::GetIndices()`
+    /// **Source:** `Extrema_POnSurfParams.hxx`:77 - `Extrema_POnSurfParams::GetIndices()`
     /// Query the U and V indices of an element that contains
     /// this point.
     pub fn get_indices(&self, theIndexU: &mut i32, theIndexV: &mut i32) {
@@ -13131,7 +7065,7 @@ impl POnSurfParams {
         }
     }
 
-    /// Inherited: **Source:** `Extrema_POnSurf.hxx`:40 - `Extrema_POnSurf::Value()`
+    /// Inherited: **Source:** `Extrema_POnSurf.hxx`:49 - `Extrema_POnSurf::Value()`
     pub fn value(&self) -> &crate::gp::Pnt {
         unsafe {
             &*(crate::check_result(
@@ -13142,7 +7076,7 @@ impl POnSurfParams {
         }
     }
 
-    /// Inherited: **Source:** `Extrema_POnSurf.hxx`:44 - `Extrema_POnSurf::SetParameters()`
+    /// Inherited: **Source:** `Extrema_POnSurf.hxx`:53 - `Extrema_POnSurf::SetParameters()`
     pub fn set_parameters(&mut self, theU: f64, theV: f64, thePnt: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_POnSurfParams_inherited_SetParameters(
@@ -13154,13 +7088,13 @@ impl POnSurfParams {
         })
     }
 
-    /// Inherited: **Source:** `Extrema_POnSurf.hxx`:47 - `Extrema_POnSurf::Parameter()`
-    pub fn parameter(&self, U: &mut f64, V: &mut f64) {
+    /// Inherited: **Source:** `Extrema_POnSurf.hxx`:61 - `Extrema_POnSurf::Parameter()`
+    pub fn parameter(&self, theU: &mut f64, theV: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Extrema_POnSurfParams_inherited_Parameter(
                 self as *const Self,
-                U,
-                V,
+                theU,
+                theV,
             )
         })
     }
@@ -13170,9 +7104,4 @@ impl POnSurfParams {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi_types::{
-    Extrema_Array1OfPOnCurv as Array1OfPOnCurv, Extrema_Array1OfPOnCurv2d as Array1OfPOnCurv2d,
-    Extrema_Array1OfPOnSurf as Array1OfPOnSurf, Extrema_Array2OfPOnCurv as Array2OfPOnCurv,
-    Extrema_Array2OfPOnCurv2d as Array2OfPOnCurv2d, Extrema_Array2OfPOnSurf as Array2OfPOnSurf,
-    Extrema_SequenceOfPOnCurv as SequenceOfPOnCurv, Extrema_SequenceOfPOnSurf as SequenceOfPOnSurf,
-};
+pub use crate::ffi_types::{Extrema_ExtPC as ExtPC, Extrema_ExtPC2d as ExtPC2d};

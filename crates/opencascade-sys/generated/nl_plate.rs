@@ -7,13 +7,13 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::HandleStandardTransient;
+pub use crate::ffi_types::Handle_Standard_Transient;
 
 // ========================
 // From NLPlate_HGPPConstraint.hxx
 // ========================
 
-/// **Source:** `NLPlate_HGPPConstraint.hxx`:35 - `NLPlate_HGPPConstraint`
+/// **Source:** `NLPlate_HGPPConstraint.hxx`:34 - `NLPlate_HGPPConstraint`
 /// define a PinPoint geometric Constraint used to load a Non Linear Plate
 pub use crate::ffi_types::NLPlate_HGPPConstraint as HGPPConstraint;
 
@@ -26,7 +26,7 @@ unsafe impl crate::CppDeletable for HGPPConstraint {
 }
 
 impl HGPPConstraint {
-    /// **Source:** `NLPlate_HGPPConstraint.hxx`:44 - `NLPlate_HGPPConstraint::SetUVFreeSliding()`
+    /// **Source:** `NLPlate_HGPPConstraint.hxx`:43 - `NLPlate_HGPPConstraint::SetUVFreeSliding()`
     pub fn set_uv_free_sliding(&mut self, UVFree: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HGPPConstraint_set_uv_free_sliding(
@@ -36,7 +36,7 @@ impl HGPPConstraint {
         })
     }
 
-    /// **Source:** `NLPlate_HGPPConstraint.hxx`:46 - `NLPlate_HGPPConstraint::SetIncrementalLoadAllowed()`
+    /// **Source:** `NLPlate_HGPPConstraint.hxx`:45 - `NLPlate_HGPPConstraint::SetIncrementalLoadAllowed()`
     pub fn set_incremental_load_allowed(&mut self, ILA: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HGPPConstraint_set_incremental_load_allowed(
@@ -46,7 +46,7 @@ impl HGPPConstraint {
         })
     }
 
-    /// **Source:** `NLPlate_HGPPConstraint.hxx`:48 - `NLPlate_HGPPConstraint::SetActiveOrder()`
+    /// **Source:** `NLPlate_HGPPConstraint.hxx`:47 - `NLPlate_HGPPConstraint::SetActiveOrder()`
     pub fn set_active_order(&mut self, ActiveOrder: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HGPPConstraint_set_active_order(
@@ -56,14 +56,14 @@ impl HGPPConstraint {
         })
     }
 
-    /// **Source:** `NLPlate_HGPPConstraint.hxx`:50 - `NLPlate_HGPPConstraint::SetUV()`
+    /// **Source:** `NLPlate_HGPPConstraint.hxx`:49 - `NLPlate_HGPPConstraint::SetUV()`
     pub fn set_uv(&mut self, UV: &crate::gp::XY) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HGPPConstraint_set_uv(self as *mut Self, UV)
         })
     }
 
-    /// **Source:** `NLPlate_HGPPConstraint.hxx`:52 - `NLPlate_HGPPConstraint::SetOrientation()`
+    /// **Source:** `NLPlate_HGPPConstraint.hxx`:51 - `NLPlate_HGPPConstraint::SetOrientation()`
     pub fn set_orientation(&mut self, Orient: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HGPPConstraint_set_orientation(
@@ -73,7 +73,7 @@ impl HGPPConstraint {
         })
     }
 
-    /// **Source:** `NLPlate_HGPPConstraint.hxx`:54 - `NLPlate_HGPPConstraint::SetG0Criterion()`
+    /// **Source:** `NLPlate_HGPPConstraint.hxx`:53 - `NLPlate_HGPPConstraint::SetG0Criterion()`
     pub fn set_g0_criterion(&mut self, TolDist: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HGPPConstraint_set_g0_criterion(
@@ -83,7 +83,7 @@ impl HGPPConstraint {
         })
     }
 
-    /// **Source:** `NLPlate_HGPPConstraint.hxx`:56 - `NLPlate_HGPPConstraint::SetG1Criterion()`
+    /// **Source:** `NLPlate_HGPPConstraint.hxx`:55 - `NLPlate_HGPPConstraint::SetG1Criterion()`
     pub fn set_g1_criterion(&mut self, TolAng: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HGPPConstraint_set_g1_criterion(
@@ -93,7 +93,7 @@ impl HGPPConstraint {
         })
     }
 
-    /// **Source:** `NLPlate_HGPPConstraint.hxx`:58 - `NLPlate_HGPPConstraint::SetG2Criterion()`
+    /// **Source:** `NLPlate_HGPPConstraint.hxx`:57 - `NLPlate_HGPPConstraint::SetG2Criterion()`
     pub fn set_g2_criterion(&mut self, TolCurv: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HGPPConstraint_set_g2_criterion(
@@ -103,7 +103,7 @@ impl HGPPConstraint {
         })
     }
 
-    /// **Source:** `NLPlate_HGPPConstraint.hxx`:60 - `NLPlate_HGPPConstraint::SetG3Criterion()`
+    /// **Source:** `NLPlate_HGPPConstraint.hxx`:59 - `NLPlate_HGPPConstraint::SetG3Criterion()`
     pub fn set_g3_criterion(&mut self, TolG3: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HGPPConstraint_set_g3_criterion(
@@ -113,7 +113,7 @@ impl HGPPConstraint {
         })
     }
 
-    /// **Source:** `NLPlate_HGPPConstraint.hxx`:62 - `NLPlate_HGPPConstraint::UVFreeSliding()`
+    /// **Source:** `NLPlate_HGPPConstraint.hxx`:61 - `NLPlate_HGPPConstraint::UVFreeSliding()`
     pub fn uv_free_sliding(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HGPPConstraint_uv_free_sliding(
@@ -122,7 +122,7 @@ impl HGPPConstraint {
         })
     }
 
-    /// **Source:** `NLPlate_HGPPConstraint.hxx`:64 - `NLPlate_HGPPConstraint::IncrementalLoadAllowed()`
+    /// **Source:** `NLPlate_HGPPConstraint.hxx`:63 - `NLPlate_HGPPConstraint::IncrementalLoadAllowed()`
     pub fn incremental_load_allowed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HGPPConstraint_incremental_load_allowed(
@@ -131,14 +131,14 @@ impl HGPPConstraint {
         })
     }
 
-    /// **Source:** `NLPlate_HGPPConstraint.hxx`:66 - `NLPlate_HGPPConstraint::ActiveOrder()`
+    /// **Source:** `NLPlate_HGPPConstraint.hxx`:65 - `NLPlate_HGPPConstraint::ActiveOrder()`
     pub fn active_order(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HGPPConstraint_active_order(self as *const Self)
         })
     }
 
-    /// **Source:** `NLPlate_HGPPConstraint.hxx`:68 - `NLPlate_HGPPConstraint::UV()`
+    /// **Source:** `NLPlate_HGPPConstraint.hxx`:67 - `NLPlate_HGPPConstraint::UV()`
     pub fn uv(&self) -> &crate::gp::XY {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::NLPlate_HGPPConstraint_uv(
@@ -147,21 +147,21 @@ impl HGPPConstraint {
         }
     }
 
-    /// **Source:** `NLPlate_HGPPConstraint.hxx`:70 - `NLPlate_HGPPConstraint::Orientation()`
+    /// **Source:** `NLPlate_HGPPConstraint.hxx`:69 - `NLPlate_HGPPConstraint::Orientation()`
     pub fn orientation(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HGPPConstraint_orientation(self as *mut Self)
         })
     }
 
-    /// **Source:** `NLPlate_HGPPConstraint.hxx`:72 - `NLPlate_HGPPConstraint::IsG0()`
+    /// **Source:** `NLPlate_HGPPConstraint.hxx`:71 - `NLPlate_HGPPConstraint::IsG0()`
     pub fn is_g0(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HGPPConstraint_is_g0(self as *const Self)
         })
     }
 
-    /// **Source:** `NLPlate_HGPPConstraint.hxx`:74 - `NLPlate_HGPPConstraint::G0Target()`
+    /// **Source:** `NLPlate_HGPPConstraint.hxx`:73 - `NLPlate_HGPPConstraint::G0Target()`
     pub fn g0_target(&self) -> &crate::gp::XYZ {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::NLPlate_HGPPConstraint_g0_target(
@@ -170,7 +170,7 @@ impl HGPPConstraint {
         }
     }
 
-    /// **Source:** `NLPlate_HGPPConstraint.hxx`:76 - `NLPlate_HGPPConstraint::G1Target()`
+    /// **Source:** `NLPlate_HGPPConstraint.hxx`:75 - `NLPlate_HGPPConstraint::G1Target()`
     pub fn g1_target(&self) -> &crate::plate::D1 {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::NLPlate_HGPPConstraint_g1_target(
@@ -179,7 +179,7 @@ impl HGPPConstraint {
         }
     }
 
-    /// **Source:** `NLPlate_HGPPConstraint.hxx`:78 - `NLPlate_HGPPConstraint::G2Target()`
+    /// **Source:** `NLPlate_HGPPConstraint.hxx`:77 - `NLPlate_HGPPConstraint::G2Target()`
     pub fn g2_target(&self) -> &crate::plate::D2 {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::NLPlate_HGPPConstraint_g2_target(
@@ -188,7 +188,7 @@ impl HGPPConstraint {
         }
     }
 
-    /// **Source:** `NLPlate_HGPPConstraint.hxx`:80 - `NLPlate_HGPPConstraint::G3Target()`
+    /// **Source:** `NLPlate_HGPPConstraint.hxx`:79 - `NLPlate_HGPPConstraint::G3Target()`
     pub fn g3_target(&self) -> &crate::plate::D3 {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::NLPlate_HGPPConstraint_g3_target(
@@ -197,36 +197,36 @@ impl HGPPConstraint {
         }
     }
 
-    /// **Source:** `NLPlate_HGPPConstraint.hxx`:82 - `NLPlate_HGPPConstraint::G0Criterion()`
+    /// **Source:** `NLPlate_HGPPConstraint.hxx`:81 - `NLPlate_HGPPConstraint::G0Criterion()`
     pub fn g0_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HGPPConstraint_g0_criterion(self as *const Self)
         })
     }
 
-    /// **Source:** `NLPlate_HGPPConstraint.hxx`:84 - `NLPlate_HGPPConstraint::G1Criterion()`
+    /// **Source:** `NLPlate_HGPPConstraint.hxx`:83 - `NLPlate_HGPPConstraint::G1Criterion()`
     pub fn g1_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HGPPConstraint_g1_criterion(self as *const Self)
         })
     }
 
-    /// **Source:** `NLPlate_HGPPConstraint.hxx`:86 - `NLPlate_HGPPConstraint::G2Criterion()`
+    /// **Source:** `NLPlate_HGPPConstraint.hxx`:85 - `NLPlate_HGPPConstraint::G2Criterion()`
     pub fn g2_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HGPPConstraint_g2_criterion(self as *const Self)
         })
     }
 
-    /// **Source:** `NLPlate_HGPPConstraint.hxx`:88 - `NLPlate_HGPPConstraint::G3Criterion()`
+    /// **Source:** `NLPlate_HGPPConstraint.hxx`:87 - `NLPlate_HGPPConstraint::G3Criterion()`
     pub fn g3_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HGPPConstraint_g3_criterion(self as *const Self)
         })
     }
 
-    /// **Source:** `NLPlate_HGPPConstraint.hxx`:90 - `NLPlate_HGPPConstraint::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `NLPlate_HGPPConstraint.hxx`:89 - `NLPlate_HGPPConstraint::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::NLPlate_HGPPConstraint_dynamic_type(
@@ -236,7 +236,7 @@ impl HGPPConstraint {
         }
     }
 
-    /// **Source:** `NLPlate_HGPPConstraint.hxx`:90 - `NLPlate_HGPPConstraint::get_type_name()`
+    /// **Source:** `NLPlate_HGPPConstraint.hxx`:89 - `NLPlate_HGPPConstraint::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -247,8 +247,8 @@ impl HGPPConstraint {
         .into_owned()
     }
 
-    /// **Source:** `NLPlate_HGPPConstraint.hxx`:90 - `NLPlate_HGPPConstraint::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `NLPlate_HGPPConstraint.hxx`:89 - `NLPlate_HGPPConstraint::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::NLPlate_HGPPConstraint_get_type_descriptor(),
@@ -278,8 +278,8 @@ impl HGPPConstraint {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HGPPConstraint_inherited_IsInstance(
                 self as *const Self,
@@ -288,8 +288,8 @@ impl HGPPConstraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HGPPConstraint_inherited_IsKind(
                 self as *const Self,
@@ -298,7 +298,7 @@ impl HGPPConstraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -314,7 +314,7 @@ impl HGPPConstraint {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HGPPConstraint_inherited_GetRefCount(
@@ -323,7 +323,7 @@ impl HGPPConstraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HGPPConstraint_inherited_IncrementRefCounter(
@@ -332,7 +332,7 @@ impl HGPPConstraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HGPPConstraint_inherited_DecrementRefCounter(
@@ -341,7 +341,7 @@ impl HGPPConstraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HGPPConstraint_inherited_Delete(
@@ -351,38 +351,38 @@ impl HGPPConstraint {
     }
 }
 
-pub use crate::ffi_types::HandleNLPlateHGPPConstraint;
+pub use crate::ffi_types::Handle_NLPlate_HGPPConstraint;
 
-unsafe impl crate::CppDeletable for HandleNLPlateHGPPConstraint {
+unsafe impl crate::CppDeletable for Handle_NLPlate_HGPPConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHGPPConstraint_destructor(ptr);
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HGPPConstraint_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleNLPlateHGPPConstraint {
+unsafe impl crate::CppCopyable for Handle_NLPlate_HGPPConstraint {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHGPPConstraint_clone(
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HGPPConstraint_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleNLPlateHGPPConstraint {
+impl Handle_NLPlate_HGPPConstraint {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHGPPConstraint_is_null(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HGPPConstraint_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying NLPlate_HGPPConstraint
     pub fn get(&self) -> &crate::ffi_types::NLPlate_HGPPConstraint {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHGPPConstraint_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HGPPConstraint_get(
                 self as *const Self,
             ))
         }
@@ -392,7 +392,7 @@ impl HandleNLPlateHGPPConstraint {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::NLPlate_HGPPConstraint {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleNLPlateHGPPConstraint_get_mut(
+                crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HGPPConstraint_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -402,9 +402,9 @@ impl HandleNLPlateHGPPConstraint {
     /// Upcast Handle<NLPlate_HGPPConstraint> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHGPPConstraint_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HGPPConstraint_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 
@@ -413,9 +413,9 @@ impl HandleNLPlateHGPPConstraint {
     /// Returns `None` if the handle does not point to a `NLPlate_HPG0Constraint` (or subclass).
     pub fn downcast_to_hpg0_constraint(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG0Constraint>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG0Constraint>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHGPPConstraint_downcast_to_HandleNLPlateHPG0Constraint(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HGPPConstraint_downcast_to_Handle_NLPlate_HPG0Constraint(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -429,9 +429,9 @@ impl HandleNLPlateHGPPConstraint {
     /// Returns `None` if the handle does not point to a `NLPlate_HPG0G1Constraint` (or subclass).
     pub fn downcast_to_hpg0g1_constraint(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG0G1Constraint>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG0G1Constraint>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHGPPConstraint_downcast_to_HandleNLPlateHPG0G1Constraint(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HGPPConstraint_downcast_to_Handle_NLPlate_HPG0G1Constraint(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -445,9 +445,9 @@ impl HandleNLPlateHGPPConstraint {
     /// Returns `None` if the handle does not point to a `NLPlate_HPG0G2Constraint` (or subclass).
     pub fn downcast_to_hpg0g2_constraint(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG0G2Constraint>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG0G2Constraint>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHGPPConstraint_downcast_to_HandleNLPlateHPG0G2Constraint(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HGPPConstraint_downcast_to_Handle_NLPlate_HPG0G2Constraint(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -461,9 +461,9 @@ impl HandleNLPlateHGPPConstraint {
     /// Returns `None` if the handle does not point to a `NLPlate_HPG0G3Constraint` (or subclass).
     pub fn downcast_to_hpg0g3_constraint(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG0G3Constraint>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG0G3Constraint>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHGPPConstraint_downcast_to_HandleNLPlateHPG0G3Constraint(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HGPPConstraint_downcast_to_Handle_NLPlate_HPG0G3Constraint(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -477,9 +477,9 @@ impl HandleNLPlateHGPPConstraint {
     /// Returns `None` if the handle does not point to a `NLPlate_HPG1Constraint` (or subclass).
     pub fn downcast_to_hpg1_constraint(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG1Constraint>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG1Constraint>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHGPPConstraint_downcast_to_HandleNLPlateHPG1Constraint(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HGPPConstraint_downcast_to_Handle_NLPlate_HPG1Constraint(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -493,9 +493,9 @@ impl HandleNLPlateHGPPConstraint {
     /// Returns `None` if the handle does not point to a `NLPlate_HPG2Constraint` (or subclass).
     pub fn downcast_to_hpg2_constraint(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG2Constraint>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG2Constraint>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHGPPConstraint_downcast_to_HandleNLPlateHPG2Constraint(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HGPPConstraint_downcast_to_Handle_NLPlate_HPG2Constraint(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -509,9 +509,9 @@ impl HandleNLPlateHGPPConstraint {
     /// Returns `None` if the handle does not point to a `NLPlate_HPG3Constraint` (or subclass).
     pub fn downcast_to_hpg3_constraint(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG3Constraint>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG3Constraint>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHGPPConstraint_downcast_to_HandleNLPlateHPG3Constraint(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HGPPConstraint_downcast_to_Handle_NLPlate_HPG3Constraint(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -525,8 +525,8 @@ impl HandleNLPlateHGPPConstraint {
 // From NLPlate_HPG0Constraint.hxx
 // ========================
 
-/// **Source:** `NLPlate_HPG0Constraint.hxx`:32 - `NLPlate_HPG0Constraint`
-/// define a PinPoint G0  Constraint  used to load a Non Linear
+/// **Source:** `NLPlate_HPG0Constraint.hxx`:29 - `NLPlate_HPG0Constraint`
+/// define a PinPoint G0 Constraint used to load a Non Linear
 /// Plate
 pub use crate::ffi_types::NLPlate_HPG0Constraint as HPG0Constraint;
 
@@ -539,7 +539,7 @@ unsafe impl crate::CppDeletable for HPG0Constraint {
 }
 
 impl HPG0Constraint {
-    /// **Source:** `NLPlate_HPG0Constraint.hxx`:36 - `NLPlate_HPG0Constraint::NLPlate_HPG0Constraint()`
+    /// **Source:** `NLPlate_HPG0Constraint.hxx`:33 - `NLPlate_HPG0Constraint::NLPlate_HPG0Constraint()`
     pub fn new_xy_xyz(UV: &crate::gp::XY, Value: &crate::gp::XYZ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -548,7 +548,7 @@ impl HPG0Constraint {
         }
     }
 
-    /// **Source:** `NLPlate_HPG0Constraint.hxx`:38 - `NLPlate_HPG0Constraint::SetUVFreeSliding()`
+    /// **Source:** `NLPlate_HPG0Constraint.hxx`:35 - `NLPlate_HPG0Constraint::SetUVFreeSliding()`
     pub fn set_uv_free_sliding(&mut self, UVFree: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0Constraint_set_uv_free_sliding(
@@ -558,7 +558,7 @@ impl HPG0Constraint {
         })
     }
 
-    /// **Source:** `NLPlate_HPG0Constraint.hxx`:40 - `NLPlate_HPG0Constraint::SetIncrementalLoadAllowed()`
+    /// **Source:** `NLPlate_HPG0Constraint.hxx`:37 - `NLPlate_HPG0Constraint::SetIncrementalLoadAllowed()`
     pub fn set_incremental_load_allowed(&mut self, ILA: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0Constraint_set_incremental_load_allowed(
@@ -568,7 +568,7 @@ impl HPG0Constraint {
         })
     }
 
-    /// **Source:** `NLPlate_HPG0Constraint.hxx`:43 - `NLPlate_HPG0Constraint::UVFreeSliding()`
+    /// **Source:** `NLPlate_HPG0Constraint.hxx`:39 - `NLPlate_HPG0Constraint::UVFreeSliding()`
     pub fn uv_free_sliding(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0Constraint_uv_free_sliding(
@@ -577,7 +577,7 @@ impl HPG0Constraint {
         })
     }
 
-    /// **Source:** `NLPlate_HPG0Constraint.hxx`:45 - `NLPlate_HPG0Constraint::IncrementalLoadAllowed()`
+    /// **Source:** `NLPlate_HPG0Constraint.hxx`:41 - `NLPlate_HPG0Constraint::IncrementalLoadAllowed()`
     pub fn incremental_load_allowed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0Constraint_incremental_load_allowed(
@@ -586,21 +586,21 @@ impl HPG0Constraint {
         })
     }
 
-    /// **Source:** `NLPlate_HPG0Constraint.hxx`:47 - `NLPlate_HPG0Constraint::ActiveOrder()`
+    /// **Source:** `NLPlate_HPG0Constraint.hxx`:43 - `NLPlate_HPG0Constraint::ActiveOrder()`
     pub fn active_order(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0Constraint_active_order(self as *const Self)
         })
     }
 
-    /// **Source:** `NLPlate_HPG0Constraint.hxx`:49 - `NLPlate_HPG0Constraint::IsG0()`
+    /// **Source:** `NLPlate_HPG0Constraint.hxx`:45 - `NLPlate_HPG0Constraint::IsG0()`
     pub fn is_g0(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0Constraint_is_g0(self as *const Self)
         })
     }
 
-    /// **Source:** `NLPlate_HPG0Constraint.hxx`:51 - `NLPlate_HPG0Constraint::G0Target()`
+    /// **Source:** `NLPlate_HPG0Constraint.hxx`:47 - `NLPlate_HPG0Constraint::G0Target()`
     pub fn g0_target(&self) -> &crate::gp::XYZ {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0Constraint_g0_target(
@@ -609,8 +609,8 @@ impl HPG0Constraint {
         }
     }
 
-    /// **Source:** `NLPlate_HPG0Constraint.hxx`:53 - `NLPlate_HPG0Constraint::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `NLPlate_HPG0Constraint.hxx`:49 - `NLPlate_HPG0Constraint::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0Constraint_dynamic_type(
@@ -620,7 +620,7 @@ impl HPG0Constraint {
         }
     }
 
-    /// **Source:** `NLPlate_HPG0Constraint.hxx`:53 - `NLPlate_HPG0Constraint::get_type_name()`
+    /// **Source:** `NLPlate_HPG0Constraint.hxx`:49 - `NLPlate_HPG0Constraint::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -631,8 +631,8 @@ impl HPG0Constraint {
         .into_owned()
     }
 
-    /// **Source:** `NLPlate_HPG0Constraint.hxx`:53 - `NLPlate_HPG0Constraint::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `NLPlate_HPG0Constraint.hxx`:49 - `NLPlate_HPG0Constraint::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0Constraint_get_type_descriptor(),
@@ -687,7 +687,7 @@ impl HPG0Constraint {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG0Constraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG0Constraint> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0Constraint_to_handle(obj.into_raw()),
@@ -695,7 +695,7 @@ impl HPG0Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:48 - `NLPlate_HGPPConstraint::SetActiveOrder()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:47 - `NLPlate_HGPPConstraint::SetActiveOrder()`
     pub fn set_active_order(&mut self, ActiveOrder: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0Constraint_inherited_SetActiveOrder(
@@ -705,7 +705,7 @@ impl HPG0Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:50 - `NLPlate_HGPPConstraint::SetUV()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:49 - `NLPlate_HGPPConstraint::SetUV()`
     pub fn set_uv(&mut self, UV: &crate::gp::XY) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0Constraint_inherited_SetUV(
@@ -715,7 +715,7 @@ impl HPG0Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:52 - `NLPlate_HGPPConstraint::SetOrientation()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:51 - `NLPlate_HGPPConstraint::SetOrientation()`
     pub fn set_orientation(&mut self, Orient: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0Constraint_inherited_SetOrientation(
@@ -725,7 +725,7 @@ impl HPG0Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:54 - `NLPlate_HGPPConstraint::SetG0Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:53 - `NLPlate_HGPPConstraint::SetG0Criterion()`
     pub fn set_g0_criterion(&mut self, TolDist: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0Constraint_inherited_SetG0Criterion(
@@ -735,7 +735,7 @@ impl HPG0Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:56 - `NLPlate_HGPPConstraint::SetG1Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:55 - `NLPlate_HGPPConstraint::SetG1Criterion()`
     pub fn set_g1_criterion(&mut self, TolAng: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0Constraint_inherited_SetG1Criterion(
@@ -745,7 +745,7 @@ impl HPG0Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:58 - `NLPlate_HGPPConstraint::SetG2Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:57 - `NLPlate_HGPPConstraint::SetG2Criterion()`
     pub fn set_g2_criterion(&mut self, TolCurv: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0Constraint_inherited_SetG2Criterion(
@@ -755,7 +755,7 @@ impl HPG0Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:60 - `NLPlate_HGPPConstraint::SetG3Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:59 - `NLPlate_HGPPConstraint::SetG3Criterion()`
     pub fn set_g3_criterion(&mut self, TolG3: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0Constraint_inherited_SetG3Criterion(
@@ -765,7 +765,7 @@ impl HPG0Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:68 - `NLPlate_HGPPConstraint::UV()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:67 - `NLPlate_HGPPConstraint::UV()`
     pub fn uv(&self) -> &crate::gp::XY {
         unsafe {
             &*(crate::check_result(
@@ -776,7 +776,7 @@ impl HPG0Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:70 - `NLPlate_HGPPConstraint::Orientation()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:69 - `NLPlate_HGPPConstraint::Orientation()`
     pub fn orientation(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0Constraint_inherited_Orientation(
@@ -785,7 +785,7 @@ impl HPG0Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:76 - `NLPlate_HGPPConstraint::G1Target()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:75 - `NLPlate_HGPPConstraint::G1Target()`
     pub fn g1_target(&self) -> &crate::plate::D1 {
         unsafe {
             &*(crate::check_result(
@@ -796,7 +796,7 @@ impl HPG0Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:78 - `NLPlate_HGPPConstraint::G2Target()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:77 - `NLPlate_HGPPConstraint::G2Target()`
     pub fn g2_target(&self) -> &crate::plate::D2 {
         unsafe {
             &*(crate::check_result(
@@ -807,7 +807,7 @@ impl HPG0Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:80 - `NLPlate_HGPPConstraint::G3Target()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:79 - `NLPlate_HGPPConstraint::G3Target()`
     pub fn g3_target(&self) -> &crate::plate::D3 {
         unsafe {
             &*(crate::check_result(
@@ -818,7 +818,7 @@ impl HPG0Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:82 - `NLPlate_HGPPConstraint::G0Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:81 - `NLPlate_HGPPConstraint::G0Criterion()`
     pub fn g0_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0Constraint_inherited_G0Criterion(
@@ -827,7 +827,7 @@ impl HPG0Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:84 - `NLPlate_HGPPConstraint::G1Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:83 - `NLPlate_HGPPConstraint::G1Criterion()`
     pub fn g1_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0Constraint_inherited_G1Criterion(
@@ -836,7 +836,7 @@ impl HPG0Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:86 - `NLPlate_HGPPConstraint::G2Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:85 - `NLPlate_HGPPConstraint::G2Criterion()`
     pub fn g2_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0Constraint_inherited_G2Criterion(
@@ -845,7 +845,7 @@ impl HPG0Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:88 - `NLPlate_HGPPConstraint::G3Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:87 - `NLPlate_HGPPConstraint::G3Criterion()`
     pub fn g3_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0Constraint_inherited_G3Criterion(
@@ -854,8 +854,8 @@ impl HPG0Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0Constraint_inherited_IsInstance(
                 self as *const Self,
@@ -864,8 +864,8 @@ impl HPG0Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0Constraint_inherited_IsKind(
                 self as *const Self,
@@ -874,7 +874,7 @@ impl HPG0Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -890,7 +890,7 @@ impl HPG0Constraint {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0Constraint_inherited_GetRefCount(
@@ -899,7 +899,7 @@ impl HPG0Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0Constraint_inherited_IncrementRefCounter(
@@ -908,7 +908,7 @@ impl HPG0Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0Constraint_inherited_DecrementRefCounter(
@@ -917,7 +917,7 @@ impl HPG0Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0Constraint_inherited_Delete(
@@ -927,38 +927,38 @@ impl HPG0Constraint {
     }
 }
 
-pub use crate::ffi_types::HandleNLPlateHPG0Constraint;
+pub use crate::ffi_types::Handle_NLPlate_HPG0Constraint;
 
-unsafe impl crate::CppDeletable for HandleNLPlateHPG0Constraint {
+unsafe impl crate::CppDeletable for Handle_NLPlate_HPG0Constraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0Constraint_destructor(ptr);
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0Constraint_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleNLPlateHPG0Constraint {
+unsafe impl crate::CppCopyable for Handle_NLPlate_HPG0Constraint {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0Constraint_clone(
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0Constraint_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleNLPlateHPG0Constraint {
+impl Handle_NLPlate_HPG0Constraint {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0Constraint_is_null(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0Constraint_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying NLPlate_HPG0Constraint
     pub fn get(&self) -> &crate::ffi_types::NLPlate_HPG0Constraint {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0Constraint_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0Constraint_get(
                 self as *const Self,
             ))
         }
@@ -968,7 +968,7 @@ impl HandleNLPlateHPG0Constraint {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::NLPlate_HPG0Constraint {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0Constraint_get_mut(
+                crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0Constraint_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -978,18 +978,18 @@ impl HandleNLPlateHPG0Constraint {
     /// Upcast Handle<NLPlate_HPG0Constraint> to Handle<NLPlate_HGPPConstraint>
     pub fn to_handle_hgpp_constraint(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleNLPlateHGPPConstraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HGPPConstraint> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0Constraint_to_HandleNLPlateHGPPConstraint(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0Constraint_to_Handle_NLPlate_HGPPConstraint(self as *const Self)))
         }
     }
 
     /// Upcast Handle<NLPlate_HPG0Constraint> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0Constraint_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0Constraint_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 
@@ -998,9 +998,9 @@ impl HandleNLPlateHPG0Constraint {
     /// Returns `None` if the handle does not point to a `NLPlate_HPG0G1Constraint` (or subclass).
     pub fn downcast_to_hpg0g1_constraint(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG0G1Constraint>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG0G1Constraint>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0Constraint_downcast_to_HandleNLPlateHPG0G1Constraint(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0Constraint_downcast_to_Handle_NLPlate_HPG0G1Constraint(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1014,9 +1014,9 @@ impl HandleNLPlateHPG0Constraint {
     /// Returns `None` if the handle does not point to a `NLPlate_HPG0G2Constraint` (or subclass).
     pub fn downcast_to_hpg0g2_constraint(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG0G2Constraint>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG0G2Constraint>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0Constraint_downcast_to_HandleNLPlateHPG0G2Constraint(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0Constraint_downcast_to_Handle_NLPlate_HPG0G2Constraint(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1030,9 +1030,9 @@ impl HandleNLPlateHPG0Constraint {
     /// Returns `None` if the handle does not point to a `NLPlate_HPG0G3Constraint` (or subclass).
     pub fn downcast_to_hpg0g3_constraint(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG0G3Constraint>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG0G3Constraint>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0Constraint_downcast_to_HandleNLPlateHPG0G3Constraint(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0Constraint_downcast_to_Handle_NLPlate_HPG0G3Constraint(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1046,8 +1046,8 @@ impl HandleNLPlateHPG0Constraint {
 // From NLPlate_HPG0G1Constraint.hxx
 // ========================
 
-/// **Source:** `NLPlate_HPG0G1Constraint.hxx`:33 - `NLPlate_HPG0G1Constraint`
-/// define a PinPoint G0+G1  Constraint  used to load a Non Linear
+/// **Source:** `NLPlate_HPG0G1Constraint.hxx`:30 - `NLPlate_HPG0G1Constraint`
+/// define a PinPoint G0+G1 Constraint used to load a Non Linear
 /// Plate
 pub use crate::ffi_types::NLPlate_HPG0G1Constraint as HPG0G1Constraint;
 
@@ -1060,7 +1060,7 @@ unsafe impl crate::CppDeletable for HPG0G1Constraint {
 }
 
 impl HPG0G1Constraint {
-    /// **Source:** `NLPlate_HPG0G1Constraint.hxx`:37 - `NLPlate_HPG0G1Constraint::NLPlate_HPG0G1Constraint()`
+    /// **Source:** `NLPlate_HPG0G1Constraint.hxx`:34 - `NLPlate_HPG0G1Constraint::NLPlate_HPG0G1Constraint()`
     pub fn new_xy_xyz_d1(
         UV: &crate::gp::XY,
         Value: &crate::gp::XYZ,
@@ -1075,7 +1075,7 @@ impl HPG0G1Constraint {
         }
     }
 
-    /// **Source:** `NLPlate_HPG0G1Constraint.hxx`:41 - `NLPlate_HPG0G1Constraint::SetOrientation()`
+    /// **Source:** `NLPlate_HPG0G1Constraint.hxx`:38 - `NLPlate_HPG0G1Constraint::SetOrientation()`
     pub fn set_orientation(&mut self, Orient: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G1Constraint_set_orientation(
@@ -1085,21 +1085,21 @@ impl HPG0G1Constraint {
         })
     }
 
-    /// **Source:** `NLPlate_HPG0G1Constraint.hxx`:43 - `NLPlate_HPG0G1Constraint::ActiveOrder()`
+    /// **Source:** `NLPlate_HPG0G1Constraint.hxx`:40 - `NLPlate_HPG0G1Constraint::ActiveOrder()`
     pub fn active_order(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G1Constraint_active_order(self as *const Self)
         })
     }
 
-    /// **Source:** `NLPlate_HPG0G1Constraint.hxx`:45 - `NLPlate_HPG0G1Constraint::Orientation()`
+    /// **Source:** `NLPlate_HPG0G1Constraint.hxx`:42 - `NLPlate_HPG0G1Constraint::Orientation()`
     pub fn orientation(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G1Constraint_orientation(self as *mut Self)
         })
     }
 
-    /// **Source:** `NLPlate_HPG0G1Constraint.hxx`:47 - `NLPlate_HPG0G1Constraint::G1Target()`
+    /// **Source:** `NLPlate_HPG0G1Constraint.hxx`:44 - `NLPlate_HPG0G1Constraint::G1Target()`
     pub fn g1_target(&self) -> &crate::plate::D1 {
         unsafe {
             &*(crate::check_result(
@@ -1110,8 +1110,8 @@ impl HPG0G1Constraint {
         }
     }
 
-    /// **Source:** `NLPlate_HPG0G1Constraint.hxx`:49 - `NLPlate_HPG0G1Constraint::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `NLPlate_HPG0G1Constraint.hxx`:46 - `NLPlate_HPG0G1Constraint::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G1Constraint_dynamic_type(
@@ -1121,7 +1121,7 @@ impl HPG0G1Constraint {
         }
     }
 
-    /// **Source:** `NLPlate_HPG0G1Constraint.hxx`:49 - `NLPlate_HPG0G1Constraint::get_type_name()`
+    /// **Source:** `NLPlate_HPG0G1Constraint.hxx`:46 - `NLPlate_HPG0G1Constraint::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1132,8 +1132,8 @@ impl HPG0G1Constraint {
         .into_owned()
     }
 
-    /// **Source:** `NLPlate_HPG0G1Constraint.hxx`:49 - `NLPlate_HPG0G1Constraint::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `NLPlate_HPG0G1Constraint.hxx`:46 - `NLPlate_HPG0G1Constraint::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G1Constraint_get_type_descriptor(),
@@ -1202,7 +1202,7 @@ impl HPG0G1Constraint {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG0G1Constraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG0G1Constraint> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G1Constraint_to_handle(obj.into_raw()),
@@ -1210,7 +1210,7 @@ impl HPG0G1Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:38 - `NLPlate_HPG0Constraint::SetUVFreeSliding()`
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:35 - `NLPlate_HPG0Constraint::SetUVFreeSliding()`
     pub fn set_uv_free_sliding(&mut self, UVFree: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G1Constraint_inherited_SetUVFreeSliding(
@@ -1220,14 +1220,14 @@ impl HPG0G1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:40 - `NLPlate_HPG0Constraint::SetIncrementalLoadAllowed()`
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:37 - `NLPlate_HPG0Constraint::SetIncrementalLoadAllowed()`
     pub fn set_incremental_load_allowed(&mut self, ILA: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G1Constraint_inherited_SetIncrementalLoadAllowed(self as *mut Self, ILA)
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:43 - `NLPlate_HPG0Constraint::UVFreeSliding()`
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:39 - `NLPlate_HPG0Constraint::UVFreeSliding()`
     pub fn uv_free_sliding(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G1Constraint_inherited_UVFreeSliding(
@@ -1236,7 +1236,7 @@ impl HPG0G1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:45 - `NLPlate_HPG0Constraint::IncrementalLoadAllowed()`
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:41 - `NLPlate_HPG0Constraint::IncrementalLoadAllowed()`
     pub fn incremental_load_allowed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G1Constraint_inherited_IncrementalLoadAllowed(
@@ -1245,7 +1245,7 @@ impl HPG0G1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:49 - `NLPlate_HPG0Constraint::IsG0()`
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:45 - `NLPlate_HPG0Constraint::IsG0()`
     pub fn is_g0(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G1Constraint_inherited_IsG0(
@@ -1254,7 +1254,7 @@ impl HPG0G1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:51 - `NLPlate_HPG0Constraint::G0Target()`
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:47 - `NLPlate_HPG0Constraint::G0Target()`
     pub fn g0_target(&self) -> &crate::gp::XYZ {
         unsafe {
             &*(crate::check_result(
@@ -1265,7 +1265,7 @@ impl HPG0G1Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:48 - `NLPlate_HGPPConstraint::SetActiveOrder()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:47 - `NLPlate_HGPPConstraint::SetActiveOrder()`
     pub fn set_active_order(&mut self, ActiveOrder: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G1Constraint_inherited_SetActiveOrder(
@@ -1275,7 +1275,7 @@ impl HPG0G1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:50 - `NLPlate_HGPPConstraint::SetUV()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:49 - `NLPlate_HGPPConstraint::SetUV()`
     pub fn set_uv(&mut self, UV: &crate::gp::XY) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G1Constraint_inherited_SetUV(
@@ -1285,7 +1285,7 @@ impl HPG0G1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:54 - `NLPlate_HGPPConstraint::SetG0Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:53 - `NLPlate_HGPPConstraint::SetG0Criterion()`
     pub fn set_g0_criterion(&mut self, TolDist: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G1Constraint_inherited_SetG0Criterion(
@@ -1295,7 +1295,7 @@ impl HPG0G1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:56 - `NLPlate_HGPPConstraint::SetG1Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:55 - `NLPlate_HGPPConstraint::SetG1Criterion()`
     pub fn set_g1_criterion(&mut self, TolAng: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G1Constraint_inherited_SetG1Criterion(
@@ -1305,7 +1305,7 @@ impl HPG0G1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:58 - `NLPlate_HGPPConstraint::SetG2Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:57 - `NLPlate_HGPPConstraint::SetG2Criterion()`
     pub fn set_g2_criterion(&mut self, TolCurv: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G1Constraint_inherited_SetG2Criterion(
@@ -1315,7 +1315,7 @@ impl HPG0G1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:60 - `NLPlate_HGPPConstraint::SetG3Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:59 - `NLPlate_HGPPConstraint::SetG3Criterion()`
     pub fn set_g3_criterion(&mut self, TolG3: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G1Constraint_inherited_SetG3Criterion(
@@ -1325,7 +1325,7 @@ impl HPG0G1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:68 - `NLPlate_HGPPConstraint::UV()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:67 - `NLPlate_HGPPConstraint::UV()`
     pub fn uv(&self) -> &crate::gp::XY {
         unsafe {
             &*(crate::check_result(
@@ -1336,7 +1336,7 @@ impl HPG0G1Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:78 - `NLPlate_HGPPConstraint::G2Target()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:77 - `NLPlate_HGPPConstraint::G2Target()`
     pub fn g2_target(&self) -> &crate::plate::D2 {
         unsafe {
             &*(crate::check_result(
@@ -1347,7 +1347,7 @@ impl HPG0G1Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:80 - `NLPlate_HGPPConstraint::G3Target()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:79 - `NLPlate_HGPPConstraint::G3Target()`
     pub fn g3_target(&self) -> &crate::plate::D3 {
         unsafe {
             &*(crate::check_result(
@@ -1358,7 +1358,7 @@ impl HPG0G1Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:82 - `NLPlate_HGPPConstraint::G0Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:81 - `NLPlate_HGPPConstraint::G0Criterion()`
     pub fn g0_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G1Constraint_inherited_G0Criterion(
@@ -1367,7 +1367,7 @@ impl HPG0G1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:84 - `NLPlate_HGPPConstraint::G1Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:83 - `NLPlate_HGPPConstraint::G1Criterion()`
     pub fn g1_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G1Constraint_inherited_G1Criterion(
@@ -1376,7 +1376,7 @@ impl HPG0G1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:86 - `NLPlate_HGPPConstraint::G2Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:85 - `NLPlate_HGPPConstraint::G2Criterion()`
     pub fn g2_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G1Constraint_inherited_G2Criterion(
@@ -1385,7 +1385,7 @@ impl HPG0G1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:88 - `NLPlate_HGPPConstraint::G3Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:87 - `NLPlate_HGPPConstraint::G3Criterion()`
     pub fn g3_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G1Constraint_inherited_G3Criterion(
@@ -1394,8 +1394,8 @@ impl HPG0G1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G1Constraint_inherited_IsInstance(
                 self as *const Self,
@@ -1404,8 +1404,8 @@ impl HPG0G1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G1Constraint_inherited_IsKind(
                 self as *const Self,
@@ -1414,7 +1414,7 @@ impl HPG0G1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1430,7 +1430,7 @@ impl HPG0G1Constraint {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G1Constraint_inherited_GetRefCount(
@@ -1439,7 +1439,7 @@ impl HPG0G1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G1Constraint_inherited_IncrementRefCounter(
@@ -1448,7 +1448,7 @@ impl HPG0G1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G1Constraint_inherited_DecrementRefCounter(
@@ -1457,7 +1457,7 @@ impl HPG0G1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G1Constraint_inherited_Delete(
@@ -1467,40 +1467,44 @@ impl HPG0G1Constraint {
     }
 }
 
-pub use crate::ffi_types::HandleNLPlateHPG0G1Constraint;
+pub use crate::ffi_types::Handle_NLPlate_HPG0G1Constraint;
 
-unsafe impl crate::CppDeletable for HandleNLPlateHPG0G1Constraint {
+unsafe impl crate::CppDeletable for Handle_NLPlate_HPG0G1Constraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G1Constraint_destructor(ptr);
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0G1Constraint_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleNLPlateHPG0G1Constraint {
+unsafe impl crate::CppCopyable for Handle_NLPlate_HPG0G1Constraint {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G1Constraint_clone(
-                ptr,
-            ))
+            crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0G1Constraint_clone(ptr),
+            )
         }
     }
 }
 
-impl HandleNLPlateHPG0G1Constraint {
+impl Handle_NLPlate_HPG0G1Constraint {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G1Constraint_is_null(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0G1Constraint_is_null(
+                self as *const Self,
+            )
         }
     }
 
     /// Dereference this Handle to access the underlying NLPlate_HPG0G1Constraint
     pub fn get(&self) -> &crate::ffi_types::NLPlate_HPG0G1Constraint {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G1Constraint_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0G1Constraint_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1508,7 +1512,7 @@ impl HandleNLPlateHPG0G1Constraint {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::NLPlate_HPG0G1Constraint {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G1Constraint_get_mut(
+                crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0G1Constraint_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -1518,27 +1522,27 @@ impl HandleNLPlateHPG0G1Constraint {
     /// Upcast Handle<NLPlate_HPG0G1Constraint> to Handle<NLPlate_HPG0Constraint>
     pub fn to_handle_hpg0_constraint(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG0Constraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG0Constraint> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G1Constraint_to_HandleNLPlateHPG0Constraint(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0G1Constraint_to_Handle_NLPlate_HPG0Constraint(self as *const Self)))
         }
     }
 
     /// Upcast Handle<NLPlate_HPG0G1Constraint> to Handle<NLPlate_HGPPConstraint>
     pub fn to_handle_hgpp_constraint(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleNLPlateHGPPConstraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HGPPConstraint> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G1Constraint_to_HandleNLPlateHGPPConstraint(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0G1Constraint_to_Handle_NLPlate_HGPPConstraint(self as *const Self)))
         }
     }
 
     /// Upcast Handle<NLPlate_HPG0G1Constraint> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G1Constraint_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0G1Constraint_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 
@@ -1547,9 +1551,9 @@ impl HandleNLPlateHPG0G1Constraint {
     /// Returns `None` if the handle does not point to a `NLPlate_HPG0G2Constraint` (or subclass).
     pub fn downcast_to_hpg0g2_constraint(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG0G2Constraint>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG0G2Constraint>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G1Constraint_downcast_to_HandleNLPlateHPG0G2Constraint(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0G1Constraint_downcast_to_Handle_NLPlate_HPG0G2Constraint(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1563,9 +1567,9 @@ impl HandleNLPlateHPG0G1Constraint {
     /// Returns `None` if the handle does not point to a `NLPlate_HPG0G3Constraint` (or subclass).
     pub fn downcast_to_hpg0g3_constraint(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG0G3Constraint>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG0G3Constraint>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G1Constraint_downcast_to_HandleNLPlateHPG0G3Constraint(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0G1Constraint_downcast_to_Handle_NLPlate_HPG0G3Constraint(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1579,8 +1583,8 @@ impl HandleNLPlateHPG0G1Constraint {
 // From NLPlate_HPG0G2Constraint.hxx
 // ========================
 
-/// **Source:** `NLPlate_HPG0G2Constraint.hxx`:34 - `NLPlate_HPG0G2Constraint`
-/// define a PinPoint G0+G2  Constraint  used to load a Non Linear
+/// **Source:** `NLPlate_HPG0G2Constraint.hxx`:31 - `NLPlate_HPG0G2Constraint`
+/// define a PinPoint G0+G2 Constraint used to load a Non Linear
 /// Plate
 pub use crate::ffi_types::NLPlate_HPG0G2Constraint as HPG0G2Constraint;
 
@@ -1593,7 +1597,7 @@ unsafe impl crate::CppDeletable for HPG0G2Constraint {
 }
 
 impl HPG0G2Constraint {
-    /// **Source:** `NLPlate_HPG0G2Constraint.hxx`:38 - `NLPlate_HPG0G2Constraint::NLPlate_HPG0G2Constraint()`
+    /// **Source:** `NLPlate_HPG0G2Constraint.hxx`:35 - `NLPlate_HPG0G2Constraint::NLPlate_HPG0G2Constraint()`
     pub fn new_xy_xyz_d1_d2(
         UV: &crate::gp::XY,
         Value: &crate::gp::XYZ,
@@ -1609,14 +1613,14 @@ impl HPG0G2Constraint {
         }
     }
 
-    /// **Source:** `NLPlate_HPG0G2Constraint.hxx`:43 - `NLPlate_HPG0G2Constraint::ActiveOrder()`
+    /// **Source:** `NLPlate_HPG0G2Constraint.hxx`:40 - `NLPlate_HPG0G2Constraint::ActiveOrder()`
     pub fn active_order(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G2Constraint_active_order(self as *const Self)
         })
     }
 
-    /// **Source:** `NLPlate_HPG0G2Constraint.hxx`:45 - `NLPlate_HPG0G2Constraint::G2Target()`
+    /// **Source:** `NLPlate_HPG0G2Constraint.hxx`:42 - `NLPlate_HPG0G2Constraint::G2Target()`
     pub fn g2_target(&self) -> &crate::plate::D2 {
         unsafe {
             &*(crate::check_result(
@@ -1627,8 +1631,8 @@ impl HPG0G2Constraint {
         }
     }
 
-    /// **Source:** `NLPlate_HPG0G2Constraint.hxx`:47 - `NLPlate_HPG0G2Constraint::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `NLPlate_HPG0G2Constraint.hxx`:44 - `NLPlate_HPG0G2Constraint::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G2Constraint_dynamic_type(
@@ -1638,7 +1642,7 @@ impl HPG0G2Constraint {
         }
     }
 
-    /// **Source:** `NLPlate_HPG0G2Constraint.hxx`:47 - `NLPlate_HPG0G2Constraint::get_type_name()`
+    /// **Source:** `NLPlate_HPG0G2Constraint.hxx`:44 - `NLPlate_HPG0G2Constraint::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1649,8 +1653,8 @@ impl HPG0G2Constraint {
         .into_owned()
     }
 
-    /// **Source:** `NLPlate_HPG0G2Constraint.hxx`:47 - `NLPlate_HPG0G2Constraint::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `NLPlate_HPG0G2Constraint.hxx`:44 - `NLPlate_HPG0G2Constraint::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G2Constraint_get_type_descriptor(),
@@ -1737,7 +1741,7 @@ impl HPG0G2Constraint {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG0G2Constraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG0G2Constraint> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G2Constraint_to_handle(obj.into_raw()),
@@ -1745,7 +1749,7 @@ impl HPG0G2Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG0G1Constraint.hxx`:41 - `NLPlate_HPG0G1Constraint::SetOrientation()`
+    /// Inherited: **Source:** `NLPlate_HPG0G1Constraint.hxx`:38 - `NLPlate_HPG0G1Constraint::SetOrientation()`
     pub fn set_orientation(&mut self, Orient: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G2Constraint_inherited_SetOrientation(
@@ -1755,7 +1759,7 @@ impl HPG0G2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG0G1Constraint.hxx`:45 - `NLPlate_HPG0G1Constraint::Orientation()`
+    /// Inherited: **Source:** `NLPlate_HPG0G1Constraint.hxx`:42 - `NLPlate_HPG0G1Constraint::Orientation()`
     pub fn orientation(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G2Constraint_inherited_Orientation(
@@ -1764,7 +1768,7 @@ impl HPG0G2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG0G1Constraint.hxx`:47 - `NLPlate_HPG0G1Constraint::G1Target()`
+    /// Inherited: **Source:** `NLPlate_HPG0G1Constraint.hxx`:44 - `NLPlate_HPG0G1Constraint::G1Target()`
     pub fn g1_target(&self) -> &crate::plate::D1 {
         unsafe {
             &*(crate::check_result(
@@ -1775,7 +1779,7 @@ impl HPG0G2Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:38 - `NLPlate_HPG0Constraint::SetUVFreeSliding()`
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:35 - `NLPlate_HPG0Constraint::SetUVFreeSliding()`
     pub fn set_uv_free_sliding(&mut self, UVFree: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G2Constraint_inherited_SetUVFreeSliding(
@@ -1785,14 +1789,14 @@ impl HPG0G2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:40 - `NLPlate_HPG0Constraint::SetIncrementalLoadAllowed()`
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:37 - `NLPlate_HPG0Constraint::SetIncrementalLoadAllowed()`
     pub fn set_incremental_load_allowed(&mut self, ILA: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G2Constraint_inherited_SetIncrementalLoadAllowed(self as *mut Self, ILA)
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:43 - `NLPlate_HPG0Constraint::UVFreeSliding()`
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:39 - `NLPlate_HPG0Constraint::UVFreeSliding()`
     pub fn uv_free_sliding(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G2Constraint_inherited_UVFreeSliding(
@@ -1801,7 +1805,7 @@ impl HPG0G2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:45 - `NLPlate_HPG0Constraint::IncrementalLoadAllowed()`
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:41 - `NLPlate_HPG0Constraint::IncrementalLoadAllowed()`
     pub fn incremental_load_allowed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G2Constraint_inherited_IncrementalLoadAllowed(
@@ -1810,7 +1814,7 @@ impl HPG0G2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:49 - `NLPlate_HPG0Constraint::IsG0()`
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:45 - `NLPlate_HPG0Constraint::IsG0()`
     pub fn is_g0(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G2Constraint_inherited_IsG0(
@@ -1819,7 +1823,7 @@ impl HPG0G2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:51 - `NLPlate_HPG0Constraint::G0Target()`
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:47 - `NLPlate_HPG0Constraint::G0Target()`
     pub fn g0_target(&self) -> &crate::gp::XYZ {
         unsafe {
             &*(crate::check_result(
@@ -1830,7 +1834,7 @@ impl HPG0G2Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:48 - `NLPlate_HGPPConstraint::SetActiveOrder()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:47 - `NLPlate_HGPPConstraint::SetActiveOrder()`
     pub fn set_active_order(&mut self, ActiveOrder: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G2Constraint_inherited_SetActiveOrder(
@@ -1840,7 +1844,7 @@ impl HPG0G2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:50 - `NLPlate_HGPPConstraint::SetUV()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:49 - `NLPlate_HGPPConstraint::SetUV()`
     pub fn set_uv(&mut self, UV: &crate::gp::XY) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G2Constraint_inherited_SetUV(
@@ -1850,7 +1854,7 @@ impl HPG0G2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:54 - `NLPlate_HGPPConstraint::SetG0Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:53 - `NLPlate_HGPPConstraint::SetG0Criterion()`
     pub fn set_g0_criterion(&mut self, TolDist: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G2Constraint_inherited_SetG0Criterion(
@@ -1860,7 +1864,7 @@ impl HPG0G2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:56 - `NLPlate_HGPPConstraint::SetG1Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:55 - `NLPlate_HGPPConstraint::SetG1Criterion()`
     pub fn set_g1_criterion(&mut self, TolAng: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G2Constraint_inherited_SetG1Criterion(
@@ -1870,7 +1874,7 @@ impl HPG0G2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:58 - `NLPlate_HGPPConstraint::SetG2Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:57 - `NLPlate_HGPPConstraint::SetG2Criterion()`
     pub fn set_g2_criterion(&mut self, TolCurv: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G2Constraint_inherited_SetG2Criterion(
@@ -1880,7 +1884,7 @@ impl HPG0G2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:60 - `NLPlate_HGPPConstraint::SetG3Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:59 - `NLPlate_HGPPConstraint::SetG3Criterion()`
     pub fn set_g3_criterion(&mut self, TolG3: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G2Constraint_inherited_SetG3Criterion(
@@ -1890,7 +1894,7 @@ impl HPG0G2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:68 - `NLPlate_HGPPConstraint::UV()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:67 - `NLPlate_HGPPConstraint::UV()`
     pub fn uv(&self) -> &crate::gp::XY {
         unsafe {
             &*(crate::check_result(
@@ -1901,7 +1905,7 @@ impl HPG0G2Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:80 - `NLPlate_HGPPConstraint::G3Target()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:79 - `NLPlate_HGPPConstraint::G3Target()`
     pub fn g3_target(&self) -> &crate::plate::D3 {
         unsafe {
             &*(crate::check_result(
@@ -1912,7 +1916,7 @@ impl HPG0G2Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:82 - `NLPlate_HGPPConstraint::G0Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:81 - `NLPlate_HGPPConstraint::G0Criterion()`
     pub fn g0_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G2Constraint_inherited_G0Criterion(
@@ -1921,7 +1925,7 @@ impl HPG0G2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:84 - `NLPlate_HGPPConstraint::G1Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:83 - `NLPlate_HGPPConstraint::G1Criterion()`
     pub fn g1_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G2Constraint_inherited_G1Criterion(
@@ -1930,7 +1934,7 @@ impl HPG0G2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:86 - `NLPlate_HGPPConstraint::G2Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:85 - `NLPlate_HGPPConstraint::G2Criterion()`
     pub fn g2_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G2Constraint_inherited_G2Criterion(
@@ -1939,7 +1943,7 @@ impl HPG0G2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:88 - `NLPlate_HGPPConstraint::G3Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:87 - `NLPlate_HGPPConstraint::G3Criterion()`
     pub fn g3_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G2Constraint_inherited_G3Criterion(
@@ -1948,8 +1952,8 @@ impl HPG0G2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G2Constraint_inherited_IsInstance(
                 self as *const Self,
@@ -1958,8 +1962,8 @@ impl HPG0G2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G2Constraint_inherited_IsKind(
                 self as *const Self,
@@ -1968,7 +1972,7 @@ impl HPG0G2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1984,7 +1988,7 @@ impl HPG0G2Constraint {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G2Constraint_inherited_GetRefCount(
@@ -1993,7 +1997,7 @@ impl HPG0G2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G2Constraint_inherited_IncrementRefCounter(
@@ -2002,7 +2006,7 @@ impl HPG0G2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G2Constraint_inherited_DecrementRefCounter(
@@ -2011,7 +2015,7 @@ impl HPG0G2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G2Constraint_inherited_Delete(
@@ -2021,40 +2025,44 @@ impl HPG0G2Constraint {
     }
 }
 
-pub use crate::ffi_types::HandleNLPlateHPG0G2Constraint;
+pub use crate::ffi_types::Handle_NLPlate_HPG0G2Constraint;
 
-unsafe impl crate::CppDeletable for HandleNLPlateHPG0G2Constraint {
+unsafe impl crate::CppDeletable for Handle_NLPlate_HPG0G2Constraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G2Constraint_destructor(ptr);
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0G2Constraint_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleNLPlateHPG0G2Constraint {
+unsafe impl crate::CppCopyable for Handle_NLPlate_HPG0G2Constraint {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G2Constraint_clone(
-                ptr,
-            ))
+            crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0G2Constraint_clone(ptr),
+            )
         }
     }
 }
 
-impl HandleNLPlateHPG0G2Constraint {
+impl Handle_NLPlate_HPG0G2Constraint {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G2Constraint_is_null(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0G2Constraint_is_null(
+                self as *const Self,
+            )
         }
     }
 
     /// Dereference this Handle to access the underlying NLPlate_HPG0G2Constraint
     pub fn get(&self) -> &crate::ffi_types::NLPlate_HPG0G2Constraint {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G2Constraint_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0G2Constraint_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2062,7 +2070,7 @@ impl HandleNLPlateHPG0G2Constraint {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::NLPlate_HPG0G2Constraint {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G2Constraint_get_mut(
+                crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0G2Constraint_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -2072,36 +2080,36 @@ impl HandleNLPlateHPG0G2Constraint {
     /// Upcast Handle<NLPlate_HPG0G2Constraint> to Handle<NLPlate_HPG0G1Constraint>
     pub fn to_handle_hpg0g1_constraint(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG0G1Constraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG0G1Constraint> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G2Constraint_to_HandleNLPlateHPG0G1Constraint(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0G2Constraint_to_Handle_NLPlate_HPG0G1Constraint(self as *const Self)))
         }
     }
 
     /// Upcast Handle<NLPlate_HPG0G2Constraint> to Handle<NLPlate_HPG0Constraint>
     pub fn to_handle_hpg0_constraint(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG0Constraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG0Constraint> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G2Constraint_to_HandleNLPlateHPG0Constraint(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0G2Constraint_to_Handle_NLPlate_HPG0Constraint(self as *const Self)))
         }
     }
 
     /// Upcast Handle<NLPlate_HPG0G2Constraint> to Handle<NLPlate_HGPPConstraint>
     pub fn to_handle_hgpp_constraint(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleNLPlateHGPPConstraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HGPPConstraint> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G2Constraint_to_HandleNLPlateHGPPConstraint(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0G2Constraint_to_Handle_NLPlate_HGPPConstraint(self as *const Self)))
         }
     }
 
     /// Upcast Handle<NLPlate_HPG0G2Constraint> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G2Constraint_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0G2Constraint_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 
@@ -2110,9 +2118,9 @@ impl HandleNLPlateHPG0G2Constraint {
     /// Returns `None` if the handle does not point to a `NLPlate_HPG0G3Constraint` (or subclass).
     pub fn downcast_to_hpg0g3_constraint(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG0G3Constraint>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG0G3Constraint>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G2Constraint_downcast_to_HandleNLPlateHPG0G3Constraint(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0G2Constraint_downcast_to_Handle_NLPlate_HPG0G3Constraint(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2126,8 +2134,8 @@ impl HandleNLPlateHPG0G2Constraint {
 // From NLPlate_HPG0G3Constraint.hxx
 // ========================
 
-/// **Source:** `NLPlate_HPG0G3Constraint.hxx`:35 - `NLPlate_HPG0G3Constraint`
-/// define a PinPoint G0+G3  Constraint  used to load a Non Linear
+/// **Source:** `NLPlate_HPG0G3Constraint.hxx`:32 - `NLPlate_HPG0G3Constraint`
+/// define a PinPoint G0+G3 Constraint used to load a Non Linear
 /// Plate
 pub use crate::ffi_types::NLPlate_HPG0G3Constraint as HPG0G3Constraint;
 
@@ -2140,7 +2148,7 @@ unsafe impl crate::CppDeletable for HPG0G3Constraint {
 }
 
 impl HPG0G3Constraint {
-    /// **Source:** `NLPlate_HPG0G3Constraint.hxx`:39 - `NLPlate_HPG0G3Constraint::NLPlate_HPG0G3Constraint()`
+    /// **Source:** `NLPlate_HPG0G3Constraint.hxx`:36 - `NLPlate_HPG0G3Constraint::NLPlate_HPG0G3Constraint()`
     pub fn new_xy_xyz_d1_d2_d3(
         UV: &crate::gp::XY,
         Value: &crate::gp::XYZ,
@@ -2157,14 +2165,14 @@ impl HPG0G3Constraint {
         }
     }
 
-    /// **Source:** `NLPlate_HPG0G3Constraint.hxx`:45 - `NLPlate_HPG0G3Constraint::ActiveOrder()`
+    /// **Source:** `NLPlate_HPG0G3Constraint.hxx`:42 - `NLPlate_HPG0G3Constraint::ActiveOrder()`
     pub fn active_order(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G3Constraint_active_order(self as *const Self)
         })
     }
 
-    /// **Source:** `NLPlate_HPG0G3Constraint.hxx`:47 - `NLPlate_HPG0G3Constraint::G3Target()`
+    /// **Source:** `NLPlate_HPG0G3Constraint.hxx`:44 - `NLPlate_HPG0G3Constraint::G3Target()`
     pub fn g3_target(&self) -> &crate::plate::D3 {
         unsafe {
             &*(crate::check_result(
@@ -2175,8 +2183,8 @@ impl HPG0G3Constraint {
         }
     }
 
-    /// **Source:** `NLPlate_HPG0G3Constraint.hxx`:49 - `NLPlate_HPG0G3Constraint::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `NLPlate_HPG0G3Constraint.hxx`:46 - `NLPlate_HPG0G3Constraint::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G3Constraint_dynamic_type(
@@ -2186,7 +2194,7 @@ impl HPG0G3Constraint {
         }
     }
 
-    /// **Source:** `NLPlate_HPG0G3Constraint.hxx`:49 - `NLPlate_HPG0G3Constraint::get_type_name()`
+    /// **Source:** `NLPlate_HPG0G3Constraint.hxx`:46 - `NLPlate_HPG0G3Constraint::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2197,8 +2205,8 @@ impl HPG0G3Constraint {
         .into_owned()
     }
 
-    /// **Source:** `NLPlate_HPG0G3Constraint.hxx`:49 - `NLPlate_HPG0G3Constraint::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `NLPlate_HPG0G3Constraint.hxx`:46 - `NLPlate_HPG0G3Constraint::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G3Constraint_get_type_descriptor(),
@@ -2303,7 +2311,7 @@ impl HPG0G3Constraint {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG0G3Constraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG0G3Constraint> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G3Constraint_to_handle(obj.into_raw()),
@@ -2311,7 +2319,7 @@ impl HPG0G3Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG0G2Constraint.hxx`:45 - `NLPlate_HPG0G2Constraint::G2Target()`
+    /// Inherited: **Source:** `NLPlate_HPG0G2Constraint.hxx`:42 - `NLPlate_HPG0G2Constraint::G2Target()`
     pub fn g2_target(&self) -> &crate::plate::D2 {
         unsafe {
             &*(crate::check_result(
@@ -2322,7 +2330,7 @@ impl HPG0G3Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG0G1Constraint.hxx`:41 - `NLPlate_HPG0G1Constraint::SetOrientation()`
+    /// Inherited: **Source:** `NLPlate_HPG0G1Constraint.hxx`:38 - `NLPlate_HPG0G1Constraint::SetOrientation()`
     pub fn set_orientation(&mut self, Orient: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G3Constraint_inherited_SetOrientation(
@@ -2332,7 +2340,7 @@ impl HPG0G3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG0G1Constraint.hxx`:45 - `NLPlate_HPG0G1Constraint::Orientation()`
+    /// Inherited: **Source:** `NLPlate_HPG0G1Constraint.hxx`:42 - `NLPlate_HPG0G1Constraint::Orientation()`
     pub fn orientation(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G3Constraint_inherited_Orientation(
@@ -2341,7 +2349,7 @@ impl HPG0G3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG0G1Constraint.hxx`:47 - `NLPlate_HPG0G1Constraint::G1Target()`
+    /// Inherited: **Source:** `NLPlate_HPG0G1Constraint.hxx`:44 - `NLPlate_HPG0G1Constraint::G1Target()`
     pub fn g1_target(&self) -> &crate::plate::D1 {
         unsafe {
             &*(crate::check_result(
@@ -2352,7 +2360,7 @@ impl HPG0G3Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:38 - `NLPlate_HPG0Constraint::SetUVFreeSliding()`
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:35 - `NLPlate_HPG0Constraint::SetUVFreeSliding()`
     pub fn set_uv_free_sliding(&mut self, UVFree: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G3Constraint_inherited_SetUVFreeSliding(
@@ -2362,14 +2370,14 @@ impl HPG0G3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:40 - `NLPlate_HPG0Constraint::SetIncrementalLoadAllowed()`
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:37 - `NLPlate_HPG0Constraint::SetIncrementalLoadAllowed()`
     pub fn set_incremental_load_allowed(&mut self, ILA: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G3Constraint_inherited_SetIncrementalLoadAllowed(self as *mut Self, ILA)
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:43 - `NLPlate_HPG0Constraint::UVFreeSliding()`
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:39 - `NLPlate_HPG0Constraint::UVFreeSliding()`
     pub fn uv_free_sliding(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G3Constraint_inherited_UVFreeSliding(
@@ -2378,7 +2386,7 @@ impl HPG0G3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:45 - `NLPlate_HPG0Constraint::IncrementalLoadAllowed()`
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:41 - `NLPlate_HPG0Constraint::IncrementalLoadAllowed()`
     pub fn incremental_load_allowed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G3Constraint_inherited_IncrementalLoadAllowed(
@@ -2387,7 +2395,7 @@ impl HPG0G3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:49 - `NLPlate_HPG0Constraint::IsG0()`
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:45 - `NLPlate_HPG0Constraint::IsG0()`
     pub fn is_g0(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G3Constraint_inherited_IsG0(
@@ -2396,7 +2404,7 @@ impl HPG0G3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:51 - `NLPlate_HPG0Constraint::G0Target()`
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:47 - `NLPlate_HPG0Constraint::G0Target()`
     pub fn g0_target(&self) -> &crate::gp::XYZ {
         unsafe {
             &*(crate::check_result(
@@ -2407,7 +2415,7 @@ impl HPG0G3Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:48 - `NLPlate_HGPPConstraint::SetActiveOrder()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:47 - `NLPlate_HGPPConstraint::SetActiveOrder()`
     pub fn set_active_order(&mut self, ActiveOrder: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G3Constraint_inherited_SetActiveOrder(
@@ -2417,7 +2425,7 @@ impl HPG0G3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:50 - `NLPlate_HGPPConstraint::SetUV()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:49 - `NLPlate_HGPPConstraint::SetUV()`
     pub fn set_uv(&mut self, UV: &crate::gp::XY) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G3Constraint_inherited_SetUV(
@@ -2427,7 +2435,7 @@ impl HPG0G3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:54 - `NLPlate_HGPPConstraint::SetG0Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:53 - `NLPlate_HGPPConstraint::SetG0Criterion()`
     pub fn set_g0_criterion(&mut self, TolDist: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G3Constraint_inherited_SetG0Criterion(
@@ -2437,7 +2445,7 @@ impl HPG0G3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:56 - `NLPlate_HGPPConstraint::SetG1Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:55 - `NLPlate_HGPPConstraint::SetG1Criterion()`
     pub fn set_g1_criterion(&mut self, TolAng: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G3Constraint_inherited_SetG1Criterion(
@@ -2447,7 +2455,7 @@ impl HPG0G3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:58 - `NLPlate_HGPPConstraint::SetG2Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:57 - `NLPlate_HGPPConstraint::SetG2Criterion()`
     pub fn set_g2_criterion(&mut self, TolCurv: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G3Constraint_inherited_SetG2Criterion(
@@ -2457,7 +2465,7 @@ impl HPG0G3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:60 - `NLPlate_HGPPConstraint::SetG3Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:59 - `NLPlate_HGPPConstraint::SetG3Criterion()`
     pub fn set_g3_criterion(&mut self, TolG3: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G3Constraint_inherited_SetG3Criterion(
@@ -2467,7 +2475,7 @@ impl HPG0G3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:68 - `NLPlate_HGPPConstraint::UV()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:67 - `NLPlate_HGPPConstraint::UV()`
     pub fn uv(&self) -> &crate::gp::XY {
         unsafe {
             &*(crate::check_result(
@@ -2478,7 +2486,7 @@ impl HPG0G3Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:82 - `NLPlate_HGPPConstraint::G0Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:81 - `NLPlate_HGPPConstraint::G0Criterion()`
     pub fn g0_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G3Constraint_inherited_G0Criterion(
@@ -2487,7 +2495,7 @@ impl HPG0G3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:84 - `NLPlate_HGPPConstraint::G1Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:83 - `NLPlate_HGPPConstraint::G1Criterion()`
     pub fn g1_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G3Constraint_inherited_G1Criterion(
@@ -2496,7 +2504,7 @@ impl HPG0G3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:86 - `NLPlate_HGPPConstraint::G2Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:85 - `NLPlate_HGPPConstraint::G2Criterion()`
     pub fn g2_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G3Constraint_inherited_G2Criterion(
@@ -2505,7 +2513,7 @@ impl HPG0G3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:88 - `NLPlate_HGPPConstraint::G3Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:87 - `NLPlate_HGPPConstraint::G3Criterion()`
     pub fn g3_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G3Constraint_inherited_G3Criterion(
@@ -2514,8 +2522,8 @@ impl HPG0G3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G3Constraint_inherited_IsInstance(
                 self as *const Self,
@@ -2524,8 +2532,8 @@ impl HPG0G3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G3Constraint_inherited_IsKind(
                 self as *const Self,
@@ -2534,7 +2542,7 @@ impl HPG0G3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2550,7 +2558,7 @@ impl HPG0G3Constraint {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G3Constraint_inherited_GetRefCount(
@@ -2559,7 +2567,7 @@ impl HPG0G3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G3Constraint_inherited_IncrementRefCounter(
@@ -2568,7 +2576,7 @@ impl HPG0G3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G3Constraint_inherited_DecrementRefCounter(
@@ -2577,7 +2585,7 @@ impl HPG0G3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG0G3Constraint_inherited_Delete(
@@ -2587,40 +2595,44 @@ impl HPG0G3Constraint {
     }
 }
 
-pub use crate::ffi_types::HandleNLPlateHPG0G3Constraint;
+pub use crate::ffi_types::Handle_NLPlate_HPG0G3Constraint;
 
-unsafe impl crate::CppDeletable for HandleNLPlateHPG0G3Constraint {
+unsafe impl crate::CppDeletable for Handle_NLPlate_HPG0G3Constraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G3Constraint_destructor(ptr);
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0G3Constraint_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleNLPlateHPG0G3Constraint {
+unsafe impl crate::CppCopyable for Handle_NLPlate_HPG0G3Constraint {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G3Constraint_clone(
-                ptr,
-            ))
+            crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0G3Constraint_clone(ptr),
+            )
         }
     }
 }
 
-impl HandleNLPlateHPG0G3Constraint {
+impl Handle_NLPlate_HPG0G3Constraint {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G3Constraint_is_null(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0G3Constraint_is_null(
+                self as *const Self,
+            )
         }
     }
 
     /// Dereference this Handle to access the underlying NLPlate_HPG0G3Constraint
     pub fn get(&self) -> &crate::ffi_types::NLPlate_HPG0G3Constraint {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G3Constraint_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0G3Constraint_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2628,7 +2640,7 @@ impl HandleNLPlateHPG0G3Constraint {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::NLPlate_HPG0G3Constraint {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G3Constraint_get_mut(
+                crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0G3Constraint_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -2638,45 +2650,45 @@ impl HandleNLPlateHPG0G3Constraint {
     /// Upcast Handle<NLPlate_HPG0G3Constraint> to Handle<NLPlate_HPG0G2Constraint>
     pub fn to_handle_hpg0g2_constraint(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG0G2Constraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG0G2Constraint> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G3Constraint_to_HandleNLPlateHPG0G2Constraint(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0G3Constraint_to_Handle_NLPlate_HPG0G2Constraint(self as *const Self)))
         }
     }
 
     /// Upcast Handle<NLPlate_HPG0G3Constraint> to Handle<NLPlate_HPG0G1Constraint>
     pub fn to_handle_hpg0g1_constraint(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG0G1Constraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG0G1Constraint> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G3Constraint_to_HandleNLPlateHPG0G1Constraint(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0G3Constraint_to_Handle_NLPlate_HPG0G1Constraint(self as *const Self)))
         }
     }
 
     /// Upcast Handle<NLPlate_HPG0G3Constraint> to Handle<NLPlate_HPG0Constraint>
     pub fn to_handle_hpg0_constraint(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG0Constraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG0Constraint> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G3Constraint_to_HandleNLPlateHPG0Constraint(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0G3Constraint_to_Handle_NLPlate_HPG0Constraint(self as *const Self)))
         }
     }
 
     /// Upcast Handle<NLPlate_HPG0G3Constraint> to Handle<NLPlate_HGPPConstraint>
     pub fn to_handle_hgpp_constraint(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleNLPlateHGPPConstraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HGPPConstraint> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G3Constraint_to_HandleNLPlateHGPPConstraint(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0G3Constraint_to_Handle_NLPlate_HGPPConstraint(self as *const Self)))
         }
     }
 
     /// Upcast Handle<NLPlate_HPG0G3Constraint> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG0G3Constraint_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG0G3Constraint_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -2685,8 +2697,8 @@ impl HandleNLPlateHPG0G3Constraint {
 // From NLPlate_HPG1Constraint.hxx
 // ========================
 
-/// **Source:** `NLPlate_HPG1Constraint.hxx`:32 - `NLPlate_HPG1Constraint`
-/// define a PinPoint (no G0)  G1 Constraint used to load a Non
+/// **Source:** `NLPlate_HPG1Constraint.hxx`:29 - `NLPlate_HPG1Constraint`
+/// define a PinPoint (no G0) G1 Constraint used to load a Non
 /// Linear Plate
 pub use crate::ffi_types::NLPlate_HPG1Constraint as HPG1Constraint;
 
@@ -2699,7 +2711,7 @@ unsafe impl crate::CppDeletable for HPG1Constraint {
 }
 
 impl HPG1Constraint {
-    /// **Source:** `NLPlate_HPG1Constraint.hxx`:36 - `NLPlate_HPG1Constraint::NLPlate_HPG1Constraint()`
+    /// **Source:** `NLPlate_HPG1Constraint.hxx`:33 - `NLPlate_HPG1Constraint::NLPlate_HPG1Constraint()`
     pub fn new_xy_d1(UV: &crate::gp::XY, D1T: &crate::plate::D1) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2708,7 +2720,7 @@ impl HPG1Constraint {
         }
     }
 
-    /// **Source:** `NLPlate_HPG1Constraint.hxx`:38 - `NLPlate_HPG1Constraint::SetIncrementalLoadAllowed()`
+    /// **Source:** `NLPlate_HPG1Constraint.hxx`:35 - `NLPlate_HPG1Constraint::SetIncrementalLoadAllowed()`
     pub fn set_incremental_load_allowed(&mut self, ILA: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG1Constraint_set_incremental_load_allowed(
@@ -2718,7 +2730,7 @@ impl HPG1Constraint {
         })
     }
 
-    /// **Source:** `NLPlate_HPG1Constraint.hxx`:41 - `NLPlate_HPG1Constraint::SetOrientation()`
+    /// **Source:** `NLPlate_HPG1Constraint.hxx`:37 - `NLPlate_HPG1Constraint::SetOrientation()`
     pub fn set_orientation(&mut self, Orient: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG1Constraint_set_orientation(
@@ -2728,7 +2740,7 @@ impl HPG1Constraint {
         })
     }
 
-    /// **Source:** `NLPlate_HPG1Constraint.hxx`:43 - `NLPlate_HPG1Constraint::IncrementalLoadAllowed()`
+    /// **Source:** `NLPlate_HPG1Constraint.hxx`:39 - `NLPlate_HPG1Constraint::IncrementalLoadAllowed()`
     pub fn incremental_load_allowed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG1Constraint_incremental_load_allowed(
@@ -2737,28 +2749,28 @@ impl HPG1Constraint {
         })
     }
 
-    /// **Source:** `NLPlate_HPG1Constraint.hxx`:45 - `NLPlate_HPG1Constraint::ActiveOrder()`
+    /// **Source:** `NLPlate_HPG1Constraint.hxx`:41 - `NLPlate_HPG1Constraint::ActiveOrder()`
     pub fn active_order(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG1Constraint_active_order(self as *const Self)
         })
     }
 
-    /// **Source:** `NLPlate_HPG1Constraint.hxx`:47 - `NLPlate_HPG1Constraint::IsG0()`
+    /// **Source:** `NLPlate_HPG1Constraint.hxx`:43 - `NLPlate_HPG1Constraint::IsG0()`
     pub fn is_g0(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG1Constraint_is_g0(self as *const Self)
         })
     }
 
-    /// **Source:** `NLPlate_HPG1Constraint.hxx`:49 - `NLPlate_HPG1Constraint::Orientation()`
+    /// **Source:** `NLPlate_HPG1Constraint.hxx`:45 - `NLPlate_HPG1Constraint::Orientation()`
     pub fn orientation(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG1Constraint_orientation(self as *mut Self)
         })
     }
 
-    /// **Source:** `NLPlate_HPG1Constraint.hxx`:51 - `NLPlate_HPG1Constraint::G1Target()`
+    /// **Source:** `NLPlate_HPG1Constraint.hxx`:47 - `NLPlate_HPG1Constraint::G1Target()`
     pub fn g1_target(&self) -> &crate::plate::D1 {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::NLPlate_HPG1Constraint_g1_target(
@@ -2767,8 +2779,8 @@ impl HPG1Constraint {
         }
     }
 
-    /// **Source:** `NLPlate_HPG1Constraint.hxx`:53 - `NLPlate_HPG1Constraint::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `NLPlate_HPG1Constraint.hxx`:49 - `NLPlate_HPG1Constraint::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::NLPlate_HPG1Constraint_dynamic_type(
@@ -2778,7 +2790,7 @@ impl HPG1Constraint {
         }
     }
 
-    /// **Source:** `NLPlate_HPG1Constraint.hxx`:53 - `NLPlate_HPG1Constraint::get_type_name()`
+    /// **Source:** `NLPlate_HPG1Constraint.hxx`:49 - `NLPlate_HPG1Constraint::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2789,8 +2801,8 @@ impl HPG1Constraint {
         .into_owned()
     }
 
-    /// **Source:** `NLPlate_HPG1Constraint.hxx`:53 - `NLPlate_HPG1Constraint::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `NLPlate_HPG1Constraint.hxx`:49 - `NLPlate_HPG1Constraint::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::NLPlate_HPG1Constraint_get_type_descriptor(),
@@ -2845,7 +2857,7 @@ impl HPG1Constraint {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG1Constraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG1Constraint> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::NLPlate_HPG1Constraint_to_handle(obj.into_raw()),
@@ -2853,7 +2865,7 @@ impl HPG1Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:44 - `NLPlate_HGPPConstraint::SetUVFreeSliding()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:43 - `NLPlate_HGPPConstraint::SetUVFreeSliding()`
     pub fn set_uv_free_sliding(&mut self, UVFree: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG1Constraint_inherited_SetUVFreeSliding(
@@ -2863,7 +2875,7 @@ impl HPG1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:48 - `NLPlate_HGPPConstraint::SetActiveOrder()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:47 - `NLPlate_HGPPConstraint::SetActiveOrder()`
     pub fn set_active_order(&mut self, ActiveOrder: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG1Constraint_inherited_SetActiveOrder(
@@ -2873,7 +2885,7 @@ impl HPG1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:50 - `NLPlate_HGPPConstraint::SetUV()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:49 - `NLPlate_HGPPConstraint::SetUV()`
     pub fn set_uv(&mut self, UV: &crate::gp::XY) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG1Constraint_inherited_SetUV(
@@ -2883,7 +2895,7 @@ impl HPG1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:54 - `NLPlate_HGPPConstraint::SetG0Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:53 - `NLPlate_HGPPConstraint::SetG0Criterion()`
     pub fn set_g0_criterion(&mut self, TolDist: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG1Constraint_inherited_SetG0Criterion(
@@ -2893,7 +2905,7 @@ impl HPG1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:56 - `NLPlate_HGPPConstraint::SetG1Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:55 - `NLPlate_HGPPConstraint::SetG1Criterion()`
     pub fn set_g1_criterion(&mut self, TolAng: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG1Constraint_inherited_SetG1Criterion(
@@ -2903,7 +2915,7 @@ impl HPG1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:58 - `NLPlate_HGPPConstraint::SetG2Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:57 - `NLPlate_HGPPConstraint::SetG2Criterion()`
     pub fn set_g2_criterion(&mut self, TolCurv: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG1Constraint_inherited_SetG2Criterion(
@@ -2913,7 +2925,7 @@ impl HPG1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:60 - `NLPlate_HGPPConstraint::SetG3Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:59 - `NLPlate_HGPPConstraint::SetG3Criterion()`
     pub fn set_g3_criterion(&mut self, TolG3: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG1Constraint_inherited_SetG3Criterion(
@@ -2923,7 +2935,7 @@ impl HPG1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:62 - `NLPlate_HGPPConstraint::UVFreeSliding()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:61 - `NLPlate_HGPPConstraint::UVFreeSliding()`
     pub fn uv_free_sliding(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG1Constraint_inherited_UVFreeSliding(
@@ -2932,7 +2944,7 @@ impl HPG1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:68 - `NLPlate_HGPPConstraint::UV()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:67 - `NLPlate_HGPPConstraint::UV()`
     pub fn uv(&self) -> &crate::gp::XY {
         unsafe {
             &*(crate::check_result(
@@ -2943,7 +2955,7 @@ impl HPG1Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:74 - `NLPlate_HGPPConstraint::G0Target()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:73 - `NLPlate_HGPPConstraint::G0Target()`
     pub fn g0_target(&self) -> &crate::gp::XYZ {
         unsafe {
             &*(crate::check_result(
@@ -2954,7 +2966,7 @@ impl HPG1Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:78 - `NLPlate_HGPPConstraint::G2Target()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:77 - `NLPlate_HGPPConstraint::G2Target()`
     pub fn g2_target(&self) -> &crate::plate::D2 {
         unsafe {
             &*(crate::check_result(
@@ -2965,7 +2977,7 @@ impl HPG1Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:80 - `NLPlate_HGPPConstraint::G3Target()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:79 - `NLPlate_HGPPConstraint::G3Target()`
     pub fn g3_target(&self) -> &crate::plate::D3 {
         unsafe {
             &*(crate::check_result(
@@ -2976,7 +2988,7 @@ impl HPG1Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:82 - `NLPlate_HGPPConstraint::G0Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:81 - `NLPlate_HGPPConstraint::G0Criterion()`
     pub fn g0_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG1Constraint_inherited_G0Criterion(
@@ -2985,7 +2997,7 @@ impl HPG1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:84 - `NLPlate_HGPPConstraint::G1Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:83 - `NLPlate_HGPPConstraint::G1Criterion()`
     pub fn g1_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG1Constraint_inherited_G1Criterion(
@@ -2994,7 +3006,7 @@ impl HPG1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:86 - `NLPlate_HGPPConstraint::G2Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:85 - `NLPlate_HGPPConstraint::G2Criterion()`
     pub fn g2_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG1Constraint_inherited_G2Criterion(
@@ -3003,7 +3015,7 @@ impl HPG1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:88 - `NLPlate_HGPPConstraint::G3Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:87 - `NLPlate_HGPPConstraint::G3Criterion()`
     pub fn g3_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG1Constraint_inherited_G3Criterion(
@@ -3012,8 +3024,8 @@ impl HPG1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG1Constraint_inherited_IsInstance(
                 self as *const Self,
@@ -3022,8 +3034,8 @@ impl HPG1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG1Constraint_inherited_IsKind(
                 self as *const Self,
@@ -3032,7 +3044,7 @@ impl HPG1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3048,7 +3060,7 @@ impl HPG1Constraint {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG1Constraint_inherited_GetRefCount(
@@ -3057,7 +3069,7 @@ impl HPG1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG1Constraint_inherited_IncrementRefCounter(
@@ -3066,7 +3078,7 @@ impl HPG1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG1Constraint_inherited_DecrementRefCounter(
@@ -3075,7 +3087,7 @@ impl HPG1Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG1Constraint_inherited_Delete(
@@ -3085,38 +3097,38 @@ impl HPG1Constraint {
     }
 }
 
-pub use crate::ffi_types::HandleNLPlateHPG1Constraint;
+pub use crate::ffi_types::Handle_NLPlate_HPG1Constraint;
 
-unsafe impl crate::CppDeletable for HandleNLPlateHPG1Constraint {
+unsafe impl crate::CppDeletable for Handle_NLPlate_HPG1Constraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG1Constraint_destructor(ptr);
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG1Constraint_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleNLPlateHPG1Constraint {
+unsafe impl crate::CppCopyable for Handle_NLPlate_HPG1Constraint {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG1Constraint_clone(
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG1Constraint_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleNLPlateHPG1Constraint {
+impl Handle_NLPlate_HPG1Constraint {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG1Constraint_is_null(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG1Constraint_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying NLPlate_HPG1Constraint
     pub fn get(&self) -> &crate::ffi_types::NLPlate_HPG1Constraint {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG1Constraint_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG1Constraint_get(
                 self as *const Self,
             ))
         }
@@ -3126,7 +3138,7 @@ impl HandleNLPlateHPG1Constraint {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::NLPlate_HPG1Constraint {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG1Constraint_get_mut(
+                crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG1Constraint_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -3136,18 +3148,18 @@ impl HandleNLPlateHPG1Constraint {
     /// Upcast Handle<NLPlate_HPG1Constraint> to Handle<NLPlate_HGPPConstraint>
     pub fn to_handle_hgpp_constraint(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleNLPlateHGPPConstraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HGPPConstraint> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG1Constraint_to_HandleNLPlateHGPPConstraint(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG1Constraint_to_Handle_NLPlate_HGPPConstraint(self as *const Self)))
         }
     }
 
     /// Upcast Handle<NLPlate_HPG1Constraint> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG1Constraint_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG1Constraint_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 
@@ -3156,9 +3168,9 @@ impl HandleNLPlateHPG1Constraint {
     /// Returns `None` if the handle does not point to a `NLPlate_HPG2Constraint` (or subclass).
     pub fn downcast_to_hpg2_constraint(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG2Constraint>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG2Constraint>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG1Constraint_downcast_to_HandleNLPlateHPG2Constraint(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG1Constraint_downcast_to_Handle_NLPlate_HPG2Constraint(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3172,9 +3184,9 @@ impl HandleNLPlateHPG1Constraint {
     /// Returns `None` if the handle does not point to a `NLPlate_HPG3Constraint` (or subclass).
     pub fn downcast_to_hpg3_constraint(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG3Constraint>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG3Constraint>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG1Constraint_downcast_to_HandleNLPlateHPG3Constraint(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG1Constraint_downcast_to_Handle_NLPlate_HPG3Constraint(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3188,8 +3200,8 @@ impl HandleNLPlateHPG1Constraint {
 // From NLPlate_HPG2Constraint.hxx
 // ========================
 
-/// **Source:** `NLPlate_HPG2Constraint.hxx`:33 - `NLPlate_HPG2Constraint`
-/// define a PinPoint (no G0)  G2 Constraint used to load a Non
+/// **Source:** `NLPlate_HPG2Constraint.hxx`:30 - `NLPlate_HPG2Constraint`
+/// define a PinPoint (no G0) G2 Constraint used to load a Non
 /// Linear Plate
 pub use crate::ffi_types::NLPlate_HPG2Constraint as HPG2Constraint;
 
@@ -3202,7 +3214,7 @@ unsafe impl crate::CppDeletable for HPG2Constraint {
 }
 
 impl HPG2Constraint {
-    /// **Source:** `NLPlate_HPG2Constraint.hxx`:37 - `NLPlate_HPG2Constraint::NLPlate_HPG2Constraint()`
+    /// **Source:** `NLPlate_HPG2Constraint.hxx`:34 - `NLPlate_HPG2Constraint::NLPlate_HPG2Constraint()`
     pub fn new_xy_d1_d2(
         UV: &crate::gp::XY,
         D1T: &crate::plate::D1,
@@ -3215,14 +3227,14 @@ impl HPG2Constraint {
         }
     }
 
-    /// **Source:** `NLPlate_HPG2Constraint.hxx`:39 - `NLPlate_HPG2Constraint::ActiveOrder()`
+    /// **Source:** `NLPlate_HPG2Constraint.hxx`:36 - `NLPlate_HPG2Constraint::ActiveOrder()`
     pub fn active_order(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG2Constraint_active_order(self as *const Self)
         })
     }
 
-    /// **Source:** `NLPlate_HPG2Constraint.hxx`:41 - `NLPlate_HPG2Constraint::G2Target()`
+    /// **Source:** `NLPlate_HPG2Constraint.hxx`:38 - `NLPlate_HPG2Constraint::G2Target()`
     pub fn g2_target(&self) -> &crate::plate::D2 {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::NLPlate_HPG2Constraint_g2_target(
@@ -3231,8 +3243,8 @@ impl HPG2Constraint {
         }
     }
 
-    /// **Source:** `NLPlate_HPG2Constraint.hxx`:43 - `NLPlate_HPG2Constraint::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `NLPlate_HPG2Constraint.hxx`:40 - `NLPlate_HPG2Constraint::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::NLPlate_HPG2Constraint_dynamic_type(
@@ -3242,7 +3254,7 @@ impl HPG2Constraint {
         }
     }
 
-    /// **Source:** `NLPlate_HPG2Constraint.hxx`:43 - `NLPlate_HPG2Constraint::get_type_name()`
+    /// **Source:** `NLPlate_HPG2Constraint.hxx`:40 - `NLPlate_HPG2Constraint::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -3253,8 +3265,8 @@ impl HPG2Constraint {
         .into_owned()
     }
 
-    /// **Source:** `NLPlate_HPG2Constraint.hxx`:43 - `NLPlate_HPG2Constraint::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `NLPlate_HPG2Constraint.hxx`:40 - `NLPlate_HPG2Constraint::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::NLPlate_HPG2Constraint_get_type_descriptor(),
@@ -3331,7 +3343,7 @@ impl HPG2Constraint {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG2Constraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG2Constraint> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::NLPlate_HPG2Constraint_to_handle(obj.into_raw()),
@@ -3339,7 +3351,7 @@ impl HPG2Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:38 - `NLPlate_HPG1Constraint::SetIncrementalLoadAllowed()`
+    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:35 - `NLPlate_HPG1Constraint::SetIncrementalLoadAllowed()`
     pub fn set_incremental_load_allowed(&mut self, ILA: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG2Constraint_inherited_SetIncrementalLoadAllowed(
@@ -3349,7 +3361,7 @@ impl HPG2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:41 - `NLPlate_HPG1Constraint::SetOrientation()`
+    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:37 - `NLPlate_HPG1Constraint::SetOrientation()`
     pub fn set_orientation(&mut self, Orient: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG2Constraint_inherited_SetOrientation(
@@ -3359,7 +3371,7 @@ impl HPG2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:43 - `NLPlate_HPG1Constraint::IncrementalLoadAllowed()`
+    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:39 - `NLPlate_HPG1Constraint::IncrementalLoadAllowed()`
     pub fn incremental_load_allowed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG2Constraint_inherited_IncrementalLoadAllowed(
@@ -3368,14 +3380,14 @@ impl HPG2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:47 - `NLPlate_HPG1Constraint::IsG0()`
+    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:43 - `NLPlate_HPG1Constraint::IsG0()`
     pub fn is_g0(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG2Constraint_inherited_IsG0(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:49 - `NLPlate_HPG1Constraint::Orientation()`
+    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:45 - `NLPlate_HPG1Constraint::Orientation()`
     pub fn orientation(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG2Constraint_inherited_Orientation(
@@ -3384,7 +3396,7 @@ impl HPG2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:51 - `NLPlate_HPG1Constraint::G1Target()`
+    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:47 - `NLPlate_HPG1Constraint::G1Target()`
     pub fn g1_target(&self) -> &crate::plate::D1 {
         unsafe {
             &*(crate::check_result(
@@ -3395,7 +3407,7 @@ impl HPG2Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:44 - `NLPlate_HGPPConstraint::SetUVFreeSliding()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:43 - `NLPlate_HGPPConstraint::SetUVFreeSliding()`
     pub fn set_uv_free_sliding(&mut self, UVFree: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG2Constraint_inherited_SetUVFreeSliding(
@@ -3405,7 +3417,7 @@ impl HPG2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:48 - `NLPlate_HGPPConstraint::SetActiveOrder()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:47 - `NLPlate_HGPPConstraint::SetActiveOrder()`
     pub fn set_active_order(&mut self, ActiveOrder: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG2Constraint_inherited_SetActiveOrder(
@@ -3415,7 +3427,7 @@ impl HPG2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:50 - `NLPlate_HGPPConstraint::SetUV()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:49 - `NLPlate_HGPPConstraint::SetUV()`
     pub fn set_uv(&mut self, UV: &crate::gp::XY) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG2Constraint_inherited_SetUV(
@@ -3425,7 +3437,7 @@ impl HPG2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:54 - `NLPlate_HGPPConstraint::SetG0Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:53 - `NLPlate_HGPPConstraint::SetG0Criterion()`
     pub fn set_g0_criterion(&mut self, TolDist: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG2Constraint_inherited_SetG0Criterion(
@@ -3435,7 +3447,7 @@ impl HPG2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:56 - `NLPlate_HGPPConstraint::SetG1Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:55 - `NLPlate_HGPPConstraint::SetG1Criterion()`
     pub fn set_g1_criterion(&mut self, TolAng: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG2Constraint_inherited_SetG1Criterion(
@@ -3445,7 +3457,7 @@ impl HPG2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:58 - `NLPlate_HGPPConstraint::SetG2Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:57 - `NLPlate_HGPPConstraint::SetG2Criterion()`
     pub fn set_g2_criterion(&mut self, TolCurv: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG2Constraint_inherited_SetG2Criterion(
@@ -3455,7 +3467,7 @@ impl HPG2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:60 - `NLPlate_HGPPConstraint::SetG3Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:59 - `NLPlate_HGPPConstraint::SetG3Criterion()`
     pub fn set_g3_criterion(&mut self, TolG3: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG2Constraint_inherited_SetG3Criterion(
@@ -3465,7 +3477,7 @@ impl HPG2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:62 - `NLPlate_HGPPConstraint::UVFreeSliding()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:61 - `NLPlate_HGPPConstraint::UVFreeSliding()`
     pub fn uv_free_sliding(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG2Constraint_inherited_UVFreeSliding(
@@ -3474,7 +3486,7 @@ impl HPG2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:68 - `NLPlate_HGPPConstraint::UV()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:67 - `NLPlate_HGPPConstraint::UV()`
     pub fn uv(&self) -> &crate::gp::XY {
         unsafe {
             &*(crate::check_result(
@@ -3485,7 +3497,7 @@ impl HPG2Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:74 - `NLPlate_HGPPConstraint::G0Target()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:73 - `NLPlate_HGPPConstraint::G0Target()`
     pub fn g0_target(&self) -> &crate::gp::XYZ {
         unsafe {
             &*(crate::check_result(
@@ -3496,7 +3508,7 @@ impl HPG2Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:80 - `NLPlate_HGPPConstraint::G3Target()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:79 - `NLPlate_HGPPConstraint::G3Target()`
     pub fn g3_target(&self) -> &crate::plate::D3 {
         unsafe {
             &*(crate::check_result(
@@ -3507,7 +3519,7 @@ impl HPG2Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:82 - `NLPlate_HGPPConstraint::G0Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:81 - `NLPlate_HGPPConstraint::G0Criterion()`
     pub fn g0_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG2Constraint_inherited_G0Criterion(
@@ -3516,7 +3528,7 @@ impl HPG2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:84 - `NLPlate_HGPPConstraint::G1Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:83 - `NLPlate_HGPPConstraint::G1Criterion()`
     pub fn g1_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG2Constraint_inherited_G1Criterion(
@@ -3525,7 +3537,7 @@ impl HPG2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:86 - `NLPlate_HGPPConstraint::G2Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:85 - `NLPlate_HGPPConstraint::G2Criterion()`
     pub fn g2_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG2Constraint_inherited_G2Criterion(
@@ -3534,7 +3546,7 @@ impl HPG2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:88 - `NLPlate_HGPPConstraint::G3Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:87 - `NLPlate_HGPPConstraint::G3Criterion()`
     pub fn g3_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG2Constraint_inherited_G3Criterion(
@@ -3543,8 +3555,8 @@ impl HPG2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG2Constraint_inherited_IsInstance(
                 self as *const Self,
@@ -3553,8 +3565,8 @@ impl HPG2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG2Constraint_inherited_IsKind(
                 self as *const Self,
@@ -3563,7 +3575,7 @@ impl HPG2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3579,7 +3591,7 @@ impl HPG2Constraint {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG2Constraint_inherited_GetRefCount(
@@ -3588,7 +3600,7 @@ impl HPG2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG2Constraint_inherited_IncrementRefCounter(
@@ -3597,7 +3609,7 @@ impl HPG2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG2Constraint_inherited_DecrementRefCounter(
@@ -3606,7 +3618,7 @@ impl HPG2Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG2Constraint_inherited_Delete(
@@ -3616,38 +3628,38 @@ impl HPG2Constraint {
     }
 }
 
-pub use crate::ffi_types::HandleNLPlateHPG2Constraint;
+pub use crate::ffi_types::Handle_NLPlate_HPG2Constraint;
 
-unsafe impl crate::CppDeletable for HandleNLPlateHPG2Constraint {
+unsafe impl crate::CppDeletable for Handle_NLPlate_HPG2Constraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG2Constraint_destructor(ptr);
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG2Constraint_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleNLPlateHPG2Constraint {
+unsafe impl crate::CppCopyable for Handle_NLPlate_HPG2Constraint {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG2Constraint_clone(
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG2Constraint_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleNLPlateHPG2Constraint {
+impl Handle_NLPlate_HPG2Constraint {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG2Constraint_is_null(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG2Constraint_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying NLPlate_HPG2Constraint
     pub fn get(&self) -> &crate::ffi_types::NLPlate_HPG2Constraint {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG2Constraint_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG2Constraint_get(
                 self as *const Self,
             ))
         }
@@ -3657,7 +3669,7 @@ impl HandleNLPlateHPG2Constraint {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::NLPlate_HPG2Constraint {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG2Constraint_get_mut(
+                crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG2Constraint_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -3667,27 +3679,27 @@ impl HandleNLPlateHPG2Constraint {
     /// Upcast Handle<NLPlate_HPG2Constraint> to Handle<NLPlate_HPG1Constraint>
     pub fn to_handle_hpg1_constraint(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG1Constraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG1Constraint> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG2Constraint_to_HandleNLPlateHPG1Constraint(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG2Constraint_to_Handle_NLPlate_HPG1Constraint(self as *const Self)))
         }
     }
 
     /// Upcast Handle<NLPlate_HPG2Constraint> to Handle<NLPlate_HGPPConstraint>
     pub fn to_handle_hgpp_constraint(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleNLPlateHGPPConstraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HGPPConstraint> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG2Constraint_to_HandleNLPlateHGPPConstraint(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG2Constraint_to_Handle_NLPlate_HGPPConstraint(self as *const Self)))
         }
     }
 
     /// Upcast Handle<NLPlate_HPG2Constraint> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG2Constraint_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG2Constraint_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 
@@ -3696,9 +3708,9 @@ impl HandleNLPlateHPG2Constraint {
     /// Returns `None` if the handle does not point to a `NLPlate_HPG3Constraint` (or subclass).
     pub fn downcast_to_hpg3_constraint(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG3Constraint>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG3Constraint>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG2Constraint_downcast_to_HandleNLPlateHPG3Constraint(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG2Constraint_downcast_to_Handle_NLPlate_HPG3Constraint(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3712,8 +3724,8 @@ impl HandleNLPlateHPG2Constraint {
 // From NLPlate_HPG3Constraint.hxx
 // ========================
 
-/// **Source:** `NLPlate_HPG3Constraint.hxx`:34 - `NLPlate_HPG3Constraint`
-/// define a PinPoint (no G0)  G3 Constraint used to load a Non
+/// **Source:** `NLPlate_HPG3Constraint.hxx`:31 - `NLPlate_HPG3Constraint`
+/// define a PinPoint (no G0) G3 Constraint used to load a Non
 /// Linear Plate
 pub use crate::ffi_types::NLPlate_HPG3Constraint as HPG3Constraint;
 
@@ -3726,7 +3738,7 @@ unsafe impl crate::CppDeletable for HPG3Constraint {
 }
 
 impl HPG3Constraint {
-    /// **Source:** `NLPlate_HPG3Constraint.hxx`:38 - `NLPlate_HPG3Constraint::NLPlate_HPG3Constraint()`
+    /// **Source:** `NLPlate_HPG3Constraint.hxx`:35 - `NLPlate_HPG3Constraint::NLPlate_HPG3Constraint()`
     pub fn new_xy_d1_d2_d3(
         UV: &crate::gp::XY,
         D1T: &crate::plate::D1,
@@ -3742,14 +3754,14 @@ impl HPG3Constraint {
         }
     }
 
-    /// **Source:** `NLPlate_HPG3Constraint.hxx`:43 - `NLPlate_HPG3Constraint::ActiveOrder()`
+    /// **Source:** `NLPlate_HPG3Constraint.hxx`:40 - `NLPlate_HPG3Constraint::ActiveOrder()`
     pub fn active_order(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG3Constraint_active_order(self as *const Self)
         })
     }
 
-    /// **Source:** `NLPlate_HPG3Constraint.hxx`:45 - `NLPlate_HPG3Constraint::G3Target()`
+    /// **Source:** `NLPlate_HPG3Constraint.hxx`:42 - `NLPlate_HPG3Constraint::G3Target()`
     pub fn g3_target(&self) -> &crate::plate::D3 {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::NLPlate_HPG3Constraint_g3_target(
@@ -3758,8 +3770,8 @@ impl HPG3Constraint {
         }
     }
 
-    /// **Source:** `NLPlate_HPG3Constraint.hxx`:47 - `NLPlate_HPG3Constraint::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `NLPlate_HPG3Constraint.hxx`:44 - `NLPlate_HPG3Constraint::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::NLPlate_HPG3Constraint_dynamic_type(
@@ -3769,7 +3781,7 @@ impl HPG3Constraint {
         }
     }
 
-    /// **Source:** `NLPlate_HPG3Constraint.hxx`:47 - `NLPlate_HPG3Constraint::get_type_name()`
+    /// **Source:** `NLPlate_HPG3Constraint.hxx`:44 - `NLPlate_HPG3Constraint::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -3780,8 +3792,8 @@ impl HPG3Constraint {
         .into_owned()
     }
 
-    /// **Source:** `NLPlate_HPG3Constraint.hxx`:47 - `NLPlate_HPG3Constraint::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `NLPlate_HPG3Constraint.hxx`:44 - `NLPlate_HPG3Constraint::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::NLPlate_HPG3Constraint_get_type_descriptor(),
@@ -3880,7 +3892,7 @@ impl HPG3Constraint {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG3Constraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG3Constraint> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::NLPlate_HPG3Constraint_to_handle(obj.into_raw()),
@@ -3888,7 +3900,7 @@ impl HPG3Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG2Constraint.hxx`:41 - `NLPlate_HPG2Constraint::G2Target()`
+    /// Inherited: **Source:** `NLPlate_HPG2Constraint.hxx`:38 - `NLPlate_HPG2Constraint::G2Target()`
     pub fn g2_target(&self) -> &crate::plate::D2 {
         unsafe {
             &*(crate::check_result(
@@ -3899,7 +3911,7 @@ impl HPG3Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:38 - `NLPlate_HPG1Constraint::SetIncrementalLoadAllowed()`
+    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:35 - `NLPlate_HPG1Constraint::SetIncrementalLoadAllowed()`
     pub fn set_incremental_load_allowed(&mut self, ILA: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG3Constraint_inherited_SetIncrementalLoadAllowed(
@@ -3909,7 +3921,7 @@ impl HPG3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:41 - `NLPlate_HPG1Constraint::SetOrientation()`
+    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:37 - `NLPlate_HPG1Constraint::SetOrientation()`
     pub fn set_orientation(&mut self, Orient: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG3Constraint_inherited_SetOrientation(
@@ -3919,7 +3931,7 @@ impl HPG3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:43 - `NLPlate_HPG1Constraint::IncrementalLoadAllowed()`
+    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:39 - `NLPlate_HPG1Constraint::IncrementalLoadAllowed()`
     pub fn incremental_load_allowed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG3Constraint_inherited_IncrementalLoadAllowed(
@@ -3928,14 +3940,14 @@ impl HPG3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:47 - `NLPlate_HPG1Constraint::IsG0()`
+    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:43 - `NLPlate_HPG1Constraint::IsG0()`
     pub fn is_g0(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG3Constraint_inherited_IsG0(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:49 - `NLPlate_HPG1Constraint::Orientation()`
+    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:45 - `NLPlate_HPG1Constraint::Orientation()`
     pub fn orientation(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG3Constraint_inherited_Orientation(
@@ -3944,7 +3956,7 @@ impl HPG3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:51 - `NLPlate_HPG1Constraint::G1Target()`
+    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:47 - `NLPlate_HPG1Constraint::G1Target()`
     pub fn g1_target(&self) -> &crate::plate::D1 {
         unsafe {
             &*(crate::check_result(
@@ -3955,7 +3967,7 @@ impl HPG3Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:44 - `NLPlate_HGPPConstraint::SetUVFreeSliding()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:43 - `NLPlate_HGPPConstraint::SetUVFreeSliding()`
     pub fn set_uv_free_sliding(&mut self, UVFree: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG3Constraint_inherited_SetUVFreeSliding(
@@ -3965,7 +3977,7 @@ impl HPG3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:48 - `NLPlate_HGPPConstraint::SetActiveOrder()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:47 - `NLPlate_HGPPConstraint::SetActiveOrder()`
     pub fn set_active_order(&mut self, ActiveOrder: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG3Constraint_inherited_SetActiveOrder(
@@ -3975,7 +3987,7 @@ impl HPG3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:50 - `NLPlate_HGPPConstraint::SetUV()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:49 - `NLPlate_HGPPConstraint::SetUV()`
     pub fn set_uv(&mut self, UV: &crate::gp::XY) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG3Constraint_inherited_SetUV(
@@ -3985,7 +3997,7 @@ impl HPG3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:54 - `NLPlate_HGPPConstraint::SetG0Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:53 - `NLPlate_HGPPConstraint::SetG0Criterion()`
     pub fn set_g0_criterion(&mut self, TolDist: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG3Constraint_inherited_SetG0Criterion(
@@ -3995,7 +4007,7 @@ impl HPG3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:56 - `NLPlate_HGPPConstraint::SetG1Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:55 - `NLPlate_HGPPConstraint::SetG1Criterion()`
     pub fn set_g1_criterion(&mut self, TolAng: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG3Constraint_inherited_SetG1Criterion(
@@ -4005,7 +4017,7 @@ impl HPG3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:58 - `NLPlate_HGPPConstraint::SetG2Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:57 - `NLPlate_HGPPConstraint::SetG2Criterion()`
     pub fn set_g2_criterion(&mut self, TolCurv: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG3Constraint_inherited_SetG2Criterion(
@@ -4015,7 +4027,7 @@ impl HPG3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:60 - `NLPlate_HGPPConstraint::SetG3Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:59 - `NLPlate_HGPPConstraint::SetG3Criterion()`
     pub fn set_g3_criterion(&mut self, TolG3: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG3Constraint_inherited_SetG3Criterion(
@@ -4025,7 +4037,7 @@ impl HPG3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:62 - `NLPlate_HGPPConstraint::UVFreeSliding()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:61 - `NLPlate_HGPPConstraint::UVFreeSliding()`
     pub fn uv_free_sliding(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG3Constraint_inherited_UVFreeSliding(
@@ -4034,7 +4046,7 @@ impl HPG3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:68 - `NLPlate_HGPPConstraint::UV()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:67 - `NLPlate_HGPPConstraint::UV()`
     pub fn uv(&self) -> &crate::gp::XY {
         unsafe {
             &*(crate::check_result(
@@ -4045,7 +4057,7 @@ impl HPG3Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:74 - `NLPlate_HGPPConstraint::G0Target()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:73 - `NLPlate_HGPPConstraint::G0Target()`
     pub fn g0_target(&self) -> &crate::gp::XYZ {
         unsafe {
             &*(crate::check_result(
@@ -4056,7 +4068,7 @@ impl HPG3Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:82 - `NLPlate_HGPPConstraint::G0Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:81 - `NLPlate_HGPPConstraint::G0Criterion()`
     pub fn g0_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG3Constraint_inherited_G0Criterion(
@@ -4065,7 +4077,7 @@ impl HPG3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:84 - `NLPlate_HGPPConstraint::G1Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:83 - `NLPlate_HGPPConstraint::G1Criterion()`
     pub fn g1_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG3Constraint_inherited_G1Criterion(
@@ -4074,7 +4086,7 @@ impl HPG3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:86 - `NLPlate_HGPPConstraint::G2Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:85 - `NLPlate_HGPPConstraint::G2Criterion()`
     pub fn g2_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG3Constraint_inherited_G2Criterion(
@@ -4083,7 +4095,7 @@ impl HPG3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:88 - `NLPlate_HGPPConstraint::G3Criterion()`
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:87 - `NLPlate_HGPPConstraint::G3Criterion()`
     pub fn g3_criterion(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG3Constraint_inherited_G3Criterion(
@@ -4092,8 +4104,8 @@ impl HPG3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG3Constraint_inherited_IsInstance(
                 self as *const Self,
@@ -4102,8 +4114,8 @@ impl HPG3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG3Constraint_inherited_IsKind(
                 self as *const Self,
@@ -4112,7 +4124,7 @@ impl HPG3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -4128,7 +4140,7 @@ impl HPG3Constraint {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG3Constraint_inherited_GetRefCount(
@@ -4137,7 +4149,7 @@ impl HPG3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG3Constraint_inherited_IncrementRefCounter(
@@ -4146,7 +4158,7 @@ impl HPG3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG3Constraint_inherited_DecrementRefCounter(
@@ -4155,7 +4167,7 @@ impl HPG3Constraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_HPG3Constraint_inherited_Delete(
@@ -4165,38 +4177,38 @@ impl HPG3Constraint {
     }
 }
 
-pub use crate::ffi_types::HandleNLPlateHPG3Constraint;
+pub use crate::ffi_types::Handle_NLPlate_HPG3Constraint;
 
-unsafe impl crate::CppDeletable for HandleNLPlateHPG3Constraint {
+unsafe impl crate::CppDeletable for Handle_NLPlate_HPG3Constraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG3Constraint_destructor(ptr);
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG3Constraint_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleNLPlateHPG3Constraint {
+unsafe impl crate::CppCopyable for Handle_NLPlate_HPG3Constraint {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG3Constraint_clone(
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG3Constraint_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleNLPlateHPG3Constraint {
+impl Handle_NLPlate_HPG3Constraint {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG3Constraint_is_null(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG3Constraint_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying NLPlate_HPG3Constraint
     pub fn get(&self) -> &crate::ffi_types::NLPlate_HPG3Constraint {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG3Constraint_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG3Constraint_get(
                 self as *const Self,
             ))
         }
@@ -4206,7 +4218,7 @@ impl HandleNLPlateHPG3Constraint {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::NLPlate_HPG3Constraint {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG3Constraint_get_mut(
+                crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG3Constraint_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -4216,36 +4228,36 @@ impl HandleNLPlateHPG3Constraint {
     /// Upcast Handle<NLPlate_HPG3Constraint> to Handle<NLPlate_HPG2Constraint>
     pub fn to_handle_hpg2_constraint(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG2Constraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG2Constraint> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG3Constraint_to_HandleNLPlateHPG2Constraint(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG3Constraint_to_Handle_NLPlate_HPG2Constraint(self as *const Self)))
         }
     }
 
     /// Upcast Handle<NLPlate_HPG3Constraint> to Handle<NLPlate_HPG1Constraint>
     pub fn to_handle_hpg1_constraint(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleNLPlateHPG1Constraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HPG1Constraint> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG3Constraint_to_HandleNLPlateHPG1Constraint(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG3Constraint_to_Handle_NLPlate_HPG1Constraint(self as *const Self)))
         }
     }
 
     /// Upcast Handle<NLPlate_HPG3Constraint> to Handle<NLPlate_HGPPConstraint>
     pub fn to_handle_hgpp_constraint(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleNLPlateHGPPConstraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NLPlate_HGPPConstraint> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG3Constraint_to_HandleNLPlateHGPPConstraint(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG3Constraint_to_Handle_NLPlate_HGPPConstraint(self as *const Self)))
         }
     }
 
     /// Upcast Handle<NLPlate_HPG3Constraint> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleNLPlateHPG3Constraint_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_NLPlate_HPG3Constraint_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -4254,7 +4266,7 @@ impl HandleNLPlateHPG3Constraint {
 // From NLPlate_NLPlate.hxx
 // ========================
 
-/// **Source:** `NLPlate_NLPlate.hxx`:32 - `NLPlate_NLPlate`
+/// **Source:** `NLPlate_NLPlate.hxx`:34 - `NLPlate_NLPlate`
 pub use crate::ffi_types::NLPlate_NLPlate as NLPlate;
 
 unsafe impl crate::CppDeletable for NLPlate {
@@ -4266,9 +4278,9 @@ unsafe impl crate::CppDeletable for NLPlate {
 }
 
 impl NLPlate {
-    /// **Source:** `NLPlate_NLPlate.hxx`:37 - `NLPlate_NLPlate::NLPlate_NLPlate()`
+    /// **Source:** `NLPlate_NLPlate.hxx`:39 - `NLPlate_NLPlate::NLPlate_NLPlate()`
     pub fn new_handlegeomsurface(
-        InitialSurface: &crate::ffi_types::HandleGeomSurface,
+        InitialSurface: &crate::ffi_types::Handle_Geom_Surface,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -4279,14 +4291,14 @@ impl NLPlate {
         }
     }
 
-    /// **Source:** `NLPlate_NLPlate.hxx`:39 - `NLPlate_NLPlate::Load()`
-    pub fn load(&mut self, GConst: &crate::ffi_types::HandleNLPlateHGPPConstraint) {
+    /// **Source:** `NLPlate_NLPlate.hxx`:41 - `NLPlate_NLPlate::Load()`
+    pub fn load(&mut self, GConst: &crate::ffi_types::Handle_NLPlate_HGPPConstraint) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_NLPlate_load(self as *mut Self, GConst)
         })
     }
 
-    /// **Source:** `NLPlate_NLPlate.hxx`:41 - `NLPlate_NLPlate::Solve()`
+    /// **Source:** `NLPlate_NLPlate.hxx`:43 - `NLPlate_NLPlate::Solve()`
     pub fn solve(&mut self, ord: i32, InitialConsraintOrder: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_NLPlate_solve(
@@ -4297,7 +4309,7 @@ impl NLPlate {
         })
     }
 
-    /// **Source:** `NLPlate_NLPlate.hxx`:44 - `NLPlate_NLPlate::Solve2()`
+    /// **Source:** `NLPlate_NLPlate.hxx`:45 - `NLPlate_NLPlate::Solve2()`
     pub fn solve2(&mut self, ord: i32, InitialConsraintOrder: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_NLPlate_solve2(
@@ -4382,14 +4394,14 @@ impl NLPlate {
         }
     }
 
-    /// **Source:** `NLPlate_NLPlate.hxx`:69 - `NLPlate_NLPlate::Continuity()`
+    /// **Source:** `NLPlate_NLPlate.hxx`:67 - `NLPlate_NLPlate::Continuity()`
     pub fn continuity(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_NLPlate_continuity(self as *const Self)
         })
     }
 
-    /// **Source:** `NLPlate_NLPlate.hxx`:71 - `NLPlate_NLPlate::ConstraintsSliding()`
+    /// **Source:** `NLPlate_NLPlate.hxx`:69 - `NLPlate_NLPlate::ConstraintsSliding()`
     pub fn constraints_sliding(&mut self, NbIterations: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_NLPlate_constraints_sliding(
@@ -4399,7 +4411,7 @@ impl NLPlate {
         })
     }
 
-    /// **Source:** `NLPlate_NLPlate.hxx`:73 - `NLPlate_NLPlate::MaxActiveConstraintOrder()`
+    /// **Source:** `NLPlate_NLPlate.hxx`:71 - `NLPlate_NLPlate::MaxActiveConstraintOrder()`
     pub fn max_active_constraint_order(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::NLPlate_NLPlate_max_active_constraint_order(

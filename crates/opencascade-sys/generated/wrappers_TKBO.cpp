@@ -3,6 +3,7 @@
 
 #include "occt_preamble.hxx"
 
+#include <Adaptor3d_Surface.hxx>
 #include <Adaptor3d_TopolTool.hxx>
 #include <BOPAlgo_Alerts.hxx>
 #include <BOPAlgo_Algo.hxx>
@@ -14,11 +15,9 @@
 #include <BOPAlgo_BuilderShape.hxx>
 #include <BOPAlgo_BuilderSolid.hxx>
 #include <BOPAlgo_CellsBuilder.hxx>
-#include <BOPAlgo_CheckResult.hxx>
 #include <BOPAlgo_CheckStatus.hxx>
 #include <BOPAlgo_CheckerSI.hxx>
 #include <BOPAlgo_GlueEnum.hxx>
-#include <BOPAlgo_ListOfCheckResult.hxx>
 #include <BOPAlgo_MakeConnected.hxx>
 #include <BOPAlgo_MakePeriodic.hxx>
 #include <BOPAlgo_MakerVolume.hxx>
@@ -36,48 +35,18 @@
 #include <BOPAlgo_WireSplitter.hxx>
 #include <BOPDS_CommonBlock.hxx>
 #include <BOPDS_CoupleOfPaveBlocks.hxx>
-#include <BOPDS_Curve.hxx>
 #include <BOPDS_DS.hxx>
-#include <BOPDS_FaceInfo.hxx>
 #include <BOPDS_IndexRange.hxx>
-#include <BOPDS_IndexedDataMapOfPaveBlockListOfInteger.hxx>
-#include <BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock.hxx>
-#include <BOPDS_IndexedMapOfPaveBlock.hxx>
 #include <BOPDS_Interf.hxx>
 #include <BOPDS_Iterator.hxx>
 #include <BOPDS_IteratorSI.hxx>
-#include <BOPDS_ListOfPave.hxx>
-#include <BOPDS_ListOfPaveBlock.hxx>
-#include <BOPDS_MapOfPair.hxx>
-#include <BOPDS_MapOfPaveBlock.hxx>
-#include <BOPDS_Pair.hxx>
-#include <BOPDS_Pave.hxx>
 #include <BOPDS_PaveBlock.hxx>
-#include <BOPDS_Point.hxx>
 #include <BOPDS_ShapeInfo.hxx>
 #include <BOPDS_SubIterator.hxx>
 #include <BOPDS_Tools.hxx>
-#include <BOPDS_VectorOfCurve.hxx>
-#include <BOPDS_VectorOfFaceInfo.hxx>
-#include <BOPDS_VectorOfInterfEE.hxx>
-#include <BOPDS_VectorOfInterfEF.hxx>
-#include <BOPDS_VectorOfInterfEZ.hxx>
-#include <BOPDS_VectorOfInterfFF.hxx>
-#include <BOPDS_VectorOfInterfFZ.hxx>
-#include <BOPDS_VectorOfInterfVE.hxx>
-#include <BOPDS_VectorOfInterfVF.hxx>
-#include <BOPDS_VectorOfInterfVV.hxx>
-#include <BOPDS_VectorOfInterfVZ.hxx>
-#include <BOPDS_VectorOfInterfZZ.hxx>
-#include <BOPDS_VectorOfListOfPaveBlock.hxx>
-#include <BOPDS_VectorOfPoint.hxx>
 #include <BOPTools_AlgoTools.hxx>
 #include <BOPTools_AlgoTools2D.hxx>
 #include <BOPTools_AlgoTools3D.hxx>
-#include <BOPTools_ConnexityBlock.hxx>
-#include <BOPTools_CoupleOfShape.hxx>
-#include <BOPTools_ListOfConnexityBlock.hxx>
-#include <BOPTools_ListOfCoupleOfShape.hxx>
 #include <BOPTools_Set.hxx>
 #include <BRepAdaptor_Curve.hxx>
 #include <BRepAdaptor_Surface.hxx>
@@ -93,73 +62,39 @@
 #include <BRepAlgoAPI_Splitter.hxx>
 #include <BRepClass3d_SolidClassifier.hxx>
 #include <BRepTools_History.hxx>
-#include <Bnd_Box.hxx>
 #include <Bnd_OBB.hxx>
 #include <Geom2dHatch_Hatcher.hxx>
-#include <Geom2d_Curve.hxx>
 #include <GeomAPI_ProjectPointOnCurve.hxx>
 #include <GeomAPI_ProjectPointOnSurf.hxx>
 #include <GeomAbs_CurveType.hxx>
 #include <GeomAdaptor_Surface.hxx>
 #include <GeomInt_LineConstructor.hxx>
-#include <Geom_Curve.hxx>
-#include <Geom_Surface.hxx>
-#include <IntPatch_SequenceOfLine.hxx>
 #include <IntPatch_WLine.hxx>
-#include <IntSurf_ListOfPntOn2S.hxx>
 #include <IntTools.hxx>
 #include <IntTools_BaseRangeSample.hxx>
 #include <IntTools_BeanFaceIntersector.hxx>
-#include <IntTools_CommonPrt.hxx>
 #include <IntTools_Context.hxx>
-#include <IntTools_Curve.hxx>
 #include <IntTools_CurveRangeLocalizeData.hxx>
-#include <IntTools_CurveRangeSample.hxx>
 #include <IntTools_EdgeEdge.hxx>
 #include <IntTools_EdgeFace.hxx>
 #include <IntTools_FClass2d.hxx>
 #include <IntTools_FaceFace.hxx>
-#include <IntTools_ListOfCurveRangeSample.hxx>
-#include <IntTools_ListOfSurfaceRangeSample.hxx>
 #include <IntTools_MarkedRangeSet.hxx>
-#include <IntTools_PntOn2Faces.hxx>
 #include <IntTools_PntOnFace.hxx>
-#include <IntTools_Range.hxx>
-#include <IntTools_Root.hxx>
-#include <IntTools_SequenceOfCommonPrts.hxx>
-#include <IntTools_SequenceOfCurves.hxx>
-#include <IntTools_SequenceOfPntOn2Faces.hxx>
-#include <IntTools_SequenceOfRanges.hxx>
-#include <IntTools_SequenceOfRoots.hxx>
 #include <IntTools_ShrunkRange.hxx>
 #include <IntTools_SurfaceRangeLocalizeData.hxx>
-#include <IntTools_SurfaceRangeSample.hxx>
 #include <IntTools_Tools.hxx>
 #include <IntTools_TopolTool.hxx>
 #include <IntTools_WLineTool.hxx>
 #include <Message_Alert.hxx>
 #include <Message_ProgressRange.hxx>
 #include <Message_Report.hxx>
-#include <NCollection_BaseAllocator.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
-#include <TColStd_Array1OfReal.hxx>
-#include <TColStd_DataMapOfIntegerInteger.hxx>
-#include <TColStd_ListOfInteger.hxx>
-#include <TColStd_MapOfInteger.hxx>
+#include <TDF_HAllocator.hxx>
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_ShapeEnum.hxx>
-#include <TopAbs_State.hxx>
-#include <TopTools_DataMapOfShapeBox.hxx>
-#include <TopTools_DataMapOfShapeListOfShape.hxx>
-#include <TopTools_DataMapOfShapeShape.hxx>
-#include <TopTools_IndexedDataMapOfShapeListOfShape.hxx>
-#include <TopTools_IndexedDataMapOfShapeReal.hxx>
-#include <TopTools_IndexedMapOfShape.hxx>
-#include <TopTools_ListOfListOfShape.hxx>
-#include <TopTools_ListOfShape.hxx>
-#include <TopTools_MapOfShape.hxx>
 #include <TopoDS_AlertWithShape.hxx>
 #include <TopoDS_Edge.hxx>
 #include <TopoDS_Face.hxx>
@@ -167,344 +102,339 @@
 #include <TopoDS_Solid.hxx>
 #include <TopoDS_Vertex.hxx>
 #include <TopoDS_Wire.hxx>
-#include <gp_Dir.hxx>
-#include <gp_Lin.hxx>
 #include <gp_Pln.hxx>
-#include <gp_Trsf.hxx>
-#include <gp_Vec.hxx>
 
 // Handle type aliases
-typedef opencascade::handle<Adaptor3d_Surface> HandleAdaptor3dSurface;
-typedef opencascade::handle<Adaptor3d_TopolTool> HandleAdaptor3dTopolTool;
-typedef opencascade::handle<BOPAlgo_AlertAcquiredSelfIntersection> HandleBOPAlgoAlertAcquiredSelfIntersection;
-typedef opencascade::handle<BOPAlgo_AlertBOPNotAllowed> HandleBOPAlgoAlertBOPNotAllowed;
-typedef opencascade::handle<BOPAlgo_AlertBOPNotSet> HandleBOPAlgoAlertBOPNotSet;
-typedef opencascade::handle<BOPAlgo_AlertBadPositioning> HandleBOPAlgoAlertBadPositioning;
-typedef opencascade::handle<BOPAlgo_AlertBuilderFailed> HandleBOPAlgoAlertBuilderFailed;
-typedef opencascade::handle<BOPAlgo_AlertBuildingPCurveFailed> HandleBOPAlgoAlertBuildingPCurveFailed;
-typedef opencascade::handle<BOPAlgo_AlertEmptyShape> HandleBOPAlgoAlertEmptyShape;
-typedef opencascade::handle<BOPAlgo_AlertFaceBuilderUnusedEdges> HandleBOPAlgoAlertFaceBuilderUnusedEdges;
-typedef opencascade::handle<BOPAlgo_AlertIntersectionFailed> HandleBOPAlgoAlertIntersectionFailed;
-typedef opencascade::handle<BOPAlgo_AlertIntersectionOfPairOfShapesFailed> HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed;
-typedef opencascade::handle<BOPAlgo_AlertMultiDimensionalArguments> HandleBOPAlgoAlertMultiDimensionalArguments;
-typedef opencascade::handle<BOPAlgo_AlertMultipleArguments> HandleBOPAlgoAlertMultipleArguments;
-typedef opencascade::handle<BOPAlgo_AlertNoFacesToRemove> HandleBOPAlgoAlertNoFacesToRemove;
-typedef opencascade::handle<BOPAlgo_AlertNoFiller> HandleBOPAlgoAlertNoFiller;
-typedef opencascade::handle<BOPAlgo_AlertNoPeriodicityRequired> HandleBOPAlgoAlertNoPeriodicityRequired;
-typedef opencascade::handle<BOPAlgo_AlertNotSplittableEdge> HandleBOPAlgoAlertNotSplittableEdge;
-typedef opencascade::handle<BOPAlgo_AlertNullInputShapes> HandleBOPAlgoAlertNullInputShapes;
-typedef opencascade::handle<BOPAlgo_AlertPostTreatFF> HandleBOPAlgoAlertPostTreatFF;
-typedef opencascade::handle<BOPAlgo_AlertRemovalOfIBForEdgesFailed> HandleBOPAlgoAlertRemovalOfIBForEdgesFailed;
-typedef opencascade::handle<BOPAlgo_AlertRemovalOfIBForFacesFailed> HandleBOPAlgoAlertRemovalOfIBForFacesFailed;
-typedef opencascade::handle<BOPAlgo_AlertRemovalOfIBForMDimShapes> HandleBOPAlgoAlertRemovalOfIBForMDimShapes;
-typedef opencascade::handle<BOPAlgo_AlertRemovalOfIBForSolidsFailed> HandleBOPAlgoAlertRemovalOfIBForSolidsFailed;
-typedef opencascade::handle<BOPAlgo_AlertRemoveFeaturesFailed> HandleBOPAlgoAlertRemoveFeaturesFailed;
-typedef opencascade::handle<BOPAlgo_AlertSelfInterferingShape> HandleBOPAlgoAlertSelfInterferingShape;
-typedef opencascade::handle<BOPAlgo_AlertShapeIsNotPeriodic> HandleBOPAlgoAlertShapeIsNotPeriodic;
-typedef opencascade::handle<BOPAlgo_AlertShellSplitterFailed> HandleBOPAlgoAlertShellSplitterFailed;
-typedef opencascade::handle<BOPAlgo_AlertSolidBuilderFailed> HandleBOPAlgoAlertSolidBuilderFailed;
-typedef opencascade::handle<BOPAlgo_AlertSolidBuilderUnusedFaces> HandleBOPAlgoAlertSolidBuilderUnusedFaces;
-typedef opencascade::handle<BOPAlgo_AlertTooFewArguments> HandleBOPAlgoAlertTooFewArguments;
-typedef opencascade::handle<BOPAlgo_AlertTooSmallEdge> HandleBOPAlgoAlertTooSmallEdge;
-typedef opencascade::handle<BOPAlgo_AlertUnableToGlue> HandleBOPAlgoAlertUnableToGlue;
-typedef opencascade::handle<BOPAlgo_AlertUnableToMakeClosedEdgeOnFace> HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace;
-typedef opencascade::handle<BOPAlgo_AlertUnableToMakeIdentical> HandleBOPAlgoAlertUnableToMakeIdentical;
-typedef opencascade::handle<BOPAlgo_AlertUnableToMakePeriodic> HandleBOPAlgoAlertUnableToMakePeriodic;
-typedef opencascade::handle<BOPAlgo_AlertUnableToOrientTheShape> HandleBOPAlgoAlertUnableToOrientTheShape;
-typedef opencascade::handle<BOPAlgo_AlertUnableToRemoveTheFeature> HandleBOPAlgoAlertUnableToRemoveTheFeature;
-typedef opencascade::handle<BOPAlgo_AlertUnableToRepeat> HandleBOPAlgoAlertUnableToRepeat;
-typedef opencascade::handle<BOPAlgo_AlertUnableToTrim> HandleBOPAlgoAlertUnableToTrim;
-typedef opencascade::handle<BOPAlgo_AlertUnknownShape> HandleBOPAlgoAlertUnknownShape;
-typedef opencascade::handle<BOPAlgo_AlertUnsupportedType> HandleBOPAlgoAlertUnsupportedType;
-typedef opencascade::handle<BOPAlgo_AlertUserBreak> HandleBOPAlgoAlertUserBreak;
-typedef opencascade::handle<BOPDS_CommonBlock> HandleBOPDSCommonBlock;
-typedef opencascade::handle<BOPDS_PaveBlock> HandleBOPDSPaveBlock;
-typedef opencascade::handle<BRepTools_History> HandleBRepToolsHistory;
-typedef opencascade::handle<Geom2d_Curve> HandleGeom2dCurve;
-typedef opencascade::handle<GeomAdaptor_Surface> HandleGeomAdaptorSurface;
-typedef opencascade::handle<Geom_Curve> HandleGeomCurve;
-typedef opencascade::handle<Geom_Surface> HandleGeomSurface;
-typedef opencascade::handle<IntPatch_WLine> HandleIntPatchWLine;
-typedef opencascade::handle<IntTools_Context> HandleIntToolsContext;
-typedef opencascade::handle<IntTools_TopolTool> HandleIntToolsTopolTool;
-typedef opencascade::handle<Message_Alert> HandleMessageAlert;
-typedef opencascade::handle<Message_Report> HandleMessageReport;
-typedef opencascade::handle<NCollection_BaseAllocator> HandleNCollectionBaseAllocator;
-typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
-typedef opencascade::handle<Standard_Type> HandleStandardType;
-typedef opencascade::handle<TopoDS_AlertWithShape> HandleTopoDSAlertWithShape;
+typedef opencascade::handle<Adaptor3d_Surface> Handle_Adaptor3d_Surface;
+typedef opencascade::handle<Adaptor3d_TopolTool> Handle_Adaptor3d_TopolTool;
+typedef opencascade::handle<BOPAlgo_AlertAcquiredSelfIntersection> Handle_BOPAlgo_AlertAcquiredSelfIntersection;
+typedef opencascade::handle<BOPAlgo_AlertBOPNotAllowed> Handle_BOPAlgo_AlertBOPNotAllowed;
+typedef opencascade::handle<BOPAlgo_AlertBOPNotSet> Handle_BOPAlgo_AlertBOPNotSet;
+typedef opencascade::handle<BOPAlgo_AlertBadPositioning> Handle_BOPAlgo_AlertBadPositioning;
+typedef opencascade::handle<BOPAlgo_AlertBuilderFailed> Handle_BOPAlgo_AlertBuilderFailed;
+typedef opencascade::handle<BOPAlgo_AlertBuildingPCurveFailed> Handle_BOPAlgo_AlertBuildingPCurveFailed;
+typedef opencascade::handle<BOPAlgo_AlertEmptyShape> Handle_BOPAlgo_AlertEmptyShape;
+typedef opencascade::handle<BOPAlgo_AlertFaceBuilderUnusedEdges> Handle_BOPAlgo_AlertFaceBuilderUnusedEdges;
+typedef opencascade::handle<BOPAlgo_AlertIntersectionFailed> Handle_BOPAlgo_AlertIntersectionFailed;
+typedef opencascade::handle<BOPAlgo_AlertIntersectionOfPairOfShapesFailed> Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed;
+typedef opencascade::handle<BOPAlgo_AlertMultiDimensionalArguments> Handle_BOPAlgo_AlertMultiDimensionalArguments;
+typedef opencascade::handle<BOPAlgo_AlertMultipleArguments> Handle_BOPAlgo_AlertMultipleArguments;
+typedef opencascade::handle<BOPAlgo_AlertNoFacesToRemove> Handle_BOPAlgo_AlertNoFacesToRemove;
+typedef opencascade::handle<BOPAlgo_AlertNoFiller> Handle_BOPAlgo_AlertNoFiller;
+typedef opencascade::handle<BOPAlgo_AlertNoPeriodicityRequired> Handle_BOPAlgo_AlertNoPeriodicityRequired;
+typedef opencascade::handle<BOPAlgo_AlertNotSplittableEdge> Handle_BOPAlgo_AlertNotSplittableEdge;
+typedef opencascade::handle<BOPAlgo_AlertNullInputShapes> Handle_BOPAlgo_AlertNullInputShapes;
+typedef opencascade::handle<BOPAlgo_AlertPostTreatFF> Handle_BOPAlgo_AlertPostTreatFF;
+typedef opencascade::handle<BOPAlgo_AlertRemovalOfIBForEdgesFailed> Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed;
+typedef opencascade::handle<BOPAlgo_AlertRemovalOfIBForFacesFailed> Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed;
+typedef opencascade::handle<BOPAlgo_AlertRemovalOfIBForMDimShapes> Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes;
+typedef opencascade::handle<BOPAlgo_AlertRemovalOfIBForSolidsFailed> Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed;
+typedef opencascade::handle<BOPAlgo_AlertRemoveFeaturesFailed> Handle_BOPAlgo_AlertRemoveFeaturesFailed;
+typedef opencascade::handle<BOPAlgo_AlertSelfInterferingShape> Handle_BOPAlgo_AlertSelfInterferingShape;
+typedef opencascade::handle<BOPAlgo_AlertShapeIsNotPeriodic> Handle_BOPAlgo_AlertShapeIsNotPeriodic;
+typedef opencascade::handle<BOPAlgo_AlertShellSplitterFailed> Handle_BOPAlgo_AlertShellSplitterFailed;
+typedef opencascade::handle<BOPAlgo_AlertSolidBuilderFailed> Handle_BOPAlgo_AlertSolidBuilderFailed;
+typedef opencascade::handle<BOPAlgo_AlertSolidBuilderUnusedFaces> Handle_BOPAlgo_AlertSolidBuilderUnusedFaces;
+typedef opencascade::handle<BOPAlgo_AlertTooFewArguments> Handle_BOPAlgo_AlertTooFewArguments;
+typedef opencascade::handle<BOPAlgo_AlertTooSmallEdge> Handle_BOPAlgo_AlertTooSmallEdge;
+typedef opencascade::handle<BOPAlgo_AlertUnableToGlue> Handle_BOPAlgo_AlertUnableToGlue;
+typedef opencascade::handle<BOPAlgo_AlertUnableToMakeClosedEdgeOnFace> Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace;
+typedef opencascade::handle<BOPAlgo_AlertUnableToMakeIdentical> Handle_BOPAlgo_AlertUnableToMakeIdentical;
+typedef opencascade::handle<BOPAlgo_AlertUnableToMakePeriodic> Handle_BOPAlgo_AlertUnableToMakePeriodic;
+typedef opencascade::handle<BOPAlgo_AlertUnableToOrientTheShape> Handle_BOPAlgo_AlertUnableToOrientTheShape;
+typedef opencascade::handle<BOPAlgo_AlertUnableToRemoveTheFeature> Handle_BOPAlgo_AlertUnableToRemoveTheFeature;
+typedef opencascade::handle<BOPAlgo_AlertUnableToRepeat> Handle_BOPAlgo_AlertUnableToRepeat;
+typedef opencascade::handle<BOPAlgo_AlertUnableToTrim> Handle_BOPAlgo_AlertUnableToTrim;
+typedef opencascade::handle<BOPAlgo_AlertUnknownShape> Handle_BOPAlgo_AlertUnknownShape;
+typedef opencascade::handle<BOPAlgo_AlertUnsupportedType> Handle_BOPAlgo_AlertUnsupportedType;
+typedef opencascade::handle<BOPAlgo_AlertUserBreak> Handle_BOPAlgo_AlertUserBreak;
+typedef opencascade::handle<BOPDS_CommonBlock> Handle_BOPDS_CommonBlock;
+typedef opencascade::handle<BOPDS_PaveBlock> Handle_BOPDS_PaveBlock;
+typedef opencascade::handle<BRepTools_History> Handle_BRepTools_History;
+typedef opencascade::handle<Geom2d_Curve> Handle_Geom2d_Curve;
+typedef opencascade::handle<GeomAdaptor_Surface> Handle_GeomAdaptor_Surface;
+typedef opencascade::handle<Geom_Curve> Handle_Geom_Curve;
+typedef opencascade::handle<Geom_Surface> Handle_Geom_Surface;
+typedef opencascade::handle<IntPatch_WLine> Handle_IntPatch_WLine;
+typedef opencascade::handle<IntTools_Context> Handle_IntTools_Context;
+typedef opencascade::handle<IntTools_TopolTool> Handle_IntTools_TopolTool;
+typedef opencascade::handle<Message_Alert> Handle_Message_Alert;
+typedef opencascade::handle<Message_Report> Handle_Message_Report;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
+typedef opencascade::handle<TopoDS_AlertWithShape> Handle_TopoDS_AlertWithShape;
 
 // Handle type destructors, clone, and is_null functions
-extern "C" void HandleBOPAlgoAlertAcquiredSelfIntersection_destructor(HandleBOPAlgoAlertAcquiredSelfIntersection* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertAcquiredSelfIntersection*> HandleBOPAlgoAlertAcquiredSelfIntersection_clone(const HandleBOPAlgoAlertAcquiredSelfIntersection* self_) {
-    try { return {new HandleBOPAlgoAlertAcquiredSelfIntersection(*self_), nullptr}; }
+extern "C" void Handle_BOPAlgo_AlertAcquiredSelfIntersection_destructor(Handle_BOPAlgo_AlertAcquiredSelfIntersection* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertAcquiredSelfIntersection*> Handle_BOPAlgo_AlertAcquiredSelfIntersection_clone(const Handle_BOPAlgo_AlertAcquiredSelfIntersection* self_) {
+    try { return {new Handle_BOPAlgo_AlertAcquiredSelfIntersection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertAcquiredSelfIntersection_is_null(const HandleBOPAlgoAlertAcquiredSelfIntersection* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertBOPNotAllowed_destructor(HandleBOPAlgoAlertBOPNotAllowed* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertBOPNotAllowed*> HandleBOPAlgoAlertBOPNotAllowed_clone(const HandleBOPAlgoAlertBOPNotAllowed* self_) {
-    try { return {new HandleBOPAlgoAlertBOPNotAllowed(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertAcquiredSelfIntersection_is_null(const Handle_BOPAlgo_AlertAcquiredSelfIntersection* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertBOPNotAllowed_destructor(Handle_BOPAlgo_AlertBOPNotAllowed* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertBOPNotAllowed*> Handle_BOPAlgo_AlertBOPNotAllowed_clone(const Handle_BOPAlgo_AlertBOPNotAllowed* self_) {
+    try { return {new Handle_BOPAlgo_AlertBOPNotAllowed(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertBOPNotAllowed_is_null(const HandleBOPAlgoAlertBOPNotAllowed* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertBOPNotSet_destructor(HandleBOPAlgoAlertBOPNotSet* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertBOPNotSet*> HandleBOPAlgoAlertBOPNotSet_clone(const HandleBOPAlgoAlertBOPNotSet* self_) {
-    try { return {new HandleBOPAlgoAlertBOPNotSet(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertBOPNotAllowed_is_null(const Handle_BOPAlgo_AlertBOPNotAllowed* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertBOPNotSet_destructor(Handle_BOPAlgo_AlertBOPNotSet* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertBOPNotSet*> Handle_BOPAlgo_AlertBOPNotSet_clone(const Handle_BOPAlgo_AlertBOPNotSet* self_) {
+    try { return {new Handle_BOPAlgo_AlertBOPNotSet(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertBOPNotSet_is_null(const HandleBOPAlgoAlertBOPNotSet* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertBadPositioning_destructor(HandleBOPAlgoAlertBadPositioning* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertBadPositioning*> HandleBOPAlgoAlertBadPositioning_clone(const HandleBOPAlgoAlertBadPositioning* self_) {
-    try { return {new HandleBOPAlgoAlertBadPositioning(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertBOPNotSet_is_null(const Handle_BOPAlgo_AlertBOPNotSet* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertBadPositioning_destructor(Handle_BOPAlgo_AlertBadPositioning* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertBadPositioning*> Handle_BOPAlgo_AlertBadPositioning_clone(const Handle_BOPAlgo_AlertBadPositioning* self_) {
+    try { return {new Handle_BOPAlgo_AlertBadPositioning(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertBadPositioning_is_null(const HandleBOPAlgoAlertBadPositioning* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertBuilderFailed_destructor(HandleBOPAlgoAlertBuilderFailed* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertBuilderFailed*> HandleBOPAlgoAlertBuilderFailed_clone(const HandleBOPAlgoAlertBuilderFailed* self_) {
-    try { return {new HandleBOPAlgoAlertBuilderFailed(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertBadPositioning_is_null(const Handle_BOPAlgo_AlertBadPositioning* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertBuilderFailed_destructor(Handle_BOPAlgo_AlertBuilderFailed* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertBuilderFailed*> Handle_BOPAlgo_AlertBuilderFailed_clone(const Handle_BOPAlgo_AlertBuilderFailed* self_) {
+    try { return {new Handle_BOPAlgo_AlertBuilderFailed(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertBuilderFailed_is_null(const HandleBOPAlgoAlertBuilderFailed* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertBuildingPCurveFailed_destructor(HandleBOPAlgoAlertBuildingPCurveFailed* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertBuildingPCurveFailed*> HandleBOPAlgoAlertBuildingPCurveFailed_clone(const HandleBOPAlgoAlertBuildingPCurveFailed* self_) {
-    try { return {new HandleBOPAlgoAlertBuildingPCurveFailed(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertBuilderFailed_is_null(const Handle_BOPAlgo_AlertBuilderFailed* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertBuildingPCurveFailed_destructor(Handle_BOPAlgo_AlertBuildingPCurveFailed* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertBuildingPCurveFailed*> Handle_BOPAlgo_AlertBuildingPCurveFailed_clone(const Handle_BOPAlgo_AlertBuildingPCurveFailed* self_) {
+    try { return {new Handle_BOPAlgo_AlertBuildingPCurveFailed(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertBuildingPCurveFailed_is_null(const HandleBOPAlgoAlertBuildingPCurveFailed* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertEmptyShape_destructor(HandleBOPAlgoAlertEmptyShape* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertEmptyShape*> HandleBOPAlgoAlertEmptyShape_clone(const HandleBOPAlgoAlertEmptyShape* self_) {
-    try { return {new HandleBOPAlgoAlertEmptyShape(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertBuildingPCurveFailed_is_null(const Handle_BOPAlgo_AlertBuildingPCurveFailed* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertEmptyShape_destructor(Handle_BOPAlgo_AlertEmptyShape* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertEmptyShape*> Handle_BOPAlgo_AlertEmptyShape_clone(const Handle_BOPAlgo_AlertEmptyShape* self_) {
+    try { return {new Handle_BOPAlgo_AlertEmptyShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertEmptyShape_is_null(const HandleBOPAlgoAlertEmptyShape* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertFaceBuilderUnusedEdges_destructor(HandleBOPAlgoAlertFaceBuilderUnusedEdges* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertFaceBuilderUnusedEdges*> HandleBOPAlgoAlertFaceBuilderUnusedEdges_clone(const HandleBOPAlgoAlertFaceBuilderUnusedEdges* self_) {
-    try { return {new HandleBOPAlgoAlertFaceBuilderUnusedEdges(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertEmptyShape_is_null(const Handle_BOPAlgo_AlertEmptyShape* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertFaceBuilderUnusedEdges_destructor(Handle_BOPAlgo_AlertFaceBuilderUnusedEdges* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertFaceBuilderUnusedEdges*> Handle_BOPAlgo_AlertFaceBuilderUnusedEdges_clone(const Handle_BOPAlgo_AlertFaceBuilderUnusedEdges* self_) {
+    try { return {new Handle_BOPAlgo_AlertFaceBuilderUnusedEdges(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertFaceBuilderUnusedEdges_is_null(const HandleBOPAlgoAlertFaceBuilderUnusedEdges* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertIntersectionFailed_destructor(HandleBOPAlgoAlertIntersectionFailed* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertIntersectionFailed*> HandleBOPAlgoAlertIntersectionFailed_clone(const HandleBOPAlgoAlertIntersectionFailed* self_) {
-    try { return {new HandleBOPAlgoAlertIntersectionFailed(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertFaceBuilderUnusedEdges_is_null(const Handle_BOPAlgo_AlertFaceBuilderUnusedEdges* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertIntersectionFailed_destructor(Handle_BOPAlgo_AlertIntersectionFailed* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertIntersectionFailed*> Handle_BOPAlgo_AlertIntersectionFailed_clone(const Handle_BOPAlgo_AlertIntersectionFailed* self_) {
+    try { return {new Handle_BOPAlgo_AlertIntersectionFailed(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertIntersectionFailed_is_null(const HandleBOPAlgoAlertIntersectionFailed* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_destructor(HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed*> HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_clone(const HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed* self_) {
-    try { return {new HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertIntersectionFailed_is_null(const Handle_BOPAlgo_AlertIntersectionFailed* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed_destructor(Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed*> Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed_clone(const Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed* self_) {
+    try { return {new Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_is_null(const HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertMultiDimensionalArguments_destructor(HandleBOPAlgoAlertMultiDimensionalArguments* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertMultiDimensionalArguments*> HandleBOPAlgoAlertMultiDimensionalArguments_clone(const HandleBOPAlgoAlertMultiDimensionalArguments* self_) {
-    try { return {new HandleBOPAlgoAlertMultiDimensionalArguments(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed_is_null(const Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertMultiDimensionalArguments_destructor(Handle_BOPAlgo_AlertMultiDimensionalArguments* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertMultiDimensionalArguments*> Handle_BOPAlgo_AlertMultiDimensionalArguments_clone(const Handle_BOPAlgo_AlertMultiDimensionalArguments* self_) {
+    try { return {new Handle_BOPAlgo_AlertMultiDimensionalArguments(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertMultiDimensionalArguments_is_null(const HandleBOPAlgoAlertMultiDimensionalArguments* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertMultipleArguments_destructor(HandleBOPAlgoAlertMultipleArguments* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertMultipleArguments*> HandleBOPAlgoAlertMultipleArguments_clone(const HandleBOPAlgoAlertMultipleArguments* self_) {
-    try { return {new HandleBOPAlgoAlertMultipleArguments(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertMultiDimensionalArguments_is_null(const Handle_BOPAlgo_AlertMultiDimensionalArguments* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertMultipleArguments_destructor(Handle_BOPAlgo_AlertMultipleArguments* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertMultipleArguments*> Handle_BOPAlgo_AlertMultipleArguments_clone(const Handle_BOPAlgo_AlertMultipleArguments* self_) {
+    try { return {new Handle_BOPAlgo_AlertMultipleArguments(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertMultipleArguments_is_null(const HandleBOPAlgoAlertMultipleArguments* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertNoFacesToRemove_destructor(HandleBOPAlgoAlertNoFacesToRemove* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertNoFacesToRemove*> HandleBOPAlgoAlertNoFacesToRemove_clone(const HandleBOPAlgoAlertNoFacesToRemove* self_) {
-    try { return {new HandleBOPAlgoAlertNoFacesToRemove(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertMultipleArguments_is_null(const Handle_BOPAlgo_AlertMultipleArguments* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertNoFacesToRemove_destructor(Handle_BOPAlgo_AlertNoFacesToRemove* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertNoFacesToRemove*> Handle_BOPAlgo_AlertNoFacesToRemove_clone(const Handle_BOPAlgo_AlertNoFacesToRemove* self_) {
+    try { return {new Handle_BOPAlgo_AlertNoFacesToRemove(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertNoFacesToRemove_is_null(const HandleBOPAlgoAlertNoFacesToRemove* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertNoFiller_destructor(HandleBOPAlgoAlertNoFiller* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertNoFiller*> HandleBOPAlgoAlertNoFiller_clone(const HandleBOPAlgoAlertNoFiller* self_) {
-    try { return {new HandleBOPAlgoAlertNoFiller(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertNoFacesToRemove_is_null(const Handle_BOPAlgo_AlertNoFacesToRemove* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertNoFiller_destructor(Handle_BOPAlgo_AlertNoFiller* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertNoFiller*> Handle_BOPAlgo_AlertNoFiller_clone(const Handle_BOPAlgo_AlertNoFiller* self_) {
+    try { return {new Handle_BOPAlgo_AlertNoFiller(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertNoFiller_is_null(const HandleBOPAlgoAlertNoFiller* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertNoPeriodicityRequired_destructor(HandleBOPAlgoAlertNoPeriodicityRequired* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertNoPeriodicityRequired*> HandleBOPAlgoAlertNoPeriodicityRequired_clone(const HandleBOPAlgoAlertNoPeriodicityRequired* self_) {
-    try { return {new HandleBOPAlgoAlertNoPeriodicityRequired(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertNoFiller_is_null(const Handle_BOPAlgo_AlertNoFiller* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertNoPeriodicityRequired_destructor(Handle_BOPAlgo_AlertNoPeriodicityRequired* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertNoPeriodicityRequired*> Handle_BOPAlgo_AlertNoPeriodicityRequired_clone(const Handle_BOPAlgo_AlertNoPeriodicityRequired* self_) {
+    try { return {new Handle_BOPAlgo_AlertNoPeriodicityRequired(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertNoPeriodicityRequired_is_null(const HandleBOPAlgoAlertNoPeriodicityRequired* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertNotSplittableEdge_destructor(HandleBOPAlgoAlertNotSplittableEdge* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertNotSplittableEdge*> HandleBOPAlgoAlertNotSplittableEdge_clone(const HandleBOPAlgoAlertNotSplittableEdge* self_) {
-    try { return {new HandleBOPAlgoAlertNotSplittableEdge(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertNoPeriodicityRequired_is_null(const Handle_BOPAlgo_AlertNoPeriodicityRequired* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertNotSplittableEdge_destructor(Handle_BOPAlgo_AlertNotSplittableEdge* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertNotSplittableEdge*> Handle_BOPAlgo_AlertNotSplittableEdge_clone(const Handle_BOPAlgo_AlertNotSplittableEdge* self_) {
+    try { return {new Handle_BOPAlgo_AlertNotSplittableEdge(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertNotSplittableEdge_is_null(const HandleBOPAlgoAlertNotSplittableEdge* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertNullInputShapes_destructor(HandleBOPAlgoAlertNullInputShapes* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertNullInputShapes*> HandleBOPAlgoAlertNullInputShapes_clone(const HandleBOPAlgoAlertNullInputShapes* self_) {
-    try { return {new HandleBOPAlgoAlertNullInputShapes(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertNotSplittableEdge_is_null(const Handle_BOPAlgo_AlertNotSplittableEdge* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertNullInputShapes_destructor(Handle_BOPAlgo_AlertNullInputShapes* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertNullInputShapes*> Handle_BOPAlgo_AlertNullInputShapes_clone(const Handle_BOPAlgo_AlertNullInputShapes* self_) {
+    try { return {new Handle_BOPAlgo_AlertNullInputShapes(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertNullInputShapes_is_null(const HandleBOPAlgoAlertNullInputShapes* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertPostTreatFF_destructor(HandleBOPAlgoAlertPostTreatFF* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertPostTreatFF*> HandleBOPAlgoAlertPostTreatFF_clone(const HandleBOPAlgoAlertPostTreatFF* self_) {
-    try { return {new HandleBOPAlgoAlertPostTreatFF(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertNullInputShapes_is_null(const Handle_BOPAlgo_AlertNullInputShapes* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertPostTreatFF_destructor(Handle_BOPAlgo_AlertPostTreatFF* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertPostTreatFF*> Handle_BOPAlgo_AlertPostTreatFF_clone(const Handle_BOPAlgo_AlertPostTreatFF* self_) {
+    try { return {new Handle_BOPAlgo_AlertPostTreatFF(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertPostTreatFF_is_null(const HandleBOPAlgoAlertPostTreatFF* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_destructor(HandleBOPAlgoAlertRemovalOfIBForEdgesFailed* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertRemovalOfIBForEdgesFailed*> HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_clone(const HandleBOPAlgoAlertRemovalOfIBForEdgesFailed* self_) {
-    try { return {new HandleBOPAlgoAlertRemovalOfIBForEdgesFailed(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertPostTreatFF_is_null(const Handle_BOPAlgo_AlertPostTreatFF* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed_destructor(Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed*> Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed_clone(const Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed* self_) {
+    try { return {new Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_is_null(const HandleBOPAlgoAlertRemovalOfIBForEdgesFailed* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertRemovalOfIBForFacesFailed_destructor(HandleBOPAlgoAlertRemovalOfIBForFacesFailed* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertRemovalOfIBForFacesFailed*> HandleBOPAlgoAlertRemovalOfIBForFacesFailed_clone(const HandleBOPAlgoAlertRemovalOfIBForFacesFailed* self_) {
-    try { return {new HandleBOPAlgoAlertRemovalOfIBForFacesFailed(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed_is_null(const Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed_destructor(Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed*> Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed_clone(const Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed* self_) {
+    try { return {new Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertRemovalOfIBForFacesFailed_is_null(const HandleBOPAlgoAlertRemovalOfIBForFacesFailed* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertRemovalOfIBForMDimShapes_destructor(HandleBOPAlgoAlertRemovalOfIBForMDimShapes* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertRemovalOfIBForMDimShapes*> HandleBOPAlgoAlertRemovalOfIBForMDimShapes_clone(const HandleBOPAlgoAlertRemovalOfIBForMDimShapes* self_) {
-    try { return {new HandleBOPAlgoAlertRemovalOfIBForMDimShapes(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed_is_null(const Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes_destructor(Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes*> Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes_clone(const Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes* self_) {
+    try { return {new Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertRemovalOfIBForMDimShapes_is_null(const HandleBOPAlgoAlertRemovalOfIBForMDimShapes* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_destructor(HandleBOPAlgoAlertRemovalOfIBForSolidsFailed* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertRemovalOfIBForSolidsFailed*> HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_clone(const HandleBOPAlgoAlertRemovalOfIBForSolidsFailed* self_) {
-    try { return {new HandleBOPAlgoAlertRemovalOfIBForSolidsFailed(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes_is_null(const Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed_destructor(Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed*> Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed_clone(const Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed* self_) {
+    try { return {new Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_is_null(const HandleBOPAlgoAlertRemovalOfIBForSolidsFailed* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertRemoveFeaturesFailed_destructor(HandleBOPAlgoAlertRemoveFeaturesFailed* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertRemoveFeaturesFailed*> HandleBOPAlgoAlertRemoveFeaturesFailed_clone(const HandleBOPAlgoAlertRemoveFeaturesFailed* self_) {
-    try { return {new HandleBOPAlgoAlertRemoveFeaturesFailed(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed_is_null(const Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertRemoveFeaturesFailed_destructor(Handle_BOPAlgo_AlertRemoveFeaturesFailed* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertRemoveFeaturesFailed*> Handle_BOPAlgo_AlertRemoveFeaturesFailed_clone(const Handle_BOPAlgo_AlertRemoveFeaturesFailed* self_) {
+    try { return {new Handle_BOPAlgo_AlertRemoveFeaturesFailed(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertRemoveFeaturesFailed_is_null(const HandleBOPAlgoAlertRemoveFeaturesFailed* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertSelfInterferingShape_destructor(HandleBOPAlgoAlertSelfInterferingShape* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertSelfInterferingShape*> HandleBOPAlgoAlertSelfInterferingShape_clone(const HandleBOPAlgoAlertSelfInterferingShape* self_) {
-    try { return {new HandleBOPAlgoAlertSelfInterferingShape(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertRemoveFeaturesFailed_is_null(const Handle_BOPAlgo_AlertRemoveFeaturesFailed* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertSelfInterferingShape_destructor(Handle_BOPAlgo_AlertSelfInterferingShape* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertSelfInterferingShape*> Handle_BOPAlgo_AlertSelfInterferingShape_clone(const Handle_BOPAlgo_AlertSelfInterferingShape* self_) {
+    try { return {new Handle_BOPAlgo_AlertSelfInterferingShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertSelfInterferingShape_is_null(const HandleBOPAlgoAlertSelfInterferingShape* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertShapeIsNotPeriodic_destructor(HandleBOPAlgoAlertShapeIsNotPeriodic* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertShapeIsNotPeriodic*> HandleBOPAlgoAlertShapeIsNotPeriodic_clone(const HandleBOPAlgoAlertShapeIsNotPeriodic* self_) {
-    try { return {new HandleBOPAlgoAlertShapeIsNotPeriodic(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertSelfInterferingShape_is_null(const Handle_BOPAlgo_AlertSelfInterferingShape* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertShapeIsNotPeriodic_destructor(Handle_BOPAlgo_AlertShapeIsNotPeriodic* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertShapeIsNotPeriodic*> Handle_BOPAlgo_AlertShapeIsNotPeriodic_clone(const Handle_BOPAlgo_AlertShapeIsNotPeriodic* self_) {
+    try { return {new Handle_BOPAlgo_AlertShapeIsNotPeriodic(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertShapeIsNotPeriodic_is_null(const HandleBOPAlgoAlertShapeIsNotPeriodic* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertShellSplitterFailed_destructor(HandleBOPAlgoAlertShellSplitterFailed* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertShellSplitterFailed*> HandleBOPAlgoAlertShellSplitterFailed_clone(const HandleBOPAlgoAlertShellSplitterFailed* self_) {
-    try { return {new HandleBOPAlgoAlertShellSplitterFailed(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertShapeIsNotPeriodic_is_null(const Handle_BOPAlgo_AlertShapeIsNotPeriodic* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertShellSplitterFailed_destructor(Handle_BOPAlgo_AlertShellSplitterFailed* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertShellSplitterFailed*> Handle_BOPAlgo_AlertShellSplitterFailed_clone(const Handle_BOPAlgo_AlertShellSplitterFailed* self_) {
+    try { return {new Handle_BOPAlgo_AlertShellSplitterFailed(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertShellSplitterFailed_is_null(const HandleBOPAlgoAlertShellSplitterFailed* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertSolidBuilderFailed_destructor(HandleBOPAlgoAlertSolidBuilderFailed* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertSolidBuilderFailed*> HandleBOPAlgoAlertSolidBuilderFailed_clone(const HandleBOPAlgoAlertSolidBuilderFailed* self_) {
-    try { return {new HandleBOPAlgoAlertSolidBuilderFailed(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertShellSplitterFailed_is_null(const Handle_BOPAlgo_AlertShellSplitterFailed* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertSolidBuilderFailed_destructor(Handle_BOPAlgo_AlertSolidBuilderFailed* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertSolidBuilderFailed*> Handle_BOPAlgo_AlertSolidBuilderFailed_clone(const Handle_BOPAlgo_AlertSolidBuilderFailed* self_) {
+    try { return {new Handle_BOPAlgo_AlertSolidBuilderFailed(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertSolidBuilderFailed_is_null(const HandleBOPAlgoAlertSolidBuilderFailed* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertSolidBuilderUnusedFaces_destructor(HandleBOPAlgoAlertSolidBuilderUnusedFaces* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertSolidBuilderUnusedFaces*> HandleBOPAlgoAlertSolidBuilderUnusedFaces_clone(const HandleBOPAlgoAlertSolidBuilderUnusedFaces* self_) {
-    try { return {new HandleBOPAlgoAlertSolidBuilderUnusedFaces(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertSolidBuilderFailed_is_null(const Handle_BOPAlgo_AlertSolidBuilderFailed* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertSolidBuilderUnusedFaces_destructor(Handle_BOPAlgo_AlertSolidBuilderUnusedFaces* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertSolidBuilderUnusedFaces*> Handle_BOPAlgo_AlertSolidBuilderUnusedFaces_clone(const Handle_BOPAlgo_AlertSolidBuilderUnusedFaces* self_) {
+    try { return {new Handle_BOPAlgo_AlertSolidBuilderUnusedFaces(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertSolidBuilderUnusedFaces_is_null(const HandleBOPAlgoAlertSolidBuilderUnusedFaces* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertTooFewArguments_destructor(HandleBOPAlgoAlertTooFewArguments* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertTooFewArguments*> HandleBOPAlgoAlertTooFewArguments_clone(const HandleBOPAlgoAlertTooFewArguments* self_) {
-    try { return {new HandleBOPAlgoAlertTooFewArguments(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertSolidBuilderUnusedFaces_is_null(const Handle_BOPAlgo_AlertSolidBuilderUnusedFaces* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertTooFewArguments_destructor(Handle_BOPAlgo_AlertTooFewArguments* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertTooFewArguments*> Handle_BOPAlgo_AlertTooFewArguments_clone(const Handle_BOPAlgo_AlertTooFewArguments* self_) {
+    try { return {new Handle_BOPAlgo_AlertTooFewArguments(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertTooFewArguments_is_null(const HandleBOPAlgoAlertTooFewArguments* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertTooSmallEdge_destructor(HandleBOPAlgoAlertTooSmallEdge* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertTooSmallEdge*> HandleBOPAlgoAlertTooSmallEdge_clone(const HandleBOPAlgoAlertTooSmallEdge* self_) {
-    try { return {new HandleBOPAlgoAlertTooSmallEdge(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertTooFewArguments_is_null(const Handle_BOPAlgo_AlertTooFewArguments* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertTooSmallEdge_destructor(Handle_BOPAlgo_AlertTooSmallEdge* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertTooSmallEdge*> Handle_BOPAlgo_AlertTooSmallEdge_clone(const Handle_BOPAlgo_AlertTooSmallEdge* self_) {
+    try { return {new Handle_BOPAlgo_AlertTooSmallEdge(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertTooSmallEdge_is_null(const HandleBOPAlgoAlertTooSmallEdge* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertUnableToGlue_destructor(HandleBOPAlgoAlertUnableToGlue* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertUnableToGlue*> HandleBOPAlgoAlertUnableToGlue_clone(const HandleBOPAlgoAlertUnableToGlue* self_) {
-    try { return {new HandleBOPAlgoAlertUnableToGlue(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertTooSmallEdge_is_null(const Handle_BOPAlgo_AlertTooSmallEdge* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertUnableToGlue_destructor(Handle_BOPAlgo_AlertUnableToGlue* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertUnableToGlue*> Handle_BOPAlgo_AlertUnableToGlue_clone(const Handle_BOPAlgo_AlertUnableToGlue* self_) {
+    try { return {new Handle_BOPAlgo_AlertUnableToGlue(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertUnableToGlue_is_null(const HandleBOPAlgoAlertUnableToGlue* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_destructor(HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace*> HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_clone(const HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace* self_) {
-    try { return {new HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertUnableToGlue_is_null(const Handle_BOPAlgo_AlertUnableToGlue* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_destructor(Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace*> Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_clone(const Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace* self_) {
+    try { return {new Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_is_null(const HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertUnableToMakeIdentical_destructor(HandleBOPAlgoAlertUnableToMakeIdentical* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertUnableToMakeIdentical*> HandleBOPAlgoAlertUnableToMakeIdentical_clone(const HandleBOPAlgoAlertUnableToMakeIdentical* self_) {
-    try { return {new HandleBOPAlgoAlertUnableToMakeIdentical(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_is_null(const Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertUnableToMakeIdentical_destructor(Handle_BOPAlgo_AlertUnableToMakeIdentical* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertUnableToMakeIdentical*> Handle_BOPAlgo_AlertUnableToMakeIdentical_clone(const Handle_BOPAlgo_AlertUnableToMakeIdentical* self_) {
+    try { return {new Handle_BOPAlgo_AlertUnableToMakeIdentical(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertUnableToMakeIdentical_is_null(const HandleBOPAlgoAlertUnableToMakeIdentical* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertUnableToMakePeriodic_destructor(HandleBOPAlgoAlertUnableToMakePeriodic* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertUnableToMakePeriodic*> HandleBOPAlgoAlertUnableToMakePeriodic_clone(const HandleBOPAlgoAlertUnableToMakePeriodic* self_) {
-    try { return {new HandleBOPAlgoAlertUnableToMakePeriodic(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertUnableToMakeIdentical_is_null(const Handle_BOPAlgo_AlertUnableToMakeIdentical* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertUnableToMakePeriodic_destructor(Handle_BOPAlgo_AlertUnableToMakePeriodic* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertUnableToMakePeriodic*> Handle_BOPAlgo_AlertUnableToMakePeriodic_clone(const Handle_BOPAlgo_AlertUnableToMakePeriodic* self_) {
+    try { return {new Handle_BOPAlgo_AlertUnableToMakePeriodic(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertUnableToMakePeriodic_is_null(const HandleBOPAlgoAlertUnableToMakePeriodic* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertUnableToOrientTheShape_destructor(HandleBOPAlgoAlertUnableToOrientTheShape* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertUnableToOrientTheShape*> HandleBOPAlgoAlertUnableToOrientTheShape_clone(const HandleBOPAlgoAlertUnableToOrientTheShape* self_) {
-    try { return {new HandleBOPAlgoAlertUnableToOrientTheShape(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertUnableToMakePeriodic_is_null(const Handle_BOPAlgo_AlertUnableToMakePeriodic* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertUnableToOrientTheShape_destructor(Handle_BOPAlgo_AlertUnableToOrientTheShape* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertUnableToOrientTheShape*> Handle_BOPAlgo_AlertUnableToOrientTheShape_clone(const Handle_BOPAlgo_AlertUnableToOrientTheShape* self_) {
+    try { return {new Handle_BOPAlgo_AlertUnableToOrientTheShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertUnableToOrientTheShape_is_null(const HandleBOPAlgoAlertUnableToOrientTheShape* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertUnableToRemoveTheFeature_destructor(HandleBOPAlgoAlertUnableToRemoveTheFeature* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertUnableToRemoveTheFeature*> HandleBOPAlgoAlertUnableToRemoveTheFeature_clone(const HandleBOPAlgoAlertUnableToRemoveTheFeature* self_) {
-    try { return {new HandleBOPAlgoAlertUnableToRemoveTheFeature(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertUnableToOrientTheShape_is_null(const Handle_BOPAlgo_AlertUnableToOrientTheShape* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertUnableToRemoveTheFeature_destructor(Handle_BOPAlgo_AlertUnableToRemoveTheFeature* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertUnableToRemoveTheFeature*> Handle_BOPAlgo_AlertUnableToRemoveTheFeature_clone(const Handle_BOPAlgo_AlertUnableToRemoveTheFeature* self_) {
+    try { return {new Handle_BOPAlgo_AlertUnableToRemoveTheFeature(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertUnableToRemoveTheFeature_is_null(const HandleBOPAlgoAlertUnableToRemoveTheFeature* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertUnableToRepeat_destructor(HandleBOPAlgoAlertUnableToRepeat* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertUnableToRepeat*> HandleBOPAlgoAlertUnableToRepeat_clone(const HandleBOPAlgoAlertUnableToRepeat* self_) {
-    try { return {new HandleBOPAlgoAlertUnableToRepeat(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertUnableToRemoveTheFeature_is_null(const Handle_BOPAlgo_AlertUnableToRemoveTheFeature* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertUnableToRepeat_destructor(Handle_BOPAlgo_AlertUnableToRepeat* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertUnableToRepeat*> Handle_BOPAlgo_AlertUnableToRepeat_clone(const Handle_BOPAlgo_AlertUnableToRepeat* self_) {
+    try { return {new Handle_BOPAlgo_AlertUnableToRepeat(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertUnableToRepeat_is_null(const HandleBOPAlgoAlertUnableToRepeat* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertUnableToTrim_destructor(HandleBOPAlgoAlertUnableToTrim* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertUnableToTrim*> HandleBOPAlgoAlertUnableToTrim_clone(const HandleBOPAlgoAlertUnableToTrim* self_) {
-    try { return {new HandleBOPAlgoAlertUnableToTrim(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertUnableToRepeat_is_null(const Handle_BOPAlgo_AlertUnableToRepeat* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertUnableToTrim_destructor(Handle_BOPAlgo_AlertUnableToTrim* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertUnableToTrim*> Handle_BOPAlgo_AlertUnableToTrim_clone(const Handle_BOPAlgo_AlertUnableToTrim* self_) {
+    try { return {new Handle_BOPAlgo_AlertUnableToTrim(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertUnableToTrim_is_null(const HandleBOPAlgoAlertUnableToTrim* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertUnknownShape_destructor(HandleBOPAlgoAlertUnknownShape* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertUnknownShape*> HandleBOPAlgoAlertUnknownShape_clone(const HandleBOPAlgoAlertUnknownShape* self_) {
-    try { return {new HandleBOPAlgoAlertUnknownShape(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertUnableToTrim_is_null(const Handle_BOPAlgo_AlertUnableToTrim* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertUnknownShape_destructor(Handle_BOPAlgo_AlertUnknownShape* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertUnknownShape*> Handle_BOPAlgo_AlertUnknownShape_clone(const Handle_BOPAlgo_AlertUnknownShape* self_) {
+    try { return {new Handle_BOPAlgo_AlertUnknownShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertUnknownShape_is_null(const HandleBOPAlgoAlertUnknownShape* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertUnsupportedType_destructor(HandleBOPAlgoAlertUnsupportedType* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertUnsupportedType*> HandleBOPAlgoAlertUnsupportedType_clone(const HandleBOPAlgoAlertUnsupportedType* self_) {
-    try { return {new HandleBOPAlgoAlertUnsupportedType(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertUnknownShape_is_null(const Handle_BOPAlgo_AlertUnknownShape* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertUnsupportedType_destructor(Handle_BOPAlgo_AlertUnsupportedType* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertUnsupportedType*> Handle_BOPAlgo_AlertUnsupportedType_clone(const Handle_BOPAlgo_AlertUnsupportedType* self_) {
+    try { return {new Handle_BOPAlgo_AlertUnsupportedType(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertUnsupportedType_is_null(const HandleBOPAlgoAlertUnsupportedType* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPAlgoAlertUserBreak_destructor(HandleBOPAlgoAlertUserBreak* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPAlgoAlertUserBreak*> HandleBOPAlgoAlertUserBreak_clone(const HandleBOPAlgoAlertUserBreak* self_) {
-    try { return {new HandleBOPAlgoAlertUserBreak(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertUnsupportedType_is_null(const Handle_BOPAlgo_AlertUnsupportedType* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPAlgo_AlertUserBreak_destructor(Handle_BOPAlgo_AlertUserBreak* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertUserBreak*> Handle_BOPAlgo_AlertUserBreak_clone(const Handle_BOPAlgo_AlertUserBreak* self_) {
+    try { return {new Handle_BOPAlgo_AlertUserBreak(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPAlgoAlertUserBreak_is_null(const HandleBOPAlgoAlertUserBreak* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPDSCommonBlock_destructor(HandleBOPDSCommonBlock* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPDSCommonBlock*> HandleBOPDSCommonBlock_clone(const HandleBOPDSCommonBlock* self_) {
-    try { return {new HandleBOPDSCommonBlock(*self_), nullptr}; }
+extern "C" bool Handle_BOPAlgo_AlertUserBreak_is_null(const Handle_BOPAlgo_AlertUserBreak* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPDS_CommonBlock_destructor(Handle_BOPDS_CommonBlock* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPDS_CommonBlock*> Handle_BOPDS_CommonBlock_clone(const Handle_BOPDS_CommonBlock* self_) {
+    try { return {new Handle_BOPDS_CommonBlock(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPDSCommonBlock_is_null(const HandleBOPDSCommonBlock* self_) { return self_->IsNull(); }
-extern "C" void HandleBOPDSPaveBlock_destructor(HandleBOPDSPaveBlock* self_) { delete self_; }
-extern "C" OcctResult<HandleBOPDSPaveBlock*> HandleBOPDSPaveBlock_clone(const HandleBOPDSPaveBlock* self_) {
-    try { return {new HandleBOPDSPaveBlock(*self_), nullptr}; }
+extern "C" bool Handle_BOPDS_CommonBlock_is_null(const Handle_BOPDS_CommonBlock* self_) { return self_->IsNull(); }
+extern "C" void Handle_BOPDS_PaveBlock_destructor(Handle_BOPDS_PaveBlock* self_) { delete self_; }
+extern "C" OcctResult<Handle_BOPDS_PaveBlock*> Handle_BOPDS_PaveBlock_clone(const Handle_BOPDS_PaveBlock* self_) {
+    try { return {new Handle_BOPDS_PaveBlock(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBOPDSPaveBlock_is_null(const HandleBOPDSPaveBlock* self_) { return self_->IsNull(); }
-extern "C" void HandleIntToolsContext_destructor(HandleIntToolsContext* self_) { delete self_; }
-extern "C" OcctResult<HandleIntToolsContext*> HandleIntToolsContext_clone(const HandleIntToolsContext* self_) {
-    try { return {new HandleIntToolsContext(*self_), nullptr}; }
+extern "C" bool Handle_BOPDS_PaveBlock_is_null(const Handle_BOPDS_PaveBlock* self_) { return self_->IsNull(); }
+extern "C" void Handle_IntTools_Context_destructor(Handle_IntTools_Context* self_) { delete self_; }
+extern "C" OcctResult<Handle_IntTools_Context*> Handle_IntTools_Context_clone(const Handle_IntTools_Context* self_) {
+    try { return {new Handle_IntTools_Context(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIntToolsContext_is_null(const HandleIntToolsContext* self_) { return self_->IsNull(); }
-extern "C" void HandleIntToolsTopolTool_destructor(HandleIntToolsTopolTool* self_) { delete self_; }
-extern "C" OcctResult<HandleIntToolsTopolTool*> HandleIntToolsTopolTool_clone(const HandleIntToolsTopolTool* self_) {
-    try { return {new HandleIntToolsTopolTool(*self_), nullptr}; }
+extern "C" bool Handle_IntTools_Context_is_null(const Handle_IntTools_Context* self_) { return self_->IsNull(); }
+extern "C" void Handle_IntTools_TopolTool_destructor(Handle_IntTools_TopolTool* self_) { delete self_; }
+extern "C" OcctResult<Handle_IntTools_TopolTool*> Handle_IntTools_TopolTool_clone(const Handle_IntTools_TopolTool* self_) {
+    try { return {new Handle_IntTools_TopolTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIntToolsTopolTool_is_null(const HandleIntToolsTopolTool* self_) { return self_->IsNull(); }
+extern "C" bool Handle_IntTools_TopolTool_is_null(const Handle_IntTools_TopolTool* self_) { return self_->IsNull(); }
 
 // ========================
 // BOPAlgo_AlertUserBreak wrappers
@@ -530,24 +460,24 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertUserBreak_as_Message_Al
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertUserBreak_as_Message_Alert_mut(BOPAlgo_AlertUserBreak* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertUserBreak_as_Standard_Transient(const BOPAlgo_AlertUserBreak* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertUserBreak_as_Standard_Transient_mut(BOPAlgo_AlertUserBreak* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertUserBreak*> BOPAlgo_AlertUserBreak_to_handle(BOPAlgo_AlertUserBreak* obj) {
-    try { return {new HandleBOPAlgoAlertUserBreak(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertUserBreak*> BOPAlgo_AlertUserBreak_to_handle(BOPAlgo_AlertUserBreak* obj) {
+    try { return {new Handle_BOPAlgo_AlertUserBreak(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertUserBreak*> HandleBOPAlgoAlertUserBreak_get(const HandleBOPAlgoAlertUserBreak* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertUserBreak*> Handle_BOPAlgo_AlertUserBreak_get(const Handle_BOPAlgo_AlertUserBreak* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertUserBreak*> HandleBOPAlgoAlertUserBreak_get_mut(HandleBOPAlgoAlertUserBreak* handle) {
+extern "C" OcctResult<BOPAlgo_AlertUserBreak*> Handle_BOPAlgo_AlertUserBreak_get_mut(Handle_BOPAlgo_AlertUserBreak* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertUserBreak_to_HandleMessageAlert(const HandleBOPAlgoAlertUserBreak* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertUserBreak_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertUserBreak* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertUserBreak_to_HandleStandardTransient(const HandleBOPAlgoAlertUserBreak* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertUserBreak_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertUserBreak* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BOPAlgo_AlertUserBreak_inherited_SupportsMerge(const BOPAlgo_AlertUserBreak* self) {
@@ -612,24 +542,24 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertBOPNotAllowed_as_Messag
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertBOPNotAllowed_as_Message_Alert_mut(BOPAlgo_AlertBOPNotAllowed* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertBOPNotAllowed_as_Standard_Transient(const BOPAlgo_AlertBOPNotAllowed* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertBOPNotAllowed_as_Standard_Transient_mut(BOPAlgo_AlertBOPNotAllowed* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertBOPNotAllowed*> BOPAlgo_AlertBOPNotAllowed_to_handle(BOPAlgo_AlertBOPNotAllowed* obj) {
-    try { return {new HandleBOPAlgoAlertBOPNotAllowed(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertBOPNotAllowed*> BOPAlgo_AlertBOPNotAllowed_to_handle(BOPAlgo_AlertBOPNotAllowed* obj) {
+    try { return {new Handle_BOPAlgo_AlertBOPNotAllowed(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertBOPNotAllowed*> HandleBOPAlgoAlertBOPNotAllowed_get(const HandleBOPAlgoAlertBOPNotAllowed* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertBOPNotAllowed*> Handle_BOPAlgo_AlertBOPNotAllowed_get(const Handle_BOPAlgo_AlertBOPNotAllowed* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertBOPNotAllowed*> HandleBOPAlgoAlertBOPNotAllowed_get_mut(HandleBOPAlgoAlertBOPNotAllowed* handle) {
+extern "C" OcctResult<BOPAlgo_AlertBOPNotAllowed*> Handle_BOPAlgo_AlertBOPNotAllowed_get_mut(Handle_BOPAlgo_AlertBOPNotAllowed* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertBOPNotAllowed_to_HandleMessageAlert(const HandleBOPAlgoAlertBOPNotAllowed* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertBOPNotAllowed_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertBOPNotAllowed* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertBOPNotAllowed_to_HandleStandardTransient(const HandleBOPAlgoAlertBOPNotAllowed* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertBOPNotAllowed_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertBOPNotAllowed* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BOPAlgo_AlertBOPNotAllowed_inherited_SupportsMerge(const BOPAlgo_AlertBOPNotAllowed* self) {
@@ -694,24 +624,24 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertBOPNotSet_as_Message_Al
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertBOPNotSet_as_Message_Alert_mut(BOPAlgo_AlertBOPNotSet* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertBOPNotSet_as_Standard_Transient(const BOPAlgo_AlertBOPNotSet* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertBOPNotSet_as_Standard_Transient_mut(BOPAlgo_AlertBOPNotSet* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertBOPNotSet*> BOPAlgo_AlertBOPNotSet_to_handle(BOPAlgo_AlertBOPNotSet* obj) {
-    try { return {new HandleBOPAlgoAlertBOPNotSet(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertBOPNotSet*> BOPAlgo_AlertBOPNotSet_to_handle(BOPAlgo_AlertBOPNotSet* obj) {
+    try { return {new Handle_BOPAlgo_AlertBOPNotSet(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertBOPNotSet*> HandleBOPAlgoAlertBOPNotSet_get(const HandleBOPAlgoAlertBOPNotSet* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertBOPNotSet*> Handle_BOPAlgo_AlertBOPNotSet_get(const Handle_BOPAlgo_AlertBOPNotSet* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertBOPNotSet*> HandleBOPAlgoAlertBOPNotSet_get_mut(HandleBOPAlgoAlertBOPNotSet* handle) {
+extern "C" OcctResult<BOPAlgo_AlertBOPNotSet*> Handle_BOPAlgo_AlertBOPNotSet_get_mut(Handle_BOPAlgo_AlertBOPNotSet* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertBOPNotSet_to_HandleMessageAlert(const HandleBOPAlgoAlertBOPNotSet* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertBOPNotSet_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertBOPNotSet* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertBOPNotSet_to_HandleStandardTransient(const HandleBOPAlgoAlertBOPNotSet* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertBOPNotSet_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertBOPNotSet* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BOPAlgo_AlertBOPNotSet_inherited_SupportsMerge(const BOPAlgo_AlertBOPNotSet* self) {
@@ -776,24 +706,24 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertBuilderFailed_as_Messag
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertBuilderFailed_as_Message_Alert_mut(BOPAlgo_AlertBuilderFailed* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertBuilderFailed_as_Standard_Transient(const BOPAlgo_AlertBuilderFailed* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertBuilderFailed_as_Standard_Transient_mut(BOPAlgo_AlertBuilderFailed* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertBuilderFailed*> BOPAlgo_AlertBuilderFailed_to_handle(BOPAlgo_AlertBuilderFailed* obj) {
-    try { return {new HandleBOPAlgoAlertBuilderFailed(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertBuilderFailed*> BOPAlgo_AlertBuilderFailed_to_handle(BOPAlgo_AlertBuilderFailed* obj) {
+    try { return {new Handle_BOPAlgo_AlertBuilderFailed(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertBuilderFailed*> HandleBOPAlgoAlertBuilderFailed_get(const HandleBOPAlgoAlertBuilderFailed* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertBuilderFailed*> Handle_BOPAlgo_AlertBuilderFailed_get(const Handle_BOPAlgo_AlertBuilderFailed* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertBuilderFailed*> HandleBOPAlgoAlertBuilderFailed_get_mut(HandleBOPAlgoAlertBuilderFailed* handle) {
+extern "C" OcctResult<BOPAlgo_AlertBuilderFailed*> Handle_BOPAlgo_AlertBuilderFailed_get_mut(Handle_BOPAlgo_AlertBuilderFailed* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertBuilderFailed_to_HandleMessageAlert(const HandleBOPAlgoAlertBuilderFailed* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertBuilderFailed_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertBuilderFailed* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertBuilderFailed_to_HandleStandardTransient(const HandleBOPAlgoAlertBuilderFailed* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertBuilderFailed_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertBuilderFailed* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BOPAlgo_AlertBuilderFailed_inherited_SupportsMerge(const BOPAlgo_AlertBuilderFailed* self) {
@@ -858,24 +788,24 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertIntersectionFailed_as_M
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertIntersectionFailed_as_Message_Alert_mut(BOPAlgo_AlertIntersectionFailed* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertIntersectionFailed_as_Standard_Transient(const BOPAlgo_AlertIntersectionFailed* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertIntersectionFailed_as_Standard_Transient_mut(BOPAlgo_AlertIntersectionFailed* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertIntersectionFailed*> BOPAlgo_AlertIntersectionFailed_to_handle(BOPAlgo_AlertIntersectionFailed* obj) {
-    try { return {new HandleBOPAlgoAlertIntersectionFailed(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertIntersectionFailed*> BOPAlgo_AlertIntersectionFailed_to_handle(BOPAlgo_AlertIntersectionFailed* obj) {
+    try { return {new Handle_BOPAlgo_AlertIntersectionFailed(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertIntersectionFailed*> HandleBOPAlgoAlertIntersectionFailed_get(const HandleBOPAlgoAlertIntersectionFailed* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertIntersectionFailed*> Handle_BOPAlgo_AlertIntersectionFailed_get(const Handle_BOPAlgo_AlertIntersectionFailed* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertIntersectionFailed*> HandleBOPAlgoAlertIntersectionFailed_get_mut(HandleBOPAlgoAlertIntersectionFailed* handle) {
+extern "C" OcctResult<BOPAlgo_AlertIntersectionFailed*> Handle_BOPAlgo_AlertIntersectionFailed_get_mut(Handle_BOPAlgo_AlertIntersectionFailed* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertIntersectionFailed_to_HandleMessageAlert(const HandleBOPAlgoAlertIntersectionFailed* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertIntersectionFailed_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertIntersectionFailed* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertIntersectionFailed_to_HandleStandardTransient(const HandleBOPAlgoAlertIntersectionFailed* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertIntersectionFailed_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertIntersectionFailed* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BOPAlgo_AlertIntersectionFailed_inherited_SupportsMerge(const BOPAlgo_AlertIntersectionFailed* self) {
@@ -940,24 +870,24 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertMultipleArguments_as_Me
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertMultipleArguments_as_Message_Alert_mut(BOPAlgo_AlertMultipleArguments* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertMultipleArguments_as_Standard_Transient(const BOPAlgo_AlertMultipleArguments* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertMultipleArguments_as_Standard_Transient_mut(BOPAlgo_AlertMultipleArguments* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertMultipleArguments*> BOPAlgo_AlertMultipleArguments_to_handle(BOPAlgo_AlertMultipleArguments* obj) {
-    try { return {new HandleBOPAlgoAlertMultipleArguments(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertMultipleArguments*> BOPAlgo_AlertMultipleArguments_to_handle(BOPAlgo_AlertMultipleArguments* obj) {
+    try { return {new Handle_BOPAlgo_AlertMultipleArguments(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertMultipleArguments*> HandleBOPAlgoAlertMultipleArguments_get(const HandleBOPAlgoAlertMultipleArguments* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertMultipleArguments*> Handle_BOPAlgo_AlertMultipleArguments_get(const Handle_BOPAlgo_AlertMultipleArguments* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertMultipleArguments*> HandleBOPAlgoAlertMultipleArguments_get_mut(HandleBOPAlgoAlertMultipleArguments* handle) {
+extern "C" OcctResult<BOPAlgo_AlertMultipleArguments*> Handle_BOPAlgo_AlertMultipleArguments_get_mut(Handle_BOPAlgo_AlertMultipleArguments* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertMultipleArguments_to_HandleMessageAlert(const HandleBOPAlgoAlertMultipleArguments* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertMultipleArguments_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertMultipleArguments* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertMultipleArguments_to_HandleStandardTransient(const HandleBOPAlgoAlertMultipleArguments* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertMultipleArguments_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertMultipleArguments* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BOPAlgo_AlertMultipleArguments_inherited_SupportsMerge(const BOPAlgo_AlertMultipleArguments* self) {
@@ -1022,24 +952,24 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertNoFiller_as_Message_Ale
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertNoFiller_as_Message_Alert_mut(BOPAlgo_AlertNoFiller* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertNoFiller_as_Standard_Transient(const BOPAlgo_AlertNoFiller* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertNoFiller_as_Standard_Transient_mut(BOPAlgo_AlertNoFiller* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertNoFiller*> BOPAlgo_AlertNoFiller_to_handle(BOPAlgo_AlertNoFiller* obj) {
-    try { return {new HandleBOPAlgoAlertNoFiller(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertNoFiller*> BOPAlgo_AlertNoFiller_to_handle(BOPAlgo_AlertNoFiller* obj) {
+    try { return {new Handle_BOPAlgo_AlertNoFiller(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertNoFiller*> HandleBOPAlgoAlertNoFiller_get(const HandleBOPAlgoAlertNoFiller* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertNoFiller*> Handle_BOPAlgo_AlertNoFiller_get(const Handle_BOPAlgo_AlertNoFiller* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertNoFiller*> HandleBOPAlgoAlertNoFiller_get_mut(HandleBOPAlgoAlertNoFiller* handle) {
+extern "C" OcctResult<BOPAlgo_AlertNoFiller*> Handle_BOPAlgo_AlertNoFiller_get_mut(Handle_BOPAlgo_AlertNoFiller* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertNoFiller_to_HandleMessageAlert(const HandleBOPAlgoAlertNoFiller* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertNoFiller_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertNoFiller* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertNoFiller_to_HandleStandardTransient(const HandleBOPAlgoAlertNoFiller* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertNoFiller_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertNoFiller* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BOPAlgo_AlertNoFiller_inherited_SupportsMerge(const BOPAlgo_AlertNoFiller* self) {
@@ -1104,24 +1034,24 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertNullInputShapes_as_Mess
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertNullInputShapes_as_Message_Alert_mut(BOPAlgo_AlertNullInputShapes* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertNullInputShapes_as_Standard_Transient(const BOPAlgo_AlertNullInputShapes* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertNullInputShapes_as_Standard_Transient_mut(BOPAlgo_AlertNullInputShapes* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertNullInputShapes*> BOPAlgo_AlertNullInputShapes_to_handle(BOPAlgo_AlertNullInputShapes* obj) {
-    try { return {new HandleBOPAlgoAlertNullInputShapes(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertNullInputShapes*> BOPAlgo_AlertNullInputShapes_to_handle(BOPAlgo_AlertNullInputShapes* obj) {
+    try { return {new Handle_BOPAlgo_AlertNullInputShapes(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertNullInputShapes*> HandleBOPAlgoAlertNullInputShapes_get(const HandleBOPAlgoAlertNullInputShapes* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertNullInputShapes*> Handle_BOPAlgo_AlertNullInputShapes_get(const Handle_BOPAlgo_AlertNullInputShapes* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertNullInputShapes*> HandleBOPAlgoAlertNullInputShapes_get_mut(HandleBOPAlgoAlertNullInputShapes* handle) {
+extern "C" OcctResult<BOPAlgo_AlertNullInputShapes*> Handle_BOPAlgo_AlertNullInputShapes_get_mut(Handle_BOPAlgo_AlertNullInputShapes* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertNullInputShapes_to_HandleMessageAlert(const HandleBOPAlgoAlertNullInputShapes* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertNullInputShapes_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertNullInputShapes* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertNullInputShapes_to_HandleStandardTransient(const HandleBOPAlgoAlertNullInputShapes* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertNullInputShapes_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertNullInputShapes* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BOPAlgo_AlertNullInputShapes_inherited_SupportsMerge(const BOPAlgo_AlertNullInputShapes* self) {
@@ -1186,24 +1116,24 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertPostTreatFF_as_Message_
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertPostTreatFF_as_Message_Alert_mut(BOPAlgo_AlertPostTreatFF* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertPostTreatFF_as_Standard_Transient(const BOPAlgo_AlertPostTreatFF* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertPostTreatFF_as_Standard_Transient_mut(BOPAlgo_AlertPostTreatFF* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertPostTreatFF*> BOPAlgo_AlertPostTreatFF_to_handle(BOPAlgo_AlertPostTreatFF* obj) {
-    try { return {new HandleBOPAlgoAlertPostTreatFF(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertPostTreatFF*> BOPAlgo_AlertPostTreatFF_to_handle(BOPAlgo_AlertPostTreatFF* obj) {
+    try { return {new Handle_BOPAlgo_AlertPostTreatFF(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertPostTreatFF*> HandleBOPAlgoAlertPostTreatFF_get(const HandleBOPAlgoAlertPostTreatFF* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertPostTreatFF*> Handle_BOPAlgo_AlertPostTreatFF_get(const Handle_BOPAlgo_AlertPostTreatFF* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertPostTreatFF*> HandleBOPAlgoAlertPostTreatFF_get_mut(HandleBOPAlgoAlertPostTreatFF* handle) {
+extern "C" OcctResult<BOPAlgo_AlertPostTreatFF*> Handle_BOPAlgo_AlertPostTreatFF_get_mut(Handle_BOPAlgo_AlertPostTreatFF* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertPostTreatFF_to_HandleMessageAlert(const HandleBOPAlgoAlertPostTreatFF* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertPostTreatFF_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertPostTreatFF* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertPostTreatFF_to_HandleStandardTransient(const HandleBOPAlgoAlertPostTreatFF* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertPostTreatFF_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertPostTreatFF* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BOPAlgo_AlertPostTreatFF_inherited_SupportsMerge(const BOPAlgo_AlertPostTreatFF* self) {
@@ -1268,24 +1198,24 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertSolidBuilderFailed_as_M
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertSolidBuilderFailed_as_Message_Alert_mut(BOPAlgo_AlertSolidBuilderFailed* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertSolidBuilderFailed_as_Standard_Transient(const BOPAlgo_AlertSolidBuilderFailed* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertSolidBuilderFailed_as_Standard_Transient_mut(BOPAlgo_AlertSolidBuilderFailed* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertSolidBuilderFailed*> BOPAlgo_AlertSolidBuilderFailed_to_handle(BOPAlgo_AlertSolidBuilderFailed* obj) {
-    try { return {new HandleBOPAlgoAlertSolidBuilderFailed(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertSolidBuilderFailed*> BOPAlgo_AlertSolidBuilderFailed_to_handle(BOPAlgo_AlertSolidBuilderFailed* obj) {
+    try { return {new Handle_BOPAlgo_AlertSolidBuilderFailed(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertSolidBuilderFailed*> HandleBOPAlgoAlertSolidBuilderFailed_get(const HandleBOPAlgoAlertSolidBuilderFailed* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertSolidBuilderFailed*> Handle_BOPAlgo_AlertSolidBuilderFailed_get(const Handle_BOPAlgo_AlertSolidBuilderFailed* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertSolidBuilderFailed*> HandleBOPAlgoAlertSolidBuilderFailed_get_mut(HandleBOPAlgoAlertSolidBuilderFailed* handle) {
+extern "C" OcctResult<BOPAlgo_AlertSolidBuilderFailed*> Handle_BOPAlgo_AlertSolidBuilderFailed_get_mut(Handle_BOPAlgo_AlertSolidBuilderFailed* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertSolidBuilderFailed_to_HandleMessageAlert(const HandleBOPAlgoAlertSolidBuilderFailed* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertSolidBuilderFailed_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertSolidBuilderFailed* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertSolidBuilderFailed_to_HandleStandardTransient(const HandleBOPAlgoAlertSolidBuilderFailed* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertSolidBuilderFailed_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertSolidBuilderFailed* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BOPAlgo_AlertSolidBuilderFailed_inherited_SupportsMerge(const BOPAlgo_AlertSolidBuilderFailed* self) {
@@ -1350,24 +1280,24 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertTooFewArguments_as_Mess
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertTooFewArguments_as_Message_Alert_mut(BOPAlgo_AlertTooFewArguments* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertTooFewArguments_as_Standard_Transient(const BOPAlgo_AlertTooFewArguments* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertTooFewArguments_as_Standard_Transient_mut(BOPAlgo_AlertTooFewArguments* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertTooFewArguments*> BOPAlgo_AlertTooFewArguments_to_handle(BOPAlgo_AlertTooFewArguments* obj) {
-    try { return {new HandleBOPAlgoAlertTooFewArguments(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertTooFewArguments*> BOPAlgo_AlertTooFewArguments_to_handle(BOPAlgo_AlertTooFewArguments* obj) {
+    try { return {new Handle_BOPAlgo_AlertTooFewArguments(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertTooFewArguments*> HandleBOPAlgoAlertTooFewArguments_get(const HandleBOPAlgoAlertTooFewArguments* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertTooFewArguments*> Handle_BOPAlgo_AlertTooFewArguments_get(const Handle_BOPAlgo_AlertTooFewArguments* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertTooFewArguments*> HandleBOPAlgoAlertTooFewArguments_get_mut(HandleBOPAlgoAlertTooFewArguments* handle) {
+extern "C" OcctResult<BOPAlgo_AlertTooFewArguments*> Handle_BOPAlgo_AlertTooFewArguments_get_mut(Handle_BOPAlgo_AlertTooFewArguments* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertTooFewArguments_to_HandleMessageAlert(const HandleBOPAlgoAlertTooFewArguments* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertTooFewArguments_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertTooFewArguments* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertTooFewArguments_to_HandleStandardTransient(const HandleBOPAlgoAlertTooFewArguments* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertTooFewArguments_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertTooFewArguments* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BOPAlgo_AlertTooFewArguments_inherited_SupportsMerge(const BOPAlgo_AlertTooFewArguments* self) {
@@ -1434,28 +1364,28 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertBadPositioning_as_Messa
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertBadPositioning_as_Message_Alert_mut(BOPAlgo_AlertBadPositioning* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertBadPositioning_as_Standard_Transient(const BOPAlgo_AlertBadPositioning* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertBadPositioning_as_Standard_Transient_mut(BOPAlgo_AlertBadPositioning* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertBadPositioning*> BOPAlgo_AlertBadPositioning_to_handle(BOPAlgo_AlertBadPositioning* obj) {
-    try { return {new HandleBOPAlgoAlertBadPositioning(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertBadPositioning*> BOPAlgo_AlertBadPositioning_to_handle(BOPAlgo_AlertBadPositioning* obj) {
+    try { return {new Handle_BOPAlgo_AlertBadPositioning(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertBadPositioning*> HandleBOPAlgoAlertBadPositioning_get(const HandleBOPAlgoAlertBadPositioning* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertBadPositioning*> Handle_BOPAlgo_AlertBadPositioning_get(const Handle_BOPAlgo_AlertBadPositioning* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertBadPositioning*> HandleBOPAlgoAlertBadPositioning_get_mut(HandleBOPAlgoAlertBadPositioning* handle) {
+extern "C" OcctResult<BOPAlgo_AlertBadPositioning*> Handle_BOPAlgo_AlertBadPositioning_get_mut(Handle_BOPAlgo_AlertBadPositioning* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSAlertWithShape*> HandleBOPAlgoAlertBadPositioning_to_HandleTopoDSAlertWithShape(const HandleBOPAlgoAlertBadPositioning* self_) {
-    try { return {new HandleTopoDSAlertWithShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_AlertWithShape*> Handle_BOPAlgo_AlertBadPositioning_to_Handle_TopoDS_AlertWithShape(const Handle_BOPAlgo_AlertBadPositioning* self_) {
+    try { return {new Handle_TopoDS_AlertWithShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertBadPositioning_to_HandleMessageAlert(const HandleBOPAlgoAlertBadPositioning* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertBadPositioning_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertBadPositioning* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertBadPositioning_to_HandleStandardTransient(const HandleBOPAlgoAlertBadPositioning* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertBadPositioning_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertBadPositioning* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape const*> BOPAlgo_AlertBadPositioning_inherited_GetShape(const BOPAlgo_AlertBadPositioning* self) {
@@ -1530,28 +1460,28 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertEmptyShape_as_Message_A
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertEmptyShape_as_Message_Alert_mut(BOPAlgo_AlertEmptyShape* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertEmptyShape_as_Standard_Transient(const BOPAlgo_AlertEmptyShape* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertEmptyShape_as_Standard_Transient_mut(BOPAlgo_AlertEmptyShape* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertEmptyShape*> BOPAlgo_AlertEmptyShape_to_handle(BOPAlgo_AlertEmptyShape* obj) {
-    try { return {new HandleBOPAlgoAlertEmptyShape(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertEmptyShape*> BOPAlgo_AlertEmptyShape_to_handle(BOPAlgo_AlertEmptyShape* obj) {
+    try { return {new Handle_BOPAlgo_AlertEmptyShape(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertEmptyShape*> HandleBOPAlgoAlertEmptyShape_get(const HandleBOPAlgoAlertEmptyShape* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertEmptyShape*> Handle_BOPAlgo_AlertEmptyShape_get(const Handle_BOPAlgo_AlertEmptyShape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertEmptyShape*> HandleBOPAlgoAlertEmptyShape_get_mut(HandleBOPAlgoAlertEmptyShape* handle) {
+extern "C" OcctResult<BOPAlgo_AlertEmptyShape*> Handle_BOPAlgo_AlertEmptyShape_get_mut(Handle_BOPAlgo_AlertEmptyShape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSAlertWithShape*> HandleBOPAlgoAlertEmptyShape_to_HandleTopoDSAlertWithShape(const HandleBOPAlgoAlertEmptyShape* self_) {
-    try { return {new HandleTopoDSAlertWithShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_AlertWithShape*> Handle_BOPAlgo_AlertEmptyShape_to_Handle_TopoDS_AlertWithShape(const Handle_BOPAlgo_AlertEmptyShape* self_) {
+    try { return {new Handle_TopoDS_AlertWithShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertEmptyShape_to_HandleMessageAlert(const HandleBOPAlgoAlertEmptyShape* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertEmptyShape_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertEmptyShape* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertEmptyShape_to_HandleStandardTransient(const HandleBOPAlgoAlertEmptyShape* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertEmptyShape_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertEmptyShape* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape const*> BOPAlgo_AlertEmptyShape_inherited_GetShape(const BOPAlgo_AlertEmptyShape* self) {
@@ -1626,28 +1556,28 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertNotSplittableEdge_as_Me
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertNotSplittableEdge_as_Message_Alert_mut(BOPAlgo_AlertNotSplittableEdge* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertNotSplittableEdge_as_Standard_Transient(const BOPAlgo_AlertNotSplittableEdge* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertNotSplittableEdge_as_Standard_Transient_mut(BOPAlgo_AlertNotSplittableEdge* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertNotSplittableEdge*> BOPAlgo_AlertNotSplittableEdge_to_handle(BOPAlgo_AlertNotSplittableEdge* obj) {
-    try { return {new HandleBOPAlgoAlertNotSplittableEdge(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertNotSplittableEdge*> BOPAlgo_AlertNotSplittableEdge_to_handle(BOPAlgo_AlertNotSplittableEdge* obj) {
+    try { return {new Handle_BOPAlgo_AlertNotSplittableEdge(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertNotSplittableEdge*> HandleBOPAlgoAlertNotSplittableEdge_get(const HandleBOPAlgoAlertNotSplittableEdge* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertNotSplittableEdge*> Handle_BOPAlgo_AlertNotSplittableEdge_get(const Handle_BOPAlgo_AlertNotSplittableEdge* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertNotSplittableEdge*> HandleBOPAlgoAlertNotSplittableEdge_get_mut(HandleBOPAlgoAlertNotSplittableEdge* handle) {
+extern "C" OcctResult<BOPAlgo_AlertNotSplittableEdge*> Handle_BOPAlgo_AlertNotSplittableEdge_get_mut(Handle_BOPAlgo_AlertNotSplittableEdge* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSAlertWithShape*> HandleBOPAlgoAlertNotSplittableEdge_to_HandleTopoDSAlertWithShape(const HandleBOPAlgoAlertNotSplittableEdge* self_) {
-    try { return {new HandleTopoDSAlertWithShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_AlertWithShape*> Handle_BOPAlgo_AlertNotSplittableEdge_to_Handle_TopoDS_AlertWithShape(const Handle_BOPAlgo_AlertNotSplittableEdge* self_) {
+    try { return {new Handle_TopoDS_AlertWithShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertNotSplittableEdge_to_HandleMessageAlert(const HandleBOPAlgoAlertNotSplittableEdge* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertNotSplittableEdge_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertNotSplittableEdge* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertNotSplittableEdge_to_HandleStandardTransient(const HandleBOPAlgoAlertNotSplittableEdge* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertNotSplittableEdge_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertNotSplittableEdge* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape const*> BOPAlgo_AlertNotSplittableEdge_inherited_GetShape(const BOPAlgo_AlertNotSplittableEdge* self) {
@@ -1722,28 +1652,28 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertRemovalOfIBForEdgesFail
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertRemovalOfIBForEdgesFailed_as_Message_Alert_mut(BOPAlgo_AlertRemovalOfIBForEdgesFailed* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertRemovalOfIBForEdgesFailed_as_Standard_Transient(const BOPAlgo_AlertRemovalOfIBForEdgesFailed* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertRemovalOfIBForEdgesFailed_as_Standard_Transient_mut(BOPAlgo_AlertRemovalOfIBForEdgesFailed* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertRemovalOfIBForEdgesFailed*> BOPAlgo_AlertRemovalOfIBForEdgesFailed_to_handle(BOPAlgo_AlertRemovalOfIBForEdgesFailed* obj) {
-    try { return {new HandleBOPAlgoAlertRemovalOfIBForEdgesFailed(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed*> BOPAlgo_AlertRemovalOfIBForEdgesFailed_to_handle(BOPAlgo_AlertRemovalOfIBForEdgesFailed* obj) {
+    try { return {new Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertRemovalOfIBForEdgesFailed*> HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_get(const HandleBOPAlgoAlertRemovalOfIBForEdgesFailed* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertRemovalOfIBForEdgesFailed*> Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed_get(const Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertRemovalOfIBForEdgesFailed*> HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_get_mut(HandleBOPAlgoAlertRemovalOfIBForEdgesFailed* handle) {
+extern "C" OcctResult<BOPAlgo_AlertRemovalOfIBForEdgesFailed*> Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed_get_mut(Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSAlertWithShape*> HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_to_HandleTopoDSAlertWithShape(const HandleBOPAlgoAlertRemovalOfIBForEdgesFailed* self_) {
-    try { return {new HandleTopoDSAlertWithShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_AlertWithShape*> Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed_to_Handle_TopoDS_AlertWithShape(const Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed* self_) {
+    try { return {new Handle_TopoDS_AlertWithShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_to_HandleMessageAlert(const HandleBOPAlgoAlertRemovalOfIBForEdgesFailed* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_to_HandleStandardTransient(const HandleBOPAlgoAlertRemovalOfIBForEdgesFailed* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape const*> BOPAlgo_AlertRemovalOfIBForEdgesFailed_inherited_GetShape(const BOPAlgo_AlertRemovalOfIBForEdgesFailed* self) {
@@ -1818,28 +1748,28 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertRemovalOfIBForFacesFail
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertRemovalOfIBForFacesFailed_as_Message_Alert_mut(BOPAlgo_AlertRemovalOfIBForFacesFailed* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertRemovalOfIBForFacesFailed_as_Standard_Transient(const BOPAlgo_AlertRemovalOfIBForFacesFailed* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertRemovalOfIBForFacesFailed_as_Standard_Transient_mut(BOPAlgo_AlertRemovalOfIBForFacesFailed* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertRemovalOfIBForFacesFailed*> BOPAlgo_AlertRemovalOfIBForFacesFailed_to_handle(BOPAlgo_AlertRemovalOfIBForFacesFailed* obj) {
-    try { return {new HandleBOPAlgoAlertRemovalOfIBForFacesFailed(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed*> BOPAlgo_AlertRemovalOfIBForFacesFailed_to_handle(BOPAlgo_AlertRemovalOfIBForFacesFailed* obj) {
+    try { return {new Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertRemovalOfIBForFacesFailed*> HandleBOPAlgoAlertRemovalOfIBForFacesFailed_get(const HandleBOPAlgoAlertRemovalOfIBForFacesFailed* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertRemovalOfIBForFacesFailed*> Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed_get(const Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertRemovalOfIBForFacesFailed*> HandleBOPAlgoAlertRemovalOfIBForFacesFailed_get_mut(HandleBOPAlgoAlertRemovalOfIBForFacesFailed* handle) {
+extern "C" OcctResult<BOPAlgo_AlertRemovalOfIBForFacesFailed*> Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed_get_mut(Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSAlertWithShape*> HandleBOPAlgoAlertRemovalOfIBForFacesFailed_to_HandleTopoDSAlertWithShape(const HandleBOPAlgoAlertRemovalOfIBForFacesFailed* self_) {
-    try { return {new HandleTopoDSAlertWithShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_AlertWithShape*> Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed_to_Handle_TopoDS_AlertWithShape(const Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed* self_) {
+    try { return {new Handle_TopoDS_AlertWithShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertRemovalOfIBForFacesFailed_to_HandleMessageAlert(const HandleBOPAlgoAlertRemovalOfIBForFacesFailed* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertRemovalOfIBForFacesFailed_to_HandleStandardTransient(const HandleBOPAlgoAlertRemovalOfIBForFacesFailed* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape const*> BOPAlgo_AlertRemovalOfIBForFacesFailed_inherited_GetShape(const BOPAlgo_AlertRemovalOfIBForFacesFailed* self) {
@@ -1914,28 +1844,28 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertRemovalOfIBForMDimShape
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertRemovalOfIBForMDimShapes_as_Message_Alert_mut(BOPAlgo_AlertRemovalOfIBForMDimShapes* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertRemovalOfIBForMDimShapes_as_Standard_Transient(const BOPAlgo_AlertRemovalOfIBForMDimShapes* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertRemovalOfIBForMDimShapes_as_Standard_Transient_mut(BOPAlgo_AlertRemovalOfIBForMDimShapes* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertRemovalOfIBForMDimShapes*> BOPAlgo_AlertRemovalOfIBForMDimShapes_to_handle(BOPAlgo_AlertRemovalOfIBForMDimShapes* obj) {
-    try { return {new HandleBOPAlgoAlertRemovalOfIBForMDimShapes(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes*> BOPAlgo_AlertRemovalOfIBForMDimShapes_to_handle(BOPAlgo_AlertRemovalOfIBForMDimShapes* obj) {
+    try { return {new Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertRemovalOfIBForMDimShapes*> HandleBOPAlgoAlertRemovalOfIBForMDimShapes_get(const HandleBOPAlgoAlertRemovalOfIBForMDimShapes* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertRemovalOfIBForMDimShapes*> Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes_get(const Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertRemovalOfIBForMDimShapes*> HandleBOPAlgoAlertRemovalOfIBForMDimShapes_get_mut(HandleBOPAlgoAlertRemovalOfIBForMDimShapes* handle) {
+extern "C" OcctResult<BOPAlgo_AlertRemovalOfIBForMDimShapes*> Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes_get_mut(Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSAlertWithShape*> HandleBOPAlgoAlertRemovalOfIBForMDimShapes_to_HandleTopoDSAlertWithShape(const HandleBOPAlgoAlertRemovalOfIBForMDimShapes* self_) {
-    try { return {new HandleTopoDSAlertWithShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_AlertWithShape*> Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes_to_Handle_TopoDS_AlertWithShape(const Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes* self_) {
+    try { return {new Handle_TopoDS_AlertWithShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertRemovalOfIBForMDimShapes_to_HandleMessageAlert(const HandleBOPAlgoAlertRemovalOfIBForMDimShapes* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertRemovalOfIBForMDimShapes_to_HandleStandardTransient(const HandleBOPAlgoAlertRemovalOfIBForMDimShapes* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape const*> BOPAlgo_AlertRemovalOfIBForMDimShapes_inherited_GetShape(const BOPAlgo_AlertRemovalOfIBForMDimShapes* self) {
@@ -2010,28 +1940,28 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertRemovalOfIBForSolidsFai
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertRemovalOfIBForSolidsFailed_as_Message_Alert_mut(BOPAlgo_AlertRemovalOfIBForSolidsFailed* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertRemovalOfIBForSolidsFailed_as_Standard_Transient(const BOPAlgo_AlertRemovalOfIBForSolidsFailed* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertRemovalOfIBForSolidsFailed_as_Standard_Transient_mut(BOPAlgo_AlertRemovalOfIBForSolidsFailed* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertRemovalOfIBForSolidsFailed*> BOPAlgo_AlertRemovalOfIBForSolidsFailed_to_handle(BOPAlgo_AlertRemovalOfIBForSolidsFailed* obj) {
-    try { return {new HandleBOPAlgoAlertRemovalOfIBForSolidsFailed(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed*> BOPAlgo_AlertRemovalOfIBForSolidsFailed_to_handle(BOPAlgo_AlertRemovalOfIBForSolidsFailed* obj) {
+    try { return {new Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertRemovalOfIBForSolidsFailed*> HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_get(const HandleBOPAlgoAlertRemovalOfIBForSolidsFailed* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertRemovalOfIBForSolidsFailed*> Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed_get(const Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertRemovalOfIBForSolidsFailed*> HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_get_mut(HandleBOPAlgoAlertRemovalOfIBForSolidsFailed* handle) {
+extern "C" OcctResult<BOPAlgo_AlertRemovalOfIBForSolidsFailed*> Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed_get_mut(Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSAlertWithShape*> HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_to_HandleTopoDSAlertWithShape(const HandleBOPAlgoAlertRemovalOfIBForSolidsFailed* self_) {
-    try { return {new HandleTopoDSAlertWithShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_AlertWithShape*> Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed_to_Handle_TopoDS_AlertWithShape(const Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed* self_) {
+    try { return {new Handle_TopoDS_AlertWithShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_to_HandleMessageAlert(const HandleBOPAlgoAlertRemovalOfIBForSolidsFailed* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_to_HandleStandardTransient(const HandleBOPAlgoAlertRemovalOfIBForSolidsFailed* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape const*> BOPAlgo_AlertRemovalOfIBForSolidsFailed_inherited_GetShape(const BOPAlgo_AlertRemovalOfIBForSolidsFailed* self) {
@@ -2106,28 +2036,28 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertSelfInterferingShape_as
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertSelfInterferingShape_as_Message_Alert_mut(BOPAlgo_AlertSelfInterferingShape* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertSelfInterferingShape_as_Standard_Transient(const BOPAlgo_AlertSelfInterferingShape* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertSelfInterferingShape_as_Standard_Transient_mut(BOPAlgo_AlertSelfInterferingShape* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertSelfInterferingShape*> BOPAlgo_AlertSelfInterferingShape_to_handle(BOPAlgo_AlertSelfInterferingShape* obj) {
-    try { return {new HandleBOPAlgoAlertSelfInterferingShape(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertSelfInterferingShape*> BOPAlgo_AlertSelfInterferingShape_to_handle(BOPAlgo_AlertSelfInterferingShape* obj) {
+    try { return {new Handle_BOPAlgo_AlertSelfInterferingShape(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertSelfInterferingShape*> HandleBOPAlgoAlertSelfInterferingShape_get(const HandleBOPAlgoAlertSelfInterferingShape* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertSelfInterferingShape*> Handle_BOPAlgo_AlertSelfInterferingShape_get(const Handle_BOPAlgo_AlertSelfInterferingShape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertSelfInterferingShape*> HandleBOPAlgoAlertSelfInterferingShape_get_mut(HandleBOPAlgoAlertSelfInterferingShape* handle) {
+extern "C" OcctResult<BOPAlgo_AlertSelfInterferingShape*> Handle_BOPAlgo_AlertSelfInterferingShape_get_mut(Handle_BOPAlgo_AlertSelfInterferingShape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSAlertWithShape*> HandleBOPAlgoAlertSelfInterferingShape_to_HandleTopoDSAlertWithShape(const HandleBOPAlgoAlertSelfInterferingShape* self_) {
-    try { return {new HandleTopoDSAlertWithShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_AlertWithShape*> Handle_BOPAlgo_AlertSelfInterferingShape_to_Handle_TopoDS_AlertWithShape(const Handle_BOPAlgo_AlertSelfInterferingShape* self_) {
+    try { return {new Handle_TopoDS_AlertWithShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertSelfInterferingShape_to_HandleMessageAlert(const HandleBOPAlgoAlertSelfInterferingShape* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertSelfInterferingShape_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertSelfInterferingShape* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertSelfInterferingShape_to_HandleStandardTransient(const HandleBOPAlgoAlertSelfInterferingShape* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertSelfInterferingShape_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertSelfInterferingShape* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape const*> BOPAlgo_AlertSelfInterferingShape_inherited_GetShape(const BOPAlgo_AlertSelfInterferingShape* self) {
@@ -2202,28 +2132,28 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertShellSplitterFailed_as_
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertShellSplitterFailed_as_Message_Alert_mut(BOPAlgo_AlertShellSplitterFailed* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertShellSplitterFailed_as_Standard_Transient(const BOPAlgo_AlertShellSplitterFailed* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertShellSplitterFailed_as_Standard_Transient_mut(BOPAlgo_AlertShellSplitterFailed* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertShellSplitterFailed*> BOPAlgo_AlertShellSplitterFailed_to_handle(BOPAlgo_AlertShellSplitterFailed* obj) {
-    try { return {new HandleBOPAlgoAlertShellSplitterFailed(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertShellSplitterFailed*> BOPAlgo_AlertShellSplitterFailed_to_handle(BOPAlgo_AlertShellSplitterFailed* obj) {
+    try { return {new Handle_BOPAlgo_AlertShellSplitterFailed(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertShellSplitterFailed*> HandleBOPAlgoAlertShellSplitterFailed_get(const HandleBOPAlgoAlertShellSplitterFailed* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertShellSplitterFailed*> Handle_BOPAlgo_AlertShellSplitterFailed_get(const Handle_BOPAlgo_AlertShellSplitterFailed* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertShellSplitterFailed*> HandleBOPAlgoAlertShellSplitterFailed_get_mut(HandleBOPAlgoAlertShellSplitterFailed* handle) {
+extern "C" OcctResult<BOPAlgo_AlertShellSplitterFailed*> Handle_BOPAlgo_AlertShellSplitterFailed_get_mut(Handle_BOPAlgo_AlertShellSplitterFailed* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSAlertWithShape*> HandleBOPAlgoAlertShellSplitterFailed_to_HandleTopoDSAlertWithShape(const HandleBOPAlgoAlertShellSplitterFailed* self_) {
-    try { return {new HandleTopoDSAlertWithShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_AlertWithShape*> Handle_BOPAlgo_AlertShellSplitterFailed_to_Handle_TopoDS_AlertWithShape(const Handle_BOPAlgo_AlertShellSplitterFailed* self_) {
+    try { return {new Handle_TopoDS_AlertWithShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertShellSplitterFailed_to_HandleMessageAlert(const HandleBOPAlgoAlertShellSplitterFailed* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertShellSplitterFailed_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertShellSplitterFailed* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertShellSplitterFailed_to_HandleStandardTransient(const HandleBOPAlgoAlertShellSplitterFailed* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertShellSplitterFailed_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertShellSplitterFailed* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape const*> BOPAlgo_AlertShellSplitterFailed_inherited_GetShape(const BOPAlgo_AlertShellSplitterFailed* self) {
@@ -2298,28 +2228,28 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertTooSmallEdge_as_Message
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertTooSmallEdge_as_Message_Alert_mut(BOPAlgo_AlertTooSmallEdge* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertTooSmallEdge_as_Standard_Transient(const BOPAlgo_AlertTooSmallEdge* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertTooSmallEdge_as_Standard_Transient_mut(BOPAlgo_AlertTooSmallEdge* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertTooSmallEdge*> BOPAlgo_AlertTooSmallEdge_to_handle(BOPAlgo_AlertTooSmallEdge* obj) {
-    try { return {new HandleBOPAlgoAlertTooSmallEdge(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertTooSmallEdge*> BOPAlgo_AlertTooSmallEdge_to_handle(BOPAlgo_AlertTooSmallEdge* obj) {
+    try { return {new Handle_BOPAlgo_AlertTooSmallEdge(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertTooSmallEdge*> HandleBOPAlgoAlertTooSmallEdge_get(const HandleBOPAlgoAlertTooSmallEdge* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertTooSmallEdge*> Handle_BOPAlgo_AlertTooSmallEdge_get(const Handle_BOPAlgo_AlertTooSmallEdge* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertTooSmallEdge*> HandleBOPAlgoAlertTooSmallEdge_get_mut(HandleBOPAlgoAlertTooSmallEdge* handle) {
+extern "C" OcctResult<BOPAlgo_AlertTooSmallEdge*> Handle_BOPAlgo_AlertTooSmallEdge_get_mut(Handle_BOPAlgo_AlertTooSmallEdge* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSAlertWithShape*> HandleBOPAlgoAlertTooSmallEdge_to_HandleTopoDSAlertWithShape(const HandleBOPAlgoAlertTooSmallEdge* self_) {
-    try { return {new HandleTopoDSAlertWithShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_AlertWithShape*> Handle_BOPAlgo_AlertTooSmallEdge_to_Handle_TopoDS_AlertWithShape(const Handle_BOPAlgo_AlertTooSmallEdge* self_) {
+    try { return {new Handle_TopoDS_AlertWithShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertTooSmallEdge_to_HandleMessageAlert(const HandleBOPAlgoAlertTooSmallEdge* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertTooSmallEdge_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertTooSmallEdge* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertTooSmallEdge_to_HandleStandardTransient(const HandleBOPAlgoAlertTooSmallEdge* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertTooSmallEdge_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertTooSmallEdge* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape const*> BOPAlgo_AlertTooSmallEdge_inherited_GetShape(const BOPAlgo_AlertTooSmallEdge* self) {
@@ -2394,28 +2324,28 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertIntersectionOfPairOfSha
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertIntersectionOfPairOfShapesFailed_as_Message_Alert_mut(BOPAlgo_AlertIntersectionOfPairOfShapesFailed* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertIntersectionOfPairOfShapesFailed_as_Standard_Transient(const BOPAlgo_AlertIntersectionOfPairOfShapesFailed* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertIntersectionOfPairOfShapesFailed_as_Standard_Transient_mut(BOPAlgo_AlertIntersectionOfPairOfShapesFailed* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed*> BOPAlgo_AlertIntersectionOfPairOfShapesFailed_to_handle(BOPAlgo_AlertIntersectionOfPairOfShapesFailed* obj) {
-    try { return {new HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed*> BOPAlgo_AlertIntersectionOfPairOfShapesFailed_to_handle(BOPAlgo_AlertIntersectionOfPairOfShapesFailed* obj) {
+    try { return {new Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertIntersectionOfPairOfShapesFailed*> HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_get(const HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertIntersectionOfPairOfShapesFailed*> Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed_get(const Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertIntersectionOfPairOfShapesFailed*> HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_get_mut(HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed* handle) {
+extern "C" OcctResult<BOPAlgo_AlertIntersectionOfPairOfShapesFailed*> Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed_get_mut(Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSAlertWithShape*> HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_to_HandleTopoDSAlertWithShape(const HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed* self_) {
-    try { return {new HandleTopoDSAlertWithShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_AlertWithShape*> Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed_to_Handle_TopoDS_AlertWithShape(const Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed* self_) {
+    try { return {new Handle_TopoDS_AlertWithShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_to_HandleMessageAlert(const HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_to_HandleStandardTransient(const HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape const*> BOPAlgo_AlertIntersectionOfPairOfShapesFailed_inherited_GetShape(const BOPAlgo_AlertIntersectionOfPairOfShapesFailed* self) {
@@ -2490,28 +2420,28 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertBuildingPCurveFailed_as
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertBuildingPCurveFailed_as_Message_Alert_mut(BOPAlgo_AlertBuildingPCurveFailed* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertBuildingPCurveFailed_as_Standard_Transient(const BOPAlgo_AlertBuildingPCurveFailed* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertBuildingPCurveFailed_as_Standard_Transient_mut(BOPAlgo_AlertBuildingPCurveFailed* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertBuildingPCurveFailed*> BOPAlgo_AlertBuildingPCurveFailed_to_handle(BOPAlgo_AlertBuildingPCurveFailed* obj) {
-    try { return {new HandleBOPAlgoAlertBuildingPCurveFailed(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertBuildingPCurveFailed*> BOPAlgo_AlertBuildingPCurveFailed_to_handle(BOPAlgo_AlertBuildingPCurveFailed* obj) {
+    try { return {new Handle_BOPAlgo_AlertBuildingPCurveFailed(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertBuildingPCurveFailed*> HandleBOPAlgoAlertBuildingPCurveFailed_get(const HandleBOPAlgoAlertBuildingPCurveFailed* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertBuildingPCurveFailed*> Handle_BOPAlgo_AlertBuildingPCurveFailed_get(const Handle_BOPAlgo_AlertBuildingPCurveFailed* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertBuildingPCurveFailed*> HandleBOPAlgoAlertBuildingPCurveFailed_get_mut(HandleBOPAlgoAlertBuildingPCurveFailed* handle) {
+extern "C" OcctResult<BOPAlgo_AlertBuildingPCurveFailed*> Handle_BOPAlgo_AlertBuildingPCurveFailed_get_mut(Handle_BOPAlgo_AlertBuildingPCurveFailed* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSAlertWithShape*> HandleBOPAlgoAlertBuildingPCurveFailed_to_HandleTopoDSAlertWithShape(const HandleBOPAlgoAlertBuildingPCurveFailed* self_) {
-    try { return {new HandleTopoDSAlertWithShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_AlertWithShape*> Handle_BOPAlgo_AlertBuildingPCurveFailed_to_Handle_TopoDS_AlertWithShape(const Handle_BOPAlgo_AlertBuildingPCurveFailed* self_) {
+    try { return {new Handle_TopoDS_AlertWithShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertBuildingPCurveFailed_to_HandleMessageAlert(const HandleBOPAlgoAlertBuildingPCurveFailed* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertBuildingPCurveFailed_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertBuildingPCurveFailed* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertBuildingPCurveFailed_to_HandleStandardTransient(const HandleBOPAlgoAlertBuildingPCurveFailed* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertBuildingPCurveFailed_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertBuildingPCurveFailed* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape const*> BOPAlgo_AlertBuildingPCurveFailed_inherited_GetShape(const BOPAlgo_AlertBuildingPCurveFailed* self) {
@@ -2586,28 +2516,28 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertAcquiredSelfIntersectio
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertAcquiredSelfIntersection_as_Message_Alert_mut(BOPAlgo_AlertAcquiredSelfIntersection* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertAcquiredSelfIntersection_as_Standard_Transient(const BOPAlgo_AlertAcquiredSelfIntersection* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertAcquiredSelfIntersection_as_Standard_Transient_mut(BOPAlgo_AlertAcquiredSelfIntersection* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertAcquiredSelfIntersection*> BOPAlgo_AlertAcquiredSelfIntersection_to_handle(BOPAlgo_AlertAcquiredSelfIntersection* obj) {
-    try { return {new HandleBOPAlgoAlertAcquiredSelfIntersection(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertAcquiredSelfIntersection*> BOPAlgo_AlertAcquiredSelfIntersection_to_handle(BOPAlgo_AlertAcquiredSelfIntersection* obj) {
+    try { return {new Handle_BOPAlgo_AlertAcquiredSelfIntersection(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertAcquiredSelfIntersection*> HandleBOPAlgoAlertAcquiredSelfIntersection_get(const HandleBOPAlgoAlertAcquiredSelfIntersection* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertAcquiredSelfIntersection*> Handle_BOPAlgo_AlertAcquiredSelfIntersection_get(const Handle_BOPAlgo_AlertAcquiredSelfIntersection* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertAcquiredSelfIntersection*> HandleBOPAlgoAlertAcquiredSelfIntersection_get_mut(HandleBOPAlgoAlertAcquiredSelfIntersection* handle) {
+extern "C" OcctResult<BOPAlgo_AlertAcquiredSelfIntersection*> Handle_BOPAlgo_AlertAcquiredSelfIntersection_get_mut(Handle_BOPAlgo_AlertAcquiredSelfIntersection* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSAlertWithShape*> HandleBOPAlgoAlertAcquiredSelfIntersection_to_HandleTopoDSAlertWithShape(const HandleBOPAlgoAlertAcquiredSelfIntersection* self_) {
-    try { return {new HandleTopoDSAlertWithShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_AlertWithShape*> Handle_BOPAlgo_AlertAcquiredSelfIntersection_to_Handle_TopoDS_AlertWithShape(const Handle_BOPAlgo_AlertAcquiredSelfIntersection* self_) {
+    try { return {new Handle_TopoDS_AlertWithShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertAcquiredSelfIntersection_to_HandleMessageAlert(const HandleBOPAlgoAlertAcquiredSelfIntersection* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertAcquiredSelfIntersection_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertAcquiredSelfIntersection* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertAcquiredSelfIntersection_to_HandleStandardTransient(const HandleBOPAlgoAlertAcquiredSelfIntersection* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertAcquiredSelfIntersection_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertAcquiredSelfIntersection* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape const*> BOPAlgo_AlertAcquiredSelfIntersection_inherited_GetShape(const BOPAlgo_AlertAcquiredSelfIntersection* self) {
@@ -2682,28 +2612,28 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertUnsupportedType_as_Mess
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertUnsupportedType_as_Message_Alert_mut(BOPAlgo_AlertUnsupportedType* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertUnsupportedType_as_Standard_Transient(const BOPAlgo_AlertUnsupportedType* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertUnsupportedType_as_Standard_Transient_mut(BOPAlgo_AlertUnsupportedType* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertUnsupportedType*> BOPAlgo_AlertUnsupportedType_to_handle(BOPAlgo_AlertUnsupportedType* obj) {
-    try { return {new HandleBOPAlgoAlertUnsupportedType(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertUnsupportedType*> BOPAlgo_AlertUnsupportedType_to_handle(BOPAlgo_AlertUnsupportedType* obj) {
+    try { return {new Handle_BOPAlgo_AlertUnsupportedType(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertUnsupportedType*> HandleBOPAlgoAlertUnsupportedType_get(const HandleBOPAlgoAlertUnsupportedType* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertUnsupportedType*> Handle_BOPAlgo_AlertUnsupportedType_get(const Handle_BOPAlgo_AlertUnsupportedType* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertUnsupportedType*> HandleBOPAlgoAlertUnsupportedType_get_mut(HandleBOPAlgoAlertUnsupportedType* handle) {
+extern "C" OcctResult<BOPAlgo_AlertUnsupportedType*> Handle_BOPAlgo_AlertUnsupportedType_get_mut(Handle_BOPAlgo_AlertUnsupportedType* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSAlertWithShape*> HandleBOPAlgoAlertUnsupportedType_to_HandleTopoDSAlertWithShape(const HandleBOPAlgoAlertUnsupportedType* self_) {
-    try { return {new HandleTopoDSAlertWithShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_AlertWithShape*> Handle_BOPAlgo_AlertUnsupportedType_to_Handle_TopoDS_AlertWithShape(const Handle_BOPAlgo_AlertUnsupportedType* self_) {
+    try { return {new Handle_TopoDS_AlertWithShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertUnsupportedType_to_HandleMessageAlert(const HandleBOPAlgoAlertUnsupportedType* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertUnsupportedType_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertUnsupportedType* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertUnsupportedType_to_HandleStandardTransient(const HandleBOPAlgoAlertUnsupportedType* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertUnsupportedType_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertUnsupportedType* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape const*> BOPAlgo_AlertUnsupportedType_inherited_GetShape(const BOPAlgo_AlertUnsupportedType* self) {
@@ -2776,24 +2706,24 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertNoFacesToRemove_as_Mess
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertNoFacesToRemove_as_Message_Alert_mut(BOPAlgo_AlertNoFacesToRemove* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertNoFacesToRemove_as_Standard_Transient(const BOPAlgo_AlertNoFacesToRemove* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertNoFacesToRemove_as_Standard_Transient_mut(BOPAlgo_AlertNoFacesToRemove* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertNoFacesToRemove*> BOPAlgo_AlertNoFacesToRemove_to_handle(BOPAlgo_AlertNoFacesToRemove* obj) {
-    try { return {new HandleBOPAlgoAlertNoFacesToRemove(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertNoFacesToRemove*> BOPAlgo_AlertNoFacesToRemove_to_handle(BOPAlgo_AlertNoFacesToRemove* obj) {
+    try { return {new Handle_BOPAlgo_AlertNoFacesToRemove(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertNoFacesToRemove*> HandleBOPAlgoAlertNoFacesToRemove_get(const HandleBOPAlgoAlertNoFacesToRemove* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertNoFacesToRemove*> Handle_BOPAlgo_AlertNoFacesToRemove_get(const Handle_BOPAlgo_AlertNoFacesToRemove* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertNoFacesToRemove*> HandleBOPAlgoAlertNoFacesToRemove_get_mut(HandleBOPAlgoAlertNoFacesToRemove* handle) {
+extern "C" OcctResult<BOPAlgo_AlertNoFacesToRemove*> Handle_BOPAlgo_AlertNoFacesToRemove_get_mut(Handle_BOPAlgo_AlertNoFacesToRemove* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertNoFacesToRemove_to_HandleMessageAlert(const HandleBOPAlgoAlertNoFacesToRemove* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertNoFacesToRemove_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertNoFacesToRemove* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertNoFacesToRemove_to_HandleStandardTransient(const HandleBOPAlgoAlertNoFacesToRemove* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertNoFacesToRemove_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertNoFacesToRemove* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BOPAlgo_AlertNoFacesToRemove_inherited_SupportsMerge(const BOPAlgo_AlertNoFacesToRemove* self) {
@@ -2860,28 +2790,28 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertUnableToRemoveTheFeatur
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertUnableToRemoveTheFeature_as_Message_Alert_mut(BOPAlgo_AlertUnableToRemoveTheFeature* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertUnableToRemoveTheFeature_as_Standard_Transient(const BOPAlgo_AlertUnableToRemoveTheFeature* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertUnableToRemoveTheFeature_as_Standard_Transient_mut(BOPAlgo_AlertUnableToRemoveTheFeature* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertUnableToRemoveTheFeature*> BOPAlgo_AlertUnableToRemoveTheFeature_to_handle(BOPAlgo_AlertUnableToRemoveTheFeature* obj) {
-    try { return {new HandleBOPAlgoAlertUnableToRemoveTheFeature(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertUnableToRemoveTheFeature*> BOPAlgo_AlertUnableToRemoveTheFeature_to_handle(BOPAlgo_AlertUnableToRemoveTheFeature* obj) {
+    try { return {new Handle_BOPAlgo_AlertUnableToRemoveTheFeature(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertUnableToRemoveTheFeature*> HandleBOPAlgoAlertUnableToRemoveTheFeature_get(const HandleBOPAlgoAlertUnableToRemoveTheFeature* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertUnableToRemoveTheFeature*> Handle_BOPAlgo_AlertUnableToRemoveTheFeature_get(const Handle_BOPAlgo_AlertUnableToRemoveTheFeature* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertUnableToRemoveTheFeature*> HandleBOPAlgoAlertUnableToRemoveTheFeature_get_mut(HandleBOPAlgoAlertUnableToRemoveTheFeature* handle) {
+extern "C" OcctResult<BOPAlgo_AlertUnableToRemoveTheFeature*> Handle_BOPAlgo_AlertUnableToRemoveTheFeature_get_mut(Handle_BOPAlgo_AlertUnableToRemoveTheFeature* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSAlertWithShape*> HandleBOPAlgoAlertUnableToRemoveTheFeature_to_HandleTopoDSAlertWithShape(const HandleBOPAlgoAlertUnableToRemoveTheFeature* self_) {
-    try { return {new HandleTopoDSAlertWithShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_AlertWithShape*> Handle_BOPAlgo_AlertUnableToRemoveTheFeature_to_Handle_TopoDS_AlertWithShape(const Handle_BOPAlgo_AlertUnableToRemoveTheFeature* self_) {
+    try { return {new Handle_TopoDS_AlertWithShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertUnableToRemoveTheFeature_to_HandleMessageAlert(const HandleBOPAlgoAlertUnableToRemoveTheFeature* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertUnableToRemoveTheFeature_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertUnableToRemoveTheFeature* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertUnableToRemoveTheFeature_to_HandleStandardTransient(const HandleBOPAlgoAlertUnableToRemoveTheFeature* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertUnableToRemoveTheFeature_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertUnableToRemoveTheFeature* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape const*> BOPAlgo_AlertUnableToRemoveTheFeature_inherited_GetShape(const BOPAlgo_AlertUnableToRemoveTheFeature* self) {
@@ -2954,24 +2884,24 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertRemoveFeaturesFailed_as
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertRemoveFeaturesFailed_as_Message_Alert_mut(BOPAlgo_AlertRemoveFeaturesFailed* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertRemoveFeaturesFailed_as_Standard_Transient(const BOPAlgo_AlertRemoveFeaturesFailed* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertRemoveFeaturesFailed_as_Standard_Transient_mut(BOPAlgo_AlertRemoveFeaturesFailed* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertRemoveFeaturesFailed*> BOPAlgo_AlertRemoveFeaturesFailed_to_handle(BOPAlgo_AlertRemoveFeaturesFailed* obj) {
-    try { return {new HandleBOPAlgoAlertRemoveFeaturesFailed(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertRemoveFeaturesFailed*> BOPAlgo_AlertRemoveFeaturesFailed_to_handle(BOPAlgo_AlertRemoveFeaturesFailed* obj) {
+    try { return {new Handle_BOPAlgo_AlertRemoveFeaturesFailed(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertRemoveFeaturesFailed*> HandleBOPAlgoAlertRemoveFeaturesFailed_get(const HandleBOPAlgoAlertRemoveFeaturesFailed* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertRemoveFeaturesFailed*> Handle_BOPAlgo_AlertRemoveFeaturesFailed_get(const Handle_BOPAlgo_AlertRemoveFeaturesFailed* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertRemoveFeaturesFailed*> HandleBOPAlgoAlertRemoveFeaturesFailed_get_mut(HandleBOPAlgoAlertRemoveFeaturesFailed* handle) {
+extern "C" OcctResult<BOPAlgo_AlertRemoveFeaturesFailed*> Handle_BOPAlgo_AlertRemoveFeaturesFailed_get_mut(Handle_BOPAlgo_AlertRemoveFeaturesFailed* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertRemoveFeaturesFailed_to_HandleMessageAlert(const HandleBOPAlgoAlertRemoveFeaturesFailed* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertRemoveFeaturesFailed_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertRemoveFeaturesFailed* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertRemoveFeaturesFailed_to_HandleStandardTransient(const HandleBOPAlgoAlertRemoveFeaturesFailed* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertRemoveFeaturesFailed_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertRemoveFeaturesFailed* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BOPAlgo_AlertRemoveFeaturesFailed_inherited_SupportsMerge(const BOPAlgo_AlertRemoveFeaturesFailed* self) {
@@ -3038,28 +2968,28 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertSolidBuilderUnusedFaces
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertSolidBuilderUnusedFaces_as_Message_Alert_mut(BOPAlgo_AlertSolidBuilderUnusedFaces* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertSolidBuilderUnusedFaces_as_Standard_Transient(const BOPAlgo_AlertSolidBuilderUnusedFaces* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertSolidBuilderUnusedFaces_as_Standard_Transient_mut(BOPAlgo_AlertSolidBuilderUnusedFaces* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertSolidBuilderUnusedFaces*> BOPAlgo_AlertSolidBuilderUnusedFaces_to_handle(BOPAlgo_AlertSolidBuilderUnusedFaces* obj) {
-    try { return {new HandleBOPAlgoAlertSolidBuilderUnusedFaces(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertSolidBuilderUnusedFaces*> BOPAlgo_AlertSolidBuilderUnusedFaces_to_handle(BOPAlgo_AlertSolidBuilderUnusedFaces* obj) {
+    try { return {new Handle_BOPAlgo_AlertSolidBuilderUnusedFaces(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertSolidBuilderUnusedFaces*> HandleBOPAlgoAlertSolidBuilderUnusedFaces_get(const HandleBOPAlgoAlertSolidBuilderUnusedFaces* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertSolidBuilderUnusedFaces*> Handle_BOPAlgo_AlertSolidBuilderUnusedFaces_get(const Handle_BOPAlgo_AlertSolidBuilderUnusedFaces* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertSolidBuilderUnusedFaces*> HandleBOPAlgoAlertSolidBuilderUnusedFaces_get_mut(HandleBOPAlgoAlertSolidBuilderUnusedFaces* handle) {
+extern "C" OcctResult<BOPAlgo_AlertSolidBuilderUnusedFaces*> Handle_BOPAlgo_AlertSolidBuilderUnusedFaces_get_mut(Handle_BOPAlgo_AlertSolidBuilderUnusedFaces* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSAlertWithShape*> HandleBOPAlgoAlertSolidBuilderUnusedFaces_to_HandleTopoDSAlertWithShape(const HandleBOPAlgoAlertSolidBuilderUnusedFaces* self_) {
-    try { return {new HandleTopoDSAlertWithShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_AlertWithShape*> Handle_BOPAlgo_AlertSolidBuilderUnusedFaces_to_Handle_TopoDS_AlertWithShape(const Handle_BOPAlgo_AlertSolidBuilderUnusedFaces* self_) {
+    try { return {new Handle_TopoDS_AlertWithShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertSolidBuilderUnusedFaces_to_HandleMessageAlert(const HandleBOPAlgoAlertSolidBuilderUnusedFaces* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertSolidBuilderUnusedFaces_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertSolidBuilderUnusedFaces* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertSolidBuilderUnusedFaces_to_HandleStandardTransient(const HandleBOPAlgoAlertSolidBuilderUnusedFaces* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertSolidBuilderUnusedFaces_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertSolidBuilderUnusedFaces* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape const*> BOPAlgo_AlertSolidBuilderUnusedFaces_inherited_GetShape(const BOPAlgo_AlertSolidBuilderUnusedFaces* self) {
@@ -3134,28 +3064,28 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertFaceBuilderUnusedEdges_
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertFaceBuilderUnusedEdges_as_Message_Alert_mut(BOPAlgo_AlertFaceBuilderUnusedEdges* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertFaceBuilderUnusedEdges_as_Standard_Transient(const BOPAlgo_AlertFaceBuilderUnusedEdges* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertFaceBuilderUnusedEdges_as_Standard_Transient_mut(BOPAlgo_AlertFaceBuilderUnusedEdges* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertFaceBuilderUnusedEdges*> BOPAlgo_AlertFaceBuilderUnusedEdges_to_handle(BOPAlgo_AlertFaceBuilderUnusedEdges* obj) {
-    try { return {new HandleBOPAlgoAlertFaceBuilderUnusedEdges(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertFaceBuilderUnusedEdges*> BOPAlgo_AlertFaceBuilderUnusedEdges_to_handle(BOPAlgo_AlertFaceBuilderUnusedEdges* obj) {
+    try { return {new Handle_BOPAlgo_AlertFaceBuilderUnusedEdges(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertFaceBuilderUnusedEdges*> HandleBOPAlgoAlertFaceBuilderUnusedEdges_get(const HandleBOPAlgoAlertFaceBuilderUnusedEdges* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertFaceBuilderUnusedEdges*> Handle_BOPAlgo_AlertFaceBuilderUnusedEdges_get(const Handle_BOPAlgo_AlertFaceBuilderUnusedEdges* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertFaceBuilderUnusedEdges*> HandleBOPAlgoAlertFaceBuilderUnusedEdges_get_mut(HandleBOPAlgoAlertFaceBuilderUnusedEdges* handle) {
+extern "C" OcctResult<BOPAlgo_AlertFaceBuilderUnusedEdges*> Handle_BOPAlgo_AlertFaceBuilderUnusedEdges_get_mut(Handle_BOPAlgo_AlertFaceBuilderUnusedEdges* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSAlertWithShape*> HandleBOPAlgoAlertFaceBuilderUnusedEdges_to_HandleTopoDSAlertWithShape(const HandleBOPAlgoAlertFaceBuilderUnusedEdges* self_) {
-    try { return {new HandleTopoDSAlertWithShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_AlertWithShape*> Handle_BOPAlgo_AlertFaceBuilderUnusedEdges_to_Handle_TopoDS_AlertWithShape(const Handle_BOPAlgo_AlertFaceBuilderUnusedEdges* self_) {
+    try { return {new Handle_TopoDS_AlertWithShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertFaceBuilderUnusedEdges_to_HandleMessageAlert(const HandleBOPAlgoAlertFaceBuilderUnusedEdges* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertFaceBuilderUnusedEdges_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertFaceBuilderUnusedEdges* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertFaceBuilderUnusedEdges_to_HandleStandardTransient(const HandleBOPAlgoAlertFaceBuilderUnusedEdges* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertFaceBuilderUnusedEdges_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertFaceBuilderUnusedEdges* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape const*> BOPAlgo_AlertFaceBuilderUnusedEdges_inherited_GetShape(const BOPAlgo_AlertFaceBuilderUnusedEdges* self) {
@@ -3230,28 +3160,28 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertUnableToOrientTheShape_
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertUnableToOrientTheShape_as_Message_Alert_mut(BOPAlgo_AlertUnableToOrientTheShape* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertUnableToOrientTheShape_as_Standard_Transient(const BOPAlgo_AlertUnableToOrientTheShape* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertUnableToOrientTheShape_as_Standard_Transient_mut(BOPAlgo_AlertUnableToOrientTheShape* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertUnableToOrientTheShape*> BOPAlgo_AlertUnableToOrientTheShape_to_handle(BOPAlgo_AlertUnableToOrientTheShape* obj) {
-    try { return {new HandleBOPAlgoAlertUnableToOrientTheShape(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertUnableToOrientTheShape*> BOPAlgo_AlertUnableToOrientTheShape_to_handle(BOPAlgo_AlertUnableToOrientTheShape* obj) {
+    try { return {new Handle_BOPAlgo_AlertUnableToOrientTheShape(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertUnableToOrientTheShape*> HandleBOPAlgoAlertUnableToOrientTheShape_get(const HandleBOPAlgoAlertUnableToOrientTheShape* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertUnableToOrientTheShape*> Handle_BOPAlgo_AlertUnableToOrientTheShape_get(const Handle_BOPAlgo_AlertUnableToOrientTheShape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertUnableToOrientTheShape*> HandleBOPAlgoAlertUnableToOrientTheShape_get_mut(HandleBOPAlgoAlertUnableToOrientTheShape* handle) {
+extern "C" OcctResult<BOPAlgo_AlertUnableToOrientTheShape*> Handle_BOPAlgo_AlertUnableToOrientTheShape_get_mut(Handle_BOPAlgo_AlertUnableToOrientTheShape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSAlertWithShape*> HandleBOPAlgoAlertUnableToOrientTheShape_to_HandleTopoDSAlertWithShape(const HandleBOPAlgoAlertUnableToOrientTheShape* self_) {
-    try { return {new HandleTopoDSAlertWithShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_AlertWithShape*> Handle_BOPAlgo_AlertUnableToOrientTheShape_to_Handle_TopoDS_AlertWithShape(const Handle_BOPAlgo_AlertUnableToOrientTheShape* self_) {
+    try { return {new Handle_TopoDS_AlertWithShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertUnableToOrientTheShape_to_HandleMessageAlert(const HandleBOPAlgoAlertUnableToOrientTheShape* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertUnableToOrientTheShape_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertUnableToOrientTheShape* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertUnableToOrientTheShape_to_HandleStandardTransient(const HandleBOPAlgoAlertUnableToOrientTheShape* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertUnableToOrientTheShape_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertUnableToOrientTheShape* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape const*> BOPAlgo_AlertUnableToOrientTheShape_inherited_GetShape(const BOPAlgo_AlertUnableToOrientTheShape* self) {
@@ -3326,28 +3256,28 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertUnknownShape_as_Message
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertUnknownShape_as_Message_Alert_mut(BOPAlgo_AlertUnknownShape* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertUnknownShape_as_Standard_Transient(const BOPAlgo_AlertUnknownShape* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertUnknownShape_as_Standard_Transient_mut(BOPAlgo_AlertUnknownShape* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertUnknownShape*> BOPAlgo_AlertUnknownShape_to_handle(BOPAlgo_AlertUnknownShape* obj) {
-    try { return {new HandleBOPAlgoAlertUnknownShape(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertUnknownShape*> BOPAlgo_AlertUnknownShape_to_handle(BOPAlgo_AlertUnknownShape* obj) {
+    try { return {new Handle_BOPAlgo_AlertUnknownShape(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertUnknownShape*> HandleBOPAlgoAlertUnknownShape_get(const HandleBOPAlgoAlertUnknownShape* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertUnknownShape*> Handle_BOPAlgo_AlertUnknownShape_get(const Handle_BOPAlgo_AlertUnknownShape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertUnknownShape*> HandleBOPAlgoAlertUnknownShape_get_mut(HandleBOPAlgoAlertUnknownShape* handle) {
+extern "C" OcctResult<BOPAlgo_AlertUnknownShape*> Handle_BOPAlgo_AlertUnknownShape_get_mut(Handle_BOPAlgo_AlertUnknownShape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSAlertWithShape*> HandleBOPAlgoAlertUnknownShape_to_HandleTopoDSAlertWithShape(const HandleBOPAlgoAlertUnknownShape* self_) {
-    try { return {new HandleTopoDSAlertWithShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_AlertWithShape*> Handle_BOPAlgo_AlertUnknownShape_to_Handle_TopoDS_AlertWithShape(const Handle_BOPAlgo_AlertUnknownShape* self_) {
+    try { return {new Handle_TopoDS_AlertWithShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertUnknownShape_to_HandleMessageAlert(const HandleBOPAlgoAlertUnknownShape* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertUnknownShape_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertUnknownShape* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertUnknownShape_to_HandleStandardTransient(const HandleBOPAlgoAlertUnknownShape* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertUnknownShape_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertUnknownShape* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape const*> BOPAlgo_AlertUnknownShape_inherited_GetShape(const BOPAlgo_AlertUnknownShape* self) {
@@ -3420,24 +3350,24 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertNoPeriodicityRequired_a
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertNoPeriodicityRequired_as_Message_Alert_mut(BOPAlgo_AlertNoPeriodicityRequired* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertNoPeriodicityRequired_as_Standard_Transient(const BOPAlgo_AlertNoPeriodicityRequired* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertNoPeriodicityRequired_as_Standard_Transient_mut(BOPAlgo_AlertNoPeriodicityRequired* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertNoPeriodicityRequired*> BOPAlgo_AlertNoPeriodicityRequired_to_handle(BOPAlgo_AlertNoPeriodicityRequired* obj) {
-    try { return {new HandleBOPAlgoAlertNoPeriodicityRequired(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertNoPeriodicityRequired*> BOPAlgo_AlertNoPeriodicityRequired_to_handle(BOPAlgo_AlertNoPeriodicityRequired* obj) {
+    try { return {new Handle_BOPAlgo_AlertNoPeriodicityRequired(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertNoPeriodicityRequired*> HandleBOPAlgoAlertNoPeriodicityRequired_get(const HandleBOPAlgoAlertNoPeriodicityRequired* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertNoPeriodicityRequired*> Handle_BOPAlgo_AlertNoPeriodicityRequired_get(const Handle_BOPAlgo_AlertNoPeriodicityRequired* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertNoPeriodicityRequired*> HandleBOPAlgoAlertNoPeriodicityRequired_get_mut(HandleBOPAlgoAlertNoPeriodicityRequired* handle) {
+extern "C" OcctResult<BOPAlgo_AlertNoPeriodicityRequired*> Handle_BOPAlgo_AlertNoPeriodicityRequired_get_mut(Handle_BOPAlgo_AlertNoPeriodicityRequired* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertNoPeriodicityRequired_to_HandleMessageAlert(const HandleBOPAlgoAlertNoPeriodicityRequired* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertNoPeriodicityRequired_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertNoPeriodicityRequired* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertNoPeriodicityRequired_to_HandleStandardTransient(const HandleBOPAlgoAlertNoPeriodicityRequired* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertNoPeriodicityRequired_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertNoPeriodicityRequired* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BOPAlgo_AlertNoPeriodicityRequired_inherited_SupportsMerge(const BOPAlgo_AlertNoPeriodicityRequired* self) {
@@ -3504,28 +3434,28 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertUnableToTrim_as_Message
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertUnableToTrim_as_Message_Alert_mut(BOPAlgo_AlertUnableToTrim* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertUnableToTrim_as_Standard_Transient(const BOPAlgo_AlertUnableToTrim* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertUnableToTrim_as_Standard_Transient_mut(BOPAlgo_AlertUnableToTrim* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertUnableToTrim*> BOPAlgo_AlertUnableToTrim_to_handle(BOPAlgo_AlertUnableToTrim* obj) {
-    try { return {new HandleBOPAlgoAlertUnableToTrim(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertUnableToTrim*> BOPAlgo_AlertUnableToTrim_to_handle(BOPAlgo_AlertUnableToTrim* obj) {
+    try { return {new Handle_BOPAlgo_AlertUnableToTrim(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertUnableToTrim*> HandleBOPAlgoAlertUnableToTrim_get(const HandleBOPAlgoAlertUnableToTrim* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertUnableToTrim*> Handle_BOPAlgo_AlertUnableToTrim_get(const Handle_BOPAlgo_AlertUnableToTrim* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertUnableToTrim*> HandleBOPAlgoAlertUnableToTrim_get_mut(HandleBOPAlgoAlertUnableToTrim* handle) {
+extern "C" OcctResult<BOPAlgo_AlertUnableToTrim*> Handle_BOPAlgo_AlertUnableToTrim_get_mut(Handle_BOPAlgo_AlertUnableToTrim* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSAlertWithShape*> HandleBOPAlgoAlertUnableToTrim_to_HandleTopoDSAlertWithShape(const HandleBOPAlgoAlertUnableToTrim* self_) {
-    try { return {new HandleTopoDSAlertWithShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_AlertWithShape*> Handle_BOPAlgo_AlertUnableToTrim_to_Handle_TopoDS_AlertWithShape(const Handle_BOPAlgo_AlertUnableToTrim* self_) {
+    try { return {new Handle_TopoDS_AlertWithShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertUnableToTrim_to_HandleMessageAlert(const HandleBOPAlgoAlertUnableToTrim* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertUnableToTrim_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertUnableToTrim* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertUnableToTrim_to_HandleStandardTransient(const HandleBOPAlgoAlertUnableToTrim* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertUnableToTrim_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertUnableToTrim* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape const*> BOPAlgo_AlertUnableToTrim_inherited_GetShape(const BOPAlgo_AlertUnableToTrim* self) {
@@ -3600,28 +3530,28 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertUnableToMakeIdentical_a
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertUnableToMakeIdentical_as_Message_Alert_mut(BOPAlgo_AlertUnableToMakeIdentical* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertUnableToMakeIdentical_as_Standard_Transient(const BOPAlgo_AlertUnableToMakeIdentical* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertUnableToMakeIdentical_as_Standard_Transient_mut(BOPAlgo_AlertUnableToMakeIdentical* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertUnableToMakeIdentical*> BOPAlgo_AlertUnableToMakeIdentical_to_handle(BOPAlgo_AlertUnableToMakeIdentical* obj) {
-    try { return {new HandleBOPAlgoAlertUnableToMakeIdentical(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertUnableToMakeIdentical*> BOPAlgo_AlertUnableToMakeIdentical_to_handle(BOPAlgo_AlertUnableToMakeIdentical* obj) {
+    try { return {new Handle_BOPAlgo_AlertUnableToMakeIdentical(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertUnableToMakeIdentical*> HandleBOPAlgoAlertUnableToMakeIdentical_get(const HandleBOPAlgoAlertUnableToMakeIdentical* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertUnableToMakeIdentical*> Handle_BOPAlgo_AlertUnableToMakeIdentical_get(const Handle_BOPAlgo_AlertUnableToMakeIdentical* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertUnableToMakeIdentical*> HandleBOPAlgoAlertUnableToMakeIdentical_get_mut(HandleBOPAlgoAlertUnableToMakeIdentical* handle) {
+extern "C" OcctResult<BOPAlgo_AlertUnableToMakeIdentical*> Handle_BOPAlgo_AlertUnableToMakeIdentical_get_mut(Handle_BOPAlgo_AlertUnableToMakeIdentical* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSAlertWithShape*> HandleBOPAlgoAlertUnableToMakeIdentical_to_HandleTopoDSAlertWithShape(const HandleBOPAlgoAlertUnableToMakeIdentical* self_) {
-    try { return {new HandleTopoDSAlertWithShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_AlertWithShape*> Handle_BOPAlgo_AlertUnableToMakeIdentical_to_Handle_TopoDS_AlertWithShape(const Handle_BOPAlgo_AlertUnableToMakeIdentical* self_) {
+    try { return {new Handle_TopoDS_AlertWithShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertUnableToMakeIdentical_to_HandleMessageAlert(const HandleBOPAlgoAlertUnableToMakeIdentical* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertUnableToMakeIdentical_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertUnableToMakeIdentical* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertUnableToMakeIdentical_to_HandleStandardTransient(const HandleBOPAlgoAlertUnableToMakeIdentical* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertUnableToMakeIdentical_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertUnableToMakeIdentical* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape const*> BOPAlgo_AlertUnableToMakeIdentical_inherited_GetShape(const BOPAlgo_AlertUnableToMakeIdentical* self) {
@@ -3696,28 +3626,28 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertUnableToRepeat_as_Messa
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertUnableToRepeat_as_Message_Alert_mut(BOPAlgo_AlertUnableToRepeat* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertUnableToRepeat_as_Standard_Transient(const BOPAlgo_AlertUnableToRepeat* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertUnableToRepeat_as_Standard_Transient_mut(BOPAlgo_AlertUnableToRepeat* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertUnableToRepeat*> BOPAlgo_AlertUnableToRepeat_to_handle(BOPAlgo_AlertUnableToRepeat* obj) {
-    try { return {new HandleBOPAlgoAlertUnableToRepeat(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertUnableToRepeat*> BOPAlgo_AlertUnableToRepeat_to_handle(BOPAlgo_AlertUnableToRepeat* obj) {
+    try { return {new Handle_BOPAlgo_AlertUnableToRepeat(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertUnableToRepeat*> HandleBOPAlgoAlertUnableToRepeat_get(const HandleBOPAlgoAlertUnableToRepeat* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertUnableToRepeat*> Handle_BOPAlgo_AlertUnableToRepeat_get(const Handle_BOPAlgo_AlertUnableToRepeat* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertUnableToRepeat*> HandleBOPAlgoAlertUnableToRepeat_get_mut(HandleBOPAlgoAlertUnableToRepeat* handle) {
+extern "C" OcctResult<BOPAlgo_AlertUnableToRepeat*> Handle_BOPAlgo_AlertUnableToRepeat_get_mut(Handle_BOPAlgo_AlertUnableToRepeat* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSAlertWithShape*> HandleBOPAlgoAlertUnableToRepeat_to_HandleTopoDSAlertWithShape(const HandleBOPAlgoAlertUnableToRepeat* self_) {
-    try { return {new HandleTopoDSAlertWithShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_AlertWithShape*> Handle_BOPAlgo_AlertUnableToRepeat_to_Handle_TopoDS_AlertWithShape(const Handle_BOPAlgo_AlertUnableToRepeat* self_) {
+    try { return {new Handle_TopoDS_AlertWithShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertUnableToRepeat_to_HandleMessageAlert(const HandleBOPAlgoAlertUnableToRepeat* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertUnableToRepeat_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertUnableToRepeat* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertUnableToRepeat_to_HandleStandardTransient(const HandleBOPAlgoAlertUnableToRepeat* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertUnableToRepeat_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertUnableToRepeat* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape const*> BOPAlgo_AlertUnableToRepeat_inherited_GetShape(const BOPAlgo_AlertUnableToRepeat* self) {
@@ -3790,24 +3720,24 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertMultiDimensionalArgumen
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertMultiDimensionalArguments_as_Message_Alert_mut(BOPAlgo_AlertMultiDimensionalArguments* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertMultiDimensionalArguments_as_Standard_Transient(const BOPAlgo_AlertMultiDimensionalArguments* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertMultiDimensionalArguments_as_Standard_Transient_mut(BOPAlgo_AlertMultiDimensionalArguments* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertMultiDimensionalArguments*> BOPAlgo_AlertMultiDimensionalArguments_to_handle(BOPAlgo_AlertMultiDimensionalArguments* obj) {
-    try { return {new HandleBOPAlgoAlertMultiDimensionalArguments(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertMultiDimensionalArguments*> BOPAlgo_AlertMultiDimensionalArguments_to_handle(BOPAlgo_AlertMultiDimensionalArguments* obj) {
+    try { return {new Handle_BOPAlgo_AlertMultiDimensionalArguments(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertMultiDimensionalArguments*> HandleBOPAlgoAlertMultiDimensionalArguments_get(const HandleBOPAlgoAlertMultiDimensionalArguments* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertMultiDimensionalArguments*> Handle_BOPAlgo_AlertMultiDimensionalArguments_get(const Handle_BOPAlgo_AlertMultiDimensionalArguments* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertMultiDimensionalArguments*> HandleBOPAlgoAlertMultiDimensionalArguments_get_mut(HandleBOPAlgoAlertMultiDimensionalArguments* handle) {
+extern "C" OcctResult<BOPAlgo_AlertMultiDimensionalArguments*> Handle_BOPAlgo_AlertMultiDimensionalArguments_get_mut(Handle_BOPAlgo_AlertMultiDimensionalArguments* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertMultiDimensionalArguments_to_HandleMessageAlert(const HandleBOPAlgoAlertMultiDimensionalArguments* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertMultiDimensionalArguments_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertMultiDimensionalArguments* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertMultiDimensionalArguments_to_HandleStandardTransient(const HandleBOPAlgoAlertMultiDimensionalArguments* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertMultiDimensionalArguments_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertMultiDimensionalArguments* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BOPAlgo_AlertMultiDimensionalArguments_inherited_SupportsMerge(const BOPAlgo_AlertMultiDimensionalArguments* self) {
@@ -3874,28 +3804,28 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertUnableToMakePeriodic_as
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertUnableToMakePeriodic_as_Message_Alert_mut(BOPAlgo_AlertUnableToMakePeriodic* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertUnableToMakePeriodic_as_Standard_Transient(const BOPAlgo_AlertUnableToMakePeriodic* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertUnableToMakePeriodic_as_Standard_Transient_mut(BOPAlgo_AlertUnableToMakePeriodic* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertUnableToMakePeriodic*> BOPAlgo_AlertUnableToMakePeriodic_to_handle(BOPAlgo_AlertUnableToMakePeriodic* obj) {
-    try { return {new HandleBOPAlgoAlertUnableToMakePeriodic(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertUnableToMakePeriodic*> BOPAlgo_AlertUnableToMakePeriodic_to_handle(BOPAlgo_AlertUnableToMakePeriodic* obj) {
+    try { return {new Handle_BOPAlgo_AlertUnableToMakePeriodic(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertUnableToMakePeriodic*> HandleBOPAlgoAlertUnableToMakePeriodic_get(const HandleBOPAlgoAlertUnableToMakePeriodic* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertUnableToMakePeriodic*> Handle_BOPAlgo_AlertUnableToMakePeriodic_get(const Handle_BOPAlgo_AlertUnableToMakePeriodic* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertUnableToMakePeriodic*> HandleBOPAlgoAlertUnableToMakePeriodic_get_mut(HandleBOPAlgoAlertUnableToMakePeriodic* handle) {
+extern "C" OcctResult<BOPAlgo_AlertUnableToMakePeriodic*> Handle_BOPAlgo_AlertUnableToMakePeriodic_get_mut(Handle_BOPAlgo_AlertUnableToMakePeriodic* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSAlertWithShape*> HandleBOPAlgoAlertUnableToMakePeriodic_to_HandleTopoDSAlertWithShape(const HandleBOPAlgoAlertUnableToMakePeriodic* self_) {
-    try { return {new HandleTopoDSAlertWithShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_AlertWithShape*> Handle_BOPAlgo_AlertUnableToMakePeriodic_to_Handle_TopoDS_AlertWithShape(const Handle_BOPAlgo_AlertUnableToMakePeriodic* self_) {
+    try { return {new Handle_TopoDS_AlertWithShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertUnableToMakePeriodic_to_HandleMessageAlert(const HandleBOPAlgoAlertUnableToMakePeriodic* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertUnableToMakePeriodic_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertUnableToMakePeriodic* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertUnableToMakePeriodic_to_HandleStandardTransient(const HandleBOPAlgoAlertUnableToMakePeriodic* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertUnableToMakePeriodic_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertUnableToMakePeriodic* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape const*> BOPAlgo_AlertUnableToMakePeriodic_inherited_GetShape(const BOPAlgo_AlertUnableToMakePeriodic* self) {
@@ -3970,28 +3900,28 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertUnableToGlue_as_Message
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertUnableToGlue_as_Message_Alert_mut(BOPAlgo_AlertUnableToGlue* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertUnableToGlue_as_Standard_Transient(const BOPAlgo_AlertUnableToGlue* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertUnableToGlue_as_Standard_Transient_mut(BOPAlgo_AlertUnableToGlue* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertUnableToGlue*> BOPAlgo_AlertUnableToGlue_to_handle(BOPAlgo_AlertUnableToGlue* obj) {
-    try { return {new HandleBOPAlgoAlertUnableToGlue(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertUnableToGlue*> BOPAlgo_AlertUnableToGlue_to_handle(BOPAlgo_AlertUnableToGlue* obj) {
+    try { return {new Handle_BOPAlgo_AlertUnableToGlue(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertUnableToGlue*> HandleBOPAlgoAlertUnableToGlue_get(const HandleBOPAlgoAlertUnableToGlue* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertUnableToGlue*> Handle_BOPAlgo_AlertUnableToGlue_get(const Handle_BOPAlgo_AlertUnableToGlue* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertUnableToGlue*> HandleBOPAlgoAlertUnableToGlue_get_mut(HandleBOPAlgoAlertUnableToGlue* handle) {
+extern "C" OcctResult<BOPAlgo_AlertUnableToGlue*> Handle_BOPAlgo_AlertUnableToGlue_get_mut(Handle_BOPAlgo_AlertUnableToGlue* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSAlertWithShape*> HandleBOPAlgoAlertUnableToGlue_to_HandleTopoDSAlertWithShape(const HandleBOPAlgoAlertUnableToGlue* self_) {
-    try { return {new HandleTopoDSAlertWithShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_AlertWithShape*> Handle_BOPAlgo_AlertUnableToGlue_to_Handle_TopoDS_AlertWithShape(const Handle_BOPAlgo_AlertUnableToGlue* self_) {
+    try { return {new Handle_TopoDS_AlertWithShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertUnableToGlue_to_HandleMessageAlert(const HandleBOPAlgoAlertUnableToGlue* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertUnableToGlue_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertUnableToGlue* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertUnableToGlue_to_HandleStandardTransient(const HandleBOPAlgoAlertUnableToGlue* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertUnableToGlue_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertUnableToGlue* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape const*> BOPAlgo_AlertUnableToGlue_inherited_GetShape(const BOPAlgo_AlertUnableToGlue* self) {
@@ -4066,28 +3996,28 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertShapeIsNotPeriodic_as_M
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertShapeIsNotPeriodic_as_Message_Alert_mut(BOPAlgo_AlertShapeIsNotPeriodic* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertShapeIsNotPeriodic_as_Standard_Transient(const BOPAlgo_AlertShapeIsNotPeriodic* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertShapeIsNotPeriodic_as_Standard_Transient_mut(BOPAlgo_AlertShapeIsNotPeriodic* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertShapeIsNotPeriodic*> BOPAlgo_AlertShapeIsNotPeriodic_to_handle(BOPAlgo_AlertShapeIsNotPeriodic* obj) {
-    try { return {new HandleBOPAlgoAlertShapeIsNotPeriodic(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertShapeIsNotPeriodic*> BOPAlgo_AlertShapeIsNotPeriodic_to_handle(BOPAlgo_AlertShapeIsNotPeriodic* obj) {
+    try { return {new Handle_BOPAlgo_AlertShapeIsNotPeriodic(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertShapeIsNotPeriodic*> HandleBOPAlgoAlertShapeIsNotPeriodic_get(const HandleBOPAlgoAlertShapeIsNotPeriodic* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertShapeIsNotPeriodic*> Handle_BOPAlgo_AlertShapeIsNotPeriodic_get(const Handle_BOPAlgo_AlertShapeIsNotPeriodic* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertShapeIsNotPeriodic*> HandleBOPAlgoAlertShapeIsNotPeriodic_get_mut(HandleBOPAlgoAlertShapeIsNotPeriodic* handle) {
+extern "C" OcctResult<BOPAlgo_AlertShapeIsNotPeriodic*> Handle_BOPAlgo_AlertShapeIsNotPeriodic_get_mut(Handle_BOPAlgo_AlertShapeIsNotPeriodic* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSAlertWithShape*> HandleBOPAlgoAlertShapeIsNotPeriodic_to_HandleTopoDSAlertWithShape(const HandleBOPAlgoAlertShapeIsNotPeriodic* self_) {
-    try { return {new HandleTopoDSAlertWithShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_AlertWithShape*> Handle_BOPAlgo_AlertShapeIsNotPeriodic_to_Handle_TopoDS_AlertWithShape(const Handle_BOPAlgo_AlertShapeIsNotPeriodic* self_) {
+    try { return {new Handle_TopoDS_AlertWithShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertShapeIsNotPeriodic_to_HandleMessageAlert(const HandleBOPAlgoAlertShapeIsNotPeriodic* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertShapeIsNotPeriodic_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertShapeIsNotPeriodic* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertShapeIsNotPeriodic_to_HandleStandardTransient(const HandleBOPAlgoAlertShapeIsNotPeriodic* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertShapeIsNotPeriodic_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertShapeIsNotPeriodic* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape const*> BOPAlgo_AlertShapeIsNotPeriodic_inherited_GetShape(const BOPAlgo_AlertShapeIsNotPeriodic* self) {
@@ -4162,28 +4092,28 @@ extern "C" OcctResult<const Message_Alert*> BOPAlgo_AlertUnableToMakeClosedEdgeO
 extern "C" OcctResult<Message_Alert*> BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_as_Message_Alert_mut(BOPAlgo_AlertUnableToMakeClosedEdgeOnFace* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_as_Standard_Transient(const BOPAlgo_AlertUnableToMakeClosedEdgeOnFace* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_as_Standard_Transient_mut(BOPAlgo_AlertUnableToMakeClosedEdgeOnFace* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace*> BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_to_handle(BOPAlgo_AlertUnableToMakeClosedEdgeOnFace* obj) {
-    try { return {new HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace*> BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_to_handle(BOPAlgo_AlertUnableToMakeClosedEdgeOnFace* obj) {
+    try { return {new Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPAlgo_AlertUnableToMakeClosedEdgeOnFace*> HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_get(const HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace* handle) {
+extern "C" OcctResult<const BOPAlgo_AlertUnableToMakeClosedEdgeOnFace*> Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_get(const Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_AlertUnableToMakeClosedEdgeOnFace*> HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_get_mut(HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace* handle) {
+extern "C" OcctResult<BOPAlgo_AlertUnableToMakeClosedEdgeOnFace*> Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_get_mut(Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSAlertWithShape*> HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_to_HandleTopoDSAlertWithShape(const HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace* self_) {
-    try { return {new HandleTopoDSAlertWithShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_AlertWithShape*> Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_to_Handle_TopoDS_AlertWithShape(const Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace* self_) {
+    try { return {new Handle_TopoDS_AlertWithShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_to_HandleMessageAlert(const HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_to_Handle_Message_Alert(const Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_to_HandleStandardTransient(const HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_to_Handle_Standard_Transient(const Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape const*> BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_inherited_GetShape(const BOPAlgo_AlertUnableToMakeClosedEdgeOnFace* self) {
@@ -4255,7 +4185,7 @@ extern "C" OcctResult<const BOPAlgo_Algo*> BOPAlgo_ParallelAlgo_as_BOPAlgo_Algo(
 extern "C" OcctResult<BOPAlgo_Algo*> BOPAlgo_ParallelAlgo_as_BOPAlgo_Algo_mut(BOPAlgo_ParallelAlgo* self_) { return {static_cast<BOPAlgo_Algo*>(self_), nullptr}; }
 extern "C" OcctResult<const BOPAlgo_Options*> BOPAlgo_ParallelAlgo_as_BOPAlgo_Options(const BOPAlgo_ParallelAlgo* self_) { return {static_cast<const BOPAlgo_Options*>(self_), nullptr}; }
 extern "C" OcctResult<BOPAlgo_Options*> BOPAlgo_ParallelAlgo_as_BOPAlgo_Options_mut(BOPAlgo_ParallelAlgo* self_) { return {static_cast<BOPAlgo_Options*>(self_), nullptr}; }
-extern "C" OcctResult<Handle(NCollection_BaseAllocator) const*> BOPAlgo_ParallelAlgo_inherited_Allocator(const BOPAlgo_ParallelAlgo* self) {
+extern "C" OcctResult<TDF_HAllocator const*> BOPAlgo_ParallelAlgo_inherited_Allocator(const BOPAlgo_ParallelAlgo* self) {
     try { return {&(self->Allocator()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4337,11 +4267,11 @@ extern "C" OcctResult<BOPAlgo_PISteps*> BOPAlgo_PISteps_ctor_int(int32_t theNbOp
     try { return {new BOPAlgo_PISteps(theNbOp), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfReal const*> BOPAlgo_PISteps_steps(const BOPAlgo_PISteps* self_) {
+extern "C" OcctResult<NCollection_Array1_double const*> BOPAlgo_PISteps_steps(const BOPAlgo_PISteps* self_) {
     try { return {&(self_->Steps()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfReal*> BOPAlgo_PISteps_change_steps(BOPAlgo_PISteps* self_) {
+extern "C" OcctResult<NCollection_Array1_double*> BOPAlgo_PISteps_change_steps(BOPAlgo_PISteps* self_) {
     try { return {&(self_->ChangeSteps()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4431,7 +4361,7 @@ extern "C" OcctResult<bool> BOPAlgo_ArgumentAnalyzer_has_faulty(const BOPAlgo_Ar
     try { return {self_->HasFaulty(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_ListOfCheckResult const*> BOPAlgo_ArgumentAnalyzer_get_check_result(const BOPAlgo_ArgumentAnalyzer* self_) {
+extern "C" OcctResult<NCollection_List_BOPAlgo_CheckResult const*> BOPAlgo_ArgumentAnalyzer_get_check_result(const BOPAlgo_ArgumentAnalyzer* self_) {
     try { return {&(self_->GetCheckResult()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4439,7 +4369,7 @@ extern "C" OcctResult<const BOPAlgo_Algo*> BOPAlgo_ArgumentAnalyzer_as_BOPAlgo_A
 extern "C" OcctResult<BOPAlgo_Algo*> BOPAlgo_ArgumentAnalyzer_as_BOPAlgo_Algo_mut(BOPAlgo_ArgumentAnalyzer* self_) { return {static_cast<BOPAlgo_Algo*>(self_), nullptr}; }
 extern "C" OcctResult<const BOPAlgo_Options*> BOPAlgo_ArgumentAnalyzer_as_BOPAlgo_Options(const BOPAlgo_ArgumentAnalyzer* self_) { return {static_cast<const BOPAlgo_Options*>(self_), nullptr}; }
 extern "C" OcctResult<BOPAlgo_Options*> BOPAlgo_ArgumentAnalyzer_as_BOPAlgo_Options_mut(BOPAlgo_ArgumentAnalyzer* self_) { return {static_cast<BOPAlgo_Options*>(self_), nullptr}; }
-extern "C" OcctResult<Handle(NCollection_BaseAllocator) const*> BOPAlgo_ArgumentAnalyzer_inherited_Allocator(const BOPAlgo_ArgumentAnalyzer* self) {
+extern "C" OcctResult<TDF_HAllocator const*> BOPAlgo_ArgumentAnalyzer_inherited_Allocator(const BOPAlgo_ArgumentAnalyzer* self) {
     try { return {&(self->Allocator()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4521,7 +4451,7 @@ extern "C" OcctResult<BOPAlgo_BOP*> BOPAlgo_BOP_ctor() {
     try { return {new BOPAlgo_BOP(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_BOP*> BOPAlgo_BOP_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPAlgo_BOP*> BOPAlgo_BOP_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPAlgo_BOP(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4555,11 +4485,11 @@ extern "C" const char* BOPAlgo_BOP_inherited_AddTool(BOPAlgo_BOP* self, TopoDS_S
     try { self->AddTool(theShape); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPAlgo_BOP_inherited_SetTools(BOPAlgo_BOP* self, TopTools_ListOfShape const& theShapes) {
+extern "C" const char* BOPAlgo_BOP_inherited_SetTools(BOPAlgo_BOP* self, NCollection_List_TopoDS_Shape const& theShapes) {
     try { self->SetTools(theShapes); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_BOP_inherited_Tools(const BOPAlgo_BOP* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_BOP_inherited_Tools(const BOPAlgo_BOP* self) {
     try { return {&(self->Tools()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4579,11 +4509,11 @@ extern "C" const char* BOPAlgo_BOP_inherited_AddArgument(BOPAlgo_BOP* self, Topo
     try { self->AddArgument(theShape); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPAlgo_BOP_inherited_SetArguments(BOPAlgo_BOP* self, TopTools_ListOfShape const& theLS) {
+extern "C" const char* BOPAlgo_BOP_inherited_SetArguments(BOPAlgo_BOP* self, NCollection_List_TopoDS_Shape const& theLS) {
     try { self->SetArguments(theLS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_BOP_inherited_Arguments(const BOPAlgo_BOP* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_BOP_inherited_Arguments(const BOPAlgo_BOP* self) {
     try { return {&(self->Arguments()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4615,19 +4545,19 @@ extern "C" const char* BOPAlgo_BOP_inherited_PerformWithFiller(BOPAlgo_BOP* self
     try { self->PerformWithFiller(theFiller, theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPAlgo_BOP_inherited_BuildBOP(BOPAlgo_BOP* self, TopTools_ListOfShape const& theObjects, int32_t theObjState, TopTools_ListOfShape const& theTools, int32_t theToolsState, Message_ProgressRange const& theRange, Handle(Message_Report) const& theReport) {
+extern "C" const char* BOPAlgo_BOP_inherited_BuildBOP(BOPAlgo_BOP* self, NCollection_List_TopoDS_Shape const& theObjects, int32_t theObjState, NCollection_List_TopoDS_Shape const& theTools, int32_t theToolsState, Message_ProgressRange const& theRange, Handle(Message_Report) const& theReport) {
     try { self->BuildBOP(theObjects, static_cast<TopAbs_State>(theObjState), theTools, static_cast<TopAbs_State>(theToolsState), theRange, theReport); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeListOfShape const*> BOPAlgo_BOP_inherited_Images(const BOPAlgo_BOP* self) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher const*> BOPAlgo_BOP_inherited_Images(const BOPAlgo_BOP* self) {
     try { return {&(self->Images()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeListOfShape const*> BOPAlgo_BOP_inherited_Origins(const BOPAlgo_BOP* self) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher const*> BOPAlgo_BOP_inherited_Origins(const BOPAlgo_BOP* self) {
     try { return {&(self->Origins()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeShape const*> BOPAlgo_BOP_inherited_ShapesSD(const BOPAlgo_BOP* self) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher const*> BOPAlgo_BOP_inherited_ShapesSD(const BOPAlgo_BOP* self) {
     try { return {&(self->ShapesSD()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4663,7 +4593,7 @@ extern "C" OcctResult<bool> BOPAlgo_BOP_inherited_HasHistory(const BOPAlgo_BOP* 
     try { return {self->HasHistory(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_BaseAllocator) const*> BOPAlgo_BOP_inherited_Allocator(const BOPAlgo_BOP* self) {
+extern "C" OcctResult<TDF_HAllocator const*> BOPAlgo_BOP_inherited_Allocator(const BOPAlgo_BOP* self) {
     try { return {&(self->Allocator()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4741,7 +4671,7 @@ extern "C" OcctResult<BOPAlgo_Builder*> BOPAlgo_Builder_ctor() {
     try { return {new BOPAlgo_Builder(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_Builder*> BOPAlgo_Builder_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPAlgo_Builder*> BOPAlgo_Builder_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPAlgo_Builder(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4765,11 +4695,11 @@ extern "C" const char* BOPAlgo_Builder_add_argument(BOPAlgo_Builder* self_, Topo
     try { self_->AddArgument(*theShape); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPAlgo_Builder_set_arguments(BOPAlgo_Builder* self_, TopTools_ListOfShape const* theLS) {
+extern "C" const char* BOPAlgo_Builder_set_arguments(BOPAlgo_Builder* self_, NCollection_List_TopoDS_Shape const* theLS) {
     try { self_->SetArguments(*theLS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_Builder_arguments(const BOPAlgo_Builder* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_Builder_arguments(const BOPAlgo_Builder* self_) {
     try { return {&(self_->Arguments()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4805,23 +4735,23 @@ extern "C" const char* BOPAlgo_Builder_perform_with_filler(BOPAlgo_Builder* self
     try { self_->PerformWithFiller(*theFiller, *theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPAlgo_Builder_build_bop_listofshape_state_listofshape_state_progressrange_handlemessagereport(BOPAlgo_Builder* self_, TopTools_ListOfShape const* theObjects, int32_t theObjState, TopTools_ListOfShape const* theTools, int32_t theToolsState, Message_ProgressRange const* theRange, Handle(Message_Report) const* theReport) {
+extern "C" const char* BOPAlgo_Builder_build_bop_list_shape_state_list_shape_state_progressrange_handlemessagereport(BOPAlgo_Builder* self_, NCollection_List_TopoDS_Shape const* theObjects, int32_t theObjState, NCollection_List_TopoDS_Shape const* theTools, int32_t theToolsState, Message_ProgressRange const* theRange, Handle(Message_Report) const* theReport) {
     try { self_->BuildBOP(*theObjects, static_cast<TopAbs_State>(theObjState), *theTools, static_cast<TopAbs_State>(theToolsState), *theRange, *theReport); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPAlgo_Builder_build_bop_listofshape2_operation_progressrange_handlemessagereport(BOPAlgo_Builder* self_, TopTools_ListOfShape const* theObjects, TopTools_ListOfShape const* theTools, int32_t theOperation, Message_ProgressRange const* theRange, Handle(Message_Report) const* theReport) {
+extern "C" const char* BOPAlgo_Builder_build_bop_list_shape2_operation_progressrange_handlemessagereport(BOPAlgo_Builder* self_, NCollection_List_TopoDS_Shape const* theObjects, NCollection_List_TopoDS_Shape const* theTools, int32_t theOperation, Message_ProgressRange const* theRange, Handle(Message_Report) const* theReport) {
     try { self_->BuildBOP(*theObjects, *theTools, static_cast<BOPAlgo_Operation>(theOperation), *theRange, *theReport); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeListOfShape const*> BOPAlgo_Builder_images(const BOPAlgo_Builder* self_) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher const*> BOPAlgo_Builder_images(const BOPAlgo_Builder* self_) {
     try { return {&(self_->Images()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeListOfShape const*> BOPAlgo_Builder_origins(const BOPAlgo_Builder* self_) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher const*> BOPAlgo_Builder_origins(const BOPAlgo_Builder* self_) {
     try { return {&(self_->Origins()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeShape const*> BOPAlgo_Builder_shapes_sd(const BOPAlgo_Builder* self_) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher const*> BOPAlgo_Builder_shapes_sd(const BOPAlgo_Builder* self_) {
     try { return {&(self_->ShapesSD()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4863,7 +4793,7 @@ extern "C" OcctResult<bool> BOPAlgo_Builder_inherited_HasHistory(const BOPAlgo_B
     try { return {self->HasHistory(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_BaseAllocator) const*> BOPAlgo_Builder_inherited_Allocator(const BOPAlgo_Builder* self) {
+extern "C" OcctResult<TDF_HAllocator const*> BOPAlgo_Builder_inherited_Allocator(const BOPAlgo_Builder* self) {
     try { return {&(self->Allocator()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4941,19 +4871,19 @@ extern "C" const char* BOPAlgo_BuilderArea_set_context(BOPAlgo_BuilderArea* self
     try { self_->SetContext(*theContext); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_BuilderArea_shapes(const BOPAlgo_BuilderArea* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_BuilderArea_shapes(const BOPAlgo_BuilderArea* self_) {
     try { return {&(self_->Shapes()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BOPAlgo_BuilderArea_set_shapes(BOPAlgo_BuilderArea* self_, TopTools_ListOfShape const* theLS) {
+extern "C" const char* BOPAlgo_BuilderArea_set_shapes(BOPAlgo_BuilderArea* self_, NCollection_List_TopoDS_Shape const* theLS) {
     try { self_->SetShapes(*theLS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_BuilderArea_loops(const BOPAlgo_BuilderArea* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_BuilderArea_loops(const BOPAlgo_BuilderArea* self_) {
     try { return {&(self_->Loops()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_BuilderArea_areas(const BOPAlgo_BuilderArea* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_BuilderArea_areas(const BOPAlgo_BuilderArea* self_) {
     try { return {&(self_->Areas()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4978,7 +4908,7 @@ extern "C" OcctResult<BOPAlgo_BuilderFace*> BOPAlgo_BuilderFace_ctor() {
     try { return {new BOPAlgo_BuilderFace(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_BuilderFace*> BOPAlgo_BuilderFace_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPAlgo_BuilderFace*> BOPAlgo_BuilderFace_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPAlgo_BuilderFace(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5008,19 +4938,19 @@ extern "C" const char* BOPAlgo_BuilderFace_inherited_SetContext(BOPAlgo_BuilderF
     try { self->SetContext(theContext); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_BuilderFace_inherited_Shapes(const BOPAlgo_BuilderFace* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_BuilderFace_inherited_Shapes(const BOPAlgo_BuilderFace* self) {
     try { return {&(self->Shapes()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BOPAlgo_BuilderFace_inherited_SetShapes(BOPAlgo_BuilderFace* self, TopTools_ListOfShape const& theLS) {
+extern "C" const char* BOPAlgo_BuilderFace_inherited_SetShapes(BOPAlgo_BuilderFace* self, NCollection_List_TopoDS_Shape const& theLS) {
     try { self->SetShapes(theLS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_BuilderFace_inherited_Loops(const BOPAlgo_BuilderFace* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_BuilderFace_inherited_Loops(const BOPAlgo_BuilderFace* self) {
     try { return {&(self->Loops()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_BuilderFace_inherited_Areas(const BOPAlgo_BuilderFace* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_BuilderFace_inherited_Areas(const BOPAlgo_BuilderFace* self) {
     try { return {&(self->Areas()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5032,7 +4962,7 @@ extern "C" OcctResult<bool> BOPAlgo_BuilderFace_inherited_IsAvoidInternalShapes(
     try { return {self->IsAvoidInternalShapes(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_BaseAllocator) const*> BOPAlgo_BuilderFace_inherited_Allocator(const BOPAlgo_BuilderFace* self) {
+extern "C" OcctResult<TDF_HAllocator const*> BOPAlgo_BuilderFace_inherited_Allocator(const BOPAlgo_BuilderFace* self) {
     try { return {&(self->Allocator()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5118,11 +5048,11 @@ extern "C" OcctResult<TopoDS_Shape const*> BOPAlgo_BuilderShape_shape(const BOPA
     try { return {&(self_->Shape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_BuilderShape_modified(BOPAlgo_BuilderShape* self_, TopoDS_Shape const* theS) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_BuilderShape_modified(BOPAlgo_BuilderShape* self_, TopoDS_Shape const* theS) {
     try { return {&(self_->Modified(*theS)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_BuilderShape_generated(BOPAlgo_BuilderShape* self_, TopoDS_Shape const* theS) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_BuilderShape_generated(BOPAlgo_BuilderShape* self_, TopoDS_Shape const* theS) {
     try { return {&(self_->Generated(*theS)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5158,7 +5088,7 @@ extern "C" const char* BOPAlgo_BuilderShape_inherited_Perform(BOPAlgo_BuilderSha
     try { self->Perform(theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_BaseAllocator) const*> BOPAlgo_BuilderShape_inherited_Allocator(const BOPAlgo_BuilderShape* self) {
+extern "C" OcctResult<TDF_HAllocator const*> BOPAlgo_BuilderShape_inherited_Allocator(const BOPAlgo_BuilderShape* self) {
     try { return {&(self->Allocator()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5236,7 +5166,7 @@ extern "C" OcctResult<BOPAlgo_BuilderSolid*> BOPAlgo_BuilderSolid_ctor() {
     try { return {new BOPAlgo_BuilderSolid(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_BuilderSolid*> BOPAlgo_BuilderSolid_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPAlgo_BuilderSolid*> BOPAlgo_BuilderSolid_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPAlgo_BuilderSolid(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5244,7 +5174,7 @@ extern "C" const char* BOPAlgo_BuilderSolid_perform(BOPAlgo_BuilderSolid* self_,
     try { self_->Perform(*theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeBox const*> BOPAlgo_BuilderSolid_get_boxes_map(const BOPAlgo_BuilderSolid* self_) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_Bnd_Box_TopTools_ShapeMapHasher const*> BOPAlgo_BuilderSolid_get_boxes_map(const BOPAlgo_BuilderSolid* self_) {
     try { return {&(self_->GetBoxesMap()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5258,19 +5188,19 @@ extern "C" const char* BOPAlgo_BuilderSolid_inherited_SetContext(BOPAlgo_Builder
     try { self->SetContext(theContext); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_BuilderSolid_inherited_Shapes(const BOPAlgo_BuilderSolid* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_BuilderSolid_inherited_Shapes(const BOPAlgo_BuilderSolid* self) {
     try { return {&(self->Shapes()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BOPAlgo_BuilderSolid_inherited_SetShapes(BOPAlgo_BuilderSolid* self, TopTools_ListOfShape const& theLS) {
+extern "C" const char* BOPAlgo_BuilderSolid_inherited_SetShapes(BOPAlgo_BuilderSolid* self, NCollection_List_TopoDS_Shape const& theLS) {
     try { self->SetShapes(theLS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_BuilderSolid_inherited_Loops(const BOPAlgo_BuilderSolid* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_BuilderSolid_inherited_Loops(const BOPAlgo_BuilderSolid* self) {
     try { return {&(self->Loops()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_BuilderSolid_inherited_Areas(const BOPAlgo_BuilderSolid* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_BuilderSolid_inherited_Areas(const BOPAlgo_BuilderSolid* self) {
     try { return {&(self->Areas()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5282,7 +5212,7 @@ extern "C" OcctResult<bool> BOPAlgo_BuilderSolid_inherited_IsAvoidInternalShapes
     try { return {self->IsAvoidInternalShapes(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_BaseAllocator) const*> BOPAlgo_BuilderSolid_inherited_Allocator(const BOPAlgo_BuilderSolid* self) {
+extern "C" OcctResult<TDF_HAllocator const*> BOPAlgo_BuilderSolid_inherited_Allocator(const BOPAlgo_BuilderSolid* self) {
     try { return {&(self->Allocator()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5364,7 +5294,7 @@ extern "C" OcctResult<BOPAlgo_CellsBuilder*> BOPAlgo_CellsBuilder_ctor() {
     try { return {new BOPAlgo_CellsBuilder(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_CellsBuilder*> BOPAlgo_CellsBuilder_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPAlgo_CellsBuilder*> BOPAlgo_CellsBuilder_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPAlgo_CellsBuilder(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5372,7 +5302,7 @@ extern "C" const char* BOPAlgo_CellsBuilder_clear(BOPAlgo_CellsBuilder* self_) {
     try { self_->Clear(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPAlgo_CellsBuilder_add_to_result(BOPAlgo_CellsBuilder* self_, TopTools_ListOfShape const* theLSToTake, TopTools_ListOfShape const* theLSToAvoid, int32_t theMaterial, bool theUpdate) {
+extern "C" const char* BOPAlgo_CellsBuilder_add_to_result(BOPAlgo_CellsBuilder* self_, NCollection_List_TopoDS_Shape const* theLSToTake, NCollection_List_TopoDS_Shape const* theLSToAvoid, int32_t theMaterial, bool theUpdate) {
     try { self_->AddToResult(*theLSToTake, *theLSToAvoid, theMaterial, theUpdate); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5380,7 +5310,7 @@ extern "C" const char* BOPAlgo_CellsBuilder_add_all_to_result(BOPAlgo_CellsBuild
     try { self_->AddAllToResult(theMaterial, theUpdate); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPAlgo_CellsBuilder_remove_from_result(BOPAlgo_CellsBuilder* self_, TopTools_ListOfShape const* theLSToTake, TopTools_ListOfShape const* theLSToAvoid) {
+extern "C" const char* BOPAlgo_CellsBuilder_remove_from_result(BOPAlgo_CellsBuilder* self_, NCollection_List_TopoDS_Shape const* theLSToTake, NCollection_List_TopoDS_Shape const* theLSToAvoid) {
     try { self_->RemoveFromResult(*theLSToTake, *theLSToAvoid); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5424,11 +5354,11 @@ extern "C" const char* BOPAlgo_CellsBuilder_inherited_AddArgument(BOPAlgo_CellsB
     try { self->AddArgument(theShape); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPAlgo_CellsBuilder_inherited_SetArguments(BOPAlgo_CellsBuilder* self, TopTools_ListOfShape const& theLS) {
+extern "C" const char* BOPAlgo_CellsBuilder_inherited_SetArguments(BOPAlgo_CellsBuilder* self, NCollection_List_TopoDS_Shape const& theLS) {
     try { self->SetArguments(theLS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_CellsBuilder_inherited_Arguments(const BOPAlgo_CellsBuilder* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_CellsBuilder_inherited_Arguments(const BOPAlgo_CellsBuilder* self) {
     try { return {&(self->Arguments()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5464,19 +5394,19 @@ extern "C" const char* BOPAlgo_CellsBuilder_inherited_PerformWithFiller(BOPAlgo_
     try { self->PerformWithFiller(theFiller, theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPAlgo_CellsBuilder_inherited_BuildBOP(BOPAlgo_CellsBuilder* self, TopTools_ListOfShape const& theObjects, int32_t theObjState, TopTools_ListOfShape const& theTools, int32_t theToolsState, Message_ProgressRange const& theRange, Handle(Message_Report) const& theReport) {
+extern "C" const char* BOPAlgo_CellsBuilder_inherited_BuildBOP(BOPAlgo_CellsBuilder* self, NCollection_List_TopoDS_Shape const& theObjects, int32_t theObjState, NCollection_List_TopoDS_Shape const& theTools, int32_t theToolsState, Message_ProgressRange const& theRange, Handle(Message_Report) const& theReport) {
     try { self->BuildBOP(theObjects, static_cast<TopAbs_State>(theObjState), theTools, static_cast<TopAbs_State>(theToolsState), theRange, theReport); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeListOfShape const*> BOPAlgo_CellsBuilder_inherited_Images(const BOPAlgo_CellsBuilder* self) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher const*> BOPAlgo_CellsBuilder_inherited_Images(const BOPAlgo_CellsBuilder* self) {
     try { return {&(self->Images()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeListOfShape const*> BOPAlgo_CellsBuilder_inherited_Origins(const BOPAlgo_CellsBuilder* self) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher const*> BOPAlgo_CellsBuilder_inherited_Origins(const BOPAlgo_CellsBuilder* self) {
     try { return {&(self->Origins()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeShape const*> BOPAlgo_CellsBuilder_inherited_ShapesSD(const BOPAlgo_CellsBuilder* self) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher const*> BOPAlgo_CellsBuilder_inherited_ShapesSD(const BOPAlgo_CellsBuilder* self) {
     try { return {&(self->ShapesSD()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5512,7 +5442,7 @@ extern "C" OcctResult<bool> BOPAlgo_CellsBuilder_inherited_HasHistory(const BOPA
     try { return {self->HasHistory(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_BaseAllocator) const*> BOPAlgo_CellsBuilder_inherited_Allocator(const BOPAlgo_CellsBuilder* self) {
+extern "C" OcctResult<TDF_HAllocator const*> BOPAlgo_CellsBuilder_inherited_Allocator(const BOPAlgo_CellsBuilder* self) {
     try { return {&(self->Allocator()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5614,11 +5544,11 @@ extern "C" OcctResult<TopoDS_Shape const*> BOPAlgo_CheckResult_get_shape2(const 
     try { return {&(self_->GetShape2()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_CheckResult_get_faulty_shapes1(const BOPAlgo_CheckResult* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_CheckResult_get_faulty_shapes1(const BOPAlgo_CheckResult* self_) {
     try { return {&(self_->GetFaultyShapes1()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_CheckResult_get_faulty_shapes2(const BOPAlgo_CheckResult* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_CheckResult_get_faulty_shapes2(const BOPAlgo_CheckResult* self_) {
     try { return {&(self_->GetFaultyShapes2()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5694,7 +5624,7 @@ extern "C" OcctResult<BOPDS_DS*> BOPAlgo_CheckerSI_inherited_PDS(BOPAlgo_Checker
     try { return {self->PDS(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BOPAlgo_CheckerSI_inherited_SetArguments(BOPAlgo_CheckerSI* self, TopTools_ListOfShape const& theLS) {
+extern "C" const char* BOPAlgo_CheckerSI_inherited_SetArguments(BOPAlgo_CheckerSI* self, NCollection_List_TopoDS_Shape const& theLS) {
     try { self->SetArguments(theLS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5702,7 +5632,7 @@ extern "C" const char* BOPAlgo_CheckerSI_inherited_AddArgument(BOPAlgo_CheckerSI
     try { self->AddArgument(theShape); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_CheckerSI_inherited_Arguments(const BOPAlgo_CheckerSI* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_CheckerSI_inherited_Arguments(const BOPAlgo_CheckerSI* self) {
     try { return {&(self->Arguments()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5738,7 +5668,7 @@ extern "C" OcctResult<bool> BOPAlgo_CheckerSI_inherited_IsAvoidBuildPCurve(const
     try { return {self->IsAvoidBuildPCurve(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_BaseAllocator) const*> BOPAlgo_CheckerSI_inherited_Allocator(const BOPAlgo_CheckerSI* self) {
+extern "C" OcctResult<TDF_HAllocator const*> BOPAlgo_CheckerSI_inherited_Allocator(const BOPAlgo_CheckerSI* self) {
     try { return {&(self->Allocator()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5816,7 +5746,7 @@ extern "C" OcctResult<BOPAlgo_MakeConnected*> BOPAlgo_MakeConnected_ctor() {
     try { return {new BOPAlgo_MakeConnected(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BOPAlgo_MakeConnected_set_arguments(BOPAlgo_MakeConnected* self_, TopTools_ListOfShape const* theArgs) {
+extern "C" const char* BOPAlgo_MakeConnected_set_arguments(BOPAlgo_MakeConnected* self_, NCollection_List_TopoDS_Shape const* theArgs) {
     try { self_->SetArguments(*theArgs); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5824,7 +5754,7 @@ extern "C" const char* BOPAlgo_MakeConnected_add_argument(BOPAlgo_MakeConnected*
     try { self_->AddArgument(*theS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_MakeConnected_arguments(const BOPAlgo_MakeConnected* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_MakeConnected_arguments(const BOPAlgo_MakeConnected* self_) {
     try { return {&(self_->Arguments()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5848,11 +5778,11 @@ extern "C" OcctResult<BOPAlgo_MakePeriodic const*> BOPAlgo_MakeConnected_periodi
     try { return {&(self_->PeriodicityTool()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_MakeConnected_materials_on_positive_side(BOPAlgo_MakeConnected* self_, TopoDS_Shape const* theS) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_MakeConnected_materials_on_positive_side(BOPAlgo_MakeConnected* self_, TopoDS_Shape const* theS) {
     try { return {&(self_->MaterialsOnPositiveSide(*theS)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_MakeConnected_materials_on_negative_side(BOPAlgo_MakeConnected* self_, TopoDS_Shape const* theS) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_MakeConnected_materials_on_negative_side(BOPAlgo_MakeConnected* self_, TopoDS_Shape const* theS) {
     try { return {&(self_->MaterialsOnNegativeSide(*theS)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5860,11 +5790,11 @@ extern "C" OcctResult<Handle(BRepTools_History) const*> BOPAlgo_MakeConnected_hi
     try { return {&(self_->History()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_MakeConnected_get_modified(BOPAlgo_MakeConnected* self_, TopoDS_Shape const* theS) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_MakeConnected_get_modified(BOPAlgo_MakeConnected* self_, TopoDS_Shape const* theS) {
     try { return {&(self_->GetModified(*theS)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_MakeConnected_get_origins(BOPAlgo_MakeConnected* self_, TopoDS_Shape const* theS) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_MakeConnected_get_origins(BOPAlgo_MakeConnected* self_, TopoDS_Shape const* theS) {
     try { return {&(self_->GetOrigins(*theS)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5882,7 +5812,7 @@ extern "C" const char* BOPAlgo_MakeConnected_clear(BOPAlgo_MakeConnected* self_)
 }
 extern "C" OcctResult<const BOPAlgo_Options*> BOPAlgo_MakeConnected_as_BOPAlgo_Options(const BOPAlgo_MakeConnected* self_) { return {static_cast<const BOPAlgo_Options*>(self_), nullptr}; }
 extern "C" OcctResult<BOPAlgo_Options*> BOPAlgo_MakeConnected_as_BOPAlgo_Options_mut(BOPAlgo_MakeConnected* self_) { return {static_cast<BOPAlgo_Options*>(self_), nullptr}; }
-extern "C" OcctResult<Handle(NCollection_BaseAllocator) const*> BOPAlgo_MakeConnected_inherited_Allocator(const BOPAlgo_MakeConnected* self) {
+extern "C" OcctResult<TDF_HAllocator const*> BOPAlgo_MakeConnected_inherited_Allocator(const BOPAlgo_MakeConnected* self) {
     try { return {&(self->Allocator()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6100,7 +6030,7 @@ extern "C" OcctResult<TopoDS_Shape const*> BOPAlgo_MakePeriodic_shape(const BOPA
     try { return {&(self_->Shape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_MakePeriodic_get_twins(const BOPAlgo_MakePeriodic* self_, TopoDS_Shape const* theS) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_MakePeriodic_get_twins(const BOPAlgo_MakePeriodic* self_, TopoDS_Shape const* theS) {
     try { return {&(self_->GetTwins(*theS)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6118,7 +6048,7 @@ extern "C" OcctResult<int32_t> BOPAlgo_MakePeriodic_to_direction_id(int32_t theD
 }
 extern "C" OcctResult<const BOPAlgo_Options*> BOPAlgo_MakePeriodic_as_BOPAlgo_Options(const BOPAlgo_MakePeriodic* self_) { return {static_cast<const BOPAlgo_Options*>(self_), nullptr}; }
 extern "C" OcctResult<BOPAlgo_Options*> BOPAlgo_MakePeriodic_as_BOPAlgo_Options_mut(BOPAlgo_MakePeriodic* self_) { return {static_cast<BOPAlgo_Options*>(self_), nullptr}; }
-extern "C" OcctResult<Handle(NCollection_BaseAllocator) const*> BOPAlgo_MakePeriodic_inherited_Allocator(const BOPAlgo_MakePeriodic* self) {
+extern "C" OcctResult<TDF_HAllocator const*> BOPAlgo_MakePeriodic_inherited_Allocator(const BOPAlgo_MakePeriodic* self) {
     try { return {&(self->Allocator()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6200,7 +6130,7 @@ extern "C" OcctResult<BOPAlgo_MakerVolume*> BOPAlgo_MakerVolume_ctor() {
     try { return {new BOPAlgo_MakerVolume(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_MakerVolume*> BOPAlgo_MakerVolume_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPAlgo_MakerVolume*> BOPAlgo_MakerVolume_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPAlgo_MakerVolume(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6220,7 +6150,7 @@ extern "C" OcctResult<TopoDS_Solid const*> BOPAlgo_MakerVolume_box_(const BOPAlg
     try { return {&(self_->Box()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_MakerVolume_faces(const BOPAlgo_MakerVolume* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_MakerVolume_faces(const BOPAlgo_MakerVolume* self_) {
     try { return {&(self_->Faces()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6260,11 +6190,11 @@ extern "C" const char* BOPAlgo_MakerVolume_inherited_AddArgument(BOPAlgo_MakerVo
     try { self->AddArgument(theShape); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPAlgo_MakerVolume_inherited_SetArguments(BOPAlgo_MakerVolume* self, TopTools_ListOfShape const& theLS) {
+extern "C" const char* BOPAlgo_MakerVolume_inherited_SetArguments(BOPAlgo_MakerVolume* self, NCollection_List_TopoDS_Shape const& theLS) {
     try { self->SetArguments(theLS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_MakerVolume_inherited_Arguments(const BOPAlgo_MakerVolume* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_MakerVolume_inherited_Arguments(const BOPAlgo_MakerVolume* self) {
     try { return {&(self->Arguments()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6296,19 +6226,19 @@ extern "C" const char* BOPAlgo_MakerVolume_inherited_PerformWithFiller(BOPAlgo_M
     try { self->PerformWithFiller(theFiller, theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPAlgo_MakerVolume_inherited_BuildBOP(BOPAlgo_MakerVolume* self, TopTools_ListOfShape const& theObjects, int32_t theObjState, TopTools_ListOfShape const& theTools, int32_t theToolsState, Message_ProgressRange const& theRange, Handle(Message_Report) const& theReport) {
+extern "C" const char* BOPAlgo_MakerVolume_inherited_BuildBOP(BOPAlgo_MakerVolume* self, NCollection_List_TopoDS_Shape const& theObjects, int32_t theObjState, NCollection_List_TopoDS_Shape const& theTools, int32_t theToolsState, Message_ProgressRange const& theRange, Handle(Message_Report) const& theReport) {
     try { self->BuildBOP(theObjects, static_cast<TopAbs_State>(theObjState), theTools, static_cast<TopAbs_State>(theToolsState), theRange, theReport); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeListOfShape const*> BOPAlgo_MakerVolume_inherited_Images(const BOPAlgo_MakerVolume* self) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher const*> BOPAlgo_MakerVolume_inherited_Images(const BOPAlgo_MakerVolume* self) {
     try { return {&(self->Images()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeListOfShape const*> BOPAlgo_MakerVolume_inherited_Origins(const BOPAlgo_MakerVolume* self) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher const*> BOPAlgo_MakerVolume_inherited_Origins(const BOPAlgo_MakerVolume* self) {
     try { return {&(self->Origins()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeShape const*> BOPAlgo_MakerVolume_inherited_ShapesSD(const BOPAlgo_MakerVolume* self) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher const*> BOPAlgo_MakerVolume_inherited_ShapesSD(const BOPAlgo_MakerVolume* self) {
     try { return {&(self->ShapesSD()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6344,7 +6274,7 @@ extern "C" OcctResult<bool> BOPAlgo_MakerVolume_inherited_HasHistory(const BOPAl
     try { return {self->HasHistory(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_BaseAllocator) const*> BOPAlgo_MakerVolume_inherited_Allocator(const BOPAlgo_MakerVolume* self) {
+extern "C" OcctResult<TDF_HAllocator const*> BOPAlgo_MakerVolume_inherited_Allocator(const BOPAlgo_MakerVolume* self) {
     try { return {&(self->Allocator()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6422,11 +6352,11 @@ extern "C" OcctResult<BOPAlgo_Options*> BOPAlgo_Options_ctor() {
     try { return {new BOPAlgo_Options(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_Options*> BOPAlgo_Options_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPAlgo_Options*> BOPAlgo_Options_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPAlgo_Options(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_BaseAllocator) const*> BOPAlgo_Options_allocator(const BOPAlgo_Options* self_) {
+extern "C" OcctResult<TDF_HAllocator const*> BOPAlgo_Options_allocator(const BOPAlgo_Options* self_) {
     try { return {&(self_->Allocator()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6516,7 +6446,7 @@ extern "C" OcctResult<BOPAlgo_PaveFiller*> BOPAlgo_PaveFiller_ctor() {
     try { return {new BOPAlgo_PaveFiller(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_PaveFiller*> BOPAlgo_PaveFiller_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPAlgo_PaveFiller*> BOPAlgo_PaveFiller_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPAlgo_PaveFiller(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6532,7 +6462,7 @@ extern "C" OcctResult<BOPDS_Iterator* const*> BOPAlgo_PaveFiller_iterator(BOPAlg
     try { return {&(self_->Iterator()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BOPAlgo_PaveFiller_set_arguments(BOPAlgo_PaveFiller* self_, TopTools_ListOfShape const* theLS) {
+extern "C" const char* BOPAlgo_PaveFiller_set_arguments(BOPAlgo_PaveFiller* self_, NCollection_List_TopoDS_Shape const* theLS) {
     try { self_->SetArguments(*theLS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6540,7 +6470,7 @@ extern "C" const char* BOPAlgo_PaveFiller_add_argument(BOPAlgo_PaveFiller* self_
     try { self_->AddArgument(*theShape); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_PaveFiller_arguments(const BOPAlgo_PaveFiller* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_PaveFiller_arguments(const BOPAlgo_PaveFiller* self_) {
     try { return {&(self_->Arguments()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6584,7 +6514,7 @@ extern "C" OcctResult<const BOPAlgo_Algo*> BOPAlgo_PaveFiller_as_BOPAlgo_Algo(co
 extern "C" OcctResult<BOPAlgo_Algo*> BOPAlgo_PaveFiller_as_BOPAlgo_Algo_mut(BOPAlgo_PaveFiller* self_) { return {static_cast<BOPAlgo_Algo*>(self_), nullptr}; }
 extern "C" OcctResult<const BOPAlgo_Options*> BOPAlgo_PaveFiller_as_BOPAlgo_Options(const BOPAlgo_PaveFiller* self_) { return {static_cast<const BOPAlgo_Options*>(self_), nullptr}; }
 extern "C" OcctResult<BOPAlgo_Options*> BOPAlgo_PaveFiller_as_BOPAlgo_Options_mut(BOPAlgo_PaveFiller* self_) { return {static_cast<BOPAlgo_Options*>(self_), nullptr}; }
-extern "C" OcctResult<Handle(NCollection_BaseAllocator) const*> BOPAlgo_PaveFiller_inherited_Allocator(const BOPAlgo_PaveFiller* self) {
+extern "C" OcctResult<TDF_HAllocator const*> BOPAlgo_PaveFiller_inherited_Allocator(const BOPAlgo_PaveFiller* self) {
     try { return {&(self->Allocator()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6674,11 +6604,11 @@ extern "C" const char* BOPAlgo_RemoveFeatures_add_face_to_remove(BOPAlgo_RemoveF
     try { self_->AddFaceToRemove(*theFace); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPAlgo_RemoveFeatures_add_faces_to_remove(BOPAlgo_RemoveFeatures* self_, TopTools_ListOfShape const* theFaces) {
+extern "C" const char* BOPAlgo_RemoveFeatures_add_faces_to_remove(BOPAlgo_RemoveFeatures* self_, NCollection_List_TopoDS_Shape const* theFaces) {
     try { self_->AddFacesToRemove(*theFaces); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_RemoveFeatures_faces_to_remove(const BOPAlgo_RemoveFeatures* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_RemoveFeatures_faces_to_remove(const BOPAlgo_RemoveFeatures* self_) {
     try { return {&(self_->FacesToRemove()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6728,7 +6658,7 @@ extern "C" OcctResult<bool> BOPAlgo_RemoveFeatures_inherited_HasHistory(const BO
     try { return {self->HasHistory(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_BaseAllocator) const*> BOPAlgo_RemoveFeatures_inherited_Allocator(const BOPAlgo_RemoveFeatures* self) {
+extern "C" OcctResult<TDF_HAllocator const*> BOPAlgo_RemoveFeatures_inherited_Allocator(const BOPAlgo_RemoveFeatures* self) {
     try { return {&(self->Allocator()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6806,7 +6736,7 @@ extern "C" OcctResult<BOPAlgo_Section*> BOPAlgo_Section_ctor() {
     try { return {new BOPAlgo_Section(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_Section*> BOPAlgo_Section_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPAlgo_Section*> BOPAlgo_Section_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPAlgo_Section(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6838,11 +6768,11 @@ extern "C" const char* BOPAlgo_Section_inherited_AddArgument(BOPAlgo_Section* se
     try { self->AddArgument(theShape); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPAlgo_Section_inherited_SetArguments(BOPAlgo_Section* self, TopTools_ListOfShape const& theLS) {
+extern "C" const char* BOPAlgo_Section_inherited_SetArguments(BOPAlgo_Section* self, NCollection_List_TopoDS_Shape const& theLS) {
     try { self->SetArguments(theLS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_Section_inherited_Arguments(const BOPAlgo_Section* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_Section_inherited_Arguments(const BOPAlgo_Section* self) {
     try { return {&(self->Arguments()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6878,19 +6808,19 @@ extern "C" const char* BOPAlgo_Section_inherited_PerformWithFiller(BOPAlgo_Secti
     try { self->PerformWithFiller(theFiller, theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPAlgo_Section_inherited_BuildBOP(BOPAlgo_Section* self, TopTools_ListOfShape const& theObjects, int32_t theObjState, TopTools_ListOfShape const& theTools, int32_t theToolsState, Message_ProgressRange const& theRange, Handle(Message_Report) const& theReport) {
+extern "C" const char* BOPAlgo_Section_inherited_BuildBOP(BOPAlgo_Section* self, NCollection_List_TopoDS_Shape const& theObjects, int32_t theObjState, NCollection_List_TopoDS_Shape const& theTools, int32_t theToolsState, Message_ProgressRange const& theRange, Handle(Message_Report) const& theReport) {
     try { self->BuildBOP(theObjects, static_cast<TopAbs_State>(theObjState), theTools, static_cast<TopAbs_State>(theToolsState), theRange, theReport); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeListOfShape const*> BOPAlgo_Section_inherited_Images(const BOPAlgo_Section* self) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher const*> BOPAlgo_Section_inherited_Images(const BOPAlgo_Section* self) {
     try { return {&(self->Images()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeListOfShape const*> BOPAlgo_Section_inherited_Origins(const BOPAlgo_Section* self) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher const*> BOPAlgo_Section_inherited_Origins(const BOPAlgo_Section* self) {
     try { return {&(self->Origins()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeShape const*> BOPAlgo_Section_inherited_ShapesSD(const BOPAlgo_Section* self) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher const*> BOPAlgo_Section_inherited_ShapesSD(const BOPAlgo_Section* self) {
     try { return {&(self->ShapesSD()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6926,7 +6856,7 @@ extern "C" OcctResult<bool> BOPAlgo_Section_inherited_HasHistory(const BOPAlgo_S
     try { return {self->HasHistory(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_BaseAllocator) const*> BOPAlgo_Section_inherited_Allocator(const BOPAlgo_Section* self) {
+extern "C" OcctResult<TDF_HAllocator const*> BOPAlgo_Section_inherited_Allocator(const BOPAlgo_Section* self) {
     try { return {&(self->Allocator()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7042,7 +6972,7 @@ extern "C" OcctResult<BOPAlgo_ShellSplitter*> BOPAlgo_ShellSplitter_ctor() {
     try { return {new BOPAlgo_ShellSplitter(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_ShellSplitter*> BOPAlgo_ShellSplitter_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPAlgo_ShellSplitter*> BOPAlgo_ShellSplitter_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPAlgo_ShellSplitter(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7050,7 +6980,7 @@ extern "C" const char* BOPAlgo_ShellSplitter_add_start_element(BOPAlgo_ShellSpli
     try { self_->AddStartElement(*theS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_ShellSplitter_start_elements(const BOPAlgo_ShellSplitter* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_ShellSplitter_start_elements(const BOPAlgo_ShellSplitter* self_) {
     try { return {&(self_->StartElements()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7058,7 +6988,7 @@ extern "C" const char* BOPAlgo_ShellSplitter_perform(BOPAlgo_ShellSplitter* self
     try { self_->Perform(*theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_ShellSplitter_shells(const BOPAlgo_ShellSplitter* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_ShellSplitter_shells(const BOPAlgo_ShellSplitter* self_) {
     try { return {&(self_->Shells()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7070,7 +7000,7 @@ extern "C" OcctResult<const BOPAlgo_Algo*> BOPAlgo_ShellSplitter_as_BOPAlgo_Algo
 extern "C" OcctResult<BOPAlgo_Algo*> BOPAlgo_ShellSplitter_as_BOPAlgo_Algo_mut(BOPAlgo_ShellSplitter* self_) { return {static_cast<BOPAlgo_Algo*>(self_), nullptr}; }
 extern "C" OcctResult<const BOPAlgo_Options*> BOPAlgo_ShellSplitter_as_BOPAlgo_Options(const BOPAlgo_ShellSplitter* self_) { return {static_cast<const BOPAlgo_Options*>(self_), nullptr}; }
 extern "C" OcctResult<BOPAlgo_Options*> BOPAlgo_ShellSplitter_as_BOPAlgo_Options_mut(BOPAlgo_ShellSplitter* self_) { return {static_cast<BOPAlgo_Options*>(self_), nullptr}; }
-extern "C" OcctResult<Handle(NCollection_BaseAllocator) const*> BOPAlgo_ShellSplitter_inherited_Allocator(const BOPAlgo_ShellSplitter* self) {
+extern "C" OcctResult<TDF_HAllocator const*> BOPAlgo_ShellSplitter_inherited_Allocator(const BOPAlgo_ShellSplitter* self) {
     try { return {&(self->Allocator()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7152,7 +7082,7 @@ extern "C" OcctResult<BOPAlgo_Splitter*> BOPAlgo_Splitter_ctor() {
     try { return {new BOPAlgo_Splitter(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_Splitter*> BOPAlgo_Splitter_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPAlgo_Splitter*> BOPAlgo_Splitter_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPAlgo_Splitter(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7178,11 +7108,11 @@ extern "C" const char* BOPAlgo_Splitter_inherited_AddTool(BOPAlgo_Splitter* self
     try { self->AddTool(theShape); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPAlgo_Splitter_inherited_SetTools(BOPAlgo_Splitter* self, TopTools_ListOfShape const& theShapes) {
+extern "C" const char* BOPAlgo_Splitter_inherited_SetTools(BOPAlgo_Splitter* self, NCollection_List_TopoDS_Shape const& theShapes) {
     try { self->SetTools(theShapes); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_Splitter_inherited_Tools(const BOPAlgo_Splitter* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_Splitter_inherited_Tools(const BOPAlgo_Splitter* self) {
     try { return {&(self->Tools()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7202,11 +7132,11 @@ extern "C" const char* BOPAlgo_Splitter_inherited_AddArgument(BOPAlgo_Splitter* 
     try { self->AddArgument(theShape); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPAlgo_Splitter_inherited_SetArguments(BOPAlgo_Splitter* self, TopTools_ListOfShape const& theLS) {
+extern "C" const char* BOPAlgo_Splitter_inherited_SetArguments(BOPAlgo_Splitter* self, NCollection_List_TopoDS_Shape const& theLS) {
     try { self->SetArguments(theLS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_Splitter_inherited_Arguments(const BOPAlgo_Splitter* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_Splitter_inherited_Arguments(const BOPAlgo_Splitter* self) {
     try { return {&(self->Arguments()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7238,19 +7168,19 @@ extern "C" const char* BOPAlgo_Splitter_inherited_PerformWithFiller(BOPAlgo_Spli
     try { self->PerformWithFiller(theFiller, theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPAlgo_Splitter_inherited_BuildBOP(BOPAlgo_Splitter* self, TopTools_ListOfShape const& theObjects, int32_t theObjState, TopTools_ListOfShape const& theTools, int32_t theToolsState, Message_ProgressRange const& theRange, Handle(Message_Report) const& theReport) {
+extern "C" const char* BOPAlgo_Splitter_inherited_BuildBOP(BOPAlgo_Splitter* self, NCollection_List_TopoDS_Shape const& theObjects, int32_t theObjState, NCollection_List_TopoDS_Shape const& theTools, int32_t theToolsState, Message_ProgressRange const& theRange, Handle(Message_Report) const& theReport) {
     try { self->BuildBOP(theObjects, static_cast<TopAbs_State>(theObjState), theTools, static_cast<TopAbs_State>(theToolsState), theRange, theReport); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeListOfShape const*> BOPAlgo_Splitter_inherited_Images(const BOPAlgo_Splitter* self) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher const*> BOPAlgo_Splitter_inherited_Images(const BOPAlgo_Splitter* self) {
     try { return {&(self->Images()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeListOfShape const*> BOPAlgo_Splitter_inherited_Origins(const BOPAlgo_Splitter* self) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher const*> BOPAlgo_Splitter_inherited_Origins(const BOPAlgo_Splitter* self) {
     try { return {&(self->Origins()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeShape const*> BOPAlgo_Splitter_inherited_ShapesSD(const BOPAlgo_Splitter* self) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher const*> BOPAlgo_Splitter_inherited_ShapesSD(const BOPAlgo_Splitter* self) {
     try { return {&(self->ShapesSD()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7286,7 +7216,7 @@ extern "C" OcctResult<bool> BOPAlgo_Splitter_inherited_HasHistory(const BOPAlgo_
     try { return {self->HasHistory(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_BaseAllocator) const*> BOPAlgo_Splitter_inherited_Allocator(const BOPAlgo_Splitter* self) {
+extern "C" OcctResult<TDF_HAllocator const*> BOPAlgo_Splitter_inherited_Allocator(const BOPAlgo_Splitter* self) {
     try { return {&(self->Allocator()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7364,18 +7294,6 @@ extern "C" OcctResult<BOPAlgo_Tools*> BOPAlgo_Tools_ctor() {
     try { return {new BOPAlgo_Tools(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BOPAlgo_Tools_fill_map(Handle(BOPDS_PaveBlock) const* thePB1, int32_t theF, BOPDS_IndexedDataMapOfPaveBlockListOfInteger* theMILI, Handle(NCollection_BaseAllocator) const* theAllocator) {
-    try { BOPAlgo_Tools::FillMap(*thePB1, theF, *theMILI, *theAllocator); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* BOPAlgo_Tools_perform_common_blocks_indexeddatamapofpaveblocklistofpaveblock_handlencollectionbaseallocator_dsptr_handleinttoolscontext(BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock* theMBlocks, Handle(NCollection_BaseAllocator) const* theAllocator, BOPDS_DS** theDS, Handle(IntTools_Context) const* theContext) {
-    try { BOPAlgo_Tools::PerformCommonBlocks(*theMBlocks, *theAllocator, *theDS, *theContext); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* BOPAlgo_Tools_perform_common_blocks_indexeddatamapofpaveblocklistofinteger_handlencollectionbaseallocator_dsptr_handleinttoolscontext(BOPDS_IndexedDataMapOfPaveBlockListOfInteger const* theMBlocks, Handle(NCollection_BaseAllocator) const* theAllocator, BOPDS_DS** pDS, Handle(IntTools_Context) const* theContext) {
-    try { BOPAlgo_Tools::PerformCommonBlocks(*theMBlocks, *theAllocator, *pDS, *theContext); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" OcctResult<double> BOPAlgo_Tools_compute_tolerance_of_cb(Handle(BOPDS_CommonBlock) const* theCB, BOPDS_DS* theDS, Handle(IntTools_Context) const* theContext) {
     try { return {BOPAlgo_Tools::ComputeToleranceOfCB(*theCB, theDS, *theContext), nullptr}; }
     OCCT_CATCH_RETURN
@@ -7388,15 +7306,15 @@ extern "C" OcctResult<bool> BOPAlgo_Tools_wires_to_faces(TopoDS_Shape const* the
     try { return {BOPAlgo_Tools::WiresToFaces(*theWires, *theFaces, theAngTol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BOPAlgo_Tools_intersect_vertices(TopTools_IndexedDataMapOfShapeReal const* theVertices, double theFuzzyValue, TopTools_ListOfListOfShape* theChains) {
+extern "C" const char* BOPAlgo_Tools_intersect_vertices(NCollection_IndexedDataMap_TopoDS_Shape_double_TopTools_ShapeMapHasher const* theVertices, double theFuzzyValue, NCollection_List_NCollection_List_TopoDS_Shape* theChains) {
     try { BOPAlgo_Tools::IntersectVertices(*theVertices, theFuzzyValue, *theChains); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPAlgo_Tools_classify_faces(TopTools_ListOfShape const* theFaces, TopTools_ListOfShape const* theSolids, bool theRunParallel, Handle(IntTools_Context)* theContext, TopTools_IndexedDataMapOfShapeListOfShape* theInParts, TopTools_DataMapOfShapeBox const* theShapeBoxMap, TopTools_DataMapOfShapeListOfShape const* theSolidsIF, Message_ProgressRange const* theRange) {
+extern "C" const char* BOPAlgo_Tools_classify_faces(NCollection_List_TopoDS_Shape const* theFaces, NCollection_List_TopoDS_Shape const* theSolids, bool theRunParallel, Handle(IntTools_Context)* theContext, NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* theInParts, NCollection_DataMap_TopoDS_Shape_Bnd_Box_TopTools_ShapeMapHasher const* theShapeBoxMap, NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher const* theSolidsIF, Message_ProgressRange const* theRange) {
     try { BOPAlgo_Tools::ClassifyFaces(*theFaces, *theSolids, theRunParallel, *theContext, *theInParts, *theShapeBoxMap, *theSolidsIF, *theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPAlgo_Tools_fill_internals(TopTools_ListOfShape const* theSolids, TopTools_ListOfShape const* theParts, TopTools_DataMapOfShapeListOfShape const* theImages, Handle(IntTools_Context) const* theContext) {
+extern "C" const char* BOPAlgo_Tools_fill_internals(NCollection_List_TopoDS_Shape const* theSolids, NCollection_List_TopoDS_Shape const* theParts, NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher const* theImages, Handle(IntTools_Context) const* theContext) {
     try { BOPAlgo_Tools::FillInternals(*theSolids, *theParts, *theImages, *theContext); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7414,7 +7332,7 @@ extern "C" OcctResult<BOPAlgo_ToolsProvider*> BOPAlgo_ToolsProvider_ctor() {
     try { return {new BOPAlgo_ToolsProvider(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_ToolsProvider*> BOPAlgo_ToolsProvider_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPAlgo_ToolsProvider*> BOPAlgo_ToolsProvider_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPAlgo_ToolsProvider(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7426,11 +7344,11 @@ extern "C" const char* BOPAlgo_ToolsProvider_add_tool(BOPAlgo_ToolsProvider* sel
     try { self_->AddTool(*theShape); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPAlgo_ToolsProvider_set_tools(BOPAlgo_ToolsProvider* self_, TopTools_ListOfShape const* theShapes) {
+extern "C" const char* BOPAlgo_ToolsProvider_set_tools(BOPAlgo_ToolsProvider* self_, NCollection_List_TopoDS_Shape const* theShapes) {
     try { self_->SetTools(*theShapes); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_ToolsProvider_tools(const BOPAlgo_ToolsProvider* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_ToolsProvider_tools(const BOPAlgo_ToolsProvider* self_) {
     try { return {&(self_->Tools()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7458,11 +7376,11 @@ extern "C" const char* BOPAlgo_ToolsProvider_inherited_AddArgument(BOPAlgo_Tools
     try { self->AddArgument(theShape); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPAlgo_ToolsProvider_inherited_SetArguments(BOPAlgo_ToolsProvider* self, TopTools_ListOfShape const& theLS) {
+extern "C" const char* BOPAlgo_ToolsProvider_inherited_SetArguments(BOPAlgo_ToolsProvider* self, NCollection_List_TopoDS_Shape const& theLS) {
     try { self->SetArguments(theLS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_ToolsProvider_inherited_Arguments(const BOPAlgo_ToolsProvider* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_ToolsProvider_inherited_Arguments(const BOPAlgo_ToolsProvider* self) {
     try { return {&(self->Arguments()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7498,19 +7416,19 @@ extern "C" const char* BOPAlgo_ToolsProvider_inherited_PerformWithFiller(BOPAlgo
     try { self->PerformWithFiller(theFiller, theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPAlgo_ToolsProvider_inherited_BuildBOP(BOPAlgo_ToolsProvider* self, TopTools_ListOfShape const& theObjects, int32_t theObjState, TopTools_ListOfShape const& theTools, int32_t theToolsState, Message_ProgressRange const& theRange, Handle(Message_Report) const& theReport) {
+extern "C" const char* BOPAlgo_ToolsProvider_inherited_BuildBOP(BOPAlgo_ToolsProvider* self, NCollection_List_TopoDS_Shape const& theObjects, int32_t theObjState, NCollection_List_TopoDS_Shape const& theTools, int32_t theToolsState, Message_ProgressRange const& theRange, Handle(Message_Report) const& theReport) {
     try { self->BuildBOP(theObjects, static_cast<TopAbs_State>(theObjState), theTools, static_cast<TopAbs_State>(theToolsState), theRange, theReport); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeListOfShape const*> BOPAlgo_ToolsProvider_inherited_Images(const BOPAlgo_ToolsProvider* self) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher const*> BOPAlgo_ToolsProvider_inherited_Images(const BOPAlgo_ToolsProvider* self) {
     try { return {&(self->Images()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeListOfShape const*> BOPAlgo_ToolsProvider_inherited_Origins(const BOPAlgo_ToolsProvider* self) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher const*> BOPAlgo_ToolsProvider_inherited_Origins(const BOPAlgo_ToolsProvider* self) {
     try { return {&(self->Origins()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeShape const*> BOPAlgo_ToolsProvider_inherited_ShapesSD(const BOPAlgo_ToolsProvider* self) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher const*> BOPAlgo_ToolsProvider_inherited_ShapesSD(const BOPAlgo_ToolsProvider* self) {
     try { return {&(self->ShapesSD()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7546,7 +7464,7 @@ extern "C" OcctResult<bool> BOPAlgo_ToolsProvider_inherited_HasHistory(const BOP
     try { return {self->HasHistory(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_BaseAllocator) const*> BOPAlgo_ToolsProvider_inherited_Allocator(const BOPAlgo_ToolsProvider* self) {
+extern "C" OcctResult<TDF_HAllocator const*> BOPAlgo_ToolsProvider_inherited_Allocator(const BOPAlgo_ToolsProvider* self) {
     try { return {&(self->Allocator()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7624,7 +7542,7 @@ extern "C" OcctResult<BOPAlgo_WireEdgeSet*> BOPAlgo_WireEdgeSet_ctor() {
     try { return {new BOPAlgo_WireEdgeSet(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_WireEdgeSet*> BOPAlgo_WireEdgeSet_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPAlgo_WireEdgeSet*> BOPAlgo_WireEdgeSet_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPAlgo_WireEdgeSet(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7644,7 +7562,7 @@ extern "C" const char* BOPAlgo_WireEdgeSet_add_start_element(BOPAlgo_WireEdgeSet
     try { self_->AddStartElement(*sS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_WireEdgeSet_start_elements(const BOPAlgo_WireEdgeSet* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_WireEdgeSet_start_elements(const BOPAlgo_WireEdgeSet* self_) {
     try { return {&(self_->StartElements()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7652,7 +7570,7 @@ extern "C" const char* BOPAlgo_WireEdgeSet_add_shape(BOPAlgo_WireEdgeSet* self_,
     try { self_->AddShape(*sS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPAlgo_WireEdgeSet_shapes(const BOPAlgo_WireEdgeSet* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPAlgo_WireEdgeSet_shapes(const BOPAlgo_WireEdgeSet* self_) {
     try { return {&(self_->Shapes()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7666,7 +7584,7 @@ extern "C" OcctResult<BOPAlgo_WireSplitter*> BOPAlgo_WireSplitter_ctor() {
     try { return {new BOPAlgo_WireSplitter(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_WireSplitter*> BOPAlgo_WireSplitter_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPAlgo_WireSplitter*> BOPAlgo_WireSplitter_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPAlgo_WireSplitter(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7690,7 +7608,7 @@ extern "C" const char* BOPAlgo_WireSplitter_perform(BOPAlgo_WireSplitter* self_,
     try { self_->Perform(*theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPAlgo_WireSplitter_make_wire(TopTools_ListOfShape* theLE, TopoDS_Wire* theW) {
+extern "C" const char* BOPAlgo_WireSplitter_make_wire(NCollection_List_TopoDS_Shape* theLE, TopoDS_Wire* theW) {
     try { BOPAlgo_WireSplitter::MakeWire(*theLE, *theW); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7702,7 +7620,7 @@ extern "C" OcctResult<const BOPAlgo_Algo*> BOPAlgo_WireSplitter_as_BOPAlgo_Algo(
 extern "C" OcctResult<BOPAlgo_Algo*> BOPAlgo_WireSplitter_as_BOPAlgo_Algo_mut(BOPAlgo_WireSplitter* self_) { return {static_cast<BOPAlgo_Algo*>(self_), nullptr}; }
 extern "C" OcctResult<const BOPAlgo_Options*> BOPAlgo_WireSplitter_as_BOPAlgo_Options(const BOPAlgo_WireSplitter* self_) { return {static_cast<const BOPAlgo_Options*>(self_), nullptr}; }
 extern "C" OcctResult<BOPAlgo_Options*> BOPAlgo_WireSplitter_as_BOPAlgo_Options_mut(BOPAlgo_WireSplitter* self_) { return {static_cast<BOPAlgo_Options*>(self_), nullptr}; }
-extern "C" OcctResult<Handle(NCollection_BaseAllocator) const*> BOPAlgo_WireSplitter_inherited_Allocator(const BOPAlgo_WireSplitter* self) {
+extern "C" OcctResult<TDF_HAllocator const*> BOPAlgo_WireSplitter_inherited_Allocator(const BOPAlgo_WireSplitter* self) {
     try { return {&(self->Allocator()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7784,7 +7702,7 @@ extern "C" OcctResult<BOPDS_CommonBlock*> BOPDS_CommonBlock_ctor() {
     try { return {new BOPDS_CommonBlock(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_CommonBlock*> BOPDS_CommonBlock_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPDS_CommonBlock*> BOPDS_CommonBlock_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPDS_CommonBlock(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7792,27 +7710,19 @@ extern "C" const char* BOPDS_CommonBlock_add_pave_block(BOPDS_CommonBlock* self_
     try { self_->AddPaveBlock(*aPB); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPDS_CommonBlock_set_pave_blocks(BOPDS_CommonBlock* self_, BOPDS_ListOfPaveBlock const* aLPB) {
-    try { self_->SetPaveBlocks(*aLPB); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* BOPDS_CommonBlock_add_face(BOPDS_CommonBlock* self_, int32_t aF) {
     try { self_->AddFace(aF); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPDS_CommonBlock_set_faces(BOPDS_CommonBlock* self_, TColStd_ListOfInteger const* aLF) {
+extern "C" const char* BOPDS_CommonBlock_set_faces(BOPDS_CommonBlock* self_, NCollection_List_int const* aLF) {
     try { self_->SetFaces(*aLF); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPDS_CommonBlock_append_faces(BOPDS_CommonBlock* self_, TColStd_ListOfInteger* aLF) {
+extern "C" const char* BOPDS_CommonBlock_append_faces(BOPDS_CommonBlock* self_, NCollection_List_int* aLF) {
     try { self_->AppendFaces(*aLF); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<BOPDS_ListOfPaveBlock const*> BOPDS_CommonBlock_pave_blocks(const BOPDS_CommonBlock* self_) {
-    try { return {&(self_->PaveBlocks()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColStd_ListOfInteger const*> BOPDS_CommonBlock_faces(const BOPDS_CommonBlock* self_) {
+extern "C" OcctResult<NCollection_List_int const*> BOPDS_CommonBlock_faces(const BOPDS_CommonBlock* self_) {
     try { return {&(self_->Faces()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7878,20 +7788,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BOPDS_CommonBlock_get_type_d
 }
 extern "C" OcctResult<const Standard_Transient*> BOPDS_CommonBlock_as_Standard_Transient(const BOPDS_CommonBlock* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPDS_CommonBlock_as_Standard_Transient_mut(BOPDS_CommonBlock* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPDSCommonBlock*> BOPDS_CommonBlock_to_handle(BOPDS_CommonBlock* obj) {
-    try { return {new HandleBOPDSCommonBlock(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPDS_CommonBlock*> BOPDS_CommonBlock_to_handle(BOPDS_CommonBlock* obj) {
+    try { return {new Handle_BOPDS_CommonBlock(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPDS_CommonBlock*> HandleBOPDSCommonBlock_get(const HandleBOPDSCommonBlock* handle) {
+extern "C" OcctResult<const BOPDS_CommonBlock*> Handle_BOPDS_CommonBlock_get(const Handle_BOPDS_CommonBlock* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_CommonBlock*> HandleBOPDSCommonBlock_get_mut(HandleBOPDSCommonBlock* handle) {
+extern "C" OcctResult<BOPDS_CommonBlock*> Handle_BOPDS_CommonBlock_get_mut(Handle_BOPDS_CommonBlock* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPDSCommonBlock_to_HandleStandardTransient(const HandleBOPDSCommonBlock* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPDS_CommonBlock_to_Handle_Standard_Transient(const Handle_BOPDS_CommonBlock* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BOPDS_CommonBlock_inherited_IsInstance(const BOPDS_CommonBlock* self, Handle(Standard_Type) const& theType) {
@@ -7956,10 +7866,6 @@ extern "C" const char* BOPDS_CoupleOfPaveBlocks_set_pave_blocks(BOPDS_CoupleOfPa
     try { self_->SetPaveBlocks(*thePB1, *thePB2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPDS_CoupleOfPaveBlocks_pave_blocks(const BOPDS_CoupleOfPaveBlocks* self_, Handle(BOPDS_PaveBlock)* thePB1, Handle(BOPDS_PaveBlock)* thePB2) {
-    try { self_->PaveBlocks(*thePB1, *thePB2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* BOPDS_CoupleOfPaveBlocks_set_pave_block1(BOPDS_CoupleOfPaveBlocks* self_, Handle(BOPDS_PaveBlock) const* thePB) {
     try { self_->SetPaveBlock1(*thePB); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -7994,7 +7900,7 @@ extern "C" OcctResult<BOPDS_Curve*> BOPDS_Curve_ctor() {
     try { return {new BOPDS_Curve(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_Curve*> BOPDS_Curve_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPDS_Curve*> BOPDS_Curve_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPDS_Curve(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8018,18 +7924,6 @@ extern "C" OcctResult<Bnd_Box*> BOPDS_Curve_change_box(BOPDS_Curve* self_) {
     try { return {&(self_->ChangeBox()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BOPDS_Curve_set_pave_blocks(BOPDS_Curve* self_, BOPDS_ListOfPaveBlock const* theLPB) {
-    try { self_->SetPaveBlocks(*theLPB); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<BOPDS_ListOfPaveBlock const*> BOPDS_Curve_pave_blocks(const BOPDS_Curve* self_) {
-    try { return {&(self_->PaveBlocks()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<BOPDS_ListOfPaveBlock*> BOPDS_Curve_change_pave_blocks(BOPDS_Curve* self_) {
-    try { return {&(self_->ChangePaveBlocks()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* BOPDS_Curve_init_pave_block1(BOPDS_Curve* self_) {
     try { self_->InitPaveBlock1(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -8038,11 +7932,11 @@ extern "C" OcctResult<Handle(BOPDS_PaveBlock)*> BOPDS_Curve_change_pave_block1(B
     try { return {&(self_->ChangePaveBlock1()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_ListOfInteger const*> BOPDS_Curve_techno_vertices(const BOPDS_Curve* self_) {
+extern "C" OcctResult<NCollection_List_int const*> BOPDS_Curve_techno_vertices(const BOPDS_Curve* self_) {
     try { return {&(self_->TechnoVertices()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_ListOfInteger*> BOPDS_Curve_change_techno_vertices(BOPDS_Curve* self_) {
+extern "C" OcctResult<NCollection_List_int*> BOPDS_Curve_change_techno_vertices(BOPDS_Curve* self_) {
     try { return {&(self_->ChangeTechnoVertices()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8072,7 +7966,7 @@ extern "C" OcctResult<BOPDS_DS*> BOPDS_DS_ctor() {
     try { return {new BOPDS_DS(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_DS*> BOPDS_DS_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPDS_DS*> BOPDS_DS_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPDS_DS(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8088,15 +7982,15 @@ extern "C" const char* BOPDS_DS_clear(BOPDS_DS* self_) {
     try { self_->Clear(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_BaseAllocator) const*> BOPDS_DS_allocator(const BOPDS_DS* self_) {
+extern "C" OcctResult<TDF_HAllocator const*> BOPDS_DS_allocator(const BOPDS_DS* self_) {
     try { return {&(self_->Allocator()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BOPDS_DS_set_arguments(BOPDS_DS* self_, TopTools_ListOfShape const* theLS) {
+extern "C" const char* BOPDS_DS_set_arguments(BOPDS_DS* self_, NCollection_List_TopoDS_Shape const* theLS) {
     try { self_->SetArguments(*theLS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPDS_DS_arguments(const BOPDS_DS* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPDS_DS_arguments(const BOPDS_DS* self_) {
     try { return {&(self_->Arguments()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8152,24 +8046,8 @@ extern "C" OcctResult<int32_t> BOPDS_DS_index(const BOPDS_DS* self_, TopoDS_Shap
     try { return {self_->Index(*theS), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_VectorOfListOfPaveBlock const*> BOPDS_DS_pave_blocks_pool(const BOPDS_DS* self_) {
-    try { return {&(self_->PaveBlocksPool()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<BOPDS_VectorOfListOfPaveBlock*> BOPDS_DS_change_pave_blocks_pool(BOPDS_DS* self_) {
-    try { return {&(self_->ChangePaveBlocksPool()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<bool> BOPDS_DS_has_pave_blocks(const BOPDS_DS* self_, int32_t theIndex) {
     try { return {self_->HasPaveBlocks(theIndex), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<BOPDS_ListOfPaveBlock const*> BOPDS_DS_pave_blocks(const BOPDS_DS* self_, int32_t theIndex) {
-    try { return {&(self_->PaveBlocks(theIndex)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<BOPDS_ListOfPaveBlock*> BOPDS_DS_change_pave_blocks(BOPDS_DS* self_, int32_t theIndex) {
-    try { return {&(self_->ChangePaveBlocks(theIndex)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* BOPDS_DS_update_pave_blocks(BOPDS_DS* self_) {
@@ -8196,7 +8074,7 @@ extern "C" OcctResult<bool> BOPDS_DS_is_common_block_on_edge(const BOPDS_DS* sel
     try { return {self_->IsCommonBlockOnEdge(*thePB), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_VectorOfFaceInfo const*> BOPDS_DS_face_info_pool(const BOPDS_DS* self_) {
+extern "C" OcctResult<NCollection_DynamicArray_BOPDS_FaceInfo const*> BOPDS_DS_face_info_pool(const BOPDS_DS* self_) {
     try { return {&(self_->FaceInfoPool()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8216,7 +8094,7 @@ extern "C" const char* BOPDS_DS_update_face_info_in_int(BOPDS_DS* self_, int32_t
     try { self_->UpdateFaceInfoIn(theIndex); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPDS_DS_update_face_info_in_mapofinteger(BOPDS_DS* self_, TColStd_MapOfInteger const* theFaces) {
+extern "C" const char* BOPDS_DS_update_face_info_in_map_int(BOPDS_DS* self_, NCollection_Map_int const* theFaces) {
     try { self_->UpdateFaceInfoIn(*theFaces); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -8224,20 +8102,12 @@ extern "C" const char* BOPDS_DS_update_face_info_on_int(BOPDS_DS* self_, int32_t
     try { self_->UpdateFaceInfoOn(theIndex); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPDS_DS_update_face_info_on_mapofinteger(BOPDS_DS* self_, TColStd_MapOfInteger const* theFaces) {
+extern "C" const char* BOPDS_DS_update_face_info_on_map_int(BOPDS_DS* self_, NCollection_Map_int const* theFaces) {
     try { self_->UpdateFaceInfoOn(*theFaces); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPDS_DS_face_info_on(BOPDS_DS* self_, int32_t theIndex, BOPDS_IndexedMapOfPaveBlock* theMPB, TColStd_MapOfInteger* theMVP) {
-    try { self_->FaceInfoOn(theIndex, *theMPB, *theMVP); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* BOPDS_DS_face_info_in(BOPDS_DS* self_, int32_t theIndex, BOPDS_IndexedMapOfPaveBlock* theMPB, TColStd_MapOfInteger* theMVP) {
-    try { self_->FaceInfoIn(theIndex, *theMPB, *theMVP); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* BOPDS_DS_alone_vertices(const BOPDS_DS* self_, int32_t theF, TColStd_ListOfInteger* theLI) {
-    try { self_->AloneVertices(theF, *theLI); return nullptr; }
+extern "C" const char* BOPDS_DS_alone_vertices(const BOPDS_DS* self_, int32_t theFaceIndex, NCollection_List_int* theVertexList) {
+    try { self_->AloneVertices(theFaceIndex, *theVertexList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* BOPDS_DS_refine_face_info_on(BOPDS_DS* self_) {
@@ -8248,15 +8118,11 @@ extern "C" const char* BOPDS_DS_refine_face_info_in(BOPDS_DS* self_) {
     try { self_->RefineFaceInfoIn(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPDS_DS_sub_shapes_on_in(const BOPDS_DS* self_, int32_t theNF1, int32_t theNF2, TColStd_MapOfInteger* theMVOnIn, TColStd_MapOfInteger* theMVCommon, BOPDS_IndexedMapOfPaveBlock* thePBOnIn, BOPDS_MapOfPaveBlock* theCommonPB) {
-    try { self_->SubShapesOnIn(theNF1, theNF2, *theMVOnIn, *theMVCommon, *thePBOnIn, *theCommonPB); return nullptr; }
+extern "C" const char* BOPDS_DS_shared_edges(BOPDS_DS* self_, int32_t theFaceIndex1, int32_t theFaceIndex2, NCollection_List_int* theEdgeList, TDF_HAllocator const* theAllocator) {
+    try { self_->SharedEdges(theFaceIndex1, theFaceIndex2, *theEdgeList, *theAllocator); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPDS_DS_shared_edges(BOPDS_DS* self_, int32_t theF1, int32_t theF2, TColStd_ListOfInteger* theLI, Handle(NCollection_BaseAllocator) const* theAllocator) {
-    try { self_->SharedEdges(theF1, theF2, *theLI, *theAllocator); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<TColStd_DataMapOfIntegerInteger*> BOPDS_DS_shapes_sd(BOPDS_DS* self_) {
+extern "C" OcctResult<NCollection_DataMap_int_int*> BOPDS_DS_shapes_sd(BOPDS_DS* self_) {
     try { return {&(self_->ShapesSD()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8268,43 +8134,47 @@ extern "C" OcctResult<bool> BOPDS_DS_has_shape_sd(const BOPDS_DS* self_, int32_t
     try { return {self_->HasShapeSD(theIndex, *theIndexSD), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_VectorOfInterfVV*> BOPDS_DS_interf_vv(BOPDS_DS* self_) {
+extern "C" OcctResult<int32_t> BOPDS_DS_get_same_domain_index(const BOPDS_DS* self_, int32_t theIndex) {
+    try { return {self_->GetSameDomainIndex(theIndex), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_DynamicArray_BOPDS_InterfVV*> BOPDS_DS_interf_vv(BOPDS_DS* self_) {
     try { return {&(self_->InterfVV()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_VectorOfInterfVE*> BOPDS_DS_interf_ve(BOPDS_DS* self_) {
+extern "C" OcctResult<NCollection_DynamicArray_BOPDS_InterfVE*> BOPDS_DS_interf_ve(BOPDS_DS* self_) {
     try { return {&(self_->InterfVE()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_VectorOfInterfVF*> BOPDS_DS_interf_vf(BOPDS_DS* self_) {
+extern "C" OcctResult<NCollection_DynamicArray_BOPDS_InterfVF*> BOPDS_DS_interf_vf(BOPDS_DS* self_) {
     try { return {&(self_->InterfVF()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_VectorOfInterfEE*> BOPDS_DS_interf_ee(BOPDS_DS* self_) {
+extern "C" OcctResult<NCollection_DynamicArray_BOPDS_InterfEE*> BOPDS_DS_interf_ee(BOPDS_DS* self_) {
     try { return {&(self_->InterfEE()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_VectorOfInterfEF*> BOPDS_DS_interf_ef(BOPDS_DS* self_) {
+extern "C" OcctResult<NCollection_DynamicArray_BOPDS_InterfEF*> BOPDS_DS_interf_ef(BOPDS_DS* self_) {
     try { return {&(self_->InterfEF()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_VectorOfInterfFF*> BOPDS_DS_interf_ff(BOPDS_DS* self_) {
+extern "C" OcctResult<NCollection_DynamicArray_BOPDS_InterfFF*> BOPDS_DS_interf_ff(BOPDS_DS* self_) {
     try { return {&(self_->InterfFF()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_VectorOfInterfVZ*> BOPDS_DS_interf_vz(BOPDS_DS* self_) {
+extern "C" OcctResult<NCollection_DynamicArray_BOPDS_InterfVZ*> BOPDS_DS_interf_vz(BOPDS_DS* self_) {
     try { return {&(self_->InterfVZ()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_VectorOfInterfEZ*> BOPDS_DS_interf_ez(BOPDS_DS* self_) {
+extern "C" OcctResult<NCollection_DynamicArray_BOPDS_InterfEZ*> BOPDS_DS_interf_ez(BOPDS_DS* self_) {
     try { return {&(self_->InterfEZ()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_VectorOfInterfFZ*> BOPDS_DS_interf_fz(BOPDS_DS* self_) {
+extern "C" OcctResult<NCollection_DynamicArray_BOPDS_InterfFZ*> BOPDS_DS_interf_fz(BOPDS_DS* self_) {
     try { return {&(self_->InterfFZ()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_VectorOfInterfZZ*> BOPDS_DS_interf_zz(BOPDS_DS* self_) {
+extern "C" OcctResult<NCollection_DynamicArray_BOPDS_InterfZZ*> BOPDS_DS_interf_zz(BOPDS_DS* self_) {
     try { return {&(self_->InterfZZ()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8320,15 +8190,15 @@ extern "C" OcctResult<bool> BOPDS_DS_has_interf_int2(const BOPDS_DS* self_, int3
     try { return {self_->HasInterf(theI1, theI2), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BOPDS_DS_has_interf_shape_sub_shapes(const BOPDS_DS* self_, int32_t theI1, int32_t theI2, bool theFlag) {
-    try { return {self_->HasInterfShapeSubShapes(theI1, theI2, theFlag), nullptr}; }
+extern "C" OcctResult<bool> BOPDS_DS_has_interf_shape_sub_shapes(const BOPDS_DS* self_, int32_t theIndex1, int32_t theIndex2, bool theAnyInterference) {
+    try { return {self_->HasInterfShapeSubShapes(theIndex1, theIndex2, theAnyInterference), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BOPDS_DS_has_interf_sub_shapes(const BOPDS_DS* self_, int32_t theI1, int32_t theI2) {
-    try { return {self_->HasInterfSubShapes(theI1, theI2), nullptr}; }
+extern "C" OcctResult<bool> BOPDS_DS_has_interf_sub_shapes(const BOPDS_DS* self_, int32_t theIndex1, int32_t theIndex2) {
+    try { return {self_->HasInterfSubShapes(theIndex1, theIndex2), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_MapOfPair const*> BOPDS_DS_interferences(const BOPDS_DS* self_) {
+extern "C" OcctResult<NCollection_Map_BOPDS_Pair const*> BOPDS_DS_interferences(const BOPDS_DS* self_) {
     try { return {&(self_->Interferences()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8336,11 +8206,11 @@ extern "C" const char* BOPDS_DS_dump(const BOPDS_DS* self_) {
     try { self_->Dump(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BOPDS_DS_is_sub_shape(BOPDS_DS* self_, int32_t theI1, int32_t theI2) {
-    try { return {self_->IsSubShape(theI1, theI2), nullptr}; }
+extern "C" OcctResult<bool> BOPDS_DS_is_sub_shape(BOPDS_DS* self_, int32_t theCandidate, int32_t theParent) {
+    try { return {self_->IsSubShape(theCandidate, theParent), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BOPDS_DS_paves(BOPDS_DS* self_, int32_t theIndex, BOPDS_ListOfPave* theLP) {
+extern "C" const char* BOPDS_DS_paves(BOPDS_DS* self_, int32_t theIndex, NCollection_List_BOPDS_Pave* theLP) {
     try { self_->Paves(theIndex, *theLP); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -8386,7 +8256,7 @@ extern "C" OcctResult<BOPDS_FaceInfo*> BOPDS_FaceInfo_ctor() {
     try { return {new BOPDS_FaceInfo(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_FaceInfo*> BOPDS_FaceInfo_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPDS_FaceInfo*> BOPDS_FaceInfo_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPDS_FaceInfo(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8402,51 +8272,27 @@ extern "C" OcctResult<int32_t> BOPDS_FaceInfo_index(const BOPDS_FaceInfo* self_)
     try { return {self_->Index(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_IndexedMapOfPaveBlock const*> BOPDS_FaceInfo_pave_blocks_in(const BOPDS_FaceInfo* self_) {
-    try { return {&(self_->PaveBlocksIn()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<BOPDS_IndexedMapOfPaveBlock*> BOPDS_FaceInfo_change_pave_blocks_in(BOPDS_FaceInfo* self_) {
-    try { return {&(self_->ChangePaveBlocksIn()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColStd_MapOfInteger const*> BOPDS_FaceInfo_vertices_in(const BOPDS_FaceInfo* self_) {
+extern "C" OcctResult<NCollection_Map_int const*> BOPDS_FaceInfo_vertices_in(const BOPDS_FaceInfo* self_) {
     try { return {&(self_->VerticesIn()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_MapOfInteger*> BOPDS_FaceInfo_change_vertices_in(BOPDS_FaceInfo* self_) {
+extern "C" OcctResult<NCollection_Map_int*> BOPDS_FaceInfo_change_vertices_in(BOPDS_FaceInfo* self_) {
     try { return {&(self_->ChangeVerticesIn()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_IndexedMapOfPaveBlock const*> BOPDS_FaceInfo_pave_blocks_on(const BOPDS_FaceInfo* self_) {
-    try { return {&(self_->PaveBlocksOn()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<BOPDS_IndexedMapOfPaveBlock*> BOPDS_FaceInfo_change_pave_blocks_on(BOPDS_FaceInfo* self_) {
-    try { return {&(self_->ChangePaveBlocksOn()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColStd_MapOfInteger const*> BOPDS_FaceInfo_vertices_on(const BOPDS_FaceInfo* self_) {
+extern "C" OcctResult<NCollection_Map_int const*> BOPDS_FaceInfo_vertices_on(const BOPDS_FaceInfo* self_) {
     try { return {&(self_->VerticesOn()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_MapOfInteger*> BOPDS_FaceInfo_change_vertices_on(BOPDS_FaceInfo* self_) {
+extern "C" OcctResult<NCollection_Map_int*> BOPDS_FaceInfo_change_vertices_on(BOPDS_FaceInfo* self_) {
     try { return {&(self_->ChangeVerticesOn()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_IndexedMapOfPaveBlock const*> BOPDS_FaceInfo_pave_blocks_sc(const BOPDS_FaceInfo* self_) {
-    try { return {&(self_->PaveBlocksSc()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<BOPDS_IndexedMapOfPaveBlock*> BOPDS_FaceInfo_change_pave_blocks_sc(BOPDS_FaceInfo* self_) {
-    try { return {&(self_->ChangePaveBlocksSc()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColStd_MapOfInteger const*> BOPDS_FaceInfo_vertices_sc(const BOPDS_FaceInfo* self_) {
+extern "C" OcctResult<NCollection_Map_int const*> BOPDS_FaceInfo_vertices_sc(const BOPDS_FaceInfo* self_) {
     try { return {&(self_->VerticesSc()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_MapOfInteger*> BOPDS_FaceInfo_change_vertices_sc(BOPDS_FaceInfo* self_) {
+extern "C" OcctResult<NCollection_Map_int*> BOPDS_FaceInfo_change_vertices_sc(BOPDS_FaceInfo* self_) {
     try { return {&(self_->ChangeVerticesSc()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8458,6 +8304,10 @@ extern "C" void BOPDS_FaceInfo_destructor(BOPDS_FaceInfo* self_) { delete self_;
 
 extern "C" OcctResult<BOPDS_IndexRange*> BOPDS_IndexRange_ctor() {
     try { return {new BOPDS_IndexRange(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BOPDS_IndexRange*> BOPDS_IndexRange_ctor_int2(int32_t theI1, int32_t theI2) {
+    try { return {new BOPDS_IndexRange(theI1, theI2), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* BOPDS_IndexRange_set_first(BOPDS_IndexRange* self_, int32_t theI1) {
@@ -8555,7 +8405,7 @@ extern "C" OcctResult<BOPDS_InterfVV*> BOPDS_InterfVV_ctor() {
     try { return {new BOPDS_InterfVV(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_InterfVV*> BOPDS_InterfVV_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPDS_InterfVV*> BOPDS_InterfVV_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPDS_InterfVV(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8615,7 +8465,7 @@ extern "C" OcctResult<BOPDS_InterfVE*> BOPDS_InterfVE_ctor() {
     try { return {new BOPDS_InterfVE(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_InterfVE*> BOPDS_InterfVE_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPDS_InterfVE*> BOPDS_InterfVE_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPDS_InterfVE(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8683,7 +8533,7 @@ extern "C" OcctResult<BOPDS_InterfVF*> BOPDS_InterfVF_ctor() {
     try { return {new BOPDS_InterfVF(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_InterfVF*> BOPDS_InterfVF_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPDS_InterfVF*> BOPDS_InterfVF_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPDS_InterfVF(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8751,7 +8601,7 @@ extern "C" OcctResult<BOPDS_InterfEE*> BOPDS_InterfEE_ctor() {
     try { return {new BOPDS_InterfEE(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_InterfEE*> BOPDS_InterfEE_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPDS_InterfEE*> BOPDS_InterfEE_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPDS_InterfEE(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8819,7 +8669,7 @@ extern "C" OcctResult<BOPDS_InterfEF*> BOPDS_InterfEF_ctor() {
     try { return {new BOPDS_InterfEF(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_InterfEF*> BOPDS_InterfEF_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPDS_InterfEF*> BOPDS_InterfEF_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPDS_InterfEF(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8899,19 +8749,19 @@ extern "C" OcctResult<bool> BOPDS_InterfFF_tangent_faces(const BOPDS_InterfFF* s
     try { return {self_->TangentFaces(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_VectorOfCurve const*> BOPDS_InterfFF_curves(const BOPDS_InterfFF* self_) {
+extern "C" OcctResult<NCollection_DynamicArray_BOPDS_Curve const*> BOPDS_InterfFF_curves(const BOPDS_InterfFF* self_) {
     try { return {&(self_->Curves()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_VectorOfCurve*> BOPDS_InterfFF_change_curves(BOPDS_InterfFF* self_) {
+extern "C" OcctResult<NCollection_DynamicArray_BOPDS_Curve*> BOPDS_InterfFF_change_curves(BOPDS_InterfFF* self_) {
     try { return {&(self_->ChangeCurves()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_VectorOfPoint const*> BOPDS_InterfFF_points(const BOPDS_InterfFF* self_) {
+extern "C" OcctResult<NCollection_DynamicArray_BOPDS_Point const*> BOPDS_InterfFF_points(const BOPDS_InterfFF* self_) {
     try { return {&(self_->Points()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_VectorOfPoint*> BOPDS_InterfFF_change_points(BOPDS_InterfFF* self_) {
+extern "C" OcctResult<NCollection_DynamicArray_BOPDS_Point*> BOPDS_InterfFF_change_points(BOPDS_InterfFF* self_) {
     try { return {&(self_->ChangePoints()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8971,7 +8821,7 @@ extern "C" OcctResult<BOPDS_InterfVZ*> BOPDS_InterfVZ_ctor() {
     try { return {new BOPDS_InterfVZ(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_InterfVZ*> BOPDS_InterfVZ_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPDS_InterfVZ*> BOPDS_InterfVZ_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPDS_InterfVZ(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9031,7 +8881,7 @@ extern "C" OcctResult<BOPDS_InterfEZ*> BOPDS_InterfEZ_ctor() {
     try { return {new BOPDS_InterfEZ(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_InterfEZ*> BOPDS_InterfEZ_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPDS_InterfEZ*> BOPDS_InterfEZ_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPDS_InterfEZ(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9091,7 +8941,7 @@ extern "C" OcctResult<BOPDS_InterfFZ*> BOPDS_InterfFZ_ctor() {
     try { return {new BOPDS_InterfFZ(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_InterfFZ*> BOPDS_InterfFZ_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPDS_InterfFZ*> BOPDS_InterfFZ_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPDS_InterfFZ(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9151,7 +9001,7 @@ extern "C" OcctResult<BOPDS_InterfZZ*> BOPDS_InterfZZ_ctor() {
     try { return {new BOPDS_InterfZZ(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_InterfZZ*> BOPDS_InterfZZ_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPDS_InterfZZ*> BOPDS_InterfZZ_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPDS_InterfZZ(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9211,7 +9061,7 @@ extern "C" OcctResult<BOPDS_Iterator*> BOPDS_Iterator_ctor() {
     try { return {new BOPDS_Iterator(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_Iterator*> BOPDS_Iterator_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPDS_Iterator*> BOPDS_Iterator_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPDS_Iterator(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9243,7 +9093,7 @@ extern "C" const char* BOPDS_Iterator_prepare(BOPDS_Iterator* self_, Handle(IntT
     try { self_->Prepare(*theCtx, theCheckOBB, theFuzzyValue); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPDS_Iterator_intersect_ext(BOPDS_Iterator* self_, TColStd_MapOfInteger const* theIndicies) {
+extern "C" const char* BOPDS_Iterator_intersect_ext(BOPDS_Iterator* self_, NCollection_Map_int const* theIndicies) {
     try { self_->IntersectExt(*theIndicies); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -9277,7 +9127,7 @@ extern "C" OcctResult<BOPDS_IteratorSI*> BOPDS_IteratorSI_ctor() {
     try { return {new BOPDS_IteratorSI(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_IteratorSI*> BOPDS_IteratorSI_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPDS_IteratorSI*> BOPDS_IteratorSI_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPDS_IteratorSI(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9311,7 +9161,7 @@ extern "C" const char* BOPDS_IteratorSI_inherited_Prepare(BOPDS_IteratorSI* self
     try { self->Prepare(theCtx, theCheckOBB, theFuzzyValue); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPDS_IteratorSI_inherited_IntersectExt(BOPDS_IteratorSI* self, TColStd_MapOfInteger const& theIndicies) {
+extern "C" const char* BOPDS_IteratorSI_inherited_IntersectExt(BOPDS_IteratorSI* self, NCollection_Map_int const& theIndicies) {
     try { self->IntersectExt(theIndicies); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -9367,6 +9217,10 @@ extern "C" OcctResult<BOPDS_Pave*> BOPDS_Pave_ctor() {
     try { return {new BOPDS_Pave(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<BOPDS_Pave*> BOPDS_Pave_ctor_int_real(int32_t theIndex, double theParameter) {
+    try { return {new BOPDS_Pave(theIndex, theParameter), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" const char* BOPDS_Pave_set_index(BOPDS_Pave* self_, int32_t theIndex) {
     try { self_->SetIndex(theIndex); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -9409,7 +9263,7 @@ extern "C" OcctResult<BOPDS_PaveBlock*> BOPDS_PaveBlock_ctor() {
     try { return {new BOPDS_PaveBlock(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_PaveBlock*> BOPDS_PaveBlock_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPDS_PaveBlock*> BOPDS_PaveBlock_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPDS_PaveBlock(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9485,17 +9339,13 @@ extern "C" const char* BOPDS_PaveBlock_remove_ext_pave(BOPDS_PaveBlock* self_, i
     try { self_->RemoveExtPave(theVertNum); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<BOPDS_ListOfPave const*> BOPDS_PaveBlock_ext_paves(const BOPDS_PaveBlock* self_) {
+extern "C" OcctResult<NCollection_List_BOPDS_Pave const*> BOPDS_PaveBlock_ext_paves(const BOPDS_PaveBlock* self_) {
     try { return {&(self_->ExtPaves()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_ListOfPave*> BOPDS_PaveBlock_change_ext_paves(BOPDS_PaveBlock* self_) {
+extern "C" OcctResult<NCollection_List_BOPDS_Pave*> BOPDS_PaveBlock_change_ext_paves(BOPDS_PaveBlock* self_) {
     try { return {&(self_->ChangeExtPaves()), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* BOPDS_PaveBlock_update(BOPDS_PaveBlock* self_, BOPDS_ListOfPaveBlock* theLPB, bool theFlag) {
-    try { self_->Update(*theLPB, theFlag); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<bool> BOPDS_PaveBlock_contains_parameter(const BOPDS_PaveBlock* self_, double thePrm, double theTol, int32_t* theInd) {
     try { return {self_->ContainsParameter(thePrm, theTol, *theInd), nullptr}; }
@@ -9535,20 +9385,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BOPDS_PaveBlock_get_type_des
 }
 extern "C" OcctResult<const Standard_Transient*> BOPDS_PaveBlock_as_Standard_Transient(const BOPDS_PaveBlock* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BOPDS_PaveBlock_as_Standard_Transient_mut(BOPDS_PaveBlock* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBOPDSPaveBlock*> BOPDS_PaveBlock_to_handle(BOPDS_PaveBlock* obj) {
-    try { return {new HandleBOPDSPaveBlock(obj), nullptr}; }
+extern "C" OcctResult<Handle_BOPDS_PaveBlock*> BOPDS_PaveBlock_to_handle(BOPDS_PaveBlock* obj) {
+    try { return {new Handle_BOPDS_PaveBlock(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BOPDS_PaveBlock*> HandleBOPDSPaveBlock_get(const HandleBOPDSPaveBlock* handle) {
+extern "C" OcctResult<const BOPDS_PaveBlock*> Handle_BOPDS_PaveBlock_get(const Handle_BOPDS_PaveBlock* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_PaveBlock*> HandleBOPDSPaveBlock_get_mut(HandleBOPDSPaveBlock* handle) {
+extern "C" OcctResult<BOPDS_PaveBlock*> Handle_BOPDS_PaveBlock_get_mut(Handle_BOPDS_PaveBlock* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBOPDSPaveBlock_to_HandleStandardTransient(const HandleBOPDSPaveBlock* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BOPDS_PaveBlock_to_Handle_Standard_Transient(const Handle_BOPDS_PaveBlock* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BOPDS_PaveBlock_inherited_IsInstance(const BOPDS_PaveBlock* self, Handle(Standard_Type) const& theType) {
@@ -9631,7 +9481,7 @@ extern "C" OcctResult<BOPDS_ShapeInfo*> BOPDS_ShapeInfo_ctor() {
     try { return {new BOPDS_ShapeInfo(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_ShapeInfo*> BOPDS_ShapeInfo_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPDS_ShapeInfo*> BOPDS_ShapeInfo_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPDS_ShapeInfo(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9663,11 +9513,11 @@ extern "C" OcctResult<Bnd_Box*> BOPDS_ShapeInfo_change_box(BOPDS_ShapeInfo* self
     try { return {&(self_->ChangeBox()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_ListOfInteger const*> BOPDS_ShapeInfo_sub_shapes(const BOPDS_ShapeInfo* self_) {
+extern "C" OcctResult<NCollection_List_int const*> BOPDS_ShapeInfo_sub_shapes(const BOPDS_ShapeInfo* self_) {
     try { return {&(self_->SubShapes()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_ListOfInteger*> BOPDS_ShapeInfo_change_sub_shapes(BOPDS_ShapeInfo* self_) {
+extern "C" OcctResult<NCollection_List_int*> BOPDS_ShapeInfo_change_sub_shapes(BOPDS_ShapeInfo* self_) {
     try { return {&(self_->ChangeSubShapes()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9725,7 +9575,7 @@ extern "C" OcctResult<BOPDS_SubIterator*> BOPDS_SubIterator_ctor() {
     try { return {new BOPDS_SubIterator(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPDS_SubIterator*> BOPDS_SubIterator_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPDS_SubIterator*> BOPDS_SubIterator_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPDS_SubIterator(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9737,19 +9587,19 @@ extern "C" OcctResult<BOPDS_DS const*> BOPDS_SubIterator_ds(const BOPDS_SubItera
     try { return {&(self_->DS()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BOPDS_SubIterator_set_sub_set1(BOPDS_SubIterator* self_, TColStd_ListOfInteger const* theLI) {
+extern "C" const char* BOPDS_SubIterator_set_sub_set1(BOPDS_SubIterator* self_, NCollection_List_int const* theLI) {
     try { self_->SetSubSet1(*theLI); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TColStd_ListOfInteger const*> BOPDS_SubIterator_sub_set1(const BOPDS_SubIterator* self_) {
+extern "C" OcctResult<NCollection_List_int const*> BOPDS_SubIterator_sub_set1(const BOPDS_SubIterator* self_) {
     try { return {&(self_->SubSet1()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BOPDS_SubIterator_set_sub_set2(BOPDS_SubIterator* self_, TColStd_ListOfInteger const* theLI) {
+extern "C" const char* BOPDS_SubIterator_set_sub_set2(BOPDS_SubIterator* self_, NCollection_List_int const* theLI) {
     try { self_->SetSubSet2(*theLI); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TColStd_ListOfInteger const*> BOPDS_SubIterator_sub_set2(const BOPDS_SubIterator* self_) {
+extern "C" OcctResult<NCollection_List_int const*> BOPDS_SubIterator_sub_set2(const BOPDS_SubIterator* self_) {
     try { return {&(self_->SubSet2()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9825,7 +9675,7 @@ extern "C" OcctResult<int32_t> BOPTools_AlgoTools_compute_vv_vertex2_real(TopoDS
     try { return {BOPTools_AlgoTools::ComputeVV(*theV1, *theV2, theFuzz), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BOPTools_AlgoTools_make_vertex(TopTools_ListOfShape const* theLV, TopoDS_Vertex* theV) {
+extern "C" const char* BOPTools_AlgoTools_make_vertex(NCollection_List_TopoDS_Shape const* theLV, TopoDS_Vertex* theV) {
     try { BOPTools_AlgoTools::MakeVertex(*theLV, *theV); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -9885,7 +9735,7 @@ extern "C" OcctResult<int32_t> BOPTools_AlgoTools_compute_state_edge_solid_real_
     try { return {static_cast<int32_t>(BOPTools_AlgoTools::ComputeState(*theEdge, *theSolid, theTol, *theContext)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> BOPTools_AlgoTools_compute_state_face_solid_real_indexedmapofshape_handleinttoolscontext(TopoDS_Face const* theFace, TopoDS_Solid const* theSolid, double theTol, TopTools_IndexedMapOfShape const* theBounds, Handle(IntTools_Context) const* theContext) {
+extern "C" OcctResult<int32_t> BOPTools_AlgoTools_compute_state_face_solid_real_imap_shape_handleinttoolscontext(TopoDS_Face const* theFace, TopoDS_Solid const* theSolid, double theTol, NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher const* theBounds, Handle(IntTools_Context) const* theContext) {
     try { return {static_cast<int32_t>(BOPTools_AlgoTools::ComputeState(*theFace, *theSolid, theTol, *theBounds, *theContext)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9893,7 +9743,7 @@ extern "C" OcctResult<int32_t> BOPTools_AlgoTools_compute_state_by_one_point(Top
     try { return {static_cast<int32_t>(BOPTools_AlgoTools::ComputeStateByOnePoint(*theShape, *theSolid, theTol, *theContext)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BOPTools_AlgoTools_get_face_off(TopoDS_Edge const* theEdge, TopoDS_Face const* theFace, BOPTools_ListOfCoupleOfShape* theLCEF, TopoDS_Face* theFaceOff, Handle(IntTools_Context) const* theContext) {
+extern "C" OcctResult<bool> BOPTools_AlgoTools_get_face_off(TopoDS_Edge const* theEdge, TopoDS_Face const* theFace, NCollection_List_BOPTools_CoupleOfShape* theLCEF, TopoDS_Face* theFaceOff, Handle(IntTools_Context) const* theContext) {
     try { return {BOPTools_AlgoTools::GetFaceOff(*theEdge, *theFace, *theLCEF, *theFaceOff, *theContext), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9901,11 +9751,11 @@ extern "C" OcctResult<int32_t> BOPTools_AlgoTools_is_internal_face_face_edge_fac
     try { return {BOPTools_AlgoTools::IsInternalFace(*theFace, *theEdge, *theFace1, *theFace2, *theContext), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> BOPTools_AlgoTools_is_internal_face_face_edge_listofshape_handleinttoolscontext(TopoDS_Face const* theFace, TopoDS_Edge const* theEdge, TopTools_ListOfShape* theLF, Handle(IntTools_Context) const* theContext) {
+extern "C" OcctResult<int32_t> BOPTools_AlgoTools_is_internal_face_face_edge_list_shape_handleinttoolscontext(TopoDS_Face const* theFace, TopoDS_Edge const* theEdge, NCollection_List_TopoDS_Shape* theLF, Handle(IntTools_Context) const* theContext) {
     try { return {BOPTools_AlgoTools::IsInternalFace(*theFace, *theEdge, *theLF, *theContext), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BOPTools_AlgoTools_is_internal_face_face_solid_indexeddatamapofshapelistofshape_real_handleinttoolscontext(TopoDS_Face const* theFace, TopoDS_Solid const* theSolid, TopTools_IndexedDataMapOfShapeListOfShape* theMEF, double theTol, Handle(IntTools_Context) const* theContext) {
+extern "C" OcctResult<bool> BOPTools_AlgoTools_is_internal_face_face_solid_indexeddatamap_topods_shape_ncollection_list_topods_shape_toptools_shapemaphasher_real_handleinttoolscontext(TopoDS_Face const* theFace, TopoDS_Solid const* theSolid, NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* theMEF, double theTol, Handle(IntTools_Context) const* theContext) {
     try { return {BOPTools_AlgoTools::IsInternalFace(*theFace, *theSolid, *theMEF, theTol, *theContext), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9937,19 +9787,19 @@ extern "C" OcctResult<int32_t> BOPTools_AlgoTools_sense(TopoDS_Face const* theF1
     try { return {BOPTools_AlgoTools::Sense(*theF1, *theF2, *theContext), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BOPTools_AlgoTools_make_connexity_block(TopTools_ListOfShape* theLS, TopTools_IndexedMapOfShape* theMapAvoid, TopTools_ListOfShape* theLSCB, Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" const char* BOPTools_AlgoTools_make_connexity_block(NCollection_List_TopoDS_Shape* theLS, NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher* theMapAvoid, NCollection_List_TopoDS_Shape* theLSCB, TDF_HAllocator const* theAllocator) {
     try { BOPTools_AlgoTools::MakeConnexityBlock(*theLS, *theMapAvoid, *theLSCB, *theAllocator); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPTools_AlgoTools_make_connexity_blocks_shape_shapeenum2_listofshape(TopoDS_Shape const* theS, int32_t theConnectionType, int32_t theElementType, TopTools_ListOfShape* theLCB) {
+extern "C" const char* BOPTools_AlgoTools_make_connexity_blocks_shape_shapeenum2_list_shape(TopoDS_Shape const* theS, int32_t theConnectionType, int32_t theElementType, NCollection_List_TopoDS_Shape* theLCB) {
     try { BOPTools_AlgoTools::MakeConnexityBlocks(*theS, static_cast<TopAbs_ShapeEnum>(theConnectionType), static_cast<TopAbs_ShapeEnum>(theElementType), *theLCB); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPTools_AlgoTools_make_connexity_blocks_shape_shapeenum2_listoflistofshape_indexeddatamapofshapelistofshape(TopoDS_Shape const* theS, int32_t theConnectionType, int32_t theElementType, TopTools_ListOfListOfShape* theLCB, TopTools_IndexedDataMapOfShapeListOfShape* theConnectionMap) {
+extern "C" const char* BOPTools_AlgoTools_make_connexity_blocks_shape_shapeenum2_list_ncollection_list_topods_shape_indexeddatamap_topods_shape_ncollection_list_topods_shape_toptools_shapemaphasher(TopoDS_Shape const* theS, int32_t theConnectionType, int32_t theElementType, NCollection_List_NCollection_List_TopoDS_Shape* theLCB, NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* theConnectionMap) {
     try { BOPTools_AlgoTools::MakeConnexityBlocks(*theS, static_cast<TopAbs_ShapeEnum>(theConnectionType), static_cast<TopAbs_ShapeEnum>(theElementType), *theLCB, *theConnectionMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPTools_AlgoTools_make_connexity_blocks_listofshape_shapeenum2_listofconnexityblock(TopTools_ListOfShape const* theLS, int32_t theConnectionType, int32_t theElementType, BOPTools_ListOfConnexityBlock* theLCB) {
+extern "C" const char* BOPTools_AlgoTools_make_connexity_blocks_list_shape_shapeenum2_list_connexityblock(NCollection_List_TopoDS_Shape const* theLS, int32_t theConnectionType, int32_t theElementType, NCollection_List_BOPTools_ConnexityBlock* theLCB) {
     try { BOPTools_AlgoTools::MakeConnexityBlocks(*theLS, static_cast<TopAbs_ShapeEnum>(theConnectionType), static_cast<TopAbs_ShapeEnum>(theElementType), *theLCB); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -9961,19 +9811,19 @@ extern "C" const char* BOPTools_AlgoTools_orient_faces_on_shell(TopoDS_Shape* th
     try { BOPTools_AlgoTools::OrientFacesOnShell(*theShell); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPTools_AlgoTools_correct_tolerances(TopoDS_Shape const* theS, TopTools_IndexedMapOfShape const* theMapToAvoid, double theTolMax, bool theRunParallel) {
+extern "C" const char* BOPTools_AlgoTools_correct_tolerances(TopoDS_Shape const* theS, NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher const* theMapToAvoid, double theTolMax, bool theRunParallel) {
     try { BOPTools_AlgoTools::CorrectTolerances(*theS, *theMapToAvoid, theTolMax, theRunParallel); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPTools_AlgoTools_correct_curve_on_surface(TopoDS_Shape const* theS, TopTools_IndexedMapOfShape const* theMapToAvoid, double theTolMax, bool theRunParallel) {
+extern "C" const char* BOPTools_AlgoTools_correct_curve_on_surface(TopoDS_Shape const* theS, NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher const* theMapToAvoid, double theTolMax, bool theRunParallel) {
     try { BOPTools_AlgoTools::CorrectCurveOnSurface(*theS, *theMapToAvoid, theTolMax, theRunParallel); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPTools_AlgoTools_correct_point_on_curve(TopoDS_Shape const* theS, TopTools_IndexedMapOfShape const* theMapToAvoid, double theTolMax, bool theRunParallel) {
+extern "C" const char* BOPTools_AlgoTools_correct_point_on_curve(TopoDS_Shape const* theS, NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher const* theMapToAvoid, double theTolMax, bool theRunParallel) {
     try { BOPTools_AlgoTools::CorrectPointOnCurve(*theS, *theMapToAvoid, theTolMax, theRunParallel); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BOPTools_AlgoTools_correct_shape_tolerances(TopoDS_Shape const* theS, TopTools_IndexedMapOfShape const* theMapToAvoid, bool theRunParallel) {
+extern "C" const char* BOPTools_AlgoTools_correct_shape_tolerances(TopoDS_Shape const* theS, NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher const* theMapToAvoid, bool theRunParallel) {
     try { BOPTools_AlgoTools::CorrectShapeTolerances(*theS, *theMapToAvoid, theRunParallel); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -10029,7 +9879,7 @@ extern "C" OcctResult<int32_t> BOPTools_AlgoTools_dimension(TopoDS_Shape const* 
     try { return {BOPTools_AlgoTools::Dimension(*theS), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BOPTools_AlgoTools_treat_compound(TopoDS_Shape const* theS, TopTools_ListOfShape* theList, TopTools_MapOfShape* theMap) {
+extern "C" const char* BOPTools_AlgoTools_treat_compound(TopoDS_Shape const* theS, NCollection_List_TopoDS_Shape* theList, NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher* theMap) {
     try { BOPTools_AlgoTools::TreatCompound(*theS, *theList, theMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -10211,15 +10061,15 @@ extern "C" OcctResult<BOPTools_ConnexityBlock*> BOPTools_ConnexityBlock_ctor() {
     try { return {new BOPTools_ConnexityBlock(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPTools_ConnexityBlock*> BOPTools_ConnexityBlock_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPTools_ConnexityBlock*> BOPTools_ConnexityBlock_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPTools_ConnexityBlock(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPTools_ConnexityBlock_shapes(const BOPTools_ConnexityBlock* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPTools_ConnexityBlock_shapes(const BOPTools_ConnexityBlock* self_) {
     try { return {&(self_->Shapes()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape*> BOPTools_ConnexityBlock_change_shapes(BOPTools_ConnexityBlock* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape*> BOPTools_ConnexityBlock_change_shapes(BOPTools_ConnexityBlock* self_) {
     try { return {&(self_->ChangeShapes()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10231,11 +10081,11 @@ extern "C" OcctResult<bool> BOPTools_ConnexityBlock_is_regular(const BOPTools_Co
     try { return {self_->IsRegular(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BOPTools_ConnexityBlock_loops(const BOPTools_ConnexityBlock* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BOPTools_ConnexityBlock_loops(const BOPTools_ConnexityBlock* self_) {
     try { return {&(self_->Loops()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape*> BOPTools_ConnexityBlock_change_loops(BOPTools_ConnexityBlock* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape*> BOPTools_ConnexityBlock_change_loops(BOPTools_ConnexityBlock* self_) {
     try { return {&(self_->ChangeLoops()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10275,7 +10125,7 @@ extern "C" OcctResult<BOPTools_Set*> BOPTools_Set_ctor() {
     try { return {new BOPTools_Set(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPTools_Set*> BOPTools_Set_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<BOPTools_Set*> BOPTools_Set_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new BOPTools_Set(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10342,11 +10192,11 @@ extern "C" OcctResult<TopoDS_Shape const*> BRepAlgoAPI_BooleanOperation_shape2(c
     try { return {&(self_->Shape2()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepAlgoAPI_BooleanOperation_set_tools(BRepAlgoAPI_BooleanOperation* self_, TopTools_ListOfShape const* theLS) {
+extern "C" const char* BRepAlgoAPI_BooleanOperation_set_tools(BRepAlgoAPI_BooleanOperation* self_, NCollection_List_TopoDS_Shape const* theLS) {
     try { self_->SetTools(*theLS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgoAPI_BooleanOperation_tools(const BRepAlgoAPI_BooleanOperation* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgoAPI_BooleanOperation_tools(const BRepAlgoAPI_BooleanOperation* self_) {
     try { return {&(self_->Tools()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10370,11 +10220,11 @@ extern "C" OcctResult<const BRepBuilderAPI_MakeShape*> BRepAlgoAPI_BooleanOperat
 extern "C" OcctResult<BRepBuilderAPI_MakeShape*> BRepAlgoAPI_BooleanOperation_as_BRepBuilderAPI_MakeShape_mut(BRepAlgoAPI_BooleanOperation* self_) { return {static_cast<BRepBuilderAPI_MakeShape*>(self_), nullptr}; }
 extern "C" OcctResult<const BRepBuilderAPI_Command*> BRepAlgoAPI_BooleanOperation_as_BRepBuilderAPI_Command(const BRepAlgoAPI_BooleanOperation* self_) { return {static_cast<const BRepBuilderAPI_Command*>(self_), nullptr}; }
 extern "C" OcctResult<BRepBuilderAPI_Command*> BRepAlgoAPI_BooleanOperation_as_BRepBuilderAPI_Command_mut(BRepAlgoAPI_BooleanOperation* self_) { return {static_cast<BRepBuilderAPI_Command*>(self_), nullptr}; }
-extern "C" const char* BRepAlgoAPI_BooleanOperation_inherited_SetArguments(BRepAlgoAPI_BooleanOperation* self, TopTools_ListOfShape const& theLS) {
+extern "C" const char* BRepAlgoAPI_BooleanOperation_inherited_SetArguments(BRepAlgoAPI_BooleanOperation* self, NCollection_List_TopoDS_Shape const& theLS) {
     try { self->SetArguments(theLS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgoAPI_BooleanOperation_inherited_Arguments(const BRepAlgoAPI_BooleanOperation* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgoAPI_BooleanOperation_inherited_Arguments(const BRepAlgoAPI_BooleanOperation* self) {
     try { return {&(self->Arguments()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10430,7 +10280,7 @@ extern "C" OcctResult<bool> BRepAlgoAPI_BooleanOperation_inherited_HasHistory(co
     try { return {self->HasHistory(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgoAPI_BooleanOperation_inherited_SectionEdges(BRepAlgoAPI_BooleanOperation* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgoAPI_BooleanOperation_inherited_SectionEdges(BRepAlgoAPI_BooleanOperation* self) {
     try { return {&(self->SectionEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10468,11 +10318,11 @@ extern "C" OcctResult<Handle(BRepTools_History)*> BRepAlgoAPI_BuilderAlgo_histor
     try { return {new Handle(BRepTools_History)(self_->History()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepAlgoAPI_BuilderAlgo_set_arguments(BRepAlgoAPI_BuilderAlgo* self_, TopTools_ListOfShape const* theLS) {
+extern "C" const char* BRepAlgoAPI_BuilderAlgo_set_arguments(BRepAlgoAPI_BuilderAlgo* self_, NCollection_List_TopoDS_Shape const* theLS) {
     try { self_->SetArguments(*theLS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgoAPI_BuilderAlgo_arguments(const BRepAlgoAPI_BuilderAlgo* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgoAPI_BuilderAlgo_arguments(const BRepAlgoAPI_BuilderAlgo* self_) {
     try { return {&(self_->Arguments()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10508,11 +10358,11 @@ extern "C" const char* BRepAlgoAPI_BuilderAlgo_simplify_result(BRepAlgoAPI_Build
     try { self_->SimplifyResult(theUnifyEdges, theUnifyFaces, theAngularTol); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgoAPI_BuilderAlgo_modified(BRepAlgoAPI_BuilderAlgo* self_, TopoDS_Shape const* theS) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgoAPI_BuilderAlgo_modified(BRepAlgoAPI_BuilderAlgo* self_, TopoDS_Shape const* theS) {
     try { return {&(self_->Modified(*theS)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgoAPI_BuilderAlgo_generated(BRepAlgoAPI_BuilderAlgo* self_, TopoDS_Shape const* theS) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgoAPI_BuilderAlgo_generated(BRepAlgoAPI_BuilderAlgo* self_, TopoDS_Shape const* theS) {
     try { return {&(self_->Generated(*theS)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10540,7 +10390,7 @@ extern "C" OcctResult<bool> BRepAlgoAPI_BuilderAlgo_has_history(const BRepAlgoAP
     try { return {self_->HasHistory(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgoAPI_BuilderAlgo_section_edges(BRepAlgoAPI_BuilderAlgo* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgoAPI_BuilderAlgo_section_edges(BRepAlgoAPI_BuilderAlgo* self_) {
     try { return {&(self_->SectionEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10604,13 +10454,13 @@ extern "C" OcctResult<bool> BRepAlgoAPI_Check_is_valid(BRepAlgoAPI_Check* self_)
     try { return {self_->IsValid(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BOPAlgo_ListOfCheckResult const*> BRepAlgoAPI_Check_result(BRepAlgoAPI_Check* self_) {
+extern "C" OcctResult<NCollection_List_BOPAlgo_CheckResult const*> BRepAlgoAPI_Check_result(BRepAlgoAPI_Check* self_) {
     try { return {&(self_->Result()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<const BOPAlgo_Options*> BRepAlgoAPI_Check_as_BOPAlgo_Options(const BRepAlgoAPI_Check* self_) { return {static_cast<const BOPAlgo_Options*>(self_), nullptr}; }
 extern "C" OcctResult<BOPAlgo_Options*> BRepAlgoAPI_Check_as_BOPAlgo_Options_mut(BRepAlgoAPI_Check* self_) { return {static_cast<BOPAlgo_Options*>(self_), nullptr}; }
-extern "C" OcctResult<Handle(NCollection_BaseAllocator) const*> BRepAlgoAPI_Check_inherited_Allocator(const BRepAlgoAPI_Check* self) {
+extern "C" OcctResult<TDF_HAllocator const*> BRepAlgoAPI_Check_inherited_Allocator(const BRepAlgoAPI_Check* self) {
     try { return {&(self->Allocator()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10722,11 +10572,11 @@ extern "C" OcctResult<TopoDS_Shape const*> BRepAlgoAPI_Common_inherited_Shape2(c
     try { return {&(self->Shape2()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepAlgoAPI_Common_inherited_SetTools(BRepAlgoAPI_Common* self, TopTools_ListOfShape const& theLS) {
+extern "C" const char* BRepAlgoAPI_Common_inherited_SetTools(BRepAlgoAPI_Common* self, NCollection_List_TopoDS_Shape const& theLS) {
     try { self->SetTools(theLS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgoAPI_Common_inherited_Tools(const BRepAlgoAPI_Common* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgoAPI_Common_inherited_Tools(const BRepAlgoAPI_Common* self) {
     try { return {&(self->Tools()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10742,11 +10592,11 @@ extern "C" const char* BRepAlgoAPI_Common_inherited_Build(BRepAlgoAPI_Common* se
     try { self->Build(theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepAlgoAPI_Common_inherited_SetArguments(BRepAlgoAPI_Common* self, TopTools_ListOfShape const& theLS) {
+extern "C" const char* BRepAlgoAPI_Common_inherited_SetArguments(BRepAlgoAPI_Common* self, NCollection_List_TopoDS_Shape const& theLS) {
     try { self->SetArguments(theLS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgoAPI_Common_inherited_Arguments(const BRepAlgoAPI_Common* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgoAPI_Common_inherited_Arguments(const BRepAlgoAPI_Common* self) {
     try { return {&(self->Arguments()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10802,7 +10652,7 @@ extern "C" OcctResult<bool> BRepAlgoAPI_Common_inherited_HasHistory(const BRepAl
     try { return {self->HasHistory(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgoAPI_Common_inherited_SectionEdges(BRepAlgoAPI_Common* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgoAPI_Common_inherited_SectionEdges(BRepAlgoAPI_Common* self) {
     try { return {&(self->SectionEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10862,11 +10712,11 @@ extern "C" OcctResult<TopoDS_Shape const*> BRepAlgoAPI_Cut_inherited_Shape2(cons
     try { return {&(self->Shape2()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepAlgoAPI_Cut_inherited_SetTools(BRepAlgoAPI_Cut* self, TopTools_ListOfShape const& theLS) {
+extern "C" const char* BRepAlgoAPI_Cut_inherited_SetTools(BRepAlgoAPI_Cut* self, NCollection_List_TopoDS_Shape const& theLS) {
     try { self->SetTools(theLS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgoAPI_Cut_inherited_Tools(const BRepAlgoAPI_Cut* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgoAPI_Cut_inherited_Tools(const BRepAlgoAPI_Cut* self) {
     try { return {&(self->Tools()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10882,11 +10732,11 @@ extern "C" const char* BRepAlgoAPI_Cut_inherited_Build(BRepAlgoAPI_Cut* self, Me
     try { self->Build(theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepAlgoAPI_Cut_inherited_SetArguments(BRepAlgoAPI_Cut* self, TopTools_ListOfShape const& theLS) {
+extern "C" const char* BRepAlgoAPI_Cut_inherited_SetArguments(BRepAlgoAPI_Cut* self, NCollection_List_TopoDS_Shape const& theLS) {
     try { self->SetArguments(theLS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgoAPI_Cut_inherited_Arguments(const BRepAlgoAPI_Cut* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgoAPI_Cut_inherited_Arguments(const BRepAlgoAPI_Cut* self) {
     try { return {&(self->Arguments()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10942,7 +10792,7 @@ extern "C" OcctResult<bool> BRepAlgoAPI_Cut_inherited_HasHistory(const BRepAlgoA
     try { return {self->HasHistory(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgoAPI_Cut_inherited_SectionEdges(BRepAlgoAPI_Cut* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgoAPI_Cut_inherited_SectionEdges(BRepAlgoAPI_Cut* self) {
     try { return {&(self->SectionEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10988,11 +10838,11 @@ extern "C" const char* BRepAlgoAPI_Defeaturing_add_face_to_remove(BRepAlgoAPI_De
     try { self_->AddFaceToRemove(*theFace); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepAlgoAPI_Defeaturing_add_faces_to_remove(BRepAlgoAPI_Defeaturing* self_, TopTools_ListOfShape const* theFaces) {
+extern "C" const char* BRepAlgoAPI_Defeaturing_add_faces_to_remove(BRepAlgoAPI_Defeaturing* self_, NCollection_List_TopoDS_Shape const* theFaces) {
     try { self_->AddFacesToRemove(*theFaces); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgoAPI_Defeaturing_faces_to_remove(const BRepAlgoAPI_Defeaturing* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgoAPI_Defeaturing_faces_to_remove(const BRepAlgoAPI_Defeaturing* self_) {
     try { return {&(self_->FacesToRemove()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11008,11 +10858,11 @@ extern "C" OcctResult<bool> BRepAlgoAPI_Defeaturing_has_history(const BRepAlgoAP
     try { return {self_->HasHistory(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgoAPI_Defeaturing_modified(BRepAlgoAPI_Defeaturing* self_, TopoDS_Shape const* theS) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgoAPI_Defeaturing_modified(BRepAlgoAPI_Defeaturing* self_, TopoDS_Shape const* theS) {
     try { return {&(self_->Modified(*theS)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgoAPI_Defeaturing_generated(BRepAlgoAPI_Defeaturing* self_, TopoDS_Shape const* theS) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgoAPI_Defeaturing_generated(BRepAlgoAPI_Defeaturing* self_, TopoDS_Shape const* theS) {
     try { return {&(self_->Generated(*theS)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11090,11 +10940,11 @@ extern "C" OcctResult<TopoDS_Shape const*> BRepAlgoAPI_Fuse_inherited_Shape2(con
     try { return {&(self->Shape2()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepAlgoAPI_Fuse_inherited_SetTools(BRepAlgoAPI_Fuse* self, TopTools_ListOfShape const& theLS) {
+extern "C" const char* BRepAlgoAPI_Fuse_inherited_SetTools(BRepAlgoAPI_Fuse* self, NCollection_List_TopoDS_Shape const& theLS) {
     try { self->SetTools(theLS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgoAPI_Fuse_inherited_Tools(const BRepAlgoAPI_Fuse* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgoAPI_Fuse_inherited_Tools(const BRepAlgoAPI_Fuse* self) {
     try { return {&(self->Tools()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11110,11 +10960,11 @@ extern "C" const char* BRepAlgoAPI_Fuse_inherited_Build(BRepAlgoAPI_Fuse* self, 
     try { self->Build(theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepAlgoAPI_Fuse_inherited_SetArguments(BRepAlgoAPI_Fuse* self, TopTools_ListOfShape const& theLS) {
+extern "C" const char* BRepAlgoAPI_Fuse_inherited_SetArguments(BRepAlgoAPI_Fuse* self, NCollection_List_TopoDS_Shape const& theLS) {
     try { self->SetArguments(theLS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgoAPI_Fuse_inherited_Arguments(const BRepAlgoAPI_Fuse* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgoAPI_Fuse_inherited_Arguments(const BRepAlgoAPI_Fuse* self) {
     try { return {&(self->Arguments()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11170,7 +11020,7 @@ extern "C" OcctResult<bool> BRepAlgoAPI_Fuse_inherited_HasHistory(const BRepAlgo
     try { return {self->HasHistory(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgoAPI_Fuse_inherited_SectionEdges(BRepAlgoAPI_Fuse* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgoAPI_Fuse_inherited_SectionEdges(BRepAlgoAPI_Fuse* self) {
     try { return {&(self->SectionEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11294,11 +11144,11 @@ extern "C" OcctResult<TopoDS_Shape const*> BRepAlgoAPI_Section_inherited_Shape2(
     try { return {&(self->Shape2()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepAlgoAPI_Section_inherited_SetTools(BRepAlgoAPI_Section* self, TopTools_ListOfShape const& theLS) {
+extern "C" const char* BRepAlgoAPI_Section_inherited_SetTools(BRepAlgoAPI_Section* self, NCollection_List_TopoDS_Shape const& theLS) {
     try { self->SetTools(theLS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgoAPI_Section_inherited_Tools(const BRepAlgoAPI_Section* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgoAPI_Section_inherited_Tools(const BRepAlgoAPI_Section* self) {
     try { return {&(self->Tools()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11310,11 +11160,11 @@ extern "C" OcctResult<int32_t> BRepAlgoAPI_Section_inherited_Operation(const BRe
     try { return {static_cast<int32_t>(self->Operation()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepAlgoAPI_Section_inherited_SetArguments(BRepAlgoAPI_Section* self, TopTools_ListOfShape const& theLS) {
+extern "C" const char* BRepAlgoAPI_Section_inherited_SetArguments(BRepAlgoAPI_Section* self, NCollection_List_TopoDS_Shape const& theLS) {
     try { self->SetArguments(theLS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgoAPI_Section_inherited_Arguments(const BRepAlgoAPI_Section* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgoAPI_Section_inherited_Arguments(const BRepAlgoAPI_Section* self) {
     try { return {&(self->Arguments()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11370,7 +11220,7 @@ extern "C" OcctResult<bool> BRepAlgoAPI_Section_inherited_HasHistory(const BRepA
     try { return {self->HasHistory(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgoAPI_Section_inherited_SectionEdges(BRepAlgoAPI_Section* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgoAPI_Section_inherited_SectionEdges(BRepAlgoAPI_Section* self) {
     try { return {&(self->SectionEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11404,11 +11254,11 @@ extern "C" OcctResult<BRepAlgoAPI_Splitter*> BRepAlgoAPI_Splitter_ctor_pavefille
     try { return {new BRepAlgoAPI_Splitter(*thePF), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepAlgoAPI_Splitter_set_tools(BRepAlgoAPI_Splitter* self_, TopTools_ListOfShape const* theLS) {
+extern "C" const char* BRepAlgoAPI_Splitter_set_tools(BRepAlgoAPI_Splitter* self_, NCollection_List_TopoDS_Shape const* theLS) {
     try { self_->SetTools(*theLS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgoAPI_Splitter_tools(const BRepAlgoAPI_Splitter* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgoAPI_Splitter_tools(const BRepAlgoAPI_Splitter* self_) {
     try { return {&(self_->Tools()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11424,11 +11274,11 @@ extern "C" OcctResult<const BRepBuilderAPI_MakeShape*> BRepAlgoAPI_Splitter_as_B
 extern "C" OcctResult<BRepBuilderAPI_MakeShape*> BRepAlgoAPI_Splitter_as_BRepBuilderAPI_MakeShape_mut(BRepAlgoAPI_Splitter* self_) { return {static_cast<BRepBuilderAPI_MakeShape*>(self_), nullptr}; }
 extern "C" OcctResult<const BRepBuilderAPI_Command*> BRepAlgoAPI_Splitter_as_BRepBuilderAPI_Command(const BRepAlgoAPI_Splitter* self_) { return {static_cast<const BRepBuilderAPI_Command*>(self_), nullptr}; }
 extern "C" OcctResult<BRepBuilderAPI_Command*> BRepAlgoAPI_Splitter_as_BRepBuilderAPI_Command_mut(BRepAlgoAPI_Splitter* self_) { return {static_cast<BRepBuilderAPI_Command*>(self_), nullptr}; }
-extern "C" const char* BRepAlgoAPI_Splitter_inherited_SetArguments(BRepAlgoAPI_Splitter* self, TopTools_ListOfShape const& theLS) {
+extern "C" const char* BRepAlgoAPI_Splitter_inherited_SetArguments(BRepAlgoAPI_Splitter* self, NCollection_List_TopoDS_Shape const& theLS) {
     try { self->SetArguments(theLS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgoAPI_Splitter_inherited_Arguments(const BRepAlgoAPI_Splitter* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgoAPI_Splitter_inherited_Arguments(const BRepAlgoAPI_Splitter* self) {
     try { return {&(self->Arguments()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11484,7 +11334,7 @@ extern "C" OcctResult<bool> BRepAlgoAPI_Splitter_inherited_HasHistory(const BRep
     try { return {self->HasHistory(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgoAPI_Splitter_inherited_SectionEdges(BRepAlgoAPI_Splitter* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgoAPI_Splitter_inherited_SectionEdges(BRepAlgoAPI_Splitter* self) {
     try { return {&(self->SectionEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11584,11 +11434,11 @@ extern "C" OcctResult<bool> IntTools_BeanFaceIntersector_is_done(const IntTools_
     try { return {self_->IsDone(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IntTools_SequenceOfRanges const*> IntTools_BeanFaceIntersector_result(const IntTools_BeanFaceIntersector* self_) {
+extern "C" OcctResult<NCollection_Sequence_IntTools_Range const*> IntTools_BeanFaceIntersector_result(const IntTools_BeanFaceIntersector* self_) {
     try { return {&(self_->Result()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IntTools_BeanFaceIntersector_result_sequenceofranges(const IntTools_BeanFaceIntersector* self_, IntTools_SequenceOfRanges* theResults) {
+extern "C" const char* IntTools_BeanFaceIntersector_result_seq_range(const IntTools_BeanFaceIntersector* self_, NCollection_Sequence_IntTools_Range* theResults) {
     try { self_->Result(*theResults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -11666,11 +11516,11 @@ extern "C" const char* IntTools_CommonPrt_range1_real2(const IntTools_CommonPrt*
     try { self_->Range1(*tf, *tl); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<IntTools_SequenceOfRanges const*> IntTools_CommonPrt_ranges2(const IntTools_CommonPrt* self_) {
+extern "C" OcctResult<NCollection_Sequence_IntTools_Range const*> IntTools_CommonPrt_ranges2(const IntTools_CommonPrt* self_) {
     try { return {&(self_->Ranges2()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IntTools_SequenceOfRanges*> IntTools_CommonPrt_change_ranges2(IntTools_CommonPrt* self_) {
+extern "C" OcctResult<NCollection_Sequence_IntTools_Range*> IntTools_CommonPrt_change_ranges2(IntTools_CommonPrt* self_) {
     try { return {&(self_->ChangeRanges2()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11716,7 +11566,7 @@ extern "C" OcctResult<IntTools_Context*> IntTools_Context_ctor() {
     try { return {new IntTools_Context(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IntTools_Context*> IntTools_Context_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAllocator) {
+extern "C" OcctResult<IntTools_Context*> IntTools_Context_ctor_hallocator(TDF_HAllocator const* theAllocator) {
     try { return {new IntTools_Context(*theAllocator), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11842,20 +11692,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> IntTools_Context_get_type_de
 }
 extern "C" OcctResult<const Standard_Transient*> IntTools_Context_as_Standard_Transient(const IntTools_Context* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IntTools_Context_as_Standard_Transient_mut(IntTools_Context* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIntToolsContext*> IntTools_Context_to_handle(IntTools_Context* obj) {
-    try { return {new HandleIntToolsContext(obj), nullptr}; }
+extern "C" OcctResult<Handle_IntTools_Context*> IntTools_Context_to_handle(IntTools_Context* obj) {
+    try { return {new Handle_IntTools_Context(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IntTools_Context*> HandleIntToolsContext_get(const HandleIntToolsContext* handle) {
+extern "C" OcctResult<const IntTools_Context*> Handle_IntTools_Context_get(const Handle_IntTools_Context* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IntTools_Context*> HandleIntToolsContext_get_mut(HandleIntToolsContext* handle) {
+extern "C" OcctResult<IntTools_Context*> Handle_IntTools_Context_get_mut(Handle_IntTools_Context* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIntToolsContext_to_HandleStandardTransient(const HandleIntToolsContext* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IntTools_Context_to_Handle_Standard_Transient(const Handle_IntTools_Context* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IntTools_Context_inherited_IsInstance(const IntTools_Context* self, Handle(Standard_Type) const& theType) {
@@ -11994,7 +11844,7 @@ extern "C" OcctResult<bool> IntTools_CurveRangeLocalizeData_is_range_out(const I
     try { return {self_->IsRangeOut(*theRange), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IntTools_CurveRangeLocalizeData_list_range_out(const IntTools_CurveRangeLocalizeData* self_, IntTools_ListOfCurveRangeSample* theList) {
+extern "C" const char* IntTools_CurveRangeLocalizeData_list_range_out(const IntTools_CurveRangeLocalizeData* self_, NCollection_List_IntTools_CurveRangeSample* theList) {
     try { self_->ListRangeOut(*theList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -12108,7 +11958,7 @@ extern "C" OcctResult<double> IntTools_EdgeEdge_fuzzy_value(const IntTools_EdgeE
     try { return {self_->FuzzyValue(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IntTools_SequenceOfCommonPrts const*> IntTools_EdgeEdge_common_parts(const IntTools_EdgeEdge* self_) {
+extern "C" OcctResult<NCollection_Sequence_IntTools_CommonPrt const*> IntTools_EdgeEdge_common_parts(const IntTools_EdgeEdge* self_) {
     try { return {&(self_->CommonParts()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -12194,7 +12044,7 @@ extern "C" OcctResult<int32_t> IntTools_EdgeFace_error_status(const IntTools_Edg
     try { return {self_->ErrorStatus(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IntTools_SequenceOfCommonPrts const*> IntTools_EdgeFace_common_parts(const IntTools_EdgeFace* self_) {
+extern "C" OcctResult<NCollection_Sequence_IntTools_CommonPrt const*> IntTools_EdgeFace_common_parts(const IntTools_EdgeFace* self_) {
     try { return {&(self_->CommonParts()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -12258,11 +12108,11 @@ extern "C" OcctResult<bool> IntTools_FaceFace_is_done(const IntTools_FaceFace* s
     try { return {self_->IsDone(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IntTools_SequenceOfCurves const*> IntTools_FaceFace_lines(const IntTools_FaceFace* self_) {
+extern "C" OcctResult<NCollection_Sequence_IntTools_Curve const*> IntTools_FaceFace_lines(const IntTools_FaceFace* self_) {
     try { return {&(self_->Lines()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IntTools_SequenceOfPntOn2Faces const*> IntTools_FaceFace_points(const IntTools_FaceFace* self_) {
+extern "C" OcctResult<NCollection_Sequence_IntTools_PntOn2Faces const*> IntTools_FaceFace_points(const IntTools_FaceFace* self_) {
     try { return {&(self_->Points()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -12282,7 +12132,7 @@ extern "C" const char* IntTools_FaceFace_prepare_lines3_d(IntTools_FaceFace* sel
     try { self_->PrepareLines3D(bToSplit); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IntTools_FaceFace_set_list(IntTools_FaceFace* self_, IntSurf_ListOfPntOn2S* ListOfPnts) {
+extern "C" const char* IntTools_FaceFace_set_list(IntTools_FaceFace* self_, NCollection_List_IntSurf_PntOn2S* ListOfPnts) {
     try { self_->SetList(*ListOfPnts); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -12316,7 +12166,7 @@ extern "C" OcctResult<IntTools_MarkedRangeSet*> IntTools_MarkedRangeSet_ctor_rea
     try { return {new IntTools_MarkedRangeSet(theFirstBoundary, theLastBoundary, theInitFlag), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IntTools_MarkedRangeSet*> IntTools_MarkedRangeSet_ctor_array1ofreal_int(TColStd_Array1OfReal const* theSortedArray, int32_t theInitFlag) {
+extern "C" OcctResult<IntTools_MarkedRangeSet*> IntTools_MarkedRangeSet_ctor_arr1_double_int(NCollection_Array1_double const* theSortedArray, int32_t theInitFlag) {
     try { return {new IntTools_MarkedRangeSet(*theSortedArray, theInitFlag), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -12328,7 +12178,7 @@ extern "C" const char* IntTools_MarkedRangeSet_set_boundaries(IntTools_MarkedRan
     try { self_->SetBoundaries(theFirstBoundary, theLastBoundary, theInitFlag); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IntTools_MarkedRangeSet_set_ranges(IntTools_MarkedRangeSet* self_, TColStd_Array1OfReal const* theSortedArray, int32_t theInitFlag) {
+extern "C" const char* IntTools_MarkedRangeSet_set_ranges(IntTools_MarkedRangeSet* self_, NCollection_Array1_double const* theSortedArray, int32_t theInitFlag) {
     try { self_->SetRanges(*theSortedArray, theInitFlag); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -12360,7 +12210,7 @@ extern "C" OcctResult<int32_t> IntTools_MarkedRangeSet_get_index_real(const IntT
     try { return {self_->GetIndex(theValue), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_SequenceOfInteger const*> IntTools_MarkedRangeSet_get_indices(IntTools_MarkedRangeSet* self_, double theValue) {
+extern "C" OcctResult<NCollection_Sequence_int const*> IntTools_MarkedRangeSet_get_indices(IntTools_MarkedRangeSet* self_, double theValue) {
     try { return {&(self_->GetIndices(theValue)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -12664,7 +12514,7 @@ extern "C" OcctResult<bool> IntTools_SurfaceRangeLocalizeData_is_range_out(const
     try { return {self_->IsRangeOut(*theRange), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IntTools_SurfaceRangeLocalizeData_list_range_out(const IntTools_SurfaceRangeLocalizeData* self_, IntTools_ListOfSurfaceRangeSample* theList) {
+extern "C" const char* IntTools_SurfaceRangeLocalizeData_list_range_out(const IntTools_SurfaceRangeLocalizeData* self_, NCollection_List_IntTools_SurfaceRangeSample* theList) {
     try { self_->ListRangeOut(*theList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -12916,11 +12766,11 @@ extern "C" OcctResult<double> IntTools_Tools_intermediate_point(double aFirst, d
     try { return {IntTools_Tools::IntermediatePoint(aFirst, aLast), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> IntTools_Tools_split_curve(IntTools_Curve const* aC, IntTools_SequenceOfCurves* aS) {
+extern "C" OcctResult<int32_t> IntTools_Tools_split_curve(IntTools_Curve const* aC, NCollection_Sequence_IntTools_Curve* aS) {
     try { return {IntTools_Tools::SplitCurve(*aC, *aS), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IntTools_Tools_reject_lines(IntTools_SequenceOfCurves const* aSIn, IntTools_SequenceOfCurves* aSOut) {
+extern "C" const char* IntTools_Tools_reject_lines(NCollection_Sequence_IntTools_Curve const* aSIn, NCollection_Sequence_IntTools_Curve* aSOut) {
     try { IntTools_Tools::RejectLines(*aSIn, *aSOut); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -13038,24 +12888,24 @@ extern "C" OcctResult<const Adaptor3d_TopolTool*> IntTools_TopolTool_as_Adaptor3
 extern "C" OcctResult<Adaptor3d_TopolTool*> IntTools_TopolTool_as_Adaptor3d_TopolTool_mut(IntTools_TopolTool* self_) { return {static_cast<Adaptor3d_TopolTool*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IntTools_TopolTool_as_Standard_Transient(const IntTools_TopolTool* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IntTools_TopolTool_as_Standard_Transient_mut(IntTools_TopolTool* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIntToolsTopolTool*> IntTools_TopolTool_to_handle(IntTools_TopolTool* obj) {
-    try { return {new HandleIntToolsTopolTool(obj), nullptr}; }
+extern "C" OcctResult<Handle_IntTools_TopolTool*> IntTools_TopolTool_to_handle(IntTools_TopolTool* obj) {
+    try { return {new Handle_IntTools_TopolTool(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IntTools_TopolTool*> HandleIntToolsTopolTool_get(const HandleIntToolsTopolTool* handle) {
+extern "C" OcctResult<const IntTools_TopolTool*> Handle_IntTools_TopolTool_get(const Handle_IntTools_TopolTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IntTools_TopolTool*> HandleIntToolsTopolTool_get_mut(HandleIntToolsTopolTool* handle) {
+extern "C" OcctResult<IntTools_TopolTool*> Handle_IntTools_TopolTool_get_mut(Handle_IntTools_TopolTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleAdaptor3dTopolTool*> HandleIntToolsTopolTool_to_HandleAdaptor3dTopolTool(const HandleIntToolsTopolTool* self_) {
-    try { return {new HandleAdaptor3dTopolTool(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Adaptor3d_TopolTool*> Handle_IntTools_TopolTool_to_Handle_Adaptor3d_TopolTool(const Handle_IntTools_TopolTool* self_) {
+    try { return {new Handle_Adaptor3d_TopolTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIntToolsTopolTool_to_HandleStandardTransient(const HandleIntToolsTopolTool* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IntTools_TopolTool_to_Handle_Standard_Transient(const Handle_IntTools_TopolTool* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IntTools_TopolTool_inherited_Init(IntTools_TopolTool* self) {
@@ -13118,11 +12968,11 @@ extern "C" OcctResult<gp_Pnt*> IntTools_TopolTool_inherited_Pnt(const IntTools_T
     try { return {new gp_Pnt(self->Pnt(V)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IntTools_TopolTool_inherited_UParameters(const IntTools_TopolTool* self, TColStd_Array1OfReal& theArray) {
+extern "C" const char* IntTools_TopolTool_inherited_UParameters(const IntTools_TopolTool* self, NCollection_Array1_double& theArray) {
     try { self->UParameters(theArray); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IntTools_TopolTool_inherited_VParameters(const IntTools_TopolTool* self, TColStd_Array1OfReal& theArray) {
+extern "C" const char* IntTools_TopolTool_inherited_VParameters(const IntTools_TopolTool* self, NCollection_Array1_double& theArray) {
     try { self->VParameters(theArray); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -13180,10 +13030,6 @@ extern "C" OcctResult<bool> IntTools_WLineTool_not_use_surfaces_for_approx(TopoD
     try { return {IntTools_WLineTool::NotUseSurfacesForApprox(*aF1, *aF2, *WL, ifprm, ilprm), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> IntTools_WLineTool_decomposition_of_w_line(Handle(IntPatch_WLine) const* theWLine, Handle(GeomAdaptor_Surface) const* theSurface1, Handle(GeomAdaptor_Surface) const* theSurface2, TopoDS_Face const* theFace1, TopoDS_Face const* theFace2, GeomInt_LineConstructor const* theLConstructor, bool theAvoidLConstructor, double theTol, IntPatch_SequenceOfLine* theNewLines, Handle(IntTools_Context) const* arg9) {
-    try { return {IntTools_WLineTool::DecompositionOfWLine(*theWLine, *theSurface1, *theSurface2, *theFace1, *theFace2, *theLConstructor, theAvoidLConstructor, theTol, *theNewLines, *arg9), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" void IntTools_WLineTool_destructor(IntTools_WLineTool* self_) { delete self_; }
 
 // ========================
@@ -13193,6 +13039,18 @@ extern "C" OcctResult<double> IntTools_length(TopoDS_Edge const* E) {
     try { return {IntTools::Length(*E), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* IntTools_remove_identical_roots(NCollection_Sequence_IntTools_Root* aSeq, double anEpsT) {
+    try { IntTools::RemoveIdenticalRoots(*aSeq, anEpsT); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* IntTools_sort_roots(NCollection_Sequence_IntTools_Root* aSeq, double anEpsT) {
+    try { IntTools::SortRoots(*aSeq, anEpsT); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* IntTools_find_root_states(NCollection_Sequence_IntTools_Root* aSeq, double anEpsNull) {
+    try { IntTools::FindRootStates(*aSeq, anEpsNull); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" OcctResult<int32_t> IntTools_parameter_pnt_handlegeomcurve_real(gp_Pnt const* P, Handle(Geom_Curve) const* Curve, double* aParm) {
     try { return {IntTools::Parameter(*P, *Curve, *aParm), nullptr}; }
     OCCT_CATCH_RETURN
@@ -13201,41 +13059,8 @@ extern "C" OcctResult<int32_t> IntTools_get_radius(BRepAdaptor_Curve const* C, d
     try { return {IntTools::GetRadius(*C, t1, t3, *R), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> IntTools_prepare_args(BRepAdaptor_Curve* C, double tMax, double tMin, int32_t Discret, double Deflect, TColStd_Array1OfReal* anArgs) {
+extern "C" OcctResult<int32_t> IntTools_prepare_args(BRepAdaptor_Curve* C, double tMax, double tMin, int32_t Discret, double Deflect, NCollection_Array1_double* anArgs) {
     try { return {IntTools::PrepareArgs(*C, tMax, tMin, Discret, Deflect, *anArgs), nullptr}; }
     OCCT_CATCH_RETURN
 }
 
-
-// Nested type and typedef type destructors
-extern "C" void BOPAlgo_ListOfCheckResult_destructor(BOPAlgo_ListOfCheckResult* self_) { delete self_; }
-extern "C" void BOPDS_IndexedDataMapOfPaveBlockListOfInteger_destructor(BOPDS_IndexedDataMapOfPaveBlockListOfInteger* self_) { delete self_; }
-extern "C" void BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock_destructor(BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock* self_) { delete self_; }
-extern "C" void BOPDS_IndexedMapOfPaveBlock_destructor(BOPDS_IndexedMapOfPaveBlock* self_) { delete self_; }
-extern "C" void BOPDS_ListOfPave_destructor(BOPDS_ListOfPave* self_) { delete self_; }
-extern "C" void BOPDS_ListOfPaveBlock_destructor(BOPDS_ListOfPaveBlock* self_) { delete self_; }
-extern "C" void BOPDS_MapOfPair_destructor(BOPDS_MapOfPair* self_) { delete self_; }
-extern "C" void BOPDS_MapOfPaveBlock_destructor(BOPDS_MapOfPaveBlock* self_) { delete self_; }
-extern "C" void BOPDS_VectorOfCurve_destructor(BOPDS_VectorOfCurve* self_) { delete self_; }
-extern "C" void BOPDS_VectorOfFaceInfo_destructor(BOPDS_VectorOfFaceInfo* self_) { delete self_; }
-extern "C" void BOPDS_VectorOfInterfEE_destructor(BOPDS_VectorOfInterfEE* self_) { delete self_; }
-extern "C" void BOPDS_VectorOfInterfEF_destructor(BOPDS_VectorOfInterfEF* self_) { delete self_; }
-extern "C" void BOPDS_VectorOfInterfEZ_destructor(BOPDS_VectorOfInterfEZ* self_) { delete self_; }
-extern "C" void BOPDS_VectorOfInterfFF_destructor(BOPDS_VectorOfInterfFF* self_) { delete self_; }
-extern "C" void BOPDS_VectorOfInterfFZ_destructor(BOPDS_VectorOfInterfFZ* self_) { delete self_; }
-extern "C" void BOPDS_VectorOfInterfVE_destructor(BOPDS_VectorOfInterfVE* self_) { delete self_; }
-extern "C" void BOPDS_VectorOfInterfVF_destructor(BOPDS_VectorOfInterfVF* self_) { delete self_; }
-extern "C" void BOPDS_VectorOfInterfVV_destructor(BOPDS_VectorOfInterfVV* self_) { delete self_; }
-extern "C" void BOPDS_VectorOfInterfVZ_destructor(BOPDS_VectorOfInterfVZ* self_) { delete self_; }
-extern "C" void BOPDS_VectorOfInterfZZ_destructor(BOPDS_VectorOfInterfZZ* self_) { delete self_; }
-extern "C" void BOPDS_VectorOfListOfPaveBlock_destructor(BOPDS_VectorOfListOfPaveBlock* self_) { delete self_; }
-extern "C" void BOPDS_VectorOfPoint_destructor(BOPDS_VectorOfPoint* self_) { delete self_; }
-extern "C" void BOPTools_ListOfConnexityBlock_destructor(BOPTools_ListOfConnexityBlock* self_) { delete self_; }
-extern "C" void BOPTools_ListOfCoupleOfShape_destructor(BOPTools_ListOfCoupleOfShape* self_) { delete self_; }
-extern "C" void IntTools_ListOfCurveRangeSample_destructor(IntTools_ListOfCurveRangeSample* self_) { delete self_; }
-extern "C" void IntTools_ListOfSurfaceRangeSample_destructor(IntTools_ListOfSurfaceRangeSample* self_) { delete self_; }
-extern "C" void IntTools_SequenceOfCommonPrts_destructor(IntTools_SequenceOfCommonPrts* self_) { delete self_; }
-extern "C" void IntTools_SequenceOfCurves_destructor(IntTools_SequenceOfCurves* self_) { delete self_; }
-extern "C" void IntTools_SequenceOfPntOn2Faces_destructor(IntTools_SequenceOfPntOn2Faces* self_) { delete self_; }
-extern "C" void IntTools_SequenceOfRanges_destructor(IntTools_SequenceOfRanges* self_) { delete self_; }
-extern "C" void IntTools_SequenceOfRoots_destructor(IntTools_SequenceOfRoots* self_) { delete self_; }

@@ -3,7 +3,6 @@
 
 #include "occt_preamble.hxx"
 
-#include <Adaptor3d_Curve.hxx>
 #include <Approx_ParametrizationType.hxx>
 #include <BRepAlgo_AsDes.hxx>
 #include <BRepAlgo_Image.hxx>
@@ -28,17 +27,13 @@
 #include <BRepOffsetAPI_NormalProjection.hxx>
 #include <BRepOffsetAPI_ThruSections.hxx>
 #include <BRepOffset_Analyse.hxx>
-#include <BRepOffset_DataMapOfShapeOffset.hxx>
 #include <BRepOffset_Error.hxx>
 #include <BRepOffset_Inter2d.hxx>
 #include <BRepOffset_Inter3d.hxx>
-#include <BRepOffset_Interval.hxx>
-#include <BRepOffset_ListOfInterval.hxx>
 #include <BRepOffset_MakeLoops.hxx>
 #include <BRepOffset_MakeOffset.hxx>
 #include <BRepOffset_MakeSimpleOffset.hxx>
 #include <BRepOffset_Mode.hxx>
-#include <BRepOffset_Offset.hxx>
 #include <BRepOffset_SimpleOffset.hxx>
 #include <BRepOffset_Status.hxx>
 #include <BRepOffset_Tool.hxx>
@@ -54,31 +49,17 @@
 #include <Draft_FaceInfo.hxx>
 #include <Draft_Modification.hxx>
 #include <Draft_VertexInfo.hxx>
-#include <Geom2d_Curve.hxx>
 #include <GeomAbs_CurveType.hxx>
 #include <GeomAbs_JoinType.hxx>
 #include <GeomAbs_Shape.hxx>
 #include <GeomFill_Trihedron.hxx>
-#include <Geom_BSplineCurve.hxx>
 #include <Geom_BezierCurve.hxx>
-#include <Geom_Curve.hxx>
-#include <Geom_Surface.hxx>
 #include <Law_Function.hxx>
 #include <Message_ProgressRange.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_Type.hxx>
-#include <TColStd_Array1OfReal.hxx>
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_ShapeEnum.hxx>
-#include <TopAbs_State.hxx>
-#include <TopLoc_Location.hxx>
-#include <TopTools_DataMapOfShapeListOfShape.hxx>
-#include <TopTools_DataMapOfShapeReal.hxx>
-#include <TopTools_DataMapOfShapeShape.hxx>
-#include <TopTools_IndexedDataMapOfShapeListOfShape.hxx>
-#include <TopTools_IndexedMapOfShape.hxx>
-#include <TopTools_ListOfShape.hxx>
-#include <TopTools_MapOfShape.hxx>
 #include <TopoDS_Compound.hxx>
 #include <TopoDS_Edge.hxx>
 #include <TopoDS_Face.hxx>
@@ -86,57 +67,53 @@
 #include <TopoDS_Vertex.hxx>
 #include <TopoDS_Wire.hxx>
 #include <gp_Ax2.hxx>
-#include <gp_Circ.hxx>
-#include <gp_Dir.hxx>
 #include <gp_Elips.hxx>
 #include <gp_Hypr.hxx>
-#include <gp_Lin.hxx>
 #include <gp_Parab.hxx>
 #include <gp_Pln.hxx>
-#include <gp_Vec.hxx>
 
 // Handle type aliases
-typedef opencascade::handle<Adaptor3d_Curve> HandleAdaptor3dCurve;
-typedef opencascade::handle<BRepAlgo_AsDes> HandleBRepAlgoAsDes;
-typedef opencascade::handle<BRepOffset_SimpleOffset> HandleBRepOffsetSimpleOffset;
-typedef opencascade::handle<BRepTools_Modification> HandleBRepToolsModification;
-typedef opencascade::handle<BiTgte_CurveOnEdge> HandleBiTgteCurveOnEdge;
-typedef opencascade::handle<BiTgte_CurveOnVertex> HandleBiTgteCurveOnVertex;
-typedef opencascade::handle<Draft_Modification> HandleDraftModification;
-typedef opencascade::handle<Geom2d_Curve> HandleGeom2dCurve;
-typedef opencascade::handle<Geom_BSplineCurve> HandleGeomBSplineCurve;
-typedef opencascade::handle<Geom_BezierCurve> HandleGeomBezierCurve;
-typedef opencascade::handle<Geom_Curve> HandleGeomCurve;
-typedef opencascade::handle<Geom_Surface> HandleGeomSurface;
-typedef opencascade::handle<Law_Function> HandleLawFunction;
-typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
-typedef opencascade::handle<Standard_Type> HandleStandardType;
+typedef opencascade::handle<Adaptor3d_Curve> Handle_Adaptor3d_Curve;
+typedef opencascade::handle<BRepAlgo_AsDes> Handle_BRepAlgo_AsDes;
+typedef opencascade::handle<BRepOffset_SimpleOffset> Handle_BRepOffset_SimpleOffset;
+typedef opencascade::handle<BRepTools_Modification> Handle_BRepTools_Modification;
+typedef opencascade::handle<BiTgte_CurveOnEdge> Handle_BiTgte_CurveOnEdge;
+typedef opencascade::handle<BiTgte_CurveOnVertex> Handle_BiTgte_CurveOnVertex;
+typedef opencascade::handle<Draft_Modification> Handle_Draft_Modification;
+typedef opencascade::handle<Geom2d_Curve> Handle_Geom2d_Curve;
+typedef opencascade::handle<Geom_BSplineCurve> Handle_Geom_BSplineCurve;
+typedef opencascade::handle<Geom_BezierCurve> Handle_Geom_BezierCurve;
+typedef opencascade::handle<Geom_Curve> Handle_Geom_Curve;
+typedef opencascade::handle<Geom_Surface> Handle_Geom_Surface;
+typedef opencascade::handle<Law_Function> Handle_Law_Function;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
 
 // Handle type destructors, clone, and is_null functions
-extern "C" void HandleBRepOffsetSimpleOffset_destructor(HandleBRepOffsetSimpleOffset* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepOffsetSimpleOffset*> HandleBRepOffsetSimpleOffset_clone(const HandleBRepOffsetSimpleOffset* self_) {
-    try { return {new HandleBRepOffsetSimpleOffset(*self_), nullptr}; }
+extern "C" void Handle_BRepOffset_SimpleOffset_destructor(Handle_BRepOffset_SimpleOffset* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepOffset_SimpleOffset*> Handle_BRepOffset_SimpleOffset_clone(const Handle_BRepOffset_SimpleOffset* self_) {
+    try { return {new Handle_BRepOffset_SimpleOffset(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepOffsetSimpleOffset_is_null(const HandleBRepOffsetSimpleOffset* self_) { return self_->IsNull(); }
-extern "C" void HandleBiTgteCurveOnEdge_destructor(HandleBiTgteCurveOnEdge* self_) { delete self_; }
-extern "C" OcctResult<HandleBiTgteCurveOnEdge*> HandleBiTgteCurveOnEdge_clone(const HandleBiTgteCurveOnEdge* self_) {
-    try { return {new HandleBiTgteCurveOnEdge(*self_), nullptr}; }
+extern "C" bool Handle_BRepOffset_SimpleOffset_is_null(const Handle_BRepOffset_SimpleOffset* self_) { return self_->IsNull(); }
+extern "C" void Handle_BiTgte_CurveOnEdge_destructor(Handle_BiTgte_CurveOnEdge* self_) { delete self_; }
+extern "C" OcctResult<Handle_BiTgte_CurveOnEdge*> Handle_BiTgte_CurveOnEdge_clone(const Handle_BiTgte_CurveOnEdge* self_) {
+    try { return {new Handle_BiTgte_CurveOnEdge(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBiTgteCurveOnEdge_is_null(const HandleBiTgteCurveOnEdge* self_) { return self_->IsNull(); }
-extern "C" void HandleBiTgteCurveOnVertex_destructor(HandleBiTgteCurveOnVertex* self_) { delete self_; }
-extern "C" OcctResult<HandleBiTgteCurveOnVertex*> HandleBiTgteCurveOnVertex_clone(const HandleBiTgteCurveOnVertex* self_) {
-    try { return {new HandleBiTgteCurveOnVertex(*self_), nullptr}; }
+extern "C" bool Handle_BiTgte_CurveOnEdge_is_null(const Handle_BiTgte_CurveOnEdge* self_) { return self_->IsNull(); }
+extern "C" void Handle_BiTgte_CurveOnVertex_destructor(Handle_BiTgte_CurveOnVertex* self_) { delete self_; }
+extern "C" OcctResult<Handle_BiTgte_CurveOnVertex*> Handle_BiTgte_CurveOnVertex_clone(const Handle_BiTgte_CurveOnVertex* self_) {
+    try { return {new Handle_BiTgte_CurveOnVertex(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBiTgteCurveOnVertex_is_null(const HandleBiTgteCurveOnVertex* self_) { return self_->IsNull(); }
-extern "C" void HandleDraftModification_destructor(HandleDraftModification* self_) { delete self_; }
-extern "C" OcctResult<HandleDraftModification*> HandleDraftModification_clone(const HandleDraftModification* self_) {
-    try { return {new HandleDraftModification(*self_), nullptr}; }
+extern "C" bool Handle_BiTgte_CurveOnVertex_is_null(const Handle_BiTgte_CurveOnVertex* self_) { return self_->IsNull(); }
+extern "C" void Handle_Draft_Modification_destructor(Handle_Draft_Modification* self_) { delete self_; }
+extern "C" OcctResult<Handle_Draft_Modification*> Handle_Draft_Modification_clone(const Handle_Draft_Modification* self_) {
+    try { return {new Handle_Draft_Modification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleDraftModification_is_null(const HandleDraftModification* self_) { return self_->IsNull(); }
+extern "C" bool Handle_Draft_Modification_is_null(const Handle_Draft_Modification* self_) { return self_->IsNull(); }
 
 // ========================
 // BRepOffset_Analyse wrappers
@@ -162,19 +139,19 @@ extern "C" OcctResult<bool> BRepOffset_Analyse_is_done(const BRepOffset_Analyse*
     try { return {self_->IsDone(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepOffset_ListOfInterval const*> BRepOffset_Analyse_type_(const BRepOffset_Analyse* self_, TopoDS_Edge const* theE) {
+extern "C" OcctResult<NCollection_List_BRepOffset_Interval const*> BRepOffset_Analyse_type_(const BRepOffset_Analyse* self_, TopoDS_Edge const* theE) {
     try { return {&(self_->Type(*theE)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepOffset_Analyse_edges_vertex_typeofconcavity_listofshape(const BRepOffset_Analyse* self_, TopoDS_Vertex const* theV, int32_t theType, TopTools_ListOfShape* theL) {
+extern "C" const char* BRepOffset_Analyse_edges_vertex_typeofconcavity_list_shape(const BRepOffset_Analyse* self_, TopoDS_Vertex const* theV, int32_t theType, NCollection_List_TopoDS_Shape* theL) {
     try { self_->Edges(*theV, static_cast<ChFiDS_TypeOfConcavity>(theType), *theL); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepOffset_Analyse_edges_face_typeofconcavity_listofshape(const BRepOffset_Analyse* self_, TopoDS_Face const* theF, int32_t theType, TopTools_ListOfShape* theL) {
+extern "C" const char* BRepOffset_Analyse_edges_face_typeofconcavity_list_shape(const BRepOffset_Analyse* self_, TopoDS_Face const* theF, int32_t theType, NCollection_List_TopoDS_Shape* theL) {
     try { self_->Edges(*theF, static_cast<ChFiDS_TypeOfConcavity>(theType), *theL); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepOffset_Analyse_tangent_edges(const BRepOffset_Analyse* self_, TopoDS_Edge const* theEdge, TopoDS_Vertex const* theVertex, TopTools_ListOfShape* theEdges) {
+extern "C" const char* BRepOffset_Analyse_tangent_edges(const BRepOffset_Analyse* self_, TopoDS_Edge const* theEdge, TopoDS_Vertex const* theVertex, NCollection_List_TopoDS_Shape* theEdges) {
     try { self_->TangentEdges(*theEdge, *theVertex, *theEdges); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -182,23 +159,23 @@ extern "C" OcctResult<bool> BRepOffset_Analyse_has_ancestor(const BRepOffset_Ana
     try { return {self_->HasAncestor(*theS), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepOffset_Analyse_ancestors(const BRepOffset_Analyse* self_, TopoDS_Shape const* theS) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepOffset_Analyse_ancestors(const BRepOffset_Analyse* self_, TopoDS_Shape const* theS) {
     try { return {&(self_->Ancestors(*theS)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepOffset_Analyse_explode_listofshape_typeofconcavity(const BRepOffset_Analyse* self_, TopTools_ListOfShape* theL, int32_t theType) {
+extern "C" const char* BRepOffset_Analyse_explode_list_shape_typeofconcavity(const BRepOffset_Analyse* self_, NCollection_List_TopoDS_Shape* theL, int32_t theType) {
     try { self_->Explode(*theL, static_cast<ChFiDS_TypeOfConcavity>(theType)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepOffset_Analyse_explode_listofshape_typeofconcavity2(const BRepOffset_Analyse* self_, TopTools_ListOfShape* theL, int32_t theType1, int32_t theType2) {
+extern "C" const char* BRepOffset_Analyse_explode_list_shape_typeofconcavity2(const BRepOffset_Analyse* self_, NCollection_List_TopoDS_Shape* theL, int32_t theType1, int32_t theType2) {
     try { self_->Explode(*theL, static_cast<ChFiDS_TypeOfConcavity>(theType1), static_cast<ChFiDS_TypeOfConcavity>(theType2)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepOffset_Analyse_add_faces_face_compound_mapofshape_typeofconcavity(const BRepOffset_Analyse* self_, TopoDS_Face const* theFace, TopoDS_Compound* theCo, TopTools_MapOfShape* theMap, int32_t theType) {
+extern "C" const char* BRepOffset_Analyse_add_faces_face_compound_map_shape_typeofconcavity(const BRepOffset_Analyse* self_, TopoDS_Face const* theFace, TopoDS_Compound* theCo, NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher* theMap, int32_t theType) {
     try { self_->AddFaces(*theFace, *theCo, *theMap, static_cast<ChFiDS_TypeOfConcavity>(theType)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepOffset_Analyse_add_faces_face_compound_mapofshape_typeofconcavity2(const BRepOffset_Analyse* self_, TopoDS_Face const* theFace, TopoDS_Compound* theCo, TopTools_MapOfShape* theMap, int32_t theType1, int32_t theType2) {
+extern "C" const char* BRepOffset_Analyse_add_faces_face_compound_map_shape_typeofconcavity2(const BRepOffset_Analyse* self_, TopoDS_Face const* theFace, TopoDS_Compound* theCo, NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher* theMap, int32_t theType1, int32_t theType2) {
     try { self_->AddFaces(*theFace, *theCo, *theMap, static_cast<ChFiDS_TypeOfConcavity>(theType1), static_cast<ChFiDS_TypeOfConcavity>(theType2)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -206,11 +183,11 @@ extern "C" const char* BRepOffset_Analyse_set_offset_value(BRepOffset_Analyse* s
     try { self_->SetOffsetValue(theOffset); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepOffset_Analyse_set_face_offset_map(BRepOffset_Analyse* self_, TopTools_DataMapOfShapeReal const* theMap) {
+extern "C" const char* BRepOffset_Analyse_set_face_offset_map(BRepOffset_Analyse* self_, NCollection_DataMap_TopoDS_Shape_double_TopTools_ShapeMapHasher const* theMap) {
     try { self_->SetFaceOffsetMap(*theMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepOffset_Analyse_new_faces(const BRepOffset_Analyse* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepOffset_Analyse_new_faces(const BRepOffset_Analyse* self_) {
     try { return {&(self_->NewFaces()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -222,7 +199,7 @@ extern "C" OcctResult<TopoDS_Edge const*> BRepOffset_Analyse_edge_replacement(co
     try { return {&(self_->EdgeReplacement(*theFace, *theEdge)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepOffset_Analyse_descendants(const BRepOffset_Analyse* self_, TopoDS_Shape const* theS, bool theUpdate) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepOffset_Analyse_descendants(const BRepOffset_Analyse* self_, TopoDS_Shape const* theS, bool theUpdate) {
     try { return {self_->Descendants(*theS, theUpdate), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -240,19 +217,19 @@ extern "C" OcctResult<BRepOffset_Inter2d*> BRepOffset_Inter2d_ctor() {
     try { return {new BRepOffset_Inter2d(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepOffset_Inter2d_compute(Handle(BRepAlgo_AsDes) const* AsDes, TopoDS_Face const* F, TopTools_IndexedMapOfShape const* NewEdges, double Tol, TopTools_DataMapOfShapeListOfShape const* theEdgeIntEdges, TopTools_IndexedDataMapOfShapeListOfShape* theDMVV, Message_ProgressRange const* theRange) {
+extern "C" const char* BRepOffset_Inter2d_compute(Handle(BRepAlgo_AsDes) const* AsDes, TopoDS_Face const* F, NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher const* NewEdges, double Tol, NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher const* theEdgeIntEdges, NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* theDMVV, Message_ProgressRange const* theRange) {
     try { BRepOffset_Inter2d::Compute(*AsDes, *F, *NewEdges, Tol, *theEdgeIntEdges, *theDMVV, *theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BRepOffset_Inter2d_connex_int_by_int(TopoDS_Face const* FI, BRepOffset_Offset* OFI, TopTools_DataMapOfShapeShape* MES, TopTools_DataMapOfShapeShape const* Build, Handle(BRepAlgo_AsDes) const* theAsDes, Handle(BRepAlgo_AsDes) const* AsDes2d, double Offset, double Tol, BRepOffset_Analyse const* Analyse, TopTools_IndexedMapOfShape* FacesWithVerts, BRepAlgo_Image* theImageVV, TopTools_DataMapOfShapeListOfShape* theEdgeIntEdges, TopTools_IndexedDataMapOfShapeListOfShape* theDMVV, Message_ProgressRange const* theRange) {
+extern "C" OcctResult<bool> BRepOffset_Inter2d_connex_int_by_int(TopoDS_Face const* FI, BRepOffset_Offset* OFI, NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher* MES, NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher const* Build, Handle(BRepAlgo_AsDes) const* theAsDes, Handle(BRepAlgo_AsDes) const* AsDes2d, double Offset, double Tol, BRepOffset_Analyse const* Analyse, NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher* FacesWithVerts, BRepAlgo_Image* theImageVV, NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* theEdgeIntEdges, NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* theDMVV, Message_ProgressRange const* theRange) {
     try { return {BRepOffset_Inter2d::ConnexIntByInt(*FI, *OFI, *MES, *Build, *theAsDes, *AsDes2d, Offset, Tol, *Analyse, *FacesWithVerts, *theImageVV, *theEdgeIntEdges, *theDMVV, *theRange), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepOffset_Inter2d_connex_int_by_int_in_vert(TopoDS_Face const* FI, BRepOffset_Offset* OFI, TopTools_DataMapOfShapeShape* MES, TopTools_DataMapOfShapeShape const* Build, Handle(BRepAlgo_AsDes) const* AsDes, Handle(BRepAlgo_AsDes) const* AsDes2d, double Tol, BRepOffset_Analyse const* Analyse, TopTools_IndexedDataMapOfShapeListOfShape* theDMVV, Message_ProgressRange const* theRange) {
+extern "C" const char* BRepOffset_Inter2d_connex_int_by_int_in_vert(TopoDS_Face const* FI, BRepOffset_Offset* OFI, NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher* MES, NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher const* Build, Handle(BRepAlgo_AsDes) const* AsDes, Handle(BRepAlgo_AsDes) const* AsDes2d, double Tol, BRepOffset_Analyse const* Analyse, NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* theDMVV, Message_ProgressRange const* theRange) {
     try { BRepOffset_Inter2d::ConnexIntByIntInVert(*FI, *OFI, *MES, *Build, *AsDes, *AsDes2d, Tol, *Analyse, *theDMVV, *theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BRepOffset_Inter2d_fuse_vertices(TopTools_IndexedDataMapOfShapeListOfShape const* theDMVV, Handle(BRepAlgo_AsDes) const* theAsDes, BRepAlgo_Image* theImageVV) {
+extern "C" OcctResult<bool> BRepOffset_Inter2d_fuse_vertices(NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher const* theDMVV, Handle(BRepAlgo_AsDes) const* theAsDes, BRepAlgo_Image* theImageVV) {
     try { return {BRepOffset_Inter2d::FuseVertices(*theDMVV, *theAsDes, *theImageVV), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -274,7 +251,7 @@ extern "C" OcctResult<Handle(BRepAlgo_AsDes)*> BRepOffset_Inter3d_as_des(const B
     try { return {new Handle(BRepAlgo_AsDes)(self_->AsDes()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepOffset_Inter3d_complet_int(BRepOffset_Inter3d* self_, TopTools_ListOfShape const* SetOfFaces, BRepAlgo_Image const* InitOffsetFace, Message_ProgressRange const* theRange) {
+extern "C" const char* BRepOffset_Inter3d_complet_int(BRepOffset_Inter3d* self_, NCollection_List_TopoDS_Shape const* SetOfFaces, BRepAlgo_Image const* InitOffsetFace, Message_ProgressRange const* theRange) {
     try { self_->CompletInt(*SetOfFaces, *InitOffsetFace, *theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -282,19 +259,19 @@ extern "C" const char* BRepOffset_Inter3d_face_inter(BRepOffset_Inter3d* self_, 
     try { self_->FaceInter(*F1, *F2, *InitOffsetFace); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepOffset_Inter3d_connex_int_by_arc(BRepOffset_Inter3d* self_, TopTools_ListOfShape const* SetOfFaces, TopoDS_Shape const* ShapeInit, BRepOffset_Analyse const* Analyse, BRepAlgo_Image const* InitOffsetFace, Message_ProgressRange const* theRange) {
+extern "C" const char* BRepOffset_Inter3d_connex_int_by_arc(BRepOffset_Inter3d* self_, NCollection_List_TopoDS_Shape const* SetOfFaces, TopoDS_Shape const* ShapeInit, BRepOffset_Analyse const* Analyse, BRepAlgo_Image const* InitOffsetFace, Message_ProgressRange const* theRange) {
     try { self_->ConnexIntByArc(*SetOfFaces, *ShapeInit, *Analyse, *InitOffsetFace, *theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepOffset_Inter3d_connex_int_by_int(BRepOffset_Inter3d* self_, TopoDS_Shape const* SI, BRepOffset_DataMapOfShapeOffset const* MapSF, BRepOffset_Analyse const* A, TopTools_DataMapOfShapeShape* MES, TopTools_DataMapOfShapeShape* Build, TopTools_ListOfShape* Failed, Message_ProgressRange const* theRange, bool bIsPlanar) {
+extern "C" const char* BRepOffset_Inter3d_connex_int_by_int(BRepOffset_Inter3d* self_, TopoDS_Shape const* SI, NCollection_DataMap_TopoDS_Shape_BRepOffset_Offset_TopTools_ShapeMapHasher const* MapSF, BRepOffset_Analyse const* A, NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher* MES, NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher* Build, NCollection_List_TopoDS_Shape* Failed, Message_ProgressRange const* theRange, bool bIsPlanar) {
     try { self_->ConnexIntByInt(*SI, *MapSF, *A, *MES, *Build, *Failed, *theRange, bIsPlanar); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepOffset_Inter3d_context_int_by_int(BRepOffset_Inter3d* self_, TopTools_IndexedMapOfShape const* ContextFaces, bool ExtentContext, BRepOffset_DataMapOfShapeOffset const* MapSF, BRepOffset_Analyse const* A, TopTools_DataMapOfShapeShape* MES, TopTools_DataMapOfShapeShape* Build, TopTools_ListOfShape* Failed, Message_ProgressRange const* theRange, bool bIsPlanar) {
+extern "C" const char* BRepOffset_Inter3d_context_int_by_int(BRepOffset_Inter3d* self_, NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher const* ContextFaces, bool ExtentContext, NCollection_DataMap_TopoDS_Shape_BRepOffset_Offset_TopTools_ShapeMapHasher const* MapSF, BRepOffset_Analyse const* A, NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher* MES, NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher* Build, NCollection_List_TopoDS_Shape* Failed, Message_ProgressRange const* theRange, bool bIsPlanar) {
     try { self_->ContextIntByInt(*ContextFaces, ExtentContext, *MapSF, *A, *MES, *Build, *Failed, *theRange, bIsPlanar); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepOffset_Inter3d_context_int_by_arc(BRepOffset_Inter3d* self_, TopTools_IndexedMapOfShape const* ContextFaces, bool ExtentContext, BRepOffset_Analyse const* Analyse, BRepAlgo_Image const* InitOffsetFace, BRepAlgo_Image* InitOffsetEdge, Message_ProgressRange const* theRange) {
+extern "C" const char* BRepOffset_Inter3d_context_int_by_arc(BRepOffset_Inter3d* self_, NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher const* ContextFaces, bool ExtentContext, BRepOffset_Analyse const* Analyse, BRepAlgo_Image const* InitOffsetFace, BRepAlgo_Image* InitOffsetEdge, Message_ProgressRange const* theRange) {
     try { self_->ContextIntByArc(*ContextFaces, ExtentContext, *Analyse, *InitOffsetFace, *InitOffsetEdge, *theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -306,11 +283,11 @@ extern "C" OcctResult<bool> BRepOffset_Inter3d_is_done(const BRepOffset_Inter3d*
     try { return {self_->IsDone(*F1, *F2), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_IndexedMapOfShape*> BRepOffset_Inter3d_touched_faces(BRepOffset_Inter3d* self_) {
+extern "C" OcctResult<NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher*> BRepOffset_Inter3d_touched_faces(BRepOffset_Inter3d* self_) {
     try { return {&(self_->TouchedFaces()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_IndexedMapOfShape*> BRepOffset_Inter3d_new_edges(BRepOffset_Inter3d* self_) {
+extern "C" OcctResult<NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher*> BRepOffset_Inter3d_new_edges(BRepOffset_Inter3d* self_) {
     try { return {&(self_->NewEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -362,15 +339,15 @@ extern "C" OcctResult<BRepOffset_MakeLoops*> BRepOffset_MakeLoops_ctor() {
     try { return {new BRepOffset_MakeLoops(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepOffset_MakeLoops_build(BRepOffset_MakeLoops* self_, TopTools_ListOfShape const* LF, Handle(BRepAlgo_AsDes) const* AsDes, BRepAlgo_Image* Image, BRepAlgo_Image* theImageVV, Message_ProgressRange const* theRange) {
+extern "C" const char* BRepOffset_MakeLoops_build(BRepOffset_MakeLoops* self_, NCollection_List_TopoDS_Shape const* LF, Handle(BRepAlgo_AsDes) const* AsDes, BRepAlgo_Image* Image, BRepAlgo_Image* theImageVV, Message_ProgressRange const* theRange) {
     try { self_->Build(*LF, *AsDes, *Image, *theImageVV, *theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepOffset_MakeLoops_build_on_context(BRepOffset_MakeLoops* self_, TopTools_ListOfShape const* LContext, BRepOffset_Analyse const* Analyse, Handle(BRepAlgo_AsDes) const* AsDes, BRepAlgo_Image* Image, bool InSide, Message_ProgressRange const* theRange) {
+extern "C" const char* BRepOffset_MakeLoops_build_on_context(BRepOffset_MakeLoops* self_, NCollection_List_TopoDS_Shape const* LContext, BRepOffset_Analyse const* Analyse, Handle(BRepAlgo_AsDes) const* AsDes, BRepAlgo_Image* Image, bool InSide, Message_ProgressRange const* theRange) {
     try { self_->BuildOnContext(*LContext, *Analyse, *AsDes, *Image, InSide, *theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepOffset_MakeLoops_build_faces(BRepOffset_MakeLoops* self_, TopTools_ListOfShape const* LF, Handle(BRepAlgo_AsDes) const* AsDes, BRepAlgo_Image* Image, Message_ProgressRange const* theRange) {
+extern "C" const char* BRepOffset_MakeLoops_build_faces(BRepOffset_MakeLoops* self_, NCollection_List_TopoDS_Shape const* LF, Handle(BRepAlgo_AsDes) const* AsDes, BRepAlgo_Image* Image, Message_ProgressRange const* theRange) {
     try { self_->BuildFaces(*LF, *AsDes, *Image, *theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -448,7 +425,7 @@ extern "C" OcctResult<BRepAlgo_Image const*> BRepOffset_MakeOffset_offset_edges_
     try { return {&(self_->OffsetEdgesFromShapes()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_IndexedMapOfShape const*> BRepOffset_MakeOffset_closing_faces(const BRepOffset_MakeOffset* self_) {
+extern "C" OcctResult<NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher const*> BRepOffset_MakeOffset_closing_faces(const BRepOffset_MakeOffset* self_) {
     try { return {&(self_->ClosingFaces()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -460,11 +437,11 @@ extern "C" OcctResult<TopoDS_Shape const*> BRepOffset_MakeOffset_get_bad_shape(c
     try { return {&(self_->GetBadShape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepOffset_MakeOffset_generated(BRepOffset_MakeOffset* self_, TopoDS_Shape const* theS) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepOffset_MakeOffset_generated(BRepOffset_MakeOffset* self_, TopoDS_Shape const* theS) {
     try { return {&(self_->Generated(*theS)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepOffset_MakeOffset_modified(BRepOffset_MakeOffset* self_, TopoDS_Shape const* theS) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepOffset_MakeOffset_modified(BRepOffset_MakeOffset* self_, TopoDS_Shape const* theS) {
     try { return {&(self_->Modified(*theS)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -560,7 +537,7 @@ extern "C" OcctResult<BRepOffset_Offset*> BRepOffset_Offset_ctor_face_real_bool_
     try { return {new BRepOffset_Offset(*Face, Offset, OffsetOutside, static_cast<GeomAbs_JoinType>(JoinType)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepOffset_Offset*> BRepOffset_Offset_ctor_face_real_datamapofshapeshape_bool_jointype(TopoDS_Face const* Face, double Offset, TopTools_DataMapOfShapeShape const* Created, bool OffsetOutside, int32_t JoinType) {
+extern "C" OcctResult<BRepOffset_Offset*> BRepOffset_Offset_ctor_face_real_dmap_shape_shape_bool_jointype(TopoDS_Face const* Face, double Offset, NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher const* Created, bool OffsetOutside, int32_t JoinType) {
     try { return {new BRepOffset_Offset(*Face, Offset, *Created, OffsetOutside, static_cast<GeomAbs_JoinType>(JoinType)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -572,7 +549,7 @@ extern "C" OcctResult<BRepOffset_Offset*> BRepOffset_Offset_ctor_edge3_real_edge
     try { return {new BRepOffset_Offset(*Path, *Edge1, *Edge2, Offset, *FirstEdge, *LastEdge, Polynomial, Tol, static_cast<GeomAbs_Shape>(Conti)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepOffset_Offset*> BRepOffset_Offset_ctor_vertex_listofshape_real_bool_real_shape(TopoDS_Vertex const* Vertex, TopTools_ListOfShape const* LEdge, double Offset, bool Polynomial, double Tol, int32_t Conti) {
+extern "C" OcctResult<BRepOffset_Offset*> BRepOffset_Offset_ctor_vertex_list_shape_real_bool_real_shape(TopoDS_Vertex const* Vertex, NCollection_List_TopoDS_Shape const* LEdge, double Offset, bool Polynomial, double Tol, int32_t Conti) {
     try { return {new BRepOffset_Offset(*Vertex, *LEdge, Offset, Polynomial, Tol, static_cast<GeomAbs_Shape>(Conti)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -584,7 +561,7 @@ extern "C" const char* BRepOffset_Offset_init_face_real_bool_jointype(BRepOffset
     try { self_->Init(*Face, Offset, OffsetOutside, static_cast<GeomAbs_JoinType>(JoinType)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepOffset_Offset_init_face_real_datamapofshapeshape_bool_jointype(BRepOffset_Offset* self_, TopoDS_Face const* Face, double Offset, TopTools_DataMapOfShapeShape const* Created, bool OffsetOutside, int32_t JoinType) {
+extern "C" const char* BRepOffset_Offset_init_face_real_dmap_shape_shape_bool_jointype(BRepOffset_Offset* self_, TopoDS_Face const* Face, double Offset, NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher const* Created, bool OffsetOutside, int32_t JoinType) {
     try { self_->Init(*Face, Offset, *Created, OffsetOutside, static_cast<GeomAbs_JoinType>(JoinType)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -596,7 +573,7 @@ extern "C" const char* BRepOffset_Offset_init_edge3_real_edge2_bool_real_shape(B
     try { self_->Init(*Path, *Edge1, *Edge2, Offset, *FirstEdge, *LastEdge, Polynomial, Tol, static_cast<GeomAbs_Shape>(Conti)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepOffset_Offset_init_vertex_listofshape_real_bool_real_shape(BRepOffset_Offset* self_, TopoDS_Vertex const* Vertex, TopTools_ListOfShape const* LEdge, double Offset, bool Polynomial, double Tol, int32_t Conti) {
+extern "C" const char* BRepOffset_Offset_init_vertex_list_shape_real_bool_real_shape(BRepOffset_Offset* self_, TopoDS_Vertex const* Vertex, NCollection_List_TopoDS_Shape const* LEdge, double Offset, bool Polynomial, double Tol, int32_t Conti) {
     try { self_->Init(*Vertex, *LEdge, Offset, Polynomial, Tol, static_cast<GeomAbs_Shape>(Conti)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -666,24 +643,24 @@ extern "C" OcctResult<const BRepTools_Modification*> BRepOffset_SimpleOffset_as_
 extern "C" OcctResult<BRepTools_Modification*> BRepOffset_SimpleOffset_as_BRepTools_Modification_mut(BRepOffset_SimpleOffset* self_) { return {static_cast<BRepTools_Modification*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepOffset_SimpleOffset_as_Standard_Transient(const BRepOffset_SimpleOffset* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepOffset_SimpleOffset_as_Standard_Transient_mut(BRepOffset_SimpleOffset* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepOffsetSimpleOffset*> BRepOffset_SimpleOffset_to_handle(BRepOffset_SimpleOffset* obj) {
-    try { return {new HandleBRepOffsetSimpleOffset(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepOffset_SimpleOffset*> BRepOffset_SimpleOffset_to_handle(BRepOffset_SimpleOffset* obj) {
+    try { return {new Handle_BRepOffset_SimpleOffset(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepOffset_SimpleOffset*> HandleBRepOffsetSimpleOffset_get(const HandleBRepOffsetSimpleOffset* handle) {
+extern "C" OcctResult<const BRepOffset_SimpleOffset*> Handle_BRepOffset_SimpleOffset_get(const Handle_BRepOffset_SimpleOffset* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepOffset_SimpleOffset*> HandleBRepOffsetSimpleOffset_get_mut(HandleBRepOffsetSimpleOffset* handle) {
+extern "C" OcctResult<BRepOffset_SimpleOffset*> Handle_BRepOffset_SimpleOffset_get_mut(Handle_BRepOffset_SimpleOffset* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepToolsModification*> HandleBRepOffsetSimpleOffset_to_HandleBRepToolsModification(const HandleBRepOffsetSimpleOffset* self_) {
-    try { return {new HandleBRepToolsModification(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepTools_Modification*> Handle_BRepOffset_SimpleOffset_to_Handle_BRepTools_Modification(const Handle_BRepOffset_SimpleOffset* self_) {
+    try { return {new Handle_BRepTools_Modification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepOffsetSimpleOffset_to_HandleStandardTransient(const HandleBRepOffsetSimpleOffset* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepOffset_SimpleOffset_to_Handle_Standard_Transient(const Handle_BRepOffset_SimpleOffset* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRepOffset_SimpleOffset_inherited_NewTriangulation(BRepOffset_SimpleOffset* self, TopoDS_Face const& F, Handle(Poly_Triangulation)& T) {
@@ -751,31 +728,31 @@ extern "C" const char* BRepOffset_Tool_orient_section(TopoDS_Edge const* E, Topo
     }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BRepOffset_Tool_find_common_shapes_face2_listofshape2(TopoDS_Face const* theF1, TopoDS_Face const* theF2, TopTools_ListOfShape* theLE, TopTools_ListOfShape* theLV) {
+extern "C" OcctResult<bool> BRepOffset_Tool_find_common_shapes_face2_list_shape2(TopoDS_Face const* theF1, TopoDS_Face const* theF2, NCollection_List_TopoDS_Shape* theLE, NCollection_List_TopoDS_Shape* theLV) {
     try { return {BRepOffset_Tool::FindCommonShapes(*theF1, *theF2, *theLE, *theLV), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BRepOffset_Tool_find_common_shapes_shape2_shapeenum_listofshape(TopoDS_Shape const* theS1, TopoDS_Shape const* theS2, int32_t theType, TopTools_ListOfShape* theLSC) {
+extern "C" OcctResult<bool> BRepOffset_Tool_find_common_shapes_shape2_shapeenum_list_shape(TopoDS_Shape const* theS1, TopoDS_Shape const* theS2, int32_t theType, NCollection_List_TopoDS_Shape* theLSC) {
     try { return {BRepOffset_Tool::FindCommonShapes(*theS1, *theS2, static_cast<TopAbs_ShapeEnum>(theType), *theLSC), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepOffset_Tool_inter3_d(TopoDS_Face const* F1, TopoDS_Face const* F2, TopTools_ListOfShape* LInt1, TopTools_ListOfShape* LInt2, int32_t Side, TopoDS_Edge const* RefEdge, TopoDS_Face const* RefFace1, TopoDS_Face const* RefFace2) {
+extern "C" const char* BRepOffset_Tool_inter3_d(TopoDS_Face const* F1, TopoDS_Face const* F2, NCollection_List_TopoDS_Shape* LInt1, NCollection_List_TopoDS_Shape* LInt2, int32_t Side, TopoDS_Edge const* RefEdge, TopoDS_Face const* RefFace1, TopoDS_Face const* RefFace2) {
     try { BRepOffset_Tool::Inter3D(*F1, *F2, *LInt1, *LInt2, static_cast<TopAbs_State>(Side), *RefEdge, *RefFace1, *RefFace2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BRepOffset_Tool_try_project(TopoDS_Face const* F1, TopoDS_Face const* F2, TopTools_ListOfShape const* Edges, TopTools_ListOfShape* LInt1, TopTools_ListOfShape* LInt2, int32_t Side, double TolConf) {
+extern "C" OcctResult<bool> BRepOffset_Tool_try_project(TopoDS_Face const* F1, TopoDS_Face const* F2, NCollection_List_TopoDS_Shape const* Edges, NCollection_List_TopoDS_Shape* LInt1, NCollection_List_TopoDS_Shape* LInt2, int32_t Side, double TolConf) {
     try { return {BRepOffset_Tool::TryProject(*F1, *F2, *Edges, *LInt1, *LInt2, static_cast<TopAbs_State>(Side), TolConf), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepOffset_Tool_pipe_inter(TopoDS_Face const* F1, TopoDS_Face const* F2, TopTools_ListOfShape* LInt1, TopTools_ListOfShape* LInt2, int32_t Side) {
+extern "C" const char* BRepOffset_Tool_pipe_inter(TopoDS_Face const* F1, TopoDS_Face const* F2, NCollection_List_TopoDS_Shape* LInt1, NCollection_List_TopoDS_Shape* LInt2, int32_t Side) {
     try { BRepOffset_Tool::PipeInter(*F1, *F2, *LInt1, *LInt2, static_cast<TopAbs_State>(Side)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepOffset_Tool_inter2d(TopoDS_Face const* F, TopoDS_Edge const* E1, TopoDS_Edge const* E2, TopTools_ListOfShape* LV, double Tol) {
+extern "C" const char* BRepOffset_Tool_inter2d(TopoDS_Face const* F, TopoDS_Edge const* E1, TopoDS_Edge const* E2, NCollection_List_TopoDS_Shape* LV, double Tol) {
     try { BRepOffset_Tool::Inter2d(*F, *E1, *E2, *LV, Tol); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepOffset_Tool_inter_or_extent(TopoDS_Face const* F1, TopoDS_Face const* F2, TopTools_ListOfShape* LInt1, TopTools_ListOfShape* LInt2, int32_t Side) {
+extern "C" const char* BRepOffset_Tool_inter_or_extent(TopoDS_Face const* F1, TopoDS_Face const* F2, NCollection_List_TopoDS_Shape* LInt1, NCollection_List_TopoDS_Shape* LInt2, int32_t Side) {
     try { BRepOffset_Tool::InterOrExtent(*F1, *F2, *LInt1, *LInt2, static_cast<TopAbs_State>(Side)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -787,23 +764,23 @@ extern "C" OcctResult<bool> BRepOffset_Tool_en_large_face(TopoDS_Face const* F, 
     try { return {BRepOffset_Tool::EnLargeFace(*F, *NF, ChangeGeom, UpDatePCurve, enlargeU, enlargeVfirst, enlargeVlast, theExtensionMode, theLenBeforeUfirst, theLenAfterUlast, theLenBeforeVfirst, theLenAfterVlast), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepOffset_Tool_extent_face(TopoDS_Face const* F, TopTools_DataMapOfShapeShape* ConstShapes, TopTools_DataMapOfShapeShape* ToBuild, int32_t Side, double TolConf, TopoDS_Face* NF) {
+extern "C" const char* BRepOffset_Tool_extent_face(TopoDS_Face const* F, NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher* ConstShapes, NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher* ToBuild, int32_t Side, double TolConf, TopoDS_Face* NF) {
     try { BRepOffset_Tool::ExtentFace(*F, *ConstShapes, *ToBuild, static_cast<TopAbs_State>(Side), TolConf, *NF); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepOffset_Tool_build_neighbour(TopoDS_Wire const* W, TopoDS_Face const* F, TopTools_DataMapOfShapeShape* NOnV1, TopTools_DataMapOfShapeShape* NOnV2) {
+extern "C" const char* BRepOffset_Tool_build_neighbour(TopoDS_Wire const* W, TopoDS_Face const* F, NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher* NOnV1, NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher* NOnV2) {
     try { BRepOffset_Tool::BuildNeighbour(*W, *F, *NOnV1, *NOnV2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepOffset_Tool_map_vertex_edges(TopoDS_Shape const* S, TopTools_DataMapOfShapeListOfShape* MVE) {
+extern "C" const char* BRepOffset_Tool_map_vertex_edges(TopoDS_Shape const* S, NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* MVE) {
     try { BRepOffset_Tool::MapVertexEdges(*S, *MVE); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopoDS_Shape*> BRepOffset_Tool_deboucle3_d(TopoDS_Shape const* S, TopTools_MapOfShape const* Boundary) {
+extern "C" OcctResult<TopoDS_Shape*> BRepOffset_Tool_deboucle3_d(TopoDS_Shape const* S, NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher const* Boundary) {
     try { return {new TopoDS_Shape(BRepOffset_Tool::Deboucle3D(*S, *Boundary)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepOffset_Tool_correct_orientation(TopoDS_Shape const* SI, TopTools_IndexedMapOfShape const* NewEdges, Handle(BRepAlgo_AsDes)* AsDes, BRepAlgo_Image* InitOffset, double Offset) {
+extern "C" const char* BRepOffset_Tool_correct_orientation(TopoDS_Shape const* SI, NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher const* NewEdges, Handle(BRepAlgo_AsDes) const* AsDes, BRepAlgo_Image* InitOffset, double Offset) {
     try { BRepOffset_Tool::CorrectOrientation(*SI, *NewEdges, *AsDes, *InitOffset, Offset); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -861,11 +838,11 @@ extern "C" OcctResult<int32_t> BRepOffsetAPI_DraftAngle_status(const BRepOffsetA
     try { return {static_cast<int32_t>(self_->Status()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepOffsetAPI_DraftAngle_connected_faces(const BRepOffsetAPI_DraftAngle* self_, TopoDS_Face const* F) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepOffsetAPI_DraftAngle_connected_faces(const BRepOffsetAPI_DraftAngle* self_, TopoDS_Face const* F) {
     try { return {&(self_->ConnectedFaces(*F)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepOffsetAPI_DraftAngle_modified_faces(const BRepOffsetAPI_DraftAngle* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepOffsetAPI_DraftAngle_modified_faces(const BRepOffsetAPI_DraftAngle* self_) {
     try { return {&(self_->ModifiedFaces()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -877,11 +854,11 @@ extern "C" const char* BRepOffsetAPI_DraftAngle_correct_wires(BRepOffsetAPI_Draf
     try { self_->CorrectWires(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepOffsetAPI_DraftAngle_generated(BRepOffsetAPI_DraftAngle* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepOffsetAPI_DraftAngle_generated(BRepOffsetAPI_DraftAngle* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Generated(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepOffsetAPI_DraftAngle_modified(BRepOffsetAPI_DraftAngle* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepOffsetAPI_DraftAngle_modified(BRepOffsetAPI_DraftAngle* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Modified(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -941,7 +918,7 @@ extern "C" OcctResult<TopoDS_Edge const*> BRepOffsetAPI_FindContigousEdges_conti
     try { return {&(self_->ContigousEdge(index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepOffsetAPI_FindContigousEdges_contigous_edge_couple(const BRepOffsetAPI_FindContigousEdges* self_, int32_t index) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepOffsetAPI_FindContigousEdges_contigous_edge_couple(const BRepOffsetAPI_FindContigousEdges* self_, int32_t index) {
     try { return {&(self_->ContigousEdgeCouple(index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1007,7 +984,7 @@ extern "C" const char* BRepOffsetAPI_MakeDraft_perform_shape_bool(BRepOffsetAPI_
     try { self_->Perform(*StopShape, KeepOutSide); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepOffsetAPI_MakeDraft_generated(BRepOffsetAPI_MakeDraft* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepOffsetAPI_MakeDraft_generated(BRepOffsetAPI_MakeDraft* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Generated(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1057,7 +1034,7 @@ extern "C" const char* BRepOffsetAPI_MakeEvolved_build(BRepOffsetAPI_MakeEvolved
     try { self_->Build(*theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepOffsetAPI_MakeEvolved_generated_shapes(const BRepOffsetAPI_MakeEvolved* self_, TopoDS_Shape const* SpineShape, TopoDS_Shape const* ProfShape) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepOffsetAPI_MakeEvolved_generated_shapes(const BRepOffsetAPI_MakeEvolved* self_, TopoDS_Shape const* SpineShape, TopoDS_Shape const* ProfShape) {
     try { return {&(self_->GeneratedShapes(*SpineShape, *ProfShape)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1143,7 +1120,7 @@ extern "C" OcctResult<bool> BRepOffsetAPI_MakeFilling_is_done(const BRepOffsetAP
     try { return {self_->IsDone(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepOffsetAPI_MakeFilling_generated(BRepOffsetAPI_MakeFilling* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepOffsetAPI_MakeFilling_generated(BRepOffsetAPI_MakeFilling* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Generated(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1229,7 +1206,7 @@ extern "C" const char* BRepOffsetAPI_MakeOffset_build(BRepOffsetAPI_MakeOffset* 
     try { self_->Build(*theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepOffsetAPI_MakeOffset_generated(BRepOffsetAPI_MakeOffset* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepOffsetAPI_MakeOffset_generated(BRepOffsetAPI_MakeOffset* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Generated(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1283,11 +1260,11 @@ extern "C" const char* BRepOffsetAPI_MakeOffsetShape_build(BRepOffsetAPI_MakeOff
     try { self_->Build(*theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepOffsetAPI_MakeOffsetShape_generated(BRepOffsetAPI_MakeOffsetShape* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepOffsetAPI_MakeOffsetShape_generated(BRepOffsetAPI_MakeOffsetShape* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Generated(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepOffsetAPI_MakeOffsetShape_modified(BRepOffsetAPI_MakeOffsetShape* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepOffsetAPI_MakeOffsetShape_modified(BRepOffsetAPI_MakeOffsetShape* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Modified(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1349,7 +1326,7 @@ extern "C" const char* BRepOffsetAPI_MakePipe_build(BRepOffsetAPI_MakePipe* self
     try { self_->Build(*theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepOffsetAPI_MakePipe_generated_shape(BRepOffsetAPI_MakePipe* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepOffsetAPI_MakePipe_generated_shape(BRepOffsetAPI_MakePipe* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Generated(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1469,7 +1446,7 @@ extern "C" const char* BRepOffsetAPI_MakePipeShell_set_transition_mode(BRepOffse
     try { self_->SetTransitionMode(static_cast<BRepBuilderAPI_TransitionMode>(Mode)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepOffsetAPI_MakePipeShell_simulate(BRepOffsetAPI_MakePipeShell* self_, int32_t NumberOfSection, TopTools_ListOfShape* Result) {
+extern "C" const char* BRepOffsetAPI_MakePipeShell_simulate(BRepOffsetAPI_MakePipeShell* self_, int32_t NumberOfSection, NCollection_List_TopoDS_Shape* Result) {
     try { self_->Simulate(NumberOfSection, *Result); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1481,7 +1458,7 @@ extern "C" OcctResult<bool> BRepOffsetAPI_MakePipeShell_make_solid(BRepOffsetAPI
     try { return {self_->MakeSolid(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepOffsetAPI_MakePipeShell_generated(BRepOffsetAPI_MakePipeShell* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepOffsetAPI_MakePipeShell_generated(BRepOffsetAPI_MakePipeShell* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Generated(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1489,7 +1466,15 @@ extern "C" OcctResult<double> BRepOffsetAPI_MakePipeShell_error_on_surface(const
     try { return {self_->ErrorOnSurface(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepOffsetAPI_MakePipeShell_profiles(BRepOffsetAPI_MakePipeShell* self_, TopTools_ListOfShape* theProfiles) {
+extern "C" const char* BRepOffsetAPI_MakePipeShell_set_is_build_history(BRepOffsetAPI_MakePipeShell* self_, bool theIsBuildHistory) {
+    try { self_->SetIsBuildHistory(theIsBuildHistory); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> BRepOffsetAPI_MakePipeShell_is_build_history(const BRepOffsetAPI_MakePipeShell* self_) {
+    try { return {self_->IsBuildHistory(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepOffsetAPI_MakePipeShell_profiles(BRepOffsetAPI_MakePipeShell* self_, NCollection_List_TopoDS_Shape* theProfiles) {
     try { self_->Profiles(*theProfiles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1533,7 +1518,7 @@ extern "C" const char* BRepOffsetAPI_MakeThickSolid_make_thick_solid_by_simple(B
     try { self_->MakeThickSolidBySimple(*theS, theOffsetValue); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepOffsetAPI_MakeThickSolid_make_thick_solid_by_join(BRepOffsetAPI_MakeThickSolid* self_, TopoDS_Shape const* S, TopTools_ListOfShape const* ClosingFaces, double Offset, double Tol, int32_t Mode, bool Intersection, bool SelfInter, int32_t Join, bool RemoveIntEdges, Message_ProgressRange const* theRange) {
+extern "C" const char* BRepOffsetAPI_MakeThickSolid_make_thick_solid_by_join(BRepOffsetAPI_MakeThickSolid* self_, TopoDS_Shape const* S, NCollection_List_TopoDS_Shape const* ClosingFaces, double Offset, double Tol, int32_t Mode, bool Intersection, bool SelfInter, int32_t Join, bool RemoveIntEdges, Message_ProgressRange const* theRange) {
     try { self_->MakeThickSolidByJoin(*S, *ClosingFaces, Offset, Tol, static_cast<BRepOffset_Mode>(Mode), Intersection, SelfInter, static_cast<GeomAbs_JoinType>(Join), RemoveIntEdges, *theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1541,7 +1526,7 @@ extern "C" const char* BRepOffsetAPI_MakeThickSolid_build(BRepOffsetAPI_MakeThic
     try { self_->Build(*theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepOffsetAPI_MakeThickSolid_modified(BRepOffsetAPI_MakeThickSolid* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepOffsetAPI_MakeThickSolid_modified(BRepOffsetAPI_MakeThickSolid* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Modified(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1671,7 +1656,7 @@ extern "C" OcctResult<TopoDS_Shape const*> BRepOffsetAPI_NormalProjection_couple
     try { return {&(self_->Couple(*E)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepOffsetAPI_NormalProjection_generated(BRepOffsetAPI_NormalProjection* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepOffsetAPI_NormalProjection_generated(BRepOffsetAPI_NormalProjection* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Generated(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1679,7 +1664,7 @@ extern "C" OcctResult<TopoDS_Shape const*> BRepOffsetAPI_NormalProjection_ancest
     try { return {&(self_->Ancestor(*E)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BRepOffsetAPI_NormalProjection_build_wire(const BRepOffsetAPI_NormalProjection* self_, TopTools_ListOfShape* Liste) {
+extern "C" OcctResult<bool> BRepOffsetAPI_NormalProjection_build_wire(const BRepOffsetAPI_NormalProjection* self_, NCollection_List_TopoDS_Shape* Liste) {
     try { return {self_->BuildWire(*Liste), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1785,11 +1770,11 @@ extern "C" const char* BRepOffsetAPI_ThruSections_set_mutable_input(BRepOffsetAP
     try { self_->SetMutableInput(theIsMutableInput); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepOffsetAPI_ThruSections_generated(BRepOffsetAPI_ThruSections* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepOffsetAPI_ThruSections_generated(BRepOffsetAPI_ThruSections* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Generated(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepOffsetAPI_ThruSections_wires(const BRepOffsetAPI_ThruSections* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepOffsetAPI_ThruSections_wires(const BRepOffsetAPI_ThruSections* self_) {
     try { return {&(self_->Wires()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1907,7 +1892,7 @@ extern "C" OcctResult<TopoDS_Face const*> BiTgte_Blend_face_int(const BiTgte_Ble
     try { return {&(self_->Face(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BiTgte_Blend_center_lines(const BiTgte_Blend* self_, TopTools_ListOfShape* LC) {
+extern "C" const char* BiTgte_Blend_center_lines(const BiTgte_Blend* self_, NCollection_List_TopoDS_Shape* LC) {
     try { self_->CenterLines(*LC); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1961,12 +1946,24 @@ extern "C" OcctResult<Handle(Adaptor3d_Curve)*> BiTgte_CurveOnEdge_trim(const Bi
     try { return {new Handle(Adaptor3d_Curve)(self_->Trim(First, Last, Tol)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Pnt*> BiTgte_CurveOnEdge_value(const BiTgte_CurveOnEdge* self_, double U) {
-    try { return {new gp_Pnt(self_->Value(U)), nullptr}; }
+extern "C" OcctResult<gp_Pnt*> BiTgte_CurveOnEdge_eval_d0(const BiTgte_CurveOnEdge* self_, double theU) {
+    try { return {new gp_Pnt(self_->EvalD0(theU)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Vec*> BiTgte_CurveOnEdge_dn(const BiTgte_CurveOnEdge* self_, double U, int32_t N) {
-    try { return {new gp_Vec(self_->DN(U, N)), nullptr}; }
+extern "C" OcctResult<Geom_Curve::ResD1*> BiTgte_CurveOnEdge_eval_d1(const BiTgte_CurveOnEdge* self_, double theU) {
+    try { return {new Geom_Curve::ResD1(self_->EvalD1(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom_Curve::ResD2*> BiTgte_CurveOnEdge_eval_d2(const BiTgte_CurveOnEdge* self_, double theU) {
+    try { return {new Geom_Curve::ResD2(self_->EvalD2(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom_Curve::ResD3*> BiTgte_CurveOnEdge_eval_d3(const BiTgte_CurveOnEdge* self_, double theU) {
+    try { return {new Geom_Curve::ResD3(self_->EvalD3(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec*> BiTgte_CurveOnEdge_eval_dn(const BiTgte_CurveOnEdge* self_, double theU, int32_t theN) {
+    try { return {new gp_Vec(self_->EvalDN(theU, theN)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Lin*> BiTgte_CurveOnEdge_line(const BiTgte_CurveOnEdge* self_) {
@@ -2021,7 +2018,7 @@ extern "C" OcctResult<int32_t> BiTgte_CurveOnEdge_nb_intervals(const BiTgte_Curv
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BiTgte_CurveOnEdge_intervals(const BiTgte_CurveOnEdge* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* BiTgte_CurveOnEdge_intervals(const BiTgte_CurveOnEdge* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -2036,22 +2033,6 @@ extern "C" OcctResult<bool> BiTgte_CurveOnEdge_is_periodic(const BiTgte_CurveOnE
 extern "C" OcctResult<double> BiTgte_CurveOnEdge_period(const BiTgte_CurveOnEdge* self_) {
     try { return {self_->Period(), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* BiTgte_CurveOnEdge_d0(const BiTgte_CurveOnEdge* self_, double U, gp_Pnt* P) {
-    try { self_->D0(U, *P); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* BiTgte_CurveOnEdge_d1(const BiTgte_CurveOnEdge* self_, double U, gp_Pnt* P, gp_Vec* V) {
-    try { self_->D1(U, *P, *V); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* BiTgte_CurveOnEdge_d2(const BiTgte_CurveOnEdge* self_, double U, gp_Pnt* P, gp_Vec* V1, gp_Vec* V2) {
-    try { self_->D2(U, *P, *V1, *V2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* BiTgte_CurveOnEdge_d3(const BiTgte_CurveOnEdge* self_, double U, gp_Pnt* P, gp_Vec* V1, gp_Vec* V2, gp_Vec* V3) {
-    try { self_->D3(U, *P, *V1, *V2, *V3); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<double> BiTgte_CurveOnEdge_resolution(const BiTgte_CurveOnEdge* self_, double R3d) {
     try { return {self_->Resolution(R3d), nullptr}; }
@@ -2089,24 +2070,48 @@ extern "C" OcctResult<const Adaptor3d_Curve*> BiTgte_CurveOnEdge_as_Adaptor3d_Cu
 extern "C" OcctResult<Adaptor3d_Curve*> BiTgte_CurveOnEdge_as_Adaptor3d_Curve_mut(BiTgte_CurveOnEdge* self_) { return {static_cast<Adaptor3d_Curve*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BiTgte_CurveOnEdge_as_Standard_Transient(const BiTgte_CurveOnEdge* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BiTgte_CurveOnEdge_as_Standard_Transient_mut(BiTgte_CurveOnEdge* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBiTgteCurveOnEdge*> BiTgte_CurveOnEdge_to_handle(BiTgte_CurveOnEdge* obj) {
-    try { return {new HandleBiTgteCurveOnEdge(obj), nullptr}; }
+extern "C" OcctResult<Handle_BiTgte_CurveOnEdge*> BiTgte_CurveOnEdge_to_handle(BiTgte_CurveOnEdge* obj) {
+    try { return {new Handle_BiTgte_CurveOnEdge(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BiTgte_CurveOnEdge*> HandleBiTgteCurveOnEdge_get(const HandleBiTgteCurveOnEdge* handle) {
+extern "C" OcctResult<const BiTgte_CurveOnEdge*> Handle_BiTgte_CurveOnEdge_get(const Handle_BiTgte_CurveOnEdge* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BiTgte_CurveOnEdge*> HandleBiTgteCurveOnEdge_get_mut(HandleBiTgteCurveOnEdge* handle) {
+extern "C" OcctResult<BiTgte_CurveOnEdge*> Handle_BiTgte_CurveOnEdge_get_mut(Handle_BiTgte_CurveOnEdge* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleAdaptor3dCurve*> HandleBiTgteCurveOnEdge_to_HandleAdaptor3dCurve(const HandleBiTgteCurveOnEdge* self_) {
-    try { return {new HandleAdaptor3dCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Adaptor3d_Curve*> Handle_BiTgte_CurveOnEdge_to_Handle_Adaptor3d_Curve(const Handle_BiTgte_CurveOnEdge* self_) {
+    try { return {new Handle_Adaptor3d_Curve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBiTgteCurveOnEdge_to_HandleStandardTransient(const HandleBiTgteCurveOnEdge* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BiTgte_CurveOnEdge_to_Handle_Standard_Transient(const Handle_BiTgte_CurveOnEdge* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Pnt*> BiTgte_CurveOnEdge_inherited_Value(const BiTgte_CurveOnEdge* self, double theU) {
+    try { return {new gp_Pnt(self->Value(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BiTgte_CurveOnEdge_inherited_D0(const BiTgte_CurveOnEdge* self, double theU, gp_Pnt& theP) {
+    try { self->D0(theU, theP); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BiTgte_CurveOnEdge_inherited_D1(const BiTgte_CurveOnEdge* self, double theU, gp_Pnt& theP, gp_Vec& theV) {
+    try { self->D1(theU, theP, theV); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BiTgte_CurveOnEdge_inherited_D2(const BiTgte_CurveOnEdge* self, double theU, gp_Pnt& theP, gp_Vec& theV1, gp_Vec& theV2) {
+    try { self->D2(theU, theP, theV1, theV2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BiTgte_CurveOnEdge_inherited_D3(const BiTgte_CurveOnEdge* self, double theU, gp_Pnt& theP, gp_Vec& theV1, gp_Vec& theV2, gp_Vec& theV3) {
+    try { self->D3(theU, theP, theV1, theV2, theV3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<gp_Vec*> BiTgte_CurveOnEdge_inherited_DN(const BiTgte_CurveOnEdge* self, double theU, int32_t theN) {
+    try { return {new gp_Vec(self->DN(theU, theN)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Geom_OffsetCurve)*> BiTgte_CurveOnEdge_inherited_OffsetCurve(const BiTgte_CurveOnEdge* self) {
@@ -2159,12 +2164,24 @@ extern "C" OcctResult<Handle(Adaptor3d_Curve)*> BiTgte_CurveOnVertex_trim(const 
     try { return {new Handle(Adaptor3d_Curve)(self_->Trim(First, Last, Tol)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Pnt*> BiTgte_CurveOnVertex_value(const BiTgte_CurveOnVertex* self_, double U) {
-    try { return {new gp_Pnt(self_->Value(U)), nullptr}; }
+extern "C" OcctResult<gp_Pnt*> BiTgte_CurveOnVertex_eval_d0(const BiTgte_CurveOnVertex* self_, double theU) {
+    try { return {new gp_Pnt(self_->EvalD0(theU)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Vec*> BiTgte_CurveOnVertex_dn(const BiTgte_CurveOnVertex* self_, double U, int32_t N) {
-    try { return {new gp_Vec(self_->DN(U, N)), nullptr}; }
+extern "C" OcctResult<Geom_Curve::ResD1*> BiTgte_CurveOnVertex_eval_d1(const BiTgte_CurveOnVertex* self_, double theU) {
+    try { return {new Geom_Curve::ResD1(self_->EvalD1(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom_Curve::ResD2*> BiTgte_CurveOnVertex_eval_d2(const BiTgte_CurveOnVertex* self_, double theU) {
+    try { return {new Geom_Curve::ResD2(self_->EvalD2(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom_Curve::ResD3*> BiTgte_CurveOnVertex_eval_d3(const BiTgte_CurveOnVertex* self_, double theU) {
+    try { return {new Geom_Curve::ResD3(self_->EvalD3(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec*> BiTgte_CurveOnVertex_eval_dn(const BiTgte_CurveOnVertex* self_, double theU, int32_t theN) {
+    try { return {new gp_Vec(self_->EvalDN(theU, theN)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Lin*> BiTgte_CurveOnVertex_line(const BiTgte_CurveOnVertex* self_) {
@@ -2219,7 +2236,7 @@ extern "C" OcctResult<int32_t> BiTgte_CurveOnVertex_nb_intervals(const BiTgte_Cu
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BiTgte_CurveOnVertex_intervals(const BiTgte_CurveOnVertex* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* BiTgte_CurveOnVertex_intervals(const BiTgte_CurveOnVertex* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -2234,22 +2251,6 @@ extern "C" OcctResult<bool> BiTgte_CurveOnVertex_is_periodic(const BiTgte_CurveO
 extern "C" OcctResult<double> BiTgte_CurveOnVertex_period(const BiTgte_CurveOnVertex* self_) {
     try { return {self_->Period(), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* BiTgte_CurveOnVertex_d0(const BiTgte_CurveOnVertex* self_, double U, gp_Pnt* P) {
-    try { self_->D0(U, *P); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* BiTgte_CurveOnVertex_d1(const BiTgte_CurveOnVertex* self_, double U, gp_Pnt* P, gp_Vec* V) {
-    try { self_->D1(U, *P, *V); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* BiTgte_CurveOnVertex_d2(const BiTgte_CurveOnVertex* self_, double U, gp_Pnt* P, gp_Vec* V1, gp_Vec* V2) {
-    try { self_->D2(U, *P, *V1, *V2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* BiTgte_CurveOnVertex_d3(const BiTgte_CurveOnVertex* self_, double U, gp_Pnt* P, gp_Vec* V1, gp_Vec* V2, gp_Vec* V3) {
-    try { self_->D3(U, *P, *V1, *V2, *V3); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<double> BiTgte_CurveOnVertex_resolution(const BiTgte_CurveOnVertex* self_, double R3d) {
     try { return {self_->Resolution(R3d), nullptr}; }
@@ -2287,28 +2288,52 @@ extern "C" OcctResult<const Adaptor3d_Curve*> BiTgte_CurveOnVertex_as_Adaptor3d_
 extern "C" OcctResult<Adaptor3d_Curve*> BiTgte_CurveOnVertex_as_Adaptor3d_Curve_mut(BiTgte_CurveOnVertex* self_) { return {static_cast<Adaptor3d_Curve*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BiTgte_CurveOnVertex_as_Standard_Transient(const BiTgte_CurveOnVertex* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BiTgte_CurveOnVertex_as_Standard_Transient_mut(BiTgte_CurveOnVertex* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBiTgteCurveOnVertex*> BiTgte_CurveOnVertex_to_handle(BiTgte_CurveOnVertex* obj) {
-    try { return {new HandleBiTgteCurveOnVertex(obj), nullptr}; }
+extern "C" OcctResult<Handle_BiTgte_CurveOnVertex*> BiTgte_CurveOnVertex_to_handle(BiTgte_CurveOnVertex* obj) {
+    try { return {new Handle_BiTgte_CurveOnVertex(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BiTgte_CurveOnVertex*> HandleBiTgteCurveOnVertex_get(const HandleBiTgteCurveOnVertex* handle) {
+extern "C" OcctResult<const BiTgte_CurveOnVertex*> Handle_BiTgte_CurveOnVertex_get(const Handle_BiTgte_CurveOnVertex* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BiTgte_CurveOnVertex*> HandleBiTgteCurveOnVertex_get_mut(HandleBiTgteCurveOnVertex* handle) {
+extern "C" OcctResult<BiTgte_CurveOnVertex*> Handle_BiTgte_CurveOnVertex_get_mut(Handle_BiTgte_CurveOnVertex* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleAdaptor3dCurve*> HandleBiTgteCurveOnVertex_to_HandleAdaptor3dCurve(const HandleBiTgteCurveOnVertex* self_) {
-    try { return {new HandleAdaptor3dCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Adaptor3d_Curve*> Handle_BiTgte_CurveOnVertex_to_Handle_Adaptor3d_Curve(const Handle_BiTgte_CurveOnVertex* self_) {
+    try { return {new Handle_Adaptor3d_Curve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBiTgteCurveOnVertex_to_HandleStandardTransient(const HandleBiTgteCurveOnVertex* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BiTgte_CurveOnVertex_to_Handle_Standard_Transient(const Handle_BiTgte_CurveOnVertex* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Adaptor3d_Curve)*> BiTgte_CurveOnVertex_inherited_ShallowCopy(const BiTgte_CurveOnVertex* self) {
     try { return {new Handle(Adaptor3d_Curve)(self->ShallowCopy()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Pnt*> BiTgte_CurveOnVertex_inherited_Value(const BiTgte_CurveOnVertex* self, double theU) {
+    try { return {new gp_Pnt(self->Value(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BiTgte_CurveOnVertex_inherited_D0(const BiTgte_CurveOnVertex* self, double theU, gp_Pnt& theP) {
+    try { self->D0(theU, theP); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BiTgte_CurveOnVertex_inherited_D1(const BiTgte_CurveOnVertex* self, double theU, gp_Pnt& theP, gp_Vec& theV) {
+    try { self->D1(theU, theP, theV); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BiTgte_CurveOnVertex_inherited_D2(const BiTgte_CurveOnVertex* self, double theU, gp_Pnt& theP, gp_Vec& theV1, gp_Vec& theV2) {
+    try { self->D2(theU, theP, theV1, theV2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BiTgte_CurveOnVertex_inherited_D3(const BiTgte_CurveOnVertex* self, double theU, gp_Pnt& theP, gp_Vec& theV1, gp_Vec& theV2, gp_Vec& theV3) {
+    try { self->D3(theU, theP, theV1, theV2, theV3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<gp_Vec*> BiTgte_CurveOnVertex_inherited_DN(const BiTgte_CurveOnVertex* self, double theU, int32_t theN) {
+    try { return {new gp_Vec(self->DN(theU, theN)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Geom_OffsetCurve)*> BiTgte_CurveOnVertex_inherited_OffsetCurve(const BiTgte_CurveOnVertex* self) {
@@ -2521,11 +2546,11 @@ extern "C" OcctResult<TopoDS_Shape const*> Draft_Modification_problematic_shape(
     try { return {&(self_->ProblematicShape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> Draft_Modification_connected_faces(Draft_Modification* self_, TopoDS_Face const* F) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> Draft_Modification_connected_faces(Draft_Modification* self_, TopoDS_Face const* F) {
     try { return {&(self_->ConnectedFaces(*F)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> Draft_Modification_modified_faces(Draft_Modification* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> Draft_Modification_modified_faces(Draft_Modification* self_) {
     try { return {&(self_->ModifiedFaces()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2569,24 +2594,24 @@ extern "C" OcctResult<const BRepTools_Modification*> Draft_Modification_as_BRepT
 extern "C" OcctResult<BRepTools_Modification*> Draft_Modification_as_BRepTools_Modification_mut(Draft_Modification* self_) { return {static_cast<BRepTools_Modification*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Draft_Modification_as_Standard_Transient(const Draft_Modification* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Draft_Modification_as_Standard_Transient_mut(Draft_Modification* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleDraftModification*> Draft_Modification_to_handle(Draft_Modification* obj) {
-    try { return {new HandleDraftModification(obj), nullptr}; }
+extern "C" OcctResult<Handle_Draft_Modification*> Draft_Modification_to_handle(Draft_Modification* obj) {
+    try { return {new Handle_Draft_Modification(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Draft_Modification*> HandleDraftModification_get(const HandleDraftModification* handle) {
+extern "C" OcctResult<const Draft_Modification*> Handle_Draft_Modification_get(const Handle_Draft_Modification* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Draft_Modification*> HandleDraftModification_get_mut(HandleDraftModification* handle) {
+extern "C" OcctResult<Draft_Modification*> Handle_Draft_Modification_get_mut(Handle_Draft_Modification* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepToolsModification*> HandleDraftModification_to_HandleBRepToolsModification(const HandleDraftModification* self_) {
-    try { return {new HandleBRepToolsModification(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepTools_Modification*> Handle_Draft_Modification_to_Handle_BRepTools_Modification(const Handle_Draft_Modification* self_) {
+    try { return {new Handle_BRepTools_Modification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleDraftModification_to_HandleStandardTransient(const HandleDraftModification* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Draft_Modification_to_Handle_Standard_Transient(const Handle_Draft_Modification* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Draft_Modification_inherited_NewTriangulation(Draft_Modification* self, TopoDS_Face const& F, Handle(Poly_Triangulation)& T) {
@@ -2693,7 +2718,3 @@ extern "C" OcctResult<double> Draft_angle(TopoDS_Face const* F, gp_Dir const* Di
     OCCT_CATCH_RETURN
 }
 
-
-// Nested type and typedef type destructors
-extern "C" void BRepOffset_DataMapOfShapeOffset_destructor(BRepOffset_DataMapOfShapeOffset* self_) { delete self_; }
-extern "C" void BRepOffset_ListOfInterval_destructor(BRepOffset_ListOfInterval* self_) { delete self_; }

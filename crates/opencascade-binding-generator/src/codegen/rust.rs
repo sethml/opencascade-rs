@@ -542,7 +542,13 @@ fn generate_opaque_declarations(
             continue;
         }
         // Protected destructor classes still need opaque declarations when referenced
-        // in method signatures; they just won't get CppDeletable.
+        // in method signatures; they just won't get CppDeletable. This is keyed on
+        // the exact type name: a nested type is not implicitly non-deletable just
+        // because its enclosing class is non-allocatable (e.g. BRepGraph_Tool is
+        // non-allocatable but BRepGraph_Tool::VertexUsage is a public typedef to a
+        // fully deletable struct). Genuinely non-deletable nested types (such as the
+        // private primitive typedef BRepGraphInc_BitFlags::BlockType) are listed
+        // explicitly in non_allocatable_classes instead.
         let has_protected_dtor = protected_destructor_classes.contains(type_name);
         if is_primitive_type(type_name) {
             continue;
@@ -944,18 +950,35 @@ fn emit_collection_impl(coll: &super::collections::CollectionInfo) -> String {
     // instead of crate::ffi::{elem} which doesn't exist for primitives.
     let rust_elem = super::collections::rust_element_type(elem);
     let is_primitive = super::collections::is_primitive_element(elem);
-    // How to refer to the element type in Rust code
+    // How to refer to the element type in Rust code. For primitive element types
+    // (int -> i32, double -> f64, etc.) use the Rust scalar directly; for class types
+    // use the opaque `crate::ffi::{Type}`.
     let elem_type_ref = if is_primitive {
         rust_elem.to_string()
     } else {
         format!("crate::ffi::{}", elem)
     };
-
+    // Same, for the value type of data maps (None for non-map collections).
+    let value_type_ref: Option<String> = coll.value_type.as_ref().map(|v| {
+        if super::collections::is_primitive_element(v) {
+            super::collections::rust_element_type(v).to_string()
+        } else {
+            format!("crate::ffi::{}", v)
+        }
+    });
+    // Whether the value type is a primitive scalar. Methods that would otherwise
+    // return an owned copy (`OwnedPtr<T>`) instead return the scalar by value, since
+    // primitives don't implement CppDeletable.
+    let value_prim = coll
+        .value_type
+        .as_deref()
+        .map(super::collections::is_primitive_element)
+        .unwrap_or(false);
 
     out.push_str(&format!("impl {} {{\n", short));
 
     match coll.kind {
-        CollectionKind::List | CollectionKind::Sequence => {
+        CollectionKind::List | CollectionKind::Sequence | CollectionKind::HSequence => {
             // new
             out.push_str(&format!(
                 "    /// Create a new empty {}\n    pub fn new() -> crate::OwnedPtr<Self> {{\n        unsafe {{ crate::OwnedPtr::from_raw(crate::ffi::{}_new()) }}\n    }}\n\n",
@@ -973,21 +996,21 @@ fn emit_collection_impl(coll: &super::collections::CollectionInfo) -> String {
             ));
             // append
             out.push_str(&format!(
-                "    /// Append an element\n    pub fn append(&mut self, item: &crate::ffi::{}) {{\n        unsafe {{ crate::ffi::{}_append(self as *mut Self, item as *const crate::ffi::{}) }}\n    }}\n\n",
-                elem, coll_name, elem
+                "    /// Append an element\n    pub fn append(&mut self, item: &{}) {{\n        unsafe {{ crate::ffi::{}_append(self as *mut Self, item as *const {}) }}\n    }}\n\n",
+                elem_type_ref, coll_name, elem_type_ref
             ));
             if coll.kind == CollectionKind::List {
                 // prepend
                 out.push_str(&format!(
-                    "    /// Prepend an element\n    pub fn prepend(&mut self, item: &crate::ffi::{}) {{\n        unsafe {{ crate::ffi::{}_prepend(self as *mut Self, item as *const crate::ffi::{}) }}\n    }}\n\n",
-                    elem, coll_name, elem
+                    "    /// Prepend an element\n    pub fn prepend(&mut self, item: &{}) {{\n        unsafe {{ crate::ffi::{}_prepend(self as *mut Self, item as *const {}) }}\n    }}\n\n",
+                    elem_type_ref, coll_name, elem_type_ref
                 ));
             }
-            if coll.kind == CollectionKind::Sequence {
+            if coll.kind == CollectionKind::Sequence || coll.kind == CollectionKind::HSequence {
                 // value (1-based index)
                 out.push_str(&format!(
-                    "    /// Get element at 1-based index\n    pub fn value(&self, index: i32) -> &crate::ffi::{} {{\n        unsafe {{ &*crate::ffi::{}_value(self as *const Self, index) }}\n    }}\n\n",
-                    elem, coll_name
+                    "    /// Get element at 1-based index\n    pub fn value(&self, index: i32) -> &{} {{\n        unsafe {{ &*crate::ffi::{}_value(self as *const Self, index) }}\n    }}\n\n",
+                    elem_type_ref, coll_name
                 ));
             }
         }
@@ -1009,19 +1032,19 @@ fn emit_collection_impl(coll: &super::collections::CollectionInfo) -> String {
             ));
             // add
             out.push_str(&format!(
-                "    /// Add an element, returns index\n    pub fn add(&mut self, item: &crate::ffi::{}) -> i32 {{\n        unsafe {{ crate::ffi::{}_add(self as *mut Self, item as *const crate::ffi::{}) }}\n    }}\n\n",
-                elem, coll_name, elem
+                "    /// Add an element, returns index\n    pub fn add(&mut self, item: &{}) -> i32 {{\n        unsafe {{ crate::ffi::{}_add(self as *mut Self, item as *const {}) }}\n    }}\n\n",
+                elem_type_ref, coll_name, elem_type_ref
             ));
             if coll.kind == CollectionKind::IndexedMap {
                 // find_key (1-based)
                 out.push_str(&format!(
-                    "    /// Get element at 1-based index\n    pub fn find_key(&self, index: i32) -> &crate::ffi::{} {{\n        unsafe {{ &*crate::ffi::{}_find_key(self as *const Self, index) }}\n    }}\n\n",
-                    elem, coll_name
+                    "    /// Get element at 1-based index\n    pub fn find_key(&self, index: i32) -> &{} {{\n        unsafe {{ &*crate::ffi::{}_find_key(self as *const Self, index) }}\n    }}\n\n",
+                    elem_type_ref, coll_name
                 ));
             }
         }
         CollectionKind::DataMap => {
-            if let Some(ref value_type) = coll.value_type {
+            if let Some(value_type) = value_type_ref.as_ref() {
                 // new
                 out.push_str(&format!(
                     "    /// Create a new empty {}\n    pub fn new() -> crate::OwnedPtr<Self> {{\n        unsafe {{ crate::OwnedPtr::from_raw(crate::ffi::{}_new()) }}\n    }}\n\n",
@@ -1039,23 +1062,31 @@ fn emit_collection_impl(coll: &super::collections::CollectionInfo) -> String {
                 ));
                 // bind
                 out.push_str(&format!(
-                    "    /// Bind a key to a value\n    pub fn bind(&mut self, key: &crate::ffi::{}, value: &crate::ffi::{}) -> bool {{\n        unsafe {{ crate::ffi::{}_bind(self as *mut Self, key as *const crate::ffi::{}, value as *const crate::ffi::{}) }}\n    }}\n\n",
-                    elem, value_type, coll_name, elem, value_type
+                    "    /// Bind a key to a value\n    pub fn bind(&mut self, key: &{}, value: &{}) -> bool {{\n        unsafe {{ crate::ffi::{}_bind(self as *mut Self, key as *const {}, value as *const {}) }}\n    }}\n\n",
+                    elem_type_ref, value_type, coll_name, elem_type_ref, value_type
                 ));
                 // find
-                out.push_str(&format!(
-                    "    /// Find a value by key (returns nullptr if not found)\n    pub fn find(&self, key: &crate::ffi::{}) -> crate::OwnedPtr<crate::ffi::{}> {{\n        unsafe {{ crate::OwnedPtr::from_raw(crate::ffi::{}_find(self as *const Self, key as *const crate::ffi::{})) }}\n    }}\n\n",
-                    elem, value_type, coll_name, elem
-                ));
+                if value_prim {
+                    // Primitive value: C++ returns a borrowed pointer into the map; copy it out.
+                    out.push_str(&format!(
+                        "    /// Find a value by key (returns None if not found)\n    pub fn find(&self, key: &{}) -> Option<{}> {{\n        let p = unsafe {{ crate::ffi::{}_find(self as *const Self, key as *const {}) }};\n        if p.is_null() {{ None }} else {{ Some(unsafe {{ *p }}) }}\n    }}\n\n",
+                        elem_type_ref, value_type, coll_name, elem_type_ref
+                    ));
+                } else {
+                    out.push_str(&format!(
+                        "    /// Find a value by key (returns None if not found)\n    pub fn find(&self, key: &{}) -> Option<crate::OwnedPtr<{}>> {{\n        let p = unsafe {{ crate::ffi::{}_find(self as *const Self, key as *const {}) }};\n        if p.is_null() {{ None }} else {{ Some(unsafe {{ crate::OwnedPtr::from_raw(p) }}) }}\n    }}\n\n",
+                        elem_type_ref, value_type, coll_name, elem_type_ref
+                    ));
+                }
                 // contains
                 out.push_str(&format!(
-                    "    /// Check if key exists\n    pub fn contains(&self, key: &crate::ffi::{}) -> bool {{\n        unsafe {{ crate::ffi::{}_contains(self as *const Self, key as *const crate::ffi::{}) }}\n    }}\n\n",
-                    elem, coll_name, elem
+                    "    /// Check if key exists\n    pub fn contains(&self, key: &{}) -> bool {{\n        unsafe {{ crate::ffi::{}_contains(self as *const Self, key as *const {}) }}\n    }}\n\n",
+                    elem_type_ref, coll_name, elem_type_ref
                 ));
             }
         }
         CollectionKind::IndexedDataMap => {
-            if let Some(ref value_type) = coll.value_type {
+            if let Some(value_type) = value_type_ref.as_ref() {
                 // new
                 out.push_str(&format!(
                     "    /// Create a new empty {}\n    pub fn new() -> crate::OwnedPtr<Self> {{\n        unsafe {{ crate::OwnedPtr::from_raw(crate::ffi::{}_new()) }}\n    }}\n\n",
@@ -1073,37 +1104,45 @@ fn emit_collection_impl(coll: &super::collections::CollectionInfo) -> String {
                 ));
                 // add
                 out.push_str(&format!(
-                    "    /// Add a key-value pair, returns index\n    pub fn add(&mut self, key: &crate::ffi::{}, value: &crate::ffi::{}) -> i32 {{\n        unsafe {{ crate::ffi::{}_add(self as *mut Self, key as *const crate::ffi::{}, value as *const crate::ffi::{}) }}\n    }}\n\n",
-                    elem, value_type, coll_name, elem, value_type
+                    "    /// Add a key-value pair, returns index\n    pub fn add(&mut self, key: &{}, value: &{}) -> i32 {{\n        unsafe {{ crate::ffi::{}_add(self as *mut Self, key as *const {}, value as *const {}) }}\n    }}\n\n",
+                    elem_type_ref, value_type, coll_name, elem_type_ref, value_type
                 ));
                 // find_from_key
                 out.push_str(&format!(
-                    "    /// Find value by key\n    pub fn find_from_key<'a>(&'a self, key: &crate::ffi::{}) -> &'a crate::ffi::{} {{\n        unsafe {{ &*crate::ffi::{}_find_from_key(self as *const Self, key as *const crate::ffi::{}) }}\n    }}\n\n",
-                    elem, value_type, coll_name, elem
+                    "    /// Find value by key\n    pub fn find_from_key<'a>(&'a self, key: &{}) -> &'a {} {{\n        unsafe {{ &*crate::ffi::{}_find_from_key(self as *const Self, key as *const {}) }}\n    }}\n\n",
+                    elem_type_ref, value_type, coll_name, elem_type_ref
                 ));
                 // find_from_index
                 out.push_str(&format!(
-                    "    /// Find value by 1-based index\n    pub fn find_from_index<'a>(&'a self, index: i32) -> &'a crate::ffi::{} {{\n        unsafe {{ &*crate::ffi::{}_find_from_index(self as *const Self, index) }}\n    }}\n\n",
+                    "    /// Find value by 1-based index\n    pub fn find_from_index<'a>(&'a self, index: i32) -> &'a {} {{\n        unsafe {{ &*crate::ffi::{}_find_from_index(self as *const Self, index) }}\n    }}\n\n",
                     value_type, coll_name
                 ));
                 // find_key
-                out.push_str(&format!(
-                    "    /// Find key by 1-based index\n    pub fn find_key(&self, index: i32) -> crate::OwnedPtr<crate::ffi::{}> {{\n        unsafe {{ crate::OwnedPtr::from_raw(crate::ffi::{}_find_key(self as *const Self, index)) }}\n    }}\n\n",
-                    elem, coll_name
-                ));
+                if is_primitive {
+                    // Primitive key: C++ returns a borrowed pointer; copy it out.
+                    out.push_str(&format!(
+                        "    /// Find key by 1-based index\n    pub fn find_key(&self, index: i32) -> {} {{\n        unsafe {{ *crate::ffi::{}_find_key(self as *const Self, index) }}\n    }}\n\n",
+                        elem_type_ref, coll_name
+                    ));
+                } else {
+                    out.push_str(&format!(
+                        "    /// Find key by 1-based index\n    pub fn find_key(&self, index: i32) -> crate::OwnedPtr<{}> {{\n        unsafe {{ crate::OwnedPtr::from_raw(crate::ffi::{}_find_key(self as *const Self, index)) }}\n    }}\n\n",
+                        elem_type_ref, coll_name
+                    ));
+                }
                 // find_index
                 out.push_str(&format!(
-                    "    /// Find index by key (returns 0 if not found)\n    pub fn find_index(&self, key: &crate::ffi::{}) -> i32 {{\n        unsafe {{ crate::ffi::{}_find_index(self as *const Self, key as *const crate::ffi::{}) }}\n    }}\n\n",
-                    elem, coll_name, elem
+                    "    /// Find index by key (returns 0 if not found)\n    pub fn find_index(&self, key: &{}) -> i32 {{\n        unsafe {{ crate::ffi::{}_find_index(self as *const Self, key as *const {}) }}\n    }}\n\n",
+                    elem_type_ref, coll_name, elem_type_ref
                 ));
                 // contains
                 out.push_str(&format!(
-                    "    /// Check if key exists\n    pub fn contains(&self, key: &crate::ffi::{}) -> bool {{\n        unsafe {{ crate::ffi::{}_contains(self as *const Self, key as *const crate::ffi::{}) }}\n    }}\n\n",
-                    elem, coll_name, elem
+                    "    /// Check if key exists\n    pub fn contains(&self, key: &{}) -> bool {{\n        unsafe {{ crate::ffi::{}_contains(self as *const Self, key as *const {}) }}\n    }}\n\n",
+                    elem_type_ref, coll_name, elem_type_ref
                 ));
             }
         }
-        CollectionKind::Array1 => {
+        CollectionKind::Array1 | CollectionKind::HArray1 => {
             // new
             out.push_str(&format!(
                 "    /// Create a new empty {}\n    pub fn new() -> crate::OwnedPtr<Self> {{\n        unsafe {{ crate::OwnedPtr::from_raw(crate::ffi::{}_new()) }}\n    }}\n\n",
@@ -1186,7 +1225,7 @@ fn emit_collection_impl(coll: &super::collections::CollectionInfo) -> String {
 
     // Add iter() method for non-array collection types
     match coll.kind {
-        CollectionKind::Array1 | CollectionKind::Array2 => {}
+        CollectionKind::Array1 | CollectionKind::Array2 | CollectionKind::HArray1 => {}
         _ => {
             let iter_type = format!("{}Iterator", coll.short_name);
             out.push_str(&format!(
@@ -1196,11 +1235,20 @@ fn emit_collection_impl(coll: &super::collections::CollectionInfo) -> String {
         }
     }
 
+    // Handle-managed collections (HArray1/HSequence): wrap an owned collection into a Handle.
+    if coll.kind.is_handle() {
+        let handle_type = type_mapping::handle_type_name(coll_name);
+        out.push_str(&format!(
+            "    /// Wrap in a Handle (reference-counted smart pointer)\n    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::{}> {{\n        unsafe {{ crate::OwnedPtr::from_raw(crate::ffi::{}_to_handle(obj.into_raw())) }}\n    }}\n\n",
+            handle_type, coll_name
+        ));
+    }
+
     out.push_str("}\n\n");
 
     // Add iterator impl block with next() for non-array collection types
     match coll.kind {
-        CollectionKind::Array1 | CollectionKind::Array2 => {}
+        CollectionKind::Array1 | CollectionKind::Array2 | CollectionKind::HArray1 => {}
         _ => {
             let iter_type = format!("{}Iterator", coll.short_name);
             let next_suffix = match coll.kind {
@@ -1208,12 +1256,21 @@ fn emit_collection_impl(coll: &super::collections::CollectionInfo) -> String {
                 _ => "_next",
             };
             let next_fn = format!("{}{}", iter_type, next_suffix);
-            out.push_str(&format!("impl {} {{\n", iter_type));
+            // The iterator implements the standard `Iterator` trait, so it (and the
+            // `OwnedPtr<Iter>` returned by `iter()`) works in `for` loops and adapters.
+            let (item_ty, some_expr) = if is_primitive {
+                // Primitive element: C++ returns a borrowed pointer; copy it out.
+                (elem_type_ref.clone(), "Some(unsafe { *ptr })".to_string())
+            } else {
+                (
+                    format!("crate::OwnedPtr<{}>", elem_type_ref),
+                    "Some(unsafe { crate::OwnedPtr::from_raw(ptr) })".to_string(),
+                )
+            };
             out.push_str(&format!(
-                "    /// Get next element (returns None when done)\n    pub fn next(&mut self) -> Option<crate::OwnedPtr<crate::ffi::{}>> {{\n        let ptr = unsafe {{ crate::ffi::{}(self as *mut Self) }};\n        if ptr.is_null() {{\n            None\n        }} else {{\n            Some(unsafe {{ crate::OwnedPtr::from_raw(ptr) }})\n        }}\n    }}\n",
-                elem, next_fn
+                "impl Iterator for {} {{\n    type Item = {};\n    fn next(&mut self) -> Option<Self::Item> {{\n        let ptr = unsafe {{ crate::ffi::{}(self as *mut Self) }};\n        if ptr.is_null() {{ None }} else {{ {} }}\n    }}\n}}\n\n",
+                iter_type, item_ty, next_fn, some_expr
             ));
-            out.push_str("}\n\n");
 
             // CppDeletable for iterator
             out.push_str(&format!(
@@ -1228,6 +1285,16 @@ fn emit_collection_impl(coll: &super::collections::CollectionInfo) -> String {
         "unsafe impl crate::CppDeletable for {} {{\n    unsafe fn cpp_delete(ptr: *mut Self) {{\n        unsafe {{ crate::ffi::{}_destructor(ptr); }}\n    }}\n}}\n\n",
         short, coll_name
     ));
+
+    // For handle-managed collections, expose get/get_mut on the Handle type to borrow
+    // the underlying collection (like the Handle_get on regular handle-able classes).
+    if coll.kind.is_handle() {
+        let handle_type = type_mapping::handle_type_name(coll_name);
+        out.push_str(&format!(
+            "impl crate::ffi::{handle} {{\n    /// Borrow the underlying {coll} pointee.\n    pub fn get(&self) -> &crate::ffi::{coll} {{\n        unsafe {{ &*crate::ffi::{handle}_get(self as *const Self) }}\n    }}\n    /// Mutably borrow the underlying {coll} pointee.\n    pub fn get_mut(&mut self) -> &mut crate::ffi::{coll} {{\n        unsafe {{ &mut *crate::ffi::{handle}_get_mut(self as *mut Self) }}\n    }}\n}}\n\n",
+            handle = handle_type, coll = coll_name
+        ));
+    }
 
     out
 }

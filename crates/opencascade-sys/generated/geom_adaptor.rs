@@ -7,13 +7,13 @@
 #![allow(non_snake_case)]
 
 /// **Source:** `GeomAdaptor.hxx`:40 - `GeomAdaptor::MakeCurve`
-/// Inherited  from    GHCurve.   Provides a  curve
+/// Inherited from GHCurve. Provides a curve
 /// handled by reference.
 /// Build a Geom_Curve using the information from the
 /// Curve from Adaptor3d
 pub fn make_curve_curve(
     C: &crate::adaptor3d::Curve,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Curve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKG3d::GeomAdaptor_make_curve_curve(C),
@@ -27,7 +27,7 @@ pub fn make_curve_curve(
 pub fn make_surface_surface_bool(
     theS: &crate::adaptor3d::Surface,
     theTrimFlag: bool,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Surface> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKG3d::GeomAdaptor_make_surface_surface_bool(theS, theTrimFlag),
@@ -36,13 +36,16 @@ pub fn make_surface_surface_bool(
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::{HandleAdaptor3dCurve, HandleAdaptor3dSurface, HandleStandardTransient};
+pub use crate::ffi_types::{
+    Handle_Adaptor3d_Curve, Handle_Adaptor3d_Surface, Handle_BRepAdaptor_Curve,
+    Handle_BRepAdaptor_Surface, Handle_Standard_Transient,
+};
 
 // ========================
 // From GeomAdaptor_Curve.hxx
 // ========================
 
-/// **Source:** `GeomAdaptor_Curve.hxx`:38 - `GeomAdaptor_Curve`
+/// **Source:** `GeomAdaptor_Curve.hxx`:51 - `GeomAdaptor_Curve`
 /// This class provides an interface between the services provided by any
 /// curve from the package Geom and those required of the curve by algorithms which use it.
 /// Creation of the loaded curve the curve is C1 by piece.
@@ -61,7 +64,7 @@ unsafe impl crate::CppDeletable for Curve {
 }
 
 impl Curve {
-    /// **Source:** `GeomAdaptor_Curve.hxx`:42 - `GeomAdaptor_Curve::GeomAdaptor_Curve()`
+    /// **Source:** `GeomAdaptor_Curve.hxx`:94 - `GeomAdaptor_Curve::GeomAdaptor_Curve()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -70,9 +73,9 @@ impl Curve {
         }
     }
 
-    /// **Source:** `GeomAdaptor_Curve.hxx`:49 - `GeomAdaptor_Curve::GeomAdaptor_Curve()`
+    /// **Source:** `GeomAdaptor_Curve.hxx`:101 - `GeomAdaptor_Curve::GeomAdaptor_Curve()`
     pub fn new_handlegeomcurve(
-        theCurve: &crate::ffi_types::HandleGeomCurve,
+        theCurve: &crate::ffi_types::Handle_Geom_Curve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -81,10 +84,10 @@ impl Curve {
         }
     }
 
-    /// **Source:** `GeomAdaptor_Curve.hxx`:52 - `GeomAdaptor_Curve::GeomAdaptor_Curve()`
+    /// **Source:** `GeomAdaptor_Curve.hxx`:104 - `GeomAdaptor_Curve::GeomAdaptor_Curve()`
     /// Standard_ConstructionError is raised if theUFirst > theULast + Precision::PConfusion()
     pub fn new_handlegeomcurve_real2(
-        theCurve: &crate::ffi_types::HandleGeomCurve,
+        theCurve: &crate::ffi_types::Handle_Geom_Curve,
         theUFirst: f64,
         theULast: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -97,8 +100,8 @@ impl Curve {
         }
     }
 
-    /// **Source:** `GeomAdaptor_Curve.hxx`:40 - `GeomAdaptor_Curve::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `GeomAdaptor_Curve.hxx`:53 - `GeomAdaptor_Curve::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKG3d::GeomAdaptor_Curve_dynamic_type(
                 self as *const Self,
@@ -106,9 +109,9 @@ impl Curve {
         }
     }
 
-    /// **Source:** `GeomAdaptor_Curve.hxx`:60 - `GeomAdaptor_Curve::ShallowCopy()`
+    /// **Source:** `GeomAdaptor_Curve.hxx`:112 - `GeomAdaptor_Curve::ShallowCopy()`
     /// Shallow copy of adaptor
-    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_Curve_shallow_copy(self as *const Self),
@@ -116,7 +119,7 @@ impl Curve {
         }
     }
 
-    /// **Source:** `GeomAdaptor_Curve.hxx`:63 - `GeomAdaptor_Curve::Reset()`
+    /// **Source:** `GeomAdaptor_Curve.hxx`:115 - `GeomAdaptor_Curve::Reset()`
     /// Reset currently loaded curve (undone Load()).
     pub fn reset(&mut self) {
         crate::check_void_result(unsafe {
@@ -124,8 +127,8 @@ impl Curve {
         })
     }
 
-    /// **Source:** `GeomAdaptor_Curve.hxx`:65 - `GeomAdaptor_Curve::Load()`
-    pub fn load_handlegeomcurve(&mut self, theCurve: &crate::ffi_types::HandleGeomCurve) {
+    /// **Source:** `GeomAdaptor_Curve.hxx`:117 - `GeomAdaptor_Curve::Load()`
+    pub fn load_handlegeomcurve(&mut self, theCurve: &crate::ffi_types::Handle_Geom_Curve) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Curve_load_handlegeomcurve(
                 self as *mut Self,
@@ -134,11 +137,11 @@ impl Curve {
         })
     }
 
-    /// **Source:** `GeomAdaptor_Curve.hxx`:75 - `GeomAdaptor_Curve::Load()`
+    /// **Source:** `GeomAdaptor_Curve.hxx`:127 - `GeomAdaptor_Curve::Load()`
     /// Standard_ConstructionError is raised if theUFirst > theULast + Precision::PConfusion()
     pub fn load_handlegeomcurve_real2(
         &mut self,
-        theCurve: &crate::ffi_types::HandleGeomCurve,
+        theCurve: &crate::ffi_types::Handle_Geom_Curve,
         theUFirst: f64,
         theULast: f64,
     ) {
@@ -152,10 +155,10 @@ impl Curve {
         })
     }
 
-    /// **Source:** `GeomAdaptor_Curve.hxx`:92 - `GeomAdaptor_Curve::Curve()`
+    /// **Source:** `GeomAdaptor_Curve.hxx`:142 - `GeomAdaptor_Curve::Curve()`
     /// Provides a curve inherited from Hcurve from Adaptor.
     /// This is inherited to provide easy to use constructors.
-    pub fn curve(&self) -> &crate::ffi_types::HandleGeomCurve {
+    pub fn curve(&self) -> &crate::ffi_types::Handle_Geom_Curve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKG3d::GeomAdaptor_Curve_curve(
                 self as *const Self,
@@ -163,21 +166,21 @@ impl Curve {
         }
     }
 
-    /// **Source:** `GeomAdaptor_Curve.hxx`:94 - `GeomAdaptor_Curve::FirstParameter()`
+    /// **Source:** `GeomAdaptor_Curve.hxx`:144 - `GeomAdaptor_Curve::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Curve_first_parameter(self as *const Self)
         })
     }
 
-    /// **Source:** `GeomAdaptor_Curve.hxx`:96 - `GeomAdaptor_Curve::LastParameter()`
+    /// **Source:** `GeomAdaptor_Curve.hxx`:146 - `GeomAdaptor_Curve::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Curve_last_parameter(self as *const Self)
         })
     }
 
-    /// **Source:** `GeomAdaptor_Curve.hxx`:98 - `GeomAdaptor_Curve::Continuity()`
+    /// **Source:** `GeomAdaptor_Curve.hxx`:148 - `GeomAdaptor_Curve::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Curve_continuity(self as *const Self)
@@ -185,8 +188,8 @@ impl Curve {
         .unwrap()
     }
 
-    /// **Source:** `GeomAdaptor_Curve.hxx`:102 - `GeomAdaptor_Curve::NbIntervals()`
-    /// Returns  the number  of  intervals for  continuity
+    /// **Source:** `GeomAdaptor_Curve.hxx`:152 - `GeomAdaptor_Curve::NbIntervals()`
+    /// Returns the number of intervals for continuity
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
@@ -194,15 +197,15 @@ impl Curve {
         })
     }
 
-    /// **Source:** `GeomAdaptor_Curve.hxx`:109 - `GeomAdaptor_Curve::Intervals()`
-    /// Stores in <T> the  parameters bounding the intervals
+    /// **Source:** `GeomAdaptor_Curve.hxx`:159 - `GeomAdaptor_Curve::Intervals()`
+    /// Stores in <T> the parameters bounding the intervals
     /// of continuity <S>.
     ///
-    /// The array must provide  enough room to  accommodate
+    /// The array must provide enough room to accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(
         &self,
-        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::NCollection_Array1_double,
         S: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
@@ -210,9 +213,9 @@ impl Curve {
         })
     }
 
-    /// **Source:** `GeomAdaptor_Curve.hxx`:116 - `GeomAdaptor_Curve::Trim()`
-    /// Returns    a  curve equivalent   of  <me>  between
-    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// **Source:** `GeomAdaptor_Curve.hxx`:166 - `GeomAdaptor_Curve::Trim()`
+    /// Returns a curve equivalent of <me> between
+    /// parameters <First> and <Last>. <Tol> is used to
     /// test for 3d points confusion.
     /// If <First> >= <Last>
     pub fn trim(
@@ -220,7 +223,7 @@ impl Curve {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_Curve_trim(
@@ -233,114 +236,25 @@ impl Curve {
         }
     }
 
-    /// **Source:** `GeomAdaptor_Curve.hxx`:120 - `GeomAdaptor_Curve::IsClosed()`
+    /// **Source:** `GeomAdaptor_Curve.hxx`:170 - `GeomAdaptor_Curve::IsClosed()`
     pub fn is_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Curve_is_closed(self as *const Self)
         })
     }
 
-    /// **Source:** `GeomAdaptor_Curve.hxx`:122 - `GeomAdaptor_Curve::IsPeriodic()`
+    /// **Source:** `GeomAdaptor_Curve.hxx`:172 - `GeomAdaptor_Curve::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Curve_is_periodic(self as *const Self)
         })
     }
 
-    /// **Source:** `GeomAdaptor_Curve.hxx`:124 - `GeomAdaptor_Curve::Period()`
+    /// **Source:** `GeomAdaptor_Curve.hxx`:174 - `GeomAdaptor_Curve::Period()`
     pub fn period(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Curve_period(self as *const Self)
         })
-    }
-
-    /// **Source:** `GeomAdaptor_Curve.hxx`:127 - `GeomAdaptor_Curve::Value()`
-    /// Computes the point of parameter U on the curve
-    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKG3d::GeomAdaptor_Curve_value(self as *const Self, U),
-            ))
-        }
-    }
-
-    /// **Source:** `GeomAdaptor_Curve.hxx`:130 - `GeomAdaptor_Curve::D0()`
-    /// Computes the point of parameter U.
-    pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKG3d::GeomAdaptor_Curve_d0(self as *const Self, U, P)
-        })
-    }
-
-    /// **Source:** `GeomAdaptor_Curve.hxx`:139 - `GeomAdaptor_Curve::D1()`
-    /// Computes the point of parameter U on the curve
-    /// with its first derivative.
-    ///
-    /// Warning : On the specific case of BSplineCurve:
-    /// if the curve is cut in interval of continuity at least C1, the
-    /// derivatives are computed on the current interval.
-    /// else the derivatives are computed on the basis curve.
-    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKG3d::GeomAdaptor_Curve_d1(self as *const Self, U, P, V)
-        })
-    }
-
-    /// **Source:** `GeomAdaptor_Curve.hxx`:148 - `GeomAdaptor_Curve::D2()`
-    /// Returns the point P of parameter U, the first and second
-    /// derivatives V1 and V2.
-    ///
-    /// Warning : On the specific case of BSplineCurve:
-    /// if the curve is cut in interval of continuity at least C2, the
-    /// derivatives are computed on the current interval.
-    /// else the derivatives are computed on the basis curve.
-    pub fn d2(
-        &self,
-        U: f64,
-        P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKG3d::GeomAdaptor_Curve_d2(self as *const Self, U, P, V1, V2)
-        })
-    }
-
-    /// **Source:** `GeomAdaptor_Curve.hxx`:160 - `GeomAdaptor_Curve::D3()`
-    /// Returns the point P of parameter U, the first, the second
-    /// and the third derivative.
-    ///
-    /// Warning : On the specific case of BSplineCurve:
-    /// if the curve is cut in interval of continuity at least C3, the
-    /// derivatives are computed on the current interval.
-    /// else the derivatives are computed on the basis curve.
-    pub fn d3(
-        &self,
-        U: f64,
-        P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-        V3: &mut crate::gp::Vec,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKG3d::GeomAdaptor_Curve_d3(self as *const Self, U, P, V1, V2, V3)
-        })
-    }
-
-    /// **Source:** `GeomAdaptor_Curve.hxx`:173 - `GeomAdaptor_Curve::DN()`
-    /// The returned vector gives the value of the derivative for the
-    /// order of derivation N.
-    /// Warning : On the specific case of BSplineCurve:
-    /// if the curve is cut in interval of continuity CN, the
-    /// derivatives are computed on the current interval.
-    /// else the derivatives are computed on the basis curve.
-    /// Raised if N < 1.
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKG3d::GeomAdaptor_Curve_dn(self as *const Self, U, N),
-            ))
-        }
     }
 
     /// **Source:** `GeomAdaptor_Curve.hxx`:177 - `GeomAdaptor_Curve::Resolution()`
@@ -450,7 +364,7 @@ impl Curve {
     /// the Curve please make a copy yourself
     /// Also it will NOT trim the surface to
     /// myFirst/Last.
-    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBezierCurve> {
+    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BezierCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_Curve_bezier(self as *const Self),
@@ -464,7 +378,7 @@ impl Curve {
     /// the Curve please make a copy yourself
     /// Also it will NOT trim the surface to
     /// myFirst/Last.
-    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineCurve> {
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_Curve_b_spline(self as *const Self),
@@ -473,7 +387,7 @@ impl Curve {
     }
 
     /// **Source:** `GeomAdaptor_Curve.hxx`:225 - `GeomAdaptor_Curve::OffsetCurve()`
-    pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomOffsetCurve> {
+    pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_OffsetCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_Curve_offset_curve(self as *const Self),
@@ -481,7 +395,57 @@ impl Curve {
         }
     }
 
-    /// **Source:** `GeomAdaptor_Curve.hxx`:40 - `GeomAdaptor_Curve::get_type_name()`
+    /// **Source:** `GeomAdaptor_Curve.hxx`:228 - `GeomAdaptor_Curve::EvalD0()`
+    /// Point evaluation. Raises an exception on failure.
+    pub fn eval_d0(&self, theU: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_Curve_eval_d0(self as *const Self, theU),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_Curve.hxx`:231 - `GeomAdaptor_Curve::EvalD1()`
+    /// D1 evaluation. Raises an exception on failure.
+    pub fn eval_d1(&self, theU: f64) -> crate::OwnedPtr<crate::geom::Curve_ResD1> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_Curve_eval_d1(self as *const Self, theU),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_Curve.hxx`:234 - `GeomAdaptor_Curve::EvalD2()`
+    /// D2 evaluation. Raises an exception on failure.
+    pub fn eval_d2(&self, theU: f64) -> crate::OwnedPtr<crate::geom::Curve_ResD2> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_Curve_eval_d2(self as *const Self, theU),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_Curve.hxx`:237 - `GeomAdaptor_Curve::EvalD3()`
+    /// D3 evaluation. Raises an exception on failure.
+    pub fn eval_d3(&self, theU: f64) -> crate::OwnedPtr<crate::geom::Curve_ResD3> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_Curve_eval_d3(self as *const Self, theU),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_Curve.hxx`:240 - `GeomAdaptor_Curve::EvalDN()`
+    /// DN evaluation. Raises an exception on failure.
+    pub fn eval_dn(&self, theU: f64, theN: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_Curve_eval_dn(self as *const Self, theU, theN),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_Curve.hxx`:53 - `GeomAdaptor_Curve::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -492,8 +456,8 @@ impl Curve {
         .into_owned()
     }
 
-    /// **Source:** `GeomAdaptor_Curve.hxx`:40 - `GeomAdaptor_Curve::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `GeomAdaptor_Curve.hxx`:53 - `GeomAdaptor_Curve::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKG3d::GeomAdaptor_Curve_get_type_descriptor()))
         }
@@ -542,7 +506,7 @@ impl Curve {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomAdaptorCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_GeomAdaptor_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_Curve_to_handle(obj.into_raw()),
@@ -550,8 +514,92 @@ impl Curve {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:89 - `Adaptor3d_Curve::Value()`
+    pub fn value(&self, theU: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_Curve_inherited_Value(
+                    self as *const Self,
+                    theU,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:92 - `Adaptor3d_Curve::D0()`
+    pub fn d0(&self, theU: f64, theP: &mut crate::gp::Pnt) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_Curve_inherited_D0(self as *const Self, theU, theP)
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:98 - `Adaptor3d_Curve::D1()`
+    pub fn d1(&self, theU: f64, theP: &mut crate::gp::Pnt, theV: &mut crate::gp::Vec) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_Curve_inherited_D1(
+                self as *const Self,
+                theU,
+                theP,
+                theV,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:109 - `Adaptor3d_Curve::D2()`
+    pub fn d2(
+        &self,
+        theU: f64,
+        theP: &mut crate::gp::Pnt,
+        theV1: &mut crate::gp::Vec,
+        theV2: &mut crate::gp::Vec,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_Curve_inherited_D2(
+                self as *const Self,
+                theU,
+                theP,
+                theV1,
+                theV2,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:121 - `Adaptor3d_Curve::D3()`
+    pub fn d3(
+        &self,
+        theU: f64,
+        theP: &mut crate::gp::Pnt,
+        theV1: &mut crate::gp::Vec,
+        theV2: &mut crate::gp::Vec,
+        theV3: &mut crate::gp::Vec,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_Curve_inherited_D3(
+                self as *const Self,
+                theU,
+                theP,
+                theV1,
+                theV2,
+                theV3,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:135 - `Adaptor3d_Curve::DN()`
+    pub fn dn(&self, theU: f64, theN: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_Curve_inherited_DN(
+                    self as *const Self,
+                    theU,
+                    theN,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Curve_inherited_IsInstance(
                 self as *const Self,
@@ -560,8 +608,8 @@ impl Curve {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Curve_inherited_IsKind(
                 self as *const Self,
@@ -570,7 +618,7 @@ impl Curve {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -584,14 +632,14 @@ impl Curve {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Curve_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Curve_inherited_IncrementRefCounter(
@@ -600,7 +648,7 @@ impl Curve {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Curve_inherited_DecrementRefCounter(
@@ -609,7 +657,7 @@ impl Curve {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Curve_inherited_Delete(self as *const Self)
@@ -617,32 +665,32 @@ impl Curve {
     }
 }
 
-pub use crate::ffi_types::HandleGeomAdaptorCurve;
+pub use crate::ffi_types::Handle_GeomAdaptor_Curve;
 
-unsafe impl crate::CppDeletable for HandleGeomAdaptorCurve {
+unsafe impl crate::CppDeletable for Handle_GeomAdaptor_Curve {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKG3d::HandleGeomAdaptorCurve_destructor(ptr);
+            crate::ffi_extern_TKG3d::Handle_GeomAdaptor_Curve_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleGeomAdaptorCurve {
+unsafe impl crate::CppCopyable for Handle_GeomAdaptor_Curve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKG3d::HandleGeomAdaptorCurve_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKG3d::Handle_GeomAdaptor_Curve_clone(ptr)) }
     }
 }
 
-impl HandleGeomAdaptorCurve {
+impl Handle_GeomAdaptor_Curve {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKG3d::HandleGeomAdaptorCurve_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKG3d::Handle_GeomAdaptor_Curve_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying GeomAdaptor_Curve
     pub fn get(&self) -> &crate::ffi_types::GeomAdaptor_Curve {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKG3d::HandleGeomAdaptorCurve_get(
+            &*crate::check_result(crate::ffi_extern_TKG3d::Handle_GeomAdaptor_Curve_get(
                 self as *const Self,
             ))
         }
@@ -651,17 +699,17 @@ impl HandleGeomAdaptorCurve {
     /// Dereference this Handle to mutably access the underlying GeomAdaptor_Curve
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomAdaptor_Curve {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKG3d::HandleGeomAdaptorCurve_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKG3d::Handle_GeomAdaptor_Curve_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<GeomAdaptor_Curve> to Handle<Adaptor3d_Curve>
-    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
+    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKG3d::HandleGeomAdaptorCurve_to_HandleAdaptor3dCurve(
+                crate::ffi_extern_TKG3d::Handle_GeomAdaptor_Curve_to_Handle_Adaptor3d_Curve(
                     self as *const Self,
                 ),
             ))
@@ -671,12 +719,84 @@ impl HandleGeomAdaptorCurve {
     /// Upcast Handle<GeomAdaptor_Curve> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKG3d::HandleGeomAdaptorCurve_to_HandleStandardTransient(
+                crate::ffi_extern_TKG3d::Handle_GeomAdaptor_Curve_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
+            ))
+        }
+    }
+}
+
+/// **Source:** `GeomAdaptor_Curve.hxx`:56 - `GeomAdaptor_Curve_OffsetData`
+/// Internal structure for offset curve evaluation data.
+pub use crate::ffi_types::GeomAdaptor_Curve_OffsetData as Curve_OffsetData;
+
+unsafe impl crate::CppDeletable for Curve_OffsetData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_Curve_OffsetData_destructor(ptr);
+        }
+    }
+}
+
+impl Curve_OffsetData {
+    /// **Source:** `GeomAdaptor_Curve.hxx` - `GeomAdaptor_Curve_OffsetData::GeomAdaptor_Curve_OffsetData()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_Curve_OffsetData_ctor(),
+            ))
+        }
+    }
+}
+
+/// **Source:** `GeomAdaptor_Curve.hxx`:65 - `GeomAdaptor_Curve_BezierData`
+/// Internal structure for Bezier curve cache data.
+pub use crate::ffi_types::GeomAdaptor_Curve_BezierData as Curve_BezierData;
+
+unsafe impl crate::CppDeletable for Curve_BezierData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_Curve_BezierData_destructor(ptr);
+        }
+    }
+}
+
+impl Curve_BezierData {
+    /// **Source:** `GeomAdaptor_Curve.hxx` - `GeomAdaptor_Curve_BezierData::GeomAdaptor_Curve_BezierData()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_Curve_BezierData_ctor(),
+            ))
+        }
+    }
+}
+
+/// **Source:** `GeomAdaptor_Curve.hxx`:73 - `GeomAdaptor_Curve_BSplineData`
+/// Internal structure for BSpline curve cache data.
+pub use crate::ffi_types::GeomAdaptor_Curve_BSplineData as Curve_BSplineData;
+
+unsafe impl crate::CppDeletable for Curve_BSplineData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_Curve_BSplineData_destructor(ptr);
+        }
+    }
+}
+
+impl Curve_BSplineData {
+    /// **Source:** `GeomAdaptor_Curve.hxx` - `GeomAdaptor_Curve_BSplineData::GeomAdaptor_Curve_BSplineData()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_Curve_BSplineData_ctor(),
             ))
         }
     }
@@ -686,7 +806,7 @@ impl HandleGeomAdaptorCurve {
 // From GeomAdaptor_Surface.hxx
 // ========================
 
-/// **Source:** `GeomAdaptor_Surface.hxx`:38 - `GeomAdaptor_Surface`
+/// **Source:** `GeomAdaptor_Surface.hxx`:55 - `GeomAdaptor_Surface`
 /// An interface between the services provided by any
 /// surface from the package Geom and those required
 /// of the surface by algorithms which use it.
@@ -706,7 +826,7 @@ unsafe impl crate::CppDeletable for Surface {
 }
 
 impl Surface {
-    /// **Source:** `GeomAdaptor_Surface.hxx`:42 - `GeomAdaptor_Surface::GeomAdaptor_Surface()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:117 - `GeomAdaptor_Surface::GeomAdaptor_Surface()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -715,9 +835,9 @@ impl Surface {
         }
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:53 - `GeomAdaptor_Surface::GeomAdaptor_Surface()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:128 - `GeomAdaptor_Surface::GeomAdaptor_Surface()`
     pub fn new_handlegeomsurface(
-        theSurf: &crate::ffi_types::HandleGeomSurface,
+        theSurf: &crate::ffi_types::Handle_Geom_Surface,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -726,10 +846,10 @@ impl Surface {
         }
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:61 - `GeomAdaptor_Surface::GeomAdaptor_Surface()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:136 - `GeomAdaptor_Surface::GeomAdaptor_Surface()`
     /// Standard_ConstructionError is raised if UFirst>ULast or VFirst>VLast
     pub fn new_handlegeomsurface_real6(
-        theSurf: &crate::ffi_types::HandleGeomSurface,
+        theSurf: &crate::ffi_types::Handle_Geom_Surface,
         theUFirst: f64,
         theULast: f64,
         theVFirst: f64,
@@ -746,10 +866,10 @@ impl Surface {
         }
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:61 - `GeomAdaptor_Surface::GeomAdaptor_Surface()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:136 - `GeomAdaptor_Surface::GeomAdaptor_Surface()`
     /// Standard_ConstructionError is raised if UFirst>ULast or VFirst>VLast
     pub fn new_handlegeomsurface_real5(
-        theSurf: &crate::ffi_types::HandleGeomSurface,
+        theSurf: &crate::ffi_types::Handle_Geom_Surface,
         theUFirst: f64,
         theULast: f64,
         theVFirst: f64,
@@ -761,10 +881,10 @@ impl Surface {
         )
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:61 - `GeomAdaptor_Surface::GeomAdaptor_Surface()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:136 - `GeomAdaptor_Surface::GeomAdaptor_Surface()`
     /// Standard_ConstructionError is raised if UFirst>ULast or VFirst>VLast
     pub fn new_handlegeomsurface_real4(
-        theSurf: &crate::ffi_types::HandleGeomSurface,
+        theSurf: &crate::ffi_types::Handle_Geom_Surface,
         theUFirst: f64,
         theULast: f64,
         theVFirst: f64,
@@ -775,8 +895,8 @@ impl Surface {
         )
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:40 - `GeomAdaptor_Surface::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `GeomAdaptor_Surface.hxx`:57 - `GeomAdaptor_Surface::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKG3d::GeomAdaptor_Surface_dynamic_type(
                 self as *const Self,
@@ -784,9 +904,9 @@ impl Surface {
         }
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:73 - `GeomAdaptor_Surface::ShallowCopy()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:148 - `GeomAdaptor_Surface::ShallowCopy()`
     /// Shallow copy of adaptor
-    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dSurface> {
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Surface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_Surface_shallow_copy(self as *const Self),
@@ -794,8 +914,8 @@ impl Surface {
         }
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:75 - `GeomAdaptor_Surface::Load()`
-    pub fn load_handlegeomsurface(&mut self, theSurf: &crate::ffi_types::HandleGeomSurface) {
+    /// **Source:** `GeomAdaptor_Surface.hxx`:150 - `GeomAdaptor_Surface::Load()`
+    pub fn load_handlegeomsurface(&mut self, theSurf: &crate::ffi_types::Handle_Geom_Surface) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Surface_load_handlegeomsurface(
                 self as *mut Self,
@@ -804,11 +924,11 @@ impl Surface {
         })
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:88 - `GeomAdaptor_Surface::Load()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:163 - `GeomAdaptor_Surface::Load()`
     /// Standard_ConstructionError is raised if theUFirst>theULast or theVFirst>theVLast
     pub fn load_handlegeomsurface_real6(
         &mut self,
-        theSurf: &crate::ffi_types::HandleGeomSurface,
+        theSurf: &crate::ffi_types::Handle_Geom_Surface,
         theUFirst: f64,
         theULast: f64,
         theVFirst: f64,
@@ -830,8 +950,8 @@ impl Surface {
         })
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:108 - `GeomAdaptor_Surface::Surface()`
-    pub fn surface(&self) -> &crate::ffi_types::HandleGeomSurface {
+    /// **Source:** `GeomAdaptor_Surface.hxx`:183 - `GeomAdaptor_Surface::Surface()`
+    pub fn surface(&self) -> &crate::ffi_types::Handle_Geom_Surface {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKG3d::GeomAdaptor_Surface_surface(
                 self as *const Self,
@@ -839,35 +959,69 @@ impl Surface {
         }
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:110 - `GeomAdaptor_Surface::FirstUParameter()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:185 - `GeomAdaptor_Surface::FirstUParameter()`
     pub fn first_u_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Surface_first_u_parameter(self as *const Self)
         })
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:112 - `GeomAdaptor_Surface::LastUParameter()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:187 - `GeomAdaptor_Surface::LastUParameter()`
     pub fn last_u_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Surface_last_u_parameter(self as *const Self)
         })
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:114 - `GeomAdaptor_Surface::FirstVParameter()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:189 - `GeomAdaptor_Surface::FirstVParameter()`
     pub fn first_v_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Surface_first_v_parameter(self as *const Self)
         })
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:116 - `GeomAdaptor_Surface::LastVParameter()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:191 - `GeomAdaptor_Surface::LastVParameter()`
     pub fn last_v_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Surface_last_v_parameter(self as *const Self)
         })
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:118 - `GeomAdaptor_Surface::UContinuity()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:198 - `GeomAdaptor_Surface::Bounds()`
+    /// Returns the parametric bounds of the surface.
+    /// @param[out] theU1 minimum U parameter
+    /// @param[out] theU2 maximum U parameter
+    /// @param[out] theV1 minimum V parameter
+    /// @param[out] theV2 maximum V parameter
+    pub fn bounds(&self, theU1: &mut f64, theU2: &mut f64, theV1: &mut f64, theV2: &mut f64) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_Surface_bounds(
+                self as *const Self,
+                theU1,
+                theU2,
+                theV1,
+                theV2,
+            )
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_Surface.hxx`:207 - `GeomAdaptor_Surface::ToleranceU()`
+    /// Returns tolerance in U direction.
+    pub fn tolerance_u(&self) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_Surface_tolerance_u(self as *const Self)
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_Surface.hxx`:210 - `GeomAdaptor_Surface::ToleranceV()`
+    /// Returns tolerance in V direction.
+    pub fn tolerance_v(&self) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_Surface_tolerance_v(self as *const Self)
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_Surface.hxx`:212 - `GeomAdaptor_Surface::UContinuity()`
     pub fn u_continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Surface_u_continuity(self as *const Self)
@@ -875,7 +1029,7 @@ impl Surface {
         .unwrap()
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:120 - `GeomAdaptor_Surface::VContinuity()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:214 - `GeomAdaptor_Surface::VContinuity()`
     pub fn v_continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Surface_v_continuity(self as *const Self)
@@ -883,8 +1037,8 @@ impl Surface {
         .unwrap()
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:124 - `GeomAdaptor_Surface::NbUIntervals()`
-    /// Returns the number of U intervals for  continuity
+    /// **Source:** `GeomAdaptor_Surface.hxx`:218 - `GeomAdaptor_Surface::NbUIntervals()`
+    /// Returns the number of U intervals for continuity
     /// <S>. May be one if UContinuity(me) >= <S>
     pub fn nb_u_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
@@ -895,8 +1049,8 @@ impl Surface {
         })
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:128 - `GeomAdaptor_Surface::NbVIntervals()`
-    /// Returns the number of V intervals for  continuity
+    /// **Source:** `GeomAdaptor_Surface.hxx`:222 - `GeomAdaptor_Surface::NbVIntervals()`
+    /// Returns the number of V intervals for continuity
     /// <S>. May be one if VContinuity(me) >= <S>
     pub fn nb_v_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
@@ -907,12 +1061,12 @@ impl Surface {
         })
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:132 - `GeomAdaptor_Surface::UIntervals()`
-    /// Returns the  intervals with the requested continuity
+    /// **Source:** `GeomAdaptor_Surface.hxx`:226 - `GeomAdaptor_Surface::UIntervals()`
+    /// Returns the intervals with the requested continuity
     /// in the U direction.
     pub fn u_intervals(
         &self,
-        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::NCollection_Array1_double,
         S: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
@@ -924,12 +1078,12 @@ impl Surface {
         })
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:137 - `GeomAdaptor_Surface::VIntervals()`
-    /// Returns the  intervals with the requested continuity
+    /// **Source:** `GeomAdaptor_Surface.hxx`:231 - `GeomAdaptor_Surface::VIntervals()`
+    /// Returns the intervals with the requested continuity
     /// in the V direction.
     pub fn v_intervals(
         &self,
-        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::NCollection_Array1_double,
         S: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
@@ -941,10 +1095,10 @@ impl Surface {
         })
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:145 - `GeomAdaptor_Surface::UTrim()`
-    /// Returns    a  surface trimmed in the U direction
-    /// equivalent   of  <me>  between
-    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// **Source:** `GeomAdaptor_Surface.hxx`:239 - `GeomAdaptor_Surface::UTrim()`
+    /// Returns a surface trimmed in the U direction
+    /// equivalent of <me> between
+    /// parameters <First> and <Last>. <Tol> is used to
     /// test for 3d points confusion.
     /// If <First> >= <Last>
     pub fn u_trim(
@@ -952,7 +1106,7 @@ impl Surface {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Surface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_Surface_u_trim(
@@ -965,9 +1119,9 @@ impl Surface {
         }
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:153 - `GeomAdaptor_Surface::VTrim()`
-    /// Returns    a  surface trimmed in the V direction  between
-    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// **Source:** `GeomAdaptor_Surface.hxx`:247 - `GeomAdaptor_Surface::VTrim()`
+    /// Returns a surface trimmed in the V direction between
+    /// parameters <First> and <Last>. <Tol> is used to
     /// test for 3d points confusion.
     /// If <First> >= <Last>
     pub fn v_trim(
@@ -975,7 +1129,7 @@ impl Surface {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Surface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_Surface_v_trim(
@@ -988,182 +1142,128 @@ impl Surface {
         }
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:157 - `GeomAdaptor_Surface::IsUClosed()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:251 - `GeomAdaptor_Surface::IsUClosed()`
     pub fn is_u_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Surface_is_u_closed(self as *const Self)
         })
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:159 - `GeomAdaptor_Surface::IsVClosed()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:253 - `GeomAdaptor_Surface::IsVClosed()`
     pub fn is_v_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Surface_is_v_closed(self as *const Self)
         })
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:161 - `GeomAdaptor_Surface::IsUPeriodic()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:255 - `GeomAdaptor_Surface::IsUPeriodic()`
     pub fn is_u_periodic(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Surface_is_u_periodic(self as *const Self)
         })
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:163 - `GeomAdaptor_Surface::UPeriod()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:257 - `GeomAdaptor_Surface::UPeriod()`
     pub fn u_period(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Surface_u_period(self as *const Self)
         })
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:165 - `GeomAdaptor_Surface::IsVPeriodic()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:259 - `GeomAdaptor_Surface::IsVPeriodic()`
     pub fn is_v_periodic(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Surface_is_v_periodic(self as *const Self)
         })
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:167 - `GeomAdaptor_Surface::VPeriod()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:261 - `GeomAdaptor_Surface::VPeriod()`
     pub fn v_period(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Surface_v_period(self as *const Self)
         })
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:170 - `GeomAdaptor_Surface::Value()`
-    /// Computes the point of parameters U,V on the surface.
-    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
+    /// **Source:** `GeomAdaptor_Surface.hxx`:264 - `GeomAdaptor_Surface::EvalD0()`
+    /// Point evaluation. Raises an exception on failure.
+    pub fn eval_d0(&self, theU: f64, theV: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKG3d::GeomAdaptor_Surface_value(self as *const Self, U, V),
+                crate::ffi_extern_TKG3d::GeomAdaptor_Surface_eval_d0(
+                    self as *const Self,
+                    theU,
+                    theV,
+                ),
             ))
         }
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:174 - `GeomAdaptor_Surface::D0()`
-    /// Computes the point of parameters U,V on the surface.
-    pub fn d0(&self, U: f64, V: f64, P: &mut crate::gp::Pnt) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKG3d::GeomAdaptor_Surface_d0(self as *const Self, U, V, P)
-        })
-    }
-
-    /// **Source:** `GeomAdaptor_Surface.hxx`:185 - `GeomAdaptor_Surface::D1()`
-    /// Computes the point  and the first derivatives on
-    /// the surface.
-    ///
-    /// Warning : On the specific case of BSplineSurface:
-    /// if the surface is cut in interval of continuity at least C1,
-    /// the derivatives are computed on the current interval.
-    /// else the derivatives are computed on the basis surface.
-    pub fn d1(
-        &self,
-        U: f64,
-        V: f64,
-        P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKG3d::GeomAdaptor_Surface_d1(self as *const Self, U, V, P, D1U, D1V)
-        })
-    }
-
-    /// **Source:** `GeomAdaptor_Surface.hxx`:198 - `GeomAdaptor_Surface::D2()`
-    /// Computes   the point,  the  first  and  second
-    /// derivatives on the surface.
-    ///
-    /// Warning : On the specific case of BSplineSurface:
-    /// if the surface is cut in interval of continuity at least C2,
-    /// the derivatives are computed on the current interval.
-    /// else the derivatives are computed on the basis surface.
-    pub fn d2(
-        &self,
-        U: f64,
-        V: f64,
-        P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKG3d::GeomAdaptor_Surface_d2(
-                self as *const Self,
-                U,
-                V,
-                P,
-                D1U,
-                D1V,
-                D2U,
-                D2V,
-                D2UV,
-            )
-        })
-    }
-
-    /// **Source:** `GeomAdaptor_Surface.hxx`:214 - `GeomAdaptor_Surface::D3()`
-    /// Computes the point,  the first, second and third
-    /// derivatives on the surface.
-    ///
-    /// Warning : On the specific case of BSplineSurface:
-    /// if the surface is cut in interval of continuity at least C3,
-    /// the derivatives are computed on the current interval.
-    /// else the derivatives are computed on the basis surface.
-    pub fn d3(
-        &self,
-        U: f64,
-        V: f64,
-        P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
-        D3U: &mut crate::gp::Vec,
-        D3V: &mut crate::gp::Vec,
-        D3UUV: &mut crate::gp::Vec,
-        D3UVV: &mut crate::gp::Vec,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKG3d::GeomAdaptor_Surface_d3(
-                self as *const Self,
-                U,
-                V,
-                P,
-                D1U,
-                D1V,
-                D2U,
-                D2V,
-                D2UV,
-                D3U,
-                D3V,
-                D3UUV,
-                D3UVV,
-            )
-        })
-    }
-
-    /// **Source:** `GeomAdaptor_Surface.hxx`:235 - `GeomAdaptor_Surface::DN()`
-    /// Computes the derivative of order Nu in the
-    /// direction U and Nv in the direction V at the point P(U, V).
-    ///
-    /// Warning : On the specific case of BSplineSurface:
-    /// if the surface is cut in interval of continuity CN,
-    /// the derivatives are computed on the current interval.
-    /// else the derivatives are computed on the basis surface.
-    /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    /// **Source:** `GeomAdaptor_Surface.hxx`:267 - `GeomAdaptor_Surface::EvalD1()`
+    /// D1 evaluation. Raises an exception on failure.
+    pub fn eval_d1(&self, theU: f64, theV: f64) -> crate::OwnedPtr<crate::geom::Surface_ResD1> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKG3d::GeomAdaptor_Surface_dn(self as *const Self, U, V, Nu, Nv),
+                crate::ffi_extern_TKG3d::GeomAdaptor_Surface_eval_d1(
+                    self as *const Self,
+                    theU,
+                    theV,
+                ),
             ))
         }
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:242 - `GeomAdaptor_Surface::UResolution()`
-    /// Returns the parametric U  resolution corresponding
+    /// **Source:** `GeomAdaptor_Surface.hxx`:271 - `GeomAdaptor_Surface::EvalD2()`
+    /// D2 evaluation. Raises an exception on failure.
+    pub fn eval_d2(&self, theU: f64, theV: f64) -> crate::OwnedPtr<crate::geom::Surface_ResD2> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_Surface_eval_d2(
+                    self as *const Self,
+                    theU,
+                    theV,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_Surface.hxx`:275 - `GeomAdaptor_Surface::EvalD3()`
+    /// D3 evaluation. Raises an exception on failure.
+    pub fn eval_d3(&self, theU: f64, theV: f64) -> crate::OwnedPtr<crate::geom::Surface_ResD3> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_Surface_eval_d3(
+                    self as *const Self,
+                    theU,
+                    theV,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_Surface.hxx`:279 - `GeomAdaptor_Surface::EvalDN()`
+    /// DN evaluation. Raises an exception on failure.
+    pub fn eval_dn(
+        &self,
+        theU: f64,
+        theV: f64,
+        theNu: i32,
+        theNv: i32,
+    ) -> crate::OwnedPtr<crate::gp::Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_Surface_eval_dn(
+                    self as *const Self,
+                    theU,
+                    theV,
+                    theNu,
+                    theNv,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_Surface.hxx`:286 - `GeomAdaptor_Surface::UResolution()`
+    /// Returns the parametric U resolution corresponding
     /// to the real space resolution <R3d>.
     pub fn u_resolution(&self, R3d: f64) -> f64 {
         crate::check_result(unsafe {
@@ -1171,8 +1271,8 @@ impl Surface {
         })
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:246 - `GeomAdaptor_Surface::VResolution()`
-    /// Returns the parametric V  resolution corresponding
+    /// **Source:** `GeomAdaptor_Surface.hxx`:290 - `GeomAdaptor_Surface::VResolution()`
+    /// Returns the parametric V resolution corresponding
     /// to the real space resolution <R3d>.
     pub fn v_resolution(&self, R3d: f64) -> f64 {
         crate::check_result(unsafe {
@@ -1180,10 +1280,10 @@ impl Surface {
         })
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:252 - `GeomAdaptor_Surface::GetType()`
-    /// Returns the type of the surface : Plane, Cylinder,
-    /// Cone,      Sphere,        Torus,    BezierSurface,
-    /// BSplineSurface,               SurfaceOfRevolution,
+    /// **Source:** `GeomAdaptor_Surface.hxx`:296 - `GeomAdaptor_Surface::GetType()`
+    /// Returns the type of the surface: Plane, Cylinder,
+    /// Cone, Sphere, Torus, BezierSurface,
+    /// BSplineSurface, SurfaceOfRevolution,
     /// SurfaceOfExtrusion, OtherSurface
     pub fn get_type(&self) -> crate::geom_abs::SurfaceType {
         crate::geom_abs::SurfaceType::try_from(crate::check_result(unsafe {
@@ -1192,7 +1292,7 @@ impl Surface {
         .unwrap()
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:254 - `GeomAdaptor_Surface::Plane()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:298 - `GeomAdaptor_Surface::Plane()`
     pub fn plane(&self) -> crate::OwnedPtr<crate::gp::Pln> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1201,7 +1301,7 @@ impl Surface {
         }
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:256 - `GeomAdaptor_Surface::Cylinder()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:300 - `GeomAdaptor_Surface::Cylinder()`
     pub fn cylinder(&self) -> crate::OwnedPtr<crate::gp::Cylinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1210,7 +1310,7 @@ impl Surface {
         }
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:258 - `GeomAdaptor_Surface::Cone()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:302 - `GeomAdaptor_Surface::Cone()`
     pub fn cone(&self) -> crate::OwnedPtr<crate::gp::Cone> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1219,7 +1319,7 @@ impl Surface {
         }
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:260 - `GeomAdaptor_Surface::Sphere()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:304 - `GeomAdaptor_Surface::Sphere()`
     pub fn sphere(&self) -> crate::OwnedPtr<crate::gp::Sphere> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1228,7 +1328,7 @@ impl Surface {
         }
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:262 - `GeomAdaptor_Surface::Torus()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:306 - `GeomAdaptor_Surface::Torus()`
     pub fn torus(&self) -> crate::OwnedPtr<crate::gp::Torus> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1237,69 +1337,69 @@ impl Surface {
         }
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:264 - `GeomAdaptor_Surface::UDegree()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:308 - `GeomAdaptor_Surface::UDegree()`
     pub fn u_degree(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Surface_u_degree(self as *const Self)
         })
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:266 - `GeomAdaptor_Surface::NbUPoles()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:310 - `GeomAdaptor_Surface::NbUPoles()`
     pub fn nb_u_poles(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Surface_nb_u_poles(self as *const Self)
         })
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:268 - `GeomAdaptor_Surface::VDegree()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:312 - `GeomAdaptor_Surface::VDegree()`
     pub fn v_degree(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Surface_v_degree(self as *const Self)
         })
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:270 - `GeomAdaptor_Surface::NbVPoles()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:314 - `GeomAdaptor_Surface::NbVPoles()`
     pub fn nb_v_poles(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Surface_nb_v_poles(self as *const Self)
         })
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:272 - `GeomAdaptor_Surface::NbUKnots()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:316 - `GeomAdaptor_Surface::NbUKnots()`
     pub fn nb_u_knots(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Surface_nb_u_knots(self as *const Self)
         })
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:274 - `GeomAdaptor_Surface::NbVKnots()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:318 - `GeomAdaptor_Surface::NbVKnots()`
     pub fn nb_v_knots(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Surface_nb_v_knots(self as *const Self)
         })
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:276 - `GeomAdaptor_Surface::IsURational()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:320 - `GeomAdaptor_Surface::IsURational()`
     pub fn is_u_rational(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Surface_is_u_rational(self as *const Self)
         })
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:278 - `GeomAdaptor_Surface::IsVRational()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:322 - `GeomAdaptor_Surface::IsVRational()`
     pub fn is_v_rational(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Surface_is_v_rational(self as *const Self)
         })
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:285 - `GeomAdaptor_Surface::Bezier()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:329 - `GeomAdaptor_Surface::Bezier()`
     /// This will NOT make a copy of the
     /// Bezier Surface : If you want to modify
     /// the Surface please make a copy yourself
     /// Also it will NOT trim the surface to
     /// myU/VFirst/Last.
-    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBezierSurface> {
+    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BezierSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_Surface_bezier(self as *const Self),
@@ -1307,13 +1407,13 @@ impl Surface {
         }
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:292 - `GeomAdaptor_Surface::BSpline()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:336 - `GeomAdaptor_Surface::BSpline()`
     /// This will NOT make a copy of the
     /// BSpline Surface : If you want to modify
     /// the Surface please make a copy yourself
     /// Also it will NOT trim the surface to
     /// myU/VFirst/Last.
-    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineSurface> {
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BSplineSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_Surface_b_spline(self as *const Self),
@@ -1321,7 +1421,7 @@ impl Surface {
         }
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:294 - `GeomAdaptor_Surface::AxeOfRevolution()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:338 - `GeomAdaptor_Surface::AxeOfRevolution()`
     pub fn axe_of_revolution(&self) -> crate::OwnedPtr<crate::gp::Ax1> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1330,7 +1430,7 @@ impl Surface {
         }
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:296 - `GeomAdaptor_Surface::Direction()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:340 - `GeomAdaptor_Surface::Direction()`
     pub fn direction(&self) -> crate::OwnedPtr<crate::gp::Dir> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1339,8 +1439,8 @@ impl Surface {
         }
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:298 - `GeomAdaptor_Surface::BasisCurve()`
-    pub fn basis_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
+    /// **Source:** `GeomAdaptor_Surface.hxx`:342 - `GeomAdaptor_Surface::BasisCurve()`
+    pub fn basis_curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_Surface_basis_curve(self as *const Self),
@@ -1348,8 +1448,8 @@ impl Surface {
         }
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:300 - `GeomAdaptor_Surface::BasisSurface()`
-    pub fn basis_surface(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dSurface> {
+    /// **Source:** `GeomAdaptor_Surface.hxx`:344 - `GeomAdaptor_Surface::BasisSurface()`
+    pub fn basis_surface(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Surface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_Surface_basis_surface(self as *const Self),
@@ -1357,14 +1457,14 @@ impl Surface {
         }
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:302 - `GeomAdaptor_Surface::OffsetValue()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:346 - `GeomAdaptor_Surface::OffsetValue()`
     pub fn offset_value(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Surface_offset_value(self as *const Self)
         })
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:40 - `GeomAdaptor_Surface::get_type_name()`
+    /// **Source:** `GeomAdaptor_Surface.hxx`:57 - `GeomAdaptor_Surface::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1375,8 +1475,8 @@ impl Surface {
         .into_owned()
     }
 
-    /// **Source:** `GeomAdaptor_Surface.hxx`:40 - `GeomAdaptor_Surface::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `GeomAdaptor_Surface.hxx`:57 - `GeomAdaptor_Surface::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_Surface_get_type_descriptor(),
@@ -1431,7 +1531,7 @@ impl Surface {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomAdaptorSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_GeomAdaptor_Surface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_Surface_to_handle(obj.into_raw()),
@@ -1439,8 +1539,137 @@ impl Surface {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:125 - `Adaptor3d_Surface::Value()`
+    pub fn value(&self, theU: f64, theV: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_Surface_inherited_Value(
+                    self as *const Self,
+                    theU,
+                    theV,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:128 - `Adaptor3d_Surface::D0()`
+    pub fn d0(&self, theU: f64, theV: f64, theP: &mut crate::gp::Pnt) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_Surface_inherited_D0(
+                self as *const Self,
+                theU,
+                theV,
+                theP,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:134 - `Adaptor3d_Surface::D1()`
+    pub fn d1(
+        &self,
+        theU: f64,
+        theV: f64,
+        theP: &mut crate::gp::Pnt,
+        theD1U: &mut crate::gp::Vec,
+        theD1V: &mut crate::gp::Vec,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_Surface_inherited_D1(
+                self as *const Self,
+                theU,
+                theV,
+                theP,
+                theD1U,
+                theD1V,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:146 - `Adaptor3d_Surface::D2()`
+    pub fn d2(
+        &self,
+        theU: f64,
+        theV: f64,
+        theP: &mut crate::gp::Pnt,
+        theD1U: &mut crate::gp::Vec,
+        theD1V: &mut crate::gp::Vec,
+        theD2U: &mut crate::gp::Vec,
+        theD2V: &mut crate::gp::Vec,
+        theD2UV: &mut crate::gp::Vec,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_Surface_inherited_D2(
+                self as *const Self,
+                theU,
+                theV,
+                theP,
+                theD1U,
+                theD1V,
+                theD2U,
+                theD2V,
+                theD2UV,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:168 - `Adaptor3d_Surface::D3()`
+    pub fn d3(
+        &self,
+        theU: f64,
+        theV: f64,
+        theP: &mut crate::gp::Pnt,
+        theD1U: &mut crate::gp::Vec,
+        theD1V: &mut crate::gp::Vec,
+        theD2U: &mut crate::gp::Vec,
+        theD2V: &mut crate::gp::Vec,
+        theD2UV: &mut crate::gp::Vec,
+        theD3U: &mut crate::gp::Vec,
+        theD3V: &mut crate::gp::Vec,
+        theD3UUV: &mut crate::gp::Vec,
+        theD3UVV: &mut crate::gp::Vec,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_Surface_inherited_D3(
+                self as *const Self,
+                theU,
+                theV,
+                theP,
+                theD1U,
+                theD1V,
+                theD2U,
+                theD2V,
+                theD2UV,
+                theD3U,
+                theD3V,
+                theD3UUV,
+                theD3UVV,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:199 - `Adaptor3d_Surface::DN()`
+    pub fn dn(
+        &self,
+        theU: f64,
+        theV: f64,
+        theNu: i32,
+        theNv: i32,
+    ) -> crate::OwnedPtr<crate::gp::Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_Surface_inherited_DN(
+                    self as *const Self,
+                    theU,
+                    theV,
+                    theNu,
+                    theNv,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Surface_inherited_IsInstance(
                 self as *const Self,
@@ -1449,8 +1678,8 @@ impl Surface {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Surface_inherited_IsKind(
                 self as *const Self,
@@ -1459,7 +1688,7 @@ impl Surface {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1473,14 +1702,14 @@ impl Surface {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Surface_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Surface_inherited_IncrementRefCounter(
@@ -1489,7 +1718,7 @@ impl Surface {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Surface_inherited_DecrementRefCounter(
@@ -1498,7 +1727,7 @@ impl Surface {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_Surface_inherited_Delete(self as *const Self)
@@ -1506,32 +1735,34 @@ impl Surface {
     }
 }
 
-pub use crate::ffi_types::HandleGeomAdaptorSurface;
+pub use crate::ffi_types::Handle_GeomAdaptor_Surface;
 
-unsafe impl crate::CppDeletable for HandleGeomAdaptorSurface {
+unsafe impl crate::CppDeletable for Handle_GeomAdaptor_Surface {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKG3d::HandleGeomAdaptorSurface_destructor(ptr);
+            crate::ffi_extern_TKG3d::Handle_GeomAdaptor_Surface_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleGeomAdaptorSurface {
+unsafe impl crate::CppCopyable for Handle_GeomAdaptor_Surface {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKG3d::HandleGeomAdaptorSurface_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKG3d::Handle_GeomAdaptor_Surface_clone(ptr))
+        }
     }
 }
 
-impl HandleGeomAdaptorSurface {
+impl Handle_GeomAdaptor_Surface {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKG3d::HandleGeomAdaptorSurface_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKG3d::Handle_GeomAdaptor_Surface_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying GeomAdaptor_Surface
     pub fn get(&self) -> &crate::ffi_types::GeomAdaptor_Surface {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKG3d::HandleGeomAdaptorSurface_get(
+            &*crate::check_result(crate::ffi_extern_TKG3d::Handle_GeomAdaptor_Surface_get(
                 self as *const Self,
             ))
         }
@@ -1540,17 +1771,17 @@ impl HandleGeomAdaptorSurface {
     /// Dereference this Handle to mutably access the underlying GeomAdaptor_Surface
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomAdaptor_Surface {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKG3d::HandleGeomAdaptorSurface_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKG3d::Handle_GeomAdaptor_Surface_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<GeomAdaptor_Surface> to Handle<Adaptor3d_Surface>
-    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dSurface> {
+    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Surface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKG3d::HandleGeomAdaptorSurface_to_HandleAdaptor3dSurface(
+                crate::ffi_extern_TKG3d::Handle_GeomAdaptor_Surface_to_Handle_Adaptor3d_Surface(
                     self as *const Self,
                 ),
             ))
@@ -1560,10 +1791,10 @@ impl HandleGeomAdaptorSurface {
     /// Upcast Handle<GeomAdaptor_Surface> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKG3d::HandleGeomAdaptorSurface_to_HandleStandardTransient(
+                crate::ffi_extern_TKG3d::Handle_GeomAdaptor_Surface_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -1575,9 +1806,10 @@ impl HandleGeomAdaptorSurface {
     /// Returns `None` if the handle does not point to a `GeomAdaptor_SurfaceOfLinearExtrusion` (or subclass).
     pub fn downcast_to_surface_of_linear_extrusion(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomAdaptorSurfaceOfLinearExtrusion>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_GeomAdaptor_SurfaceOfLinearExtrusion>>
+    {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKG3d::HandleGeomAdaptorSurface_downcast_to_HandleGeomAdaptorSurfaceOfLinearExtrusion(self as *const Self)
+            crate::ffi_extern_TKG3d::Handle_GeomAdaptor_Surface_downcast_to_Handle_GeomAdaptor_SurfaceOfLinearExtrusion(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1591,9 +1823,9 @@ impl HandleGeomAdaptorSurface {
     /// Returns `None` if the handle does not point to a `GeomAdaptor_SurfaceOfRevolution` (or subclass).
     pub fn downcast_to_surface_of_revolution(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomAdaptorSurfaceOfRevolution>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_GeomAdaptor_SurfaceOfRevolution>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKG3d::HandleGeomAdaptorSurface_downcast_to_HandleGeomAdaptorSurfaceOfRevolution(self as *const Self)
+            crate::ffi_extern_TKG3d::Handle_GeomAdaptor_Surface_downcast_to_Handle_GeomAdaptor_SurfaceOfRevolution(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1603,17 +1835,136 @@ impl HandleGeomAdaptorSurface {
     }
 }
 
+/// **Source:** `GeomAdaptor_Surface.hxx`:60 - `GeomAdaptor_Surface_ExtrusionData`
+/// Internal structure for extrusion surface evaluation data.
+pub use crate::ffi_types::GeomAdaptor_Surface_ExtrusionData as Surface_ExtrusionData;
+
+unsafe impl crate::CppDeletable for Surface_ExtrusionData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_Surface_ExtrusionData_destructor(ptr);
+        }
+    }
+}
+
+impl Surface_ExtrusionData {
+    /// **Source:** `GeomAdaptor_Surface.hxx` - `GeomAdaptor_Surface_ExtrusionData::GeomAdaptor_Surface_ExtrusionData()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_Surface_ExtrusionData_ctor(),
+            ))
+        }
+    }
+}
+
+/// **Source:** `GeomAdaptor_Surface.hxx`:68 - `GeomAdaptor_Surface_RevolutionData`
+/// Internal structure for revolution surface evaluation data.
+pub use crate::ffi_types::GeomAdaptor_Surface_RevolutionData as Surface_RevolutionData;
+
+unsafe impl crate::CppDeletable for Surface_RevolutionData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_Surface_RevolutionData_destructor(ptr);
+        }
+    }
+}
+
+impl Surface_RevolutionData {
+    /// **Source:** `GeomAdaptor_Surface.hxx` - `GeomAdaptor_Surface_RevolutionData::GeomAdaptor_Surface_RevolutionData()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_Surface_RevolutionData_ctor(),
+            ))
+        }
+    }
+}
+
+/// **Source:** `GeomAdaptor_Surface.hxx`:76 - `GeomAdaptor_Surface_OffsetData`
+/// Internal structure for offset surface evaluation data.
+pub use crate::ffi_types::GeomAdaptor_Surface_OffsetData as Surface_OffsetData;
+
+unsafe impl crate::CppDeletable for Surface_OffsetData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_Surface_OffsetData_destructor(ptr);
+        }
+    }
+}
+
+impl Surface_OffsetData {
+    /// **Source:** `GeomAdaptor_Surface.hxx` - `GeomAdaptor_Surface_OffsetData::GeomAdaptor_Surface_OffsetData()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_Surface_OffsetData_ctor(),
+            ))
+        }
+    }
+}
+
+/// **Source:** `GeomAdaptor_Surface.hxx`:88 - `GeomAdaptor_Surface_BezierData`
+/// Internal structure for Bezier surface cache data.
+pub use crate::ffi_types::GeomAdaptor_Surface_BezierData as Surface_BezierData;
+
+unsafe impl crate::CppDeletable for Surface_BezierData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_Surface_BezierData_destructor(ptr);
+        }
+    }
+}
+
+impl Surface_BezierData {
+    /// **Source:** `GeomAdaptor_Surface.hxx` - `GeomAdaptor_Surface_BezierData::GeomAdaptor_Surface_BezierData()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_Surface_BezierData_ctor(),
+            ))
+        }
+    }
+}
+
+/// **Source:** `GeomAdaptor_Surface.hxx`:96 - `GeomAdaptor_Surface_BSplineData`
+/// Internal structure for BSpline surface cache data.
+pub use crate::ffi_types::GeomAdaptor_Surface_BSplineData as Surface_BSplineData;
+
+unsafe impl crate::CppDeletable for Surface_BSplineData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_Surface_BSplineData_destructor(ptr);
+        }
+    }
+}
+
+impl Surface_BSplineData {
+    /// **Source:** `GeomAdaptor_Surface.hxx` - `GeomAdaptor_Surface_BSplineData::GeomAdaptor_Surface_BSplineData()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_Surface_BSplineData_ctor(),
+            ))
+        }
+    }
+}
+
 // ========================
 // From GeomAdaptor_SurfaceOfLinearExtrusion.hxx
 // ========================
 
-/// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:40 - `GeomAdaptor_SurfaceOfLinearExtrusion`
-/// Generalised cylinder. This surface is obtained  by sweeping a  curve in  a given
-/// direction. The parametrization range  for the parameter U is defined
+/// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:37 - `GeomAdaptor_SurfaceOfLinearExtrusion`
+/// Generalised cylinder. This surface is obtained by sweeping a curve in a given
+/// direction. The parametrization range for the parameter U is defined
 /// with referenced the curve.
 /// The parametrization range for the parameter V is ]-infinite,+infinite[
-/// The  position of  the   curve gives  the origin for    the
-/// parameter V.
+/// The position of the curve gives the origin for the parameter V.
 /// The continuity of the surface is CN in the V direction.
 pub use crate::ffi_types::GeomAdaptor_SurfaceOfLinearExtrusion as SurfaceOfLinearExtrusion;
 
@@ -1626,7 +1977,7 @@ unsafe impl crate::CppDeletable for SurfaceOfLinearExtrusion {
 }
 
 impl SurfaceOfLinearExtrusion {
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:44 - `GeomAdaptor_SurfaceOfLinearExtrusion::GeomAdaptor_SurfaceOfLinearExtrusion()`
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:41 - `GeomAdaptor_SurfaceOfLinearExtrusion::GeomAdaptor_SurfaceOfLinearExtrusion()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1635,20 +1986,20 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:47 - `GeomAdaptor_SurfaceOfLinearExtrusion::GeomAdaptor_SurfaceOfLinearExtrusion()`
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:44 - `GeomAdaptor_SurfaceOfLinearExtrusion::GeomAdaptor_SurfaceOfLinearExtrusion()`
     /// The Curve is loaded.
     pub fn new_handleadaptor3dcurve(
-        C: &crate::ffi_types::HandleAdaptor3dCurve,
+        C: &crate::ffi_types::Handle_Adaptor3d_Curve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_ctor_handleadaptor3dcurve(C)))
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:50 - `GeomAdaptor_SurfaceOfLinearExtrusion::GeomAdaptor_SurfaceOfLinearExtrusion()`
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:47 - `GeomAdaptor_SurfaceOfLinearExtrusion::GeomAdaptor_SurfaceOfLinearExtrusion()`
     /// Thew Curve and the Direction are loaded.
     pub fn new_handleadaptor3dcurve_dir(
-        C: &crate::ffi_types::HandleAdaptor3dCurve,
+        C: &crate::ffi_types::Handle_Adaptor3d_Curve,
         V: &crate::gp::Dir,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1656,8 +2007,8 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:42 - `GeomAdaptor_SurfaceOfLinearExtrusion::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:39 - `GeomAdaptor_SurfaceOfLinearExtrusion::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_dynamic_type(
@@ -1667,9 +2018,9 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:54 - `GeomAdaptor_SurfaceOfLinearExtrusion::ShallowCopy()`
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:51 - `GeomAdaptor_SurfaceOfLinearExtrusion::ShallowCopy()`
     /// Shallow copy of adaptor
-    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dSurface> {
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Surface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_shallow_copy(
@@ -1679,9 +2030,9 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:57 - `GeomAdaptor_SurfaceOfLinearExtrusion::Load()`
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:54 - `GeomAdaptor_SurfaceOfLinearExtrusion::Load()`
     /// Changes the Curve
-    pub fn load_handleadaptor3dcurve(&mut self, C: &crate::ffi_types::HandleAdaptor3dCurve) {
+    pub fn load_handleadaptor3dcurve(&mut self, C: &crate::ffi_types::Handle_Adaptor3d_Curve) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_load_handleadaptor3dcurve(
                 self as *mut Self,
@@ -1690,7 +2041,7 @@ impl SurfaceOfLinearExtrusion {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:60 - `GeomAdaptor_SurfaceOfLinearExtrusion::Load()`
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:57 - `GeomAdaptor_SurfaceOfLinearExtrusion::Load()`
     /// Changes the Direction
     pub fn load_dir(&mut self, V: &crate::gp::Dir) {
         crate::check_void_result(unsafe {
@@ -1701,7 +2052,7 @@ impl SurfaceOfLinearExtrusion {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:62 - `GeomAdaptor_SurfaceOfLinearExtrusion::FirstUParameter()`
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:59 - `GeomAdaptor_SurfaceOfLinearExtrusion::FirstUParameter()`
     pub fn first_u_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_first_u_parameter(
@@ -1710,7 +2061,7 @@ impl SurfaceOfLinearExtrusion {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:64 - `GeomAdaptor_SurfaceOfLinearExtrusion::LastUParameter()`
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:61 - `GeomAdaptor_SurfaceOfLinearExtrusion::LastUParameter()`
     pub fn last_u_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_last_u_parameter(
@@ -1719,7 +2070,7 @@ impl SurfaceOfLinearExtrusion {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:66 - `GeomAdaptor_SurfaceOfLinearExtrusion::FirstVParameter()`
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:63 - `GeomAdaptor_SurfaceOfLinearExtrusion::FirstVParameter()`
     pub fn first_v_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_first_v_parameter(
@@ -1728,7 +2079,7 @@ impl SurfaceOfLinearExtrusion {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:68 - `GeomAdaptor_SurfaceOfLinearExtrusion::LastVParameter()`
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:65 - `GeomAdaptor_SurfaceOfLinearExtrusion::LastVParameter()`
     pub fn last_v_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_last_v_parameter(
@@ -1737,7 +2088,7 @@ impl SurfaceOfLinearExtrusion {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:70 - `GeomAdaptor_SurfaceOfLinearExtrusion::UContinuity()`
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:67 - `GeomAdaptor_SurfaceOfLinearExtrusion::UContinuity()`
     pub fn u_continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_u_continuity(
@@ -1747,7 +2098,7 @@ impl SurfaceOfLinearExtrusion {
         .unwrap()
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:73 - `GeomAdaptor_SurfaceOfLinearExtrusion::VContinuity()`
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:70 - `GeomAdaptor_SurfaceOfLinearExtrusion::VContinuity()`
     /// Return CN.
     pub fn v_continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
@@ -1758,8 +2109,8 @@ impl SurfaceOfLinearExtrusion {
         .unwrap()
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:77 - `GeomAdaptor_SurfaceOfLinearExtrusion::NbUIntervals()`
-    /// Returns the number of U intervals for  continuity
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:74 - `GeomAdaptor_SurfaceOfLinearExtrusion::NbUIntervals()`
+    /// Returns the number of U intervals for continuity
     /// <S>. May be one if UContinuity(me) >= <S>
     pub fn nb_u_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
@@ -1770,8 +2121,8 @@ impl SurfaceOfLinearExtrusion {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:81 - `GeomAdaptor_SurfaceOfLinearExtrusion::NbVIntervals()`
-    /// Returns the number of V intervals for  continuity
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:78 - `GeomAdaptor_SurfaceOfLinearExtrusion::NbVIntervals()`
+    /// Returns the number of V intervals for continuity
     /// <S>. May be one if VContinuity(me) >= <S>
     pub fn nb_v_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
@@ -1782,12 +2133,12 @@ impl SurfaceOfLinearExtrusion {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:85 - `GeomAdaptor_SurfaceOfLinearExtrusion::UIntervals()`
-    /// Returns the  intervals with the requested continuity
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:82 - `GeomAdaptor_SurfaceOfLinearExtrusion::UIntervals()`
+    /// Returns the intervals with the requested continuity
     /// in the U direction.
     pub fn u_intervals(
         &self,
-        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::NCollection_Array1_double,
         S: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
@@ -1799,12 +2150,12 @@ impl SurfaceOfLinearExtrusion {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:90 - `GeomAdaptor_SurfaceOfLinearExtrusion::VIntervals()`
-    /// Returns the  intervals with the requested continuity
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:87 - `GeomAdaptor_SurfaceOfLinearExtrusion::VIntervals()`
+    /// Returns the intervals with the requested continuity
     /// in the V direction.
     pub fn v_intervals(
         &self,
-        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::NCollection_Array1_double,
         S: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
@@ -1816,10 +2167,10 @@ impl SurfaceOfLinearExtrusion {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:98 - `GeomAdaptor_SurfaceOfLinearExtrusion::UTrim()`
-    /// Returns    a  surface trimmed in the U direction
-    /// equivalent   of  <me>  between
-    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:95 - `GeomAdaptor_SurfaceOfLinearExtrusion::UTrim()`
+    /// Returns a surface trimmed in the U direction
+    /// equivalent of <me> between
+    /// parameters <First> and <Last>. <Tol> is used to
     /// test for 3d points confusion.
     /// If <First> >= <Last>
     pub fn u_trim(
@@ -1827,7 +2178,7 @@ impl SurfaceOfLinearExtrusion {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Surface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_u_trim(
@@ -1840,9 +2191,9 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:106 - `GeomAdaptor_SurfaceOfLinearExtrusion::VTrim()`
-    /// Returns    a  surface trimmed in the V direction  between
-    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:103 - `GeomAdaptor_SurfaceOfLinearExtrusion::VTrim()`
+    /// Returns a surface trimmed in the V direction between
+    /// parameters <First> and <Last>. <Tol> is used to
     /// test for 3d points confusion.
     /// If <First> >= <Last>
     pub fn v_trim(
@@ -1850,7 +2201,7 @@ impl SurfaceOfLinearExtrusion {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Surface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_v_trim(
@@ -1863,7 +2214,7 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:110 - `GeomAdaptor_SurfaceOfLinearExtrusion::IsUClosed()`
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:107 - `GeomAdaptor_SurfaceOfLinearExtrusion::IsUClosed()`
     pub fn is_u_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_is_u_closed(
@@ -1872,7 +2223,7 @@ impl SurfaceOfLinearExtrusion {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:112 - `GeomAdaptor_SurfaceOfLinearExtrusion::IsVClosed()`
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:109 - `GeomAdaptor_SurfaceOfLinearExtrusion::IsVClosed()`
     pub fn is_v_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_is_v_closed(
@@ -1881,7 +2232,7 @@ impl SurfaceOfLinearExtrusion {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:114 - `GeomAdaptor_SurfaceOfLinearExtrusion::IsUPeriodic()`
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:111 - `GeomAdaptor_SurfaceOfLinearExtrusion::IsUPeriodic()`
     pub fn is_u_periodic(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_is_u_periodic(
@@ -1890,7 +2241,7 @@ impl SurfaceOfLinearExtrusion {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:116 - `GeomAdaptor_SurfaceOfLinearExtrusion::UPeriod()`
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:113 - `GeomAdaptor_SurfaceOfLinearExtrusion::UPeriod()`
     pub fn u_period(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_u_period(
@@ -1899,7 +2250,7 @@ impl SurfaceOfLinearExtrusion {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:118 - `GeomAdaptor_SurfaceOfLinearExtrusion::IsVPeriodic()`
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:115 - `GeomAdaptor_SurfaceOfLinearExtrusion::IsVPeriodic()`
     pub fn is_v_periodic(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_is_v_periodic(
@@ -1908,7 +2259,7 @@ impl SurfaceOfLinearExtrusion {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:120 - `GeomAdaptor_SurfaceOfLinearExtrusion::VPeriod()`
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:117 - `GeomAdaptor_SurfaceOfLinearExtrusion::VPeriod()`
     pub fn v_period(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_v_period(
@@ -1917,8 +2268,8 @@ impl SurfaceOfLinearExtrusion {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:124 - `GeomAdaptor_SurfaceOfLinearExtrusion::UResolution()`
-    /// Returns the parametric U  resolution corresponding
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:121 - `GeomAdaptor_SurfaceOfLinearExtrusion::UResolution()`
+    /// Returns the parametric U resolution corresponding
     /// to the real space resolution <R3d>.
     pub fn u_resolution(&self, R3d: f64) -> f64 {
         crate::check_result(unsafe {
@@ -1929,8 +2280,8 @@ impl SurfaceOfLinearExtrusion {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:128 - `GeomAdaptor_SurfaceOfLinearExtrusion::VResolution()`
-    /// Returns the parametric V  resolution corresponding
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:125 - `GeomAdaptor_SurfaceOfLinearExtrusion::VResolution()`
+    /// Returns the parametric V resolution corresponding
     /// to the real space resolution <R3d>.
     pub fn v_resolution(&self, R3d: f64) -> f64 {
         crate::check_result(unsafe {
@@ -1941,10 +2292,10 @@ impl SurfaceOfLinearExtrusion {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:134 - `GeomAdaptor_SurfaceOfLinearExtrusion::GetType()`
-    /// Returns the type of the surface : Plane, Cylinder,
-    /// Cone,      Sphere,        Torus,    BezierSurface,
-    /// BSplineSurface,               SurfaceOfRevolution,
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:131 - `GeomAdaptor_SurfaceOfLinearExtrusion::GetType()`
+    /// Returns the type of the surface: Plane, Cylinder,
+    /// Cone, Sphere, Torus, BezierSurface,
+    /// BSplineSurface, SurfaceOfRevolution,
     /// SurfaceOfExtrusion, OtherSurface
     pub fn get_type(&self) -> crate::geom_abs::SurfaceType {
         crate::geom_abs::SurfaceType::try_from(crate::check_result(unsafe {
@@ -1955,7 +2306,7 @@ impl SurfaceOfLinearExtrusion {
         .unwrap()
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:136 - `GeomAdaptor_SurfaceOfLinearExtrusion::Plane()`
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:133 - `GeomAdaptor_SurfaceOfLinearExtrusion::Plane()`
     pub fn plane(&self) -> crate::OwnedPtr<crate::gp::Pln> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1966,7 +2317,7 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:138 - `GeomAdaptor_SurfaceOfLinearExtrusion::Cylinder()`
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:135 - `GeomAdaptor_SurfaceOfLinearExtrusion::Cylinder()`
     pub fn cylinder(&self) -> crate::OwnedPtr<crate::gp::Cylinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1977,7 +2328,7 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:140 - `GeomAdaptor_SurfaceOfLinearExtrusion::Cone()`
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:137 - `GeomAdaptor_SurfaceOfLinearExtrusion::Cone()`
     pub fn cone(&self) -> crate::OwnedPtr<crate::gp::Cone> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1988,7 +2339,7 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:142 - `GeomAdaptor_SurfaceOfLinearExtrusion::Sphere()`
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:139 - `GeomAdaptor_SurfaceOfLinearExtrusion::Sphere()`
     pub fn sphere(&self) -> crate::OwnedPtr<crate::gp::Sphere> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1999,7 +2350,7 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:144 - `GeomAdaptor_SurfaceOfLinearExtrusion::Torus()`
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:141 - `GeomAdaptor_SurfaceOfLinearExtrusion::Torus()`
     pub fn torus(&self) -> crate::OwnedPtr<crate::gp::Torus> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2010,7 +2361,7 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:146 - `GeomAdaptor_SurfaceOfLinearExtrusion::UDegree()`
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:143 - `GeomAdaptor_SurfaceOfLinearExtrusion::UDegree()`
     pub fn u_degree(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_u_degree(
@@ -2019,7 +2370,7 @@ impl SurfaceOfLinearExtrusion {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:148 - `GeomAdaptor_SurfaceOfLinearExtrusion::NbUPoles()`
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:145 - `GeomAdaptor_SurfaceOfLinearExtrusion::NbUPoles()`
     pub fn nb_u_poles(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_nb_u_poles(
@@ -2028,7 +2379,7 @@ impl SurfaceOfLinearExtrusion {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:150 - `GeomAdaptor_SurfaceOfLinearExtrusion::IsURational()`
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:147 - `GeomAdaptor_SurfaceOfLinearExtrusion::IsURational()`
     pub fn is_u_rational(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_is_u_rational(
@@ -2037,7 +2388,7 @@ impl SurfaceOfLinearExtrusion {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:152 - `GeomAdaptor_SurfaceOfLinearExtrusion::IsVRational()`
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:149 - `GeomAdaptor_SurfaceOfLinearExtrusion::IsVRational()`
     pub fn is_v_rational(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_is_v_rational(
@@ -2046,8 +2397,8 @@ impl SurfaceOfLinearExtrusion {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:154 - `GeomAdaptor_SurfaceOfLinearExtrusion::Bezier()`
-    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBezierSurface> {
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:151 - `GeomAdaptor_SurfaceOfLinearExtrusion::Bezier()`
+    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BezierSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_bezier(
@@ -2057,8 +2408,8 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:156 - `GeomAdaptor_SurfaceOfLinearExtrusion::BSpline()`
-    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineSurface> {
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:153 - `GeomAdaptor_SurfaceOfLinearExtrusion::BSpline()`
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BSplineSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_b_spline(
@@ -2068,7 +2419,7 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:158 - `GeomAdaptor_SurfaceOfLinearExtrusion::AxeOfRevolution()`
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:155 - `GeomAdaptor_SurfaceOfLinearExtrusion::AxeOfRevolution()`
     pub fn axe_of_revolution(&self) -> crate::OwnedPtr<crate::gp::Ax1> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2079,7 +2430,7 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:160 - `GeomAdaptor_SurfaceOfLinearExtrusion::Direction()`
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:157 - `GeomAdaptor_SurfaceOfLinearExtrusion::Direction()`
     pub fn direction(&self) -> crate::OwnedPtr<crate::gp::Dir> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2090,8 +2441,8 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:162 - `GeomAdaptor_SurfaceOfLinearExtrusion::BasisCurve()`
-    pub fn basis_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:159 - `GeomAdaptor_SurfaceOfLinearExtrusion::BasisCurve()`
+    pub fn basis_curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_basis_curve(
@@ -2101,7 +2452,7 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:42 - `GeomAdaptor_SurfaceOfLinearExtrusion::get_type_name()`
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:39 - `GeomAdaptor_SurfaceOfLinearExtrusion::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2112,8 +2463,8 @@ impl SurfaceOfLinearExtrusion {
         .into_owned()
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:42 - `GeomAdaptor_SurfaceOfLinearExtrusion::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:39 - `GeomAdaptor_SurfaceOfLinearExtrusion::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_get_type_descriptor(),
@@ -2174,7 +2525,7 @@ impl SurfaceOfLinearExtrusion {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomAdaptorSurfaceOfLinearExtrusion> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_GeomAdaptor_SurfaceOfLinearExtrusion> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_to_handle(
@@ -2184,8 +2535,8 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
-    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:108 - `GeomAdaptor_Surface::Surface()`
-    pub fn surface(&self) -> &crate::ffi_types::HandleGeomSurface {
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:183 - `GeomAdaptor_Surface::Surface()`
+    pub fn surface(&self) -> &crate::ffi_types::Handle_Geom_Surface {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_Surface(
@@ -2195,130 +2546,111 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
-    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:170 - `GeomAdaptor_Surface::Value()`
-    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:198 - `GeomAdaptor_Surface::Bounds()`
+    pub fn bounds(&self, theU1: &mut f64, theU2: &mut f64, theV1: &mut f64, theV2: &mut f64) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_Bounds(
+                self as *const Self,
+                theU1,
+                theU2,
+                theV1,
+                theV2,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:207 - `GeomAdaptor_Surface::ToleranceU()`
+    pub fn tolerance_u(&self) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_ToleranceU(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:210 - `GeomAdaptor_Surface::ToleranceV()`
+    pub fn tolerance_v(&self) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_ToleranceV(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:264 - `GeomAdaptor_Surface::EvalD0()`
+    pub fn eval_d0(&self, theU: f64, theV: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_Value(
+                crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_EvalD0(
                     self as *const Self,
-                    U,
-                    V,
+                    theU,
+                    theV,
                 ),
             ))
         }
     }
 
-    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:174 - `GeomAdaptor_Surface::D0()`
-    pub fn d0(&self, U: f64, V: f64, P: &mut crate::gp::Pnt) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_D0(
-                self as *const Self,
-                U,
-                V,
-                P,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:185 - `GeomAdaptor_Surface::D1()`
-    pub fn d1(
-        &self,
-        U: f64,
-        V: f64,
-        P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_D1(
-                self as *const Self,
-                U,
-                V,
-                P,
-                D1U,
-                D1V,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:198 - `GeomAdaptor_Surface::D2()`
-    pub fn d2(
-        &self,
-        U: f64,
-        V: f64,
-        P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_D2(
-                self as *const Self,
-                U,
-                V,
-                P,
-                D1U,
-                D1V,
-                D2U,
-                D2V,
-                D2UV,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:214 - `GeomAdaptor_Surface::D3()`
-    pub fn d3(
-        &self,
-        U: f64,
-        V: f64,
-        P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
-        D3U: &mut crate::gp::Vec,
-        D3V: &mut crate::gp::Vec,
-        D3UUV: &mut crate::gp::Vec,
-        D3UVV: &mut crate::gp::Vec,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_D3(
-                self as *const Self,
-                U,
-                V,
-                P,
-                D1U,
-                D1V,
-                D2U,
-                D2V,
-                D2UV,
-                D3U,
-                D3V,
-                D3UUV,
-                D3UVV,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:235 - `GeomAdaptor_Surface::DN()`
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:267 - `GeomAdaptor_Surface::EvalD1()`
+    pub fn eval_d1(&self, theU: f64, theV: f64) -> crate::OwnedPtr<crate::geom::Surface_ResD1> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_DN(
+                crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_EvalD1(
                     self as *const Self,
-                    U,
-                    V,
-                    Nu,
-                    Nv,
+                    theU,
+                    theV,
                 ),
             ))
         }
     }
 
-    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:268 - `GeomAdaptor_Surface::VDegree()`
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:271 - `GeomAdaptor_Surface::EvalD2()`
+    pub fn eval_d2(&self, theU: f64, theV: f64) -> crate::OwnedPtr<crate::geom::Surface_ResD2> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_EvalD2(
+                    self as *const Self,
+                    theU,
+                    theV,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:275 - `GeomAdaptor_Surface::EvalD3()`
+    pub fn eval_d3(&self, theU: f64, theV: f64) -> crate::OwnedPtr<crate::geom::Surface_ResD3> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_EvalD3(
+                    self as *const Self,
+                    theU,
+                    theV,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:279 - `GeomAdaptor_Surface::EvalDN()`
+    pub fn eval_dn(
+        &self,
+        theU: f64,
+        theV: f64,
+        theNu: i32,
+        theNv: i32,
+    ) -> crate::OwnedPtr<crate::gp::Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_EvalDN(
+                    self as *const Self,
+                    theU,
+                    theV,
+                    theNu,
+                    theNv,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:312 - `GeomAdaptor_Surface::VDegree()`
     pub fn v_degree(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_VDegree(
@@ -2327,7 +2659,7 @@ impl SurfaceOfLinearExtrusion {
         })
     }
 
-    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:270 - `GeomAdaptor_Surface::NbVPoles()`
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:314 - `GeomAdaptor_Surface::NbVPoles()`
     pub fn nb_v_poles(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_NbVPoles(
@@ -2336,7 +2668,7 @@ impl SurfaceOfLinearExtrusion {
         })
     }
 
-    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:272 - `GeomAdaptor_Surface::NbUKnots()`
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:316 - `GeomAdaptor_Surface::NbUKnots()`
     pub fn nb_u_knots(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_NbUKnots(
@@ -2345,7 +2677,7 @@ impl SurfaceOfLinearExtrusion {
         })
     }
 
-    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:274 - `GeomAdaptor_Surface::NbVKnots()`
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:318 - `GeomAdaptor_Surface::NbVKnots()`
     pub fn nb_v_knots(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_NbVKnots(
@@ -2354,14 +2686,14 @@ impl SurfaceOfLinearExtrusion {
         })
     }
 
-    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:300 - `GeomAdaptor_Surface::BasisSurface()`
-    pub fn basis_surface(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dSurface> {
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:344 - `GeomAdaptor_Surface::BasisSurface()`
+    pub fn basis_surface(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Surface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_BasisSurface(self as *const Self)))
         }
     }
 
-    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:302 - `GeomAdaptor_Surface::OffsetValue()`
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:346 - `GeomAdaptor_Surface::OffsetValue()`
     pub fn offset_value(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_OffsetValue(
@@ -2370,8 +2702,137 @@ impl SurfaceOfLinearExtrusion {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:125 - `Adaptor3d_Surface::Value()`
+    pub fn value(&self, theU: f64, theV: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_Value(
+                    self as *const Self,
+                    theU,
+                    theV,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:128 - `Adaptor3d_Surface::D0()`
+    pub fn d0(&self, theU: f64, theV: f64, theP: &mut crate::gp::Pnt) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_D0(
+                self as *const Self,
+                theU,
+                theV,
+                theP,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:134 - `Adaptor3d_Surface::D1()`
+    pub fn d1(
+        &self,
+        theU: f64,
+        theV: f64,
+        theP: &mut crate::gp::Pnt,
+        theD1U: &mut crate::gp::Vec,
+        theD1V: &mut crate::gp::Vec,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_D1(
+                self as *const Self,
+                theU,
+                theV,
+                theP,
+                theD1U,
+                theD1V,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:146 - `Adaptor3d_Surface::D2()`
+    pub fn d2(
+        &self,
+        theU: f64,
+        theV: f64,
+        theP: &mut crate::gp::Pnt,
+        theD1U: &mut crate::gp::Vec,
+        theD1V: &mut crate::gp::Vec,
+        theD2U: &mut crate::gp::Vec,
+        theD2V: &mut crate::gp::Vec,
+        theD2UV: &mut crate::gp::Vec,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_D2(
+                self as *const Self,
+                theU,
+                theV,
+                theP,
+                theD1U,
+                theD1V,
+                theD2U,
+                theD2V,
+                theD2UV,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:168 - `Adaptor3d_Surface::D3()`
+    pub fn d3(
+        &self,
+        theU: f64,
+        theV: f64,
+        theP: &mut crate::gp::Pnt,
+        theD1U: &mut crate::gp::Vec,
+        theD1V: &mut crate::gp::Vec,
+        theD2U: &mut crate::gp::Vec,
+        theD2V: &mut crate::gp::Vec,
+        theD2UV: &mut crate::gp::Vec,
+        theD3U: &mut crate::gp::Vec,
+        theD3V: &mut crate::gp::Vec,
+        theD3UUV: &mut crate::gp::Vec,
+        theD3UVV: &mut crate::gp::Vec,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_D3(
+                self as *const Self,
+                theU,
+                theV,
+                theP,
+                theD1U,
+                theD1V,
+                theD2U,
+                theD2V,
+                theD2UV,
+                theD3U,
+                theD3V,
+                theD3UUV,
+                theD3UVV,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:199 - `Adaptor3d_Surface::DN()`
+    pub fn dn(
+        &self,
+        theU: f64,
+        theV: f64,
+        theNu: i32,
+        theNv: i32,
+    ) -> crate::OwnedPtr<crate::gp::Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_DN(
+                    self as *const Self,
+                    theU,
+                    theV,
+                    theNu,
+                    theNv,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_IsInstance(
                 self as *const Self,
@@ -2380,8 +2841,8 @@ impl SurfaceOfLinearExtrusion {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_IsKind(
                 self as *const Self,
@@ -2390,7 +2851,7 @@ impl SurfaceOfLinearExtrusion {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2406,7 +2867,7 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_GetRefCount(
@@ -2415,21 +2876,21 @@ impl SurfaceOfLinearExtrusion {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_Delete(
@@ -2439,31 +2900,31 @@ impl SurfaceOfLinearExtrusion {
     }
 }
 
-pub use crate::ffi_types::HandleGeomAdaptorSurfaceOfLinearExtrusion;
+pub use crate::ffi_types::Handle_GeomAdaptor_SurfaceOfLinearExtrusion;
 
-unsafe impl crate::CppDeletable for HandleGeomAdaptorSurfaceOfLinearExtrusion {
+unsafe impl crate::CppDeletable for Handle_GeomAdaptor_SurfaceOfLinearExtrusion {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKG3d::HandleGeomAdaptorSurfaceOfLinearExtrusion_destructor(ptr);
+            crate::ffi_extern_TKG3d::Handle_GeomAdaptor_SurfaceOfLinearExtrusion_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleGeomAdaptorSurfaceOfLinearExtrusion {
+unsafe impl crate::CppCopyable for Handle_GeomAdaptor_SurfaceOfLinearExtrusion {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKG3d::HandleGeomAdaptorSurfaceOfLinearExtrusion_clone(ptr),
+                crate::ffi_extern_TKG3d::Handle_GeomAdaptor_SurfaceOfLinearExtrusion_clone(ptr),
             )
         }
     }
 }
 
-impl HandleGeomAdaptorSurfaceOfLinearExtrusion {
+impl Handle_GeomAdaptor_SurfaceOfLinearExtrusion {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKG3d::HandleGeomAdaptorSurfaceOfLinearExtrusion_is_null(
+            crate::ffi_extern_TKG3d::Handle_GeomAdaptor_SurfaceOfLinearExtrusion_is_null(
                 self as *const Self,
             )
         }
@@ -2473,7 +2934,7 @@ impl HandleGeomAdaptorSurfaceOfLinearExtrusion {
     pub fn get(&self) -> &crate::ffi_types::GeomAdaptor_SurfaceOfLinearExtrusion {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKG3d::HandleGeomAdaptorSurfaceOfLinearExtrusion_get(
+                crate::ffi_extern_TKG3d::Handle_GeomAdaptor_SurfaceOfLinearExtrusion_get(
                     self as *const Self,
                 ),
             )
@@ -2484,7 +2945,7 @@ impl HandleGeomAdaptorSurfaceOfLinearExtrusion {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomAdaptor_SurfaceOfLinearExtrusion {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKG3d::HandleGeomAdaptorSurfaceOfLinearExtrusion_get_mut(
+                crate::ffi_extern_TKG3d::Handle_GeomAdaptor_SurfaceOfLinearExtrusion_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -2494,27 +2955,27 @@ impl HandleGeomAdaptorSurfaceOfLinearExtrusion {
     /// Upcast Handle<GeomAdaptor_SurfaceOfLinearExtrusion> to Handle<GeomAdaptor_Surface>
     pub fn to_handle_geom_adaptor_surface(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomAdaptorSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_GeomAdaptor_Surface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::HandleGeomAdaptorSurfaceOfLinearExtrusion_to_HandleGeomAdaptorSurface(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::Handle_GeomAdaptor_SurfaceOfLinearExtrusion_to_Handle_GeomAdaptor_Surface(self as *const Self)))
         }
     }
 
     /// Upcast Handle<GeomAdaptor_SurfaceOfLinearExtrusion> to Handle<Adaptor3d_Surface>
     pub fn to_handle_adaptor3d_surface(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Surface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::HandleGeomAdaptorSurfaceOfLinearExtrusion_to_HandleAdaptor3dSurface(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::Handle_GeomAdaptor_SurfaceOfLinearExtrusion_to_Handle_Adaptor3d_Surface(self as *const Self)))
         }
     }
 
     /// Upcast Handle<GeomAdaptor_SurfaceOfLinearExtrusion> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::HandleGeomAdaptorSurfaceOfLinearExtrusion_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::Handle_GeomAdaptor_SurfaceOfLinearExtrusion_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -2523,7 +2984,7 @@ impl HandleGeomAdaptorSurfaceOfLinearExtrusion {
 // From GeomAdaptor_SurfaceOfRevolution.hxx
 // ========================
 
-/// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:48 - `GeomAdaptor_SurfaceOfRevolution`
+/// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:46 - `GeomAdaptor_SurfaceOfRevolution`
 /// This class defines a complete surface of revolution.
 /// The surface is obtained by rotating a curve a complete revolution
 /// about an axis. The curve and the axis must be in the same plane.
@@ -2531,7 +2992,7 @@ impl HandleGeomAdaptorSurfaceOfLinearExtrusion {
 /// possible to be in the previous case after a cylindrical projection
 /// of the curve in a referenced plane.
 /// For a complete surface of revolution the parametric range is
-/// 0 <= U <= 2*PI.       --
+/// 0 <= U <= 2*PI
 /// The parametric range for V is defined with the revolved curve.
 /// The origin of the U parametrization is given by the position
 /// of the revolved curve (reference). The direction of the revolution
@@ -2551,7 +3012,7 @@ unsafe impl crate::CppDeletable for SurfaceOfRevolution {
 }
 
 impl SurfaceOfRevolution {
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:52 - `GeomAdaptor_SurfaceOfRevolution::GeomAdaptor_SurfaceOfRevolution()`
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:50 - `GeomAdaptor_SurfaceOfRevolution::GeomAdaptor_SurfaceOfRevolution()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2560,10 +3021,10 @@ impl SurfaceOfRevolution {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:55 - `GeomAdaptor_SurfaceOfRevolution::GeomAdaptor_SurfaceOfRevolution()`
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:53 - `GeomAdaptor_SurfaceOfRevolution::GeomAdaptor_SurfaceOfRevolution()`
     /// The Curve is loaded.
     pub fn new_handleadaptor3dcurve(
-        C: &crate::ffi_types::HandleAdaptor3dCurve,
+        C: &crate::ffi_types::Handle_Adaptor3d_Curve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2574,10 +3035,10 @@ impl SurfaceOfRevolution {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:58 - `GeomAdaptor_SurfaceOfRevolution::GeomAdaptor_SurfaceOfRevolution()`
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:56 - `GeomAdaptor_SurfaceOfRevolution::GeomAdaptor_SurfaceOfRevolution()`
     /// The Curve and the Direction are loaded.
     pub fn new_handleadaptor3dcurve_ax1(
-        C: &crate::ffi_types::HandleAdaptor3dCurve,
+        C: &crate::ffi_types::Handle_Adaptor3d_Curve,
         V: &crate::gp::Ax1,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2585,8 +3046,8 @@ impl SurfaceOfRevolution {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:50 - `GeomAdaptor_SurfaceOfRevolution::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:48 - `GeomAdaptor_SurfaceOfRevolution::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_dynamic_type(
@@ -2596,9 +3057,9 @@ impl SurfaceOfRevolution {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:62 - `GeomAdaptor_SurfaceOfRevolution::ShallowCopy()`
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:60 - `GeomAdaptor_SurfaceOfRevolution::ShallowCopy()`
     /// Shallow copy of adaptor
-    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dSurface> {
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Surface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_shallow_copy(
@@ -2608,9 +3069,9 @@ impl SurfaceOfRevolution {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:65 - `GeomAdaptor_SurfaceOfRevolution::Load()`
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:63 - `GeomAdaptor_SurfaceOfRevolution::Load()`
     /// Changes the Curve
-    pub fn load_handleadaptor3dcurve(&mut self, C: &crate::ffi_types::HandleAdaptor3dCurve) {
+    pub fn load_handleadaptor3dcurve(&mut self, C: &crate::ffi_types::Handle_Adaptor3d_Curve) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_load_handleadaptor3dcurve(
                 self as *mut Self,
@@ -2619,7 +3080,7 @@ impl SurfaceOfRevolution {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:68 - `GeomAdaptor_SurfaceOfRevolution::Load()`
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:66 - `GeomAdaptor_SurfaceOfRevolution::Load()`
     /// Changes the Direction
     pub fn load_ax1(&mut self, V: &crate::gp::Ax1) {
         crate::check_void_result(unsafe {
@@ -2627,7 +3088,7 @@ impl SurfaceOfRevolution {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:70 - `GeomAdaptor_SurfaceOfRevolution::AxeOfRevolution()`
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:68 - `GeomAdaptor_SurfaceOfRevolution::AxeOfRevolution()`
     pub fn axe_of_revolution(&self) -> crate::OwnedPtr<crate::gp::Ax1> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2638,7 +3099,7 @@ impl SurfaceOfRevolution {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:72 - `GeomAdaptor_SurfaceOfRevolution::FirstUParameter()`
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:70 - `GeomAdaptor_SurfaceOfRevolution::FirstUParameter()`
     pub fn first_u_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_first_u_parameter(
@@ -2647,7 +3108,7 @@ impl SurfaceOfRevolution {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:74 - `GeomAdaptor_SurfaceOfRevolution::LastUParameter()`
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:72 - `GeomAdaptor_SurfaceOfRevolution::LastUParameter()`
     pub fn last_u_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_last_u_parameter(
@@ -2656,7 +3117,7 @@ impl SurfaceOfRevolution {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:76 - `GeomAdaptor_SurfaceOfRevolution::FirstVParameter()`
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:74 - `GeomAdaptor_SurfaceOfRevolution::FirstVParameter()`
     pub fn first_v_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_first_v_parameter(
@@ -2665,7 +3126,7 @@ impl SurfaceOfRevolution {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:78 - `GeomAdaptor_SurfaceOfRevolution::LastVParameter()`
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:76 - `GeomAdaptor_SurfaceOfRevolution::LastVParameter()`
     pub fn last_v_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_last_v_parameter(
@@ -2674,7 +3135,7 @@ impl SurfaceOfRevolution {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:80 - `GeomAdaptor_SurfaceOfRevolution::UContinuity()`
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:78 - `GeomAdaptor_SurfaceOfRevolution::UContinuity()`
     pub fn u_continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_u_continuity(
@@ -2684,7 +3145,7 @@ impl SurfaceOfRevolution {
         .unwrap()
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:83 - `GeomAdaptor_SurfaceOfRevolution::VContinuity()`
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:81 - `GeomAdaptor_SurfaceOfRevolution::VContinuity()`
     /// Return CN.
     pub fn v_continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
@@ -2695,8 +3156,8 @@ impl SurfaceOfRevolution {
         .unwrap()
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:87 - `GeomAdaptor_SurfaceOfRevolution::NbUIntervals()`
-    /// Returns the number of U intervals for  continuity
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:85 - `GeomAdaptor_SurfaceOfRevolution::NbUIntervals()`
+    /// Returns the number of U intervals for continuity
     /// <S>. May be one if UContinuity(me) >= <S>
     pub fn nb_u_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
@@ -2707,8 +3168,8 @@ impl SurfaceOfRevolution {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:91 - `GeomAdaptor_SurfaceOfRevolution::NbVIntervals()`
-    /// Returns the number of V intervals for  continuity
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:89 - `GeomAdaptor_SurfaceOfRevolution::NbVIntervals()`
+    /// Returns the number of V intervals for continuity
     /// <S>. May be one if VContinuity(me) >= <S>
     pub fn nb_v_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
@@ -2719,12 +3180,12 @@ impl SurfaceOfRevolution {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:95 - `GeomAdaptor_SurfaceOfRevolution::UIntervals()`
-    /// Returns the  intervals with the requested continuity
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:93 - `GeomAdaptor_SurfaceOfRevolution::UIntervals()`
+    /// Returns the intervals with the requested continuity
     /// in the U direction.
     pub fn u_intervals(
         &self,
-        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::NCollection_Array1_double,
         S: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
@@ -2736,12 +3197,12 @@ impl SurfaceOfRevolution {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:100 - `GeomAdaptor_SurfaceOfRevolution::VIntervals()`
-    /// Returns the  intervals with the requested continuity
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:98 - `GeomAdaptor_SurfaceOfRevolution::VIntervals()`
+    /// Returns the intervals with the requested continuity
     /// in the V direction.
     pub fn v_intervals(
         &self,
-        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::NCollection_Array1_double,
         S: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
@@ -2753,10 +3214,10 @@ impl SurfaceOfRevolution {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:108 - `GeomAdaptor_SurfaceOfRevolution::UTrim()`
-    /// Returns    a  surface trimmed in the U direction
-    /// equivalent   of  <me>  between
-    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:106 - `GeomAdaptor_SurfaceOfRevolution::UTrim()`
+    /// Returns a surface trimmed in the U direction
+    /// equivalent of <me> between
+    /// parameters <First> and <Last>. <Tol> is used to
     /// test for 3d points confusion.
     /// If <First> >= <Last>
     pub fn u_trim(
@@ -2764,7 +3225,7 @@ impl SurfaceOfRevolution {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Surface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_u_trim(
@@ -2777,9 +3238,9 @@ impl SurfaceOfRevolution {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:116 - `GeomAdaptor_SurfaceOfRevolution::VTrim()`
-    /// Returns    a  surface trimmed in the V direction  between
-    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:114 - `GeomAdaptor_SurfaceOfRevolution::VTrim()`
+    /// Returns a surface trimmed in the V direction between
+    /// parameters <First> and <Last>. <Tol> is used to
     /// test for 3d points confusion.
     /// If <First> >= <Last>
     pub fn v_trim(
@@ -2787,7 +3248,7 @@ impl SurfaceOfRevolution {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Surface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_v_trim(
@@ -2800,7 +3261,7 @@ impl SurfaceOfRevolution {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:120 - `GeomAdaptor_SurfaceOfRevolution::IsUClosed()`
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:118 - `GeomAdaptor_SurfaceOfRevolution::IsUClosed()`
     pub fn is_u_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_is_u_closed(
@@ -2809,7 +3270,7 @@ impl SurfaceOfRevolution {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:122 - `GeomAdaptor_SurfaceOfRevolution::IsVClosed()`
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:120 - `GeomAdaptor_SurfaceOfRevolution::IsVClosed()`
     pub fn is_v_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_is_v_closed(
@@ -2818,7 +3279,7 @@ impl SurfaceOfRevolution {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:124 - `GeomAdaptor_SurfaceOfRevolution::IsUPeriodic()`
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:122 - `GeomAdaptor_SurfaceOfRevolution::IsUPeriodic()`
     pub fn is_u_periodic(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_is_u_periodic(
@@ -2827,14 +3288,14 @@ impl SurfaceOfRevolution {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:126 - `GeomAdaptor_SurfaceOfRevolution::UPeriod()`
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:124 - `GeomAdaptor_SurfaceOfRevolution::UPeriod()`
     pub fn u_period(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_u_period(self as *const Self)
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:128 - `GeomAdaptor_SurfaceOfRevolution::IsVPeriodic()`
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:126 - `GeomAdaptor_SurfaceOfRevolution::IsVPeriodic()`
     pub fn is_v_periodic(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_is_v_periodic(
@@ -2843,15 +3304,15 @@ impl SurfaceOfRevolution {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:130 - `GeomAdaptor_SurfaceOfRevolution::VPeriod()`
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:128 - `GeomAdaptor_SurfaceOfRevolution::VPeriod()`
     pub fn v_period(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_v_period(self as *const Self)
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:134 - `GeomAdaptor_SurfaceOfRevolution::UResolution()`
-    /// Returns the parametric U  resolution corresponding
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:132 - `GeomAdaptor_SurfaceOfRevolution::UResolution()`
+    /// Returns the parametric U resolution corresponding
     /// to the real space resolution <R3d>.
     pub fn u_resolution(&self, R3d: f64) -> f64 {
         crate::check_result(unsafe {
@@ -2862,8 +3323,8 @@ impl SurfaceOfRevolution {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:138 - `GeomAdaptor_SurfaceOfRevolution::VResolution()`
-    /// Returns the parametric V  resolution corresponding
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:136 - `GeomAdaptor_SurfaceOfRevolution::VResolution()`
+    /// Returns the parametric V resolution corresponding
     /// to the real space resolution <R3d>.
     pub fn v_resolution(&self, R3d: f64) -> f64 {
         crate::check_result(unsafe {
@@ -2874,10 +3335,10 @@ impl SurfaceOfRevolution {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:144 - `GeomAdaptor_SurfaceOfRevolution::GetType()`
-    /// Returns the type of the surface : Plane, Cylinder,
-    /// Cone,      Sphere,        Torus,    BezierSurface,
-    /// BSplineSurface,               SurfaceOfRevolution,
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:142 - `GeomAdaptor_SurfaceOfRevolution::GetType()`
+    /// Returns the type of the surface: Plane, Cylinder,
+    /// Cone, Sphere, Torus, BezierSurface,
+    /// BSplineSurface, SurfaceOfRevolution,
     /// SurfaceOfExtrusion, OtherSurface
     pub fn get_type(&self) -> crate::geom_abs::SurfaceType {
         crate::geom_abs::SurfaceType::try_from(crate::check_result(unsafe {
@@ -2886,7 +3347,7 @@ impl SurfaceOfRevolution {
         .unwrap()
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:146 - `GeomAdaptor_SurfaceOfRevolution::Plane()`
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:144 - `GeomAdaptor_SurfaceOfRevolution::Plane()`
     pub fn plane(&self) -> crate::OwnedPtr<crate::gp::Pln> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2895,7 +3356,7 @@ impl SurfaceOfRevolution {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:148 - `GeomAdaptor_SurfaceOfRevolution::Cylinder()`
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:146 - `GeomAdaptor_SurfaceOfRevolution::Cylinder()`
     pub fn cylinder(&self) -> crate::OwnedPtr<crate::gp::Cylinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2906,7 +3367,7 @@ impl SurfaceOfRevolution {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:152 - `GeomAdaptor_SurfaceOfRevolution::Cone()`
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:150 - `GeomAdaptor_SurfaceOfRevolution::Cone()`
     /// Apex of the Cone = Cone.Position().Location()
     /// ==> ReferenceRadius = 0.
     pub fn cone(&self) -> crate::OwnedPtr<crate::gp::Cone> {
@@ -2917,7 +3378,7 @@ impl SurfaceOfRevolution {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:154 - `GeomAdaptor_SurfaceOfRevolution::Sphere()`
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:152 - `GeomAdaptor_SurfaceOfRevolution::Sphere()`
     pub fn sphere(&self) -> crate::OwnedPtr<crate::gp::Sphere> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2928,7 +3389,7 @@ impl SurfaceOfRevolution {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:156 - `GeomAdaptor_SurfaceOfRevolution::Torus()`
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:154 - `GeomAdaptor_SurfaceOfRevolution::Torus()`
     pub fn torus(&self) -> crate::OwnedPtr<crate::gp::Torus> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2937,28 +3398,28 @@ impl SurfaceOfRevolution {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:158 - `GeomAdaptor_SurfaceOfRevolution::VDegree()`
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:156 - `GeomAdaptor_SurfaceOfRevolution::VDegree()`
     pub fn v_degree(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_v_degree(self as *const Self)
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:160 - `GeomAdaptor_SurfaceOfRevolution::NbVPoles()`
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:158 - `GeomAdaptor_SurfaceOfRevolution::NbVPoles()`
     pub fn nb_v_poles(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_nb_v_poles(self as *const Self)
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:162 - `GeomAdaptor_SurfaceOfRevolution::NbVKnots()`
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:160 - `GeomAdaptor_SurfaceOfRevolution::NbVKnots()`
     pub fn nb_v_knots(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_nb_v_knots(self as *const Self)
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:164 - `GeomAdaptor_SurfaceOfRevolution::IsURational()`
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:162 - `GeomAdaptor_SurfaceOfRevolution::IsURational()`
     pub fn is_u_rational(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_is_u_rational(
@@ -2967,7 +3428,7 @@ impl SurfaceOfRevolution {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:166 - `GeomAdaptor_SurfaceOfRevolution::IsVRational()`
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:164 - `GeomAdaptor_SurfaceOfRevolution::IsVRational()`
     pub fn is_v_rational(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_is_v_rational(
@@ -2976,8 +3437,8 @@ impl SurfaceOfRevolution {
         })
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:168 - `GeomAdaptor_SurfaceOfRevolution::Bezier()`
-    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBezierSurface> {
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:166 - `GeomAdaptor_SurfaceOfRevolution::Bezier()`
+    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BezierSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_bezier(
@@ -2987,8 +3448,8 @@ impl SurfaceOfRevolution {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:170 - `GeomAdaptor_SurfaceOfRevolution::BSpline()`
-    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineSurface> {
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:168 - `GeomAdaptor_SurfaceOfRevolution::BSpline()`
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BSplineSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_b_spline(
@@ -2998,7 +3459,7 @@ impl SurfaceOfRevolution {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:172 - `GeomAdaptor_SurfaceOfRevolution::Axis()`
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:170 - `GeomAdaptor_SurfaceOfRevolution::Axis()`
     pub fn axis(&self) -> &crate::gp::Ax3 {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_axis(
@@ -3007,8 +3468,8 @@ impl SurfaceOfRevolution {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:174 - `GeomAdaptor_SurfaceOfRevolution::BasisCurve()`
-    pub fn basis_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:172 - `GeomAdaptor_SurfaceOfRevolution::BasisCurve()`
+    pub fn basis_curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_basis_curve(
@@ -3018,7 +3479,7 @@ impl SurfaceOfRevolution {
         }
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:50 - `GeomAdaptor_SurfaceOfRevolution::get_type_name()`
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:48 - `GeomAdaptor_SurfaceOfRevolution::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -3029,8 +3490,8 @@ impl SurfaceOfRevolution {
         .into_owned()
     }
 
-    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:50 - `GeomAdaptor_SurfaceOfRevolution::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:48 - `GeomAdaptor_SurfaceOfRevolution::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_get_type_descriptor(),
@@ -3107,7 +3568,7 @@ impl SurfaceOfRevolution {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomAdaptorSurfaceOfRevolution> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_GeomAdaptor_SurfaceOfRevolution> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_to_handle(obj.into_raw()),
@@ -3115,8 +3576,8 @@ impl SurfaceOfRevolution {
         }
     }
 
-    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:108 - `GeomAdaptor_Surface::Surface()`
-    pub fn surface(&self) -> &crate::ffi_types::HandleGeomSurface {
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:183 - `GeomAdaptor_Surface::Surface()`
+    pub fn surface(&self) -> &crate::ffi_types::Handle_Geom_Surface {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_Surface(
@@ -3126,130 +3587,111 @@ impl SurfaceOfRevolution {
         }
     }
 
-    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:170 - `GeomAdaptor_Surface::Value()`
-    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:198 - `GeomAdaptor_Surface::Bounds()`
+    pub fn bounds(&self, theU1: &mut f64, theU2: &mut f64, theV1: &mut f64, theV2: &mut f64) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_Bounds(
+                self as *const Self,
+                theU1,
+                theU2,
+                theV1,
+                theV2,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:207 - `GeomAdaptor_Surface::ToleranceU()`
+    pub fn tolerance_u(&self) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_ToleranceU(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:210 - `GeomAdaptor_Surface::ToleranceV()`
+    pub fn tolerance_v(&self) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_ToleranceV(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:264 - `GeomAdaptor_Surface::EvalD0()`
+    pub fn eval_d0(&self, theU: f64, theV: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_Value(
+                crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_EvalD0(
                     self as *const Self,
-                    U,
-                    V,
+                    theU,
+                    theV,
                 ),
             ))
         }
     }
 
-    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:174 - `GeomAdaptor_Surface::D0()`
-    pub fn d0(&self, U: f64, V: f64, P: &mut crate::gp::Pnt) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_D0(
-                self as *const Self,
-                U,
-                V,
-                P,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:185 - `GeomAdaptor_Surface::D1()`
-    pub fn d1(
-        &self,
-        U: f64,
-        V: f64,
-        P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_D1(
-                self as *const Self,
-                U,
-                V,
-                P,
-                D1U,
-                D1V,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:198 - `GeomAdaptor_Surface::D2()`
-    pub fn d2(
-        &self,
-        U: f64,
-        V: f64,
-        P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_D2(
-                self as *const Self,
-                U,
-                V,
-                P,
-                D1U,
-                D1V,
-                D2U,
-                D2V,
-                D2UV,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:214 - `GeomAdaptor_Surface::D3()`
-    pub fn d3(
-        &self,
-        U: f64,
-        V: f64,
-        P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
-        D3U: &mut crate::gp::Vec,
-        D3V: &mut crate::gp::Vec,
-        D3UUV: &mut crate::gp::Vec,
-        D3UVV: &mut crate::gp::Vec,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_D3(
-                self as *const Self,
-                U,
-                V,
-                P,
-                D1U,
-                D1V,
-                D2U,
-                D2V,
-                D2UV,
-                D3U,
-                D3V,
-                D3UUV,
-                D3UVV,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:235 - `GeomAdaptor_Surface::DN()`
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:267 - `GeomAdaptor_Surface::EvalD1()`
+    pub fn eval_d1(&self, theU: f64, theV: f64) -> crate::OwnedPtr<crate::geom::Surface_ResD1> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_DN(
+                crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_EvalD1(
                     self as *const Self,
-                    U,
-                    V,
-                    Nu,
-                    Nv,
+                    theU,
+                    theV,
                 ),
             ))
         }
     }
 
-    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:264 - `GeomAdaptor_Surface::UDegree()`
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:271 - `GeomAdaptor_Surface::EvalD2()`
+    pub fn eval_d2(&self, theU: f64, theV: f64) -> crate::OwnedPtr<crate::geom::Surface_ResD2> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_EvalD2(
+                    self as *const Self,
+                    theU,
+                    theV,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:275 - `GeomAdaptor_Surface::EvalD3()`
+    pub fn eval_d3(&self, theU: f64, theV: f64) -> crate::OwnedPtr<crate::geom::Surface_ResD3> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_EvalD3(
+                    self as *const Self,
+                    theU,
+                    theV,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:279 - `GeomAdaptor_Surface::EvalDN()`
+    pub fn eval_dn(
+        &self,
+        theU: f64,
+        theV: f64,
+        theNu: i32,
+        theNv: i32,
+    ) -> crate::OwnedPtr<crate::gp::Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_EvalDN(
+                    self as *const Self,
+                    theU,
+                    theV,
+                    theNu,
+                    theNv,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:308 - `GeomAdaptor_Surface::UDegree()`
     pub fn u_degree(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_UDegree(
@@ -3258,7 +3700,7 @@ impl SurfaceOfRevolution {
         })
     }
 
-    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:266 - `GeomAdaptor_Surface::NbUPoles()`
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:310 - `GeomAdaptor_Surface::NbUPoles()`
     pub fn nb_u_poles(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_NbUPoles(
@@ -3267,7 +3709,7 @@ impl SurfaceOfRevolution {
         })
     }
 
-    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:272 - `GeomAdaptor_Surface::NbUKnots()`
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:316 - `GeomAdaptor_Surface::NbUKnots()`
     pub fn nb_u_knots(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_NbUKnots(
@@ -3276,7 +3718,7 @@ impl SurfaceOfRevolution {
         })
     }
 
-    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:296 - `GeomAdaptor_Surface::Direction()`
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:340 - `GeomAdaptor_Surface::Direction()`
     pub fn direction(&self) -> crate::OwnedPtr<crate::gp::Dir> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3287,8 +3729,8 @@ impl SurfaceOfRevolution {
         }
     }
 
-    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:300 - `GeomAdaptor_Surface::BasisSurface()`
-    pub fn basis_surface(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dSurface> {
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:344 - `GeomAdaptor_Surface::BasisSurface()`
+    pub fn basis_surface(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Surface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_BasisSurface(
@@ -3298,7 +3740,7 @@ impl SurfaceOfRevolution {
         }
     }
 
-    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:302 - `GeomAdaptor_Surface::OffsetValue()`
+    /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:346 - `GeomAdaptor_Surface::OffsetValue()`
     pub fn offset_value(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_OffsetValue(
@@ -3307,8 +3749,137 @@ impl SurfaceOfRevolution {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:125 - `Adaptor3d_Surface::Value()`
+    pub fn value(&self, theU: f64, theV: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_Value(
+                    self as *const Self,
+                    theU,
+                    theV,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:128 - `Adaptor3d_Surface::D0()`
+    pub fn d0(&self, theU: f64, theV: f64, theP: &mut crate::gp::Pnt) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_D0(
+                self as *const Self,
+                theU,
+                theV,
+                theP,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:134 - `Adaptor3d_Surface::D1()`
+    pub fn d1(
+        &self,
+        theU: f64,
+        theV: f64,
+        theP: &mut crate::gp::Pnt,
+        theD1U: &mut crate::gp::Vec,
+        theD1V: &mut crate::gp::Vec,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_D1(
+                self as *const Self,
+                theU,
+                theV,
+                theP,
+                theD1U,
+                theD1V,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:146 - `Adaptor3d_Surface::D2()`
+    pub fn d2(
+        &self,
+        theU: f64,
+        theV: f64,
+        theP: &mut crate::gp::Pnt,
+        theD1U: &mut crate::gp::Vec,
+        theD1V: &mut crate::gp::Vec,
+        theD2U: &mut crate::gp::Vec,
+        theD2V: &mut crate::gp::Vec,
+        theD2UV: &mut crate::gp::Vec,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_D2(
+                self as *const Self,
+                theU,
+                theV,
+                theP,
+                theD1U,
+                theD1V,
+                theD2U,
+                theD2V,
+                theD2UV,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:168 - `Adaptor3d_Surface::D3()`
+    pub fn d3(
+        &self,
+        theU: f64,
+        theV: f64,
+        theP: &mut crate::gp::Pnt,
+        theD1U: &mut crate::gp::Vec,
+        theD1V: &mut crate::gp::Vec,
+        theD2U: &mut crate::gp::Vec,
+        theD2V: &mut crate::gp::Vec,
+        theD2UV: &mut crate::gp::Vec,
+        theD3U: &mut crate::gp::Vec,
+        theD3V: &mut crate::gp::Vec,
+        theD3UUV: &mut crate::gp::Vec,
+        theD3UVV: &mut crate::gp::Vec,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_D3(
+                self as *const Self,
+                theU,
+                theV,
+                theP,
+                theD1U,
+                theD1V,
+                theD2U,
+                theD2V,
+                theD2UV,
+                theD3U,
+                theD3V,
+                theD3UUV,
+                theD3UVV,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:199 - `Adaptor3d_Surface::DN()`
+    pub fn dn(
+        &self,
+        theU: f64,
+        theV: f64,
+        theNu: i32,
+        theNv: i32,
+    ) -> crate::OwnedPtr<crate::gp::Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_DN(
+                    self as *const Self,
+                    theU,
+                    theV,
+                    theNu,
+                    theNv,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_IsInstance(
                 self as *const Self,
@@ -3317,8 +3888,8 @@ impl SurfaceOfRevolution {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_IsKind(
                 self as *const Self,
@@ -3327,7 +3898,7 @@ impl SurfaceOfRevolution {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3343,7 +3914,7 @@ impl SurfaceOfRevolution {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_GetRefCount(
@@ -3352,7 +3923,7 @@ impl SurfaceOfRevolution {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_IncrementRefCounter(
@@ -3361,7 +3932,7 @@ impl SurfaceOfRevolution {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_DecrementRefCounter(
@@ -3370,7 +3941,7 @@ impl SurfaceOfRevolution {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKG3d::GeomAdaptor_SurfaceOfRevolution_inherited_Delete(
@@ -3380,31 +3951,31 @@ impl SurfaceOfRevolution {
     }
 }
 
-pub use crate::ffi_types::HandleGeomAdaptorSurfaceOfRevolution;
+pub use crate::ffi_types::Handle_GeomAdaptor_SurfaceOfRevolution;
 
-unsafe impl crate::CppDeletable for HandleGeomAdaptorSurfaceOfRevolution {
+unsafe impl crate::CppDeletable for Handle_GeomAdaptor_SurfaceOfRevolution {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKG3d::HandleGeomAdaptorSurfaceOfRevolution_destructor(ptr);
+            crate::ffi_extern_TKG3d::Handle_GeomAdaptor_SurfaceOfRevolution_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleGeomAdaptorSurfaceOfRevolution {
+unsafe impl crate::CppCopyable for Handle_GeomAdaptor_SurfaceOfRevolution {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKG3d::HandleGeomAdaptorSurfaceOfRevolution_clone(ptr),
+                crate::ffi_extern_TKG3d::Handle_GeomAdaptor_SurfaceOfRevolution_clone(ptr),
             )
         }
     }
 }
 
-impl HandleGeomAdaptorSurfaceOfRevolution {
+impl Handle_GeomAdaptor_SurfaceOfRevolution {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKG3d::HandleGeomAdaptorSurfaceOfRevolution_is_null(
+            crate::ffi_extern_TKG3d::Handle_GeomAdaptor_SurfaceOfRevolution_is_null(
                 self as *const Self,
             )
         }
@@ -3414,7 +3985,7 @@ impl HandleGeomAdaptorSurfaceOfRevolution {
     pub fn get(&self) -> &crate::ffi_types::GeomAdaptor_SurfaceOfRevolution {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKG3d::HandleGeomAdaptorSurfaceOfRevolution_get(
+                crate::ffi_extern_TKG3d::Handle_GeomAdaptor_SurfaceOfRevolution_get(
                     self as *const Self,
                 ),
             )
@@ -3425,7 +3996,7 @@ impl HandleGeomAdaptorSurfaceOfRevolution {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomAdaptor_SurfaceOfRevolution {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKG3d::HandleGeomAdaptorSurfaceOfRevolution_get_mut(
+                crate::ffi_extern_TKG3d::Handle_GeomAdaptor_SurfaceOfRevolution_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -3435,27 +4006,1975 @@ impl HandleGeomAdaptorSurfaceOfRevolution {
     /// Upcast Handle<GeomAdaptor_SurfaceOfRevolution> to Handle<GeomAdaptor_Surface>
     pub fn to_handle_geom_adaptor_surface(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomAdaptorSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_GeomAdaptor_Surface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::HandleGeomAdaptorSurfaceOfRevolution_to_HandleGeomAdaptorSurface(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::Handle_GeomAdaptor_SurfaceOfRevolution_to_Handle_GeomAdaptor_Surface(self as *const Self)))
         }
     }
 
     /// Upcast Handle<GeomAdaptor_SurfaceOfRevolution> to Handle<Adaptor3d_Surface>
     pub fn to_handle_adaptor3d_surface(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Surface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::HandleGeomAdaptorSurfaceOfRevolution_to_HandleAdaptor3dSurface(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::Handle_GeomAdaptor_SurfaceOfRevolution_to_Handle_Adaptor3d_Surface(self as *const Self)))
         }
     }
 
     /// Upcast Handle<GeomAdaptor_SurfaceOfRevolution> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::HandleGeomAdaptorSurfaceOfRevolution_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::Handle_GeomAdaptor_SurfaceOfRevolution_to_Handle_Standard_Transient(self as *const Self)))
+        }
+    }
+}
+
+// ========================
+// From GeomAdaptor_TransformedCurve.hxx
+// ========================
+
+/// **Source:** `GeomAdaptor_TransformedCurve.hxx`:31 - `GeomAdaptor_TransformedCurve`
+/// An adaptor for curves with an applied transformation.
+///
+/// This class wraps a GeomAdaptor_Curve (or an Adaptor3d_CurveOnSurface) and
+/// applies a gp_Trsf transformation to all point and derivative evaluations.
+/// It serves as a base class for BRepAdaptor_Curve and allows batch evaluation
+/// with transformations in GeomGridEval_Curve.
+///
+/// The evaluation methods (Value, D0, D1, D2, D3, DN) are marked final
+/// to enable optimizations in grid evaluation.
+pub use crate::ffi_types::GeomAdaptor_TransformedCurve as TransformedCurve;
+
+unsafe impl crate::CppDeletable for TransformedCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_destructor(ptr);
+        }
+    }
+}
+
+impl TransformedCurve {
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:36 - `GeomAdaptor_TransformedCurve::GeomAdaptor_TransformedCurve()`
+    /// Creates an undefined curve with identity transformation.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_ctor(),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:41 - `GeomAdaptor_TransformedCurve::GeomAdaptor_TransformedCurve()`
+    /// Creates a curve adaptor with transformation.
+    /// @param theCurve underlying geometry
+    /// @param theTrsf transformation to apply
+    pub fn new_handlegeomcurve_trsf(
+        theCurve: &crate::ffi_types::Handle_Geom_Curve,
+        theTrsf: &crate::gp::Trsf,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_ctor_handlegeomcurve_trsf(
+                    theCurve, theTrsf,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:49 - `GeomAdaptor_TransformedCurve::GeomAdaptor_TransformedCurve()`
+    /// Creates a curve adaptor with transformation and parameter bounds.
+    /// @param theCurve underlying geometry
+    /// @param theFirst minimum parameter
+    /// @param theLast maximum parameter
+    /// @param theTrsf transformation to apply
+    pub fn new_handlegeomcurve_real2_trsf(
+        theCurve: &crate::ffi_types::Handle_Geom_Curve,
+        theFirst: f64,
+        theLast: f64,
+        theTrsf: &crate::gp::Trsf,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_ctor_handlegeomcurve_real2_trsf(theCurve, theFirst, theLast, theTrsf)))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:33 - `GeomAdaptor_TransformedCurve::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:55 - `GeomAdaptor_TransformedCurve::ShallowCopy()`
+    /// Shallow copy of adaptor.
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Curve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_shallow_copy(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:59 - `GeomAdaptor_TransformedCurve::Load()`
+    /// Loads the curve geometry.
+    /// @param theCurve underlying geometry
+    pub fn load_handlegeomcurve(&mut self, theCurve: &crate::ffi_types::Handle_Geom_Curve) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_load_handlegeomcurve(
+                self as *mut Self,
+                theCurve,
+            )
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:65 - `GeomAdaptor_TransformedCurve::Load()`
+    /// Loads the curve geometry with parameter bounds.
+    /// @param theCurve underlying geometry
+    /// @param theFirst minimum parameter
+    /// @param theLast maximum parameter
+    pub fn load_handlegeomcurve_real2(
+        &mut self,
+        theCurve: &crate::ffi_types::Handle_Geom_Curve,
+        theFirst: f64,
+        theLast: f64,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_load_handlegeomcurve_real2(
+                self as *mut Self,
+                theCurve,
+                theFirst,
+                theLast,
+            )
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:72 - `GeomAdaptor_TransformedCurve::LoadCurveOnSurface()`
+    /// Sets the curve on surface adaptor.
+    /// @param theConSurf curve on surface adaptor
+    pub fn load_curve_on_surface(
+        &mut self,
+        theConSurf: &crate::ffi_types::Handle_Adaptor3d_CurveOnSurface,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_load_curve_on_surface(
+                self as *mut Self,
+                theConSurf,
+            )
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:79 - `GeomAdaptor_TransformedCurve::SetTrsf()`
+    /// Sets the transformation.
+    /// @param theTrsf transformation to apply
+    pub fn set_trsf(&mut self, theTrsf: &crate::gp::Trsf) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_set_trsf(
+                self as *mut Self,
+                theTrsf,
+            )
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:82 - `GeomAdaptor_TransformedCurve::Trsf()`
+    /// Returns the transformation.
+    pub fn trsf(&self) -> &crate::gp::Trsf {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_trsf(
+                self as *const Self,
+            )))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:85 - `GeomAdaptor_TransformedCurve::Is3DCurve()`
+    /// Returns true if the geometry is a 3D curve (not curve on surface).
+    pub fn is3_d_curve(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_is3_d_curve(self as *const Self)
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:88 - `GeomAdaptor_TransformedCurve::IsCurveOnSurface()`
+    /// Returns true if the geometry is a curve on surface.
+    pub fn is_curve_on_surface(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_is_curve_on_surface(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:91 - `GeomAdaptor_TransformedCurve::Curve()`
+    /// Returns the underlying GeomAdaptor_Curve.
+    pub fn curve(&self) -> &Curve {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_curve(
+                self as *const Self,
+            )))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:94 - `GeomAdaptor_TransformedCurve::ChangeCurve()`
+    /// Returns the underlying GeomAdaptor_Curve for modification.
+    pub fn change_curve(&mut self) -> &mut Curve {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_change_curve(
+                    self as *mut Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:97 - `GeomAdaptor_TransformedCurve::CurveOnSurface()`
+    /// Returns the CurveOnSurface adaptor.
+    pub fn curve_on_surface(&self) -> &crate::adaptor3d::CurveOnSurface {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_curve_on_surface(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:100 - `GeomAdaptor_TransformedCurve::GeomCurve()`
+    /// Returns the underlying Geom_Curve.
+    pub fn geom_curve(&self) -> &crate::ffi_types::Handle_Geom_Curve {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_geom_curve(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:103 - `GeomAdaptor_TransformedCurve::FirstParameter()`
+    pub fn first_parameter(&self) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_first_parameter(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:108 - `GeomAdaptor_TransformedCurve::LastParameter()`
+    pub fn last_parameter(&self) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_last_parameter(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:113 - `GeomAdaptor_TransformedCurve::Continuity()`
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_continuity(self as *const Self)
+        }))
+        .unwrap()
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:118 - `GeomAdaptor_TransformedCurve::NbIntervals()`
+    pub fn nb_intervals(&self, theS: crate::geom_abs::Shape) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_nb_intervals(
+                self as *const Self,
+                theS.into(),
+            )
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:123 - `GeomAdaptor_TransformedCurve::Intervals()`
+    pub fn intervals(
+        &self,
+        theT: &mut crate::ffi_types::NCollection_Array1_double,
+        theS: crate::geom_abs::Shape,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_intervals(
+                self as *const Self,
+                theT,
+                theS.into(),
+            )
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:126 - `GeomAdaptor_TransformedCurve::Trim()`
+    pub fn trim(
+        &self,
+        theFirst: f64,
+        theLast: f64,
+        theTol: f64,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Curve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_trim(
+                    self as *const Self,
+                    theFirst,
+                    theLast,
+                    theTol,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:130 - `GeomAdaptor_TransformedCurve::IsClosed()`
+    pub fn is_closed(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_is_closed(self as *const Self)
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:135 - `GeomAdaptor_TransformedCurve::IsPeriodic()`
+    pub fn is_periodic(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_is_periodic(self as *const Self)
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:140 - `GeomAdaptor_TransformedCurve::Period()`
+    pub fn period(&self) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_period(self as *const Self)
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:146 - `GeomAdaptor_TransformedCurve::EvalD0()`
+    /// Point evaluation. Applies transformation after evaluation.
+    pub fn eval_d0(&self, theU: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_eval_d0(
+                    self as *const Self,
+                    theU,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:149 - `GeomAdaptor_TransformedCurve::EvalD1()`
+    /// D1 evaluation. Applies transformation after evaluation.
+    pub fn eval_d1(&self, theU: f64) -> crate::OwnedPtr<crate::geom::Curve_ResD1> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_eval_d1(
+                    self as *const Self,
+                    theU,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:152 - `GeomAdaptor_TransformedCurve::EvalD2()`
+    /// D2 evaluation. Applies transformation after evaluation.
+    pub fn eval_d2(&self, theU: f64) -> crate::OwnedPtr<crate::geom::Curve_ResD2> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_eval_d2(
+                    self as *const Self,
+                    theU,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:155 - `GeomAdaptor_TransformedCurve::EvalD3()`
+    /// D3 evaluation. Applies transformation after evaluation.
+    pub fn eval_d3(&self, theU: f64) -> crate::OwnedPtr<crate::geom::Curve_ResD3> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_eval_d3(
+                    self as *const Self,
+                    theU,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:158 - `GeomAdaptor_TransformedCurve::EvalDN()`
+    /// DN evaluation. Applies transformation after evaluation.
+    pub fn eval_dn(&self, theU: f64, theN: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_eval_dn(
+                    self as *const Self,
+                    theU,
+                    theN,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:160 - `GeomAdaptor_TransformedCurve::Resolution()`
+    pub fn resolution(&self, theR3d: f64) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_resolution(
+                self as *const Self,
+                theR3d,
+            )
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:165 - `GeomAdaptor_TransformedCurve::GetType()`
+    pub fn get_type(&self) -> crate::geom_abs::CurveType {
+        crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_get_type(self as *const Self)
+        }))
+        .unwrap()
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:170 - `GeomAdaptor_TransformedCurve::Line()`
+    pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_line(self as *const Self),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:172 - `GeomAdaptor_TransformedCurve::Circle()`
+    pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_circle(self as *const Self),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:174 - `GeomAdaptor_TransformedCurve::Ellipse()`
+    pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_ellipse(self as *const Self),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:176 - `GeomAdaptor_TransformedCurve::Hyperbola()`
+    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_hyperbola(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:178 - `GeomAdaptor_TransformedCurve::Parabola()`
+    pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_parabola(self as *const Self),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:180 - `GeomAdaptor_TransformedCurve::Degree()`
+    pub fn degree(&self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_degree(self as *const Self)
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:185 - `GeomAdaptor_TransformedCurve::IsRational()`
+    pub fn is_rational(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_is_rational(self as *const Self)
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:190 - `GeomAdaptor_TransformedCurve::NbPoles()`
+    pub fn nb_poles(&self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_nb_poles(self as *const Self)
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:195 - `GeomAdaptor_TransformedCurve::NbKnots()`
+    pub fn nb_knots(&self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_nb_knots(self as *const Self)
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:200 - `GeomAdaptor_TransformedCurve::Bezier()`
+    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BezierCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_bezier(self as *const Self),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:202 - `GeomAdaptor_TransformedCurve::BSpline()`
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BSplineCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_b_spline(self as *const Self),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:204 - `GeomAdaptor_TransformedCurve::OffsetCurve()`
+    pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_OffsetCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_offset_curve(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:33 - `GeomAdaptor_TransformedCurve::get_type_name()`
+    pub fn get_type_name() -> std::string::String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_get_type_name(),
+            ))
+        }
+        .to_string_lossy()
+        .into_owned()
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedCurve.hxx`:33 - `GeomAdaptor_TransformedCurve::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_get_type_descriptor(),
+            ))
+        }
+    }
+
+    /// Upcast to Adaptor3d_Curve
+    pub fn as_adaptor3d_curve(&self) -> &crate::adaptor3d::Curve {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_as_Adaptor3d_Curve(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to Adaptor3d_Curve (mutable)
+    pub fn as_adaptor3d_curve_mut(&mut self) -> &mut crate::adaptor3d::Curve {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_as_Adaptor3d_Curve_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_GeomAdaptor_TransformedCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_to_handle(obj.into_raw()),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:89 - `Adaptor3d_Curve::Value()`
+    pub fn value(&self, theU: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_inherited_Value(
+                    self as *const Self,
+                    theU,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:92 - `Adaptor3d_Curve::D0()`
+    pub fn d0(&self, theU: f64, theP: &mut crate::gp::Pnt) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_inherited_D0(
+                self as *const Self,
+                theU,
+                theP,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:98 - `Adaptor3d_Curve::D1()`
+    pub fn d1(&self, theU: f64, theP: &mut crate::gp::Pnt, theV: &mut crate::gp::Vec) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_inherited_D1(
+                self as *const Self,
+                theU,
+                theP,
+                theV,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:109 - `Adaptor3d_Curve::D2()`
+    pub fn d2(
+        &self,
+        theU: f64,
+        theP: &mut crate::gp::Pnt,
+        theV1: &mut crate::gp::Vec,
+        theV2: &mut crate::gp::Vec,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_inherited_D2(
+                self as *const Self,
+                theU,
+                theP,
+                theV1,
+                theV2,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:121 - `Adaptor3d_Curve::D3()`
+    pub fn d3(
+        &self,
+        theU: f64,
+        theP: &mut crate::gp::Pnt,
+        theV1: &mut crate::gp::Vec,
+        theV2: &mut crate::gp::Vec,
+        theV3: &mut crate::gp::Vec,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_inherited_D3(
+                self as *const Self,
+                theU,
+                theP,
+                theV1,
+                theV2,
+                theV3,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:135 - `Adaptor3d_Curve::DN()`
+    pub fn dn(&self, theU: f64, theN: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_inherited_DN(
+                    self as *const Self,
+                    theU,
+                    theN,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let __val = crate::check_result(unsafe {
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_inherited_This(
+                    self as *const Self,
+                )
+            });
+            if __val.is_null() {
+                None
+            } else {
+                Some(unsafe { &*__val })
+            }
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_inherited_GetRefCount(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedCurve_inherited_Delete(
+                self as *const Self,
+            )
+        })
+    }
+}
+
+pub use crate::ffi_types::Handle_GeomAdaptor_TransformedCurve;
+
+unsafe impl crate::CppDeletable for Handle_GeomAdaptor_TransformedCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKG3d::Handle_GeomAdaptor_TransformedCurve_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppCopyable for Handle_GeomAdaptor_TransformedCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKG3d::Handle_GeomAdaptor_TransformedCurve_clone(
+                ptr,
+            ))
+        }
+    }
+}
+
+impl Handle_GeomAdaptor_TransformedCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKG3d::Handle_GeomAdaptor_TransformedCurve_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Dereference this Handle to access the underlying GeomAdaptor_TransformedCurve
+    pub fn get(&self) -> &crate::ffi_types::GeomAdaptor_TransformedCurve {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKG3d::Handle_GeomAdaptor_TransformedCurve_get(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomAdaptor_TransformedCurve
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomAdaptor_TransformedCurve {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKG3d::Handle_GeomAdaptor_TransformedCurve_get_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<GeomAdaptor_TransformedCurve> to Handle<Adaptor3d_Curve>
+    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Curve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::Handle_GeomAdaptor_TransformedCurve_to_Handle_Adaptor3d_Curve(self as *const Self)))
+        }
+    }
+
+    /// Upcast Handle<GeomAdaptor_TransformedCurve> to Handle<Standard_Transient>
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::Handle_GeomAdaptor_TransformedCurve_to_Handle_Standard_Transient(self as *const Self)))
+        }
+    }
+
+    /// Downcast Handle<GeomAdaptor_TransformedCurve> to Handle<BRepAdaptor_Curve>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepAdaptor_Curve` (or subclass).
+    pub fn downcast_to_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BRepAdaptor_Curve>> {
+        let __val = crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::Handle_GeomAdaptor_TransformedCurve_downcast_to_Handle_BRepAdaptor_Curve(self as *const Self)
+        });
+        if __val.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
+        }
+    }
+}
+
+// ========================
+// From GeomAdaptor_TransformedSurface.hxx
+// ========================
+
+/// **Source:** `GeomAdaptor_TransformedSurface.hxx`:36 - `GeomAdaptor_TransformedSurface`
+/// An adaptor for surfaces with an applied transformation.
+///
+/// This class wraps a GeomAdaptor_Surface and applies a gp_Trsf transformation
+/// to all point and derivative evaluations. It serves as a base class for
+/// BRepAdaptor_Surface and allows batch evaluation with transformations in
+/// GeomGridEval_Surface.
+///
+/// The evaluation methods (Value, D0, D1, D2, D3, DN) are marked final
+/// to enable optimizations in grid evaluation.
+pub use crate::ffi_types::GeomAdaptor_TransformedSurface as TransformedSurface;
+
+unsafe impl crate::CppDeletable for TransformedSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_destructor(ptr);
+        }
+    }
+}
+
+impl TransformedSurface {
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:41 - `GeomAdaptor_TransformedSurface::GeomAdaptor_TransformedSurface()`
+    /// Creates an undefined surface with identity transformation.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_ctor(),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:46 - `GeomAdaptor_TransformedSurface::GeomAdaptor_TransformedSurface()`
+    /// Creates a surface adaptor with transformation.
+    /// @param theSurface underlying geometry
+    /// @param theTrsf transformation to apply
+    pub fn new_handlegeomsurface_trsf(
+        theSurface: &crate::ffi_types::Handle_Geom_Surface,
+        theTrsf: &crate::gp::Trsf,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_ctor_handlegeomsurface_trsf(
+                    theSurface, theTrsf,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:58 - `GeomAdaptor_TransformedSurface::GeomAdaptor_TransformedSurface()`
+    /// Creates a surface adaptor with transformation and parameter bounds.
+    /// @param theSurface underlying geometry
+    /// @param theUFirst minimum U parameter
+    /// @param theULast maximum U parameter
+    /// @param theVFirst minimum V parameter
+    /// @param theVLast maximum V parameter
+    /// @param theTrsf transformation to apply
+    /// @param theTolU tolerance in U direction
+    /// @param theTolV tolerance in V direction
+    pub fn new_handlegeomsurface_real4_trsf_real2(
+        theSurface: &crate::ffi_types::Handle_Geom_Surface,
+        theUFirst: f64,
+        theULast: f64,
+        theVFirst: f64,
+        theVLast: f64,
+        theTrsf: &crate::gp::Trsf,
+        theTolU: f64,
+        theTolV: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_ctor_handlegeomsurface_real4_trsf_real2(theSurface, theUFirst, theULast, theVFirst, theVLast, theTrsf, theTolU, theTolV)))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:58 - `GeomAdaptor_TransformedSurface::GeomAdaptor_TransformedSurface()`
+    /// Creates a surface adaptor with transformation and parameter bounds.
+    /// @param theSurface underlying geometry
+    /// @param theUFirst minimum U parameter
+    /// @param theULast maximum U parameter
+    /// @param theVFirst minimum V parameter
+    /// @param theVLast maximum V parameter
+    /// @param theTrsf transformation to apply
+    /// @param theTolU tolerance in U direction
+    /// @param theTolV tolerance in V direction
+    pub fn new_handlegeomsurface_real4_trsf_real(
+        theSurface: &crate::ffi_types::Handle_Geom_Surface,
+        theUFirst: f64,
+        theULast: f64,
+        theVFirst: f64,
+        theVLast: f64,
+        theTrsf: &crate::gp::Trsf,
+        theTolU: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handlegeomsurface_real4_trsf_real2(
+            theSurface, theUFirst, theULast, theVFirst, theVLast, theTrsf, theTolU, 0.0,
+        )
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:58 - `GeomAdaptor_TransformedSurface::GeomAdaptor_TransformedSurface()`
+    /// Creates a surface adaptor with transformation and parameter bounds.
+    /// @param theSurface underlying geometry
+    /// @param theUFirst minimum U parameter
+    /// @param theULast maximum U parameter
+    /// @param theVFirst minimum V parameter
+    /// @param theVLast maximum V parameter
+    /// @param theTrsf transformation to apply
+    /// @param theTolU tolerance in U direction
+    /// @param theTolV tolerance in V direction
+    pub fn new_handlegeomsurface_real4_trsf(
+        theSurface: &crate::ffi_types::Handle_Geom_Surface,
+        theUFirst: f64,
+        theULast: f64,
+        theVFirst: f64,
+        theVLast: f64,
+        theTrsf: &crate::gp::Trsf,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handlegeomsurface_real4_trsf_real2(
+            theSurface, theUFirst, theULast, theVFirst, theVLast, theTrsf, 0.0, 0.0,
+        )
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:38 - `GeomAdaptor_TransformedSurface::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:68 - `GeomAdaptor_TransformedSurface::ShallowCopy()`
+    /// Shallow copy of adaptor.
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Surface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_shallow_copy(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:73 - `GeomAdaptor_TransformedSurface::Load()`
+    /// Loads the surface geometry.
+    /// @param theSurface underlying geometry
+    /// @param theTrsf transformation to apply
+    pub fn load_handlegeomsurface_trsf(
+        &mut self,
+        theSurface: &crate::ffi_types::Handle_Geom_Surface,
+        theTrsf: &crate::gp::Trsf,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_load_handlegeomsurface_trsf(
+                self as *mut Self,
+                theSurface,
+                theTrsf,
+            )
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:84 - `GeomAdaptor_TransformedSurface::Load()`
+    /// Loads the surface geometry with parameter bounds.
+    /// @param theSurface underlying geometry
+    /// @param theUFirst minimum U parameter
+    /// @param theULast maximum U parameter
+    /// @param theVFirst minimum V parameter
+    /// @param theVLast maximum V parameter
+    /// @param theTrsf transformation to apply
+    /// @param theTolU tolerance in U direction
+    /// @param theTolV tolerance in V direction
+    pub fn load_handlegeomsurface_real4_trsf_real2(
+        &mut self,
+        theSurface: &crate::ffi_types::Handle_Geom_Surface,
+        theUFirst: f64,
+        theULast: f64,
+        theVFirst: f64,
+        theVLast: f64,
+        theTrsf: &crate::gp::Trsf,
+        theTolU: f64,
+        theTolV: f64,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_load_handlegeomsurface_real4_trsf_real2(self as *mut Self, theSurface, theUFirst, theULast, theVFirst, theVLast, theTrsf, theTolU, theTolV)
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:95 - `GeomAdaptor_TransformedSurface::SetTrsf()`
+    /// Sets the transformation.
+    /// @param theTrsf transformation to apply
+    pub fn set_trsf(&mut self, theTrsf: &crate::gp::Trsf) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_set_trsf(
+                self as *mut Self,
+                theTrsf,
+            )
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:98 - `GeomAdaptor_TransformedSurface::HasTrsf()`
+    /// Returns true if non-identity transformation is applied.
+    pub fn has_trsf(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_has_trsf(self as *const Self)
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:101 - `GeomAdaptor_TransformedSurface::Trsf()`
+    /// Returns the transformation.
+    pub fn trsf(&self) -> &crate::gp::Trsf {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_trsf(
+                self as *const Self,
+            )))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:109 - `GeomAdaptor_TransformedSurface::AdaptorSurfaceOriginal()`
+    /// Returns the underlying original GeomAdaptor_Surface without transformation applied.
+    pub fn adaptor_surface_original(&self) -> &Surface {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_adaptor_surface_original(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:113 - `GeomAdaptor_TransformedSurface::AdaptorSurfaceTransformed()`
+    /// Returns an adaptor for the transformed surface state.
+    /// Uses the original adaptor for identity transformation to preserve existing trimming.
+    pub fn adaptor_surface_transformed(&self) -> &Surface {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_adaptor_surface_transformed(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:116 - `GeomAdaptor_TransformedSurface::GeomSurfaceOriginal()`
+    /// Returns the underlying original Geom_Surface without transformation applied.
+    pub fn geom_surface_original(&self) -> &crate::ffi_types::Handle_Geom_Surface {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_geom_surface_original(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:119 - `GeomAdaptor_TransformedSurface::GeomSurfaceTransformed()`
+    /// Returns the transformed Geom_Surface cached for current state.
+    pub fn geom_surface_transformed(&self) -> &crate::ffi_types::Handle_Geom_Surface {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_geom_surface_transformed(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:126 - `GeomAdaptor_TransformedSurface::FirstUParameter()`
+    pub fn first_u_parameter(&self) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_first_u_parameter(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:128 - `GeomAdaptor_TransformedSurface::LastUParameter()`
+    pub fn last_u_parameter(&self) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_last_u_parameter(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:130 - `GeomAdaptor_TransformedSurface::FirstVParameter()`
+    pub fn first_v_parameter(&self) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_first_v_parameter(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:132 - `GeomAdaptor_TransformedSurface::LastVParameter()`
+    pub fn last_v_parameter(&self) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_last_v_parameter(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:134 - `GeomAdaptor_TransformedSurface::UContinuity()`
+    pub fn u_continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_u_continuity(
+                self as *const Self,
+            )
+        }))
+        .unwrap()
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:136 - `GeomAdaptor_TransformedSurface::VContinuity()`
+    pub fn v_continuity(&self) -> crate::geom_abs::Shape {
+        crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_v_continuity(
+                self as *const Self,
+            )
+        }))
+        .unwrap()
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:138 - `GeomAdaptor_TransformedSurface::NbUIntervals()`
+    pub fn nb_u_intervals(&self, theS: crate::geom_abs::Shape) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_nb_u_intervals(
+                self as *const Self,
+                theS.into(),
+            )
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:140 - `GeomAdaptor_TransformedSurface::NbVIntervals()`
+    pub fn nb_v_intervals(&self, theS: crate::geom_abs::Shape) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_nb_v_intervals(
+                self as *const Self,
+                theS.into(),
+            )
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:142 - `GeomAdaptor_TransformedSurface::UIntervals()`
+    pub fn u_intervals(
+        &self,
+        theT: &mut crate::ffi_types::NCollection_Array1_double,
+        theS: crate::geom_abs::Shape,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_u_intervals(
+                self as *const Self,
+                theT,
+                theS.into(),
+            )
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:145 - `GeomAdaptor_TransformedSurface::VIntervals()`
+    pub fn v_intervals(
+        &self,
+        theT: &mut crate::ffi_types::NCollection_Array1_double,
+        theS: crate::geom_abs::Shape,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_v_intervals(
+                self as *const Self,
+                theT,
+                theS.into(),
+            )
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:148 - `GeomAdaptor_TransformedSurface::UTrim()`
+    pub fn u_trim(
+        &self,
+        theFirst: f64,
+        theLast: f64,
+        theTol: f64,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Surface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_u_trim(
+                    self as *const Self,
+                    theFirst,
+                    theLast,
+                    theTol,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:152 - `GeomAdaptor_TransformedSurface::VTrim()`
+    pub fn v_trim(
+        &self,
+        theFirst: f64,
+        theLast: f64,
+        theTol: f64,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Surface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_v_trim(
+                    self as *const Self,
+                    theFirst,
+                    theLast,
+                    theTol,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:156 - `GeomAdaptor_TransformedSurface::IsUClosed()`
+    pub fn is_u_closed(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_is_u_closed(self as *const Self)
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:158 - `GeomAdaptor_TransformedSurface::IsVClosed()`
+    pub fn is_v_closed(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_is_v_closed(self as *const Self)
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:160 - `GeomAdaptor_TransformedSurface::IsUPeriodic()`
+    pub fn is_u_periodic(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_is_u_periodic(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:162 - `GeomAdaptor_TransformedSurface::UPeriod()`
+    pub fn u_period(&self) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_u_period(self as *const Self)
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:164 - `GeomAdaptor_TransformedSurface::IsVPeriodic()`
+    pub fn is_v_periodic(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_is_v_periodic(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:166 - `GeomAdaptor_TransformedSurface::VPeriod()`
+    pub fn v_period(&self) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_v_period(self as *const Self)
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:169 - `GeomAdaptor_TransformedSurface::ToleranceU()`
+    /// Returns tolerance in U direction.
+    pub fn tolerance_u(&self) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_tolerance_u(self as *const Self)
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:172 - `GeomAdaptor_TransformedSurface::ToleranceV()`
+    /// Returns tolerance in V direction.
+    pub fn tolerance_v(&self) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_tolerance_v(self as *const Self)
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:175 - `GeomAdaptor_TransformedSurface::EvalD0()`
+    /// Point evaluation. Applies transformation after evaluation.
+    pub fn eval_d0(&self, theU: f64, theV: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_eval_d0(
+                    self as *const Self,
+                    theU,
+                    theV,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:178 - `GeomAdaptor_TransformedSurface::EvalD1()`
+    /// D1 evaluation. Applies transformation after evaluation.
+    pub fn eval_d1(&self, theU: f64, theV: f64) -> crate::OwnedPtr<crate::geom::Surface_ResD1> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_eval_d1(
+                    self as *const Self,
+                    theU,
+                    theV,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:182 - `GeomAdaptor_TransformedSurface::EvalD2()`
+    /// D2 evaluation. Applies transformation after evaluation.
+    pub fn eval_d2(&self, theU: f64, theV: f64) -> crate::OwnedPtr<crate::geom::Surface_ResD2> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_eval_d2(
+                    self as *const Self,
+                    theU,
+                    theV,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:186 - `GeomAdaptor_TransformedSurface::EvalD3()`
+    /// D3 evaluation. Applies transformation after evaluation.
+    pub fn eval_d3(&self, theU: f64, theV: f64) -> crate::OwnedPtr<crate::geom::Surface_ResD3> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_eval_d3(
+                    self as *const Self,
+                    theU,
+                    theV,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:190 - `GeomAdaptor_TransformedSurface::EvalDN()`
+    /// DN evaluation. Applies transformation after evaluation.
+    pub fn eval_dn(
+        &self,
+        theU: f64,
+        theV: f64,
+        theNu: i32,
+        theNv: i32,
+    ) -> crate::OwnedPtr<crate::gp::Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_eval_dn(
+                    self as *const Self,
+                    theU,
+                    theV,
+                    theNu,
+                    theNv,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:195 - `GeomAdaptor_TransformedSurface::UResolution()`
+    pub fn u_resolution(&self, theR3d: f64) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_u_resolution(
+                self as *const Self,
+                theR3d,
+            )
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:197 - `GeomAdaptor_TransformedSurface::VResolution()`
+    pub fn v_resolution(&self, theR3d: f64) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_v_resolution(
+                self as *const Self,
+                theR3d,
+            )
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:199 - `GeomAdaptor_TransformedSurface::GetType()`
+    pub fn get_type(&self) -> crate::geom_abs::SurfaceType {
+        crate::geom_abs::SurfaceType::try_from(crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_get_type(self as *const Self)
+        }))
+        .unwrap()
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:201 - `GeomAdaptor_TransformedSurface::Plane()`
+    pub fn plane(&self) -> crate::OwnedPtr<crate::gp::Pln> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_plane(self as *const Self),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:203 - `GeomAdaptor_TransformedSurface::Cylinder()`
+    pub fn cylinder(&self) -> crate::OwnedPtr<crate::gp::Cylinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_cylinder(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:205 - `GeomAdaptor_TransformedSurface::Cone()`
+    pub fn cone(&self) -> crate::OwnedPtr<crate::gp::Cone> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_cone(self as *const Self),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:207 - `GeomAdaptor_TransformedSurface::Sphere()`
+    pub fn sphere(&self) -> crate::OwnedPtr<crate::gp::Sphere> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_sphere(self as *const Self),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:209 - `GeomAdaptor_TransformedSurface::Torus()`
+    pub fn torus(&self) -> crate::OwnedPtr<crate::gp::Torus> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_torus(self as *const Self),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:211 - `GeomAdaptor_TransformedSurface::UDegree()`
+    pub fn u_degree(&self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_u_degree(self as *const Self)
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:213 - `GeomAdaptor_TransformedSurface::NbUPoles()`
+    pub fn nb_u_poles(&self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_nb_u_poles(self as *const Self)
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:215 - `GeomAdaptor_TransformedSurface::VDegree()`
+    pub fn v_degree(&self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_v_degree(self as *const Self)
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:217 - `GeomAdaptor_TransformedSurface::NbVPoles()`
+    pub fn nb_v_poles(&self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_nb_v_poles(self as *const Self)
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:219 - `GeomAdaptor_TransformedSurface::NbUKnots()`
+    pub fn nb_u_knots(&self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_nb_u_knots(self as *const Self)
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:221 - `GeomAdaptor_TransformedSurface::NbVKnots()`
+    pub fn nb_v_knots(&self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_nb_v_knots(self as *const Self)
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:223 - `GeomAdaptor_TransformedSurface::IsURational()`
+    pub fn is_u_rational(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_is_u_rational(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:225 - `GeomAdaptor_TransformedSurface::IsVRational()`
+    pub fn is_v_rational(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_is_v_rational(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:227 - `GeomAdaptor_TransformedSurface::Bezier()`
+    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BezierSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_bezier(self as *const Self),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:229 - `GeomAdaptor_TransformedSurface::BSpline()`
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BSplineSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_b_spline(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:231 - `GeomAdaptor_TransformedSurface::AxeOfRevolution()`
+    pub fn axe_of_revolution(&self) -> crate::OwnedPtr<crate::gp::Ax1> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_axe_of_revolution(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:233 - `GeomAdaptor_TransformedSurface::Direction()`
+    pub fn direction(&self) -> crate::OwnedPtr<crate::gp::Dir> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_direction(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:235 - `GeomAdaptor_TransformedSurface::BasisCurve()`
+    pub fn basis_curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Curve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_basis_curve(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:237 - `GeomAdaptor_TransformedSurface::BasisSurface()`
+    pub fn basis_surface(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Surface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_basis_surface(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:239 - `GeomAdaptor_TransformedSurface::OffsetValue()`
+    pub fn offset_value(&self) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_offset_value(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:38 - `GeomAdaptor_TransformedSurface::get_type_name()`
+    pub fn get_type_name() -> std::string::String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_get_type_name(),
+            ))
+        }
+        .to_string_lossy()
+        .into_owned()
+    }
+
+    /// **Source:** `GeomAdaptor_TransformedSurface.hxx`:38 - `GeomAdaptor_TransformedSurface::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_get_type_descriptor(),
+            ))
+        }
+    }
+
+    /// Upcast to Adaptor3d_Surface
+    pub fn as_adaptor3d_surface(&self) -> &crate::adaptor3d::Surface {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_as_Adaptor3d_Surface(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to Adaptor3d_Surface (mutable)
+    pub fn as_adaptor3d_surface_mut(&mut self) -> &mut crate::adaptor3d::Surface {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_as_Adaptor3d_Surface_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_GeomAdaptor_TransformedSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_to_handle(obj.into_raw()),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:125 - `Adaptor3d_Surface::Value()`
+    pub fn value(&self, theU: f64, theV: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_inherited_Value(
+                    self as *const Self,
+                    theU,
+                    theV,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:128 - `Adaptor3d_Surface::D0()`
+    pub fn d0(&self, theU: f64, theV: f64, theP: &mut crate::gp::Pnt) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_inherited_D0(
+                self as *const Self,
+                theU,
+                theV,
+                theP,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:134 - `Adaptor3d_Surface::D1()`
+    pub fn d1(
+        &self,
+        theU: f64,
+        theV: f64,
+        theP: &mut crate::gp::Pnt,
+        theD1U: &mut crate::gp::Vec,
+        theD1V: &mut crate::gp::Vec,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_inherited_D1(
+                self as *const Self,
+                theU,
+                theV,
+                theP,
+                theD1U,
+                theD1V,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:146 - `Adaptor3d_Surface::D2()`
+    pub fn d2(
+        &self,
+        theU: f64,
+        theV: f64,
+        theP: &mut crate::gp::Pnt,
+        theD1U: &mut crate::gp::Vec,
+        theD1V: &mut crate::gp::Vec,
+        theD2U: &mut crate::gp::Vec,
+        theD2V: &mut crate::gp::Vec,
+        theD2UV: &mut crate::gp::Vec,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_inherited_D2(
+                self as *const Self,
+                theU,
+                theV,
+                theP,
+                theD1U,
+                theD1V,
+                theD2U,
+                theD2V,
+                theD2UV,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:168 - `Adaptor3d_Surface::D3()`
+    pub fn d3(
+        &self,
+        theU: f64,
+        theV: f64,
+        theP: &mut crate::gp::Pnt,
+        theD1U: &mut crate::gp::Vec,
+        theD1V: &mut crate::gp::Vec,
+        theD2U: &mut crate::gp::Vec,
+        theD2V: &mut crate::gp::Vec,
+        theD2UV: &mut crate::gp::Vec,
+        theD3U: &mut crate::gp::Vec,
+        theD3V: &mut crate::gp::Vec,
+        theD3UUV: &mut crate::gp::Vec,
+        theD3UVV: &mut crate::gp::Vec,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_inherited_D3(
+                self as *const Self,
+                theU,
+                theV,
+                theP,
+                theD1U,
+                theD1V,
+                theD2U,
+                theD2V,
+                theD2UV,
+                theD3U,
+                theD3V,
+                theD3UUV,
+                theD3UVV,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Surface.hxx`:199 - `Adaptor3d_Surface::DN()`
+    pub fn dn(
+        &self,
+        theU: f64,
+        theV: f64,
+        theNu: i32,
+        theNv: i32,
+    ) -> crate::OwnedPtr<crate::gp::Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_inherited_DN(
+                    self as *const Self,
+                    theU,
+                    theV,
+                    theNu,
+                    theNv,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let __val = crate::check_result(unsafe {
+                crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_inherited_This(
+                    self as *const Self,
+                )
+            });
+            if __val.is_null() {
+                None
+            } else {
+                Some(unsafe { &*__val })
+            }
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_inherited_GetRefCount(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomAdaptor_TransformedSurface_inherited_Delete(
+                self as *const Self,
+            )
+        })
+    }
+}
+
+pub use crate::ffi_types::Handle_GeomAdaptor_TransformedSurface;
+
+unsafe impl crate::CppDeletable for Handle_GeomAdaptor_TransformedSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKG3d::Handle_GeomAdaptor_TransformedSurface_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppCopyable for Handle_GeomAdaptor_TransformedSurface {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(
+                crate::ffi_extern_TKG3d::Handle_GeomAdaptor_TransformedSurface_clone(ptr),
+            )
+        }
+    }
+}
+
+impl Handle_GeomAdaptor_TransformedSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi_extern_TKG3d::Handle_GeomAdaptor_TransformedSurface_is_null(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Dereference this Handle to access the underlying GeomAdaptor_TransformedSurface
+    pub fn get(&self) -> &crate::ffi_types::GeomAdaptor_TransformedSurface {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKG3d::Handle_GeomAdaptor_TransformedSurface_get(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomAdaptor_TransformedSurface
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomAdaptor_TransformedSurface {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKG3d::Handle_GeomAdaptor_TransformedSurface_get_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<GeomAdaptor_TransformedSurface> to Handle<Adaptor3d_Surface>
+    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Surface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::Handle_GeomAdaptor_TransformedSurface_to_Handle_Adaptor3d_Surface(self as *const Self)))
+        }
+    }
+
+    /// Upcast Handle<GeomAdaptor_TransformedSurface> to Handle<Standard_Transient>
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::Handle_GeomAdaptor_TransformedSurface_to_Handle_Standard_Transient(self as *const Self)))
+        }
+    }
+
+    /// Downcast Handle<GeomAdaptor_TransformedSurface> to Handle<BRepAdaptor_Surface>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepAdaptor_Surface` (or subclass).
+    pub fn downcast_to_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BRepAdaptor_Surface>> {
+        let __val = crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::Handle_GeomAdaptor_TransformedSurface_downcast_to_Handle_BRepAdaptor_Surface(self as *const Self)
+        });
+        if __val.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 }

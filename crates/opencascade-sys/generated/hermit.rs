@@ -10,10 +10,10 @@
 /// returns the correct spline a(u) which will
 /// be multiplicated with BS later.
 pub fn solution_handlegeombsplinecurve_real2(
-    BS: &crate::ffi_types::HandleGeomBSplineCurve,
+    BS: &crate::ffi_types::Handle_Geom_BSplineCurve,
     TolPoles: f64,
     TolKnots: f64,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BSplineCurve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKGeomBase::Hermit_solution_handlegeombsplinecurve_real2(
@@ -26,10 +26,10 @@ pub fn solution_handlegeombsplinecurve_real2(
 /// returns the correct spline a(u) which will
 /// be multiplicated with BS later.
 pub fn solution_handlegeom2dbsplinecurve_real2(
-    BS: &crate::ffi_types::HandleGeom2dBSplineCurve,
+    BS: &crate::ffi_types::Handle_Geom2d_BSplineCurve,
     TolPoles: f64,
     TolKnots: f64,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BSplineCurve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKGeomBase::Hermit_solution_handlegeom2dbsplinecurve_real2(
@@ -43,7 +43,7 @@ pub fn solution_handlegeom2dbsplinecurve_real2(
 /// stay with a constant sign and in the
 /// tolerances.
 pub fn solutionbis(
-    BS: &crate::ffi_types::HandleGeomBSplineCurve,
+    BS: &crate::ffi_types::Handle_Geom_BSplineCurve,
     Knotmin: &mut f64,
     Knotmax: &mut f64,
     TolPoles: f64,

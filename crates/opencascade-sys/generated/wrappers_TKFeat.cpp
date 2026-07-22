@@ -22,7 +22,6 @@
 #include <BRepFeat_StatusError.hxx>
 #include <BRepTopAdaptor_FClass2d.hxx>
 #include <Geom2dAdaptor_Curve.hxx>
-#include <Geom_Curve.hxx>
 #include <Geom_Plane.hxx>
 #include <LocOpe.hxx>
 #include <LocOpe_BuildShape.hxx>
@@ -43,8 +42,6 @@
 #include <LocOpe_Prism.hxx>
 #include <LocOpe_Revol.hxx>
 #include <LocOpe_RevolutionForm.hxx>
-#include <LocOpe_SequenceOfCirc.hxx>
-#include <LocOpe_SequenceOfLin.hxx>
 #include <LocOpe_SplitDrafts.hxx>
 #include <LocOpe_SplitShape.hxx>
 #include <LocOpe_Spliter.hxx>
@@ -53,14 +50,8 @@
 #include <Standard_Handle.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
-#include <TColGeom_SequenceOfCurve.hxx>
-#include <TColgp_SequenceOfPnt.hxx>
+#include <TDF_HAllocator.hxx>
 #include <TopAbs_Orientation.hxx>
-#include <TopTools_DataMapOfShapeListOfShape.hxx>
-#include <TopTools_DataMapOfShapeShape.hxx>
-#include <TopTools_ListOfShape.hxx>
-#include <TopTools_MapOfShape.hxx>
-#include <TopTools_SequenceOfShape.hxx>
 #include <TopoDS_Compound.hxx>
 #include <TopoDS_Edge.hxx>
 #include <TopoDS_Face.hxx>
@@ -68,39 +59,36 @@
 #include <TopoDS_Vertex.hxx>
 #include <TopoDS_Wire.hxx>
 #include <gp_Ax1.hxx>
-#include <gp_Circ.hxx>
-#include <gp_Dir.hxx>
 #include <gp_Pln.hxx>
-#include <gp_Vec.hxx>
 
 // Handle type aliases
-typedef opencascade::handle<Geom_Curve> HandleGeomCurve;
-typedef opencascade::handle<Geom_Plane> HandleGeomPlane;
-typedef opencascade::handle<LocOpe_GeneratedShape> HandleLocOpeGeneratedShape;
-typedef opencascade::handle<LocOpe_GluedShape> HandleLocOpeGluedShape;
-typedef opencascade::handle<LocOpe_WiresOnShape> HandleLocOpeWiresOnShape;
-typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
-typedef opencascade::handle<Standard_Type> HandleStandardType;
+typedef opencascade::handle<Geom_Curve> Handle_Geom_Curve;
+typedef opencascade::handle<Geom_Plane> Handle_Geom_Plane;
+typedef opencascade::handle<LocOpe_GeneratedShape> Handle_LocOpe_GeneratedShape;
+typedef opencascade::handle<LocOpe_GluedShape> Handle_LocOpe_GluedShape;
+typedef opencascade::handle<LocOpe_WiresOnShape> Handle_LocOpe_WiresOnShape;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
 
 // Handle type destructors, clone, and is_null functions
-extern "C" void HandleLocOpeGeneratedShape_destructor(HandleLocOpeGeneratedShape* self_) { delete self_; }
-extern "C" OcctResult<HandleLocOpeGeneratedShape*> HandleLocOpeGeneratedShape_clone(const HandleLocOpeGeneratedShape* self_) {
-    try { return {new HandleLocOpeGeneratedShape(*self_), nullptr}; }
+extern "C" void Handle_LocOpe_GeneratedShape_destructor(Handle_LocOpe_GeneratedShape* self_) { delete self_; }
+extern "C" OcctResult<Handle_LocOpe_GeneratedShape*> Handle_LocOpe_GeneratedShape_clone(const Handle_LocOpe_GeneratedShape* self_) {
+    try { return {new Handle_LocOpe_GeneratedShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleLocOpeGeneratedShape_is_null(const HandleLocOpeGeneratedShape* self_) { return self_->IsNull(); }
-extern "C" void HandleLocOpeGluedShape_destructor(HandleLocOpeGluedShape* self_) { delete self_; }
-extern "C" OcctResult<HandleLocOpeGluedShape*> HandleLocOpeGluedShape_clone(const HandleLocOpeGluedShape* self_) {
-    try { return {new HandleLocOpeGluedShape(*self_), nullptr}; }
+extern "C" bool Handle_LocOpe_GeneratedShape_is_null(const Handle_LocOpe_GeneratedShape* self_) { return self_->IsNull(); }
+extern "C" void Handle_LocOpe_GluedShape_destructor(Handle_LocOpe_GluedShape* self_) { delete self_; }
+extern "C" OcctResult<Handle_LocOpe_GluedShape*> Handle_LocOpe_GluedShape_clone(const Handle_LocOpe_GluedShape* self_) {
+    try { return {new Handle_LocOpe_GluedShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleLocOpeGluedShape_is_null(const HandleLocOpeGluedShape* self_) { return self_->IsNull(); }
-extern "C" void HandleLocOpeWiresOnShape_destructor(HandleLocOpeWiresOnShape* self_) { delete self_; }
-extern "C" OcctResult<HandleLocOpeWiresOnShape*> HandleLocOpeWiresOnShape_clone(const HandleLocOpeWiresOnShape* self_) {
-    try { return {new HandleLocOpeWiresOnShape(*self_), nullptr}; }
+extern "C" bool Handle_LocOpe_GluedShape_is_null(const Handle_LocOpe_GluedShape* self_) { return self_->IsNull(); }
+extern "C" void Handle_LocOpe_WiresOnShape_destructor(Handle_LocOpe_WiresOnShape* self_) { delete self_; }
+extern "C" OcctResult<Handle_LocOpe_WiresOnShape*> Handle_LocOpe_WiresOnShape_clone(const Handle_LocOpe_WiresOnShape* self_) {
+    try { return {new Handle_LocOpe_WiresOnShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleLocOpeWiresOnShape_is_null(const HandleLocOpeWiresOnShape* self_) { return self_->IsNull(); }
+extern "C" bool Handle_LocOpe_WiresOnShape_is_null(const Handle_LocOpe_WiresOnShape* self_) { return self_->IsNull(); }
 
 // ========================
 // BRepFeat_Builder wrappers
@@ -130,11 +118,11 @@ extern "C" const char* BRepFeat_Builder_set_operation_int_bool(BRepFeat_Builder*
     try { self_->SetOperation(theFuse, theFlag); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepFeat_Builder_parts_of_tool(BRepFeat_Builder* self_, TopTools_ListOfShape* theLT) {
+extern "C" const char* BRepFeat_Builder_parts_of_tool(BRepFeat_Builder* self_, NCollection_List_TopoDS_Shape* theLT) {
     try { self_->PartsOfTool(*theLT); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepFeat_Builder_keep_parts(BRepFeat_Builder* self_, TopTools_ListOfShape const* theIm) {
+extern "C" const char* BRepFeat_Builder_keep_parts(BRepFeat_Builder* self_, NCollection_List_TopoDS_Shape const* theIm) {
     try { self_->KeepParts(*theIm); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -150,7 +138,7 @@ extern "C" const char* BRepFeat_Builder_rebuild_faces(BRepFeat_Builder* self_) {
     try { self_->RebuildFaces(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepFeat_Builder_rebuild_edge(BRepFeat_Builder* self_, TopoDS_Shape const* theE, TopoDS_Face const* theF, TopTools_MapOfShape const* theME, TopTools_ListOfShape* aLEIm) {
+extern "C" const char* BRepFeat_Builder_rebuild_edge(BRepFeat_Builder* self_, TopoDS_Shape const* theE, TopoDS_Face const* theF, NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher const* theME, NCollection_List_TopoDS_Shape* aLEIm) {
     try { self_->RebuildEdge(*theE, *theF, *theME, *aLEIm); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -162,7 +150,7 @@ extern "C" const char* BRepFeat_Builder_fill_removed(BRepFeat_Builder* self_) {
     try { self_->FillRemoved(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepFeat_Builder_fill_removed_shape_mapofshape(BRepFeat_Builder* self_, TopoDS_Shape const* theS, TopTools_MapOfShape* theM) {
+extern "C" const char* BRepFeat_Builder_fill_removed_shape_map_shape(BRepFeat_Builder* self_, TopoDS_Shape const* theS, NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher* theM) {
     try { self_->FillRemoved(*theS, *theM); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -190,11 +178,11 @@ extern "C" const char* BRepFeat_Builder_inherited_AddTool(BRepFeat_Builder* self
     try { self->AddTool(theShape); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepFeat_Builder_inherited_SetTools(BRepFeat_Builder* self, TopTools_ListOfShape const& theShapes) {
+extern "C" const char* BRepFeat_Builder_inherited_SetTools(BRepFeat_Builder* self, NCollection_List_TopoDS_Shape const& theShapes) {
     try { self->SetTools(theShapes); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_Builder_inherited_Tools(const BRepFeat_Builder* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_Builder_inherited_Tools(const BRepFeat_Builder* self) {
     try { return {&(self->Tools()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -214,11 +202,11 @@ extern "C" const char* BRepFeat_Builder_inherited_AddArgument(BRepFeat_Builder* 
     try { self->AddArgument(theShape); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepFeat_Builder_inherited_SetArguments(BRepFeat_Builder* self, TopTools_ListOfShape const& theLS) {
+extern "C" const char* BRepFeat_Builder_inherited_SetArguments(BRepFeat_Builder* self, NCollection_List_TopoDS_Shape const& theLS) {
     try { self->SetArguments(theLS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_Builder_inherited_Arguments(const BRepFeat_Builder* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_Builder_inherited_Arguments(const BRepFeat_Builder* self) {
     try { return {&(self->Arguments()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -250,19 +238,19 @@ extern "C" const char* BRepFeat_Builder_inherited_PerformWithFiller(BRepFeat_Bui
     try { self->PerformWithFiller(theFiller, theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepFeat_Builder_inherited_BuildBOP(BRepFeat_Builder* self, TopTools_ListOfShape const& theObjects, int32_t theObjState, TopTools_ListOfShape const& theTools, int32_t theToolsState, Message_ProgressRange const& theRange, Handle(Message_Report) const& theReport) {
+extern "C" const char* BRepFeat_Builder_inherited_BuildBOP(BRepFeat_Builder* self, NCollection_List_TopoDS_Shape const& theObjects, int32_t theObjState, NCollection_List_TopoDS_Shape const& theTools, int32_t theToolsState, Message_ProgressRange const& theRange, Handle(Message_Report) const& theReport) {
     try { self->BuildBOP(theObjects, static_cast<TopAbs_State>(theObjState), theTools, static_cast<TopAbs_State>(theToolsState), theRange, theReport); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeListOfShape const*> BRepFeat_Builder_inherited_Images(const BRepFeat_Builder* self) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher const*> BRepFeat_Builder_inherited_Images(const BRepFeat_Builder* self) {
     try { return {&(self->Images()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeListOfShape const*> BRepFeat_Builder_inherited_Origins(const BRepFeat_Builder* self) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher const*> BRepFeat_Builder_inherited_Origins(const BRepFeat_Builder* self) {
     try { return {&(self->Origins()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeShape const*> BRepFeat_Builder_inherited_ShapesSD(const BRepFeat_Builder* self) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher const*> BRepFeat_Builder_inherited_ShapesSD(const BRepFeat_Builder* self) {
     try { return {&(self->ShapesSD()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -298,7 +286,7 @@ extern "C" OcctResult<bool> BRepFeat_Builder_inherited_HasHistory(const BRepFeat
     try { return {self->HasHistory(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_BaseAllocator) const*> BRepFeat_Builder_inherited_Allocator(const BRepFeat_Builder* self) {
+extern "C" OcctResult<TDF_HAllocator const*> BRepFeat_Builder_inherited_Allocator(const BRepFeat_Builder* self) {
     try { return {&(self->Allocator()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -376,11 +364,11 @@ extern "C" OcctResult<Handle(Geom_Curve)*> BRepFeat_Form_baryc_curve(BRepFeat_Fo
     try { return {new Handle(Geom_Curve)(self_->BarycCurve()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_Form_modified(BRepFeat_Form* self_, TopoDS_Shape const* F) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_Form_modified(BRepFeat_Form* self_, TopoDS_Shape const* F) {
     try { return {&(self_->Modified(*F)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_Form_generated(BRepFeat_Form* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_Form_generated(BRepFeat_Form* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Generated(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -388,19 +376,19 @@ extern "C" OcctResult<bool> BRepFeat_Form_is_deleted(BRepFeat_Form* self_, TopoD
     try { return {self_->IsDeleted(*S), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_Form_first_shape(const BRepFeat_Form* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_Form_first_shape(const BRepFeat_Form* self_) {
     try { return {&(self_->FirstShape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_Form_last_shape(const BRepFeat_Form* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_Form_last_shape(const BRepFeat_Form* self_) {
     try { return {&(self_->LastShape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_Form_new_edges(const BRepFeat_Form* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_Form_new_edges(const BRepFeat_Form* self_) {
     try { return {&(self_->NewEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_Form_tgt_edges(const BRepFeat_Form* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_Form_tgt_edges(const BRepFeat_Form* self_) {
     try { return {&(self_->TgtEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -430,10 +418,6 @@ extern "C" const char* BRepFeat_Form_sketch_face_valid(BRepFeat_Form* self_) {
 }
 extern "C" const char* BRepFeat_Form_perf_selection_valid(BRepFeat_Form* self_) {
     try { self_->PerfSelectionValid(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* BRepFeat_Form_curves(BRepFeat_Form* self_, TColGeom_SequenceOfCurve* S) {
-    try { self_->Curves(*S); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<int32_t> BRepFeat_Form_current_status_error(const BRepFeat_Form* self_) {
@@ -506,7 +490,7 @@ extern "C" OcctResult<bool> BRepFeat_Gluer_is_deleted(BRepFeat_Gluer* self_, Top
     try { return {self_->IsDeleted(*F), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_Gluer_modified(BRepFeat_Gluer* self_, TopoDS_Shape const* F) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_Gluer_modified(BRepFeat_Gluer* self_, TopoDS_Shape const* F) {
     try { return {&(self_->Modified(*F)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -594,11 +578,11 @@ extern "C" const char* BRepFeat_MakeCylindricalHole_inherited_SetOperation(BRepF
     try { self->SetOperation(theFuse); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepFeat_MakeCylindricalHole_inherited_PartsOfTool(BRepFeat_MakeCylindricalHole* self, TopTools_ListOfShape& theLT) {
+extern "C" const char* BRepFeat_MakeCylindricalHole_inherited_PartsOfTool(BRepFeat_MakeCylindricalHole* self, NCollection_List_TopoDS_Shape& theLT) {
     try { self->PartsOfTool(theLT); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepFeat_MakeCylindricalHole_inherited_KeepParts(BRepFeat_MakeCylindricalHole* self, TopTools_ListOfShape const& theIm) {
+extern "C" const char* BRepFeat_MakeCylindricalHole_inherited_KeepParts(BRepFeat_MakeCylindricalHole* self, NCollection_List_TopoDS_Shape const& theIm) {
     try { self->KeepParts(theIm); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -614,7 +598,7 @@ extern "C" const char* BRepFeat_MakeCylindricalHole_inherited_RebuildFaces(BRepF
     try { self->RebuildFaces(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepFeat_MakeCylindricalHole_inherited_RebuildEdge(BRepFeat_MakeCylindricalHole* self, TopoDS_Shape const& theE, TopoDS_Face const& theF, TopTools_MapOfShape const& theME, TopTools_ListOfShape& aLEIm) {
+extern "C" const char* BRepFeat_MakeCylindricalHole_inherited_RebuildEdge(BRepFeat_MakeCylindricalHole* self, TopoDS_Shape const& theE, TopoDS_Face const& theF, NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher const& theME, NCollection_List_TopoDS_Shape& aLEIm) {
     try { self->RebuildEdge(theE, theF, theME, aLEIm); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -634,11 +618,11 @@ extern "C" const char* BRepFeat_MakeCylindricalHole_inherited_AddTool(BRepFeat_M
     try { self->AddTool(theShape); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepFeat_MakeCylindricalHole_inherited_SetTools(BRepFeat_MakeCylindricalHole* self, TopTools_ListOfShape const& theShapes) {
+extern "C" const char* BRepFeat_MakeCylindricalHole_inherited_SetTools(BRepFeat_MakeCylindricalHole* self, NCollection_List_TopoDS_Shape const& theShapes) {
     try { self->SetTools(theShapes); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_MakeCylindricalHole_inherited_Tools(const BRepFeat_MakeCylindricalHole* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_MakeCylindricalHole_inherited_Tools(const BRepFeat_MakeCylindricalHole* self) {
     try { return {&(self->Tools()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -658,11 +642,11 @@ extern "C" const char* BRepFeat_MakeCylindricalHole_inherited_AddArgument(BRepFe
     try { self->AddArgument(theShape); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepFeat_MakeCylindricalHole_inherited_SetArguments(BRepFeat_MakeCylindricalHole* self, TopTools_ListOfShape const& theLS) {
+extern "C" const char* BRepFeat_MakeCylindricalHole_inherited_SetArguments(BRepFeat_MakeCylindricalHole* self, NCollection_List_TopoDS_Shape const& theLS) {
     try { self->SetArguments(theLS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_MakeCylindricalHole_inherited_Arguments(const BRepFeat_MakeCylindricalHole* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_MakeCylindricalHole_inherited_Arguments(const BRepFeat_MakeCylindricalHole* self) {
     try { return {&(self->Arguments()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -694,19 +678,19 @@ extern "C" const char* BRepFeat_MakeCylindricalHole_inherited_PerformWithFiller(
     try { self->PerformWithFiller(theFiller, theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepFeat_MakeCylindricalHole_inherited_BuildBOP(BRepFeat_MakeCylindricalHole* self, TopTools_ListOfShape const& theObjects, int32_t theObjState, TopTools_ListOfShape const& theTools, int32_t theToolsState, Message_ProgressRange const& theRange, Handle(Message_Report) const& theReport) {
+extern "C" const char* BRepFeat_MakeCylindricalHole_inherited_BuildBOP(BRepFeat_MakeCylindricalHole* self, NCollection_List_TopoDS_Shape const& theObjects, int32_t theObjState, NCollection_List_TopoDS_Shape const& theTools, int32_t theToolsState, Message_ProgressRange const& theRange, Handle(Message_Report) const& theReport) {
     try { self->BuildBOP(theObjects, static_cast<TopAbs_State>(theObjState), theTools, static_cast<TopAbs_State>(theToolsState), theRange, theReport); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeListOfShape const*> BRepFeat_MakeCylindricalHole_inherited_Images(const BRepFeat_MakeCylindricalHole* self) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher const*> BRepFeat_MakeCylindricalHole_inherited_Images(const BRepFeat_MakeCylindricalHole* self) {
     try { return {&(self->Images()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeListOfShape const*> BRepFeat_MakeCylindricalHole_inherited_Origins(const BRepFeat_MakeCylindricalHole* self) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher const*> BRepFeat_MakeCylindricalHole_inherited_Origins(const BRepFeat_MakeCylindricalHole* self) {
     try { return {&(self->Origins()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeShape const*> BRepFeat_MakeCylindricalHole_inherited_ShapesSD(const BRepFeat_MakeCylindricalHole* self) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher const*> BRepFeat_MakeCylindricalHole_inherited_ShapesSD(const BRepFeat_MakeCylindricalHole* self) {
     try { return {&(self->ShapesSD()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -742,7 +726,7 @@ extern "C" OcctResult<bool> BRepFeat_MakeCylindricalHole_inherited_HasHistory(co
     try { return {self->HasHistory(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_BaseAllocator) const*> BRepFeat_MakeCylindricalHole_inherited_Allocator(const BRepFeat_MakeCylindricalHole* self) {
+extern "C" OcctResult<TDF_HAllocator const*> BRepFeat_MakeCylindricalHole_inherited_Allocator(const BRepFeat_MakeCylindricalHole* self) {
     try { return {&(self->Allocator()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -864,19 +848,15 @@ extern "C" const char* BRepFeat_MakeDPrism_perform_until_height(BRepFeat_MakeDPr
     try { self_->PerformUntilHeight(*Until, Height); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepFeat_MakeDPrism_curves(BRepFeat_MakeDPrism* self_, TColGeom_SequenceOfCurve* S) {
-    try { self_->Curves(*S); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* BRepFeat_MakeDPrism_boss_edges(BRepFeat_MakeDPrism* self_, int32_t sig) {
     try { self_->BossEdges(sig); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_MakeDPrism_top_edges(BRepFeat_MakeDPrism* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_MakeDPrism_top_edges(BRepFeat_MakeDPrism* self_) {
     try { return {&(self_->TopEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_MakeDPrism_lat_edges(BRepFeat_MakeDPrism* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_MakeDPrism_lat_edges(BRepFeat_MakeDPrism* self_) {
     try { return {&(self_->LatEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -890,19 +870,19 @@ extern "C" OcctResult<bool> BRepFeat_MakeDPrism_inherited_IsDeleted(BRepFeat_Mak
     try { return {self->IsDeleted(S), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_MakeDPrism_inherited_FirstShape(const BRepFeat_MakeDPrism* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_MakeDPrism_inherited_FirstShape(const BRepFeat_MakeDPrism* self) {
     try { return {&(self->FirstShape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_MakeDPrism_inherited_LastShape(const BRepFeat_MakeDPrism* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_MakeDPrism_inherited_LastShape(const BRepFeat_MakeDPrism* self) {
     try { return {&(self->LastShape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_MakeDPrism_inherited_NewEdges(const BRepFeat_MakeDPrism* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_MakeDPrism_inherited_NewEdges(const BRepFeat_MakeDPrism* self) {
     try { return {&(self->NewEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_MakeDPrism_inherited_TgtEdges(const BRepFeat_MakeDPrism* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_MakeDPrism_inherited_TgtEdges(const BRepFeat_MakeDPrism* self) {
     try { return {&(self->TgtEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -984,7 +964,7 @@ extern "C" const char* BRepFeat_MakeLinearForm_transform_shape_fu(BRepFeat_MakeL
     try { self_->TransformShapeFU(flag); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BRepFeat_MakeLinearForm_propagate(BRepFeat_MakeLinearForm* self_, TopTools_ListOfShape* L, TopoDS_Face const* F, gp_Pnt const* FPoint, gp_Pnt const* LPoint, bool* falseside) {
+extern "C" OcctResult<bool> BRepFeat_MakeLinearForm_propagate(BRepFeat_MakeLinearForm* self_, NCollection_List_TopoDS_Shape* L, TopoDS_Face const* F, gp_Pnt const* FPoint, gp_Pnt const* LPoint, bool* falseside) {
     try { return {self_->Propagate(*L, *F, *FPoint, *LPoint, *falseside), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -998,23 +978,23 @@ extern "C" OcctResult<bool> BRepFeat_MakeLinearForm_inherited_IsDeleted(BRepFeat
     try { return {self->IsDeleted(F), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_MakeLinearForm_inherited_FirstShape(const BRepFeat_MakeLinearForm* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_MakeLinearForm_inherited_FirstShape(const BRepFeat_MakeLinearForm* self) {
     try { return {&(self->FirstShape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_MakeLinearForm_inherited_LastShape(const BRepFeat_MakeLinearForm* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_MakeLinearForm_inherited_LastShape(const BRepFeat_MakeLinearForm* self) {
     try { return {&(self->LastShape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_MakeLinearForm_inherited_FacesForDraft(const BRepFeat_MakeLinearForm* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_MakeLinearForm_inherited_FacesForDraft(const BRepFeat_MakeLinearForm* self) {
     try { return {&(self->FacesForDraft()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_MakeLinearForm_inherited_NewEdges(const BRepFeat_MakeLinearForm* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_MakeLinearForm_inherited_NewEdges(const BRepFeat_MakeLinearForm* self) {
     try { return {&(self->NewEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_MakeLinearForm_inherited_TgtEdges(const BRepFeat_MakeLinearForm* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_MakeLinearForm_inherited_TgtEdges(const BRepFeat_MakeLinearForm* self) {
     try { return {&(self->TgtEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1076,10 +1056,6 @@ extern "C" const char* BRepFeat_MakePipe_perform_shape2(BRepFeat_MakePipe* self_
     try { self_->Perform(*From, *Until); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepFeat_MakePipe_curves(BRepFeat_MakePipe* self_, TColGeom_SequenceOfCurve* S) {
-    try { self_->Curves(*S); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" OcctResult<const BRepFeat_Form*> BRepFeat_MakePipe_as_BRepFeat_Form(const BRepFeat_MakePipe* self_) { return {static_cast<const BRepFeat_Form*>(self_), nullptr}; }
 extern "C" OcctResult<BRepFeat_Form*> BRepFeat_MakePipe_as_BRepFeat_Form_mut(BRepFeat_MakePipe* self_) { return {static_cast<BRepFeat_Form*>(self_), nullptr}; }
 extern "C" OcctResult<const BRepBuilderAPI_MakeShape*> BRepFeat_MakePipe_as_BRepBuilderAPI_MakeShape(const BRepFeat_MakePipe* self_) { return {static_cast<const BRepBuilderAPI_MakeShape*>(self_), nullptr}; }
@@ -1090,19 +1066,19 @@ extern "C" OcctResult<bool> BRepFeat_MakePipe_inherited_IsDeleted(BRepFeat_MakeP
     try { return {self->IsDeleted(S), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_MakePipe_inherited_FirstShape(const BRepFeat_MakePipe* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_MakePipe_inherited_FirstShape(const BRepFeat_MakePipe* self) {
     try { return {&(self->FirstShape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_MakePipe_inherited_LastShape(const BRepFeat_MakePipe* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_MakePipe_inherited_LastShape(const BRepFeat_MakePipe* self) {
     try { return {&(self->LastShape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_MakePipe_inherited_NewEdges(const BRepFeat_MakePipe* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_MakePipe_inherited_NewEdges(const BRepFeat_MakePipe* self) {
     try { return {&(self->NewEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_MakePipe_inherited_TgtEdges(const BRepFeat_MakePipe* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_MakePipe_inherited_TgtEdges(const BRepFeat_MakePipe* self) {
     try { return {&(self->TgtEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1208,10 +1184,6 @@ extern "C" const char* BRepFeat_MakePrism_perform_until_height(BRepFeat_MakePris
     try { self_->PerformUntilHeight(*Until, Length); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepFeat_MakePrism_curves(BRepFeat_MakePrism* self_, TColGeom_SequenceOfCurve* S) {
-    try { self_->Curves(*S); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" OcctResult<const BRepFeat_Form*> BRepFeat_MakePrism_as_BRepFeat_Form(const BRepFeat_MakePrism* self_) { return {static_cast<const BRepFeat_Form*>(self_), nullptr}; }
 extern "C" OcctResult<BRepFeat_Form*> BRepFeat_MakePrism_as_BRepFeat_Form_mut(BRepFeat_MakePrism* self_) { return {static_cast<BRepFeat_Form*>(self_), nullptr}; }
 extern "C" OcctResult<const BRepBuilderAPI_MakeShape*> BRepFeat_MakePrism_as_BRepBuilderAPI_MakeShape(const BRepFeat_MakePrism* self_) { return {static_cast<const BRepBuilderAPI_MakeShape*>(self_), nullptr}; }
@@ -1222,19 +1194,19 @@ extern "C" OcctResult<bool> BRepFeat_MakePrism_inherited_IsDeleted(BRepFeat_Make
     try { return {self->IsDeleted(S), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_MakePrism_inherited_FirstShape(const BRepFeat_MakePrism* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_MakePrism_inherited_FirstShape(const BRepFeat_MakePrism* self) {
     try { return {&(self->FirstShape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_MakePrism_inherited_LastShape(const BRepFeat_MakePrism* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_MakePrism_inherited_LastShape(const BRepFeat_MakePrism* self) {
     try { return {&(self->LastShape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_MakePrism_inherited_NewEdges(const BRepFeat_MakePrism* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_MakePrism_inherited_NewEdges(const BRepFeat_MakePrism* self) {
     try { return {&(self->NewEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_MakePrism_inherited_TgtEdges(const BRepFeat_MakePrism* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_MakePrism_inherited_TgtEdges(const BRepFeat_MakePrism* self) {
     try { return {&(self->TgtEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1332,10 +1304,6 @@ extern "C" const char* BRepFeat_MakeRevol_perform_until_angle(BRepFeat_MakeRevol
     try { self_->PerformUntilAngle(*Until, Angle); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepFeat_MakeRevol_curves(BRepFeat_MakeRevol* self_, TColGeom_SequenceOfCurve* S) {
-    try { self_->Curves(*S); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" OcctResult<const BRepFeat_Form*> BRepFeat_MakeRevol_as_BRepFeat_Form(const BRepFeat_MakeRevol* self_) { return {static_cast<const BRepFeat_Form*>(self_), nullptr}; }
 extern "C" OcctResult<BRepFeat_Form*> BRepFeat_MakeRevol_as_BRepFeat_Form_mut(BRepFeat_MakeRevol* self_) { return {static_cast<BRepFeat_Form*>(self_), nullptr}; }
 extern "C" OcctResult<const BRepBuilderAPI_MakeShape*> BRepFeat_MakeRevol_as_BRepBuilderAPI_MakeShape(const BRepFeat_MakeRevol* self_) { return {static_cast<const BRepBuilderAPI_MakeShape*>(self_), nullptr}; }
@@ -1346,19 +1314,19 @@ extern "C" OcctResult<bool> BRepFeat_MakeRevol_inherited_IsDeleted(BRepFeat_Make
     try { return {self->IsDeleted(S), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_MakeRevol_inherited_FirstShape(const BRepFeat_MakeRevol* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_MakeRevol_inherited_FirstShape(const BRepFeat_MakeRevol* self) {
     try { return {&(self->FirstShape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_MakeRevol_inherited_LastShape(const BRepFeat_MakeRevol* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_MakeRevol_inherited_LastShape(const BRepFeat_MakeRevol* self) {
     try { return {&(self->LastShape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_MakeRevol_inherited_NewEdges(const BRepFeat_MakeRevol* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_MakeRevol_inherited_NewEdges(const BRepFeat_MakeRevol* self) {
     try { return {&(self->NewEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_MakeRevol_inherited_TgtEdges(const BRepFeat_MakeRevol* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_MakeRevol_inherited_TgtEdges(const BRepFeat_MakeRevol* self) {
     try { return {&(self->TgtEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1436,7 +1404,7 @@ extern "C" const char* BRepFeat_MakeRevolutionForm_perform(BRepFeat_MakeRevoluti
     try { self_->Perform(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BRepFeat_MakeRevolutionForm_propagate(BRepFeat_MakeRevolutionForm* self_, TopTools_ListOfShape* L, TopoDS_Face const* F, gp_Pnt const* FPoint, gp_Pnt const* LPoint, bool* falseside) {
+extern "C" OcctResult<bool> BRepFeat_MakeRevolutionForm_propagate(BRepFeat_MakeRevolutionForm* self_, NCollection_List_TopoDS_Shape* L, TopoDS_Face const* F, gp_Pnt const* FPoint, gp_Pnt const* LPoint, bool* falseside) {
     try { return {self_->Propagate(*L, *F, *FPoint, *LPoint, *falseside), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1450,23 +1418,23 @@ extern "C" OcctResult<bool> BRepFeat_MakeRevolutionForm_inherited_IsDeleted(BRep
     try { return {self->IsDeleted(F), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_MakeRevolutionForm_inherited_FirstShape(const BRepFeat_MakeRevolutionForm* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_MakeRevolutionForm_inherited_FirstShape(const BRepFeat_MakeRevolutionForm* self) {
     try { return {&(self->FirstShape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_MakeRevolutionForm_inherited_LastShape(const BRepFeat_MakeRevolutionForm* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_MakeRevolutionForm_inherited_LastShape(const BRepFeat_MakeRevolutionForm* self) {
     try { return {&(self->LastShape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_MakeRevolutionForm_inherited_FacesForDraft(const BRepFeat_MakeRevolutionForm* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_MakeRevolutionForm_inherited_FacesForDraft(const BRepFeat_MakeRevolutionForm* self) {
     try { return {&(self->FacesForDraft()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_MakeRevolutionForm_inherited_NewEdges(const BRepFeat_MakeRevolutionForm* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_MakeRevolutionForm_inherited_NewEdges(const BRepFeat_MakeRevolutionForm* self) {
     try { return {&(self->NewEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_MakeRevolutionForm_inherited_TgtEdges(const BRepFeat_MakeRevolutionForm* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_MakeRevolutionForm_inherited_TgtEdges(const BRepFeat_MakeRevolutionForm* self) {
     try { return {&(self->TgtEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1500,31 +1468,31 @@ extern "C" OcctResult<bool> BRepFeat_RibSlot_is_deleted(BRepFeat_RibSlot* self_,
     try { return {self_->IsDeleted(*F), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_RibSlot_modified(BRepFeat_RibSlot* self_, TopoDS_Shape const* F) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_RibSlot_modified(BRepFeat_RibSlot* self_, TopoDS_Shape const* F) {
     try { return {&(self_->Modified(*F)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_RibSlot_generated(BRepFeat_RibSlot* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_RibSlot_generated(BRepFeat_RibSlot* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Generated(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_RibSlot_first_shape(const BRepFeat_RibSlot* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_RibSlot_first_shape(const BRepFeat_RibSlot* self_) {
     try { return {&(self_->FirstShape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_RibSlot_last_shape(const BRepFeat_RibSlot* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_RibSlot_last_shape(const BRepFeat_RibSlot* self_) {
     try { return {&(self_->LastShape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_RibSlot_faces_for_draft(const BRepFeat_RibSlot* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_RibSlot_faces_for_draft(const BRepFeat_RibSlot* self_) {
     try { return {&(self_->FacesForDraft()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_RibSlot_new_edges(const BRepFeat_RibSlot* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_RibSlot_new_edges(const BRepFeat_RibSlot* self_) {
     try { return {&(self_->NewEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_RibSlot_tgt_edges(const BRepFeat_RibSlot* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_RibSlot_tgt_edges(const BRepFeat_RibSlot* self_) {
     try { return {&(self_->TgtEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1536,7 +1504,7 @@ extern "C" OcctResult<double> BRepFeat_RibSlot_int_par(Handle(Geom_Curve) const*
     try { return {BRepFeat_RibSlot::IntPar(*C, *P), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopoDS_Face*> BRepFeat_RibSlot_choice_of_faces(TopTools_ListOfShape* faces, Handle(Geom_Curve) const* cc, double par, double bnd, Handle(Geom_Plane) const* Pln) {
+extern "C" OcctResult<TopoDS_Face*> BRepFeat_RibSlot_choice_of_faces(NCollection_List_TopoDS_Shape* faces, Handle(Geom_Curve) const* cc, double par, double bnd, Handle(Geom_Plane) const* Pln) {
     try { return {new TopoDS_Face(BRepFeat_RibSlot::ChoiceOfFaces(*faces, *cc, par, bnd, *Pln)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1574,7 +1542,7 @@ extern "C" OcctResult<BRepFeat_SplitShape*> BRepFeat_SplitShape_ctor_shape(TopoD
     try { return {new BRepFeat_SplitShape(*S), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BRepFeat_SplitShape_add_sequenceofshape(BRepFeat_SplitShape* self_, TopTools_SequenceOfShape const* theEdges) {
+extern "C" OcctResult<bool> BRepFeat_SplitShape_add_seq_shape(BRepFeat_SplitShape* self_, NCollection_Sequence_TopoDS_Shape const* theEdges) {
     try { return {self_->Add(*theEdges), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1602,15 +1570,15 @@ extern "C" const char* BRepFeat_SplitShape_add_edge2(BRepFeat_SplitShape* self_,
     try { self_->Add(*E, *EOn); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_SplitShape_direct_left(const BRepFeat_SplitShape* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_SplitShape_direct_left(const BRepFeat_SplitShape* self_) {
     try { return {&(self_->DirectLeft()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_SplitShape_left(const BRepFeat_SplitShape* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_SplitShape_left(const BRepFeat_SplitShape* self_) {
     try { return {&(self_->Left()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_SplitShape_right(const BRepFeat_SplitShape* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_SplitShape_right(const BRepFeat_SplitShape* self_) {
     try { return {&(self_->Right()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1622,7 +1590,7 @@ extern "C" OcctResult<bool> BRepFeat_SplitShape_is_deleted(BRepFeat_SplitShape* 
     try { return {self_->IsDeleted(*S), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFeat_SplitShape_modified(BRepFeat_SplitShape* self_, TopoDS_Shape const* F) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFeat_SplitShape_modified(BRepFeat_SplitShape* self_, TopoDS_Shape const* F) {
     try { return {&(self_->Modified(*F)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1652,11 +1620,11 @@ extern "C" OcctResult<LocOpe_BuildShape*> LocOpe_BuildShape_ctor() {
     try { return {new LocOpe_BuildShape(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<LocOpe_BuildShape*> LocOpe_BuildShape_ctor_listofshape(TopTools_ListOfShape const* L) {
+extern "C" OcctResult<LocOpe_BuildShape*> LocOpe_BuildShape_ctor_list_shape(NCollection_List_TopoDS_Shape const* L) {
     try { return {new LocOpe_BuildShape(*L), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* LocOpe_BuildShape_perform(LocOpe_BuildShape* self_, TopTools_ListOfShape const* L) {
+extern "C" const char* LocOpe_BuildShape_perform(LocOpe_BuildShape* self_, NCollection_List_TopoDS_Shape const* L) {
     try { self_->Perform(*L); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1674,11 +1642,11 @@ extern "C" OcctResult<LocOpe_BuildWires*> LocOpe_BuildWires_ctor() {
     try { return {new LocOpe_BuildWires(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<LocOpe_BuildWires*> LocOpe_BuildWires_ctor_listofshape_handlelocopewiresonshape(TopTools_ListOfShape const* Ledges, Handle(LocOpe_WiresOnShape) const* PW) {
+extern "C" OcctResult<LocOpe_BuildWires*> LocOpe_BuildWires_ctor_list_shape_handlelocopewiresonshape(NCollection_List_TopoDS_Shape const* Ledges, Handle(LocOpe_WiresOnShape) const* PW) {
     try { return {new LocOpe_BuildWires(*Ledges, *PW), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* LocOpe_BuildWires_perform(LocOpe_BuildWires* self_, TopTools_ListOfShape const* Ledges, Handle(LocOpe_WiresOnShape) const* PW) {
+extern "C" const char* LocOpe_BuildWires_perform(LocOpe_BuildWires* self_, NCollection_List_TopoDS_Shape const* Ledges, Handle(LocOpe_WiresOnShape) const* PW) {
     try { self_->Perform(*Ledges, *PW); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1686,7 +1654,7 @@ extern "C" OcctResult<bool> LocOpe_BuildWires_is_done(const LocOpe_BuildWires* s
     try { return {self_->IsDone(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> LocOpe_BuildWires_result(const LocOpe_BuildWires* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> LocOpe_BuildWires_result(const LocOpe_BuildWires* self_) {
     try { return {&(self_->Result()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1708,16 +1676,12 @@ extern "C" const char* LocOpe_CSIntersector_init(LocOpe_CSIntersector* self_, To
     try { self_->Init(*S); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* LocOpe_CSIntersector_perform_sequenceoflin(LocOpe_CSIntersector* self_, LocOpe_SequenceOfLin const* Slin) {
+extern "C" const char* LocOpe_CSIntersector_perform_seq_lin(LocOpe_CSIntersector* self_, NCollection_Sequence_gp_Lin const* Slin) {
     try { self_->Perform(*Slin); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* LocOpe_CSIntersector_perform_sequenceofcirc(LocOpe_CSIntersector* self_, LocOpe_SequenceOfCirc const* Scir) {
+extern "C" const char* LocOpe_CSIntersector_perform_seq_circ(LocOpe_CSIntersector* self_, NCollection_Sequence_gp_Circ const* Scir) {
     try { self_->Perform(*Scir); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* LocOpe_CSIntersector_perform_sequenceofcurve(LocOpe_CSIntersector* self_, TColGeom_SequenceOfCurve const* Scur) {
-    try { self_->Perform(*Scur); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<bool> LocOpe_CSIntersector_is_done(const LocOpe_CSIntersector* self_) {
@@ -1888,13 +1852,9 @@ extern "C" OcctResult<TopoDS_Shape const*> LocOpe_DPrism_shape(const LocOpe_DPri
     try { return {&(self_->Shape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> LocOpe_DPrism_shapes(const LocOpe_DPrism* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> LocOpe_DPrism_shapes(const LocOpe_DPrism* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Shapes(*S)), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* LocOpe_DPrism_curves(const LocOpe_DPrism* self_, TColGeom_SequenceOfCurve* SCurves) {
-    try { self_->Curves(*SCurves); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" void LocOpe_DPrism_destructor(LocOpe_DPrism* self_) { delete self_; }
 
@@ -1982,11 +1942,11 @@ extern "C" OcctResult<TopoDS_Face*> LocOpe_GeneratedShape_generated_edge(LocOpe_
     try { return {new TopoDS_Face(self_->Generated(*E)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> LocOpe_GeneratedShape_generating_edges(LocOpe_GeneratedShape* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> LocOpe_GeneratedShape_generating_edges(LocOpe_GeneratedShape* self_) {
     try { return {&(self_->GeneratingEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> LocOpe_GeneratedShape_oriented_faces(LocOpe_GeneratedShape* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> LocOpe_GeneratedShape_oriented_faces(LocOpe_GeneratedShape* self_) {
     try { return {&(self_->OrientedFaces()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2004,23 +1964,23 @@ extern "C" OcctResult<Handle(Standard_Type) const*> LocOpe_GeneratedShape_get_ty
 }
 extern "C" OcctResult<const Standard_Transient*> LocOpe_GeneratedShape_as_Standard_Transient(const LocOpe_GeneratedShape* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> LocOpe_GeneratedShape_as_Standard_Transient_mut(LocOpe_GeneratedShape* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const LocOpe_GeneratedShape*> HandleLocOpeGeneratedShape_get(const HandleLocOpeGeneratedShape* handle) {
+extern "C" OcctResult<const LocOpe_GeneratedShape*> Handle_LocOpe_GeneratedShape_get(const Handle_LocOpe_GeneratedShape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<LocOpe_GeneratedShape*> HandleLocOpeGeneratedShape_get_mut(HandleLocOpeGeneratedShape* handle) {
+extern "C" OcctResult<LocOpe_GeneratedShape*> Handle_LocOpe_GeneratedShape_get_mut(Handle_LocOpe_GeneratedShape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleLocOpeGeneratedShape_to_HandleStandardTransient(const HandleLocOpeGeneratedShape* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_LocOpe_GeneratedShape_to_Handle_Standard_Transient(const Handle_LocOpe_GeneratedShape* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleLocOpeGluedShape*> HandleLocOpeGeneratedShape_downcast_to_HandleLocOpeGluedShape(const HandleLocOpeGeneratedShape* self_) {
+extern "C" OcctResult<Handle_LocOpe_GluedShape*> Handle_LocOpe_GeneratedShape_downcast_to_Handle_LocOpe_GluedShape(const Handle_LocOpe_GeneratedShape* self_) {
     try {
     opencascade::handle<LocOpe_GluedShape> result = opencascade::handle<LocOpe_GluedShape>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleLocOpeGluedShape(result), nullptr};
+    return {new Handle_LocOpe_GluedShape(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -2086,7 +2046,7 @@ extern "C" OcctResult<TopoDS_Shape const*> LocOpe_Generator_shape(const LocOpe_G
     try { return {&(self_->Shape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> LocOpe_Generator_descendant_face(LocOpe_Generator* self_, TopoDS_Face const* F) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> LocOpe_Generator_descendant_face(LocOpe_Generator* self_, TopoDS_Face const* F) {
     try { return {&(self_->DescendantFace(*F)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2120,11 +2080,11 @@ extern "C" const char* LocOpe_GluedShape_glue_on_face(LocOpe_GluedShape* self_, 
     try { self_->GlueOnFace(*F); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> LocOpe_GluedShape_generating_edges(LocOpe_GluedShape* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> LocOpe_GluedShape_generating_edges(LocOpe_GluedShape* self_) {
     try { return {&(self_->GeneratingEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> LocOpe_GluedShape_oriented_faces(LocOpe_GluedShape* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> LocOpe_GluedShape_oriented_faces(LocOpe_GluedShape* self_) {
     try { return {&(self_->OrientedFaces()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2144,24 +2104,24 @@ extern "C" OcctResult<const LocOpe_GeneratedShape*> LocOpe_GluedShape_as_LocOpe_
 extern "C" OcctResult<LocOpe_GeneratedShape*> LocOpe_GluedShape_as_LocOpe_GeneratedShape_mut(LocOpe_GluedShape* self_) { return {static_cast<LocOpe_GeneratedShape*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> LocOpe_GluedShape_as_Standard_Transient(const LocOpe_GluedShape* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> LocOpe_GluedShape_as_Standard_Transient_mut(LocOpe_GluedShape* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleLocOpeGluedShape*> LocOpe_GluedShape_to_handle(LocOpe_GluedShape* obj) {
-    try { return {new HandleLocOpeGluedShape(obj), nullptr}; }
+extern "C" OcctResult<Handle_LocOpe_GluedShape*> LocOpe_GluedShape_to_handle(LocOpe_GluedShape* obj) {
+    try { return {new Handle_LocOpe_GluedShape(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const LocOpe_GluedShape*> HandleLocOpeGluedShape_get(const HandleLocOpeGluedShape* handle) {
+extern "C" OcctResult<const LocOpe_GluedShape*> Handle_LocOpe_GluedShape_get(const Handle_LocOpe_GluedShape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<LocOpe_GluedShape*> HandleLocOpeGluedShape_get_mut(HandleLocOpeGluedShape* handle) {
+extern "C" OcctResult<LocOpe_GluedShape*> Handle_LocOpe_GluedShape_get_mut(Handle_LocOpe_GluedShape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleLocOpeGeneratedShape*> HandleLocOpeGluedShape_to_HandleLocOpeGeneratedShape(const HandleLocOpeGluedShape* self_) {
-    try { return {new HandleLocOpeGeneratedShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_LocOpe_GeneratedShape*> Handle_LocOpe_GluedShape_to_Handle_LocOpe_GeneratedShape(const Handle_LocOpe_GluedShape* self_) {
+    try { return {new Handle_LocOpe_GeneratedShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleLocOpeGluedShape_to_HandleStandardTransient(const HandleLocOpeGluedShape* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_LocOpe_GluedShape_to_Handle_Standard_Transient(const Handle_LocOpe_GluedShape* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> LocOpe_GluedShape_inherited_IsInstance(const LocOpe_GluedShape* self, Handle(Standard_Type) const& theType) {
@@ -2234,7 +2194,7 @@ extern "C" OcctResult<TopoDS_Shape const*> LocOpe_Gluer_resulting_shape(const Lo
     try { return {&(self_->ResultingShape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> LocOpe_Gluer_descendant_faces(const LocOpe_Gluer* self_, TopoDS_Face const* F) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> LocOpe_Gluer_descendant_faces(const LocOpe_Gluer* self_, TopoDS_Face const* F) {
     try { return {&(self_->DescendantFaces(*F)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2246,11 +2206,11 @@ extern "C" OcctResult<TopoDS_Shape const*> LocOpe_Gluer_glued_shape(const LocOpe
     try { return {&(self_->GluedShape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> LocOpe_Gluer_edges(const LocOpe_Gluer* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> LocOpe_Gluer_edges(const LocOpe_Gluer* self_) {
     try { return {&(self_->Edges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> LocOpe_Gluer_tgt_edges(const LocOpe_Gluer* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> LocOpe_Gluer_tgt_edges(const LocOpe_Gluer* self_) {
     try { return {&(self_->TgtEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2292,7 +2252,7 @@ extern "C" OcctResult<TopoDS_Shape const*> LocOpe_LinearForm_shape(const LocOpe_
     try { return {&(self_->Shape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> LocOpe_LinearForm_shapes(const LocOpe_LinearForm* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> LocOpe_LinearForm_shapes(const LocOpe_LinearForm* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Shapes(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2330,12 +2290,8 @@ extern "C" OcctResult<TopoDS_Shape const*> LocOpe_Pipe_shape(const LocOpe_Pipe* 
     try { return {&(self_->Shape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> LocOpe_Pipe_shapes(LocOpe_Pipe* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> LocOpe_Pipe_shapes(LocOpe_Pipe* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Shapes(*S)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColGeom_SequenceOfCurve const*> LocOpe_Pipe_curves(LocOpe_Pipe* self_, TColgp_SequenceOfPnt const* Spt) {
-    try { return {&(self_->Curves(*Spt)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" void LocOpe_Pipe_destructor(LocOpe_Pipe* self_) { delete self_; }
@@ -2422,13 +2378,9 @@ extern "C" OcctResult<TopoDS_Shape const*> LocOpe_Prism_shape(const LocOpe_Prism
     try { return {&(self_->Shape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> LocOpe_Prism_shapes(const LocOpe_Prism* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> LocOpe_Prism_shapes(const LocOpe_Prism* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Shapes(*S)), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* LocOpe_Prism_curves(const LocOpe_Prism* self_, TColGeom_SequenceOfCurve* SCurves) {
-    try { self_->Curves(*SCurves); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" void LocOpe_Prism_destructor(LocOpe_Prism* self_) { delete self_; }
 
@@ -2472,13 +2424,9 @@ extern "C" OcctResult<TopoDS_Shape const*> LocOpe_Revol_shape(const LocOpe_Revol
     try { return {&(self_->Shape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> LocOpe_Revol_shapes(const LocOpe_Revol* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> LocOpe_Revol_shapes(const LocOpe_Revol* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Shapes(*S)), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* LocOpe_Revol_curves(const LocOpe_Revol* self_, TColGeom_SequenceOfCurve* SCurves) {
-    try { self_->Curves(*SCurves); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" void LocOpe_Revol_destructor(LocOpe_Revol* self_) { delete self_; }
 
@@ -2510,7 +2458,7 @@ extern "C" OcctResult<TopoDS_Shape const*> LocOpe_RevolutionForm_shape(const Loc
     try { return {&(self_->Shape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> LocOpe_RevolutionForm_shapes(const LocOpe_RevolutionForm* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> LocOpe_RevolutionForm_shapes(const LocOpe_RevolutionForm* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Shapes(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2552,7 +2500,7 @@ extern "C" OcctResult<TopoDS_Shape const*> LocOpe_SplitDrafts_shape(const LocOpe
     try { return {&(self_->Shape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> LocOpe_SplitDrafts_shapes_from_shape(const LocOpe_SplitDrafts* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> LocOpe_SplitDrafts_shapes_from_shape(const LocOpe_SplitDrafts* self_, TopoDS_Shape const* S) {
     try { return {&(self_->ShapesFromShape(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2586,7 +2534,7 @@ extern "C" OcctResult<bool> LocOpe_SplitShape_add_wire_face(LocOpe_SplitShape* s
     try { return {self_->Add(*W, *F), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> LocOpe_SplitShape_add_listofshape_face(LocOpe_SplitShape* self_, TopTools_ListOfShape const* Lwires, TopoDS_Face const* F) {
+extern "C" OcctResult<bool> LocOpe_SplitShape_add_list_shape_face(LocOpe_SplitShape* self_, NCollection_List_TopoDS_Shape const* Lwires, TopoDS_Face const* F) {
     try { return {self_->Add(*Lwires, *F), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2594,11 +2542,11 @@ extern "C" OcctResult<TopoDS_Shape const*> LocOpe_SplitShape_shape(const LocOpe_
     try { return {&(self_->Shape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> LocOpe_SplitShape_descendant_shapes(LocOpe_SplitShape* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> LocOpe_SplitShape_descendant_shapes(LocOpe_SplitShape* self_, TopoDS_Shape const* S) {
     try { return {&(self_->DescendantShapes(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> LocOpe_SplitShape_left_of(LocOpe_SplitShape* self_, TopoDS_Wire const* W, TopoDS_Face const* F) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> LocOpe_SplitShape_left_of(LocOpe_SplitShape* self_, TopoDS_Wire const* W, TopoDS_Face const* F) {
     try { return {&(self_->LeftOf(*W, *F)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2636,15 +2584,15 @@ extern "C" OcctResult<TopoDS_Shape const*> LocOpe_Spliter_shape(const LocOpe_Spl
     try { return {&(self_->Shape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> LocOpe_Spliter_direct_left(const LocOpe_Spliter* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> LocOpe_Spliter_direct_left(const LocOpe_Spliter* self_) {
     try { return {&(self_->DirectLeft()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> LocOpe_Spliter_left(const LocOpe_Spliter* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> LocOpe_Spliter_left(const LocOpe_Spliter* self_) {
     try { return {&(self_->Left()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> LocOpe_Spliter_descendant_shapes(LocOpe_Spliter* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> LocOpe_Spliter_descendant_shapes(LocOpe_Spliter* self_, TopoDS_Shape const* S) {
     try { return {&(self_->DescendantShapes(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2670,7 +2618,7 @@ extern "C" const char* LocOpe_WiresOnShape_init(LocOpe_WiresOnShape* self_, Topo
     try { self_->Init(*S); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> LocOpe_WiresOnShape_add(LocOpe_WiresOnShape* self_, TopTools_SequenceOfShape const* theEdges) {
+extern "C" OcctResult<bool> LocOpe_WiresOnShape_add(LocOpe_WiresOnShape* self_, NCollection_Sequence_TopoDS_Shape const* theEdges) {
     try { return {self_->Add(*theEdges), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2748,20 +2696,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> LocOpe_WiresOnShape_get_type
 }
 extern "C" OcctResult<const Standard_Transient*> LocOpe_WiresOnShape_as_Standard_Transient(const LocOpe_WiresOnShape* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> LocOpe_WiresOnShape_as_Standard_Transient_mut(LocOpe_WiresOnShape* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleLocOpeWiresOnShape*> LocOpe_WiresOnShape_to_handle(LocOpe_WiresOnShape* obj) {
-    try { return {new HandleLocOpeWiresOnShape(obj), nullptr}; }
+extern "C" OcctResult<Handle_LocOpe_WiresOnShape*> LocOpe_WiresOnShape_to_handle(LocOpe_WiresOnShape* obj) {
+    try { return {new Handle_LocOpe_WiresOnShape(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const LocOpe_WiresOnShape*> HandleLocOpeWiresOnShape_get(const HandleLocOpeWiresOnShape* handle) {
+extern "C" OcctResult<const LocOpe_WiresOnShape*> Handle_LocOpe_WiresOnShape_get(const Handle_LocOpe_WiresOnShape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<LocOpe_WiresOnShape*> HandleLocOpeWiresOnShape_get_mut(HandleLocOpeWiresOnShape* handle) {
+extern "C" OcctResult<LocOpe_WiresOnShape*> Handle_LocOpe_WiresOnShape_get_mut(Handle_LocOpe_WiresOnShape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleLocOpeWiresOnShape_to_HandleStandardTransient(const HandleLocOpeWiresOnShape* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_LocOpe_WiresOnShape_to_Handle_Standard_Transient(const Handle_LocOpe_WiresOnShape* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> LocOpe_WiresOnShape_inherited_IsInstance(const LocOpe_WiresOnShape* self, Handle(Standard_Type) const& theType) {
@@ -2797,6 +2745,10 @@ extern "C" void LocOpe_WiresOnShape_destructor(LocOpe_WiresOnShape* self_) { del
 // ========================
 // BRepFeat namespace functions
 // ========================
+extern "C" const char* BRepFeat_sample_edges_mut(TopoDS_Shape const* S, NCollection_Sequence_gp_Pnt* Pt) {
+    try { BRepFeat::SampleEdges(*S, *Pt); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* BRepFeat_barycenter(TopoDS_Shape const* S, gp_Pnt* Pt) {
     try { BRepFeat::Barycenter(*S, *Pt); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -2845,8 +2797,8 @@ extern "C" OcctResult<bool> LocOpe_tgt_faces(TopoDS_Edge const* E, TopoDS_Face c
     try { return {LocOpe::TgtFaces(*E, *F1, *F2), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* LocOpe_sample_edges_mut(TopoDS_Shape const* S, NCollection_Sequence_gp_Pnt* Pt) {
+    try { LocOpe::SampleEdges(*S, *Pt); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 
-
-// Nested type and typedef type destructors
-extern "C" void LocOpe_SequenceOfCirc_destructor(LocOpe_SequenceOfCirc* self_) { delete self_; }
-extern "C" void LocOpe_SequenceOfLin_destructor(LocOpe_SequenceOfLin* self_) { delete self_; }

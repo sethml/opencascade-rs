@@ -6,9 +6,10 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `NCollection_Primes.hxx`:34 - `NCollection_Primes::NextPrimeForMap`
+/// **Source:** `NCollection_Primes.hxx`:37 - `NCollection_Primes::NextPrimeForMap`
 /// Returns the next prime number greater than or equal to theN.
-pub fn next_prime_for_map(theN: i32) -> i32 {
+/// If theN exceeds the largest available prime, returns theN + 1.
+pub fn next_prime_for_map(theN: usize) -> usize {
     crate::check_result(unsafe {
         crate::ffi_extern_misc::NCollection_Primes_next_prime_for_map(theN)
     })

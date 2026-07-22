@@ -15,12 +15,12 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:22 - `BOPAlgo_AlertUserBreak::DynamicType()`
     pub fn BOPAlgo_AlertUserBreak_dynamic_type(
         self_: *const BOPAlgo_AlertUserBreak,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:22 - `BOPAlgo_AlertUserBreak::get_type_name()`
     pub fn BOPAlgo_AlertUserBreak_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:22 - `BOPAlgo_AlertUserBreak::get_type_descriptor()`
     pub fn BOPAlgo_AlertUserBreak_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertUserBreak to Message_Alert
     pub fn BOPAlgo_AlertUserBreak_as_Message_Alert(
         self_: *const BOPAlgo_AlertUserBreak,
@@ -40,67 +40,69 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertUserBreak in a Handle
     pub fn BOPAlgo_AlertUserBreak_to_handle(
         obj: *mut BOPAlgo_AlertUserBreak,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUserBreak>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertUserBreak>;
     /// Destroy Handle<BOPAlgo_AlertUserBreak>
-    pub fn HandleBOPAlgoAlertUserBreak_destructor(self_: *mut HandleBOPAlgoAlertUserBreak);
+    pub fn Handle_BOPAlgo_AlertUserBreak_destructor(self_: *mut Handle_BOPAlgo_AlertUserBreak);
     /// Clone Handle<BOPAlgo_AlertUserBreak> (increments reference count)
-    pub fn HandleBOPAlgoAlertUserBreak_clone(
-        self_: *const HandleBOPAlgoAlertUserBreak,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUserBreak>;
+    pub fn Handle_BOPAlgo_AlertUserBreak_clone(
+        self_: *const Handle_BOPAlgo_AlertUserBreak,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertUserBreak>;
     /// Check if Handle<BOPAlgo_AlertUserBreak> is null
-    pub fn HandleBOPAlgoAlertUserBreak_is_null(self_: *const HandleBOPAlgoAlertUserBreak) -> bool;
+    pub fn Handle_BOPAlgo_AlertUserBreak_is_null(
+        self_: *const Handle_BOPAlgo_AlertUserBreak,
+    ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertUserBreak
-    pub fn HandleBOPAlgoAlertUserBreak_get(
-        handle: *const HandleBOPAlgoAlertUserBreak,
+    pub fn Handle_BOPAlgo_AlertUserBreak_get(
+        handle: *const Handle_BOPAlgo_AlertUserBreak,
     ) -> crate::OcctResult<*const BOPAlgo_AlertUserBreak>;
     /// Dereference Handle to get *mut BOPAlgo_AlertUserBreak
-    pub fn HandleBOPAlgoAlertUserBreak_get_mut(
-        handle: *mut HandleBOPAlgoAlertUserBreak,
+    pub fn Handle_BOPAlgo_AlertUserBreak_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertUserBreak,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertUserBreak>;
     /// Upcast Handle<BOPAlgo_AlertUserBreak> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertUserBreak_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertUserBreak,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertUserBreak_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertUserBreak,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertUserBreak> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertUserBreak_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertUserBreak,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
+    pub fn Handle_BOPAlgo_AlertUserBreak_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertUserBreak,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Message_Alert.hxx`:45 - `Message_Alert::SupportsMerge()`
     pub fn BOPAlgo_AlertUserBreak_inherited_SupportsMerge(
         self_: *const BOPAlgo_AlertUserBreak,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
+    /// Inherited: **Source:** `Message_Alert.hxx`:50 - `Message_Alert::Merge()`
     pub fn BOPAlgo_AlertUserBreak_inherited_Merge(
         self_: *mut BOPAlgo_AlertUserBreak,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertUserBreak_inherited_IsInstance(
         self_: *const BOPAlgo_AlertUserBreak,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertUserBreak_inherited_IsKind(
         self_: *const BOPAlgo_AlertUserBreak,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertUserBreak_inherited_This(
         self_: *const BOPAlgo_AlertUserBreak,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertUserBreak_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertUserBreak,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertUserBreak_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertUserBreak,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertUserBreak_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertUserBreak,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertUserBreak_inherited_Delete(
         self_: *const BOPAlgo_AlertUserBreak,
     ) -> *const std::ffi::c_char;
@@ -111,12 +113,12 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:25 - `BOPAlgo_AlertBOPNotAllowed::DynamicType()`
     pub fn BOPAlgo_AlertBOPNotAllowed_dynamic_type(
         self_: *const BOPAlgo_AlertBOPNotAllowed,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:25 - `BOPAlgo_AlertBOPNotAllowed::get_type_name()`
     pub fn BOPAlgo_AlertBOPNotAllowed_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:25 - `BOPAlgo_AlertBOPNotAllowed::get_type_descriptor()`
     pub fn BOPAlgo_AlertBOPNotAllowed_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertBOPNotAllowed to Message_Alert
     pub fn BOPAlgo_AlertBOPNotAllowed_as_Message_Alert(
         self_: *const BOPAlgo_AlertBOPNotAllowed,
@@ -136,69 +138,71 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertBOPNotAllowed in a Handle
     pub fn BOPAlgo_AlertBOPNotAllowed_to_handle(
         obj: *mut BOPAlgo_AlertBOPNotAllowed,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertBOPNotAllowed>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertBOPNotAllowed>;
     /// Destroy Handle<BOPAlgo_AlertBOPNotAllowed>
-    pub fn HandleBOPAlgoAlertBOPNotAllowed_destructor(self_: *mut HandleBOPAlgoAlertBOPNotAllowed);
+    pub fn Handle_BOPAlgo_AlertBOPNotAllowed_destructor(
+        self_: *mut Handle_BOPAlgo_AlertBOPNotAllowed,
+    );
     /// Clone Handle<BOPAlgo_AlertBOPNotAllowed> (increments reference count)
-    pub fn HandleBOPAlgoAlertBOPNotAllowed_clone(
-        self_: *const HandleBOPAlgoAlertBOPNotAllowed,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertBOPNotAllowed>;
+    pub fn Handle_BOPAlgo_AlertBOPNotAllowed_clone(
+        self_: *const Handle_BOPAlgo_AlertBOPNotAllowed,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertBOPNotAllowed>;
     /// Check if Handle<BOPAlgo_AlertBOPNotAllowed> is null
-    pub fn HandleBOPAlgoAlertBOPNotAllowed_is_null(
-        self_: *const HandleBOPAlgoAlertBOPNotAllowed,
+    pub fn Handle_BOPAlgo_AlertBOPNotAllowed_is_null(
+        self_: *const Handle_BOPAlgo_AlertBOPNotAllowed,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertBOPNotAllowed
-    pub fn HandleBOPAlgoAlertBOPNotAllowed_get(
-        handle: *const HandleBOPAlgoAlertBOPNotAllowed,
+    pub fn Handle_BOPAlgo_AlertBOPNotAllowed_get(
+        handle: *const Handle_BOPAlgo_AlertBOPNotAllowed,
     ) -> crate::OcctResult<*const BOPAlgo_AlertBOPNotAllowed>;
     /// Dereference Handle to get *mut BOPAlgo_AlertBOPNotAllowed
-    pub fn HandleBOPAlgoAlertBOPNotAllowed_get_mut(
-        handle: *mut HandleBOPAlgoAlertBOPNotAllowed,
+    pub fn Handle_BOPAlgo_AlertBOPNotAllowed_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertBOPNotAllowed,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertBOPNotAllowed>;
     /// Upcast Handle<BOPAlgo_AlertBOPNotAllowed> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertBOPNotAllowed_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertBOPNotAllowed,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertBOPNotAllowed_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertBOPNotAllowed,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertBOPNotAllowed> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertBOPNotAllowed_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertBOPNotAllowed,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
+    pub fn Handle_BOPAlgo_AlertBOPNotAllowed_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertBOPNotAllowed,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Message_Alert.hxx`:45 - `Message_Alert::SupportsMerge()`
     pub fn BOPAlgo_AlertBOPNotAllowed_inherited_SupportsMerge(
         self_: *const BOPAlgo_AlertBOPNotAllowed,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
+    /// Inherited: **Source:** `Message_Alert.hxx`:50 - `Message_Alert::Merge()`
     pub fn BOPAlgo_AlertBOPNotAllowed_inherited_Merge(
         self_: *mut BOPAlgo_AlertBOPNotAllowed,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertBOPNotAllowed_inherited_IsInstance(
         self_: *const BOPAlgo_AlertBOPNotAllowed,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertBOPNotAllowed_inherited_IsKind(
         self_: *const BOPAlgo_AlertBOPNotAllowed,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertBOPNotAllowed_inherited_This(
         self_: *const BOPAlgo_AlertBOPNotAllowed,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertBOPNotAllowed_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertBOPNotAllowed,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertBOPNotAllowed_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertBOPNotAllowed,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertBOPNotAllowed_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertBOPNotAllowed,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertBOPNotAllowed_inherited_Delete(
         self_: *const BOPAlgo_AlertBOPNotAllowed,
     ) -> *const std::ffi::c_char;
@@ -209,12 +213,12 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:28 - `BOPAlgo_AlertBOPNotSet::DynamicType()`
     pub fn BOPAlgo_AlertBOPNotSet_dynamic_type(
         self_: *const BOPAlgo_AlertBOPNotSet,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:28 - `BOPAlgo_AlertBOPNotSet::get_type_name()`
     pub fn BOPAlgo_AlertBOPNotSet_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:28 - `BOPAlgo_AlertBOPNotSet::get_type_descriptor()`
     pub fn BOPAlgo_AlertBOPNotSet_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertBOPNotSet to Message_Alert
     pub fn BOPAlgo_AlertBOPNotSet_as_Message_Alert(
         self_: *const BOPAlgo_AlertBOPNotSet,
@@ -234,67 +238,69 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertBOPNotSet in a Handle
     pub fn BOPAlgo_AlertBOPNotSet_to_handle(
         obj: *mut BOPAlgo_AlertBOPNotSet,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertBOPNotSet>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertBOPNotSet>;
     /// Destroy Handle<BOPAlgo_AlertBOPNotSet>
-    pub fn HandleBOPAlgoAlertBOPNotSet_destructor(self_: *mut HandleBOPAlgoAlertBOPNotSet);
+    pub fn Handle_BOPAlgo_AlertBOPNotSet_destructor(self_: *mut Handle_BOPAlgo_AlertBOPNotSet);
     /// Clone Handle<BOPAlgo_AlertBOPNotSet> (increments reference count)
-    pub fn HandleBOPAlgoAlertBOPNotSet_clone(
-        self_: *const HandleBOPAlgoAlertBOPNotSet,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertBOPNotSet>;
+    pub fn Handle_BOPAlgo_AlertBOPNotSet_clone(
+        self_: *const Handle_BOPAlgo_AlertBOPNotSet,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertBOPNotSet>;
     /// Check if Handle<BOPAlgo_AlertBOPNotSet> is null
-    pub fn HandleBOPAlgoAlertBOPNotSet_is_null(self_: *const HandleBOPAlgoAlertBOPNotSet) -> bool;
+    pub fn Handle_BOPAlgo_AlertBOPNotSet_is_null(
+        self_: *const Handle_BOPAlgo_AlertBOPNotSet,
+    ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertBOPNotSet
-    pub fn HandleBOPAlgoAlertBOPNotSet_get(
-        handle: *const HandleBOPAlgoAlertBOPNotSet,
+    pub fn Handle_BOPAlgo_AlertBOPNotSet_get(
+        handle: *const Handle_BOPAlgo_AlertBOPNotSet,
     ) -> crate::OcctResult<*const BOPAlgo_AlertBOPNotSet>;
     /// Dereference Handle to get *mut BOPAlgo_AlertBOPNotSet
-    pub fn HandleBOPAlgoAlertBOPNotSet_get_mut(
-        handle: *mut HandleBOPAlgoAlertBOPNotSet,
+    pub fn Handle_BOPAlgo_AlertBOPNotSet_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertBOPNotSet,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertBOPNotSet>;
     /// Upcast Handle<BOPAlgo_AlertBOPNotSet> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertBOPNotSet_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertBOPNotSet,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertBOPNotSet_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertBOPNotSet,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertBOPNotSet> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertBOPNotSet_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertBOPNotSet,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
+    pub fn Handle_BOPAlgo_AlertBOPNotSet_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertBOPNotSet,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Message_Alert.hxx`:45 - `Message_Alert::SupportsMerge()`
     pub fn BOPAlgo_AlertBOPNotSet_inherited_SupportsMerge(
         self_: *const BOPAlgo_AlertBOPNotSet,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
+    /// Inherited: **Source:** `Message_Alert.hxx`:50 - `Message_Alert::Merge()`
     pub fn BOPAlgo_AlertBOPNotSet_inherited_Merge(
         self_: *mut BOPAlgo_AlertBOPNotSet,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertBOPNotSet_inherited_IsInstance(
         self_: *const BOPAlgo_AlertBOPNotSet,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertBOPNotSet_inherited_IsKind(
         self_: *const BOPAlgo_AlertBOPNotSet,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertBOPNotSet_inherited_This(
         self_: *const BOPAlgo_AlertBOPNotSet,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertBOPNotSet_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertBOPNotSet,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertBOPNotSet_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertBOPNotSet,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertBOPNotSet_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertBOPNotSet,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertBOPNotSet_inherited_Delete(
         self_: *const BOPAlgo_AlertBOPNotSet,
     ) -> *const std::ffi::c_char;
@@ -305,12 +311,12 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:31 - `BOPAlgo_AlertBuilderFailed::DynamicType()`
     pub fn BOPAlgo_AlertBuilderFailed_dynamic_type(
         self_: *const BOPAlgo_AlertBuilderFailed,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:31 - `BOPAlgo_AlertBuilderFailed::get_type_name()`
     pub fn BOPAlgo_AlertBuilderFailed_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:31 - `BOPAlgo_AlertBuilderFailed::get_type_descriptor()`
     pub fn BOPAlgo_AlertBuilderFailed_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertBuilderFailed to Message_Alert
     pub fn BOPAlgo_AlertBuilderFailed_as_Message_Alert(
         self_: *const BOPAlgo_AlertBuilderFailed,
@@ -330,69 +336,71 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertBuilderFailed in a Handle
     pub fn BOPAlgo_AlertBuilderFailed_to_handle(
         obj: *mut BOPAlgo_AlertBuilderFailed,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertBuilderFailed>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertBuilderFailed>;
     /// Destroy Handle<BOPAlgo_AlertBuilderFailed>
-    pub fn HandleBOPAlgoAlertBuilderFailed_destructor(self_: *mut HandleBOPAlgoAlertBuilderFailed);
+    pub fn Handle_BOPAlgo_AlertBuilderFailed_destructor(
+        self_: *mut Handle_BOPAlgo_AlertBuilderFailed,
+    );
     /// Clone Handle<BOPAlgo_AlertBuilderFailed> (increments reference count)
-    pub fn HandleBOPAlgoAlertBuilderFailed_clone(
-        self_: *const HandleBOPAlgoAlertBuilderFailed,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertBuilderFailed>;
+    pub fn Handle_BOPAlgo_AlertBuilderFailed_clone(
+        self_: *const Handle_BOPAlgo_AlertBuilderFailed,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertBuilderFailed>;
     /// Check if Handle<BOPAlgo_AlertBuilderFailed> is null
-    pub fn HandleBOPAlgoAlertBuilderFailed_is_null(
-        self_: *const HandleBOPAlgoAlertBuilderFailed,
+    pub fn Handle_BOPAlgo_AlertBuilderFailed_is_null(
+        self_: *const Handle_BOPAlgo_AlertBuilderFailed,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertBuilderFailed
-    pub fn HandleBOPAlgoAlertBuilderFailed_get(
-        handle: *const HandleBOPAlgoAlertBuilderFailed,
+    pub fn Handle_BOPAlgo_AlertBuilderFailed_get(
+        handle: *const Handle_BOPAlgo_AlertBuilderFailed,
     ) -> crate::OcctResult<*const BOPAlgo_AlertBuilderFailed>;
     /// Dereference Handle to get *mut BOPAlgo_AlertBuilderFailed
-    pub fn HandleBOPAlgoAlertBuilderFailed_get_mut(
-        handle: *mut HandleBOPAlgoAlertBuilderFailed,
+    pub fn Handle_BOPAlgo_AlertBuilderFailed_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertBuilderFailed,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertBuilderFailed>;
     /// Upcast Handle<BOPAlgo_AlertBuilderFailed> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertBuilderFailed_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertBuilderFailed,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertBuilderFailed_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertBuilderFailed,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertBuilderFailed> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertBuilderFailed_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertBuilderFailed,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
+    pub fn Handle_BOPAlgo_AlertBuilderFailed_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertBuilderFailed,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Message_Alert.hxx`:45 - `Message_Alert::SupportsMerge()`
     pub fn BOPAlgo_AlertBuilderFailed_inherited_SupportsMerge(
         self_: *const BOPAlgo_AlertBuilderFailed,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
+    /// Inherited: **Source:** `Message_Alert.hxx`:50 - `Message_Alert::Merge()`
     pub fn BOPAlgo_AlertBuilderFailed_inherited_Merge(
         self_: *mut BOPAlgo_AlertBuilderFailed,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertBuilderFailed_inherited_IsInstance(
         self_: *const BOPAlgo_AlertBuilderFailed,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertBuilderFailed_inherited_IsKind(
         self_: *const BOPAlgo_AlertBuilderFailed,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertBuilderFailed_inherited_This(
         self_: *const BOPAlgo_AlertBuilderFailed,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertBuilderFailed_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertBuilderFailed,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertBuilderFailed_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertBuilderFailed,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertBuilderFailed_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertBuilderFailed,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertBuilderFailed_inherited_Delete(
         self_: *const BOPAlgo_AlertBuilderFailed,
     ) -> *const std::ffi::c_char;
@@ -404,13 +412,13 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:34 - `BOPAlgo_AlertIntersectionFailed::DynamicType()`
     pub fn BOPAlgo_AlertIntersectionFailed_dynamic_type(
         self_: *const BOPAlgo_AlertIntersectionFailed,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:34 - `BOPAlgo_AlertIntersectionFailed::get_type_name()`
     pub fn BOPAlgo_AlertIntersectionFailed_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:34 - `BOPAlgo_AlertIntersectionFailed::get_type_descriptor()`
     pub fn BOPAlgo_AlertIntersectionFailed_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertIntersectionFailed to Message_Alert
     pub fn BOPAlgo_AlertIntersectionFailed_as_Message_Alert(
         self_: *const BOPAlgo_AlertIntersectionFailed,
@@ -430,71 +438,71 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertIntersectionFailed in a Handle
     pub fn BOPAlgo_AlertIntersectionFailed_to_handle(
         obj: *mut BOPAlgo_AlertIntersectionFailed,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertIntersectionFailed>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertIntersectionFailed>;
     /// Destroy Handle<BOPAlgo_AlertIntersectionFailed>
-    pub fn HandleBOPAlgoAlertIntersectionFailed_destructor(
-        self_: *mut HandleBOPAlgoAlertIntersectionFailed,
+    pub fn Handle_BOPAlgo_AlertIntersectionFailed_destructor(
+        self_: *mut Handle_BOPAlgo_AlertIntersectionFailed,
     );
     /// Clone Handle<BOPAlgo_AlertIntersectionFailed> (increments reference count)
-    pub fn HandleBOPAlgoAlertIntersectionFailed_clone(
-        self_: *const HandleBOPAlgoAlertIntersectionFailed,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertIntersectionFailed>;
+    pub fn Handle_BOPAlgo_AlertIntersectionFailed_clone(
+        self_: *const Handle_BOPAlgo_AlertIntersectionFailed,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertIntersectionFailed>;
     /// Check if Handle<BOPAlgo_AlertIntersectionFailed> is null
-    pub fn HandleBOPAlgoAlertIntersectionFailed_is_null(
-        self_: *const HandleBOPAlgoAlertIntersectionFailed,
+    pub fn Handle_BOPAlgo_AlertIntersectionFailed_is_null(
+        self_: *const Handle_BOPAlgo_AlertIntersectionFailed,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertIntersectionFailed
-    pub fn HandleBOPAlgoAlertIntersectionFailed_get(
-        handle: *const HandleBOPAlgoAlertIntersectionFailed,
+    pub fn Handle_BOPAlgo_AlertIntersectionFailed_get(
+        handle: *const Handle_BOPAlgo_AlertIntersectionFailed,
     ) -> crate::OcctResult<*const BOPAlgo_AlertIntersectionFailed>;
     /// Dereference Handle to get *mut BOPAlgo_AlertIntersectionFailed
-    pub fn HandleBOPAlgoAlertIntersectionFailed_get_mut(
-        handle: *mut HandleBOPAlgoAlertIntersectionFailed,
+    pub fn Handle_BOPAlgo_AlertIntersectionFailed_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertIntersectionFailed,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertIntersectionFailed>;
     /// Upcast Handle<BOPAlgo_AlertIntersectionFailed> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertIntersectionFailed_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertIntersectionFailed,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertIntersectionFailed_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertIntersectionFailed,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertIntersectionFailed> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertIntersectionFailed_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertIntersectionFailed,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
+    pub fn Handle_BOPAlgo_AlertIntersectionFailed_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertIntersectionFailed,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Message_Alert.hxx`:45 - `Message_Alert::SupportsMerge()`
     pub fn BOPAlgo_AlertIntersectionFailed_inherited_SupportsMerge(
         self_: *const BOPAlgo_AlertIntersectionFailed,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
+    /// Inherited: **Source:** `Message_Alert.hxx`:50 - `Message_Alert::Merge()`
     pub fn BOPAlgo_AlertIntersectionFailed_inherited_Merge(
         self_: *mut BOPAlgo_AlertIntersectionFailed,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertIntersectionFailed_inherited_IsInstance(
         self_: *const BOPAlgo_AlertIntersectionFailed,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertIntersectionFailed_inherited_IsKind(
         self_: *const BOPAlgo_AlertIntersectionFailed,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertIntersectionFailed_inherited_This(
         self_: *const BOPAlgo_AlertIntersectionFailed,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertIntersectionFailed_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertIntersectionFailed,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertIntersectionFailed_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertIntersectionFailed,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertIntersectionFailed_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertIntersectionFailed,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertIntersectionFailed_inherited_Delete(
         self_: *const BOPAlgo_AlertIntersectionFailed,
     ) -> *const std::ffi::c_char;
@@ -506,13 +514,13 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:37 - `BOPAlgo_AlertMultipleArguments::DynamicType()`
     pub fn BOPAlgo_AlertMultipleArguments_dynamic_type(
         self_: *const BOPAlgo_AlertMultipleArguments,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:37 - `BOPAlgo_AlertMultipleArguments::get_type_name()`
     pub fn BOPAlgo_AlertMultipleArguments_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:37 - `BOPAlgo_AlertMultipleArguments::get_type_descriptor()`
     pub fn BOPAlgo_AlertMultipleArguments_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertMultipleArguments to Message_Alert
     pub fn BOPAlgo_AlertMultipleArguments_as_Message_Alert(
         self_: *const BOPAlgo_AlertMultipleArguments,
@@ -532,71 +540,71 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertMultipleArguments in a Handle
     pub fn BOPAlgo_AlertMultipleArguments_to_handle(
         obj: *mut BOPAlgo_AlertMultipleArguments,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertMultipleArguments>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertMultipleArguments>;
     /// Destroy Handle<BOPAlgo_AlertMultipleArguments>
-    pub fn HandleBOPAlgoAlertMultipleArguments_destructor(
-        self_: *mut HandleBOPAlgoAlertMultipleArguments,
+    pub fn Handle_BOPAlgo_AlertMultipleArguments_destructor(
+        self_: *mut Handle_BOPAlgo_AlertMultipleArguments,
     );
     /// Clone Handle<BOPAlgo_AlertMultipleArguments> (increments reference count)
-    pub fn HandleBOPAlgoAlertMultipleArguments_clone(
-        self_: *const HandleBOPAlgoAlertMultipleArguments,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertMultipleArguments>;
+    pub fn Handle_BOPAlgo_AlertMultipleArguments_clone(
+        self_: *const Handle_BOPAlgo_AlertMultipleArguments,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertMultipleArguments>;
     /// Check if Handle<BOPAlgo_AlertMultipleArguments> is null
-    pub fn HandleBOPAlgoAlertMultipleArguments_is_null(
-        self_: *const HandleBOPAlgoAlertMultipleArguments,
+    pub fn Handle_BOPAlgo_AlertMultipleArguments_is_null(
+        self_: *const Handle_BOPAlgo_AlertMultipleArguments,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertMultipleArguments
-    pub fn HandleBOPAlgoAlertMultipleArguments_get(
-        handle: *const HandleBOPAlgoAlertMultipleArguments,
+    pub fn Handle_BOPAlgo_AlertMultipleArguments_get(
+        handle: *const Handle_BOPAlgo_AlertMultipleArguments,
     ) -> crate::OcctResult<*const BOPAlgo_AlertMultipleArguments>;
     /// Dereference Handle to get *mut BOPAlgo_AlertMultipleArguments
-    pub fn HandleBOPAlgoAlertMultipleArguments_get_mut(
-        handle: *mut HandleBOPAlgoAlertMultipleArguments,
+    pub fn Handle_BOPAlgo_AlertMultipleArguments_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertMultipleArguments,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertMultipleArguments>;
     /// Upcast Handle<BOPAlgo_AlertMultipleArguments> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertMultipleArguments_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertMultipleArguments,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertMultipleArguments_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertMultipleArguments,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertMultipleArguments> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertMultipleArguments_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertMultipleArguments,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
+    pub fn Handle_BOPAlgo_AlertMultipleArguments_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertMultipleArguments,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Message_Alert.hxx`:45 - `Message_Alert::SupportsMerge()`
     pub fn BOPAlgo_AlertMultipleArguments_inherited_SupportsMerge(
         self_: *const BOPAlgo_AlertMultipleArguments,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
+    /// Inherited: **Source:** `Message_Alert.hxx`:50 - `Message_Alert::Merge()`
     pub fn BOPAlgo_AlertMultipleArguments_inherited_Merge(
         self_: *mut BOPAlgo_AlertMultipleArguments,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertMultipleArguments_inherited_IsInstance(
         self_: *const BOPAlgo_AlertMultipleArguments,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertMultipleArguments_inherited_IsKind(
         self_: *const BOPAlgo_AlertMultipleArguments,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertMultipleArguments_inherited_This(
         self_: *const BOPAlgo_AlertMultipleArguments,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertMultipleArguments_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertMultipleArguments,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertMultipleArguments_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertMultipleArguments,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertMultipleArguments_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertMultipleArguments,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertMultipleArguments_inherited_Delete(
         self_: *const BOPAlgo_AlertMultipleArguments,
     ) -> *const std::ffi::c_char;
@@ -607,12 +615,12 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:40 - `BOPAlgo_AlertNoFiller::DynamicType()`
     pub fn BOPAlgo_AlertNoFiller_dynamic_type(
         self_: *const BOPAlgo_AlertNoFiller,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:40 - `BOPAlgo_AlertNoFiller::get_type_name()`
     pub fn BOPAlgo_AlertNoFiller_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:40 - `BOPAlgo_AlertNoFiller::get_type_descriptor()`
     pub fn BOPAlgo_AlertNoFiller_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertNoFiller to Message_Alert
     pub fn BOPAlgo_AlertNoFiller_as_Message_Alert(
         self_: *const BOPAlgo_AlertNoFiller,
@@ -632,67 +640,68 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertNoFiller in a Handle
     pub fn BOPAlgo_AlertNoFiller_to_handle(
         obj: *mut BOPAlgo_AlertNoFiller,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertNoFiller>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertNoFiller>;
     /// Destroy Handle<BOPAlgo_AlertNoFiller>
-    pub fn HandleBOPAlgoAlertNoFiller_destructor(self_: *mut HandleBOPAlgoAlertNoFiller);
+    pub fn Handle_BOPAlgo_AlertNoFiller_destructor(self_: *mut Handle_BOPAlgo_AlertNoFiller);
     /// Clone Handle<BOPAlgo_AlertNoFiller> (increments reference count)
-    pub fn HandleBOPAlgoAlertNoFiller_clone(
-        self_: *const HandleBOPAlgoAlertNoFiller,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertNoFiller>;
+    pub fn Handle_BOPAlgo_AlertNoFiller_clone(
+        self_: *const Handle_BOPAlgo_AlertNoFiller,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertNoFiller>;
     /// Check if Handle<BOPAlgo_AlertNoFiller> is null
-    pub fn HandleBOPAlgoAlertNoFiller_is_null(self_: *const HandleBOPAlgoAlertNoFiller) -> bool;
+    pub fn Handle_BOPAlgo_AlertNoFiller_is_null(self_: *const Handle_BOPAlgo_AlertNoFiller)
+        -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertNoFiller
-    pub fn HandleBOPAlgoAlertNoFiller_get(
-        handle: *const HandleBOPAlgoAlertNoFiller,
+    pub fn Handle_BOPAlgo_AlertNoFiller_get(
+        handle: *const Handle_BOPAlgo_AlertNoFiller,
     ) -> crate::OcctResult<*const BOPAlgo_AlertNoFiller>;
     /// Dereference Handle to get *mut BOPAlgo_AlertNoFiller
-    pub fn HandleBOPAlgoAlertNoFiller_get_mut(
-        handle: *mut HandleBOPAlgoAlertNoFiller,
+    pub fn Handle_BOPAlgo_AlertNoFiller_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertNoFiller,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertNoFiller>;
     /// Upcast Handle<BOPAlgo_AlertNoFiller> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertNoFiller_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertNoFiller,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertNoFiller_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertNoFiller,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertNoFiller> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertNoFiller_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertNoFiller,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
+    pub fn Handle_BOPAlgo_AlertNoFiller_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertNoFiller,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Message_Alert.hxx`:45 - `Message_Alert::SupportsMerge()`
     pub fn BOPAlgo_AlertNoFiller_inherited_SupportsMerge(
         self_: *const BOPAlgo_AlertNoFiller,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
+    /// Inherited: **Source:** `Message_Alert.hxx`:50 - `Message_Alert::Merge()`
     pub fn BOPAlgo_AlertNoFiller_inherited_Merge(
         self_: *mut BOPAlgo_AlertNoFiller,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertNoFiller_inherited_IsInstance(
         self_: *const BOPAlgo_AlertNoFiller,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertNoFiller_inherited_IsKind(
         self_: *const BOPAlgo_AlertNoFiller,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertNoFiller_inherited_This(
         self_: *const BOPAlgo_AlertNoFiller,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertNoFiller_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertNoFiller,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertNoFiller_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertNoFiller,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertNoFiller_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertNoFiller,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertNoFiller_inherited_Delete(
         self_: *const BOPAlgo_AlertNoFiller,
     ) -> *const std::ffi::c_char;
@@ -704,12 +713,12 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:43 - `BOPAlgo_AlertNullInputShapes::DynamicType()`
     pub fn BOPAlgo_AlertNullInputShapes_dynamic_type(
         self_: *const BOPAlgo_AlertNullInputShapes,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:43 - `BOPAlgo_AlertNullInputShapes::get_type_name()`
     pub fn BOPAlgo_AlertNullInputShapes_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:43 - `BOPAlgo_AlertNullInputShapes::get_type_descriptor()`
     pub fn BOPAlgo_AlertNullInputShapes_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertNullInputShapes to Message_Alert
     pub fn BOPAlgo_AlertNullInputShapes_as_Message_Alert(
         self_: *const BOPAlgo_AlertNullInputShapes,
@@ -729,71 +738,71 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertNullInputShapes in a Handle
     pub fn BOPAlgo_AlertNullInputShapes_to_handle(
         obj: *mut BOPAlgo_AlertNullInputShapes,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertNullInputShapes>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertNullInputShapes>;
     /// Destroy Handle<BOPAlgo_AlertNullInputShapes>
-    pub fn HandleBOPAlgoAlertNullInputShapes_destructor(
-        self_: *mut HandleBOPAlgoAlertNullInputShapes,
+    pub fn Handle_BOPAlgo_AlertNullInputShapes_destructor(
+        self_: *mut Handle_BOPAlgo_AlertNullInputShapes,
     );
     /// Clone Handle<BOPAlgo_AlertNullInputShapes> (increments reference count)
-    pub fn HandleBOPAlgoAlertNullInputShapes_clone(
-        self_: *const HandleBOPAlgoAlertNullInputShapes,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertNullInputShapes>;
+    pub fn Handle_BOPAlgo_AlertNullInputShapes_clone(
+        self_: *const Handle_BOPAlgo_AlertNullInputShapes,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertNullInputShapes>;
     /// Check if Handle<BOPAlgo_AlertNullInputShapes> is null
-    pub fn HandleBOPAlgoAlertNullInputShapes_is_null(
-        self_: *const HandleBOPAlgoAlertNullInputShapes,
+    pub fn Handle_BOPAlgo_AlertNullInputShapes_is_null(
+        self_: *const Handle_BOPAlgo_AlertNullInputShapes,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertNullInputShapes
-    pub fn HandleBOPAlgoAlertNullInputShapes_get(
-        handle: *const HandleBOPAlgoAlertNullInputShapes,
+    pub fn Handle_BOPAlgo_AlertNullInputShapes_get(
+        handle: *const Handle_BOPAlgo_AlertNullInputShapes,
     ) -> crate::OcctResult<*const BOPAlgo_AlertNullInputShapes>;
     /// Dereference Handle to get *mut BOPAlgo_AlertNullInputShapes
-    pub fn HandleBOPAlgoAlertNullInputShapes_get_mut(
-        handle: *mut HandleBOPAlgoAlertNullInputShapes,
+    pub fn Handle_BOPAlgo_AlertNullInputShapes_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertNullInputShapes,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertNullInputShapes>;
     /// Upcast Handle<BOPAlgo_AlertNullInputShapes> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertNullInputShapes_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertNullInputShapes,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertNullInputShapes_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertNullInputShapes,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertNullInputShapes> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertNullInputShapes_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertNullInputShapes,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
+    pub fn Handle_BOPAlgo_AlertNullInputShapes_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertNullInputShapes,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Message_Alert.hxx`:45 - `Message_Alert::SupportsMerge()`
     pub fn BOPAlgo_AlertNullInputShapes_inherited_SupportsMerge(
         self_: *const BOPAlgo_AlertNullInputShapes,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
+    /// Inherited: **Source:** `Message_Alert.hxx`:50 - `Message_Alert::Merge()`
     pub fn BOPAlgo_AlertNullInputShapes_inherited_Merge(
         self_: *mut BOPAlgo_AlertNullInputShapes,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertNullInputShapes_inherited_IsInstance(
         self_: *const BOPAlgo_AlertNullInputShapes,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertNullInputShapes_inherited_IsKind(
         self_: *const BOPAlgo_AlertNullInputShapes,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertNullInputShapes_inherited_This(
         self_: *const BOPAlgo_AlertNullInputShapes,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertNullInputShapes_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertNullInputShapes,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertNullInputShapes_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertNullInputShapes,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertNullInputShapes_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertNullInputShapes,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertNullInputShapes_inherited_Delete(
         self_: *const BOPAlgo_AlertNullInputShapes,
     ) -> *const std::ffi::c_char;
@@ -804,12 +813,12 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:46 - `BOPAlgo_AlertPostTreatFF::DynamicType()`
     pub fn BOPAlgo_AlertPostTreatFF_dynamic_type(
         self_: *const BOPAlgo_AlertPostTreatFF,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:46 - `BOPAlgo_AlertPostTreatFF::get_type_name()`
     pub fn BOPAlgo_AlertPostTreatFF_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:46 - `BOPAlgo_AlertPostTreatFF::get_type_descriptor()`
     pub fn BOPAlgo_AlertPostTreatFF_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertPostTreatFF to Message_Alert
     pub fn BOPAlgo_AlertPostTreatFF_as_Message_Alert(
         self_: *const BOPAlgo_AlertPostTreatFF,
@@ -829,69 +838,69 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertPostTreatFF in a Handle
     pub fn BOPAlgo_AlertPostTreatFF_to_handle(
         obj: *mut BOPAlgo_AlertPostTreatFF,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertPostTreatFF>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertPostTreatFF>;
     /// Destroy Handle<BOPAlgo_AlertPostTreatFF>
-    pub fn HandleBOPAlgoAlertPostTreatFF_destructor(self_: *mut HandleBOPAlgoAlertPostTreatFF);
+    pub fn Handle_BOPAlgo_AlertPostTreatFF_destructor(self_: *mut Handle_BOPAlgo_AlertPostTreatFF);
     /// Clone Handle<BOPAlgo_AlertPostTreatFF> (increments reference count)
-    pub fn HandleBOPAlgoAlertPostTreatFF_clone(
-        self_: *const HandleBOPAlgoAlertPostTreatFF,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertPostTreatFF>;
+    pub fn Handle_BOPAlgo_AlertPostTreatFF_clone(
+        self_: *const Handle_BOPAlgo_AlertPostTreatFF,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertPostTreatFF>;
     /// Check if Handle<BOPAlgo_AlertPostTreatFF> is null
-    pub fn HandleBOPAlgoAlertPostTreatFF_is_null(
-        self_: *const HandleBOPAlgoAlertPostTreatFF,
+    pub fn Handle_BOPAlgo_AlertPostTreatFF_is_null(
+        self_: *const Handle_BOPAlgo_AlertPostTreatFF,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertPostTreatFF
-    pub fn HandleBOPAlgoAlertPostTreatFF_get(
-        handle: *const HandleBOPAlgoAlertPostTreatFF,
+    pub fn Handle_BOPAlgo_AlertPostTreatFF_get(
+        handle: *const Handle_BOPAlgo_AlertPostTreatFF,
     ) -> crate::OcctResult<*const BOPAlgo_AlertPostTreatFF>;
     /// Dereference Handle to get *mut BOPAlgo_AlertPostTreatFF
-    pub fn HandleBOPAlgoAlertPostTreatFF_get_mut(
-        handle: *mut HandleBOPAlgoAlertPostTreatFF,
+    pub fn Handle_BOPAlgo_AlertPostTreatFF_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertPostTreatFF,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertPostTreatFF>;
     /// Upcast Handle<BOPAlgo_AlertPostTreatFF> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertPostTreatFF_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertPostTreatFF,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertPostTreatFF_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertPostTreatFF,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertPostTreatFF> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertPostTreatFF_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertPostTreatFF,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
+    pub fn Handle_BOPAlgo_AlertPostTreatFF_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertPostTreatFF,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Message_Alert.hxx`:45 - `Message_Alert::SupportsMerge()`
     pub fn BOPAlgo_AlertPostTreatFF_inherited_SupportsMerge(
         self_: *const BOPAlgo_AlertPostTreatFF,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
+    /// Inherited: **Source:** `Message_Alert.hxx`:50 - `Message_Alert::Merge()`
     pub fn BOPAlgo_AlertPostTreatFF_inherited_Merge(
         self_: *mut BOPAlgo_AlertPostTreatFF,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertPostTreatFF_inherited_IsInstance(
         self_: *const BOPAlgo_AlertPostTreatFF,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertPostTreatFF_inherited_IsKind(
         self_: *const BOPAlgo_AlertPostTreatFF,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertPostTreatFF_inherited_This(
         self_: *const BOPAlgo_AlertPostTreatFF,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertPostTreatFF_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertPostTreatFF,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertPostTreatFF_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertPostTreatFF,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertPostTreatFF_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertPostTreatFF,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertPostTreatFF_inherited_Delete(
         self_: *const BOPAlgo_AlertPostTreatFF,
     ) -> *const std::ffi::c_char;
@@ -903,13 +912,13 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:49 - `BOPAlgo_AlertSolidBuilderFailed::DynamicType()`
     pub fn BOPAlgo_AlertSolidBuilderFailed_dynamic_type(
         self_: *const BOPAlgo_AlertSolidBuilderFailed,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:49 - `BOPAlgo_AlertSolidBuilderFailed::get_type_name()`
     pub fn BOPAlgo_AlertSolidBuilderFailed_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:49 - `BOPAlgo_AlertSolidBuilderFailed::get_type_descriptor()`
     pub fn BOPAlgo_AlertSolidBuilderFailed_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertSolidBuilderFailed to Message_Alert
     pub fn BOPAlgo_AlertSolidBuilderFailed_as_Message_Alert(
         self_: *const BOPAlgo_AlertSolidBuilderFailed,
@@ -929,71 +938,71 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertSolidBuilderFailed in a Handle
     pub fn BOPAlgo_AlertSolidBuilderFailed_to_handle(
         obj: *mut BOPAlgo_AlertSolidBuilderFailed,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertSolidBuilderFailed>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertSolidBuilderFailed>;
     /// Destroy Handle<BOPAlgo_AlertSolidBuilderFailed>
-    pub fn HandleBOPAlgoAlertSolidBuilderFailed_destructor(
-        self_: *mut HandleBOPAlgoAlertSolidBuilderFailed,
+    pub fn Handle_BOPAlgo_AlertSolidBuilderFailed_destructor(
+        self_: *mut Handle_BOPAlgo_AlertSolidBuilderFailed,
     );
     /// Clone Handle<BOPAlgo_AlertSolidBuilderFailed> (increments reference count)
-    pub fn HandleBOPAlgoAlertSolidBuilderFailed_clone(
-        self_: *const HandleBOPAlgoAlertSolidBuilderFailed,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertSolidBuilderFailed>;
+    pub fn Handle_BOPAlgo_AlertSolidBuilderFailed_clone(
+        self_: *const Handle_BOPAlgo_AlertSolidBuilderFailed,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertSolidBuilderFailed>;
     /// Check if Handle<BOPAlgo_AlertSolidBuilderFailed> is null
-    pub fn HandleBOPAlgoAlertSolidBuilderFailed_is_null(
-        self_: *const HandleBOPAlgoAlertSolidBuilderFailed,
+    pub fn Handle_BOPAlgo_AlertSolidBuilderFailed_is_null(
+        self_: *const Handle_BOPAlgo_AlertSolidBuilderFailed,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertSolidBuilderFailed
-    pub fn HandleBOPAlgoAlertSolidBuilderFailed_get(
-        handle: *const HandleBOPAlgoAlertSolidBuilderFailed,
+    pub fn Handle_BOPAlgo_AlertSolidBuilderFailed_get(
+        handle: *const Handle_BOPAlgo_AlertSolidBuilderFailed,
     ) -> crate::OcctResult<*const BOPAlgo_AlertSolidBuilderFailed>;
     /// Dereference Handle to get *mut BOPAlgo_AlertSolidBuilderFailed
-    pub fn HandleBOPAlgoAlertSolidBuilderFailed_get_mut(
-        handle: *mut HandleBOPAlgoAlertSolidBuilderFailed,
+    pub fn Handle_BOPAlgo_AlertSolidBuilderFailed_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertSolidBuilderFailed,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertSolidBuilderFailed>;
     /// Upcast Handle<BOPAlgo_AlertSolidBuilderFailed> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertSolidBuilderFailed_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertSolidBuilderFailed,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertSolidBuilderFailed_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertSolidBuilderFailed,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertSolidBuilderFailed> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertSolidBuilderFailed_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertSolidBuilderFailed,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
+    pub fn Handle_BOPAlgo_AlertSolidBuilderFailed_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertSolidBuilderFailed,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Message_Alert.hxx`:45 - `Message_Alert::SupportsMerge()`
     pub fn BOPAlgo_AlertSolidBuilderFailed_inherited_SupportsMerge(
         self_: *const BOPAlgo_AlertSolidBuilderFailed,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
+    /// Inherited: **Source:** `Message_Alert.hxx`:50 - `Message_Alert::Merge()`
     pub fn BOPAlgo_AlertSolidBuilderFailed_inherited_Merge(
         self_: *mut BOPAlgo_AlertSolidBuilderFailed,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertSolidBuilderFailed_inherited_IsInstance(
         self_: *const BOPAlgo_AlertSolidBuilderFailed,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertSolidBuilderFailed_inherited_IsKind(
         self_: *const BOPAlgo_AlertSolidBuilderFailed,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertSolidBuilderFailed_inherited_This(
         self_: *const BOPAlgo_AlertSolidBuilderFailed,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertSolidBuilderFailed_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertSolidBuilderFailed,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertSolidBuilderFailed_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertSolidBuilderFailed,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertSolidBuilderFailed_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertSolidBuilderFailed,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertSolidBuilderFailed_inherited_Delete(
         self_: *const BOPAlgo_AlertSolidBuilderFailed,
     ) -> *const std::ffi::c_char;
@@ -1005,12 +1014,12 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:52 - `BOPAlgo_AlertTooFewArguments::DynamicType()`
     pub fn BOPAlgo_AlertTooFewArguments_dynamic_type(
         self_: *const BOPAlgo_AlertTooFewArguments,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:52 - `BOPAlgo_AlertTooFewArguments::get_type_name()`
     pub fn BOPAlgo_AlertTooFewArguments_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:52 - `BOPAlgo_AlertTooFewArguments::get_type_descriptor()`
     pub fn BOPAlgo_AlertTooFewArguments_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertTooFewArguments to Message_Alert
     pub fn BOPAlgo_AlertTooFewArguments_as_Message_Alert(
         self_: *const BOPAlgo_AlertTooFewArguments,
@@ -1030,71 +1039,71 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertTooFewArguments in a Handle
     pub fn BOPAlgo_AlertTooFewArguments_to_handle(
         obj: *mut BOPAlgo_AlertTooFewArguments,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertTooFewArguments>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertTooFewArguments>;
     /// Destroy Handle<BOPAlgo_AlertTooFewArguments>
-    pub fn HandleBOPAlgoAlertTooFewArguments_destructor(
-        self_: *mut HandleBOPAlgoAlertTooFewArguments,
+    pub fn Handle_BOPAlgo_AlertTooFewArguments_destructor(
+        self_: *mut Handle_BOPAlgo_AlertTooFewArguments,
     );
     /// Clone Handle<BOPAlgo_AlertTooFewArguments> (increments reference count)
-    pub fn HandleBOPAlgoAlertTooFewArguments_clone(
-        self_: *const HandleBOPAlgoAlertTooFewArguments,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertTooFewArguments>;
+    pub fn Handle_BOPAlgo_AlertTooFewArguments_clone(
+        self_: *const Handle_BOPAlgo_AlertTooFewArguments,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertTooFewArguments>;
     /// Check if Handle<BOPAlgo_AlertTooFewArguments> is null
-    pub fn HandleBOPAlgoAlertTooFewArguments_is_null(
-        self_: *const HandleBOPAlgoAlertTooFewArguments,
+    pub fn Handle_BOPAlgo_AlertTooFewArguments_is_null(
+        self_: *const Handle_BOPAlgo_AlertTooFewArguments,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertTooFewArguments
-    pub fn HandleBOPAlgoAlertTooFewArguments_get(
-        handle: *const HandleBOPAlgoAlertTooFewArguments,
+    pub fn Handle_BOPAlgo_AlertTooFewArguments_get(
+        handle: *const Handle_BOPAlgo_AlertTooFewArguments,
     ) -> crate::OcctResult<*const BOPAlgo_AlertTooFewArguments>;
     /// Dereference Handle to get *mut BOPAlgo_AlertTooFewArguments
-    pub fn HandleBOPAlgoAlertTooFewArguments_get_mut(
-        handle: *mut HandleBOPAlgoAlertTooFewArguments,
+    pub fn Handle_BOPAlgo_AlertTooFewArguments_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertTooFewArguments,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertTooFewArguments>;
     /// Upcast Handle<BOPAlgo_AlertTooFewArguments> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertTooFewArguments_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertTooFewArguments,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertTooFewArguments_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertTooFewArguments,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertTooFewArguments> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertTooFewArguments_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertTooFewArguments,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
+    pub fn Handle_BOPAlgo_AlertTooFewArguments_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertTooFewArguments,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Message_Alert.hxx`:45 - `Message_Alert::SupportsMerge()`
     pub fn BOPAlgo_AlertTooFewArguments_inherited_SupportsMerge(
         self_: *const BOPAlgo_AlertTooFewArguments,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
+    /// Inherited: **Source:** `Message_Alert.hxx`:50 - `Message_Alert::Merge()`
     pub fn BOPAlgo_AlertTooFewArguments_inherited_Merge(
         self_: *mut BOPAlgo_AlertTooFewArguments,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertTooFewArguments_inherited_IsInstance(
         self_: *const BOPAlgo_AlertTooFewArguments,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertTooFewArguments_inherited_IsKind(
         self_: *const BOPAlgo_AlertTooFewArguments,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertTooFewArguments_inherited_This(
         self_: *const BOPAlgo_AlertTooFewArguments,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertTooFewArguments_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertTooFewArguments,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertTooFewArguments_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertTooFewArguments,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertTooFewArguments_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertTooFewArguments,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertTooFewArguments_inherited_Delete(
         self_: *const BOPAlgo_AlertTooFewArguments,
     ) -> *const std::ffi::c_char;
@@ -1107,12 +1116,12 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:55 - `BOPAlgo_AlertBadPositioning::DynamicType()`
     pub fn BOPAlgo_AlertBadPositioning_dynamic_type(
         self_: *const BOPAlgo_AlertBadPositioning,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:55 - `BOPAlgo_AlertBadPositioning::get_type_name()`
     pub fn BOPAlgo_AlertBadPositioning_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:55 - `BOPAlgo_AlertBadPositioning::get_type_descriptor()`
     pub fn BOPAlgo_AlertBadPositioning_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertBadPositioning to TopoDS_AlertWithShape
     pub fn BOPAlgo_AlertBadPositioning_as_TopoDS_AlertWithShape(
         self_: *const BOPAlgo_AlertBadPositioning,
@@ -1140,39 +1149,39 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertBadPositioning in a Handle
     pub fn BOPAlgo_AlertBadPositioning_to_handle(
         obj: *mut BOPAlgo_AlertBadPositioning,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertBadPositioning>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertBadPositioning>;
     /// Destroy Handle<BOPAlgo_AlertBadPositioning>
-    pub fn HandleBOPAlgoAlertBadPositioning_destructor(
-        self_: *mut HandleBOPAlgoAlertBadPositioning,
+    pub fn Handle_BOPAlgo_AlertBadPositioning_destructor(
+        self_: *mut Handle_BOPAlgo_AlertBadPositioning,
     );
     /// Clone Handle<BOPAlgo_AlertBadPositioning> (increments reference count)
-    pub fn HandleBOPAlgoAlertBadPositioning_clone(
-        self_: *const HandleBOPAlgoAlertBadPositioning,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertBadPositioning>;
+    pub fn Handle_BOPAlgo_AlertBadPositioning_clone(
+        self_: *const Handle_BOPAlgo_AlertBadPositioning,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertBadPositioning>;
     /// Check if Handle<BOPAlgo_AlertBadPositioning> is null
-    pub fn HandleBOPAlgoAlertBadPositioning_is_null(
-        self_: *const HandleBOPAlgoAlertBadPositioning,
+    pub fn Handle_BOPAlgo_AlertBadPositioning_is_null(
+        self_: *const Handle_BOPAlgo_AlertBadPositioning,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertBadPositioning
-    pub fn HandleBOPAlgoAlertBadPositioning_get(
-        handle: *const HandleBOPAlgoAlertBadPositioning,
+    pub fn Handle_BOPAlgo_AlertBadPositioning_get(
+        handle: *const Handle_BOPAlgo_AlertBadPositioning,
     ) -> crate::OcctResult<*const BOPAlgo_AlertBadPositioning>;
     /// Dereference Handle to get *mut BOPAlgo_AlertBadPositioning
-    pub fn HandleBOPAlgoAlertBadPositioning_get_mut(
-        handle: *mut HandleBOPAlgoAlertBadPositioning,
+    pub fn Handle_BOPAlgo_AlertBadPositioning_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertBadPositioning,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertBadPositioning>;
     /// Upcast Handle<BOPAlgo_AlertBadPositioning> to Handle<TopoDS_AlertWithShape>
-    pub fn HandleBOPAlgoAlertBadPositioning_to_HandleTopoDSAlertWithShape(
-        self_: *const HandleBOPAlgoAlertBadPositioning,
-    ) -> crate::OcctResult<*mut HandleTopoDSAlertWithShape>;
+    pub fn Handle_BOPAlgo_AlertBadPositioning_to_Handle_TopoDS_AlertWithShape(
+        self_: *const Handle_BOPAlgo_AlertBadPositioning,
+    ) -> crate::OcctResult<*mut Handle_TopoDS_AlertWithShape>;
     /// Upcast Handle<BOPAlgo_AlertBadPositioning> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertBadPositioning_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertBadPositioning,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertBadPositioning_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertBadPositioning,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertBadPositioning> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertBadPositioning_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertBadPositioning,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BOPAlgo_AlertBadPositioning_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertBadPositioning,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn BOPAlgo_AlertBadPositioning_inherited_GetShape(
         self_: *const BOPAlgo_AlertBadPositioning,
@@ -1189,35 +1198,35 @@ unsafe extern "C" {
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
     pub fn BOPAlgo_AlertBadPositioning_inherited_Merge(
         self_: *mut BOPAlgo_AlertBadPositioning,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertBadPositioning_inherited_IsInstance(
         self_: *const BOPAlgo_AlertBadPositioning,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertBadPositioning_inherited_IsKind(
         self_: *const BOPAlgo_AlertBadPositioning,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertBadPositioning_inherited_This(
         self_: *const BOPAlgo_AlertBadPositioning,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertBadPositioning_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertBadPositioning,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertBadPositioning_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertBadPositioning,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertBadPositioning_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertBadPositioning,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertBadPositioning_inherited_Delete(
         self_: *const BOPAlgo_AlertBadPositioning,
     ) -> *const std::ffi::c_char;
@@ -1230,12 +1239,12 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:58 - `BOPAlgo_AlertEmptyShape::DynamicType()`
     pub fn BOPAlgo_AlertEmptyShape_dynamic_type(
         self_: *const BOPAlgo_AlertEmptyShape,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:58 - `BOPAlgo_AlertEmptyShape::get_type_name()`
     pub fn BOPAlgo_AlertEmptyShape_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:58 - `BOPAlgo_AlertEmptyShape::get_type_descriptor()`
     pub fn BOPAlgo_AlertEmptyShape_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertEmptyShape to TopoDS_AlertWithShape
     pub fn BOPAlgo_AlertEmptyShape_as_TopoDS_AlertWithShape(
         self_: *const BOPAlgo_AlertEmptyShape,
@@ -1263,36 +1272,37 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertEmptyShape in a Handle
     pub fn BOPAlgo_AlertEmptyShape_to_handle(
         obj: *mut BOPAlgo_AlertEmptyShape,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertEmptyShape>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertEmptyShape>;
     /// Destroy Handle<BOPAlgo_AlertEmptyShape>
-    pub fn HandleBOPAlgoAlertEmptyShape_destructor(self_: *mut HandleBOPAlgoAlertEmptyShape);
+    pub fn Handle_BOPAlgo_AlertEmptyShape_destructor(self_: *mut Handle_BOPAlgo_AlertEmptyShape);
     /// Clone Handle<BOPAlgo_AlertEmptyShape> (increments reference count)
-    pub fn HandleBOPAlgoAlertEmptyShape_clone(
-        self_: *const HandleBOPAlgoAlertEmptyShape,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertEmptyShape>;
+    pub fn Handle_BOPAlgo_AlertEmptyShape_clone(
+        self_: *const Handle_BOPAlgo_AlertEmptyShape,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertEmptyShape>;
     /// Check if Handle<BOPAlgo_AlertEmptyShape> is null
-    pub fn HandleBOPAlgoAlertEmptyShape_is_null(self_: *const HandleBOPAlgoAlertEmptyShape)
-        -> bool;
+    pub fn Handle_BOPAlgo_AlertEmptyShape_is_null(
+        self_: *const Handle_BOPAlgo_AlertEmptyShape,
+    ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertEmptyShape
-    pub fn HandleBOPAlgoAlertEmptyShape_get(
-        handle: *const HandleBOPAlgoAlertEmptyShape,
+    pub fn Handle_BOPAlgo_AlertEmptyShape_get(
+        handle: *const Handle_BOPAlgo_AlertEmptyShape,
     ) -> crate::OcctResult<*const BOPAlgo_AlertEmptyShape>;
     /// Dereference Handle to get *mut BOPAlgo_AlertEmptyShape
-    pub fn HandleBOPAlgoAlertEmptyShape_get_mut(
-        handle: *mut HandleBOPAlgoAlertEmptyShape,
+    pub fn Handle_BOPAlgo_AlertEmptyShape_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertEmptyShape,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertEmptyShape>;
     /// Upcast Handle<BOPAlgo_AlertEmptyShape> to Handle<TopoDS_AlertWithShape>
-    pub fn HandleBOPAlgoAlertEmptyShape_to_HandleTopoDSAlertWithShape(
-        self_: *const HandleBOPAlgoAlertEmptyShape,
-    ) -> crate::OcctResult<*mut HandleTopoDSAlertWithShape>;
+    pub fn Handle_BOPAlgo_AlertEmptyShape_to_Handle_TopoDS_AlertWithShape(
+        self_: *const Handle_BOPAlgo_AlertEmptyShape,
+    ) -> crate::OcctResult<*mut Handle_TopoDS_AlertWithShape>;
     /// Upcast Handle<BOPAlgo_AlertEmptyShape> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertEmptyShape_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertEmptyShape,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertEmptyShape_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertEmptyShape,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertEmptyShape> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertEmptyShape_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertEmptyShape,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BOPAlgo_AlertEmptyShape_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertEmptyShape,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn BOPAlgo_AlertEmptyShape_inherited_GetShape(
         self_: *const BOPAlgo_AlertEmptyShape,
@@ -1309,35 +1319,35 @@ unsafe extern "C" {
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
     pub fn BOPAlgo_AlertEmptyShape_inherited_Merge(
         self_: *mut BOPAlgo_AlertEmptyShape,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertEmptyShape_inherited_IsInstance(
         self_: *const BOPAlgo_AlertEmptyShape,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertEmptyShape_inherited_IsKind(
         self_: *const BOPAlgo_AlertEmptyShape,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertEmptyShape_inherited_This(
         self_: *const BOPAlgo_AlertEmptyShape,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertEmptyShape_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertEmptyShape,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertEmptyShape_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertEmptyShape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertEmptyShape_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertEmptyShape,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertEmptyShape_inherited_Delete(
         self_: *const BOPAlgo_AlertEmptyShape,
     ) -> *const std::ffi::c_char;
@@ -1350,13 +1360,13 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:61 - `BOPAlgo_AlertNotSplittableEdge::DynamicType()`
     pub fn BOPAlgo_AlertNotSplittableEdge_dynamic_type(
         self_: *const BOPAlgo_AlertNotSplittableEdge,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:61 - `BOPAlgo_AlertNotSplittableEdge::get_type_name()`
     pub fn BOPAlgo_AlertNotSplittableEdge_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:61 - `BOPAlgo_AlertNotSplittableEdge::get_type_descriptor()`
     pub fn BOPAlgo_AlertNotSplittableEdge_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertNotSplittableEdge to TopoDS_AlertWithShape
     pub fn BOPAlgo_AlertNotSplittableEdge_as_TopoDS_AlertWithShape(
         self_: *const BOPAlgo_AlertNotSplittableEdge,
@@ -1384,39 +1394,39 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertNotSplittableEdge in a Handle
     pub fn BOPAlgo_AlertNotSplittableEdge_to_handle(
         obj: *mut BOPAlgo_AlertNotSplittableEdge,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertNotSplittableEdge>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertNotSplittableEdge>;
     /// Destroy Handle<BOPAlgo_AlertNotSplittableEdge>
-    pub fn HandleBOPAlgoAlertNotSplittableEdge_destructor(
-        self_: *mut HandleBOPAlgoAlertNotSplittableEdge,
+    pub fn Handle_BOPAlgo_AlertNotSplittableEdge_destructor(
+        self_: *mut Handle_BOPAlgo_AlertNotSplittableEdge,
     );
     /// Clone Handle<BOPAlgo_AlertNotSplittableEdge> (increments reference count)
-    pub fn HandleBOPAlgoAlertNotSplittableEdge_clone(
-        self_: *const HandleBOPAlgoAlertNotSplittableEdge,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertNotSplittableEdge>;
+    pub fn Handle_BOPAlgo_AlertNotSplittableEdge_clone(
+        self_: *const Handle_BOPAlgo_AlertNotSplittableEdge,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertNotSplittableEdge>;
     /// Check if Handle<BOPAlgo_AlertNotSplittableEdge> is null
-    pub fn HandleBOPAlgoAlertNotSplittableEdge_is_null(
-        self_: *const HandleBOPAlgoAlertNotSplittableEdge,
+    pub fn Handle_BOPAlgo_AlertNotSplittableEdge_is_null(
+        self_: *const Handle_BOPAlgo_AlertNotSplittableEdge,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertNotSplittableEdge
-    pub fn HandleBOPAlgoAlertNotSplittableEdge_get(
-        handle: *const HandleBOPAlgoAlertNotSplittableEdge,
+    pub fn Handle_BOPAlgo_AlertNotSplittableEdge_get(
+        handle: *const Handle_BOPAlgo_AlertNotSplittableEdge,
     ) -> crate::OcctResult<*const BOPAlgo_AlertNotSplittableEdge>;
     /// Dereference Handle to get *mut BOPAlgo_AlertNotSplittableEdge
-    pub fn HandleBOPAlgoAlertNotSplittableEdge_get_mut(
-        handle: *mut HandleBOPAlgoAlertNotSplittableEdge,
+    pub fn Handle_BOPAlgo_AlertNotSplittableEdge_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertNotSplittableEdge,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertNotSplittableEdge>;
     /// Upcast Handle<BOPAlgo_AlertNotSplittableEdge> to Handle<TopoDS_AlertWithShape>
-    pub fn HandleBOPAlgoAlertNotSplittableEdge_to_HandleTopoDSAlertWithShape(
-        self_: *const HandleBOPAlgoAlertNotSplittableEdge,
-    ) -> crate::OcctResult<*mut HandleTopoDSAlertWithShape>;
+    pub fn Handle_BOPAlgo_AlertNotSplittableEdge_to_Handle_TopoDS_AlertWithShape(
+        self_: *const Handle_BOPAlgo_AlertNotSplittableEdge,
+    ) -> crate::OcctResult<*mut Handle_TopoDS_AlertWithShape>;
     /// Upcast Handle<BOPAlgo_AlertNotSplittableEdge> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertNotSplittableEdge_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertNotSplittableEdge,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertNotSplittableEdge_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertNotSplittableEdge,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertNotSplittableEdge> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertNotSplittableEdge_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertNotSplittableEdge,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BOPAlgo_AlertNotSplittableEdge_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertNotSplittableEdge,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn BOPAlgo_AlertNotSplittableEdge_inherited_GetShape(
         self_: *const BOPAlgo_AlertNotSplittableEdge,
@@ -1433,35 +1443,35 @@ unsafe extern "C" {
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
     pub fn BOPAlgo_AlertNotSplittableEdge_inherited_Merge(
         self_: *mut BOPAlgo_AlertNotSplittableEdge,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertNotSplittableEdge_inherited_IsInstance(
         self_: *const BOPAlgo_AlertNotSplittableEdge,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertNotSplittableEdge_inherited_IsKind(
         self_: *const BOPAlgo_AlertNotSplittableEdge,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertNotSplittableEdge_inherited_This(
         self_: *const BOPAlgo_AlertNotSplittableEdge,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertNotSplittableEdge_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertNotSplittableEdge,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertNotSplittableEdge_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertNotSplittableEdge,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertNotSplittableEdge_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertNotSplittableEdge,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertNotSplittableEdge_inherited_Delete(
         self_: *const BOPAlgo_AlertNotSplittableEdge,
     ) -> *const std::ffi::c_char;
@@ -1476,13 +1486,13 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:64 - `BOPAlgo_AlertRemovalOfIBForEdgesFailed::DynamicType()`
     pub fn BOPAlgo_AlertRemovalOfIBForEdgesFailed_dynamic_type(
         self_: *const BOPAlgo_AlertRemovalOfIBForEdgesFailed,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:64 - `BOPAlgo_AlertRemovalOfIBForEdgesFailed::get_type_name()`
     pub fn BOPAlgo_AlertRemovalOfIBForEdgesFailed_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:64 - `BOPAlgo_AlertRemovalOfIBForEdgesFailed::get_type_descriptor()`
     pub fn BOPAlgo_AlertRemovalOfIBForEdgesFailed_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertRemovalOfIBForEdgesFailed to TopoDS_AlertWithShape
     pub fn BOPAlgo_AlertRemovalOfIBForEdgesFailed_as_TopoDS_AlertWithShape(
         self_: *const BOPAlgo_AlertRemovalOfIBForEdgesFailed,
@@ -1510,39 +1520,39 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertRemovalOfIBForEdgesFailed in a Handle
     pub fn BOPAlgo_AlertRemovalOfIBForEdgesFailed_to_handle(
         obj: *mut BOPAlgo_AlertRemovalOfIBForEdgesFailed,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertRemovalOfIBForEdgesFailed>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed>;
     /// Destroy Handle<BOPAlgo_AlertRemovalOfIBForEdgesFailed>
-    pub fn HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_destructor(
-        self_: *mut HandleBOPAlgoAlertRemovalOfIBForEdgesFailed,
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed_destructor(
+        self_: *mut Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed,
     );
     /// Clone Handle<BOPAlgo_AlertRemovalOfIBForEdgesFailed> (increments reference count)
-    pub fn HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_clone(
-        self_: *const HandleBOPAlgoAlertRemovalOfIBForEdgesFailed,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertRemovalOfIBForEdgesFailed>;
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed_clone(
+        self_: *const Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed>;
     /// Check if Handle<BOPAlgo_AlertRemovalOfIBForEdgesFailed> is null
-    pub fn HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_is_null(
-        self_: *const HandleBOPAlgoAlertRemovalOfIBForEdgesFailed,
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed_is_null(
+        self_: *const Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertRemovalOfIBForEdgesFailed
-    pub fn HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_get(
-        handle: *const HandleBOPAlgoAlertRemovalOfIBForEdgesFailed,
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed_get(
+        handle: *const Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed,
     ) -> crate::OcctResult<*const BOPAlgo_AlertRemovalOfIBForEdgesFailed>;
     /// Dereference Handle to get *mut BOPAlgo_AlertRemovalOfIBForEdgesFailed
-    pub fn HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_get_mut(
-        handle: *mut HandleBOPAlgoAlertRemovalOfIBForEdgesFailed,
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertRemovalOfIBForEdgesFailed>;
     /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForEdgesFailed> to Handle<TopoDS_AlertWithShape>
-    pub fn HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_to_HandleTopoDSAlertWithShape(
-        self_: *const HandleBOPAlgoAlertRemovalOfIBForEdgesFailed,
-    ) -> crate::OcctResult<*mut HandleTopoDSAlertWithShape>;
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed_to_Handle_TopoDS_AlertWithShape(
+        self_: *const Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed,
+    ) -> crate::OcctResult<*mut Handle_TopoDS_AlertWithShape>;
     /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForEdgesFailed> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertRemovalOfIBForEdgesFailed,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForEdgesFailed> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertRemovalOfIBForEdgesFailed,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn BOPAlgo_AlertRemovalOfIBForEdgesFailed_inherited_GetShape(
         self_: *const BOPAlgo_AlertRemovalOfIBForEdgesFailed,
@@ -1559,35 +1569,35 @@ unsafe extern "C" {
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
     pub fn BOPAlgo_AlertRemovalOfIBForEdgesFailed_inherited_Merge(
         self_: *mut BOPAlgo_AlertRemovalOfIBForEdgesFailed,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertRemovalOfIBForEdgesFailed_inherited_IsInstance(
         self_: *const BOPAlgo_AlertRemovalOfIBForEdgesFailed,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertRemovalOfIBForEdgesFailed_inherited_IsKind(
         self_: *const BOPAlgo_AlertRemovalOfIBForEdgesFailed,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertRemovalOfIBForEdgesFailed_inherited_This(
         self_: *const BOPAlgo_AlertRemovalOfIBForEdgesFailed,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertRemovalOfIBForEdgesFailed_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertRemovalOfIBForEdgesFailed,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertRemovalOfIBForEdgesFailed_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertRemovalOfIBForEdgesFailed,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertRemovalOfIBForEdgesFailed_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertRemovalOfIBForEdgesFailed,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertRemovalOfIBForEdgesFailed_inherited_Delete(
         self_: *const BOPAlgo_AlertRemovalOfIBForEdgesFailed,
     ) -> *const std::ffi::c_char;
@@ -1602,13 +1612,13 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:67 - `BOPAlgo_AlertRemovalOfIBForFacesFailed::DynamicType()`
     pub fn BOPAlgo_AlertRemovalOfIBForFacesFailed_dynamic_type(
         self_: *const BOPAlgo_AlertRemovalOfIBForFacesFailed,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:67 - `BOPAlgo_AlertRemovalOfIBForFacesFailed::get_type_name()`
     pub fn BOPAlgo_AlertRemovalOfIBForFacesFailed_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:67 - `BOPAlgo_AlertRemovalOfIBForFacesFailed::get_type_descriptor()`
     pub fn BOPAlgo_AlertRemovalOfIBForFacesFailed_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertRemovalOfIBForFacesFailed to TopoDS_AlertWithShape
     pub fn BOPAlgo_AlertRemovalOfIBForFacesFailed_as_TopoDS_AlertWithShape(
         self_: *const BOPAlgo_AlertRemovalOfIBForFacesFailed,
@@ -1636,39 +1646,39 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertRemovalOfIBForFacesFailed in a Handle
     pub fn BOPAlgo_AlertRemovalOfIBForFacesFailed_to_handle(
         obj: *mut BOPAlgo_AlertRemovalOfIBForFacesFailed,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertRemovalOfIBForFacesFailed>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed>;
     /// Destroy Handle<BOPAlgo_AlertRemovalOfIBForFacesFailed>
-    pub fn HandleBOPAlgoAlertRemovalOfIBForFacesFailed_destructor(
-        self_: *mut HandleBOPAlgoAlertRemovalOfIBForFacesFailed,
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed_destructor(
+        self_: *mut Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed,
     );
     /// Clone Handle<BOPAlgo_AlertRemovalOfIBForFacesFailed> (increments reference count)
-    pub fn HandleBOPAlgoAlertRemovalOfIBForFacesFailed_clone(
-        self_: *const HandleBOPAlgoAlertRemovalOfIBForFacesFailed,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertRemovalOfIBForFacesFailed>;
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed_clone(
+        self_: *const Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed>;
     /// Check if Handle<BOPAlgo_AlertRemovalOfIBForFacesFailed> is null
-    pub fn HandleBOPAlgoAlertRemovalOfIBForFacesFailed_is_null(
-        self_: *const HandleBOPAlgoAlertRemovalOfIBForFacesFailed,
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed_is_null(
+        self_: *const Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertRemovalOfIBForFacesFailed
-    pub fn HandleBOPAlgoAlertRemovalOfIBForFacesFailed_get(
-        handle: *const HandleBOPAlgoAlertRemovalOfIBForFacesFailed,
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed_get(
+        handle: *const Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed,
     ) -> crate::OcctResult<*const BOPAlgo_AlertRemovalOfIBForFacesFailed>;
     /// Dereference Handle to get *mut BOPAlgo_AlertRemovalOfIBForFacesFailed
-    pub fn HandleBOPAlgoAlertRemovalOfIBForFacesFailed_get_mut(
-        handle: *mut HandleBOPAlgoAlertRemovalOfIBForFacesFailed,
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertRemovalOfIBForFacesFailed>;
     /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForFacesFailed> to Handle<TopoDS_AlertWithShape>
-    pub fn HandleBOPAlgoAlertRemovalOfIBForFacesFailed_to_HandleTopoDSAlertWithShape(
-        self_: *const HandleBOPAlgoAlertRemovalOfIBForFacesFailed,
-    ) -> crate::OcctResult<*mut HandleTopoDSAlertWithShape>;
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed_to_Handle_TopoDS_AlertWithShape(
+        self_: *const Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed,
+    ) -> crate::OcctResult<*mut Handle_TopoDS_AlertWithShape>;
     /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForFacesFailed> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertRemovalOfIBForFacesFailed_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertRemovalOfIBForFacesFailed,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForFacesFailed> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertRemovalOfIBForFacesFailed_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertRemovalOfIBForFacesFailed,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn BOPAlgo_AlertRemovalOfIBForFacesFailed_inherited_GetShape(
         self_: *const BOPAlgo_AlertRemovalOfIBForFacesFailed,
@@ -1685,35 +1695,35 @@ unsafe extern "C" {
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
     pub fn BOPAlgo_AlertRemovalOfIBForFacesFailed_inherited_Merge(
         self_: *mut BOPAlgo_AlertRemovalOfIBForFacesFailed,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertRemovalOfIBForFacesFailed_inherited_IsInstance(
         self_: *const BOPAlgo_AlertRemovalOfIBForFacesFailed,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertRemovalOfIBForFacesFailed_inherited_IsKind(
         self_: *const BOPAlgo_AlertRemovalOfIBForFacesFailed,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertRemovalOfIBForFacesFailed_inherited_This(
         self_: *const BOPAlgo_AlertRemovalOfIBForFacesFailed,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertRemovalOfIBForFacesFailed_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertRemovalOfIBForFacesFailed,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertRemovalOfIBForFacesFailed_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertRemovalOfIBForFacesFailed,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertRemovalOfIBForFacesFailed_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertRemovalOfIBForFacesFailed,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertRemovalOfIBForFacesFailed_inherited_Delete(
         self_: *const BOPAlgo_AlertRemovalOfIBForFacesFailed,
     ) -> *const std::ffi::c_char;
@@ -1728,13 +1738,13 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:70 - `BOPAlgo_AlertRemovalOfIBForMDimShapes::DynamicType()`
     pub fn BOPAlgo_AlertRemovalOfIBForMDimShapes_dynamic_type(
         self_: *const BOPAlgo_AlertRemovalOfIBForMDimShapes,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:70 - `BOPAlgo_AlertRemovalOfIBForMDimShapes::get_type_name()`
     pub fn BOPAlgo_AlertRemovalOfIBForMDimShapes_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:70 - `BOPAlgo_AlertRemovalOfIBForMDimShapes::get_type_descriptor()`
     pub fn BOPAlgo_AlertRemovalOfIBForMDimShapes_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertRemovalOfIBForMDimShapes to TopoDS_AlertWithShape
     pub fn BOPAlgo_AlertRemovalOfIBForMDimShapes_as_TopoDS_AlertWithShape(
         self_: *const BOPAlgo_AlertRemovalOfIBForMDimShapes,
@@ -1762,39 +1772,39 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertRemovalOfIBForMDimShapes in a Handle
     pub fn BOPAlgo_AlertRemovalOfIBForMDimShapes_to_handle(
         obj: *mut BOPAlgo_AlertRemovalOfIBForMDimShapes,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertRemovalOfIBForMDimShapes>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes>;
     /// Destroy Handle<BOPAlgo_AlertRemovalOfIBForMDimShapes>
-    pub fn HandleBOPAlgoAlertRemovalOfIBForMDimShapes_destructor(
-        self_: *mut HandleBOPAlgoAlertRemovalOfIBForMDimShapes,
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes_destructor(
+        self_: *mut Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes,
     );
     /// Clone Handle<BOPAlgo_AlertRemovalOfIBForMDimShapes> (increments reference count)
-    pub fn HandleBOPAlgoAlertRemovalOfIBForMDimShapes_clone(
-        self_: *const HandleBOPAlgoAlertRemovalOfIBForMDimShapes,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertRemovalOfIBForMDimShapes>;
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes_clone(
+        self_: *const Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes>;
     /// Check if Handle<BOPAlgo_AlertRemovalOfIBForMDimShapes> is null
-    pub fn HandleBOPAlgoAlertRemovalOfIBForMDimShapes_is_null(
-        self_: *const HandleBOPAlgoAlertRemovalOfIBForMDimShapes,
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes_is_null(
+        self_: *const Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertRemovalOfIBForMDimShapes
-    pub fn HandleBOPAlgoAlertRemovalOfIBForMDimShapes_get(
-        handle: *const HandleBOPAlgoAlertRemovalOfIBForMDimShapes,
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes_get(
+        handle: *const Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes,
     ) -> crate::OcctResult<*const BOPAlgo_AlertRemovalOfIBForMDimShapes>;
     /// Dereference Handle to get *mut BOPAlgo_AlertRemovalOfIBForMDimShapes
-    pub fn HandleBOPAlgoAlertRemovalOfIBForMDimShapes_get_mut(
-        handle: *mut HandleBOPAlgoAlertRemovalOfIBForMDimShapes,
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertRemovalOfIBForMDimShapes>;
     /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForMDimShapes> to Handle<TopoDS_AlertWithShape>
-    pub fn HandleBOPAlgoAlertRemovalOfIBForMDimShapes_to_HandleTopoDSAlertWithShape(
-        self_: *const HandleBOPAlgoAlertRemovalOfIBForMDimShapes,
-    ) -> crate::OcctResult<*mut HandleTopoDSAlertWithShape>;
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes_to_Handle_TopoDS_AlertWithShape(
+        self_: *const Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes,
+    ) -> crate::OcctResult<*mut Handle_TopoDS_AlertWithShape>;
     /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForMDimShapes> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertRemovalOfIBForMDimShapes_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertRemovalOfIBForMDimShapes,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForMDimShapes> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertRemovalOfIBForMDimShapes_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertRemovalOfIBForMDimShapes,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn BOPAlgo_AlertRemovalOfIBForMDimShapes_inherited_GetShape(
         self_: *const BOPAlgo_AlertRemovalOfIBForMDimShapes,
@@ -1811,35 +1821,35 @@ unsafe extern "C" {
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
     pub fn BOPAlgo_AlertRemovalOfIBForMDimShapes_inherited_Merge(
         self_: *mut BOPAlgo_AlertRemovalOfIBForMDimShapes,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertRemovalOfIBForMDimShapes_inherited_IsInstance(
         self_: *const BOPAlgo_AlertRemovalOfIBForMDimShapes,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertRemovalOfIBForMDimShapes_inherited_IsKind(
         self_: *const BOPAlgo_AlertRemovalOfIBForMDimShapes,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertRemovalOfIBForMDimShapes_inherited_This(
         self_: *const BOPAlgo_AlertRemovalOfIBForMDimShapes,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertRemovalOfIBForMDimShapes_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertRemovalOfIBForMDimShapes,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertRemovalOfIBForMDimShapes_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertRemovalOfIBForMDimShapes,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertRemovalOfIBForMDimShapes_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertRemovalOfIBForMDimShapes,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertRemovalOfIBForMDimShapes_inherited_Delete(
         self_: *const BOPAlgo_AlertRemovalOfIBForMDimShapes,
     ) -> *const std::ffi::c_char;
@@ -1854,13 +1864,13 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:73 - `BOPAlgo_AlertRemovalOfIBForSolidsFailed::DynamicType()`
     pub fn BOPAlgo_AlertRemovalOfIBForSolidsFailed_dynamic_type(
         self_: *const BOPAlgo_AlertRemovalOfIBForSolidsFailed,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:73 - `BOPAlgo_AlertRemovalOfIBForSolidsFailed::get_type_name()`
     pub fn BOPAlgo_AlertRemovalOfIBForSolidsFailed_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:73 - `BOPAlgo_AlertRemovalOfIBForSolidsFailed::get_type_descriptor()`
     pub fn BOPAlgo_AlertRemovalOfIBForSolidsFailed_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertRemovalOfIBForSolidsFailed to TopoDS_AlertWithShape
     pub fn BOPAlgo_AlertRemovalOfIBForSolidsFailed_as_TopoDS_AlertWithShape(
         self_: *const BOPAlgo_AlertRemovalOfIBForSolidsFailed,
@@ -1888,39 +1898,39 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertRemovalOfIBForSolidsFailed in a Handle
     pub fn BOPAlgo_AlertRemovalOfIBForSolidsFailed_to_handle(
         obj: *mut BOPAlgo_AlertRemovalOfIBForSolidsFailed,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertRemovalOfIBForSolidsFailed>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed>;
     /// Destroy Handle<BOPAlgo_AlertRemovalOfIBForSolidsFailed>
-    pub fn HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_destructor(
-        self_: *mut HandleBOPAlgoAlertRemovalOfIBForSolidsFailed,
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed_destructor(
+        self_: *mut Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed,
     );
     /// Clone Handle<BOPAlgo_AlertRemovalOfIBForSolidsFailed> (increments reference count)
-    pub fn HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_clone(
-        self_: *const HandleBOPAlgoAlertRemovalOfIBForSolidsFailed,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertRemovalOfIBForSolidsFailed>;
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed_clone(
+        self_: *const Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed>;
     /// Check if Handle<BOPAlgo_AlertRemovalOfIBForSolidsFailed> is null
-    pub fn HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_is_null(
-        self_: *const HandleBOPAlgoAlertRemovalOfIBForSolidsFailed,
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed_is_null(
+        self_: *const Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertRemovalOfIBForSolidsFailed
-    pub fn HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_get(
-        handle: *const HandleBOPAlgoAlertRemovalOfIBForSolidsFailed,
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed_get(
+        handle: *const Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed,
     ) -> crate::OcctResult<*const BOPAlgo_AlertRemovalOfIBForSolidsFailed>;
     /// Dereference Handle to get *mut BOPAlgo_AlertRemovalOfIBForSolidsFailed
-    pub fn HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_get_mut(
-        handle: *mut HandleBOPAlgoAlertRemovalOfIBForSolidsFailed,
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertRemovalOfIBForSolidsFailed>;
     /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForSolidsFailed> to Handle<TopoDS_AlertWithShape>
-    pub fn HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_to_HandleTopoDSAlertWithShape(
-        self_: *const HandleBOPAlgoAlertRemovalOfIBForSolidsFailed,
-    ) -> crate::OcctResult<*mut HandleTopoDSAlertWithShape>;
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed_to_Handle_TopoDS_AlertWithShape(
+        self_: *const Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed,
+    ) -> crate::OcctResult<*mut Handle_TopoDS_AlertWithShape>;
     /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForSolidsFailed> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertRemovalOfIBForSolidsFailed,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForSolidsFailed> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertRemovalOfIBForSolidsFailed,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn BOPAlgo_AlertRemovalOfIBForSolidsFailed_inherited_GetShape(
         self_: *const BOPAlgo_AlertRemovalOfIBForSolidsFailed,
@@ -1937,35 +1947,35 @@ unsafe extern "C" {
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
     pub fn BOPAlgo_AlertRemovalOfIBForSolidsFailed_inherited_Merge(
         self_: *mut BOPAlgo_AlertRemovalOfIBForSolidsFailed,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertRemovalOfIBForSolidsFailed_inherited_IsInstance(
         self_: *const BOPAlgo_AlertRemovalOfIBForSolidsFailed,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertRemovalOfIBForSolidsFailed_inherited_IsKind(
         self_: *const BOPAlgo_AlertRemovalOfIBForSolidsFailed,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertRemovalOfIBForSolidsFailed_inherited_This(
         self_: *const BOPAlgo_AlertRemovalOfIBForSolidsFailed,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertRemovalOfIBForSolidsFailed_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertRemovalOfIBForSolidsFailed,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertRemovalOfIBForSolidsFailed_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertRemovalOfIBForSolidsFailed,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertRemovalOfIBForSolidsFailed_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertRemovalOfIBForSolidsFailed,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertRemovalOfIBForSolidsFailed_inherited_Delete(
         self_: *const BOPAlgo_AlertRemovalOfIBForSolidsFailed,
     ) -> *const std::ffi::c_char;
@@ -1980,13 +1990,13 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:76 - `BOPAlgo_AlertSelfInterferingShape::DynamicType()`
     pub fn BOPAlgo_AlertSelfInterferingShape_dynamic_type(
         self_: *const BOPAlgo_AlertSelfInterferingShape,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:76 - `BOPAlgo_AlertSelfInterferingShape::get_type_name()`
     pub fn BOPAlgo_AlertSelfInterferingShape_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:76 - `BOPAlgo_AlertSelfInterferingShape::get_type_descriptor()`
     pub fn BOPAlgo_AlertSelfInterferingShape_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertSelfInterferingShape to TopoDS_AlertWithShape
     pub fn BOPAlgo_AlertSelfInterferingShape_as_TopoDS_AlertWithShape(
         self_: *const BOPAlgo_AlertSelfInterferingShape,
@@ -2014,39 +2024,39 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertSelfInterferingShape in a Handle
     pub fn BOPAlgo_AlertSelfInterferingShape_to_handle(
         obj: *mut BOPAlgo_AlertSelfInterferingShape,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertSelfInterferingShape>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertSelfInterferingShape>;
     /// Destroy Handle<BOPAlgo_AlertSelfInterferingShape>
-    pub fn HandleBOPAlgoAlertSelfInterferingShape_destructor(
-        self_: *mut HandleBOPAlgoAlertSelfInterferingShape,
+    pub fn Handle_BOPAlgo_AlertSelfInterferingShape_destructor(
+        self_: *mut Handle_BOPAlgo_AlertSelfInterferingShape,
     );
     /// Clone Handle<BOPAlgo_AlertSelfInterferingShape> (increments reference count)
-    pub fn HandleBOPAlgoAlertSelfInterferingShape_clone(
-        self_: *const HandleBOPAlgoAlertSelfInterferingShape,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertSelfInterferingShape>;
+    pub fn Handle_BOPAlgo_AlertSelfInterferingShape_clone(
+        self_: *const Handle_BOPAlgo_AlertSelfInterferingShape,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertSelfInterferingShape>;
     /// Check if Handle<BOPAlgo_AlertSelfInterferingShape> is null
-    pub fn HandleBOPAlgoAlertSelfInterferingShape_is_null(
-        self_: *const HandleBOPAlgoAlertSelfInterferingShape,
+    pub fn Handle_BOPAlgo_AlertSelfInterferingShape_is_null(
+        self_: *const Handle_BOPAlgo_AlertSelfInterferingShape,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertSelfInterferingShape
-    pub fn HandleBOPAlgoAlertSelfInterferingShape_get(
-        handle: *const HandleBOPAlgoAlertSelfInterferingShape,
+    pub fn Handle_BOPAlgo_AlertSelfInterferingShape_get(
+        handle: *const Handle_BOPAlgo_AlertSelfInterferingShape,
     ) -> crate::OcctResult<*const BOPAlgo_AlertSelfInterferingShape>;
     /// Dereference Handle to get *mut BOPAlgo_AlertSelfInterferingShape
-    pub fn HandleBOPAlgoAlertSelfInterferingShape_get_mut(
-        handle: *mut HandleBOPAlgoAlertSelfInterferingShape,
+    pub fn Handle_BOPAlgo_AlertSelfInterferingShape_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertSelfInterferingShape,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertSelfInterferingShape>;
     /// Upcast Handle<BOPAlgo_AlertSelfInterferingShape> to Handle<TopoDS_AlertWithShape>
-    pub fn HandleBOPAlgoAlertSelfInterferingShape_to_HandleTopoDSAlertWithShape(
-        self_: *const HandleBOPAlgoAlertSelfInterferingShape,
-    ) -> crate::OcctResult<*mut HandleTopoDSAlertWithShape>;
+    pub fn Handle_BOPAlgo_AlertSelfInterferingShape_to_Handle_TopoDS_AlertWithShape(
+        self_: *const Handle_BOPAlgo_AlertSelfInterferingShape,
+    ) -> crate::OcctResult<*mut Handle_TopoDS_AlertWithShape>;
     /// Upcast Handle<BOPAlgo_AlertSelfInterferingShape> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertSelfInterferingShape_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertSelfInterferingShape,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertSelfInterferingShape_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertSelfInterferingShape,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertSelfInterferingShape> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertSelfInterferingShape_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertSelfInterferingShape,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BOPAlgo_AlertSelfInterferingShape_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertSelfInterferingShape,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn BOPAlgo_AlertSelfInterferingShape_inherited_GetShape(
         self_: *const BOPAlgo_AlertSelfInterferingShape,
@@ -2063,35 +2073,35 @@ unsafe extern "C" {
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
     pub fn BOPAlgo_AlertSelfInterferingShape_inherited_Merge(
         self_: *mut BOPAlgo_AlertSelfInterferingShape,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertSelfInterferingShape_inherited_IsInstance(
         self_: *const BOPAlgo_AlertSelfInterferingShape,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertSelfInterferingShape_inherited_IsKind(
         self_: *const BOPAlgo_AlertSelfInterferingShape,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertSelfInterferingShape_inherited_This(
         self_: *const BOPAlgo_AlertSelfInterferingShape,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertSelfInterferingShape_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertSelfInterferingShape,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertSelfInterferingShape_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertSelfInterferingShape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertSelfInterferingShape_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertSelfInterferingShape,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertSelfInterferingShape_inherited_Delete(
         self_: *const BOPAlgo_AlertSelfInterferingShape,
     ) -> *const std::ffi::c_char;
@@ -2106,13 +2116,13 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:79 - `BOPAlgo_AlertShellSplitterFailed::DynamicType()`
     pub fn BOPAlgo_AlertShellSplitterFailed_dynamic_type(
         self_: *const BOPAlgo_AlertShellSplitterFailed,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:79 - `BOPAlgo_AlertShellSplitterFailed::get_type_name()`
     pub fn BOPAlgo_AlertShellSplitterFailed_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:79 - `BOPAlgo_AlertShellSplitterFailed::get_type_descriptor()`
     pub fn BOPAlgo_AlertShellSplitterFailed_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertShellSplitterFailed to TopoDS_AlertWithShape
     pub fn BOPAlgo_AlertShellSplitterFailed_as_TopoDS_AlertWithShape(
         self_: *const BOPAlgo_AlertShellSplitterFailed,
@@ -2140,39 +2150,39 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertShellSplitterFailed in a Handle
     pub fn BOPAlgo_AlertShellSplitterFailed_to_handle(
         obj: *mut BOPAlgo_AlertShellSplitterFailed,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertShellSplitterFailed>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertShellSplitterFailed>;
     /// Destroy Handle<BOPAlgo_AlertShellSplitterFailed>
-    pub fn HandleBOPAlgoAlertShellSplitterFailed_destructor(
-        self_: *mut HandleBOPAlgoAlertShellSplitterFailed,
+    pub fn Handle_BOPAlgo_AlertShellSplitterFailed_destructor(
+        self_: *mut Handle_BOPAlgo_AlertShellSplitterFailed,
     );
     /// Clone Handle<BOPAlgo_AlertShellSplitterFailed> (increments reference count)
-    pub fn HandleBOPAlgoAlertShellSplitterFailed_clone(
-        self_: *const HandleBOPAlgoAlertShellSplitterFailed,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertShellSplitterFailed>;
+    pub fn Handle_BOPAlgo_AlertShellSplitterFailed_clone(
+        self_: *const Handle_BOPAlgo_AlertShellSplitterFailed,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertShellSplitterFailed>;
     /// Check if Handle<BOPAlgo_AlertShellSplitterFailed> is null
-    pub fn HandleBOPAlgoAlertShellSplitterFailed_is_null(
-        self_: *const HandleBOPAlgoAlertShellSplitterFailed,
+    pub fn Handle_BOPAlgo_AlertShellSplitterFailed_is_null(
+        self_: *const Handle_BOPAlgo_AlertShellSplitterFailed,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertShellSplitterFailed
-    pub fn HandleBOPAlgoAlertShellSplitterFailed_get(
-        handle: *const HandleBOPAlgoAlertShellSplitterFailed,
+    pub fn Handle_BOPAlgo_AlertShellSplitterFailed_get(
+        handle: *const Handle_BOPAlgo_AlertShellSplitterFailed,
     ) -> crate::OcctResult<*const BOPAlgo_AlertShellSplitterFailed>;
     /// Dereference Handle to get *mut BOPAlgo_AlertShellSplitterFailed
-    pub fn HandleBOPAlgoAlertShellSplitterFailed_get_mut(
-        handle: *mut HandleBOPAlgoAlertShellSplitterFailed,
+    pub fn Handle_BOPAlgo_AlertShellSplitterFailed_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertShellSplitterFailed,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertShellSplitterFailed>;
     /// Upcast Handle<BOPAlgo_AlertShellSplitterFailed> to Handle<TopoDS_AlertWithShape>
-    pub fn HandleBOPAlgoAlertShellSplitterFailed_to_HandleTopoDSAlertWithShape(
-        self_: *const HandleBOPAlgoAlertShellSplitterFailed,
-    ) -> crate::OcctResult<*mut HandleTopoDSAlertWithShape>;
+    pub fn Handle_BOPAlgo_AlertShellSplitterFailed_to_Handle_TopoDS_AlertWithShape(
+        self_: *const Handle_BOPAlgo_AlertShellSplitterFailed,
+    ) -> crate::OcctResult<*mut Handle_TopoDS_AlertWithShape>;
     /// Upcast Handle<BOPAlgo_AlertShellSplitterFailed> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertShellSplitterFailed_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertShellSplitterFailed,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertShellSplitterFailed_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertShellSplitterFailed,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertShellSplitterFailed> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertShellSplitterFailed_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertShellSplitterFailed,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BOPAlgo_AlertShellSplitterFailed_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertShellSplitterFailed,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn BOPAlgo_AlertShellSplitterFailed_inherited_GetShape(
         self_: *const BOPAlgo_AlertShellSplitterFailed,
@@ -2189,35 +2199,35 @@ unsafe extern "C" {
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
     pub fn BOPAlgo_AlertShellSplitterFailed_inherited_Merge(
         self_: *mut BOPAlgo_AlertShellSplitterFailed,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertShellSplitterFailed_inherited_IsInstance(
         self_: *const BOPAlgo_AlertShellSplitterFailed,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertShellSplitterFailed_inherited_IsKind(
         self_: *const BOPAlgo_AlertShellSplitterFailed,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertShellSplitterFailed_inherited_This(
         self_: *const BOPAlgo_AlertShellSplitterFailed,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertShellSplitterFailed_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertShellSplitterFailed,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertShellSplitterFailed_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertShellSplitterFailed,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertShellSplitterFailed_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertShellSplitterFailed,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertShellSplitterFailed_inherited_Delete(
         self_: *const BOPAlgo_AlertShellSplitterFailed,
     ) -> *const std::ffi::c_char;
@@ -2230,12 +2240,12 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:82 - `BOPAlgo_AlertTooSmallEdge::DynamicType()`
     pub fn BOPAlgo_AlertTooSmallEdge_dynamic_type(
         self_: *const BOPAlgo_AlertTooSmallEdge,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:82 - `BOPAlgo_AlertTooSmallEdge::get_type_name()`
     pub fn BOPAlgo_AlertTooSmallEdge_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:82 - `BOPAlgo_AlertTooSmallEdge::get_type_descriptor()`
     pub fn BOPAlgo_AlertTooSmallEdge_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertTooSmallEdge to TopoDS_AlertWithShape
     pub fn BOPAlgo_AlertTooSmallEdge_as_TopoDS_AlertWithShape(
         self_: *const BOPAlgo_AlertTooSmallEdge,
@@ -2263,37 +2273,39 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertTooSmallEdge in a Handle
     pub fn BOPAlgo_AlertTooSmallEdge_to_handle(
         obj: *mut BOPAlgo_AlertTooSmallEdge,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertTooSmallEdge>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertTooSmallEdge>;
     /// Destroy Handle<BOPAlgo_AlertTooSmallEdge>
-    pub fn HandleBOPAlgoAlertTooSmallEdge_destructor(self_: *mut HandleBOPAlgoAlertTooSmallEdge);
+    pub fn Handle_BOPAlgo_AlertTooSmallEdge_destructor(
+        self_: *mut Handle_BOPAlgo_AlertTooSmallEdge,
+    );
     /// Clone Handle<BOPAlgo_AlertTooSmallEdge> (increments reference count)
-    pub fn HandleBOPAlgoAlertTooSmallEdge_clone(
-        self_: *const HandleBOPAlgoAlertTooSmallEdge,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertTooSmallEdge>;
+    pub fn Handle_BOPAlgo_AlertTooSmallEdge_clone(
+        self_: *const Handle_BOPAlgo_AlertTooSmallEdge,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertTooSmallEdge>;
     /// Check if Handle<BOPAlgo_AlertTooSmallEdge> is null
-    pub fn HandleBOPAlgoAlertTooSmallEdge_is_null(
-        self_: *const HandleBOPAlgoAlertTooSmallEdge,
+    pub fn Handle_BOPAlgo_AlertTooSmallEdge_is_null(
+        self_: *const Handle_BOPAlgo_AlertTooSmallEdge,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertTooSmallEdge
-    pub fn HandleBOPAlgoAlertTooSmallEdge_get(
-        handle: *const HandleBOPAlgoAlertTooSmallEdge,
+    pub fn Handle_BOPAlgo_AlertTooSmallEdge_get(
+        handle: *const Handle_BOPAlgo_AlertTooSmallEdge,
     ) -> crate::OcctResult<*const BOPAlgo_AlertTooSmallEdge>;
     /// Dereference Handle to get *mut BOPAlgo_AlertTooSmallEdge
-    pub fn HandleBOPAlgoAlertTooSmallEdge_get_mut(
-        handle: *mut HandleBOPAlgoAlertTooSmallEdge,
+    pub fn Handle_BOPAlgo_AlertTooSmallEdge_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertTooSmallEdge,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertTooSmallEdge>;
     /// Upcast Handle<BOPAlgo_AlertTooSmallEdge> to Handle<TopoDS_AlertWithShape>
-    pub fn HandleBOPAlgoAlertTooSmallEdge_to_HandleTopoDSAlertWithShape(
-        self_: *const HandleBOPAlgoAlertTooSmallEdge,
-    ) -> crate::OcctResult<*mut HandleTopoDSAlertWithShape>;
+    pub fn Handle_BOPAlgo_AlertTooSmallEdge_to_Handle_TopoDS_AlertWithShape(
+        self_: *const Handle_BOPAlgo_AlertTooSmallEdge,
+    ) -> crate::OcctResult<*mut Handle_TopoDS_AlertWithShape>;
     /// Upcast Handle<BOPAlgo_AlertTooSmallEdge> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertTooSmallEdge_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertTooSmallEdge,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertTooSmallEdge_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertTooSmallEdge,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertTooSmallEdge> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertTooSmallEdge_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertTooSmallEdge,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BOPAlgo_AlertTooSmallEdge_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertTooSmallEdge,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn BOPAlgo_AlertTooSmallEdge_inherited_GetShape(
         self_: *const BOPAlgo_AlertTooSmallEdge,
@@ -2310,35 +2322,35 @@ unsafe extern "C" {
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
     pub fn BOPAlgo_AlertTooSmallEdge_inherited_Merge(
         self_: *mut BOPAlgo_AlertTooSmallEdge,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertTooSmallEdge_inherited_IsInstance(
         self_: *const BOPAlgo_AlertTooSmallEdge,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertTooSmallEdge_inherited_IsKind(
         self_: *const BOPAlgo_AlertTooSmallEdge,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertTooSmallEdge_inherited_This(
         self_: *const BOPAlgo_AlertTooSmallEdge,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertTooSmallEdge_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertTooSmallEdge,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertTooSmallEdge_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertTooSmallEdge,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertTooSmallEdge_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertTooSmallEdge,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertTooSmallEdge_inherited_Delete(
         self_: *const BOPAlgo_AlertTooSmallEdge,
     ) -> *const std::ffi::c_char;
@@ -2353,13 +2365,13 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:85 - `BOPAlgo_AlertIntersectionOfPairOfShapesFailed::DynamicType()`
     pub fn BOPAlgo_AlertIntersectionOfPairOfShapesFailed_dynamic_type(
         self_: *const BOPAlgo_AlertIntersectionOfPairOfShapesFailed,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:85 - `BOPAlgo_AlertIntersectionOfPairOfShapesFailed::get_type_name()`
     pub fn BOPAlgo_AlertIntersectionOfPairOfShapesFailed_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:85 - `BOPAlgo_AlertIntersectionOfPairOfShapesFailed::get_type_descriptor()`
     pub fn BOPAlgo_AlertIntersectionOfPairOfShapesFailed_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertIntersectionOfPairOfShapesFailed to TopoDS_AlertWithShape
     pub fn BOPAlgo_AlertIntersectionOfPairOfShapesFailed_as_TopoDS_AlertWithShape(
         self_: *const BOPAlgo_AlertIntersectionOfPairOfShapesFailed,
@@ -2387,39 +2399,39 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertIntersectionOfPairOfShapesFailed in a Handle
     pub fn BOPAlgo_AlertIntersectionOfPairOfShapesFailed_to_handle(
         obj: *mut BOPAlgo_AlertIntersectionOfPairOfShapesFailed,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed>;
     /// Destroy Handle<BOPAlgo_AlertIntersectionOfPairOfShapesFailed>
-    pub fn HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_destructor(
-        self_: *mut HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed,
+    pub fn Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed_destructor(
+        self_: *mut Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed,
     );
     /// Clone Handle<BOPAlgo_AlertIntersectionOfPairOfShapesFailed> (increments reference count)
-    pub fn HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_clone(
-        self_: *const HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed>;
+    pub fn Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed_clone(
+        self_: *const Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed>;
     /// Check if Handle<BOPAlgo_AlertIntersectionOfPairOfShapesFailed> is null
-    pub fn HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_is_null(
-        self_: *const HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed,
+    pub fn Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed_is_null(
+        self_: *const Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertIntersectionOfPairOfShapesFailed
-    pub fn HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_get(
-        handle: *const HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed,
+    pub fn Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed_get(
+        handle: *const Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed,
     ) -> crate::OcctResult<*const BOPAlgo_AlertIntersectionOfPairOfShapesFailed>;
     /// Dereference Handle to get *mut BOPAlgo_AlertIntersectionOfPairOfShapesFailed
-    pub fn HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_get_mut(
-        handle: *mut HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed,
+    pub fn Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertIntersectionOfPairOfShapesFailed>;
     /// Upcast Handle<BOPAlgo_AlertIntersectionOfPairOfShapesFailed> to Handle<TopoDS_AlertWithShape>
-    pub fn HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_to_HandleTopoDSAlertWithShape(
-        self_: *const HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed,
-    ) -> crate::OcctResult<*mut HandleTopoDSAlertWithShape>;
+    pub fn Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed_to_Handle_TopoDS_AlertWithShape(
+        self_: *const Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed,
+    ) -> crate::OcctResult<*mut Handle_TopoDS_AlertWithShape>;
     /// Upcast Handle<BOPAlgo_AlertIntersectionOfPairOfShapesFailed> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertIntersectionOfPairOfShapesFailed> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn BOPAlgo_AlertIntersectionOfPairOfShapesFailed_inherited_GetShape(
         self_: *const BOPAlgo_AlertIntersectionOfPairOfShapesFailed,
@@ -2436,35 +2448,35 @@ unsafe extern "C" {
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
     pub fn BOPAlgo_AlertIntersectionOfPairOfShapesFailed_inherited_Merge(
         self_: *mut BOPAlgo_AlertIntersectionOfPairOfShapesFailed,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertIntersectionOfPairOfShapesFailed_inherited_IsInstance(
         self_: *const BOPAlgo_AlertIntersectionOfPairOfShapesFailed,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertIntersectionOfPairOfShapesFailed_inherited_IsKind(
         self_: *const BOPAlgo_AlertIntersectionOfPairOfShapesFailed,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertIntersectionOfPairOfShapesFailed_inherited_This(
         self_: *const BOPAlgo_AlertIntersectionOfPairOfShapesFailed,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertIntersectionOfPairOfShapesFailed_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertIntersectionOfPairOfShapesFailed,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertIntersectionOfPairOfShapesFailed_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertIntersectionOfPairOfShapesFailed,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertIntersectionOfPairOfShapesFailed_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertIntersectionOfPairOfShapesFailed,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertIntersectionOfPairOfShapesFailed_inherited_Delete(
         self_: *const BOPAlgo_AlertIntersectionOfPairOfShapesFailed,
     ) -> *const std::ffi::c_char;
@@ -2479,13 +2491,13 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:88 - `BOPAlgo_AlertBuildingPCurveFailed::DynamicType()`
     pub fn BOPAlgo_AlertBuildingPCurveFailed_dynamic_type(
         self_: *const BOPAlgo_AlertBuildingPCurveFailed,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:88 - `BOPAlgo_AlertBuildingPCurveFailed::get_type_name()`
     pub fn BOPAlgo_AlertBuildingPCurveFailed_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:88 - `BOPAlgo_AlertBuildingPCurveFailed::get_type_descriptor()`
     pub fn BOPAlgo_AlertBuildingPCurveFailed_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertBuildingPCurveFailed to TopoDS_AlertWithShape
     pub fn BOPAlgo_AlertBuildingPCurveFailed_as_TopoDS_AlertWithShape(
         self_: *const BOPAlgo_AlertBuildingPCurveFailed,
@@ -2513,39 +2525,39 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertBuildingPCurveFailed in a Handle
     pub fn BOPAlgo_AlertBuildingPCurveFailed_to_handle(
         obj: *mut BOPAlgo_AlertBuildingPCurveFailed,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertBuildingPCurveFailed>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertBuildingPCurveFailed>;
     /// Destroy Handle<BOPAlgo_AlertBuildingPCurveFailed>
-    pub fn HandleBOPAlgoAlertBuildingPCurveFailed_destructor(
-        self_: *mut HandleBOPAlgoAlertBuildingPCurveFailed,
+    pub fn Handle_BOPAlgo_AlertBuildingPCurveFailed_destructor(
+        self_: *mut Handle_BOPAlgo_AlertBuildingPCurveFailed,
     );
     /// Clone Handle<BOPAlgo_AlertBuildingPCurveFailed> (increments reference count)
-    pub fn HandleBOPAlgoAlertBuildingPCurveFailed_clone(
-        self_: *const HandleBOPAlgoAlertBuildingPCurveFailed,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertBuildingPCurveFailed>;
+    pub fn Handle_BOPAlgo_AlertBuildingPCurveFailed_clone(
+        self_: *const Handle_BOPAlgo_AlertBuildingPCurveFailed,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertBuildingPCurveFailed>;
     /// Check if Handle<BOPAlgo_AlertBuildingPCurveFailed> is null
-    pub fn HandleBOPAlgoAlertBuildingPCurveFailed_is_null(
-        self_: *const HandleBOPAlgoAlertBuildingPCurveFailed,
+    pub fn Handle_BOPAlgo_AlertBuildingPCurveFailed_is_null(
+        self_: *const Handle_BOPAlgo_AlertBuildingPCurveFailed,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertBuildingPCurveFailed
-    pub fn HandleBOPAlgoAlertBuildingPCurveFailed_get(
-        handle: *const HandleBOPAlgoAlertBuildingPCurveFailed,
+    pub fn Handle_BOPAlgo_AlertBuildingPCurveFailed_get(
+        handle: *const Handle_BOPAlgo_AlertBuildingPCurveFailed,
     ) -> crate::OcctResult<*const BOPAlgo_AlertBuildingPCurveFailed>;
     /// Dereference Handle to get *mut BOPAlgo_AlertBuildingPCurveFailed
-    pub fn HandleBOPAlgoAlertBuildingPCurveFailed_get_mut(
-        handle: *mut HandleBOPAlgoAlertBuildingPCurveFailed,
+    pub fn Handle_BOPAlgo_AlertBuildingPCurveFailed_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertBuildingPCurveFailed,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertBuildingPCurveFailed>;
     /// Upcast Handle<BOPAlgo_AlertBuildingPCurveFailed> to Handle<TopoDS_AlertWithShape>
-    pub fn HandleBOPAlgoAlertBuildingPCurveFailed_to_HandleTopoDSAlertWithShape(
-        self_: *const HandleBOPAlgoAlertBuildingPCurveFailed,
-    ) -> crate::OcctResult<*mut HandleTopoDSAlertWithShape>;
+    pub fn Handle_BOPAlgo_AlertBuildingPCurveFailed_to_Handle_TopoDS_AlertWithShape(
+        self_: *const Handle_BOPAlgo_AlertBuildingPCurveFailed,
+    ) -> crate::OcctResult<*mut Handle_TopoDS_AlertWithShape>;
     /// Upcast Handle<BOPAlgo_AlertBuildingPCurveFailed> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertBuildingPCurveFailed_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertBuildingPCurveFailed,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertBuildingPCurveFailed_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertBuildingPCurveFailed,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertBuildingPCurveFailed> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertBuildingPCurveFailed_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertBuildingPCurveFailed,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BOPAlgo_AlertBuildingPCurveFailed_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertBuildingPCurveFailed,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn BOPAlgo_AlertBuildingPCurveFailed_inherited_GetShape(
         self_: *const BOPAlgo_AlertBuildingPCurveFailed,
@@ -2562,35 +2574,35 @@ unsafe extern "C" {
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
     pub fn BOPAlgo_AlertBuildingPCurveFailed_inherited_Merge(
         self_: *mut BOPAlgo_AlertBuildingPCurveFailed,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertBuildingPCurveFailed_inherited_IsInstance(
         self_: *const BOPAlgo_AlertBuildingPCurveFailed,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertBuildingPCurveFailed_inherited_IsKind(
         self_: *const BOPAlgo_AlertBuildingPCurveFailed,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertBuildingPCurveFailed_inherited_This(
         self_: *const BOPAlgo_AlertBuildingPCurveFailed,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertBuildingPCurveFailed_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertBuildingPCurveFailed,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertBuildingPCurveFailed_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertBuildingPCurveFailed,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertBuildingPCurveFailed_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertBuildingPCurveFailed,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertBuildingPCurveFailed_inherited_Delete(
         self_: *const BOPAlgo_AlertBuildingPCurveFailed,
     ) -> *const std::ffi::c_char;
@@ -2605,13 +2617,13 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:92 - `BOPAlgo_AlertAcquiredSelfIntersection::DynamicType()`
     pub fn BOPAlgo_AlertAcquiredSelfIntersection_dynamic_type(
         self_: *const BOPAlgo_AlertAcquiredSelfIntersection,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:92 - `BOPAlgo_AlertAcquiredSelfIntersection::get_type_name()`
     pub fn BOPAlgo_AlertAcquiredSelfIntersection_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:92 - `BOPAlgo_AlertAcquiredSelfIntersection::get_type_descriptor()`
     pub fn BOPAlgo_AlertAcquiredSelfIntersection_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertAcquiredSelfIntersection to TopoDS_AlertWithShape
     pub fn BOPAlgo_AlertAcquiredSelfIntersection_as_TopoDS_AlertWithShape(
         self_: *const BOPAlgo_AlertAcquiredSelfIntersection,
@@ -2639,39 +2651,39 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertAcquiredSelfIntersection in a Handle
     pub fn BOPAlgo_AlertAcquiredSelfIntersection_to_handle(
         obj: *mut BOPAlgo_AlertAcquiredSelfIntersection,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertAcquiredSelfIntersection>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertAcquiredSelfIntersection>;
     /// Destroy Handle<BOPAlgo_AlertAcquiredSelfIntersection>
-    pub fn HandleBOPAlgoAlertAcquiredSelfIntersection_destructor(
-        self_: *mut HandleBOPAlgoAlertAcquiredSelfIntersection,
+    pub fn Handle_BOPAlgo_AlertAcquiredSelfIntersection_destructor(
+        self_: *mut Handle_BOPAlgo_AlertAcquiredSelfIntersection,
     );
     /// Clone Handle<BOPAlgo_AlertAcquiredSelfIntersection> (increments reference count)
-    pub fn HandleBOPAlgoAlertAcquiredSelfIntersection_clone(
-        self_: *const HandleBOPAlgoAlertAcquiredSelfIntersection,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertAcquiredSelfIntersection>;
+    pub fn Handle_BOPAlgo_AlertAcquiredSelfIntersection_clone(
+        self_: *const Handle_BOPAlgo_AlertAcquiredSelfIntersection,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertAcquiredSelfIntersection>;
     /// Check if Handle<BOPAlgo_AlertAcquiredSelfIntersection> is null
-    pub fn HandleBOPAlgoAlertAcquiredSelfIntersection_is_null(
-        self_: *const HandleBOPAlgoAlertAcquiredSelfIntersection,
+    pub fn Handle_BOPAlgo_AlertAcquiredSelfIntersection_is_null(
+        self_: *const Handle_BOPAlgo_AlertAcquiredSelfIntersection,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertAcquiredSelfIntersection
-    pub fn HandleBOPAlgoAlertAcquiredSelfIntersection_get(
-        handle: *const HandleBOPAlgoAlertAcquiredSelfIntersection,
+    pub fn Handle_BOPAlgo_AlertAcquiredSelfIntersection_get(
+        handle: *const Handle_BOPAlgo_AlertAcquiredSelfIntersection,
     ) -> crate::OcctResult<*const BOPAlgo_AlertAcquiredSelfIntersection>;
     /// Dereference Handle to get *mut BOPAlgo_AlertAcquiredSelfIntersection
-    pub fn HandleBOPAlgoAlertAcquiredSelfIntersection_get_mut(
-        handle: *mut HandleBOPAlgoAlertAcquiredSelfIntersection,
+    pub fn Handle_BOPAlgo_AlertAcquiredSelfIntersection_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertAcquiredSelfIntersection,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertAcquiredSelfIntersection>;
     /// Upcast Handle<BOPAlgo_AlertAcquiredSelfIntersection> to Handle<TopoDS_AlertWithShape>
-    pub fn HandleBOPAlgoAlertAcquiredSelfIntersection_to_HandleTopoDSAlertWithShape(
-        self_: *const HandleBOPAlgoAlertAcquiredSelfIntersection,
-    ) -> crate::OcctResult<*mut HandleTopoDSAlertWithShape>;
+    pub fn Handle_BOPAlgo_AlertAcquiredSelfIntersection_to_Handle_TopoDS_AlertWithShape(
+        self_: *const Handle_BOPAlgo_AlertAcquiredSelfIntersection,
+    ) -> crate::OcctResult<*mut Handle_TopoDS_AlertWithShape>;
     /// Upcast Handle<BOPAlgo_AlertAcquiredSelfIntersection> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertAcquiredSelfIntersection_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertAcquiredSelfIntersection,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertAcquiredSelfIntersection_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertAcquiredSelfIntersection,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertAcquiredSelfIntersection> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertAcquiredSelfIntersection_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertAcquiredSelfIntersection,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BOPAlgo_AlertAcquiredSelfIntersection_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertAcquiredSelfIntersection,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn BOPAlgo_AlertAcquiredSelfIntersection_inherited_GetShape(
         self_: *const BOPAlgo_AlertAcquiredSelfIntersection,
@@ -2688,35 +2700,35 @@ unsafe extern "C" {
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
     pub fn BOPAlgo_AlertAcquiredSelfIntersection_inherited_Merge(
         self_: *mut BOPAlgo_AlertAcquiredSelfIntersection,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertAcquiredSelfIntersection_inherited_IsInstance(
         self_: *const BOPAlgo_AlertAcquiredSelfIntersection,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertAcquiredSelfIntersection_inherited_IsKind(
         self_: *const BOPAlgo_AlertAcquiredSelfIntersection,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertAcquiredSelfIntersection_inherited_This(
         self_: *const BOPAlgo_AlertAcquiredSelfIntersection,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertAcquiredSelfIntersection_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertAcquiredSelfIntersection,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertAcquiredSelfIntersection_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertAcquiredSelfIntersection,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertAcquiredSelfIntersection_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertAcquiredSelfIntersection,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertAcquiredSelfIntersection_inherited_Delete(
         self_: *const BOPAlgo_AlertAcquiredSelfIntersection,
     ) -> *const std::ffi::c_char;
@@ -2729,12 +2741,12 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:95 - `BOPAlgo_AlertUnsupportedType::DynamicType()`
     pub fn BOPAlgo_AlertUnsupportedType_dynamic_type(
         self_: *const BOPAlgo_AlertUnsupportedType,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:95 - `BOPAlgo_AlertUnsupportedType::get_type_name()`
     pub fn BOPAlgo_AlertUnsupportedType_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:95 - `BOPAlgo_AlertUnsupportedType::get_type_descriptor()`
     pub fn BOPAlgo_AlertUnsupportedType_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertUnsupportedType to TopoDS_AlertWithShape
     pub fn BOPAlgo_AlertUnsupportedType_as_TopoDS_AlertWithShape(
         self_: *const BOPAlgo_AlertUnsupportedType,
@@ -2762,39 +2774,39 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertUnsupportedType in a Handle
     pub fn BOPAlgo_AlertUnsupportedType_to_handle(
         obj: *mut BOPAlgo_AlertUnsupportedType,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnsupportedType>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertUnsupportedType>;
     /// Destroy Handle<BOPAlgo_AlertUnsupportedType>
-    pub fn HandleBOPAlgoAlertUnsupportedType_destructor(
-        self_: *mut HandleBOPAlgoAlertUnsupportedType,
+    pub fn Handle_BOPAlgo_AlertUnsupportedType_destructor(
+        self_: *mut Handle_BOPAlgo_AlertUnsupportedType,
     );
     /// Clone Handle<BOPAlgo_AlertUnsupportedType> (increments reference count)
-    pub fn HandleBOPAlgoAlertUnsupportedType_clone(
-        self_: *const HandleBOPAlgoAlertUnsupportedType,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnsupportedType>;
+    pub fn Handle_BOPAlgo_AlertUnsupportedType_clone(
+        self_: *const Handle_BOPAlgo_AlertUnsupportedType,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertUnsupportedType>;
     /// Check if Handle<BOPAlgo_AlertUnsupportedType> is null
-    pub fn HandleBOPAlgoAlertUnsupportedType_is_null(
-        self_: *const HandleBOPAlgoAlertUnsupportedType,
+    pub fn Handle_BOPAlgo_AlertUnsupportedType_is_null(
+        self_: *const Handle_BOPAlgo_AlertUnsupportedType,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertUnsupportedType
-    pub fn HandleBOPAlgoAlertUnsupportedType_get(
-        handle: *const HandleBOPAlgoAlertUnsupportedType,
+    pub fn Handle_BOPAlgo_AlertUnsupportedType_get(
+        handle: *const Handle_BOPAlgo_AlertUnsupportedType,
     ) -> crate::OcctResult<*const BOPAlgo_AlertUnsupportedType>;
     /// Dereference Handle to get *mut BOPAlgo_AlertUnsupportedType
-    pub fn HandleBOPAlgoAlertUnsupportedType_get_mut(
-        handle: *mut HandleBOPAlgoAlertUnsupportedType,
+    pub fn Handle_BOPAlgo_AlertUnsupportedType_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertUnsupportedType,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertUnsupportedType>;
     /// Upcast Handle<BOPAlgo_AlertUnsupportedType> to Handle<TopoDS_AlertWithShape>
-    pub fn HandleBOPAlgoAlertUnsupportedType_to_HandleTopoDSAlertWithShape(
-        self_: *const HandleBOPAlgoAlertUnsupportedType,
-    ) -> crate::OcctResult<*mut HandleTopoDSAlertWithShape>;
+    pub fn Handle_BOPAlgo_AlertUnsupportedType_to_Handle_TopoDS_AlertWithShape(
+        self_: *const Handle_BOPAlgo_AlertUnsupportedType,
+    ) -> crate::OcctResult<*mut Handle_TopoDS_AlertWithShape>;
     /// Upcast Handle<BOPAlgo_AlertUnsupportedType> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertUnsupportedType_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertUnsupportedType,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertUnsupportedType_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertUnsupportedType,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertUnsupportedType> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertUnsupportedType_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertUnsupportedType,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BOPAlgo_AlertUnsupportedType_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertUnsupportedType,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn BOPAlgo_AlertUnsupportedType_inherited_GetShape(
         self_: *const BOPAlgo_AlertUnsupportedType,
@@ -2811,35 +2823,35 @@ unsafe extern "C" {
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
     pub fn BOPAlgo_AlertUnsupportedType_inherited_Merge(
         self_: *mut BOPAlgo_AlertUnsupportedType,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertUnsupportedType_inherited_IsInstance(
         self_: *const BOPAlgo_AlertUnsupportedType,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertUnsupportedType_inherited_IsKind(
         self_: *const BOPAlgo_AlertUnsupportedType,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertUnsupportedType_inherited_This(
         self_: *const BOPAlgo_AlertUnsupportedType,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertUnsupportedType_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertUnsupportedType,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertUnsupportedType_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertUnsupportedType,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertUnsupportedType_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertUnsupportedType,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertUnsupportedType_inherited_Delete(
         self_: *const BOPAlgo_AlertUnsupportedType,
     ) -> *const std::ffi::c_char;
@@ -2851,12 +2863,12 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:98 - `BOPAlgo_AlertNoFacesToRemove::DynamicType()`
     pub fn BOPAlgo_AlertNoFacesToRemove_dynamic_type(
         self_: *const BOPAlgo_AlertNoFacesToRemove,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:98 - `BOPAlgo_AlertNoFacesToRemove::get_type_name()`
     pub fn BOPAlgo_AlertNoFacesToRemove_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:98 - `BOPAlgo_AlertNoFacesToRemove::get_type_descriptor()`
     pub fn BOPAlgo_AlertNoFacesToRemove_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertNoFacesToRemove to Message_Alert
     pub fn BOPAlgo_AlertNoFacesToRemove_as_Message_Alert(
         self_: *const BOPAlgo_AlertNoFacesToRemove,
@@ -2876,71 +2888,71 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertNoFacesToRemove in a Handle
     pub fn BOPAlgo_AlertNoFacesToRemove_to_handle(
         obj: *mut BOPAlgo_AlertNoFacesToRemove,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertNoFacesToRemove>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertNoFacesToRemove>;
     /// Destroy Handle<BOPAlgo_AlertNoFacesToRemove>
-    pub fn HandleBOPAlgoAlertNoFacesToRemove_destructor(
-        self_: *mut HandleBOPAlgoAlertNoFacesToRemove,
+    pub fn Handle_BOPAlgo_AlertNoFacesToRemove_destructor(
+        self_: *mut Handle_BOPAlgo_AlertNoFacesToRemove,
     );
     /// Clone Handle<BOPAlgo_AlertNoFacesToRemove> (increments reference count)
-    pub fn HandleBOPAlgoAlertNoFacesToRemove_clone(
-        self_: *const HandleBOPAlgoAlertNoFacesToRemove,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertNoFacesToRemove>;
+    pub fn Handle_BOPAlgo_AlertNoFacesToRemove_clone(
+        self_: *const Handle_BOPAlgo_AlertNoFacesToRemove,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertNoFacesToRemove>;
     /// Check if Handle<BOPAlgo_AlertNoFacesToRemove> is null
-    pub fn HandleBOPAlgoAlertNoFacesToRemove_is_null(
-        self_: *const HandleBOPAlgoAlertNoFacesToRemove,
+    pub fn Handle_BOPAlgo_AlertNoFacesToRemove_is_null(
+        self_: *const Handle_BOPAlgo_AlertNoFacesToRemove,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertNoFacesToRemove
-    pub fn HandleBOPAlgoAlertNoFacesToRemove_get(
-        handle: *const HandleBOPAlgoAlertNoFacesToRemove,
+    pub fn Handle_BOPAlgo_AlertNoFacesToRemove_get(
+        handle: *const Handle_BOPAlgo_AlertNoFacesToRemove,
     ) -> crate::OcctResult<*const BOPAlgo_AlertNoFacesToRemove>;
     /// Dereference Handle to get *mut BOPAlgo_AlertNoFacesToRemove
-    pub fn HandleBOPAlgoAlertNoFacesToRemove_get_mut(
-        handle: *mut HandleBOPAlgoAlertNoFacesToRemove,
+    pub fn Handle_BOPAlgo_AlertNoFacesToRemove_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertNoFacesToRemove,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertNoFacesToRemove>;
     /// Upcast Handle<BOPAlgo_AlertNoFacesToRemove> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertNoFacesToRemove_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertNoFacesToRemove,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertNoFacesToRemove_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertNoFacesToRemove,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertNoFacesToRemove> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertNoFacesToRemove_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertNoFacesToRemove,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
+    pub fn Handle_BOPAlgo_AlertNoFacesToRemove_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertNoFacesToRemove,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Message_Alert.hxx`:45 - `Message_Alert::SupportsMerge()`
     pub fn BOPAlgo_AlertNoFacesToRemove_inherited_SupportsMerge(
         self_: *const BOPAlgo_AlertNoFacesToRemove,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
+    /// Inherited: **Source:** `Message_Alert.hxx`:50 - `Message_Alert::Merge()`
     pub fn BOPAlgo_AlertNoFacesToRemove_inherited_Merge(
         self_: *mut BOPAlgo_AlertNoFacesToRemove,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertNoFacesToRemove_inherited_IsInstance(
         self_: *const BOPAlgo_AlertNoFacesToRemove,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertNoFacesToRemove_inherited_IsKind(
         self_: *const BOPAlgo_AlertNoFacesToRemove,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertNoFacesToRemove_inherited_This(
         self_: *const BOPAlgo_AlertNoFacesToRemove,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertNoFacesToRemove_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertNoFacesToRemove,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertNoFacesToRemove_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertNoFacesToRemove,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertNoFacesToRemove_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertNoFacesToRemove,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertNoFacesToRemove_inherited_Delete(
         self_: *const BOPAlgo_AlertNoFacesToRemove,
     ) -> *const std::ffi::c_char;
@@ -2955,13 +2967,13 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:101 - `BOPAlgo_AlertUnableToRemoveTheFeature::DynamicType()`
     pub fn BOPAlgo_AlertUnableToRemoveTheFeature_dynamic_type(
         self_: *const BOPAlgo_AlertUnableToRemoveTheFeature,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:101 - `BOPAlgo_AlertUnableToRemoveTheFeature::get_type_name()`
     pub fn BOPAlgo_AlertUnableToRemoveTheFeature_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:101 - `BOPAlgo_AlertUnableToRemoveTheFeature::get_type_descriptor()`
     pub fn BOPAlgo_AlertUnableToRemoveTheFeature_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertUnableToRemoveTheFeature to TopoDS_AlertWithShape
     pub fn BOPAlgo_AlertUnableToRemoveTheFeature_as_TopoDS_AlertWithShape(
         self_: *const BOPAlgo_AlertUnableToRemoveTheFeature,
@@ -2989,39 +3001,39 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertUnableToRemoveTheFeature in a Handle
     pub fn BOPAlgo_AlertUnableToRemoveTheFeature_to_handle(
         obj: *mut BOPAlgo_AlertUnableToRemoveTheFeature,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnableToRemoveTheFeature>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertUnableToRemoveTheFeature>;
     /// Destroy Handle<BOPAlgo_AlertUnableToRemoveTheFeature>
-    pub fn HandleBOPAlgoAlertUnableToRemoveTheFeature_destructor(
-        self_: *mut HandleBOPAlgoAlertUnableToRemoveTheFeature,
+    pub fn Handle_BOPAlgo_AlertUnableToRemoveTheFeature_destructor(
+        self_: *mut Handle_BOPAlgo_AlertUnableToRemoveTheFeature,
     );
     /// Clone Handle<BOPAlgo_AlertUnableToRemoveTheFeature> (increments reference count)
-    pub fn HandleBOPAlgoAlertUnableToRemoveTheFeature_clone(
-        self_: *const HandleBOPAlgoAlertUnableToRemoveTheFeature,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnableToRemoveTheFeature>;
+    pub fn Handle_BOPAlgo_AlertUnableToRemoveTheFeature_clone(
+        self_: *const Handle_BOPAlgo_AlertUnableToRemoveTheFeature,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertUnableToRemoveTheFeature>;
     /// Check if Handle<BOPAlgo_AlertUnableToRemoveTheFeature> is null
-    pub fn HandleBOPAlgoAlertUnableToRemoveTheFeature_is_null(
-        self_: *const HandleBOPAlgoAlertUnableToRemoveTheFeature,
+    pub fn Handle_BOPAlgo_AlertUnableToRemoveTheFeature_is_null(
+        self_: *const Handle_BOPAlgo_AlertUnableToRemoveTheFeature,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertUnableToRemoveTheFeature
-    pub fn HandleBOPAlgoAlertUnableToRemoveTheFeature_get(
-        handle: *const HandleBOPAlgoAlertUnableToRemoveTheFeature,
+    pub fn Handle_BOPAlgo_AlertUnableToRemoveTheFeature_get(
+        handle: *const Handle_BOPAlgo_AlertUnableToRemoveTheFeature,
     ) -> crate::OcctResult<*const BOPAlgo_AlertUnableToRemoveTheFeature>;
     /// Dereference Handle to get *mut BOPAlgo_AlertUnableToRemoveTheFeature
-    pub fn HandleBOPAlgoAlertUnableToRemoveTheFeature_get_mut(
-        handle: *mut HandleBOPAlgoAlertUnableToRemoveTheFeature,
+    pub fn Handle_BOPAlgo_AlertUnableToRemoveTheFeature_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertUnableToRemoveTheFeature,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertUnableToRemoveTheFeature>;
     /// Upcast Handle<BOPAlgo_AlertUnableToRemoveTheFeature> to Handle<TopoDS_AlertWithShape>
-    pub fn HandleBOPAlgoAlertUnableToRemoveTheFeature_to_HandleTopoDSAlertWithShape(
-        self_: *const HandleBOPAlgoAlertUnableToRemoveTheFeature,
-    ) -> crate::OcctResult<*mut HandleTopoDSAlertWithShape>;
+    pub fn Handle_BOPAlgo_AlertUnableToRemoveTheFeature_to_Handle_TopoDS_AlertWithShape(
+        self_: *const Handle_BOPAlgo_AlertUnableToRemoveTheFeature,
+    ) -> crate::OcctResult<*mut Handle_TopoDS_AlertWithShape>;
     /// Upcast Handle<BOPAlgo_AlertUnableToRemoveTheFeature> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertUnableToRemoveTheFeature_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertUnableToRemoveTheFeature,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertUnableToRemoveTheFeature_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertUnableToRemoveTheFeature,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertUnableToRemoveTheFeature> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertUnableToRemoveTheFeature_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertUnableToRemoveTheFeature,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BOPAlgo_AlertUnableToRemoveTheFeature_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertUnableToRemoveTheFeature,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn BOPAlgo_AlertUnableToRemoveTheFeature_inherited_GetShape(
         self_: *const BOPAlgo_AlertUnableToRemoveTheFeature,
@@ -3038,35 +3050,35 @@ unsafe extern "C" {
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
     pub fn BOPAlgo_AlertUnableToRemoveTheFeature_inherited_Merge(
         self_: *mut BOPAlgo_AlertUnableToRemoveTheFeature,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertUnableToRemoveTheFeature_inherited_IsInstance(
         self_: *const BOPAlgo_AlertUnableToRemoveTheFeature,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertUnableToRemoveTheFeature_inherited_IsKind(
         self_: *const BOPAlgo_AlertUnableToRemoveTheFeature,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertUnableToRemoveTheFeature_inherited_This(
         self_: *const BOPAlgo_AlertUnableToRemoveTheFeature,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertUnableToRemoveTheFeature_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertUnableToRemoveTheFeature,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertUnableToRemoveTheFeature_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertUnableToRemoveTheFeature,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertUnableToRemoveTheFeature_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertUnableToRemoveTheFeature,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertUnableToRemoveTheFeature_inherited_Delete(
         self_: *const BOPAlgo_AlertUnableToRemoveTheFeature,
     ) -> *const std::ffi::c_char;
@@ -3080,13 +3092,13 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:104 - `BOPAlgo_AlertRemoveFeaturesFailed::DynamicType()`
     pub fn BOPAlgo_AlertRemoveFeaturesFailed_dynamic_type(
         self_: *const BOPAlgo_AlertRemoveFeaturesFailed,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:104 - `BOPAlgo_AlertRemoveFeaturesFailed::get_type_name()`
     pub fn BOPAlgo_AlertRemoveFeaturesFailed_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:104 - `BOPAlgo_AlertRemoveFeaturesFailed::get_type_descriptor()`
     pub fn BOPAlgo_AlertRemoveFeaturesFailed_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertRemoveFeaturesFailed to Message_Alert
     pub fn BOPAlgo_AlertRemoveFeaturesFailed_as_Message_Alert(
         self_: *const BOPAlgo_AlertRemoveFeaturesFailed,
@@ -3106,71 +3118,71 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertRemoveFeaturesFailed in a Handle
     pub fn BOPAlgo_AlertRemoveFeaturesFailed_to_handle(
         obj: *mut BOPAlgo_AlertRemoveFeaturesFailed,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertRemoveFeaturesFailed>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertRemoveFeaturesFailed>;
     /// Destroy Handle<BOPAlgo_AlertRemoveFeaturesFailed>
-    pub fn HandleBOPAlgoAlertRemoveFeaturesFailed_destructor(
-        self_: *mut HandleBOPAlgoAlertRemoveFeaturesFailed,
+    pub fn Handle_BOPAlgo_AlertRemoveFeaturesFailed_destructor(
+        self_: *mut Handle_BOPAlgo_AlertRemoveFeaturesFailed,
     );
     /// Clone Handle<BOPAlgo_AlertRemoveFeaturesFailed> (increments reference count)
-    pub fn HandleBOPAlgoAlertRemoveFeaturesFailed_clone(
-        self_: *const HandleBOPAlgoAlertRemoveFeaturesFailed,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertRemoveFeaturesFailed>;
+    pub fn Handle_BOPAlgo_AlertRemoveFeaturesFailed_clone(
+        self_: *const Handle_BOPAlgo_AlertRemoveFeaturesFailed,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertRemoveFeaturesFailed>;
     /// Check if Handle<BOPAlgo_AlertRemoveFeaturesFailed> is null
-    pub fn HandleBOPAlgoAlertRemoveFeaturesFailed_is_null(
-        self_: *const HandleBOPAlgoAlertRemoveFeaturesFailed,
+    pub fn Handle_BOPAlgo_AlertRemoveFeaturesFailed_is_null(
+        self_: *const Handle_BOPAlgo_AlertRemoveFeaturesFailed,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertRemoveFeaturesFailed
-    pub fn HandleBOPAlgoAlertRemoveFeaturesFailed_get(
-        handle: *const HandleBOPAlgoAlertRemoveFeaturesFailed,
+    pub fn Handle_BOPAlgo_AlertRemoveFeaturesFailed_get(
+        handle: *const Handle_BOPAlgo_AlertRemoveFeaturesFailed,
     ) -> crate::OcctResult<*const BOPAlgo_AlertRemoveFeaturesFailed>;
     /// Dereference Handle to get *mut BOPAlgo_AlertRemoveFeaturesFailed
-    pub fn HandleBOPAlgoAlertRemoveFeaturesFailed_get_mut(
-        handle: *mut HandleBOPAlgoAlertRemoveFeaturesFailed,
+    pub fn Handle_BOPAlgo_AlertRemoveFeaturesFailed_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertRemoveFeaturesFailed,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertRemoveFeaturesFailed>;
     /// Upcast Handle<BOPAlgo_AlertRemoveFeaturesFailed> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertRemoveFeaturesFailed_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertRemoveFeaturesFailed,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertRemoveFeaturesFailed_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertRemoveFeaturesFailed,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertRemoveFeaturesFailed> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertRemoveFeaturesFailed_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertRemoveFeaturesFailed,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
+    pub fn Handle_BOPAlgo_AlertRemoveFeaturesFailed_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertRemoveFeaturesFailed,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Message_Alert.hxx`:45 - `Message_Alert::SupportsMerge()`
     pub fn BOPAlgo_AlertRemoveFeaturesFailed_inherited_SupportsMerge(
         self_: *const BOPAlgo_AlertRemoveFeaturesFailed,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
+    /// Inherited: **Source:** `Message_Alert.hxx`:50 - `Message_Alert::Merge()`
     pub fn BOPAlgo_AlertRemoveFeaturesFailed_inherited_Merge(
         self_: *mut BOPAlgo_AlertRemoveFeaturesFailed,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertRemoveFeaturesFailed_inherited_IsInstance(
         self_: *const BOPAlgo_AlertRemoveFeaturesFailed,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertRemoveFeaturesFailed_inherited_IsKind(
         self_: *const BOPAlgo_AlertRemoveFeaturesFailed,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertRemoveFeaturesFailed_inherited_This(
         self_: *const BOPAlgo_AlertRemoveFeaturesFailed,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertRemoveFeaturesFailed_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertRemoveFeaturesFailed,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertRemoveFeaturesFailed_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertRemoveFeaturesFailed,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertRemoveFeaturesFailed_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertRemoveFeaturesFailed,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertRemoveFeaturesFailed_inherited_Delete(
         self_: *const BOPAlgo_AlertRemoveFeaturesFailed,
     ) -> *const std::ffi::c_char;
@@ -3185,13 +3197,13 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:108 - `BOPAlgo_AlertSolidBuilderUnusedFaces::DynamicType()`
     pub fn BOPAlgo_AlertSolidBuilderUnusedFaces_dynamic_type(
         self_: *const BOPAlgo_AlertSolidBuilderUnusedFaces,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:108 - `BOPAlgo_AlertSolidBuilderUnusedFaces::get_type_name()`
     pub fn BOPAlgo_AlertSolidBuilderUnusedFaces_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:108 - `BOPAlgo_AlertSolidBuilderUnusedFaces::get_type_descriptor()`
     pub fn BOPAlgo_AlertSolidBuilderUnusedFaces_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertSolidBuilderUnusedFaces to TopoDS_AlertWithShape
     pub fn BOPAlgo_AlertSolidBuilderUnusedFaces_as_TopoDS_AlertWithShape(
         self_: *const BOPAlgo_AlertSolidBuilderUnusedFaces,
@@ -3219,39 +3231,39 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertSolidBuilderUnusedFaces in a Handle
     pub fn BOPAlgo_AlertSolidBuilderUnusedFaces_to_handle(
         obj: *mut BOPAlgo_AlertSolidBuilderUnusedFaces,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertSolidBuilderUnusedFaces>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertSolidBuilderUnusedFaces>;
     /// Destroy Handle<BOPAlgo_AlertSolidBuilderUnusedFaces>
-    pub fn HandleBOPAlgoAlertSolidBuilderUnusedFaces_destructor(
-        self_: *mut HandleBOPAlgoAlertSolidBuilderUnusedFaces,
+    pub fn Handle_BOPAlgo_AlertSolidBuilderUnusedFaces_destructor(
+        self_: *mut Handle_BOPAlgo_AlertSolidBuilderUnusedFaces,
     );
     /// Clone Handle<BOPAlgo_AlertSolidBuilderUnusedFaces> (increments reference count)
-    pub fn HandleBOPAlgoAlertSolidBuilderUnusedFaces_clone(
-        self_: *const HandleBOPAlgoAlertSolidBuilderUnusedFaces,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertSolidBuilderUnusedFaces>;
+    pub fn Handle_BOPAlgo_AlertSolidBuilderUnusedFaces_clone(
+        self_: *const Handle_BOPAlgo_AlertSolidBuilderUnusedFaces,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertSolidBuilderUnusedFaces>;
     /// Check if Handle<BOPAlgo_AlertSolidBuilderUnusedFaces> is null
-    pub fn HandleBOPAlgoAlertSolidBuilderUnusedFaces_is_null(
-        self_: *const HandleBOPAlgoAlertSolidBuilderUnusedFaces,
+    pub fn Handle_BOPAlgo_AlertSolidBuilderUnusedFaces_is_null(
+        self_: *const Handle_BOPAlgo_AlertSolidBuilderUnusedFaces,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertSolidBuilderUnusedFaces
-    pub fn HandleBOPAlgoAlertSolidBuilderUnusedFaces_get(
-        handle: *const HandleBOPAlgoAlertSolidBuilderUnusedFaces,
+    pub fn Handle_BOPAlgo_AlertSolidBuilderUnusedFaces_get(
+        handle: *const Handle_BOPAlgo_AlertSolidBuilderUnusedFaces,
     ) -> crate::OcctResult<*const BOPAlgo_AlertSolidBuilderUnusedFaces>;
     /// Dereference Handle to get *mut BOPAlgo_AlertSolidBuilderUnusedFaces
-    pub fn HandleBOPAlgoAlertSolidBuilderUnusedFaces_get_mut(
-        handle: *mut HandleBOPAlgoAlertSolidBuilderUnusedFaces,
+    pub fn Handle_BOPAlgo_AlertSolidBuilderUnusedFaces_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertSolidBuilderUnusedFaces,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertSolidBuilderUnusedFaces>;
     /// Upcast Handle<BOPAlgo_AlertSolidBuilderUnusedFaces> to Handle<TopoDS_AlertWithShape>
-    pub fn HandleBOPAlgoAlertSolidBuilderUnusedFaces_to_HandleTopoDSAlertWithShape(
-        self_: *const HandleBOPAlgoAlertSolidBuilderUnusedFaces,
-    ) -> crate::OcctResult<*mut HandleTopoDSAlertWithShape>;
+    pub fn Handle_BOPAlgo_AlertSolidBuilderUnusedFaces_to_Handle_TopoDS_AlertWithShape(
+        self_: *const Handle_BOPAlgo_AlertSolidBuilderUnusedFaces,
+    ) -> crate::OcctResult<*mut Handle_TopoDS_AlertWithShape>;
     /// Upcast Handle<BOPAlgo_AlertSolidBuilderUnusedFaces> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertSolidBuilderUnusedFaces_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertSolidBuilderUnusedFaces,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertSolidBuilderUnusedFaces_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertSolidBuilderUnusedFaces,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertSolidBuilderUnusedFaces> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertSolidBuilderUnusedFaces_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertSolidBuilderUnusedFaces,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BOPAlgo_AlertSolidBuilderUnusedFaces_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertSolidBuilderUnusedFaces,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn BOPAlgo_AlertSolidBuilderUnusedFaces_inherited_GetShape(
         self_: *const BOPAlgo_AlertSolidBuilderUnusedFaces,
@@ -3268,35 +3280,35 @@ unsafe extern "C" {
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
     pub fn BOPAlgo_AlertSolidBuilderUnusedFaces_inherited_Merge(
         self_: *mut BOPAlgo_AlertSolidBuilderUnusedFaces,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertSolidBuilderUnusedFaces_inherited_IsInstance(
         self_: *const BOPAlgo_AlertSolidBuilderUnusedFaces,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertSolidBuilderUnusedFaces_inherited_IsKind(
         self_: *const BOPAlgo_AlertSolidBuilderUnusedFaces,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertSolidBuilderUnusedFaces_inherited_This(
         self_: *const BOPAlgo_AlertSolidBuilderUnusedFaces,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertSolidBuilderUnusedFaces_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertSolidBuilderUnusedFaces,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertSolidBuilderUnusedFaces_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertSolidBuilderUnusedFaces,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertSolidBuilderUnusedFaces_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertSolidBuilderUnusedFaces,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertSolidBuilderUnusedFaces_inherited_Delete(
         self_: *const BOPAlgo_AlertSolidBuilderUnusedFaces,
     ) -> *const std::ffi::c_char;
@@ -3311,13 +3323,13 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:112 - `BOPAlgo_AlertFaceBuilderUnusedEdges::DynamicType()`
     pub fn BOPAlgo_AlertFaceBuilderUnusedEdges_dynamic_type(
         self_: *const BOPAlgo_AlertFaceBuilderUnusedEdges,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:112 - `BOPAlgo_AlertFaceBuilderUnusedEdges::get_type_name()`
     pub fn BOPAlgo_AlertFaceBuilderUnusedEdges_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:112 - `BOPAlgo_AlertFaceBuilderUnusedEdges::get_type_descriptor()`
     pub fn BOPAlgo_AlertFaceBuilderUnusedEdges_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertFaceBuilderUnusedEdges to TopoDS_AlertWithShape
     pub fn BOPAlgo_AlertFaceBuilderUnusedEdges_as_TopoDS_AlertWithShape(
         self_: *const BOPAlgo_AlertFaceBuilderUnusedEdges,
@@ -3345,39 +3357,39 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertFaceBuilderUnusedEdges in a Handle
     pub fn BOPAlgo_AlertFaceBuilderUnusedEdges_to_handle(
         obj: *mut BOPAlgo_AlertFaceBuilderUnusedEdges,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertFaceBuilderUnusedEdges>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertFaceBuilderUnusedEdges>;
     /// Destroy Handle<BOPAlgo_AlertFaceBuilderUnusedEdges>
-    pub fn HandleBOPAlgoAlertFaceBuilderUnusedEdges_destructor(
-        self_: *mut HandleBOPAlgoAlertFaceBuilderUnusedEdges,
+    pub fn Handle_BOPAlgo_AlertFaceBuilderUnusedEdges_destructor(
+        self_: *mut Handle_BOPAlgo_AlertFaceBuilderUnusedEdges,
     );
     /// Clone Handle<BOPAlgo_AlertFaceBuilderUnusedEdges> (increments reference count)
-    pub fn HandleBOPAlgoAlertFaceBuilderUnusedEdges_clone(
-        self_: *const HandleBOPAlgoAlertFaceBuilderUnusedEdges,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertFaceBuilderUnusedEdges>;
+    pub fn Handle_BOPAlgo_AlertFaceBuilderUnusedEdges_clone(
+        self_: *const Handle_BOPAlgo_AlertFaceBuilderUnusedEdges,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertFaceBuilderUnusedEdges>;
     /// Check if Handle<BOPAlgo_AlertFaceBuilderUnusedEdges> is null
-    pub fn HandleBOPAlgoAlertFaceBuilderUnusedEdges_is_null(
-        self_: *const HandleBOPAlgoAlertFaceBuilderUnusedEdges,
+    pub fn Handle_BOPAlgo_AlertFaceBuilderUnusedEdges_is_null(
+        self_: *const Handle_BOPAlgo_AlertFaceBuilderUnusedEdges,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertFaceBuilderUnusedEdges
-    pub fn HandleBOPAlgoAlertFaceBuilderUnusedEdges_get(
-        handle: *const HandleBOPAlgoAlertFaceBuilderUnusedEdges,
+    pub fn Handle_BOPAlgo_AlertFaceBuilderUnusedEdges_get(
+        handle: *const Handle_BOPAlgo_AlertFaceBuilderUnusedEdges,
     ) -> crate::OcctResult<*const BOPAlgo_AlertFaceBuilderUnusedEdges>;
     /// Dereference Handle to get *mut BOPAlgo_AlertFaceBuilderUnusedEdges
-    pub fn HandleBOPAlgoAlertFaceBuilderUnusedEdges_get_mut(
-        handle: *mut HandleBOPAlgoAlertFaceBuilderUnusedEdges,
+    pub fn Handle_BOPAlgo_AlertFaceBuilderUnusedEdges_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertFaceBuilderUnusedEdges,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertFaceBuilderUnusedEdges>;
     /// Upcast Handle<BOPAlgo_AlertFaceBuilderUnusedEdges> to Handle<TopoDS_AlertWithShape>
-    pub fn HandleBOPAlgoAlertFaceBuilderUnusedEdges_to_HandleTopoDSAlertWithShape(
-        self_: *const HandleBOPAlgoAlertFaceBuilderUnusedEdges,
-    ) -> crate::OcctResult<*mut HandleTopoDSAlertWithShape>;
+    pub fn Handle_BOPAlgo_AlertFaceBuilderUnusedEdges_to_Handle_TopoDS_AlertWithShape(
+        self_: *const Handle_BOPAlgo_AlertFaceBuilderUnusedEdges,
+    ) -> crate::OcctResult<*mut Handle_TopoDS_AlertWithShape>;
     /// Upcast Handle<BOPAlgo_AlertFaceBuilderUnusedEdges> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertFaceBuilderUnusedEdges_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertFaceBuilderUnusedEdges,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertFaceBuilderUnusedEdges_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertFaceBuilderUnusedEdges,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertFaceBuilderUnusedEdges> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertFaceBuilderUnusedEdges_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertFaceBuilderUnusedEdges,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BOPAlgo_AlertFaceBuilderUnusedEdges_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertFaceBuilderUnusedEdges,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn BOPAlgo_AlertFaceBuilderUnusedEdges_inherited_GetShape(
         self_: *const BOPAlgo_AlertFaceBuilderUnusedEdges,
@@ -3394,35 +3406,35 @@ unsafe extern "C" {
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
     pub fn BOPAlgo_AlertFaceBuilderUnusedEdges_inherited_Merge(
         self_: *mut BOPAlgo_AlertFaceBuilderUnusedEdges,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertFaceBuilderUnusedEdges_inherited_IsInstance(
         self_: *const BOPAlgo_AlertFaceBuilderUnusedEdges,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertFaceBuilderUnusedEdges_inherited_IsKind(
         self_: *const BOPAlgo_AlertFaceBuilderUnusedEdges,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertFaceBuilderUnusedEdges_inherited_This(
         self_: *const BOPAlgo_AlertFaceBuilderUnusedEdges,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertFaceBuilderUnusedEdges_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertFaceBuilderUnusedEdges,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertFaceBuilderUnusedEdges_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertFaceBuilderUnusedEdges,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertFaceBuilderUnusedEdges_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertFaceBuilderUnusedEdges,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertFaceBuilderUnusedEdges_inherited_Delete(
         self_: *const BOPAlgo_AlertFaceBuilderUnusedEdges,
     ) -> *const std::ffi::c_char;
@@ -3437,13 +3449,13 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:115 - `BOPAlgo_AlertUnableToOrientTheShape::DynamicType()`
     pub fn BOPAlgo_AlertUnableToOrientTheShape_dynamic_type(
         self_: *const BOPAlgo_AlertUnableToOrientTheShape,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:115 - `BOPAlgo_AlertUnableToOrientTheShape::get_type_name()`
     pub fn BOPAlgo_AlertUnableToOrientTheShape_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:115 - `BOPAlgo_AlertUnableToOrientTheShape::get_type_descriptor()`
     pub fn BOPAlgo_AlertUnableToOrientTheShape_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertUnableToOrientTheShape to TopoDS_AlertWithShape
     pub fn BOPAlgo_AlertUnableToOrientTheShape_as_TopoDS_AlertWithShape(
         self_: *const BOPAlgo_AlertUnableToOrientTheShape,
@@ -3471,39 +3483,39 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertUnableToOrientTheShape in a Handle
     pub fn BOPAlgo_AlertUnableToOrientTheShape_to_handle(
         obj: *mut BOPAlgo_AlertUnableToOrientTheShape,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnableToOrientTheShape>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertUnableToOrientTheShape>;
     /// Destroy Handle<BOPAlgo_AlertUnableToOrientTheShape>
-    pub fn HandleBOPAlgoAlertUnableToOrientTheShape_destructor(
-        self_: *mut HandleBOPAlgoAlertUnableToOrientTheShape,
+    pub fn Handle_BOPAlgo_AlertUnableToOrientTheShape_destructor(
+        self_: *mut Handle_BOPAlgo_AlertUnableToOrientTheShape,
     );
     /// Clone Handle<BOPAlgo_AlertUnableToOrientTheShape> (increments reference count)
-    pub fn HandleBOPAlgoAlertUnableToOrientTheShape_clone(
-        self_: *const HandleBOPAlgoAlertUnableToOrientTheShape,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnableToOrientTheShape>;
+    pub fn Handle_BOPAlgo_AlertUnableToOrientTheShape_clone(
+        self_: *const Handle_BOPAlgo_AlertUnableToOrientTheShape,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertUnableToOrientTheShape>;
     /// Check if Handle<BOPAlgo_AlertUnableToOrientTheShape> is null
-    pub fn HandleBOPAlgoAlertUnableToOrientTheShape_is_null(
-        self_: *const HandleBOPAlgoAlertUnableToOrientTheShape,
+    pub fn Handle_BOPAlgo_AlertUnableToOrientTheShape_is_null(
+        self_: *const Handle_BOPAlgo_AlertUnableToOrientTheShape,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertUnableToOrientTheShape
-    pub fn HandleBOPAlgoAlertUnableToOrientTheShape_get(
-        handle: *const HandleBOPAlgoAlertUnableToOrientTheShape,
+    pub fn Handle_BOPAlgo_AlertUnableToOrientTheShape_get(
+        handle: *const Handle_BOPAlgo_AlertUnableToOrientTheShape,
     ) -> crate::OcctResult<*const BOPAlgo_AlertUnableToOrientTheShape>;
     /// Dereference Handle to get *mut BOPAlgo_AlertUnableToOrientTheShape
-    pub fn HandleBOPAlgoAlertUnableToOrientTheShape_get_mut(
-        handle: *mut HandleBOPAlgoAlertUnableToOrientTheShape,
+    pub fn Handle_BOPAlgo_AlertUnableToOrientTheShape_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertUnableToOrientTheShape,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertUnableToOrientTheShape>;
     /// Upcast Handle<BOPAlgo_AlertUnableToOrientTheShape> to Handle<TopoDS_AlertWithShape>
-    pub fn HandleBOPAlgoAlertUnableToOrientTheShape_to_HandleTopoDSAlertWithShape(
-        self_: *const HandleBOPAlgoAlertUnableToOrientTheShape,
-    ) -> crate::OcctResult<*mut HandleTopoDSAlertWithShape>;
+    pub fn Handle_BOPAlgo_AlertUnableToOrientTheShape_to_Handle_TopoDS_AlertWithShape(
+        self_: *const Handle_BOPAlgo_AlertUnableToOrientTheShape,
+    ) -> crate::OcctResult<*mut Handle_TopoDS_AlertWithShape>;
     /// Upcast Handle<BOPAlgo_AlertUnableToOrientTheShape> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertUnableToOrientTheShape_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertUnableToOrientTheShape,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertUnableToOrientTheShape_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertUnableToOrientTheShape,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertUnableToOrientTheShape> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertUnableToOrientTheShape_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertUnableToOrientTheShape,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BOPAlgo_AlertUnableToOrientTheShape_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertUnableToOrientTheShape,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn BOPAlgo_AlertUnableToOrientTheShape_inherited_GetShape(
         self_: *const BOPAlgo_AlertUnableToOrientTheShape,
@@ -3520,35 +3532,35 @@ unsafe extern "C" {
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
     pub fn BOPAlgo_AlertUnableToOrientTheShape_inherited_Merge(
         self_: *mut BOPAlgo_AlertUnableToOrientTheShape,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertUnableToOrientTheShape_inherited_IsInstance(
         self_: *const BOPAlgo_AlertUnableToOrientTheShape,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertUnableToOrientTheShape_inherited_IsKind(
         self_: *const BOPAlgo_AlertUnableToOrientTheShape,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertUnableToOrientTheShape_inherited_This(
         self_: *const BOPAlgo_AlertUnableToOrientTheShape,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertUnableToOrientTheShape_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertUnableToOrientTheShape,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertUnableToOrientTheShape_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertUnableToOrientTheShape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertUnableToOrientTheShape_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertUnableToOrientTheShape,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertUnableToOrientTheShape_inherited_Delete(
         self_: *const BOPAlgo_AlertUnableToOrientTheShape,
     ) -> *const std::ffi::c_char;
@@ -3561,12 +3573,12 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:118 - `BOPAlgo_AlertUnknownShape::DynamicType()`
     pub fn BOPAlgo_AlertUnknownShape_dynamic_type(
         self_: *const BOPAlgo_AlertUnknownShape,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:118 - `BOPAlgo_AlertUnknownShape::get_type_name()`
     pub fn BOPAlgo_AlertUnknownShape_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:118 - `BOPAlgo_AlertUnknownShape::get_type_descriptor()`
     pub fn BOPAlgo_AlertUnknownShape_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertUnknownShape to TopoDS_AlertWithShape
     pub fn BOPAlgo_AlertUnknownShape_as_TopoDS_AlertWithShape(
         self_: *const BOPAlgo_AlertUnknownShape,
@@ -3594,37 +3606,39 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertUnknownShape in a Handle
     pub fn BOPAlgo_AlertUnknownShape_to_handle(
         obj: *mut BOPAlgo_AlertUnknownShape,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnknownShape>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertUnknownShape>;
     /// Destroy Handle<BOPAlgo_AlertUnknownShape>
-    pub fn HandleBOPAlgoAlertUnknownShape_destructor(self_: *mut HandleBOPAlgoAlertUnknownShape);
+    pub fn Handle_BOPAlgo_AlertUnknownShape_destructor(
+        self_: *mut Handle_BOPAlgo_AlertUnknownShape,
+    );
     /// Clone Handle<BOPAlgo_AlertUnknownShape> (increments reference count)
-    pub fn HandleBOPAlgoAlertUnknownShape_clone(
-        self_: *const HandleBOPAlgoAlertUnknownShape,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnknownShape>;
+    pub fn Handle_BOPAlgo_AlertUnknownShape_clone(
+        self_: *const Handle_BOPAlgo_AlertUnknownShape,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertUnknownShape>;
     /// Check if Handle<BOPAlgo_AlertUnknownShape> is null
-    pub fn HandleBOPAlgoAlertUnknownShape_is_null(
-        self_: *const HandleBOPAlgoAlertUnknownShape,
+    pub fn Handle_BOPAlgo_AlertUnknownShape_is_null(
+        self_: *const Handle_BOPAlgo_AlertUnknownShape,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertUnknownShape
-    pub fn HandleBOPAlgoAlertUnknownShape_get(
-        handle: *const HandleBOPAlgoAlertUnknownShape,
+    pub fn Handle_BOPAlgo_AlertUnknownShape_get(
+        handle: *const Handle_BOPAlgo_AlertUnknownShape,
     ) -> crate::OcctResult<*const BOPAlgo_AlertUnknownShape>;
     /// Dereference Handle to get *mut BOPAlgo_AlertUnknownShape
-    pub fn HandleBOPAlgoAlertUnknownShape_get_mut(
-        handle: *mut HandleBOPAlgoAlertUnknownShape,
+    pub fn Handle_BOPAlgo_AlertUnknownShape_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertUnknownShape,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertUnknownShape>;
     /// Upcast Handle<BOPAlgo_AlertUnknownShape> to Handle<TopoDS_AlertWithShape>
-    pub fn HandleBOPAlgoAlertUnknownShape_to_HandleTopoDSAlertWithShape(
-        self_: *const HandleBOPAlgoAlertUnknownShape,
-    ) -> crate::OcctResult<*mut HandleTopoDSAlertWithShape>;
+    pub fn Handle_BOPAlgo_AlertUnknownShape_to_Handle_TopoDS_AlertWithShape(
+        self_: *const Handle_BOPAlgo_AlertUnknownShape,
+    ) -> crate::OcctResult<*mut Handle_TopoDS_AlertWithShape>;
     /// Upcast Handle<BOPAlgo_AlertUnknownShape> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertUnknownShape_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertUnknownShape,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertUnknownShape_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertUnknownShape,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertUnknownShape> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertUnknownShape_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertUnknownShape,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BOPAlgo_AlertUnknownShape_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertUnknownShape,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn BOPAlgo_AlertUnknownShape_inherited_GetShape(
         self_: *const BOPAlgo_AlertUnknownShape,
@@ -3641,35 +3655,35 @@ unsafe extern "C" {
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
     pub fn BOPAlgo_AlertUnknownShape_inherited_Merge(
         self_: *mut BOPAlgo_AlertUnknownShape,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertUnknownShape_inherited_IsInstance(
         self_: *const BOPAlgo_AlertUnknownShape,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertUnknownShape_inherited_IsKind(
         self_: *const BOPAlgo_AlertUnknownShape,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertUnknownShape_inherited_This(
         self_: *const BOPAlgo_AlertUnknownShape,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertUnknownShape_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertUnknownShape,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertUnknownShape_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertUnknownShape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertUnknownShape_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertUnknownShape,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertUnknownShape_inherited_Delete(
         self_: *const BOPAlgo_AlertUnknownShape,
     ) -> *const std::ffi::c_char;
@@ -3683,13 +3697,13 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:121 - `BOPAlgo_AlertNoPeriodicityRequired::DynamicType()`
     pub fn BOPAlgo_AlertNoPeriodicityRequired_dynamic_type(
         self_: *const BOPAlgo_AlertNoPeriodicityRequired,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:121 - `BOPAlgo_AlertNoPeriodicityRequired::get_type_name()`
     pub fn BOPAlgo_AlertNoPeriodicityRequired_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:121 - `BOPAlgo_AlertNoPeriodicityRequired::get_type_descriptor()`
     pub fn BOPAlgo_AlertNoPeriodicityRequired_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertNoPeriodicityRequired to Message_Alert
     pub fn BOPAlgo_AlertNoPeriodicityRequired_as_Message_Alert(
         self_: *const BOPAlgo_AlertNoPeriodicityRequired,
@@ -3709,71 +3723,71 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertNoPeriodicityRequired in a Handle
     pub fn BOPAlgo_AlertNoPeriodicityRequired_to_handle(
         obj: *mut BOPAlgo_AlertNoPeriodicityRequired,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertNoPeriodicityRequired>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertNoPeriodicityRequired>;
     /// Destroy Handle<BOPAlgo_AlertNoPeriodicityRequired>
-    pub fn HandleBOPAlgoAlertNoPeriodicityRequired_destructor(
-        self_: *mut HandleBOPAlgoAlertNoPeriodicityRequired,
+    pub fn Handle_BOPAlgo_AlertNoPeriodicityRequired_destructor(
+        self_: *mut Handle_BOPAlgo_AlertNoPeriodicityRequired,
     );
     /// Clone Handle<BOPAlgo_AlertNoPeriodicityRequired> (increments reference count)
-    pub fn HandleBOPAlgoAlertNoPeriodicityRequired_clone(
-        self_: *const HandleBOPAlgoAlertNoPeriodicityRequired,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertNoPeriodicityRequired>;
+    pub fn Handle_BOPAlgo_AlertNoPeriodicityRequired_clone(
+        self_: *const Handle_BOPAlgo_AlertNoPeriodicityRequired,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertNoPeriodicityRequired>;
     /// Check if Handle<BOPAlgo_AlertNoPeriodicityRequired> is null
-    pub fn HandleBOPAlgoAlertNoPeriodicityRequired_is_null(
-        self_: *const HandleBOPAlgoAlertNoPeriodicityRequired,
+    pub fn Handle_BOPAlgo_AlertNoPeriodicityRequired_is_null(
+        self_: *const Handle_BOPAlgo_AlertNoPeriodicityRequired,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertNoPeriodicityRequired
-    pub fn HandleBOPAlgoAlertNoPeriodicityRequired_get(
-        handle: *const HandleBOPAlgoAlertNoPeriodicityRequired,
+    pub fn Handle_BOPAlgo_AlertNoPeriodicityRequired_get(
+        handle: *const Handle_BOPAlgo_AlertNoPeriodicityRequired,
     ) -> crate::OcctResult<*const BOPAlgo_AlertNoPeriodicityRequired>;
     /// Dereference Handle to get *mut BOPAlgo_AlertNoPeriodicityRequired
-    pub fn HandleBOPAlgoAlertNoPeriodicityRequired_get_mut(
-        handle: *mut HandleBOPAlgoAlertNoPeriodicityRequired,
+    pub fn Handle_BOPAlgo_AlertNoPeriodicityRequired_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertNoPeriodicityRequired,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertNoPeriodicityRequired>;
     /// Upcast Handle<BOPAlgo_AlertNoPeriodicityRequired> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertNoPeriodicityRequired_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertNoPeriodicityRequired,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertNoPeriodicityRequired_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertNoPeriodicityRequired,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertNoPeriodicityRequired> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertNoPeriodicityRequired_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertNoPeriodicityRequired,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
+    pub fn Handle_BOPAlgo_AlertNoPeriodicityRequired_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertNoPeriodicityRequired,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Message_Alert.hxx`:45 - `Message_Alert::SupportsMerge()`
     pub fn BOPAlgo_AlertNoPeriodicityRequired_inherited_SupportsMerge(
         self_: *const BOPAlgo_AlertNoPeriodicityRequired,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
+    /// Inherited: **Source:** `Message_Alert.hxx`:50 - `Message_Alert::Merge()`
     pub fn BOPAlgo_AlertNoPeriodicityRequired_inherited_Merge(
         self_: *mut BOPAlgo_AlertNoPeriodicityRequired,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertNoPeriodicityRequired_inherited_IsInstance(
         self_: *const BOPAlgo_AlertNoPeriodicityRequired,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertNoPeriodicityRequired_inherited_IsKind(
         self_: *const BOPAlgo_AlertNoPeriodicityRequired,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertNoPeriodicityRequired_inherited_This(
         self_: *const BOPAlgo_AlertNoPeriodicityRequired,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertNoPeriodicityRequired_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertNoPeriodicityRequired,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertNoPeriodicityRequired_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertNoPeriodicityRequired,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertNoPeriodicityRequired_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertNoPeriodicityRequired,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertNoPeriodicityRequired_inherited_Delete(
         self_: *const BOPAlgo_AlertNoPeriodicityRequired,
     ) -> *const std::ffi::c_char;
@@ -3786,12 +3800,12 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:124 - `BOPAlgo_AlertUnableToTrim::DynamicType()`
     pub fn BOPAlgo_AlertUnableToTrim_dynamic_type(
         self_: *const BOPAlgo_AlertUnableToTrim,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:124 - `BOPAlgo_AlertUnableToTrim::get_type_name()`
     pub fn BOPAlgo_AlertUnableToTrim_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:124 - `BOPAlgo_AlertUnableToTrim::get_type_descriptor()`
     pub fn BOPAlgo_AlertUnableToTrim_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertUnableToTrim to TopoDS_AlertWithShape
     pub fn BOPAlgo_AlertUnableToTrim_as_TopoDS_AlertWithShape(
         self_: *const BOPAlgo_AlertUnableToTrim,
@@ -3819,37 +3833,39 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertUnableToTrim in a Handle
     pub fn BOPAlgo_AlertUnableToTrim_to_handle(
         obj: *mut BOPAlgo_AlertUnableToTrim,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnableToTrim>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertUnableToTrim>;
     /// Destroy Handle<BOPAlgo_AlertUnableToTrim>
-    pub fn HandleBOPAlgoAlertUnableToTrim_destructor(self_: *mut HandleBOPAlgoAlertUnableToTrim);
+    pub fn Handle_BOPAlgo_AlertUnableToTrim_destructor(
+        self_: *mut Handle_BOPAlgo_AlertUnableToTrim,
+    );
     /// Clone Handle<BOPAlgo_AlertUnableToTrim> (increments reference count)
-    pub fn HandleBOPAlgoAlertUnableToTrim_clone(
-        self_: *const HandleBOPAlgoAlertUnableToTrim,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnableToTrim>;
+    pub fn Handle_BOPAlgo_AlertUnableToTrim_clone(
+        self_: *const Handle_BOPAlgo_AlertUnableToTrim,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertUnableToTrim>;
     /// Check if Handle<BOPAlgo_AlertUnableToTrim> is null
-    pub fn HandleBOPAlgoAlertUnableToTrim_is_null(
-        self_: *const HandleBOPAlgoAlertUnableToTrim,
+    pub fn Handle_BOPAlgo_AlertUnableToTrim_is_null(
+        self_: *const Handle_BOPAlgo_AlertUnableToTrim,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertUnableToTrim
-    pub fn HandleBOPAlgoAlertUnableToTrim_get(
-        handle: *const HandleBOPAlgoAlertUnableToTrim,
+    pub fn Handle_BOPAlgo_AlertUnableToTrim_get(
+        handle: *const Handle_BOPAlgo_AlertUnableToTrim,
     ) -> crate::OcctResult<*const BOPAlgo_AlertUnableToTrim>;
     /// Dereference Handle to get *mut BOPAlgo_AlertUnableToTrim
-    pub fn HandleBOPAlgoAlertUnableToTrim_get_mut(
-        handle: *mut HandleBOPAlgoAlertUnableToTrim,
+    pub fn Handle_BOPAlgo_AlertUnableToTrim_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertUnableToTrim,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertUnableToTrim>;
     /// Upcast Handle<BOPAlgo_AlertUnableToTrim> to Handle<TopoDS_AlertWithShape>
-    pub fn HandleBOPAlgoAlertUnableToTrim_to_HandleTopoDSAlertWithShape(
-        self_: *const HandleBOPAlgoAlertUnableToTrim,
-    ) -> crate::OcctResult<*mut HandleTopoDSAlertWithShape>;
+    pub fn Handle_BOPAlgo_AlertUnableToTrim_to_Handle_TopoDS_AlertWithShape(
+        self_: *const Handle_BOPAlgo_AlertUnableToTrim,
+    ) -> crate::OcctResult<*mut Handle_TopoDS_AlertWithShape>;
     /// Upcast Handle<BOPAlgo_AlertUnableToTrim> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertUnableToTrim_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertUnableToTrim,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertUnableToTrim_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertUnableToTrim,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertUnableToTrim> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertUnableToTrim_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertUnableToTrim,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BOPAlgo_AlertUnableToTrim_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertUnableToTrim,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn BOPAlgo_AlertUnableToTrim_inherited_GetShape(
         self_: *const BOPAlgo_AlertUnableToTrim,
@@ -3866,35 +3882,35 @@ unsafe extern "C" {
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
     pub fn BOPAlgo_AlertUnableToTrim_inherited_Merge(
         self_: *mut BOPAlgo_AlertUnableToTrim,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertUnableToTrim_inherited_IsInstance(
         self_: *const BOPAlgo_AlertUnableToTrim,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertUnableToTrim_inherited_IsKind(
         self_: *const BOPAlgo_AlertUnableToTrim,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertUnableToTrim_inherited_This(
         self_: *const BOPAlgo_AlertUnableToTrim,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertUnableToTrim_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertUnableToTrim,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertUnableToTrim_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertUnableToTrim,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertUnableToTrim_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertUnableToTrim,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertUnableToTrim_inherited_Delete(
         self_: *const BOPAlgo_AlertUnableToTrim,
     ) -> *const std::ffi::c_char;
@@ -3909,13 +3925,13 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:127 - `BOPAlgo_AlertUnableToMakeIdentical::DynamicType()`
     pub fn BOPAlgo_AlertUnableToMakeIdentical_dynamic_type(
         self_: *const BOPAlgo_AlertUnableToMakeIdentical,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:127 - `BOPAlgo_AlertUnableToMakeIdentical::get_type_name()`
     pub fn BOPAlgo_AlertUnableToMakeIdentical_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:127 - `BOPAlgo_AlertUnableToMakeIdentical::get_type_descriptor()`
     pub fn BOPAlgo_AlertUnableToMakeIdentical_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertUnableToMakeIdentical to TopoDS_AlertWithShape
     pub fn BOPAlgo_AlertUnableToMakeIdentical_as_TopoDS_AlertWithShape(
         self_: *const BOPAlgo_AlertUnableToMakeIdentical,
@@ -3943,39 +3959,39 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertUnableToMakeIdentical in a Handle
     pub fn BOPAlgo_AlertUnableToMakeIdentical_to_handle(
         obj: *mut BOPAlgo_AlertUnableToMakeIdentical,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnableToMakeIdentical>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertUnableToMakeIdentical>;
     /// Destroy Handle<BOPAlgo_AlertUnableToMakeIdentical>
-    pub fn HandleBOPAlgoAlertUnableToMakeIdentical_destructor(
-        self_: *mut HandleBOPAlgoAlertUnableToMakeIdentical,
+    pub fn Handle_BOPAlgo_AlertUnableToMakeIdentical_destructor(
+        self_: *mut Handle_BOPAlgo_AlertUnableToMakeIdentical,
     );
     /// Clone Handle<BOPAlgo_AlertUnableToMakeIdentical> (increments reference count)
-    pub fn HandleBOPAlgoAlertUnableToMakeIdentical_clone(
-        self_: *const HandleBOPAlgoAlertUnableToMakeIdentical,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnableToMakeIdentical>;
+    pub fn Handle_BOPAlgo_AlertUnableToMakeIdentical_clone(
+        self_: *const Handle_BOPAlgo_AlertUnableToMakeIdentical,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertUnableToMakeIdentical>;
     /// Check if Handle<BOPAlgo_AlertUnableToMakeIdentical> is null
-    pub fn HandleBOPAlgoAlertUnableToMakeIdentical_is_null(
-        self_: *const HandleBOPAlgoAlertUnableToMakeIdentical,
+    pub fn Handle_BOPAlgo_AlertUnableToMakeIdentical_is_null(
+        self_: *const Handle_BOPAlgo_AlertUnableToMakeIdentical,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertUnableToMakeIdentical
-    pub fn HandleBOPAlgoAlertUnableToMakeIdentical_get(
-        handle: *const HandleBOPAlgoAlertUnableToMakeIdentical,
+    pub fn Handle_BOPAlgo_AlertUnableToMakeIdentical_get(
+        handle: *const Handle_BOPAlgo_AlertUnableToMakeIdentical,
     ) -> crate::OcctResult<*const BOPAlgo_AlertUnableToMakeIdentical>;
     /// Dereference Handle to get *mut BOPAlgo_AlertUnableToMakeIdentical
-    pub fn HandleBOPAlgoAlertUnableToMakeIdentical_get_mut(
-        handle: *mut HandleBOPAlgoAlertUnableToMakeIdentical,
+    pub fn Handle_BOPAlgo_AlertUnableToMakeIdentical_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertUnableToMakeIdentical,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertUnableToMakeIdentical>;
     /// Upcast Handle<BOPAlgo_AlertUnableToMakeIdentical> to Handle<TopoDS_AlertWithShape>
-    pub fn HandleBOPAlgoAlertUnableToMakeIdentical_to_HandleTopoDSAlertWithShape(
-        self_: *const HandleBOPAlgoAlertUnableToMakeIdentical,
-    ) -> crate::OcctResult<*mut HandleTopoDSAlertWithShape>;
+    pub fn Handle_BOPAlgo_AlertUnableToMakeIdentical_to_Handle_TopoDS_AlertWithShape(
+        self_: *const Handle_BOPAlgo_AlertUnableToMakeIdentical,
+    ) -> crate::OcctResult<*mut Handle_TopoDS_AlertWithShape>;
     /// Upcast Handle<BOPAlgo_AlertUnableToMakeIdentical> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertUnableToMakeIdentical_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertUnableToMakeIdentical,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertUnableToMakeIdentical_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertUnableToMakeIdentical,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertUnableToMakeIdentical> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertUnableToMakeIdentical_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertUnableToMakeIdentical,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BOPAlgo_AlertUnableToMakeIdentical_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertUnableToMakeIdentical,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn BOPAlgo_AlertUnableToMakeIdentical_inherited_GetShape(
         self_: *const BOPAlgo_AlertUnableToMakeIdentical,
@@ -3992,35 +4008,35 @@ unsafe extern "C" {
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
     pub fn BOPAlgo_AlertUnableToMakeIdentical_inherited_Merge(
         self_: *mut BOPAlgo_AlertUnableToMakeIdentical,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertUnableToMakeIdentical_inherited_IsInstance(
         self_: *const BOPAlgo_AlertUnableToMakeIdentical,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertUnableToMakeIdentical_inherited_IsKind(
         self_: *const BOPAlgo_AlertUnableToMakeIdentical,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertUnableToMakeIdentical_inherited_This(
         self_: *const BOPAlgo_AlertUnableToMakeIdentical,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertUnableToMakeIdentical_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertUnableToMakeIdentical,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertUnableToMakeIdentical_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertUnableToMakeIdentical,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertUnableToMakeIdentical_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertUnableToMakeIdentical,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertUnableToMakeIdentical_inherited_Delete(
         self_: *const BOPAlgo_AlertUnableToMakeIdentical,
     ) -> *const std::ffi::c_char;
@@ -4033,12 +4049,12 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:130 - `BOPAlgo_AlertUnableToRepeat::DynamicType()`
     pub fn BOPAlgo_AlertUnableToRepeat_dynamic_type(
         self_: *const BOPAlgo_AlertUnableToRepeat,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:130 - `BOPAlgo_AlertUnableToRepeat::get_type_name()`
     pub fn BOPAlgo_AlertUnableToRepeat_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:130 - `BOPAlgo_AlertUnableToRepeat::get_type_descriptor()`
     pub fn BOPAlgo_AlertUnableToRepeat_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertUnableToRepeat to TopoDS_AlertWithShape
     pub fn BOPAlgo_AlertUnableToRepeat_as_TopoDS_AlertWithShape(
         self_: *const BOPAlgo_AlertUnableToRepeat,
@@ -4066,39 +4082,39 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertUnableToRepeat in a Handle
     pub fn BOPAlgo_AlertUnableToRepeat_to_handle(
         obj: *mut BOPAlgo_AlertUnableToRepeat,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnableToRepeat>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertUnableToRepeat>;
     /// Destroy Handle<BOPAlgo_AlertUnableToRepeat>
-    pub fn HandleBOPAlgoAlertUnableToRepeat_destructor(
-        self_: *mut HandleBOPAlgoAlertUnableToRepeat,
+    pub fn Handle_BOPAlgo_AlertUnableToRepeat_destructor(
+        self_: *mut Handle_BOPAlgo_AlertUnableToRepeat,
     );
     /// Clone Handle<BOPAlgo_AlertUnableToRepeat> (increments reference count)
-    pub fn HandleBOPAlgoAlertUnableToRepeat_clone(
-        self_: *const HandleBOPAlgoAlertUnableToRepeat,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnableToRepeat>;
+    pub fn Handle_BOPAlgo_AlertUnableToRepeat_clone(
+        self_: *const Handle_BOPAlgo_AlertUnableToRepeat,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertUnableToRepeat>;
     /// Check if Handle<BOPAlgo_AlertUnableToRepeat> is null
-    pub fn HandleBOPAlgoAlertUnableToRepeat_is_null(
-        self_: *const HandleBOPAlgoAlertUnableToRepeat,
+    pub fn Handle_BOPAlgo_AlertUnableToRepeat_is_null(
+        self_: *const Handle_BOPAlgo_AlertUnableToRepeat,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertUnableToRepeat
-    pub fn HandleBOPAlgoAlertUnableToRepeat_get(
-        handle: *const HandleBOPAlgoAlertUnableToRepeat,
+    pub fn Handle_BOPAlgo_AlertUnableToRepeat_get(
+        handle: *const Handle_BOPAlgo_AlertUnableToRepeat,
     ) -> crate::OcctResult<*const BOPAlgo_AlertUnableToRepeat>;
     /// Dereference Handle to get *mut BOPAlgo_AlertUnableToRepeat
-    pub fn HandleBOPAlgoAlertUnableToRepeat_get_mut(
-        handle: *mut HandleBOPAlgoAlertUnableToRepeat,
+    pub fn Handle_BOPAlgo_AlertUnableToRepeat_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertUnableToRepeat,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertUnableToRepeat>;
     /// Upcast Handle<BOPAlgo_AlertUnableToRepeat> to Handle<TopoDS_AlertWithShape>
-    pub fn HandleBOPAlgoAlertUnableToRepeat_to_HandleTopoDSAlertWithShape(
-        self_: *const HandleBOPAlgoAlertUnableToRepeat,
-    ) -> crate::OcctResult<*mut HandleTopoDSAlertWithShape>;
+    pub fn Handle_BOPAlgo_AlertUnableToRepeat_to_Handle_TopoDS_AlertWithShape(
+        self_: *const Handle_BOPAlgo_AlertUnableToRepeat,
+    ) -> crate::OcctResult<*mut Handle_TopoDS_AlertWithShape>;
     /// Upcast Handle<BOPAlgo_AlertUnableToRepeat> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertUnableToRepeat_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertUnableToRepeat,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertUnableToRepeat_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertUnableToRepeat,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertUnableToRepeat> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertUnableToRepeat_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertUnableToRepeat,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BOPAlgo_AlertUnableToRepeat_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertUnableToRepeat,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn BOPAlgo_AlertUnableToRepeat_inherited_GetShape(
         self_: *const BOPAlgo_AlertUnableToRepeat,
@@ -4115,35 +4131,35 @@ unsafe extern "C" {
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
     pub fn BOPAlgo_AlertUnableToRepeat_inherited_Merge(
         self_: *mut BOPAlgo_AlertUnableToRepeat,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertUnableToRepeat_inherited_IsInstance(
         self_: *const BOPAlgo_AlertUnableToRepeat,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertUnableToRepeat_inherited_IsKind(
         self_: *const BOPAlgo_AlertUnableToRepeat,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertUnableToRepeat_inherited_This(
         self_: *const BOPAlgo_AlertUnableToRepeat,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertUnableToRepeat_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertUnableToRepeat,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertUnableToRepeat_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertUnableToRepeat,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertUnableToRepeat_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertUnableToRepeat,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertUnableToRepeat_inherited_Delete(
         self_: *const BOPAlgo_AlertUnableToRepeat,
     ) -> *const std::ffi::c_char;
@@ -4157,13 +4173,13 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:133 - `BOPAlgo_AlertMultiDimensionalArguments::DynamicType()`
     pub fn BOPAlgo_AlertMultiDimensionalArguments_dynamic_type(
         self_: *const BOPAlgo_AlertMultiDimensionalArguments,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:133 - `BOPAlgo_AlertMultiDimensionalArguments::get_type_name()`
     pub fn BOPAlgo_AlertMultiDimensionalArguments_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:133 - `BOPAlgo_AlertMultiDimensionalArguments::get_type_descriptor()`
     pub fn BOPAlgo_AlertMultiDimensionalArguments_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertMultiDimensionalArguments to Message_Alert
     pub fn BOPAlgo_AlertMultiDimensionalArguments_as_Message_Alert(
         self_: *const BOPAlgo_AlertMultiDimensionalArguments,
@@ -4183,71 +4199,71 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertMultiDimensionalArguments in a Handle
     pub fn BOPAlgo_AlertMultiDimensionalArguments_to_handle(
         obj: *mut BOPAlgo_AlertMultiDimensionalArguments,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertMultiDimensionalArguments>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertMultiDimensionalArguments>;
     /// Destroy Handle<BOPAlgo_AlertMultiDimensionalArguments>
-    pub fn HandleBOPAlgoAlertMultiDimensionalArguments_destructor(
-        self_: *mut HandleBOPAlgoAlertMultiDimensionalArguments,
+    pub fn Handle_BOPAlgo_AlertMultiDimensionalArguments_destructor(
+        self_: *mut Handle_BOPAlgo_AlertMultiDimensionalArguments,
     );
     /// Clone Handle<BOPAlgo_AlertMultiDimensionalArguments> (increments reference count)
-    pub fn HandleBOPAlgoAlertMultiDimensionalArguments_clone(
-        self_: *const HandleBOPAlgoAlertMultiDimensionalArguments,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertMultiDimensionalArguments>;
+    pub fn Handle_BOPAlgo_AlertMultiDimensionalArguments_clone(
+        self_: *const Handle_BOPAlgo_AlertMultiDimensionalArguments,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertMultiDimensionalArguments>;
     /// Check if Handle<BOPAlgo_AlertMultiDimensionalArguments> is null
-    pub fn HandleBOPAlgoAlertMultiDimensionalArguments_is_null(
-        self_: *const HandleBOPAlgoAlertMultiDimensionalArguments,
+    pub fn Handle_BOPAlgo_AlertMultiDimensionalArguments_is_null(
+        self_: *const Handle_BOPAlgo_AlertMultiDimensionalArguments,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertMultiDimensionalArguments
-    pub fn HandleBOPAlgoAlertMultiDimensionalArguments_get(
-        handle: *const HandleBOPAlgoAlertMultiDimensionalArguments,
+    pub fn Handle_BOPAlgo_AlertMultiDimensionalArguments_get(
+        handle: *const Handle_BOPAlgo_AlertMultiDimensionalArguments,
     ) -> crate::OcctResult<*const BOPAlgo_AlertMultiDimensionalArguments>;
     /// Dereference Handle to get *mut BOPAlgo_AlertMultiDimensionalArguments
-    pub fn HandleBOPAlgoAlertMultiDimensionalArguments_get_mut(
-        handle: *mut HandleBOPAlgoAlertMultiDimensionalArguments,
+    pub fn Handle_BOPAlgo_AlertMultiDimensionalArguments_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertMultiDimensionalArguments,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertMultiDimensionalArguments>;
     /// Upcast Handle<BOPAlgo_AlertMultiDimensionalArguments> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertMultiDimensionalArguments_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertMultiDimensionalArguments,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertMultiDimensionalArguments_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertMultiDimensionalArguments,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertMultiDimensionalArguments> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertMultiDimensionalArguments_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertMultiDimensionalArguments,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
+    pub fn Handle_BOPAlgo_AlertMultiDimensionalArguments_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertMultiDimensionalArguments,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Message_Alert.hxx`:45 - `Message_Alert::SupportsMerge()`
     pub fn BOPAlgo_AlertMultiDimensionalArguments_inherited_SupportsMerge(
         self_: *const BOPAlgo_AlertMultiDimensionalArguments,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
+    /// Inherited: **Source:** `Message_Alert.hxx`:50 - `Message_Alert::Merge()`
     pub fn BOPAlgo_AlertMultiDimensionalArguments_inherited_Merge(
         self_: *mut BOPAlgo_AlertMultiDimensionalArguments,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertMultiDimensionalArguments_inherited_IsInstance(
         self_: *const BOPAlgo_AlertMultiDimensionalArguments,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertMultiDimensionalArguments_inherited_IsKind(
         self_: *const BOPAlgo_AlertMultiDimensionalArguments,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertMultiDimensionalArguments_inherited_This(
         self_: *const BOPAlgo_AlertMultiDimensionalArguments,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertMultiDimensionalArguments_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertMultiDimensionalArguments,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertMultiDimensionalArguments_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertMultiDimensionalArguments,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertMultiDimensionalArguments_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertMultiDimensionalArguments,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertMultiDimensionalArguments_inherited_Delete(
         self_: *const BOPAlgo_AlertMultiDimensionalArguments,
     ) -> *const std::ffi::c_char;
@@ -4262,13 +4278,13 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:136 - `BOPAlgo_AlertUnableToMakePeriodic::DynamicType()`
     pub fn BOPAlgo_AlertUnableToMakePeriodic_dynamic_type(
         self_: *const BOPAlgo_AlertUnableToMakePeriodic,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:136 - `BOPAlgo_AlertUnableToMakePeriodic::get_type_name()`
     pub fn BOPAlgo_AlertUnableToMakePeriodic_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:136 - `BOPAlgo_AlertUnableToMakePeriodic::get_type_descriptor()`
     pub fn BOPAlgo_AlertUnableToMakePeriodic_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertUnableToMakePeriodic to TopoDS_AlertWithShape
     pub fn BOPAlgo_AlertUnableToMakePeriodic_as_TopoDS_AlertWithShape(
         self_: *const BOPAlgo_AlertUnableToMakePeriodic,
@@ -4296,39 +4312,39 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertUnableToMakePeriodic in a Handle
     pub fn BOPAlgo_AlertUnableToMakePeriodic_to_handle(
         obj: *mut BOPAlgo_AlertUnableToMakePeriodic,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnableToMakePeriodic>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertUnableToMakePeriodic>;
     /// Destroy Handle<BOPAlgo_AlertUnableToMakePeriodic>
-    pub fn HandleBOPAlgoAlertUnableToMakePeriodic_destructor(
-        self_: *mut HandleBOPAlgoAlertUnableToMakePeriodic,
+    pub fn Handle_BOPAlgo_AlertUnableToMakePeriodic_destructor(
+        self_: *mut Handle_BOPAlgo_AlertUnableToMakePeriodic,
     );
     /// Clone Handle<BOPAlgo_AlertUnableToMakePeriodic> (increments reference count)
-    pub fn HandleBOPAlgoAlertUnableToMakePeriodic_clone(
-        self_: *const HandleBOPAlgoAlertUnableToMakePeriodic,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnableToMakePeriodic>;
+    pub fn Handle_BOPAlgo_AlertUnableToMakePeriodic_clone(
+        self_: *const Handle_BOPAlgo_AlertUnableToMakePeriodic,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertUnableToMakePeriodic>;
     /// Check if Handle<BOPAlgo_AlertUnableToMakePeriodic> is null
-    pub fn HandleBOPAlgoAlertUnableToMakePeriodic_is_null(
-        self_: *const HandleBOPAlgoAlertUnableToMakePeriodic,
+    pub fn Handle_BOPAlgo_AlertUnableToMakePeriodic_is_null(
+        self_: *const Handle_BOPAlgo_AlertUnableToMakePeriodic,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertUnableToMakePeriodic
-    pub fn HandleBOPAlgoAlertUnableToMakePeriodic_get(
-        handle: *const HandleBOPAlgoAlertUnableToMakePeriodic,
+    pub fn Handle_BOPAlgo_AlertUnableToMakePeriodic_get(
+        handle: *const Handle_BOPAlgo_AlertUnableToMakePeriodic,
     ) -> crate::OcctResult<*const BOPAlgo_AlertUnableToMakePeriodic>;
     /// Dereference Handle to get *mut BOPAlgo_AlertUnableToMakePeriodic
-    pub fn HandleBOPAlgoAlertUnableToMakePeriodic_get_mut(
-        handle: *mut HandleBOPAlgoAlertUnableToMakePeriodic,
+    pub fn Handle_BOPAlgo_AlertUnableToMakePeriodic_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertUnableToMakePeriodic,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertUnableToMakePeriodic>;
     /// Upcast Handle<BOPAlgo_AlertUnableToMakePeriodic> to Handle<TopoDS_AlertWithShape>
-    pub fn HandleBOPAlgoAlertUnableToMakePeriodic_to_HandleTopoDSAlertWithShape(
-        self_: *const HandleBOPAlgoAlertUnableToMakePeriodic,
-    ) -> crate::OcctResult<*mut HandleTopoDSAlertWithShape>;
+    pub fn Handle_BOPAlgo_AlertUnableToMakePeriodic_to_Handle_TopoDS_AlertWithShape(
+        self_: *const Handle_BOPAlgo_AlertUnableToMakePeriodic,
+    ) -> crate::OcctResult<*mut Handle_TopoDS_AlertWithShape>;
     /// Upcast Handle<BOPAlgo_AlertUnableToMakePeriodic> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertUnableToMakePeriodic_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertUnableToMakePeriodic,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertUnableToMakePeriodic_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertUnableToMakePeriodic,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertUnableToMakePeriodic> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertUnableToMakePeriodic_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertUnableToMakePeriodic,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BOPAlgo_AlertUnableToMakePeriodic_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertUnableToMakePeriodic,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn BOPAlgo_AlertUnableToMakePeriodic_inherited_GetShape(
         self_: *const BOPAlgo_AlertUnableToMakePeriodic,
@@ -4345,35 +4361,35 @@ unsafe extern "C" {
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
     pub fn BOPAlgo_AlertUnableToMakePeriodic_inherited_Merge(
         self_: *mut BOPAlgo_AlertUnableToMakePeriodic,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertUnableToMakePeriodic_inherited_IsInstance(
         self_: *const BOPAlgo_AlertUnableToMakePeriodic,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertUnableToMakePeriodic_inherited_IsKind(
         self_: *const BOPAlgo_AlertUnableToMakePeriodic,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertUnableToMakePeriodic_inherited_This(
         self_: *const BOPAlgo_AlertUnableToMakePeriodic,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertUnableToMakePeriodic_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertUnableToMakePeriodic,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertUnableToMakePeriodic_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertUnableToMakePeriodic,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertUnableToMakePeriodic_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertUnableToMakePeriodic,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertUnableToMakePeriodic_inherited_Delete(
         self_: *const BOPAlgo_AlertUnableToMakePeriodic,
     ) -> *const std::ffi::c_char;
@@ -4386,12 +4402,12 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:139 - `BOPAlgo_AlertUnableToGlue::DynamicType()`
     pub fn BOPAlgo_AlertUnableToGlue_dynamic_type(
         self_: *const BOPAlgo_AlertUnableToGlue,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:139 - `BOPAlgo_AlertUnableToGlue::get_type_name()`
     pub fn BOPAlgo_AlertUnableToGlue_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:139 - `BOPAlgo_AlertUnableToGlue::get_type_descriptor()`
     pub fn BOPAlgo_AlertUnableToGlue_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertUnableToGlue to TopoDS_AlertWithShape
     pub fn BOPAlgo_AlertUnableToGlue_as_TopoDS_AlertWithShape(
         self_: *const BOPAlgo_AlertUnableToGlue,
@@ -4419,37 +4435,39 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertUnableToGlue in a Handle
     pub fn BOPAlgo_AlertUnableToGlue_to_handle(
         obj: *mut BOPAlgo_AlertUnableToGlue,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnableToGlue>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertUnableToGlue>;
     /// Destroy Handle<BOPAlgo_AlertUnableToGlue>
-    pub fn HandleBOPAlgoAlertUnableToGlue_destructor(self_: *mut HandleBOPAlgoAlertUnableToGlue);
+    pub fn Handle_BOPAlgo_AlertUnableToGlue_destructor(
+        self_: *mut Handle_BOPAlgo_AlertUnableToGlue,
+    );
     /// Clone Handle<BOPAlgo_AlertUnableToGlue> (increments reference count)
-    pub fn HandleBOPAlgoAlertUnableToGlue_clone(
-        self_: *const HandleBOPAlgoAlertUnableToGlue,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnableToGlue>;
+    pub fn Handle_BOPAlgo_AlertUnableToGlue_clone(
+        self_: *const Handle_BOPAlgo_AlertUnableToGlue,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertUnableToGlue>;
     /// Check if Handle<BOPAlgo_AlertUnableToGlue> is null
-    pub fn HandleBOPAlgoAlertUnableToGlue_is_null(
-        self_: *const HandleBOPAlgoAlertUnableToGlue,
+    pub fn Handle_BOPAlgo_AlertUnableToGlue_is_null(
+        self_: *const Handle_BOPAlgo_AlertUnableToGlue,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertUnableToGlue
-    pub fn HandleBOPAlgoAlertUnableToGlue_get(
-        handle: *const HandleBOPAlgoAlertUnableToGlue,
+    pub fn Handle_BOPAlgo_AlertUnableToGlue_get(
+        handle: *const Handle_BOPAlgo_AlertUnableToGlue,
     ) -> crate::OcctResult<*const BOPAlgo_AlertUnableToGlue>;
     /// Dereference Handle to get *mut BOPAlgo_AlertUnableToGlue
-    pub fn HandleBOPAlgoAlertUnableToGlue_get_mut(
-        handle: *mut HandleBOPAlgoAlertUnableToGlue,
+    pub fn Handle_BOPAlgo_AlertUnableToGlue_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertUnableToGlue,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertUnableToGlue>;
     /// Upcast Handle<BOPAlgo_AlertUnableToGlue> to Handle<TopoDS_AlertWithShape>
-    pub fn HandleBOPAlgoAlertUnableToGlue_to_HandleTopoDSAlertWithShape(
-        self_: *const HandleBOPAlgoAlertUnableToGlue,
-    ) -> crate::OcctResult<*mut HandleTopoDSAlertWithShape>;
+    pub fn Handle_BOPAlgo_AlertUnableToGlue_to_Handle_TopoDS_AlertWithShape(
+        self_: *const Handle_BOPAlgo_AlertUnableToGlue,
+    ) -> crate::OcctResult<*mut Handle_TopoDS_AlertWithShape>;
     /// Upcast Handle<BOPAlgo_AlertUnableToGlue> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertUnableToGlue_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertUnableToGlue,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertUnableToGlue_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertUnableToGlue,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertUnableToGlue> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertUnableToGlue_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertUnableToGlue,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BOPAlgo_AlertUnableToGlue_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertUnableToGlue,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn BOPAlgo_AlertUnableToGlue_inherited_GetShape(
         self_: *const BOPAlgo_AlertUnableToGlue,
@@ -4466,35 +4484,35 @@ unsafe extern "C" {
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
     pub fn BOPAlgo_AlertUnableToGlue_inherited_Merge(
         self_: *mut BOPAlgo_AlertUnableToGlue,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertUnableToGlue_inherited_IsInstance(
         self_: *const BOPAlgo_AlertUnableToGlue,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertUnableToGlue_inherited_IsKind(
         self_: *const BOPAlgo_AlertUnableToGlue,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertUnableToGlue_inherited_This(
         self_: *const BOPAlgo_AlertUnableToGlue,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertUnableToGlue_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertUnableToGlue,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertUnableToGlue_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertUnableToGlue,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertUnableToGlue_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertUnableToGlue,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertUnableToGlue_inherited_Delete(
         self_: *const BOPAlgo_AlertUnableToGlue,
     ) -> *const std::ffi::c_char;
@@ -4507,13 +4525,13 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:142 - `BOPAlgo_AlertShapeIsNotPeriodic::DynamicType()`
     pub fn BOPAlgo_AlertShapeIsNotPeriodic_dynamic_type(
         self_: *const BOPAlgo_AlertShapeIsNotPeriodic,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:142 - `BOPAlgo_AlertShapeIsNotPeriodic::get_type_name()`
     pub fn BOPAlgo_AlertShapeIsNotPeriodic_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:142 - `BOPAlgo_AlertShapeIsNotPeriodic::get_type_descriptor()`
     pub fn BOPAlgo_AlertShapeIsNotPeriodic_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertShapeIsNotPeriodic to TopoDS_AlertWithShape
     pub fn BOPAlgo_AlertShapeIsNotPeriodic_as_TopoDS_AlertWithShape(
         self_: *const BOPAlgo_AlertShapeIsNotPeriodic,
@@ -4541,39 +4559,39 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertShapeIsNotPeriodic in a Handle
     pub fn BOPAlgo_AlertShapeIsNotPeriodic_to_handle(
         obj: *mut BOPAlgo_AlertShapeIsNotPeriodic,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertShapeIsNotPeriodic>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertShapeIsNotPeriodic>;
     /// Destroy Handle<BOPAlgo_AlertShapeIsNotPeriodic>
-    pub fn HandleBOPAlgoAlertShapeIsNotPeriodic_destructor(
-        self_: *mut HandleBOPAlgoAlertShapeIsNotPeriodic,
+    pub fn Handle_BOPAlgo_AlertShapeIsNotPeriodic_destructor(
+        self_: *mut Handle_BOPAlgo_AlertShapeIsNotPeriodic,
     );
     /// Clone Handle<BOPAlgo_AlertShapeIsNotPeriodic> (increments reference count)
-    pub fn HandleBOPAlgoAlertShapeIsNotPeriodic_clone(
-        self_: *const HandleBOPAlgoAlertShapeIsNotPeriodic,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertShapeIsNotPeriodic>;
+    pub fn Handle_BOPAlgo_AlertShapeIsNotPeriodic_clone(
+        self_: *const Handle_BOPAlgo_AlertShapeIsNotPeriodic,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertShapeIsNotPeriodic>;
     /// Check if Handle<BOPAlgo_AlertShapeIsNotPeriodic> is null
-    pub fn HandleBOPAlgoAlertShapeIsNotPeriodic_is_null(
-        self_: *const HandleBOPAlgoAlertShapeIsNotPeriodic,
+    pub fn Handle_BOPAlgo_AlertShapeIsNotPeriodic_is_null(
+        self_: *const Handle_BOPAlgo_AlertShapeIsNotPeriodic,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertShapeIsNotPeriodic
-    pub fn HandleBOPAlgoAlertShapeIsNotPeriodic_get(
-        handle: *const HandleBOPAlgoAlertShapeIsNotPeriodic,
+    pub fn Handle_BOPAlgo_AlertShapeIsNotPeriodic_get(
+        handle: *const Handle_BOPAlgo_AlertShapeIsNotPeriodic,
     ) -> crate::OcctResult<*const BOPAlgo_AlertShapeIsNotPeriodic>;
     /// Dereference Handle to get *mut BOPAlgo_AlertShapeIsNotPeriodic
-    pub fn HandleBOPAlgoAlertShapeIsNotPeriodic_get_mut(
-        handle: *mut HandleBOPAlgoAlertShapeIsNotPeriodic,
+    pub fn Handle_BOPAlgo_AlertShapeIsNotPeriodic_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertShapeIsNotPeriodic,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertShapeIsNotPeriodic>;
     /// Upcast Handle<BOPAlgo_AlertShapeIsNotPeriodic> to Handle<TopoDS_AlertWithShape>
-    pub fn HandleBOPAlgoAlertShapeIsNotPeriodic_to_HandleTopoDSAlertWithShape(
-        self_: *const HandleBOPAlgoAlertShapeIsNotPeriodic,
-    ) -> crate::OcctResult<*mut HandleTopoDSAlertWithShape>;
+    pub fn Handle_BOPAlgo_AlertShapeIsNotPeriodic_to_Handle_TopoDS_AlertWithShape(
+        self_: *const Handle_BOPAlgo_AlertShapeIsNotPeriodic,
+    ) -> crate::OcctResult<*mut Handle_TopoDS_AlertWithShape>;
     /// Upcast Handle<BOPAlgo_AlertShapeIsNotPeriodic> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertShapeIsNotPeriodic_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertShapeIsNotPeriodic,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertShapeIsNotPeriodic_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertShapeIsNotPeriodic,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertShapeIsNotPeriodic> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertShapeIsNotPeriodic_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertShapeIsNotPeriodic,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BOPAlgo_AlertShapeIsNotPeriodic_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertShapeIsNotPeriodic,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn BOPAlgo_AlertShapeIsNotPeriodic_inherited_GetShape(
         self_: *const BOPAlgo_AlertShapeIsNotPeriodic,
@@ -4590,35 +4608,35 @@ unsafe extern "C" {
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
     pub fn BOPAlgo_AlertShapeIsNotPeriodic_inherited_Merge(
         self_: *mut BOPAlgo_AlertShapeIsNotPeriodic,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertShapeIsNotPeriodic_inherited_IsInstance(
         self_: *const BOPAlgo_AlertShapeIsNotPeriodic,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertShapeIsNotPeriodic_inherited_IsKind(
         self_: *const BOPAlgo_AlertShapeIsNotPeriodic,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertShapeIsNotPeriodic_inherited_This(
         self_: *const BOPAlgo_AlertShapeIsNotPeriodic,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertShapeIsNotPeriodic_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertShapeIsNotPeriodic,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertShapeIsNotPeriodic_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertShapeIsNotPeriodic,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertShapeIsNotPeriodic_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertShapeIsNotPeriodic,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertShapeIsNotPeriodic_inherited_Delete(
         self_: *const BOPAlgo_AlertShapeIsNotPeriodic,
     ) -> *const std::ffi::c_char;
@@ -4633,13 +4651,13 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Alerts.hxx`:145 - `BOPAlgo_AlertUnableToMakeClosedEdgeOnFace::DynamicType()`
     pub fn BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_dynamic_type(
         self_: *const BOPAlgo_AlertUnableToMakeClosedEdgeOnFace,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:145 - `BOPAlgo_AlertUnableToMakeClosedEdgeOnFace::get_type_name()`
     pub fn BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BOPAlgo_Alerts.hxx`:145 - `BOPAlgo_AlertUnableToMakeClosedEdgeOnFace::get_type_descriptor()`
     pub fn BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPAlgo_AlertUnableToMakeClosedEdgeOnFace to TopoDS_AlertWithShape
     pub fn BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_as_TopoDS_AlertWithShape(
         self_: *const BOPAlgo_AlertUnableToMakeClosedEdgeOnFace,
@@ -4667,39 +4685,39 @@ unsafe extern "C" {
     /// Wrap BOPAlgo_AlertUnableToMakeClosedEdgeOnFace in a Handle
     pub fn BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_to_handle(
         obj: *mut BOPAlgo_AlertUnableToMakeClosedEdgeOnFace,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace>;
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace>;
     /// Destroy Handle<BOPAlgo_AlertUnableToMakeClosedEdgeOnFace>
-    pub fn HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_destructor(
-        self_: *mut HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace,
+    pub fn Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_destructor(
+        self_: *mut Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace,
     );
     /// Clone Handle<BOPAlgo_AlertUnableToMakeClosedEdgeOnFace> (increments reference count)
-    pub fn HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_clone(
-        self_: *const HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace,
-    ) -> crate::OcctResult<*mut HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace>;
+    pub fn Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_clone(
+        self_: *const Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace,
+    ) -> crate::OcctResult<*mut Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace>;
     /// Check if Handle<BOPAlgo_AlertUnableToMakeClosedEdgeOnFace> is null
-    pub fn HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_is_null(
-        self_: *const HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace,
+    pub fn Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_is_null(
+        self_: *const Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace,
     ) -> bool;
     /// Dereference Handle to get *const BOPAlgo_AlertUnableToMakeClosedEdgeOnFace
-    pub fn HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_get(
-        handle: *const HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace,
+    pub fn Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_get(
+        handle: *const Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace,
     ) -> crate::OcctResult<*const BOPAlgo_AlertUnableToMakeClosedEdgeOnFace>;
     /// Dereference Handle to get *mut BOPAlgo_AlertUnableToMakeClosedEdgeOnFace
-    pub fn HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_get_mut(
-        handle: *mut HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace,
+    pub fn Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_get_mut(
+        handle: *mut Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace,
     ) -> crate::OcctResult<*mut BOPAlgo_AlertUnableToMakeClosedEdgeOnFace>;
     /// Upcast Handle<BOPAlgo_AlertUnableToMakeClosedEdgeOnFace> to Handle<TopoDS_AlertWithShape>
-    pub fn HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_to_HandleTopoDSAlertWithShape(
-        self_: *const HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace,
-    ) -> crate::OcctResult<*mut HandleTopoDSAlertWithShape>;
+    pub fn Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_to_Handle_TopoDS_AlertWithShape(
+        self_: *const Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace,
+    ) -> crate::OcctResult<*mut Handle_TopoDS_AlertWithShape>;
     /// Upcast Handle<BOPAlgo_AlertUnableToMakeClosedEdgeOnFace> to Handle<Message_Alert>
-    pub fn HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_to_HandleMessageAlert(
-        self_: *const HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace,
-    ) -> crate::OcctResult<*mut HandleMessageAlert>;
+    pub fn Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_to_Handle_Message_Alert(
+        self_: *const Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace,
+    ) -> crate::OcctResult<*mut Handle_Message_Alert>;
     /// Upcast Handle<BOPAlgo_AlertUnableToMakeClosedEdgeOnFace> to Handle<Standard_Transient>
-    pub fn HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_to_HandleStandardTransient(
-        self_: *const HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_inherited_GetShape(
         self_: *const BOPAlgo_AlertUnableToMakeClosedEdgeOnFace,
@@ -4716,35 +4734,35 @@ unsafe extern "C" {
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
     pub fn BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_inherited_Merge(
         self_: *mut BOPAlgo_AlertUnableToMakeClosedEdgeOnFace,
-        theTarget: *const HandleMessageAlert,
+        theTarget: *const Handle_Message_Alert,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_inherited_IsInstance(
         self_: *const BOPAlgo_AlertUnableToMakeClosedEdgeOnFace,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_inherited_IsKind(
         self_: *const BOPAlgo_AlertUnableToMakeClosedEdgeOnFace,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_inherited_This(
         self_: *const BOPAlgo_AlertUnableToMakeClosedEdgeOnFace,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_inherited_GetRefCount(
         self_: *const BOPAlgo_AlertUnableToMakeClosedEdgeOnFace,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_inherited_IncrementRefCounter(
         self_: *mut BOPAlgo_AlertUnableToMakeClosedEdgeOnFace,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_inherited_DecrementRefCounter(
         self_: *mut BOPAlgo_AlertUnableToMakeClosedEdgeOnFace,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_inherited_Delete(
         self_: *const BOPAlgo_AlertUnableToMakeClosedEdgeOnFace,
     ) -> *const std::ffi::c_char;
@@ -4764,7 +4782,7 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*mut BOPAlgo_Options>;
     // ======================== BOPAlgo_ParallelAlgo ========================
     pub fn BOPAlgo_ParallelAlgo_destructor(self_: *mut BOPAlgo_ParallelAlgo);
-    /// **Source:** `BOPAlgo_Algo.hxx`:98 - `BOPAlgo_ParallelAlgo::SetProgressRange()`
+    /// **Source:** `BOPAlgo_Algo.hxx`:97 - `BOPAlgo_ParallelAlgo::SetProgressRange()`
     pub fn BOPAlgo_ParallelAlgo_set_progress_range(
         self_: *mut BOPAlgo_ParallelAlgo,
         theRange: *const Message_ProgressRange,
@@ -4788,7 +4806,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
     pub fn BOPAlgo_ParallelAlgo_inherited_Allocator(
         self_: *const BOPAlgo_ParallelAlgo,
-    ) -> crate::OcctResult<*const HandleNCollectionBaseAllocator>;
+    ) -> crate::OcctResult<*const TDF_HAllocator>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:55 - `BOPAlgo_Options::Clear()`
     pub fn BOPAlgo_ParallelAlgo_inherited_Clear(
         self_: *mut BOPAlgo_ParallelAlgo,
@@ -4796,12 +4814,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
     pub fn BOPAlgo_ParallelAlgo_inherited_AddError(
         self_: *mut BOPAlgo_ParallelAlgo,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
     pub fn BOPAlgo_ParallelAlgo_inherited_AddWarning(
         self_: *mut BOPAlgo_ParallelAlgo,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:73 - `BOPAlgo_Options::HasErrors()`
     pub fn BOPAlgo_ParallelAlgo_inherited_HasErrors(
@@ -4810,7 +4828,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
     pub fn BOPAlgo_ParallelAlgo_inherited_HasError(
         self_: *const BOPAlgo_ParallelAlgo,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:82 - `BOPAlgo_Options::HasWarnings()`
     pub fn BOPAlgo_ParallelAlgo_inherited_HasWarnings(
@@ -4819,12 +4837,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     pub fn BOPAlgo_ParallelAlgo_inherited_HasWarning(
         self_: *const BOPAlgo_ParallelAlgo,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn BOPAlgo_ParallelAlgo_inherited_GetReport(
         self_: *const BOPAlgo_ParallelAlgo,
-    ) -> crate::OcctResult<*const HandleMessageReport>;
+    ) -> crate::OcctResult<*const Handle_Message_Report>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
     pub fn BOPAlgo_ParallelAlgo_inherited_DumpErrors(
         self_: *const BOPAlgo_ParallelAlgo,
@@ -4868,23 +4886,23 @@ unsafe extern "C" {
     ) -> crate::OcctResult<bool>;
     // ======================== BOPAlgo_PISteps ========================
     pub fn BOPAlgo_PISteps_destructor(self_: *mut BOPAlgo_PISteps);
-    /// **Source:** `BOPAlgo_Algo.hxx`:114 - `BOPAlgo_PISteps::BOPAlgo_PISteps()`
+    /// **Source:** `BOPAlgo_Algo.hxx`:113 - `BOPAlgo_PISteps::BOPAlgo_PISteps()`
     pub fn BOPAlgo_PISteps_ctor_int(theNbOp: i32) -> crate::OcctResult<*mut BOPAlgo_PISteps>;
-    /// **Source:** `BOPAlgo_Algo.hxx`:121 - `BOPAlgo_PISteps::Steps()`
+    /// **Source:** `BOPAlgo_Algo.hxx`:120 - `BOPAlgo_PISteps::Steps()`
     pub fn BOPAlgo_PISteps_steps(
         self_: *const BOPAlgo_PISteps,
-    ) -> crate::OcctResult<*const TColStd_Array1OfReal>;
-    /// **Source:** `BOPAlgo_Algo.hxx`:124 - `BOPAlgo_PISteps::ChangeSteps()`
+    ) -> crate::OcctResult<*const NCollection_Array1_double>;
+    /// **Source:** `BOPAlgo_Algo.hxx`:123 - `BOPAlgo_PISteps::ChangeSteps()`
     pub fn BOPAlgo_PISteps_change_steps(
         self_: *mut BOPAlgo_PISteps,
-    ) -> crate::OcctResult<*mut TColStd_Array1OfReal>;
-    /// **Source:** `BOPAlgo_Algo.hxx`:127 - `BOPAlgo_PISteps::SetStep()`
+    ) -> crate::OcctResult<*mut NCollection_Array1_double>;
+    /// **Source:** `BOPAlgo_Algo.hxx`:126 - `BOPAlgo_PISteps::SetStep()`
     pub fn BOPAlgo_PISteps_set_step(
         self_: *mut BOPAlgo_PISteps,
         theOperation: i32,
         theStep: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_Algo.hxx`:136 - `BOPAlgo_PISteps::GetStep()`
+    /// **Source:** `BOPAlgo_Algo.hxx`:135 - `BOPAlgo_PISteps::GetStep()`
     pub fn BOPAlgo_PISteps_get_step(
         self_: *mut BOPAlgo_PISteps,
         theOperation: i32,
@@ -4960,14 +4978,14 @@ unsafe extern "C" {
         self_: *mut BOPAlgo_ArgumentAnalyzer,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_ArgumentAnalyzer.hxx`:97 - `BOPAlgo_ArgumentAnalyzer::HasFaulty()`
+    /// **Source:** `BOPAlgo_ArgumentAnalyzer.hxx`:98 - `BOPAlgo_ArgumentAnalyzer::HasFaulty()`
     pub fn BOPAlgo_ArgumentAnalyzer_has_faulty(
         self_: *const BOPAlgo_ArgumentAnalyzer,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPAlgo_ArgumentAnalyzer.hxx`:100 - `BOPAlgo_ArgumentAnalyzer::GetCheckResult()`
+    /// **Source:** `BOPAlgo_ArgumentAnalyzer.hxx`:101 - `BOPAlgo_ArgumentAnalyzer::GetCheckResult()`
     pub fn BOPAlgo_ArgumentAnalyzer_get_check_result(
         self_: *const BOPAlgo_ArgumentAnalyzer,
-    ) -> crate::OcctResult<*const BOPAlgo_ListOfCheckResult>;
+    ) -> crate::OcctResult<*const NCollection_List_BOPAlgo_CheckResult>;
     /// Upcast BOPAlgo_ArgumentAnalyzer to BOPAlgo_Algo
     pub fn BOPAlgo_ArgumentAnalyzer_as_BOPAlgo_Algo(
         self_: *const BOPAlgo_ArgumentAnalyzer,
@@ -4987,7 +5005,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
     pub fn BOPAlgo_ArgumentAnalyzer_inherited_Allocator(
         self_: *const BOPAlgo_ArgumentAnalyzer,
-    ) -> crate::OcctResult<*const HandleNCollectionBaseAllocator>;
+    ) -> crate::OcctResult<*const TDF_HAllocator>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:55 - `BOPAlgo_Options::Clear()`
     pub fn BOPAlgo_ArgumentAnalyzer_inherited_Clear(
         self_: *mut BOPAlgo_ArgumentAnalyzer,
@@ -4995,12 +5013,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
     pub fn BOPAlgo_ArgumentAnalyzer_inherited_AddError(
         self_: *mut BOPAlgo_ArgumentAnalyzer,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
     pub fn BOPAlgo_ArgumentAnalyzer_inherited_AddWarning(
         self_: *mut BOPAlgo_ArgumentAnalyzer,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:73 - `BOPAlgo_Options::HasErrors()`
     pub fn BOPAlgo_ArgumentAnalyzer_inherited_HasErrors(
@@ -5009,7 +5027,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
     pub fn BOPAlgo_ArgumentAnalyzer_inherited_HasError(
         self_: *const BOPAlgo_ArgumentAnalyzer,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:82 - `BOPAlgo_Options::HasWarnings()`
     pub fn BOPAlgo_ArgumentAnalyzer_inherited_HasWarnings(
@@ -5018,12 +5036,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     pub fn BOPAlgo_ArgumentAnalyzer_inherited_HasWarning(
         self_: *const BOPAlgo_ArgumentAnalyzer,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn BOPAlgo_ArgumentAnalyzer_inherited_GetReport(
         self_: *const BOPAlgo_ArgumentAnalyzer,
-    ) -> crate::OcctResult<*const HandleMessageReport>;
+    ) -> crate::OcctResult<*const Handle_Message_Report>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
     pub fn BOPAlgo_ArgumentAnalyzer_inherited_DumpErrors(
         self_: *const BOPAlgo_ArgumentAnalyzer,
@@ -5070,8 +5088,8 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_BOP.hxx`:69 - `BOPAlgo_BOP::BOPAlgo_BOP()`
     pub fn BOPAlgo_BOP_ctor() -> crate::OcctResult<*mut BOPAlgo_BOP>;
     /// **Source:** `BOPAlgo_BOP.hxx`:72 - `BOPAlgo_BOP::BOPAlgo_BOP()`
-    pub fn BOPAlgo_BOP_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    pub fn BOPAlgo_BOP_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPAlgo_BOP>;
     /// **Source:** `BOPAlgo_BOP.hxx`:75 - `BOPAlgo_BOP::Clear()`
     pub fn BOPAlgo_BOP_clear(self_: *mut BOPAlgo_BOP) -> *const std::ffi::c_char;
@@ -5135,148 +5153,146 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_ToolsProvider.hxx`:42 - `BOPAlgo_ToolsProvider::SetTools()`
     pub fn BOPAlgo_BOP_inherited_SetTools(
         self_: *mut BOPAlgo_BOP,
-        theShapes: *const TopTools_ListOfShape,
+        theShapes: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_ToolsProvider.hxx`:45 - `BOPAlgo_ToolsProvider::Tools()`
     pub fn BOPAlgo_BOP_inherited_Tools(
         self_: *const BOPAlgo_BOP,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:89 - `BOPAlgo_Builder::PPaveFiller()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:90 - `BOPAlgo_Builder::PPaveFiller()`
     pub fn BOPAlgo_BOP_inherited_PPaveFiller(
         self_: *mut BOPAlgo_BOP,
     ) -> crate::OcctResult<*mut BOPAlgo_PaveFiller>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:92 - `BOPAlgo_Builder::PDS()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:93 - `BOPAlgo_Builder::PDS()`
     pub fn BOPAlgo_BOP_inherited_PDS(self_: *mut BOPAlgo_BOP) -> crate::OcctResult<*mut BOPDS_DS>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:95 - `BOPAlgo_Builder::Context()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:96 - `BOPAlgo_Builder::Context()`
     pub fn BOPAlgo_BOP_inherited_Context(
         self_: *const BOPAlgo_BOP,
-    ) -> crate::OcctResult<*mut HandleIntToolsContext>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:99 - `BOPAlgo_Builder::AddArgument()`
+    ) -> crate::OcctResult<*mut Handle_IntTools_Context>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:100 - `BOPAlgo_Builder::AddArgument()`
     pub fn BOPAlgo_BOP_inherited_AddArgument(
         self_: *mut BOPAlgo_BOP,
         theShape: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:102 - `BOPAlgo_Builder::SetArguments()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:103 - `BOPAlgo_Builder::SetArguments()`
     pub fn BOPAlgo_BOP_inherited_SetArguments(
         self_: *mut BOPAlgo_BOP,
-        theLS: *const TopTools_ListOfShape,
+        theLS: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:105 - `BOPAlgo_Builder::Arguments()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:106 - `BOPAlgo_Builder::Arguments()`
     pub fn BOPAlgo_BOP_inherited_Arguments(
         self_: *const BOPAlgo_BOP,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:114 - `BOPAlgo_Builder::SetNonDestructive()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:115 - `BOPAlgo_Builder::SetNonDestructive()`
     pub fn BOPAlgo_BOP_inherited_SetNonDestructive(
         self_: *mut BOPAlgo_BOP,
         theFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:119 - `BOPAlgo_Builder::NonDestructive()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:120 - `BOPAlgo_Builder::NonDestructive()`
     pub fn BOPAlgo_BOP_inherited_NonDestructive(
         self_: *const BOPAlgo_BOP,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:122 - `BOPAlgo_Builder::SetGlue()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:123 - `BOPAlgo_Builder::SetGlue()`
     pub fn BOPAlgo_BOP_inherited_SetGlue(
         self_: *mut BOPAlgo_BOP,
         theGlue: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:125 - `BOPAlgo_Builder::Glue()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:126 - `BOPAlgo_Builder::Glue()`
     pub fn BOPAlgo_BOP_inherited_Glue(self_: *const BOPAlgo_BOP) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:128 - `BOPAlgo_Builder::SetCheckInverted()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:129 - `BOPAlgo_Builder::SetCheckInverted()`
     pub fn BOPAlgo_BOP_inherited_SetCheckInverted(
         self_: *mut BOPAlgo_BOP,
         theCheck: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:132 - `BOPAlgo_Builder::CheckInverted()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:133 - `BOPAlgo_Builder::CheckInverted()`
     pub fn BOPAlgo_BOP_inherited_CheckInverted(
         self_: *const BOPAlgo_BOP,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:142 - `BOPAlgo_Builder::PerformWithFiller()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:143 - `BOPAlgo_Builder::PerformWithFiller()`
     pub fn BOPAlgo_BOP_inherited_PerformWithFiller(
         self_: *mut BOPAlgo_BOP,
         theFiller: *const BOPAlgo_PaveFiller,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:186 - `BOPAlgo_Builder::BuildBOP()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:187 - `BOPAlgo_Builder::BuildBOP()`
     pub fn BOPAlgo_BOP_inherited_BuildBOP(
         self_: *mut BOPAlgo_BOP,
-        theObjects: *const TopTools_ListOfShape,
+        theObjects: *const NCollection_List_TopoDS_Shape,
         theObjState: i32,
-        theTools: *const TopTools_ListOfShape,
+        theTools: *const NCollection_List_TopoDS_Shape,
         theToolsState: i32,
         theRange: *const Message_ProgressRange,
-        theReport: *const HandleMessageReport,
+        theReport: *const Handle_Message_Report,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
-    pub fn BOPAlgo_BOP_inherited_Images(
-        self_: *const BOPAlgo_BOP,
-    ) -> crate::OcctResult<*const TopTools_DataMapOfShapeListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:284 - `BOPAlgo_Builder::Origins()`
-    pub fn BOPAlgo_BOP_inherited_Origins(
-        self_: *const BOPAlgo_BOP,
-    ) -> crate::OcctResult<*const TopTools_DataMapOfShapeListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:288 - `BOPAlgo_Builder::ShapesSD()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:285 - `BOPAlgo_Builder::Images()`
+    pub fn BOPAlgo_BOP_inherited_Images(self_: *const BOPAlgo_BOP) -> crate::OcctResult<*const NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:292 - `BOPAlgo_Builder::Origins()`
+    pub fn BOPAlgo_BOP_inherited_Origins(self_: *const BOPAlgo_BOP) -> crate::OcctResult<*const NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:299 - `BOPAlgo_Builder::ShapesSD()`
     pub fn BOPAlgo_BOP_inherited_ShapesSD(
         self_: *const BOPAlgo_BOP,
-    ) -> crate::OcctResult<*const TopTools_DataMapOfShapeShape>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
+    ) -> crate::OcctResult<
+        *const NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
+    >;
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:48 - `BOPAlgo_BuilderShape::Shape()`
     pub fn BOPAlgo_BOP_inherited_Shape(
         self_: *const BOPAlgo_BOP,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:72 - `BOPAlgo_BuilderShape::IsDeleted()`
     pub fn BOPAlgo_BOP_inherited_IsDeleted(
         self_: *mut BOPAlgo_BOP,
         theS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:77 - `BOPAlgo_BuilderShape::HasModified()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:78 - `BOPAlgo_BuilderShape::HasModified()`
     pub fn BOPAlgo_BOP_inherited_HasModified(self_: *const BOPAlgo_BOP) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:83 - `BOPAlgo_BuilderShape::HasGenerated()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:84 - `BOPAlgo_BuilderShape::HasGenerated()`
     pub fn BOPAlgo_BOP_inherited_HasGenerated(self_: *const BOPAlgo_BOP)
         -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:89 - `BOPAlgo_BuilderShape::HasDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:90 - `BOPAlgo_BuilderShape::HasDeleted()`
     pub fn BOPAlgo_BOP_inherited_HasDeleted(self_: *const BOPAlgo_BOP) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:95 - `BOPAlgo_BuilderShape::History()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:93 - `BOPAlgo_BuilderShape::History()`
     pub fn BOPAlgo_BOP_inherited_History(
         self_: *mut BOPAlgo_BOP,
-    ) -> crate::OcctResult<*mut HandleBRepToolsHistory>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:116 - `BOPAlgo_BuilderShape::SetToFillHistory()`
+    ) -> crate::OcctResult<*mut Handle_BRepTools_History>;
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:114 - `BOPAlgo_BuilderShape::SetToFillHistory()`
     pub fn BOPAlgo_BOP_inherited_SetToFillHistory(
         self_: *mut BOPAlgo_BOP,
         theHistFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:119 - `BOPAlgo_BuilderShape::HasHistory()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:117 - `BOPAlgo_BuilderShape::HasHistory()`
     pub fn BOPAlgo_BOP_inherited_HasHistory(self_: *const BOPAlgo_BOP) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
     pub fn BOPAlgo_BOP_inherited_Allocator(
         self_: *const BOPAlgo_BOP,
-    ) -> crate::OcctResult<*const HandleNCollectionBaseAllocator>;
+    ) -> crate::OcctResult<*const TDF_HAllocator>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
     pub fn BOPAlgo_BOP_inherited_AddError(
         self_: *mut BOPAlgo_BOP,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
     pub fn BOPAlgo_BOP_inherited_AddWarning(
         self_: *mut BOPAlgo_BOP,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:73 - `BOPAlgo_Options::HasErrors()`
     pub fn BOPAlgo_BOP_inherited_HasErrors(self_: *const BOPAlgo_BOP) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
     pub fn BOPAlgo_BOP_inherited_HasError(
         self_: *const BOPAlgo_BOP,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:82 - `BOPAlgo_Options::HasWarnings()`
     pub fn BOPAlgo_BOP_inherited_HasWarnings(self_: *const BOPAlgo_BOP) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     pub fn BOPAlgo_BOP_inherited_HasWarning(
         self_: *const BOPAlgo_BOP,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn BOPAlgo_BOP_inherited_GetReport(
         self_: *const BOPAlgo_BOP,
-    ) -> crate::OcctResult<*const HandleMessageReport>;
+    ) -> crate::OcctResult<*const Handle_Message_Report>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
     pub fn BOPAlgo_BOP_inherited_DumpErrors(
         self_: *const BOPAlgo_BOP,
@@ -5312,104 +5328,102 @@ unsafe extern "C" {
     pub fn BOPAlgo_BOP_inherited_UseOBB(self_: *const BOPAlgo_BOP) -> crate::OcctResult<bool>;
     // ======================== BOPAlgo_Builder ========================
     pub fn BOPAlgo_Builder_destructor(self_: *mut BOPAlgo_Builder);
-    /// **Source:** `BOPAlgo_Builder.hxx`:80 - `BOPAlgo_Builder::BOPAlgo_Builder()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:81 - `BOPAlgo_Builder::BOPAlgo_Builder()`
     pub fn BOPAlgo_Builder_ctor() -> crate::OcctResult<*mut BOPAlgo_Builder>;
-    /// **Source:** `BOPAlgo_Builder.hxx`:83 - `BOPAlgo_Builder::BOPAlgo_Builder()`
-    pub fn BOPAlgo_Builder_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    /// **Source:** `BOPAlgo_Builder.hxx`:84 - `BOPAlgo_Builder::BOPAlgo_Builder()`
+    pub fn BOPAlgo_Builder_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPAlgo_Builder>;
-    /// **Source:** `BOPAlgo_Builder.hxx`:86 - `BOPAlgo_Builder::Clear()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:87 - `BOPAlgo_Builder::Clear()`
     pub fn BOPAlgo_Builder_clear(self_: *mut BOPAlgo_Builder) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_Builder.hxx`:89 - `BOPAlgo_Builder::PPaveFiller()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:90 - `BOPAlgo_Builder::PPaveFiller()`
     pub fn BOPAlgo_Builder_p_pave_filler(
         self_: *mut BOPAlgo_Builder,
     ) -> crate::OcctResult<*mut BOPAlgo_PaveFiller>;
-    /// **Source:** `BOPAlgo_Builder.hxx`:92 - `BOPAlgo_Builder::PDS()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:93 - `BOPAlgo_Builder::PDS()`
     pub fn BOPAlgo_Builder_pds(self_: *mut BOPAlgo_Builder) -> crate::OcctResult<*mut BOPDS_DS>;
-    /// **Source:** `BOPAlgo_Builder.hxx`:95 - `BOPAlgo_Builder::Context()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:96 - `BOPAlgo_Builder::Context()`
     pub fn BOPAlgo_Builder_context(
         self_: *const BOPAlgo_Builder,
-    ) -> crate::OcctResult<*mut HandleIntToolsContext>;
-    /// **Source:** `BOPAlgo_Builder.hxx`:99 - `BOPAlgo_Builder::AddArgument()`
+    ) -> crate::OcctResult<*mut Handle_IntTools_Context>;
+    /// **Source:** `BOPAlgo_Builder.hxx`:100 - `BOPAlgo_Builder::AddArgument()`
     pub fn BOPAlgo_Builder_add_argument(
         self_: *mut BOPAlgo_Builder,
         theShape: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_Builder.hxx`:102 - `BOPAlgo_Builder::SetArguments()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:103 - `BOPAlgo_Builder::SetArguments()`
     pub fn BOPAlgo_Builder_set_arguments(
         self_: *mut BOPAlgo_Builder,
-        theLS: *const TopTools_ListOfShape,
+        theLS: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_Builder.hxx`:105 - `BOPAlgo_Builder::Arguments()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:106 - `BOPAlgo_Builder::Arguments()`
     pub fn BOPAlgo_Builder_arguments(
         self_: *const BOPAlgo_Builder,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BOPAlgo_Builder.hxx`:114 - `BOPAlgo_Builder::SetNonDestructive()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BOPAlgo_Builder.hxx`:115 - `BOPAlgo_Builder::SetNonDestructive()`
     pub fn BOPAlgo_Builder_set_non_destructive(
         self_: *mut BOPAlgo_Builder,
         theFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_Builder.hxx`:119 - `BOPAlgo_Builder::NonDestructive()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:120 - `BOPAlgo_Builder::NonDestructive()`
     pub fn BOPAlgo_Builder_non_destructive(
         self_: *const BOPAlgo_Builder,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPAlgo_Builder.hxx`:122 - `BOPAlgo_Builder::SetGlue()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:123 - `BOPAlgo_Builder::SetGlue()`
     pub fn BOPAlgo_Builder_set_glue(
         self_: *mut BOPAlgo_Builder,
         theGlue: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_Builder.hxx`:125 - `BOPAlgo_Builder::Glue()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:126 - `BOPAlgo_Builder::Glue()`
     pub fn BOPAlgo_Builder_glue(self_: *const BOPAlgo_Builder) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPAlgo_Builder.hxx`:128 - `BOPAlgo_Builder::SetCheckInverted()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:129 - `BOPAlgo_Builder::SetCheckInverted()`
     pub fn BOPAlgo_Builder_set_check_inverted(
         self_: *mut BOPAlgo_Builder,
         theCheck: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_Builder.hxx`:132 - `BOPAlgo_Builder::CheckInverted()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:133 - `BOPAlgo_Builder::CheckInverted()`
     pub fn BOPAlgo_Builder_check_inverted(self_: *const BOPAlgo_Builder)
         -> crate::OcctResult<bool>;
-    /// **Source:** `BOPAlgo_Builder.hxx`:137 - `BOPAlgo_Builder::Perform()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:138 - `BOPAlgo_Builder::Perform()`
     pub fn BOPAlgo_Builder_perform(
         self_: *mut BOPAlgo_Builder,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_Builder.hxx`:142 - `BOPAlgo_Builder::PerformWithFiller()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:143 - `BOPAlgo_Builder::PerformWithFiller()`
     pub fn BOPAlgo_Builder_perform_with_filler(
         self_: *mut BOPAlgo_Builder,
         theFiller: *const BOPAlgo_PaveFiller,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_Builder.hxx`:186 - `BOPAlgo_Builder::BuildBOP()`
-    pub fn BOPAlgo_Builder_build_bop_listofshape_state_listofshape_state_progressrange_handlemessagereport(
+    /// **Source:** `BOPAlgo_Builder.hxx`:187 - `BOPAlgo_Builder::BuildBOP()`
+    pub fn BOPAlgo_Builder_build_bop_list_shape_state_list_shape_state_progressrange_handlemessagereport(
         self_: *mut BOPAlgo_Builder,
-        theObjects: *const TopTools_ListOfShape,
+        theObjects: *const NCollection_List_TopoDS_Shape,
         theObjState: i32,
-        theTools: *const TopTools_ListOfShape,
+        theTools: *const NCollection_List_TopoDS_Shape,
         theToolsState: i32,
         theRange: *const Message_ProgressRange,
-        theReport: *const HandleMessageReport,
+        theReport: *const Handle_Message_Report,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_Builder.hxx`:213 - `BOPAlgo_Builder::BuildBOP()`
-    pub fn BOPAlgo_Builder_build_bop_listofshape2_operation_progressrange_handlemessagereport(
+    /// **Source:** `BOPAlgo_Builder.hxx`:214 - `BOPAlgo_Builder::BuildBOP()`
+    pub fn BOPAlgo_Builder_build_bop_list_shape2_operation_progressrange_handlemessagereport(
         self_: *mut BOPAlgo_Builder,
-        theObjects: *const TopTools_ListOfShape,
-        theTools: *const TopTools_ListOfShape,
+        theObjects: *const NCollection_List_TopoDS_Shape,
+        theTools: *const NCollection_List_TopoDS_Shape,
         theOperation: i32,
         theRange: *const Message_ProgressRange,
-        theReport: *const HandleMessageReport,
+        theReport: *const Handle_Message_Report,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
-    pub fn BOPAlgo_Builder_images(
-        self_: *const BOPAlgo_Builder,
-    ) -> crate::OcctResult<*const TopTools_DataMapOfShapeListOfShape>;
-    /// **Source:** `BOPAlgo_Builder.hxx`:284 - `BOPAlgo_Builder::Origins()`
-    pub fn BOPAlgo_Builder_origins(
-        self_: *const BOPAlgo_Builder,
-    ) -> crate::OcctResult<*const TopTools_DataMapOfShapeListOfShape>;
-    /// **Source:** `BOPAlgo_Builder.hxx`:288 - `BOPAlgo_Builder::ShapesSD()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:285 - `BOPAlgo_Builder::Images()`
+    pub fn BOPAlgo_Builder_images(self_: *const BOPAlgo_Builder) -> crate::OcctResult<*const NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher>;
+    /// **Source:** `BOPAlgo_Builder.hxx`:292 - `BOPAlgo_Builder::Origins()`
+    pub fn BOPAlgo_Builder_origins(self_: *const BOPAlgo_Builder) -> crate::OcctResult<*const NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher>;
+    /// **Source:** `BOPAlgo_Builder.hxx`:299 - `BOPAlgo_Builder::ShapesSD()`
     pub fn BOPAlgo_Builder_shapes_sd(
         self_: *const BOPAlgo_Builder,
-    ) -> crate::OcctResult<*const TopTools_DataMapOfShapeShape>;
+    ) -> crate::OcctResult<
+        *const NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
+    >;
     /// Upcast BOPAlgo_Builder to BOPAlgo_BuilderShape
     pub fn BOPAlgo_Builder_as_BOPAlgo_BuilderShape(
         self_: *const BOPAlgo_Builder,
@@ -5434,53 +5448,53 @@ unsafe extern "C" {
     pub fn BOPAlgo_Builder_as_BOPAlgo_Options_mut(
         self_: *mut BOPAlgo_Builder,
     ) -> crate::OcctResult<*mut BOPAlgo_Options>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:48 - `BOPAlgo_BuilderShape::Shape()`
     pub fn BOPAlgo_Builder_inherited_Shape(
         self_: *const BOPAlgo_Builder,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:72 - `BOPAlgo_BuilderShape::IsDeleted()`
     pub fn BOPAlgo_Builder_inherited_IsDeleted(
         self_: *mut BOPAlgo_Builder,
         theS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:77 - `BOPAlgo_BuilderShape::HasModified()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:78 - `BOPAlgo_BuilderShape::HasModified()`
     pub fn BOPAlgo_Builder_inherited_HasModified(
         self_: *const BOPAlgo_Builder,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:83 - `BOPAlgo_BuilderShape::HasGenerated()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:84 - `BOPAlgo_BuilderShape::HasGenerated()`
     pub fn BOPAlgo_Builder_inherited_HasGenerated(
         self_: *const BOPAlgo_Builder,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:89 - `BOPAlgo_BuilderShape::HasDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:90 - `BOPAlgo_BuilderShape::HasDeleted()`
     pub fn BOPAlgo_Builder_inherited_HasDeleted(
         self_: *const BOPAlgo_Builder,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:95 - `BOPAlgo_BuilderShape::History()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:93 - `BOPAlgo_BuilderShape::History()`
     pub fn BOPAlgo_Builder_inherited_History(
         self_: *mut BOPAlgo_Builder,
-    ) -> crate::OcctResult<*mut HandleBRepToolsHistory>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:116 - `BOPAlgo_BuilderShape::SetToFillHistory()`
+    ) -> crate::OcctResult<*mut Handle_BRepTools_History>;
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:114 - `BOPAlgo_BuilderShape::SetToFillHistory()`
     pub fn BOPAlgo_Builder_inherited_SetToFillHistory(
         self_: *mut BOPAlgo_Builder,
         theHistFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:119 - `BOPAlgo_BuilderShape::HasHistory()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:117 - `BOPAlgo_BuilderShape::HasHistory()`
     pub fn BOPAlgo_Builder_inherited_HasHistory(
         self_: *const BOPAlgo_Builder,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
     pub fn BOPAlgo_Builder_inherited_Allocator(
         self_: *const BOPAlgo_Builder,
-    ) -> crate::OcctResult<*const HandleNCollectionBaseAllocator>;
+    ) -> crate::OcctResult<*const TDF_HAllocator>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
     pub fn BOPAlgo_Builder_inherited_AddError(
         self_: *mut BOPAlgo_Builder,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
     pub fn BOPAlgo_Builder_inherited_AddWarning(
         self_: *mut BOPAlgo_Builder,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:73 - `BOPAlgo_Options::HasErrors()`
     pub fn BOPAlgo_Builder_inherited_HasErrors(
@@ -5489,7 +5503,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
     pub fn BOPAlgo_Builder_inherited_HasError(
         self_: *const BOPAlgo_Builder,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:82 - `BOPAlgo_Options::HasWarnings()`
     pub fn BOPAlgo_Builder_inherited_HasWarnings(
@@ -5498,12 +5512,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     pub fn BOPAlgo_Builder_inherited_HasWarning(
         self_: *const BOPAlgo_Builder,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn BOPAlgo_Builder_inherited_GetReport(
         self_: *const BOPAlgo_Builder,
-    ) -> crate::OcctResult<*const HandleMessageReport>;
+    ) -> crate::OcctResult<*const Handle_Message_Report>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
     pub fn BOPAlgo_Builder_inherited_DumpErrors(
         self_: *const BOPAlgo_Builder,
@@ -5546,34 +5560,34 @@ unsafe extern "C" {
         self_: *const BOPAlgo_Builder,
     ) -> crate::OcctResult<bool>;
     // ======================== BOPAlgo_BuilderArea ========================
-    /// **Source:** `BOPAlgo_BuilderArea.hxx`:39 - `BOPAlgo_BuilderArea::SetContext()`
+    /// **Source:** `BOPAlgo_BuilderArea.hxx`:40 - `BOPAlgo_BuilderArea::SetContext()`
     pub fn BOPAlgo_BuilderArea_set_context(
         self_: *mut BOPAlgo_BuilderArea,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_BuilderArea.hxx`:42 - `BOPAlgo_BuilderArea::Shapes()`
+    /// **Source:** `BOPAlgo_BuilderArea.hxx`:43 - `BOPAlgo_BuilderArea::Shapes()`
     pub fn BOPAlgo_BuilderArea_shapes(
         self_: *const BOPAlgo_BuilderArea,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BOPAlgo_BuilderArea.hxx`:45 - `BOPAlgo_BuilderArea::SetShapes()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BOPAlgo_BuilderArea.hxx`:46 - `BOPAlgo_BuilderArea::SetShapes()`
     pub fn BOPAlgo_BuilderArea_set_shapes(
         self_: *mut BOPAlgo_BuilderArea,
-        theLS: *const TopTools_ListOfShape,
+        theLS: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_BuilderArea.hxx`:48 - `BOPAlgo_BuilderArea::Loops()`
+    /// **Source:** `BOPAlgo_BuilderArea.hxx`:49 - `BOPAlgo_BuilderArea::Loops()`
     pub fn BOPAlgo_BuilderArea_loops(
         self_: *const BOPAlgo_BuilderArea,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BOPAlgo_BuilderArea.hxx`:51 - `BOPAlgo_BuilderArea::Areas()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BOPAlgo_BuilderArea.hxx`:52 - `BOPAlgo_BuilderArea::Areas()`
     pub fn BOPAlgo_BuilderArea_areas(
         self_: *const BOPAlgo_BuilderArea,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BOPAlgo_BuilderArea.hxx`:55 - `BOPAlgo_BuilderArea::SetAvoidInternalShapes()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BOPAlgo_BuilderArea.hxx`:56 - `BOPAlgo_BuilderArea::SetAvoidInternalShapes()`
     pub fn BOPAlgo_BuilderArea_set_avoid_internal_shapes(
         self_: *mut BOPAlgo_BuilderArea,
         theAvoidInternal: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_BuilderArea.hxx`:61 - `BOPAlgo_BuilderArea::IsAvoidInternalShapes()`
+    /// **Source:** `BOPAlgo_BuilderArea.hxx`:62 - `BOPAlgo_BuilderArea::IsAvoidInternalShapes()`
     pub fn BOPAlgo_BuilderArea_is_avoid_internal_shapes(
         self_: *const BOPAlgo_BuilderArea,
     ) -> crate::OcctResult<bool>;
@@ -5598,8 +5612,8 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_BuilderFace.hxx`:41 - `BOPAlgo_BuilderFace::BOPAlgo_BuilderFace()`
     pub fn BOPAlgo_BuilderFace_ctor() -> crate::OcctResult<*mut BOPAlgo_BuilderFace>;
     /// **Source:** `BOPAlgo_BuilderFace.hxx`:44 - `BOPAlgo_BuilderFace::BOPAlgo_BuilderFace()`
-    pub fn BOPAlgo_BuilderFace_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    pub fn BOPAlgo_BuilderFace_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPAlgo_BuilderFace>;
     /// **Source:** `BOPAlgo_BuilderFace.hxx`:47 - `BOPAlgo_BuilderFace::SetFace()`
     pub fn BOPAlgo_BuilderFace_set_face(
@@ -5643,41 +5657,41 @@ unsafe extern "C" {
     pub fn BOPAlgo_BuilderFace_as_BOPAlgo_Options_mut(
         self_: *mut BOPAlgo_BuilderFace,
     ) -> crate::OcctResult<*mut BOPAlgo_Options>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:39 - `BOPAlgo_BuilderArea::SetContext()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:40 - `BOPAlgo_BuilderArea::SetContext()`
     pub fn BOPAlgo_BuilderFace_inherited_SetContext(
         self_: *mut BOPAlgo_BuilderFace,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:42 - `BOPAlgo_BuilderArea::Shapes()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:43 - `BOPAlgo_BuilderArea::Shapes()`
     pub fn BOPAlgo_BuilderFace_inherited_Shapes(
         self_: *const BOPAlgo_BuilderFace,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:45 - `BOPAlgo_BuilderArea::SetShapes()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:46 - `BOPAlgo_BuilderArea::SetShapes()`
     pub fn BOPAlgo_BuilderFace_inherited_SetShapes(
         self_: *mut BOPAlgo_BuilderFace,
-        theLS: *const TopTools_ListOfShape,
+        theLS: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:48 - `BOPAlgo_BuilderArea::Loops()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:49 - `BOPAlgo_BuilderArea::Loops()`
     pub fn BOPAlgo_BuilderFace_inherited_Loops(
         self_: *const BOPAlgo_BuilderFace,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:51 - `BOPAlgo_BuilderArea::Areas()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:52 - `BOPAlgo_BuilderArea::Areas()`
     pub fn BOPAlgo_BuilderFace_inherited_Areas(
         self_: *const BOPAlgo_BuilderFace,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:55 - `BOPAlgo_BuilderArea::SetAvoidInternalShapes()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:56 - `BOPAlgo_BuilderArea::SetAvoidInternalShapes()`
     pub fn BOPAlgo_BuilderFace_inherited_SetAvoidInternalShapes(
         self_: *mut BOPAlgo_BuilderFace,
         theAvoidInternal: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:61 - `BOPAlgo_BuilderArea::IsAvoidInternalShapes()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:62 - `BOPAlgo_BuilderArea::IsAvoidInternalShapes()`
     pub fn BOPAlgo_BuilderFace_inherited_IsAvoidInternalShapes(
         self_: *const BOPAlgo_BuilderFace,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
     pub fn BOPAlgo_BuilderFace_inherited_Allocator(
         self_: *const BOPAlgo_BuilderFace,
-    ) -> crate::OcctResult<*const HandleNCollectionBaseAllocator>;
+    ) -> crate::OcctResult<*const TDF_HAllocator>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:55 - `BOPAlgo_Options::Clear()`
     pub fn BOPAlgo_BuilderFace_inherited_Clear(
         self_: *mut BOPAlgo_BuilderFace,
@@ -5685,12 +5699,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
     pub fn BOPAlgo_BuilderFace_inherited_AddError(
         self_: *mut BOPAlgo_BuilderFace,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
     pub fn BOPAlgo_BuilderFace_inherited_AddWarning(
         self_: *mut BOPAlgo_BuilderFace,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:73 - `BOPAlgo_Options::HasErrors()`
     pub fn BOPAlgo_BuilderFace_inherited_HasErrors(
@@ -5699,7 +5713,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
     pub fn BOPAlgo_BuilderFace_inherited_HasError(
         self_: *const BOPAlgo_BuilderFace,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:82 - `BOPAlgo_Options::HasWarnings()`
     pub fn BOPAlgo_BuilderFace_inherited_HasWarnings(
@@ -5708,12 +5722,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     pub fn BOPAlgo_BuilderFace_inherited_HasWarning(
         self_: *const BOPAlgo_BuilderFace,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn BOPAlgo_BuilderFace_inherited_GetReport(
         self_: *const BOPAlgo_BuilderFace,
-    ) -> crate::OcctResult<*const HandleMessageReport>;
+    ) -> crate::OcctResult<*const Handle_Message_Report>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
     pub fn BOPAlgo_BuilderFace_inherited_DumpErrors(
         self_: *const BOPAlgo_BuilderFace,
@@ -5757,47 +5771,47 @@ unsafe extern "C" {
     ) -> crate::OcctResult<bool>;
     // ======================== BOPAlgo_BuilderShape ========================
     pub fn BOPAlgo_BuilderShape_destructor(self_: *mut BOPAlgo_BuilderShape);
-    /// **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
+    /// **Source:** `BOPAlgo_BuilderShape.hxx`:48 - `BOPAlgo_BuilderShape::Shape()`
     pub fn BOPAlgo_BuilderShape_shape(
         self_: *const BOPAlgo_BuilderShape,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BOPAlgo_BuilderShape.hxx`:51 - `BOPAlgo_BuilderShape::Modified()`
+    /// **Source:** `BOPAlgo_BuilderShape.hxx`:52 - `BOPAlgo_BuilderShape::Modified()`
     pub fn BOPAlgo_BuilderShape_modified(
         self_: *mut BOPAlgo_BuilderShape,
         theS: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BOPAlgo_BuilderShape.hxx`:60 - `BOPAlgo_BuilderShape::Generated()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BOPAlgo_BuilderShape.hxx`:61 - `BOPAlgo_BuilderShape::Generated()`
     pub fn BOPAlgo_BuilderShape_generated(
         self_: *mut BOPAlgo_BuilderShape,
         theS: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BOPAlgo_BuilderShape.hxx`:72 - `BOPAlgo_BuilderShape::IsDeleted()`
     pub fn BOPAlgo_BuilderShape_is_deleted(
         self_: *mut BOPAlgo_BuilderShape,
         theS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPAlgo_BuilderShape.hxx`:77 - `BOPAlgo_BuilderShape::HasModified()`
+    /// **Source:** `BOPAlgo_BuilderShape.hxx`:78 - `BOPAlgo_BuilderShape::HasModified()`
     pub fn BOPAlgo_BuilderShape_has_modified(
         self_: *const BOPAlgo_BuilderShape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPAlgo_BuilderShape.hxx`:83 - `BOPAlgo_BuilderShape::HasGenerated()`
+    /// **Source:** `BOPAlgo_BuilderShape.hxx`:84 - `BOPAlgo_BuilderShape::HasGenerated()`
     pub fn BOPAlgo_BuilderShape_has_generated(
         self_: *const BOPAlgo_BuilderShape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPAlgo_BuilderShape.hxx`:89 - `BOPAlgo_BuilderShape::HasDeleted()`
+    /// **Source:** `BOPAlgo_BuilderShape.hxx`:90 - `BOPAlgo_BuilderShape::HasDeleted()`
     pub fn BOPAlgo_BuilderShape_has_deleted(
         self_: *const BOPAlgo_BuilderShape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPAlgo_BuilderShape.hxx`:95 - `BOPAlgo_BuilderShape::History()`
+    /// **Source:** `BOPAlgo_BuilderShape.hxx`:93 - `BOPAlgo_BuilderShape::History()`
     pub fn BOPAlgo_BuilderShape_history(
         self_: *mut BOPAlgo_BuilderShape,
-    ) -> crate::OcctResult<*mut HandleBRepToolsHistory>;
-    /// **Source:** `BOPAlgo_BuilderShape.hxx`:116 - `BOPAlgo_BuilderShape::SetToFillHistory()`
+    ) -> crate::OcctResult<*mut Handle_BRepTools_History>;
+    /// **Source:** `BOPAlgo_BuilderShape.hxx`:114 - `BOPAlgo_BuilderShape::SetToFillHistory()`
     pub fn BOPAlgo_BuilderShape_set_to_fill_history(
         self_: *mut BOPAlgo_BuilderShape,
         theHistFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_BuilderShape.hxx`:119 - `BOPAlgo_BuilderShape::HasHistory()`
+    /// **Source:** `BOPAlgo_BuilderShape.hxx`:117 - `BOPAlgo_BuilderShape::HasHistory()`
     pub fn BOPAlgo_BuilderShape_has_history(
         self_: *const BOPAlgo_BuilderShape,
     ) -> crate::OcctResult<bool>;
@@ -5825,16 +5839,16 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
     pub fn BOPAlgo_BuilderShape_inherited_Allocator(
         self_: *const BOPAlgo_BuilderShape,
-    ) -> crate::OcctResult<*const HandleNCollectionBaseAllocator>;
+    ) -> crate::OcctResult<*const TDF_HAllocator>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
     pub fn BOPAlgo_BuilderShape_inherited_AddError(
         self_: *mut BOPAlgo_BuilderShape,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
     pub fn BOPAlgo_BuilderShape_inherited_AddWarning(
         self_: *mut BOPAlgo_BuilderShape,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:73 - `BOPAlgo_Options::HasErrors()`
     pub fn BOPAlgo_BuilderShape_inherited_HasErrors(
@@ -5843,7 +5857,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
     pub fn BOPAlgo_BuilderShape_inherited_HasError(
         self_: *const BOPAlgo_BuilderShape,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:82 - `BOPAlgo_Options::HasWarnings()`
     pub fn BOPAlgo_BuilderShape_inherited_HasWarnings(
@@ -5852,12 +5866,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     pub fn BOPAlgo_BuilderShape_inherited_HasWarning(
         self_: *const BOPAlgo_BuilderShape,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn BOPAlgo_BuilderShape_inherited_GetReport(
         self_: *const BOPAlgo_BuilderShape,
-    ) -> crate::OcctResult<*const HandleMessageReport>;
+    ) -> crate::OcctResult<*const Handle_Message_Report>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
     pub fn BOPAlgo_BuilderShape_inherited_DumpErrors(
         self_: *const BOPAlgo_BuilderShape,
@@ -5901,21 +5915,21 @@ unsafe extern "C" {
     ) -> crate::OcctResult<bool>;
     // ======================== BOPAlgo_BuilderSolid ========================
     pub fn BOPAlgo_BuilderSolid_destructor(self_: *mut BOPAlgo_BuilderSolid);
-    /// **Source:** `BOPAlgo_BuilderSolid.hxx`:87 - `BOPAlgo_BuilderSolid::BOPAlgo_BuilderSolid()`
+    /// **Source:** `BOPAlgo_BuilderSolid.hxx`:90 - `BOPAlgo_BuilderSolid::BOPAlgo_BuilderSolid()`
     pub fn BOPAlgo_BuilderSolid_ctor() -> crate::OcctResult<*mut BOPAlgo_BuilderSolid>;
-    /// **Source:** `BOPAlgo_BuilderSolid.hxx`:91 - `BOPAlgo_BuilderSolid::BOPAlgo_BuilderSolid()`
-    pub fn BOPAlgo_BuilderSolid_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    /// **Source:** `BOPAlgo_BuilderSolid.hxx`:94 - `BOPAlgo_BuilderSolid::BOPAlgo_BuilderSolid()`
+    pub fn BOPAlgo_BuilderSolid_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPAlgo_BuilderSolid>;
-    /// **Source:** `BOPAlgo_BuilderSolid.hxx`:95 - `BOPAlgo_BuilderSolid::Perform()`
+    /// **Source:** `BOPAlgo_BuilderSolid.hxx`:98 - `BOPAlgo_BuilderSolid::Perform()`
     pub fn BOPAlgo_BuilderSolid_perform(
         self_: *mut BOPAlgo_BuilderSolid,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_BuilderSolid.hxx`:101 - `BOPAlgo_BuilderSolid::GetBoxesMap()`
+    /// **Source:** `BOPAlgo_BuilderSolid.hxx`:104 - `BOPAlgo_BuilderSolid::GetBoxesMap()`
     pub fn BOPAlgo_BuilderSolid_get_boxes_map(
         self_: *const BOPAlgo_BuilderSolid,
-    ) -> crate::OcctResult<*const TopTools_DataMapOfShapeBox>;
+    ) -> crate::OcctResult<*const NCollection_DataMap_TopoDS_Shape_Bnd_Box_TopTools_ShapeMapHasher>;
     /// Upcast BOPAlgo_BuilderSolid to BOPAlgo_BuilderArea
     pub fn BOPAlgo_BuilderSolid_as_BOPAlgo_BuilderArea(
         self_: *const BOPAlgo_BuilderSolid,
@@ -5940,41 +5954,41 @@ unsafe extern "C" {
     pub fn BOPAlgo_BuilderSolid_as_BOPAlgo_Options_mut(
         self_: *mut BOPAlgo_BuilderSolid,
     ) -> crate::OcctResult<*mut BOPAlgo_Options>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:39 - `BOPAlgo_BuilderArea::SetContext()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:40 - `BOPAlgo_BuilderArea::SetContext()`
     pub fn BOPAlgo_BuilderSolid_inherited_SetContext(
         self_: *mut BOPAlgo_BuilderSolid,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:42 - `BOPAlgo_BuilderArea::Shapes()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:43 - `BOPAlgo_BuilderArea::Shapes()`
     pub fn BOPAlgo_BuilderSolid_inherited_Shapes(
         self_: *const BOPAlgo_BuilderSolid,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:45 - `BOPAlgo_BuilderArea::SetShapes()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:46 - `BOPAlgo_BuilderArea::SetShapes()`
     pub fn BOPAlgo_BuilderSolid_inherited_SetShapes(
         self_: *mut BOPAlgo_BuilderSolid,
-        theLS: *const TopTools_ListOfShape,
+        theLS: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:48 - `BOPAlgo_BuilderArea::Loops()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:49 - `BOPAlgo_BuilderArea::Loops()`
     pub fn BOPAlgo_BuilderSolid_inherited_Loops(
         self_: *const BOPAlgo_BuilderSolid,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:51 - `BOPAlgo_BuilderArea::Areas()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:52 - `BOPAlgo_BuilderArea::Areas()`
     pub fn BOPAlgo_BuilderSolid_inherited_Areas(
         self_: *const BOPAlgo_BuilderSolid,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:55 - `BOPAlgo_BuilderArea::SetAvoidInternalShapes()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:56 - `BOPAlgo_BuilderArea::SetAvoidInternalShapes()`
     pub fn BOPAlgo_BuilderSolid_inherited_SetAvoidInternalShapes(
         self_: *mut BOPAlgo_BuilderSolid,
         theAvoidInternal: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:61 - `BOPAlgo_BuilderArea::IsAvoidInternalShapes()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:62 - `BOPAlgo_BuilderArea::IsAvoidInternalShapes()`
     pub fn BOPAlgo_BuilderSolid_inherited_IsAvoidInternalShapes(
         self_: *const BOPAlgo_BuilderSolid,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
     pub fn BOPAlgo_BuilderSolid_inherited_Allocator(
         self_: *const BOPAlgo_BuilderSolid,
-    ) -> crate::OcctResult<*const HandleNCollectionBaseAllocator>;
+    ) -> crate::OcctResult<*const TDF_HAllocator>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:55 - `BOPAlgo_Options::Clear()`
     pub fn BOPAlgo_BuilderSolid_inherited_Clear(
         self_: *mut BOPAlgo_BuilderSolid,
@@ -5982,12 +5996,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
     pub fn BOPAlgo_BuilderSolid_inherited_AddError(
         self_: *mut BOPAlgo_BuilderSolid,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
     pub fn BOPAlgo_BuilderSolid_inherited_AddWarning(
         self_: *mut BOPAlgo_BuilderSolid,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:73 - `BOPAlgo_Options::HasErrors()`
     pub fn BOPAlgo_BuilderSolid_inherited_HasErrors(
@@ -5996,7 +6010,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
     pub fn BOPAlgo_BuilderSolid_inherited_HasError(
         self_: *const BOPAlgo_BuilderSolid,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:82 - `BOPAlgo_Options::HasWarnings()`
     pub fn BOPAlgo_BuilderSolid_inherited_HasWarnings(
@@ -6005,12 +6019,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     pub fn BOPAlgo_BuilderSolid_inherited_HasWarning(
         self_: *const BOPAlgo_BuilderSolid,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn BOPAlgo_BuilderSolid_inherited_GetReport(
         self_: *const BOPAlgo_BuilderSolid,
-    ) -> crate::OcctResult<*const HandleMessageReport>;
+    ) -> crate::OcctResult<*const Handle_Message_Report>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
     pub fn BOPAlgo_BuilderSolid_inherited_DumpErrors(
         self_: *const BOPAlgo_BuilderSolid,
@@ -6054,23 +6068,23 @@ unsafe extern "C" {
     ) -> crate::OcctResult<bool>;
     // ======================== BOPAlgo_CellsBuilder ========================
     pub fn BOPAlgo_CellsBuilder_destructor(self_: *mut BOPAlgo_CellsBuilder);
-    /// **Source:** `BOPAlgo_CellsBuilder.hxx`:172 - `BOPAlgo_CellsBuilder::BOPAlgo_CellsBuilder()`
+    /// **Source:** `BOPAlgo_CellsBuilder.hxx`:173 - `BOPAlgo_CellsBuilder::BOPAlgo_CellsBuilder()`
     pub fn BOPAlgo_CellsBuilder_ctor() -> crate::OcctResult<*mut BOPAlgo_CellsBuilder>;
-    /// **Source:** `BOPAlgo_CellsBuilder.hxx`:174 - `BOPAlgo_CellsBuilder::BOPAlgo_CellsBuilder()`
-    pub fn BOPAlgo_CellsBuilder_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    /// **Source:** `BOPAlgo_CellsBuilder.hxx`:175 - `BOPAlgo_CellsBuilder::BOPAlgo_CellsBuilder()`
+    pub fn BOPAlgo_CellsBuilder_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPAlgo_CellsBuilder>;
-    /// **Source:** `BOPAlgo_CellsBuilder.hxx`:179 - `BOPAlgo_CellsBuilder::Clear()`
+    /// **Source:** `BOPAlgo_CellsBuilder.hxx`:180 - `BOPAlgo_CellsBuilder::Clear()`
     pub fn BOPAlgo_CellsBuilder_clear(self_: *mut BOPAlgo_CellsBuilder) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_CellsBuilder.hxx`:193 - `BOPAlgo_CellsBuilder::AddToResult()`
+    /// **Source:** `BOPAlgo_CellsBuilder.hxx`:194 - `BOPAlgo_CellsBuilder::AddToResult()`
     pub fn BOPAlgo_CellsBuilder_add_to_result(
         self_: *mut BOPAlgo_CellsBuilder,
-        theLSToTake: *const TopTools_ListOfShape,
-        theLSToAvoid: *const TopTools_ListOfShape,
+        theLSToTake: *const NCollection_List_TopoDS_Shape,
+        theLSToAvoid: *const NCollection_List_TopoDS_Shape,
         theMaterial: i32,
         theUpdate: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_CellsBuilder.hxx`:201 - `BOPAlgo_CellsBuilder::AddAllToResult()`
+    /// **Source:** `BOPAlgo_CellsBuilder.hxx`:202 - `BOPAlgo_CellsBuilder::AddAllToResult()`
     pub fn BOPAlgo_CellsBuilder_add_all_to_result(
         self_: *mut BOPAlgo_CellsBuilder,
         theMaterial: i32,
@@ -6079,8 +6093,8 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_CellsBuilder.hxx`:210 - `BOPAlgo_CellsBuilder::RemoveFromResult()`
     pub fn BOPAlgo_CellsBuilder_remove_from_result(
         self_: *mut BOPAlgo_CellsBuilder,
-        theLSToTake: *const TopTools_ListOfShape,
-        theLSToAvoid: *const TopTools_ListOfShape,
+        theLSToTake: *const NCollection_List_TopoDS_Shape,
+        theLSToAvoid: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BOPAlgo_CellsBuilder.hxx`:214 - `BOPAlgo_CellsBuilder::RemoveAllFromResult()`
     pub fn BOPAlgo_CellsBuilder_remove_all_from_result(
@@ -6130,139 +6144,137 @@ unsafe extern "C" {
     pub fn BOPAlgo_CellsBuilder_as_BOPAlgo_Options_mut(
         self_: *mut BOPAlgo_CellsBuilder,
     ) -> crate::OcctResult<*mut BOPAlgo_Options>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:89 - `BOPAlgo_Builder::PPaveFiller()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:90 - `BOPAlgo_Builder::PPaveFiller()`
     pub fn BOPAlgo_CellsBuilder_inherited_PPaveFiller(
         self_: *mut BOPAlgo_CellsBuilder,
     ) -> crate::OcctResult<*mut BOPAlgo_PaveFiller>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:92 - `BOPAlgo_Builder::PDS()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:93 - `BOPAlgo_Builder::PDS()`
     pub fn BOPAlgo_CellsBuilder_inherited_PDS(
         self_: *mut BOPAlgo_CellsBuilder,
     ) -> crate::OcctResult<*mut BOPDS_DS>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:95 - `BOPAlgo_Builder::Context()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:96 - `BOPAlgo_Builder::Context()`
     pub fn BOPAlgo_CellsBuilder_inherited_Context(
         self_: *const BOPAlgo_CellsBuilder,
-    ) -> crate::OcctResult<*mut HandleIntToolsContext>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:99 - `BOPAlgo_Builder::AddArgument()`
+    ) -> crate::OcctResult<*mut Handle_IntTools_Context>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:100 - `BOPAlgo_Builder::AddArgument()`
     pub fn BOPAlgo_CellsBuilder_inherited_AddArgument(
         self_: *mut BOPAlgo_CellsBuilder,
         theShape: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:102 - `BOPAlgo_Builder::SetArguments()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:103 - `BOPAlgo_Builder::SetArguments()`
     pub fn BOPAlgo_CellsBuilder_inherited_SetArguments(
         self_: *mut BOPAlgo_CellsBuilder,
-        theLS: *const TopTools_ListOfShape,
+        theLS: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:105 - `BOPAlgo_Builder::Arguments()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:106 - `BOPAlgo_Builder::Arguments()`
     pub fn BOPAlgo_CellsBuilder_inherited_Arguments(
         self_: *const BOPAlgo_CellsBuilder,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:114 - `BOPAlgo_Builder::SetNonDestructive()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:115 - `BOPAlgo_Builder::SetNonDestructive()`
     pub fn BOPAlgo_CellsBuilder_inherited_SetNonDestructive(
         self_: *mut BOPAlgo_CellsBuilder,
         theFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:119 - `BOPAlgo_Builder::NonDestructive()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:120 - `BOPAlgo_Builder::NonDestructive()`
     pub fn BOPAlgo_CellsBuilder_inherited_NonDestructive(
         self_: *const BOPAlgo_CellsBuilder,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:122 - `BOPAlgo_Builder::SetGlue()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:123 - `BOPAlgo_Builder::SetGlue()`
     pub fn BOPAlgo_CellsBuilder_inherited_SetGlue(
         self_: *mut BOPAlgo_CellsBuilder,
         theGlue: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:125 - `BOPAlgo_Builder::Glue()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:126 - `BOPAlgo_Builder::Glue()`
     pub fn BOPAlgo_CellsBuilder_inherited_Glue(
         self_: *const BOPAlgo_CellsBuilder,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:128 - `BOPAlgo_Builder::SetCheckInverted()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:129 - `BOPAlgo_Builder::SetCheckInverted()`
     pub fn BOPAlgo_CellsBuilder_inherited_SetCheckInverted(
         self_: *mut BOPAlgo_CellsBuilder,
         theCheck: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:132 - `BOPAlgo_Builder::CheckInverted()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:133 - `BOPAlgo_Builder::CheckInverted()`
     pub fn BOPAlgo_CellsBuilder_inherited_CheckInverted(
         self_: *const BOPAlgo_CellsBuilder,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:137 - `BOPAlgo_Builder::Perform()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:138 - `BOPAlgo_Builder::Perform()`
     pub fn BOPAlgo_CellsBuilder_inherited_Perform(
         self_: *mut BOPAlgo_CellsBuilder,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:142 - `BOPAlgo_Builder::PerformWithFiller()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:143 - `BOPAlgo_Builder::PerformWithFiller()`
     pub fn BOPAlgo_CellsBuilder_inherited_PerformWithFiller(
         self_: *mut BOPAlgo_CellsBuilder,
         theFiller: *const BOPAlgo_PaveFiller,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:186 - `BOPAlgo_Builder::BuildBOP()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:187 - `BOPAlgo_Builder::BuildBOP()`
     pub fn BOPAlgo_CellsBuilder_inherited_BuildBOP(
         self_: *mut BOPAlgo_CellsBuilder,
-        theObjects: *const TopTools_ListOfShape,
+        theObjects: *const NCollection_List_TopoDS_Shape,
         theObjState: i32,
-        theTools: *const TopTools_ListOfShape,
+        theTools: *const NCollection_List_TopoDS_Shape,
         theToolsState: i32,
         theRange: *const Message_ProgressRange,
-        theReport: *const HandleMessageReport,
+        theReport: *const Handle_Message_Report,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
-    pub fn BOPAlgo_CellsBuilder_inherited_Images(
-        self_: *const BOPAlgo_CellsBuilder,
-    ) -> crate::OcctResult<*const TopTools_DataMapOfShapeListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:284 - `BOPAlgo_Builder::Origins()`
-    pub fn BOPAlgo_CellsBuilder_inherited_Origins(
-        self_: *const BOPAlgo_CellsBuilder,
-    ) -> crate::OcctResult<*const TopTools_DataMapOfShapeListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:288 - `BOPAlgo_Builder::ShapesSD()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:285 - `BOPAlgo_Builder::Images()`
+    pub fn BOPAlgo_CellsBuilder_inherited_Images(self_: *const BOPAlgo_CellsBuilder) -> crate::OcctResult<*const NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:292 - `BOPAlgo_Builder::Origins()`
+    pub fn BOPAlgo_CellsBuilder_inherited_Origins(self_: *const BOPAlgo_CellsBuilder) -> crate::OcctResult<*const NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:299 - `BOPAlgo_Builder::ShapesSD()`
     pub fn BOPAlgo_CellsBuilder_inherited_ShapesSD(
         self_: *const BOPAlgo_CellsBuilder,
-    ) -> crate::OcctResult<*const TopTools_DataMapOfShapeShape>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
+    ) -> crate::OcctResult<
+        *const NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
+    >;
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:48 - `BOPAlgo_BuilderShape::Shape()`
     pub fn BOPAlgo_CellsBuilder_inherited_Shape(
         self_: *const BOPAlgo_CellsBuilder,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:72 - `BOPAlgo_BuilderShape::IsDeleted()`
     pub fn BOPAlgo_CellsBuilder_inherited_IsDeleted(
         self_: *mut BOPAlgo_CellsBuilder,
         theS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:77 - `BOPAlgo_BuilderShape::HasModified()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:78 - `BOPAlgo_BuilderShape::HasModified()`
     pub fn BOPAlgo_CellsBuilder_inherited_HasModified(
         self_: *const BOPAlgo_CellsBuilder,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:83 - `BOPAlgo_BuilderShape::HasGenerated()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:84 - `BOPAlgo_BuilderShape::HasGenerated()`
     pub fn BOPAlgo_CellsBuilder_inherited_HasGenerated(
         self_: *const BOPAlgo_CellsBuilder,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:89 - `BOPAlgo_BuilderShape::HasDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:90 - `BOPAlgo_BuilderShape::HasDeleted()`
     pub fn BOPAlgo_CellsBuilder_inherited_HasDeleted(
         self_: *const BOPAlgo_CellsBuilder,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:95 - `BOPAlgo_BuilderShape::History()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:93 - `BOPAlgo_BuilderShape::History()`
     pub fn BOPAlgo_CellsBuilder_inherited_History(
         self_: *mut BOPAlgo_CellsBuilder,
-    ) -> crate::OcctResult<*mut HandleBRepToolsHistory>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:116 - `BOPAlgo_BuilderShape::SetToFillHistory()`
+    ) -> crate::OcctResult<*mut Handle_BRepTools_History>;
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:114 - `BOPAlgo_BuilderShape::SetToFillHistory()`
     pub fn BOPAlgo_CellsBuilder_inherited_SetToFillHistory(
         self_: *mut BOPAlgo_CellsBuilder,
         theHistFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:119 - `BOPAlgo_BuilderShape::HasHistory()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:117 - `BOPAlgo_BuilderShape::HasHistory()`
     pub fn BOPAlgo_CellsBuilder_inherited_HasHistory(
         self_: *const BOPAlgo_CellsBuilder,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
     pub fn BOPAlgo_CellsBuilder_inherited_Allocator(
         self_: *const BOPAlgo_CellsBuilder,
-    ) -> crate::OcctResult<*const HandleNCollectionBaseAllocator>;
+    ) -> crate::OcctResult<*const TDF_HAllocator>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
     pub fn BOPAlgo_CellsBuilder_inherited_AddError(
         self_: *mut BOPAlgo_CellsBuilder,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
     pub fn BOPAlgo_CellsBuilder_inherited_AddWarning(
         self_: *mut BOPAlgo_CellsBuilder,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:73 - `BOPAlgo_Options::HasErrors()`
     pub fn BOPAlgo_CellsBuilder_inherited_HasErrors(
@@ -6271,7 +6283,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
     pub fn BOPAlgo_CellsBuilder_inherited_HasError(
         self_: *const BOPAlgo_CellsBuilder,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:82 - `BOPAlgo_Options::HasWarnings()`
     pub fn BOPAlgo_CellsBuilder_inherited_HasWarnings(
@@ -6280,12 +6292,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     pub fn BOPAlgo_CellsBuilder_inherited_HasWarning(
         self_: *const BOPAlgo_CellsBuilder,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn BOPAlgo_CellsBuilder_inherited_GetReport(
         self_: *const BOPAlgo_CellsBuilder,
-    ) -> crate::OcctResult<*const HandleMessageReport>;
+    ) -> crate::OcctResult<*const Handle_Message_Report>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
     pub fn BOPAlgo_CellsBuilder_inherited_DumpErrors(
         self_: *const BOPAlgo_CellsBuilder,
@@ -6362,11 +6374,11 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_CheckResult.hxx`:56 - `BOPAlgo_CheckResult::GetFaultyShapes1()`
     pub fn BOPAlgo_CheckResult_get_faulty_shapes1(
         self_: *const BOPAlgo_CheckResult,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// **Source:** `BOPAlgo_CheckResult.hxx`:59 - `BOPAlgo_CheckResult::GetFaultyShapes2()`
     pub fn BOPAlgo_CheckResult_get_faulty_shapes2(
         self_: *const BOPAlgo_CheckResult,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// **Source:** `BOPAlgo_CheckResult.hxx`:62 - `BOPAlgo_CheckResult::SetCheckStatus()`
     pub fn BOPAlgo_CheckResult_set_check_status(
         self_: *mut BOPAlgo_CheckResult,
@@ -6450,77 +6462,77 @@ unsafe extern "C" {
     pub fn BOPAlgo_CheckerSI_as_BOPAlgo_Options_mut(
         self_: *mut BOPAlgo_CheckerSI,
     ) -> crate::OcctResult<*mut BOPAlgo_Options>;
-    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:119 - `BOPAlgo_PaveFiller::DS()`
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:117 - `BOPAlgo_PaveFiller::DS()`
     pub fn BOPAlgo_CheckerSI_inherited_DS(
         self_: *mut BOPAlgo_CheckerSI,
     ) -> crate::OcctResult<*const BOPDS_DS>;
-    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:121 - `BOPAlgo_PaveFiller::PDS()`
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:119 - `BOPAlgo_PaveFiller::PDS()`
     pub fn BOPAlgo_CheckerSI_inherited_PDS(
         self_: *mut BOPAlgo_CheckerSI,
     ) -> crate::OcctResult<*mut BOPDS_DS>;
-    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:126 - `BOPAlgo_PaveFiller::SetArguments()`
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:124 - `BOPAlgo_PaveFiller::SetArguments()`
     pub fn BOPAlgo_CheckerSI_inherited_SetArguments(
         self_: *mut BOPAlgo_CheckerSI,
-        theLS: *const TopTools_ListOfShape,
+        theLS: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:129 - `BOPAlgo_PaveFiller::AddArgument()`
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:130 - `BOPAlgo_PaveFiller::AddArgument()`
     pub fn BOPAlgo_CheckerSI_inherited_AddArgument(
         self_: *mut BOPAlgo_CheckerSI,
         theShape: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:132 - `BOPAlgo_PaveFiller::Arguments()`
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:133 - `BOPAlgo_PaveFiller::Arguments()`
     pub fn BOPAlgo_CheckerSI_inherited_Arguments(
         self_: *const BOPAlgo_CheckerSI,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:134 - `BOPAlgo_PaveFiller::Context()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:135 - `BOPAlgo_PaveFiller::Context()`
     pub fn BOPAlgo_CheckerSI_inherited_Context(
         self_: *mut BOPAlgo_CheckerSI,
-    ) -> crate::OcctResult<*const HandleIntToolsContext>;
-    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:136 - `BOPAlgo_PaveFiller::SetSectionAttribute()`
+    ) -> crate::OcctResult<*const Handle_IntTools_Context>;
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:137 - `BOPAlgo_PaveFiller::SetSectionAttribute()`
     pub fn BOPAlgo_CheckerSI_inherited_SetSectionAttribute(
         self_: *mut BOPAlgo_CheckerSI,
         theSecAttr: *const BOPAlgo_SectionAttribute,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:141 - `BOPAlgo_PaveFiller::SetNonDestructive()`
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:142 - `BOPAlgo_PaveFiller::SetNonDestructive()`
     pub fn BOPAlgo_CheckerSI_inherited_SetNonDestructive(
         self_: *mut BOPAlgo_CheckerSI,
         theFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:146 - `BOPAlgo_PaveFiller::NonDestructive()`
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:147 - `BOPAlgo_PaveFiller::NonDestructive()`
     pub fn BOPAlgo_CheckerSI_inherited_NonDestructive(
         self_: *const BOPAlgo_CheckerSI,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:152 - `BOPAlgo_PaveFiller::SetGlue()`
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:153 - `BOPAlgo_PaveFiller::SetGlue()`
     pub fn BOPAlgo_CheckerSI_inherited_SetGlue(
         self_: *mut BOPAlgo_CheckerSI,
         theGlue: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:155 - `BOPAlgo_PaveFiller::Glue()`
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:156 - `BOPAlgo_PaveFiller::Glue()`
     pub fn BOPAlgo_CheckerSI_inherited_Glue(
         self_: *const BOPAlgo_CheckerSI,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:158 - `BOPAlgo_PaveFiller::SetAvoidBuildPCurve()`
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:159 - `BOPAlgo_PaveFiller::SetAvoidBuildPCurve()`
     pub fn BOPAlgo_CheckerSI_inherited_SetAvoidBuildPCurve(
         self_: *mut BOPAlgo_CheckerSI,
         theValue: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:161 - `BOPAlgo_PaveFiller::IsAvoidBuildPCurve()`
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:162 - `BOPAlgo_PaveFiller::IsAvoidBuildPCurve()`
     pub fn BOPAlgo_CheckerSI_inherited_IsAvoidBuildPCurve(
         self_: *const BOPAlgo_CheckerSI,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
     pub fn BOPAlgo_CheckerSI_inherited_Allocator(
         self_: *const BOPAlgo_CheckerSI,
-    ) -> crate::OcctResult<*const HandleNCollectionBaseAllocator>;
+    ) -> crate::OcctResult<*const TDF_HAllocator>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
     pub fn BOPAlgo_CheckerSI_inherited_AddError(
         self_: *mut BOPAlgo_CheckerSI,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
     pub fn BOPAlgo_CheckerSI_inherited_AddWarning(
         self_: *mut BOPAlgo_CheckerSI,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:73 - `BOPAlgo_Options::HasErrors()`
     pub fn BOPAlgo_CheckerSI_inherited_HasErrors(
@@ -6529,7 +6541,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
     pub fn BOPAlgo_CheckerSI_inherited_HasError(
         self_: *const BOPAlgo_CheckerSI,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:82 - `BOPAlgo_Options::HasWarnings()`
     pub fn BOPAlgo_CheckerSI_inherited_HasWarnings(
@@ -6538,12 +6550,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     pub fn BOPAlgo_CheckerSI_inherited_HasWarning(
         self_: *const BOPAlgo_CheckerSI,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn BOPAlgo_CheckerSI_inherited_GetReport(
         self_: *const BOPAlgo_CheckerSI,
-    ) -> crate::OcctResult<*const HandleMessageReport>;
+    ) -> crate::OcctResult<*const Handle_Message_Report>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
     pub fn BOPAlgo_CheckerSI_inherited_DumpErrors(
         self_: *const BOPAlgo_CheckerSI,
@@ -6589,76 +6601,76 @@ unsafe extern "C" {
     pub fn BOPAlgo_MakeConnected_destructor(self_: *mut BOPAlgo_MakeConnected);
     /// **Source:** `BOPAlgo_MakeConnected.hxx`:138 - `BOPAlgo_MakeConnected::BOPAlgo_MakeConnected()`
     pub fn BOPAlgo_MakeConnected_ctor() -> crate::OcctResult<*mut BOPAlgo_MakeConnected>;
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:146 - `BOPAlgo_MakeConnected::SetArguments()`
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:145 - `BOPAlgo_MakeConnected::SetArguments()`
     pub fn BOPAlgo_MakeConnected_set_arguments(
         self_: *mut BOPAlgo_MakeConnected,
-        theArgs: *const TopTools_ListOfShape,
+        theArgs: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:150 - `BOPAlgo_MakeConnected::AddArgument()`
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:149 - `BOPAlgo_MakeConnected::AddArgument()`
     pub fn BOPAlgo_MakeConnected_add_argument(
         self_: *mut BOPAlgo_MakeConnected,
         theS: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:153 - `BOPAlgo_MakeConnected::Arguments()`
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:152 - `BOPAlgo_MakeConnected::Arguments()`
     pub fn BOPAlgo_MakeConnected_arguments(
         self_: *const BOPAlgo_MakeConnected,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:157 - `BOPAlgo_MakeConnected::Perform()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:156 - `BOPAlgo_MakeConnected::Perform()`
     pub fn BOPAlgo_MakeConnected_perform(
         self_: *mut BOPAlgo_MakeConnected,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:164 - `BOPAlgo_MakeConnected::MakePeriodic()`
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:163 - `BOPAlgo_MakeConnected::MakePeriodic()`
     pub fn BOPAlgo_MakeConnected_make_periodic(
         self_: *mut BOPAlgo_MakeConnected,
         theParams: *const BOPAlgo_MakePeriodic_PeriodicityParams,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:171 - `BOPAlgo_MakeConnected::RepeatShape()`
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:170 - `BOPAlgo_MakeConnected::RepeatShape()`
     pub fn BOPAlgo_MakeConnected_repeat_shape(
         self_: *mut BOPAlgo_MakeConnected,
         theDirectionID: i32,
         theTimes: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:176 - `BOPAlgo_MakeConnected::ClearRepetitions()`
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:174 - `BOPAlgo_MakeConnected::ClearRepetitions()`
     pub fn BOPAlgo_MakeConnected_clear_repetitions(
         self_: *mut BOPAlgo_MakeConnected,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:179 - `BOPAlgo_MakeConnected::PeriodicityTool()`
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:177 - `BOPAlgo_MakeConnected::PeriodicityTool()`
     pub fn BOPAlgo_MakeConnected_periodicity_tool(
         self_: *const BOPAlgo_MakeConnected,
     ) -> crate::OcctResult<*const BOPAlgo_MakePeriodic>;
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:185 - `BOPAlgo_MakeConnected::MaterialsOnPositiveSide()`
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:183 - `BOPAlgo_MakeConnected::MaterialsOnPositiveSide()`
     pub fn BOPAlgo_MakeConnected_materials_on_positive_side(
         self_: *mut BOPAlgo_MakeConnected,
         theS: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:194 - `BOPAlgo_MakeConnected::MaterialsOnNegativeSide()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:192 - `BOPAlgo_MakeConnected::MaterialsOnNegativeSide()`
     pub fn BOPAlgo_MakeConnected_materials_on_negative_side(
         self_: *mut BOPAlgo_MakeConnected,
         theS: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:202 - `BOPAlgo_MakeConnected::History()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:200 - `BOPAlgo_MakeConnected::History()`
     pub fn BOPAlgo_MakeConnected_history(
         self_: *const BOPAlgo_MakeConnected,
-    ) -> crate::OcctResult<*const HandleBRepToolsHistory>;
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:206 - `BOPAlgo_MakeConnected::GetModified()`
+    ) -> crate::OcctResult<*const Handle_BRepTools_History>;
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:204 - `BOPAlgo_MakeConnected::GetModified()`
     pub fn BOPAlgo_MakeConnected_get_modified(
         self_: *mut BOPAlgo_MakeConnected,
         theS: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:213 - `BOPAlgo_MakeConnected::GetOrigins()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:211 - `BOPAlgo_MakeConnected::GetOrigins()`
     pub fn BOPAlgo_MakeConnected_get_origins(
         self_: *mut BOPAlgo_MakeConnected,
         theS: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:221 - `BOPAlgo_MakeConnected::Shape()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:219 - `BOPAlgo_MakeConnected::Shape()`
     pub fn BOPAlgo_MakeConnected_shape(
         self_: *const BOPAlgo_MakeConnected,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:224 - `BOPAlgo_MakeConnected::PeriodicShape()`
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:222 - `BOPAlgo_MakeConnected::PeriodicShape()`
     pub fn BOPAlgo_MakeConnected_periodic_shape(
         self_: *const BOPAlgo_MakeConnected,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:228 - `BOPAlgo_MakeConnected::Clear()`
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:226 - `BOPAlgo_MakeConnected::Clear()`
     pub fn BOPAlgo_MakeConnected_clear(
         self_: *mut BOPAlgo_MakeConnected,
     ) -> *const std::ffi::c_char;
@@ -6673,16 +6685,16 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
     pub fn BOPAlgo_MakeConnected_inherited_Allocator(
         self_: *const BOPAlgo_MakeConnected,
-    ) -> crate::OcctResult<*const HandleNCollectionBaseAllocator>;
+    ) -> crate::OcctResult<*const TDF_HAllocator>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
     pub fn BOPAlgo_MakeConnected_inherited_AddError(
         self_: *mut BOPAlgo_MakeConnected,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
     pub fn BOPAlgo_MakeConnected_inherited_AddWarning(
         self_: *mut BOPAlgo_MakeConnected,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:73 - `BOPAlgo_Options::HasErrors()`
     pub fn BOPAlgo_MakeConnected_inherited_HasErrors(
@@ -6691,7 +6703,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
     pub fn BOPAlgo_MakeConnected_inherited_HasError(
         self_: *const BOPAlgo_MakeConnected,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:82 - `BOPAlgo_Options::HasWarnings()`
     pub fn BOPAlgo_MakeConnected_inherited_HasWarnings(
@@ -6700,12 +6712,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     pub fn BOPAlgo_MakeConnected_inherited_HasWarning(
         self_: *const BOPAlgo_MakeConnected,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn BOPAlgo_MakeConnected_inherited_GetReport(
         self_: *const BOPAlgo_MakeConnected,
-    ) -> crate::OcctResult<*const HandleMessageReport>;
+    ) -> crate::OcctResult<*const Handle_Message_Report>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
     pub fn BOPAlgo_MakeConnected_inherited_DumpErrors(
         self_: *const BOPAlgo_MakeConnected,
@@ -6749,189 +6761,189 @@ unsafe extern "C" {
     ) -> crate::OcctResult<bool>;
     // ======================== BOPAlgo_MakePeriodic ========================
     pub fn BOPAlgo_MakePeriodic_destructor(self_: *mut BOPAlgo_MakePeriodic);
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:131 - `BOPAlgo_MakePeriodic::BOPAlgo_MakePeriodic()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:132 - `BOPAlgo_MakePeriodic::BOPAlgo_MakePeriodic()`
     pub fn BOPAlgo_MakePeriodic_ctor() -> crate::OcctResult<*mut BOPAlgo_MakePeriodic>;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:140 - `BOPAlgo_MakePeriodic::SetShape()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:137 - `BOPAlgo_MakePeriodic::SetShape()`
     pub fn BOPAlgo_MakePeriodic_set_shape(
         self_: *mut BOPAlgo_MakePeriodic,
         theShape: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:172 - `BOPAlgo_MakePeriodic::SetPeriodicityParameters()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:169 - `BOPAlgo_MakePeriodic::SetPeriodicityParameters()`
     pub fn BOPAlgo_MakePeriodic_set_periodicity_parameters(
         self_: *mut BOPAlgo_MakePeriodic,
         theParams: *const BOPAlgo_MakePeriodic_PeriodicityParams,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:177 - `BOPAlgo_MakePeriodic::PeriodicityParameters()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:174 - `BOPAlgo_MakePeriodic::PeriodicityParameters()`
     pub fn BOPAlgo_MakePeriodic_periodicity_parameters(
         self_: *const BOPAlgo_MakePeriodic,
     ) -> crate::OcctResult<*const BOPAlgo_MakePeriodic_PeriodicityParams>;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:188 - `BOPAlgo_MakePeriodic::MakePeriodic()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:185 - `BOPAlgo_MakePeriodic::MakePeriodic()`
     pub fn BOPAlgo_MakePeriodic_make_periodic(
         self_: *mut BOPAlgo_MakePeriodic,
         theDirectionID: i32,
         theIsPeriodic: bool,
         thePeriod: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:199 - `BOPAlgo_MakePeriodic::IsPeriodic()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:196 - `BOPAlgo_MakePeriodic::IsPeriodic()`
     pub fn BOPAlgo_MakePeriodic_is_periodic(
         self_: *const BOPAlgo_MakePeriodic,
         theDirectionID: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:206 - `BOPAlgo_MakePeriodic::Period()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:203 - `BOPAlgo_MakePeriodic::Period()`
     pub fn BOPAlgo_MakePeriodic_period(
         self_: *const BOPAlgo_MakePeriodic,
         theDirectionID: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:216 - `BOPAlgo_MakePeriodic::MakeXPeriodic()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:213 - `BOPAlgo_MakePeriodic::MakeXPeriodic()`
     pub fn BOPAlgo_MakePeriodic_make_x_periodic(
         self_: *mut BOPAlgo_MakePeriodic,
         theIsPeriodic: bool,
         thePeriod: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:222 - `BOPAlgo_MakePeriodic::IsXPeriodic()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:219 - `BOPAlgo_MakePeriodic::IsXPeriodic()`
     pub fn BOPAlgo_MakePeriodic_is_x_periodic(
         self_: *const BOPAlgo_MakePeriodic,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:225 - `BOPAlgo_MakePeriodic::XPeriod()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:222 - `BOPAlgo_MakePeriodic::XPeriod()`
     pub fn BOPAlgo_MakePeriodic_x_period(
         self_: *const BOPAlgo_MakePeriodic,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:230 - `BOPAlgo_MakePeriodic::MakeYPeriodic()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:227 - `BOPAlgo_MakePeriodic::MakeYPeriodic()`
     pub fn BOPAlgo_MakePeriodic_make_y_periodic(
         self_: *mut BOPAlgo_MakePeriodic,
         theIsPeriodic: bool,
         thePeriod: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:236 - `BOPAlgo_MakePeriodic::IsYPeriodic()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:233 - `BOPAlgo_MakePeriodic::IsYPeriodic()`
     pub fn BOPAlgo_MakePeriodic_is_y_periodic(
         self_: *const BOPAlgo_MakePeriodic,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:239 - `BOPAlgo_MakePeriodic::YPeriod()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:236 - `BOPAlgo_MakePeriodic::YPeriod()`
     pub fn BOPAlgo_MakePeriodic_y_period(
         self_: *const BOPAlgo_MakePeriodic,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:244 - `BOPAlgo_MakePeriodic::MakeZPeriodic()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:241 - `BOPAlgo_MakePeriodic::MakeZPeriodic()`
     pub fn BOPAlgo_MakePeriodic_make_z_periodic(
         self_: *mut BOPAlgo_MakePeriodic,
         theIsPeriodic: bool,
         thePeriod: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:250 - `BOPAlgo_MakePeriodic::IsZPeriodic()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:247 - `BOPAlgo_MakePeriodic::IsZPeriodic()`
     pub fn BOPAlgo_MakePeriodic_is_z_periodic(
         self_: *const BOPAlgo_MakePeriodic,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:253 - `BOPAlgo_MakePeriodic::ZPeriod()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:250 - `BOPAlgo_MakePeriodic::ZPeriod()`
     pub fn BOPAlgo_MakePeriodic_z_period(
         self_: *const BOPAlgo_MakePeriodic,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:272 - `BOPAlgo_MakePeriodic::SetTrimmed()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:269 - `BOPAlgo_MakePeriodic::SetTrimmed()`
     pub fn BOPAlgo_MakePeriodic_set_trimmed(
         self_: *mut BOPAlgo_MakePeriodic,
         theDirectionID: i32,
         theIsTrimmed: bool,
         theFirst: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:286 - `BOPAlgo_MakePeriodic::IsInputTrimmed()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:281 - `BOPAlgo_MakePeriodic::IsInputTrimmed()`
     pub fn BOPAlgo_MakePeriodic_is_input_trimmed(
         self_: *const BOPAlgo_MakePeriodic,
         theDirectionID: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:293 - `BOPAlgo_MakePeriodic::PeriodFirst()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:288 - `BOPAlgo_MakePeriodic::PeriodFirst()`
     pub fn BOPAlgo_MakePeriodic_period_first(
         self_: *const BOPAlgo_MakePeriodic,
         theDirectionID: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:310 - `BOPAlgo_MakePeriodic::SetXTrimmed()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:305 - `BOPAlgo_MakePeriodic::SetXTrimmed()`
     pub fn BOPAlgo_MakePeriodic_set_x_trimmed(
         self_: *mut BOPAlgo_MakePeriodic,
         theIsTrimmed: bool,
         theFirst: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:316 - `BOPAlgo_MakePeriodic::IsInputXTrimmed()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:311 - `BOPAlgo_MakePeriodic::IsInputXTrimmed()`
     pub fn BOPAlgo_MakePeriodic_is_input_x_trimmed(
         self_: *const BOPAlgo_MakePeriodic,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:319 - `BOPAlgo_MakePeriodic::XPeriodFirst()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:314 - `BOPAlgo_MakePeriodic::XPeriodFirst()`
     pub fn BOPAlgo_MakePeriodic_x_period_first(
         self_: *const BOPAlgo_MakePeriodic,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:331 - `BOPAlgo_MakePeriodic::SetYTrimmed()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:326 - `BOPAlgo_MakePeriodic::SetYTrimmed()`
     pub fn BOPAlgo_MakePeriodic_set_y_trimmed(
         self_: *mut BOPAlgo_MakePeriodic,
         theIsTrimmed: bool,
         theFirst: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:337 - `BOPAlgo_MakePeriodic::IsInputYTrimmed()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:332 - `BOPAlgo_MakePeriodic::IsInputYTrimmed()`
     pub fn BOPAlgo_MakePeriodic_is_input_y_trimmed(
         self_: *const BOPAlgo_MakePeriodic,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:340 - `BOPAlgo_MakePeriodic::YPeriodFirst()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:335 - `BOPAlgo_MakePeriodic::YPeriodFirst()`
     pub fn BOPAlgo_MakePeriodic_y_period_first(
         self_: *const BOPAlgo_MakePeriodic,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:352 - `BOPAlgo_MakePeriodic::SetZTrimmed()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:347 - `BOPAlgo_MakePeriodic::SetZTrimmed()`
     pub fn BOPAlgo_MakePeriodic_set_z_trimmed(
         self_: *mut BOPAlgo_MakePeriodic,
         theIsTrimmed: bool,
         theFirst: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:358 - `BOPAlgo_MakePeriodic::IsInputZTrimmed()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:353 - `BOPAlgo_MakePeriodic::IsInputZTrimmed()`
     pub fn BOPAlgo_MakePeriodic_is_input_z_trimmed(
         self_: *const BOPAlgo_MakePeriodic,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:361 - `BOPAlgo_MakePeriodic::ZPeriodFirst()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:356 - `BOPAlgo_MakePeriodic::ZPeriodFirst()`
     pub fn BOPAlgo_MakePeriodic_z_period_first(
         self_: *const BOPAlgo_MakePeriodic,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:365 - `BOPAlgo_MakePeriodic::Perform()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:360 - `BOPAlgo_MakePeriodic::Perform()`
     pub fn BOPAlgo_MakePeriodic_perform(
         self_: *mut BOPAlgo_MakePeriodic,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:376 - `BOPAlgo_MakePeriodic::RepeatShape()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:371 - `BOPAlgo_MakePeriodic::RepeatShape()`
     pub fn BOPAlgo_MakePeriodic_repeat_shape(
         self_: *mut BOPAlgo_MakePeriodic,
         theDirectionID: i32,
         theTimes: i32,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:385 - `BOPAlgo_MakePeriodic::XRepeat()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:379 - `BOPAlgo_MakePeriodic::XRepeat()`
     pub fn BOPAlgo_MakePeriodic_x_repeat(
         self_: *mut BOPAlgo_MakePeriodic,
         theTimes: i32,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:393 - `BOPAlgo_MakePeriodic::YRepeat()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:387 - `BOPAlgo_MakePeriodic::YRepeat()`
     pub fn BOPAlgo_MakePeriodic_y_repeat(
         self_: *mut BOPAlgo_MakePeriodic,
         theTimes: i32,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:401 - `BOPAlgo_MakePeriodic::ZRepeat()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:395 - `BOPAlgo_MakePeriodic::ZRepeat()`
     pub fn BOPAlgo_MakePeriodic_z_repeat(
         self_: *mut BOPAlgo_MakePeriodic,
         theTimes: i32,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:405 - `BOPAlgo_MakePeriodic::RepeatedShape()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:399 - `BOPAlgo_MakePeriodic::RepeatedShape()`
     pub fn BOPAlgo_MakePeriodic_repeated_shape(
         self_: *const BOPAlgo_MakePeriodic,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:409 - `BOPAlgo_MakePeriodic::ClearRepetitions()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:403 - `BOPAlgo_MakePeriodic::ClearRepetitions()`
     pub fn BOPAlgo_MakePeriodic_clear_repetitions(
         self_: *mut BOPAlgo_MakePeriodic,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:424 - `BOPAlgo_MakePeriodic::Shape()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:418 - `BOPAlgo_MakePeriodic::Shape()`
     pub fn BOPAlgo_MakePeriodic_shape(
         self_: *const BOPAlgo_MakePeriodic,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:432 - `BOPAlgo_MakePeriodic::GetTwins()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:426 - `BOPAlgo_MakePeriodic::GetTwins()`
     pub fn BOPAlgo_MakePeriodic_get_twins(
         self_: *const BOPAlgo_MakePeriodic,
         theS: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:442 - `BOPAlgo_MakePeriodic::History()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:436 - `BOPAlgo_MakePeriodic::History()`
     pub fn BOPAlgo_MakePeriodic_history(
         self_: *const BOPAlgo_MakePeriodic,
-    ) -> crate::OcctResult<*const HandleBRepToolsHistory>;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:446 - `BOPAlgo_MakePeriodic::Clear()`
+    ) -> crate::OcctResult<*const Handle_BRepTools_History>;
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:440 - `BOPAlgo_MakePeriodic::Clear()`
     pub fn BOPAlgo_MakePeriodic_clear(self_: *mut BOPAlgo_MakePeriodic) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:461 - `BOPAlgo_MakePeriodic::ToDirectionID()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:455 - `BOPAlgo_MakePeriodic::ToDirectionID()`
     pub fn BOPAlgo_MakePeriodic_to_direction_id(theDirectionID: i32) -> crate::OcctResult<i32>;
     /// Upcast BOPAlgo_MakePeriodic to BOPAlgo_Options
     pub fn BOPAlgo_MakePeriodic_as_BOPAlgo_Options(
@@ -6944,16 +6956,16 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
     pub fn BOPAlgo_MakePeriodic_inherited_Allocator(
         self_: *const BOPAlgo_MakePeriodic,
-    ) -> crate::OcctResult<*const HandleNCollectionBaseAllocator>;
+    ) -> crate::OcctResult<*const TDF_HAllocator>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
     pub fn BOPAlgo_MakePeriodic_inherited_AddError(
         self_: *mut BOPAlgo_MakePeriodic,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
     pub fn BOPAlgo_MakePeriodic_inherited_AddWarning(
         self_: *mut BOPAlgo_MakePeriodic,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:73 - `BOPAlgo_Options::HasErrors()`
     pub fn BOPAlgo_MakePeriodic_inherited_HasErrors(
@@ -6962,7 +6974,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
     pub fn BOPAlgo_MakePeriodic_inherited_HasError(
         self_: *const BOPAlgo_MakePeriodic,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:82 - `BOPAlgo_Options::HasWarnings()`
     pub fn BOPAlgo_MakePeriodic_inherited_HasWarnings(
@@ -6971,12 +6983,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     pub fn BOPAlgo_MakePeriodic_inherited_HasWarning(
         self_: *const BOPAlgo_MakePeriodic,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn BOPAlgo_MakePeriodic_inherited_GetReport(
         self_: *const BOPAlgo_MakePeriodic,
-    ) -> crate::OcctResult<*const HandleMessageReport>;
+    ) -> crate::OcctResult<*const Handle_Message_Report>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
     pub fn BOPAlgo_MakePeriodic_inherited_DumpErrors(
         self_: *const BOPAlgo_MakePeriodic,
@@ -7025,41 +7037,41 @@ unsafe extern "C" {
     pub fn BOPAlgo_MakePeriodic_PeriodicityParams_sizeof() -> usize;
     // ======================== BOPAlgo_MakerVolume ========================
     pub fn BOPAlgo_MakerVolume_destructor(self_: *mut BOPAlgo_MakerVolume);
-    /// **Source:** `BOPAlgo_MakerVolume.hxx`:112 - `BOPAlgo_MakerVolume::BOPAlgo_MakerVolume()`
+    /// **Source:** `BOPAlgo_MakerVolume.hxx`:114 - `BOPAlgo_MakerVolume::BOPAlgo_MakerVolume()`
     pub fn BOPAlgo_MakerVolume_ctor() -> crate::OcctResult<*mut BOPAlgo_MakerVolume>;
-    /// **Source:** `BOPAlgo_MakerVolume.hxx`:116 - `BOPAlgo_MakerVolume::BOPAlgo_MakerVolume()`
-    pub fn BOPAlgo_MakerVolume_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    /// **Source:** `BOPAlgo_MakerVolume.hxx`:118 - `BOPAlgo_MakerVolume::BOPAlgo_MakerVolume()`
+    pub fn BOPAlgo_MakerVolume_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPAlgo_MakerVolume>;
-    /// **Source:** `BOPAlgo_MakerVolume.hxx`:119 - `BOPAlgo_MakerVolume::Clear()`
+    /// **Source:** `BOPAlgo_MakerVolume.hxx`:121 - `BOPAlgo_MakerVolume::Clear()`
     pub fn BOPAlgo_MakerVolume_clear(self_: *mut BOPAlgo_MakerVolume) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_MakerVolume.hxx`:124 - `BOPAlgo_MakerVolume::SetIntersect()`
+    /// **Source:** `BOPAlgo_MakerVolume.hxx`:126 - `BOPAlgo_MakerVolume::SetIntersect()`
     pub fn BOPAlgo_MakerVolume_set_intersect(
         self_: *mut BOPAlgo_MakerVolume,
         bIntersect: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_MakerVolume.hxx`:127 - `BOPAlgo_MakerVolume::IsIntersect()`
+    /// **Source:** `BOPAlgo_MakerVolume.hxx`:129 - `BOPAlgo_MakerVolume::IsIntersect()`
     pub fn BOPAlgo_MakerVolume_is_intersect(
         self_: *const BOPAlgo_MakerVolume,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPAlgo_MakerVolume.hxx`:130 - `BOPAlgo_MakerVolume::Box()`
+    /// **Source:** `BOPAlgo_MakerVolume.hxx`:132 - `BOPAlgo_MakerVolume::Box()`
     pub fn BOPAlgo_MakerVolume_box_(
         self_: *const BOPAlgo_MakerVolume,
     ) -> crate::OcctResult<*const TopoDS_Solid>;
-    /// **Source:** `BOPAlgo_MakerVolume.hxx`:133 - `BOPAlgo_MakerVolume::Faces()`
+    /// **Source:** `BOPAlgo_MakerVolume.hxx`:135 - `BOPAlgo_MakerVolume::Faces()`
     pub fn BOPAlgo_MakerVolume_faces(
         self_: *const BOPAlgo_MakerVolume,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BOPAlgo_MakerVolume.hxx`:137 - `BOPAlgo_MakerVolume::SetAvoidInternalShapes()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BOPAlgo_MakerVolume.hxx`:139 - `BOPAlgo_MakerVolume::SetAvoidInternalShapes()`
     pub fn BOPAlgo_MakerVolume_set_avoid_internal_shapes(
         self_: *mut BOPAlgo_MakerVolume,
         theAvoidInternal: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_MakerVolume.hxx`:143 - `BOPAlgo_MakerVolume::IsAvoidInternalShapes()`
+    /// **Source:** `BOPAlgo_MakerVolume.hxx`:145 - `BOPAlgo_MakerVolume::IsAvoidInternalShapes()`
     pub fn BOPAlgo_MakerVolume_is_avoid_internal_shapes(
         self_: *const BOPAlgo_MakerVolume,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPAlgo_MakerVolume.hxx`:146 - `BOPAlgo_MakerVolume::Perform()`
+    /// **Source:** `BOPAlgo_MakerVolume.hxx`:148 - `BOPAlgo_MakerVolume::Perform()`
     pub fn BOPAlgo_MakerVolume_perform(
         self_: *mut BOPAlgo_MakerVolume,
         theRange: *const Message_ProgressRange,
@@ -7096,134 +7108,132 @@ unsafe extern "C" {
     pub fn BOPAlgo_MakerVolume_as_BOPAlgo_Options_mut(
         self_: *mut BOPAlgo_MakerVolume,
     ) -> crate::OcctResult<*mut BOPAlgo_Options>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:89 - `BOPAlgo_Builder::PPaveFiller()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:90 - `BOPAlgo_Builder::PPaveFiller()`
     pub fn BOPAlgo_MakerVolume_inherited_PPaveFiller(
         self_: *mut BOPAlgo_MakerVolume,
     ) -> crate::OcctResult<*mut BOPAlgo_PaveFiller>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:92 - `BOPAlgo_Builder::PDS()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:93 - `BOPAlgo_Builder::PDS()`
     pub fn BOPAlgo_MakerVolume_inherited_PDS(
         self_: *mut BOPAlgo_MakerVolume,
     ) -> crate::OcctResult<*mut BOPDS_DS>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:95 - `BOPAlgo_Builder::Context()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:96 - `BOPAlgo_Builder::Context()`
     pub fn BOPAlgo_MakerVolume_inherited_Context(
         self_: *const BOPAlgo_MakerVolume,
-    ) -> crate::OcctResult<*mut HandleIntToolsContext>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:99 - `BOPAlgo_Builder::AddArgument()`
+    ) -> crate::OcctResult<*mut Handle_IntTools_Context>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:100 - `BOPAlgo_Builder::AddArgument()`
     pub fn BOPAlgo_MakerVolume_inherited_AddArgument(
         self_: *mut BOPAlgo_MakerVolume,
         theShape: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:102 - `BOPAlgo_Builder::SetArguments()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:103 - `BOPAlgo_Builder::SetArguments()`
     pub fn BOPAlgo_MakerVolume_inherited_SetArguments(
         self_: *mut BOPAlgo_MakerVolume,
-        theLS: *const TopTools_ListOfShape,
+        theLS: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:105 - `BOPAlgo_Builder::Arguments()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:106 - `BOPAlgo_Builder::Arguments()`
     pub fn BOPAlgo_MakerVolume_inherited_Arguments(
         self_: *const BOPAlgo_MakerVolume,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:114 - `BOPAlgo_Builder::SetNonDestructive()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:115 - `BOPAlgo_Builder::SetNonDestructive()`
     pub fn BOPAlgo_MakerVolume_inherited_SetNonDestructive(
         self_: *mut BOPAlgo_MakerVolume,
         theFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:119 - `BOPAlgo_Builder::NonDestructive()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:120 - `BOPAlgo_Builder::NonDestructive()`
     pub fn BOPAlgo_MakerVolume_inherited_NonDestructive(
         self_: *const BOPAlgo_MakerVolume,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:122 - `BOPAlgo_Builder::SetGlue()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:123 - `BOPAlgo_Builder::SetGlue()`
     pub fn BOPAlgo_MakerVolume_inherited_SetGlue(
         self_: *mut BOPAlgo_MakerVolume,
         theGlue: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:125 - `BOPAlgo_Builder::Glue()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:126 - `BOPAlgo_Builder::Glue()`
     pub fn BOPAlgo_MakerVolume_inherited_Glue(
         self_: *const BOPAlgo_MakerVolume,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:128 - `BOPAlgo_Builder::SetCheckInverted()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:129 - `BOPAlgo_Builder::SetCheckInverted()`
     pub fn BOPAlgo_MakerVolume_inherited_SetCheckInverted(
         self_: *mut BOPAlgo_MakerVolume,
         theCheck: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:132 - `BOPAlgo_Builder::CheckInverted()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:133 - `BOPAlgo_Builder::CheckInverted()`
     pub fn BOPAlgo_MakerVolume_inherited_CheckInverted(
         self_: *const BOPAlgo_MakerVolume,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:142 - `BOPAlgo_Builder::PerformWithFiller()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:143 - `BOPAlgo_Builder::PerformWithFiller()`
     pub fn BOPAlgo_MakerVolume_inherited_PerformWithFiller(
         self_: *mut BOPAlgo_MakerVolume,
         theFiller: *const BOPAlgo_PaveFiller,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:186 - `BOPAlgo_Builder::BuildBOP()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:187 - `BOPAlgo_Builder::BuildBOP()`
     pub fn BOPAlgo_MakerVolume_inherited_BuildBOP(
         self_: *mut BOPAlgo_MakerVolume,
-        theObjects: *const TopTools_ListOfShape,
+        theObjects: *const NCollection_List_TopoDS_Shape,
         theObjState: i32,
-        theTools: *const TopTools_ListOfShape,
+        theTools: *const NCollection_List_TopoDS_Shape,
         theToolsState: i32,
         theRange: *const Message_ProgressRange,
-        theReport: *const HandleMessageReport,
+        theReport: *const Handle_Message_Report,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
-    pub fn BOPAlgo_MakerVolume_inherited_Images(
-        self_: *const BOPAlgo_MakerVolume,
-    ) -> crate::OcctResult<*const TopTools_DataMapOfShapeListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:284 - `BOPAlgo_Builder::Origins()`
-    pub fn BOPAlgo_MakerVolume_inherited_Origins(
-        self_: *const BOPAlgo_MakerVolume,
-    ) -> crate::OcctResult<*const TopTools_DataMapOfShapeListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:288 - `BOPAlgo_Builder::ShapesSD()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:285 - `BOPAlgo_Builder::Images()`
+    pub fn BOPAlgo_MakerVolume_inherited_Images(self_: *const BOPAlgo_MakerVolume) -> crate::OcctResult<*const NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:292 - `BOPAlgo_Builder::Origins()`
+    pub fn BOPAlgo_MakerVolume_inherited_Origins(self_: *const BOPAlgo_MakerVolume) -> crate::OcctResult<*const NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:299 - `BOPAlgo_Builder::ShapesSD()`
     pub fn BOPAlgo_MakerVolume_inherited_ShapesSD(
         self_: *const BOPAlgo_MakerVolume,
-    ) -> crate::OcctResult<*const TopTools_DataMapOfShapeShape>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
+    ) -> crate::OcctResult<
+        *const NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
+    >;
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:48 - `BOPAlgo_BuilderShape::Shape()`
     pub fn BOPAlgo_MakerVolume_inherited_Shape(
         self_: *const BOPAlgo_MakerVolume,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:72 - `BOPAlgo_BuilderShape::IsDeleted()`
     pub fn BOPAlgo_MakerVolume_inherited_IsDeleted(
         self_: *mut BOPAlgo_MakerVolume,
         theS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:77 - `BOPAlgo_BuilderShape::HasModified()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:78 - `BOPAlgo_BuilderShape::HasModified()`
     pub fn BOPAlgo_MakerVolume_inherited_HasModified(
         self_: *const BOPAlgo_MakerVolume,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:83 - `BOPAlgo_BuilderShape::HasGenerated()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:84 - `BOPAlgo_BuilderShape::HasGenerated()`
     pub fn BOPAlgo_MakerVolume_inherited_HasGenerated(
         self_: *const BOPAlgo_MakerVolume,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:89 - `BOPAlgo_BuilderShape::HasDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:90 - `BOPAlgo_BuilderShape::HasDeleted()`
     pub fn BOPAlgo_MakerVolume_inherited_HasDeleted(
         self_: *const BOPAlgo_MakerVolume,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:95 - `BOPAlgo_BuilderShape::History()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:93 - `BOPAlgo_BuilderShape::History()`
     pub fn BOPAlgo_MakerVolume_inherited_History(
         self_: *mut BOPAlgo_MakerVolume,
-    ) -> crate::OcctResult<*mut HandleBRepToolsHistory>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:116 - `BOPAlgo_BuilderShape::SetToFillHistory()`
+    ) -> crate::OcctResult<*mut Handle_BRepTools_History>;
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:114 - `BOPAlgo_BuilderShape::SetToFillHistory()`
     pub fn BOPAlgo_MakerVolume_inherited_SetToFillHistory(
         self_: *mut BOPAlgo_MakerVolume,
         theHistFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:119 - `BOPAlgo_BuilderShape::HasHistory()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:117 - `BOPAlgo_BuilderShape::HasHistory()`
     pub fn BOPAlgo_MakerVolume_inherited_HasHistory(
         self_: *const BOPAlgo_MakerVolume,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
     pub fn BOPAlgo_MakerVolume_inherited_Allocator(
         self_: *const BOPAlgo_MakerVolume,
-    ) -> crate::OcctResult<*const HandleNCollectionBaseAllocator>;
+    ) -> crate::OcctResult<*const TDF_HAllocator>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
     pub fn BOPAlgo_MakerVolume_inherited_AddError(
         self_: *mut BOPAlgo_MakerVolume,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
     pub fn BOPAlgo_MakerVolume_inherited_AddWarning(
         self_: *mut BOPAlgo_MakerVolume,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:73 - `BOPAlgo_Options::HasErrors()`
     pub fn BOPAlgo_MakerVolume_inherited_HasErrors(
@@ -7232,7 +7242,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
     pub fn BOPAlgo_MakerVolume_inherited_HasError(
         self_: *const BOPAlgo_MakerVolume,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:82 - `BOPAlgo_Options::HasWarnings()`
     pub fn BOPAlgo_MakerVolume_inherited_HasWarnings(
@@ -7241,12 +7251,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     pub fn BOPAlgo_MakerVolume_inherited_HasWarning(
         self_: *const BOPAlgo_MakerVolume,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn BOPAlgo_MakerVolume_inherited_GetReport(
         self_: *const BOPAlgo_MakerVolume,
-    ) -> crate::OcctResult<*const HandleMessageReport>;
+    ) -> crate::OcctResult<*const Handle_Message_Report>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
     pub fn BOPAlgo_MakerVolume_inherited_DumpErrors(
         self_: *const BOPAlgo_MakerVolume,
@@ -7293,43 +7303,43 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Options.hxx`:42 - `BOPAlgo_Options::BOPAlgo_Options()`
     pub fn BOPAlgo_Options_ctor() -> crate::OcctResult<*mut BOPAlgo_Options>;
     /// **Source:** `BOPAlgo_Options.hxx`:45 - `BOPAlgo_Options::BOPAlgo_Options()`
-    pub fn BOPAlgo_Options_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    pub fn BOPAlgo_Options_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPAlgo_Options>;
     /// **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
     pub fn BOPAlgo_Options_allocator(
         self_: *const BOPAlgo_Options,
-    ) -> crate::OcctResult<*const HandleNCollectionBaseAllocator>;
+    ) -> crate::OcctResult<*const TDF_HAllocator>;
     /// **Source:** `BOPAlgo_Options.hxx`:55 - `BOPAlgo_Options::Clear()`
     pub fn BOPAlgo_Options_clear(self_: *mut BOPAlgo_Options) -> *const std::ffi::c_char;
     /// **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
     pub fn BOPAlgo_Options_add_error(
         self_: *mut BOPAlgo_Options,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
     pub fn BOPAlgo_Options_add_warning(
         self_: *mut BOPAlgo_Options,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BOPAlgo_Options.hxx`:73 - `BOPAlgo_Options::HasErrors()`
     pub fn BOPAlgo_Options_has_errors(self_: *const BOPAlgo_Options) -> crate::OcctResult<bool>;
     /// **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
     pub fn BOPAlgo_Options_has_error(
         self_: *const BOPAlgo_Options,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `BOPAlgo_Options.hxx`:82 - `BOPAlgo_Options::HasWarnings()`
     pub fn BOPAlgo_Options_has_warnings(self_: *const BOPAlgo_Options) -> crate::OcctResult<bool>;
     /// **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     pub fn BOPAlgo_Options_has_warning(
         self_: *const BOPAlgo_Options,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn BOPAlgo_Options_get_report(
         self_: *const BOPAlgo_Options,
-    ) -> crate::OcctResult<*const HandleMessageReport>;
+    ) -> crate::OcctResult<*const Handle_Message_Report>;
     /// **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
     pub fn BOPAlgo_Options_dump_errors(
         self_: *const BOPAlgo_Options,
@@ -7369,74 +7379,74 @@ unsafe extern "C" {
     pub fn BOPAlgo_Options_set_parallel_mode(theNewMode: bool) -> *const std::ffi::c_char;
     // ======================== BOPAlgo_PaveFiller ========================
     pub fn BOPAlgo_PaveFiller_destructor(self_: *mut BOPAlgo_PaveFiller);
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:113 - `BOPAlgo_PaveFiller::BOPAlgo_PaveFiller()`
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:111 - `BOPAlgo_PaveFiller::BOPAlgo_PaveFiller()`
     pub fn BOPAlgo_PaveFiller_ctor() -> crate::OcctResult<*mut BOPAlgo_PaveFiller>;
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:117 - `BOPAlgo_PaveFiller::BOPAlgo_PaveFiller()`
-    pub fn BOPAlgo_PaveFiller_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:115 - `BOPAlgo_PaveFiller::BOPAlgo_PaveFiller()`
+    pub fn BOPAlgo_PaveFiller_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPAlgo_PaveFiller>;
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:119 - `BOPAlgo_PaveFiller::DS()`
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:117 - `BOPAlgo_PaveFiller::DS()`
     pub fn BOPAlgo_PaveFiller_ds(
         self_: *mut BOPAlgo_PaveFiller,
     ) -> crate::OcctResult<*const BOPDS_DS>;
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:121 - `BOPAlgo_PaveFiller::PDS()`
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:119 - `BOPAlgo_PaveFiller::PDS()`
     pub fn BOPAlgo_PaveFiller_pds(
         self_: *mut BOPAlgo_PaveFiller,
     ) -> crate::OcctResult<*mut BOPDS_DS>;
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:123 - `BOPAlgo_PaveFiller::Iterator()`
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:121 - `BOPAlgo_PaveFiller::Iterator()`
     pub fn BOPAlgo_PaveFiller_iterator(
         self_: *mut BOPAlgo_PaveFiller,
     ) -> crate::OcctResult<*const *mut BOPDS_Iterator>;
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:126 - `BOPAlgo_PaveFiller::SetArguments()`
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:124 - `BOPAlgo_PaveFiller::SetArguments()`
     pub fn BOPAlgo_PaveFiller_set_arguments(
         self_: *mut BOPAlgo_PaveFiller,
-        theLS: *const TopTools_ListOfShape,
+        theLS: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:129 - `BOPAlgo_PaveFiller::AddArgument()`
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:130 - `BOPAlgo_PaveFiller::AddArgument()`
     pub fn BOPAlgo_PaveFiller_add_argument(
         self_: *mut BOPAlgo_PaveFiller,
         theShape: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:132 - `BOPAlgo_PaveFiller::Arguments()`
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:133 - `BOPAlgo_PaveFiller::Arguments()`
     pub fn BOPAlgo_PaveFiller_arguments(
         self_: *const BOPAlgo_PaveFiller,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:134 - `BOPAlgo_PaveFiller::Context()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:135 - `BOPAlgo_PaveFiller::Context()`
     pub fn BOPAlgo_PaveFiller_context(
         self_: *mut BOPAlgo_PaveFiller,
-    ) -> crate::OcctResult<*const HandleIntToolsContext>;
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:136 - `BOPAlgo_PaveFiller::SetSectionAttribute()`
+    ) -> crate::OcctResult<*const Handle_IntTools_Context>;
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:137 - `BOPAlgo_PaveFiller::SetSectionAttribute()`
     pub fn BOPAlgo_PaveFiller_set_section_attribute(
         self_: *mut BOPAlgo_PaveFiller,
         theSecAttr: *const BOPAlgo_SectionAttribute,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:141 - `BOPAlgo_PaveFiller::SetNonDestructive()`
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:142 - `BOPAlgo_PaveFiller::SetNonDestructive()`
     pub fn BOPAlgo_PaveFiller_set_non_destructive(
         self_: *mut BOPAlgo_PaveFiller,
         theFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:146 - `BOPAlgo_PaveFiller::NonDestructive()`
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:147 - `BOPAlgo_PaveFiller::NonDestructive()`
     pub fn BOPAlgo_PaveFiller_non_destructive(
         self_: *const BOPAlgo_PaveFiller,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:148 - `BOPAlgo_PaveFiller::Perform()`
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:149 - `BOPAlgo_PaveFiller::Perform()`
     pub fn BOPAlgo_PaveFiller_perform(
         self_: *mut BOPAlgo_PaveFiller,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:152 - `BOPAlgo_PaveFiller::SetGlue()`
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:153 - `BOPAlgo_PaveFiller::SetGlue()`
     pub fn BOPAlgo_PaveFiller_set_glue(
         self_: *mut BOPAlgo_PaveFiller,
         theGlue: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:155 - `BOPAlgo_PaveFiller::Glue()`
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:156 - `BOPAlgo_PaveFiller::Glue()`
     pub fn BOPAlgo_PaveFiller_glue(self_: *const BOPAlgo_PaveFiller) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:158 - `BOPAlgo_PaveFiller::SetAvoidBuildPCurve()`
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:159 - `BOPAlgo_PaveFiller::SetAvoidBuildPCurve()`
     pub fn BOPAlgo_PaveFiller_set_avoid_build_p_curve(
         self_: *mut BOPAlgo_PaveFiller,
         theValue: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:161 - `BOPAlgo_PaveFiller::IsAvoidBuildPCurve()`
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:162 - `BOPAlgo_PaveFiller::IsAvoidBuildPCurve()`
     pub fn BOPAlgo_PaveFiller_is_avoid_build_p_curve(
         self_: *const BOPAlgo_PaveFiller,
     ) -> crate::OcctResult<bool>;
@@ -7459,16 +7469,16 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
     pub fn BOPAlgo_PaveFiller_inherited_Allocator(
         self_: *const BOPAlgo_PaveFiller,
-    ) -> crate::OcctResult<*const HandleNCollectionBaseAllocator>;
+    ) -> crate::OcctResult<*const TDF_HAllocator>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
     pub fn BOPAlgo_PaveFiller_inherited_AddError(
         self_: *mut BOPAlgo_PaveFiller,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
     pub fn BOPAlgo_PaveFiller_inherited_AddWarning(
         self_: *mut BOPAlgo_PaveFiller,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:73 - `BOPAlgo_Options::HasErrors()`
     pub fn BOPAlgo_PaveFiller_inherited_HasErrors(
@@ -7477,7 +7487,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
     pub fn BOPAlgo_PaveFiller_inherited_HasError(
         self_: *const BOPAlgo_PaveFiller,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:82 - `BOPAlgo_Options::HasWarnings()`
     pub fn BOPAlgo_PaveFiller_inherited_HasWarnings(
@@ -7486,12 +7496,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     pub fn BOPAlgo_PaveFiller_inherited_HasWarning(
         self_: *const BOPAlgo_PaveFiller,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn BOPAlgo_PaveFiller_inherited_GetReport(
         self_: *const BOPAlgo_PaveFiller,
-    ) -> crate::OcctResult<*const HandleMessageReport>;
+    ) -> crate::OcctResult<*const Handle_Message_Report>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
     pub fn BOPAlgo_PaveFiller_inherited_DumpErrors(
         self_: *const BOPAlgo_PaveFiller,
@@ -7535,7 +7545,7 @@ unsafe extern "C" {
     ) -> crate::OcctResult<bool>;
     // ======================== BOPAlgo_RemoveFeatures ========================
     pub fn BOPAlgo_RemoveFeatures_destructor(self_: *mut BOPAlgo_RemoveFeatures);
-    /// **Source:** `BOPAlgo_RemoveFeatures.hxx`:154 - `BOPAlgo_RemoveFeatures::BOPAlgo_RemoveFeatures()`
+    /// **Source:** `BOPAlgo_RemoveFeatures.hxx`:155 - `BOPAlgo_RemoveFeatures::BOPAlgo_RemoveFeatures()`
     pub fn BOPAlgo_RemoveFeatures_ctor() -> crate::OcctResult<*mut BOPAlgo_RemoveFeatures>;
     /// **Source:** `BOPAlgo_RemoveFeatures.hxx`:163 - `BOPAlgo_RemoveFeatures::SetShape()`
     pub fn BOPAlgo_RemoveFeatures_set_shape(
@@ -7554,12 +7564,12 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_RemoveFeatures.hxx`:174 - `BOPAlgo_RemoveFeatures::AddFacesToRemove()`
     pub fn BOPAlgo_RemoveFeatures_add_faces_to_remove(
         self_: *mut BOPAlgo_RemoveFeatures,
-        theFaces: *const TopTools_ListOfShape,
+        theFaces: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BOPAlgo_RemoveFeatures.hxx`:183 - `BOPAlgo_RemoveFeatures::FacesToRemove()`
     pub fn BOPAlgo_RemoveFeatures_faces_to_remove(
         self_: *const BOPAlgo_RemoveFeatures,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// **Source:** `BOPAlgo_RemoveFeatures.hxx`:187 - `BOPAlgo_RemoveFeatures::Perform()`
     pub fn BOPAlgo_RemoveFeatures_perform(
         self_: *mut BOPAlgo_RemoveFeatures,
@@ -7593,53 +7603,53 @@ unsafe extern "C" {
     pub fn BOPAlgo_RemoveFeatures_as_BOPAlgo_Options_mut(
         self_: *mut BOPAlgo_RemoveFeatures,
     ) -> crate::OcctResult<*mut BOPAlgo_Options>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:48 - `BOPAlgo_BuilderShape::Shape()`
     pub fn BOPAlgo_RemoveFeatures_inherited_Shape(
         self_: *const BOPAlgo_RemoveFeatures,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:72 - `BOPAlgo_BuilderShape::IsDeleted()`
     pub fn BOPAlgo_RemoveFeatures_inherited_IsDeleted(
         self_: *mut BOPAlgo_RemoveFeatures,
         theS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:77 - `BOPAlgo_BuilderShape::HasModified()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:78 - `BOPAlgo_BuilderShape::HasModified()`
     pub fn BOPAlgo_RemoveFeatures_inherited_HasModified(
         self_: *const BOPAlgo_RemoveFeatures,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:83 - `BOPAlgo_BuilderShape::HasGenerated()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:84 - `BOPAlgo_BuilderShape::HasGenerated()`
     pub fn BOPAlgo_RemoveFeatures_inherited_HasGenerated(
         self_: *const BOPAlgo_RemoveFeatures,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:89 - `BOPAlgo_BuilderShape::HasDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:90 - `BOPAlgo_BuilderShape::HasDeleted()`
     pub fn BOPAlgo_RemoveFeatures_inherited_HasDeleted(
         self_: *const BOPAlgo_RemoveFeatures,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:95 - `BOPAlgo_BuilderShape::History()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:93 - `BOPAlgo_BuilderShape::History()`
     pub fn BOPAlgo_RemoveFeatures_inherited_History(
         self_: *mut BOPAlgo_RemoveFeatures,
-    ) -> crate::OcctResult<*mut HandleBRepToolsHistory>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:116 - `BOPAlgo_BuilderShape::SetToFillHistory()`
+    ) -> crate::OcctResult<*mut Handle_BRepTools_History>;
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:114 - `BOPAlgo_BuilderShape::SetToFillHistory()`
     pub fn BOPAlgo_RemoveFeatures_inherited_SetToFillHistory(
         self_: *mut BOPAlgo_RemoveFeatures,
         theHistFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:119 - `BOPAlgo_BuilderShape::HasHistory()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:117 - `BOPAlgo_BuilderShape::HasHistory()`
     pub fn BOPAlgo_RemoveFeatures_inherited_HasHistory(
         self_: *const BOPAlgo_RemoveFeatures,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
     pub fn BOPAlgo_RemoveFeatures_inherited_Allocator(
         self_: *const BOPAlgo_RemoveFeatures,
-    ) -> crate::OcctResult<*const HandleNCollectionBaseAllocator>;
+    ) -> crate::OcctResult<*const TDF_HAllocator>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
     pub fn BOPAlgo_RemoveFeatures_inherited_AddError(
         self_: *mut BOPAlgo_RemoveFeatures,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
     pub fn BOPAlgo_RemoveFeatures_inherited_AddWarning(
         self_: *mut BOPAlgo_RemoveFeatures,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:73 - `BOPAlgo_Options::HasErrors()`
     pub fn BOPAlgo_RemoveFeatures_inherited_HasErrors(
@@ -7648,7 +7658,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
     pub fn BOPAlgo_RemoveFeatures_inherited_HasError(
         self_: *const BOPAlgo_RemoveFeatures,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:82 - `BOPAlgo_Options::HasWarnings()`
     pub fn BOPAlgo_RemoveFeatures_inherited_HasWarnings(
@@ -7657,12 +7667,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     pub fn BOPAlgo_RemoveFeatures_inherited_HasWarning(
         self_: *const BOPAlgo_RemoveFeatures,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn BOPAlgo_RemoveFeatures_inherited_GetReport(
         self_: *const BOPAlgo_RemoveFeatures,
-    ) -> crate::OcctResult<*const HandleMessageReport>;
+    ) -> crate::OcctResult<*const Handle_Message_Report>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
     pub fn BOPAlgo_RemoveFeatures_inherited_DumpErrors(
         self_: *const BOPAlgo_RemoveFeatures,
@@ -7709,8 +7719,8 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Section.hxx`:39 - `BOPAlgo_Section::BOPAlgo_Section()`
     pub fn BOPAlgo_Section_ctor() -> crate::OcctResult<*mut BOPAlgo_Section>;
     /// **Source:** `BOPAlgo_Section.hxx`:43 - `BOPAlgo_Section::BOPAlgo_Section()`
-    pub fn BOPAlgo_Section_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    pub fn BOPAlgo_Section_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPAlgo_Section>;
     /// Upcast BOPAlgo_Section to BOPAlgo_Builder
     pub fn BOPAlgo_Section_as_BOPAlgo_Builder(
@@ -7744,139 +7754,137 @@ unsafe extern "C" {
     pub fn BOPAlgo_Section_as_BOPAlgo_Options_mut(
         self_: *mut BOPAlgo_Section,
     ) -> crate::OcctResult<*mut BOPAlgo_Options>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:86 - `BOPAlgo_Builder::Clear()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:87 - `BOPAlgo_Builder::Clear()`
     pub fn BOPAlgo_Section_inherited_Clear(self_: *mut BOPAlgo_Section) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:89 - `BOPAlgo_Builder::PPaveFiller()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:90 - `BOPAlgo_Builder::PPaveFiller()`
     pub fn BOPAlgo_Section_inherited_PPaveFiller(
         self_: *mut BOPAlgo_Section,
     ) -> crate::OcctResult<*mut BOPAlgo_PaveFiller>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:92 - `BOPAlgo_Builder::PDS()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:93 - `BOPAlgo_Builder::PDS()`
     pub fn BOPAlgo_Section_inherited_PDS(
         self_: *mut BOPAlgo_Section,
     ) -> crate::OcctResult<*mut BOPDS_DS>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:95 - `BOPAlgo_Builder::Context()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:96 - `BOPAlgo_Builder::Context()`
     pub fn BOPAlgo_Section_inherited_Context(
         self_: *const BOPAlgo_Section,
-    ) -> crate::OcctResult<*mut HandleIntToolsContext>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:99 - `BOPAlgo_Builder::AddArgument()`
+    ) -> crate::OcctResult<*mut Handle_IntTools_Context>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:100 - `BOPAlgo_Builder::AddArgument()`
     pub fn BOPAlgo_Section_inherited_AddArgument(
         self_: *mut BOPAlgo_Section,
         theShape: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:102 - `BOPAlgo_Builder::SetArguments()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:103 - `BOPAlgo_Builder::SetArguments()`
     pub fn BOPAlgo_Section_inherited_SetArguments(
         self_: *mut BOPAlgo_Section,
-        theLS: *const TopTools_ListOfShape,
+        theLS: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:105 - `BOPAlgo_Builder::Arguments()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:106 - `BOPAlgo_Builder::Arguments()`
     pub fn BOPAlgo_Section_inherited_Arguments(
         self_: *const BOPAlgo_Section,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:114 - `BOPAlgo_Builder::SetNonDestructive()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:115 - `BOPAlgo_Builder::SetNonDestructive()`
     pub fn BOPAlgo_Section_inherited_SetNonDestructive(
         self_: *mut BOPAlgo_Section,
         theFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:119 - `BOPAlgo_Builder::NonDestructive()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:120 - `BOPAlgo_Builder::NonDestructive()`
     pub fn BOPAlgo_Section_inherited_NonDestructive(
         self_: *const BOPAlgo_Section,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:122 - `BOPAlgo_Builder::SetGlue()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:123 - `BOPAlgo_Builder::SetGlue()`
     pub fn BOPAlgo_Section_inherited_SetGlue(
         self_: *mut BOPAlgo_Section,
         theGlue: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:125 - `BOPAlgo_Builder::Glue()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:126 - `BOPAlgo_Builder::Glue()`
     pub fn BOPAlgo_Section_inherited_Glue(self_: *const BOPAlgo_Section) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:128 - `BOPAlgo_Builder::SetCheckInverted()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:129 - `BOPAlgo_Builder::SetCheckInverted()`
     pub fn BOPAlgo_Section_inherited_SetCheckInverted(
         self_: *mut BOPAlgo_Section,
         theCheck: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:132 - `BOPAlgo_Builder::CheckInverted()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:133 - `BOPAlgo_Builder::CheckInverted()`
     pub fn BOPAlgo_Section_inherited_CheckInverted(
         self_: *const BOPAlgo_Section,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:137 - `BOPAlgo_Builder::Perform()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:138 - `BOPAlgo_Builder::Perform()`
     pub fn BOPAlgo_Section_inherited_Perform(
         self_: *mut BOPAlgo_Section,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:142 - `BOPAlgo_Builder::PerformWithFiller()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:143 - `BOPAlgo_Builder::PerformWithFiller()`
     pub fn BOPAlgo_Section_inherited_PerformWithFiller(
         self_: *mut BOPAlgo_Section,
         theFiller: *const BOPAlgo_PaveFiller,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:186 - `BOPAlgo_Builder::BuildBOP()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:187 - `BOPAlgo_Builder::BuildBOP()`
     pub fn BOPAlgo_Section_inherited_BuildBOP(
         self_: *mut BOPAlgo_Section,
-        theObjects: *const TopTools_ListOfShape,
+        theObjects: *const NCollection_List_TopoDS_Shape,
         theObjState: i32,
-        theTools: *const TopTools_ListOfShape,
+        theTools: *const NCollection_List_TopoDS_Shape,
         theToolsState: i32,
         theRange: *const Message_ProgressRange,
-        theReport: *const HandleMessageReport,
+        theReport: *const Handle_Message_Report,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
-    pub fn BOPAlgo_Section_inherited_Images(
-        self_: *const BOPAlgo_Section,
-    ) -> crate::OcctResult<*const TopTools_DataMapOfShapeListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:284 - `BOPAlgo_Builder::Origins()`
-    pub fn BOPAlgo_Section_inherited_Origins(
-        self_: *const BOPAlgo_Section,
-    ) -> crate::OcctResult<*const TopTools_DataMapOfShapeListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:288 - `BOPAlgo_Builder::ShapesSD()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:285 - `BOPAlgo_Builder::Images()`
+    pub fn BOPAlgo_Section_inherited_Images(self_: *const BOPAlgo_Section) -> crate::OcctResult<*const NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:292 - `BOPAlgo_Builder::Origins()`
+    pub fn BOPAlgo_Section_inherited_Origins(self_: *const BOPAlgo_Section) -> crate::OcctResult<*const NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:299 - `BOPAlgo_Builder::ShapesSD()`
     pub fn BOPAlgo_Section_inherited_ShapesSD(
         self_: *const BOPAlgo_Section,
-    ) -> crate::OcctResult<*const TopTools_DataMapOfShapeShape>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
+    ) -> crate::OcctResult<
+        *const NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
+    >;
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:48 - `BOPAlgo_BuilderShape::Shape()`
     pub fn BOPAlgo_Section_inherited_Shape(
         self_: *const BOPAlgo_Section,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:72 - `BOPAlgo_BuilderShape::IsDeleted()`
     pub fn BOPAlgo_Section_inherited_IsDeleted(
         self_: *mut BOPAlgo_Section,
         theS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:77 - `BOPAlgo_BuilderShape::HasModified()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:78 - `BOPAlgo_BuilderShape::HasModified()`
     pub fn BOPAlgo_Section_inherited_HasModified(
         self_: *const BOPAlgo_Section,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:83 - `BOPAlgo_BuilderShape::HasGenerated()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:84 - `BOPAlgo_BuilderShape::HasGenerated()`
     pub fn BOPAlgo_Section_inherited_HasGenerated(
         self_: *const BOPAlgo_Section,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:89 - `BOPAlgo_BuilderShape::HasDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:90 - `BOPAlgo_BuilderShape::HasDeleted()`
     pub fn BOPAlgo_Section_inherited_HasDeleted(
         self_: *const BOPAlgo_Section,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:95 - `BOPAlgo_BuilderShape::History()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:93 - `BOPAlgo_BuilderShape::History()`
     pub fn BOPAlgo_Section_inherited_History(
         self_: *mut BOPAlgo_Section,
-    ) -> crate::OcctResult<*mut HandleBRepToolsHistory>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:116 - `BOPAlgo_BuilderShape::SetToFillHistory()`
+    ) -> crate::OcctResult<*mut Handle_BRepTools_History>;
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:114 - `BOPAlgo_BuilderShape::SetToFillHistory()`
     pub fn BOPAlgo_Section_inherited_SetToFillHistory(
         self_: *mut BOPAlgo_Section,
         theHistFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:119 - `BOPAlgo_BuilderShape::HasHistory()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:117 - `BOPAlgo_BuilderShape::HasHistory()`
     pub fn BOPAlgo_Section_inherited_HasHistory(
         self_: *const BOPAlgo_Section,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
     pub fn BOPAlgo_Section_inherited_Allocator(
         self_: *const BOPAlgo_Section,
-    ) -> crate::OcctResult<*const HandleNCollectionBaseAllocator>;
+    ) -> crate::OcctResult<*const TDF_HAllocator>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
     pub fn BOPAlgo_Section_inherited_AddError(
         self_: *mut BOPAlgo_Section,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
     pub fn BOPAlgo_Section_inherited_AddWarning(
         self_: *mut BOPAlgo_Section,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:73 - `BOPAlgo_Options::HasErrors()`
     pub fn BOPAlgo_Section_inherited_HasErrors(
@@ -7885,7 +7893,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
     pub fn BOPAlgo_Section_inherited_HasError(
         self_: *const BOPAlgo_Section,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:82 - `BOPAlgo_Options::HasWarnings()`
     pub fn BOPAlgo_Section_inherited_HasWarnings(
@@ -7894,12 +7902,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     pub fn BOPAlgo_Section_inherited_HasWarning(
         self_: *const BOPAlgo_Section,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn BOPAlgo_Section_inherited_GetReport(
         self_: *const BOPAlgo_Section,
-    ) -> crate::OcctResult<*const HandleMessageReport>;
+    ) -> crate::OcctResult<*const Handle_Message_Report>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
     pub fn BOPAlgo_Section_inherited_DumpErrors(
         self_: *const BOPAlgo_Section,
@@ -7983,8 +7991,8 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_ShellSplitter.hxx`:37 - `BOPAlgo_ShellSplitter::BOPAlgo_ShellSplitter()`
     pub fn BOPAlgo_ShellSplitter_ctor() -> crate::OcctResult<*mut BOPAlgo_ShellSplitter>;
     /// **Source:** `BOPAlgo_ShellSplitter.hxx`:41 - `BOPAlgo_ShellSplitter::BOPAlgo_ShellSplitter()`
-    pub fn BOPAlgo_ShellSplitter_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    pub fn BOPAlgo_ShellSplitter_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPAlgo_ShellSplitter>;
     /// **Source:** `BOPAlgo_ShellSplitter.hxx`:44 - `BOPAlgo_ShellSplitter::AddStartElement()`
     pub fn BOPAlgo_ShellSplitter_add_start_element(
@@ -7994,7 +8002,7 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_ShellSplitter.hxx`:47 - `BOPAlgo_ShellSplitter::StartElements()`
     pub fn BOPAlgo_ShellSplitter_start_elements(
         self_: *const BOPAlgo_ShellSplitter,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// **Source:** `BOPAlgo_ShellSplitter.hxx`:50 - `BOPAlgo_ShellSplitter::Perform()`
     pub fn BOPAlgo_ShellSplitter_perform(
         self_: *mut BOPAlgo_ShellSplitter,
@@ -8003,7 +8011,7 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_ShellSplitter.hxx`:54 - `BOPAlgo_ShellSplitter::Shells()`
     pub fn BOPAlgo_ShellSplitter_shells(
         self_: *const BOPAlgo_ShellSplitter,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// **Source:** `BOPAlgo_ShellSplitter.hxx`:56 - `BOPAlgo_ShellSplitter::SplitBlock()`
     pub fn BOPAlgo_ShellSplitter_split_block(
         theCB: *mut BOPTools_ConnexityBlock,
@@ -8027,7 +8035,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
     pub fn BOPAlgo_ShellSplitter_inherited_Allocator(
         self_: *const BOPAlgo_ShellSplitter,
-    ) -> crate::OcctResult<*const HandleNCollectionBaseAllocator>;
+    ) -> crate::OcctResult<*const TDF_HAllocator>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:55 - `BOPAlgo_Options::Clear()`
     pub fn BOPAlgo_ShellSplitter_inherited_Clear(
         self_: *mut BOPAlgo_ShellSplitter,
@@ -8035,12 +8043,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
     pub fn BOPAlgo_ShellSplitter_inherited_AddError(
         self_: *mut BOPAlgo_ShellSplitter,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
     pub fn BOPAlgo_ShellSplitter_inherited_AddWarning(
         self_: *mut BOPAlgo_ShellSplitter,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:73 - `BOPAlgo_Options::HasErrors()`
     pub fn BOPAlgo_ShellSplitter_inherited_HasErrors(
@@ -8049,7 +8057,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
     pub fn BOPAlgo_ShellSplitter_inherited_HasError(
         self_: *const BOPAlgo_ShellSplitter,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:82 - `BOPAlgo_Options::HasWarnings()`
     pub fn BOPAlgo_ShellSplitter_inherited_HasWarnings(
@@ -8058,12 +8066,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     pub fn BOPAlgo_ShellSplitter_inherited_HasWarning(
         self_: *const BOPAlgo_ShellSplitter,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn BOPAlgo_ShellSplitter_inherited_GetReport(
         self_: *const BOPAlgo_ShellSplitter,
-    ) -> crate::OcctResult<*const HandleMessageReport>;
+    ) -> crate::OcctResult<*const Handle_Message_Report>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
     pub fn BOPAlgo_ShellSplitter_inherited_DumpErrors(
         self_: *const BOPAlgo_ShellSplitter,
@@ -8110,8 +8118,8 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_Splitter.hxx`:56 - `BOPAlgo_Splitter::BOPAlgo_Splitter()`
     pub fn BOPAlgo_Splitter_ctor() -> crate::OcctResult<*mut BOPAlgo_Splitter>;
     /// **Source:** `BOPAlgo_Splitter.hxx`:59 - `BOPAlgo_Splitter::BOPAlgo_Splitter()`
-    pub fn BOPAlgo_Splitter_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    pub fn BOPAlgo_Splitter_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPAlgo_Splitter>;
     /// **Source:** `BOPAlgo_Splitter.hxx`:62 - `BOPAlgo_Splitter::Perform()`
     pub fn BOPAlgo_Splitter_perform(
@@ -8170,140 +8178,138 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_ToolsProvider.hxx`:42 - `BOPAlgo_ToolsProvider::SetTools()`
     pub fn BOPAlgo_Splitter_inherited_SetTools(
         self_: *mut BOPAlgo_Splitter,
-        theShapes: *const TopTools_ListOfShape,
+        theShapes: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_ToolsProvider.hxx`:45 - `BOPAlgo_ToolsProvider::Tools()`
     pub fn BOPAlgo_Splitter_inherited_Tools(
         self_: *const BOPAlgo_Splitter,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:89 - `BOPAlgo_Builder::PPaveFiller()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:90 - `BOPAlgo_Builder::PPaveFiller()`
     pub fn BOPAlgo_Splitter_inherited_PPaveFiller(
         self_: *mut BOPAlgo_Splitter,
     ) -> crate::OcctResult<*mut BOPAlgo_PaveFiller>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:92 - `BOPAlgo_Builder::PDS()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:93 - `BOPAlgo_Builder::PDS()`
     pub fn BOPAlgo_Splitter_inherited_PDS(
         self_: *mut BOPAlgo_Splitter,
     ) -> crate::OcctResult<*mut BOPDS_DS>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:95 - `BOPAlgo_Builder::Context()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:96 - `BOPAlgo_Builder::Context()`
     pub fn BOPAlgo_Splitter_inherited_Context(
         self_: *const BOPAlgo_Splitter,
-    ) -> crate::OcctResult<*mut HandleIntToolsContext>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:99 - `BOPAlgo_Builder::AddArgument()`
+    ) -> crate::OcctResult<*mut Handle_IntTools_Context>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:100 - `BOPAlgo_Builder::AddArgument()`
     pub fn BOPAlgo_Splitter_inherited_AddArgument(
         self_: *mut BOPAlgo_Splitter,
         theShape: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:102 - `BOPAlgo_Builder::SetArguments()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:103 - `BOPAlgo_Builder::SetArguments()`
     pub fn BOPAlgo_Splitter_inherited_SetArguments(
         self_: *mut BOPAlgo_Splitter,
-        theLS: *const TopTools_ListOfShape,
+        theLS: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:105 - `BOPAlgo_Builder::Arguments()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:106 - `BOPAlgo_Builder::Arguments()`
     pub fn BOPAlgo_Splitter_inherited_Arguments(
         self_: *const BOPAlgo_Splitter,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:114 - `BOPAlgo_Builder::SetNonDestructive()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:115 - `BOPAlgo_Builder::SetNonDestructive()`
     pub fn BOPAlgo_Splitter_inherited_SetNonDestructive(
         self_: *mut BOPAlgo_Splitter,
         theFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:119 - `BOPAlgo_Builder::NonDestructive()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:120 - `BOPAlgo_Builder::NonDestructive()`
     pub fn BOPAlgo_Splitter_inherited_NonDestructive(
         self_: *const BOPAlgo_Splitter,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:122 - `BOPAlgo_Builder::SetGlue()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:123 - `BOPAlgo_Builder::SetGlue()`
     pub fn BOPAlgo_Splitter_inherited_SetGlue(
         self_: *mut BOPAlgo_Splitter,
         theGlue: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:125 - `BOPAlgo_Builder::Glue()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:126 - `BOPAlgo_Builder::Glue()`
     pub fn BOPAlgo_Splitter_inherited_Glue(
         self_: *const BOPAlgo_Splitter,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:128 - `BOPAlgo_Builder::SetCheckInverted()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:129 - `BOPAlgo_Builder::SetCheckInverted()`
     pub fn BOPAlgo_Splitter_inherited_SetCheckInverted(
         self_: *mut BOPAlgo_Splitter,
         theCheck: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:132 - `BOPAlgo_Builder::CheckInverted()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:133 - `BOPAlgo_Builder::CheckInverted()`
     pub fn BOPAlgo_Splitter_inherited_CheckInverted(
         self_: *const BOPAlgo_Splitter,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:142 - `BOPAlgo_Builder::PerformWithFiller()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:143 - `BOPAlgo_Builder::PerformWithFiller()`
     pub fn BOPAlgo_Splitter_inherited_PerformWithFiller(
         self_: *mut BOPAlgo_Splitter,
         theFiller: *const BOPAlgo_PaveFiller,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:186 - `BOPAlgo_Builder::BuildBOP()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:187 - `BOPAlgo_Builder::BuildBOP()`
     pub fn BOPAlgo_Splitter_inherited_BuildBOP(
         self_: *mut BOPAlgo_Splitter,
-        theObjects: *const TopTools_ListOfShape,
+        theObjects: *const NCollection_List_TopoDS_Shape,
         theObjState: i32,
-        theTools: *const TopTools_ListOfShape,
+        theTools: *const NCollection_List_TopoDS_Shape,
         theToolsState: i32,
         theRange: *const Message_ProgressRange,
-        theReport: *const HandleMessageReport,
+        theReport: *const Handle_Message_Report,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
-    pub fn BOPAlgo_Splitter_inherited_Images(
-        self_: *const BOPAlgo_Splitter,
-    ) -> crate::OcctResult<*const TopTools_DataMapOfShapeListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:284 - `BOPAlgo_Builder::Origins()`
-    pub fn BOPAlgo_Splitter_inherited_Origins(
-        self_: *const BOPAlgo_Splitter,
-    ) -> crate::OcctResult<*const TopTools_DataMapOfShapeListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:288 - `BOPAlgo_Builder::ShapesSD()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:285 - `BOPAlgo_Builder::Images()`
+    pub fn BOPAlgo_Splitter_inherited_Images(self_: *const BOPAlgo_Splitter) -> crate::OcctResult<*const NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:292 - `BOPAlgo_Builder::Origins()`
+    pub fn BOPAlgo_Splitter_inherited_Origins(self_: *const BOPAlgo_Splitter) -> crate::OcctResult<*const NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:299 - `BOPAlgo_Builder::ShapesSD()`
     pub fn BOPAlgo_Splitter_inherited_ShapesSD(
         self_: *const BOPAlgo_Splitter,
-    ) -> crate::OcctResult<*const TopTools_DataMapOfShapeShape>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
+    ) -> crate::OcctResult<
+        *const NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
+    >;
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:48 - `BOPAlgo_BuilderShape::Shape()`
     pub fn BOPAlgo_Splitter_inherited_Shape(
         self_: *const BOPAlgo_Splitter,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:72 - `BOPAlgo_BuilderShape::IsDeleted()`
     pub fn BOPAlgo_Splitter_inherited_IsDeleted(
         self_: *mut BOPAlgo_Splitter,
         theS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:77 - `BOPAlgo_BuilderShape::HasModified()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:78 - `BOPAlgo_BuilderShape::HasModified()`
     pub fn BOPAlgo_Splitter_inherited_HasModified(
         self_: *const BOPAlgo_Splitter,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:83 - `BOPAlgo_BuilderShape::HasGenerated()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:84 - `BOPAlgo_BuilderShape::HasGenerated()`
     pub fn BOPAlgo_Splitter_inherited_HasGenerated(
         self_: *const BOPAlgo_Splitter,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:89 - `BOPAlgo_BuilderShape::HasDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:90 - `BOPAlgo_BuilderShape::HasDeleted()`
     pub fn BOPAlgo_Splitter_inherited_HasDeleted(
         self_: *const BOPAlgo_Splitter,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:95 - `BOPAlgo_BuilderShape::History()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:93 - `BOPAlgo_BuilderShape::History()`
     pub fn BOPAlgo_Splitter_inherited_History(
         self_: *mut BOPAlgo_Splitter,
-    ) -> crate::OcctResult<*mut HandleBRepToolsHistory>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:116 - `BOPAlgo_BuilderShape::SetToFillHistory()`
+    ) -> crate::OcctResult<*mut Handle_BRepTools_History>;
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:114 - `BOPAlgo_BuilderShape::SetToFillHistory()`
     pub fn BOPAlgo_Splitter_inherited_SetToFillHistory(
         self_: *mut BOPAlgo_Splitter,
         theHistFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:119 - `BOPAlgo_BuilderShape::HasHistory()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:117 - `BOPAlgo_BuilderShape::HasHistory()`
     pub fn BOPAlgo_Splitter_inherited_HasHistory(
         self_: *const BOPAlgo_Splitter,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
     pub fn BOPAlgo_Splitter_inherited_Allocator(
         self_: *const BOPAlgo_Splitter,
-    ) -> crate::OcctResult<*const HandleNCollectionBaseAllocator>;
+    ) -> crate::OcctResult<*const TDF_HAllocator>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
     pub fn BOPAlgo_Splitter_inherited_AddError(
         self_: *mut BOPAlgo_Splitter,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
     pub fn BOPAlgo_Splitter_inherited_AddWarning(
         self_: *mut BOPAlgo_Splitter,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:73 - `BOPAlgo_Options::HasErrors()`
     pub fn BOPAlgo_Splitter_inherited_HasErrors(
@@ -8312,7 +8318,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
     pub fn BOPAlgo_Splitter_inherited_HasError(
         self_: *const BOPAlgo_Splitter,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:82 - `BOPAlgo_Options::HasWarnings()`
     pub fn BOPAlgo_Splitter_inherited_HasWarnings(
@@ -8321,12 +8327,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     pub fn BOPAlgo_Splitter_inherited_HasWarning(
         self_: *const BOPAlgo_Splitter,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn BOPAlgo_Splitter_inherited_GetReport(
         self_: *const BOPAlgo_Splitter,
-    ) -> crate::OcctResult<*const HandleMessageReport>;
+    ) -> crate::OcctResult<*const Handle_Message_Report>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
     pub fn BOPAlgo_Splitter_inherited_DumpErrors(
         self_: *const BOPAlgo_Splitter,
@@ -8372,71 +8378,50 @@ unsafe extern "C" {
     pub fn BOPAlgo_Tools_destructor(self_: *mut BOPAlgo_Tools);
     /// **Source:** `BOPAlgo_Tools.hxx` - `BOPAlgo_Tools::BOPAlgo_Tools()`
     pub fn BOPAlgo_Tools_ctor() -> crate::OcctResult<*mut BOPAlgo_Tools>;
-    /// **Source:** `BOPAlgo_Tools.hxx`:104 - `BOPAlgo_Tools::FillMap()`
-    pub fn BOPAlgo_Tools_fill_map(
-        thePB1: *const HandleBOPDSPaveBlock,
-        theF: i32,
-        theMILI: *mut BOPDS_IndexedDataMapOfPaveBlockListOfInteger,
-        theAllocator: *const HandleNCollectionBaseAllocator,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_Tools.hxx`:111 - `BOPAlgo_Tools::PerformCommonBlocks()`
-    pub fn BOPAlgo_Tools_perform_common_blocks_indexeddatamapofpaveblocklistofpaveblock_handlencollectionbaseallocator_dsptr_handleinttoolscontext(
-        theMBlocks: *mut BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock,
-        theAllocator: *const HandleNCollectionBaseAllocator,
-        theDS: *mut *mut BOPDS_DS,
-        theContext: *const HandleIntToolsContext,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_Tools.hxx`:118 - `BOPAlgo_Tools::PerformCommonBlocks()`
-    pub fn BOPAlgo_Tools_perform_common_blocks_indexeddatamapofpaveblocklistofinteger_handlencollectionbaseallocator_dsptr_handleinttoolscontext(
-        theMBlocks: *const BOPDS_IndexedDataMapOfPaveBlockListOfInteger,
-        theAllocator: *const HandleNCollectionBaseAllocator,
-        pDS: *mut *mut BOPDS_DS,
-        theContext: *const HandleIntToolsContext,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_Tools.hxx`:124 - `BOPAlgo_Tools::ComputeToleranceOfCB()`
+    /// **Source:** `BOPAlgo_Tools.hxx`:127 - `BOPAlgo_Tools::ComputeToleranceOfCB()`
     pub fn BOPAlgo_Tools_compute_tolerance_of_cb(
-        theCB: *const HandleBOPDSCommonBlock,
+        theCB: *const Handle_BOPDS_CommonBlock,
         theDS: *mut BOPDS_DS,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BOPAlgo_Tools.hxx`:148 - `BOPAlgo_Tools::EdgesToWires()`
+    /// **Source:** `BOPAlgo_Tools.hxx`:151 - `BOPAlgo_Tools::EdgesToWires()`
     pub fn BOPAlgo_Tools_edges_to_wires(
         theEdges: *const TopoDS_Shape,
         theWires: *mut TopoDS_Shape,
         theShared: bool,
         theAngTol: f64,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPAlgo_Tools.hxx`:168 - `BOPAlgo_Tools::WiresToFaces()`
+    /// **Source:** `BOPAlgo_Tools.hxx`:170 - `BOPAlgo_Tools::WiresToFaces()`
     pub fn BOPAlgo_Tools_wires_to_faces(
         theWires: *const TopoDS_Shape,
         theFaces: *mut TopoDS_Shape,
         theAngTol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPAlgo_Tools.hxx`:173 - `BOPAlgo_Tools::IntersectVertices()`
+    /// **Source:** `BOPAlgo_Tools.hxx`:175 - `BOPAlgo_Tools::IntersectVertices()`
     pub fn BOPAlgo_Tools_intersect_vertices(
-        theVertices: *const TopTools_IndexedDataMapOfShapeReal,
+        theVertices: *const NCollection_IndexedDataMap_TopoDS_Shape_double_TopTools_ShapeMapHasher,
         theFuzzyValue: f64,
-        theChains: *mut TopTools_ListOfListOfShape,
+        theChains: *mut NCollection_List_NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_Tools.hxx`:191 - `BOPAlgo_Tools::ClassifyFaces()`
+    /// **Source:** `BOPAlgo_Tools.hxx`:193 - `BOPAlgo_Tools::ClassifyFaces()`
     pub fn BOPAlgo_Tools_classify_faces(
-        theFaces: *const TopTools_ListOfShape,
-        theSolids: *const TopTools_ListOfShape,
+        theFaces: *const NCollection_List_TopoDS_Shape,
+        theSolids: *const NCollection_List_TopoDS_Shape,
         theRunParallel: bool,
-        theContext: *mut HandleIntToolsContext,
-        theInParts: *mut TopTools_IndexedDataMapOfShapeListOfShape,
-        theShapeBoxMap: *const TopTools_DataMapOfShapeBox,
-        theSolidsIF: *const TopTools_DataMapOfShapeListOfShape,
+        theContext: *mut Handle_IntTools_Context,
+        theInParts: *mut NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
+        theShapeBoxMap: *const NCollection_DataMap_TopoDS_Shape_Bnd_Box_TopTools_ShapeMapHasher,
+        theSolidsIF: *const NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_Tools.hxx`:208 - `BOPAlgo_Tools::FillInternals()`
+    /// **Source:** `BOPAlgo_Tools.hxx`:216 - `BOPAlgo_Tools::FillInternals()`
     pub fn BOPAlgo_Tools_fill_internals(
-        theSolids: *const TopTools_ListOfShape,
-        theParts: *const TopTools_ListOfShape,
-        theImages: *const TopTools_DataMapOfShapeListOfShape,
-        theContext: *const HandleIntToolsContext,
+        theSolids: *const NCollection_List_TopoDS_Shape,
+        theParts: *const NCollection_List_TopoDS_Shape,
+        theImages: *const NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
+        theContext: *const Handle_IntTools_Context,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_Tools.hxx`:222 - `BOPAlgo_Tools::TrsfToPoint()`
+    /// **Source:** `BOPAlgo_Tools.hxx`:233 - `BOPAlgo_Tools::TrsfToPoint()`
     pub fn BOPAlgo_Tools_trsf_to_point(
         theBox1: *const Bnd_Box,
         theBox2: *const Bnd_Box,
@@ -8449,8 +8434,8 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_ToolsProvider.hxx`:31 - `BOPAlgo_ToolsProvider::BOPAlgo_ToolsProvider()`
     pub fn BOPAlgo_ToolsProvider_ctor() -> crate::OcctResult<*mut BOPAlgo_ToolsProvider>;
     /// **Source:** `BOPAlgo_ToolsProvider.hxx`:33 - `BOPAlgo_ToolsProvider::BOPAlgo_ToolsProvider()`
-    pub fn BOPAlgo_ToolsProvider_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    pub fn BOPAlgo_ToolsProvider_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPAlgo_ToolsProvider>;
     /// **Source:** `BOPAlgo_ToolsProvider.hxx`:36 - `BOPAlgo_ToolsProvider::Clear()`
     pub fn BOPAlgo_ToolsProvider_clear(
@@ -8464,12 +8449,12 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_ToolsProvider.hxx`:42 - `BOPAlgo_ToolsProvider::SetTools()`
     pub fn BOPAlgo_ToolsProvider_set_tools(
         self_: *mut BOPAlgo_ToolsProvider,
-        theShapes: *const TopTools_ListOfShape,
+        theShapes: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BOPAlgo_ToolsProvider.hxx`:45 - `BOPAlgo_ToolsProvider::Tools()`
     pub fn BOPAlgo_ToolsProvider_tools(
         self_: *const BOPAlgo_ToolsProvider,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// Upcast BOPAlgo_ToolsProvider to BOPAlgo_Builder
     pub fn BOPAlgo_ToolsProvider_as_BOPAlgo_Builder(
         self_: *const BOPAlgo_ToolsProvider,
@@ -8502,139 +8487,137 @@ unsafe extern "C" {
     pub fn BOPAlgo_ToolsProvider_as_BOPAlgo_Options_mut(
         self_: *mut BOPAlgo_ToolsProvider,
     ) -> crate::OcctResult<*mut BOPAlgo_Options>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:89 - `BOPAlgo_Builder::PPaveFiller()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:90 - `BOPAlgo_Builder::PPaveFiller()`
     pub fn BOPAlgo_ToolsProvider_inherited_PPaveFiller(
         self_: *mut BOPAlgo_ToolsProvider,
     ) -> crate::OcctResult<*mut BOPAlgo_PaveFiller>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:92 - `BOPAlgo_Builder::PDS()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:93 - `BOPAlgo_Builder::PDS()`
     pub fn BOPAlgo_ToolsProvider_inherited_PDS(
         self_: *mut BOPAlgo_ToolsProvider,
     ) -> crate::OcctResult<*mut BOPDS_DS>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:95 - `BOPAlgo_Builder::Context()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:96 - `BOPAlgo_Builder::Context()`
     pub fn BOPAlgo_ToolsProvider_inherited_Context(
         self_: *const BOPAlgo_ToolsProvider,
-    ) -> crate::OcctResult<*mut HandleIntToolsContext>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:99 - `BOPAlgo_Builder::AddArgument()`
+    ) -> crate::OcctResult<*mut Handle_IntTools_Context>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:100 - `BOPAlgo_Builder::AddArgument()`
     pub fn BOPAlgo_ToolsProvider_inherited_AddArgument(
         self_: *mut BOPAlgo_ToolsProvider,
         theShape: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:102 - `BOPAlgo_Builder::SetArguments()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:103 - `BOPAlgo_Builder::SetArguments()`
     pub fn BOPAlgo_ToolsProvider_inherited_SetArguments(
         self_: *mut BOPAlgo_ToolsProvider,
-        theLS: *const TopTools_ListOfShape,
+        theLS: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:105 - `BOPAlgo_Builder::Arguments()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:106 - `BOPAlgo_Builder::Arguments()`
     pub fn BOPAlgo_ToolsProvider_inherited_Arguments(
         self_: *const BOPAlgo_ToolsProvider,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:114 - `BOPAlgo_Builder::SetNonDestructive()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:115 - `BOPAlgo_Builder::SetNonDestructive()`
     pub fn BOPAlgo_ToolsProvider_inherited_SetNonDestructive(
         self_: *mut BOPAlgo_ToolsProvider,
         theFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:119 - `BOPAlgo_Builder::NonDestructive()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:120 - `BOPAlgo_Builder::NonDestructive()`
     pub fn BOPAlgo_ToolsProvider_inherited_NonDestructive(
         self_: *const BOPAlgo_ToolsProvider,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:122 - `BOPAlgo_Builder::SetGlue()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:123 - `BOPAlgo_Builder::SetGlue()`
     pub fn BOPAlgo_ToolsProvider_inherited_SetGlue(
         self_: *mut BOPAlgo_ToolsProvider,
         theGlue: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:125 - `BOPAlgo_Builder::Glue()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:126 - `BOPAlgo_Builder::Glue()`
     pub fn BOPAlgo_ToolsProvider_inherited_Glue(
         self_: *const BOPAlgo_ToolsProvider,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:128 - `BOPAlgo_Builder::SetCheckInverted()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:129 - `BOPAlgo_Builder::SetCheckInverted()`
     pub fn BOPAlgo_ToolsProvider_inherited_SetCheckInverted(
         self_: *mut BOPAlgo_ToolsProvider,
         theCheck: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:132 - `BOPAlgo_Builder::CheckInverted()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:133 - `BOPAlgo_Builder::CheckInverted()`
     pub fn BOPAlgo_ToolsProvider_inherited_CheckInverted(
         self_: *const BOPAlgo_ToolsProvider,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:137 - `BOPAlgo_Builder::Perform()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:138 - `BOPAlgo_Builder::Perform()`
     pub fn BOPAlgo_ToolsProvider_inherited_Perform(
         self_: *mut BOPAlgo_ToolsProvider,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:142 - `BOPAlgo_Builder::PerformWithFiller()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:143 - `BOPAlgo_Builder::PerformWithFiller()`
     pub fn BOPAlgo_ToolsProvider_inherited_PerformWithFiller(
         self_: *mut BOPAlgo_ToolsProvider,
         theFiller: *const BOPAlgo_PaveFiller,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:186 - `BOPAlgo_Builder::BuildBOP()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:187 - `BOPAlgo_Builder::BuildBOP()`
     pub fn BOPAlgo_ToolsProvider_inherited_BuildBOP(
         self_: *mut BOPAlgo_ToolsProvider,
-        theObjects: *const TopTools_ListOfShape,
+        theObjects: *const NCollection_List_TopoDS_Shape,
         theObjState: i32,
-        theTools: *const TopTools_ListOfShape,
+        theTools: *const NCollection_List_TopoDS_Shape,
         theToolsState: i32,
         theRange: *const Message_ProgressRange,
-        theReport: *const HandleMessageReport,
+        theReport: *const Handle_Message_Report,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
-    pub fn BOPAlgo_ToolsProvider_inherited_Images(
-        self_: *const BOPAlgo_ToolsProvider,
-    ) -> crate::OcctResult<*const TopTools_DataMapOfShapeListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:284 - `BOPAlgo_Builder::Origins()`
-    pub fn BOPAlgo_ToolsProvider_inherited_Origins(
-        self_: *const BOPAlgo_ToolsProvider,
-    ) -> crate::OcctResult<*const TopTools_DataMapOfShapeListOfShape>;
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:288 - `BOPAlgo_Builder::ShapesSD()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:285 - `BOPAlgo_Builder::Images()`
+    pub fn BOPAlgo_ToolsProvider_inherited_Images(self_: *const BOPAlgo_ToolsProvider) -> crate::OcctResult<*const NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:292 - `BOPAlgo_Builder::Origins()`
+    pub fn BOPAlgo_ToolsProvider_inherited_Origins(self_: *const BOPAlgo_ToolsProvider) -> crate::OcctResult<*const NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher>;
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:299 - `BOPAlgo_Builder::ShapesSD()`
     pub fn BOPAlgo_ToolsProvider_inherited_ShapesSD(
         self_: *const BOPAlgo_ToolsProvider,
-    ) -> crate::OcctResult<*const TopTools_DataMapOfShapeShape>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
+    ) -> crate::OcctResult<
+        *const NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
+    >;
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:48 - `BOPAlgo_BuilderShape::Shape()`
     pub fn BOPAlgo_ToolsProvider_inherited_Shape(
         self_: *const BOPAlgo_ToolsProvider,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:72 - `BOPAlgo_BuilderShape::IsDeleted()`
     pub fn BOPAlgo_ToolsProvider_inherited_IsDeleted(
         self_: *mut BOPAlgo_ToolsProvider,
         theS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:77 - `BOPAlgo_BuilderShape::HasModified()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:78 - `BOPAlgo_BuilderShape::HasModified()`
     pub fn BOPAlgo_ToolsProvider_inherited_HasModified(
         self_: *const BOPAlgo_ToolsProvider,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:83 - `BOPAlgo_BuilderShape::HasGenerated()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:84 - `BOPAlgo_BuilderShape::HasGenerated()`
     pub fn BOPAlgo_ToolsProvider_inherited_HasGenerated(
         self_: *const BOPAlgo_ToolsProvider,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:89 - `BOPAlgo_BuilderShape::HasDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:90 - `BOPAlgo_BuilderShape::HasDeleted()`
     pub fn BOPAlgo_ToolsProvider_inherited_HasDeleted(
         self_: *const BOPAlgo_ToolsProvider,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:95 - `BOPAlgo_BuilderShape::History()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:93 - `BOPAlgo_BuilderShape::History()`
     pub fn BOPAlgo_ToolsProvider_inherited_History(
         self_: *mut BOPAlgo_ToolsProvider,
-    ) -> crate::OcctResult<*mut HandleBRepToolsHistory>;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:116 - `BOPAlgo_BuilderShape::SetToFillHistory()`
+    ) -> crate::OcctResult<*mut Handle_BRepTools_History>;
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:114 - `BOPAlgo_BuilderShape::SetToFillHistory()`
     pub fn BOPAlgo_ToolsProvider_inherited_SetToFillHistory(
         self_: *mut BOPAlgo_ToolsProvider,
         theHistFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:119 - `BOPAlgo_BuilderShape::HasHistory()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:117 - `BOPAlgo_BuilderShape::HasHistory()`
     pub fn BOPAlgo_ToolsProvider_inherited_HasHistory(
         self_: *const BOPAlgo_ToolsProvider,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
     pub fn BOPAlgo_ToolsProvider_inherited_Allocator(
         self_: *const BOPAlgo_ToolsProvider,
-    ) -> crate::OcctResult<*const HandleNCollectionBaseAllocator>;
+    ) -> crate::OcctResult<*const TDF_HAllocator>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
     pub fn BOPAlgo_ToolsProvider_inherited_AddError(
         self_: *mut BOPAlgo_ToolsProvider,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
     pub fn BOPAlgo_ToolsProvider_inherited_AddWarning(
         self_: *mut BOPAlgo_ToolsProvider,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:73 - `BOPAlgo_Options::HasErrors()`
     pub fn BOPAlgo_ToolsProvider_inherited_HasErrors(
@@ -8643,7 +8626,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
     pub fn BOPAlgo_ToolsProvider_inherited_HasError(
         self_: *const BOPAlgo_ToolsProvider,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:82 - `BOPAlgo_Options::HasWarnings()`
     pub fn BOPAlgo_ToolsProvider_inherited_HasWarnings(
@@ -8652,12 +8635,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     pub fn BOPAlgo_ToolsProvider_inherited_HasWarning(
         self_: *const BOPAlgo_ToolsProvider,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn BOPAlgo_ToolsProvider_inherited_GetReport(
         self_: *const BOPAlgo_ToolsProvider,
-    ) -> crate::OcctResult<*const HandleMessageReport>;
+    ) -> crate::OcctResult<*const Handle_Message_Report>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
     pub fn BOPAlgo_ToolsProvider_inherited_DumpErrors(
         self_: *const BOPAlgo_ToolsProvider,
@@ -8701,48 +8684,48 @@ unsafe extern "C" {
     ) -> crate::OcctResult<bool>;
     // ======================== BOPAlgo_WireEdgeSet ========================
     pub fn BOPAlgo_WireEdgeSet_destructor(self_: *mut BOPAlgo_WireEdgeSet);
-    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:36 - `BOPAlgo_WireEdgeSet::BOPAlgo_WireEdgeSet()`
+    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:37 - `BOPAlgo_WireEdgeSet::BOPAlgo_WireEdgeSet()`
     pub fn BOPAlgo_WireEdgeSet_ctor() -> crate::OcctResult<*mut BOPAlgo_WireEdgeSet>;
-    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:39 - `BOPAlgo_WireEdgeSet::BOPAlgo_WireEdgeSet()`
-    pub fn BOPAlgo_WireEdgeSet_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:40 - `BOPAlgo_WireEdgeSet::BOPAlgo_WireEdgeSet()`
+    pub fn BOPAlgo_WireEdgeSet_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPAlgo_WireEdgeSet>;
-    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:41 - `BOPAlgo_WireEdgeSet::Clear()`
+    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:42 - `BOPAlgo_WireEdgeSet::Clear()`
     pub fn BOPAlgo_WireEdgeSet_clear(self_: *mut BOPAlgo_WireEdgeSet) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:43 - `BOPAlgo_WireEdgeSet::SetFace()`
+    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:44 - `BOPAlgo_WireEdgeSet::SetFace()`
     pub fn BOPAlgo_WireEdgeSet_set_face(
         self_: *mut BOPAlgo_WireEdgeSet,
         aF: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:45 - `BOPAlgo_WireEdgeSet::Face()`
+    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:46 - `BOPAlgo_WireEdgeSet::Face()`
     pub fn BOPAlgo_WireEdgeSet_face(
         self_: *const BOPAlgo_WireEdgeSet,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:47 - `BOPAlgo_WireEdgeSet::AddStartElement()`
+    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:48 - `BOPAlgo_WireEdgeSet::AddStartElement()`
     pub fn BOPAlgo_WireEdgeSet_add_start_element(
         self_: *mut BOPAlgo_WireEdgeSet,
         sS: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:49 - `BOPAlgo_WireEdgeSet::StartElements()`
+    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:50 - `BOPAlgo_WireEdgeSet::StartElements()`
     pub fn BOPAlgo_WireEdgeSet_start_elements(
         self_: *const BOPAlgo_WireEdgeSet,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:51 - `BOPAlgo_WireEdgeSet::AddShape()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:52 - `BOPAlgo_WireEdgeSet::AddShape()`
     pub fn BOPAlgo_WireEdgeSet_add_shape(
         self_: *mut BOPAlgo_WireEdgeSet,
         sS: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:53 - `BOPAlgo_WireEdgeSet::Shapes()`
+    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:54 - `BOPAlgo_WireEdgeSet::Shapes()`
     pub fn BOPAlgo_WireEdgeSet_shapes(
         self_: *const BOPAlgo_WireEdgeSet,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     // ======================== BOPAlgo_WireSplitter ========================
     pub fn BOPAlgo_WireSplitter_destructor(self_: *mut BOPAlgo_WireSplitter);
     /// **Source:** `BOPAlgo_WireSplitter.hxx`:42 - `BOPAlgo_WireSplitter::BOPAlgo_WireSplitter()`
     pub fn BOPAlgo_WireSplitter_ctor() -> crate::OcctResult<*mut BOPAlgo_WireSplitter>;
     /// **Source:** `BOPAlgo_WireSplitter.hxx`:45 - `BOPAlgo_WireSplitter::BOPAlgo_WireSplitter()`
-    pub fn BOPAlgo_WireSplitter_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    pub fn BOPAlgo_WireSplitter_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPAlgo_WireSplitter>;
     /// **Source:** `BOPAlgo_WireSplitter.hxx`:47 - `BOPAlgo_WireSplitter::SetWES()`
     pub fn BOPAlgo_WireSplitter_set_wes(
@@ -8756,12 +8739,12 @@ unsafe extern "C" {
     /// **Source:** `BOPAlgo_WireSplitter.hxx`:52 - `BOPAlgo_WireSplitter::SetContext()`
     pub fn BOPAlgo_WireSplitter_set_context(
         self_: *mut BOPAlgo_WireSplitter,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BOPAlgo_WireSplitter.hxx`:55 - `BOPAlgo_WireSplitter::Context()`
     pub fn BOPAlgo_WireSplitter_context(
         self_: *mut BOPAlgo_WireSplitter,
-    ) -> crate::OcctResult<*const HandleIntToolsContext>;
+    ) -> crate::OcctResult<*const Handle_IntTools_Context>;
     /// **Source:** `BOPAlgo_WireSplitter.hxx`:57 - `BOPAlgo_WireSplitter::Perform()`
     pub fn BOPAlgo_WireSplitter_perform(
         self_: *mut BOPAlgo_WireSplitter,
@@ -8769,14 +8752,14 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     /// **Source:** `BOPAlgo_WireSplitter.hxx`:60 - `BOPAlgo_WireSplitter::MakeWire()`
     pub fn BOPAlgo_WireSplitter_make_wire(
-        theLE: *mut TopTools_ListOfShape,
+        theLE: *mut NCollection_List_TopoDS_Shape,
         theW: *mut TopoDS_Wire,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BOPAlgo_WireSplitter.hxx`:62 - `BOPAlgo_WireSplitter::SplitBlock()`
     pub fn BOPAlgo_WireSplitter_split_block(
         theF: *const TopoDS_Face,
         theCB: *mut BOPTools_ConnexityBlock,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> *const std::ffi::c_char;
     /// Upcast BOPAlgo_WireSplitter to BOPAlgo_Algo
     pub fn BOPAlgo_WireSplitter_as_BOPAlgo_Algo(
@@ -8797,7 +8780,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
     pub fn BOPAlgo_WireSplitter_inherited_Allocator(
         self_: *const BOPAlgo_WireSplitter,
-    ) -> crate::OcctResult<*const HandleNCollectionBaseAllocator>;
+    ) -> crate::OcctResult<*const TDF_HAllocator>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:55 - `BOPAlgo_Options::Clear()`
     pub fn BOPAlgo_WireSplitter_inherited_Clear(
         self_: *mut BOPAlgo_WireSplitter,
@@ -8805,12 +8788,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
     pub fn BOPAlgo_WireSplitter_inherited_AddError(
         self_: *mut BOPAlgo_WireSplitter,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
     pub fn BOPAlgo_WireSplitter_inherited_AddWarning(
         self_: *mut BOPAlgo_WireSplitter,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:73 - `BOPAlgo_Options::HasErrors()`
     pub fn BOPAlgo_WireSplitter_inherited_HasErrors(
@@ -8819,7 +8802,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
     pub fn BOPAlgo_WireSplitter_inherited_HasError(
         self_: *const BOPAlgo_WireSplitter,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:82 - `BOPAlgo_Options::HasWarnings()`
     pub fn BOPAlgo_WireSplitter_inherited_HasWarnings(
@@ -8828,12 +8811,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     pub fn BOPAlgo_WireSplitter_inherited_HasWarning(
         self_: *const BOPAlgo_WireSplitter,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn BOPAlgo_WireSplitter_inherited_GetReport(
         self_: *const BOPAlgo_WireSplitter,
-    ) -> crate::OcctResult<*const HandleMessageReport>;
+    ) -> crate::OcctResult<*const Handle_Message_Report>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
     pub fn BOPAlgo_WireSplitter_inherited_DumpErrors(
         self_: *const BOPAlgo_WireSplitter,
@@ -8877,103 +8860,94 @@ unsafe extern "C" {
     ) -> crate::OcctResult<bool>;
     // ======================== BOPDS_CommonBlock ========================
     pub fn BOPDS_CommonBlock_destructor(self_: *mut BOPDS_CommonBlock);
-    /// **Source:** `BOPDS_CommonBlock.hxx`:43 - `BOPDS_CommonBlock::BOPDS_CommonBlock()`
+    /// **Source:** `BOPDS_CommonBlock.hxx`:40 - `BOPDS_CommonBlock::BOPDS_CommonBlock()`
     pub fn BOPDS_CommonBlock_ctor() -> crate::OcctResult<*mut BOPDS_CommonBlock>;
-    /// **Source:** `BOPDS_CommonBlock.hxx`:47 - `BOPDS_CommonBlock::BOPDS_CommonBlock()`
-    pub fn BOPDS_CommonBlock_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    /// **Source:** `BOPDS_CommonBlock.hxx`:44 - `BOPDS_CommonBlock::BOPDS_CommonBlock()`
+    pub fn BOPDS_CommonBlock_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPDS_CommonBlock>;
-    /// **Source:** `BOPDS_CommonBlock.hxx`:52 - `BOPDS_CommonBlock::AddPaveBlock()`
+    /// **Source:** `BOPDS_CommonBlock.hxx`:49 - `BOPDS_CommonBlock::AddPaveBlock()`
     pub fn BOPDS_CommonBlock_add_pave_block(
         self_: *mut BOPDS_CommonBlock,
-        aPB: *const HandleBOPDSPaveBlock,
+        aPB: *const Handle_BOPDS_PaveBlock,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_CommonBlock.hxx`:56 - `BOPDS_CommonBlock::SetPaveBlocks()`
-    pub fn BOPDS_CommonBlock_set_pave_blocks(
-        self_: *mut BOPDS_CommonBlock,
-        aLPB: *const BOPDS_ListOfPaveBlock,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_CommonBlock.hxx`:62 - `BOPDS_CommonBlock::AddFace()`
+    /// **Source:** `BOPDS_CommonBlock.hxx`:59 - `BOPDS_CommonBlock::AddFace()`
     pub fn BOPDS_CommonBlock_add_face(
         self_: *mut BOPDS_CommonBlock,
         aF: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_CommonBlock.hxx`:67 - `BOPDS_CommonBlock::SetFaces()`
+    /// **Source:** `BOPDS_CommonBlock.hxx`:64 - `BOPDS_CommonBlock::SetFaces()`
     pub fn BOPDS_CommonBlock_set_faces(
         self_: *mut BOPDS_CommonBlock,
-        aLF: *const TColStd_ListOfInteger,
+        aLF: *const NCollection_List_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_CommonBlock.hxx`:73 - `BOPDS_CommonBlock::AppendFaces()`
+    /// **Source:** `BOPDS_CommonBlock.hxx`:70 - `BOPDS_CommonBlock::AppendFaces()`
     pub fn BOPDS_CommonBlock_append_faces(
         self_: *mut BOPDS_CommonBlock,
-        aLF: *mut TColStd_ListOfInteger,
+        aLF: *mut NCollection_List_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_CommonBlock.hxx`:78 - `BOPDS_CommonBlock::PaveBlocks()`
-    pub fn BOPDS_CommonBlock_pave_blocks(
-        self_: *const BOPDS_CommonBlock,
-    ) -> crate::OcctResult<*const BOPDS_ListOfPaveBlock>;
-    /// **Source:** `BOPDS_CommonBlock.hxx`:83 - `BOPDS_CommonBlock::Faces()`
+    /// **Source:** `BOPDS_CommonBlock.hxx`:80 - `BOPDS_CommonBlock::Faces()`
     pub fn BOPDS_CommonBlock_faces(
         self_: *const BOPDS_CommonBlock,
-    ) -> crate::OcctResult<*const TColStd_ListOfInteger>;
-    /// **Source:** `BOPDS_CommonBlock.hxx`:88 - `BOPDS_CommonBlock::PaveBlock1()`
+    ) -> crate::OcctResult<*const NCollection_List_int>;
+    /// **Source:** `BOPDS_CommonBlock.hxx`:85 - `BOPDS_CommonBlock::PaveBlock1()`
     pub fn BOPDS_CommonBlock_pave_block1(
         self_: *const BOPDS_CommonBlock,
-    ) -> crate::OcctResult<*const HandleBOPDSPaveBlock>;
-    /// **Source:** `BOPDS_CommonBlock.hxx`:93 - `BOPDS_CommonBlock::PaveBlockOnEdge()`
+    ) -> crate::OcctResult<*const Handle_BOPDS_PaveBlock>;
+    /// **Source:** `BOPDS_CommonBlock.hxx`:90 - `BOPDS_CommonBlock::PaveBlockOnEdge()`
     pub fn BOPDS_CommonBlock_pave_block_on_edge(
         self_: *mut BOPDS_CommonBlock,
         theIndex: i32,
-    ) -> crate::OcctResult<*mut HandleBOPDSPaveBlock>;
-    /// **Source:** `BOPDS_CommonBlock.hxx`:99 - `BOPDS_CommonBlock::IsPaveBlockOnFace()`
+    ) -> crate::OcctResult<*mut Handle_BOPDS_PaveBlock>;
+    /// **Source:** `BOPDS_CommonBlock.hxx`:96 - `BOPDS_CommonBlock::IsPaveBlockOnFace()`
     pub fn BOPDS_CommonBlock_is_pave_block_on_face(
         self_: *const BOPDS_CommonBlock,
         theIndex: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_CommonBlock.hxx`:105 - `BOPDS_CommonBlock::IsPaveBlockOnEdge()`
+    /// **Source:** `BOPDS_CommonBlock.hxx`:102 - `BOPDS_CommonBlock::IsPaveBlockOnEdge()`
     pub fn BOPDS_CommonBlock_is_pave_block_on_edge(
         self_: *const BOPDS_CommonBlock,
         theIndex: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_CommonBlock.hxx`:110 - `BOPDS_CommonBlock::Contains()`
+    /// **Source:** `BOPDS_CommonBlock.hxx`:107 - `BOPDS_CommonBlock::Contains()`
     pub fn BOPDS_CommonBlock_contains_handlebopdspaveblock(
         self_: *const BOPDS_CommonBlock,
-        thePB: *const HandleBOPDSPaveBlock,
+        thePB: *const Handle_BOPDS_PaveBlock,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_CommonBlock.hxx`:115 - `BOPDS_CommonBlock::Contains()`
+    /// **Source:** `BOPDS_CommonBlock.hxx`:112 - `BOPDS_CommonBlock::Contains()`
     pub fn BOPDS_CommonBlock_contains_int(
         self_: *const BOPDS_CommonBlock,
         theF: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_CommonBlock.hxx`:120 - `BOPDS_CommonBlock::SetEdge()`
+    /// **Source:** `BOPDS_CommonBlock.hxx`:117 - `BOPDS_CommonBlock::SetEdge()`
     pub fn BOPDS_CommonBlock_set_edge(
         self_: *mut BOPDS_CommonBlock,
         theEdge: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_CommonBlock.hxx`:125 - `BOPDS_CommonBlock::Edge()`
+    /// **Source:** `BOPDS_CommonBlock.hxx`:122 - `BOPDS_CommonBlock::Edge()`
     pub fn BOPDS_CommonBlock_edge(self_: *const BOPDS_CommonBlock) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPDS_CommonBlock.hxx`:127 - `BOPDS_CommonBlock::Dump()`
+    /// **Source:** `BOPDS_CommonBlock.hxx`:124 - `BOPDS_CommonBlock::Dump()`
     pub fn BOPDS_CommonBlock_dump(self_: *const BOPDS_CommonBlock) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_CommonBlock.hxx`:132 - `BOPDS_CommonBlock::SetRealPaveBlock()`
+    /// **Source:** `BOPDS_CommonBlock.hxx`:129 - `BOPDS_CommonBlock::SetRealPaveBlock()`
     pub fn BOPDS_CommonBlock_set_real_pave_block(
         self_: *mut BOPDS_CommonBlock,
-        thePB: *const HandleBOPDSPaveBlock,
+        thePB: *const Handle_BOPDS_PaveBlock,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_CommonBlock.hxx`:135 - `BOPDS_CommonBlock::SetTolerance()`
+    /// **Source:** `BOPDS_CommonBlock.hxx`:132 - `BOPDS_CommonBlock::SetTolerance()`
     pub fn BOPDS_CommonBlock_set_tolerance(
         self_: *mut BOPDS_CommonBlock,
         theTol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_CommonBlock.hxx`:138 - `BOPDS_CommonBlock::Tolerance()`
+    /// **Source:** `BOPDS_CommonBlock.hxx`:135 - `BOPDS_CommonBlock::Tolerance()`
     pub fn BOPDS_CommonBlock_tolerance(self_: *const BOPDS_CommonBlock) -> crate::OcctResult<f64>;
-    /// **Source:** `BOPDS_CommonBlock.hxx`:140 - `BOPDS_CommonBlock::DynamicType()`
+    /// **Source:** `BOPDS_CommonBlock.hxx`:137 - `BOPDS_CommonBlock::DynamicType()`
     pub fn BOPDS_CommonBlock_dynamic_type(
         self_: *const BOPDS_CommonBlock,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BOPDS_CommonBlock.hxx`:140 - `BOPDS_CommonBlock::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BOPDS_CommonBlock.hxx`:137 - `BOPDS_CommonBlock::get_type_name()`
     pub fn BOPDS_CommonBlock_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BOPDS_CommonBlock.hxx`:140 - `BOPDS_CommonBlock::get_type_descriptor()`
-    pub fn BOPDS_CommonBlock_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `BOPDS_CommonBlock.hxx`:137 - `BOPDS_CommonBlock::get_type_descriptor()`
+    pub fn BOPDS_CommonBlock_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPDS_CommonBlock to Standard_Transient
     pub fn BOPDS_CommonBlock_as_Standard_Transient(
         self_: *const BOPDS_CommonBlock,
@@ -8985,120 +8959,114 @@ unsafe extern "C" {
     /// Wrap BOPDS_CommonBlock in a Handle
     pub fn BOPDS_CommonBlock_to_handle(
         obj: *mut BOPDS_CommonBlock,
-    ) -> crate::OcctResult<*mut HandleBOPDSCommonBlock>;
+    ) -> crate::OcctResult<*mut Handle_BOPDS_CommonBlock>;
     /// Destroy Handle<BOPDS_CommonBlock>
-    pub fn HandleBOPDSCommonBlock_destructor(self_: *mut HandleBOPDSCommonBlock);
+    pub fn Handle_BOPDS_CommonBlock_destructor(self_: *mut Handle_BOPDS_CommonBlock);
     /// Clone Handle<BOPDS_CommonBlock> (increments reference count)
-    pub fn HandleBOPDSCommonBlock_clone(
-        self_: *const HandleBOPDSCommonBlock,
-    ) -> crate::OcctResult<*mut HandleBOPDSCommonBlock>;
+    pub fn Handle_BOPDS_CommonBlock_clone(
+        self_: *const Handle_BOPDS_CommonBlock,
+    ) -> crate::OcctResult<*mut Handle_BOPDS_CommonBlock>;
     /// Check if Handle<BOPDS_CommonBlock> is null
-    pub fn HandleBOPDSCommonBlock_is_null(self_: *const HandleBOPDSCommonBlock) -> bool;
+    pub fn Handle_BOPDS_CommonBlock_is_null(self_: *const Handle_BOPDS_CommonBlock) -> bool;
     /// Dereference Handle to get *const BOPDS_CommonBlock
-    pub fn HandleBOPDSCommonBlock_get(
-        handle: *const HandleBOPDSCommonBlock,
+    pub fn Handle_BOPDS_CommonBlock_get(
+        handle: *const Handle_BOPDS_CommonBlock,
     ) -> crate::OcctResult<*const BOPDS_CommonBlock>;
     /// Dereference Handle to get *mut BOPDS_CommonBlock
-    pub fn HandleBOPDSCommonBlock_get_mut(
-        handle: *mut HandleBOPDSCommonBlock,
+    pub fn Handle_BOPDS_CommonBlock_get_mut(
+        handle: *mut Handle_BOPDS_CommonBlock,
     ) -> crate::OcctResult<*mut BOPDS_CommonBlock>;
     /// Upcast Handle<BOPDS_CommonBlock> to Handle<Standard_Transient>
-    pub fn HandleBOPDSCommonBlock_to_HandleStandardTransient(
-        self_: *const HandleBOPDSCommonBlock,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_BOPDS_CommonBlock_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPDS_CommonBlock,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPDS_CommonBlock_inherited_IsInstance(
         self_: *const BOPDS_CommonBlock,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPDS_CommonBlock_inherited_IsKind(
         self_: *const BOPDS_CommonBlock,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPDS_CommonBlock_inherited_This(
         self_: *const BOPDS_CommonBlock,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPDS_CommonBlock_inherited_GetRefCount(
         self_: *const BOPDS_CommonBlock,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPDS_CommonBlock_inherited_IncrementRefCounter(
         self_: *mut BOPDS_CommonBlock,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPDS_CommonBlock_inherited_DecrementRefCounter(
         self_: *mut BOPDS_CommonBlock,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPDS_CommonBlock_inherited_Delete(
         self_: *const BOPDS_CommonBlock,
     ) -> *const std::ffi::c_char;
     // ======================== BOPDS_CoupleOfPaveBlocks ========================
     pub fn BOPDS_CoupleOfPaveBlocks_destructor(self_: *mut BOPDS_CoupleOfPaveBlocks);
-    /// **Source:** `BOPDS_CoupleOfPaveBlocks.hxx`:36 - `BOPDS_CoupleOfPaveBlocks::BOPDS_CoupleOfPaveBlocks()`
+    /// **Source:** `BOPDS_CoupleOfPaveBlocks.hxx`:25 - `BOPDS_CoupleOfPaveBlocks::BOPDS_CoupleOfPaveBlocks()`
     pub fn BOPDS_CoupleOfPaveBlocks_ctor() -> crate::OcctResult<*mut BOPDS_CoupleOfPaveBlocks>;
-    /// **Source:** `BOPDS_CoupleOfPaveBlocks.hxx`:51 - `BOPDS_CoupleOfPaveBlocks::BOPDS_CoupleOfPaveBlocks()`
+    /// **Source:** `BOPDS_CoupleOfPaveBlocks.hxx`:35 - `BOPDS_CoupleOfPaveBlocks::BOPDS_CoupleOfPaveBlocks()`
     pub fn BOPDS_CoupleOfPaveBlocks_ctor_handlebopdspaveblock2(
-        thePB1: *const HandleBOPDSPaveBlock,
-        thePB2: *const HandleBOPDSPaveBlock,
+        thePB1: *const Handle_BOPDS_PaveBlock,
+        thePB2: *const Handle_BOPDS_PaveBlock,
     ) -> crate::OcctResult<*mut BOPDS_CoupleOfPaveBlocks>;
-    /// **Source:** `BOPDS_CoupleOfPaveBlocks.hxx`:72 - `BOPDS_CoupleOfPaveBlocks::SetIndex()`
+    /// **Source:** `BOPDS_CoupleOfPaveBlocks.hxx`:48 - `BOPDS_CoupleOfPaveBlocks::SetIndex()`
     pub fn BOPDS_CoupleOfPaveBlocks_set_index(
         self_: *mut BOPDS_CoupleOfPaveBlocks,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_CoupleOfPaveBlocks.hxx`:80 - `BOPDS_CoupleOfPaveBlocks::Index()`
+    /// **Source:** `BOPDS_CoupleOfPaveBlocks.hxx`:52 - `BOPDS_CoupleOfPaveBlocks::Index()`
     pub fn BOPDS_CoupleOfPaveBlocks_index(
         self_: *const BOPDS_CoupleOfPaveBlocks,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPDS_CoupleOfPaveBlocks.hxx`:88 - `BOPDS_CoupleOfPaveBlocks::SetIndexInterf()`
+    /// **Source:** `BOPDS_CoupleOfPaveBlocks.hxx`:56 - `BOPDS_CoupleOfPaveBlocks::SetIndexInterf()`
     pub fn BOPDS_CoupleOfPaveBlocks_set_index_interf(
         self_: *mut BOPDS_CoupleOfPaveBlocks,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_CoupleOfPaveBlocks.hxx`:96 - `BOPDS_CoupleOfPaveBlocks::IndexInterf()`
+    /// **Source:** `BOPDS_CoupleOfPaveBlocks.hxx`:60 - `BOPDS_CoupleOfPaveBlocks::IndexInterf()`
     pub fn BOPDS_CoupleOfPaveBlocks_index_interf(
         self_: *const BOPDS_CoupleOfPaveBlocks,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPDS_CoupleOfPaveBlocks.hxx`:106 - `BOPDS_CoupleOfPaveBlocks::SetPaveBlocks()`
+    /// **Source:** `BOPDS_CoupleOfPaveBlocks.hxx`:65 - `BOPDS_CoupleOfPaveBlocks::SetPaveBlocks()`
     pub fn BOPDS_CoupleOfPaveBlocks_set_pave_blocks(
         self_: *mut BOPDS_CoupleOfPaveBlocks,
-        thePB1: *const HandleBOPDSPaveBlock,
-        thePB2: *const HandleBOPDSPaveBlock,
+        thePB1: *const Handle_BOPDS_PaveBlock,
+        thePB2: *const Handle_BOPDS_PaveBlock,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_CoupleOfPaveBlocks.hxx`:120 - `BOPDS_CoupleOfPaveBlocks::PaveBlocks()`
-    pub fn BOPDS_CoupleOfPaveBlocks_pave_blocks(
-        self_: *const BOPDS_CoupleOfPaveBlocks,
-        thePB1: *mut HandleBOPDSPaveBlock,
-        thePB2: *mut HandleBOPDSPaveBlock,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_CoupleOfPaveBlocks.hxx`:132 - `BOPDS_CoupleOfPaveBlocks::SetPaveBlock1()`
+    /// **Source:** `BOPDS_CoupleOfPaveBlocks.hxx`:82 - `BOPDS_CoupleOfPaveBlocks::SetPaveBlock1()`
     pub fn BOPDS_CoupleOfPaveBlocks_set_pave_block1(
         self_: *mut BOPDS_CoupleOfPaveBlocks,
-        thePB: *const HandleBOPDSPaveBlock,
+        thePB: *const Handle_BOPDS_PaveBlock,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_CoupleOfPaveBlocks.hxx`:139 - `BOPDS_CoupleOfPaveBlocks::PaveBlock1()`
+    /// **Source:** `BOPDS_CoupleOfPaveBlocks.hxx`:86 - `BOPDS_CoupleOfPaveBlocks::PaveBlock1()`
     pub fn BOPDS_CoupleOfPaveBlocks_pave_block1(
         self_: *const BOPDS_CoupleOfPaveBlocks,
-    ) -> crate::OcctResult<*const HandleBOPDSPaveBlock>;
-    /// **Source:** `BOPDS_CoupleOfPaveBlocks.hxx`:147 - `BOPDS_CoupleOfPaveBlocks::SetPaveBlock2()`
+    ) -> crate::OcctResult<*const Handle_BOPDS_PaveBlock>;
+    /// **Source:** `BOPDS_CoupleOfPaveBlocks.hxx`:90 - `BOPDS_CoupleOfPaveBlocks::SetPaveBlock2()`
     pub fn BOPDS_CoupleOfPaveBlocks_set_pave_block2(
         self_: *mut BOPDS_CoupleOfPaveBlocks,
-        thePB: *const HandleBOPDSPaveBlock,
+        thePB: *const Handle_BOPDS_PaveBlock,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_CoupleOfPaveBlocks.hxx`:155 - `BOPDS_CoupleOfPaveBlocks::PaveBlock2()`
+    /// **Source:** `BOPDS_CoupleOfPaveBlocks.hxx`:94 - `BOPDS_CoupleOfPaveBlocks::PaveBlock2()`
     pub fn BOPDS_CoupleOfPaveBlocks_pave_block2(
         self_: *const BOPDS_CoupleOfPaveBlocks,
-    ) -> crate::OcctResult<*const HandleBOPDSPaveBlock>;
-    /// **Source:** `BOPDS_CoupleOfPaveBlocks.hxx`:160 - `BOPDS_CoupleOfPaveBlocks::SetTolerance()`
+    ) -> crate::OcctResult<*const Handle_BOPDS_PaveBlock>;
+    /// **Source:** `BOPDS_CoupleOfPaveBlocks.hxx`:98 - `BOPDS_CoupleOfPaveBlocks::SetTolerance()`
     pub fn BOPDS_CoupleOfPaveBlocks_set_tolerance(
         self_: *mut BOPDS_CoupleOfPaveBlocks,
         theTol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_CoupleOfPaveBlocks.hxx`:166 - `BOPDS_CoupleOfPaveBlocks::Tolerance()`
+    /// **Source:** `BOPDS_CoupleOfPaveBlocks.hxx`:102 - `BOPDS_CoupleOfPaveBlocks::Tolerance()`
     pub fn BOPDS_CoupleOfPaveBlocks_tolerance(
         self_: *const BOPDS_CoupleOfPaveBlocks,
     ) -> crate::OcctResult<f64>;
@@ -9107,8 +9075,8 @@ unsafe extern "C" {
     /// **Source:** `BOPDS_Curve.hxx`:39 - `BOPDS_Curve::BOPDS_Curve()`
     pub fn BOPDS_Curve_ctor() -> crate::OcctResult<*mut BOPDS_Curve>;
     /// **Source:** `BOPDS_Curve.hxx`:45 - `BOPDS_Curve::BOPDS_Curve()`
-    pub fn BOPDS_Curve_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    pub fn BOPDS_Curve_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPDS_Curve>;
     /// **Source:** `BOPDS_Curve.hxx`:49 - `BOPDS_Curve::SetCurve()`
     pub fn BOPDS_Curve_set_curve(
@@ -9127,33 +9095,20 @@ unsafe extern "C" {
     pub fn BOPDS_Curve_box_(self_: *const BOPDS_Curve) -> crate::OcctResult<*const Bnd_Box>;
     /// **Source:** `BOPDS_Curve.hxx`:65 - `BOPDS_Curve::ChangeBox()`
     pub fn BOPDS_Curve_change_box(self_: *mut BOPDS_Curve) -> crate::OcctResult<*mut Bnd_Box>;
-    /// **Source:** `BOPDS_Curve.hxx`:67 - `BOPDS_Curve::SetPaveBlocks()`
-    pub fn BOPDS_Curve_set_pave_blocks(
-        self_: *mut BOPDS_Curve,
-        theLPB: *const BOPDS_ListOfPaveBlock,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_Curve.hxx`:72 - `BOPDS_Curve::PaveBlocks()`
-    pub fn BOPDS_Curve_pave_blocks(
-        self_: *const BOPDS_Curve,
-    ) -> crate::OcctResult<*const BOPDS_ListOfPaveBlock>;
-    /// **Source:** `BOPDS_Curve.hxx`:77 - `BOPDS_Curve::ChangePaveBlocks()`
-    pub fn BOPDS_Curve_change_pave_blocks(
-        self_: *mut BOPDS_Curve,
-    ) -> crate::OcctResult<*mut BOPDS_ListOfPaveBlock>;
     /// **Source:** `BOPDS_Curve.hxx`:81 - `BOPDS_Curve::InitPaveBlock1()`
     pub fn BOPDS_Curve_init_pave_block1(self_: *mut BOPDS_Curve) -> *const std::ffi::c_char;
     /// **Source:** `BOPDS_Curve.hxx`:86 - `BOPDS_Curve::ChangePaveBlock1()`
     pub fn BOPDS_Curve_change_pave_block1(
         self_: *mut BOPDS_Curve,
-    ) -> crate::OcctResult<*mut HandleBOPDSPaveBlock>;
+    ) -> crate::OcctResult<*mut Handle_BOPDS_PaveBlock>;
     /// **Source:** `BOPDS_Curve.hxx`:91 - `BOPDS_Curve::TechnoVertices()`
     pub fn BOPDS_Curve_techno_vertices(
         self_: *const BOPDS_Curve,
-    ) -> crate::OcctResult<*const TColStd_ListOfInteger>;
+    ) -> crate::OcctResult<*const NCollection_List_int>;
     /// **Source:** `BOPDS_Curve.hxx`:96 - `BOPDS_Curve::ChangeTechnoVertices()`
     pub fn BOPDS_Curve_change_techno_vertices(
         self_: *mut BOPDS_Curve,
-    ) -> crate::OcctResult<*mut TColStd_ListOfInteger>;
+    ) -> crate::OcctResult<*mut NCollection_List_int>;
     /// **Source:** `BOPDS_Curve.hxx`:101 - `BOPDS_Curve::HasEdge()`
     pub fn BOPDS_Curve_has_edge(self_: *const BOPDS_Curve) -> crate::OcctResult<bool>;
     /// **Source:** `BOPDS_Curve.hxx`:104 - `BOPDS_Curve::SetTolerance()`
@@ -9167,511 +9122,453 @@ unsafe extern "C" {
     pub fn BOPDS_Curve_tangential_tolerance(self_: *const BOPDS_Curve) -> crate::OcctResult<f64>;
     // ======================== BOPDS_DS ========================
     pub fn BOPDS_DS_destructor(self_: *mut BOPDS_DS);
-    /// **Source:** `BOPDS_DS.hxx`:82 - `BOPDS_DS::BOPDS_DS()`
+    /// **Source:** `BOPDS_DS.hxx`:70 - `BOPDS_DS::BOPDS_DS()`
     pub fn BOPDS_DS_ctor() -> crate::OcctResult<*mut BOPDS_DS>;
-    /// **Source:** `BOPDS_DS.hxx`:88 - `BOPDS_DS::BOPDS_DS()`
-    pub fn BOPDS_DS_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    /// **Source:** `BOPDS_DS.hxx`:76 - `BOPDS_DS::BOPDS_DS()`
+    pub fn BOPDS_DS_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPDS_DS>;
-    /// **Source:** `BOPDS_DS.hxx`:91 - `BOPDS_DS::Clear()`
+    /// **Source:** `BOPDS_DS.hxx`:79 - `BOPDS_DS::Clear()`
     pub fn BOPDS_DS_clear(self_: *mut BOPDS_DS) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_DS.hxx`:94 - `BOPDS_DS::Allocator()`
-    pub fn BOPDS_DS_allocator(
-        self_: *const BOPDS_DS,
-    ) -> crate::OcctResult<*const HandleNCollectionBaseAllocator>;
-    /// **Source:** `BOPDS_DS.hxx`:98 - `BOPDS_DS::SetArguments()`
+    /// **Source:** `BOPDS_DS.hxx`:82 - `BOPDS_DS::Allocator()`
+    pub fn BOPDS_DS_allocator(self_: *const BOPDS_DS) -> crate::OcctResult<*const TDF_HAllocator>;
+    /// **Source:** `BOPDS_DS.hxx`:86 - `BOPDS_DS::SetArguments()`
     pub fn BOPDS_DS_set_arguments(
         self_: *mut BOPDS_DS,
-        theLS: *const TopTools_ListOfShape,
+        theLS: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_DS.hxx`:102 - `BOPDS_DS::Arguments()`
+    /// **Source:** `BOPDS_DS.hxx`:90 - `BOPDS_DS::Arguments()`
     pub fn BOPDS_DS_arguments(
         self_: *const BOPDS_DS,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BOPDS_DS.hxx`:106 - `BOPDS_DS::Init()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BOPDS_DS.hxx`:94 - `BOPDS_DS::Init()`
     pub fn BOPDS_DS_init(self_: *mut BOPDS_DS, theFuzz: f64) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_DS.hxx`:110 - `BOPDS_DS::NbShapes()`
+    /// **Source:** `BOPDS_DS.hxx`:98 - `BOPDS_DS::NbShapes()`
     pub fn BOPDS_DS_nb_shapes(self_: *const BOPDS_DS) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPDS_DS.hxx`:114 - `BOPDS_DS::NbSourceShapes()`
+    /// **Source:** `BOPDS_DS.hxx`:102 - `BOPDS_DS::NbSourceShapes()`
     pub fn BOPDS_DS_nb_source_shapes(self_: *const BOPDS_DS) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPDS_DS.hxx`:118 - `BOPDS_DS::NbRanges()`
+    /// **Source:** `BOPDS_DS.hxx`:106 - `BOPDS_DS::NbRanges()`
     pub fn BOPDS_DS_nb_ranges(self_: *const BOPDS_DS) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPDS_DS.hxx`:122 - `BOPDS_DS::Range()`
+    /// **Source:** `BOPDS_DS.hxx`:110 - `BOPDS_DS::Range()`
     pub fn BOPDS_DS_range(
         self_: *const BOPDS_DS,
         theIndex: i32,
     ) -> crate::OcctResult<*const BOPDS_IndexRange>;
-    /// **Source:** `BOPDS_DS.hxx`:126 - `BOPDS_DS::Rank()`
+    /// **Source:** `BOPDS_DS.hxx`:114 - `BOPDS_DS::Rank()`
     pub fn BOPDS_DS_rank(self_: *const BOPDS_DS, theIndex: i32) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPDS_DS.hxx`:130 - `BOPDS_DS::IsNewShape()`
+    /// **Source:** `BOPDS_DS.hxx`:118 - `BOPDS_DS::IsNewShape()`
     pub fn BOPDS_DS_is_new_shape(self_: *const BOPDS_DS, theIndex: i32) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_DS.hxx`:136 - `BOPDS_DS::Append()`
+    /// **Source:** `BOPDS_DS.hxx`:124 - `BOPDS_DS::Append()`
     pub fn BOPDS_DS_append_shapeinfo(
         self_: *mut BOPDS_DS,
         theSI: *const BOPDS_ShapeInfo,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPDS_DS.hxx`:142 - `BOPDS_DS::Append()`
+    /// **Source:** `BOPDS_DS.hxx`:130 - `BOPDS_DS::Append()`
     pub fn BOPDS_DS_append_shape(
         self_: *mut BOPDS_DS,
         theS: *const TopoDS_Shape,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPDS_DS.hxx`:147 - `BOPDS_DS::ShapeInfo()`
+    /// **Source:** `BOPDS_DS.hxx`:135 - `BOPDS_DS::ShapeInfo()`
     pub fn BOPDS_DS_shape_info(
         self_: *const BOPDS_DS,
         theIndex: i32,
     ) -> crate::OcctResult<*const BOPDS_ShapeInfo>;
-    /// **Source:** `BOPDS_DS.hxx`:152 - `BOPDS_DS::ChangeShapeInfo()`
+    /// **Source:** `BOPDS_DS.hxx`:140 - `BOPDS_DS::ChangeShapeInfo()`
     pub fn BOPDS_DS_change_shape_info(
         self_: *mut BOPDS_DS,
         theIndex: i32,
     ) -> crate::OcctResult<*mut BOPDS_ShapeInfo>;
-    /// **Source:** `BOPDS_DS.hxx`:157 - `BOPDS_DS::Shape()`
+    /// **Source:** `BOPDS_DS.hxx`:145 - `BOPDS_DS::Shape()`
     pub fn BOPDS_DS_shape(
         self_: *const BOPDS_DS,
         theIndex: i32,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BOPDS_DS.hxx`:161 - `BOPDS_DS::Index()`
+    /// **Source:** `BOPDS_DS.hxx`:149 - `BOPDS_DS::Index()`
     pub fn BOPDS_DS_index(
         self_: *const BOPDS_DS,
         theS: *const TopoDS_Shape,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPDS_DS.hxx`:165 - `BOPDS_DS::PaveBlocksPool()`
-    pub fn BOPDS_DS_pave_blocks_pool(
-        self_: *const BOPDS_DS,
-    ) -> crate::OcctResult<*const BOPDS_VectorOfListOfPaveBlock>;
-    /// **Source:** `BOPDS_DS.hxx`:169 - `BOPDS_DS::ChangePaveBlocksPool()`
-    pub fn BOPDS_DS_change_pave_blocks_pool(
-        self_: *mut BOPDS_DS,
-    ) -> crate::OcctResult<*mut BOPDS_VectorOfListOfPaveBlock>;
-    /// **Source:** `BOPDS_DS.hxx`:174 - `BOPDS_DS::HasPaveBlocks()`
+    /// **Source:** `BOPDS_DS.hxx`:164 - `BOPDS_DS::HasPaveBlocks()`
     pub fn BOPDS_DS_has_pave_blocks(
         self_: *const BOPDS_DS,
         theIndex: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_DS.hxx`:178 - `BOPDS_DS::PaveBlocks()`
-    pub fn BOPDS_DS_pave_blocks(
-        self_: *const BOPDS_DS,
-        theIndex: i32,
-    ) -> crate::OcctResult<*const BOPDS_ListOfPaveBlock>;
-    /// **Source:** `BOPDS_DS.hxx`:182 - `BOPDS_DS::ChangePaveBlocks()`
-    pub fn BOPDS_DS_change_pave_blocks(
-        self_: *mut BOPDS_DS,
-        theIndex: i32,
-    ) -> crate::OcctResult<*mut BOPDS_ListOfPaveBlock>;
-    /// **Source:** `BOPDS_DS.hxx`:185 - `BOPDS_DS::UpdatePaveBlocks()`
+    /// **Source:** `BOPDS_DS.hxx`:177 - `BOPDS_DS::UpdatePaveBlocks()`
     pub fn BOPDS_DS_update_pave_blocks(self_: *mut BOPDS_DS) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_DS.hxx`:188 - `BOPDS_DS::UpdatePaveBlock()`
+    /// **Source:** `BOPDS_DS.hxx`:180 - `BOPDS_DS::UpdatePaveBlock()`
     pub fn BOPDS_DS_update_pave_block(
         self_: *mut BOPDS_DS,
-        thePB: *const HandleBOPDSPaveBlock,
+        thePB: *const Handle_BOPDS_PaveBlock,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_DS.hxx`:191 - `BOPDS_DS::UpdateCommonBlock()`
+    /// **Source:** `BOPDS_DS.hxx`:183 - `BOPDS_DS::UpdateCommonBlock()`
     pub fn BOPDS_DS_update_common_block(
         self_: *mut BOPDS_DS,
-        theCB: *const HandleBOPDSCommonBlock,
+        theCB: *const Handle_BOPDS_CommonBlock,
         theFuzz: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_DS.hxx`:196 - `BOPDS_DS::IsCommonBlock()`
+    /// **Source:** `BOPDS_DS.hxx`:188 - `BOPDS_DS::IsCommonBlock()`
     pub fn BOPDS_DS_is_common_block(
         self_: *const BOPDS_DS,
-        thePB: *const HandleBOPDSPaveBlock,
+        thePB: *const Handle_BOPDS_PaveBlock,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_DS.hxx`:200 - `BOPDS_DS::CommonBlock()`
+    /// **Source:** `BOPDS_DS.hxx`:192 - `BOPDS_DS::CommonBlock()`
     pub fn BOPDS_DS_common_block(
         self_: *const BOPDS_DS,
-        thePB: *const HandleBOPDSPaveBlock,
-    ) -> crate::OcctResult<*mut HandleBOPDSCommonBlock>;
-    /// **Source:** `BOPDS_DS.hxx`:204 - `BOPDS_DS::SetCommonBlock()`
+        thePB: *const Handle_BOPDS_PaveBlock,
+    ) -> crate::OcctResult<*mut Handle_BOPDS_CommonBlock>;
+    /// **Source:** `BOPDS_DS.hxx`:197 - `BOPDS_DS::SetCommonBlock()`
     pub fn BOPDS_DS_set_common_block(
         self_: *mut BOPDS_DS,
-        thePB: *const HandleBOPDSPaveBlock,
-        theCB: *const HandleBOPDSCommonBlock,
+        thePB: *const Handle_BOPDS_PaveBlock,
+        theCB: *const Handle_BOPDS_CommonBlock,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_DS.hxx`:209 - `BOPDS_DS::RealPaveBlock()`
+    /// **Source:** `BOPDS_DS.hxx`:202 - `BOPDS_DS::RealPaveBlock()`
     pub fn BOPDS_DS_real_pave_block(
         self_: *const BOPDS_DS,
-        thePB: *const HandleBOPDSPaveBlock,
-    ) -> crate::OcctResult<*mut HandleBOPDSPaveBlock>;
-    /// **Source:** `BOPDS_DS.hxx`:213 - `BOPDS_DS::IsCommonBlockOnEdge()`
+        thePB: *const Handle_BOPDS_PaveBlock,
+    ) -> crate::OcctResult<*mut Handle_BOPDS_PaveBlock>;
+    /// **Source:** `BOPDS_DS.hxx`:207 - `BOPDS_DS::IsCommonBlockOnEdge()`
     pub fn BOPDS_DS_is_common_block_on_edge(
         self_: *const BOPDS_DS,
-        thePB: *const HandleBOPDSPaveBlock,
+        thePB: *const Handle_BOPDS_PaveBlock,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_DS.hxx`:217 - `BOPDS_DS::FaceInfoPool()`
+    /// **Source:** `BOPDS_DS.hxx`:211 - `BOPDS_DS::FaceInfoPool()`
     pub fn BOPDS_DS_face_info_pool(
         self_: *const BOPDS_DS,
-    ) -> crate::OcctResult<*const BOPDS_VectorOfFaceInfo>;
-    /// **Source:** `BOPDS_DS.hxx`:222 - `BOPDS_DS::HasFaceInfo()`
+    ) -> crate::OcctResult<*const NCollection_DynamicArray_BOPDS_FaceInfo>;
+    /// **Source:** `BOPDS_DS.hxx`:216 - `BOPDS_DS::HasFaceInfo()`
     pub fn BOPDS_DS_has_face_info(self_: *const BOPDS_DS, theIndex: i32)
         -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_DS.hxx`:226 - `BOPDS_DS::FaceInfo()`
+    /// **Source:** `BOPDS_DS.hxx`:220 - `BOPDS_DS::FaceInfo()`
     pub fn BOPDS_DS_face_info(
         self_: *const BOPDS_DS,
         theIndex: i32,
     ) -> crate::OcctResult<*const BOPDS_FaceInfo>;
-    /// **Source:** `BOPDS_DS.hxx`:230 - `BOPDS_DS::ChangeFaceInfo()`
+    /// **Source:** `BOPDS_DS.hxx`:224 - `BOPDS_DS::ChangeFaceInfo()`
     pub fn BOPDS_DS_change_face_info(
         self_: *mut BOPDS_DS,
         theIndex: i32,
     ) -> crate::OcctResult<*mut BOPDS_FaceInfo>;
-    /// **Source:** `BOPDS_DS.hxx`:233 - `BOPDS_DS::UpdateFaceInfoIn()`
+    /// **Source:** `BOPDS_DS.hxx`:227 - `BOPDS_DS::UpdateFaceInfoIn()`
     pub fn BOPDS_DS_update_face_info_in_int(
         self_: *mut BOPDS_DS,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_DS.hxx`:236 - `BOPDS_DS::UpdateFaceInfoIn()`
-    pub fn BOPDS_DS_update_face_info_in_mapofinteger(
+    /// **Source:** `BOPDS_DS.hxx`:230 - `BOPDS_DS::UpdateFaceInfoIn()`
+    pub fn BOPDS_DS_update_face_info_in_map_int(
         self_: *mut BOPDS_DS,
-        theFaces: *const TColStd_MapOfInteger,
+        theFaces: *const NCollection_Map_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_DS.hxx`:239 - `BOPDS_DS::UpdateFaceInfoOn()`
+    /// **Source:** `BOPDS_DS.hxx`:233 - `BOPDS_DS::UpdateFaceInfoOn()`
     pub fn BOPDS_DS_update_face_info_on_int(
         self_: *mut BOPDS_DS,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_DS.hxx`:242 - `BOPDS_DS::UpdateFaceInfoOn()`
-    pub fn BOPDS_DS_update_face_info_on_mapofinteger(
+    /// **Source:** `BOPDS_DS.hxx`:236 - `BOPDS_DS::UpdateFaceInfoOn()`
+    pub fn BOPDS_DS_update_face_info_on_map_int(
         self_: *mut BOPDS_DS,
-        theFaces: *const TColStd_MapOfInteger,
+        theFaces: *const NCollection_Map_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_DS.hxx`:247 - `BOPDS_DS::FaceInfoOn()`
-    pub fn BOPDS_DS_face_info_on(
-        self_: *mut BOPDS_DS,
-        theIndex: i32,
-        theMPB: *mut BOPDS_IndexedMapOfPaveBlock,
-        theMVP: *mut TColStd_MapOfInteger,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_DS.hxx`:254 - `BOPDS_DS::FaceInfoIn()`
-    pub fn BOPDS_DS_face_info_in(
-        self_: *mut BOPDS_DS,
-        theIndex: i32,
-        theMPB: *mut BOPDS_IndexedMapOfPaveBlock,
-        theMVP: *mut TColStd_MapOfInteger,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_DS.hxx`:261 - `BOPDS_DS::AloneVertices()`
+    /// **Source:** `BOPDS_DS.hxx`:255 - `BOPDS_DS::AloneVertices()`
     pub fn BOPDS_DS_alone_vertices(
         self_: *const BOPDS_DS,
-        theF: i32,
-        theLI: *mut TColStd_ListOfInteger,
+        theFaceIndex: i32,
+        theVertexList: *mut NCollection_List_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_DS.hxx`:268 - `BOPDS_DS::RefineFaceInfoOn()`
+    /// **Source:** `BOPDS_DS.hxx`:262 - `BOPDS_DS::RefineFaceInfoOn()`
     pub fn BOPDS_DS_refine_face_info_on(self_: *mut BOPDS_DS) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_DS.hxx`:271 - `BOPDS_DS::RefineFaceInfoIn()`
+    /// **Source:** `BOPDS_DS.hxx`:265 - `BOPDS_DS::RefineFaceInfoIn()`
     pub fn BOPDS_DS_refine_face_info_in(self_: *mut BOPDS_DS) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_DS.hxx`:278 - `BOPDS_DS::SubShapesOnIn()`
-    pub fn BOPDS_DS_sub_shapes_on_in(
-        self_: *const BOPDS_DS,
-        theNF1: i32,
-        theNF2: i32,
-        theMVOnIn: *mut TColStd_MapOfInteger,
-        theMVCommon: *mut TColStd_MapOfInteger,
-        thePBOnIn: *mut BOPDS_IndexedMapOfPaveBlock,
-        theCommonPB: *mut BOPDS_MapOfPaveBlock,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_DS.hxx`:289 - `BOPDS_DS::SharedEdges()`
+    /// **Source:** `BOPDS_DS.hxx`:284 - `BOPDS_DS::SharedEdges()`
     pub fn BOPDS_DS_shared_edges(
         self_: *mut BOPDS_DS,
-        theF1: i32,
-        theF2: i32,
-        theLI: *mut TColStd_ListOfInteger,
-        theAllocator: *const HandleNCollectionBaseAllocator,
+        theFaceIndex1: i32,
+        theFaceIndex2: i32,
+        theEdgeList: *mut NCollection_List_int,
+        theAllocator: *const TDF_HAllocator,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_DS.hxx`:296 - `BOPDS_DS::ShapesSD()`
+    /// **Source:** `BOPDS_DS.hxx`:291 - `BOPDS_DS::ShapesSD()`
     pub fn BOPDS_DS_shapes_sd(
         self_: *mut BOPDS_DS,
-    ) -> crate::OcctResult<*mut TColStd_DataMapOfIntegerInteger>;
-    /// **Source:** `BOPDS_DS.hxx`:301 - `BOPDS_DS::AddShapeSD()`
+    ) -> crate::OcctResult<*mut NCollection_DataMap_int_int>;
+    /// **Source:** `BOPDS_DS.hxx`:296 - `BOPDS_DS::AddShapeSD()`
     pub fn BOPDS_DS_add_shape_sd(
         self_: *mut BOPDS_DS,
         theIndex: i32,
         theIndexSD: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_DS.hxx`:310 - `BOPDS_DS::HasShapeSD()`
+    /// **Source:** `BOPDS_DS.hxx`:304 - `BOPDS_DS::HasShapeSD()`
     pub fn BOPDS_DS_has_shape_sd(
         self_: *const BOPDS_DS,
         theIndex: i32,
         theIndexSD: *mut i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_DS.hxx`:315 - `BOPDS_DS::InterfVV()`
+    /// **Source:** `BOPDS_DS.hxx`:308 - `BOPDS_DS::GetSameDomainIndex()`
+    pub fn BOPDS_DS_get_same_domain_index(
+        self_: *const BOPDS_DS,
+        theIndex: i32,
+    ) -> crate::OcctResult<i32>;
+    /// **Source:** `BOPDS_DS.hxx`:312 - `BOPDS_DS::InterfVV()`
     pub fn BOPDS_DS_interf_vv(
         self_: *mut BOPDS_DS,
-    ) -> crate::OcctResult<*mut BOPDS_VectorOfInterfVV>;
-    /// **Source:** `BOPDS_DS.hxx`:319 - `BOPDS_DS::InterfVE()`
+    ) -> crate::OcctResult<*mut NCollection_DynamicArray_BOPDS_InterfVV>;
+    /// **Source:** `BOPDS_DS.hxx`:316 - `BOPDS_DS::InterfVE()`
     pub fn BOPDS_DS_interf_ve(
         self_: *mut BOPDS_DS,
-    ) -> crate::OcctResult<*mut BOPDS_VectorOfInterfVE>;
-    /// **Source:** `BOPDS_DS.hxx`:323 - `BOPDS_DS::InterfVF()`
+    ) -> crate::OcctResult<*mut NCollection_DynamicArray_BOPDS_InterfVE>;
+    /// **Source:** `BOPDS_DS.hxx`:320 - `BOPDS_DS::InterfVF()`
     pub fn BOPDS_DS_interf_vf(
         self_: *mut BOPDS_DS,
-    ) -> crate::OcctResult<*mut BOPDS_VectorOfInterfVF>;
-    /// **Source:** `BOPDS_DS.hxx`:327 - `BOPDS_DS::InterfEE()`
+    ) -> crate::OcctResult<*mut NCollection_DynamicArray_BOPDS_InterfVF>;
+    /// **Source:** `BOPDS_DS.hxx`:324 - `BOPDS_DS::InterfEE()`
     pub fn BOPDS_DS_interf_ee(
         self_: *mut BOPDS_DS,
-    ) -> crate::OcctResult<*mut BOPDS_VectorOfInterfEE>;
-    /// **Source:** `BOPDS_DS.hxx`:331 - `BOPDS_DS::InterfEF()`
+    ) -> crate::OcctResult<*mut NCollection_DynamicArray_BOPDS_InterfEE>;
+    /// **Source:** `BOPDS_DS.hxx`:328 - `BOPDS_DS::InterfEF()`
     pub fn BOPDS_DS_interf_ef(
         self_: *mut BOPDS_DS,
-    ) -> crate::OcctResult<*mut BOPDS_VectorOfInterfEF>;
-    /// **Source:** `BOPDS_DS.hxx`:335 - `BOPDS_DS::InterfFF()`
+    ) -> crate::OcctResult<*mut NCollection_DynamicArray_BOPDS_InterfEF>;
+    /// **Source:** `BOPDS_DS.hxx`:332 - `BOPDS_DS::InterfFF()`
     pub fn BOPDS_DS_interf_ff(
         self_: *mut BOPDS_DS,
-    ) -> crate::OcctResult<*mut BOPDS_VectorOfInterfFF>;
-    /// **Source:** `BOPDS_DS.hxx`:339 - `BOPDS_DS::InterfVZ()`
+    ) -> crate::OcctResult<*mut NCollection_DynamicArray_BOPDS_InterfFF>;
+    /// **Source:** `BOPDS_DS.hxx`:336 - `BOPDS_DS::InterfVZ()`
     pub fn BOPDS_DS_interf_vz(
         self_: *mut BOPDS_DS,
-    ) -> crate::OcctResult<*mut BOPDS_VectorOfInterfVZ>;
-    /// **Source:** `BOPDS_DS.hxx`:343 - `BOPDS_DS::InterfEZ()`
+    ) -> crate::OcctResult<*mut NCollection_DynamicArray_BOPDS_InterfVZ>;
+    /// **Source:** `BOPDS_DS.hxx`:340 - `BOPDS_DS::InterfEZ()`
     pub fn BOPDS_DS_interf_ez(
         self_: *mut BOPDS_DS,
-    ) -> crate::OcctResult<*mut BOPDS_VectorOfInterfEZ>;
-    /// **Source:** `BOPDS_DS.hxx`:347 - `BOPDS_DS::InterfFZ()`
+    ) -> crate::OcctResult<*mut NCollection_DynamicArray_BOPDS_InterfEZ>;
+    /// **Source:** `BOPDS_DS.hxx`:344 - `BOPDS_DS::InterfFZ()`
     pub fn BOPDS_DS_interf_fz(
         self_: *mut BOPDS_DS,
-    ) -> crate::OcctResult<*mut BOPDS_VectorOfInterfFZ>;
-    /// **Source:** `BOPDS_DS.hxx`:351 - `BOPDS_DS::InterfZZ()`
+    ) -> crate::OcctResult<*mut NCollection_DynamicArray_BOPDS_InterfFZ>;
+    /// **Source:** `BOPDS_DS.hxx`:348 - `BOPDS_DS::InterfZZ()`
     pub fn BOPDS_DS_interf_zz(
         self_: *mut BOPDS_DS,
-    ) -> crate::OcctResult<*mut BOPDS_VectorOfInterfZZ>;
-    /// **Source:** `BOPDS_DS.hxx`:360 - `BOPDS_DS::AddInterf()`
+    ) -> crate::OcctResult<*mut NCollection_DynamicArray_BOPDS_InterfZZ>;
+    /// **Source:** `BOPDS_DS.hxx`:357 - `BOPDS_DS::AddInterf()`
     pub fn BOPDS_DS_add_interf(
         self_: *mut BOPDS_DS,
         theI1: i32,
         theI2: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_DS.hxx`:365 - `BOPDS_DS::HasInterf()`
+    /// **Source:** `BOPDS_DS.hxx`:362 - `BOPDS_DS::HasInterf()`
     pub fn BOPDS_DS_has_interf_int(self_: *const BOPDS_DS, theI: i32) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_DS.hxx`:370 - `BOPDS_DS::HasInterf()`
+    /// **Source:** `BOPDS_DS.hxx`:367 - `BOPDS_DS::HasInterf()`
     pub fn BOPDS_DS_has_interf_int2(
         self_: *const BOPDS_DS,
         theI1: i32,
         theI2: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_DS.hxx`:378 - `BOPDS_DS::HasInterfShapeSubShapes()`
+    /// **Source:** `BOPDS_DS.hxx`:374 - `BOPDS_DS::HasInterfShapeSubShapes()`
     pub fn BOPDS_DS_has_interf_shape_sub_shapes(
         self_: *const BOPDS_DS,
-        theI1: i32,
-        theI2: i32,
-        theFlag: bool,
+        theIndex1: i32,
+        theIndex2: i32,
+        theAnyInterference: bool,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_DS.hxx`:385 - `BOPDS_DS::HasInterfSubShapes()`
+    /// **Source:** `BOPDS_DS.hxx`:381 - `BOPDS_DS::HasInterfSubShapes()`
     pub fn BOPDS_DS_has_interf_sub_shapes(
         self_: *const BOPDS_DS,
-        theI1: i32,
-        theI2: i32,
+        theIndex1: i32,
+        theIndex2: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_DS.hxx`:392 - `BOPDS_DS::Interferences()`
+    /// **Source:** `BOPDS_DS.hxx`:387 - `BOPDS_DS::Interferences()`
     pub fn BOPDS_DS_interferences(
         self_: *const BOPDS_DS,
-    ) -> crate::OcctResult<*const BOPDS_MapOfPair>;
-    /// **Source:** `BOPDS_DS.hxx`:394 - `BOPDS_DS::Dump()`
+    ) -> crate::OcctResult<*const NCollection_Map_BOPDS_Pair>;
+    /// **Source:** `BOPDS_DS.hxx`:389 - `BOPDS_DS::Dump()`
     pub fn BOPDS_DS_dump(self_: *const BOPDS_DS) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_DS.hxx`:396 - `BOPDS_DS::IsSubShape()`
+    /// **Source:** `BOPDS_DS.hxx`:393 - `BOPDS_DS::IsSubShape()`
     pub fn BOPDS_DS_is_sub_shape(
         self_: *mut BOPDS_DS,
-        theI1: i32,
-        theI2: i32,
+        theCandidate: i32,
+        theParent: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_DS.hxx`:401 - `BOPDS_DS::Paves()`
+    /// **Source:** `BOPDS_DS.hxx`:397 - `BOPDS_DS::Paves()`
     pub fn BOPDS_DS_paves(
         self_: *mut BOPDS_DS,
         theIndex: i32,
-        theLP: *mut BOPDS_ListOfPave,
+        theLP: *mut NCollection_List_BOPDS_Pave,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_DS.hxx`:404 - `BOPDS_DS::UpdatePaveBlocksWithSDVertices()`
+    /// **Source:** `BOPDS_DS.hxx`:400 - `BOPDS_DS::UpdatePaveBlocksWithSDVertices()`
     pub fn BOPDS_DS_update_pave_blocks_with_sd_vertices(
         self_: *mut BOPDS_DS,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_DS.hxx`:407 - `BOPDS_DS::UpdatePaveBlockWithSDVertices()`
+    /// **Source:** `BOPDS_DS.hxx`:403 - `BOPDS_DS::UpdatePaveBlockWithSDVertices()`
     pub fn BOPDS_DS_update_pave_block_with_sd_vertices(
         self_: *mut BOPDS_DS,
-        thePB: *const HandleBOPDSPaveBlock,
+        thePB: *const Handle_BOPDS_PaveBlock,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_DS.hxx`:410 - `BOPDS_DS::UpdateCommonBlockWithSDVertices()`
+    /// **Source:** `BOPDS_DS.hxx`:406 - `BOPDS_DS::UpdateCommonBlockWithSDVertices()`
     pub fn BOPDS_DS_update_common_block_with_sd_vertices(
         self_: *mut BOPDS_DS,
-        theCB: *const HandleBOPDSCommonBlock,
+        theCB: *const Handle_BOPDS_CommonBlock,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_DS.hxx`:412 - `BOPDS_DS::InitPaveBlocksForVertex()`
+    /// **Source:** `BOPDS_DS.hxx`:408 - `BOPDS_DS::InitPaveBlocksForVertex()`
     pub fn BOPDS_DS_init_pave_blocks_for_vertex(
         self_: *mut BOPDS_DS,
         theNV: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_DS.hxx`:415 - `BOPDS_DS::ReleasePaveBlocks()`
+    /// **Source:** `BOPDS_DS.hxx`:411 - `BOPDS_DS::ReleasePaveBlocks()`
     pub fn BOPDS_DS_release_pave_blocks(self_: *mut BOPDS_DS) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_DS.hxx`:421 - `BOPDS_DS::IsValidShrunkData()`
+    /// **Source:** `BOPDS_DS.hxx`:417 - `BOPDS_DS::IsValidShrunkData()`
     pub fn BOPDS_DS_is_valid_shrunk_data(
         self_: *mut BOPDS_DS,
-        thePB: *const HandleBOPDSPaveBlock,
+        thePB: *const Handle_BOPDS_PaveBlock,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_DS.hxx`:426 - `BOPDS_DS::BuildBndBoxSolid()`
+    /// **Source:** `BOPDS_DS.hxx`:422 - `BOPDS_DS::BuildBndBoxSolid()`
     pub fn BOPDS_DS_build_bnd_box_solid(
         self_: *mut BOPDS_DS,
         theIndex: i32,
         theBox: *mut Bnd_Box,
         theCheckInverted: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_DS.hxx`:354 - `BOPDS_DS::NbInterfTypes()`
+    /// **Source:** `BOPDS_DS.hxx`:351 - `BOPDS_DS::NbInterfTypes()`
     pub fn BOPDS_DS_nb_interf_types() -> crate::OcctResult<i32>;
     // ======================== BOPDS_FaceInfo ========================
     pub fn BOPDS_FaceInfo_destructor(self_: *mut BOPDS_FaceInfo);
-    /// **Source:** `BOPDS_FaceInfo.hxx`:38 - `BOPDS_FaceInfo::BOPDS_FaceInfo()`
+    /// **Source:** `BOPDS_FaceInfo.hxx`:39 - `BOPDS_FaceInfo::BOPDS_FaceInfo()`
     pub fn BOPDS_FaceInfo_ctor() -> crate::OcctResult<*mut BOPDS_FaceInfo>;
-    /// **Source:** `BOPDS_FaceInfo.hxx`:44 - `BOPDS_FaceInfo::BOPDS_FaceInfo()`
-    pub fn BOPDS_FaceInfo_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    /// **Source:** `BOPDS_FaceInfo.hxx`:45 - `BOPDS_FaceInfo::BOPDS_FaceInfo()`
+    pub fn BOPDS_FaceInfo_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPDS_FaceInfo>;
-    /// **Source:** `BOPDS_FaceInfo.hxx`:47 - `BOPDS_FaceInfo::Clear()`
+    /// **Source:** `BOPDS_FaceInfo.hxx`:48 - `BOPDS_FaceInfo::Clear()`
     pub fn BOPDS_FaceInfo_clear(self_: *mut BOPDS_FaceInfo) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_FaceInfo.hxx`:51 - `BOPDS_FaceInfo::SetIndex()`
+    /// **Source:** `BOPDS_FaceInfo.hxx`:52 - `BOPDS_FaceInfo::SetIndex()`
     pub fn BOPDS_FaceInfo_set_index(
         self_: *mut BOPDS_FaceInfo,
         theI: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_FaceInfo.hxx`:57 - `BOPDS_FaceInfo::Index()`
+    /// **Source:** `BOPDS_FaceInfo.hxx`:58 - `BOPDS_FaceInfo::Index()`
     pub fn BOPDS_FaceInfo_index(self_: *const BOPDS_FaceInfo) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPDS_FaceInfo.hxx`:62 - `BOPDS_FaceInfo::PaveBlocksIn()`
-    pub fn BOPDS_FaceInfo_pave_blocks_in(
-        self_: *const BOPDS_FaceInfo,
-    ) -> crate::OcctResult<*const BOPDS_IndexedMapOfPaveBlock>;
-    /// **Source:** `BOPDS_FaceInfo.hxx`:68 - `BOPDS_FaceInfo::ChangePaveBlocksIn()`
-    pub fn BOPDS_FaceInfo_change_pave_blocks_in(
-        self_: *mut BOPDS_FaceInfo,
-    ) -> crate::OcctResult<*mut BOPDS_IndexedMapOfPaveBlock>;
-    /// **Source:** `BOPDS_FaceInfo.hxx`:74 - `BOPDS_FaceInfo::VerticesIn()`
+    /// **Source:** `BOPDS_FaceInfo.hxx`:75 - `BOPDS_FaceInfo::VerticesIn()`
     pub fn BOPDS_FaceInfo_vertices_in(
         self_: *const BOPDS_FaceInfo,
-    ) -> crate::OcctResult<*const TColStd_MapOfInteger>;
-    /// **Source:** `BOPDS_FaceInfo.hxx`:82 - `BOPDS_FaceInfo::ChangeVerticesIn()`
+    ) -> crate::OcctResult<*const NCollection_Map_int>;
+    /// **Source:** `BOPDS_FaceInfo.hxx`:83 - `BOPDS_FaceInfo::ChangeVerticesIn()`
     pub fn BOPDS_FaceInfo_change_vertices_in(
         self_: *mut BOPDS_FaceInfo,
-    ) -> crate::OcctResult<*mut TColStd_MapOfInteger>;
-    /// **Source:** `BOPDS_FaceInfo.hxx`:87 - `BOPDS_FaceInfo::PaveBlocksOn()`
-    pub fn BOPDS_FaceInfo_pave_blocks_on(
-        self_: *const BOPDS_FaceInfo,
-    ) -> crate::OcctResult<*const BOPDS_IndexedMapOfPaveBlock>;
-    /// **Source:** `BOPDS_FaceInfo.hxx`:93 - `BOPDS_FaceInfo::ChangePaveBlocksOn()`
-    pub fn BOPDS_FaceInfo_change_pave_blocks_on(
-        self_: *mut BOPDS_FaceInfo,
-    ) -> crate::OcctResult<*mut BOPDS_IndexedMapOfPaveBlock>;
-    /// **Source:** `BOPDS_FaceInfo.hxx`:99 - `BOPDS_FaceInfo::VerticesOn()`
+    ) -> crate::OcctResult<*mut NCollection_Map_int>;
+    /// **Source:** `BOPDS_FaceInfo.hxx`:100 - `BOPDS_FaceInfo::VerticesOn()`
     pub fn BOPDS_FaceInfo_vertices_on(
         self_: *const BOPDS_FaceInfo,
-    ) -> crate::OcctResult<*const TColStd_MapOfInteger>;
-    /// **Source:** `BOPDS_FaceInfo.hxx`:107 - `BOPDS_FaceInfo::ChangeVerticesOn()`
+    ) -> crate::OcctResult<*const NCollection_Map_int>;
+    /// **Source:** `BOPDS_FaceInfo.hxx`:108 - `BOPDS_FaceInfo::ChangeVerticesOn()`
     pub fn BOPDS_FaceInfo_change_vertices_on(
         self_: *mut BOPDS_FaceInfo,
-    ) -> crate::OcctResult<*mut TColStd_MapOfInteger>;
-    /// **Source:** `BOPDS_FaceInfo.hxx`:112 - `BOPDS_FaceInfo::PaveBlocksSc()`
-    pub fn BOPDS_FaceInfo_pave_blocks_sc(
-        self_: *const BOPDS_FaceInfo,
-    ) -> crate::OcctResult<*const BOPDS_IndexedMapOfPaveBlock>;
-    /// **Source:** `BOPDS_FaceInfo.hxx`:114 - `BOPDS_FaceInfo::ChangePaveBlocksSc()`
-    pub fn BOPDS_FaceInfo_change_pave_blocks_sc(
-        self_: *mut BOPDS_FaceInfo,
-    ) -> crate::OcctResult<*mut BOPDS_IndexedMapOfPaveBlock>;
-    /// **Source:** `BOPDS_FaceInfo.hxx`:119 - `BOPDS_FaceInfo::VerticesSc()`
+    ) -> crate::OcctResult<*mut NCollection_Map_int>;
+    /// **Source:** `BOPDS_FaceInfo.hxx`:120 - `BOPDS_FaceInfo::VerticesSc()`
     pub fn BOPDS_FaceInfo_vertices_sc(
         self_: *const BOPDS_FaceInfo,
-    ) -> crate::OcctResult<*const TColStd_MapOfInteger>;
-    /// **Source:** `BOPDS_FaceInfo.hxx`:126 - `BOPDS_FaceInfo::ChangeVerticesSc()`
+    ) -> crate::OcctResult<*const NCollection_Map_int>;
+    /// **Source:** `BOPDS_FaceInfo.hxx`:127 - `BOPDS_FaceInfo::ChangeVerticesSc()`
     pub fn BOPDS_FaceInfo_change_vertices_sc(
         self_: *mut BOPDS_FaceInfo,
-    ) -> crate::OcctResult<*mut TColStd_MapOfInteger>;
+    ) -> crate::OcctResult<*mut NCollection_Map_int>;
     // ======================== BOPDS_IndexRange ========================
     pub fn BOPDS_IndexRange_destructor(self_: *mut BOPDS_IndexRange);
     /// **Source:** `BOPDS_IndexRange.hxx`:32 - `BOPDS_IndexRange::BOPDS_IndexRange()`
     pub fn BOPDS_IndexRange_ctor() -> crate::OcctResult<*mut BOPDS_IndexRange>;
-    /// **Source:** `BOPDS_IndexRange.hxx`:36 - `BOPDS_IndexRange::SetFirst()`
+    /// **Source:** `BOPDS_IndexRange.hxx`:35 - `BOPDS_IndexRange::BOPDS_IndexRange()`
+    pub fn BOPDS_IndexRange_ctor_int2(
+        theI1: i32,
+        theI2: i32,
+    ) -> crate::OcctResult<*mut BOPDS_IndexRange>;
+    /// **Source:** `BOPDS_IndexRange.hxx`:39 - `BOPDS_IndexRange::SetFirst()`
     pub fn BOPDS_IndexRange_set_first(
         self_: *mut BOPDS_IndexRange,
         theI1: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_IndexRange.hxx`:40 - `BOPDS_IndexRange::SetLast()`
+    /// **Source:** `BOPDS_IndexRange.hxx`:43 - `BOPDS_IndexRange::SetLast()`
     pub fn BOPDS_IndexRange_set_last(
         self_: *mut BOPDS_IndexRange,
         theI2: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_IndexRange.hxx`:44 - `BOPDS_IndexRange::First()`
+    /// **Source:** `BOPDS_IndexRange.hxx`:47 - `BOPDS_IndexRange::First()`
     pub fn BOPDS_IndexRange_first(self_: *const BOPDS_IndexRange) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPDS_IndexRange.hxx`:48 - `BOPDS_IndexRange::Last()`
+    /// **Source:** `BOPDS_IndexRange.hxx`:51 - `BOPDS_IndexRange::Last()`
     pub fn BOPDS_IndexRange_last(self_: *const BOPDS_IndexRange) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPDS_IndexRange.hxx`:53 - `BOPDS_IndexRange::SetIndices()`
+    /// **Source:** `BOPDS_IndexRange.hxx`:56 - `BOPDS_IndexRange::SetIndices()`
     pub fn BOPDS_IndexRange_set_indices(
         self_: *mut BOPDS_IndexRange,
         theI1: i32,
         theI2: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_IndexRange.hxx`:58 - `BOPDS_IndexRange::Indices()`
+    /// **Source:** `BOPDS_IndexRange.hxx`:61 - `BOPDS_IndexRange::Indices()`
     pub fn BOPDS_IndexRange_indices(
         self_: *const BOPDS_IndexRange,
         theI1: *mut i32,
         theI2: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_IndexRange.hxx`:62 - `BOPDS_IndexRange::Contains()`
+    /// **Source:** `BOPDS_IndexRange.hxx`:65 - `BOPDS_IndexRange::Contains()`
     pub fn BOPDS_IndexRange_contains(
         self_: *const BOPDS_IndexRange,
         theIndex: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_IndexRange.hxx`:64 - `BOPDS_IndexRange::Dump()`
+    /// **Source:** `BOPDS_IndexRange.hxx`:67 - `BOPDS_IndexRange::Dump()`
     pub fn BOPDS_IndexRange_dump(self_: *const BOPDS_IndexRange) -> *const std::ffi::c_char;
     // ======================== BOPDS_Interf ========================
-    /// **Source:** `BOPDS_Interf.hxx`:44 - `BOPDS_Interf::SetIndices()`
+    /// **Source:** `BOPDS_Interf.hxx`:45 - `BOPDS_Interf::SetIndices()`
     pub fn BOPDS_Interf_set_indices(
         self_: *mut BOPDS_Interf,
         theIndex1: i32,
         theIndex2: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
+    /// **Source:** `BOPDS_Interf.hxx`:59 - `BOPDS_Interf::Indices()`
     pub fn BOPDS_Interf_indices(
         self_: *const BOPDS_Interf,
         theIndex1: *mut i32,
         theIndex2: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
+    /// **Source:** `BOPDS_Interf.hxx`:71 - `BOPDS_Interf::SetIndex1()`
     pub fn BOPDS_Interf_set_index1(
         self_: *mut BOPDS_Interf,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_Interf.hxx`:78 - `BOPDS_Interf::SetIndex2()`
+    /// **Source:** `BOPDS_Interf.hxx`:79 - `BOPDS_Interf::SetIndex2()`
     pub fn BOPDS_Interf_set_index2(
         self_: *mut BOPDS_Interf,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_Interf.hxx`:86 - `BOPDS_Interf::Index1()`
+    /// **Source:** `BOPDS_Interf.hxx`:87 - `BOPDS_Interf::Index1()`
     pub fn BOPDS_Interf_index1(self_: *const BOPDS_Interf) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPDS_Interf.hxx`:94 - `BOPDS_Interf::Index2()`
+    /// **Source:** `BOPDS_Interf.hxx`:95 - `BOPDS_Interf::Index2()`
     pub fn BOPDS_Interf_index2(self_: *const BOPDS_Interf) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPDS_Interf.hxx`:104 - `BOPDS_Interf::OppositeIndex()`
+    /// **Source:** `BOPDS_Interf.hxx`:105 - `BOPDS_Interf::OppositeIndex()`
     pub fn BOPDS_Interf_opposite_index(
         self_: *const BOPDS_Interf,
         theI: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPDS_Interf.hxx`:128 - `BOPDS_Interf::Contains()`
+    /// **Source:** `BOPDS_Interf.hxx`:129 - `BOPDS_Interf::Contains()`
     pub fn BOPDS_Interf_contains(
         self_: *const BOPDS_Interf,
         theIndex: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_Interf.hxx`:139 - `BOPDS_Interf::SetIndexNew()`
+    /// **Source:** `BOPDS_Interf.hxx`:137 - `BOPDS_Interf::SetIndexNew()`
     pub fn BOPDS_Interf_set_index_new(
         self_: *mut BOPDS_Interf,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_Interf.hxx`:148 - `BOPDS_Interf::IndexNew()`
+    /// **Source:** `BOPDS_Interf.hxx`:146 - `BOPDS_Interf::IndexNew()`
     pub fn BOPDS_Interf_index_new(self_: *const BOPDS_Interf) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPDS_Interf.hxx`:159 - `BOPDS_Interf::HasIndexNew()`
+    /// **Source:** `BOPDS_Interf.hxx`:157 - `BOPDS_Interf::HasIndexNew()`
     pub fn BOPDS_Interf_has_index_new_int(
         self_: *const BOPDS_Interf,
         theIndex: *mut i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_Interf.hxx`:171 - `BOPDS_Interf::HasIndexNew()`
+    /// **Source:** `BOPDS_Interf.hxx`:169 - `BOPDS_Interf::HasIndexNew()`
     pub fn BOPDS_Interf_has_index_new(self_: *const BOPDS_Interf) -> crate::OcctResult<bool>;
     // ======================== BOPDS_InterfVV ========================
     pub fn BOPDS_InterfVV_destructor(self_: *mut BOPDS_InterfVV);
-    /// **Source:** `BOPDS_Interf.hxx`:217 - `BOPDS_InterfVV::BOPDS_InterfVV()`
+    /// **Source:** `BOPDS_Interf.hxx`:220 - `BOPDS_InterfVV::BOPDS_InterfVV()`
     pub fn BOPDS_InterfVV_ctor() -> crate::OcctResult<*mut BOPDS_InterfVV>;
-    /// **Source:** `BOPDS_Interf.hxx`:228 - `BOPDS_InterfVV::BOPDS_InterfVV()`
-    pub fn BOPDS_InterfVV_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    /// **Source:** `BOPDS_Interf.hxx`:230 - `BOPDS_InterfVV::BOPDS_InterfVV()`
+    pub fn BOPDS_InterfVV_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPDS_InterfVV>;
     /// Upcast BOPDS_InterfVV to BOPDS_Interf
     pub fn BOPDS_InterfVV_as_BOPDS_Interf(
@@ -9681,52 +9578,52 @@ unsafe extern "C" {
     pub fn BOPDS_InterfVV_as_BOPDS_Interf_mut(
         self_: *mut BOPDS_InterfVV,
     ) -> crate::OcctResult<*mut BOPDS_Interf>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:44 - `BOPDS_Interf::SetIndices()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:45 - `BOPDS_Interf::SetIndices()`
     pub fn BOPDS_InterfVV_inherited_SetIndices(
         self_: *mut BOPDS_InterfVV,
         theIndex1: i32,
         theIndex2: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:59 - `BOPDS_Interf::Indices()`
     pub fn BOPDS_InterfVV_inherited_Indices(
         self_: *const BOPDS_InterfVV,
         theIndex1: *mut i32,
         theIndex2: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:71 - `BOPDS_Interf::SetIndex1()`
     pub fn BOPDS_InterfVV_inherited_SetIndex1(
         self_: *mut BOPDS_InterfVV,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:78 - `BOPDS_Interf::SetIndex2()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:79 - `BOPDS_Interf::SetIndex2()`
     pub fn BOPDS_InterfVV_inherited_SetIndex2(
         self_: *mut BOPDS_InterfVV,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:86 - `BOPDS_Interf::Index1()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:87 - `BOPDS_Interf::Index1()`
     pub fn BOPDS_InterfVV_inherited_Index1(self_: *const BOPDS_InterfVV) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:94 - `BOPDS_Interf::Index2()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:95 - `BOPDS_Interf::Index2()`
     pub fn BOPDS_InterfVV_inherited_Index2(self_: *const BOPDS_InterfVV) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:104 - `BOPDS_Interf::OppositeIndex()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:105 - `BOPDS_Interf::OppositeIndex()`
     pub fn BOPDS_InterfVV_inherited_OppositeIndex(
         self_: *const BOPDS_InterfVV,
         theI: i32,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:128 - `BOPDS_Interf::Contains()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:129 - `BOPDS_Interf::Contains()`
     pub fn BOPDS_InterfVV_inherited_Contains(
         self_: *const BOPDS_InterfVV,
         theIndex: i32,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:139 - `BOPDS_Interf::SetIndexNew()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:137 - `BOPDS_Interf::SetIndexNew()`
     pub fn BOPDS_InterfVV_inherited_SetIndexNew(
         self_: *mut BOPDS_InterfVV,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:148 - `BOPDS_Interf::IndexNew()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:146 - `BOPDS_Interf::IndexNew()`
     pub fn BOPDS_InterfVV_inherited_IndexNew(
         self_: *const BOPDS_InterfVV,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:159 - `BOPDS_Interf::HasIndexNew()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:157 - `BOPDS_Interf::HasIndexNew()`
     pub fn BOPDS_InterfVV_inherited_HasIndexNew(
         self_: *const BOPDS_InterfVV,
         theIndex: *mut i32,
@@ -9735,16 +9632,16 @@ unsafe extern "C" {
     pub fn BOPDS_InterfVE_destructor(self_: *mut BOPDS_InterfVE);
     /// **Source:** `BOPDS_Interf.hxx`:257 - `BOPDS_InterfVE::BOPDS_InterfVE()`
     pub fn BOPDS_InterfVE_ctor() -> crate::OcctResult<*mut BOPDS_InterfVE>;
-    /// **Source:** `BOPDS_Interf.hxx`:269 - `BOPDS_InterfVE::BOPDS_InterfVE()`
-    pub fn BOPDS_InterfVE_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    /// **Source:** `BOPDS_Interf.hxx`:268 - `BOPDS_InterfVE::BOPDS_InterfVE()`
+    pub fn BOPDS_InterfVE_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPDS_InterfVE>;
-    /// **Source:** `BOPDS_Interf.hxx`:290 - `BOPDS_InterfVE::SetParameter()`
+    /// **Source:** `BOPDS_Interf.hxx`:289 - `BOPDS_InterfVE::SetParameter()`
     pub fn BOPDS_InterfVE_set_parameter(
         self_: *mut BOPDS_InterfVE,
         theT: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_Interf.hxx`:301 - `BOPDS_InterfVE::Parameter()`
+    /// **Source:** `BOPDS_Interf.hxx`:300 - `BOPDS_InterfVE::Parameter()`
     pub fn BOPDS_InterfVE_parameter(self_: *const BOPDS_InterfVE) -> crate::OcctResult<f64>;
     /// Upcast BOPDS_InterfVE to BOPDS_Interf
     pub fn BOPDS_InterfVE_as_BOPDS_Interf(
@@ -9754,71 +9651,71 @@ unsafe extern "C" {
     pub fn BOPDS_InterfVE_as_BOPDS_Interf_mut(
         self_: *mut BOPDS_InterfVE,
     ) -> crate::OcctResult<*mut BOPDS_Interf>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:44 - `BOPDS_Interf::SetIndices()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:45 - `BOPDS_Interf::SetIndices()`
     pub fn BOPDS_InterfVE_inherited_SetIndices(
         self_: *mut BOPDS_InterfVE,
         theIndex1: i32,
         theIndex2: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:59 - `BOPDS_Interf::Indices()`
     pub fn BOPDS_InterfVE_inherited_Indices(
         self_: *const BOPDS_InterfVE,
         theIndex1: *mut i32,
         theIndex2: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:71 - `BOPDS_Interf::SetIndex1()`
     pub fn BOPDS_InterfVE_inherited_SetIndex1(
         self_: *mut BOPDS_InterfVE,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:78 - `BOPDS_Interf::SetIndex2()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:79 - `BOPDS_Interf::SetIndex2()`
     pub fn BOPDS_InterfVE_inherited_SetIndex2(
         self_: *mut BOPDS_InterfVE,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:86 - `BOPDS_Interf::Index1()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:87 - `BOPDS_Interf::Index1()`
     pub fn BOPDS_InterfVE_inherited_Index1(self_: *const BOPDS_InterfVE) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:94 - `BOPDS_Interf::Index2()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:95 - `BOPDS_Interf::Index2()`
     pub fn BOPDS_InterfVE_inherited_Index2(self_: *const BOPDS_InterfVE) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:104 - `BOPDS_Interf::OppositeIndex()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:105 - `BOPDS_Interf::OppositeIndex()`
     pub fn BOPDS_InterfVE_inherited_OppositeIndex(
         self_: *const BOPDS_InterfVE,
         theI: i32,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:128 - `BOPDS_Interf::Contains()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:129 - `BOPDS_Interf::Contains()`
     pub fn BOPDS_InterfVE_inherited_Contains(
         self_: *const BOPDS_InterfVE,
         theIndex: i32,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:139 - `BOPDS_Interf::SetIndexNew()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:137 - `BOPDS_Interf::SetIndexNew()`
     pub fn BOPDS_InterfVE_inherited_SetIndexNew(
         self_: *mut BOPDS_InterfVE,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:148 - `BOPDS_Interf::IndexNew()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:146 - `BOPDS_Interf::IndexNew()`
     pub fn BOPDS_InterfVE_inherited_IndexNew(
         self_: *const BOPDS_InterfVE,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:159 - `BOPDS_Interf::HasIndexNew()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:157 - `BOPDS_Interf::HasIndexNew()`
     pub fn BOPDS_InterfVE_inherited_HasIndexNew(
         self_: *const BOPDS_InterfVE,
         theIndex: *mut i32,
     ) -> crate::OcctResult<bool>;
     // ======================== BOPDS_InterfVF ========================
     pub fn BOPDS_InterfVF_destructor(self_: *mut BOPDS_InterfVF);
-    /// **Source:** `BOPDS_Interf.hxx`:322 - `BOPDS_InterfVF::BOPDS_InterfVF()`
+    /// **Source:** `BOPDS_Interf.hxx`:319 - `BOPDS_InterfVF::BOPDS_InterfVF()`
     pub fn BOPDS_InterfVF_ctor() -> crate::OcctResult<*mut BOPDS_InterfVF>;
-    /// **Source:** `BOPDS_Interf.hxx`:335 - `BOPDS_InterfVF::BOPDS_InterfVF()`
-    pub fn BOPDS_InterfVF_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    /// **Source:** `BOPDS_Interf.hxx`:331 - `BOPDS_InterfVF::BOPDS_InterfVF()`
+    pub fn BOPDS_InterfVF_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPDS_InterfVF>;
-    /// **Source:** `BOPDS_Interf.hxx`:359 - `BOPDS_InterfVF::SetUV()`
+    /// **Source:** `BOPDS_Interf.hxx`:355 - `BOPDS_InterfVF::SetUV()`
     pub fn BOPDS_InterfVF_set_uv(
         self_: *mut BOPDS_InterfVF,
         theU: f64,
         theV: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_Interf.hxx`:376 - `BOPDS_InterfVF::UV()`
+    /// **Source:** `BOPDS_Interf.hxx`:372 - `BOPDS_InterfVF::UV()`
     pub fn BOPDS_InterfVF_uv(
         self_: *const BOPDS_InterfVF,
         theU: *mut f64,
@@ -9832,70 +9729,70 @@ unsafe extern "C" {
     pub fn BOPDS_InterfVF_as_BOPDS_Interf_mut(
         self_: *mut BOPDS_InterfVF,
     ) -> crate::OcctResult<*mut BOPDS_Interf>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:44 - `BOPDS_Interf::SetIndices()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:45 - `BOPDS_Interf::SetIndices()`
     pub fn BOPDS_InterfVF_inherited_SetIndices(
         self_: *mut BOPDS_InterfVF,
         theIndex1: i32,
         theIndex2: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:59 - `BOPDS_Interf::Indices()`
     pub fn BOPDS_InterfVF_inherited_Indices(
         self_: *const BOPDS_InterfVF,
         theIndex1: *mut i32,
         theIndex2: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:71 - `BOPDS_Interf::SetIndex1()`
     pub fn BOPDS_InterfVF_inherited_SetIndex1(
         self_: *mut BOPDS_InterfVF,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:78 - `BOPDS_Interf::SetIndex2()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:79 - `BOPDS_Interf::SetIndex2()`
     pub fn BOPDS_InterfVF_inherited_SetIndex2(
         self_: *mut BOPDS_InterfVF,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:86 - `BOPDS_Interf::Index1()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:87 - `BOPDS_Interf::Index1()`
     pub fn BOPDS_InterfVF_inherited_Index1(self_: *const BOPDS_InterfVF) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:94 - `BOPDS_Interf::Index2()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:95 - `BOPDS_Interf::Index2()`
     pub fn BOPDS_InterfVF_inherited_Index2(self_: *const BOPDS_InterfVF) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:104 - `BOPDS_Interf::OppositeIndex()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:105 - `BOPDS_Interf::OppositeIndex()`
     pub fn BOPDS_InterfVF_inherited_OppositeIndex(
         self_: *const BOPDS_InterfVF,
         theI: i32,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:128 - `BOPDS_Interf::Contains()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:129 - `BOPDS_Interf::Contains()`
     pub fn BOPDS_InterfVF_inherited_Contains(
         self_: *const BOPDS_InterfVF,
         theIndex: i32,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:139 - `BOPDS_Interf::SetIndexNew()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:137 - `BOPDS_Interf::SetIndexNew()`
     pub fn BOPDS_InterfVF_inherited_SetIndexNew(
         self_: *mut BOPDS_InterfVF,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:148 - `BOPDS_Interf::IndexNew()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:146 - `BOPDS_Interf::IndexNew()`
     pub fn BOPDS_InterfVF_inherited_IndexNew(
         self_: *const BOPDS_InterfVF,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:159 - `BOPDS_Interf::HasIndexNew()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:157 - `BOPDS_Interf::HasIndexNew()`
     pub fn BOPDS_InterfVF_inherited_HasIndexNew(
         self_: *const BOPDS_InterfVF,
         theIndex: *mut i32,
     ) -> crate::OcctResult<bool>;
     // ======================== BOPDS_InterfEE ========================
     pub fn BOPDS_InterfEE_destructor(self_: *mut BOPDS_InterfEE);
-    /// **Source:** `BOPDS_Interf.hxx`:402 - `BOPDS_InterfEE::BOPDS_InterfEE()`
+    /// **Source:** `BOPDS_Interf.hxx`:396 - `BOPDS_InterfEE::BOPDS_InterfEE()`
     pub fn BOPDS_InterfEE_ctor() -> crate::OcctResult<*mut BOPDS_InterfEE>;
-    /// **Source:** `BOPDS_Interf.hxx`:413 - `BOPDS_InterfEE::BOPDS_InterfEE()`
-    pub fn BOPDS_InterfEE_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    /// **Source:** `BOPDS_Interf.hxx`:406 - `BOPDS_InterfEE::BOPDS_InterfEE()`
+    pub fn BOPDS_InterfEE_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPDS_InterfEE>;
-    /// **Source:** `BOPDS_Interf.hxx`:431 - `BOPDS_InterfEE::SetCommonPart()`
+    /// **Source:** `BOPDS_Interf.hxx`:424 - `BOPDS_InterfEE::SetCommonPart()`
     pub fn BOPDS_InterfEE_set_common_part(
         self_: *mut BOPDS_InterfEE,
         theCP: *const IntTools_CommonPrt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_Interf.hxx`:440 - `BOPDS_InterfEE::CommonPart()`
+    /// **Source:** `BOPDS_Interf.hxx`:433 - `BOPDS_InterfEE::CommonPart()`
     pub fn BOPDS_InterfEE_common_part(
         self_: *const BOPDS_InterfEE,
     ) -> crate::OcctResult<*const IntTools_CommonPrt>;
@@ -9907,70 +9804,70 @@ unsafe extern "C" {
     pub fn BOPDS_InterfEE_as_BOPDS_Interf_mut(
         self_: *mut BOPDS_InterfEE,
     ) -> crate::OcctResult<*mut BOPDS_Interf>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:44 - `BOPDS_Interf::SetIndices()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:45 - `BOPDS_Interf::SetIndices()`
     pub fn BOPDS_InterfEE_inherited_SetIndices(
         self_: *mut BOPDS_InterfEE,
         theIndex1: i32,
         theIndex2: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:59 - `BOPDS_Interf::Indices()`
     pub fn BOPDS_InterfEE_inherited_Indices(
         self_: *const BOPDS_InterfEE,
         theIndex1: *mut i32,
         theIndex2: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:71 - `BOPDS_Interf::SetIndex1()`
     pub fn BOPDS_InterfEE_inherited_SetIndex1(
         self_: *mut BOPDS_InterfEE,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:78 - `BOPDS_Interf::SetIndex2()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:79 - `BOPDS_Interf::SetIndex2()`
     pub fn BOPDS_InterfEE_inherited_SetIndex2(
         self_: *mut BOPDS_InterfEE,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:86 - `BOPDS_Interf::Index1()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:87 - `BOPDS_Interf::Index1()`
     pub fn BOPDS_InterfEE_inherited_Index1(self_: *const BOPDS_InterfEE) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:94 - `BOPDS_Interf::Index2()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:95 - `BOPDS_Interf::Index2()`
     pub fn BOPDS_InterfEE_inherited_Index2(self_: *const BOPDS_InterfEE) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:104 - `BOPDS_Interf::OppositeIndex()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:105 - `BOPDS_Interf::OppositeIndex()`
     pub fn BOPDS_InterfEE_inherited_OppositeIndex(
         self_: *const BOPDS_InterfEE,
         theI: i32,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:128 - `BOPDS_Interf::Contains()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:129 - `BOPDS_Interf::Contains()`
     pub fn BOPDS_InterfEE_inherited_Contains(
         self_: *const BOPDS_InterfEE,
         theIndex: i32,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:139 - `BOPDS_Interf::SetIndexNew()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:137 - `BOPDS_Interf::SetIndexNew()`
     pub fn BOPDS_InterfEE_inherited_SetIndexNew(
         self_: *mut BOPDS_InterfEE,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:148 - `BOPDS_Interf::IndexNew()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:146 - `BOPDS_Interf::IndexNew()`
     pub fn BOPDS_InterfEE_inherited_IndexNew(
         self_: *const BOPDS_InterfEE,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:159 - `BOPDS_Interf::HasIndexNew()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:157 - `BOPDS_Interf::HasIndexNew()`
     pub fn BOPDS_InterfEE_inherited_HasIndexNew(
         self_: *const BOPDS_InterfEE,
         theIndex: *mut i32,
     ) -> crate::OcctResult<bool>;
     // ======================== BOPDS_InterfEF ========================
     pub fn BOPDS_InterfEF_destructor(self_: *mut BOPDS_InterfEF);
-    /// **Source:** `BOPDS_Interf.hxx`:461 - `BOPDS_InterfEF::BOPDS_InterfEF()`
+    /// **Source:** `BOPDS_Interf.hxx`:452 - `BOPDS_InterfEF::BOPDS_InterfEF()`
     pub fn BOPDS_InterfEF_ctor() -> crate::OcctResult<*mut BOPDS_InterfEF>;
-    /// **Source:** `BOPDS_Interf.hxx`:477 - `BOPDS_InterfEF::BOPDS_InterfEF()`
-    pub fn BOPDS_InterfEF_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    /// **Source:** `BOPDS_Interf.hxx`:467 - `BOPDS_InterfEF::BOPDS_InterfEF()`
+    pub fn BOPDS_InterfEF_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPDS_InterfEF>;
-    /// **Source:** `BOPDS_Interf.hxx`:495 - `BOPDS_InterfEF::SetCommonPart()`
+    /// **Source:** `BOPDS_Interf.hxx`:485 - `BOPDS_InterfEF::SetCommonPart()`
     pub fn BOPDS_InterfEF_set_common_part(
         self_: *mut BOPDS_InterfEF,
         theCP: *const IntTools_CommonPrt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_Interf.hxx`:504 - `BOPDS_InterfEF::CommonPart()`
+    /// **Source:** `BOPDS_Interf.hxx`:494 - `BOPDS_InterfEF::CommonPart()`
     pub fn BOPDS_InterfEF_common_part(
         self_: *const BOPDS_InterfEF,
     ) -> crate::OcctResult<*const IntTools_CommonPrt>;
@@ -9982,89 +9879,89 @@ unsafe extern "C" {
     pub fn BOPDS_InterfEF_as_BOPDS_Interf_mut(
         self_: *mut BOPDS_InterfEF,
     ) -> crate::OcctResult<*mut BOPDS_Interf>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:44 - `BOPDS_Interf::SetIndices()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:45 - `BOPDS_Interf::SetIndices()`
     pub fn BOPDS_InterfEF_inherited_SetIndices(
         self_: *mut BOPDS_InterfEF,
         theIndex1: i32,
         theIndex2: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:59 - `BOPDS_Interf::Indices()`
     pub fn BOPDS_InterfEF_inherited_Indices(
         self_: *const BOPDS_InterfEF,
         theIndex1: *mut i32,
         theIndex2: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:71 - `BOPDS_Interf::SetIndex1()`
     pub fn BOPDS_InterfEF_inherited_SetIndex1(
         self_: *mut BOPDS_InterfEF,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:78 - `BOPDS_Interf::SetIndex2()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:79 - `BOPDS_Interf::SetIndex2()`
     pub fn BOPDS_InterfEF_inherited_SetIndex2(
         self_: *mut BOPDS_InterfEF,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:86 - `BOPDS_Interf::Index1()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:87 - `BOPDS_Interf::Index1()`
     pub fn BOPDS_InterfEF_inherited_Index1(self_: *const BOPDS_InterfEF) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:94 - `BOPDS_Interf::Index2()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:95 - `BOPDS_Interf::Index2()`
     pub fn BOPDS_InterfEF_inherited_Index2(self_: *const BOPDS_InterfEF) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:104 - `BOPDS_Interf::OppositeIndex()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:105 - `BOPDS_Interf::OppositeIndex()`
     pub fn BOPDS_InterfEF_inherited_OppositeIndex(
         self_: *const BOPDS_InterfEF,
         theI: i32,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:128 - `BOPDS_Interf::Contains()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:129 - `BOPDS_Interf::Contains()`
     pub fn BOPDS_InterfEF_inherited_Contains(
         self_: *const BOPDS_InterfEF,
         theIndex: i32,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:139 - `BOPDS_Interf::SetIndexNew()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:137 - `BOPDS_Interf::SetIndexNew()`
     pub fn BOPDS_InterfEF_inherited_SetIndexNew(
         self_: *mut BOPDS_InterfEF,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:148 - `BOPDS_Interf::IndexNew()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:146 - `BOPDS_Interf::IndexNew()`
     pub fn BOPDS_InterfEF_inherited_IndexNew(
         self_: *const BOPDS_InterfEF,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:159 - `BOPDS_Interf::HasIndexNew()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:157 - `BOPDS_Interf::HasIndexNew()`
     pub fn BOPDS_InterfEF_inherited_HasIndexNew(
         self_: *const BOPDS_InterfEF,
         theIndex: *mut i32,
     ) -> crate::OcctResult<bool>;
     // ======================== BOPDS_InterfFF ========================
     pub fn BOPDS_InterfFF_destructor(self_: *mut BOPDS_InterfFF);
-    /// **Source:** `BOPDS_Interf.hxx`:527 - `BOPDS_InterfFF::BOPDS_InterfFF()`
+    /// **Source:** `BOPDS_Interf.hxx`:515 - `BOPDS_InterfFF::BOPDS_InterfFF()`
     pub fn BOPDS_InterfFF_ctor() -> crate::OcctResult<*mut BOPDS_InterfFF>;
-    /// **Source:** `BOPDS_Interf.hxx`:550 - `BOPDS_InterfFF::Init()`
+    /// **Source:** `BOPDS_Interf.hxx`:537 - `BOPDS_InterfFF::Init()`
     pub fn BOPDS_InterfFF_init(
         self_: *mut BOPDS_InterfFF,
         theNbCurves: i32,
         theNbPoints: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_Interf.hxx`:568 - `BOPDS_InterfFF::SetTangentFaces()`
+    /// **Source:** `BOPDS_Interf.hxx`:555 - `BOPDS_InterfFF::SetTangentFaces()`
     pub fn BOPDS_InterfFF_set_tangent_faces(
         self_: *mut BOPDS_InterfFF,
         theFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_Interf.hxx`:576 - `BOPDS_InterfFF::TangentFaces()`
+    /// **Source:** `BOPDS_Interf.hxx`:563 - `BOPDS_InterfFF::TangentFaces()`
     pub fn BOPDS_InterfFF_tangent_faces(self_: *const BOPDS_InterfFF) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_Interf.hxx`:585 - `BOPDS_InterfFF::Curves()`
+    /// **Source:** `BOPDS_Interf.hxx`:572 - `BOPDS_InterfFF::Curves()`
     pub fn BOPDS_InterfFF_curves(
         self_: *const BOPDS_InterfFF,
-    ) -> crate::OcctResult<*const BOPDS_VectorOfCurve>;
-    /// **Source:** `BOPDS_Interf.hxx`:594 - `BOPDS_InterfFF::ChangeCurves()`
+    ) -> crate::OcctResult<*const NCollection_DynamicArray_BOPDS_Curve>;
+    /// **Source:** `BOPDS_Interf.hxx`:581 - `BOPDS_InterfFF::ChangeCurves()`
     pub fn BOPDS_InterfFF_change_curves(
         self_: *mut BOPDS_InterfFF,
-    ) -> crate::OcctResult<*mut BOPDS_VectorOfCurve>;
-    /// **Source:** `BOPDS_Interf.hxx`:603 - `BOPDS_InterfFF::Points()`
+    ) -> crate::OcctResult<*mut NCollection_DynamicArray_BOPDS_Curve>;
+    /// **Source:** `BOPDS_Interf.hxx`:590 - `BOPDS_InterfFF::Points()`
     pub fn BOPDS_InterfFF_points(
         self_: *const BOPDS_InterfFF,
-    ) -> crate::OcctResult<*const BOPDS_VectorOfPoint>;
-    /// **Source:** `BOPDS_Interf.hxx`:612 - `BOPDS_InterfFF::ChangePoints()`
+    ) -> crate::OcctResult<*const NCollection_DynamicArray_BOPDS_Point>;
+    /// **Source:** `BOPDS_Interf.hxx`:599 - `BOPDS_InterfFF::ChangePoints()`
     pub fn BOPDS_InterfFF_change_points(
         self_: *mut BOPDS_InterfFF,
-    ) -> crate::OcctResult<*mut BOPDS_VectorOfPoint>;
+    ) -> crate::OcctResult<*mut NCollection_DynamicArray_BOPDS_Point>;
     /// Upcast BOPDS_InterfFF to BOPDS_Interf
     pub fn BOPDS_InterfFF_as_BOPDS_Interf(
         self_: *const BOPDS_InterfFF,
@@ -10073,63 +9970,63 @@ unsafe extern "C" {
     pub fn BOPDS_InterfFF_as_BOPDS_Interf_mut(
         self_: *mut BOPDS_InterfFF,
     ) -> crate::OcctResult<*mut BOPDS_Interf>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:44 - `BOPDS_Interf::SetIndices()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:45 - `BOPDS_Interf::SetIndices()`
     pub fn BOPDS_InterfFF_inherited_SetIndices(
         self_: *mut BOPDS_InterfFF,
         theIndex1: i32,
         theIndex2: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:59 - `BOPDS_Interf::Indices()`
     pub fn BOPDS_InterfFF_inherited_Indices(
         self_: *const BOPDS_InterfFF,
         theIndex1: *mut i32,
         theIndex2: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:71 - `BOPDS_Interf::SetIndex1()`
     pub fn BOPDS_InterfFF_inherited_SetIndex1(
         self_: *mut BOPDS_InterfFF,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:78 - `BOPDS_Interf::SetIndex2()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:79 - `BOPDS_Interf::SetIndex2()`
     pub fn BOPDS_InterfFF_inherited_SetIndex2(
         self_: *mut BOPDS_InterfFF,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:86 - `BOPDS_Interf::Index1()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:87 - `BOPDS_Interf::Index1()`
     pub fn BOPDS_InterfFF_inherited_Index1(self_: *const BOPDS_InterfFF) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:94 - `BOPDS_Interf::Index2()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:95 - `BOPDS_Interf::Index2()`
     pub fn BOPDS_InterfFF_inherited_Index2(self_: *const BOPDS_InterfFF) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:104 - `BOPDS_Interf::OppositeIndex()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:105 - `BOPDS_Interf::OppositeIndex()`
     pub fn BOPDS_InterfFF_inherited_OppositeIndex(
         self_: *const BOPDS_InterfFF,
         theI: i32,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:128 - `BOPDS_Interf::Contains()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:129 - `BOPDS_Interf::Contains()`
     pub fn BOPDS_InterfFF_inherited_Contains(
         self_: *const BOPDS_InterfFF,
         theIndex: i32,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:139 - `BOPDS_Interf::SetIndexNew()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:137 - `BOPDS_Interf::SetIndexNew()`
     pub fn BOPDS_InterfFF_inherited_SetIndexNew(
         self_: *mut BOPDS_InterfFF,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:148 - `BOPDS_Interf::IndexNew()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:146 - `BOPDS_Interf::IndexNew()`
     pub fn BOPDS_InterfFF_inherited_IndexNew(
         self_: *const BOPDS_InterfFF,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:159 - `BOPDS_Interf::HasIndexNew()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:157 - `BOPDS_Interf::HasIndexNew()`
     pub fn BOPDS_InterfFF_inherited_HasIndexNew(
         self_: *const BOPDS_InterfFF,
         theIndex: *mut i32,
     ) -> crate::OcctResult<bool>;
     // ======================== BOPDS_InterfVZ ========================
     pub fn BOPDS_InterfVZ_destructor(self_: *mut BOPDS_InterfVZ);
-    /// **Source:** `BOPDS_Interf.hxx`:636 - `BOPDS_InterfVZ::BOPDS_InterfVZ()`
+    /// **Source:** `BOPDS_Interf.hxx`:621 - `BOPDS_InterfVZ::BOPDS_InterfVZ()`
     pub fn BOPDS_InterfVZ_ctor() -> crate::OcctResult<*mut BOPDS_InterfVZ>;
-    /// **Source:** `BOPDS_Interf.hxx`:644 - `BOPDS_InterfVZ::BOPDS_InterfVZ()`
-    pub fn BOPDS_InterfVZ_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    /// **Source:** `BOPDS_Interf.hxx`:628 - `BOPDS_InterfVZ::BOPDS_InterfVZ()`
+    pub fn BOPDS_InterfVZ_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPDS_InterfVZ>;
     /// Upcast BOPDS_InterfVZ to BOPDS_Interf
     pub fn BOPDS_InterfVZ_as_BOPDS_Interf(
@@ -10139,63 +10036,63 @@ unsafe extern "C" {
     pub fn BOPDS_InterfVZ_as_BOPDS_Interf_mut(
         self_: *mut BOPDS_InterfVZ,
     ) -> crate::OcctResult<*mut BOPDS_Interf>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:44 - `BOPDS_Interf::SetIndices()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:45 - `BOPDS_Interf::SetIndices()`
     pub fn BOPDS_InterfVZ_inherited_SetIndices(
         self_: *mut BOPDS_InterfVZ,
         theIndex1: i32,
         theIndex2: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:59 - `BOPDS_Interf::Indices()`
     pub fn BOPDS_InterfVZ_inherited_Indices(
         self_: *const BOPDS_InterfVZ,
         theIndex1: *mut i32,
         theIndex2: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:71 - `BOPDS_Interf::SetIndex1()`
     pub fn BOPDS_InterfVZ_inherited_SetIndex1(
         self_: *mut BOPDS_InterfVZ,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:78 - `BOPDS_Interf::SetIndex2()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:79 - `BOPDS_Interf::SetIndex2()`
     pub fn BOPDS_InterfVZ_inherited_SetIndex2(
         self_: *mut BOPDS_InterfVZ,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:86 - `BOPDS_Interf::Index1()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:87 - `BOPDS_Interf::Index1()`
     pub fn BOPDS_InterfVZ_inherited_Index1(self_: *const BOPDS_InterfVZ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:94 - `BOPDS_Interf::Index2()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:95 - `BOPDS_Interf::Index2()`
     pub fn BOPDS_InterfVZ_inherited_Index2(self_: *const BOPDS_InterfVZ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:104 - `BOPDS_Interf::OppositeIndex()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:105 - `BOPDS_Interf::OppositeIndex()`
     pub fn BOPDS_InterfVZ_inherited_OppositeIndex(
         self_: *const BOPDS_InterfVZ,
         theI: i32,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:128 - `BOPDS_Interf::Contains()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:129 - `BOPDS_Interf::Contains()`
     pub fn BOPDS_InterfVZ_inherited_Contains(
         self_: *const BOPDS_InterfVZ,
         theIndex: i32,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:139 - `BOPDS_Interf::SetIndexNew()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:137 - `BOPDS_Interf::SetIndexNew()`
     pub fn BOPDS_InterfVZ_inherited_SetIndexNew(
         self_: *mut BOPDS_InterfVZ,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:148 - `BOPDS_Interf::IndexNew()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:146 - `BOPDS_Interf::IndexNew()`
     pub fn BOPDS_InterfVZ_inherited_IndexNew(
         self_: *const BOPDS_InterfVZ,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:159 - `BOPDS_Interf::HasIndexNew()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:157 - `BOPDS_Interf::HasIndexNew()`
     pub fn BOPDS_InterfVZ_inherited_HasIndexNew(
         self_: *const BOPDS_InterfVZ,
         theIndex: *mut i32,
     ) -> crate::OcctResult<bool>;
     // ======================== BOPDS_InterfEZ ========================
     pub fn BOPDS_InterfEZ_destructor(self_: *mut BOPDS_InterfEZ);
-    /// **Source:** `BOPDS_Interf.hxx`:669 - `BOPDS_InterfEZ::BOPDS_InterfEZ()`
+    /// **Source:** `BOPDS_Interf.hxx`:651 - `BOPDS_InterfEZ::BOPDS_InterfEZ()`
     pub fn BOPDS_InterfEZ_ctor() -> crate::OcctResult<*mut BOPDS_InterfEZ>;
-    /// **Source:** `BOPDS_Interf.hxx`:677 - `BOPDS_InterfEZ::BOPDS_InterfEZ()`
-    pub fn BOPDS_InterfEZ_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    /// **Source:** `BOPDS_Interf.hxx`:658 - `BOPDS_InterfEZ::BOPDS_InterfEZ()`
+    pub fn BOPDS_InterfEZ_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPDS_InterfEZ>;
     /// Upcast BOPDS_InterfEZ to BOPDS_Interf
     pub fn BOPDS_InterfEZ_as_BOPDS_Interf(
@@ -10205,63 +10102,63 @@ unsafe extern "C" {
     pub fn BOPDS_InterfEZ_as_BOPDS_Interf_mut(
         self_: *mut BOPDS_InterfEZ,
     ) -> crate::OcctResult<*mut BOPDS_Interf>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:44 - `BOPDS_Interf::SetIndices()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:45 - `BOPDS_Interf::SetIndices()`
     pub fn BOPDS_InterfEZ_inherited_SetIndices(
         self_: *mut BOPDS_InterfEZ,
         theIndex1: i32,
         theIndex2: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:59 - `BOPDS_Interf::Indices()`
     pub fn BOPDS_InterfEZ_inherited_Indices(
         self_: *const BOPDS_InterfEZ,
         theIndex1: *mut i32,
         theIndex2: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:71 - `BOPDS_Interf::SetIndex1()`
     pub fn BOPDS_InterfEZ_inherited_SetIndex1(
         self_: *mut BOPDS_InterfEZ,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:78 - `BOPDS_Interf::SetIndex2()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:79 - `BOPDS_Interf::SetIndex2()`
     pub fn BOPDS_InterfEZ_inherited_SetIndex2(
         self_: *mut BOPDS_InterfEZ,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:86 - `BOPDS_Interf::Index1()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:87 - `BOPDS_Interf::Index1()`
     pub fn BOPDS_InterfEZ_inherited_Index1(self_: *const BOPDS_InterfEZ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:94 - `BOPDS_Interf::Index2()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:95 - `BOPDS_Interf::Index2()`
     pub fn BOPDS_InterfEZ_inherited_Index2(self_: *const BOPDS_InterfEZ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:104 - `BOPDS_Interf::OppositeIndex()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:105 - `BOPDS_Interf::OppositeIndex()`
     pub fn BOPDS_InterfEZ_inherited_OppositeIndex(
         self_: *const BOPDS_InterfEZ,
         theI: i32,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:128 - `BOPDS_Interf::Contains()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:129 - `BOPDS_Interf::Contains()`
     pub fn BOPDS_InterfEZ_inherited_Contains(
         self_: *const BOPDS_InterfEZ,
         theIndex: i32,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:139 - `BOPDS_Interf::SetIndexNew()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:137 - `BOPDS_Interf::SetIndexNew()`
     pub fn BOPDS_InterfEZ_inherited_SetIndexNew(
         self_: *mut BOPDS_InterfEZ,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:148 - `BOPDS_Interf::IndexNew()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:146 - `BOPDS_Interf::IndexNew()`
     pub fn BOPDS_InterfEZ_inherited_IndexNew(
         self_: *const BOPDS_InterfEZ,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:159 - `BOPDS_Interf::HasIndexNew()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:157 - `BOPDS_Interf::HasIndexNew()`
     pub fn BOPDS_InterfEZ_inherited_HasIndexNew(
         self_: *const BOPDS_InterfEZ,
         theIndex: *mut i32,
     ) -> crate::OcctResult<bool>;
     // ======================== BOPDS_InterfFZ ========================
     pub fn BOPDS_InterfFZ_destructor(self_: *mut BOPDS_InterfFZ);
-    /// **Source:** `BOPDS_Interf.hxx`:702 - `BOPDS_InterfFZ::BOPDS_InterfFZ()`
+    /// **Source:** `BOPDS_Interf.hxx`:681 - `BOPDS_InterfFZ::BOPDS_InterfFZ()`
     pub fn BOPDS_InterfFZ_ctor() -> crate::OcctResult<*mut BOPDS_InterfFZ>;
-    /// **Source:** `BOPDS_Interf.hxx`:710 - `BOPDS_InterfFZ::BOPDS_InterfFZ()`
-    pub fn BOPDS_InterfFZ_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    /// **Source:** `BOPDS_Interf.hxx`:688 - `BOPDS_InterfFZ::BOPDS_InterfFZ()`
+    pub fn BOPDS_InterfFZ_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPDS_InterfFZ>;
     /// Upcast BOPDS_InterfFZ to BOPDS_Interf
     pub fn BOPDS_InterfFZ_as_BOPDS_Interf(
@@ -10271,63 +10168,63 @@ unsafe extern "C" {
     pub fn BOPDS_InterfFZ_as_BOPDS_Interf_mut(
         self_: *mut BOPDS_InterfFZ,
     ) -> crate::OcctResult<*mut BOPDS_Interf>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:44 - `BOPDS_Interf::SetIndices()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:45 - `BOPDS_Interf::SetIndices()`
     pub fn BOPDS_InterfFZ_inherited_SetIndices(
         self_: *mut BOPDS_InterfFZ,
         theIndex1: i32,
         theIndex2: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:59 - `BOPDS_Interf::Indices()`
     pub fn BOPDS_InterfFZ_inherited_Indices(
         self_: *const BOPDS_InterfFZ,
         theIndex1: *mut i32,
         theIndex2: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:71 - `BOPDS_Interf::SetIndex1()`
     pub fn BOPDS_InterfFZ_inherited_SetIndex1(
         self_: *mut BOPDS_InterfFZ,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:78 - `BOPDS_Interf::SetIndex2()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:79 - `BOPDS_Interf::SetIndex2()`
     pub fn BOPDS_InterfFZ_inherited_SetIndex2(
         self_: *mut BOPDS_InterfFZ,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:86 - `BOPDS_Interf::Index1()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:87 - `BOPDS_Interf::Index1()`
     pub fn BOPDS_InterfFZ_inherited_Index1(self_: *const BOPDS_InterfFZ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:94 - `BOPDS_Interf::Index2()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:95 - `BOPDS_Interf::Index2()`
     pub fn BOPDS_InterfFZ_inherited_Index2(self_: *const BOPDS_InterfFZ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:104 - `BOPDS_Interf::OppositeIndex()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:105 - `BOPDS_Interf::OppositeIndex()`
     pub fn BOPDS_InterfFZ_inherited_OppositeIndex(
         self_: *const BOPDS_InterfFZ,
         theI: i32,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:128 - `BOPDS_Interf::Contains()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:129 - `BOPDS_Interf::Contains()`
     pub fn BOPDS_InterfFZ_inherited_Contains(
         self_: *const BOPDS_InterfFZ,
         theIndex: i32,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:139 - `BOPDS_Interf::SetIndexNew()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:137 - `BOPDS_Interf::SetIndexNew()`
     pub fn BOPDS_InterfFZ_inherited_SetIndexNew(
         self_: *mut BOPDS_InterfFZ,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:148 - `BOPDS_Interf::IndexNew()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:146 - `BOPDS_Interf::IndexNew()`
     pub fn BOPDS_InterfFZ_inherited_IndexNew(
         self_: *const BOPDS_InterfFZ,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:159 - `BOPDS_Interf::HasIndexNew()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:157 - `BOPDS_Interf::HasIndexNew()`
     pub fn BOPDS_InterfFZ_inherited_HasIndexNew(
         self_: *const BOPDS_InterfFZ,
         theIndex: *mut i32,
     ) -> crate::OcctResult<bool>;
     // ======================== BOPDS_InterfZZ ========================
     pub fn BOPDS_InterfZZ_destructor(self_: *mut BOPDS_InterfZZ);
-    /// **Source:** `BOPDS_Interf.hxx`:735 - `BOPDS_InterfZZ::BOPDS_InterfZZ()`
+    /// **Source:** `BOPDS_Interf.hxx`:711 - `BOPDS_InterfZZ::BOPDS_InterfZZ()`
     pub fn BOPDS_InterfZZ_ctor() -> crate::OcctResult<*mut BOPDS_InterfZZ>;
-    /// **Source:** `BOPDS_Interf.hxx`:743 - `BOPDS_InterfZZ::BOPDS_InterfZZ()`
-    pub fn BOPDS_InterfZZ_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    /// **Source:** `BOPDS_Interf.hxx`:718 - `BOPDS_InterfZZ::BOPDS_InterfZZ()`
+    pub fn BOPDS_InterfZZ_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPDS_InterfZZ>;
     /// Upcast BOPDS_InterfZZ to BOPDS_Interf
     pub fn BOPDS_InterfZZ_as_BOPDS_Interf(
@@ -10337,119 +10234,119 @@ unsafe extern "C" {
     pub fn BOPDS_InterfZZ_as_BOPDS_Interf_mut(
         self_: *mut BOPDS_InterfZZ,
     ) -> crate::OcctResult<*mut BOPDS_Interf>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:44 - `BOPDS_Interf::SetIndices()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:45 - `BOPDS_Interf::SetIndices()`
     pub fn BOPDS_InterfZZ_inherited_SetIndices(
         self_: *mut BOPDS_InterfZZ,
         theIndex1: i32,
         theIndex2: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:59 - `BOPDS_Interf::Indices()`
     pub fn BOPDS_InterfZZ_inherited_Indices(
         self_: *const BOPDS_InterfZZ,
         theIndex1: *mut i32,
         theIndex2: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:71 - `BOPDS_Interf::SetIndex1()`
     pub fn BOPDS_InterfZZ_inherited_SetIndex1(
         self_: *mut BOPDS_InterfZZ,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:78 - `BOPDS_Interf::SetIndex2()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:79 - `BOPDS_Interf::SetIndex2()`
     pub fn BOPDS_InterfZZ_inherited_SetIndex2(
         self_: *mut BOPDS_InterfZZ,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:86 - `BOPDS_Interf::Index1()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:87 - `BOPDS_Interf::Index1()`
     pub fn BOPDS_InterfZZ_inherited_Index1(self_: *const BOPDS_InterfZZ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:94 - `BOPDS_Interf::Index2()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:95 - `BOPDS_Interf::Index2()`
     pub fn BOPDS_InterfZZ_inherited_Index2(self_: *const BOPDS_InterfZZ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:104 - `BOPDS_Interf::OppositeIndex()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:105 - `BOPDS_Interf::OppositeIndex()`
     pub fn BOPDS_InterfZZ_inherited_OppositeIndex(
         self_: *const BOPDS_InterfZZ,
         theI: i32,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:128 - `BOPDS_Interf::Contains()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:129 - `BOPDS_Interf::Contains()`
     pub fn BOPDS_InterfZZ_inherited_Contains(
         self_: *const BOPDS_InterfZZ,
         theIndex: i32,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:139 - `BOPDS_Interf::SetIndexNew()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:137 - `BOPDS_Interf::SetIndexNew()`
     pub fn BOPDS_InterfZZ_inherited_SetIndexNew(
         self_: *mut BOPDS_InterfZZ,
         theIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:148 - `BOPDS_Interf::IndexNew()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:146 - `BOPDS_Interf::IndexNew()`
     pub fn BOPDS_InterfZZ_inherited_IndexNew(
         self_: *const BOPDS_InterfZZ,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:159 - `BOPDS_Interf::HasIndexNew()`
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:157 - `BOPDS_Interf::HasIndexNew()`
     pub fn BOPDS_InterfZZ_inherited_HasIndexNew(
         self_: *const BOPDS_InterfZZ,
         theIndex: *mut i32,
     ) -> crate::OcctResult<bool>;
     // ======================== BOPDS_Iterator ========================
     pub fn BOPDS_Iterator_destructor(self_: *mut BOPDS_Iterator);
-    /// **Source:** `BOPDS_Iterator.hxx`:46 - `BOPDS_Iterator::BOPDS_Iterator()`
+    /// **Source:** `BOPDS_Iterator.hxx`:47 - `BOPDS_Iterator::BOPDS_Iterator()`
     pub fn BOPDS_Iterator_ctor() -> crate::OcctResult<*mut BOPDS_Iterator>;
-    /// **Source:** `BOPDS_Iterator.hxx`:51 - `BOPDS_Iterator::BOPDS_Iterator()`
-    pub fn BOPDS_Iterator_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    /// **Source:** `BOPDS_Iterator.hxx`:52 - `BOPDS_Iterator::BOPDS_Iterator()`
+    pub fn BOPDS_Iterator_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPDS_Iterator>;
-    /// **Source:** `BOPDS_Iterator.hxx`:55 - `BOPDS_Iterator::SetDS()`
+    /// **Source:** `BOPDS_Iterator.hxx`:56 - `BOPDS_Iterator::SetDS()`
     pub fn BOPDS_Iterator_set_ds(
         self_: *mut BOPDS_Iterator,
         pDS: *const *mut BOPDS_DS,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_Iterator.hxx`:59 - `BOPDS_Iterator::DS()`
+    /// **Source:** `BOPDS_Iterator.hxx`:60 - `BOPDS_Iterator::DS()`
     pub fn BOPDS_Iterator_ds(self_: *const BOPDS_Iterator) -> crate::OcctResult<*const BOPDS_DS>;
-    /// **Source:** `BOPDS_Iterator.hxx`:64 - `BOPDS_Iterator::Initialize()`
+    /// **Source:** `BOPDS_Iterator.hxx`:65 - `BOPDS_Iterator::Initialize()`
     pub fn BOPDS_Iterator_initialize(
         self_: *mut BOPDS_Iterator,
         theType1: i32,
         theType2: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_Iterator.hxx`:68 - `BOPDS_Iterator::More()`
+    /// **Source:** `BOPDS_Iterator.hxx`:69 - `BOPDS_Iterator::More()`
     pub fn BOPDS_Iterator_more(self_: *const BOPDS_Iterator) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_Iterator.hxx`:71 - `BOPDS_Iterator::Next()`
+    /// **Source:** `BOPDS_Iterator.hxx`:72 - `BOPDS_Iterator::Next()`
     pub fn BOPDS_Iterator_next(self_: *mut BOPDS_Iterator) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_Iterator.hxx`:76 - `BOPDS_Iterator::Value()`
+    /// **Source:** `BOPDS_Iterator.hxx`:77 - `BOPDS_Iterator::Value()`
     pub fn BOPDS_Iterator_value(
         self_: *const BOPDS_Iterator,
         theIndex1: *mut i32,
         theIndex2: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_Iterator.hxx`:80 - `BOPDS_Iterator::Prepare()`
+    /// **Source:** `BOPDS_Iterator.hxx`:81 - `BOPDS_Iterator::Prepare()`
     pub fn BOPDS_Iterator_prepare(
         self_: *mut BOPDS_Iterator,
-        theCtx: *const HandleIntToolsContext,
+        theCtx: *const Handle_IntTools_Context,
         theCheckOBB: bool,
         theFuzzyValue: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_Iterator.hxx`:87 - `BOPDS_Iterator::IntersectExt()`
+    /// **Source:** `BOPDS_Iterator.hxx`:88 - `BOPDS_Iterator::IntersectExt()`
     pub fn BOPDS_Iterator_intersect_ext(
         self_: *mut BOPDS_Iterator,
-        theIndicies: *const TColStd_MapOfInteger,
+        theIndicies: *const NCollection_Map_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_Iterator.hxx`:90 - `BOPDS_Iterator::ExpectedLength()`
+    /// **Source:** `BOPDS_Iterator.hxx`:91 - `BOPDS_Iterator::ExpectedLength()`
     pub fn BOPDS_Iterator_expected_length(self_: *const BOPDS_Iterator) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPDS_Iterator.hxx`:93 - `BOPDS_Iterator::BlockLength()`
+    /// **Source:** `BOPDS_Iterator.hxx`:94 - `BOPDS_Iterator::BlockLength()`
     pub fn BOPDS_Iterator_block_length(self_: *const BOPDS_Iterator) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPDS_Iterator.hxx`:98 - `BOPDS_Iterator::SetRunParallel()`
+    /// **Source:** `BOPDS_Iterator.hxx`:99 - `BOPDS_Iterator::SetRunParallel()`
     pub fn BOPDS_Iterator_set_run_parallel(
         self_: *mut BOPDS_Iterator,
         theFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_Iterator.hxx`:101 - `BOPDS_Iterator::RunParallel()`
+    /// **Source:** `BOPDS_Iterator.hxx`:102 - `BOPDS_Iterator::RunParallel()`
     pub fn BOPDS_Iterator_run_parallel(self_: *const BOPDS_Iterator) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_Iterator.hxx`:106 - `BOPDS_Iterator::NbExtInterfs()`
+    /// **Source:** `BOPDS_Iterator.hxx`:107 - `BOPDS_Iterator::NbExtInterfs()`
     pub fn BOPDS_Iterator_nb_ext_interfs() -> crate::OcctResult<i32>;
     // ======================== BOPDS_IteratorSI ========================
     pub fn BOPDS_IteratorSI_destructor(self_: *mut BOPDS_IteratorSI);
     /// **Source:** `BOPDS_IteratorSI.hxx`:41 - `BOPDS_IteratorSI::BOPDS_IteratorSI()`
     pub fn BOPDS_IteratorSI_ctor() -> crate::OcctResult<*mut BOPDS_IteratorSI>;
     /// **Source:** `BOPDS_IteratorSI.hxx`:47 - `BOPDS_IteratorSI::BOPDS_IteratorSI()`
-    pub fn BOPDS_IteratorSI_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    pub fn BOPDS_IteratorSI_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPDS_IteratorSI>;
     /// **Source:** `BOPDS_IteratorSI.hxx`:58 - `BOPDS_IteratorSI::UpdateByLevelOfCheck()`
     pub fn BOPDS_IteratorSI_update_by_level_of_check(
@@ -10464,55 +10361,55 @@ unsafe extern "C" {
     pub fn BOPDS_IteratorSI_as_BOPDS_Iterator_mut(
         self_: *mut BOPDS_IteratorSI,
     ) -> crate::OcctResult<*mut BOPDS_Iterator>;
-    /// Inherited: **Source:** `BOPDS_Iterator.hxx`:59 - `BOPDS_Iterator::DS()`
+    /// Inherited: **Source:** `BOPDS_Iterator.hxx`:60 - `BOPDS_Iterator::DS()`
     pub fn BOPDS_IteratorSI_inherited_DS(
         self_: *const BOPDS_IteratorSI,
     ) -> crate::OcctResult<*const BOPDS_DS>;
-    /// Inherited: **Source:** `BOPDS_Iterator.hxx`:64 - `BOPDS_Iterator::Initialize()`
+    /// Inherited: **Source:** `BOPDS_Iterator.hxx`:65 - `BOPDS_Iterator::Initialize()`
     pub fn BOPDS_IteratorSI_inherited_Initialize(
         self_: *mut BOPDS_IteratorSI,
         theType1: i32,
         theType2: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Iterator.hxx`:68 - `BOPDS_Iterator::More()`
+    /// Inherited: **Source:** `BOPDS_Iterator.hxx`:69 - `BOPDS_Iterator::More()`
     pub fn BOPDS_IteratorSI_inherited_More(
         self_: *const BOPDS_IteratorSI,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BOPDS_Iterator.hxx`:71 - `BOPDS_Iterator::Next()`
+    /// Inherited: **Source:** `BOPDS_Iterator.hxx`:72 - `BOPDS_Iterator::Next()`
     pub fn BOPDS_IteratorSI_inherited_Next(self_: *mut BOPDS_IteratorSI)
         -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Iterator.hxx`:76 - `BOPDS_Iterator::Value()`
+    /// Inherited: **Source:** `BOPDS_Iterator.hxx`:77 - `BOPDS_Iterator::Value()`
     pub fn BOPDS_IteratorSI_inherited_Value(
         self_: *const BOPDS_IteratorSI,
         theIndex1: *mut i32,
         theIndex2: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Iterator.hxx`:80 - `BOPDS_Iterator::Prepare()`
+    /// Inherited: **Source:** `BOPDS_Iterator.hxx`:81 - `BOPDS_Iterator::Prepare()`
     pub fn BOPDS_IteratorSI_inherited_Prepare(
         self_: *mut BOPDS_IteratorSI,
-        theCtx: *const HandleIntToolsContext,
+        theCtx: *const Handle_IntTools_Context,
         theCheckOBB: bool,
         theFuzzyValue: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Iterator.hxx`:87 - `BOPDS_Iterator::IntersectExt()`
+    /// Inherited: **Source:** `BOPDS_Iterator.hxx`:88 - `BOPDS_Iterator::IntersectExt()`
     pub fn BOPDS_IteratorSI_inherited_IntersectExt(
         self_: *mut BOPDS_IteratorSI,
-        theIndicies: *const TColStd_MapOfInteger,
+        theIndicies: *const NCollection_Map_int,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Iterator.hxx`:90 - `BOPDS_Iterator::ExpectedLength()`
+    /// Inherited: **Source:** `BOPDS_Iterator.hxx`:91 - `BOPDS_Iterator::ExpectedLength()`
     pub fn BOPDS_IteratorSI_inherited_ExpectedLength(
         self_: *const BOPDS_IteratorSI,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Iterator.hxx`:93 - `BOPDS_Iterator::BlockLength()`
+    /// Inherited: **Source:** `BOPDS_Iterator.hxx`:94 - `BOPDS_Iterator::BlockLength()`
     pub fn BOPDS_IteratorSI_inherited_BlockLength(
         self_: *const BOPDS_IteratorSI,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BOPDS_Iterator.hxx`:98 - `BOPDS_Iterator::SetRunParallel()`
+    /// Inherited: **Source:** `BOPDS_Iterator.hxx`:99 - `BOPDS_Iterator::SetRunParallel()`
     pub fn BOPDS_IteratorSI_inherited_SetRunParallel(
         self_: *mut BOPDS_IteratorSI,
         theFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BOPDS_Iterator.hxx`:101 - `BOPDS_Iterator::RunParallel()`
+    /// Inherited: **Source:** `BOPDS_Iterator.hxx`:102 - `BOPDS_Iterator::RunParallel()`
     pub fn BOPDS_IteratorSI_inherited_RunParallel(
         self_: *const BOPDS_IteratorSI,
     ) -> crate::OcctResult<bool>;
@@ -10546,140 +10443,139 @@ unsafe extern "C" {
     pub fn BOPDS_Pave_destructor(self_: *mut BOPDS_Pave);
     /// **Source:** `BOPDS_Pave.hxx`:33 - `BOPDS_Pave::BOPDS_Pave()`
     pub fn BOPDS_Pave_ctor() -> crate::OcctResult<*mut BOPDS_Pave>;
-    /// **Source:** `BOPDS_Pave.hxx`:37 - `BOPDS_Pave::SetIndex()`
+    /// **Source:** `BOPDS_Pave.hxx`:36 - `BOPDS_Pave::BOPDS_Pave()`
+    pub fn BOPDS_Pave_ctor_int_real(
+        theIndex: i32,
+        theParameter: f64,
+    ) -> crate::OcctResult<*mut BOPDS_Pave>;
+    /// **Source:** `BOPDS_Pave.hxx`:40 - `BOPDS_Pave::SetIndex()`
     pub fn BOPDS_Pave_set_index(self_: *mut BOPDS_Pave, theIndex: i32) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_Pave.hxx`:41 - `BOPDS_Pave::Index()`
+    /// **Source:** `BOPDS_Pave.hxx`:44 - `BOPDS_Pave::Index()`
     pub fn BOPDS_Pave_index(self_: *const BOPDS_Pave) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPDS_Pave.hxx`:45 - `BOPDS_Pave::SetParameter()`
+    /// **Source:** `BOPDS_Pave.hxx`:48 - `BOPDS_Pave::SetParameter()`
     pub fn BOPDS_Pave_set_parameter(
         self_: *mut BOPDS_Pave,
         theParameter: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_Pave.hxx`:49 - `BOPDS_Pave::Parameter()`
+    /// **Source:** `BOPDS_Pave.hxx`:52 - `BOPDS_Pave::Parameter()`
     pub fn BOPDS_Pave_parameter(self_: *const BOPDS_Pave) -> crate::OcctResult<f64>;
-    /// **Source:** `BOPDS_Pave.hxx`:54 - `BOPDS_Pave::Contents()`
+    /// **Source:** `BOPDS_Pave.hxx`:57 - `BOPDS_Pave::Contents()`
     pub fn BOPDS_Pave_contents(
         self_: *const BOPDS_Pave,
         theIndex: *mut i32,
         theParameter: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_Pave.hxx`:59 - `BOPDS_Pave::IsLess()`
+    /// **Source:** `BOPDS_Pave.hxx`:62 - `BOPDS_Pave::IsLess()`
     pub fn BOPDS_Pave_is_less(
         self_: *const BOPDS_Pave,
         theOther: *const BOPDS_Pave,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_Pave.hxx`:66 - `BOPDS_Pave::IsEqual()`
+    /// **Source:** `BOPDS_Pave.hxx`:69 - `BOPDS_Pave::IsEqual()`
     pub fn BOPDS_Pave_is_equal(
         self_: *const BOPDS_Pave,
         theOther: *const BOPDS_Pave,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_Pave.hxx`:70 - `BOPDS_Pave::Dump()`
+    /// **Source:** `BOPDS_Pave.hxx`:73 - `BOPDS_Pave::Dump()`
     pub fn BOPDS_Pave_dump(self_: *const BOPDS_Pave) -> *const std::ffi::c_char;
     // ======================== BOPDS_PaveBlock ========================
     pub fn BOPDS_PaveBlock_destructor(self_: *mut BOPDS_PaveBlock);
-    /// **Source:** `BOPDS_PaveBlock.hxx`:40 - `BOPDS_PaveBlock::BOPDS_PaveBlock()`
+    /// **Source:** `BOPDS_PaveBlock.hxx`:38 - `BOPDS_PaveBlock::BOPDS_PaveBlock()`
     pub fn BOPDS_PaveBlock_ctor() -> crate::OcctResult<*mut BOPDS_PaveBlock>;
-    /// **Source:** `BOPDS_PaveBlock.hxx`:44 - `BOPDS_PaveBlock::BOPDS_PaveBlock()`
-    pub fn BOPDS_PaveBlock_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    /// **Source:** `BOPDS_PaveBlock.hxx`:42 - `BOPDS_PaveBlock::BOPDS_PaveBlock()`
+    pub fn BOPDS_PaveBlock_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPDS_PaveBlock>;
-    /// **Source:** `BOPDS_PaveBlock.hxx`:48 - `BOPDS_PaveBlock::SetPave1()`
+    /// **Source:** `BOPDS_PaveBlock.hxx`:46 - `BOPDS_PaveBlock::SetPave1()`
     pub fn BOPDS_PaveBlock_set_pave1(
         self_: *mut BOPDS_PaveBlock,
         thePave: *const BOPDS_Pave,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_PaveBlock.hxx`:52 - `BOPDS_PaveBlock::Pave1()`
+    /// **Source:** `BOPDS_PaveBlock.hxx`:50 - `BOPDS_PaveBlock::Pave1()`
     pub fn BOPDS_PaveBlock_pave1(
         self_: *const BOPDS_PaveBlock,
     ) -> crate::OcctResult<*const BOPDS_Pave>;
-    /// **Source:** `BOPDS_PaveBlock.hxx`:56 - `BOPDS_PaveBlock::SetPave2()`
+    /// **Source:** `BOPDS_PaveBlock.hxx`:54 - `BOPDS_PaveBlock::SetPave2()`
     pub fn BOPDS_PaveBlock_set_pave2(
         self_: *mut BOPDS_PaveBlock,
         thePave: *const BOPDS_Pave,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_PaveBlock.hxx`:60 - `BOPDS_PaveBlock::Pave2()`
+    /// **Source:** `BOPDS_PaveBlock.hxx`:58 - `BOPDS_PaveBlock::Pave2()`
     pub fn BOPDS_PaveBlock_pave2(
         self_: *const BOPDS_PaveBlock,
     ) -> crate::OcctResult<*const BOPDS_Pave>;
-    /// **Source:** `BOPDS_PaveBlock.hxx`:64 - `BOPDS_PaveBlock::SetEdge()`
+    /// **Source:** `BOPDS_PaveBlock.hxx`:62 - `BOPDS_PaveBlock::SetEdge()`
     pub fn BOPDS_PaveBlock_set_edge(
         self_: *mut BOPDS_PaveBlock,
         theEdge: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_PaveBlock.hxx`:68 - `BOPDS_PaveBlock::Edge()`
+    /// **Source:** `BOPDS_PaveBlock.hxx`:66 - `BOPDS_PaveBlock::Edge()`
     pub fn BOPDS_PaveBlock_edge(self_: *const BOPDS_PaveBlock) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPDS_PaveBlock.hxx`:72 - `BOPDS_PaveBlock::HasEdge()`
+    /// **Source:** `BOPDS_PaveBlock.hxx`:70 - `BOPDS_PaveBlock::HasEdge()`
     pub fn BOPDS_PaveBlock_has_edge(self_: *const BOPDS_PaveBlock) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_PaveBlock.hxx`:77 - `BOPDS_PaveBlock::HasEdge()`
+    /// **Source:** `BOPDS_PaveBlock.hxx`:75 - `BOPDS_PaveBlock::HasEdge()`
     pub fn BOPDS_PaveBlock_has_edge_int(
         self_: *const BOPDS_PaveBlock,
         theEdge: *mut i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_PaveBlock.hxx`:82 - `BOPDS_PaveBlock::SetOriginalEdge()`
+    /// **Source:** `BOPDS_PaveBlock.hxx`:80 - `BOPDS_PaveBlock::SetOriginalEdge()`
     pub fn BOPDS_PaveBlock_set_original_edge(
         self_: *mut BOPDS_PaveBlock,
         theEdge: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_PaveBlock.hxx`:86 - `BOPDS_PaveBlock::OriginalEdge()`
+    /// **Source:** `BOPDS_PaveBlock.hxx`:84 - `BOPDS_PaveBlock::OriginalEdge()`
     pub fn BOPDS_PaveBlock_original_edge(self_: *const BOPDS_PaveBlock) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPDS_PaveBlock.hxx`:91 - `BOPDS_PaveBlock::IsSplitEdge()`
+    /// **Source:** `BOPDS_PaveBlock.hxx`:89 - `BOPDS_PaveBlock::IsSplitEdge()`
     pub fn BOPDS_PaveBlock_is_split_edge(self_: *const BOPDS_PaveBlock) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_PaveBlock.hxx`:96 - `BOPDS_PaveBlock::Range()`
+    /// **Source:** `BOPDS_PaveBlock.hxx`:94 - `BOPDS_PaveBlock::Range()`
     pub fn BOPDS_PaveBlock_range(
         self_: *const BOPDS_PaveBlock,
         theT1: *mut f64,
         theT2: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_PaveBlock.hxx`:102 - `BOPDS_PaveBlock::HasSameBounds()`
+    /// **Source:** `BOPDS_PaveBlock.hxx`:100 - `BOPDS_PaveBlock::HasSameBounds()`
     pub fn BOPDS_PaveBlock_has_same_bounds(
         self_: *const BOPDS_PaveBlock,
-        theOther: *const HandleBOPDSPaveBlock,
+        theOther: *const Handle_BOPDS_PaveBlock,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_PaveBlock.hxx`:107 - `BOPDS_PaveBlock::Indices()`
+    /// **Source:** `BOPDS_PaveBlock.hxx`:105 - `BOPDS_PaveBlock::Indices()`
     pub fn BOPDS_PaveBlock_indices(
         self_: *const BOPDS_PaveBlock,
         theIndex1: *mut i32,
         theIndex2: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_PaveBlock.hxx`:111 - `BOPDS_PaveBlock::IsToUpdate()`
+    /// **Source:** `BOPDS_PaveBlock.hxx`:109 - `BOPDS_PaveBlock::IsToUpdate()`
     pub fn BOPDS_PaveBlock_is_to_update(self_: *const BOPDS_PaveBlock) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_PaveBlock.hxx`:115 - `BOPDS_PaveBlock::AppendExtPave()`
+    /// **Source:** `BOPDS_PaveBlock.hxx`:113 - `BOPDS_PaveBlock::AppendExtPave()`
     pub fn BOPDS_PaveBlock_append_ext_pave(
         self_: *mut BOPDS_PaveBlock,
         thePave: *const BOPDS_Pave,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_PaveBlock.hxx`:119 - `BOPDS_PaveBlock::AppendExtPave1()`
+    /// **Source:** `BOPDS_PaveBlock.hxx`:117 - `BOPDS_PaveBlock::AppendExtPave1()`
     pub fn BOPDS_PaveBlock_append_ext_pave1(
         self_: *mut BOPDS_PaveBlock,
         thePave: *const BOPDS_Pave,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_PaveBlock.hxx`:123 - `BOPDS_PaveBlock::RemoveExtPave()`
+    /// **Source:** `BOPDS_PaveBlock.hxx`:121 - `BOPDS_PaveBlock::RemoveExtPave()`
     pub fn BOPDS_PaveBlock_remove_ext_pave(
         self_: *mut BOPDS_PaveBlock,
         theVertNum: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_PaveBlock.hxx`:127 - `BOPDS_PaveBlock::ExtPaves()`
+    /// **Source:** `BOPDS_PaveBlock.hxx`:125 - `BOPDS_PaveBlock::ExtPaves()`
     pub fn BOPDS_PaveBlock_ext_paves(
         self_: *const BOPDS_PaveBlock,
-    ) -> crate::OcctResult<*const BOPDS_ListOfPave>;
-    /// **Source:** `BOPDS_PaveBlock.hxx`:131 - `BOPDS_PaveBlock::ChangeExtPaves()`
+    ) -> crate::OcctResult<*const NCollection_List_BOPDS_Pave>;
+    /// **Source:** `BOPDS_PaveBlock.hxx`:129 - `BOPDS_PaveBlock::ChangeExtPaves()`
     pub fn BOPDS_PaveBlock_change_ext_paves(
         self_: *mut BOPDS_PaveBlock,
-    ) -> crate::OcctResult<*mut BOPDS_ListOfPave>;
-    /// **Source:** `BOPDS_PaveBlock.hxx`:138 - `BOPDS_PaveBlock::Update()`
-    pub fn BOPDS_PaveBlock_update(
-        self_: *mut BOPDS_PaveBlock,
-        theLPB: *mut BOPDS_ListOfPaveBlock,
-        theFlag: bool,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_PaveBlock.hxx`:146 - `BOPDS_PaveBlock::ContainsParameter()`
+    ) -> crate::OcctResult<*mut NCollection_List_BOPDS_Pave>;
+    /// **Source:** `BOPDS_PaveBlock.hxx`:144 - `BOPDS_PaveBlock::ContainsParameter()`
     pub fn BOPDS_PaveBlock_contains_parameter(
         self_: *const BOPDS_PaveBlock,
         thePrm: f64,
         theTol: f64,
         theInd: *mut i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_PaveBlock.hxx`:155 - `BOPDS_PaveBlock::SetShrunkData()`
+    /// **Source:** `BOPDS_PaveBlock.hxx`:153 - `BOPDS_PaveBlock::SetShrunkData()`
     pub fn BOPDS_PaveBlock_set_shrunk_data(
         self_: *mut BOPDS_PaveBlock,
         theTS1: f64,
@@ -10687,7 +10583,7 @@ unsafe extern "C" {
         theBox: *const Bnd_Box,
         theIsSplittable: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_PaveBlock.hxx`:165 - `BOPDS_PaveBlock::ShrunkData()`
+    /// **Source:** `BOPDS_PaveBlock.hxx`:163 - `BOPDS_PaveBlock::ShrunkData()`
     pub fn BOPDS_PaveBlock_shrunk_data(
         self_: *const BOPDS_PaveBlock,
         theTS1: *mut f64,
@@ -10695,22 +10591,22 @@ unsafe extern "C" {
         theBox: *mut Bnd_Box,
         theIsSplittable: *mut bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_PaveBlock.hxx`:173 - `BOPDS_PaveBlock::HasShrunkData()`
+    /// **Source:** `BOPDS_PaveBlock.hxx`:171 - `BOPDS_PaveBlock::HasShrunkData()`
     pub fn BOPDS_PaveBlock_has_shrunk_data(
         self_: *const BOPDS_PaveBlock,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_PaveBlock.hxx`:175 - `BOPDS_PaveBlock::Dump()`
+    /// **Source:** `BOPDS_PaveBlock.hxx`:173 - `BOPDS_PaveBlock::Dump()`
     pub fn BOPDS_PaveBlock_dump(self_: *const BOPDS_PaveBlock) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_PaveBlock.hxx`:180 - `BOPDS_PaveBlock::IsSplittable()`
+    /// **Source:** `BOPDS_PaveBlock.hxx`:178 - `BOPDS_PaveBlock::IsSplittable()`
     pub fn BOPDS_PaveBlock_is_splittable(self_: *const BOPDS_PaveBlock) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_PaveBlock.hxx`:182 - `BOPDS_PaveBlock::DynamicType()`
+    /// **Source:** `BOPDS_PaveBlock.hxx`:180 - `BOPDS_PaveBlock::DynamicType()`
     pub fn BOPDS_PaveBlock_dynamic_type(
         self_: *const BOPDS_PaveBlock,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BOPDS_PaveBlock.hxx`:182 - `BOPDS_PaveBlock::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BOPDS_PaveBlock.hxx`:180 - `BOPDS_PaveBlock::get_type_name()`
     pub fn BOPDS_PaveBlock_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BOPDS_PaveBlock.hxx`:182 - `BOPDS_PaveBlock::get_type_descriptor()`
-    pub fn BOPDS_PaveBlock_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `BOPDS_PaveBlock.hxx`:180 - `BOPDS_PaveBlock::get_type_descriptor()`
+    pub fn BOPDS_PaveBlock_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BOPDS_PaveBlock to Standard_Transient
     pub fn BOPDS_PaveBlock_as_Standard_Transient(
         self_: *const BOPDS_PaveBlock,
@@ -10722,54 +10618,54 @@ unsafe extern "C" {
     /// Wrap BOPDS_PaveBlock in a Handle
     pub fn BOPDS_PaveBlock_to_handle(
         obj: *mut BOPDS_PaveBlock,
-    ) -> crate::OcctResult<*mut HandleBOPDSPaveBlock>;
+    ) -> crate::OcctResult<*mut Handle_BOPDS_PaveBlock>;
     /// Destroy Handle<BOPDS_PaveBlock>
-    pub fn HandleBOPDSPaveBlock_destructor(self_: *mut HandleBOPDSPaveBlock);
+    pub fn Handle_BOPDS_PaveBlock_destructor(self_: *mut Handle_BOPDS_PaveBlock);
     /// Clone Handle<BOPDS_PaveBlock> (increments reference count)
-    pub fn HandleBOPDSPaveBlock_clone(
-        self_: *const HandleBOPDSPaveBlock,
-    ) -> crate::OcctResult<*mut HandleBOPDSPaveBlock>;
+    pub fn Handle_BOPDS_PaveBlock_clone(
+        self_: *const Handle_BOPDS_PaveBlock,
+    ) -> crate::OcctResult<*mut Handle_BOPDS_PaveBlock>;
     /// Check if Handle<BOPDS_PaveBlock> is null
-    pub fn HandleBOPDSPaveBlock_is_null(self_: *const HandleBOPDSPaveBlock) -> bool;
+    pub fn Handle_BOPDS_PaveBlock_is_null(self_: *const Handle_BOPDS_PaveBlock) -> bool;
     /// Dereference Handle to get *const BOPDS_PaveBlock
-    pub fn HandleBOPDSPaveBlock_get(
-        handle: *const HandleBOPDSPaveBlock,
+    pub fn Handle_BOPDS_PaveBlock_get(
+        handle: *const Handle_BOPDS_PaveBlock,
     ) -> crate::OcctResult<*const BOPDS_PaveBlock>;
     /// Dereference Handle to get *mut BOPDS_PaveBlock
-    pub fn HandleBOPDSPaveBlock_get_mut(
-        handle: *mut HandleBOPDSPaveBlock,
+    pub fn Handle_BOPDS_PaveBlock_get_mut(
+        handle: *mut Handle_BOPDS_PaveBlock,
     ) -> crate::OcctResult<*mut BOPDS_PaveBlock>;
     /// Upcast Handle<BOPDS_PaveBlock> to Handle<Standard_Transient>
-    pub fn HandleBOPDSPaveBlock_to_HandleStandardTransient(
-        self_: *const HandleBOPDSPaveBlock,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_BOPDS_PaveBlock_to_Handle_Standard_Transient(
+        self_: *const Handle_BOPDS_PaveBlock,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BOPDS_PaveBlock_inherited_IsInstance(
         self_: *const BOPDS_PaveBlock,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BOPDS_PaveBlock_inherited_IsKind(
         self_: *const BOPDS_PaveBlock,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BOPDS_PaveBlock_inherited_This(
         self_: *const BOPDS_PaveBlock,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BOPDS_PaveBlock_inherited_GetRefCount(
         self_: *const BOPDS_PaveBlock,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BOPDS_PaveBlock_inherited_IncrementRefCounter(
         self_: *mut BOPDS_PaveBlock,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BOPDS_PaveBlock_inherited_DecrementRefCounter(
         self_: *mut BOPDS_PaveBlock,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BOPDS_PaveBlock_inherited_Delete(
         self_: *const BOPDS_PaveBlock,
     ) -> *const std::ffi::c_char;
@@ -10808,8 +10704,8 @@ unsafe extern "C" {
     /// **Source:** `BOPDS_ShapeInfo.hxx`:37 - `BOPDS_ShapeInfo::BOPDS_ShapeInfo()`
     pub fn BOPDS_ShapeInfo_ctor() -> crate::OcctResult<*mut BOPDS_ShapeInfo>;
     /// **Source:** `BOPDS_ShapeInfo.hxx`:43 - `BOPDS_ShapeInfo::BOPDS_ShapeInfo()`
-    pub fn BOPDS_ShapeInfo_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    pub fn BOPDS_ShapeInfo_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPDS_ShapeInfo>;
     /// **Source:** `BOPDS_ShapeInfo.hxx`:47 - `BOPDS_ShapeInfo::SetShape()`
     pub fn BOPDS_ShapeInfo_set_shape(
@@ -10842,11 +10738,11 @@ unsafe extern "C" {
     /// **Source:** `BOPDS_ShapeInfo.hxx`:75 - `BOPDS_ShapeInfo::SubShapes()`
     pub fn BOPDS_ShapeInfo_sub_shapes(
         self_: *const BOPDS_ShapeInfo,
-    ) -> crate::OcctResult<*const TColStd_ListOfInteger>;
+    ) -> crate::OcctResult<*const NCollection_List_int>;
     /// **Source:** `BOPDS_ShapeInfo.hxx`:79 - `BOPDS_ShapeInfo::ChangeSubShapes()`
     pub fn BOPDS_ShapeInfo_change_sub_shapes(
         self_: *mut BOPDS_ShapeInfo,
-    ) -> crate::OcctResult<*mut TColStd_ListOfInteger>;
+    ) -> crate::OcctResult<*mut NCollection_List_int>;
     /// **Source:** `BOPDS_ShapeInfo.hxx`:84 - `BOPDS_ShapeInfo::HasSubShape()`
     pub fn BOPDS_ShapeInfo_has_sub_shape(
         self_: *const BOPDS_ShapeInfo,
@@ -10884,54 +10780,54 @@ unsafe extern "C" {
     pub fn BOPDS_ShapeInfo_dump(self_: *const BOPDS_ShapeInfo) -> *const std::ffi::c_char;
     // ======================== BOPDS_SubIterator ========================
     pub fn BOPDS_SubIterator_destructor(self_: *mut BOPDS_SubIterator);
-    /// **Source:** `BOPDS_SubIterator.hxx`:39 - `BOPDS_SubIterator::BOPDS_SubIterator()`
+    /// **Source:** `BOPDS_SubIterator.hxx`:40 - `BOPDS_SubIterator::BOPDS_SubIterator()`
     pub fn BOPDS_SubIterator_ctor() -> crate::OcctResult<*mut BOPDS_SubIterator>;
-    /// **Source:** `BOPDS_SubIterator.hxx`:44 - `BOPDS_SubIterator::BOPDS_SubIterator()`
-    pub fn BOPDS_SubIterator_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    /// **Source:** `BOPDS_SubIterator.hxx`:45 - `BOPDS_SubIterator::BOPDS_SubIterator()`
+    pub fn BOPDS_SubIterator_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPDS_SubIterator>;
-    /// **Source:** `BOPDS_SubIterator.hxx`:48 - `BOPDS_SubIterator::SetDS()`
+    /// **Source:** `BOPDS_SubIterator.hxx`:49 - `BOPDS_SubIterator::SetDS()`
     pub fn BOPDS_SubIterator_set_ds(
         self_: *mut BOPDS_SubIterator,
         pDS: *const *mut BOPDS_DS,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_SubIterator.hxx`:51 - `BOPDS_SubIterator::DS()`
+    /// **Source:** `BOPDS_SubIterator.hxx`:52 - `BOPDS_SubIterator::DS()`
     pub fn BOPDS_SubIterator_ds(
         self_: *const BOPDS_SubIterator,
     ) -> crate::OcctResult<*const BOPDS_DS>;
-    /// **Source:** `BOPDS_SubIterator.hxx`:54 - `BOPDS_SubIterator::SetSubSet1()`
+    /// **Source:** `BOPDS_SubIterator.hxx`:55 - `BOPDS_SubIterator::SetSubSet1()`
     pub fn BOPDS_SubIterator_set_sub_set1(
         self_: *mut BOPDS_SubIterator,
-        theLI: *const TColStd_ListOfInteger,
+        theLI: *const NCollection_List_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_SubIterator.hxx`:60 - `BOPDS_SubIterator::SubSet1()`
+    /// **Source:** `BOPDS_SubIterator.hxx`:61 - `BOPDS_SubIterator::SubSet1()`
     pub fn BOPDS_SubIterator_sub_set1(
         self_: *const BOPDS_SubIterator,
-    ) -> crate::OcctResult<*const TColStd_ListOfInteger>;
-    /// **Source:** `BOPDS_SubIterator.hxx`:63 - `BOPDS_SubIterator::SetSubSet2()`
+    ) -> crate::OcctResult<*const NCollection_List_int>;
+    /// **Source:** `BOPDS_SubIterator.hxx`:64 - `BOPDS_SubIterator::SetSubSet2()`
     pub fn BOPDS_SubIterator_set_sub_set2(
         self_: *mut BOPDS_SubIterator,
-        theLI: *const TColStd_ListOfInteger,
+        theLI: *const NCollection_List_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_SubIterator.hxx`:69 - `BOPDS_SubIterator::SubSet2()`
+    /// **Source:** `BOPDS_SubIterator.hxx`:70 - `BOPDS_SubIterator::SubSet2()`
     pub fn BOPDS_SubIterator_sub_set2(
         self_: *const BOPDS_SubIterator,
-    ) -> crate::OcctResult<*const TColStd_ListOfInteger>;
-    /// **Source:** `BOPDS_SubIterator.hxx`:72 - `BOPDS_SubIterator::Initialize()`
+    ) -> crate::OcctResult<*const NCollection_List_int>;
+    /// **Source:** `BOPDS_SubIterator.hxx`:73 - `BOPDS_SubIterator::Initialize()`
     pub fn BOPDS_SubIterator_initialize(self_: *mut BOPDS_SubIterator) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_SubIterator.hxx`:75 - `BOPDS_SubIterator::More()`
+    /// **Source:** `BOPDS_SubIterator.hxx`:76 - `BOPDS_SubIterator::More()`
     pub fn BOPDS_SubIterator_more(self_: *const BOPDS_SubIterator) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPDS_SubIterator.hxx`:78 - `BOPDS_SubIterator::Next()`
+    /// **Source:** `BOPDS_SubIterator.hxx`:79 - `BOPDS_SubIterator::Next()`
     pub fn BOPDS_SubIterator_next(self_: *mut BOPDS_SubIterator) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_SubIterator.hxx`:83 - `BOPDS_SubIterator::Value()`
+    /// **Source:** `BOPDS_SubIterator.hxx`:84 - `BOPDS_SubIterator::Value()`
     pub fn BOPDS_SubIterator_value(
         self_: *const BOPDS_SubIterator,
         theIndex1: *mut i32,
         theIndex2: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_SubIterator.hxx`:87 - `BOPDS_SubIterator::Prepare()`
+    /// **Source:** `BOPDS_SubIterator.hxx`:88 - `BOPDS_SubIterator::Prepare()`
     pub fn BOPDS_SubIterator_prepare(self_: *mut BOPDS_SubIterator) -> *const std::ffi::c_char;
-    /// **Source:** `BOPDS_SubIterator.hxx`:90 - `BOPDS_SubIterator::ExpectedLength()`
+    /// **Source:** `BOPDS_SubIterator.hxx`:91 - `BOPDS_SubIterator::ExpectedLength()`
     pub fn BOPDS_SubIterator_expected_length(
         self_: *const BOPDS_SubIterator,
     ) -> crate::OcctResult<i32>;
@@ -10952,15 +10848,15 @@ unsafe extern "C" {
     pub fn BOPTools_AlgoTools_destructor(self_: *mut BOPTools_AlgoTools);
     /// **Source:** `BOPTools_AlgoTools.hxx` - `BOPTools_AlgoTools::BOPTools_AlgoTools()`
     pub fn BOPTools_AlgoTools_ctor() -> crate::OcctResult<*mut BOPTools_AlgoTools>;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:69 - `BOPTools_AlgoTools::DTolerance()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:70 - `BOPTools_AlgoTools::DTolerance()`
     pub fn BOPTools_AlgoTools_d_tolerance() -> crate::OcctResult<f64>;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:76 - `BOPTools_AlgoTools::ComputeVV()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:77 - `BOPTools_AlgoTools::ComputeVV()`
     pub fn BOPTools_AlgoTools_compute_vv_vertex_pnt_real(
         theV: *const TopoDS_Vertex,
         theP: *const gp_Pnt,
         theTolP: f64,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:84 - `BOPTools_AlgoTools::ComputeVV()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:85 - `BOPTools_AlgoTools::ComputeVV()`
     pub fn BOPTools_AlgoTools_compute_vv_vertex2_real(
         theV1: *const TopoDS_Vertex,
         theV2: *const TopoDS_Vertex,
@@ -10968,22 +10864,22 @@ unsafe extern "C" {
     ) -> crate::OcctResult<i32>;
     /// **Source:** `BOPTools_AlgoTools.hxx`:92 - `BOPTools_AlgoTools::MakeVertex()`
     pub fn BOPTools_AlgoTools_make_vertex(
-        theLV: *const TopTools_ListOfShape,
+        theLV: *const NCollection_List_TopoDS_Shape,
         theV: *mut TopoDS_Vertex,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:95 - `BOPTools_AlgoTools::MakeNewVertex()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:96 - `BOPTools_AlgoTools::MakeNewVertex()`
     pub fn BOPTools_AlgoTools_make_new_vertex_pnt_real_vertex(
         aP1: *const gp_Pnt,
         aTol: f64,
         aNewVertex: *mut TopoDS_Vertex,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:100 - `BOPTools_AlgoTools::MakeNewVertex()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:101 - `BOPTools_AlgoTools::MakeNewVertex()`
     pub fn BOPTools_AlgoTools_make_new_vertex_vertex3(
         aV1: *const TopoDS_Vertex,
         aV2: *const TopoDS_Vertex,
         aNewVertex: *mut TopoDS_Vertex,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:106 - `BOPTools_AlgoTools::MakeNewVertex()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:107 - `BOPTools_AlgoTools::MakeNewVertex()`
     pub fn BOPTools_AlgoTools_make_new_vertex_edge_real_edge_real_vertex(
         aE1: *const TopoDS_Edge,
         aP1: f64,
@@ -10991,31 +10887,31 @@ unsafe extern "C" {
         aP2: f64,
         aNewVertex: *mut TopoDS_Vertex,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:114 - `BOPTools_AlgoTools::MakeNewVertex()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:115 - `BOPTools_AlgoTools::MakeNewVertex()`
     pub fn BOPTools_AlgoTools_make_new_vertex_edge_real_face_vertex(
         aE1: *const TopoDS_Edge,
         aP1: f64,
         aF2: *const TopoDS_Face,
         aNewVertex: *mut TopoDS_Vertex,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:123 - `BOPTools_AlgoTools::UpdateVertex()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:124 - `BOPTools_AlgoTools::UpdateVertex()`
     pub fn BOPTools_AlgoTools_update_vertex_curve_real_vertex(
         aIC: *const IntTools_Curve,
         aT: f64,
         aV: *const TopoDS_Vertex,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:130 - `BOPTools_AlgoTools::UpdateVertex()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:131 - `BOPTools_AlgoTools::UpdateVertex()`
     pub fn BOPTools_AlgoTools_update_vertex_edge_real_vertex(
         aE: *const TopoDS_Edge,
         aT: f64,
         aV: *const TopoDS_Vertex,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:137 - `BOPTools_AlgoTools::UpdateVertex()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:138 - `BOPTools_AlgoTools::UpdateVertex()`
     pub fn BOPTools_AlgoTools_update_vertex_vertex2(
         aVF: *const TopoDS_Vertex,
         aVN: *const TopoDS_Vertex,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:141 - `BOPTools_AlgoTools::MakeEdge()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:142 - `BOPTools_AlgoTools::MakeEdge()`
     pub fn BOPTools_AlgoTools_make_edge(
         theCurve: *const IntTools_Curve,
         theV1: *const TopoDS_Vertex,
@@ -11025,11 +10921,11 @@ unsafe extern "C" {
         theTolR3D: f64,
         theE: *mut TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:150 - `BOPTools_AlgoTools::CopyEdge()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:151 - `BOPTools_AlgoTools::CopyEdge()`
     pub fn BOPTools_AlgoTools_copy_edge(
         theEdge: *const TopoDS_Edge,
     ) -> crate::OcctResult<*mut TopoDS_Edge>;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:154 - `BOPTools_AlgoTools::MakeSplitEdge()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:155 - `BOPTools_AlgoTools::MakeSplitEdge()`
     pub fn BOPTools_AlgoTools_make_split_edge(
         aE1: *const TopoDS_Edge,
         aV1: *const TopoDS_Vertex,
@@ -11038,7 +10934,7 @@ unsafe extern "C" {
         aP2: f64,
         aNewEdge: *mut TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:163 - `BOPTools_AlgoTools::MakeSectEdge()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:164 - `BOPTools_AlgoTools::MakeSectEdge()`
     pub fn BOPTools_AlgoTools_make_sect_edge(
         aIC: *const IntTools_Curve,
         aV1: *const TopoDS_Vertex,
@@ -11047,74 +10943,74 @@ unsafe extern "C" {
         aP2: f64,
         aNewEdge: *mut TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:176 - `BOPTools_AlgoTools::ComputeState()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:177 - `BOPTools_AlgoTools::ComputeState()`
     pub fn BOPTools_AlgoTools_compute_state_pnt_solid_real_handleinttoolscontext(
         thePoint: *const gp_Pnt,
         theSolid: *const TopoDS_Solid,
         theTol: f64,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:186 - `BOPTools_AlgoTools::ComputeState()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:187 - `BOPTools_AlgoTools::ComputeState()`
     pub fn BOPTools_AlgoTools_compute_state_vertex_solid_real_handleinttoolscontext(
         theVertex: *const TopoDS_Vertex,
         theSolid: *const TopoDS_Solid,
         theTol: f64,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:196 - `BOPTools_AlgoTools::ComputeState()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:197 - `BOPTools_AlgoTools::ComputeState()`
     pub fn BOPTools_AlgoTools_compute_state_edge_solid_real_handleinttoolscontext(
         theEdge: *const TopoDS_Edge,
         theSolid: *const TopoDS_Solid,
         theTol: f64,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:207 - `BOPTools_AlgoTools::ComputeState()`
-    pub fn BOPTools_AlgoTools_compute_state_face_solid_real_indexedmapofshape_handleinttoolscontext(
+    /// **Source:** `BOPTools_AlgoTools.hxx`:208 - `BOPTools_AlgoTools::ComputeState()`
+    pub fn BOPTools_AlgoTools_compute_state_face_solid_real_imap_shape_handleinttoolscontext(
         theFace: *const TopoDS_Face,
         theSolid: *const TopoDS_Solid,
         theTol: f64,
-        theBounds: *const TopTools_IndexedMapOfShape,
-        theContext: *const HandleIntToolsContext,
+        theBounds: *const NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher,
+        theContext: *const Handle_IntTools_Context,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:218 - `BOPTools_AlgoTools::ComputeStateByOnePoint()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:220 - `BOPTools_AlgoTools::ComputeStateByOnePoint()`
     pub fn BOPTools_AlgoTools_compute_state_by_one_point(
         theShape: *const TopoDS_Shape,
         theSolid: *const TopoDS_Solid,
         theTol: f64,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:229 - `BOPTools_AlgoTools::GetFaceOff()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:231 - `BOPTools_AlgoTools::GetFaceOff()`
     pub fn BOPTools_AlgoTools_get_face_off(
         theEdge: *const TopoDS_Edge,
         theFace: *const TopoDS_Face,
-        theLCEF: *mut BOPTools_ListOfCoupleOfShape,
+        theLCEF: *mut NCollection_List_BOPTools_CoupleOfShape,
         theFaceOff: *mut TopoDS_Face,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:243 - `BOPTools_AlgoTools::IsInternalFace()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:245 - `BOPTools_AlgoTools::IsInternalFace()`
     pub fn BOPTools_AlgoTools_is_internal_face_face_edge_face2_handleinttoolscontext(
         theFace: *const TopoDS_Face,
         theEdge: *const TopoDS_Edge,
         theFace1: *const TopoDS_Face,
         theFace2: *const TopoDS_Face,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:257 - `BOPTools_AlgoTools::IsInternalFace()`
-    pub fn BOPTools_AlgoTools_is_internal_face_face_edge_listofshape_handleinttoolscontext(
+    /// **Source:** `BOPTools_AlgoTools.hxx`:258 - `BOPTools_AlgoTools::IsInternalFace()`
+    pub fn BOPTools_AlgoTools_is_internal_face_face_edge_list_shape_handleinttoolscontext(
         theFace: *const TopoDS_Face,
         theEdge: *const TopoDS_Edge,
-        theLF: *mut TopTools_ListOfShape,
-        theContext: *const HandleIntToolsContext,
+        theLF: *mut NCollection_List_TopoDS_Shape,
+        theContext: *const Handle_IntTools_Context,
     ) -> crate::OcctResult<i32>;
     /// **Source:** `BOPTools_AlgoTools.hxx`:268 - `BOPTools_AlgoTools::IsInternalFace()`
-    pub fn BOPTools_AlgoTools_is_internal_face_face_solid_indexeddatamapofshapelistofshape_real_handleinttoolscontext(
+    pub fn BOPTools_AlgoTools_is_internal_face_face_solid_indexeddatamap_topods_shape_ncollection_list_topods_shape_toptools_shapemaphasher_real_handleinttoolscontext(
         theFace: *const TopoDS_Face,
         theSolid: *const TopoDS_Solid,
-        theMEF: *mut TopTools_IndexedDataMapOfShapeListOfShape,
+        theMEF: *mut NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
         theTol: f64,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:278 - `BOPTools_AlgoTools::MakePCurve()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:280 - `BOPTools_AlgoTools::MakePCurve()`
     pub fn BOPTools_AlgoTools_make_p_curve(
         theE: *const TopoDS_Edge,
         theF1: *const TopoDS_Face,
@@ -11122,116 +11018,116 @@ unsafe extern "C" {
         theCurve: *const IntTools_Curve,
         thePC1: bool,
         thePC2: bool,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:289 - `BOPTools_AlgoTools::IsHole()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:291 - `BOPTools_AlgoTools::IsHole()`
     pub fn BOPTools_AlgoTools_is_hole(
         theW: *const TopoDS_Shape,
         theF: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:314 - `BOPTools_AlgoTools::IsSplitToReverse()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:315 - `BOPTools_AlgoTools::IsSplitToReverse()`
     pub fn BOPTools_AlgoTools_is_split_to_reverse_shape2_handleinttoolscontext_intptr(
         theSplit: *const TopoDS_Shape,
         theShape: *const TopoDS_Shape,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
         theError: *mut i32,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `BOPTools_AlgoTools.hxx`:323 - `BOPTools_AlgoTools::IsSplitToReverseWithWarn()`
     pub fn BOPTools_AlgoTools_is_split_to_reverse_with_warn(
         theSplit: *const TopoDS_Shape,
         theShape: *const TopoDS_Shape,
-        theContext: *const HandleIntToolsContext,
-        theReport: *const HandleMessageReport,
+        theContext: *const Handle_IntTools_Context,
+        theReport: *const Handle_Message_Report,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `BOPTools_AlgoTools.hxx`:349 - `BOPTools_AlgoTools::IsSplitToReverse()`
     pub fn BOPTools_AlgoTools_is_split_to_reverse_face2_handleinttoolscontext_intptr(
         theSplit: *const TopoDS_Face,
         theShape: *const TopoDS_Face,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
         theError: *mut i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:375 - `BOPTools_AlgoTools::IsSplitToReverse()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:374 - `BOPTools_AlgoTools::IsSplitToReverse()`
     pub fn BOPTools_AlgoTools_is_split_to_reverse_edge2_handleinttoolscontext_intptr(
         theSplit: *const TopoDS_Edge,
         theShape: *const TopoDS_Edge,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
         theError: *mut i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:387 - `BOPTools_AlgoTools::Sense()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:385 - `BOPTools_AlgoTools::Sense()`
     pub fn BOPTools_AlgoTools_sense(
         theF1: *const TopoDS_Face,
         theF2: *const TopoDS_Face,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:396 - `BOPTools_AlgoTools::MakeConnexityBlock()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:394 - `BOPTools_AlgoTools::MakeConnexityBlock()`
     pub fn BOPTools_AlgoTools_make_connexity_block(
-        theLS: *mut TopTools_ListOfShape,
-        theMapAvoid: *mut TopTools_IndexedMapOfShape,
-        theLSCB: *mut TopTools_ListOfShape,
-        theAllocator: *const HandleNCollectionBaseAllocator,
+        theLS: *mut NCollection_List_TopoDS_Shape,
+        theMapAvoid: *mut NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher,
+        theLSCB: *mut NCollection_List_TopoDS_Shape,
+        theAllocator: *const TDF_HAllocator,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:406 - `BOPTools_AlgoTools::MakeConnexityBlocks()`
-    pub fn BOPTools_AlgoTools_make_connexity_blocks_shape_shapeenum2_listofshape(
+    /// **Source:** `BOPTools_AlgoTools.hxx`:404 - `BOPTools_AlgoTools::MakeConnexityBlocks()`
+    pub fn BOPTools_AlgoTools_make_connexity_blocks_shape_shapeenum2_list_shape(
         theS: *const TopoDS_Shape,
         theConnectionType: i32,
         theElementType: i32,
-        theLCB: *mut TopTools_ListOfShape,
+        theLCB: *mut NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:416 - `BOPTools_AlgoTools::MakeConnexityBlocks()`
-    pub fn BOPTools_AlgoTools_make_connexity_blocks_shape_shapeenum2_listoflistofshape_indexeddatamapofshapelistofshape(
+    /// **Source:** `BOPTools_AlgoTools.hxx`:414 - `BOPTools_AlgoTools::MakeConnexityBlocks()`
+    pub fn BOPTools_AlgoTools_make_connexity_blocks_shape_shapeenum2_list_ncollection_list_topods_shape_indexeddatamap_topods_shape_ncollection_list_topods_shape_toptools_shapemaphasher(
         theS: *const TopoDS_Shape,
         theConnectionType: i32,
         theElementType: i32,
-        theLCB: *mut TopTools_ListOfListOfShape,
-        theConnectionMap: *mut TopTools_IndexedDataMapOfShapeListOfShape,
+        theLCB: *mut NCollection_List_NCollection_List_TopoDS_Shape,
+        theConnectionMap: *mut NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BOPTools_AlgoTools.hxx`:426 - `BOPTools_AlgoTools::MakeConnexityBlocks()`
-    pub fn BOPTools_AlgoTools_make_connexity_blocks_listofshape_shapeenum2_listofconnexityblock(
-        theLS: *const TopTools_ListOfShape,
+    pub fn BOPTools_AlgoTools_make_connexity_blocks_list_shape_shapeenum2_list_connexityblock(
+        theLS: *const NCollection_List_TopoDS_Shape,
         theConnectionType: i32,
         theElementType: i32,
-        theLCB: *mut BOPTools_ListOfConnexityBlock,
+        theLCB: *mut NCollection_List_BOPTools_ConnexityBlock,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:433 - `BOPTools_AlgoTools::OrientEdgesOnWire()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:434 - `BOPTools_AlgoTools::OrientEdgesOnWire()`
     pub fn BOPTools_AlgoTools_orient_edges_on_wire(
         theWire: *mut TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:436 - `BOPTools_AlgoTools::OrientFacesOnShell()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:437 - `BOPTools_AlgoTools::OrientFacesOnShell()`
     pub fn BOPTools_AlgoTools_orient_faces_on_shell(
         theShell: *mut TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:444 - `BOPTools_AlgoTools::CorrectTolerances()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:445 - `BOPTools_AlgoTools::CorrectTolerances()`
     pub fn BOPTools_AlgoTools_correct_tolerances(
         theS: *const TopoDS_Shape,
-        theMapToAvoid: *const TopTools_IndexedMapOfShape,
+        theMapToAvoid: *const NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher,
         theTolMax: f64,
         theRunParallel: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:452 - `BOPTools_AlgoTools::CorrectCurveOnSurface()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:453 - `BOPTools_AlgoTools::CorrectCurveOnSurface()`
     pub fn BOPTools_AlgoTools_correct_curve_on_surface(
         theS: *const TopoDS_Shape,
-        theMapToAvoid: *const TopTools_IndexedMapOfShape,
+        theMapToAvoid: *const NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher,
         theTolMax: f64,
         theRunParallel: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:460 - `BOPTools_AlgoTools::CorrectPointOnCurve()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:461 - `BOPTools_AlgoTools::CorrectPointOnCurve()`
     pub fn BOPTools_AlgoTools_correct_point_on_curve(
         theS: *const TopoDS_Shape,
-        theMapToAvoid: *const TopTools_IndexedMapOfShape,
+        theMapToAvoid: *const NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher,
         theTolMax: f64,
         theRunParallel: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:467 - `BOPTools_AlgoTools::CorrectShapeTolerances()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:468 - `BOPTools_AlgoTools::CorrectShapeTolerances()`
     pub fn BOPTools_AlgoTools_correct_shape_tolerances(
         theS: *const TopoDS_Shape,
-        theMapToAvoid: *const TopTools_IndexedMapOfShape,
+        theMapToAvoid: *const NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher,
         theRunParallel: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:474 - `BOPTools_AlgoTools::AreFacesSameDomain()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:475 - `BOPTools_AlgoTools::AreFacesSameDomain()`
     pub fn BOPTools_AlgoTools_are_faces_same_domain(
         theF1: *const TopoDS_Face,
         theF2: *const TopoDS_Face,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
         theFuzz: f64,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `BOPTools_AlgoTools.hxx`:485 - `BOPTools_AlgoTools::GetEdgeOff()`
@@ -11263,53 +11159,53 @@ unsafe extern "C" {
     /// **Source:** `BOPTools_AlgoTools.hxx`:516 - `BOPTools_AlgoTools::IsMicroEdge()`
     pub fn BOPTools_AlgoTools_is_micro_edge(
         theEdge: *const TopoDS_Edge,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
         theCheckSplittable: bool,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:523 - `BOPTools_AlgoTools::IsInvertedSolid()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:522 - `BOPTools_AlgoTools::IsInvertedSolid()`
     pub fn BOPTools_AlgoTools_is_inverted_solid(
         theSolid: *const TopoDS_Solid,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:527 - `BOPTools_AlgoTools::ComputeTolerance()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:526 - `BOPTools_AlgoTools::ComputeTolerance()`
     pub fn BOPTools_AlgoTools_compute_tolerance(
         theFace: *const TopoDS_Face,
         theEdge: *const TopoDS_Edge,
         theMaxDist: *mut f64,
         theMaxPar: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:534 - `BOPTools_AlgoTools::MakeContainer()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:533 - `BOPTools_AlgoTools::MakeContainer()`
     pub fn BOPTools_AlgoTools_make_container(
         theType: i32,
         theShape: *mut TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:537 - `BOPTools_AlgoTools::PointOnEdge()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:536 - `BOPTools_AlgoTools::PointOnEdge()`
     pub fn BOPTools_AlgoTools_point_on_edge(
         aEdge: *const TopoDS_Edge,
         aPrm: f64,
         aP: *mut gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:543 - `BOPTools_AlgoTools::IsBlockInOnFace()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:540 - `BOPTools_AlgoTools::IsBlockInOnFace()`
     pub fn BOPTools_AlgoTools_is_block_in_on_face(
         aShR: *const IntTools_Range,
         aF: *const TopoDS_Face,
         aE: *const TopoDS_Edge,
-        aContext: *const HandleIntToolsContext,
+        aContext: *const Handle_IntTools_Context,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:549 - `BOPTools_AlgoTools::Dimensions()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:546 - `BOPTools_AlgoTools::Dimensions()`
     pub fn BOPTools_AlgoTools_dimensions(
         theS: *const TopoDS_Shape,
         theDMin: *mut i32,
         theDMax: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:555 - `BOPTools_AlgoTools::Dimension()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:550 - `BOPTools_AlgoTools::Dimension()`
     pub fn BOPTools_AlgoTools_dimension(theS: *const TopoDS_Shape) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:560 - `BOPTools_AlgoTools::TreatCompound()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:555 - `BOPTools_AlgoTools::TreatCompound()`
     pub fn BOPTools_AlgoTools_treat_compound(
         theS: *const TopoDS_Shape,
-        theList: *mut TopTools_ListOfShape,
-        theMap: *mut TopTools_MapOfShape,
+        theList: *mut NCollection_List_TopoDS_Shape,
+        theMap: *mut NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools.hxx`:565 - `BOPTools_AlgoTools::IsOpenShell()`
+    /// **Source:** `BOPTools_AlgoTools.hxx`:561 - `BOPTools_AlgoTools::IsOpenShell()`
     pub fn BOPTools_AlgoTools_is_open_shell(
         theShell: *const TopoDS_Shell,
     ) -> crate::OcctResult<bool>;
@@ -11321,7 +11217,7 @@ unsafe extern "C" {
     pub fn BOPTools_AlgoTools2D_build_p_curve_for_edge_on_face(
         aE: *const TopoDS_Edge,
         aF: *const TopoDS_Face,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BOPTools_AlgoTools2D.hxx`:50 - `BOPTools_AlgoTools2D::EdgeTangent()`
     pub fn BOPTools_AlgoTools2D_edge_tangent(
@@ -11329,117 +11225,117 @@ unsafe extern "C" {
         aT: f64,
         Tau: *mut gp_Vec,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPTools_AlgoTools2D.hxx`:60 - `BOPTools_AlgoTools2D::PointOnSurface()`
+    /// **Source:** `BOPTools_AlgoTools2D.hxx`:58 - `BOPTools_AlgoTools2D::PointOnSurface()`
     pub fn BOPTools_AlgoTools2D_point_on_surface(
         aE: *const TopoDS_Edge,
         aF: *const TopoDS_Face,
         aT: f64,
         U: *mut f64,
         V: *mut f64,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools2D.hxx`:73 - `BOPTools_AlgoTools2D::CurveOnSurface()`
+    /// **Source:** `BOPTools_AlgoTools2D.hxx`:71 - `BOPTools_AlgoTools2D::CurveOnSurface()`
     pub fn BOPTools_AlgoTools2D_curve_on_surface_edge_face_handlegeom2dcurve_real_handleinttoolscontext(
         aE: *const TopoDS_Edge,
         aF: *const TopoDS_Face,
-        aC: *mut HandleGeom2dCurve,
+        aC: *mut Handle_Geom2d_Curve,
         aToler: *mut f64,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools2D.hxx`:86 - `BOPTools_AlgoTools2D::CurveOnSurface()`
+    /// **Source:** `BOPTools_AlgoTools2D.hxx`:84 - `BOPTools_AlgoTools2D::CurveOnSurface()`
     pub fn BOPTools_AlgoTools2D_curve_on_surface_edge_face_handlegeom2dcurve_real3_handleinttoolscontext(
         aE: *const TopoDS_Edge,
         aF: *const TopoDS_Face,
-        aC: *mut HandleGeom2dCurve,
+        aC: *mut Handle_Geom2d_Curve,
         aFirst: *mut f64,
         aLast: *mut f64,
         aToler: *mut f64,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools2D.hxx`:100 - `BOPTools_AlgoTools2D::HasCurveOnSurface()`
+    /// **Source:** `BOPTools_AlgoTools2D.hxx`:98 - `BOPTools_AlgoTools2D::HasCurveOnSurface()`
     pub fn BOPTools_AlgoTools2D_has_curve_on_surface_edge_face_handlegeom2dcurve_real3(
         aE: *const TopoDS_Edge,
         aF: *const TopoDS_Face,
-        aC: *mut HandleGeom2dCurve,
+        aC: *mut Handle_Geom2d_Curve,
         aFirst: *mut f64,
         aLast: *mut f64,
         aToler: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPTools_AlgoTools2D.hxx`:110 - `BOPTools_AlgoTools2D::HasCurveOnSurface()`
+    /// **Source:** `BOPTools_AlgoTools2D.hxx`:108 - `BOPTools_AlgoTools2D::HasCurveOnSurface()`
     pub fn BOPTools_AlgoTools2D_has_curve_on_surface_edge_face(
         aE: *const TopoDS_Edge,
         aF: *const TopoDS_Face,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPTools_AlgoTools2D.hxx`:115 - `BOPTools_AlgoTools2D::AdjustPCurveOnFace()`
+    /// **Source:** `BOPTools_AlgoTools2D.hxx`:112 - `BOPTools_AlgoTools2D::AdjustPCurveOnFace()`
     pub fn BOPTools_AlgoTools2D_adjust_p_curve_on_face_face_handlegeomcurve_handlegeom2dcurve2_handleinttoolscontext(
         theF: *const TopoDS_Face,
-        theC3D: *const HandleGeomCurve,
-        theC2D: *const HandleGeom2dCurve,
-        theC2DA: *mut HandleGeom2dCurve,
-        theContext: *const HandleIntToolsContext,
+        theC3D: *const Handle_Geom_Curve,
+        theC2D: *const Handle_Geom2d_Curve,
+        theC2DA: *mut Handle_Geom2d_Curve,
+        theContext: *const Handle_IntTools_Context,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools2D.hxx`:125 - `BOPTools_AlgoTools2D::AdjustPCurveOnFace()`
+    /// **Source:** `BOPTools_AlgoTools2D.hxx`:122 - `BOPTools_AlgoTools2D::AdjustPCurveOnFace()`
     pub fn BOPTools_AlgoTools2D_adjust_p_curve_on_face_face_real2_handlegeom2dcurve2_handleinttoolscontext(
         theF: *const TopoDS_Face,
         theFirst: f64,
         theLast: f64,
-        theC2D: *const HandleGeom2dCurve,
-        theC2DA: *mut HandleGeom2dCurve,
-        theContext: *const HandleIntToolsContext,
+        theC2D: *const Handle_Geom2d_Curve,
+        theC2DA: *mut Handle_Geom2d_Curve,
+        theContext: *const Handle_IntTools_Context,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools2D.hxx`:135 - `BOPTools_AlgoTools2D::AdjustPCurveOnSurf()`
+    /// **Source:** `BOPTools_AlgoTools2D.hxx`:132 - `BOPTools_AlgoTools2D::AdjustPCurveOnSurf()`
     pub fn BOPTools_AlgoTools2D_adjust_p_curve_on_surf(
         aF: *const BRepAdaptor_Surface,
         aT1: f64,
         aT2: f64,
-        aC2D: *const HandleGeom2dCurve,
-        aC2DA: *mut HandleGeom2dCurve,
+        aC2D: *const Handle_Geom2d_Curve,
+        aC2DA: *mut Handle_Geom2d_Curve,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools2D.hxx`:142 - `BOPTools_AlgoTools2D::IntermediatePoint()`
+    /// **Source:** `BOPTools_AlgoTools2D.hxx`:139 - `BOPTools_AlgoTools2D::IntermediatePoint()`
     pub fn BOPTools_AlgoTools2D_intermediate_point_real2(
         aFirst: f64,
         aLast: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BOPTools_AlgoTools2D.hxx`:146 - `BOPTools_AlgoTools2D::IntermediatePoint()`
+    /// **Source:** `BOPTools_AlgoTools2D.hxx`:142 - `BOPTools_AlgoTools2D::IntermediatePoint()`
     pub fn BOPTools_AlgoTools2D_intermediate_point_edge(
         anE: *const TopoDS_Edge,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BOPTools_AlgoTools2D.hxx`:153 - `BOPTools_AlgoTools2D::Make2D()`
+    /// **Source:** `BOPTools_AlgoTools2D.hxx`:149 - `BOPTools_AlgoTools2D::Make2D()`
     pub fn BOPTools_AlgoTools2D_make2_d(
         aE: *const TopoDS_Edge,
         aF: *const TopoDS_Face,
-        aC: *mut HandleGeom2dCurve,
+        aC: *mut Handle_Geom2d_Curve,
         aFirst: *mut f64,
         aLast: *mut f64,
         aToler: *mut f64,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools2D.hxx`:166 - `BOPTools_AlgoTools2D::MakePCurveOnFace()`
+    /// **Source:** `BOPTools_AlgoTools2D.hxx`:162 - `BOPTools_AlgoTools2D::MakePCurveOnFace()`
     pub fn BOPTools_AlgoTools2D_make_p_curve_on_face_face_handlegeomcurve_handlegeom2dcurve_real_handleinttoolscontext(
         aF: *const TopoDS_Face,
-        C3D: *const HandleGeomCurve,
-        aC: *mut HandleGeom2dCurve,
+        C3D: *const Handle_Geom_Curve,
+        aC: *mut Handle_Geom2d_Curve,
         aToler: *mut f64,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools2D.hxx`:178 - `BOPTools_AlgoTools2D::MakePCurveOnFace()`
+    /// **Source:** `BOPTools_AlgoTools2D.hxx`:174 - `BOPTools_AlgoTools2D::MakePCurveOnFace()`
     pub fn BOPTools_AlgoTools2D_make_p_curve_on_face_face_handlegeomcurve_real2_handlegeom2dcurve_real_handleinttoolscontext(
         aF: *const TopoDS_Face,
-        C3D: *const HandleGeomCurve,
+        C3D: *const Handle_Geom_Curve,
         aT1: f64,
         aT2: f64,
-        aC: *mut HandleGeom2dCurve,
+        aC: *mut Handle_Geom2d_Curve,
         aToler: *mut f64,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_AlgoTools2D.hxx`:190 - `BOPTools_AlgoTools2D::AttachExistingPCurve()`
+    /// **Source:** `BOPTools_AlgoTools2D.hxx`:186 - `BOPTools_AlgoTools2D::AttachExistingPCurve()`
     pub fn BOPTools_AlgoTools2D_attach_existing_p_curve(
         aEold: *const TopoDS_Edge,
         aEnew: *const TopoDS_Edge,
         aF: *const TopoDS_Face,
-        aCtx: *const HandleIntToolsContext,
+        aCtx: *const Handle_IntTools_Context,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BOPTools_AlgoTools2D.hxx`:207 - `BOPTools_AlgoTools2D::IsEdgeIsoline()`
+    /// **Source:** `BOPTools_AlgoTools2D.hxx`:202 - `BOPTools_AlgoTools2D::IsEdgeIsoline()`
     pub fn BOPTools_AlgoTools2D_is_edge_isoline(
         theE: *const TopoDS_Edge,
         theF: *const TopoDS_Face,
@@ -11467,14 +11363,14 @@ unsafe extern "C" {
         aF: *const TopoDS_Face,
         aT: f64,
         aD: *mut gp_Dir,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BOPTools_AlgoTools3D.hxx`:65 - `BOPTools_AlgoTools3D::GetNormalToFaceOnEdge()`
     pub fn BOPTools_AlgoTools3D_get_normal_to_face_on_edge_edge_face_dir_handleinttoolscontext(
         aE: *const TopoDS_Edge,
         aF: *const TopoDS_Face,
         aD: *mut gp_Dir,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BOPTools_AlgoTools3D.hxx`:74 - `BOPTools_AlgoTools3D::SenseFlag()`
     pub fn BOPTools_AlgoTools3D_sense_flag(
@@ -11483,7 +11379,7 @@ unsafe extern "C" {
     ) -> crate::OcctResult<i32>;
     /// **Source:** `BOPTools_AlgoTools3D.hxx`:78 - `BOPTools_AlgoTools3D::GetNormalToSurface()`
     pub fn BOPTools_AlgoTools3D_get_normal_to_surface(
-        aS: *const HandleGeomSurface,
+        aS: *const Handle_Geom_Surface,
         U: f64,
         V: f64,
         aD: *mut gp_Dir,
@@ -11495,7 +11391,7 @@ unsafe extern "C" {
         aT: f64,
         aPx: *mut gp_Pnt,
         aD: *mut gp_Dir,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `BOPTools_AlgoTools3D.hxx`:118 - `BOPTools_AlgoTools3D::GetApproxNormalToFaceOnEdge()`
     pub fn BOPTools_AlgoTools3D_get_approx_normal_to_face_on_edge_edge_face_real_pnt_dir_real(
@@ -11514,7 +11410,7 @@ unsafe extern "C" {
         aDt2D: f64,
         aP: *mut gp_Pnt,
         aDNF: *mut gp_Dir,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `BOPTools_AlgoTools3D.hxx`:158 - `BOPTools_AlgoTools3D::PointNearEdge()`
     pub fn BOPTools_AlgoTools3D_point_near_edge_edge_face_real2_pnt2d_pnt_handleinttoolscontext(
@@ -11524,7 +11420,7 @@ unsafe extern "C" {
         aDt2D: f64,
         aP2D: *mut gp_Pnt2d,
         aPx: *mut gp_Pnt,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> crate::OcctResult<i32>;
     /// **Source:** `BOPTools_AlgoTools3D.hxx`:173 - `BOPTools_AlgoTools3D::PointNearEdge()`
     pub fn BOPTools_AlgoTools3D_point_near_edge_edge_face_real2_pnt2d_pnt(
@@ -11542,7 +11438,7 @@ unsafe extern "C" {
         aT: f64,
         aP2D: *mut gp_Pnt2d,
         aPx: *mut gp_Pnt,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> crate::OcctResult<i32>;
     /// **Source:** `BOPTools_AlgoTools3D.hxx`:207 - `BOPTools_AlgoTools3D::PointNearEdge()`
     pub fn BOPTools_AlgoTools3D_point_near_edge_edge_face_pnt2d_pnt_handleinttoolscontext(
@@ -11550,7 +11446,7 @@ unsafe extern "C" {
         aF: *const TopoDS_Face,
         aP2D: *mut gp_Pnt2d,
         aPx: *mut gp_Pnt,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> crate::OcctResult<i32>;
     /// **Source:** `BOPTools_AlgoTools3D.hxx`:215 - `BOPTools_AlgoTools3D::MinStepIn2d()`
     pub fn BOPTools_AlgoTools3D_min_step_in2d() -> crate::OcctResult<f64>;
@@ -11567,7 +11463,7 @@ unsafe extern "C" {
         theF: *const TopoDS_Face,
         theP: *mut gp_Pnt,
         theP2D: *mut gp_Pnt2d,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> crate::OcctResult<i32>;
     /// **Source:** `BOPTools_AlgoTools3D.hxx`:245 - `BOPTools_AlgoTools3D::PointInFace()`
     pub fn BOPTools_AlgoTools3D_point_in_face_face_edge_real2_pnt_pnt2d_handleinttoolscontext(
@@ -11577,69 +11473,69 @@ unsafe extern "C" {
         theDt2D: f64,
         theP: *mut gp_Pnt,
         theP2D: *mut gp_Pnt2d,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> crate::OcctResult<i32>;
     /// **Source:** `BOPTools_AlgoTools3D.hxx`:258 - `BOPTools_AlgoTools3D::PointInFace()`
     pub fn BOPTools_AlgoTools3D_point_in_face_face_handlegeom2dcurve_pnt_pnt2d_handleinttoolscontext_real(
         theF: *const TopoDS_Face,
-        theL: *const HandleGeom2dCurve,
+        theL: *const Handle_Geom2d_Curve,
         theP: *mut gp_Pnt,
         theP2D: *mut gp_Pnt2d,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
         theDt2D: f64,
     ) -> crate::OcctResult<i32>;
     // ======================== BOPTools_ConnexityBlock ========================
     pub fn BOPTools_ConnexityBlock_destructor(self_: *mut BOPTools_ConnexityBlock);
-    /// **Source:** `BOPTools_ConnexityBlock.hxx`:28 - `BOPTools_ConnexityBlock::BOPTools_ConnexityBlock()`
+    /// **Source:** `BOPTools_ConnexityBlock.hxx`:27 - `BOPTools_ConnexityBlock::BOPTools_ConnexityBlock()`
     pub fn BOPTools_ConnexityBlock_ctor() -> crate::OcctResult<*mut BOPTools_ConnexityBlock>;
-    /// **Source:** `BOPTools_ConnexityBlock.hxx`:34 - `BOPTools_ConnexityBlock::BOPTools_ConnexityBlock()`
-    pub fn BOPTools_ConnexityBlock_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    /// **Source:** `BOPTools_ConnexityBlock.hxx`:33 - `BOPTools_ConnexityBlock::BOPTools_ConnexityBlock()`
+    pub fn BOPTools_ConnexityBlock_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPTools_ConnexityBlock>;
-    /// **Source:** `BOPTools_ConnexityBlock.hxx`:41 - `BOPTools_ConnexityBlock::Shapes()`
+    /// **Source:** `BOPTools_ConnexityBlock.hxx`:40 - `BOPTools_ConnexityBlock::Shapes()`
     pub fn BOPTools_ConnexityBlock_shapes(
         self_: *const BOPTools_ConnexityBlock,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BOPTools_ConnexityBlock.hxx`:44 - `BOPTools_ConnexityBlock::ChangeShapes()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BOPTools_ConnexityBlock.hxx`:43 - `BOPTools_ConnexityBlock::ChangeShapes()`
     pub fn BOPTools_ConnexityBlock_change_shapes(
         self_: *mut BOPTools_ConnexityBlock,
-    ) -> crate::OcctResult<*mut TopTools_ListOfShape>;
-    /// **Source:** `BOPTools_ConnexityBlock.hxx`:47 - `BOPTools_ConnexityBlock::SetRegular()`
+    ) -> crate::OcctResult<*mut NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BOPTools_ConnexityBlock.hxx`:46 - `BOPTools_ConnexityBlock::SetRegular()`
     pub fn BOPTools_ConnexityBlock_set_regular(
         self_: *mut BOPTools_ConnexityBlock,
         theFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_ConnexityBlock.hxx`:50 - `BOPTools_ConnexityBlock::IsRegular()`
+    /// **Source:** `BOPTools_ConnexityBlock.hxx`:49 - `BOPTools_ConnexityBlock::IsRegular()`
     pub fn BOPTools_ConnexityBlock_is_regular(
         self_: *const BOPTools_ConnexityBlock,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BOPTools_ConnexityBlock.hxx`:53 - `BOPTools_ConnexityBlock::Loops()`
+    /// **Source:** `BOPTools_ConnexityBlock.hxx`:52 - `BOPTools_ConnexityBlock::Loops()`
     pub fn BOPTools_ConnexityBlock_loops(
         self_: *const BOPTools_ConnexityBlock,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BOPTools_ConnexityBlock.hxx`:56 - `BOPTools_ConnexityBlock::ChangeLoops()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BOPTools_ConnexityBlock.hxx`:55 - `BOPTools_ConnexityBlock::ChangeLoops()`
     pub fn BOPTools_ConnexityBlock_change_loops(
         self_: *mut BOPTools_ConnexityBlock,
-    ) -> crate::OcctResult<*mut TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*mut NCollection_List_TopoDS_Shape>;
     // ======================== BOPTools_CoupleOfShape ========================
     pub fn BOPTools_CoupleOfShape_destructor(self_: *mut BOPTools_CoupleOfShape);
-    /// **Source:** `BOPTools_CoupleOfShape.hxx`:27 - `BOPTools_CoupleOfShape::BOPTools_CoupleOfShape()`
+    /// **Source:** `BOPTools_CoupleOfShape.hxx`:25 - `BOPTools_CoupleOfShape::BOPTools_CoupleOfShape()`
     pub fn BOPTools_CoupleOfShape_ctor() -> crate::OcctResult<*mut BOPTools_CoupleOfShape>;
-    /// **Source:** `BOPTools_CoupleOfShape.hxx`:32 - `BOPTools_CoupleOfShape::SetShape1()`
+    /// **Source:** `BOPTools_CoupleOfShape.hxx`:30 - `BOPTools_CoupleOfShape::SetShape1()`
     pub fn BOPTools_CoupleOfShape_set_shape1(
         self_: *mut BOPTools_CoupleOfShape,
         theShape: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_CoupleOfShape.hxx`:35 - `BOPTools_CoupleOfShape::Shape1()`
+    /// **Source:** `BOPTools_CoupleOfShape.hxx`:33 - `BOPTools_CoupleOfShape::Shape1()`
     pub fn BOPTools_CoupleOfShape_shape1(
         self_: *const BOPTools_CoupleOfShape,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BOPTools_CoupleOfShape.hxx`:38 - `BOPTools_CoupleOfShape::SetShape2()`
+    /// **Source:** `BOPTools_CoupleOfShape.hxx`:36 - `BOPTools_CoupleOfShape::SetShape2()`
     pub fn BOPTools_CoupleOfShape_set_shape2(
         self_: *mut BOPTools_CoupleOfShape,
         theShape: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BOPTools_CoupleOfShape.hxx`:41 - `BOPTools_CoupleOfShape::Shape2()`
+    /// **Source:** `BOPTools_CoupleOfShape.hxx`:39 - `BOPTools_CoupleOfShape::Shape2()`
     pub fn BOPTools_CoupleOfShape_shape2(
         self_: *const BOPTools_CoupleOfShape,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
@@ -11648,8 +11544,8 @@ unsafe extern "C" {
     /// **Source:** `BOPTools_Set.hxx`:32 - `BOPTools_Set::BOPTools_Set()`
     pub fn BOPTools_Set_ctor() -> crate::OcctResult<*mut BOPTools_Set>;
     /// **Source:** `BOPTools_Set.hxx`:35 - `BOPTools_Set::BOPTools_Set()`
-    pub fn BOPTools_Set_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    pub fn BOPTools_Set_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut BOPTools_Set>;
     /// **Source:** `BOPTools_Set.hxx`:40 - `BOPTools_Set::Assign()`
     pub fn BOPTools_Set_assign(
@@ -11717,12 +11613,12 @@ unsafe extern "C" {
     /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:73 - `BRepAlgoAPI_BooleanOperation::SetTools()`
     pub fn BRepAlgoAPI_BooleanOperation_set_tools(
         self_: *mut BRepAlgoAPI_BooleanOperation,
-        theLS: *const TopTools_ListOfShape,
+        theLS: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:76 - `BRepAlgoAPI_BooleanOperation::Tools()`
     pub fn BRepAlgoAPI_BooleanOperation_tools(
         self_: *const BRepAlgoAPI_BooleanOperation,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:80 - `BRepAlgoAPI_BooleanOperation::SetOperation()`
     pub fn BRepAlgoAPI_BooleanOperation_set_operation(
         self_: *mut BRepAlgoAPI_BooleanOperation,
@@ -11769,83 +11665,83 @@ unsafe extern "C" {
     pub fn BRepAlgoAPI_BooleanOperation_as_BRepBuilderAPI_Command_mut(
         self_: *mut BRepAlgoAPI_BooleanOperation,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_Command>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:75 - `BRepAlgoAPI_BuilderAlgo::SetArguments()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:88 - `BRepAlgoAPI_BuilderAlgo::SetArguments()`
     pub fn BRepAlgoAPI_BooleanOperation_inherited_SetArguments(
         self_: *mut BRepAlgoAPI_BooleanOperation,
-        theLS: *const TopTools_ListOfShape,
+        theLS: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:78 - `BRepAlgoAPI_BuilderAlgo::Arguments()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:91 - `BRepAlgoAPI_BuilderAlgo::Arguments()`
     pub fn BRepAlgoAPI_BooleanOperation_inherited_Arguments(
         self_: *const BRepAlgoAPI_BooleanOperation,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:84 - `BRepAlgoAPI_BuilderAlgo::SetNonDestructive()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:97 - `BRepAlgoAPI_BuilderAlgo::SetNonDestructive()`
     pub fn BRepAlgoAPI_BooleanOperation_inherited_SetNonDestructive(
         self_: *mut BRepAlgoAPI_BooleanOperation,
         theFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:89 - `BRepAlgoAPI_BuilderAlgo::NonDestructive()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:102 - `BRepAlgoAPI_BuilderAlgo::NonDestructive()`
     pub fn BRepAlgoAPI_BooleanOperation_inherited_NonDestructive(
         self_: *const BRepAlgoAPI_BooleanOperation,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:94 - `BRepAlgoAPI_BuilderAlgo::SetGlue()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:107 - `BRepAlgoAPI_BuilderAlgo::SetGlue()`
     pub fn BRepAlgoAPI_BooleanOperation_inherited_SetGlue(
         self_: *mut BRepAlgoAPI_BooleanOperation,
         theGlue: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:97 - `BRepAlgoAPI_BuilderAlgo::Glue()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:110 - `BRepAlgoAPI_BuilderAlgo::Glue()`
     pub fn BRepAlgoAPI_BooleanOperation_inherited_Glue(
         self_: *const BRepAlgoAPI_BooleanOperation,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:100 - `BRepAlgoAPI_BuilderAlgo::SetCheckInverted()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:113 - `BRepAlgoAPI_BuilderAlgo::SetCheckInverted()`
     pub fn BRepAlgoAPI_BooleanOperation_inherited_SetCheckInverted(
         self_: *mut BRepAlgoAPI_BooleanOperation,
         theCheck: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:104 - `BRepAlgoAPI_BuilderAlgo::CheckInverted()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:117 - `BRepAlgoAPI_BuilderAlgo::CheckInverted()`
     pub fn BRepAlgoAPI_BooleanOperation_inherited_CheckInverted(
         self_: *const BRepAlgoAPI_BooleanOperation,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:135 - `BRepAlgoAPI_BuilderAlgo::SimplifyResult()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:148 - `BRepAlgoAPI_BuilderAlgo::SimplifyResult()`
     pub fn BRepAlgoAPI_BooleanOperation_inherited_SimplifyResult(
         self_: *mut BRepAlgoAPI_BooleanOperation,
         theUnifyEdges: bool,
         theUnifyFaces: bool,
         theAngularTol: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:158 - `BRepAlgoAPI_BuilderAlgo::IsDeleted()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:170 - `BRepAlgoAPI_BuilderAlgo::IsDeleted()`
     pub fn BRepAlgoAPI_BooleanOperation_inherited_IsDeleted(
         self_: *mut BRepAlgoAPI_BooleanOperation,
         aS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:161 - `BRepAlgoAPI_BuilderAlgo::HasModified()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:173 - `BRepAlgoAPI_BuilderAlgo::HasModified()`
     pub fn BRepAlgoAPI_BooleanOperation_inherited_HasModified(
         self_: *const BRepAlgoAPI_BooleanOperation,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:164 - `BRepAlgoAPI_BuilderAlgo::HasGenerated()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:176 - `BRepAlgoAPI_BuilderAlgo::HasGenerated()`
     pub fn BRepAlgoAPI_BooleanOperation_inherited_HasGenerated(
         self_: *const BRepAlgoAPI_BooleanOperation,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:169 - `BRepAlgoAPI_BuilderAlgo::HasDeleted()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:181 - `BRepAlgoAPI_BuilderAlgo::HasDeleted()`
     pub fn BRepAlgoAPI_BooleanOperation_inherited_HasDeleted(
         self_: *const BRepAlgoAPI_BooleanOperation,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:173 - `BRepAlgoAPI_BuilderAlgo::SetToFillHistory()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:185 - `BRepAlgoAPI_BuilderAlgo::SetToFillHistory()`
     pub fn BRepAlgoAPI_BooleanOperation_inherited_SetToFillHistory(
         self_: *mut BRepAlgoAPI_BooleanOperation,
         theHistFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:176 - `BRepAlgoAPI_BuilderAlgo::HasHistory()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:188 - `BRepAlgoAPI_BuilderAlgo::HasHistory()`
     pub fn BRepAlgoAPI_BooleanOperation_inherited_HasHistory(
         self_: *const BRepAlgoAPI_BooleanOperation,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:181 - `BRepAlgoAPI_BuilderAlgo::SectionEdges()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:193 - `BRepAlgoAPI_BuilderAlgo::SectionEdges()`
     pub fn BRepAlgoAPI_BooleanOperation_inherited_SectionEdges(
         self_: *mut BRepAlgoAPI_BooleanOperation,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:191 - `BRepAlgoAPI_BuilderAlgo::History()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:203 - `BRepAlgoAPI_BuilderAlgo::History()`
     pub fn BRepAlgoAPI_BooleanOperation_inherited_History(
         self_: *const BRepAlgoAPI_BooleanOperation,
-    ) -> crate::OcctResult<*mut HandleBRepToolsHistory>;
+    ) -> crate::OcctResult<*mut Handle_BRepTools_History>;
     /// Inherited: **Source:** `BRepAlgoAPI_Algo.hxx`:37 - `BRepAlgoAPI_Algo::Shape()`
     pub fn BRepAlgoAPI_BooleanOperation_inherited_Shape(
         self_: *mut BRepAlgoAPI_BooleanOperation,
@@ -11860,112 +11756,112 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepAlgoAPI_BuilderAlgo ========================
     pub fn BRepAlgoAPI_BuilderAlgo_destructor(self_: *mut BRepAlgoAPI_BuilderAlgo);
-    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:67 - `BRepAlgoAPI_BuilderAlgo::BRepAlgoAPI_BuilderAlgo()`
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:68 - `BRepAlgoAPI_BuilderAlgo::BRepAlgoAPI_BuilderAlgo()`
     pub fn BRepAlgoAPI_BuilderAlgo_ctor() -> crate::OcctResult<*mut BRepAlgoAPI_BuilderAlgo>;
-    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:71 - `BRepAlgoAPI_BuilderAlgo::BRepAlgoAPI_BuilderAlgo()`
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:72 - `BRepAlgoAPI_BuilderAlgo::BRepAlgoAPI_BuilderAlgo()`
     pub fn BRepAlgoAPI_BuilderAlgo_ctor_pavefiller(
         thePF: *const BOPAlgo_PaveFiller,
     ) -> crate::OcctResult<*mut BRepAlgoAPI_BuilderAlgo>;
-    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:75 - `BRepAlgoAPI_BuilderAlgo::SetArguments()`
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:88 - `BRepAlgoAPI_BuilderAlgo::SetArguments()`
     pub fn BRepAlgoAPI_BuilderAlgo_set_arguments(
         self_: *mut BRepAlgoAPI_BuilderAlgo,
-        theLS: *const TopTools_ListOfShape,
+        theLS: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:78 - `BRepAlgoAPI_BuilderAlgo::Arguments()`
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:91 - `BRepAlgoAPI_BuilderAlgo::Arguments()`
     pub fn BRepAlgoAPI_BuilderAlgo_arguments(
         self_: *const BRepAlgoAPI_BuilderAlgo,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:84 - `BRepAlgoAPI_BuilderAlgo::SetNonDestructive()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:97 - `BRepAlgoAPI_BuilderAlgo::SetNonDestructive()`
     pub fn BRepAlgoAPI_BuilderAlgo_set_non_destructive(
         self_: *mut BRepAlgoAPI_BuilderAlgo,
         theFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:89 - `BRepAlgoAPI_BuilderAlgo::NonDestructive()`
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:102 - `BRepAlgoAPI_BuilderAlgo::NonDestructive()`
     pub fn BRepAlgoAPI_BuilderAlgo_non_destructive(
         self_: *const BRepAlgoAPI_BuilderAlgo,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:94 - `BRepAlgoAPI_BuilderAlgo::SetGlue()`
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:107 - `BRepAlgoAPI_BuilderAlgo::SetGlue()`
     pub fn BRepAlgoAPI_BuilderAlgo_set_glue(
         self_: *mut BRepAlgoAPI_BuilderAlgo,
         theGlue: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:97 - `BRepAlgoAPI_BuilderAlgo::Glue()`
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:110 - `BRepAlgoAPI_BuilderAlgo::Glue()`
     pub fn BRepAlgoAPI_BuilderAlgo_glue(
         self_: *const BRepAlgoAPI_BuilderAlgo,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:100 - `BRepAlgoAPI_BuilderAlgo::SetCheckInverted()`
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:113 - `BRepAlgoAPI_BuilderAlgo::SetCheckInverted()`
     pub fn BRepAlgoAPI_BuilderAlgo_set_check_inverted(
         self_: *mut BRepAlgoAPI_BuilderAlgo,
         theCheck: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:104 - `BRepAlgoAPI_BuilderAlgo::CheckInverted()`
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:117 - `BRepAlgoAPI_BuilderAlgo::CheckInverted()`
     pub fn BRepAlgoAPI_BuilderAlgo_check_inverted(
         self_: *const BRepAlgoAPI_BuilderAlgo,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:108 - `BRepAlgoAPI_BuilderAlgo::Build()`
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:121 - `BRepAlgoAPI_BuilderAlgo::Build()`
     pub fn BRepAlgoAPI_BuilderAlgo_build(
         self_: *mut BRepAlgoAPI_BuilderAlgo,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:135 - `BRepAlgoAPI_BuilderAlgo::SimplifyResult()`
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:148 - `BRepAlgoAPI_BuilderAlgo::SimplifyResult()`
     pub fn BRepAlgoAPI_BuilderAlgo_simplify_result(
         self_: *mut BRepAlgoAPI_BuilderAlgo,
         theUnifyEdges: bool,
         theUnifyFaces: bool,
         theAngularTol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:143 - `BRepAlgoAPI_BuilderAlgo::Modified()`
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:156 - `BRepAlgoAPI_BuilderAlgo::Modified()`
     pub fn BRepAlgoAPI_BuilderAlgo_modified(
         self_: *mut BRepAlgoAPI_BuilderAlgo,
         theS: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:152 - `BRepAlgoAPI_BuilderAlgo::Generated()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:164 - `BRepAlgoAPI_BuilderAlgo::Generated()`
     pub fn BRepAlgoAPI_BuilderAlgo_generated(
         self_: *mut BRepAlgoAPI_BuilderAlgo,
         theS: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:158 - `BRepAlgoAPI_BuilderAlgo::IsDeleted()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:170 - `BRepAlgoAPI_BuilderAlgo::IsDeleted()`
     pub fn BRepAlgoAPI_BuilderAlgo_is_deleted(
         self_: *mut BRepAlgoAPI_BuilderAlgo,
         aS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:161 - `BRepAlgoAPI_BuilderAlgo::HasModified()`
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:173 - `BRepAlgoAPI_BuilderAlgo::HasModified()`
     pub fn BRepAlgoAPI_BuilderAlgo_has_modified(
         self_: *const BRepAlgoAPI_BuilderAlgo,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:164 - `BRepAlgoAPI_BuilderAlgo::HasGenerated()`
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:176 - `BRepAlgoAPI_BuilderAlgo::HasGenerated()`
     pub fn BRepAlgoAPI_BuilderAlgo_has_generated(
         self_: *const BRepAlgoAPI_BuilderAlgo,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:169 - `BRepAlgoAPI_BuilderAlgo::HasDeleted()`
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:181 - `BRepAlgoAPI_BuilderAlgo::HasDeleted()`
     pub fn BRepAlgoAPI_BuilderAlgo_has_deleted(
         self_: *const BRepAlgoAPI_BuilderAlgo,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:173 - `BRepAlgoAPI_BuilderAlgo::SetToFillHistory()`
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:185 - `BRepAlgoAPI_BuilderAlgo::SetToFillHistory()`
     pub fn BRepAlgoAPI_BuilderAlgo_set_to_fill_history(
         self_: *mut BRepAlgoAPI_BuilderAlgo,
         theHistFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:176 - `BRepAlgoAPI_BuilderAlgo::HasHistory()`
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:188 - `BRepAlgoAPI_BuilderAlgo::HasHistory()`
     pub fn BRepAlgoAPI_BuilderAlgo_has_history(
         self_: *const BRepAlgoAPI_BuilderAlgo,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:181 - `BRepAlgoAPI_BuilderAlgo::SectionEdges()`
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:193 - `BRepAlgoAPI_BuilderAlgo::SectionEdges()`
     pub fn BRepAlgoAPI_BuilderAlgo_section_edges(
         self_: *mut BRepAlgoAPI_BuilderAlgo,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:185 - `BRepAlgoAPI_BuilderAlgo::DSFiller()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:197 - `BRepAlgoAPI_BuilderAlgo::DSFiller()`
     pub fn BRepAlgoAPI_BuilderAlgo_ds_filler(
         self_: *const BRepAlgoAPI_BuilderAlgo,
     ) -> crate::OcctResult<*const *mut BOPAlgo_PaveFiller>;
-    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:188 - `BRepAlgoAPI_BuilderAlgo::Builder()`
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:200 - `BRepAlgoAPI_BuilderAlgo::Builder()`
     pub fn BRepAlgoAPI_BuilderAlgo_builder(
         self_: *const BRepAlgoAPI_BuilderAlgo,
     ) -> crate::OcctResult<*const *mut BOPAlgo_Builder>;
-    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:191 - `BRepAlgoAPI_BuilderAlgo::History()`
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:203 - `BRepAlgoAPI_BuilderAlgo::History()`
     pub fn BRepAlgoAPI_BuilderAlgo_history(
         self_: *const BRepAlgoAPI_BuilderAlgo,
-    ) -> crate::OcctResult<*mut HandleBRepToolsHistory>;
+    ) -> crate::OcctResult<*mut Handle_BRepTools_History>;
     /// Upcast BRepAlgoAPI_BuilderAlgo to BRepAlgoAPI_Algo
     pub fn BRepAlgoAPI_BuilderAlgo_as_BRepAlgoAPI_Algo(
         self_: *const BRepAlgoAPI_BuilderAlgo,
@@ -12029,7 +11925,7 @@ unsafe extern "C" {
         bTestSE: bool,
         bTestSI: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepAlgoAPI_Check.hxx`:125 - `BRepAlgoAPI_Check::SetData()`
+    /// **Source:** `BRepAlgoAPI_Check.hxx`:123 - `BRepAlgoAPI_Check::SetData()`
     pub fn BRepAlgoAPI_Check_set_data_shape2_operation_bool2(
         self_: *mut BRepAlgoAPI_Check,
         theS1: *const TopoDS_Shape,
@@ -12038,17 +11934,17 @@ unsafe extern "C" {
         bTestSE: bool,
         bTestSI: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepAlgoAPI_Check.hxx`:141 - `BRepAlgoAPI_Check::Perform()`
+    /// **Source:** `BRepAlgoAPI_Check.hxx`:139 - `BRepAlgoAPI_Check::Perform()`
     pub fn BRepAlgoAPI_Check_perform(
         self_: *mut BRepAlgoAPI_Check,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepAlgoAPI_Check.hxx`:145 - `BRepAlgoAPI_Check::IsValid()`
+    /// **Source:** `BRepAlgoAPI_Check.hxx`:143 - `BRepAlgoAPI_Check::IsValid()`
     pub fn BRepAlgoAPI_Check_is_valid(self_: *mut BRepAlgoAPI_Check) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepAlgoAPI_Check.hxx`:148 - `BRepAlgoAPI_Check::Result()`
+    /// **Source:** `BRepAlgoAPI_Check.hxx`:146 - `BRepAlgoAPI_Check::Result()`
     pub fn BRepAlgoAPI_Check_result(
         self_: *mut BRepAlgoAPI_Check,
-    ) -> crate::OcctResult<*const BOPAlgo_ListOfCheckResult>;
+    ) -> crate::OcctResult<*const NCollection_List_BOPAlgo_CheckResult>;
     /// Upcast BRepAlgoAPI_Check to BOPAlgo_Options
     pub fn BRepAlgoAPI_Check_as_BOPAlgo_Options(
         self_: *const BRepAlgoAPI_Check,
@@ -12060,7 +11956,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
     pub fn BRepAlgoAPI_Check_inherited_Allocator(
         self_: *const BRepAlgoAPI_Check,
-    ) -> crate::OcctResult<*const HandleNCollectionBaseAllocator>;
+    ) -> crate::OcctResult<*const TDF_HAllocator>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:55 - `BOPAlgo_Options::Clear()`
     pub fn BRepAlgoAPI_Check_inherited_Clear(
         self_: *mut BRepAlgoAPI_Check,
@@ -12068,12 +11964,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
     pub fn BRepAlgoAPI_Check_inherited_AddError(
         self_: *mut BRepAlgoAPI_Check,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
     pub fn BRepAlgoAPI_Check_inherited_AddWarning(
         self_: *mut BRepAlgoAPI_Check,
-        theAlert: *const HandleMessageAlert,
+        theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:73 - `BOPAlgo_Options::HasErrors()`
     pub fn BRepAlgoAPI_Check_inherited_HasErrors(
@@ -12082,7 +11978,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
     pub fn BRepAlgoAPI_Check_inherited_HasError(
         self_: *const BRepAlgoAPI_Check,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:82 - `BOPAlgo_Options::HasWarnings()`
     pub fn BRepAlgoAPI_Check_inherited_HasWarnings(
@@ -12091,12 +11987,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     pub fn BRepAlgoAPI_Check_inherited_HasWarning(
         self_: *const BRepAlgoAPI_Check,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     pub fn BRepAlgoAPI_Check_inherited_GetReport(
         self_: *const BRepAlgoAPI_Check,
-    ) -> crate::OcctResult<*const HandleMessageReport>;
+    ) -> crate::OcctResult<*const Handle_Message_Report>;
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
     pub fn BRepAlgoAPI_Check_inherited_DumpErrors(
         self_: *const BRepAlgoAPI_Check,
@@ -12210,12 +12106,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:73 - `BRepAlgoAPI_BooleanOperation::SetTools()`
     pub fn BRepAlgoAPI_Common_inherited_SetTools(
         self_: *mut BRepAlgoAPI_Common,
-        theLS: *const TopTools_ListOfShape,
+        theLS: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:76 - `BRepAlgoAPI_BooleanOperation::Tools()`
     pub fn BRepAlgoAPI_Common_inherited_Tools(
         self_: *const BRepAlgoAPI_Common,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:80 - `BRepAlgoAPI_BooleanOperation::SetOperation()`
     pub fn BRepAlgoAPI_Common_inherited_SetOperation(
         self_: *mut BRepAlgoAPI_Common,
@@ -12230,83 +12126,83 @@ unsafe extern "C" {
         self_: *mut BRepAlgoAPI_Common,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:75 - `BRepAlgoAPI_BuilderAlgo::SetArguments()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:88 - `BRepAlgoAPI_BuilderAlgo::SetArguments()`
     pub fn BRepAlgoAPI_Common_inherited_SetArguments(
         self_: *mut BRepAlgoAPI_Common,
-        theLS: *const TopTools_ListOfShape,
+        theLS: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:78 - `BRepAlgoAPI_BuilderAlgo::Arguments()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:91 - `BRepAlgoAPI_BuilderAlgo::Arguments()`
     pub fn BRepAlgoAPI_Common_inherited_Arguments(
         self_: *const BRepAlgoAPI_Common,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:84 - `BRepAlgoAPI_BuilderAlgo::SetNonDestructive()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:97 - `BRepAlgoAPI_BuilderAlgo::SetNonDestructive()`
     pub fn BRepAlgoAPI_Common_inherited_SetNonDestructive(
         self_: *mut BRepAlgoAPI_Common,
         theFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:89 - `BRepAlgoAPI_BuilderAlgo::NonDestructive()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:102 - `BRepAlgoAPI_BuilderAlgo::NonDestructive()`
     pub fn BRepAlgoAPI_Common_inherited_NonDestructive(
         self_: *const BRepAlgoAPI_Common,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:94 - `BRepAlgoAPI_BuilderAlgo::SetGlue()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:107 - `BRepAlgoAPI_BuilderAlgo::SetGlue()`
     pub fn BRepAlgoAPI_Common_inherited_SetGlue(
         self_: *mut BRepAlgoAPI_Common,
         theGlue: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:97 - `BRepAlgoAPI_BuilderAlgo::Glue()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:110 - `BRepAlgoAPI_BuilderAlgo::Glue()`
     pub fn BRepAlgoAPI_Common_inherited_Glue(
         self_: *const BRepAlgoAPI_Common,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:100 - `BRepAlgoAPI_BuilderAlgo::SetCheckInverted()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:113 - `BRepAlgoAPI_BuilderAlgo::SetCheckInverted()`
     pub fn BRepAlgoAPI_Common_inherited_SetCheckInverted(
         self_: *mut BRepAlgoAPI_Common,
         theCheck: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:104 - `BRepAlgoAPI_BuilderAlgo::CheckInverted()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:117 - `BRepAlgoAPI_BuilderAlgo::CheckInverted()`
     pub fn BRepAlgoAPI_Common_inherited_CheckInverted(
         self_: *const BRepAlgoAPI_Common,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:135 - `BRepAlgoAPI_BuilderAlgo::SimplifyResult()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:148 - `BRepAlgoAPI_BuilderAlgo::SimplifyResult()`
     pub fn BRepAlgoAPI_Common_inherited_SimplifyResult(
         self_: *mut BRepAlgoAPI_Common,
         theUnifyEdges: bool,
         theUnifyFaces: bool,
         theAngularTol: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:158 - `BRepAlgoAPI_BuilderAlgo::IsDeleted()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:170 - `BRepAlgoAPI_BuilderAlgo::IsDeleted()`
     pub fn BRepAlgoAPI_Common_inherited_IsDeleted(
         self_: *mut BRepAlgoAPI_Common,
         aS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:161 - `BRepAlgoAPI_BuilderAlgo::HasModified()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:173 - `BRepAlgoAPI_BuilderAlgo::HasModified()`
     pub fn BRepAlgoAPI_Common_inherited_HasModified(
         self_: *const BRepAlgoAPI_Common,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:164 - `BRepAlgoAPI_BuilderAlgo::HasGenerated()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:176 - `BRepAlgoAPI_BuilderAlgo::HasGenerated()`
     pub fn BRepAlgoAPI_Common_inherited_HasGenerated(
         self_: *const BRepAlgoAPI_Common,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:169 - `BRepAlgoAPI_BuilderAlgo::HasDeleted()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:181 - `BRepAlgoAPI_BuilderAlgo::HasDeleted()`
     pub fn BRepAlgoAPI_Common_inherited_HasDeleted(
         self_: *const BRepAlgoAPI_Common,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:173 - `BRepAlgoAPI_BuilderAlgo::SetToFillHistory()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:185 - `BRepAlgoAPI_BuilderAlgo::SetToFillHistory()`
     pub fn BRepAlgoAPI_Common_inherited_SetToFillHistory(
         self_: *mut BRepAlgoAPI_Common,
         theHistFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:176 - `BRepAlgoAPI_BuilderAlgo::HasHistory()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:188 - `BRepAlgoAPI_BuilderAlgo::HasHistory()`
     pub fn BRepAlgoAPI_Common_inherited_HasHistory(
         self_: *const BRepAlgoAPI_Common,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:181 - `BRepAlgoAPI_BuilderAlgo::SectionEdges()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:193 - `BRepAlgoAPI_BuilderAlgo::SectionEdges()`
     pub fn BRepAlgoAPI_Common_inherited_SectionEdges(
         self_: *mut BRepAlgoAPI_Common,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:191 - `BRepAlgoAPI_BuilderAlgo::History()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:203 - `BRepAlgoAPI_BuilderAlgo::History()`
     pub fn BRepAlgoAPI_Common_inherited_History(
         self_: *const BRepAlgoAPI_Common,
-    ) -> crate::OcctResult<*mut HandleBRepToolsHistory>;
+    ) -> crate::OcctResult<*mut Handle_BRepTools_History>;
     /// Inherited: **Source:** `BRepAlgoAPI_Algo.hxx`:37 - `BRepAlgoAPI_Algo::Shape()`
     pub fn BRepAlgoAPI_Common_inherited_Shape(
         self_: *mut BRepAlgoAPI_Common,
@@ -12392,12 +12288,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:73 - `BRepAlgoAPI_BooleanOperation::SetTools()`
     pub fn BRepAlgoAPI_Cut_inherited_SetTools(
         self_: *mut BRepAlgoAPI_Cut,
-        theLS: *const TopTools_ListOfShape,
+        theLS: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:76 - `BRepAlgoAPI_BooleanOperation::Tools()`
     pub fn BRepAlgoAPI_Cut_inherited_Tools(
         self_: *const BRepAlgoAPI_Cut,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:80 - `BRepAlgoAPI_BooleanOperation::SetOperation()`
     pub fn BRepAlgoAPI_Cut_inherited_SetOperation(
         self_: *mut BRepAlgoAPI_Cut,
@@ -12412,81 +12308,81 @@ unsafe extern "C" {
         self_: *mut BRepAlgoAPI_Cut,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:75 - `BRepAlgoAPI_BuilderAlgo::SetArguments()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:88 - `BRepAlgoAPI_BuilderAlgo::SetArguments()`
     pub fn BRepAlgoAPI_Cut_inherited_SetArguments(
         self_: *mut BRepAlgoAPI_Cut,
-        theLS: *const TopTools_ListOfShape,
+        theLS: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:78 - `BRepAlgoAPI_BuilderAlgo::Arguments()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:91 - `BRepAlgoAPI_BuilderAlgo::Arguments()`
     pub fn BRepAlgoAPI_Cut_inherited_Arguments(
         self_: *const BRepAlgoAPI_Cut,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:84 - `BRepAlgoAPI_BuilderAlgo::SetNonDestructive()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:97 - `BRepAlgoAPI_BuilderAlgo::SetNonDestructive()`
     pub fn BRepAlgoAPI_Cut_inherited_SetNonDestructive(
         self_: *mut BRepAlgoAPI_Cut,
         theFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:89 - `BRepAlgoAPI_BuilderAlgo::NonDestructive()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:102 - `BRepAlgoAPI_BuilderAlgo::NonDestructive()`
     pub fn BRepAlgoAPI_Cut_inherited_NonDestructive(
         self_: *const BRepAlgoAPI_Cut,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:94 - `BRepAlgoAPI_BuilderAlgo::SetGlue()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:107 - `BRepAlgoAPI_BuilderAlgo::SetGlue()`
     pub fn BRepAlgoAPI_Cut_inherited_SetGlue(
         self_: *mut BRepAlgoAPI_Cut,
         theGlue: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:97 - `BRepAlgoAPI_BuilderAlgo::Glue()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:110 - `BRepAlgoAPI_BuilderAlgo::Glue()`
     pub fn BRepAlgoAPI_Cut_inherited_Glue(self_: *const BRepAlgoAPI_Cut) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:100 - `BRepAlgoAPI_BuilderAlgo::SetCheckInverted()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:113 - `BRepAlgoAPI_BuilderAlgo::SetCheckInverted()`
     pub fn BRepAlgoAPI_Cut_inherited_SetCheckInverted(
         self_: *mut BRepAlgoAPI_Cut,
         theCheck: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:104 - `BRepAlgoAPI_BuilderAlgo::CheckInverted()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:117 - `BRepAlgoAPI_BuilderAlgo::CheckInverted()`
     pub fn BRepAlgoAPI_Cut_inherited_CheckInverted(
         self_: *const BRepAlgoAPI_Cut,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:135 - `BRepAlgoAPI_BuilderAlgo::SimplifyResult()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:148 - `BRepAlgoAPI_BuilderAlgo::SimplifyResult()`
     pub fn BRepAlgoAPI_Cut_inherited_SimplifyResult(
         self_: *mut BRepAlgoAPI_Cut,
         theUnifyEdges: bool,
         theUnifyFaces: bool,
         theAngularTol: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:158 - `BRepAlgoAPI_BuilderAlgo::IsDeleted()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:170 - `BRepAlgoAPI_BuilderAlgo::IsDeleted()`
     pub fn BRepAlgoAPI_Cut_inherited_IsDeleted(
         self_: *mut BRepAlgoAPI_Cut,
         aS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:161 - `BRepAlgoAPI_BuilderAlgo::HasModified()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:173 - `BRepAlgoAPI_BuilderAlgo::HasModified()`
     pub fn BRepAlgoAPI_Cut_inherited_HasModified(
         self_: *const BRepAlgoAPI_Cut,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:164 - `BRepAlgoAPI_BuilderAlgo::HasGenerated()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:176 - `BRepAlgoAPI_BuilderAlgo::HasGenerated()`
     pub fn BRepAlgoAPI_Cut_inherited_HasGenerated(
         self_: *const BRepAlgoAPI_Cut,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:169 - `BRepAlgoAPI_BuilderAlgo::HasDeleted()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:181 - `BRepAlgoAPI_BuilderAlgo::HasDeleted()`
     pub fn BRepAlgoAPI_Cut_inherited_HasDeleted(
         self_: *const BRepAlgoAPI_Cut,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:173 - `BRepAlgoAPI_BuilderAlgo::SetToFillHistory()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:185 - `BRepAlgoAPI_BuilderAlgo::SetToFillHistory()`
     pub fn BRepAlgoAPI_Cut_inherited_SetToFillHistory(
         self_: *mut BRepAlgoAPI_Cut,
         theHistFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:176 - `BRepAlgoAPI_BuilderAlgo::HasHistory()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:188 - `BRepAlgoAPI_BuilderAlgo::HasHistory()`
     pub fn BRepAlgoAPI_Cut_inherited_HasHistory(
         self_: *const BRepAlgoAPI_Cut,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:181 - `BRepAlgoAPI_BuilderAlgo::SectionEdges()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:193 - `BRepAlgoAPI_BuilderAlgo::SectionEdges()`
     pub fn BRepAlgoAPI_Cut_inherited_SectionEdges(
         self_: *mut BRepAlgoAPI_Cut,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:191 - `BRepAlgoAPI_BuilderAlgo::History()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:203 - `BRepAlgoAPI_BuilderAlgo::History()`
     pub fn BRepAlgoAPI_Cut_inherited_History(
         self_: *const BRepAlgoAPI_Cut,
-    ) -> crate::OcctResult<*mut HandleBRepToolsHistory>;
+    ) -> crate::OcctResult<*mut Handle_BRepTools_History>;
     /// Inherited: **Source:** `BRepAlgoAPI_Algo.hxx`:37 - `BRepAlgoAPI_Algo::Shape()`
     pub fn BRepAlgoAPI_Cut_inherited_Shape(
         self_: *mut BRepAlgoAPI_Cut,
@@ -12503,74 +12399,74 @@ unsafe extern "C" {
     pub fn BRepAlgoAPI_Defeaturing_destructor(self_: *mut BRepAlgoAPI_Defeaturing);
     /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:107 - `BRepAlgoAPI_Defeaturing::BRepAlgoAPI_Defeaturing()`
     pub fn BRepAlgoAPI_Defeaturing_ctor() -> crate::OcctResult<*mut BRepAlgoAPI_Defeaturing>;
-    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:117 - `BRepAlgoAPI_Defeaturing::SetShape()`
+    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:116 - `BRepAlgoAPI_Defeaturing::SetShape()`
     pub fn BRepAlgoAPI_Defeaturing_set_shape(
         self_: *mut BRepAlgoAPI_Defeaturing,
         theShape: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:120 - `BRepAlgoAPI_Defeaturing::InputShape()`
+    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:119 - `BRepAlgoAPI_Defeaturing::InputShape()`
     pub fn BRepAlgoAPI_Defeaturing_input_shape(
         self_: *const BRepAlgoAPI_Defeaturing,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:124 - `BRepAlgoAPI_Defeaturing::AddFaceToRemove()`
+    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:123 - `BRepAlgoAPI_Defeaturing::AddFaceToRemove()`
     pub fn BRepAlgoAPI_Defeaturing_add_face_to_remove(
         self_: *mut BRepAlgoAPI_Defeaturing,
         theFace: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:128 - `BRepAlgoAPI_Defeaturing::AddFacesToRemove()`
+    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:127 - `BRepAlgoAPI_Defeaturing::AddFacesToRemove()`
     pub fn BRepAlgoAPI_Defeaturing_add_faces_to_remove(
         self_: *mut BRepAlgoAPI_Defeaturing,
-        theFaces: *const TopTools_ListOfShape,
+        theFaces: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:137 - `BRepAlgoAPI_Defeaturing::FacesToRemove()`
+    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:136 - `BRepAlgoAPI_Defeaturing::FacesToRemove()`
     pub fn BRepAlgoAPI_Defeaturing_faces_to_remove(
         self_: *const BRepAlgoAPI_Defeaturing,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:141 - `BRepAlgoAPI_Defeaturing::Build()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:140 - `BRepAlgoAPI_Defeaturing::Build()`
     pub fn BRepAlgoAPI_Defeaturing_build(
         self_: *mut BRepAlgoAPI_Defeaturing,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:146 - `BRepAlgoAPI_Defeaturing::SetToFillHistory()`
+    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:145 - `BRepAlgoAPI_Defeaturing::SetToFillHistory()`
     pub fn BRepAlgoAPI_Defeaturing_set_to_fill_history(
         self_: *mut BRepAlgoAPI_Defeaturing,
         theFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:149 - `BRepAlgoAPI_Defeaturing::HasHistory()`
+    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:148 - `BRepAlgoAPI_Defeaturing::HasHistory()`
     pub fn BRepAlgoAPI_Defeaturing_has_history(
         self_: *const BRepAlgoAPI_Defeaturing,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:152 - `BRepAlgoAPI_Defeaturing::Modified()`
+    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:151 - `BRepAlgoAPI_Defeaturing::Modified()`
     pub fn BRepAlgoAPI_Defeaturing_modified(
         self_: *mut BRepAlgoAPI_Defeaturing,
         theS: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:156 - `BRepAlgoAPI_Defeaturing::Generated()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:154 - `BRepAlgoAPI_Defeaturing::Generated()`
     pub fn BRepAlgoAPI_Defeaturing_generated(
         self_: *mut BRepAlgoAPI_Defeaturing,
         theS: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:162 - `BRepAlgoAPI_Defeaturing::IsDeleted()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:160 - `BRepAlgoAPI_Defeaturing::IsDeleted()`
     pub fn BRepAlgoAPI_Defeaturing_is_deleted(
         self_: *mut BRepAlgoAPI_Defeaturing,
         theS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:165 - `BRepAlgoAPI_Defeaturing::HasModified()`
+    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:163 - `BRepAlgoAPI_Defeaturing::HasModified()`
     pub fn BRepAlgoAPI_Defeaturing_has_modified(
         self_: *const BRepAlgoAPI_Defeaturing,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:168 - `BRepAlgoAPI_Defeaturing::HasGenerated()`
+    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:166 - `BRepAlgoAPI_Defeaturing::HasGenerated()`
     pub fn BRepAlgoAPI_Defeaturing_has_generated(
         self_: *const BRepAlgoAPI_Defeaturing,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:171 - `BRepAlgoAPI_Defeaturing::HasDeleted()`
+    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:169 - `BRepAlgoAPI_Defeaturing::HasDeleted()`
     pub fn BRepAlgoAPI_Defeaturing_has_deleted(
         self_: *const BRepAlgoAPI_Defeaturing,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:174 - `BRepAlgoAPI_Defeaturing::History()`
+    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:172 - `BRepAlgoAPI_Defeaturing::History()`
     pub fn BRepAlgoAPI_Defeaturing_history(
         self_: *mut BRepAlgoAPI_Defeaturing,
-    ) -> crate::OcctResult<*mut HandleBRepToolsHistory>;
+    ) -> crate::OcctResult<*mut Handle_BRepTools_History>;
     /// Upcast BRepAlgoAPI_Defeaturing to BRepAlgoAPI_Algo
     pub fn BRepAlgoAPI_Defeaturing_as_BRepAlgoAPI_Algo(
         self_: *const BRepAlgoAPI_Defeaturing,
@@ -12679,12 +12575,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:73 - `BRepAlgoAPI_BooleanOperation::SetTools()`
     pub fn BRepAlgoAPI_Fuse_inherited_SetTools(
         self_: *mut BRepAlgoAPI_Fuse,
-        theLS: *const TopTools_ListOfShape,
+        theLS: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:76 - `BRepAlgoAPI_BooleanOperation::Tools()`
     pub fn BRepAlgoAPI_Fuse_inherited_Tools(
         self_: *const BRepAlgoAPI_Fuse,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:80 - `BRepAlgoAPI_BooleanOperation::SetOperation()`
     pub fn BRepAlgoAPI_Fuse_inherited_SetOperation(
         self_: *mut BRepAlgoAPI_Fuse,
@@ -12699,83 +12595,83 @@ unsafe extern "C" {
         self_: *mut BRepAlgoAPI_Fuse,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:75 - `BRepAlgoAPI_BuilderAlgo::SetArguments()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:88 - `BRepAlgoAPI_BuilderAlgo::SetArguments()`
     pub fn BRepAlgoAPI_Fuse_inherited_SetArguments(
         self_: *mut BRepAlgoAPI_Fuse,
-        theLS: *const TopTools_ListOfShape,
+        theLS: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:78 - `BRepAlgoAPI_BuilderAlgo::Arguments()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:91 - `BRepAlgoAPI_BuilderAlgo::Arguments()`
     pub fn BRepAlgoAPI_Fuse_inherited_Arguments(
         self_: *const BRepAlgoAPI_Fuse,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:84 - `BRepAlgoAPI_BuilderAlgo::SetNonDestructive()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:97 - `BRepAlgoAPI_BuilderAlgo::SetNonDestructive()`
     pub fn BRepAlgoAPI_Fuse_inherited_SetNonDestructive(
         self_: *mut BRepAlgoAPI_Fuse,
         theFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:89 - `BRepAlgoAPI_BuilderAlgo::NonDestructive()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:102 - `BRepAlgoAPI_BuilderAlgo::NonDestructive()`
     pub fn BRepAlgoAPI_Fuse_inherited_NonDestructive(
         self_: *const BRepAlgoAPI_Fuse,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:94 - `BRepAlgoAPI_BuilderAlgo::SetGlue()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:107 - `BRepAlgoAPI_BuilderAlgo::SetGlue()`
     pub fn BRepAlgoAPI_Fuse_inherited_SetGlue(
         self_: *mut BRepAlgoAPI_Fuse,
         theGlue: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:97 - `BRepAlgoAPI_BuilderAlgo::Glue()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:110 - `BRepAlgoAPI_BuilderAlgo::Glue()`
     pub fn BRepAlgoAPI_Fuse_inherited_Glue(
         self_: *const BRepAlgoAPI_Fuse,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:100 - `BRepAlgoAPI_BuilderAlgo::SetCheckInverted()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:113 - `BRepAlgoAPI_BuilderAlgo::SetCheckInverted()`
     pub fn BRepAlgoAPI_Fuse_inherited_SetCheckInverted(
         self_: *mut BRepAlgoAPI_Fuse,
         theCheck: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:104 - `BRepAlgoAPI_BuilderAlgo::CheckInverted()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:117 - `BRepAlgoAPI_BuilderAlgo::CheckInverted()`
     pub fn BRepAlgoAPI_Fuse_inherited_CheckInverted(
         self_: *const BRepAlgoAPI_Fuse,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:135 - `BRepAlgoAPI_BuilderAlgo::SimplifyResult()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:148 - `BRepAlgoAPI_BuilderAlgo::SimplifyResult()`
     pub fn BRepAlgoAPI_Fuse_inherited_SimplifyResult(
         self_: *mut BRepAlgoAPI_Fuse,
         theUnifyEdges: bool,
         theUnifyFaces: bool,
         theAngularTol: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:158 - `BRepAlgoAPI_BuilderAlgo::IsDeleted()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:170 - `BRepAlgoAPI_BuilderAlgo::IsDeleted()`
     pub fn BRepAlgoAPI_Fuse_inherited_IsDeleted(
         self_: *mut BRepAlgoAPI_Fuse,
         aS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:161 - `BRepAlgoAPI_BuilderAlgo::HasModified()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:173 - `BRepAlgoAPI_BuilderAlgo::HasModified()`
     pub fn BRepAlgoAPI_Fuse_inherited_HasModified(
         self_: *const BRepAlgoAPI_Fuse,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:164 - `BRepAlgoAPI_BuilderAlgo::HasGenerated()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:176 - `BRepAlgoAPI_BuilderAlgo::HasGenerated()`
     pub fn BRepAlgoAPI_Fuse_inherited_HasGenerated(
         self_: *const BRepAlgoAPI_Fuse,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:169 - `BRepAlgoAPI_BuilderAlgo::HasDeleted()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:181 - `BRepAlgoAPI_BuilderAlgo::HasDeleted()`
     pub fn BRepAlgoAPI_Fuse_inherited_HasDeleted(
         self_: *const BRepAlgoAPI_Fuse,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:173 - `BRepAlgoAPI_BuilderAlgo::SetToFillHistory()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:185 - `BRepAlgoAPI_BuilderAlgo::SetToFillHistory()`
     pub fn BRepAlgoAPI_Fuse_inherited_SetToFillHistory(
         self_: *mut BRepAlgoAPI_Fuse,
         theHistFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:176 - `BRepAlgoAPI_BuilderAlgo::HasHistory()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:188 - `BRepAlgoAPI_BuilderAlgo::HasHistory()`
     pub fn BRepAlgoAPI_Fuse_inherited_HasHistory(
         self_: *const BRepAlgoAPI_Fuse,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:181 - `BRepAlgoAPI_BuilderAlgo::SectionEdges()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:193 - `BRepAlgoAPI_BuilderAlgo::SectionEdges()`
     pub fn BRepAlgoAPI_Fuse_inherited_SectionEdges(
         self_: *mut BRepAlgoAPI_Fuse,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:191 - `BRepAlgoAPI_BuilderAlgo::History()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:203 - `BRepAlgoAPI_BuilderAlgo::History()`
     pub fn BRepAlgoAPI_Fuse_inherited_History(
         self_: *const BRepAlgoAPI_Fuse,
-    ) -> crate::OcctResult<*mut HandleBRepToolsHistory>;
+    ) -> crate::OcctResult<*mut Handle_BRepTools_History>;
     /// Inherited: **Source:** `BRepAlgoAPI_Algo.hxx`:37 - `BRepAlgoAPI_Algo::Shape()`
     pub fn BRepAlgoAPI_Fuse_inherited_Shape(
         self_: *mut BRepAlgoAPI_Fuse,
@@ -12818,19 +12714,19 @@ unsafe extern "C" {
     /// **Source:** `BRepAlgoAPI_Section.hxx`:89 - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
     pub fn BRepAlgoAPI_Section_ctor_shape_handlegeomsurface_bool(
         S1: *const TopoDS_Shape,
-        Sf: *const HandleGeomSurface,
+        Sf: *const Handle_Geom_Surface,
         PerformNow: bool,
     ) -> crate::OcctResult<*mut BRepAlgoAPI_Section>;
     /// **Source:** `BRepAlgoAPI_Section.hxx`:99 - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
     pub fn BRepAlgoAPI_Section_ctor_handlegeomsurface_shape_bool(
-        Sf: *const HandleGeomSurface,
+        Sf: *const Handle_Geom_Surface,
         S2: *const TopoDS_Shape,
         PerformNow: bool,
     ) -> crate::OcctResult<*mut BRepAlgoAPI_Section>;
     /// **Source:** `BRepAlgoAPI_Section.hxx`:109 - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
     pub fn BRepAlgoAPI_Section_ctor_handlegeomsurface2_bool(
-        Sf1: *const HandleGeomSurface,
-        Sf2: *const HandleGeomSurface,
+        Sf1: *const Handle_Geom_Surface,
+        Sf2: *const Handle_Geom_Surface,
         PerformNow: bool,
     ) -> crate::OcctResult<*mut BRepAlgoAPI_Section>;
     /// **Source:** `BRepAlgoAPI_Section.hxx`:116 - `BRepAlgoAPI_Section::Init1()`
@@ -12846,7 +12742,7 @@ unsafe extern "C" {
     /// **Source:** `BRepAlgoAPI_Section.hxx`:126 - `BRepAlgoAPI_Section::Init1()`
     pub fn BRepAlgoAPI_Section_init1_handlegeomsurface(
         self_: *mut BRepAlgoAPI_Section,
-        Sf: *const HandleGeomSurface,
+        Sf: *const Handle_Geom_Surface,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepAlgoAPI_Section.hxx`:131 - `BRepAlgoAPI_Section::Init2()`
     pub fn BRepAlgoAPI_Section_init2_shape(
@@ -12861,7 +12757,7 @@ unsafe extern "C" {
     /// **Source:** `BRepAlgoAPI_Section.hxx`:141 - `BRepAlgoAPI_Section::Init2()`
     pub fn BRepAlgoAPI_Section_init2_handlegeomsurface(
         self_: *mut BRepAlgoAPI_Section,
-        Sf: *const HandleGeomSurface,
+        Sf: *const Handle_Geom_Surface,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepAlgoAPI_Section.hxx`:143 - `BRepAlgoAPI_Section::Approximation()`
     pub fn BRepAlgoAPI_Section_approximation(
@@ -12946,12 +12842,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:73 - `BRepAlgoAPI_BooleanOperation::SetTools()`
     pub fn BRepAlgoAPI_Section_inherited_SetTools(
         self_: *mut BRepAlgoAPI_Section,
-        theLS: *const TopTools_ListOfShape,
+        theLS: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:76 - `BRepAlgoAPI_BooleanOperation::Tools()`
     pub fn BRepAlgoAPI_Section_inherited_Tools(
         self_: *const BRepAlgoAPI_Section,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:80 - `BRepAlgoAPI_BooleanOperation::SetOperation()`
     pub fn BRepAlgoAPI_Section_inherited_SetOperation(
         self_: *mut BRepAlgoAPI_Section,
@@ -12961,83 +12857,83 @@ unsafe extern "C" {
     pub fn BRepAlgoAPI_Section_inherited_Operation(
         self_: *const BRepAlgoAPI_Section,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:75 - `BRepAlgoAPI_BuilderAlgo::SetArguments()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:88 - `BRepAlgoAPI_BuilderAlgo::SetArguments()`
     pub fn BRepAlgoAPI_Section_inherited_SetArguments(
         self_: *mut BRepAlgoAPI_Section,
-        theLS: *const TopTools_ListOfShape,
+        theLS: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:78 - `BRepAlgoAPI_BuilderAlgo::Arguments()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:91 - `BRepAlgoAPI_BuilderAlgo::Arguments()`
     pub fn BRepAlgoAPI_Section_inherited_Arguments(
         self_: *const BRepAlgoAPI_Section,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:84 - `BRepAlgoAPI_BuilderAlgo::SetNonDestructive()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:97 - `BRepAlgoAPI_BuilderAlgo::SetNonDestructive()`
     pub fn BRepAlgoAPI_Section_inherited_SetNonDestructive(
         self_: *mut BRepAlgoAPI_Section,
         theFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:89 - `BRepAlgoAPI_BuilderAlgo::NonDestructive()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:102 - `BRepAlgoAPI_BuilderAlgo::NonDestructive()`
     pub fn BRepAlgoAPI_Section_inherited_NonDestructive(
         self_: *const BRepAlgoAPI_Section,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:94 - `BRepAlgoAPI_BuilderAlgo::SetGlue()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:107 - `BRepAlgoAPI_BuilderAlgo::SetGlue()`
     pub fn BRepAlgoAPI_Section_inherited_SetGlue(
         self_: *mut BRepAlgoAPI_Section,
         theGlue: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:97 - `BRepAlgoAPI_BuilderAlgo::Glue()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:110 - `BRepAlgoAPI_BuilderAlgo::Glue()`
     pub fn BRepAlgoAPI_Section_inherited_Glue(
         self_: *const BRepAlgoAPI_Section,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:100 - `BRepAlgoAPI_BuilderAlgo::SetCheckInverted()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:113 - `BRepAlgoAPI_BuilderAlgo::SetCheckInverted()`
     pub fn BRepAlgoAPI_Section_inherited_SetCheckInverted(
         self_: *mut BRepAlgoAPI_Section,
         theCheck: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:104 - `BRepAlgoAPI_BuilderAlgo::CheckInverted()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:117 - `BRepAlgoAPI_BuilderAlgo::CheckInverted()`
     pub fn BRepAlgoAPI_Section_inherited_CheckInverted(
         self_: *const BRepAlgoAPI_Section,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:135 - `BRepAlgoAPI_BuilderAlgo::SimplifyResult()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:148 - `BRepAlgoAPI_BuilderAlgo::SimplifyResult()`
     pub fn BRepAlgoAPI_Section_inherited_SimplifyResult(
         self_: *mut BRepAlgoAPI_Section,
         theUnifyEdges: bool,
         theUnifyFaces: bool,
         theAngularTol: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:158 - `BRepAlgoAPI_BuilderAlgo::IsDeleted()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:170 - `BRepAlgoAPI_BuilderAlgo::IsDeleted()`
     pub fn BRepAlgoAPI_Section_inherited_IsDeleted(
         self_: *mut BRepAlgoAPI_Section,
         aS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:161 - `BRepAlgoAPI_BuilderAlgo::HasModified()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:173 - `BRepAlgoAPI_BuilderAlgo::HasModified()`
     pub fn BRepAlgoAPI_Section_inherited_HasModified(
         self_: *const BRepAlgoAPI_Section,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:164 - `BRepAlgoAPI_BuilderAlgo::HasGenerated()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:176 - `BRepAlgoAPI_BuilderAlgo::HasGenerated()`
     pub fn BRepAlgoAPI_Section_inherited_HasGenerated(
         self_: *const BRepAlgoAPI_Section,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:169 - `BRepAlgoAPI_BuilderAlgo::HasDeleted()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:181 - `BRepAlgoAPI_BuilderAlgo::HasDeleted()`
     pub fn BRepAlgoAPI_Section_inherited_HasDeleted(
         self_: *const BRepAlgoAPI_Section,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:173 - `BRepAlgoAPI_BuilderAlgo::SetToFillHistory()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:185 - `BRepAlgoAPI_BuilderAlgo::SetToFillHistory()`
     pub fn BRepAlgoAPI_Section_inherited_SetToFillHistory(
         self_: *mut BRepAlgoAPI_Section,
         theHistFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:176 - `BRepAlgoAPI_BuilderAlgo::HasHistory()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:188 - `BRepAlgoAPI_BuilderAlgo::HasHistory()`
     pub fn BRepAlgoAPI_Section_inherited_HasHistory(
         self_: *const BRepAlgoAPI_Section,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:181 - `BRepAlgoAPI_BuilderAlgo::SectionEdges()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:193 - `BRepAlgoAPI_BuilderAlgo::SectionEdges()`
     pub fn BRepAlgoAPI_Section_inherited_SectionEdges(
         self_: *mut BRepAlgoAPI_Section,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:191 - `BRepAlgoAPI_BuilderAlgo::History()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:203 - `BRepAlgoAPI_BuilderAlgo::History()`
     pub fn BRepAlgoAPI_Section_inherited_History(
         self_: *const BRepAlgoAPI_Section,
-    ) -> crate::OcctResult<*mut HandleBRepToolsHistory>;
+    ) -> crate::OcctResult<*mut Handle_BRepTools_History>;
     /// Inherited: **Source:** `BRepAlgoAPI_Algo.hxx`:37 - `BRepAlgoAPI_Algo::Shape()`
     pub fn BRepAlgoAPI_Section_inherited_Shape(
         self_: *mut BRepAlgoAPI_Section,
@@ -13061,12 +12957,12 @@ unsafe extern "C" {
     /// **Source:** `BRepAlgoAPI_Splitter.hxx`:65 - `BRepAlgoAPI_Splitter::SetTools()`
     pub fn BRepAlgoAPI_Splitter_set_tools(
         self_: *mut BRepAlgoAPI_Splitter,
-        theLS: *const TopTools_ListOfShape,
+        theLS: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepAlgoAPI_Splitter.hxx`:68 - `BRepAlgoAPI_Splitter::Tools()`
     pub fn BRepAlgoAPI_Splitter_tools(
         self_: *const BRepAlgoAPI_Splitter,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// **Source:** `BRepAlgoAPI_Splitter.hxx`:74 - `BRepAlgoAPI_Splitter::Build()`
     pub fn BRepAlgoAPI_Splitter_build(
         self_: *mut BRepAlgoAPI_Splitter,
@@ -13104,83 +13000,83 @@ unsafe extern "C" {
     pub fn BRepAlgoAPI_Splitter_as_BRepBuilderAPI_Command_mut(
         self_: *mut BRepAlgoAPI_Splitter,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_Command>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:75 - `BRepAlgoAPI_BuilderAlgo::SetArguments()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:88 - `BRepAlgoAPI_BuilderAlgo::SetArguments()`
     pub fn BRepAlgoAPI_Splitter_inherited_SetArguments(
         self_: *mut BRepAlgoAPI_Splitter,
-        theLS: *const TopTools_ListOfShape,
+        theLS: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:78 - `BRepAlgoAPI_BuilderAlgo::Arguments()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:91 - `BRepAlgoAPI_BuilderAlgo::Arguments()`
     pub fn BRepAlgoAPI_Splitter_inherited_Arguments(
         self_: *const BRepAlgoAPI_Splitter,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:84 - `BRepAlgoAPI_BuilderAlgo::SetNonDestructive()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:97 - `BRepAlgoAPI_BuilderAlgo::SetNonDestructive()`
     pub fn BRepAlgoAPI_Splitter_inherited_SetNonDestructive(
         self_: *mut BRepAlgoAPI_Splitter,
         theFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:89 - `BRepAlgoAPI_BuilderAlgo::NonDestructive()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:102 - `BRepAlgoAPI_BuilderAlgo::NonDestructive()`
     pub fn BRepAlgoAPI_Splitter_inherited_NonDestructive(
         self_: *const BRepAlgoAPI_Splitter,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:94 - `BRepAlgoAPI_BuilderAlgo::SetGlue()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:107 - `BRepAlgoAPI_BuilderAlgo::SetGlue()`
     pub fn BRepAlgoAPI_Splitter_inherited_SetGlue(
         self_: *mut BRepAlgoAPI_Splitter,
         theGlue: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:97 - `BRepAlgoAPI_BuilderAlgo::Glue()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:110 - `BRepAlgoAPI_BuilderAlgo::Glue()`
     pub fn BRepAlgoAPI_Splitter_inherited_Glue(
         self_: *const BRepAlgoAPI_Splitter,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:100 - `BRepAlgoAPI_BuilderAlgo::SetCheckInverted()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:113 - `BRepAlgoAPI_BuilderAlgo::SetCheckInverted()`
     pub fn BRepAlgoAPI_Splitter_inherited_SetCheckInverted(
         self_: *mut BRepAlgoAPI_Splitter,
         theCheck: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:104 - `BRepAlgoAPI_BuilderAlgo::CheckInverted()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:117 - `BRepAlgoAPI_BuilderAlgo::CheckInverted()`
     pub fn BRepAlgoAPI_Splitter_inherited_CheckInverted(
         self_: *const BRepAlgoAPI_Splitter,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:135 - `BRepAlgoAPI_BuilderAlgo::SimplifyResult()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:148 - `BRepAlgoAPI_BuilderAlgo::SimplifyResult()`
     pub fn BRepAlgoAPI_Splitter_inherited_SimplifyResult(
         self_: *mut BRepAlgoAPI_Splitter,
         theUnifyEdges: bool,
         theUnifyFaces: bool,
         theAngularTol: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:158 - `BRepAlgoAPI_BuilderAlgo::IsDeleted()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:170 - `BRepAlgoAPI_BuilderAlgo::IsDeleted()`
     pub fn BRepAlgoAPI_Splitter_inherited_IsDeleted(
         self_: *mut BRepAlgoAPI_Splitter,
         aS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:161 - `BRepAlgoAPI_BuilderAlgo::HasModified()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:173 - `BRepAlgoAPI_BuilderAlgo::HasModified()`
     pub fn BRepAlgoAPI_Splitter_inherited_HasModified(
         self_: *const BRepAlgoAPI_Splitter,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:164 - `BRepAlgoAPI_BuilderAlgo::HasGenerated()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:176 - `BRepAlgoAPI_BuilderAlgo::HasGenerated()`
     pub fn BRepAlgoAPI_Splitter_inherited_HasGenerated(
         self_: *const BRepAlgoAPI_Splitter,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:169 - `BRepAlgoAPI_BuilderAlgo::HasDeleted()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:181 - `BRepAlgoAPI_BuilderAlgo::HasDeleted()`
     pub fn BRepAlgoAPI_Splitter_inherited_HasDeleted(
         self_: *const BRepAlgoAPI_Splitter,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:173 - `BRepAlgoAPI_BuilderAlgo::SetToFillHistory()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:185 - `BRepAlgoAPI_BuilderAlgo::SetToFillHistory()`
     pub fn BRepAlgoAPI_Splitter_inherited_SetToFillHistory(
         self_: *mut BRepAlgoAPI_Splitter,
         theHistFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:176 - `BRepAlgoAPI_BuilderAlgo::HasHistory()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:188 - `BRepAlgoAPI_BuilderAlgo::HasHistory()`
     pub fn BRepAlgoAPI_Splitter_inherited_HasHistory(
         self_: *const BRepAlgoAPI_Splitter,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:181 - `BRepAlgoAPI_BuilderAlgo::SectionEdges()`
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:193 - `BRepAlgoAPI_BuilderAlgo::SectionEdges()`
     pub fn BRepAlgoAPI_Splitter_inherited_SectionEdges(
         self_: *mut BRepAlgoAPI_Splitter,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:191 - `BRepAlgoAPI_BuilderAlgo::History()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:203 - `BRepAlgoAPI_BuilderAlgo::History()`
     pub fn BRepAlgoAPI_Splitter_inherited_History(
         self_: *const BRepAlgoAPI_Splitter,
-    ) -> crate::OcctResult<*mut HandleBRepToolsHistory>;
+    ) -> crate::OcctResult<*mut Handle_BRepTools_History>;
     /// Inherited: **Source:** `BRepAlgoAPI_Algo.hxx`:37 - `BRepAlgoAPI_Algo::Shape()`
     pub fn BRepAlgoAPI_Splitter_inherited_Shape(
         self_: *mut BRepAlgoAPI_Splitter,
@@ -13212,22 +13108,22 @@ unsafe extern "C" {
     ) -> crate::OcctResult<i32>;
     // ======================== IntTools_BeanFaceIntersector ========================
     pub fn IntTools_BeanFaceIntersector_destructor(self_: *mut IntTools_BeanFaceIntersector);
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:55 - `IntTools_BeanFaceIntersector::IntTools_BeanFaceIntersector()`
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:57 - `IntTools_BeanFaceIntersector::IntTools_BeanFaceIntersector()`
     pub fn IntTools_BeanFaceIntersector_ctor(
     ) -> crate::OcctResult<*mut IntTools_BeanFaceIntersector>;
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:64 - `IntTools_BeanFaceIntersector::IntTools_BeanFaceIntersector()`
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:66 - `IntTools_BeanFaceIntersector::IntTools_BeanFaceIntersector()`
     pub fn IntTools_BeanFaceIntersector_ctor_edge_face(
         theEdge: *const TopoDS_Edge,
         theFace: *const TopoDS_Face,
     ) -> crate::OcctResult<*mut IntTools_BeanFaceIntersector>;
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:68 - `IntTools_BeanFaceIntersector::IntTools_BeanFaceIntersector()`
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:70 - `IntTools_BeanFaceIntersector::IntTools_BeanFaceIntersector()`
     pub fn IntTools_BeanFaceIntersector_ctor_curve_surface_real2(
         theCurve: *const BRepAdaptor_Curve,
         theSurface: *const BRepAdaptor_Surface,
         theBeanTolerance: f64,
         theFaceTolerance: f64,
     ) -> crate::OcctResult<*mut IntTools_BeanFaceIntersector>;
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:76 - `IntTools_BeanFaceIntersector::IntTools_BeanFaceIntersector()`
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:78 - `IntTools_BeanFaceIntersector::IntTools_BeanFaceIntersector()`
     pub fn IntTools_BeanFaceIntersector_ctor_curve_surface_real8(
         theCurve: *const BRepAdaptor_Curve,
         theSurface: *const BRepAdaptor_Surface,
@@ -13240,13 +13136,13 @@ unsafe extern "C" {
         theBeanTolerance: f64,
         theFaceTolerance: f64,
     ) -> crate::OcctResult<*mut IntTools_BeanFaceIntersector>;
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:94 - `IntTools_BeanFaceIntersector::Init()`
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:96 - `IntTools_BeanFaceIntersector::Init()`
     pub fn IntTools_BeanFaceIntersector_init_edge_face(
         self_: *mut IntTools_BeanFaceIntersector,
         theEdge: *const TopoDS_Edge,
         theFace: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:97 - `IntTools_BeanFaceIntersector::Init()`
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:99 - `IntTools_BeanFaceIntersector::Init()`
     pub fn IntTools_BeanFaceIntersector_init_curve_surface_real2(
         self_: *mut IntTools_BeanFaceIntersector,
         theCurve: *const BRepAdaptor_Curve,
@@ -13254,7 +13150,7 @@ unsafe extern "C" {
         theBeanTolerance: f64,
         theFaceTolerance: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:105 - `IntTools_BeanFaceIntersector::Init()`
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:107 - `IntTools_BeanFaceIntersector::Init()`
     pub fn IntTools_BeanFaceIntersector_init_curve_surface_real8(
         self_: *mut IntTools_BeanFaceIntersector,
         theCurve: *const BRepAdaptor_Curve,
@@ -13268,22 +13164,22 @@ unsafe extern "C" {
         theBeanTolerance: f64,
         theFaceTolerance: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:117 - `IntTools_BeanFaceIntersector::SetContext()`
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:119 - `IntTools_BeanFaceIntersector::SetContext()`
     pub fn IntTools_BeanFaceIntersector_set_context(
         self_: *mut IntTools_BeanFaceIntersector,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:120 - `IntTools_BeanFaceIntersector::Context()`
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:122 - `IntTools_BeanFaceIntersector::Context()`
     pub fn IntTools_BeanFaceIntersector_context(
         self_: *const IntTools_BeanFaceIntersector,
-    ) -> crate::OcctResult<*const HandleIntToolsContext>;
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:123 - `IntTools_BeanFaceIntersector::SetBeanParameters()`
+    ) -> crate::OcctResult<*const Handle_IntTools_Context>;
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:125 - `IntTools_BeanFaceIntersector::SetBeanParameters()`
     pub fn IntTools_BeanFaceIntersector_set_bean_parameters(
         self_: *mut IntTools_BeanFaceIntersector,
         theFirstParOnCurve: f64,
         theLastParOnCurve: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:127 - `IntTools_BeanFaceIntersector::SetSurfaceParameters()`
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:129 - `IntTools_BeanFaceIntersector::SetSurfaceParameters()`
     pub fn IntTools_BeanFaceIntersector_set_surface_parameters(
         self_: *mut IntTools_BeanFaceIntersector,
         theUMinParameter: f64,
@@ -13291,140 +13187,140 @@ unsafe extern "C" {
         theVMinParameter: f64,
         theVMaxParameter: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:133 - `IntTools_BeanFaceIntersector::Perform()`
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:135 - `IntTools_BeanFaceIntersector::Perform()`
     pub fn IntTools_BeanFaceIntersector_perform(
         self_: *mut IntTools_BeanFaceIntersector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:136 - `IntTools_BeanFaceIntersector::IsDone()`
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:138 - `IntTools_BeanFaceIntersector::IsDone()`
     pub fn IntTools_BeanFaceIntersector_is_done(
         self_: *const IntTools_BeanFaceIntersector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:138 - `IntTools_BeanFaceIntersector::Result()`
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:140 - `IntTools_BeanFaceIntersector::Result()`
     pub fn IntTools_BeanFaceIntersector_result(
         self_: *const IntTools_BeanFaceIntersector,
-    ) -> crate::OcctResult<*const IntTools_SequenceOfRanges>;
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:140 - `IntTools_BeanFaceIntersector::Result()`
-    pub fn IntTools_BeanFaceIntersector_result_sequenceofranges(
+    ) -> crate::OcctResult<*const NCollection_Sequence_IntTools_Range>;
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:142 - `IntTools_BeanFaceIntersector::Result()`
+    pub fn IntTools_BeanFaceIntersector_result_seq_range(
         self_: *const IntTools_BeanFaceIntersector,
-        theResults: *mut IntTools_SequenceOfRanges,
+        theResults: *mut NCollection_Sequence_IntTools_Range,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:143 - `IntTools_BeanFaceIntersector::MinimalSquareDistance()`
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:145 - `IntTools_BeanFaceIntersector::MinimalSquareDistance()`
     pub fn IntTools_BeanFaceIntersector_minimal_square_distance(
         self_: *const IntTools_BeanFaceIntersector,
     ) -> crate::OcctResult<f64>;
     // ======================== IntTools_CommonPrt ========================
     pub fn IntTools_CommonPrt_destructor(self_: *mut IntTools_CommonPrt);
-    /// **Source:** `IntTools_CommonPrt.hxx`:37 - `IntTools_CommonPrt::IntTools_CommonPrt()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:38 - `IntTools_CommonPrt::IntTools_CommonPrt()`
     pub fn IntTools_CommonPrt_ctor() -> crate::OcctResult<*mut IntTools_CommonPrt>;
-    /// **Source:** `IntTools_CommonPrt.hxx`:42 - `IntTools_CommonPrt::Assign()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:43 - `IntTools_CommonPrt::Assign()`
     pub fn IntTools_CommonPrt_assign(
         self_: *mut IntTools_CommonPrt,
         Other: *const IntTools_CommonPrt,
     ) -> crate::OcctResult<*mut IntTools_CommonPrt>;
-    /// **Source:** `IntTools_CommonPrt.hxx`:47 - `IntTools_CommonPrt::SetEdge1()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:48 - `IntTools_CommonPrt::SetEdge1()`
     pub fn IntTools_CommonPrt_set_edge1(
         self_: *mut IntTools_CommonPrt,
         anE: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_CommonPrt.hxx`:50 - `IntTools_CommonPrt::SetEdge2()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:51 - `IntTools_CommonPrt::SetEdge2()`
     pub fn IntTools_CommonPrt_set_edge2(
         self_: *mut IntTools_CommonPrt,
         anE: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_CommonPrt.hxx`:54 - `IntTools_CommonPrt::SetType()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:55 - `IntTools_CommonPrt::SetType()`
     pub fn IntTools_CommonPrt_set_type(
         self_: *mut IntTools_CommonPrt,
         aType: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_CommonPrt.hxx`:57 - `IntTools_CommonPrt::SetRange1()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:58 - `IntTools_CommonPrt::SetRange1()`
     pub fn IntTools_CommonPrt_set_range1_range(
         self_: *mut IntTools_CommonPrt,
         aR: *const IntTools_Range,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_CommonPrt.hxx`:60 - `IntTools_CommonPrt::SetRange1()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:61 - `IntTools_CommonPrt::SetRange1()`
     pub fn IntTools_CommonPrt_set_range1_real2(
         self_: *mut IntTools_CommonPrt,
         tf: f64,
         tl: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_CommonPrt.hxx`:63 - `IntTools_CommonPrt::AppendRange2()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:64 - `IntTools_CommonPrt::AppendRange2()`
     pub fn IntTools_CommonPrt_append_range2_range(
         self_: *mut IntTools_CommonPrt,
         aR: *const IntTools_Range,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_CommonPrt.hxx`:66 - `IntTools_CommonPrt::AppendRange2()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:67 - `IntTools_CommonPrt::AppendRange2()`
     pub fn IntTools_CommonPrt_append_range2_real2(
         self_: *mut IntTools_CommonPrt,
         tf: f64,
         tl: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_CommonPrt.hxx`:69 - `IntTools_CommonPrt::SetVertexParameter1()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:70 - `IntTools_CommonPrt::SetVertexParameter1()`
     pub fn IntTools_CommonPrt_set_vertex_parameter1(
         self_: *mut IntTools_CommonPrt,
         tV: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_CommonPrt.hxx`:72 - `IntTools_CommonPrt::SetVertexParameter2()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:73 - `IntTools_CommonPrt::SetVertexParameter2()`
     pub fn IntTools_CommonPrt_set_vertex_parameter2(
         self_: *mut IntTools_CommonPrt,
         tV: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_CommonPrt.hxx`:75 - `IntTools_CommonPrt::Edge1()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:76 - `IntTools_CommonPrt::Edge1()`
     pub fn IntTools_CommonPrt_edge1(
         self_: *const IntTools_CommonPrt,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `IntTools_CommonPrt.hxx`:78 - `IntTools_CommonPrt::Edge2()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:79 - `IntTools_CommonPrt::Edge2()`
     pub fn IntTools_CommonPrt_edge2(
         self_: *const IntTools_CommonPrt,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `IntTools_CommonPrt.hxx`:81 - `IntTools_CommonPrt::Type()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:82 - `IntTools_CommonPrt::Type()`
     pub fn IntTools_CommonPrt_type_(self_: *const IntTools_CommonPrt) -> crate::OcctResult<i32>;
-    /// **Source:** `IntTools_CommonPrt.hxx`:84 - `IntTools_CommonPrt::Range1()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:85 - `IntTools_CommonPrt::Range1()`
     pub fn IntTools_CommonPrt_range1(
         self_: *const IntTools_CommonPrt,
     ) -> crate::OcctResult<*const IntTools_Range>;
-    /// **Source:** `IntTools_CommonPrt.hxx`:87 - `IntTools_CommonPrt::Range1()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:88 - `IntTools_CommonPrt::Range1()`
     pub fn IntTools_CommonPrt_range1_real2(
         self_: *const IntTools_CommonPrt,
         tf: *mut f64,
         tl: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_CommonPrt.hxx`:90 - `IntTools_CommonPrt::Ranges2()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:91 - `IntTools_CommonPrt::Ranges2()`
     pub fn IntTools_CommonPrt_ranges2(
         self_: *const IntTools_CommonPrt,
-    ) -> crate::OcctResult<*const IntTools_SequenceOfRanges>;
-    /// **Source:** `IntTools_CommonPrt.hxx`:93 - `IntTools_CommonPrt::ChangeRanges2()`
+    ) -> crate::OcctResult<*const NCollection_Sequence_IntTools_Range>;
+    /// **Source:** `IntTools_CommonPrt.hxx`:94 - `IntTools_CommonPrt::ChangeRanges2()`
     pub fn IntTools_CommonPrt_change_ranges2(
         self_: *mut IntTools_CommonPrt,
-    ) -> crate::OcctResult<*mut IntTools_SequenceOfRanges>;
-    /// **Source:** `IntTools_CommonPrt.hxx`:96 - `IntTools_CommonPrt::VertexParameter1()`
+    ) -> crate::OcctResult<*mut NCollection_Sequence_IntTools_Range>;
+    /// **Source:** `IntTools_CommonPrt.hxx`:97 - `IntTools_CommonPrt::VertexParameter1()`
     pub fn IntTools_CommonPrt_vertex_parameter1(
         self_: *const IntTools_CommonPrt,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `IntTools_CommonPrt.hxx`:99 - `IntTools_CommonPrt::VertexParameter2()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:100 - `IntTools_CommonPrt::VertexParameter2()`
     pub fn IntTools_CommonPrt_vertex_parameter2(
         self_: *const IntTools_CommonPrt,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `IntTools_CommonPrt.hxx`:102 - `IntTools_CommonPrt::Copy()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:103 - `IntTools_CommonPrt::Copy()`
     pub fn IntTools_CommonPrt_copy(
         self_: *const IntTools_CommonPrt,
         anOther: *mut IntTools_CommonPrt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_CommonPrt.hxx`:105 - `IntTools_CommonPrt::AllNullFlag()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:106 - `IntTools_CommonPrt::AllNullFlag()`
     pub fn IntTools_CommonPrt_all_null_flag(
         self_: *const IntTools_CommonPrt,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_CommonPrt.hxx`:108 - `IntTools_CommonPrt::SetAllNullFlag()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:109 - `IntTools_CommonPrt::SetAllNullFlag()`
     pub fn IntTools_CommonPrt_set_all_null_flag(
         self_: *mut IntTools_CommonPrt,
         aFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_CommonPrt.hxx`:111 - `IntTools_CommonPrt::SetBoundingPoints()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:112 - `IntTools_CommonPrt::SetBoundingPoints()`
     pub fn IntTools_CommonPrt_set_bounding_points(
         self_: *mut IntTools_CommonPrt,
         aP1: *const gp_Pnt,
         aP2: *const gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_CommonPrt.hxx`:114 - `IntTools_CommonPrt::BoundingPoints()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:115 - `IntTools_CommonPrt::BoundingPoints()`
     pub fn IntTools_CommonPrt_bounding_points(
         self_: *const IntTools_CommonPrt,
         aP1: *mut gp_Pnt,
@@ -13439,8 +13335,8 @@ unsafe extern "C" {
     /// **Source:** `IntTools_Context.hxx`:53 - `IntTools_Context::IntTools_Context()`
     pub fn IntTools_Context_ctor() -> crate::OcctResult<*mut IntTools_Context>;
     /// **Source:** `IntTools_Context.hxx`:56 - `IntTools_Context::IntTools_Context()`
-    pub fn IntTools_Context_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+    pub fn IntTools_Context_ctor_hallocator(
+        theAllocator: *const TDF_HAllocator,
     ) -> crate::OcctResult<*mut IntTools_Context>;
     /// **Source:** `IntTools_Context.hxx`:60 - `IntTools_Context::FClass2d()`
     pub fn IntTools_Context_f_class2d(
@@ -13460,7 +13356,7 @@ unsafe extern "C" {
     /// **Source:** `IntTools_Context.hxx`:72 - `IntTools_Context::ProjPT()`
     pub fn IntTools_Context_proj_pt(
         self_: *mut IntTools_Context,
-        aC: *const HandleGeomCurve,
+        aC: *const Handle_Geom_Curve,
     ) -> crate::OcctResult<*mut GeomAPI_ProjectPointOnCurve>;
     /// **Source:** `IntTools_Context.hxx`:76 - `IntTools_Context::SurfaceData()`
     pub fn IntTools_Context_surface_data(
@@ -13544,20 +13440,20 @@ unsafe extern "C" {
         aF: *const TopoDS_Face,
         aTol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_Context.hxx`:166 - `IntTools_Context::IsPointInOnFace()`
+    /// **Source:** `IntTools_Context.hxx`:164 - `IntTools_Context::IsPointInOnFace()`
     pub fn IntTools_Context_is_point_in_on_face(
         self_: *mut IntTools_Context,
         aF: *const TopoDS_Face,
         aP2D: *const gp_Pnt2d,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_Context.hxx`:172 - `IntTools_Context::IsValidPointForFace()`
+    /// **Source:** `IntTools_Context.hxx`:170 - `IntTools_Context::IsValidPointForFace()`
     pub fn IntTools_Context_is_valid_point_for_face(
         self_: *mut IntTools_Context,
         aP3D: *const gp_Pnt,
         aF: *const TopoDS_Face,
         aTol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_Context.hxx`:178 - `IntTools_Context::IsValidPointForFaces()`
+    /// **Source:** `IntTools_Context.hxx`:176 - `IntTools_Context::IsValidPointForFaces()`
     pub fn IntTools_Context_is_valid_point_for_faces(
         self_: *mut IntTools_Context,
         aP3D: *const gp_Pnt,
@@ -13565,7 +13461,7 @@ unsafe extern "C" {
         aF2: *const TopoDS_Face,
         aTol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_Context.hxx`:186 - `IntTools_Context::IsValidBlockForFace()`
+    /// **Source:** `IntTools_Context.hxx`:184 - `IntTools_Context::IsValidBlockForFace()`
     pub fn IntTools_Context_is_valid_block_for_face(
         self_: *mut IntTools_Context,
         aT1: f64,
@@ -13574,7 +13470,7 @@ unsafe extern "C" {
         aF: *const TopoDS_Face,
         aTol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_Context.hxx`:194 - `IntTools_Context::IsValidBlockForFaces()`
+    /// **Source:** `IntTools_Context.hxx`:192 - `IntTools_Context::IsValidBlockForFaces()`
     pub fn IntTools_Context_is_valid_block_for_faces(
         self_: *mut IntTools_Context,
         aT1: f64,
@@ -13584,7 +13480,7 @@ unsafe extern "C" {
         aF2: *const TopoDS_Face,
         aTol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_Context.hxx`:207 - `IntTools_Context::IsVertexOnLine()`
+    /// **Source:** `IntTools_Context.hxx`:205 - `IntTools_Context::IsVertexOnLine()`
     pub fn IntTools_Context_is_vertex_on_line_vertex_curve_real2(
         self_: *mut IntTools_Context,
         aV: *const TopoDS_Vertex,
@@ -13592,7 +13488,7 @@ unsafe extern "C" {
         aTolC: f64,
         aT: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_Context.hxx`:218 - `IntTools_Context::IsVertexOnLine()`
+    /// **Source:** `IntTools_Context.hxx`:216 - `IntTools_Context::IsVertexOnLine()`
     pub fn IntTools_Context_is_vertex_on_line_vertex_real_curve_real2(
         self_: *mut IntTools_Context,
         aV: *const TopoDS_Vertex,
@@ -13601,36 +13497,36 @@ unsafe extern "C" {
         aTolC: f64,
         aT: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_Context.hxx`:228 - `IntTools_Context::ProjectPointOnEdge()`
+    /// **Source:** `IntTools_Context.hxx`:226 - `IntTools_Context::ProjectPointOnEdge()`
     pub fn IntTools_Context_project_point_on_edge(
         self_: *mut IntTools_Context,
         aP: *const gp_Pnt,
         aE: *const TopoDS_Edge,
         aT: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_Context.hxx`:232 - `IntTools_Context::BndBox()`
+    /// **Source:** `IntTools_Context.hxx`:228 - `IntTools_Context::BndBox()`
     pub fn IntTools_Context_bnd_box(
         self_: *mut IntTools_Context,
         theS: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut Bnd_Box>;
-    /// **Source:** `IntTools_Context.hxx`:236 - `IntTools_Context::IsInfiniteFace()`
+    /// **Source:** `IntTools_Context.hxx`:232 - `IntTools_Context::IsInfiniteFace()`
     pub fn IntTools_Context_is_infinite_face(
         self_: *mut IntTools_Context,
         theFace: *const TopoDS_Face,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_Context.hxx`:241 - `IntTools_Context::SetPOnSProjectionTolerance()`
+    /// **Source:** `IntTools_Context.hxx`:237 - `IntTools_Context::SetPOnSProjectionTolerance()`
     pub fn IntTools_Context_set_p_on_s_projection_tolerance(
         self_: *mut IntTools_Context,
         theValue: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_Context.hxx`:243 - `IntTools_Context::DynamicType()`
+    /// **Source:** `IntTools_Context.hxx`:239 - `IntTools_Context::DynamicType()`
     pub fn IntTools_Context_dynamic_type(
         self_: *const IntTools_Context,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `IntTools_Context.hxx`:243 - `IntTools_Context::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `IntTools_Context.hxx`:239 - `IntTools_Context::get_type_name()`
     pub fn IntTools_Context_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `IntTools_Context.hxx`:243 - `IntTools_Context::get_type_descriptor()`
-    pub fn IntTools_Context_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `IntTools_Context.hxx`:239 - `IntTools_Context::get_type_descriptor()`
+    pub fn IntTools_Context_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast IntTools_Context to Standard_Transient
     pub fn IntTools_Context_as_Standard_Transient(
         self_: *const IntTools_Context,
@@ -13642,54 +13538,54 @@ unsafe extern "C" {
     /// Wrap IntTools_Context in a Handle
     pub fn IntTools_Context_to_handle(
         obj: *mut IntTools_Context,
-    ) -> crate::OcctResult<*mut HandleIntToolsContext>;
+    ) -> crate::OcctResult<*mut Handle_IntTools_Context>;
     /// Destroy Handle<IntTools_Context>
-    pub fn HandleIntToolsContext_destructor(self_: *mut HandleIntToolsContext);
+    pub fn Handle_IntTools_Context_destructor(self_: *mut Handle_IntTools_Context);
     /// Clone Handle<IntTools_Context> (increments reference count)
-    pub fn HandleIntToolsContext_clone(
-        self_: *const HandleIntToolsContext,
-    ) -> crate::OcctResult<*mut HandleIntToolsContext>;
+    pub fn Handle_IntTools_Context_clone(
+        self_: *const Handle_IntTools_Context,
+    ) -> crate::OcctResult<*mut Handle_IntTools_Context>;
     /// Check if Handle<IntTools_Context> is null
-    pub fn HandleIntToolsContext_is_null(self_: *const HandleIntToolsContext) -> bool;
+    pub fn Handle_IntTools_Context_is_null(self_: *const Handle_IntTools_Context) -> bool;
     /// Dereference Handle to get *const IntTools_Context
-    pub fn HandleIntToolsContext_get(
-        handle: *const HandleIntToolsContext,
+    pub fn Handle_IntTools_Context_get(
+        handle: *const Handle_IntTools_Context,
     ) -> crate::OcctResult<*const IntTools_Context>;
     /// Dereference Handle to get *mut IntTools_Context
-    pub fn HandleIntToolsContext_get_mut(
-        handle: *mut HandleIntToolsContext,
+    pub fn Handle_IntTools_Context_get_mut(
+        handle: *mut Handle_IntTools_Context,
     ) -> crate::OcctResult<*mut IntTools_Context>;
     /// Upcast Handle<IntTools_Context> to Handle<Standard_Transient>
-    pub fn HandleIntToolsContext_to_HandleStandardTransient(
-        self_: *const HandleIntToolsContext,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_IntTools_Context_to_Handle_Standard_Transient(
+        self_: *const Handle_IntTools_Context,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn IntTools_Context_inherited_IsInstance(
         self_: *const IntTools_Context,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn IntTools_Context_inherited_IsKind(
         self_: *const IntTools_Context,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn IntTools_Context_inherited_This(
         self_: *const IntTools_Context,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn IntTools_Context_inherited_GetRefCount(
         self_: *const IntTools_Context,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn IntTools_Context_inherited_IncrementRefCounter(
         self_: *mut IntTools_Context,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn IntTools_Context_inherited_DecrementRefCounter(
         self_: *mut IntTools_Context,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn IntTools_Context_inherited_Delete(
         self_: *const IntTools_Context,
     ) -> *const std::ffi::c_char;
@@ -13699,33 +13595,33 @@ unsafe extern "C" {
     pub fn IntTools_Curve_ctor() -> crate::OcctResult<*mut IntTools_Curve>;
     /// **Source:** `IntTools_Curve.hxx`:49 - `IntTools_Curve::IntTools_Curve()`
     pub fn IntTools_Curve_ctor_handlegeomcurve_handlegeom2dcurve2_real2(
-        the3dCurve3d: *const HandleGeomCurve,
-        the2dCurve1: *const HandleGeom2dCurve,
-        the2dCurve2: *const HandleGeom2dCurve,
+        the3dCurve3d: *const Handle_Geom_Curve,
+        the2dCurve1: *const Handle_Geom2d_Curve,
+        the2dCurve2: *const Handle_Geom2d_Curve,
         theTolerance: f64,
         theTangentialTolerance: f64,
     ) -> crate::OcctResult<*mut IntTools_Curve>;
     /// **Source:** `IntTools_Curve.hxx`:56 - `IntTools_Curve::SetCurves()`
     pub fn IntTools_Curve_set_curves(
         self_: *mut IntTools_Curve,
-        the3dCurve: *const HandleGeomCurve,
-        the2dCurve1: *const HandleGeom2dCurve,
-        the2dCurve2: *const HandleGeom2dCurve,
+        the3dCurve: *const Handle_Geom_Curve,
+        the2dCurve1: *const Handle_Geom2d_Curve,
+        the2dCurve2: *const Handle_Geom2d_Curve,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IntTools_Curve.hxx`:66 - `IntTools_Curve::SetCurve()`
     pub fn IntTools_Curve_set_curve(
         self_: *mut IntTools_Curve,
-        the3dCurve: *const HandleGeomCurve,
+        the3dCurve: *const Handle_Geom_Curve,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IntTools_Curve.hxx`:69 - `IntTools_Curve::SetFirstCurve2d()`
     pub fn IntTools_Curve_set_first_curve2d(
         self_: *mut IntTools_Curve,
-        the2dCurve1: *const HandleGeom2dCurve,
+        the2dCurve1: *const Handle_Geom2d_Curve,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IntTools_Curve.hxx`:72 - `IntTools_Curve::SetSecondCurve2d()`
     pub fn IntTools_Curve_set_second_curve2d(
         self_: *mut IntTools_Curve,
-        the2dCurve2: *const HandleGeom2dCurve,
+        the2dCurve2: *const Handle_Geom2d_Curve,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IntTools_Curve.hxx`:75 - `IntTools_Curve::SetTolerance()`
     pub fn IntTools_Curve_set_tolerance(
@@ -13740,15 +13636,15 @@ unsafe extern "C" {
     /// **Source:** `IntTools_Curve.hxx`:84 - `IntTools_Curve::Curve()`
     pub fn IntTools_Curve_curve(
         self_: *const IntTools_Curve,
-    ) -> crate::OcctResult<*const HandleGeomCurve>;
+    ) -> crate::OcctResult<*const Handle_Geom_Curve>;
     /// **Source:** `IntTools_Curve.hxx`:87 - `IntTools_Curve::FirstCurve2d()`
     pub fn IntTools_Curve_first_curve2d(
         self_: *const IntTools_Curve,
-    ) -> crate::OcctResult<*const HandleGeom2dCurve>;
+    ) -> crate::OcctResult<*const Handle_Geom2d_Curve>;
     /// **Source:** `IntTools_Curve.hxx`:90 - `IntTools_Curve::SecondCurve2d()`
     pub fn IntTools_Curve_second_curve2d(
         self_: *const IntTools_Curve,
-    ) -> crate::OcctResult<*const HandleGeom2dCurve>;
+    ) -> crate::OcctResult<*const Handle_Geom2d_Curve>;
     /// **Source:** `IntTools_Curve.hxx`:93 - `IntTools_Curve::Tolerance()`
     pub fn IntTools_Curve_tolerance(self_: *const IntTools_Curve) -> crate::OcctResult<f64>;
     /// **Source:** `IntTools_Curve.hxx`:96 - `IntTools_Curve::TangentialTolerance()`
@@ -13775,31 +13671,31 @@ unsafe extern "C" {
     pub fn IntTools_Curve_type_(self_: *const IntTools_Curve) -> crate::OcctResult<i32>;
     // ======================== IntTools_CurveRangeLocalizeData ========================
     pub fn IntTools_CurveRangeLocalizeData_destructor(self_: *mut IntTools_CurveRangeLocalizeData);
-    /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:34 - `IntTools_CurveRangeLocalizeData::IntTools_CurveRangeLocalizeData()`
+    /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:36 - `IntTools_CurveRangeLocalizeData::IntTools_CurveRangeLocalizeData()`
     pub fn IntTools_CurveRangeLocalizeData_ctor_int_real(
         theNbSample: i32,
         theMinRange: f64,
     ) -> crate::OcctResult<*mut IntTools_CurveRangeLocalizeData>;
-    /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:37 - `IntTools_CurveRangeLocalizeData::GetNbSample()`
+    /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:38 - `IntTools_CurveRangeLocalizeData::GetNbSample()`
     pub fn IntTools_CurveRangeLocalizeData_get_nb_sample(
         self_: *const IntTools_CurveRangeLocalizeData,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:39 - `IntTools_CurveRangeLocalizeData::GetMinRange()`
+    /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:40 - `IntTools_CurveRangeLocalizeData::GetMinRange()`
     pub fn IntTools_CurveRangeLocalizeData_get_min_range(
         self_: *const IntTools_CurveRangeLocalizeData,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:41 - `IntTools_CurveRangeLocalizeData::AddOutRange()`
+    /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:42 - `IntTools_CurveRangeLocalizeData::AddOutRange()`
     pub fn IntTools_CurveRangeLocalizeData_add_out_range(
         self_: *mut IntTools_CurveRangeLocalizeData,
         theRange: *const IntTools_CurveRangeSample,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:43 - `IntTools_CurveRangeLocalizeData::AddBox()`
+    /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:44 - `IntTools_CurveRangeLocalizeData::AddBox()`
     pub fn IntTools_CurveRangeLocalizeData_add_box(
         self_: *mut IntTools_CurveRangeLocalizeData,
         theRange: *const IntTools_CurveRangeSample,
         theBox: *const Bnd_Box,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:45 - `IntTools_CurveRangeLocalizeData::FindBox()`
+    /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:46 - `IntTools_CurveRangeLocalizeData::FindBox()`
     pub fn IntTools_CurveRangeLocalizeData_find_box(
         self_: *const IntTools_CurveRangeLocalizeData,
         theRange: *const IntTools_CurveRangeSample,
@@ -13813,7 +13709,7 @@ unsafe extern "C" {
     /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:50 - `IntTools_CurveRangeLocalizeData::ListRangeOut()`
     pub fn IntTools_CurveRangeLocalizeData_list_range_out(
         self_: *const IntTools_CurveRangeLocalizeData,
-        theList: *mut IntTools_ListOfCurveRangeSample,
+        theList: *mut NCollection_List_IntTools_CurveRangeSample,
     ) -> *const std::ffi::c_char;
     // ======================== IntTools_CurveRangeSample ========================
     pub fn IntTools_CurveRangeSample_destructor(self_: *mut IntTools_CurveRangeSample);
@@ -13868,14 +13764,14 @@ unsafe extern "C" {
     ) -> crate::OcctResult<i32>;
     // ======================== IntTools_EdgeEdge ========================
     pub fn IntTools_EdgeEdge_destructor(self_: *mut IntTools_EdgeEdge);
-    /// **Source:** `IntTools_EdgeEdge.hxx`:38 - `IntTools_EdgeEdge::IntTools_EdgeEdge()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:39 - `IntTools_EdgeEdge::IntTools_EdgeEdge()`
     pub fn IntTools_EdgeEdge_ctor() -> crate::OcctResult<*mut IntTools_EdgeEdge>;
-    /// **Source:** `IntTools_EdgeEdge.hxx`:44 - `IntTools_EdgeEdge::IntTools_EdgeEdge()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:45 - `IntTools_EdgeEdge::IntTools_EdgeEdge()`
     pub fn IntTools_EdgeEdge_ctor_edge2(
         theEdge1: *const TopoDS_Edge,
         theEdge2: *const TopoDS_Edge,
     ) -> crate::OcctResult<*mut IntTools_EdgeEdge>;
-    /// **Source:** `IntTools_EdgeEdge.hxx`:47 - `IntTools_EdgeEdge::IntTools_EdgeEdge()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:48 - `IntTools_EdgeEdge::IntTools_EdgeEdge()`
     pub fn IntTools_EdgeEdge_ctor_edge_real2_edge_real2(
         theEdge1: *const TopoDS_Edge,
         aT11: f64,
@@ -13884,195 +13780,195 @@ unsafe extern "C" {
         aT21: f64,
         aT22: f64,
     ) -> crate::OcctResult<*mut IntTools_EdgeEdge>;
-    /// **Source:** `IntTools_EdgeEdge.hxx`:55 - `IntTools_EdgeEdge::SetEdge1()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:56 - `IntTools_EdgeEdge::SetEdge1()`
     pub fn IntTools_EdgeEdge_set_edge1_edge(
         self_: *mut IntTools_EdgeEdge,
         theEdge: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_EdgeEdge.hxx`:58 - `IntTools_EdgeEdge::SetEdge1()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:59 - `IntTools_EdgeEdge::SetEdge1()`
     pub fn IntTools_EdgeEdge_set_edge1_edge_real2(
         self_: *mut IntTools_EdgeEdge,
         theEdge: *const TopoDS_Edge,
         aT1: f64,
         aT2: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_EdgeEdge.hxx`:61 - `IntTools_EdgeEdge::SetRange1()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:62 - `IntTools_EdgeEdge::SetRange1()`
     pub fn IntTools_EdgeEdge_set_range1_range(
         self_: *mut IntTools_EdgeEdge,
         theRange1: *const IntTools_Range,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_EdgeEdge.hxx`:64 - `IntTools_EdgeEdge::SetRange1()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:65 - `IntTools_EdgeEdge::SetRange1()`
     pub fn IntTools_EdgeEdge_set_range1_real2(
         self_: *mut IntTools_EdgeEdge,
         aT1: f64,
         aT2: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_EdgeEdge.hxx`:67 - `IntTools_EdgeEdge::SetEdge2()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:68 - `IntTools_EdgeEdge::SetEdge2()`
     pub fn IntTools_EdgeEdge_set_edge2_edge(
         self_: *mut IntTools_EdgeEdge,
         theEdge: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_EdgeEdge.hxx`:70 - `IntTools_EdgeEdge::SetEdge2()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:71 - `IntTools_EdgeEdge::SetEdge2()`
     pub fn IntTools_EdgeEdge_set_edge2_edge_real2(
         self_: *mut IntTools_EdgeEdge,
         theEdge: *const TopoDS_Edge,
         aT1: f64,
         aT2: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_EdgeEdge.hxx`:73 - `IntTools_EdgeEdge::SetRange2()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:74 - `IntTools_EdgeEdge::SetRange2()`
     pub fn IntTools_EdgeEdge_set_range2_range(
         self_: *mut IntTools_EdgeEdge,
         theRange: *const IntTools_Range,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_EdgeEdge.hxx`:76 - `IntTools_EdgeEdge::SetRange2()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:77 - `IntTools_EdgeEdge::SetRange2()`
     pub fn IntTools_EdgeEdge_set_range2_real2(
         self_: *mut IntTools_EdgeEdge,
         aT1: f64,
         aT2: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_EdgeEdge.hxx`:79 - `IntTools_EdgeEdge::SetFuzzyValue()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:80 - `IntTools_EdgeEdge::SetFuzzyValue()`
     pub fn IntTools_EdgeEdge_set_fuzzy_value(
         self_: *mut IntTools_EdgeEdge,
         theFuzz: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_EdgeEdge.hxx`:82 - `IntTools_EdgeEdge::Perform()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:83 - `IntTools_EdgeEdge::Perform()`
     pub fn IntTools_EdgeEdge_perform(self_: *mut IntTools_EdgeEdge) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_EdgeEdge.hxx`:85 - `IntTools_EdgeEdge::IsDone()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:86 - `IntTools_EdgeEdge::IsDone()`
     pub fn IntTools_EdgeEdge_is_done(self_: *const IntTools_EdgeEdge) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_EdgeEdge.hxx`:88 - `IntTools_EdgeEdge::FuzzyValue()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:89 - `IntTools_EdgeEdge::FuzzyValue()`
     pub fn IntTools_EdgeEdge_fuzzy_value(self_: *const IntTools_EdgeEdge)
         -> crate::OcctResult<f64>;
-    /// **Source:** `IntTools_EdgeEdge.hxx`:91 - `IntTools_EdgeEdge::CommonParts()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:92 - `IntTools_EdgeEdge::CommonParts()`
     pub fn IntTools_EdgeEdge_common_parts(
         self_: *const IntTools_EdgeEdge,
-    ) -> crate::OcctResult<*const IntTools_SequenceOfCommonPrts>;
-    /// **Source:** `IntTools_EdgeEdge.hxx`:94 - `IntTools_EdgeEdge::UseQuickCoincidenceCheck()`
+    ) -> crate::OcctResult<*const NCollection_Sequence_IntTools_CommonPrt>;
+    /// **Source:** `IntTools_EdgeEdge.hxx`:95 - `IntTools_EdgeEdge::UseQuickCoincidenceCheck()`
     pub fn IntTools_EdgeEdge_use_quick_coincidence_check(
         self_: *mut IntTools_EdgeEdge,
         bFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_EdgeEdge.hxx`:97 - `IntTools_EdgeEdge::IsCoincidenceCheckedQuickly()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:98 - `IntTools_EdgeEdge::IsCoincidenceCheckedQuickly()`
     pub fn IntTools_EdgeEdge_is_coincidence_checked_quickly(
         self_: *mut IntTools_EdgeEdge,
     ) -> crate::OcctResult<bool>;
     // ======================== IntTools_EdgeFace ========================
     pub fn IntTools_EdgeFace_destructor(self_: *mut IntTools_EdgeFace);
-    /// **Source:** `IntTools_EdgeFace.hxx`:47 - `IntTools_EdgeFace::IntTools_EdgeFace()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:48 - `IntTools_EdgeFace::IntTools_EdgeFace()`
     pub fn IntTools_EdgeFace_ctor() -> crate::OcctResult<*mut IntTools_EdgeFace>;
-    /// **Source:** `IntTools_EdgeFace.hxx`:51 - `IntTools_EdgeFace::SetEdge()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:52 - `IntTools_EdgeFace::SetEdge()`
     pub fn IntTools_EdgeFace_set_edge(
         self_: *mut IntTools_EdgeFace,
         theEdge: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_EdgeFace.hxx`:54 - `IntTools_EdgeFace::Edge()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:55 - `IntTools_EdgeFace::Edge()`
     pub fn IntTools_EdgeFace_edge(
         self_: *const IntTools_EdgeFace,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `IntTools_EdgeFace.hxx`:57 - `IntTools_EdgeFace::SetFace()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:58 - `IntTools_EdgeFace::SetFace()`
     pub fn IntTools_EdgeFace_set_face(
         self_: *mut IntTools_EdgeFace,
         theFace: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_EdgeFace.hxx`:60 - `IntTools_EdgeFace::Face()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:61 - `IntTools_EdgeFace::Face()`
     pub fn IntTools_EdgeFace_face(
         self_: *const IntTools_EdgeFace,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// **Source:** `IntTools_EdgeFace.hxx`:64 - `IntTools_EdgeFace::SetRange()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:65 - `IntTools_EdgeFace::SetRange()`
     pub fn IntTools_EdgeFace_set_range_range(
         self_: *mut IntTools_EdgeFace,
         theRange: *const IntTools_Range,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_EdgeFace.hxx`:68 - `IntTools_EdgeFace::SetRange()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:69 - `IntTools_EdgeFace::SetRange()`
     pub fn IntTools_EdgeFace_set_range_real2(
         self_: *mut IntTools_EdgeFace,
         theFirst: f64,
         theLast: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_EdgeFace.hxx`:75 - `IntTools_EdgeFace::Range()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:76 - `IntTools_EdgeFace::Range()`
     pub fn IntTools_EdgeFace_range(
         self_: *const IntTools_EdgeFace,
     ) -> crate::OcctResult<*const IntTools_Range>;
-    /// **Source:** `IntTools_EdgeFace.hxx`:78 - `IntTools_EdgeFace::SetContext()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:79 - `IntTools_EdgeFace::SetContext()`
     pub fn IntTools_EdgeFace_set_context(
         self_: *mut IntTools_EdgeFace,
-        theContext: *const HandleIntToolsContext,
+        theContext: *const Handle_IntTools_Context,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_EdgeFace.hxx`:81 - `IntTools_EdgeFace::Context()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:82 - `IntTools_EdgeFace::Context()`
     pub fn IntTools_EdgeFace_context(
         self_: *const IntTools_EdgeFace,
-    ) -> crate::OcctResult<*const HandleIntToolsContext>;
-    /// **Source:** `IntTools_EdgeFace.hxx`:84 - `IntTools_EdgeFace::SetFuzzyValue()`
+    ) -> crate::OcctResult<*const Handle_IntTools_Context>;
+    /// **Source:** `IntTools_EdgeFace.hxx`:85 - `IntTools_EdgeFace::SetFuzzyValue()`
     pub fn IntTools_EdgeFace_set_fuzzy_value(
         self_: *mut IntTools_EdgeFace,
         theFuzz: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_EdgeFace.hxx`:90 - `IntTools_EdgeFace::FuzzyValue()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:91 - `IntTools_EdgeFace::FuzzyValue()`
     pub fn IntTools_EdgeFace_fuzzy_value(self_: *const IntTools_EdgeFace)
         -> crate::OcctResult<f64>;
-    /// **Source:** `IntTools_EdgeFace.hxx`:97 - `IntTools_EdgeFace::UseQuickCoincidenceCheck()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:98 - `IntTools_EdgeFace::UseQuickCoincidenceCheck()`
     pub fn IntTools_EdgeFace_use_quick_coincidence_check(
         self_: *mut IntTools_EdgeFace,
         theFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_EdgeFace.hxx`:103 - `IntTools_EdgeFace::IsCoincidenceCheckedQuickly()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:101 - `IntTools_EdgeFace::IsCoincidenceCheckedQuickly()`
     pub fn IntTools_EdgeFace_is_coincidence_checked_quickly(
         self_: *mut IntTools_EdgeFace,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_EdgeFace.hxx`:107 - `IntTools_EdgeFace::Perform()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:105 - `IntTools_EdgeFace::Perform()`
     pub fn IntTools_EdgeFace_perform(self_: *mut IntTools_EdgeFace) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_EdgeFace.hxx`:112 - `IntTools_EdgeFace::IsDone()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:110 - `IntTools_EdgeFace::IsDone()`
     pub fn IntTools_EdgeFace_is_done(self_: *const IntTools_EdgeFace) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_EdgeFace.hxx`:119 - `IntTools_EdgeFace::ErrorStatus()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:117 - `IntTools_EdgeFace::ErrorStatus()`
     pub fn IntTools_EdgeFace_error_status(
         self_: *const IntTools_EdgeFace,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `IntTools_EdgeFace.hxx`:123 - `IntTools_EdgeFace::CommonParts()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:121 - `IntTools_EdgeFace::CommonParts()`
     pub fn IntTools_EdgeFace_common_parts(
         self_: *const IntTools_EdgeFace,
-    ) -> crate::OcctResult<*const IntTools_SequenceOfCommonPrts>;
-    /// **Source:** `IntTools_EdgeFace.hxx`:126 - `IntTools_EdgeFace::MinimalDistance()`
+    ) -> crate::OcctResult<*const NCollection_Sequence_IntTools_CommonPrt>;
+    /// **Source:** `IntTools_EdgeFace.hxx`:124 - `IntTools_EdgeFace::MinimalDistance()`
     pub fn IntTools_EdgeFace_minimal_distance(
         self_: *const IntTools_EdgeFace,
     ) -> crate::OcctResult<f64>;
     // ======================== IntTools_FClass2d ========================
     pub fn IntTools_FClass2d_destructor(self_: *mut IntTools_FClass2d);
-    /// **Source:** `IntTools_FClass2d.hxx`:41 - `IntTools_FClass2d::IntTools_FClass2d()`
+    /// **Source:** `IntTools_FClass2d.hxx`:43 - `IntTools_FClass2d::IntTools_FClass2d()`
     pub fn IntTools_FClass2d_ctor() -> crate::OcctResult<*mut IntTools_FClass2d>;
-    /// **Source:** `IntTools_FClass2d.hxx`:45 - `IntTools_FClass2d::IntTools_FClass2d()`
+    /// **Source:** `IntTools_FClass2d.hxx`:47 - `IntTools_FClass2d::IntTools_FClass2d()`
     pub fn IntTools_FClass2d_ctor_face_real(
         F: *const TopoDS_Face,
         Tol: f64,
     ) -> crate::OcctResult<*mut IntTools_FClass2d>;
-    /// **Source:** `IntTools_FClass2d.hxx`:49 - `IntTools_FClass2d::Init()`
+    /// **Source:** `IntTools_FClass2d.hxx`:51 - `IntTools_FClass2d::Init()`
     pub fn IntTools_FClass2d_init(
         self_: *mut IntTools_FClass2d,
         F: *const TopoDS_Face,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_FClass2d.hxx`:52 - `IntTools_FClass2d::PerformInfinitePoint()`
+    /// **Source:** `IntTools_FClass2d.hxx`:54 - `IntTools_FClass2d::PerformInfinitePoint()`
     pub fn IntTools_FClass2d_perform_infinite_point(
         self_: *const IntTools_FClass2d,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `IntTools_FClass2d.hxx`:59 - `IntTools_FClass2d::Perform()`
+    /// **Source:** `IntTools_FClass2d.hxx`:60 - `IntTools_FClass2d::Perform()`
     pub fn IntTools_FClass2d_perform(
         self_: *const IntTools_FClass2d,
         Puv: *const gp_Pnt2d,
         RecadreOnPeriodic: bool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `IntTools_FClass2d.hxx`:68 - `IntTools_FClass2d::TestOnRestriction()`
+    /// **Source:** `IntTools_FClass2d.hxx`:69 - `IntTools_FClass2d::TestOnRestriction()`
     pub fn IntTools_FClass2d_test_on_restriction(
         self_: *const IntTools_FClass2d,
         Puv: *const gp_Pnt2d,
         Tol: f64,
         RecadreOnPeriodic: bool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `IntTools_FClass2d.hxx`:72 - `IntTools_FClass2d::IsHole()`
+    /// **Source:** `IntTools_FClass2d.hxx`:73 - `IntTools_FClass2d::IsHole()`
     pub fn IntTools_FClass2d_is_hole(self_: *const IntTools_FClass2d) -> crate::OcctResult<bool>;
     // ======================== IntTools_FaceFace ========================
     pub fn IntTools_FaceFace_destructor(self_: *mut IntTools_FaceFace);
-    /// **Source:** `IntTools_FaceFace.hxx`:38 - `IntTools_FaceFace::IntTools_FaceFace()`
+    /// **Source:** `IntTools_FaceFace.hxx`:40 - `IntTools_FaceFace::IntTools_FaceFace()`
     pub fn IntTools_FaceFace_ctor() -> crate::OcctResult<*mut IntTools_FaceFace>;
-    /// **Source:** `IntTools_FaceFace.hxx`:41 - `IntTools_FaceFace::SetParameters()`
+    /// **Source:** `IntTools_FaceFace.hxx`:43 - `IntTools_FaceFace::SetParameters()`
     pub fn IntTools_FaceFace_set_parameters(
         self_: *mut IntTools_FaceFace,
         ApproxCurves: bool,
@@ -14080,62 +13976,62 @@ unsafe extern "C" {
         ComputeCurveOnS2: bool,
         ApproximationTolerance: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_FaceFace.hxx`:49 - `IntTools_FaceFace::Perform()`
+    /// **Source:** `IntTools_FaceFace.hxx`:51 - `IntTools_FaceFace::Perform()`
     pub fn IntTools_FaceFace_perform(
         self_: *mut IntTools_FaceFace,
         F1: *const TopoDS_Face,
         F2: *const TopoDS_Face,
         theToRunParallel: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_FaceFace.hxx`:54 - `IntTools_FaceFace::IsDone()`
+    /// **Source:** `IntTools_FaceFace.hxx`:56 - `IntTools_FaceFace::IsDone()`
     pub fn IntTools_FaceFace_is_done(self_: *const IntTools_FaceFace) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_FaceFace.hxx`:57 - `IntTools_FaceFace::Lines()`
+    /// **Source:** `IntTools_FaceFace.hxx`:59 - `IntTools_FaceFace::Lines()`
     pub fn IntTools_FaceFace_lines(
         self_: *const IntTools_FaceFace,
-    ) -> crate::OcctResult<*const IntTools_SequenceOfCurves>;
-    /// **Source:** `IntTools_FaceFace.hxx`:60 - `IntTools_FaceFace::Points()`
+    ) -> crate::OcctResult<*const NCollection_Sequence_IntTools_Curve>;
+    /// **Source:** `IntTools_FaceFace.hxx`:62 - `IntTools_FaceFace::Points()`
     pub fn IntTools_FaceFace_points(
         self_: *const IntTools_FaceFace,
-    ) -> crate::OcctResult<*const IntTools_SequenceOfPntOn2Faces>;
-    /// **Source:** `IntTools_FaceFace.hxx`:63 - `IntTools_FaceFace::Face1()`
+    ) -> crate::OcctResult<*const NCollection_Sequence_IntTools_PntOn2Faces>;
+    /// **Source:** `IntTools_FaceFace.hxx`:65 - `IntTools_FaceFace::Face1()`
     pub fn IntTools_FaceFace_face1(
         self_: *const IntTools_FaceFace,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// **Source:** `IntTools_FaceFace.hxx`:66 - `IntTools_FaceFace::Face2()`
+    /// **Source:** `IntTools_FaceFace.hxx`:68 - `IntTools_FaceFace::Face2()`
     pub fn IntTools_FaceFace_face2(
         self_: *const IntTools_FaceFace,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// **Source:** `IntTools_FaceFace.hxx`:69 - `IntTools_FaceFace::TangentFaces()`
+    /// **Source:** `IntTools_FaceFace.hxx`:71 - `IntTools_FaceFace::TangentFaces()`
     pub fn IntTools_FaceFace_tangent_faces(
         self_: *const IntTools_FaceFace,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_FaceFace.hxx`:74 - `IntTools_FaceFace::PrepareLines3D()`
+    /// **Source:** `IntTools_FaceFace.hxx`:76 - `IntTools_FaceFace::PrepareLines3D()`
     pub fn IntTools_FaceFace_prepare_lines3_d(
         self_: *mut IntTools_FaceFace,
         bToSplit: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_FaceFace.hxx`:76 - `IntTools_FaceFace::SetList()`
+    /// **Source:** `IntTools_FaceFace.hxx`:78 - `IntTools_FaceFace::SetList()`
     pub fn IntTools_FaceFace_set_list(
         self_: *mut IntTools_FaceFace,
-        ListOfPnts: *mut IntSurf_ListOfPntOn2S,
+        ListOfPnts: *mut NCollection_List_IntSurf_PntOn2S,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_FaceFace.hxx`:79 - `IntTools_FaceFace::SetContext()`
+    /// **Source:** `IntTools_FaceFace.hxx`:81 - `IntTools_FaceFace::SetContext()`
     pub fn IntTools_FaceFace_set_context(
         self_: *mut IntTools_FaceFace,
-        aContext: *const HandleIntToolsContext,
+        aContext: *const Handle_IntTools_Context,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_FaceFace.hxx`:82 - `IntTools_FaceFace::SetFuzzyValue()`
+    /// **Source:** `IntTools_FaceFace.hxx`:84 - `IntTools_FaceFace::SetFuzzyValue()`
     pub fn IntTools_FaceFace_set_fuzzy_value(
         self_: *mut IntTools_FaceFace,
         theFuzz: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_FaceFace.hxx`:85 - `IntTools_FaceFace::FuzzyValue()`
+    /// **Source:** `IntTools_FaceFace.hxx`:87 - `IntTools_FaceFace::FuzzyValue()`
     pub fn IntTools_FaceFace_fuzzy_value(self_: *const IntTools_FaceFace)
         -> crate::OcctResult<f64>;
-    /// **Source:** `IntTools_FaceFace.hxx`:88 - `IntTools_FaceFace::Context()`
+    /// **Source:** `IntTools_FaceFace.hxx`:90 - `IntTools_FaceFace::Context()`
     pub fn IntTools_FaceFace_context(
         self_: *const IntTools_FaceFace,
-    ) -> crate::OcctResult<*const HandleIntToolsContext>;
+    ) -> crate::OcctResult<*const Handle_IntTools_Context>;
     // ======================== IntTools_MarkedRangeSet ========================
     pub fn IntTools_MarkedRangeSet_destructor(self_: *mut IntTools_MarkedRangeSet);
     /// **Source:** `IntTools_MarkedRangeSet.hxx`:32 - `IntTools_MarkedRangeSet::IntTools_MarkedRangeSet()`
@@ -14147,8 +14043,8 @@ unsafe extern "C" {
         theInitFlag: i32,
     ) -> crate::OcctResult<*mut IntTools_MarkedRangeSet>;
     /// **Source:** `IntTools_MarkedRangeSet.hxx`:45 - `IntTools_MarkedRangeSet::IntTools_MarkedRangeSet()`
-    pub fn IntTools_MarkedRangeSet_ctor_array1ofreal_int(
-        theSortedArray: *const TColStd_Array1OfReal,
+    pub fn IntTools_MarkedRangeSet_ctor_arr1_double_int(
+        theSortedArray: *const NCollection_Array1_double,
         theInitFlag: i32,
     ) -> crate::OcctResult<*mut IntTools_MarkedRangeSet>;
     /// **Source:** `IntTools_MarkedRangeSet.hxx`:50 - `IntTools_MarkedRangeSet::SetBoundaries()`
@@ -14161,7 +14057,7 @@ unsafe extern "C" {
     /// **Source:** `IntTools_MarkedRangeSet.hxx`:59 - `IntTools_MarkedRangeSet::SetRanges()`
     pub fn IntTools_MarkedRangeSet_set_ranges(
         self_: *mut IntTools_MarkedRangeSet,
-        theSortedArray: *const TColStd_Array1OfReal,
+        theSortedArray: *const NCollection_Array1_double,
         theInitFlag: i32,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IntTools_MarkedRangeSet.hxx`:67 - `IntTools_MarkedRangeSet::InsertRange()`
@@ -14177,7 +14073,7 @@ unsafe extern "C" {
         theRange: *const IntTools_Range,
         theFlag: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_MarkedRangeSet.hxx`:85 - `IntTools_MarkedRangeSet::InsertRange()`
+    /// **Source:** `IntTools_MarkedRangeSet.hxx`:84 - `IntTools_MarkedRangeSet::InsertRange()`
     pub fn IntTools_MarkedRangeSet_insert_range_real2_int2(
         self_: *mut IntTools_MarkedRangeSet,
         theFirstBoundary: f64,
@@ -14185,45 +14081,45 @@ unsafe extern "C" {
         theFlag: i32,
         theIndex: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_MarkedRangeSet.hxx`:96 - `IntTools_MarkedRangeSet::InsertRange()`
+    /// **Source:** `IntTools_MarkedRangeSet.hxx`:95 - `IntTools_MarkedRangeSet::InsertRange()`
     pub fn IntTools_MarkedRangeSet_insert_range_range_int2(
         self_: *mut IntTools_MarkedRangeSet,
         theRange: *const IntTools_Range,
         theFlag: i32,
         theIndex: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_MarkedRangeSet.hxx`:101 - `IntTools_MarkedRangeSet::SetFlag()`
+    /// **Source:** `IntTools_MarkedRangeSet.hxx`:100 - `IntTools_MarkedRangeSet::SetFlag()`
     pub fn IntTools_MarkedRangeSet_set_flag(
         self_: *mut IntTools_MarkedRangeSet,
         theIndex: i32,
         theFlag: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_MarkedRangeSet.hxx`:104 - `IntTools_MarkedRangeSet::Flag()`
+    /// **Source:** `IntTools_MarkedRangeSet.hxx`:103 - `IntTools_MarkedRangeSet::Flag()`
     pub fn IntTools_MarkedRangeSet_flag(
         self_: *const IntTools_MarkedRangeSet,
         theIndex: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `IntTools_MarkedRangeSet.hxx`:108 - `IntTools_MarkedRangeSet::GetIndex()`
+    /// **Source:** `IntTools_MarkedRangeSet.hxx`:107 - `IntTools_MarkedRangeSet::GetIndex()`
     pub fn IntTools_MarkedRangeSet_get_index_real(
         self_: *const IntTools_MarkedRangeSet,
         theValue: f64,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `IntTools_MarkedRangeSet.hxx`:110 - `IntTools_MarkedRangeSet::GetIndices()`
+    /// **Source:** `IntTools_MarkedRangeSet.hxx`:109 - `IntTools_MarkedRangeSet::GetIndices()`
     pub fn IntTools_MarkedRangeSet_get_indices(
         self_: *mut IntTools_MarkedRangeSet,
         theValue: f64,
-    ) -> crate::OcctResult<*const TColStd_SequenceOfInteger>;
-    /// **Source:** `IntTools_MarkedRangeSet.hxx`:117 - `IntTools_MarkedRangeSet::GetIndex()`
+    ) -> crate::OcctResult<*const NCollection_Sequence_int>;
+    /// **Source:** `IntTools_MarkedRangeSet.hxx`:116 - `IntTools_MarkedRangeSet::GetIndex()`
     pub fn IntTools_MarkedRangeSet_get_index_real_bool(
         self_: *const IntTools_MarkedRangeSet,
         theValue: f64,
         UseLower: bool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `IntTools_MarkedRangeSet.hxx`:121 - `IntTools_MarkedRangeSet::Length()`
+    /// **Source:** `IntTools_MarkedRangeSet.hxx`:119 - `IntTools_MarkedRangeSet::Length()`
     pub fn IntTools_MarkedRangeSet_length(
         self_: *const IntTools_MarkedRangeSet,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `IntTools_MarkedRangeSet.hxx`:125 - `IntTools_MarkedRangeSet::Range()`
+    /// **Source:** `IntTools_MarkedRangeSet.hxx`:123 - `IntTools_MarkedRangeSet::Range()`
     pub fn IntTools_MarkedRangeSet_range(
         self_: *const IntTools_MarkedRangeSet,
         theIndex: i32,
@@ -14419,12 +14315,12 @@ unsafe extern "C" {
     /// **Source:** `IntTools_ShrunkRange.hxx`:45 - `IntTools_ShrunkRange::SetContext()`
     pub fn IntTools_ShrunkRange_set_context(
         self_: *mut IntTools_ShrunkRange,
-        aCtx: *const HandleIntToolsContext,
+        aCtx: *const Handle_IntTools_Context,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IntTools_ShrunkRange.hxx`:47 - `IntTools_ShrunkRange::Context()`
     pub fn IntTools_ShrunkRange_context(
         self_: *const IntTools_ShrunkRange,
-    ) -> crate::OcctResult<*const HandleIntToolsContext>;
+    ) -> crate::OcctResult<*const Handle_IntTools_Context>;
     /// **Source:** `IntTools_ShrunkRange.hxx`:49 - `IntTools_ShrunkRange::SetShrunkRange()`
     pub fn IntTools_ShrunkRange_set_shrunk_range(
         self_: *mut IntTools_ShrunkRange,
@@ -14465,131 +14361,131 @@ unsafe extern "C" {
     pub fn IntTools_SurfaceRangeLocalizeData_destructor(
         self_: *mut IntTools_SurfaceRangeLocalizeData,
     );
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:38 - `IntTools_SurfaceRangeLocalizeData::IntTools_SurfaceRangeLocalizeData()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:43 - `IntTools_SurfaceRangeLocalizeData::IntTools_SurfaceRangeLocalizeData()`
     pub fn IntTools_SurfaceRangeLocalizeData_ctor(
     ) -> crate::OcctResult<*mut IntTools_SurfaceRangeLocalizeData>;
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:40 - `IntTools_SurfaceRangeLocalizeData::IntTools_SurfaceRangeLocalizeData()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:45 - `IntTools_SurfaceRangeLocalizeData::IntTools_SurfaceRangeLocalizeData()`
     pub fn IntTools_SurfaceRangeLocalizeData_ctor_int2_real2(
         theNbSampleU: i32,
         theNbSampleV: i32,
         theMinRangeU: f64,
         theMinRangeV: f64,
     ) -> crate::OcctResult<*mut IntTools_SurfaceRangeLocalizeData>;
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:47 - `IntTools_SurfaceRangeLocalizeData::Assign()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:52 - `IntTools_SurfaceRangeLocalizeData::Assign()`
     pub fn IntTools_SurfaceRangeLocalizeData_assign(
         self_: *mut IntTools_SurfaceRangeLocalizeData,
         Other: *const IntTools_SurfaceRangeLocalizeData,
     ) -> crate::OcctResult<*mut IntTools_SurfaceRangeLocalizeData>;
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:55 - `IntTools_SurfaceRangeLocalizeData::GetNbSampleU()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:60 - `IntTools_SurfaceRangeLocalizeData::GetNbSampleU()`
     pub fn IntTools_SurfaceRangeLocalizeData_get_nb_sample_u(
         self_: *const IntTools_SurfaceRangeLocalizeData,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:57 - `IntTools_SurfaceRangeLocalizeData::GetNbSampleV()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:62 - `IntTools_SurfaceRangeLocalizeData::GetNbSampleV()`
     pub fn IntTools_SurfaceRangeLocalizeData_get_nb_sample_v(
         self_: *const IntTools_SurfaceRangeLocalizeData,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:59 - `IntTools_SurfaceRangeLocalizeData::GetMinRangeU()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:64 - `IntTools_SurfaceRangeLocalizeData::GetMinRangeU()`
     pub fn IntTools_SurfaceRangeLocalizeData_get_min_range_u(
         self_: *const IntTools_SurfaceRangeLocalizeData,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:61 - `IntTools_SurfaceRangeLocalizeData::GetMinRangeV()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:66 - `IntTools_SurfaceRangeLocalizeData::GetMinRangeV()`
     pub fn IntTools_SurfaceRangeLocalizeData_get_min_range_v(
         self_: *const IntTools_SurfaceRangeLocalizeData,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:63 - `IntTools_SurfaceRangeLocalizeData::AddOutRange()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:68 - `IntTools_SurfaceRangeLocalizeData::AddOutRange()`
     pub fn IntTools_SurfaceRangeLocalizeData_add_out_range(
         self_: *mut IntTools_SurfaceRangeLocalizeData,
         theRange: *const IntTools_SurfaceRangeSample,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:65 - `IntTools_SurfaceRangeLocalizeData::AddBox()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:70 - `IntTools_SurfaceRangeLocalizeData::AddBox()`
     pub fn IntTools_SurfaceRangeLocalizeData_add_box(
         self_: *mut IntTools_SurfaceRangeLocalizeData,
         theRange: *const IntTools_SurfaceRangeSample,
         theBox: *const Bnd_Box,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:67 - `IntTools_SurfaceRangeLocalizeData::FindBox()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:72 - `IntTools_SurfaceRangeLocalizeData::FindBox()`
     pub fn IntTools_SurfaceRangeLocalizeData_find_box(
         self_: *const IntTools_SurfaceRangeLocalizeData,
         theRange: *const IntTools_SurfaceRangeSample,
         theBox: *mut Bnd_Box,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:70 - `IntTools_SurfaceRangeLocalizeData::IsRangeOut()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:74 - `IntTools_SurfaceRangeLocalizeData::IsRangeOut()`
     pub fn IntTools_SurfaceRangeLocalizeData_is_range_out(
         self_: *const IntTools_SurfaceRangeLocalizeData,
         theRange: *const IntTools_SurfaceRangeSample,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:72 - `IntTools_SurfaceRangeLocalizeData::ListRangeOut()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:76 - `IntTools_SurfaceRangeLocalizeData::ListRangeOut()`
     pub fn IntTools_SurfaceRangeLocalizeData_list_range_out(
         self_: *const IntTools_SurfaceRangeLocalizeData,
-        theList: *mut IntTools_ListOfSurfaceRangeSample,
+        theList: *mut NCollection_List_IntTools_SurfaceRangeSample,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:74 - `IntTools_SurfaceRangeLocalizeData::RemoveRangeOutAll()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:78 - `IntTools_SurfaceRangeLocalizeData::RemoveRangeOutAll()`
     pub fn IntTools_SurfaceRangeLocalizeData_remove_range_out_all(
         self_: *mut IntTools_SurfaceRangeLocalizeData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:77 - `IntTools_SurfaceRangeLocalizeData::SetGridDeflection()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:81 - `IntTools_SurfaceRangeLocalizeData::SetGridDeflection()`
     pub fn IntTools_SurfaceRangeLocalizeData_set_grid_deflection(
         self_: *mut IntTools_SurfaceRangeLocalizeData,
         theDeflection: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:80 - `IntTools_SurfaceRangeLocalizeData::GetGridDeflection()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:84 - `IntTools_SurfaceRangeLocalizeData::GetGridDeflection()`
     pub fn IntTools_SurfaceRangeLocalizeData_get_grid_deflection(
         self_: *const IntTools_SurfaceRangeLocalizeData,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:83 - `IntTools_SurfaceRangeLocalizeData::SetRangeUGrid()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:87 - `IntTools_SurfaceRangeLocalizeData::SetRangeUGrid()`
     pub fn IntTools_SurfaceRangeLocalizeData_set_range_u_grid(
         self_: *mut IntTools_SurfaceRangeLocalizeData,
         theNbUGrid: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:86 - `IntTools_SurfaceRangeLocalizeData::GetRangeUGrid()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:90 - `IntTools_SurfaceRangeLocalizeData::GetRangeUGrid()`
     pub fn IntTools_SurfaceRangeLocalizeData_get_range_u_grid(
         self_: *const IntTools_SurfaceRangeLocalizeData,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:89 - `IntTools_SurfaceRangeLocalizeData::SetUParam()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:93 - `IntTools_SurfaceRangeLocalizeData::SetUParam()`
     pub fn IntTools_SurfaceRangeLocalizeData_set_u_param(
         self_: *mut IntTools_SurfaceRangeLocalizeData,
         theIndex: i32,
         theUParam: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:92 - `IntTools_SurfaceRangeLocalizeData::GetUParam()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:96 - `IntTools_SurfaceRangeLocalizeData::GetUParam()`
     pub fn IntTools_SurfaceRangeLocalizeData_get_u_param(
         self_: *const IntTools_SurfaceRangeLocalizeData,
         theIndex: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:95 - `IntTools_SurfaceRangeLocalizeData::SetRangeVGrid()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:99 - `IntTools_SurfaceRangeLocalizeData::SetRangeVGrid()`
     pub fn IntTools_SurfaceRangeLocalizeData_set_range_v_grid(
         self_: *mut IntTools_SurfaceRangeLocalizeData,
         theNbVGrid: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:98 - `IntTools_SurfaceRangeLocalizeData::GetRangeVGrid()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:102 - `IntTools_SurfaceRangeLocalizeData::GetRangeVGrid()`
     pub fn IntTools_SurfaceRangeLocalizeData_get_range_v_grid(
         self_: *const IntTools_SurfaceRangeLocalizeData,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:101 - `IntTools_SurfaceRangeLocalizeData::SetVParam()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:105 - `IntTools_SurfaceRangeLocalizeData::SetVParam()`
     pub fn IntTools_SurfaceRangeLocalizeData_set_v_param(
         self_: *mut IntTools_SurfaceRangeLocalizeData,
         theIndex: i32,
         theVParam: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:104 - `IntTools_SurfaceRangeLocalizeData::GetVParam()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:108 - `IntTools_SurfaceRangeLocalizeData::GetVParam()`
     pub fn IntTools_SurfaceRangeLocalizeData_get_v_param(
         self_: *const IntTools_SurfaceRangeLocalizeData,
         theIndex: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:107 - `IntTools_SurfaceRangeLocalizeData::SetGridPoint()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:111 - `IntTools_SurfaceRangeLocalizeData::SetGridPoint()`
     pub fn IntTools_SurfaceRangeLocalizeData_set_grid_point(
         self_: *mut IntTools_SurfaceRangeLocalizeData,
         theUIndex: i32,
         theVIndex: i32,
         thePoint: *const gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:112 - `IntTools_SurfaceRangeLocalizeData::GetGridPoint()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:114 - `IntTools_SurfaceRangeLocalizeData::GetGridPoint()`
     pub fn IntTools_SurfaceRangeLocalizeData_get_grid_point(
         self_: *const IntTools_SurfaceRangeLocalizeData,
         theUIndex: i32,
         theVIndex: i32,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:116 - `IntTools_SurfaceRangeLocalizeData::SetFrame()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:117 - `IntTools_SurfaceRangeLocalizeData::SetFrame()`
     pub fn IntTools_SurfaceRangeLocalizeData_set_frame(
         self_: *mut IntTools_SurfaceRangeLocalizeData,
         theUMin: f64,
@@ -14597,15 +14493,15 @@ unsafe extern "C" {
         theVMin: f64,
         theVMax: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:122 - `IntTools_SurfaceRangeLocalizeData::GetNBUPointsInFrame()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:123 - `IntTools_SurfaceRangeLocalizeData::GetNBUPointsInFrame()`
     pub fn IntTools_SurfaceRangeLocalizeData_get_nbu_points_in_frame(
         self_: *const IntTools_SurfaceRangeLocalizeData,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:125 - `IntTools_SurfaceRangeLocalizeData::GetNBVPointsInFrame()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:126 - `IntTools_SurfaceRangeLocalizeData::GetNBVPointsInFrame()`
     pub fn IntTools_SurfaceRangeLocalizeData_get_nbv_points_in_frame(
         self_: *const IntTools_SurfaceRangeLocalizeData,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:128 - `IntTools_SurfaceRangeLocalizeData::GetPointInFrame()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:129 - `IntTools_SurfaceRangeLocalizeData::GetPointInFrame()`
     pub fn IntTools_SurfaceRangeLocalizeData_get_point_in_frame(
         self_: *const IntTools_SurfaceRangeLocalizeData,
         theUIndex: i32,
@@ -14771,7 +14667,7 @@ unsafe extern "C" {
     pub fn IntTools_Tools_destructor(self_: *mut IntTools_Tools);
     /// **Source:** `IntTools_Tools.hxx` - `IntTools_Tools::IntTools_Tools()`
     pub fn IntTools_Tools_ctor() -> crate::OcctResult<*mut IntTools_Tools>;
-    /// **Source:** `IntTools_Tools.hxx`:55 - `IntTools_Tools::ComputeVV()`
+    /// **Source:** `IntTools_Tools.hxx`:56 - `IntTools_Tools::ComputeVV()`
     pub fn IntTools_Tools_compute_vv(
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
@@ -14809,77 +14705,77 @@ unsafe extern "C" {
         E1: *const TopoDS_Edge,
         E2: *const TopoDS_Edge,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_Tools.hxx`:100 - `IntTools_Tools::IsVertex()`
+    /// **Source:** `IntTools_Tools.hxx`:99 - `IntTools_Tools::IsVertex()`
     pub fn IntTools_Tools_is_vertex_pnt_real_vertex(
         aP: *const gp_Pnt,
         aTolPV: f64,
         aV: *const TopoDS_Vertex,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_Tools.hxx`:105 - `IntTools_Tools::IntermediatePoint()`
+    /// **Source:** `IntTools_Tools.hxx`:104 - `IntTools_Tools::IntermediatePoint()`
     pub fn IntTools_Tools_intermediate_point(aFirst: f64, aLast: f64) -> crate::OcctResult<f64>;
-    /// **Source:** `IntTools_Tools.hxx`:111 - `IntTools_Tools::SplitCurve()`
+    /// **Source:** `IntTools_Tools.hxx`:109 - `IntTools_Tools::SplitCurve()`
     pub fn IntTools_Tools_split_curve(
         aC: *const IntTools_Curve,
-        aS: *mut IntTools_SequenceOfCurves,
+        aS: *mut NCollection_Sequence_IntTools_Curve,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `IntTools_Tools.hxx`:116 - `IntTools_Tools::RejectLines()`
+    /// **Source:** `IntTools_Tools.hxx`:114 - `IntTools_Tools::RejectLines()`
     pub fn IntTools_Tools_reject_lines(
-        aSIn: *const IntTools_SequenceOfCurves,
-        aSOut: *mut IntTools_SequenceOfCurves,
+        aSIn: *const NCollection_Sequence_IntTools_Curve,
+        aSOut: *mut NCollection_Sequence_IntTools_Curve,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_Tools.hxx`:120 - `IntTools_Tools::IsDirsCoinside()`
+    /// **Source:** `IntTools_Tools.hxx`:118 - `IntTools_Tools::IsDirsCoinside()`
     pub fn IntTools_Tools_is_dirs_coinside_dir2(
         D1: *const gp_Dir,
         D2: *const gp_Dir,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_Tools.hxx`:123 - `IntTools_Tools::IsDirsCoinside()`
+    /// **Source:** `IntTools_Tools.hxx`:121 - `IntTools_Tools::IsDirsCoinside()`
     pub fn IntTools_Tools_is_dirs_coinside_dir2_real(
         D1: *const gp_Dir,
         D2: *const gp_Dir,
         aTol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_Tools.hxx`:131 - `IntTools_Tools::IsClosed()`
-    pub fn IntTools_Tools_is_closed(aC: *const HandleGeomCurve) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_Tools.hxx`:136 - `IntTools_Tools::CurveTolerance()`
+    /// **Source:** `IntTools_Tools.hxx`:127 - `IntTools_Tools::IsClosed()`
+    pub fn IntTools_Tools_is_closed(aC: *const Handle_Geom_Curve) -> crate::OcctResult<bool>;
+    /// **Source:** `IntTools_Tools.hxx`:132 - `IntTools_Tools::CurveTolerance()`
     pub fn IntTools_Tools_curve_tolerance(
-        aC: *const HandleGeomCurve,
+        aC: *const Handle_Geom_Curve,
         aTolBase: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `IntTools_Tools.hxx`:141 - `IntTools_Tools::CheckCurve()`
+    /// **Source:** `IntTools_Tools.hxx`:137 - `IntTools_Tools::CheckCurve()`
     pub fn IntTools_Tools_check_curve(
         theCurve: *const IntTools_Curve,
         theBox: *mut Bnd_Box,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_Tools.hxx`:144 - `IntTools_Tools::IsOnPave()`
+    /// **Source:** `IntTools_Tools.hxx`:139 - `IntTools_Tools::IsOnPave()`
     pub fn IntTools_Tools_is_on_pave(
         theT: f64,
         theRange: *const IntTools_Range,
         theTol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_Tools.hxx`:148 - `IntTools_Tools::VertexParameters()`
+    /// **Source:** `IntTools_Tools.hxx`:143 - `IntTools_Tools::VertexParameters()`
     pub fn IntTools_Tools_vertex_parameters(
         theCP: *const IntTools_CommonPrt,
         theT1: *mut f64,
         theT2: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_Tools.hxx`:152 - `IntTools_Tools::VertexParameter()`
+    /// **Source:** `IntTools_Tools.hxx`:147 - `IntTools_Tools::VertexParameter()`
     pub fn IntTools_Tools_vertex_parameter(
         theCP: *const IntTools_CommonPrt,
         theT: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_Tools.hxx`:154 - `IntTools_Tools::IsOnPave1()`
+    /// **Source:** `IntTools_Tools.hxx`:149 - `IntTools_Tools::IsOnPave1()`
     pub fn IntTools_Tools_is_on_pave1(
         theT: f64,
         theRange: *const IntTools_Range,
         theTol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_Tools.hxx`:159 - `IntTools_Tools::IsInRange()`
+    /// **Source:** `IntTools_Tools.hxx`:154 - `IntTools_Tools::IsInRange()`
     pub fn IntTools_Tools_is_in_range(
         theRRef: *const IntTools_Range,
         theR: *const IntTools_Range,
         theTol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_Tools.hxx`:163 - `IntTools_Tools::SegPln()`
+    /// **Source:** `IntTools_Tools.hxx`:158 - `IntTools_Tools::SegPln()`
     pub fn IntTools_Tools_seg_pln(
         theLin: *const gp_Lin,
         theTLin1: f64,
@@ -14893,11 +14789,11 @@ unsafe extern "C" {
         theTmin: *mut f64,
         theTmax: *mut f64,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `IntTools_Tools.hxx`:177 - `IntTools_Tools::ComputeTolerance()`
+    /// **Source:** `IntTools_Tools.hxx`:172 - `IntTools_Tools::ComputeTolerance()`
     pub fn IntTools_Tools_compute_tolerance(
-        theCurve3D: *const HandleGeomCurve,
-        theCurve2D: *const HandleGeom2dCurve,
-        theSurf: *const HandleGeomSurface,
+        theCurve3D: *const Handle_Geom_Curve,
+        theCurve2D: *const Handle_Geom2d_Curve,
+        theSurf: *const Handle_Geom_Surface,
         theFirst: f64,
         theLast: f64,
         theMaxDist: *mut f64,
@@ -14905,7 +14801,7 @@ unsafe extern "C" {
         theTolRange: f64,
         theToRunParallel: bool,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_Tools.hxx`:190 - `IntTools_Tools::ComputeIntRange()`
+    /// **Source:** `IntTools_Tools.hxx`:184 - `IntTools_Tools::ComputeIntRange()`
     pub fn IntTools_Tools_compute_int_range(
         theTol1: f64,
         theTol2: f64,
@@ -14913,56 +14809,56 @@ unsafe extern "C" {
     ) -> crate::OcctResult<f64>;
     // ======================== IntTools_TopolTool ========================
     pub fn IntTools_TopolTool_destructor(self_: *mut IntTools_TopolTool);
-    /// **Source:** `IntTools_TopolTool.hxx`:35 - `IntTools_TopolTool::IntTools_TopolTool()`
+    /// **Source:** `IntTools_TopolTool.hxx`:32 - `IntTools_TopolTool::IntTools_TopolTool()`
     pub fn IntTools_TopolTool_ctor() -> crate::OcctResult<*mut IntTools_TopolTool>;
-    /// **Source:** `IntTools_TopolTool.hxx`:38 - `IntTools_TopolTool::IntTools_TopolTool()`
+    /// **Source:** `IntTools_TopolTool.hxx`:35 - `IntTools_TopolTool::IntTools_TopolTool()`
     pub fn IntTools_TopolTool_ctor_handleadaptor3dsurface(
-        theSurface: *const HandleAdaptor3dSurface,
+        theSurface: *const Handle_Adaptor3d_Surface,
     ) -> crate::OcctResult<*mut IntTools_TopolTool>;
-    /// **Source:** `IntTools_TopolTool.hxx`:44 - `IntTools_TopolTool::Initialize()`
+    /// **Source:** `IntTools_TopolTool.hxx`:41 - `IntTools_TopolTool::Initialize()`
     pub fn IntTools_TopolTool_initialize(self_: *mut IntTools_TopolTool)
         -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_TopolTool.hxx`:47 - `IntTools_TopolTool::Initialize()`
+    /// **Source:** `IntTools_TopolTool.hxx`:44 - `IntTools_TopolTool::Initialize()`
     pub fn IntTools_TopolTool_initialize_handleadaptor3dsurface(
         self_: *mut IntTools_TopolTool,
-        theSurface: *const HandleAdaptor3dSurface,
+        theSurface: *const Handle_Adaptor3d_Surface,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_TopolTool.hxx`:50 - `IntTools_TopolTool::ComputeSamplePoints()`
+    /// **Source:** `IntTools_TopolTool.hxx`:46 - `IntTools_TopolTool::ComputeSamplePoints()`
     pub fn IntTools_TopolTool_compute_sample_points(
         self_: *mut IntTools_TopolTool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_TopolTool.hxx`:53 - `IntTools_TopolTool::NbSamplesU()`
+    /// **Source:** `IntTools_TopolTool.hxx`:49 - `IntTools_TopolTool::NbSamplesU()`
     pub fn IntTools_TopolTool_nb_samples_u(
         self_: *mut IntTools_TopolTool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `IntTools_TopolTool.hxx`:56 - `IntTools_TopolTool::NbSamplesV()`
+    /// **Source:** `IntTools_TopolTool.hxx`:52 - `IntTools_TopolTool::NbSamplesV()`
     pub fn IntTools_TopolTool_nb_samples_v(
         self_: *mut IntTools_TopolTool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `IntTools_TopolTool.hxx`:59 - `IntTools_TopolTool::NbSamples()`
+    /// **Source:** `IntTools_TopolTool.hxx`:55 - `IntTools_TopolTool::NbSamples()`
     pub fn IntTools_TopolTool_nb_samples(self_: *mut IntTools_TopolTool) -> crate::OcctResult<i32>;
-    /// **Source:** `IntTools_TopolTool.hxx`:65 - `IntTools_TopolTool::SamplePoint()`
+    /// **Source:** `IntTools_TopolTool.hxx`:61 - `IntTools_TopolTool::SamplePoint()`
     pub fn IntTools_TopolTool_sample_point(
         self_: *mut IntTools_TopolTool,
         Index: i32,
         P2d: *mut gp_Pnt2d,
         P3d: *mut gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_TopolTool.hxx`:75 - `IntTools_TopolTool::SamplePnts()`
+    /// **Source:** `IntTools_TopolTool.hxx`:69 - `IntTools_TopolTool::SamplePnts()`
     pub fn IntTools_TopolTool_sample_pnts(
         self_: *mut IntTools_TopolTool,
         theDefl: f64,
         theNUmin: i32,
         theNVmin: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntTools_TopolTool.hxx`:79 - `IntTools_TopolTool::DynamicType()`
+    /// **Source:** `IntTools_TopolTool.hxx`:73 - `IntTools_TopolTool::DynamicType()`
     pub fn IntTools_TopolTool_dynamic_type(
         self_: *const IntTools_TopolTool,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `IntTools_TopolTool.hxx`:79 - `IntTools_TopolTool::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `IntTools_TopolTool.hxx`:73 - `IntTools_TopolTool::get_type_name()`
     pub fn IntTools_TopolTool_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `IntTools_TopolTool.hxx`:79 - `IntTools_TopolTool::get_type_descriptor()`
-    pub fn IntTools_TopolTool_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `IntTools_TopolTool.hxx`:73 - `IntTools_TopolTool::get_type_descriptor()`
+    pub fn IntTools_TopolTool_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast IntTools_TopolTool to Adaptor3d_TopolTool
     pub fn IntTools_TopolTool_as_Adaptor3d_TopolTool(
         self_: *const IntTools_TopolTool,
@@ -14982,154 +14878,154 @@ unsafe extern "C" {
     /// Wrap IntTools_TopolTool in a Handle
     pub fn IntTools_TopolTool_to_handle(
         obj: *mut IntTools_TopolTool,
-    ) -> crate::OcctResult<*mut HandleIntToolsTopolTool>;
+    ) -> crate::OcctResult<*mut Handle_IntTools_TopolTool>;
     /// Destroy Handle<IntTools_TopolTool>
-    pub fn HandleIntToolsTopolTool_destructor(self_: *mut HandleIntToolsTopolTool);
+    pub fn Handle_IntTools_TopolTool_destructor(self_: *mut Handle_IntTools_TopolTool);
     /// Clone Handle<IntTools_TopolTool> (increments reference count)
-    pub fn HandleIntToolsTopolTool_clone(
-        self_: *const HandleIntToolsTopolTool,
-    ) -> crate::OcctResult<*mut HandleIntToolsTopolTool>;
+    pub fn Handle_IntTools_TopolTool_clone(
+        self_: *const Handle_IntTools_TopolTool,
+    ) -> crate::OcctResult<*mut Handle_IntTools_TopolTool>;
     /// Check if Handle<IntTools_TopolTool> is null
-    pub fn HandleIntToolsTopolTool_is_null(self_: *const HandleIntToolsTopolTool) -> bool;
+    pub fn Handle_IntTools_TopolTool_is_null(self_: *const Handle_IntTools_TopolTool) -> bool;
     /// Dereference Handle to get *const IntTools_TopolTool
-    pub fn HandleIntToolsTopolTool_get(
-        handle: *const HandleIntToolsTopolTool,
+    pub fn Handle_IntTools_TopolTool_get(
+        handle: *const Handle_IntTools_TopolTool,
     ) -> crate::OcctResult<*const IntTools_TopolTool>;
     /// Dereference Handle to get *mut IntTools_TopolTool
-    pub fn HandleIntToolsTopolTool_get_mut(
-        handle: *mut HandleIntToolsTopolTool,
+    pub fn Handle_IntTools_TopolTool_get_mut(
+        handle: *mut Handle_IntTools_TopolTool,
     ) -> crate::OcctResult<*mut IntTools_TopolTool>;
     /// Upcast Handle<IntTools_TopolTool> to Handle<Adaptor3d_TopolTool>
-    pub fn HandleIntToolsTopolTool_to_HandleAdaptor3dTopolTool(
-        self_: *const HandleIntToolsTopolTool,
-    ) -> crate::OcctResult<*mut HandleAdaptor3dTopolTool>;
+    pub fn Handle_IntTools_TopolTool_to_Handle_Adaptor3d_TopolTool(
+        self_: *const Handle_IntTools_TopolTool,
+    ) -> crate::OcctResult<*mut Handle_Adaptor3d_TopolTool>;
     /// Upcast Handle<IntTools_TopolTool> to Handle<Standard_Transient>
-    pub fn HandleIntToolsTopolTool_to_HandleStandardTransient(
-        self_: *const HandleIntToolsTopolTool,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:50 - `Adaptor3d_TopolTool::Init()`
+    pub fn Handle_IntTools_TopolTool_to_Handle_Standard_Transient(
+        self_: *const Handle_IntTools_TopolTool,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:48 - `Adaptor3d_TopolTool::Init()`
     pub fn IntTools_TopolTool_inherited_Init(
         self_: *mut IntTools_TopolTool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:52 - `Adaptor3d_TopolTool::More()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:50 - `Adaptor3d_TopolTool::More()`
     pub fn IntTools_TopolTool_inherited_More(
         self_: *mut IntTools_TopolTool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:54 - `Adaptor3d_TopolTool::Value()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:52 - `Adaptor3d_TopolTool::Value()`
     pub fn IntTools_TopolTool_inherited_Value(
         self_: *mut IntTools_TopolTool,
-    ) -> crate::OcctResult<*mut HandleAdaptor2dCurve2d>;
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:56 - `Adaptor3d_TopolTool::Next()`
+    ) -> crate::OcctResult<*mut Handle_Adaptor2d_Curve2d>;
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:54 - `Adaptor3d_TopolTool::Next()`
     pub fn IntTools_TopolTool_inherited_Next(
         self_: *mut IntTools_TopolTool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:58 - `Adaptor3d_TopolTool::InitVertexIterator()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:56 - `Adaptor3d_TopolTool::InitVertexIterator()`
     pub fn IntTools_TopolTool_inherited_InitVertexIterator(
         self_: *mut IntTools_TopolTool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:60 - `Adaptor3d_TopolTool::MoreVertex()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:58 - `Adaptor3d_TopolTool::MoreVertex()`
     pub fn IntTools_TopolTool_inherited_MoreVertex(
         self_: *mut IntTools_TopolTool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:62 - `Adaptor3d_TopolTool::Vertex()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:60 - `Adaptor3d_TopolTool::Vertex()`
     pub fn IntTools_TopolTool_inherited_Vertex(
         self_: *mut IntTools_TopolTool,
-    ) -> crate::OcctResult<*mut HandleAdaptor3dHVertex>;
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:64 - `Adaptor3d_TopolTool::NextVertex()`
+    ) -> crate::OcctResult<*mut Handle_Adaptor3d_HVertex>;
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:62 - `Adaptor3d_TopolTool::NextVertex()`
     pub fn IntTools_TopolTool_inherited_NextVertex(
         self_: *mut IntTools_TopolTool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:66 - `Adaptor3d_TopolTool::Classify()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:64 - `Adaptor3d_TopolTool::Classify()`
     pub fn IntTools_TopolTool_inherited_Classify(
         self_: *mut IntTools_TopolTool,
         P: *const gp_Pnt2d,
         Tol: f64,
         ReacdreOnPeriodic: bool,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:71 - `Adaptor3d_TopolTool::IsThePointOn()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:68 - `Adaptor3d_TopolTool::IsThePointOn()`
     pub fn IntTools_TopolTool_inherited_IsThePointOn(
         self_: *mut IntTools_TopolTool,
         P: *const gp_Pnt2d,
         Tol: f64,
         ReacdreOnPeriodic: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:81 - `Adaptor3d_TopolTool::Orientation()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:77 - `Adaptor3d_TopolTool::Orientation()`
     pub fn IntTools_TopolTool_inherited_Orientation(
         self_: *mut IntTools_TopolTool,
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:92 - `Adaptor3d_TopolTool::Identical()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:88 - `Adaptor3d_TopolTool::Identical()`
     pub fn IntTools_TopolTool_inherited_Identical(
         self_: *mut IntTools_TopolTool,
-        V1: *const HandleAdaptor3dHVertex,
-        V2: *const HandleAdaptor3dHVertex,
+        V1: *const Handle_Adaptor3d_HVertex,
+        V2: *const Handle_Adaptor3d_HVertex,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:97 - `Adaptor3d_TopolTool::Has3d()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:93 - `Adaptor3d_TopolTool::Has3d()`
     pub fn IntTools_TopolTool_inherited_Has3d(
         self_: *const IntTools_TopolTool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:100 - `Adaptor3d_TopolTool::Tol3d()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:96 - `Adaptor3d_TopolTool::Tol3d()`
     pub fn IntTools_TopolTool_inherited_Tol3d(
         self_: *const IntTools_TopolTool,
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:106 - `Adaptor3d_TopolTool::Pnt()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:102 - `Adaptor3d_TopolTool::Pnt()`
     pub fn IntTools_TopolTool_inherited_Pnt(
         self_: *const IntTools_TopolTool,
-        V: *const HandleAdaptor3dHVertex,
+        V: *const Handle_Adaptor3d_HVertex,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:121 - `Adaptor3d_TopolTool::UParameters()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:117 - `Adaptor3d_TopolTool::UParameters()`
     pub fn IntTools_TopolTool_inherited_UParameters(
         self_: *const IntTools_TopolTool,
-        theArray: *mut TColStd_Array1OfReal,
+        theArray: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:125 - `Adaptor3d_TopolTool::VParameters()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:121 - `Adaptor3d_TopolTool::VParameters()`
     pub fn IntTools_TopolTool_inherited_VParameters(
         self_: *const IntTools_TopolTool,
-        theArray: *mut TColStd_Array1OfReal,
+        theArray: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:131 - `Adaptor3d_TopolTool::DomainIsInfinite()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:125 - `Adaptor3d_TopolTool::DomainIsInfinite()`
     pub fn IntTools_TopolTool_inherited_DomainIsInfinite(
         self_: *mut IntTools_TopolTool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:150 - `Adaptor3d_TopolTool::BSplSamplePnts()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:144 - `Adaptor3d_TopolTool::BSplSamplePnts()`
     pub fn IntTools_TopolTool_inherited_BSplSamplePnts(
         self_: *mut IntTools_TopolTool,
         theDefl: f64,
         theNUmin: i32,
         theNVmin: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:155 - `Adaptor3d_TopolTool::IsUniformSampling()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:149 - `Adaptor3d_TopolTool::IsUniformSampling()`
     pub fn IntTools_TopolTool_inherited_IsUniformSampling(
         self_: *const IntTools_TopolTool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn IntTools_TopolTool_inherited_IsInstance(
         self_: *const IntTools_TopolTool,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn IntTools_TopolTool_inherited_IsKind(
         self_: *const IntTools_TopolTool,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn IntTools_TopolTool_inherited_This(
         self_: *const IntTools_TopolTool,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn IntTools_TopolTool_inherited_GetRefCount(
         self_: *const IntTools_TopolTool,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn IntTools_TopolTool_inherited_IncrementRefCounter(
         self_: *mut IntTools_TopolTool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn IntTools_TopolTool_inherited_DecrementRefCounter(
         self_: *mut IntTools_TopolTool,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn IntTools_TopolTool_inherited_Delete(
         self_: *const IntTools_TopolTool,
     ) -> *const std::ffi::c_char;
@@ -15137,90 +15033,53 @@ unsafe extern "C" {
     pub fn IntTools_WLineTool_destructor(self_: *mut IntTools_WLineTool);
     /// **Source:** `IntTools_WLineTool.hxx` - `IntTools_WLineTool::IntTools_WLineTool()`
     pub fn IntTools_WLineTool_ctor() -> crate::OcctResult<*mut IntTools_WLineTool>;
-    /// **Source:** `IntTools_WLineTool.hxx`:31 - `IntTools_WLineTool::NotUseSurfacesForApprox()`
+    /// **Source:** `IntTools_WLineTool.hxx`:32 - `IntTools_WLineTool::NotUseSurfacesForApprox()`
     pub fn IntTools_WLineTool_not_use_surfaces_for_approx(
         aF1: *const TopoDS_Face,
         aF2: *const TopoDS_Face,
-        WL: *const HandleIntPatchWLine,
+        WL: *const Handle_IntPatch_WLine,
         ifprm: i32,
         ilprm: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntTools_WLineTool.hxx`:37 - `IntTools_WLineTool::DecompositionOfWLine()`
-    pub fn IntTools_WLineTool_decomposition_of_w_line(
-        theWLine: *const HandleIntPatchWLine,
-        theSurface1: *const HandleGeomAdaptorSurface,
-        theSurface2: *const HandleGeomAdaptorSurface,
-        theFace1: *const TopoDS_Face,
-        theFace2: *const TopoDS_Face,
-        theLConstructor: *const GeomInt_LineConstructor,
-        theAvoidLConstructor: bool,
-        theTol: f64,
-        theNewLines: *mut IntPatch_SequenceOfLine,
-        arg9: *const HandleIntToolsContext,
-    ) -> crate::OcctResult<bool>;
 
     // Free functions
-    /// **Source:** `IntTools.hxx`:34 - `IntTools::Length`
+    /// **Source:** `IntTools.hxx`:35 - `IntTools::Length`
     pub fn IntTools_length(E: *const TopoDS_Edge) -> crate::OcctResult<f64>;
-    /// **Source:** `IntTools.hxx`:48 - `IntTools::Parameter`
+    /// **Source:** `IntTools.hxx`:39 - `IntTools::RemoveIdenticalRoots`
+    pub fn IntTools_remove_identical_roots(
+        aSeq: *mut NCollection_Sequence_IntTools_Root,
+        anEpsT: f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `IntTools.hxx`:43 - `IntTools::SortRoots`
+    pub fn IntTools_sort_roots(
+        aSeq: *mut NCollection_Sequence_IntTools_Root,
+        anEpsT: f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `IntTools.hxx`:47 - `IntTools::FindRootStates`
+    pub fn IntTools_find_root_states(
+        aSeq: *mut NCollection_Sequence_IntTools_Root,
+        anEpsNull: f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `IntTools.hxx`:50 - `IntTools::Parameter`
     pub fn IntTools_parameter_pnt_handlegeomcurve_real(
         P: *const gp_Pnt,
-        Curve: *const HandleGeomCurve,
+        Curve: *const Handle_Geom_Curve,
         aParm: *mut f64,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `IntTools.hxx`:52 - `IntTools::GetRadius`
+    /// **Source:** `IntTools.hxx`:54 - `IntTools::GetRadius`
     pub fn IntTools_get_radius(
         C: *const BRepAdaptor_Curve,
         t1: f64,
         t3: f64,
         R: *mut f64,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `IntTools.hxx`:57 - `IntTools::PrepareArgs`
+    /// **Source:** `IntTools.hxx`:59 - `IntTools::PrepareArgs`
     pub fn IntTools_prepare_args(
         C: *mut BRepAdaptor_Curve,
         tMax: f64,
         tMin: f64,
         Discret: i32,
         Deflect: f64,
-        anArgs: *mut TColStd_Array1OfReal,
+        anArgs: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<i32>;
-
-    // Nested type & typedef type destructors
-    pub fn BOPAlgo_ListOfCheckResult_destructor(self_: *mut BOPAlgo_ListOfCheckResult);
-    pub fn BOPDS_IndexedDataMapOfPaveBlockListOfInteger_destructor(
-        self_: *mut BOPDS_IndexedDataMapOfPaveBlockListOfInteger,
-    );
-    pub fn BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock_destructor(
-        self_: *mut BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock,
-    );
-    pub fn BOPDS_IndexedMapOfPaveBlock_destructor(self_: *mut BOPDS_IndexedMapOfPaveBlock);
-    pub fn BOPDS_ListOfPave_destructor(self_: *mut BOPDS_ListOfPave);
-    pub fn BOPDS_ListOfPaveBlock_destructor(self_: *mut BOPDS_ListOfPaveBlock);
-    pub fn BOPDS_MapOfPair_destructor(self_: *mut BOPDS_MapOfPair);
-    pub fn BOPDS_MapOfPaveBlock_destructor(self_: *mut BOPDS_MapOfPaveBlock);
-    pub fn BOPDS_VectorOfCurve_destructor(self_: *mut BOPDS_VectorOfCurve);
-    pub fn BOPDS_VectorOfFaceInfo_destructor(self_: *mut BOPDS_VectorOfFaceInfo);
-    pub fn BOPDS_VectorOfInterfEE_destructor(self_: *mut BOPDS_VectorOfInterfEE);
-    pub fn BOPDS_VectorOfInterfEF_destructor(self_: *mut BOPDS_VectorOfInterfEF);
-    pub fn BOPDS_VectorOfInterfEZ_destructor(self_: *mut BOPDS_VectorOfInterfEZ);
-    pub fn BOPDS_VectorOfInterfFF_destructor(self_: *mut BOPDS_VectorOfInterfFF);
-    pub fn BOPDS_VectorOfInterfFZ_destructor(self_: *mut BOPDS_VectorOfInterfFZ);
-    pub fn BOPDS_VectorOfInterfVE_destructor(self_: *mut BOPDS_VectorOfInterfVE);
-    pub fn BOPDS_VectorOfInterfVF_destructor(self_: *mut BOPDS_VectorOfInterfVF);
-    pub fn BOPDS_VectorOfInterfVV_destructor(self_: *mut BOPDS_VectorOfInterfVV);
-    pub fn BOPDS_VectorOfInterfVZ_destructor(self_: *mut BOPDS_VectorOfInterfVZ);
-    pub fn BOPDS_VectorOfInterfZZ_destructor(self_: *mut BOPDS_VectorOfInterfZZ);
-    pub fn BOPDS_VectorOfListOfPaveBlock_destructor(self_: *mut BOPDS_VectorOfListOfPaveBlock);
-    pub fn BOPDS_VectorOfPoint_destructor(self_: *mut BOPDS_VectorOfPoint);
-    pub fn BOPTools_ListOfConnexityBlock_destructor(self_: *mut BOPTools_ListOfConnexityBlock);
-    pub fn BOPTools_ListOfCoupleOfShape_destructor(self_: *mut BOPTools_ListOfCoupleOfShape);
-    pub fn IntTools_ListOfCurveRangeSample_destructor(self_: *mut IntTools_ListOfCurveRangeSample);
-    pub fn IntTools_ListOfSurfaceRangeSample_destructor(
-        self_: *mut IntTools_ListOfSurfaceRangeSample,
-    );
-    pub fn IntTools_SequenceOfCommonPrts_destructor(self_: *mut IntTools_SequenceOfCommonPrts);
-    pub fn IntTools_SequenceOfCurves_destructor(self_: *mut IntTools_SequenceOfCurves);
-    pub fn IntTools_SequenceOfPntOn2Faces_destructor(self_: *mut IntTools_SequenceOfPntOn2Faces);
-    pub fn IntTools_SequenceOfRanges_destructor(self_: *mut IntTools_SequenceOfRanges);
-    pub fn IntTools_SequenceOfRoots_destructor(self_: *mut IntTools_SequenceOfRoots);
 }
