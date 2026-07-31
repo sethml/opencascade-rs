@@ -16,6 +16,7 @@
 #include <Geom2dEval_ArchimedeanSpiralCurve.hxx>
 #include <Geom2dEval_CircleInvoluteCurve.hxx>
 #include <Geom2dEval_LogarithmicSpiralCurve.hxx>
+#include <Geom2dEval_RepCurveDesc.hxx>
 #include <Geom2dEval_SineWaveCurve.hxx>
 #include <Geom2dEval_TBezierCurve.hxx>
 #include <Geom2dGridEval_BSplineCurve.hxx>

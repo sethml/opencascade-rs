@@ -929,11 +929,24 @@ pub fn generate_wrappers_for_group(
         super::collections::collect_collection_headers(&coll_vec),
     );
 
-    // Add headers for nested types (TypeName.hxx convention)
+    // Add headers for nested types (TypeName.hxx convention). For a qualified name
+    // `A::B`, also try each enclosing scope (`A.hxx`): a class declared inside a
+    // namespace — e.g. `GeomEval_RepSurfaceDesc::Base` — lives in the scope's own
+    // header, and consumers of it carry only a forward declaration
+    // (`namespace GeomEval_RepSurfaceDesc { class Base; }`). Without the defining
+    // header, the destructor emitted below would `delete` an incomplete type, which
+    // is undefined behaviour (and -Wdelete-incomplete).
     for nt in nested_types {
-        let header = format!("{}.hxx", nt.cpp_name);
-        if known_headers.is_empty() || known_headers.contains(&header) {
-            extend_unique_headers(&mut headers, [header]);
+        let mut candidates = vec![format!("{}.hxx", nt.cpp_name)];
+        let mut scope = nt.cpp_name.as_str();
+        while let Some((outer, _)) = scope.rsplit_once("::") {
+            candidates.push(format!("{}.hxx", outer));
+            scope = outer;
+        }
+        for header in candidates {
+            if known_headers.is_empty() || known_headers.contains(&header) {
+                extend_unique_headers(&mut headers, [header]);
+            }
         }
     }
 

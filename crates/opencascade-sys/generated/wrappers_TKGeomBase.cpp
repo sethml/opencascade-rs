@@ -79,6 +79,7 @@
 #include <CPnts_RealFunction.hxx>
 #include <CPnts_UniformDeflection.hxx>
 #include <Convert_ParameterisationType.hxx>
+#include <ExtremaPC.hxx>
 #include <ExtremaPC_BSplineCurve.hxx>
 #include <ExtremaPC_BezierCurve.hxx>
 #include <ExtremaPC_Circle.hxx>

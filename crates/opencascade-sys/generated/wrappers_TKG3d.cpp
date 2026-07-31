@@ -43,6 +43,8 @@
 #include <GeomEval_HypParaboloidSurface.hxx>
 #include <GeomEval_HyperboloidSurface.hxx>
 #include <GeomEval_ParaboloidSurface.hxx>
+#include <GeomEval_RepCurveDesc.hxx>
+#include <GeomEval_RepSurfaceDesc.hxx>
 #include <GeomEval_SineWaveCurve.hxx>
 #include <GeomEval_TBezierCurve.hxx>
 #include <GeomEval_TBezierSurface.hxx>
