@@ -8,7 +8,6 @@
 #include <Adaptor3d_Surface.hxx>
 #include <Adaptor3d_TopolTool.hxx>
 #include <BRepAdaptor_Curve.hxx>
-#include <BRepAdaptor_Surface.hxx>
 #include <Bnd_BoundSortBox.hxx>
 #include <Bnd_Box2d.hxx>
 #include <Contap_ArcFunction.hxx>

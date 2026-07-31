@@ -11,7 +11,6 @@
 #include <Approx_SweepFunction.hxx>
 #include <BRepAdaptor_Curve.hxx>
 #include <BRepAdaptor_Curve2d.hxx>
-#include <BRepAdaptor_Surface.hxx>
 #include <BRepBlend_AppFunc.hxx>
 #include <BRepBlend_AppFuncRoot.hxx>
 #include <BRepBlend_AppFuncRst.hxx>

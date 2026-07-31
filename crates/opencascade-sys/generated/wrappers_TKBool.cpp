@@ -6,7 +6,6 @@
 #include <Adaptor3d_CurveOnSurface.hxx>
 #include <AppParCurves_Constraint.hxx>
 #include <BRepAdaptor_Curve.hxx>
-#include <BRepAdaptor_Surface.hxx>
 #include <BRepAlgo.hxx>
 #include <BRepAlgo_AsDes.hxx>
 #include <BRepAlgo_FaceRestrictor.hxx>
@@ -65,7 +64,6 @@
 #include <GeomFill_PipeError.hxx>
 #include <GeomFill_SectionLaw.hxx>
 #include <GeomFill_Trihedron.hxx>
-#include <GeomLProp_SLProps.hxx>
 #include <GeomPlate_CurveConstraint.hxx>
 #include <IntPatch_GLine.hxx>
 #include <IntPatch_Line.hxx>

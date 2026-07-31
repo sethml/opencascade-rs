@@ -14,7 +14,6 @@
 #include <Approx_Status.hxx>
 #include <BRepAdaptor_Curve.hxx>
 #include <BRepAdaptor_Curve2d.hxx>
-#include <BRepAdaptor_Surface.hxx>
 #include <BRepApprox_Approx.hxx>
 #include <BRepApprox_ApproxLine.hxx>
 #include <BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox.hxx>

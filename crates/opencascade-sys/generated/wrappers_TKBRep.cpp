@@ -10,7 +10,6 @@
 #include <BRepAdaptor_CompCurve.hxx>
 #include <BRepAdaptor_Curve.hxx>
 #include <BRepAdaptor_Curve2d.hxx>
-#include <BRepAdaptor_Surface.hxx>
 #include <BRepGraph.hxx>
 #include <BRepGraphInc_BitFlags.hxx>
 #include <BRepGraphInc_Load.hxx>
@@ -11605,6 +11604,108 @@ extern "C" OcctResult<BRepGraphInc_Storage::CachedShape*> BRepGraphInc_Storage_C
     OCCT_CATCH_RETURN
 }
 extern "C" void BRepGraphInc_Storage_CachedShape_destructor(BRepGraphInc_Storage::CachedShape* self_) { delete self_; }
+
+// ========================
+// BRepLProp_SLProps wrappers
+// ========================
+
+extern "C" OcctResult<BRepLProp_SLProps*> BRepLProp_SLProps_ctor_surface_real2_int_real(BRepAdaptor_Surface const* S, double U, double V, int32_t N, double Resolution) {
+    try { return {new BRepLProp_SLProps(*S, U, V, N, Resolution), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepLProp_SLProps*> BRepLProp_SLProps_ctor_surface_int_real(BRepAdaptor_Surface const* S, int32_t N, double Resolution) {
+    try { return {new BRepLProp_SLProps(*S, N, Resolution), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepLProp_SLProps*> BRepLProp_SLProps_ctor_int_real(int32_t N, double Resolution) {
+    try { return {new BRepLProp_SLProps(N, Resolution), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepLProp_SLProps_set_surface(BRepLProp_SLProps* self_, BRepAdaptor_Surface const* S) {
+    try { self_->SetSurface(*S); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepLProp_SLProps_set_parameters(BRepLProp_SLProps* self_, double U, double V) {
+    try { self_->SetParameters(U, V); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<gp_Pnt const*> BRepLProp_SLProps_value(const BRepLProp_SLProps* self_) {
+    try { return {&(self_->Value()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec const*> BRepLProp_SLProps_d1u(BRepLProp_SLProps* self_) {
+    try { return {&(self_->D1U()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec const*> BRepLProp_SLProps_d1v(BRepLProp_SLProps* self_) {
+    try { return {&(self_->D1V()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec const*> BRepLProp_SLProps_d2u(BRepLProp_SLProps* self_) {
+    try { return {&(self_->D2U()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec const*> BRepLProp_SLProps_d2v(BRepLProp_SLProps* self_) {
+    try { return {&(self_->D2V()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec const*> BRepLProp_SLProps_duv(BRepLProp_SLProps* self_) {
+    try { return {&(self_->DUV()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepLProp_SLProps_is_tangent_u_defined(BRepLProp_SLProps* self_) {
+    try { return {self_->IsTangentUDefined(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepLProp_SLProps_tangent_u(BRepLProp_SLProps* self_, gp_Dir* D) {
+    try { self_->TangentU(*D); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> BRepLProp_SLProps_is_tangent_v_defined(BRepLProp_SLProps* self_) {
+    try { return {self_->IsTangentVDefined(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepLProp_SLProps_tangent_v(BRepLProp_SLProps* self_, gp_Dir* D) {
+    try { self_->TangentV(*D); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> BRepLProp_SLProps_is_normal_defined(BRepLProp_SLProps* self_) {
+    try { return {self_->IsNormalDefined(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Dir const*> BRepLProp_SLProps_normal(BRepLProp_SLProps* self_) {
+    try { return {&(self_->Normal()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepLProp_SLProps_is_curvature_defined(BRepLProp_SLProps* self_) {
+    try { return {self_->IsCurvatureDefined(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepLProp_SLProps_is_umbilic(BRepLProp_SLProps* self_) {
+    try { return {self_->IsUmbilic(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> BRepLProp_SLProps_max_curvature(BRepLProp_SLProps* self_) {
+    try { return {self_->MaxCurvature(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> BRepLProp_SLProps_min_curvature(BRepLProp_SLProps* self_) {
+    try { return {self_->MinCurvature(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepLProp_SLProps_curvature_directions(BRepLProp_SLProps* self_, gp_Dir* MaxD, gp_Dir* MinD) {
+    try { self_->CurvatureDirections(*MaxD, *MinD); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<double> BRepLProp_SLProps_mean_curvature(BRepLProp_SLProps* self_) {
+    try { return {self_->MeanCurvature(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> BRepLProp_SLProps_gaussian_curvature(BRepLProp_SLProps* self_) {
+    try { return {self_->GaussianCurvature(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepLProp_SLProps_destructor(BRepLProp_SLProps* self_) { delete self_; }
 
 // ========================
 // BRepLProp_SurfaceTool wrappers

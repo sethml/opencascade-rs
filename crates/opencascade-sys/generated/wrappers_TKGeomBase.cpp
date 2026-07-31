@@ -269,7 +269,6 @@
 #include <GeomFill_SweepFunction.hxx>
 #include <GeomLProp.hxx>
 #include <GeomLProp_CurAndInf2d.hxx>
-#include <GeomLProp_SLProps.hxx>
 #include <GeomLib.hxx>
 #include <GeomLib_Check2dBSplineCurve.hxx>
 #include <GeomLib_CheckBSplineCurve.hxx>
@@ -12475,6 +12474,108 @@ extern "C" OcctResult<int32_t> GeomLProp_CurAndInf2d_inherited_Type(const GeomLP
 extern "C" void GeomLProp_CurAndInf2d_destructor(GeomLProp_CurAndInf2d* self_) { delete self_; }
 
 // ========================
+// GeomLProp_SLProps wrappers
+// ========================
+
+extern "C" OcctResult<GeomLProp_SLProps*> GeomLProp_SLProps_ctor_handlegeomsurface_real2_int_real(Handle(Geom_Surface) const* S, double U, double V, int32_t N, double Resolution) {
+    try { return {new GeomLProp_SLProps(*S, U, V, N, Resolution), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<GeomLProp_SLProps*> GeomLProp_SLProps_ctor_handlegeomsurface_int_real(Handle(Geom_Surface) const* S, int32_t N, double Resolution) {
+    try { return {new GeomLProp_SLProps(*S, N, Resolution), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<GeomLProp_SLProps*> GeomLProp_SLProps_ctor_int_real(int32_t N, double Resolution) {
+    try { return {new GeomLProp_SLProps(N, Resolution), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* GeomLProp_SLProps_set_surface(GeomLProp_SLProps* self_, Handle(Geom_Surface) const* S) {
+    try { self_->SetSurface(*S); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* GeomLProp_SLProps_set_parameters(GeomLProp_SLProps* self_, double U, double V) {
+    try { self_->SetParameters(U, V); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<gp_Pnt const*> GeomLProp_SLProps_value(const GeomLProp_SLProps* self_) {
+    try { return {&(self_->Value()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec const*> GeomLProp_SLProps_d1u(GeomLProp_SLProps* self_) {
+    try { return {&(self_->D1U()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec const*> GeomLProp_SLProps_d1v(GeomLProp_SLProps* self_) {
+    try { return {&(self_->D1V()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec const*> GeomLProp_SLProps_d2u(GeomLProp_SLProps* self_) {
+    try { return {&(self_->D2U()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec const*> GeomLProp_SLProps_d2v(GeomLProp_SLProps* self_) {
+    try { return {&(self_->D2V()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec const*> GeomLProp_SLProps_duv(GeomLProp_SLProps* self_) {
+    try { return {&(self_->DUV()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> GeomLProp_SLProps_is_tangent_u_defined(GeomLProp_SLProps* self_) {
+    try { return {self_->IsTangentUDefined(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* GeomLProp_SLProps_tangent_u(GeomLProp_SLProps* self_, gp_Dir* D) {
+    try { self_->TangentU(*D); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> GeomLProp_SLProps_is_tangent_v_defined(GeomLProp_SLProps* self_) {
+    try { return {self_->IsTangentVDefined(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* GeomLProp_SLProps_tangent_v(GeomLProp_SLProps* self_, gp_Dir* D) {
+    try { self_->TangentV(*D); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> GeomLProp_SLProps_is_normal_defined(GeomLProp_SLProps* self_) {
+    try { return {self_->IsNormalDefined(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Dir const*> GeomLProp_SLProps_normal(GeomLProp_SLProps* self_) {
+    try { return {&(self_->Normal()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> GeomLProp_SLProps_is_curvature_defined(GeomLProp_SLProps* self_) {
+    try { return {self_->IsCurvatureDefined(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> GeomLProp_SLProps_is_umbilic(GeomLProp_SLProps* self_) {
+    try { return {self_->IsUmbilic(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> GeomLProp_SLProps_max_curvature(GeomLProp_SLProps* self_) {
+    try { return {self_->MaxCurvature(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> GeomLProp_SLProps_min_curvature(GeomLProp_SLProps* self_) {
+    try { return {self_->MinCurvature(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* GeomLProp_SLProps_curvature_directions(GeomLProp_SLProps* self_, gp_Dir* MaxD, gp_Dir* MinD) {
+    try { self_->CurvatureDirections(*MaxD, *MinD); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<double> GeomLProp_SLProps_mean_curvature(GeomLProp_SLProps* self_) {
+    try { return {self_->MeanCurvature(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> GeomLProp_SLProps_gaussian_curvature(GeomLProp_SLProps* self_) {
+    try { return {self_->GaussianCurvature(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void GeomLProp_SLProps_destructor(GeomLProp_SLProps* self_) { delete self_; }
+
+// ========================
 // GeomLib_Check2dBSplineCurve wrappers
 // ========================
 
@@ -16969,4 +17070,3 @@ extern "C" void ExtremaPC_SearchMode_destructor(ExtremaPC::SearchMode* self_) { 
 extern "C" void Extrema_ExtPC_destructor(Extrema_ExtPC* self_) { delete self_; }
 extern "C" void Extrema_ExtPC2d_destructor(Extrema_ExtPC2d* self_) { delete self_; }
 extern "C" void GProp_PEquation_Type_destructor(GProp_PEquation::Type* self_) { delete self_; }
-extern "C" void GeomLProp_SLProps_destructor(GeomLProp_SLProps* self_) { delete self_; }

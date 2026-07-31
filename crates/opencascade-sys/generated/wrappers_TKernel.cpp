@@ -25,7 +25,6 @@
 #include <BRepAdaptor_CompCurve.hxx>
 #include <BRepAdaptor_Curve.hxx>
 #include <BRepAdaptor_Curve2d.hxx>
-#include <BRepAdaptor_Surface.hxx>
 #include <BRepAlgo_AsDes.hxx>
 #include <BRepApprox_ApproxLine.hxx>
 #include <BRepBlend_AppFunc.hxx>

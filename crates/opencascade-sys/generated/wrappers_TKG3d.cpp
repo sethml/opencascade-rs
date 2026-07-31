@@ -20,7 +20,6 @@
 #include <AdvApprox_SimpleApprox.hxx>
 #include <BRepAdaptor_CompCurve.hxx>
 #include <BRepAdaptor_Curve.hxx>
-#include <BRepAdaptor_Surface.hxx>
 #include <BRepTopAdaptor_HVertex.hxx>
 #include <BRepTopAdaptor_TopolTool.hxx>
 #include <BiTgte_CurveOnEdge.hxx>

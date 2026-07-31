@@ -206,6 +206,15 @@ STEPControl_Writer = "Uses OCCT global state that is not thread-safe. Use step_c
 "NCollection_HArray1<double>" = { header = "NCollection_HArray1.hxx", module = "NCollection", handle = true }
 "NCollection_HArray1<Standard_Boolean>" = { header = "NCollection_HArray1.hxx", module = "NCollection", handle = true }
 "NCollection_HSequence<TopoDS_Shape>" = { header = "NCollection_HSequence.hxx", module = "NCollection", handle = true }
+# (OCCT 8.0.0) GeomLProp_SLProps and BRepLProp_SLProps stopped being plain classes
+# and became aliases for instantiations of the GeomLProp_SLPropsBase template, so
+# the parser's template skip reduced them to opaque types with no methods.
+# `generate_methods` forces an explicit instantiation so libclang materializes the
+# members, binding the surface differential-geometry API (Normal, Gaussian/Mean/
+# Max/Min curvature, tangents, D1U..DUV) under the alias name.
+"GeomLProp_SLPropsBase<occ::handle<Geom_Surface>>" = { header = "GeomLProp_SLProps.hxx", module = "GeomLProp", alias = "GeomLProp_SLProps", generate_methods = true, template_params = { SurfaceType = "Handle(Geom_Surface)" } }
+"GeomLProp_SLPropsBase<BRepAdaptor_Surface>" = { header = "BRepLProp_SLProps.hxx", module = "BRepLProp", alias = "BRepLProp_SLProps", generate_methods = true, template_params = { SurfaceType = "BRepAdaptor_Surface" } }
+
 "BVH_Builder<double, 3>" = { header = "BVH_Builder.hxx", module = "BVH", handle = true }
 "BVH_Tree<double, 3>" = { header = "BVH_Tree.hxx", module = "BVH", handle = true }
 "NCollection_Shared<NCollection_List<gp_Pnt2d>>" = { header = "NCollection_Shared.hxx", module = "NCollection", handle = true }

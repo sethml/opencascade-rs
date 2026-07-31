@@ -234,7 +234,6 @@
 #include <GeomInt_ThePrmPrmSvSurfacesOfWLApprox.hxx>
 #include <GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox.hxx>
 #include <GeomInt_WLApprox.hxx>
-#include <GeomLProp_SLProps.hxx>
 #include <GeomPlate_BuildAveragePlane.hxx>
 #include <GeomPlate_BuildPlateSurface.hxx>
 #include <GeomPlate_CurveConstraint.hxx>

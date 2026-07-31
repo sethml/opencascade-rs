@@ -1351,7 +1351,7 @@ impl CurveConstraint {
     }
 
     /// **Source:** `GeomPlate_CurveConstraint.hxx`:111 - `GeomPlate_CurveConstraint::LPropSurf()`
-    pub fn l_prop_surf(&mut self, U: f64) -> &mut crate::ffi_types::GeomLProp_SLProps {
+    pub fn l_prop_surf(&mut self, U: f64) -> &mut crate::geom_l_prop::SLProps {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_l_prop_surf(
@@ -2377,7 +2377,7 @@ impl PointConstraint {
     }
 
     /// **Source:** `GeomPlate_PointConstraint.hxx`:132 - `GeomPlate_PointConstraint::LPropSurf()`
-    pub fn l_prop_surf(&mut self) -> &mut crate::ffi_types::GeomLProp_SLProps {
+    pub fn l_prop_surf(&mut self) -> &mut crate::geom_l_prop::SLProps {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_l_prop_surf(

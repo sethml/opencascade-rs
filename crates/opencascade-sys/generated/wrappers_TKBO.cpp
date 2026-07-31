@@ -49,7 +49,6 @@
 #include <BOPTools_AlgoTools3D.hxx>
 #include <BOPTools_Set.hxx>
 #include <BRepAdaptor_Curve.hxx>
-#include <BRepAdaptor_Surface.hxx>
 #include <BRepAlgoAPI_Algo.hxx>
 #include <BRepAlgoAPI_BooleanOperation.hxx>
 #include <BRepAlgoAPI_BuilderAlgo.hxx>

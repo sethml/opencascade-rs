@@ -1485,7 +1485,7 @@ impl CurveConstraint {
     }
 
     /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:111 - `GeomPlate_CurveConstraint::LPropSurf()`
-    pub fn l_prop_surf(&mut self, U: f64) -> &mut crate::ffi_types::GeomLProp_SLProps {
+    pub fn l_prop_surf(&mut self, U: f64) -> &mut crate::geom_l_prop::SLProps {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKBool::BRepFill_CurveConstraint_inherited_LPropSurf(

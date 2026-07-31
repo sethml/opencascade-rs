@@ -266,10 +266,30 @@ fn main() -> Result<()> {
 
     println!("Parsing {} headers...", headers_to_process.len());
     crate::model::set_void_pointer_type_names(void_pointer_types);
+    // Instantiations opting in to full method generation. Everything else in
+    // `template_instantiations` stays type-registration only.
+    let template_class_requests: Vec<parser::TemplateClassRequest> = template_instantiations
+        .iter()
+        .filter(|(_, inst)| inst.generate_methods)
+        .map(|(spelling, inst)| parser::TemplateClassRequest {
+            spelling: spelling.clone(),
+            alias: config::instantiation_binding_name(spelling, inst),
+            header: inst.header.clone(),
+            template_params: inst.template_params.clone(),
+        })
+        .collect();
+    if !template_class_requests.is_empty() {
+        println!(
+            "Generating methods for {} template instantiation(s)",
+            template_class_requests.len()
+        );
+    }
+
     let mut parsed = parser::parse_headers(
         &headers_to_process,
         &args.include_dirs,
         &occt_alias_type_overrides,
+        &template_class_requests,
         args.verbose,
     )?;
 
@@ -348,6 +368,11 @@ fn main() -> Result<()> {
                         header,
                         module,
                         handle: is_handle_collection,
+                        // Auto-discovered collections go through the dedicated
+                        // collection codegen, not template method generation.
+                        alias: None,
+                        generate_methods: false,
+                        template_params: Default::default(),
                     },
                 );
                 auto_count += 1;

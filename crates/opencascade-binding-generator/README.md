@@ -414,6 +414,38 @@ full mangled type, so an overloaded `TopExp::MapShapes` reads
 `map_shapes_shape_shapeenum_imap_shape` instead of
 `map_shapes_shape_shapeenum_indexedmap_topods_shape_toptools_shapemaphasher`.
 
+### Template Class Instantiations
+
+Class templates are normally skipped, so an OCCT alias for an instantiation
+(`using GeomLProp_SLProps = GeomLProp_SLPropsBase<occ::handle<Geom_Surface>>;`) binds as
+an opaque type with a destructor and no methods. A `[template_instantiations]` entry with
+`generate_methods = true` binds one with a full method set:
+
+```toml
+"GeomLProp_SLPropsBase<occ::handle<Geom_Surface>>" = { header = "GeomLProp_SLProps.hxx", \
+    module = "GeomLProp", alias = "GeomLProp_SLProps", generate_methods = true, \
+    template_params = { SurfaceType = "Handle(Geom_Surface)" } }
+```
+
+- `alias` is the name the class is bound under, and must be a real C++ alias — generated
+  wrappers use it verbatim as the type spelling. Defaults to the mangled spelling.
+- `template_params` maps each template parameter to its concrete argument, either
+  `Handle(X)` or a plain class name.
+
+Two libclang details drive the implementation (`parser.rs`: `parse_template_classes`):
+
+1. A specialization's members only materialize if something forces instantiation, so the
+   synthetic TU gets a `template class <spelling>;` line per entry. Naming or `sizeof`-ing
+   the alias is *not* enough — the specialization stays incomplete.
+2. Even then, libclang exposes only template-argument references on the specialization
+   cursor; the members live on the **primary template**, with parameters unsubstituted.
+   (Clang's own AST has the substituted members — libclang's cursor API is a lossier view.)
+   So members are parsed from the primary template while `template_params` substitutes the
+   parameters, which is why that mapping is required rather than inferred.
+
+Members mentioning an unlisted parameter are skipped as unknown types; the many members
+that never mention one bind either way.
+
 ### Standard Streams (iostream)
 
 OCCT uses `Standard_OStream` (typedef for `std::ostream`) and `Standard_IStream` (typedef for `std::istream`) in many debug/dump methods. These are declared as `manual_types` in `bindings.toml` so the generator recognizes them as known types without generating class bindings. Namespace-scoped typedef aliases (for example `IMeshData::MapOfInteger`) are now resolved automatically by guarded parser logic that recognizes OCCT namespace typedef declarations.

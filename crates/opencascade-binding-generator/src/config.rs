@@ -157,6 +157,38 @@ pub struct TemplateInstantiation {
     /// Whether this instantiation inherits from Standard_Transient and needs Handle support.
     #[serde(default)]
     pub handle: bool,
+    /// Friendly name to bind this instantiation under — normally the OCCT alias
+    /// (e.g. `GeomLProp_SLProps` for `GeomLProp_SLPropsBase<occ::handle<Geom_Surface>>`).
+    /// Defaults to the mangled `template_alias_name()` spelling when unset.
+    #[serde(default)]
+    pub alias: Option<String>,
+    /// Opt in to full method generation for this instantiation.
+    ///
+    /// Off by default: most entries here exist only to register a type (and its
+    /// Handle) so signatures mentioning it resolve. Turning this on makes the
+    /// parser force an explicit instantiation so libclang materializes the
+    /// specialization's members, which are then bound like any other class.
+    #[serde(default)]
+    pub generate_methods: bool,
+
+    /// Concrete types for the template's parameters, e.g.
+    /// `{ SurfaceType = "Handle(Geom_Surface)" }`.
+    ///
+    /// libclang exposes a specialization's members only on the *primary template*,
+    /// with parameters unsubstituted, so members mentioning a parameter would
+    /// otherwise be skipped as unknown types. Values are either `Handle(X)` for a
+    /// handle to X, or a plain class name. Parameters not listed here are left
+    /// alone, which is fine for the many members that never mention them.
+    #[serde(default)]
+    pub template_params: std::collections::HashMap<String, String>,
+}
+
+/// The name an instantiation is bound under: the configured `alias` when given,
+/// otherwise the mangled spelling.
+pub fn instantiation_binding_name(spelling: &str, inst: &TemplateInstantiation) -> String {
+    inst.alias
+        .clone()
+        .unwrap_or_else(|| template_alias_name(spelling))
 }
 
 /// Load and parse a TOML configuration file.

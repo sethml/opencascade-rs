@@ -15071,6 +15071,109 @@ unsafe extern "C" {
         self_: *const GeomLProp_CurAndInf2d,
         N: i32,
     ) -> crate::OcctResult<i32>;
+    // ======================== GeomLProp_SLProps ========================
+    pub fn GeomLProp_SLProps_destructor(self_: *mut GeomLProp_SLProps);
+    /// **Source:** `GeomLProp_SLProps.hxx`:54 - `GeomLProp_SLProps::GeomLProp_SLProps()`
+    pub fn GeomLProp_SLProps_ctor_handlegeomsurface_real2_int_real(
+        S: *const Handle_Geom_Surface,
+        U: f64,
+        V: f64,
+        N: i32,
+        Resolution: f64,
+    ) -> crate::OcctResult<*mut GeomLProp_SLProps>;
+    /// **Source:** `GeomLProp_SLProps.hxx`:76 - `GeomLProp_SLProps::GeomLProp_SLProps()`
+    pub fn GeomLProp_SLProps_ctor_handlegeomsurface_int_real(
+        S: *const Handle_Geom_Surface,
+        N: i32,
+        Resolution: f64,
+    ) -> crate::OcctResult<*mut GeomLProp_SLProps>;
+    /// **Source:** `GeomLProp_SLProps.hxx`:94 - `GeomLProp_SLProps::GeomLProp_SLProps()`
+    pub fn GeomLProp_SLProps_ctor_int_real(
+        N: i32,
+        Resolution: f64,
+    ) -> crate::OcctResult<*mut GeomLProp_SLProps>;
+    /// **Source:** `GeomLProp_SLProps.hxx`:112 - `GeomLProp_SLProps::SetSurface()`
+    pub fn GeomLProp_SLProps_set_surface(
+        self_: *mut GeomLProp_SLProps,
+        S: *const Handle_Geom_Surface,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `GeomLProp_SLProps.hxx`:120 - `GeomLProp_SLProps::SetParameters()`
+    pub fn GeomLProp_SLProps_set_parameters(
+        self_: *mut GeomLProp_SLProps,
+        U: f64,
+        V: f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `GeomLProp_SLProps.hxx`:141 - `GeomLProp_SLProps::Value()`
+    pub fn GeomLProp_SLProps_value(
+        self_: *const GeomLProp_SLProps,
+    ) -> crate::OcctResult<*const gp_Pnt>;
+    /// **Source:** `GeomLProp_SLProps.hxx`:145 - `GeomLProp_SLProps::D1U()`
+    pub fn GeomLProp_SLProps_d1u(self_: *mut GeomLProp_SLProps)
+        -> crate::OcctResult<*const gp_Vec>;
+    /// **Source:** `GeomLProp_SLProps.hxx`:153 - `GeomLProp_SLProps::D1V()`
+    pub fn GeomLProp_SLProps_d1v(self_: *mut GeomLProp_SLProps)
+        -> crate::OcctResult<*const gp_Vec>;
+    /// **Source:** `GeomLProp_SLProps.hxx`:161 - `GeomLProp_SLProps::D2U()`
+    pub fn GeomLProp_SLProps_d2u(self_: *mut GeomLProp_SLProps)
+        -> crate::OcctResult<*const gp_Vec>;
+    /// **Source:** `GeomLProp_SLProps.hxx`:169 - `GeomLProp_SLProps::D2V()`
+    pub fn GeomLProp_SLProps_d2v(self_: *mut GeomLProp_SLProps)
+        -> crate::OcctResult<*const gp_Vec>;
+    /// **Source:** `GeomLProp_SLProps.hxx`:177 - `GeomLProp_SLProps::DUV()`
+    pub fn GeomLProp_SLProps_duv(self_: *mut GeomLProp_SLProps)
+        -> crate::OcctResult<*const gp_Vec>;
+    /// **Source:** `GeomLProp_SLProps.hxx`:186 - `GeomLProp_SLProps::IsTangentUDefined()`
+    pub fn GeomLProp_SLProps_is_tangent_u_defined(
+        self_: *mut GeomLProp_SLProps,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `GeomLProp_SLProps.hxx`:196 - `GeomLProp_SLProps::TangentU()`
+    pub fn GeomLProp_SLProps_tangent_u(
+        self_: *mut GeomLProp_SLProps,
+        D: *mut gp_Dir,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `GeomLProp_SLProps.hxx`:211 - `GeomLProp_SLProps::IsTangentVDefined()`
+    pub fn GeomLProp_SLProps_is_tangent_v_defined(
+        self_: *mut GeomLProp_SLProps,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `GeomLProp_SLProps.hxx`:221 - `GeomLProp_SLProps::TangentV()`
+    pub fn GeomLProp_SLProps_tangent_v(
+        self_: *mut GeomLProp_SLProps,
+        D: *mut gp_Dir,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `GeomLProp_SLProps.hxx`:234 - `GeomLProp_SLProps::IsNormalDefined()`
+    pub fn GeomLProp_SLProps_is_normal_defined(
+        self_: *mut GeomLProp_SLProps,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `GeomLProp_SLProps.hxx`:240 - `GeomLProp_SLProps::Normal()`
+    pub fn GeomLProp_SLProps_normal(
+        self_: *mut GeomLProp_SLProps,
+    ) -> crate::OcctResult<*const gp_Dir>;
+    /// **Source:** `GeomLProp_SLProps.hxx`:243 - `GeomLProp_SLProps::IsCurvatureDefined()`
+    pub fn GeomLProp_SLProps_is_curvature_defined(
+        self_: *mut GeomLProp_SLProps,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `GeomLProp_SLProps.hxx`:265 - `GeomLProp_SLProps::IsUmbilic()`
+    pub fn GeomLProp_SLProps_is_umbilic(self_: *mut GeomLProp_SLProps) -> crate::OcctResult<bool>;
+    /// **Source:** `GeomLProp_SLProps.hxx`:268 - `GeomLProp_SLProps::MaxCurvature()`
+    pub fn GeomLProp_SLProps_max_curvature(self_: *mut GeomLProp_SLProps)
+        -> crate::OcctResult<f64>;
+    /// **Source:** `GeomLProp_SLProps.hxx`:271 - `GeomLProp_SLProps::MinCurvature()`
+    pub fn GeomLProp_SLProps_min_curvature(self_: *mut GeomLProp_SLProps)
+        -> crate::OcctResult<f64>;
+    /// **Source:** `GeomLProp_SLProps.hxx`:275 - `GeomLProp_SLProps::CurvatureDirections()`
+    pub fn GeomLProp_SLProps_curvature_directions(
+        self_: *mut GeomLProp_SLProps,
+        MaxD: *mut gp_Dir,
+        MinD: *mut gp_Dir,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `GeomLProp_SLProps.hxx`:281 - `GeomLProp_SLProps::MeanCurvature()`
+    pub fn GeomLProp_SLProps_mean_curvature(
+        self_: *mut GeomLProp_SLProps,
+    ) -> crate::OcctResult<f64>;
+    /// **Source:** `GeomLProp_SLProps.hxx`:284 - `GeomLProp_SLProps::GaussianCurvature()`
+    pub fn GeomLProp_SLProps_gaussian_curvature(
+        self_: *mut GeomLProp_SLProps,
+    ) -> crate::OcctResult<f64>;
     // ======================== GeomLib_Check2dBSplineCurve ========================
     pub fn GeomLib_Check2dBSplineCurve_destructor(self_: *mut GeomLib_Check2dBSplineCurve);
     /// **Source:** `GeomLib_Check2dBSplineCurve.hxx`:33 - `GeomLib_Check2dBSplineCurve::GeomLib_Check2dBSplineCurve()`
@@ -20360,5 +20463,4 @@ unsafe extern "C" {
     pub fn Extrema_ExtPC_destructor(self_: *mut Extrema_ExtPC);
     pub fn Extrema_ExtPC2d_destructor(self_: *mut Extrema_ExtPC2d);
     pub fn GProp_PEquation_Type_destructor(self_: *mut GProp_PEquation_Type);
-    pub fn GeomLProp_SLProps_destructor(self_: *mut GeomLProp_SLProps);
 }

@@ -5,7 +5,6 @@
 
 #include <Adaptor3d_Surface.hxx>
 #include <BRepAdaptor_Curve.hxx>
-#include <BRepAdaptor_Surface.hxx>
 #include <BRepMesh_BaseMeshAlgo.hxx>
 #include <BRepMesh_BoundaryParamsRangeSplitter.hxx>
 #include <BRepMesh_Circle.hxx>

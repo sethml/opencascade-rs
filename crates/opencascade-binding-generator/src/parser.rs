@@ -64,6 +64,11 @@ thread_local! {
     /// Map of canonical OCCT type spellings to public alias names loaded from config.
     /// Keys are whitespace-normalized to match `normalize_template_spelling()` lookups.
     static OCCT_ALIAS_TYPE_OVERRIDES: RefCell<HashMap<String, String>> = RefCell::new(HashMap::new());
+
+    /// Concrete types for the template parameters of the instantiation currently
+    /// being parsed (e.g. `SurfaceType` -> `Handle(Geom_Surface)`). Empty except
+    /// while `parse_template_classes` is binding one.
+    static TEMPLATE_PARAM_SUBSTITUTIONS: RefCell<HashMap<String, Type>> = RefCell::new(HashMap::new());
 }
 
 /// Check if a type name is a known pointer typedef (e.g., `TopOpeBRepTool_Plos`).
@@ -94,7 +99,32 @@ fn normalize_occt_alias_type_name(type_name: &str) -> String {
 }
 
 fn class_type(type_name: &str) -> Type {
+    // While binding a configured template instantiation, template parameters
+    // resolve to their concrete arguments. libclang reports members of the primary
+    // template only, so without this every member mentioning a parameter would be
+    // skipped as an unknown type.
+    let key = type_name.trim();
+    if let Some(subst) =
+        TEMPLATE_PARAM_SUBSTITUTIONS.with(|m| m.borrow().get(key).cloned())
+    {
+        return subst;
+    }
     Type::Class(normalize_occt_alias_type_name(type_name))
+}
+
+/// Install template-parameter substitutions for the duration of one class parse.
+fn set_template_param_substitutions(subs: HashMap<String, Type>) {
+    TEMPLATE_PARAM_SUBSTITUTIONS.with(|m| *m.borrow_mut() = subs);
+}
+
+/// Parse a config template-parameter value into a type: `Handle(X)` becomes a
+/// handle to X, anything else is a plain class name.
+fn parse_template_param_type(spec: &str) -> Type {
+    let s = spec.trim();
+    match s.strip_prefix("Handle(").and_then(|r| r.strip_suffix(')')) {
+        Some(inner) => Type::Handle(inner.trim().to_string()),
+        None => Type::Class(s.to_string()),
+    }
 }
 
 /// Build a fully-qualified C++ display name for a nested class/struct by walking
@@ -448,10 +478,29 @@ fn set_occt_alias_type_overrides(overrides: &HashMap<String, String>) {
 /// Uses batch parsing: creates a synthetic source file that includes all headers,
 /// parses once, then extracts entities from each target header. This is much faster
 /// than parsing each header separately since OCCT headers have deep include chains.
+/// A template instantiation that should be bound with a full method set.
+#[derive(Debug, Clone)]
+pub struct TemplateClassRequest {
+    /// C++ spelling to explicitly instantiate, e.g.
+    /// `GeomLProp_SLPropsBase<occ::handle<Geom_Surface>>`. Default template
+    /// arguments may be omitted; the compiler fills them in.
+    pub spelling: String,
+    /// Name to bind the instantiation under, normally the OCCT alias
+    /// (`GeomLProp_SLProps`). This must name a real C++ alias, because generated
+    /// wrappers use it verbatim as the type spelling.
+    pub alias: String,
+    /// Header declaring the alias; the parsed class is filed against it.
+    pub header: String,
+    /// Concrete types for the template's parameters, keyed by parameter name
+    /// (see `TemplateInstantiation::template_params`).
+    pub template_params: HashMap<String, String>,
+}
+
 pub fn parse_headers(
     headers: &[impl AsRef<Path>],
     include_dirs: &[impl AsRef<Path>],
     occt_alias_type_overrides: &HashMap<String, String>,
+    template_classes: &[TemplateClassRequest],
     verbose: bool,
 ) -> Result<Vec<ParsedHeader>> {
     let clang =
@@ -485,6 +534,15 @@ pub fn parse_headers(
     let mut synthetic_source = String::new();
     for header in headers {
         synthetic_source.push_str(&format!("#include \"{}\"\n", header.as_ref().display()));
+    }
+
+    // Force instantiation of configured template classes. Without an explicit
+    // instantiation libclang leaves the specialization incomplete and exposes no
+    // members — merely naming or `sizeof`-ing the alias is not enough. With it,
+    // the members appear with template arguments already substituted, so they can
+    // be parsed like any ordinary class.
+    for req in template_classes {
+        synthetic_source.push_str(&format!("template class {};\n", req.spelling));
     }
 
     // Build clang arguments
@@ -597,6 +655,12 @@ pub fn parse_headers(
     root.visit_children(|entity, _parent| {
         visit_top_level_batch(&entity, &header_set, &filename_to_index, &mut results, verbose)
     });
+
+    // Configured template instantiations are bound after the main walk: their
+    // specializations are not declared in any target header, so the file-filtered
+    // visitor above never reaches them.
+    parse_template_classes(&root, template_classes, &filename_to_index, &mut results, verbose);
+
     let visit_time = visit_start.elapsed();
 
     eprintln!("\nTiming summary:");
@@ -604,6 +668,103 @@ pub fn parse_headers(
     eprintln!("  Total AST visit time: {:.2}s", visit_time.as_secs_f64());
 
     Ok(results)
+}
+
+/// Bind configured template instantiations with a full method set.
+///
+/// Matching is done through the *alias* declaration rather than by comparing
+/// specialization spellings: clang canonicalizes those (expanding default
+/// arguments and namespace aliases), so the spelling in config rarely matches
+/// verbatim. An alias name is stable and unambiguous, and following it lands on
+/// exactly the specialization that `parse_headers` instantiated.
+fn parse_template_classes(
+    root: &Entity,
+    requests: &[TemplateClassRequest],
+    filename_to_index: &std::collections::HashMap<&str, usize>,
+    results: &mut [ParsedHeader],
+    verbose: bool,
+) {
+    if requests.is_empty() {
+        return;
+    }
+    let by_alias: HashMap<&str, &TemplateClassRequest> =
+        requests.iter().map(|r| (r.alias.as_str(), r)).collect();
+    let mut bound: HashSet<String> = HashSet::new();
+
+    root.visit_children(|entity, _parent| {
+        let kind = entity.get_kind();
+        if kind != EntityKind::TypedefDecl && kind != EntityKind::TypeAliasDecl {
+            return EntityVisitResult::Recurse;
+        }
+        let Some(name) = entity.get_name() else {
+            return EntityVisitResult::Continue;
+        };
+        let Some(req) = by_alias.get(name.as_str()).copied() else {
+            return EntityVisitResult::Continue;
+        };
+        if bound.contains(&name) {
+            return EntityVisitResult::Continue;
+        }
+        // alias -> underlying type -> the specialization that declares the members
+        let Some(spec) = entity
+            .get_typedef_underlying_type()
+            .and_then(|t| t.get_declaration())
+        else {
+            return EntityVisitResult::Continue;
+        };
+        let Some(&index) = filename_to_index.get(req.header.as_str()) else {
+            eprintln!(
+                "  warning: template class {} declared in {}, which is not in the parsed header set",
+                req.alias, req.header
+            );
+            return EntityVisitResult::Continue;
+        };
+
+        // libclang exposes only template-argument references on the specialization
+        // cursor — the members live on the primary template, with parameters
+        // unsubstituted. Parse the template, substituting the configured arguments
+        // so members mentioning a parameter still bind.
+        let target = spec.get_template().unwrap_or(spec);
+        let subs: HashMap<String, Type> = req
+            .template_params
+            .iter()
+            .map(|(param, spec)| (param.clone(), parse_template_param_type(spec)))
+            .collect();
+        set_template_param_substitutions(subs);
+        let parsed = parse_class(&target, &req.header, verbose, Some(&req.alias));
+        set_template_param_substitutions(HashMap::new());
+        match parsed.iter().find(|c| c.name == req.alias) {
+            Some(c) if c.methods.is_empty() && c.constructors.is_empty() => {
+                eprintln!(
+                    "  warning: template class {} instantiated but exposed no members",
+                    req.alias
+                );
+            }
+            Some(c) => {
+                println!(
+                    "  Template class {}: {} methods, {} constructors",
+                    req.alias,
+                    c.methods.len(),
+                    c.constructors.len()
+                );
+            }
+            None => {
+                eprintln!("  warning: template class {} produced no class", req.alias);
+            }
+        }
+        results[index].classes.extend(parsed);
+        bound.insert(name);
+        EntityVisitResult::Continue
+    });
+
+    for req in requests {
+        if !bound.contains(&req.alias) {
+            eprintln!(
+                "  warning: template class alias {} not found (is `{}` declared in a parsed header?)",
+                req.alias, req.alias
+            );
+        }
+    }
 }
 
 /// Get the canonical path of the file an entity is located in
@@ -662,7 +823,7 @@ fn visit_top_level_batch(
 
     match entity.get_kind() {
         EntityKind::ClassDecl | EntityKind::StructDecl => {
-            let parsed_classes = parse_class(entity, &entity_file.file_name().unwrap_or_default().to_string_lossy(), verbose);
+            let parsed_classes = parse_class(entity, &entity_file.file_name().unwrap_or_default().to_string_lossy(), verbose, None);
             results[index].classes.extend(parsed_classes);
         }
         EntityKind::EnumDecl => {
@@ -716,10 +877,24 @@ fn visit_namespace_member_batch(
 /// Parse a class or struct declaration.
 /// Returns a vector because nested classes/structs defined inside the class
 /// are also returned (qualified as `Parent::Nested`).
-fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Vec<ParsedClass> {
-    let name = match entity.get_name() {
-        Some(n) => n,
-        None => return Vec::new(),
+/// `forced_name` binds a class under a caller-chosen name instead of its own.
+/// It is set only for configured template instantiations, where the entity is a
+/// `ClassTemplateSpecializationDecl` (whose own name is the bare template, e.g.
+/// `GeomLProp_SLPropsBase`) and we want the OCCT alias (`GeomLProp_SLProps`).
+/// Passing it also waives the template guards below, which otherwise reject every
+/// specialization.
+fn parse_class(
+    entity: &Entity,
+    source_header: &str,
+    verbose: bool,
+    forced_name: Option<&str>,
+) -> Vec<ParsedClass> {
+    let name = match forced_name {
+        Some(n) => n.to_string(),
+        None => match entity.get_name() {
+            Some(n) => n,
+            None => return Vec::new(),
+        },
     };
 
     // Skip forward declarations (no definition)
@@ -752,18 +927,21 @@ fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Vec<Parse
     // Skip template classes and template specializations
     // Template classes have get_template() returning Some, or get_template_kind() returning Some
     // Also skip if the display name contains angle brackets (indicates template instantiation)
-    if entity.get_template().is_some() {
-        if verbose {
-            println!("    Skipping {} (template class)", name);
+    // A configured instantiation (forced_name) is exempt: it is deliberately bound.
+    if forced_name.is_none() {
+        if entity.get_template().is_some() {
+            if verbose {
+                println!("    Skipping {} (template class)", name);
+            }
+            return Vec::new();
         }
-        return Vec::new();
-    }
-    let display_name = entity.get_display_name().unwrap_or_default();
-    if display_name.contains('<') {
-        if verbose {
-            println!("    Skipping {} (template specialization)", display_name);
+        let display_name = entity.get_display_name().unwrap_or_default();
+        if display_name.contains('<') {
+            if verbose {
+                println!("    Skipping {} (template specialization)", display_name);
+            }
+            return Vec::new();
         }
-        return Vec::new();
     }
 
     // Skip policy/trait classes used as template parameters
@@ -948,7 +1126,7 @@ fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Vec<Parse
                 let is_nested_public = current_access.get() == Accessibility::Public;
                 // Parse nested classes/structs defined inside this class
                 if is_nested_public && child.is_definition() {
-                    let mut parsed = parse_class(&child, source_header, verbose);
+                    let mut parsed = parse_class(&child, source_header, verbose, None);
                     // Collect the original (unqualified) names of sibling nested classes
                     // so we can fix base class references after qualification.
                     let sibling_names: HashSet<String> = parsed.iter().map(|c| c.name.clone()).collect();

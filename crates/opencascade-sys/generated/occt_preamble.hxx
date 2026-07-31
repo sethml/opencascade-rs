@@ -88,6 +88,7 @@ __attribute__((noinline)) static const char* occt_handle_exception() {
 #include <BOPTools_BoxTree.hxx>
 #include <BOPTools_ConnexityBlock.hxx>
 #include <BOPTools_CoupleOfShape.hxx>
+#include <BRepAdaptor_Surface.hxx>
 #include <BRepCheck_Status.hxx>
 #include <BRepExtrema_ProximityValueTool.hxx>
 #include <BRepExtrema_SolutionElem.hxx>
@@ -97,6 +98,7 @@ __attribute__((noinline)) static const char* occt_handle_exception() {
 #include <BRepGraph_NodeId.hxx>
 #include <BRepGraph_RefId.hxx>
 #include <BRepGraph_UID.hxx>
+#include <BRepLProp_SLProps.hxx>
 #include <BRepMesh_Vertex.hxx>
 #include <BRepOffset_Interval.hxx>
 #include <BRepOffset_Offset.hxx>
@@ -117,6 +119,7 @@ __attribute__((noinline)) static const char* occt_handle_exception() {
 #include <Geom2d_BoundedCurve.hxx>
 #include <Geom2d_Curve.hxx>
 #include <GeomGridEval.hxx>
+#include <GeomLProp_SLProps.hxx>
 #include <GeomPlate_Aij.hxx>
 #include <Geom_BSplineCurve.hxx>
 #include <Geom_BoundedCurve.hxx>
@@ -130,6 +133,7 @@ __attribute__((noinline)) static const char* occt_handle_exception() {
 #include <HLRBRep_EdgeData.hxx>
 #include <HLRBRep_FaceData.hxx>
 #include <HLRBRep_ShapeBounds.hxx>
+#include <IFSelect_ActFunc.hxx>
 #include <IGESAppli_FiniteElement.hxx>
 #include <IGESAppli_Node.hxx>
 #include <IGESData_IGESEntity.hxx>
@@ -359,6 +363,8 @@ typedef BRepGraph_MutGuard<BRepGraphInc::WireRef> BRepGraph_MutGuard_BRepGraphIn
 typedef BVH_Box<double, 2> BVH_Box_double_2;
 typedef BVH_Builder<double, 3> BVH_Builder_double_3;
 typedef BVH_Tree<double, 3> BVH_Tree_double_3;
+typedef GeomLProp_SLPropsBase<BRepAdaptor_Surface> GeomLProp_SLPropsBase_BRepAdaptor_Surface;
+typedef GeomLProp_SLPropsBase<occ::handle<Geom_Surface>> GeomLProp_SLPropsBase_occ_handle_Geom_Surface;
 typedef NCollection_Array1<AppDef_MultiPointConstraint> NCollection_Array1_AppDef_MultiPointConstraint;
 typedef NCollection_Array1<AppParCurves_MultiPoint> NCollection_Array1_AppParCurves_MultiPoint;
 typedef NCollection_Array1<BRepGraphInc::ParityOrientation> NCollection_Array1_BRepGraphInc_ParityOrientation;

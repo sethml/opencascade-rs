@@ -12177,6 +12177,109 @@ unsafe extern "C" {
     /// **Source:** `BRepGraphInc_Storage.hxx` - `BRepGraphInc_Storage_CachedShape::BRepGraphInc_Storage_CachedShape()`
     pub fn BRepGraphInc_Storage_CachedShape_ctor(
     ) -> crate::OcctResult<*mut BRepGraphInc_Storage_CachedShape>;
+    // ======================== BRepLProp_SLProps ========================
+    pub fn BRepLProp_SLProps_destructor(self_: *mut BRepLProp_SLProps);
+    /// **Source:** `BRepLProp_SLProps.hxx`:54 - `BRepLProp_SLProps::BRepLProp_SLProps()`
+    pub fn BRepLProp_SLProps_ctor_surface_real2_int_real(
+        S: *const BRepAdaptor_Surface,
+        U: f64,
+        V: f64,
+        N: i32,
+        Resolution: f64,
+    ) -> crate::OcctResult<*mut BRepLProp_SLProps>;
+    /// **Source:** `BRepLProp_SLProps.hxx`:76 - `BRepLProp_SLProps::BRepLProp_SLProps()`
+    pub fn BRepLProp_SLProps_ctor_surface_int_real(
+        S: *const BRepAdaptor_Surface,
+        N: i32,
+        Resolution: f64,
+    ) -> crate::OcctResult<*mut BRepLProp_SLProps>;
+    /// **Source:** `BRepLProp_SLProps.hxx`:94 - `BRepLProp_SLProps::BRepLProp_SLProps()`
+    pub fn BRepLProp_SLProps_ctor_int_real(
+        N: i32,
+        Resolution: f64,
+    ) -> crate::OcctResult<*mut BRepLProp_SLProps>;
+    /// **Source:** `BRepLProp_SLProps.hxx`:112 - `BRepLProp_SLProps::SetSurface()`
+    pub fn BRepLProp_SLProps_set_surface(
+        self_: *mut BRepLProp_SLProps,
+        S: *const BRepAdaptor_Surface,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BRepLProp_SLProps.hxx`:120 - `BRepLProp_SLProps::SetParameters()`
+    pub fn BRepLProp_SLProps_set_parameters(
+        self_: *mut BRepLProp_SLProps,
+        U: f64,
+        V: f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BRepLProp_SLProps.hxx`:141 - `BRepLProp_SLProps::Value()`
+    pub fn BRepLProp_SLProps_value(
+        self_: *const BRepLProp_SLProps,
+    ) -> crate::OcctResult<*const gp_Pnt>;
+    /// **Source:** `BRepLProp_SLProps.hxx`:145 - `BRepLProp_SLProps::D1U()`
+    pub fn BRepLProp_SLProps_d1u(self_: *mut BRepLProp_SLProps)
+        -> crate::OcctResult<*const gp_Vec>;
+    /// **Source:** `BRepLProp_SLProps.hxx`:153 - `BRepLProp_SLProps::D1V()`
+    pub fn BRepLProp_SLProps_d1v(self_: *mut BRepLProp_SLProps)
+        -> crate::OcctResult<*const gp_Vec>;
+    /// **Source:** `BRepLProp_SLProps.hxx`:161 - `BRepLProp_SLProps::D2U()`
+    pub fn BRepLProp_SLProps_d2u(self_: *mut BRepLProp_SLProps)
+        -> crate::OcctResult<*const gp_Vec>;
+    /// **Source:** `BRepLProp_SLProps.hxx`:169 - `BRepLProp_SLProps::D2V()`
+    pub fn BRepLProp_SLProps_d2v(self_: *mut BRepLProp_SLProps)
+        -> crate::OcctResult<*const gp_Vec>;
+    /// **Source:** `BRepLProp_SLProps.hxx`:177 - `BRepLProp_SLProps::DUV()`
+    pub fn BRepLProp_SLProps_duv(self_: *mut BRepLProp_SLProps)
+        -> crate::OcctResult<*const gp_Vec>;
+    /// **Source:** `BRepLProp_SLProps.hxx`:186 - `BRepLProp_SLProps::IsTangentUDefined()`
+    pub fn BRepLProp_SLProps_is_tangent_u_defined(
+        self_: *mut BRepLProp_SLProps,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `BRepLProp_SLProps.hxx`:196 - `BRepLProp_SLProps::TangentU()`
+    pub fn BRepLProp_SLProps_tangent_u(
+        self_: *mut BRepLProp_SLProps,
+        D: *mut gp_Dir,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BRepLProp_SLProps.hxx`:211 - `BRepLProp_SLProps::IsTangentVDefined()`
+    pub fn BRepLProp_SLProps_is_tangent_v_defined(
+        self_: *mut BRepLProp_SLProps,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `BRepLProp_SLProps.hxx`:221 - `BRepLProp_SLProps::TangentV()`
+    pub fn BRepLProp_SLProps_tangent_v(
+        self_: *mut BRepLProp_SLProps,
+        D: *mut gp_Dir,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BRepLProp_SLProps.hxx`:234 - `BRepLProp_SLProps::IsNormalDefined()`
+    pub fn BRepLProp_SLProps_is_normal_defined(
+        self_: *mut BRepLProp_SLProps,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `BRepLProp_SLProps.hxx`:240 - `BRepLProp_SLProps::Normal()`
+    pub fn BRepLProp_SLProps_normal(
+        self_: *mut BRepLProp_SLProps,
+    ) -> crate::OcctResult<*const gp_Dir>;
+    /// **Source:** `BRepLProp_SLProps.hxx`:243 - `BRepLProp_SLProps::IsCurvatureDefined()`
+    pub fn BRepLProp_SLProps_is_curvature_defined(
+        self_: *mut BRepLProp_SLProps,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `BRepLProp_SLProps.hxx`:265 - `BRepLProp_SLProps::IsUmbilic()`
+    pub fn BRepLProp_SLProps_is_umbilic(self_: *mut BRepLProp_SLProps) -> crate::OcctResult<bool>;
+    /// **Source:** `BRepLProp_SLProps.hxx`:268 - `BRepLProp_SLProps::MaxCurvature()`
+    pub fn BRepLProp_SLProps_max_curvature(self_: *mut BRepLProp_SLProps)
+        -> crate::OcctResult<f64>;
+    /// **Source:** `BRepLProp_SLProps.hxx`:271 - `BRepLProp_SLProps::MinCurvature()`
+    pub fn BRepLProp_SLProps_min_curvature(self_: *mut BRepLProp_SLProps)
+        -> crate::OcctResult<f64>;
+    /// **Source:** `BRepLProp_SLProps.hxx`:275 - `BRepLProp_SLProps::CurvatureDirections()`
+    pub fn BRepLProp_SLProps_curvature_directions(
+        self_: *mut BRepLProp_SLProps,
+        MaxD: *mut gp_Dir,
+        MinD: *mut gp_Dir,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BRepLProp_SLProps.hxx`:281 - `BRepLProp_SLProps::MeanCurvature()`
+    pub fn BRepLProp_SLProps_mean_curvature(
+        self_: *mut BRepLProp_SLProps,
+    ) -> crate::OcctResult<f64>;
+    /// **Source:** `BRepLProp_SLProps.hxx`:284 - `BRepLProp_SLProps::GaussianCurvature()`
+    pub fn BRepLProp_SLProps_gaussian_curvature(
+        self_: *mut BRepLProp_SLProps,
+    ) -> crate::OcctResult<f64>;
     // ======================== BRepLProp_SurfaceTool ========================
     pub fn BRepLProp_SurfaceTool_destructor(self_: *mut BRepLProp_SurfaceTool);
     /// **Source:** `BRepLProp_SurfaceTool.hxx` - `BRepLProp_SurfaceTool::BRepLProp_SurfaceTool()`

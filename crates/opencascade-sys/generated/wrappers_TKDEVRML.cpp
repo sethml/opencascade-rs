@@ -4,7 +4,6 @@
 #include "occt_preamble.hxx"
 
 #include <Aspect_TypeOfDeflection.hxx>
-#include <BRepAdaptor_Surface.hxx>
 #include <DEVRML_ConfigurationNode.hxx>
 #include <DEVRML_Provider.hxx>
 #include <DE_ConfigurationContext.hxx>
