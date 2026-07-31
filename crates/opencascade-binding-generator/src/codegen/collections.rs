@@ -1267,9 +1267,17 @@ fn generate_rust_ffi_collection(info: &CollectionInfo) -> String {
         CollectionKind::IndexedMap | CollectionKind::Map => {
             output.push_str("    /// Add an element to the map/set\n");
             output.push_str(&format!("    pub fn {}_add(coll: *mut {}, item: *const {}) -> i32;\n\n", coll_name, coll_name, elem));
+            // These must mirror generate_cpp_indexed_collection / _const_iterator_collection
+            // exactly: IndexedMap emits add/find_key/find_index, Map emits add/contains.
+            // Omitting one here leaves an orphaned C++ wrapper that Rust cannot reach.
             if info.kind == CollectionKind::IndexedMap {
                 output.push_str("    /// Get element at 1-based index\n");
                 output.push_str(&format!("    pub fn {}_find_key(coll: *const {}, index: i32) -> *const {};\n\n", coll_name, coll_name, elem));
+                output.push_str("    /// Find the 1-based index of an element (returns 0 if not found)\n");
+                output.push_str(&format!("    pub fn {}_find_index(coll: *const {}, item: *const {}) -> i32;\n\n", coll_name, coll_name, elem));
+            } else {
+                output.push_str("    /// Check if an element is present\n");
+                output.push_str(&format!("    pub fn {}_contains(coll: *const {}, item: *const {}) -> bool;\n\n", coll_name, coll_name, elem));
             }
         }
         CollectionKind::DataMap => {

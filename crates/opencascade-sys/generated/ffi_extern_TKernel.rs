@@ -32931,6 +32931,12 @@ unsafe extern "C" {
         index: i32,
     ) -> *const TCollection_AsciiString;
 
+    /// Find the 1-based index of an element (returns 0 if not found)
+    pub fn NCollection_IndexedMap_TCollection_AsciiString_find_index(
+        coll: *const NCollection_IndexedMap_TCollection_AsciiString,
+        item: *const TCollection_AsciiString,
+    ) -> i32;
+
     /// Create an iterator over the collection
     pub fn NCollection_IndexedMap_TCollection_AsciiString_iter(
         coll: *const NCollection_IndexedMap_TCollection_AsciiString,
@@ -32973,6 +32979,12 @@ unsafe extern "C" {
         coll: *const NCollection_IndexedMap_TDF_Label,
         index: i32,
     ) -> *const TDF_Label;
+
+    /// Find the 1-based index of an element (returns 0 if not found)
+    pub fn NCollection_IndexedMap_TDF_Label_find_index(
+        coll: *const NCollection_IndexedMap_TDF_Label,
+        item: *const TDF_Label,
+    ) -> i32;
 
     /// Create an iterator over the collection
     pub fn NCollection_IndexedMap_TDF_Label_iter(
@@ -33017,6 +33029,12 @@ unsafe extern "C" {
         index: i32,
     ) -> *const TopoDS_Shape;
 
+    /// Find the 1-based index of an element (returns 0 if not found)
+    pub fn NCollection_IndexedMap_TopoDS_Shape_find_index(
+        coll: *const NCollection_IndexedMap_TopoDS_Shape,
+        item: *const TopoDS_Shape,
+    ) -> i32;
+
     /// Create an iterator over the collection
     pub fn NCollection_IndexedMap_TopoDS_Shape_iter(
         coll: *const NCollection_IndexedMap_TopoDS_Shape,
@@ -33060,6 +33078,12 @@ unsafe extern "C" {
         coll: *const NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher,
         index: i32,
     ) -> *const TopoDS_Shape;
+
+    /// Find the 1-based index of an element (returns 0 if not found)
+    pub fn NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher_find_index(
+        coll: *const NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher,
+        item: *const TopoDS_Shape,
+    ) -> i32;
 
     /// Create an iterator over the collection
     pub fn NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher_iter(
@@ -33929,6 +33953,12 @@ unsafe extern "C" {
         item: *const BOPDS_Pair,
     ) -> i32;
 
+    /// Check if an element is present
+    pub fn NCollection_Map_BOPDS_Pair_contains(
+        coll: *const NCollection_Map_BOPDS_Pair,
+        item: *const BOPDS_Pair,
+    ) -> bool;
+
     /// Create an iterator over the collection
     pub fn NCollection_Map_BOPDS_Pair_iter(
         coll: *const NCollection_Map_BOPDS_Pair,
@@ -33965,6 +33995,12 @@ unsafe extern "C" {
         item: *const TCollection_AsciiString,
     ) -> i32;
 
+    /// Check if an element is present
+    pub fn NCollection_Map_TCollection_AsciiString_contains(
+        coll: *const NCollection_Map_TCollection_AsciiString,
+        item: *const TCollection_AsciiString,
+    ) -> bool;
+
     /// Create an iterator over the collection
     pub fn NCollection_Map_TCollection_AsciiString_iter(
         coll: *const NCollection_Map_TCollection_AsciiString,
@@ -33997,6 +34033,12 @@ unsafe extern "C" {
         coll: *mut NCollection_Map_TDF_Label,
         item: *const TDF_Label,
     ) -> i32;
+
+    /// Check if an element is present
+    pub fn NCollection_Map_TDF_Label_contains(
+        coll: *const NCollection_Map_TDF_Label,
+        item: *const TDF_Label,
+    ) -> bool;
 
     /// Create an iterator over the collection
     pub fn NCollection_Map_TDF_Label_iter(
@@ -34034,6 +34076,12 @@ unsafe extern "C" {
         item: *const TopoDS_Shape,
     ) -> i32;
 
+    /// Check if an element is present
+    pub fn NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher_contains(
+        coll: *const NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher,
+        item: *const TopoDS_Shape,
+    ) -> bool;
+
     /// Create an iterator over the collection
     pub fn NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher_iter(
         coll: *const NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher,
@@ -34063,6 +34111,10 @@ unsafe extern "C" {
 
     /// Add an element to the map/set
     pub fn NCollection_Map_int_add(coll: *mut NCollection_Map_int, item: *const i32) -> i32;
+
+    /// Check if an element is present
+    pub fn NCollection_Map_int_contains(coll: *const NCollection_Map_int, item: *const i32)
+        -> bool;
 
     /// Create an iterator over the collection
     pub fn NCollection_Map_int_iter(coll: *const NCollection_Map_int) -> *mut Map_intIterator;

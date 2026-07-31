@@ -1041,6 +1041,18 @@ fn emit_collection_impl(coll: &super::collections::CollectionInfo) -> String {
                     "    /// Get element at 1-based index\n    pub fn find_key(&self, index: i32) -> &{} {{\n        unsafe {{ &*crate::ffi::{}_find_key(self as *const Self, index) }}\n    }}\n\n",
                     elem_type_ref, coll_name
                 ));
+                // find_index: the inverse of find_key, and the reason to use an
+                // IndexedMap over a linear scan.
+                out.push_str(&format!(
+                    "    /// Find the 1-based index of an element (returns 0 if not found)\n    pub fn find_index(&self, item: &{}) -> i32 {{\n        unsafe {{ crate::ffi::{}_find_index(self as *const Self, item as *const {}) }}\n    }}\n\n",
+                    elem_type_ref, coll_name, elem_type_ref
+                ));
+            } else {
+                // Map has no index, so membership is the only lookup it offers.
+                out.push_str(&format!(
+                    "    /// Check if an element is present\n    pub fn contains(&self, item: &{}) -> bool {{\n        unsafe {{ crate::ffi::{}_contains(self as *const Self, item as *const {}) }}\n    }}\n\n",
+                    elem_type_ref, coll_name, elem_type_ref
+                ));
             }
         }
         CollectionKind::DataMap => {

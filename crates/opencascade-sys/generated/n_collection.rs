@@ -15919,6 +15919,16 @@ impl IndexedMap_TCollection_AsciiString {
         }
     }
 
+    /// Find the 1-based index of an element (returns 0 if not found)
+    pub fn find_index(&self, item: &crate::ffi_types::TCollection_AsciiString) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedMap_TCollection_AsciiString_find_index(
+                self as *const Self,
+                item as *const crate::ffi_types::TCollection_AsciiString,
+            )
+        }
+    }
+
     /// Create an iterator over the collection
     pub fn iter(
         &self,
@@ -16012,6 +16022,16 @@ impl IndexedMap_TDF_Label {
         }
     }
 
+    /// Find the 1-based index of an element (returns 0 if not found)
+    pub fn find_index(&self, item: &crate::ffi_types::TDF_Label) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedMap_TDF_Label_find_index(
+                self as *const Self,
+                item as *const crate::ffi_types::TDF_Label,
+            )
+        }
+    }
+
     /// Create an iterator over the collection
     pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::IndexedMap_TDF_LabelIterator> {
         unsafe {
@@ -16099,6 +16119,16 @@ impl IndexedMap_TopoDS_Shape {
         }
     }
 
+    /// Find the 1-based index of an element (returns 0 if not found)
+    pub fn find_index(&self, item: &crate::ffi_types::TopoDS_Shape) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedMap_TopoDS_Shape_find_index(
+                self as *const Self,
+                item as *const crate::ffi_types::TopoDS_Shape,
+            )
+        }
+    }
+
     /// Create an iterator over the collection
     pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::IndexedMap_TopoDS_ShapeIterator> {
         unsafe {
@@ -16175,6 +16205,13 @@ impl IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher {
     pub fn find_key(&self, index: i32) -> &crate::ffi_types::TopoDS_Shape {
         unsafe {
             &*crate::ffi_extern_TKernel::NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher_find_key(self as *const Self, index)
+        }
+    }
+
+    /// Find the 1-based index of an element (returns 0 if not found)
+    pub fn find_index(&self, item: &crate::ffi_types::TopoDS_Shape) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher_find_index(self as *const Self, item as *const crate::ffi_types::TopoDS_Shape)
         }
     }
 
@@ -18051,6 +18088,16 @@ impl Map_BOPDS_Pair {
         }
     }
 
+    /// Check if an element is present
+    pub fn contains(&self, item: &crate::ffi_types::BOPDS_Pair) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Map_BOPDS_Pair_contains(
+                self as *const Self,
+                item as *const crate::ffi_types::BOPDS_Pair,
+            )
+        }
+    }
+
     /// Create an iterator over the collection
     pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::Map_BOPDS_PairIterator> {
         unsafe {
@@ -18129,6 +18176,16 @@ impl Map_TCollection_AsciiString {
         }
     }
 
+    /// Check if an element is present
+    pub fn contains(&self, item: &crate::ffi_types::TCollection_AsciiString) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Map_TCollection_AsciiString_contains(
+                self as *const Self,
+                item as *const crate::ffi_types::TCollection_AsciiString,
+            )
+        }
+    }
+
     /// Create an iterator over the collection
     pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::Map_TCollection_AsciiStringIterator> {
         unsafe {
@@ -18195,6 +18252,16 @@ impl Map_TDF_Label {
         unsafe {
             crate::ffi_extern_TKernel::NCollection_Map_TDF_Label_add(
                 self as *mut Self,
+                item as *const crate::ffi_types::TDF_Label,
+            )
+        }
+    }
+
+    /// Check if an element is present
+    pub fn contains(&self, item: &crate::ffi_types::TDF_Label) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Map_TDF_Label_contains(
+                self as *const Self,
                 item as *const crate::ffi_types::TDF_Label,
             )
         }
@@ -18279,6 +18346,16 @@ impl Map_TopoDS_Shape_TopTools_ShapeMapHasher {
         }
     }
 
+    /// Check if an element is present
+    pub fn contains(&self, item: &crate::ffi_types::TopoDS_Shape) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher_contains(
+                self as *const Self,
+                item as *const crate::ffi_types::TopoDS_Shape,
+            )
+        }
+    }
+
     /// Create an iterator over the collection
     pub fn iter(
         &self,
@@ -18345,6 +18422,16 @@ impl Map_int {
         unsafe {
             crate::ffi_extern_TKernel::NCollection_Map_int_add(
                 self as *mut Self,
+                item as *const i32,
+            )
+        }
+    }
+
+    /// Check if an element is present
+    pub fn contains(&self, item: &i32) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Map_int_contains(
+                self as *const Self,
                 item as *const i32,
             )
         }
